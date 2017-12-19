@@ -16,7 +16,7 @@
            
     </head>
     
-    <body class="page-container-bg-solid page-boxed">
+    <body class="page-container-bg-solid page-boxed botton_footer">
 
      <?php echo $header; ?>
         <?php if ($artdata[0]['art_step'] == 4) { ?>

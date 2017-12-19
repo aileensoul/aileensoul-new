@@ -15,7 +15,7 @@
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business-common.min.css?ver=' . time()); ?>">
         <?php } ?>
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push">
+    <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
         <!-- START HEADER -->
         <?php echo $header; ?>
         <!-- END HEADER -->
@@ -148,18 +148,18 @@
                                                                     </div>  
                                                                     <div class="cq_latest_right">
                                                                         <div class="cq_desc_post">
-                                                                            <sapn class="rifght_fname">  
+                                                                            <span class="rifght_fname">  
                                                                                 <a  href="<?php echo base_url('business-profile/dashboard/' . $friend['business_slug']); ?>">
                                                                                     <span class="main_name">
                                                                                         <?php echo ucfirst(strtolower($friend['company_name'])); ?> 
                                                                                     </span>
                                                                                 </a>
                                                                                 <span style="color: #8c8c8c;">confirmed your contact request .</span>
-                                                                            </sapn>
+                                                                            </span>
                                                                         </div>
 
                                                                         <div class="cq_desc_post">
-                                                                            <sapn class="cq_rifght_desc">  <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($friend['modify_date']))); ?> </sapn>
+                                                                            <span class="cq_rifght_desc">  <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($friend['modify_date']))); ?> </span>
                                                                         </div>  
                                                                     </div>
                                                                 </div>

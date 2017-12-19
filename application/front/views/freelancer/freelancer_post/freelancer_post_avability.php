@@ -6,9 +6,9 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver='.time()); ?>">
       
     </head>
-    <div class="js">
-        <body>
-            <div id="preloader"></div>
+   
+    <body class="botton_footer">
+         
             <?php echo $header; ?>
             <?php
             if ($freepostdata[0]['user_id'] && $freepostdata[0]['free_post_step'] == '7') {
@@ -135,5 +135,5 @@
             <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_avability.js?ver='.time()); ?>"></script>
              <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
         </body>
-    </div>
+   
 </html>

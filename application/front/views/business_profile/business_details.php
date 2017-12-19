@@ -213,7 +213,7 @@
 
         </style>
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push no-login">
+    <body class="page-container-bg-solid page-boxed pushmenu-push no-login botton_footer">
         <header>
             <div class="container">
                 <div class="row">

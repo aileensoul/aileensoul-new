@@ -7,7 +7,7 @@
 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css'); ?>">
     </head> <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css') ;?>" />
-    <body class="page-container-bg-solid page-boxed pushmenu-push">
+    <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
         <?php 
             echo $header; 
             echo $job_header2_border; 

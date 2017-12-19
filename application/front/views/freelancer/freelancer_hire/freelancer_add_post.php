@@ -28,7 +28,7 @@
             }
         </style>
     </head>
-    <body class="pushmenu-push">
+    <body class="pushmenu-push botton_footer">
         <?php echo $header; ?>
         <?php echo $freelancer_hire_header2_border; ?>
         <section>

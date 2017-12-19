@@ -199,7 +199,7 @@ $route['freelancer-work/portfolio/(:any)'] = "freelancer/freelancer_post_portfol
 $route['freelancer-work/search'] = "search/freelancer_post_search";
 $route['freelancer-work/deactivate'] = "freelancer/deactivate";
 $route['freelancer-work/reactivate'] = "freelancer/reactivate";
-$route['freelancer-work/registation'] = "freelancer/registation";
+$route['freelancer-work/registration'] = "freelancer/registation";
 $route['freelancer-work'] = "freelancer/freelancer_post/freelancer_post_basic_information";
 
 
@@ -351,9 +351,9 @@ $route['notification/business-post/(:any)'] = "business_profile/edit_post/$1";
 $route['notification/art-post/(:any)'] = "notification/art_post/$1";
 
 
-$route['how-to-use-job-profile-in-aileensoul'] = "profile_job";
-$route['how-to-use-recruiter-profile-in-aileensoul'] = "recruiter_profile";
-$route['how-to-use-freelance-profile-in-aileensoul'] = "freelancer_profile";
-$route['how-to-use-business-profile-in-aileensoul'] = "profile_business";
-$route['how-to-use-artistic-profile-in-aileensoul'] = "artistic_profile";
+$route['how-to-use-job-profile-in-aileensoul'] = "introduction/job_profile";
+$route['how-to-use-recruiter-profile-in-aileensoul'] = "introduction/recruiter_profile";
+$route['how-to-use-freelance-profile-in-aileensoul'] = "introduction/freelance_profile";
+$route['how-to-use-business-profile-in-aileensoul'] = "introduction/business_profile";
+$route['how-to-use-artistic-profile-in-aileensoul'] = "introduction/artistic_profile";
 

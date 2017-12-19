@@ -366,7 +366,7 @@
         .full-box-module{width: 320px;float: left;height: auto;}
         .profile-boxProfileCard{border: none;}
     </style>
-    <body class="page-container-bg-solid page-boxed no-login">
+    <body class="page-container-bg-solid page-boxed no-login botton_footer">
 
         <header>
             <div class="container">

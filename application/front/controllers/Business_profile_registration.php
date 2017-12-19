@@ -48,6 +48,11 @@ class Business_profile_registration extends MY_Controller {
             $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             //$this->load->view('business_profile/ng_business_registration_old', $this->data);
+            if($userid){
+            $this->data['profile_login'] = "login";
+             }else{
+            $this->data['profile_login'] = "live";
+            }
             $this->load->view('business_profile/ng_business_registration', $this->data);
         }
     }

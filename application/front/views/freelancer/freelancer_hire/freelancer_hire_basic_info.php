@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
     </head>
     <!--<div class="js">-->
-    <body class="pushmenu-push">
+    <body class="pushmenu-push botton_footer">
         <!--<div id="preloader"></div>-->
         <?php echo $header; ?>
         <?php

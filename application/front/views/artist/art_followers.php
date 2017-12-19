@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">
 
 </head>
-<body  class="page-container-bg-solid page-boxed">
+<body  class="page-container-bg-solid page-boxed botton_footer">
 <?php echo $header; ?>
 <?php echo $art_header2_border; ?>
    <section class="custom-row">

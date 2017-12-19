@@ -59,7 +59,7 @@ class Freelancer extends MY_Controller {
             } else if ($jobdata[0]['free_post_step'] == 7) {
                 redirect('freelancer-work/home', refresh);
             } else {
-                redirect('freelancer-work/registation', refresh);
+                redirect('freelancer-work/registration', refresh);
                 //  redirect('freelancer-work/basic-information', refresh);
                 // $this->load->view('freelancer/freelancer_post/freelancer_post_basic_information',$this->data);
             }
@@ -1705,13 +1705,13 @@ class Freelancer extends MY_Controller {
                     if ($row['freelancer_post_user_image']) {
                         if (IMAGEPATHFROM == 'upload') {
                             if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $row['freelancer_post_user_image'])) {
-                                $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                                $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                                 $return_html .= '<div class = "post-img-div">';
                                 $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
                                 $return_html .= '</div>
                                  </a>';
                             } else {
-                                $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
+                                $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] ) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
                 <img src = "' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image'] . '" alt = " ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
                 </a>';
                             }
@@ -1720,11 +1720,11 @@ class Freelancer extends MY_Controller {
                             $s3 = new S3(awsAccessKey, awsSecretKey);
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                             if ($info) {
-                                $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
+                                $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
                 <img src = "' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image'] . '" alt = " ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
                 </a>';
                             } else {
-                                $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                                $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                                 $return_html .= '<div class = "post-img-div">';
                                 $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
                                 $return_html .= '</div>
@@ -1732,7 +1732,7 @@ class Freelancer extends MY_Controller {
                             }
                         }
                     } else {
-                        $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                        $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                         $return_html .= '<div class = "post-img-div">';
                         $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
                         $return_html .= '</div>
@@ -1743,7 +1743,7 @@ class Freelancer extends MY_Controller {
                 <div class = "designation_rec fl">
                 <ul>
                 <li>
-                <a href = " ' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
+                <a href = " ' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
                 <h6>';
                     $return_html .= ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']);
                     $return_html .= '</h6>
@@ -2212,7 +2212,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= '<h5><a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
                 $return_html .= $post['post_name'];
                 $return_html .= '</a></h5>';
-                $return_html .= '<p><a href="' . base_url('freelancer-hire/employer-details/' . $hireslug . '?page=freelancer_post') . '">';
+                $return_html .= '<p><a href="' . base_url('freelancer-hire/employer-details/' . $hireslug) . '">';
                 $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                 $return_html .= '</a></p>
             </div>
@@ -2952,8 +2952,8 @@ class Freelancer extends MY_Controller {
         $offset = $start;
 
         $contition_array = array('save.status' => '0', 'freelancer_post_reg.is_delete' => '0', 'freelancer_post_reg.status' => '1', 'save.from_id' => $userid, 'save.save_type' => '2');
-        $postdata = $this->common->select_data_by_condition('save', $contition_array, $data = 'freelancer_post_reg.freelancer_post_user_image, freelancer_post_reg.user_id, freelancer_post_reg.freelancer_post_fullname, freelancer_post_reg.freelancer_post_username, freelancer_post_reg.designation, freelancer_post_reg.freelancer_post_area, freelancer_post_reg.freelancer_post_otherskill,freelancer_post_reg.freelancer_post_country, freelancer_post_reg.freelancer_post_city, freelancer_post_reg.freelancer_post_skill_description, freelancer_post_reg.freelancer_post_work_hour, freelancer_post_reg.freelancer_post_hourly, freelancer_post_reg.freelancer_post_ratestate, freelancer_post_reg.freelancer_post_fixed_rate, freelancer_post_reg.freelancer_post_exp_year, freelancer_post_reg.freelancer_post_exp_month,freelancer_post_reg.freelancer_post_field, save.save_id', $sortby = 'save_id', $orderby = 'desc', $limit, $offset, $join_str, $groupby = '');
-        $postdata1 = $this->common->select_data_by_condition('save', $contition_array, $data = 'freelancer_post_reg.freelancer_post_user_image, freelancer_post_reg.user_id, freelancer_post_reg.freelancer_post_fullname, freelancer_post_reg.freelancer_post_username, freelancer_post_reg.designation, freelancer_post_reg.freelancer_post_area, freelancer_post_reg.freelancer_post_otherskill,freelancer_post_reg.freelancer_post_country, freelancer_post_reg.freelancer_post_city, freelancer_post_reg.freelancer_post_skill_description, freelancer_post_reg.freelancer_post_work_hour, freelancer_post_reg.freelancer_post_hourly, freelancer_post_reg.freelancer_post_ratestate, freelancer_post_reg.freelancer_post_fixed_rate, freelancer_post_reg.freelancer_post_exp_year, freelancer_post_reg.freelancer_post_exp_month,freelancer_post_reg.freelancer_post_field, save.save_id', $sortby = 'save_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+        $postdata = $this->common->select_data_by_condition('save', $contition_array, $data = 'freelancer_post_reg.freelancer_post_user_image, freelancer_post_reg.user_id, freelancer_post_reg.freelancer_post_fullname, freelancer_post_reg.freelancer_post_username, freelancer_post_reg.designation, freelancer_post_reg.freelancer_apply_slug,freelancer_post_reg.freelancer_post_area, freelancer_post_reg.freelancer_post_otherskill,freelancer_post_reg.freelancer_post_country, freelancer_post_reg.freelancer_post_city, freelancer_post_reg.freelancer_post_skill_description, freelancer_post_reg.freelancer_post_work_hour, freelancer_post_reg.freelancer_post_hourly, freelancer_post_reg.freelancer_post_ratestate, freelancer_post_reg.freelancer_post_fixed_rate, freelancer_post_reg.freelancer_post_exp_year, freelancer_post_reg.freelancer_post_exp_month,freelancer_post_reg.freelancer_post_field, save.save_id', $sortby = 'save_id', $orderby = 'desc', $limit, $offset, $join_str, $groupby = '');
+        $postdata1 = $this->common->select_data_by_condition('save', $contition_array, $data = 'freelancer_post_reg.freelancer_post_user_image, freelancer_post_reg.user_id, freelancer_post_reg.freelancer_post_fullname, freelancer_post_reg.freelancer_post_username, freelancer_post_reg.designation,freelancer_post_reg.freelancer_apply_slug, freelancer_post_reg.freelancer_post_area, freelancer_post_reg.freelancer_post_otherskill,freelancer_post_reg.freelancer_post_country, freelancer_post_reg.freelancer_post_city, freelancer_post_reg.freelancer_post_skill_description, freelancer_post_reg.freelancer_post_work_hour, freelancer_post_reg.freelancer_post_hourly, freelancer_post_reg.freelancer_post_ratestate, freelancer_post_reg.freelancer_post_fixed_rate, freelancer_post_reg.freelancer_post_exp_year, freelancer_post_reg.freelancer_post_exp_month,freelancer_post_reg.freelancer_post_field, save.save_id', $sortby = 'save_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($postdata1);
@@ -2974,10 +2974,10 @@ class Freelancer extends MY_Controller {
                                         <div style="display: inline-block; float: left;">
                                             <div  class="buisness-profile-pic-candidate">';
                 if ($rec['freelancer_post_user_image']) {
-                    $return_html .= '<a href="' . base_url('freelancer/freelancer_post_profile/' . $rec['user_id'] . '?page=freelancer_hire') . '" title="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '">
+                    $return_html .= '<a href="' . base_url('freelancer/freelancer_post_profile/' . $rec['freelancer_apply_slug']) . '" title="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '">
                                                         <img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $rec['freelancer_post_user_image'] . '" alt="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"></a>';
                 } else {
-                    $return_html .= '<a href="' . base_url('freelancer-work/freelancer-details/' . $rec['user_id'] . '?page=freelancer_hire') . '" title="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '">';
+                    $return_html .= '<a href="' . base_url('freelancer-work/freelancer-details/' . $rec['freelancer_apply_slug']) . '" title="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '">';
                     $post_fname = $rec['freelancer_post_fullname'];
                     $post_lname = $rec['freelancer_post_username'];
                     $sub_post_fname = substr($post_fname, 0, 1);
@@ -2992,9 +2992,9 @@ class Freelancer extends MY_Controller {
                                         <div class="designation_rec" style="float: left;">
                                             <ul>
                                                 <li>
-                                                    <a  class="post_name" href="' . base_url('freelancer-work/freelancer-details/' . $rec['user_id'] . '?page=freelancer_hire') . '" title="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '">
+                                                    <a  class="post_name" href="' . base_url('freelancer-work/freelancer-details/' . $rec['freelancer_apply_slug']) . '" title="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '">
                                                         ' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '</a></li>
-                                                <li style="display: block;"> <a href="#">';
+                                                <li style="display: block;"> <a>';
                 if ($rec['designation']) {
                     $return_html .= $rec['designation'];
                 } else {
@@ -4884,7 +4884,7 @@ class Freelancer extends MY_Controller {
 
         $this->form_validation->set_rules('firstname', 'Full Name', 'required');
         $this->form_validation->set_rules('lastname', 'Last Name', 'required');
-        $this->form_validation->set_rules('email_reg', 'EmailId', 'required|valid_email');
+        $this->form_validation->set_rules('email_reg1', 'EmailId', 'required|valid_email');
         $this->form_validation->set_rules('country', 'country', 'required');
         $this->form_validation->set_rules('state', 'state', 'required');
 
@@ -4895,7 +4895,7 @@ class Freelancer extends MY_Controller {
             $data = array(
                 'fullname' => trim($this->input->post('firstname')),
                 'username' => trim($this->input->post('lastname')),
-                'email' => trim($this->input->post('email_reg')),
+                'email' => trim($this->input->post('email_reg1')),
                 'freelancer_hire_slug' => $this->setcategory_slug($first_lastname, 'freelancer_hire_slug', 'freelancer_hire_reg'),
                 'phone' => trim($this->input->post('phoneno')),
                 'country' => trim($this->input->post('country')),

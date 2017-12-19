@@ -48,7 +48,7 @@
                     <div class="col-md-4 col-sm-5 col-xs-5 mob-zindex">
                         <div class="logo">
                             <a tabindex="-200" href="<?php echo base_url('dashboard') ?>">
-                                <h2  style="color: white;">Aileensoul</h2>
+                                <p><img src="<?php echo base_url('assets/img/logo-name.png') ?>"></p>
                             </a>
                         </div>
                     </div>

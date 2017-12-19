@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
 
     </head>
-    <body>
+    <body class="botton_footer">
         <?php echo $header; ?>
         <?php
         if ($freepostdata[0]['user_id'] && $freepostdata[0]['free_post_step'] == '7') {

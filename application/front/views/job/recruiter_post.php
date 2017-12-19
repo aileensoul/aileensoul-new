@@ -10,7 +10,7 @@
        
        <!--  <link rel="stylesheet" href="css/jquery.fancybox.css"> -->
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push">
+    <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
         <?php echo $header; ?>
         <?php echo $job_header2_border; ?>
 

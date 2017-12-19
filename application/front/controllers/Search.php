@@ -1237,13 +1237,13 @@ Your browser does not support the audio tag.
                 if ($row['freelancer_post_user_image']) {
                     if (IMAGEPATHFROM == 'upload') {
                         if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $row['freelancer_post_user_image'])) {
-                            $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                            $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                             $return_html .= '<div class = "post-img-div">';
                             $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
                             $return_html .= '</div>
                 </a>';
                         } else {
-                            $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title=" ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                            $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title=" ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                             $return_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image'] . '" alt="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '" > </a>';
                         }
                     } else {
@@ -1251,10 +1251,10 @@ Your browser does not support the audio tag.
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                         if ($info) {
-                            $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title=" ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                            $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title=" ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                             $return_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image'] . '" alt="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '" > </a>';
                         } else {
-                            $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                            $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                             $return_html .= '<div class = "post-img-div">';
                             $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
                             $return_html .= '</div>
@@ -1262,7 +1262,7 @@ Your browser does not support the audio tag.
                         }
                     }
                 } else {
-                    $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                    $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                     $return_html .= '<div class = "post-img-div">';
                     $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
                     $return_html .= '</div>
@@ -1275,7 +1275,7 @@ Your browser does not support the audio tag.
                                                                         <ul>
                                                                             <li>';
                 if ($userid) {
-                    $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"><h6>';
+                    $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"><h6>';
                     $return_html .= ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']);
                     $return_html .= '</h6>
                                                                                 </a>
@@ -1286,7 +1286,7 @@ Your browser does not support the audio tag.
                     $return_html .= '</h6>
                     </a>';
                 }
-                $return_html .= '<li style="display: block;" ><a href="#">';
+                $return_html .= '<li style="display: block;" ><a>';
                 if ($row['designation']) {
                     $return_html .= $row['designation'];
                 } else {
