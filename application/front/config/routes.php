@@ -75,6 +75,8 @@ $route['sitemap/freelance-profile'] = "sitemap/freelance_profile";
 $route['sitemap/business-profile'] = "sitemap/business_profile";
 $route['sitemap/artistic-profile'] = "sitemap/artistic_profile";
 
+$route['profile'] = "profile";
+$route['profiles/(:any)'] = "dashboard";
 
 
 $route['business-profile'] = "business_profile/index";
