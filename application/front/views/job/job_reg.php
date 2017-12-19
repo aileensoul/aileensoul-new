@@ -401,7 +401,7 @@
             .cus-no-login .btn1{padding: 5px 20px; font-size:16px !important;}
             .cus-no-login .inner-form1{width:560px;}
             .cus-no-login.modal-open{overflow-y:auto;}
-
+            .cus-no-login .title h1{text-align: center;margin-top: 20px;line-height: 1.2;}
             .modal-footer{border: none;}
         </style>
 </head>
@@ -571,7 +571,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                                <h4>Join Aileensoul - It's Free</h4>
+                              <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
