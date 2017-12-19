@@ -43,7 +43,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
     </head>
-    <body class="custom-tp privacy-cust">
+    <body class="custom-tp privacy-cust outer-page">
         <div class="main-inner">
             <div class="terms-con-cus">
             <header class="terms-con bg-none">
@@ -140,8 +140,8 @@
                         <div class="ex_py">
                             <h3>Help Desk</h3>
                             <p>
-                                In accordance with Information Technology Act 2000 and rules made there under, following is the details of our help desk.
-                            <br><div class="fw">
+                                In accordance with Information Technology Act 2000 and rules made there under, following is the details of our help desk.</p>
+                            <div class="fw">
                                 <span class="em-py3">   Email : </span>
                                 <span class="em-py2">
                                     <a href="mailto:info@aileensoul.com"> info@aileensoul.com</a>
@@ -150,7 +150,7 @@
                                 <br>
 
                             </div>
-
+							<p>
                             If you have any questions about this Policy or other privacy concerns, you can also email us at help desk of site
 
                             </p>

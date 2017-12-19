@@ -45,8 +45,8 @@
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
        
     </head>
-    <body class="feedback-cus">
-        <div class="main-inner" class="feedback">
+    <body class="feedback-cus outer-page">
+        <div class="main-inner feedback">
            <!--  <?php
             //echo $login_header
             ?> -->
@@ -94,7 +94,7 @@
                                 <div class="title">
                                     <h1>Send us feedback</h1>
                                 </div>
-                                <form role="form" name="feedback_form" id="feedback_form" method="post">
+                                <form name="feedback_form" id="feedback_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-group">
@@ -115,7 +115,7 @@
                                         <input type="text" name="feedback_subject" id="feedback_subject" class="form-control input-sm" placeholder="Subject*">
                                     </div>
                                     <div class="form-group">
-                                        <textarea type="text" id="feedback_message" name="feedback_message" class="form-control" placeholder="Message*"></textarea>
+                                        <textarea id="feedback_message" name="feedback_message" class="form-control" placeholder="Message*"></textarea>
                                     </div>
                                     <p class="pb15">
                                         <span class="red">*</span>All fields are mendatory
@@ -150,6 +150,6 @@ var base_url = '<?php echo base_url(); ?>';
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/feedback.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/webpage/feedback.js'); ?>"></script>
     </body>
 </html>

@@ -392,8 +392,8 @@
             -o-transform: translate(-50%,-50%);
             transform: translate(-50%,-50%);}
             /*.no-login .form-group{margin-bottom:15px;}*/
-            .cus-no-login .dob .error{bottom:-25px;}
-            .cus-no-login .gender-custom .error{bottom:-25px;}
+/*            .cus-no-login .dob .error{bottom:-25px;}
+            .cus-no-login .gender-custom .error{bottom:-25px;}*/
             .cus-no-login .job-saved-box{margin-bottom:15px;}
             .cus-no-login .job-post-detail{margin-bottom:0;}
             .cus-no-login .login p{font-size:14px; margin-bottom:9px;}
@@ -651,7 +651,7 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our
-                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                            <a href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
@@ -720,7 +720,7 @@
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="create_profile();">Create an account</a>
                                         </p>
                                     </form>
 

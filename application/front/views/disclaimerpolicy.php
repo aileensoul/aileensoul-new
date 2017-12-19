@@ -43,7 +43,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
     </head>
-    <body class="custom-tp cust-disclaimer about-us">
+    <body class="custom-tp cust-disclaimer about-us outer-page">
         <div class="main-inner">            
             <div class="terms-con-cus">
             <header class="terms-con bg-none cust-header">

@@ -87,6 +87,7 @@
                         </div>
                         <div class="about-content">
                           <p>
+							<img class="pull-right" src="<?php echo base_url('assets/img/about-1.jpg') ?>">
                             Founded in 2017, Aileensoul is a new age portal that amalgamates a variety of career-oriented services into a single unified platform with an aim to address the needs of  jobseekers, recruiters, business professionals, freelancers and artists - all under one roof! Introduced to fulfil one of the most fundamental and important aspects of an individual’s life - one’s desire to land a rewarding and successful career for himself or herself - Aileensoul’s futuristic platform serves to launch and advance the careers of first-time jobseekers, experienced business professionals/consultants and upcoming/veteran artists. 
                          </p>    
                         
@@ -113,6 +114,7 @@
                             <h1 class="pb20">Our Mission</h1>
                         </div>
                         <div class="about-content">
+						<img style="width:100%;" src="<?php echo base_url('assets/img/about-2.jpg') ?>">
                             <p>
                             Social and economic upliftment of people is a key contributor to the all-round progress of a nation. Aileensoul endeavours to impact this very aspect of socio-economic development through creation of employment opportunities for the country’s youth and helping eradicate unemployment and poverty, not just from India but also from the world. 
                         </p>
@@ -130,6 +132,7 @@
                             <h1 class="pb20">Our Vision</h1>
                         </div>
                         <div class="about-content text-center">
+							<img style="width:100%;" src="<?php echo base_url('assets/img/about-3.jpg') ?>">
                                 We aspire to become a one-stop destination for career enthusiasts from various walks of life and with diverse experience and educational backgrounds.                              
 
                         </div>
@@ -142,15 +145,21 @@
                             <h1 class="pb20">Our Team</h1>
                         </div>
                        <div class="about-content text-center">
+					   <img style="width:100%;" src="<?php echo base_url('assets/img/about-4.jpg') ?>" alt="aboutus-image">
                            Coming together is a beginning, staying together is progress, and working together is success.<br>
                     -Henry Ford 
                         </div>
                         <div class="all-tem">
-                           <ul class="">
-                            <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/NishaRaj.jpg" oncontextmenu="return false;">
+                           <ul class="new-abput-page">
+							<li class="img-custom">
+                           
+                                 <div class="text-custom">
+                                    <h4>Dhaval Shah</h4>
+                                    <p>CEO</p>
                                 </div>
+                             </li>
+                            <li class="img-custom">
+                           
                                  <div class="text-custom">
                                     <h4>Nisha Raj</h4>
                                     <p>Content Head</p>
@@ -158,9 +167,7 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/yatinbelani.jpg" >
-                                </div>
+                               
                                  <div class="text-custom">
                                     <h4>Yatin Belani</h4>
                                     <p>Project Manager</p>
@@ -168,9 +175,7 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/Shashvat.jpg" >
-                                </div>
+                               
                                  <div class="text-custom">
                                     <h4>Shashwat Barbhaya</h4>
                                     <p>Business Manager</p>
@@ -178,9 +183,7 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/himanshuSadadiya.jpeg" >
-                                </div>
+                                
                                  <div class="text-custom">
                                     <h4>Himanshu Sadadiya</h4>
                                     <p>AWS Architect/Devops Expert</p>
@@ -188,9 +191,7 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/AnkitMakadiya.jpg" >
-                                </div>
+                               
                                  <div class="text-custom">
                                     <h4>Ankit Makadiya</h4>
                                     <p>Technical Head</p>
@@ -198,9 +199,7 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/KhyatiRaval.jpeg" >
-                                </div>
+                               
                                  <div class="text-custom">
                                     <h4>Khyati Raval </h4>
                                     <p>Sr. Web Developer</p>
@@ -208,9 +207,7 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/nikunj.jpg" >
-                                </div>
+                              
                                  <div class="text-custom">
                                     <h4>Nikunj Bhalodiya </h4>
                                     <p>Software Tester</p>
@@ -218,9 +215,7 @@
                              </li>
 
                                 <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/Harshad.jpg" >
-                                </div>
+                              
                                  <div class="text-custom">
                                     <h4>Harshad Patoliya</h4>
                                     <p>Sr. Web Designer</p>
@@ -228,9 +223,7 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/PRASHANT.jpg" >
-                                </div>
+                               
                                  <div class="text-custom">
                                     <h4>Prashant Dadhaniya</h4>
                                     <p>Sr. SEO Executive</p>
@@ -238,62 +231,36 @@
                              </li>
 
                                 <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/JayPatel.jpg" >
-                                </div>
+                               
                                  <div class="text-custom">
                                     <h4>Jay Patel</h4>
                                     <p>Jr. SEO Executive</p>
                                 </div>
                              </li>
 
-                                <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/PallaviPanalia.jpg" >
-                                </div>
+                             <li class="img-custom">
+                               
                                  <div class="text-custom">
                                     <h4>Pallavi Panaliya</h4>
                                     <p>Jr. Web Developer</p>
                                 </div>
-                             </li>                
+                             </li> 
+								<li class="img-custom">
+                               
+									 <div class="text-custom">
+										<h4>Dhaval Shah</h4>
+										<p>Jr. Web Designer</p>
+									</div>
+								</li> 	
+								<li class="img-custom">
+                               
+									 <div class="text-custom">
+										<h4>Falguni Tank</h4>
+										<p>Jr. Web Developer</p>
+									</div>
+								</li> 								
                              </ul>
 
-
-                            <ul class="">
-                            <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/Dhaval12.jpg" >
-                                </div>
-                                 <div class="text-custom">
-                                    <h4>Dhaval Shah</h4>
-                                    <p>Jr. Web Designer</p>
-                                </div>
-                             </li>
-
-
-                             <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/FalguniTank.jpg" >
-                                </div>
-                                 <div class="text-custom">
-                                    <h4>Falguni Tank</h4>
-                                    <p>Jr. Web Developer</p>
-                                </div>
-                             </li>
-
-                            </ul>
-
-                            <ul class="Main-im">
-                                <li class="img-custom">
-                                <div class="team-1" oncontextmenu="return false;">
-                                    <img src="assets/img/ShahDhaval.jpg" >
-                                </div>
-                                 <div class="text-custom">
-                                    <h4>Dhaval Shah</h4>
-                                    <p>CEO</p>
-                                </div>
-                                </li>
-                            </ul>
 
                         </div>
                     </div>
