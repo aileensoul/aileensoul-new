@@ -224,7 +224,7 @@ input[type=submit]:hover,
 input[type=button]:hover,
 button:hover {
     background: #156f95;
-    border-color: #000;
+  /*  border-color: #000;*/
 
 }
 input[type="text"],
@@ -2109,6 +2109,7 @@ word-break: break-word;}
 .chat-history .user_message_div{}
 .chat-history .loader{position:absolute !important; left:0; right:0; bottom:76px;}
 /***  end message page css  ***/
+ 
 
 /***  media query  ***/
 

@@ -392,14 +392,14 @@
             -o-transform: translate(-50%,-50%);
             transform: translate(-50%,-50%);}
             /*.no-login .form-group{margin-bottom:15px;}*/
-            .no-login .dob .error{bottom:-25px;}
-            .no-login .gender-custom .error{bottom:-25px;}
-            .no-login .job-saved-box{margin-bottom:15px;}
-            .no-login .job-post-detail{margin-bottom:0;}
-            .no-login .login p{font-size:14px; margin-bottom:9px;}
-            .no-login .btn1{padding: 5px 20px; font-size:16px !important;}
-            .no-login .inner-form1{width:560px;}
-            .no-login.modal-open{overflow-y:auto;}
+            .cus-no-login .dob .error{bottom:-25px;}
+            .cus-no-login .gender-custom .error{bottom:-25px;}
+            .cus-no-login .job-saved-box{margin-bottom:15px;}
+            .cus-no-login .job-post-detail{margin-bottom:0;}
+            .cus-no-login .login p{font-size:14px; margin-bottom:9px;}
+            .cus-no-login .btn1{padding: 5px 20px; font-size:16px !important;}
+            .cus-no-login .inner-form1{width:560px;}
+            .cus-no-login.modal-open{overflow-y:auto;}
 
                 /*second*/
             
@@ -412,7 +412,7 @@
     <!-- start header -->
     <?php echo $header; ?>
     <!-- END HEADER -->
-    <body class="no-login">
+    <body class="cus-no-login botton_footer">
         <section>
             <div class="user-midd-section " id="paddingtop_fixed">
                 <div class="container">
