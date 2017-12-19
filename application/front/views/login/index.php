@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" class="login-custom">
     <head>
+		<meta charset="utf-8">
         <title>Login into Aileensoul.com</title>
         <meta name="description" content="Login to Aileensoul.com dashboard and get updates on your profiles." />
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
-        <meta charset="utf-8">
         <meta name="keywords" content="Hire Freelancers, Freelance Jobs Online, Find Freelance Work, Freelance Jobs, Get Online Work, online freelance jobs, freelance websites, freelance portal, online freelance work, freelance job sites, freelance consulting jobs, hire freelancers online, best freelancing sites, online writing jobs for beginners, top freelance websites, freelance marketplace, jobs, Job search, job vacancies, Job Opportunities in India, jobs in India, job openings, Jobs Recruitment, Apply For Jobs, Find the right Job, online job applications, apply for jobs online, online job search, online jobs india, job posting sites, job seeking sites, job search websites, job websites in india, job listing websites, jobs hiring, how to find a job, employment agency, employment websites, employment vacancies, application for employment, employment in india, searching for a job, job search companies, job search in india, best jobs in india, job agency, job placement agencies, how to apply for a job, jobs for freshers, job vacancies for freshers, recruitment agencies, employment agencies, job recruitment, hiring agencies, hiring websites, recruitment sites, corporate recruiter, career recruitment, online recruitment, executive recruiters, job recruiting companies, online job recruitment, job recruitment agencies, it, recruitment agencies, recruitment websites, executive search firms, sales recruitment agencies, top executive search firms, recruitment services, technical recruiter, recruitment services, job recruitment agency, recruitment career" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
        
@@ -22,7 +22,7 @@
         <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script-->
     </head>
 
-    <body>
+    <body class="outer-page">
         <div class="main-inner">
             <header>
                 <div class="container">
@@ -44,7 +44,7 @@
                     <div class="form-pd row">
 
 
-                        <div id="error1" style="display:block;">
+                        <div id="error1">
 
                             <?php
                             if ($this->session->flashdata('error')) {
@@ -69,11 +69,11 @@
                                     <h1 class="ttc">Welcome To Aileensoul</h1>
                                 </div>
 
-                                <form role="form" name="login_form" id="login_form" method="post">
+                                <form name="login_form" id="login_form" method="post">
 
                                     <div class="form-group">
                                         <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
-                                        <div id="error2" style="display:block;">
+                                        <div id="error2">
                                             <?php
                                             if ($this->session->flashdata('erroremail')) {
                                                 echo $this->session->flashdata('erroremail');
@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
-                                        <div id="error1" style="display:block;">
+                                        <div id="error1">
 <?php
 if ($this->session->flashdata('errorpass')) {
     echo $this->session->flashdata('errorpass');
@@ -158,8 +158,8 @@ echo form_open('profile/forgot_password', $form_attribute);
 
 <?php echo $login_footer ?>
         </div>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>  
+        <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>  
         <script>
                                             $(document).ready(function () {
 
@@ -216,8 +216,8 @@ echo form_open('profile/forgot_password', $form_attribute);
 
         <!-- script for login  user valoidtaion start -->
 
-         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript">
+         <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        <script>
                                             function login()
                                             {
                                                 document.getElementById('error1').style.display = 'none';
@@ -347,7 +347,7 @@ echo form_open('profile/forgot_password', $form_attribute);
         </script>
 
         <!-- forgot password script end -->
-        <script type="text/javascript">
+        <script>
             $(document).ready(function () { //aletr("hii");
                 /* validation */
                 $("#forgot_password").validate({
@@ -385,11 +385,11 @@ echo form_open('profile/forgot_password', $form_attribute);
             });
         </script>
 
-        <script type="text/javascript">
+        <script>
             $(".alert").delay(3200).fadeOut(300);
         </script>
 
-        <script type="text/javascript">
+        <script>
             $(document).on('keydown', function (e) {
                 if (e.keyCode === 27) {
                     $("#myModal").hide();

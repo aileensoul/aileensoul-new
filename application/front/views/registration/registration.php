@@ -24,7 +24,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-xs-3">
-                            <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png') ?>"></a>
+                            <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png') ?>" alt="logo"></a>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-9">
                             <div class="btn-right pull-right t-r-l">
@@ -44,7 +44,7 @@
                                 <div class="title">
                                     <h1>Join Aileensoul - It's Free</h1>
                                 </div>
-                                <form role="form" name="register_form" id="register_form" method="post">
+                                <form name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-group">
@@ -68,7 +68,7 @@
                                         <label class="d_o_b"> Date Of Birth *:</label>
                                         <!--span class="d_o_b">DOB </span-->
                                         <select class="day" name="selday" id="selday" tabindex="5">
-                                            <option value="" disabled selected value>Day</option>
+                                            <option value="" disabled selected>Day</option>
                                             <?php
                                             for ($i = 1; $i <= 31; $i++) {
                                                 ?>
@@ -78,7 +78,7 @@
                                             ?>
                                         </select>
                                         <select class="month" name="selmonth" id="selmonth" tabindex="6">
-                                            <option value="" disabled selected value>Month</option>
+                                            <option value="" disabled selected>Month</option>
                                             <?php
 //                  for($i = 1; $i <= 12; $i++){
                                             ?>
@@ -99,7 +99,7 @@
                                             ?>
                                         </select>
                                         <select class="year" name="selyear" id="selyear" tabindex="7">
-                                            <option value="" disabled selected value>Year</option>
+                                            <option value="" disabled selected>Year</option>
                                             <?php
                                             for ($i = date('Y'); $i >= 1900; $i--) {
                                                 ?>
@@ -113,7 +113,7 @@
 
                                     <div class="form-group gender-custom">
                                         <select class="gender" name="selgen" id="selgen" tabindex="8">
-                                            <option value="" disabled selected value>Gender*</option>
+                                            <option value="" disabled selected>Gender*</option>
                                             <option value="M">Male</option>
                                             <option value="F">female</option>
                                         </select>
