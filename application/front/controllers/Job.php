@@ -1864,7 +1864,7 @@ class Job extends MY_Controller {
 
         $slug_user = $this->db->get_where('job_reg', array('slug' => $slug, 'user_id !=' => $userid, 'is_delete' => '0', 'status' => '1'))->row()->slug;
 
-
+        $this->data['get_url'] = $slug;
 
         if ($slug != $slug_user || $slug == '') {
 
@@ -1939,7 +1939,12 @@ class Job extends MY_Controller {
             $this->load->view('job/notavalible');
         } else {
 //            echo "2222";die();
+            if($userid){  
             $this->load->view('job/job_printpreview', $this->data);
+            }else{
+            $this->load->view('job/job_liveprintpreview', $this->data);
+
+            }
         }
 //for deactive profile and slug not found then see page end 
     }

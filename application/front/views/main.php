@@ -245,22 +245,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="opacity:0; position:absolute; left:0; top:0; pointer-events:none;">
-                    <script>
-                        (function () {
-                            if (window.CHITIKA === undefined) {
-                                window.CHITIKA = {'units': []};
-                            }
-                            ;
-                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
-                            var placement_id = window.CHITIKA.units.length;
-                            window.CHITIKA.units.push(unit);
-                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                        }());
-                    </script>
-                    <script src="//cdn.chitika.net/getads.js" async></script>
-                </div>
-
+               
                 <div id="myModal" class="modal">
                     <div class="modal-content md-2">
                         <?php

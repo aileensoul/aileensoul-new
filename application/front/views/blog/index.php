@@ -251,40 +251,7 @@
                                     ?>
                                 </div>
 
-                                <div class="fw text-center pt15 none-1279">
-                                    <script type="text/javascript">
-                                        (function () {
-                                            if (window.CHITIKA === undefined) {
-                                                window.CHITIKA = {'units': []};
-                                            }
-                                            ;
-                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                            var placement_id = window.CHITIKA.units.length;
-                                            window.CHITIKA.units.push(unit);
-                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                        }());
-                                    </script>
-                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                    <div class="fw pt10">
-                                        <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
-                                    </div>
-                                </div>
-                                <div class="fw text-center pt15 block-1279 main-none">
-                                    <script type="text/javascript">
-                                        (function () {
-                                            if (window.CHITIKA === undefined) {
-                                                window.CHITIKA = {'units': []};
-                                            }
-                                            ;
-                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
-                                            var placement_id = window.CHITIKA.units.length;
-                                            window.CHITIKA.units.push(unit);
-                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                        }());
-                                    </script>
-                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                </div>
-
+                                
                             </div>
 
 

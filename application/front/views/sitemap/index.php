@@ -43,7 +43,7 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()) ?>">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
-    <body class="site-map" >
+    <body class="site-map outer-page" >
         <div class="main-inner">
             <?php echo $sitemap_header ?>
 
@@ -51,7 +51,7 @@
 
 
                 <div class="site-map-img">
-                    <img src="assets/img/sitemap.jpg">
+                    <img src="assets/img/sitemap.jpg" alt="sitemap">
                 </div>
                 
 
@@ -60,6 +60,6 @@
             echo $login_footer
             ?>
         </div>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
     </body>
 </html>
