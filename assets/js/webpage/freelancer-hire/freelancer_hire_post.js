@@ -14,7 +14,7 @@ $(document).on('keydown', function (e) {
 
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER START
 $(document).ready(function () {
-    freelancerhire_project(user_id, returnpage);
+    freelancerhire_project(user_id);
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
         // if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
@@ -32,7 +32,7 @@ $(document).ready(function () {
                 //if ($(".page_number:last").val() <= $(".total_record").val()) {
                 if (parseInt(page) <= parseInt(available_page)) {
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
-                    freelancerhire_project(user_id, returnpage, pagenum);
+                    freelancerhire_project(user_id, pagenum);
                 }
             }
         }
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
 });
 var isProcessing = false;
-function freelancerhire_project(user_id, returnpage, pagenum)
+function freelancerhire_project(user_id, pagenum)
 {
     if (isProcessing) {
         /*
@@ -53,7 +53,7 @@ function freelancerhire_project(user_id, returnpage, pagenum)
     isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "freelancer/ajax_freelancer_hire_post/" + user_id + '/' + returnpage + '?page=' + pagenum,
+        url: base_url + "freelancer/ajax_freelancer_hire_post/" + user_id + '?page=' + pagenum,
         data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
