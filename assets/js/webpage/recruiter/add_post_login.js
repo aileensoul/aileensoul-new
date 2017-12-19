@@ -677,7 +677,7 @@ $(document).ready(function () {
                         }
                     });
                     }else{
-                        window.location = base_url + "dashboard";
+                        window.location = base_url + "profiles/" + user_slug;
                     }
              
                 }
@@ -996,7 +996,7 @@ $(document).ready(function () {
                         }
                     });
                     }else{
-                        window.location = base_url + "dashboard";
+                        window.location = base_url + + "profiles/" + user_slug;
                     }
                   
 

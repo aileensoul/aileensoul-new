@@ -95,7 +95,7 @@ function home_profile(clicked_id, searchkeyword, searchplace) {
 
             } else if (clicked_id == 5)
             {
-                window.location = base_url + "dashboard";
+                window.location = base_url + "profiles/" + user_slug;
             } else if (clicked_id == 6)
             {
                 window.location = base_url + "profile";
