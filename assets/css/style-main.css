@@ -504,13 +504,14 @@ a:hover{
 .fancybox-slide > *{font-size: 24px; padding: 45px!important;}
 
 
+.botton_footer{padding-bottom: 104px;}
 /***  footer  ***/
 footer{
-	padding:0 0 20px;
+	/*padding:0 0 20px;*/
 	color:#353535;
 	position:absolute;
 	bottom:0;
-	height:60px;
+	/*height:60px;*/
 	width:100%;
         background-color: #fff; /*d bg*/
         line-height: 22px;
