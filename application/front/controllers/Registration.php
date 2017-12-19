@@ -63,7 +63,7 @@ class Registration extends CI_Controller {
         $updatedata = $this->common->update_data($data, 'user', 'user_id', $id);
         if ($updatedata) {
             $this->session->set_userdata('aileenuser', $id);
-            redirect('dashboard', 'refresh');
+            redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
             // echo "hi";die();
         }
     }
@@ -298,7 +298,7 @@ class Registration extends CI_Controller {
                 //$this->session->set_flashdata('success', 'Skill updated successfully'); 
                 //redirect('/');
                 $this->session->set_userdata('aileenuser', $user_id);
-                redirect('dashboard', 'refresh');
+                redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
                 redirect('registration/registration_image', 'refresh');
@@ -370,7 +370,7 @@ class Registration extends CI_Controller {
                     $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
                     if ($updatdata) {
 
-                        redirect('dashboard', 'refresh');
+                       redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
                         $this->session->flashdata('success', 'Update Successfully!!');
                     } else {
                         $this->session->flashdata('error', 'Your Password not Edited');
