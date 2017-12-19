@@ -495,6 +495,7 @@
         <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js'); ?>"></script>
         <script>
                                             var base_url = '<?php echo base_url(); ?>';
+                                            var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
                                             var data1 = <?php echo json_encode($de); ?>;
                                             var data = <?php echo json_encode($demo); ?>;
                                             var jobdata = <?php echo json_encode($jobtitle); ?>;
