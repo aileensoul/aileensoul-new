@@ -70,7 +70,7 @@ class Dashboard extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         if ($this->input->post('cancel')) {
-            redirect('dashboard', refresh);
+            redirect('profiles/' . $this->session->userdata('aileenuser_slug'), refresh);
         }
 
         if (empty($_FILES['profilepic']['name'])) {
@@ -122,7 +122,7 @@ class Dashboard extends MY_Controller {
             }
             if ($error) {
                 $this->session->set_flashdata('error', $error[0]);
-                $redirect_url = site_url('dashboard');
+                $redirect_url = site_url('profiles/' . $this->session->userdata('aileenuser_slug'));
                 redirect($redirect_url, 'refresh');
             } else {
                 $user_image = $imgdata['file_name'];
@@ -136,10 +136,10 @@ class Dashboard extends MY_Controller {
             $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
 
             if ($updatdata) {
-                redirect('dashboard', refresh);
+                redirect('profiles/' . $this->session->userdata('aileenuser_slug'), refresh);
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('dashboard', refresh);
+                redirect('profiles/' . $this->session->userdata('aileenuser_slug'), refresh);
             }
         }
     }
@@ -153,7 +153,7 @@ class Dashboard extends MY_Controller {
             $admin_check = $this->logins->check_authentication($user_name, $user_password);
             if ($admin_check != 0) {
                 $this->session->set_userdata('topgraffiti_admin', $admin_check[0]['admin_id']);
-                redirect('dashboard', 'refresh');
+                redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
             } else {
                 $this->session->set_flashdata('error', '<div class="alert alert-danger">Please Enter Valid Credential.</div>');
                 redirect('login', 'refresh');
