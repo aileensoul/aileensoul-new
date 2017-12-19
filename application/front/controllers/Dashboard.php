@@ -15,13 +15,13 @@ class Dashboard extends MY_Controller {
         $this->data['title'] = "Grow Business Network | Hiring | Search Jobs | Freelance Work | Artistic | It's Free";
        
         //This function is there only one time users slug created after remove it start
-//         $this->db->select('user_id,first_name,last_name');
-//         $res = $this->db->get('user')->result();
-//         foreach ($res as $k => $v) {
-//             $data = array('user_slug' => $this->setuser_slug($v->first_name."-". $v->last_name, 'user_slug', 'user'));
-//             $this->db->where('user_id', $v->user_id);
-//             $this->db->update('user', $data);
-//          }
+         $this->db->select('user_id,first_name,last_name');
+         $res = $this->db->get('user')->result();
+         foreach ($res as $k => $v) {
+             $data = array('user_slug' => $this->setuser_slug($v->first_name."-". $v->last_name, 'user_slug', 'user'));
+             $this->db->where('user_id', $v->user_id);
+             $this->db->update('user', $data);
+          }
         //This function is there only one time users slug created after remove it End
         
         include('include.php');
