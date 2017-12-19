@@ -42,16 +42,16 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
     </head>
-    <body class="job-pro">
+    <body class="outer-page">
         <div class="main-inner">
             <div class="profile-bnr">
-                <img src="<?php echo base_url('assets/img/bp.jpg'); ?>">
+                <img src="<?php echo base_url('assets/img/bp.jpg'); ?>" alt="banner-image">
 
                 <header class="profile-header">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4 col-sm-3 left-header">
-                                <h2 class="logo"><a href="<?php echo base_url(); ?>"><img style="height:30px; width:auto;" src="<?php echo base_url('assets/img/logo2.png'); ?>"></a></h2>
+                                <div class="logo"><a href="<?php echo base_url(); ?>"><img style="height:30px; width:auto;" src="<?php echo base_url('assets/img/logo2.png'); ?>" alt="logo"></a></div>
                             </div>
                             <div class="col-md-8 col-sm-9 right-header">
                                 <div class="btn-right pull-right">
@@ -82,7 +82,7 @@
                         <div class="row dis-box">
                             <h2>Aileensoul - Cost-Free and Enriching Business Collaboration Is Now at Your Fingertips</h2>
                             <div class="col-md-6 col-sm-12 pb20">
-                                <img style="width:100%;" src="<?php echo base_url('assets/img/bus1.jpg'); ?>">
+                                <img style="width:100%;" src="<?php echo base_url('assets/img/bus1.jpg'); ?>" alt="business-image">
                             </div>
                             <div class="col-md-6 col-sm-12 pb20">
                                 <p>One of the common challenges faced by many small-sized companies and upcoming ventures is their relative unfamiliarity and unpreparedness for the typical bottlenecks of their industry, owing to their lack of adequate awareness and experience in their respective fields and domains. Often, such firms struggle to find the right channel or resources to help them manage and overcome their growth-limiting issues and obstacles. <br>
@@ -93,7 +93,7 @@
                         <div class="row dis-box">
                             <h2>How to Register With Aileensoul’s Business Profile?</h2>
                             <div class="col-md-6 col-sm-12 pb20 pull-right">
-                                <img style="width:100%;" src="<?php echo base_url('assets/img/bus2.jpg'); ?>">
+                                <img style="width:100%;" src="<?php echo base_url('assets/img/bus2.jpg'); ?>" alt="business-image">
                             </div>
                             <div class="col-md-6 col-sm-12 pb20 pull-left">
                                 <p>After successfully registering with the platform, you need to register with Aileensoul’s ‘Business Profile’ to take advantage of the latter’s features and functionalities. The registration process is easy and self-explanatory with few basic steps that require completion. These include furnishing information about your company’s name, address and contact details, specifying the business type, category and description and uploading of appropriate business images of high quality and resolution. Once you have provided the necessary information, you need to click on the ‘Submit’ button to complete the profile creation process. 
@@ -103,7 +103,7 @@
                         <div class="row dis-box">
                             <h2>Additional Features of Aileensoul’s Business Profile:</h2>
                             <div class="col-md-6 col-sm-12 pb20">
-                                <img style="width:100%;" src="<?php echo base_url('assets/img/bus3.jpg'); ?>">
+                                <img style="width:100%;" src="<?php echo base_url('assets/img/bus3.jpg'); ?>" alt="business-image">
                             </div>
                             <div class="col-md-6 col-sm-12 pb20">
                                 <p>Other than networking, entrepreneurs, professionals and business owners can follow specific business categories of their interest and relevance to stay updated with the latest happenings in their chosen space in the form of regular and continuous newsfeed. They can even demonstrate their preference and inclination for specific type of content by liking and commenting on the posts of others. Additionally, they can promote and spread awareness about their own brands by uploading interesting and thought-provoking posts and PDF attachments along with photos, videos and audios to spark the curiosity and interest of their target audience.  
