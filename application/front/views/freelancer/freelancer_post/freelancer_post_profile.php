@@ -1720,6 +1720,7 @@
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var user_session = '<?php echo $this->session->userdata('aileenuser'); ?>';
+            var segment3 = '<?php echo $this->uri->segment(3); ?>'
             var count_profile_value = '<?php echo $count_profile_value; ?>';
             var count_profile = '<?php echo $count_profile; ?>';
         </script>
