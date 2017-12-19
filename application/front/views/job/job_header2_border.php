@@ -97,6 +97,7 @@
 <!-- Model Popup Close -->
 
 <script>
+    var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
     var base_url = '<?php echo base_url(); ?>';
     var segment = '<?php echo "" . $this->uri->segment(1) . "" ?>';
     var seg='<?php $this->uri->segment(3) ?>';
