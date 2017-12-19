@@ -408,7 +408,7 @@
 
 <!-- start header -->
 <!-- END HEADER -->
-<body>
+<body class="botton_footer">
     <?php echo $header; ?>
         
    <section>

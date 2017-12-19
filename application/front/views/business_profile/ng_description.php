@@ -33,7 +33,7 @@
             }
         </style>
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push" ng-app="descriptionApp" ng-controller="descriptionController">
+    <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer" ng-app="descriptionApp" ng-controller="descriptionController">
         <?php echo $header; ?>
         <?php if ($business_common_data[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>

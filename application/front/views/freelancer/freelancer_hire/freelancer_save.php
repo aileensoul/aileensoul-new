@@ -8,7 +8,7 @@
             #popup-form img{display: block;}
         </style>
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push">
+    <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
         <?php echo $header; ?>
         <?php echo $freelancer_hire_header2_border; ?>
         <section class="custom-row">

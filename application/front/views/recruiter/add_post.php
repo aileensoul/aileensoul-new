@@ -15,7 +15,7 @@
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
         <?php } ?>
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push">
+    <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
         <?php echo $header; ?>
         <?php if ($recdata[0]['re_step'] == 3) { ?>
             <?php echo $recruiter_header2_border; ?>
@@ -392,8 +392,7 @@
                 </div>
                 <!-- MIDDLE SECTION END-->
         </section>
-        <?php echo $login_footer ?>
-           <?php echo $footer; ?>
+       
         <!-- END CONTAINER -->
 
         <!-- Bid-modal  --> 

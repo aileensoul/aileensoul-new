@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">
         
     </head>    
-    <body class="page-container-bg-solid page-boxed">
+    <body class="page-container-bg-solid page-boxed botton_footer">
         <?php echo $header; ?>
         <?php if ($artdata[0]['art_step'] == 4) { ?>
             <?php echo $art_header2_border; ?>

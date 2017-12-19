@@ -403,7 +403,7 @@
     <!-- start header -->
     <?php echo $header; ?>
     <!-- END HEADER -->
-    <body class="no-login">
+    <body class="no-login botton_footer">
         <section>
             <div class="user-midd-section " id="paddingtop_fixed">
                 <div class="container">

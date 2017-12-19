@@ -438,7 +438,7 @@
         </style>
 
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push reg-form" ng-app="busRegApp" ng-controller="busRegController">
+    <body class="page-container-bg-solid page-boxed pushmenu-push reg-form botton_footer" ng-app="busRegApp" ng-controller="busRegController">
         <?php echo $header; ?>
         <?php if ($business_common_data[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>

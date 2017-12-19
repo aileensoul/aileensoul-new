@@ -401,7 +401,7 @@
 <!-- start header -->
 <?php echo $header; ?>
 <!-- END HEADER -->
-<body>
+<body class="botton_footer">
    <section>
       <div class="user-midd-section " id="paddingtop_fixed">
          <div class="container">

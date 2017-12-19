@@ -7,7 +7,7 @@
 
     </head>
 
-    <body>
+    <body class="botton_footer">
         <div id="preloader"></div>
         <?php echo $header; ?>
         <?php

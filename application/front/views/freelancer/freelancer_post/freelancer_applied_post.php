@@ -7,7 +7,7 @@
         
 
     </head>
-    <body class="page-container-bg-solid page-boxed">
+    <body class="page-container-bg-solid page-boxed botton_footer">
         <?php echo $header; ?>
         <?php echo $freelancer_post_header2_border; ?>
         <section class="custom-row">

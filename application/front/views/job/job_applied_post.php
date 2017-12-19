@@ -17,7 +17,7 @@
     echo $job_header2_border;
     ?>
     <!-- END HEADER -->
-    <body  class="page-container-bg-solid page-boxed custom-border">
+    <body  class="page-container-bg-solid page-boxed custom-border botton_footer">
         <section class="custom-row">
             <div class="container" id="paddingtop_fixed_job">
                 <div class="row" id="row1" style="display:none;">
