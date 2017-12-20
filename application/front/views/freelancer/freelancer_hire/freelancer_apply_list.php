@@ -13,7 +13,7 @@
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-3 col-sm-3">
                             <div class="add-post-button">
                                 <a title="Back to Post" href="<?php echo base_url("freelancer-hire/projects"); ?>"><div class="back">
                                         <div class="but1">

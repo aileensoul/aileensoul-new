@@ -530,7 +530,7 @@
                         </fieldset>
                         <fieldset class="full-width fresher_select main_select_data" >
                            <label for="cities">Preffered location for job<font  color="red">*</font> : </label>
-                           <input id="cities2" name="cities"  style="text-transform: capitalize;" size="90" tabindex="11" placeholder="Enter Preferred Cites">
+                           <input id="cities2" name="cities"  style="text-transform: capitalize;" size="90" tabindex="9" placeholder="Enter Preferred Cites">
                            <?php echo form_error('cities');; ?>
                         </fieldset>
                         <fieldset class=" full-width">

@@ -1448,7 +1448,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     width: 100%;
 }
 .back {
-    width: 90%;
+    width: 84%;
     position: relative;
     background-color: #fff;
     color: #1b8ab9;
