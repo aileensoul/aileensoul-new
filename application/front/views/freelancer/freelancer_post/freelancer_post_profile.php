@@ -394,12 +394,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
-                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                        <h2 class="logo"><a title="Aileensoul" href="<?php echo base_url(); ?>">Aileensoul</a></h2>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                         <div class="btn-right pull-right">
-                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="create_profile();" class="btn3">Create an account</a>
+                            <a title="Login" href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
+                            <a title="Create an account" href="javascript:void(0);" onclick="create_profile();" class="btn3">Create an account</a>
                         </div>
                     </div>
                 </div>
@@ -534,12 +534,12 @@
                                 </div>
                             <?php } ?>
                             <?php if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
+                                        <a title="update Profile pic" href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
                             <?php } ?>
                         </div>
                     </div>
                     <div class="job-menu-profile mob-block">
-                        <a href="javascript:void(0);">   <h3> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h3></a>
+                        <a title="<?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?>" href="javascript:void(0);">   <h3> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h3></a>
                         <div class="profile-text">
                             <?php
                             if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) {
@@ -610,12 +610,12 @@
                                                     if ($_GET['post_id']) {
                                                         ?> 
                                                         <li>
-                                                            <a id="<?php echo $id; ?>" onClick="shortlistpopup(<?php echo $id; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $id ?>"> Shortlist </a> 
+                                                            <a title="shortlist" id="<?php echo $id; ?>" onClick="shortlistpopup(<?php echo $id; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $id ?>"> Shortlist </a> 
 
                                                         </li>
                                                     <?php } else { ?>
                                                         <li>
-                                                            <a id="<?php echo $id; ?>" onClick="savepopup(<?php echo $id; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $id ?>">
+                                                            <a title="save" id="<?php echo $id; ?>" onClick="savepopup(<?php echo $id; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $id ?>">
                                                                 <?php echo $this->lang->line("save"); ?>
                                                             </a> 
 
@@ -624,11 +624,11 @@
                                                 } elseif ($data[0]['status'] == '0') {
                                                     ?>
                                                     <li> 
-                                                        <a class="saved butt_rec <?php echo 'saveduser' . $id; ?> "><?php echo $this->lang->line("saved"); ?></a>
+                                                        <a title="Saved" class="saved butt_rec <?php echo 'saveduser' . $id; ?> "><?php echo $this->lang->line("saved"); ?></a>
                                                     </li> <?php } else {
                                                     ?>
                                                     <li> 
-                                                        <a class="saved butt_rec <?php echo 'saveduser' . $id; ?> ">Shortlisted</a>
+                                                        <a title="Shortlisted" class="saved butt_rec <?php echo 'saveduser' . $id; ?> ">Shortlisted</a>
                                                     </li> 
                                                 <?php }
                                                 ?>
@@ -638,9 +638,9 @@
                                                     //  $returnpage = $_GET['page'];
                                                     if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
                                                         ?>
-                                                        <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                    <a title="Message" href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                     <?php } else { ?>
-                                                        <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                        <a title="Message" href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                     <?php }
                                                     ?>
 
@@ -658,7 +658,7 @@
             </div>
             <div class="middle-part container pt10">
                 <div class="job-menu-profile mob-none pt-20">
-                    <a href="javascript:void(0);">   <h3> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h3></a>
+                    <a title="<?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?>" href="javascript:void(0);">   <h3> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h3></a>
                     <div class="profile-text pt5">
                         <?php
                         if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) {
@@ -695,7 +695,7 @@
                                     <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
                                     <p class="mob-edit-pro">
 
-                                        <a href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
+                                        <a title="Successfully Completed" href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
 
 
                                     </p>
@@ -714,7 +714,7 @@
                                 <p class="mob-edit-pro">
 
 
-                                    <a href="<?php echo base_url('freelancer-work/basic-information') ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
+                                    <a title="Edit Profile" href="<?php echo base_url('freelancer-work/basic-information') ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
 
 
                                 </p>
@@ -1332,7 +1332,7 @@
                                                                     ?>
                                                                     <li> <b><?php echo $this->lang->line("attach"); ?></b><span>
                                                                             <div class="free_attc">
-                                                                                <a href="<?php echo base_url('freelancer/pdf/' . $freelancerpostdata[0]['user_id']) ?>">
+                                                                                <a title="pdf" href="<?php echo base_url('freelancer/pdf/' . $freelancerpostdata[0]['user_id']) ?>">
                                                                                     <img src="<?php echo base_url('assets/images/PDF.jpg') ?>" > 
                                                                                 </a>
                                                                         </span>
@@ -1381,7 +1381,7 @@
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("attach"); ?></b><span>
                                                                         <div class="free_attc">
-                                                                            <a href="<?php echo base_url('freelancer/pdf/' . $freelancerpostdata[0]['user_id']) ?>">
+                                                                            <a title="pdf" href="<?php echo base_url('freelancer/pdf/' . $freelancerpostdata[0]['user_id']) ?>">
                                                                                 <img src="<?php echo base_url('assets/images/PDF.jpg') ?>" > 
                                                                             </a>
                                                                     </span>
@@ -1457,7 +1457,7 @@
                                     <div class="second circle-1">
                                         <div>
                                             <strong></strong>
-                                            <a href="<?php echo base_url('freelancer-work/basic-information') ?>" class="edit_profile_job">Edit Profile
+                                            <a title="Edit Profile" href="<?php echo base_url('freelancer-work/basic-information') ?>" class="edit_profile_job">Edit Profile
                                             </a>
                                         </div>
                                     </div>
@@ -1608,7 +1608,7 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our
-                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                            <a title="Terms and Condition" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a title="Privacy policy" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
@@ -1616,7 +1616,7 @@
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>
-                                                Already have an account ? <a tabindex="12" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
+                                                Already have an account ? <a title=" Log In" tabindex="12" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
                                             </p>
                                         </div>
                                     </form>
@@ -1673,11 +1673,11 @@
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            <a title="Forgot Password" href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a title="Create an account" class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                         </p>
                                     </form>
 

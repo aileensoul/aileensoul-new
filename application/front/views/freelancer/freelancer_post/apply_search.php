@@ -374,12 +374,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
-                            <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                            <h2 class="logo"><a title="Aileensoul" href="<?php echo base_url(); ?>">Aileensoul</a></h2>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                             <div class="btn-right pull-right">
-                                <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                                <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
+                                <a title="Login" href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
+                                <a title="Create an account" href="javascript:void(0);" onclick="register_profile();" class="btn3">Create an account</a>
                             </div>
                         </div>
                     </div>
@@ -406,62 +406,62 @@
                                         <li>
                                         <label for="City" class="lbpos fw">
 
-                                        <a href="<?php echo base_url("projects"); ?>" >All Projects</a>
+                                            <a title="All Projects" href="<?php echo base_url("projects"); ?>" >All Projects</a>
                                         </label>
                                         </li>
                                         <li>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Accounting-Consulting-project"); ?>" <?php if ($keyword == 'Accounting-Consulting') { ?> class="job_active" <?php } ?>>Accounting & Consulting Projects</a>
+                                            <a title="Accounting & Consulting Projects" href="<?php echo base_url("Accounting-Consulting-project"); ?>" <?php if ($keyword == 'Accounting-Consulting') { ?> class="job_active" <?php } ?>>Accounting & Consulting Projects</a>
                                         </label>
                                         </li>
                                         <li>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword == 'Admin-Support') { ?> class="job_active" <?php } ?>>Admin Support Projects</a>
+                                            <a title="Admin Support Projects" href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword == 'Admin-Support') { ?> class="job_active" <?php } ?>>Admin Support Projects</a>
                                         </label>
                                         </li>
                                         <li>
                                         <label for="City" class="lbpos fw"> 
-                                            <a href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword == 'Customer-Service') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
+                                            <a title="Customer Service Projects" href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword == 'Customer-Service') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
                                         </label>
                                         </li>
                                         <li>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword == 'Data-Science-Analytics') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
+                                            <a title="Data Science & Analytics Projects" href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword == 'Data-Science-Analytics') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
                                         </label>
                                         </li>
                                         <li>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Design-Creative-project"); ?>" <?php if ($keyword == 'Design-Creative') { ?> class="job_active" <?php } ?>>Design & Creative  Projects</a>
+                                            <a title="Design & Creative  Projects" href="<?php echo base_url("Design-Creative-project"); ?>" <?php if ($keyword == 'Design-Creative') { ?> class="job_active" <?php } ?>>Design & Creative  Projects</a>
                                         </label>
                                         </li>
                                         <li>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Engineering-Architecture-project"); ?>" <?php if ($keyword == 'Engineering-Architecture') { ?> class="job_active" <?php } ?>>Engineering & Architecture Projects</a>
+                                            <a title="Engineering & Architecture Projects" href="<?php echo base_url("Engineering-Architecture-project"); ?>" <?php if ($keyword == 'Engineering-Architecture') { ?> class="job_active" <?php } ?>>Engineering & Architecture Projects</a>
                                         </label>
                                         </li>
                                         <li>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Legal-project"); ?>" <?php if ($keyword == 'Legal') { ?> class="job_active" <?php } ?>>Legal Projects</a>
+                                            <a title="Legal Projects" href="<?php echo base_url("Legal-project"); ?>" <?php if ($keyword == 'Legal') { ?> class="job_active" <?php } ?>>Legal Projects</a>
                                         </label>
                                         </li>
                                         <li>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Sales-Marketing-project"); ?>" <?php if ($keyword == 'Sales-Marketing') { ?> class="job_active" <?php } ?>>Sales & Marketing Projects</a>
+                                            <a title="Sales & Marketing Projects" href="<?php echo base_url("Sales-Marketing-project"); ?>" <?php if ($keyword == 'Sales-Marketing') { ?> class="job_active" <?php } ?>>Sales & Marketing Projects</a>
                                       </label>
                                       </li>
                                       <li>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Translation-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Translation Projects</a>
+                                            <a title="Translation Projects" href="<?php echo base_url("Translation-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Translation Projects</a>
                                         </label>
                                         </li>
                                         <li>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("WebsiteMobileSoftware-DevelopmentIT-Networking-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Website,Mobile,Software Development,IT & Networking Projects</a>
+                                            <a title="Website,Mobile,Software Development,IT & Networking Projects" href="<?php echo base_url("WebsiteMobileSoftware-DevelopmentIT-Networking-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Website,Mobile,Software Development,IT & Networking Projects</a>
                                         </label>
                                         </li>
                                         <li>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Writing-Content-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
+                                            <a title="Writing & Content Projects" href="<?php echo base_url("Writing-Content-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
                                         </label>
                                         </li>
                                     </ul>
@@ -566,11 +566,11 @@
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            <a title="Forgot Password ?" href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a title="Create an account" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                         </p>
                                     </form>
 
@@ -629,11 +629,11 @@
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            <a title="Forgot Password ?" href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a title="Create an account" class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                         </p>
                                     </form>
 
@@ -940,7 +940,7 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our
-                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                            <a title="Terms and Condition" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a title="Privacy policy" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
@@ -948,7 +948,7 @@
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>
-                                                Already have an account ? <a tabindex="12" id ="postid" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
+                                                Already have an account ? <a title="Log In" tabindex="12" id ="postid" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
                                             </p>
                                         </div>
                                     </form>
@@ -1053,7 +1053,7 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our<br class="mob-none">
-                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                            <a title="Terms and Condition" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a title="Privacy policy" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>

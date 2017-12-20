@@ -46,13 +46,13 @@
                         <div class="col-md-3 col-sm-3">
                             <div class="left-side-bar">
                                 <ul class="left-form-each">
-                                    <li class="custom-none"><a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
-                                    <li class="custom-none"><a href="<?php echo base_url('freelancer-work/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
-                                    <li class="custom-none"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
-                                    <li class="custom-none"><a href="<?php echo base_url('freelancer-work/rate'); ?>"><?php echo $this->lang->line("rate"); ?></a></li>
-                                    <li class="custom-none"><a href="<?php echo base_url('freelancer-work/avability'); ?>"><?php echo $this->lang->line("add_avability"); ?></a></li>
-                                    <li class="custom-none"><a href="<?php echo base_url('freelancer-work/education'); ?>"><?php echo $this->lang->line("education"); ?></a></li>           
-                                    <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a href="javascript:void(0);"><?php echo $this->lang->line("portfolio"); ?></a></li>
+                                    <li class="custom-none"><a title="Basic Information" href="<?php echo base_url('freelancer-work/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
+                                    <li class="custom-none"><a title="Address Information" href="<?php echo base_url('freelancer-work/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
+                                    <li class="custom-none"><a title="Professional Information" href="<?php echo base_url('freelancer-work/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
+                                    <li class="custom-none"><a title="Rate" href="<?php echo base_url('freelancer-work/rate'); ?>"><?php echo $this->lang->line("rate"); ?></a></li>
+                                    <li class="custom-none"><a title="Avability" href="<?php echo base_url('freelancer-work/avability'); ?>"><?php echo $this->lang->line("add_avability"); ?></a></li>
+                                    <li class="custom-none"><a title="Education" href="<?php echo base_url('freelancer-work/education'); ?>"><?php echo $this->lang->line("education"); ?></a></li>           
+                                    <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a title="Portfolio" href="javascript:void(0);"><?php echo $this->lang->line("portfolio"); ?></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -84,8 +84,8 @@
                                         <?php if ($portfolio_attachment1) { ?>
                                             <div style="visibility:show;" id ="pdffile">
                                                 <?php $userid = $this->session->userdata('aileenuser'); ?>
-                                                <a href="<?php echo base_url('freelancer/pdf/' . $userid) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
-                                                <a style="position: absolute; cursor:pointer;" onclick="delpdf();"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                                <a title="Pdf" href="<?php echo base_url('freelancer/pdf/' . $userid) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                                <a title="Delete pdf" style="position: absolute; cursor:pointer;" onclick="delpdf();"><i class="fa fa-times" aria-hidden="true"></i></a>
                                             </div>
                                         <?php } ?>
                                         <input type="hidden" tabindex="2" name="image_hidden_portfolio" id="image_hidden_portfolio" value="<?php

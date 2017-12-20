@@ -10,7 +10,7 @@
                     <?php } else { ?>
                         <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
                     <?php } ?>
-                    <a href="#popup-form" class="fancybox"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
+                        <a title="Update Profile Pic" href="#popup-form" class="fancybox"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
                 </div>
                 <div id="popup-form">
                     <?php echo form_open_multipart(base_url('freelancer/user_image_add'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>

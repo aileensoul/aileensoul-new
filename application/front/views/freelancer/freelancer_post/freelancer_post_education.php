@@ -43,22 +43,22 @@
                         <div class="col-md-3 col-sm-3">
                             <div class="left-side-bar">
                                 <ul class="left-form-each">
-                                    <li class="custom-none"><a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
+                                    <li class="custom-none"><a title="Basic Information" href="<?php echo base_url('freelancer-work/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
 
-                                    <li class="custom-none"><a href="<?php echo base_url('freelancer-work/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
+                                    <li class="custom-none"><a title="Address Information" href="<?php echo base_url('freelancer-work/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
 
-                                    <li class="custom-none"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
+                                    <li class="custom-none"><a title="Professional Information" href="<?php echo base_url('freelancer-work/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
 
-                                    <li class="custom-none"><a href="<?php echo base_url('freelancer-work/rate'); ?>"><?php echo $this->lang->line("rate"); ?></a></li>
+                                    <li class="custom-none"><a title="Rate" href="<?php echo base_url('freelancer-work/rate'); ?>"><?php echo $this->lang->line("rate"); ?></a></li>
 
-                                    <li class="custom-none"><a href="<?php echo base_url('freelancer-work/avability'); ?>"><?php echo $this->lang->line("add_avability"); ?></a></li>
-                                    <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a href="javascript:void(0);"><?php echo $this->lang->line("education"); ?></a></li>	
+                                    <li class="custom-none"><a title="Avability" href="<?php echo base_url('freelancer-work/avability'); ?>"><?php echo $this->lang->line("add_avability"); ?></a></li>
+                                    <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a title="Education" href="javascript:void(0);"><?php echo $this->lang->line("education"); ?></a></li>	
 
                                     <li class="custom-none <?php
                                     if ($freepostdata[0]['free_post_step'] < '6') {
                                         echo "khyati";
                                     }
-                                    ?>"><a href="<?php echo base_url('freelancer-work/portfolio'); ?>"><?php echo $this->lang->line("portfolio"); ?></a></li>
+                                    ?>"><a title="Portfolio" href="<?php echo base_url('freelancer-work/portfolio'); ?>"><?php echo $this->lang->line("portfolio"); ?></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -229,7 +229,7 @@
                     <h2>Add University</h2> 
                     <input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()">
                     <!--<input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">-->
-                    <div class="fw"><a id="univer" class="btn">OK</a></div>
+                    <div class="fw"><a title="Ok" id="univer" class="btn">OK</a></div>
                     <!--                    </div>-->
                 </div>
             </div>
@@ -246,7 +246,7 @@
                     <h2>Add Stream</h2>
                     <select name="other_stream" id="other_stream" class="other_stream" onchange="return remove_validation1()">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream) { ?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select>
                     <!--<input type="text" name="other_degree" id="other_degree" onkeypress="return remove_validation()">-->
-                    <div class="fw text-center"><a id="univer2" class="btn">OK</a></div>
+                    <div class="fw text-center"><a title="Ok" id="univer2" class="btn">OK</a></div>
                     <!--                    </div>-->
                 </div>
             </div>
@@ -261,7 +261,7 @@
                     <h2>Add stream</h2> 
                     <input type="text" name="other_degree1" id="other_degree1" onkeypress="return remove_validation_stream()">
                     <!--<input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">-->
-                    <div class="fw"><a id="univer1" class="btn">OK</a></div>
+                    <div class="fw"><a title="Ok" id="univer1" class="btn">OK</a></div>
                     <!--                    </div>-->
                 </div>
             </div>

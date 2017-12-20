@@ -111,19 +111,19 @@
                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
-                            <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
+                            <a title="update Profile Pic" href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
                         </div>
 
                     </div>
                     <div class="job-menu-profile mob-block ">
-                        <a href="javascript:void(0);">
+                        <a title="<?php echo ucwords($freepostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freepostdata[0]['freelancer_post_username']); ?>" href="javascript:void(0);">
                             <h3> <?php echo ucwords($freepostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freepostdata[0]['freelancer_post_username']); ?></h3>
                         </a>
                         <div class="profile-text">
                             <?php
                             if ($freepostdata[0]['designation'] == "") {
                                 ?>
-                                <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
+                            <a title="<?php echo $this->lang->line("designation"); ?>" id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
                                 <?php
                             } else {
                                 ?> 
@@ -157,14 +157,14 @@
             </div>
             <div class="middle-part container padding_set_res">
                 <div class="job-menu-profile mob-none pt20">
-                    <a href="javascript:void(0);">
+                    <a title="<?php echo ucwords($freepostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freepostdata[0]['freelancer_post_username']); ?>" href="javascript:void(0);">
                         <h3> <?php echo ucwords($freepostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freepostdata[0]['freelancer_post_username']); ?></h3>
                     </a>
                     <div class="profile-text">
                         <?php
                         if ($freepostdata[0]['designation'] == "") {
                             ?>
-                            <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
+                        <a title="<?php echo $this->lang->line("designation"); ?>" id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
                             <?php
                         } else {
                             ?> 
@@ -185,7 +185,7 @@
                <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
                <p class="mob-edit-pro">
                  
-                  <a href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
+                   <a title="Successfully Completed" href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
                   
                  
                </p>
@@ -205,7 +205,7 @@
                <p class="mob-edit-pro">
                   
                     
-                  <a href="<?php echo base_url('freelancer-work/basic-information')?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
+                   <a title="Edit Profile" href="<?php echo base_url('freelancer-work/basic-information')?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
                   
                     
                </p>
@@ -269,7 +269,7 @@
                      <div class="second circle-1">
                         <div>
                            <strong></strong>
-                           <a href="<?php echo base_url('freelancer-work/basic-information')?>" class="edit_profile_job">Edit Profile
+                           <a title="Edit Profile" href="<?php echo base_url('freelancer-work/basic-information')?>" class="edit_profile_job">Edit Profile
                            </a>
                         </div>
                      </div>

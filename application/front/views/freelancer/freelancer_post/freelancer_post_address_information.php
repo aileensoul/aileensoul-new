@@ -41,8 +41,8 @@
                             <div class="col-md-3 col-sm-3">
                                 <div class="left-side-bar">
                                     <ul class="left-form-each">
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a href="javascript:void(0);"><?php echo $this->lang->line("address_info"); ?></a></li>
+                                        <li class="custom-none"><a title="Basic Information" href="<?php echo base_url('freelancer-work/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a title="Address Information" href="javascript:void(0);"><?php echo $this->lang->line("address_info"); ?></a></li>
                                         <li class="custom-none <?php
                                         if ($freepostdata[0]['free_post_step'] < '2') {
                                             echo "khyati";
@@ -53,24 +53,24 @@
                                         if ($freepostdata[0]['free_post_step'] < '3') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/rate'); ?>"><?php echo $this->lang->line("rate"); ?></a></li>
+                                        ?>"><a title="Rate" href="<?php echo base_url('freelancer-work/rate'); ?>"><?php echo $this->lang->line("rate"); ?></a></li>
 
                                         <li class="custom-none <?php
                                         if ($freepostdata[0]['free_post_step'] < '4') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/avability'); ?>"><?php echo $this->lang->line("add_avability"); ?></a></li>
+                                        ?>"><a title="Avability" href="<?php echo base_url('freelancer-work/avability'); ?>"><?php echo $this->lang->line("add_avability"); ?></a></li>
 
                                         <li class="custom-none <?php
                                         if ($freepostdata[0]['free_post_step'] < '5') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/education'); ?>"><?php echo $this->lang->line("education"); ?></a></li>		    
+                                        ?>"><a title="Education" href="<?php echo base_url('freelancer-work/education'); ?>"><?php echo $this->lang->line("education"); ?></a></li>		    
                                         <li class="custom-none <?php
                                         if ($freepostdata[0]['free_post_step'] < '6') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/portfolio'); ?>" class="custom-none"><?php echo $this->lang->line("portfolio"); ?></a></li>
+                                        ?>"><a title="Portfolio" href="<?php echo base_url('freelancer-work/portfolio'); ?>" class="custom-none"><?php echo $this->lang->line("portfolio"); ?></a></li>
                                     </ul>
                                 </div>
                             </div>
