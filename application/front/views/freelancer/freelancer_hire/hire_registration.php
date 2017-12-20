@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">
         <!-- This Css is used for call popup -->
 
+        <?php if(!$this->session->userdata('aileenuser')){ ?>
 
          <style>
             /***  commen css  ***/
@@ -249,7 +250,7 @@
             }
             .login .form-group input, .login .form-group select, .login .form-group textarea {
                 border:none;
-                border-bottom:1px solid #d9d9d9;
+                border-bottom: 1px solid #d9d9d9;
                 border-radius:0px;
                 box-shadow:none;
                 font-size:15px;
@@ -405,12 +406,30 @@
             
 
         </style>
-
+        <?php } ?>
     </head>
     <!-- END HEAD -->
 
     <!-- start header -->
-    <?php echo $header; ?>
+    <?php if($this->session->userdata('aileenuser')){ 
+        echo $header; }else{ ?>
+                 <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
+                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                    </div>
+                    <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
+                        <div class="btn-right pull-right">
+                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
+                            <a href="javascript:void(0);" onclick="create_profile();" class="btn3">Create an account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+            
+  <?php  } ?>
     <!-- END HEADER -->
     <body class="cus-no-login botton_footer">
         <section>

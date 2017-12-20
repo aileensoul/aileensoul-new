@@ -1220,10 +1220,10 @@ class Freelancer extends MY_Controller {
 
 
                 $return_html .= '<div class="job-top-detail">';
-                $return_html .= '<h5><a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
+                $return_html .= '<h5><a title="'. $post['post_name'].'" href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
                 $return_html .= $post['post_name'];
                 $return_html .= '</a></h5>';
-                $return_html .= '<p><a href="' . base_url('freelancer-hire/employer-details/' . $hireslug) . '">';
+                $return_html .= '<p><a title="'.ucwords($firstname) . " " . ucwords($lastname).'" href="' . base_url('freelancer-hire/employer-details/' . $hireslug) . '">';
                 $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                 $return_html .= '</a></p>
             </div>
@@ -1296,7 +1296,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= $rest;
 
                 if (strlen($post['post_description']) > 150) {
-                    $return_html .= '.....<a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">Read more</a>';
+                    $return_html .= '.....<a title="Read more" href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">Read more</a>';
                 }
                 $return_html .= '</p>
 
@@ -1890,12 +1890,12 @@ class Freelancer extends MY_Controller {
                     $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => '2');
                     $data = $this->common->select_data_by_condition('save', $contition_array, $data = 'status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     if ($userid != $row['user_id']) {
-                        $return_html .= '<a href = " ' . base_url('chat/abc/3/4/' . $row['user_id']) . '">';
+                        $return_html .= '<a href = " ' . base_url('chat/abc/3/4/' . $row['user_id']) . '" title="Message">';
                         $return_html .= $this->lang->line("message");
                         $return_html .= '</a>';
                         if ($data[0]['status'] == 1 || $data[0]['status'] == '') {
                             $return_html .= '<input type = "hidden" id = "hideenuser' . $row['user_id'] . '" value = "' . $data[0]['save_id'] . '">';
-                            $return_html .= '<a id = "' . $row['user_id'] . '" onClick = "savepopup(' . $row['user_id'] . ')" href = "javascript:void(0);" class = "saveduser' . $row['user_id'] . '">';
+                            $return_html .= '<a title = "save" id = "' . $row['user_id'] . '" onClick = "savepopup(' . $row['user_id'] . ')" href = "javascript:void(0);" class = "saveduser' . $row['user_id'] . '">';
 
                             $return_html .= $this->lang->line("save");
                             $return_html .= '</a>';
@@ -2209,10 +2209,10 @@ class Freelancer extends MY_Controller {
 
 
                 $return_html .= '<div class="job-top-detail">';
-                $return_html .= '<h5><a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
+                $return_html .= '<h5><a title ="'.$post['post_name'].'" href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
                 $return_html .= $post['post_name'];
                 $return_html .= '</a></h5>';
-                $return_html .= '<p><a href="' . base_url('freelancer-hire/employer-details/' . $hireslug) . '">';
+                $return_html .= '<p><a title = "'.ucwords($firstname) . " " . ucwords($lastname).'" href="' . base_url('freelancer-hire/employer-details/' . $hireslug) . '">';
                 $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                 $return_html .= '</a></p>
             </div>
@@ -2287,7 +2287,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= $rest;
 
                 if (strlen($post['post_description']) > 150) {
-                    $return_html .= '.....<a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">Read more</a>';
+                    $return_html .= '.....<a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title = "Read more">Read more</a>';
                 }
                 $return_html .= '</p>
 
@@ -2304,16 +2304,16 @@ class Freelancer extends MY_Controller {
                 //  echo "<pre>"; print_r($freelancerapply1); die();
 
                 if ($freelancerapply1) {
-                    $return_html .= '<a href="javascript:void(0);" class="btn4  applied">Applied</a>';
+                    $return_html .= '<a title="Applied" href="javascript:void(0);" class="btn4  applied">Applied</a>';
                 } else {
-                    $return_html .= '<a href="javascript:void(0);"  class= "btn4 applypost' . $post['post_id'] . '" onclick="applypopup(' . $post['post_id'] . ' , ' . $post['user_id'] . ')">Apply</a>';
+                    $return_html .= '<a title = "Apply" href="javascript:void(0);"  class= "btn4 applypost' . $post['post_id'] . '" onclick="applypopup(' . $post['post_id'] . ' , ' . $post['user_id'] . ')">Apply</a>';
                     $userid = $this->session->userdata('aileenuser');
                     $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
                     $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     if ($data) {
-                        $return_html .= '<a href="javascript:void(0);" class="btn4 saved savedpost' . $post['post_id'] . '">Saved</a>';
+                        $return_html .= '<a title = "Saved" href="javascript:void(0);" class="btn4 saved savedpost' . $post['post_id'] . '">Saved</a>';
                     } else {
-                        $return_html .= '<a href="javascript:void(0);" id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" class="btn4 savedpost' . $post['post_id'] . '">Save</a>';
+                        $return_html .= '<a title = "Save" href="javascript:void(0);" id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" class="btn4 savedpost' . $post['post_id'] . '">Save</a>';
                     }
                 }
 
@@ -2667,10 +2667,10 @@ class Freelancer extends MY_Controller {
 
 
                 $return_html .= '<div class="job-top-detail">';
-                $return_html .= '<h5><a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
+                $return_html .= '<h5><a title = "'.$post['post_name'].'" href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
                 $return_html .= $post['post_name'];
                 $return_html .= '</a></h5>';
-                $return_html .= '<p><a href="' . base_url('freelancer-hire/employer-details/' . $hireslug) . '">';
+                $return_html .= '<p><a title = "'.ucwords($firstname) . " " . ucwords($lastname).'" href="' . base_url('freelancer-hire/employer-details/' . $hireslug) . '">';
                 $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                 $return_html .= '</a></p>
             </div>
@@ -2743,7 +2743,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= $rest;
 
                 if (strlen($post['post_description']) > 150) {
-                    $return_html .= '.....<a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">Read more</a>';
+                    $return_html .= '.....<a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title = "Read more">Read more</a>';
                 }
                 $return_html .= '</p>
 
@@ -2754,7 +2754,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= '</span>
                 <p class="pull-right">';
 
-                $return_html .= '<a href="javascript:void(0);" class="btn4" onclick="removepopup(' . $post['app_id'] . ')">Remove</a>';
+                $return_html .= '<a title = "Remove" href="javascript:void(0);" class="btn4" onclick="removepopup(' . $post['app_id'] . ')">Remove</a>';
 
                 $return_html .= ' </p>
 
@@ -3135,10 +3135,10 @@ class Freelancer extends MY_Controller {
                                     <div class="apply-btn fr">';
                 $userid = $this->session->userdata('aileenuser');
                 if ($userid != $rec['user_id']) {
-                    $return_html .= '<a href="' . base_url('chat/abc/3/4/' . $rec['user_id']) . '">';
+                    $return_html .= '<a title = "Message" href="' . base_url('chat/abc/3/4/' . $rec['user_id']) . '">';
                     $return_html .= $this->lang->line("message");
                     $return_html .= '</a>';
-                    $return_html .= '<a href="javascript:void(0);" class="button" onclick="removepopup(' . $rec['save_id'] . ')">';
+                    $return_html .= '<a title = "Remove" href="javascript:void(0);" class="button" onclick="removepopup(' . $rec['save_id'] . ')">';
                     $return_html .= $this->lang->line("remove");
                     $return_html .= '</a>';
                 }
@@ -3254,10 +3254,10 @@ class Freelancer extends MY_Controller {
 
 
                     $return_html .= '<div class="job-top-detail">';
-                    $return_html .= '<h5><a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
+                    $return_html .= '<h5><a title = "'.$post['post_name'].'" href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
                     $return_html .= $post['post_name'];
                     $return_html .= '</a></h5>';
-                    $return_html .= '<p><a href="' . base_url('freelancer-hire/employer-details/' . $hireslug) . '">';
+                    $return_html .= '<p><a title = "'.ucwords($firstname) . " " . ucwords($lastname).'" href="' . base_url('freelancer-hire/employer-details/' . $hireslug) . '">';
                     $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                     $return_html .= '</a></p>
             </div>
@@ -3330,7 +3330,7 @@ class Freelancer extends MY_Controller {
                     $return_html .= $rest;
 
                     if (strlen($post['post_description']) > 150) {
-                        $return_html .= '.....<a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">Read more</a>';
+                        $return_html .= '.....<a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="Read more">Read more</a>';
                     }
                     $return_html .= '</p>
 
@@ -3341,7 +3341,7 @@ class Freelancer extends MY_Controller {
                     $return_html .= '</span>
                 <p class="pull-right">';
 
-                    $return_html .= '<a href="javascript:void(0);" class="btn4" onclick="removepopup(' . $post['app_id'] . ')">Remove</a>';
+                    $return_html .= '<a title = "Remove" href="javascript:void(0);" class="btn4" onclick="removepopup(' . $post['app_id'] . ')">Remove</a>';
                     $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                     $contition_array = array('post_id' => $post['post_id'], 'job_delete' => '0', 'user_id' => $userid);
                     $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3350,7 +3350,7 @@ class Freelancer extends MY_Controller {
                     if ($freelancerapply1) {
                         
                     } else {
-                        $return_html .= '<a href="javascript:void(0);"  class= "btn4" onclick="applypopup(' . $post['post_id'] . ',' . $post['app_id'] . ')">Apply</a>';
+                        $return_html .= '<a title="Apply" href="javascript:void(0);"  class= "btn4" onclick="applypopup(' . $post['post_id'] . ',' . $post['app_id'] . ')">Apply</a>';
                     }
 
                     $return_html .= ' </p>
