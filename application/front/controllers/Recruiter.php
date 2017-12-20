@@ -595,7 +595,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER RECOMMANDED FUNCTION END
 // RECRUITER ADD POST START
     public function add_post() {
-        
+        $this->data['title'] = 'AddPost | RecruiterProfile - Aileensouls';
         
         if($this->session->userdata('aileenuser')){
         
@@ -869,7 +869,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER POST START
     public function rec_post($id = "") {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-
+        $this->data['title'] = 'Post  | RecruiterProfile - Aileensou';
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -1265,7 +1265,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER SAVED CANDIDATE LIST START
     public function save_candidate() {
         $this->recruiter_apply_check();
-
+$this->data['title'] = 'SavedCandidate   | RecruiterProfile - Aileensou';
         $userid = $this->session->userdata('aileenuser');
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
@@ -1313,7 +1313,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER SAVED CANDIDATE LIST END
 // RECRUITER PROFILE START
     public function rec_profile($id = "") {
-
+      $this->data['title'] = 'Details | RecruiterProfile - Aileensou';
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
 //if user deactive profile then redirect to recruiter/index untill active profile start

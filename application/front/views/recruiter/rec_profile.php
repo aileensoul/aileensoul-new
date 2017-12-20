@@ -22,7 +22,7 @@
         <?php
  $returnpage= $_GET['page'];
  $userid = $this->session->userdata('aileenuser');
- if ($this->uri->segment(3) == $userid){
+ if ($this->uri->segment(3) != $userid){
      echo $job_header2_border; 
  }
  elseif($recdata[0]['re_step'] == 3){

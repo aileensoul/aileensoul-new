@@ -1,5 +1,6 @@
 
-<?php  if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home')) { ?>
+<?php echo $userid = $this->data['user_id'] =  $this->session->userdata('aileenuser'); 
+if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home')) { ?>
 
     <header>
         <div class="bg-search">
@@ -70,7 +71,7 @@
                                                     <div class="my_S">Account</div>
 
                                                 </span>
-                                                <a href="<?php echo base_url('recruiter/profile'); ?>" title="Recrutier profile"><span class="icon-view-profile edit_data"></span> <sapn>View Profile</sapn></a>
+                                                <a href="<?php echo base_url('recruiter/profile/') . $userid; ?>" title="Recrutier profile"><span class="icon-view-profile edit_data"></span> <sapn>View Profile</sapn></a>
                                                 <a href="<?php echo base_url('recruiter/basic-information'); ?>" title="Recrutier profile"><span class="icon-edit-profile edit_data"> </span>
                                                     <span>Edit Profile</span> </a>
 
@@ -194,7 +195,7 @@
                                                         <span> View Profile </span></a>
 
                                                 <?php } else { ?>
-                                                    <a href="<?php echo base_url('recruiter/profile'); ?>" title="Recruiter Profile"><span class="icon-view-profile edit_data"></span>
+                                                    <a href="<?php echo base_url('recruiter/profile/') . $userid; ?>" title="Recruiter Profile"><span class="icon-view-profile edit_data"></span>
                                                         <span> View Profile </span></a>
                                                 <?php } ?>
                                                 <!-- View profile popup show on different page of Recruiter ENd -->
