@@ -346,7 +346,7 @@
                             if (response.okmsg == "ok") {
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
 
-                                window.location = "<?php echo base_url() ?>dashboard";
+                                window.location = "<?php echo base_url() ?>profiles/<?php echo $this->session->userdata('aileenuser_slug'); ?>";
                                 sendmail(userid);
                                 // setTimeout(' window.location.href = "<?php //echo base_url()  ?>dashboard"; ', 4000);
                             } else {
