@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#">
+<html lang="en">
    <head>
       <title><?php echo $blog_detail[0]['title'];?> - Aileensoul.com</title>
       <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
@@ -113,7 +113,7 @@
          </div>
       </div>
       <section>
-         <section>
+         
             <div class="blog-mid-section user-midd-section">
                <div class="container">
                   <div class="row">
@@ -140,9 +140,9 @@
                                     <div class="blog_class_main_by">
                                     </div>
                                     <div class="blog_class_main_desc">
-                                       <span>
+                                       
                                        <?php echo $blog_detail[0]['description'];?>
-                                       </span>
+                                     
                                     </div>
                                     <div class="blog_class_main_social">
                                        <div class="left_blog_icon fl">
@@ -281,7 +281,7 @@
                         </div>
                         <div class="comment_box">
                            <h3>Give Comment</h3>
-                           <form name="comment" id="comment" method="post" action="" autocomplete="off">
+                           <form name="comment" id="comment" method="post" autocomplete="off">
                               <fieldset class="full-width comment_foem">
                                  <label>Name </label>
                                  <input type="text" name="name" id="name" placeholder="Enter your name">
@@ -396,8 +396,7 @@
       </div>
       <!-- Model Popup Close -->
 
-         </section>
-      </section>
+    </section>
  <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
       <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
  
