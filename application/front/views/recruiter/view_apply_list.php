@@ -34,7 +34,7 @@
 
                             <div class="add-post-button">
 
-                                <a href="<?php echo base_url('recruiter/post'); ?>"><div class="back">
+                                <a href="<?php echo base_url('recruiter/post'); ?>" title="Back To Post"><div class="back">
                                         <div class="but1" >
                                             Back To Post
                                         </div>
@@ -61,7 +61,7 @@
                                                                     <div style="display: inline-block; float: left;">
                                                                         <div  class="buisness-profile-pic-candidate">
                                                                              <a style="  font-size: 19px;
-                                                                                   font-weight: 600;" href="<?php echo base_url('job/resume/' . $row['slug'] . '?page=recruiter'); ?>">
+                                                                                   font-weight: 600;" href="<?php echo base_url('job/resume/' . $row['slug'] . '?page=recruiter'); ?>" title="<?php echo $row['job_user_image']; ?>">
 
                                                                                    <?php 
                                                                                     $filename = $this->config->item('job_profile_thumb_upload_path') . $row['job_user_image'];
@@ -96,7 +96,7 @@
                                                                         <ul>
                                                                             <li>
                                                                                 <a style="  font-size: 19px;
-                                                                                   font-weight: 600;" href="<?php echo base_url('job/resume/' . $row['slug'] . '?page=recruiter'); ?>">
+                                                                                   font-weight: 600;" href="<?php echo base_url('job/resume/' . $row['slug'] . '?page=recruiter'); ?>" title="<?php echo $row['job_user_image']; ?>">
                                                                                     <?php echo ucfirst(strtolower($row['fname'])) . ' ' . ucfirst(strtolower($row['lname'])); ?></a>
                                                                             </li>
                                                                             <li class="show">

@@ -92,7 +92,7 @@
                             ?>
 
                              <div class="bg-images no-cover-upload">
-                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="<?php echo 'NOIMAGE'; ?>"/ >
+                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="<?php echo 'NOIMAGE'; ?>" />
                              </div>
                              <?php }
                              ?>
@@ -138,13 +138,10 @@
 
                                 </div>
                             <?php } ?>
-<<<<<<< HEAD
-                            <?php if ($returnpage == '') { ?>
-                                <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png" alt="<?php echo 'CAMERAIMAGE'; ?>"> Update Profile Picture</a>
-=======
+
                             <?php if ($this->uri->segment(3) == $userid) { ?>
                                 <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
->>>>>>> eeb6f0b82793c8ba667523f6e0bda282b05fc457
+
                             <?php } ?>
                         </div>
                     </div>
