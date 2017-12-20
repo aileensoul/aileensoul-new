@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo $title; ?></title>
+        <title>Business information | Business Profile - Aileensoul</title>
         <?php echo $head_profile_reg; ?>  
         <?php
         if (IS_BUSINESS_CSS_MINIFY == '0') {
