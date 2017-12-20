@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Reactivate</title>
+        <title><?php echo $title ?></title>
         <?php echo $head; ?>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </head>
