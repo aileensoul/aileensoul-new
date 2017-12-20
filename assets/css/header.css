@@ -2192,11 +2192,13 @@ footer {
 
 /***  footer  ***/
 footer{
-    padding:0 0 20px;
+    /*padding:0 0 20px;*/
+    padding: 0px;
     color:#353535;
     position:absolute;
     bottom:0;
-    height:60px;
+    height: 0px;
+    /*height:60px;*/
     width:100%;
     background-color: #f3f3f3;
 }
