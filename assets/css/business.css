@@ -2795,8 +2795,8 @@ label.cameraButton:active {
 .close2 {
     color: #fff;
     position: absolute;
-    top: 12px;
-    right: 64px;
+    top: 0px;
+    right: 0px;
     font-size: 35px;
     font-weight: bold;
     z-index: 9;
@@ -4229,10 +4229,10 @@ div .comment {
     font-size: 12px;
     height: 100px;
 }
-.modal-content2 .prev,
+/*.modal-content2 .prev,
 .modal-content2 .next {
     top: 290px;
-}
+}*/
 .slider_img .prev,
 .slider_img .next {
     top: 50%;
