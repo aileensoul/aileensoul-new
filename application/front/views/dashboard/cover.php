@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en" class="custom-c">
     <head>
+		<meta charset="utf-8">
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css') ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/slider.css') ?>">
