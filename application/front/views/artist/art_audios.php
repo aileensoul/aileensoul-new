@@ -66,7 +66,7 @@
                <?php } } else{?>
              <div class="art_no_pva_avl">
          <div class="art_no_post_img">
-              <img src="<?php echo base_url('assets/images/color_008.png'); ?>"  >                              
+              <img src="<?php echo base_url('assets/images/color_008.png'); ?>"  alt="<?php echo "color_008.png"; ?>">                              
          </div>
          <div class="art_no_post_text1">
            No Audio Available.
@@ -115,7 +115,7 @@
 
                                <!--  <div class="user_profile"></div> -->
 
-                               <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                               <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" title="<?php echo "loader.gif"; ?>"/></div>
 
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>

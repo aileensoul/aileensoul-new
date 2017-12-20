@@ -44,9 +44,9 @@
                     <div class="col-md-3 col-sm-4">
                         <div class="left-side-bar">
                             <ul class="left-form-each">
-                                <li <?php if($this->uri->segment(1) == 'artist'){?> class="active init" <?php } ?>><a href="javascript:void(0);">Basic Information</a></li>
-                                <li class="custom-none <?php if($artdata[0]['art_step'] < '1'){echo "khyati";}?>"><a href="<?php echo base_url('artist/artistic-address'); ?>">Address</a></li>
-                                <li class="custom-none <?php if($artdata[0]['art_step'] < '2'){echo "khyati";}?>"><a href="<?php echo base_url('artist/artistic-information'); ?>">Art Information</a></li>
+                                <li <?php if($this->uri->segment(1) == 'artist'){?> class="active init" <?php } ?>><a href="javascript:void(0);" title="Basic Information">Basic Information</a></li>
+                                <li class="custom-none <?php if($artdata[0]['art_step'] < '1'){echo "khyati";}?>"><a href="<?php echo base_url('artist/artistic-address'); ?>" title="Address">Address</a></li>
+                                <li class="custom-none <?php if($artdata[0]['art_step'] < '2'){echo "khyati";}?>"><a href="<?php echo base_url('artist/artistic-information'); ?>" title="Art Information">Art Information</a></li>
                                
                             </ul>
                         </div>

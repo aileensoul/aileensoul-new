@@ -55,6 +55,15 @@
                            </div>
                      </li>
                      <li>
+
+                        <?php 
+                        $userid = $this->session->userdata('aileenuser');
+                         $contition_array = array('status' => '1', 'user_id' => $userid);
+                         $slugdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = ''); 
+                         //echo "<pre>"; print_r($slugdata); die();
+
+                           ?>
+
                      <!-- Friend Request End-->
                      <div class="dropdown_hover">
                      <span id="art_profile" class="profiletitle dropbtn_common" >Job Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
@@ -62,7 +71,7 @@
                      <span class="my_account">
                      <div class="my_S">Account</div>
                      </span>
-                     <a href="<?php echo base_url('job/resume'); ?>" title="View Profile"><span class="icon-view-profile edit_data"></span>
+                     <a href="<?php echo base_url('job/resume/'.$slugdata[0]['slug']); ?>" title="View Profile"><span class="icon-view-profile edit_data"></span>
                      <span> View Profile </span></a>
                      <a href="<?php echo base_url('job/basic-information'); ?>" title="Edit Profile"><span class="icon-edit-profile edit_data"></span>  
                      <span>Edit Profile </span></a>

@@ -49,7 +49,7 @@
         </style>
 
     </head>
-    <body class="site-map" >
+    <body class="site-map outer-page" >
         <div class="main-inner">
             <?php echo $sitemap_header ?>
             <section class="middle-main">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="busRegApp" ng-controller="busRegController">
     <head>
-        <title><?php echo $title; ?></title>
+        <title ng-bind="title"></title>
         <?php echo $head_profile_reg; ?>  
         <?php
         if (IS_BUSINESS_CSS_MINIFY == '0') {
@@ -48,7 +48,7 @@
             }
         </style>
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push reg-form botton_footer" ng-app="busRegApp" ng-controller="busRegController">
+    <body class="page-container-bg-solid page-boxed pushmenu-push reg-form botton_footer">
         <?php echo $header; ?>
         <?php if ($business_common_data[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>
@@ -580,6 +580,7 @@
                             $('ul.left-form-each-ul li#left-form-each-li-1').addClass('active filled-box');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(1)').addClass('active');
+                            $scope.title = 'Business information | Business Profile - Aileensoul';
                             getCountry();
                             getBusinessInformation();
                         }
@@ -591,6 +592,7 @@
                             $('ul.left-form-each-ul li#left-form-each-li-2').addClass('active filled-box');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(2)').addClass('active');
+                            $scope.title = 'Contact Information | Business profile - Aileensoul';
                             getContactInformation();
                         }
                         function activeDescription() {
@@ -602,6 +604,7 @@
                             $('ul.left-form-each-ul li#left-form-each-li-2').addClass('filled-box');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(3)').addClass('active');
+                            $scope.title = 'Descrption | Business profile - Aileensoul';
                             getDescription();
                         }
                         function activeImage() {
@@ -614,6 +617,7 @@
                             $('ul.left-form-each-ul li#left-form-each-li-3').addClass('filled-box');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(4)').addClass('active');
+                            $scope.title = 'Business Image | Business Profile - Aileensoul';
                             getImage();
                         }
                         if (reg_uri == 'business-information') {

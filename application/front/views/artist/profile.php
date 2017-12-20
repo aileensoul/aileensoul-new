@@ -695,14 +695,14 @@
 
                                     <p class="form-text">
                                         By Clicking on create an account button you agree our<br class="mob-none">
-                                        <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                        <a href="<?php echo base_url('main/terms-and-condition'); ?>" title="Terms and Condition">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy">Privacy policy</a>.
                                     </p>
                                     <p>
                                         <button tabindex="13" class="btn1">Create an account</button>
                                     </p>
                                     <div class="sign_in pt10">
                                         <p>
-                                            Already have an account ? <a tabindex="12" onclick="login_data();" href="javascript:void(0);"> Log In </a>
+                                            Already have an account ? <a tabindex="12" onclick="login_data();" href="javascript:void(0);" title="Log In"> Log In </a>
                                         </p>
                                     </div>
                                 </form>
@@ -761,11 +761,11 @@
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn" title="Forgot Password">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();" title="Create an account">Create an account</a>
                                         </p>
                                     </form>
 
