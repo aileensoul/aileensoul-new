@@ -5,12 +5,12 @@
                   <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo site_url('artist/dashboard/'.$get_url); ?>" tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>">
 
                      <?php if ($artisticdata[0]['profile_background']) { ?>
-                      <img src="<?php echo ART_BG_MAIN_UPLOAD_URL.$artisticdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                      <img src="<?php echo ART_BG_MAIN_UPLOAD_URL.$artisticdata[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $artisticdata[0]['profile_background'];?>"/>
                     
                      <?php }else { ?>
                      <div class="data_img">
                        <div class="bg-images no-cover-upload">
-                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>"  ></div>
+                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo "WHITEIMAGE"; ?>"></div>
                      </div>
                      <?php } ?>
 
@@ -32,12 +32,12 @@
                                   if($artisticdata[0]['art_user_image']){
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
                                        
-                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                         
                                     <?php } else { ?>
-                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="<?php echo $artisticdata[0]['art_user_image']; ?>">
                                    <?php } } else{?>
-                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                 <?php } } else{  
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
@@ -45,11 +45,11 @@
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                     if ($info) { ?>
-                        <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>" class="bgImage"  alt="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>" >
+                        <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>" class="bgImage"  alt="<?php echo $artisticdata[0]['art_user_image']; ?>" >
                                                                 <?php
                                                             } else { ?>
 
-                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                               <?php } }?>
                         </div>
                         
@@ -58,11 +58,11 @@
                   </div>
                   <div class="right_left_box_design ">
                      <span class="profile-company-name ">
-                     <a   href="<?php echo site_url('artist/dashboard/'.$get_url); ?>"> <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?></a>
+                     <a  href="<?php echo site_url('artist/dashboard/'.$get_url); ?>" title="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>"> <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?></a>
                      </span>
                     
                      <div class="profile-boxProfile-name">
-                        <a  href="<?php echo site_url('artist/dashboard/'.$get_url); ?>">
+                        <a  href="<?php echo site_url('artist/dashboard/'.$get_url); ?>" title="<?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?>">
                         <?php
                            if ($artisticdata[0]['designation']) {
                                echo ucfirst(strtolower($artisticdata[0]['designation']));
