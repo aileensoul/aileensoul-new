@@ -1331,7 +1331,7 @@ class Artist extends MY_Controller {
             } elseif (in_array($ext, $allowesaudio)) {
                 $return_html .= '<div class="audio_main_div">
                                                 <div class="audio_img">
-                                                    <img src="' . base_url('assets/images/music-icon.png') . '">  
+                                                    <img src="' . base_url('assets/images/music-icon.png') . '" alt="<?php echo "music-icon.png"; ?>">  
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio controls>
@@ -1347,7 +1347,7 @@ class Artist extends MY_Controller {
 
                 $return_html .= '<div  class="two-images">
                                                 <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-                                                     <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
+                                                     <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="<?php echo $multiimage["file_name"]; ?>">
                                                 </a>
                                             </div>';
             }
@@ -1355,7 +1355,7 @@ class Artist extends MY_Controller {
             $return_html .= '<div class="three-image-top" >
                                             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
 
-                                                <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+                                                <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="<?php echo $artmultiimage[0]["file_name"]; ?>">
                                             </a>
                                         </div>
                                         <div class="three-image" >

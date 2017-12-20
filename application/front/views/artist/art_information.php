@@ -57,9 +57,9 @@
                     <div class="col-md-3 col-sm-4">
                         <div class="left-side-bar">
                             <ul class="left-form-each">
-                                <li class="custom-none"><a href="<?php echo base_url('artist/artistic-information-update'); ?>">Basic Information</a></li>
-                                <li class="custom-none"><a href="<?php echo base_url('artist/artistic-address'); ?>">Address</a></li>
-                                <li <?php if($this->uri->segment(1) == 'artist'){?> class="active init" <?php } ?>><a href="javascript:void(0);">Art Information</a></li>
+                                <li class="custom-none"><a href="<?php echo base_url('artist/artistic-information-update'); ?>" title="Basic Information">Basic Information</a></li>
+                                <li class="custom-none"><a href="<?php echo base_url('artist/artistic-address'); ?>" title="Address">Address</a></li>
+                                <li <?php if($this->uri->segment(1) == 'artist'){?> class="active init" <?php } ?> title="Art Information"><a href="javascript:void(0);">Art Information</a></li>
                             </ul>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                                  <input type="file" value="" name="bestofmine" id="bestofmine" style="display:block;display:none;"/>
 
                                  <label for="bestofmine" class="optional-custom"  tabindex="1" ><i class="fa fa-plus action-buttons btn-group"  aria-hidden="true" style=" margin: 8px; cursor:pointer ; color: #fff; float: initial;"> </i> Attachment<span class="optional">(optional)</span></label> <span id="datav" class="attach-file-name"></span>   
-                                 <div class="fw" id="loader" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /> 
+                                 <div class="fw" id="loader" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/> 
                                  </div> 
                                 <div class="bestofmine_image" style="color:#f00; display: block;"></div>
            

@@ -236,12 +236,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 fw-479">
-                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                        <h2 class="logo"><a href="<?php echo base_url(); ?>" title="Aileensoul">Aileensoul</a></h2>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 fw-479">
                         <div class="btn-right pull-right">
-                            <a href="javascript:void(0);" onclick="login_data();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Create an account</a>
+                            <a href="javascript:void(0);" onclick="login_data();" class="btn2" title="Login">Login</a>
+                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3" title="Create an account">Create an account</a>
                         </div>
                     </div>
                 </div>
@@ -251,16 +251,16 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <?php echo $artistic_common_profile; ?>
             <div class="text-center tab-block">
                 <div class="container mob-inner-page">
-                    <a href="javascript:void(0);" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="login_profile();" title="Photo">
                         Photo
                     </a>
-                    <a href="javascript:void(0);" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="login_profile();" title="Video">
                         Video
                     </a>
-                    <a href="javascript:void(0);" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="login_profile();" title="Audio">
                         Audio
                     </a>
-                    <a href="javascript:void(0);" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="login_profile();" title="Pdf">
                         PDf
                     </a>
                 </div>
@@ -273,7 +273,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         <div class="full-box-module business_data">
                             <div class="profile-boxProfileCard  module">
                                 <div class="head_details1">
-                                    <span><a href="javascript:void(0);" onclick="login_profile();"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
+                                    <span><a href="javascript:void(0);" onclick="login_profile();" title="Information"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
                                     </span>      
                                 </div>
                                 <table class="business_data_table">
@@ -324,7 +324,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                      <tr>
                                 <td class="business_data_td1 detaile_map"><i class="fa fa-envelope" aria-hidden="true"></i></td>
                                 <td class="business_data_td2">
-                                    <a href="mailto:<?php echo $artisticdata[0]['art_email']; ?>"><?php echo $artisticdata[0]['art_email']; ?></a>
+                                    <a href="mailto:<?php echo $artisticdata[0]['art_email']; ?>" title="<?php echo $artisticdata[0]['art_email']; ?>"><?php echo $artisticdata[0]['art_email']; ?></a>
                                 </td>
                             </tr>
                             <tr>
@@ -347,21 +347,21 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             </div>
                         </div>
                         <!-- user iamges start-->
-                        <a href="javascript:void(0);" onclick="login_profile();">
+                        <a href="javascript:void(0);" onclick="login_profile();" title="Photos">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module buisness_he_module" >
                                     <div class="head_details">
                                         <h5><i class="fa fa-camera" aria-hidden="true"></i>   Photos</h5>
                                     </div>
                                    <div class="art_photos">
-                                      <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                      <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                                   </div>
                                 </div>
                             </div>
                         </a>
                         <!-- user images end-->
                         <!-- user video start-->
-                        <a href="javascript:void(0);" onclick="login_profile();">
+                        <a href="javascript:void(0);" onclick="login_profile();" title="Video">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
                                     <table class="business_data_table">
@@ -369,7 +369,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             <h5><i class="fa fa-video-camera" aria-hidden="true"></i>Video</h5>
                                         </div>
                                         <div class="art_videos">
-                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                                         </div>
                                     </table>
                                 </div>
@@ -377,7 +377,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         </a>
                         <!-- user video emd-->
                         <!-- user audio start-->
-                        <a href="javascript:void(0);" onclick="login_profile();">
+                        <a href="javascript:void(0);" onclick="login_profile();" title="Audio">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
                                     <div class="head_details1">
@@ -385,7 +385,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     </div>
                                     <table class="business_data_table">
                                         <div class="art_audios">
-                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                                        </div>
                                     </table>
                                 </div>
@@ -393,14 +393,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         </a>
                         <!-- user audio end-->
                         <!-- user pdf  start-->
-                        <a href="javascript:void(0);" onclick="login_profile();">
+                        <a href="javascript:void(0);" onclick="login_profile();" title="Pdf">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module buisness_he_module" >
                                     <div class="head_details">
                                         <h5><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  PDF</h5>
                                     </div>      
                                     <div class="art_pdf">
-                                      <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                      <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                                    </div>
                                 </div>
                             </div>
@@ -411,7 +411,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                       <div class="col-md-6 col-sm-12">
                             <div class="art-all-post">
                             </div>
-                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                         </div>
                   </div>
                 </div>
@@ -496,11 +496,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn" title="Forgot Password">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();" title="Create an account">Create an account</a>
                                         </p>
                                     </form>
 
@@ -657,14 +657,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                     <p class="form-text">
                                         By Clicking on create an account button you agree our<br class="mob-none">
-                                        <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                        <a href="<?php echo base_url('main/terms-and-condition'); ?>" title="Terms and Condition">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy">Privacy policy</a>.
                                     </p>
                                     <p>
                                         <button tabindex="13" class="btn1">Create an account</button>
                                     </p>
                                     <div class="sign_in pt10">
                                         <p>
-                                            Already have an account ? <a tabindex="12" onclick="login_data();" href="javascript:void(0);"> Log In </a>
+                                            Already have an account ? <a tabindex="12" onclick="login_data();" href="javascript:void(0);" title="Log In"> Log In </a>
                                         </p>
                                     </div>
                                 </form>
@@ -787,7 +787,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         success: function (response)
                         {
                             if (response.data == "ok") {
-                                $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Login');
+                                $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" alt="<?php echo "btn-ajax-loader.gif"; ?>"/> &nbsp; Login');
                                 if (response.is_artistic == '1') {
                                     window.location = "<?php echo base_url() ?>artist/dashboard/" + site_url;
                                 } else {
@@ -986,7 +986,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         success: function (response)
                         {
                             if (response.okmsg == "ok") {
-                                $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
+                                $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" alt="<?php echo "btn-ajax-loader.gif"; ?>"/> &nbsp; Sign Up ...');
 //                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
                                 window.location = "<?php echo base_url() ?>artist";
                             } else {
