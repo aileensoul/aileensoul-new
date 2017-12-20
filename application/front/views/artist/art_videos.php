@@ -22,10 +22,10 @@
         <div class="padding_less main_art" >   <!-- Tab panes -->
                     <div class="top-tab">
                       <ul class="nav nav-tabs tabs-left remove_tab">
-                          <li> <a href="<?php echo base_url('artist/photos/'.$get_url) ?>"><i class="fa fa-camera" aria-hidden="true"></i>   Photos</a></li>
-                          <li class="active"> <a href="<?php echo base_url('artist/videos/'.$get_url) ?>"><i class="fa fa-video-camera" aria-hidden="true"></i>  Video</a></li>
-                          <li><a href="<?php echo base_url('artist/audios/'.$get_url) ?>"><i class="fa fa-music" aria-hidden="true"></i>  Audio</a></li>
-                          <li>    <a href="<?php echo base_url('artist/pdf/'.$get_url) ?>"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  Pdf</a></li>
+                          <li> <a href="<?php echo base_url('artist/photos/'.$get_url) ?>" title="Photos"><i class="fa fa-camera" aria-hidden="true"></i>   Photos</a></li>
+                          <li class="active"> <a href="<?php echo base_url('artist/videos/'.$get_url) ?>" title="Video"><i class="fa fa-video-camera" aria-hidden="true"></i>  Video</a></li>
+                          <li><a href="<?php echo base_url('artist/audios/'.$get_url) ?>" title="Audio"><i class="fa fa-music" aria-hidden="true"></i>  Audio</a></li>
+                          <li>    <a href="<?php echo base_url('artist/pdf/'.$get_url) ?>" title="Pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  Pdf</a></li>
                         </ul>
                     </div>
           <div class="tab-content">
@@ -116,7 +116,7 @@
       <?php }  }  else{?>
  <div class="art_no_pva_avl">
          <div class="art_no_post_img">
-          <img src="<?php echo base_url('assets/images/010.png'); ?>"  >
+          <img src="<?php echo base_url('assets/images/010.png'); ?>"  alt="<?php echo "010.png"; ?>">
          </div>
          <div class="art_no_post_text1">
            No video Available.
@@ -166,7 +166,7 @@
 
                                 <!-- <div class="user_profile"></div> -->
 
-                                <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
 
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>

@@ -58,7 +58,7 @@
                     ?>
                   
 
-                    <img src="<?php echo ART_BG_MAIN_UPLOAD_URL.$image[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                    <img src="<?php echo ART_BG_MAIN_UPLOAD_URL.$image[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $image[0]['profile_background']; ?>" />
                   
                     
                     <?php
@@ -113,12 +113,12 @@
                                 if($artisticdata[0]['art_user_image']){
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
                                        
-                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                         
                                     <?php } else { ?>
-                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="<?php echo $artisticdata[0]['art_user_image']; ?>">
                                    <?php } }else{ ?>
-                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                   <?php }
                                 } else{
 
@@ -127,18 +127,18 @@
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                    if ($info) { ?>
-                 <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>" alt="" >
+                 <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>" alt="<?php echo $artisticdata[0]['art_user_image']; ?>" >
                 <?php
                 } else { ?>
 
-                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                        <?php } }?>
 
                 <?php
                 $userid = $this->session->userdata('aileenuser');
                 if ($artisticdata[0]['user_id'] == $userid) {
                     ?>                                                                                                                                    
-                    <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
+                    <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();" title="Update Profile Picture"><img src="<?php echo base_url(); ?>assets/img/cam.png" alt="<?php echo "cam.png"; ?>"> Update Profile Picture</a>
                 <?php } ?>
                </div>
 
@@ -149,7 +149,7 @@
 
 
                             <div class="profile-left">
-         <h4 class="profile-head-text"><a href="<?php echo site_url('artist/dashboard/' . $get_url); ?>">
+         <h4 class="profile-head-text"><a href="<?php echo site_url('artist/dashboard/' . $get_url); ?>" title=" <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>">
                 <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?></a>
 </h4>
             <!-- text head start -->
@@ -177,7 +177,7 @@
 
                                         <!-- <a id="myBtn"><?php echo ucwords($artisticdata[0]['designation']); ?></a> -->
                     <?php } else { ?>
-                        <a><?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?></a>
+                        <a title="<?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?></a>
                     <?php } ?>
 
                 <?php } ?>

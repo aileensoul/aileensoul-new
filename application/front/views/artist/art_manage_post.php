@@ -38,16 +38,16 @@
 <?php echo $artistic_common; ?>
 <div class="text-center tab-block">
     <div class="container mob-inner-page">
-       <a href="<?php echo base_url('artist/photos/' . $get_url) ?>">
+       <a href="<?php echo base_url('artist/photos/' . $get_url) ?>" title="Photo">
             Photo
         </a>
-       <a href="<?php echo base_url('artist/videos/' . $get_url) ?>">
+       <a href="<?php echo base_url('artist/videos/' . $get_url) ?>" title="Video">
             Video
         </a>
-       <a href="<?php echo base_url('artist/audios/' . $get_url) ?>">
+       <a href="<?php echo base_url('artist/audios/' . $get_url) ?>" title="Audio">
             Audio
         </a>
-        <a href="<?php echo base_url('artist/pdf/' . $get_url) ?>">
+        <a href="<?php echo base_url('artist/pdf/' . $get_url) ?>" title="Pdf">
             PDf
         </a>
     </div>
@@ -60,7 +60,7 @@
                     <div class="profile-boxProfileCard  module">
                        <div class="head_details1">
                             <span>
-                                  <a href="<?php echo base_url('artist/details/' . $this->uri->segment(3)) ?>">
+                                  <a href="<?php echo base_url('artist/details/' . $this->uri->segment(3)) ?>" title="Information">
                                       <h5><i class="fa fa-info-circle" aria-hidden="true"></i>
                                     Information  
                                    </h5>
@@ -115,7 +115,7 @@
                             <tr>
                                 <td class="business_data_td1 detaile_map"><i class="fa fa-envelope" aria-hidden="true"></i></td>
                                 <td class="business_data_td2">
-									<a href="mailto:<?php echo $artisticdata[0]['art_email']; ?>"><?php echo $artisticdata[0]['art_email']; ?></a>
+									<a href="mailto:<?php echo $artisticdata[0]['art_email']; ?>" title="<?php echo $artisticdata[0]['art_email']; ?>"><?php echo $artisticdata[0]['art_email']; ?></a>
 								</td>
                             </tr>
                             <tr>
@@ -137,19 +137,19 @@
                         </table>
                     </div>
                 </div>
-                <a href="<?php echo base_url('artist/photos/' . $get_url) ?>">
+                <a href="<?php echo base_url('artist/photos/' . $get_url) ?>" title="Photos">
                 <div class="full-box-module business_data" id="autorefresh">
                     <div class="profile-boxProfileCard  module buisness_he_module" style="">
                         <div class="head_details">
                             <h5><i class="fa fa-camera" aria-hidden="true"></i>Photos</h5>
                         </div>  
                         <div class="art_photos">
-                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                         </div>
                     </div>
                 </div>
                 </a>
-                <a href="<?php echo base_url('artist/videos/' . $get_url) ?>">
+                <a href="<?php echo base_url('artist/videos/' . $get_url) ?>" title="Video">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module">
                         <table class="business_data_table">
@@ -157,7 +157,7 @@
                                  <h5><i class="fa fa-video-camera" aria-hidden="true"></i>  Video</h5>
                             </div>  
                             <div class="art_videos">
-                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                             </div>
                         </table>
                     </div>
@@ -171,13 +171,13 @@
                                  <h5><i class="fa fa-music" aria-hidden="true"></i>  Audio</h5>
                             </div>
                             <div class="art_audios">
-                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                             </div>
                         </table>
                     </div>
                 </div>
                <!--  </a> -->
-                <a href="<?php echo base_url('artist/pdf/' . $get_url) ?>">
+                <a href="<?php echo base_url('artist/pdf/' . $get_url) ?>" title="Pdf">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module pdf_box">
                         <table class="business_data_table">
@@ -185,7 +185,7 @@
                                  <h5><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  PDF</h5>
                             </div>
                             <div class="art_pdf">
-                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                             </div>
                         </table>
                     </div>
@@ -223,13 +223,13 @@ $loginuser = $userdata[0]['art_id'];
                                 if($artisticdata[0]['art_user_image']){
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
                                        
-                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                         
                                     <?php } else { ?>
-                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="<?php echo $artisticdata[0]['art_user_image']; ?>">
                                    <?php }
                                 } else{ ?>
-                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                <?php } }else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') .$userimageposted;
@@ -238,11 +238,11 @@ $loginuser = $userdata[0]['art_id'];
 
 
                      if ($info) { ?>
-                                      <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>" name="image_src" id="image_src" />
+                                      <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>" name="image_src" id="image_src" alt="<?php echo $userimageposted; ?>" />
                                                                 <?php
                                                             } else { ?>
                
-                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                 <?php } }?>
                
 
@@ -274,13 +274,13 @@ $loginuser = $userdata[0]['art_id'];
                                 if($artisticdata[0]['art_user_image']){
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
                                        
-                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                         
                                     <?php } else { ?>
-                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="<?php echo $artisticdata[0]['art_user_image']; ?>">
                                    <?php }
                                 } else{ ?>
-                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                <?php } }else{
                                 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
@@ -288,11 +288,11 @@ $loginuser = $userdata[0]['art_id'];
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
 if ($info) { ?>
-        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="<?php echo $artisticdata[0]['art_user_image']; ?>">
             <?php
                 } else { ?>
                          
-                             <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                             <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                             <?php } }?>
                             
                             </div>
@@ -349,7 +349,7 @@ if ($info) { ?>
             <!--  </div> -->
 
              </div>
-              <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+              <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
             </div>           
         
     </div>
@@ -368,7 +368,7 @@ if ($info) { ?>
 
                                <!--  <div class="user_profile"></div> -->
 
-                               <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                               <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>" /></div>
 
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>

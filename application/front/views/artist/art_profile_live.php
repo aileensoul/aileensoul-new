@@ -234,12 +234,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 fw-479">
-                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                        <h2 class="logo"><a href="<?php echo base_url(); ?>" title="Aileensoul">Aileensoul</a></h2>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 fw-479">
                         <div class="btn-right pull-right">
-                            <a href="javascript:void(0);" onclick="login_data();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Create an account</a>
+                            <a href="javascript:void(0);" onclick="login_data();" class="btn2" title="Login">Login</a>
+                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3" title="Create an account">Create an account</a>
                         </div>
                     </div>
                 </div>
@@ -249,16 +249,16 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <?php echo $artistic_common_profile; ?>
             <div class="text-center tab-block">
                 <div class="container mob-inner-page">
-                    <a href="javascript:void(0);" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="login_profile();" title="Photo">
                         Photo
                     </a>
-                    <a href="javascript:void(0);" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="login_profile();" title="Video">
                         Video
                     </a>
-                    <a href="javascript:void(0);" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="login_profile();" title="Audio">
                         Audio
                     </a>
-                    <a href="javascript:void(0);" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="login_profile();" title="Pdf">
                         PDf
                     </a>
                 </div>
@@ -503,7 +503,7 @@ echo PROFILENA;
    echo "Pdf not available."
     ?>
 <?php }else{ ?>
-        <a href="<?php echo base_url($this->config->item('art_portfolio_main_upload_path') . $artisticdata[0]['art_bestofmine']) ?>">PDF</a>
+        <a href="<?php echo base_url($this->config->item('art_portfolio_main_upload_path') . $artisticdata[0]['art_bestofmine']) ?>" title="Pdf">PDF</a>
 <?php }?>
          <?php
          } ?></div></span></li>
@@ -549,7 +549,7 @@ echo PROFILENA;
 
                                <!--  <div class="user_profile"></div> -->
 
-                               <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                               <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
 
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
@@ -609,11 +609,11 @@ echo PROFILENA;
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn" title="Forgot Password">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();" title="Create an account">Create an account</a>
                                         </p>
                                     </form>
 
@@ -722,14 +722,14 @@ echo PROFILENA;
 
                                     <p class="form-text">
                                         By Clicking on create an account button you agree our<br class="mob-none">
-                                        <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                        <a href="<?php echo base_url('main/terms-and-condition'); ?>" title="Terms and Condition">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy">Privacy policy</a>.
                                     </p>
                                     <p>
                                         <button tabindex="13" class="btn1">Create an account</button>
                                     </p>
                                     <div class="sign_in pt10">
                                         <p>
-                                            Already have an account ? <a tabindex="12" onclick="login_data();" href="javascript:void(0);"> Log In </a>
+                                            Already have an account ? <a tabindex="12" onclick="login_data();" href="javascript:void(0);" title="Log In"> Log In </a>
                                         </p>
                                     </div>
                                 </form>
