@@ -35,9 +35,10 @@ class Userslug extends MY_Controller {
                $this->db->select('user_id,first_name,last_name');
          $res = $this->db->get('user')->result();
          foreach ($res as $k => $v) {
-             $data = array('user_slug' => $this->setuser_slug($v->first_name."-". $v->last_name, 'user_slug', 'user'));
+            // $data = array('user_slug' => $this->setuser_slug($v->first_name."-". $v->last_name, 'user_slug', 'user'));
+             $data = array('user_salug' => '');
              $this->db->where('user_id', $v->user_id);
-             $this->db->update('user', $data);
+              $this->db->update('user', $data);
           }
           
           
