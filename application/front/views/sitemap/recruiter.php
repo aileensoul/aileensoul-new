@@ -9,7 +9,7 @@
         <?php
         if ($_SERVER['HTTP_HOST'] != "localhost") {
             ?>
-            
+
             <script>
                 (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
@@ -31,21 +31,21 @@
             <?php
         }
         ?>
-            <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
-                (adsbygoogle = window.adsbygoogle || []).push({
-                    google_ad_client: "ca-pub-6060111582812113",
-                    enable_page_level_ads: true
-                });
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-6060111582812113",
+                enable_page_level_ads: true
+            });
         </script>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()) ?>">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <style type="text/css">
-            .linkbox ul li{
+/*            .linkbox ul li{
                 width: 100% !important;
-            }
+            }*/
         </style>
 
     </head>
@@ -60,18 +60,40 @@
                         <div class="linkbox">
                             <div class="smap-catbox">
                                 <ul class="catbox-right artist-sitemap">
-                                    <li style="list-style-type: circle;font-size: 20px;">Login/Register</li>
-                                    <li style="padding-bottom: 30px;">Register/Takeme in</li>
-                                    <li style="margin-left: -20px;padding-left: 38px;font-size: 20px;"><a style="text-transform: none;color: #333;" href="<?php echo base_url() ?>recruiter/add-post-live" target="_blank">Post a Job</a></li>
+                                    <li style="list-style-type: circle;font-size: 20px; width: 100%;">Login/Register</li>
+                                    <li style="padding-bottom: 30px; width: 100%;">Register/Takeme in</li>
+                                    <li style="margin-left: -20px;padding-left: 38px;font-size: 20px; width: 100%;"><a style="text-transform: none;color: #333;" href="<?php echo base_url() ?>recruiter/add-post-live" target="_blank">Post a Job</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    <div class="all-site-link ">
+                        <h3 style="padding-bottom: 15px;">Job Seekers</h3>
+                        <div class="linkbox">
+                            <?php
+                            foreach ($getJobseekers as $key => $value) {
+                                ?>
+                                <div class="smap-catbox">
+                                    <div class="catbox-left">
+                                        <h5><?php echo $key ?></h5>
+                                    </div>
+                                    <ul class="catbox-right">
+                                        <?php foreach ($value as $jobseekers) { ?>
+                                            <li><a href="<?php echo base_url('job/resume/' . $jobseekers['slug']) ?>" target="_blank"><?php echo $jobseekers['fname'] . ' ' . $jobseekers['lname'] ?></a></li>    
+                                        <?php } ?>
+                                    </ul>
+                                </div>
+    <?php
+}
+?>
+                        </div>
+                    </div>
+
                 </div>
             </section>
-            <?php
-            echo $login_footer
-            ?>
+<?php
+echo $login_footer
+?>
         </div>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
     </body>

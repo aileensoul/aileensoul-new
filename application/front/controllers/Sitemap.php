@@ -30,13 +30,14 @@ class Sitemap extends CI_Controller {
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['getJobDataByLocation'] = $this->sitemap_model->getJobDataByLocation();
+        $this->data['getRecruiter'] = $this->sitemap_model->getRecruiter();
         $this->load->view('sitemap/job', $this->data);
     }
 
     public function recruiter_profile() {
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
-
+        $this->data['getJobseekers'] = $this->sitemap_model->getJobseekers();
         $contition_array = array('');
         $this->data['business_profile'] = $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -48,7 +49,8 @@ class Sitemap extends CI_Controller {
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['getFreepostDataByCategory'] = $this->sitemap_model->getFreepostDataByCategory();
-//echo '<pre>'; print_r($this->data['getFreepostDataByCategory']); die();
+        $this->data['getFreelancers'] = $this->sitemap_model->getFreelancers();
+        $this->data['getEmployees'] = $this->sitemap_model->getEmployees();
         $this->load->view('sitemap/freelance', $this->data);
     }
 
