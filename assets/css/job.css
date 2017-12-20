@@ -2326,6 +2326,11 @@ margin-bottom: 15px;}
 #experience_month4-error{display: none !important;}
 #experience_month5-error{display: none !important;}
 .cust-block li{margin-left: -20px;}
+.all-job-bottom p.pull-right a.btn4:last-child {padding: 3px 12px !important;}
+p.job-top-btn a.btn4:last-child {padding: 3px 12px !important;line-height: 22px;}
+p.job-top-btn a.btn4:first-child {line-height: 22px;}
+
+
 /***  media query  ***/
 @media screen and (min-width: 768px) {
     .mob-progressbar.temp {

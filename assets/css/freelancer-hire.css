@@ -1582,7 +1582,9 @@ font-weight: 500; color: #5c5c5c; background:#fff;}
  .profile-job-details ul li .post_title a{font-weight: bold;display: inline-block;cursor: pointer;}   
 .register_disable{pointer-events: none;}
 .col-chang{color: #5c5c5c !important;}
-
+.all-job-bottom p.pull-right a.btn4:first-child {padding: 3px 12px !important;}
+p.pull-right a.btn4:first-child {padding: 3px 12px !important;line-height: 22px;}
+p.pull-right a.btn4:last-child {line-height: 22px;}
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
     .common-form fieldset.mgrd input[type="radio"] {
