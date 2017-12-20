@@ -20,7 +20,7 @@
             
 			<li><a id="trigger" class="click-profiles" style="" href="javascript:void(0)"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Profiles <i class="fa fa-sort-asc" aria-hidden="true"></i></a>
 				<div class="click-nav"><ul id="drop" class="left-ftr-profiles">
-					<li><a href="<?php echo base_url('how-to-use-job-profile-in-aileensoul'); ?>" target="_blank">Job Profiles</a></li>
+					<li><a href="<?php echo base_url('how-to-use-job-profile-in-aileensoul'); ?>" target="_blank">        Job Profiles</a></li>
 					<li><a href="<?php echo base_url('how-to-use-recruiter-profile-in-aileensoul'); ?>" target="_blank">Recruiter Profile</a></li>
 					<li><a href="<?php echo base_url('how-to-use-freelance-profile-in-aileensoul'); ?>" target="_blank">Freelance Profile</a></li>
 					<li><a href="<?php echo base_url('how-to-use-business-profile-in-aileensoul'); ?>" target="_blank">Business Profile</a></li>
@@ -28,9 +28,7 @@
 				</ul></div>
 			</li>
         </ul>
-
     </div>
-
 </div>
 
 
