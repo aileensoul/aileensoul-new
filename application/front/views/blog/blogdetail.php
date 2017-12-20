@@ -132,7 +132,7 @@
                               <div class="blog_inside_post_main">
                                  <div class="blog_main_post_first_part">
                                     <div class="blog_main_post_img">
-                                       <img src="<?php echo base_url($this->config->item('blog_main_upload_path')  . $blog_detail[0]['image']) ?>" >
+                                       <img src="<?php echo base_url($this->config->item('blog_main_upload_path')  . $blog_detail[0]['image']) ?>"  alt="Blog">
                                     </div>
                                  </div>
                                  <div class="blog_main_post_second_part">
@@ -252,7 +252,7 @@
                                        <ul>
                                           <li class="comment-list">
                                              <div class="c-user-img">
-                                                <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
+                                                <img src="<?php echo base_url(NOIMAGE); ?>" alt="Blog">
                                              </div>
                                              <div class="c-user-comments">
                                                 <h5><?php echo $comment['name']; ?></h5>
@@ -285,7 +285,7 @@
                         </div>
                         <div class="comment_box">
                            <h3>Give Comment</h3>
-                           <form role="form" name="comment" id="comment" method="post" action="" autocomplete="off">
+                           <form name="comment" id="comment" method="post" action="" autocomplete="off">
                               <fieldset class="full-width comment_foem">
                                  <label>Name </label>
                                  <input type="text" name="name" id="name" placeholder="Enter your name">
@@ -312,9 +312,9 @@
 								<div class="col-md-4 col-sm-12">
 									<div class="rel-blog-box">
 										<a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><div class="rel-blog-img">
-											<img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $random['image']) ?>">
-										</div>
-										<h5> <?php echo $random['title']; ?> </a> </h5>
+											<img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $random['image']) ?>" alt="Blog">
+										</div></a>
+										<h5> <a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><?php echo $random['title']; ?> </a> </h5>
 									</div>
 								</div>
                                                                                     
@@ -330,7 +330,7 @@
                           <div class="art_no_post_avl">
                                     <div class="art-img-nn">
                                         <div class="art_no_post_img">
-                                            <img src="<?php echo base_url('assets/img/bui-no.png') ?>">
+                                            <img src="<?php echo base_url('assets/img/bui-no.png') ?>" alt="Blog">
                                         </div>
                                         <div class="art_no_post_text">
                                             Sorry, this content isn't available at the moment
@@ -360,7 +360,7 @@
                                     <div class="post_inside_data">
                                        <div class="post_latest_left">
                                           <div class="lateaqt_post_img">
-                                             <a href="<?php echo base_url('blog/'.$blog['blog_slug'])?>"> <img src="<?php echo base_url($this->config->item('blog_main_upload_path')  . $blog['image']) ?>" ></a>
+                                             <a href="<?php echo base_url('blog/'.$blog['blog_slug'])?>"> <img src="<?php echo base_url($this->config->item('blog_main_upload_path')  . $blog['image']) ?>" alt="Blog"></a>
                                           </div>
                                        </div>
                                        <div class="post_latest_right">
@@ -402,17 +402,16 @@
 
          </section>
       </section>
- <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+ <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
       <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
  
 
       <?php
             echo $login_footer
             ?>
-   </body>
-</html>
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js'); ?>"></script>
+
+<script src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.validate.js'); ?>"></script>
 <!-- This Js is used for call popup -->
 
 <script>
@@ -520,4 +519,6 @@
 //AJAX DATA LOAD BY LAZZY LOADER END
 </script>
 
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/blog/blog_detail.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/webpage/blog/blog_detail.js'); ?>"></script>
+   </body>
+</html>

@@ -1,4 +1,5 @@
-<html class="blog_cl">
+<!DOCTYPE html>
+<html class="blog_cl" lang="en">
     <head>
         <title>Official Blog for Regular Updates , News and sharing knowledge - Ailensoul.com</title>
         <meta name="description" content="Our Aileensoul official blog will describe our free service and related news, tips and tricks - stay tuned." />
@@ -38,7 +39,7 @@
                     enable_page_level_ads: true
                 });
         </script>
-        <style type="text/css">
+        <style>
             footer > .container{border:1px solid transparent!important;}
             .footer{border:1px solid #d9d9d9;}
         </style>
@@ -73,7 +74,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver=' . time()); ?>">
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+        <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
     </head>
     <body class="blog">
         <div class="main-inner">
@@ -137,7 +138,7 @@
                 <div class="col-md-12 hidden-md hidden-lg pt20">
                     <div class="blog_search">
                         <div>
-                            <div class="searc_w"><input type="" name="" placeholder="Search Blog Post"></div>
+                            <div class="searc_w"><input type="text" name="Search blog post" placeholder="Search Blog Post"></div>
                             <div class="butn_w"><a href=""><i class="fa fa-search" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -212,11 +213,12 @@
                                     <h6> Blog Search </h6>
                                     <div>
 
-                                        <form action=<?php echo base_url('blog') ?> method="get" autocomplete="off">
+                                        <form action="<?php echo base_url('blog') ?>" method="get" autocomplete="off">
                                             <div class="searc_w"><input type="text" name="q" id="q" placeholder="Search Blog Post"></div>
                                             <button type="submit" class="butn_w" onclick="return checkvalue();"><i class="fa fa-search"></i></button> 
 
-                                            <?php echo form_close(); ?>
+                                            <?php //echo form_close(); ?>
+										</form>
                                     </div>
                                 </div>
                                 <div class="blog_latest_post">
@@ -258,14 +260,13 @@
                         </div>
                     </div>
                 </div>
-        </div>
+       
     </section>
     <?php
     echo $login_footer
     ?>
 </div>
-</body>
-</html>
+
 <script>
                                         var base_url = '<?php echo base_url(); ?>';
 </script>
@@ -370,5 +371,6 @@
     }
 //AJAX DATA LOAD BY LAZZY LOADER END
 </script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/blog/blog.js?ver=' . time()); ?>"></script>
-
+<script src="<?php echo base_url('assets/js/webpage/blog/blog.js?ver=' . time()); ?>"></script>
+</body>
+</html>
