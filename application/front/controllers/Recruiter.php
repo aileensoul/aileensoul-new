@@ -97,6 +97,7 @@ class Recruiter extends MY_Controller {
 
 // RECRUITER BASIC INFORMATION STEP START
     public function rec_basic_information() {
+        $this->data['title'] = 'BasicInformation | Edit Profile - Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
@@ -126,6 +127,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER BASIC INFORMATION INSERT STEP START  
     public function basic_information() {
 
+        $this->data['title'] = 'BasicInformation | Edit Profile - Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
@@ -161,6 +163,9 @@ class Recruiter extends MY_Controller {
                     $this->data['phone'] = $this->data['recdata'][0]['rec_phone'];
                 }
             }
+
+            echo $this->data['title'];
+            die();
             $this->load->view('recruiter/rec_basic_information', $this->data);
         } else {
             //  $contition_array = array('user_id' => $userid, 're_status' => '1');
@@ -264,7 +269,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER CHECK EMAIL FUCNTION IN BSIC INFORMATION END  
 // RECRUITER CHECK EMAIL FUCNTION IN COMPANY INFORMATION START  
     public function company_info_form() {
-
+        $this->data['title'] = 'CompanyInformation |  Edit Profile - Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
@@ -596,24 +601,24 @@ class Recruiter extends MY_Controller {
 // RECRUITER ADD POST START
     public function add_post() {
         $this->data['title'] = 'AddPost | RecruiterProfile - Aileensouls';
-        
-        if($this->session->userdata('aileenuser')){
-        
-        $this->recruiter_apply_check();
 
-        $userid = $this->session->userdata('aileenuser');
+        if ($this->session->userdata('aileenuser')) {
+
+            $this->recruiter_apply_check();
+
+            $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
-        $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
-        $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($recruiter_deactive) {
-            redirect('recruiter/');
-        }
+            $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
+            $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+            if ($recruiter_deactive) {
+                redirect('recruiter/');
+            }
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
 
 
-        $contition_array = array('status' => '1');
-        $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('status' => '1');
+            $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
 //        $contition_array = array('is_delete' => '0','status'=>'1','industry_name !=' => "Others");
@@ -623,86 +628,86 @@ class Recruiter extends MY_Controller {
 //        $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
 //        $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //         
-        $contition_array = array('is_delete' => '0', 'is_other' => '0', 'industry_name !=' => "Others");
-        $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-        $industry = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('is_delete' => '0', 'is_other' => '0', 'industry_name !=' => "Others");
+            $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+            $industry = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
-        $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
+            $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
 
-        $contition_array = array('is_delete' => '0', 'degree_name !=' => "Other");
-        $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-        $degree = $this->data['degree'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('is_delete' => '0', 'degree_name !=' => "Other");
+            $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+            $degree = $this->data['degree'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'status' => '1', 'degree_name' => "Other");
-        $this->data['degree_otherdata'] = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'degree_name' => "Other");
+            $this->data['degree_otherdata'] = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('status' => '1');
-        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('status' => '1', 'type' => '1');
-        $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        // $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
-//jobtitle data fetch
-        $contition_array = array('status' => 'publish');
-        $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        foreach ($jobtitle as $key1 => $value1) {
-            foreach ($value1 as $ke1 => $val1) {
-                $title[] = $val1;
-            }
-        }
-        foreach ($title as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-        $this->data['jobtitle'] = array_values($result1);
-
-        $this->load->view('recruiter/add_post', $this->data);
-        }else{
             $contition_array = array('status' => '1');
-        $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'is_other' => '0', 'industry_name !=' => "Others");
-        $search_condition = "(status = '1')";
-        $industry = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('status' => '1', 'type' => '1');
+            $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+            // $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
+//jobtitle data fetch
+            $contition_array = array('status' => 'publish');
+            $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
-        $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('is_delete' => '0', 'degree_name !=' => "Other");
-        $search_condition = "(status = '1')";
-        $degree = $this->data['degree'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('is_delete' => '0', 'status' => '1', 'degree_name' => "Other");
-        $this->data['degree_otherdata'] = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('status' => '1');
-        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('status' => '1', 'type' => '1');
-        $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('status' => 'publish');
-        $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        foreach ($jobtitle as $key1 => $value1) {
-            foreach ($value1 as $ke1 => $val1) {
-                $title[] = $val1;
+            foreach ($jobtitle as $key1 => $value1) {
+                foreach ($value1 as $ke1 => $val1) {
+                    $title[] = $val1;
+                }
             }
-        }
-        foreach ($title as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-        $this->data['jobtitle'] = array_values($result1);
+            foreach ($title as $key => $value) {
+                $result1[$key]['label'] = $value;
+                $result1[$key]['value'] = $value;
+            }
+            $this->data['jobtitle'] = array_values($result1);
+
+            $this->load->view('recruiter/add_post', $this->data);
+        } else {
+            $contition_array = array('status' => '1');
+            $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $contition_array = array('is_delete' => '0', 'is_other' => '0', 'industry_name !=' => "Others");
+            $search_condition = "(status = '1')";
+            $industry = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        $this->load->view('recruiter/add_post_login', $this->data);
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
+            $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $contition_array = array('is_delete' => '0', 'degree_name !=' => "Other");
+            $search_condition = "(status = '1')";
+            $degree = $this->data['degree'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'degree_name' => "Other");
+            $this->data['degree_otherdata'] = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $contition_array = array('status' => '1');
+            $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $contition_array = array('status' => '1', 'type' => '1');
+            $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $contition_array = array('status' => 'publish');
+            $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            foreach ($jobtitle as $key1 => $value1) {
+                foreach ($value1 as $ke1 => $val1) {
+                    $title[] = $val1;
+                }
+            }
+            foreach ($title as $key => $value) {
+                $result1[$key]['label'] = $value;
+                $result1[$key]['value'] = $value;
+            }
+            $this->data['jobtitle'] = array_values($result1);
+
+
+            $this->load->view('recruiter/add_post_login', $this->data);
         }
     }
 
@@ -922,7 +927,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER EDIT POST START
     public function edit_post($id = "") {
 
-
+        $this->data['title'] = 'EditPost | RecruiterProfile - Aileensoul';
 
         $this->recruiter_apply_check();
 
@@ -1265,7 +1270,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER SAVED CANDIDATE LIST START
     public function save_candidate() {
         $this->recruiter_apply_check();
-$this->data['title'] = 'SavedCandidate   | RecruiterProfile - Aileensou';
+        $this->data['title'] = 'SavedCandidate   | RecruiterProfile - Aileensou';
         $userid = $this->session->userdata('aileenuser');
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
@@ -1313,7 +1318,7 @@ $this->data['title'] = 'SavedCandidate   | RecruiterProfile - Aileensou';
 // RECRUITER SAVED CANDIDATE LIST END
 // RECRUITER PROFILE START
     public function rec_profile($id = "") {
-      $this->data['title'] = 'Details | RecruiterProfile - Aileensou';
+        $this->data['title'] = 'Details | RecruiterProfile - Aileensou';
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
@@ -1334,11 +1339,11 @@ $this->data['title'] = 'SavedCandidate   | RecruiterProfile - Aileensou';
             //   $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $id, $data, $join_str = array());
         }
         $this->data['reg_id'] = $id;
-        if($userid){
-        $this->load->view('recruiter/rec_profile', $this->data);
-       }else{
-        $this->load->view('recruiter/rec_liveprofile', $this->data);
-       }
+        if ($userid) {
+            $this->load->view('recruiter/rec_profile', $this->data);
+        } else {
+            $this->load->view('recruiter/rec_liveprofile', $this->data);
+        }
     }
 
 // RECRUITER PROFILE END
@@ -1385,7 +1390,7 @@ $this->data['title'] = 'SavedCandidate   | RecruiterProfile - Aileensou';
 // REMOVE CANDIDATE END
 // VIEW APPLIED LIST START
     public function view_apply_list($id = "") {
-
+        $this->data['title'] = 'AppliedCandidate | Recruiter Profile - Aileensoul';
         $this->recruiter_apply_check();
 
         $userid = $this->session->userdata('aileenuser');
@@ -2594,23 +2599,23 @@ $this->data['title'] = 'SavedCandidate   | RecruiterProfile - Aileensou';
                 $search_condition = "( job_reg.work_job_industry IN ('$ind_list'))";
                 $jobind_data = $this->common->select_data_by_search('job_reg', $search_condition, $contition_array, $data1, $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
             }
-            if($job_list){
-            $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_step' => '10', 'job_reg.user_id != ' => $userid);
-            $search_condition = "( job_reg.work_job_title IN ('$job_list'))";
-            $jobtitle_data = $this->common->select_data_by_search('job_reg', $search_condition, $contition_array, $data, $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
+            if ($job_list) {
+                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_step' => '10', 'job_reg.user_id != ' => $userid);
+                $search_condition = "( job_reg.work_job_title IN ('$job_list'))";
+                $jobtitle_data = $this->common->select_data_by_search('job_reg', $search_condition, $contition_array, $data, $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
             }
-            if($skill_list){
-            $skill_list = explode(",", $skill_list);
-            foreach ($skill_list as $ski) {
-                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_step' => '10', 'job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $ski . '", keyskill) != ' => '0');
-                $jobskill_data[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
+            if ($skill_list) {
+                $skill_list = explode(",", $skill_list);
+                foreach ($skill_list as $ski) {
+                    $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_step' => '10', 'job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $ski . '", keyskill) != ' => '0');
+                    $jobskill_data[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
 
 
 //25-9 SKILL RESULT END FOR RECRUITER
-            }
-            $job_data = $jobskill_data;
-            $job_data = array_reduce($job_data, 'array_merge', array());
-            $job_data = array_unique($job_data, SORT_REGULAR);
+                }
+                $job_data = $jobskill_data;
+                $job_data = array_reduce($job_data, 'array_merge', array());
+                $job_data = array_unique($job_data, SORT_REGULAR);
             }
             //  echo "<pre>"; print_r($job_data);die();
             $unique = array_merge((array) $jobtitle_data, (array) $job_data, (array) $jobind_data);

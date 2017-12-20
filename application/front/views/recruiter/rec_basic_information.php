@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo $title; ?></title>
+        <title><?php  echo $title; ?></title>
         <?php echo $head; ?> 
         <?php
         if (IS_REC_CSS_MINIFY == '0') {
