@@ -708,6 +708,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             }
             function forgot_profile() {
                 $('#forgotPassword').modal('show');
+                $('#register').modal('hide');
+                $('#login').modal('hide');
             }
         </script>
         <script type="text/javascript">

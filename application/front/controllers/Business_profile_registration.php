@@ -53,7 +53,12 @@ class Business_profile_registration extends MY_Controller {
              }else{
             $this->data['profile_login'] = "live";
             }
-            $this->load->view('business_profile/ng_business_registration', $this->data);
+            if(!$this->session->userdata('aileenuser')){
+                $this->load->view('business_profile/ng_business_registration_live', $this->data);
+            }else{
+                $this->load->view('business_profile/ng_business_registration', $this->data);
+            }
+            
         }
     }
 
