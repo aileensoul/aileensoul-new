@@ -173,7 +173,7 @@ if (!file_exists($this->config->item('user_bg_main_upload_path') . $userdata[0][
                                 } else {
                                     ?>
                                     <div class="bg-images no-cover-upload">
-                                        <img src="<?php echo WHITEIMAGE; ?>" name="image_src" id="image_src" alt="WHITE IMAGE" /></div>
+                                        <img src="<?php echo base_url() . WHITEIMAGE; ?>" name="image_src" id="image_src" alt="WHITE IMAGE" /></div>
                                 <?php }
                                 ?>
                             </div>
