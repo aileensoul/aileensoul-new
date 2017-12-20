@@ -42,13 +42,13 @@
                             <div class="col-md-3 col-sm-3">
                                 <div class="left-side-bar">
                                     <ul class="left-form-each">
-                                        <li class="custom-none "> <a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="javascript:void(0);"><?php echo $this->lang->line("address_info"); ?></a></li>
+                                        <li class="custom-none "> <a title="Basic Information" href="<?php echo base_url('freelancer-hire/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a title="Address Information" href="javascript:void(0);"><?php echo $this->lang->line("address_info"); ?></a></li>
                                         <li class="custom-none  <?php
                                         if ($freehiredata[0]['free_hire_step'] < '2') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-hire/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
+                                        ?>"><a title="Professional Information" href="<?php echo base_url('freelancer-hire/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
                                     </ul>
                                 </div>
                             </div>

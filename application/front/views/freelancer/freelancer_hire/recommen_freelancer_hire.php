@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="profile-boxProfileCard-content clearfix">
                                             <div class="left_side_box_img buisness-profile-txext">
-                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('freelancer-hire/employer-details'); ?>""  tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>">
+                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('freelancer-hire/employer-details'); ?>"  tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>">
                                                     <?php
                                                     $fname = $freehiredata[0]['fullname'];
                                                     $lname = $freehiredata[0]['username'];
@@ -111,7 +111,7 @@
                                
                                 <?php echo $left_footer; ?>
                                 <div  class="add-post-button">
-                                    <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Add Project</a>
+                                    <a title="Post Project" class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Add Project</a>
                                 </div>
 
                             </div>
@@ -150,11 +150,11 @@
 
                        <div class="all-profile-box">
                                 <div class="all-pro-head">
-                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
+                                    <h4>Profiles<a title="All" href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
                                 </div>
                                 <ul class="all-pr-list">
                                     <li>
-                                        <a href="<?php echo base_url('job'); ?>">
+                                        <a title="Job Profile" href="<?php echo base_url('job'); ?>">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
                                             </div>
@@ -162,7 +162,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('recruiter'); ?>">
+                                        <a title="Recruiter Profile" href="<?php echo base_url('recruiter'); ?>">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
                                             </div>
@@ -170,7 +170,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        <a title="Freelance Profile" href="<?php echo base_url('freelancer'); ?>">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
                                             </div>
@@ -178,7 +178,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('business-profile'); ?>">
+                                        <a title="Business Profile" href="<?php echo base_url('business-profile'); ?>">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
                                             </div>
@@ -186,7 +186,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('artist'); ?>">
+                                        <a title="Artistic Profile" href="<?php echo base_url('artist'); ?>">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i5.jpg'); ?>">
                                             </div>

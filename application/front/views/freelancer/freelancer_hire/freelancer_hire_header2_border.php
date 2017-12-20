@@ -11,7 +11,7 @@
                     <div class="col-sm-5 col-md-5 col-xs-12 fw-479">
                         <div class="search-mob-block">
                             <div class="">
-                                <a href="#search">
+                                <a title="search" href="#search">
                                     <label><i class="fa fa-search" aria-hidden="true"></i></label>
                                 </a>
                             </div>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="">
                             <ul class="" id="dropdownclass">
-                                <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>" onclick="return leave_page(1)"><span class="home-22x22-h"></span></a>
+                                <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a title="Home" href="<?php echo base_url('freelancer-hire/home'); ?>" onclick="return leave_page(1)"><span class="home-22x22-h"></span></a>
                                 </li>
                                 <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
@@ -67,12 +67,12 @@
                                             <span class="my_account">
                                                 <div class="my_S">Account</div>
                                             </span>
-                                            <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>" onclick="return leave_page(2)"><span class="h2-img h2-srrt"></span> View Profile</a>
-                                            <a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"  onclick="return leave_page(3)"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+                                            <a title="View Profile" href="<?php echo base_url('freelancer-hire/employer-details'); ?>" onclick="return leave_page(2)"><span class="h2-img h2-srrt"></span> View Profile</a>
+                                            <a title="Edit Profile" href="<?php echo base_url('freelancer-hire/basic-information'); ?>"  onclick="return leave_page(3)"><span class="h3-img h2-srrt"></span> Edit Profile</a>
                                             <?php
                                             $userid = $this->session->userdata('aileenuser');
                                             ?>
-                                            <a onClick="deactivate(<?php echo $userid; ?>)"><span class="h4-img h2-srrt"></span> Deactive Profile</a>
+                                            <a title="Deactive Profile" onClick="deactivate(<?php echo $userid; ?>)"><span class="h4-img h2-srrt"></span> Deactive Profile</a>
                                         </div>
                                     </div>
                                 </li>
@@ -104,7 +104,7 @@
 <script type="text/javascript">
                                                 function deactivate(clicked_id) {
                                                    
-                                                    $('.biderror .mes').html("<div class='pop_content'> Are you sure you want to deactive your Freelancer Hire profile?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='deactivate_profile(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                                    $('.biderror .mes').html("<div class='pop_content'> Are you sure you want to deactive your Freelancer Hire profile?<div class='model_ok_cancel'><a title='yes' class='okbtn' id=" + clicked_id + " onClick='deactivate_profile(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a title='No' class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                                     $('#bidmodal').modal('show');
                                                 }
                                                 function deactivate_profile(clicked_id) {

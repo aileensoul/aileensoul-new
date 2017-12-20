@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-4">
                             <div class="add-post-button">
-                                <a href="<?php echo base_url("freelancer-hire/projects"); ?>"><div class="back">
+                                <a title="Back to post" href="<?php echo base_url("freelancer-hire/projects"); ?>"><div class="back">
                                         <div class="but1">
                                             <?php echo $this->lang->line("back_to_post"); ?>
                                         </div>
@@ -75,7 +75,7 @@
                                                                                         <?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?></h6>
                                                                                 </a>
                                                                             </li>
-                                                                            <li style="display: block;" ><a href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire'); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>" > <?php
+                                                                            <li style="display: block;" ><a href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id']); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>" > <?php
                                                                                     if ($row['designation']) {
                                                                                         echo $row['designation'];
                                                                                     } else {
@@ -207,15 +207,15 @@
                                                                     ?>
 
                                                                     <?php if ($userid != $row['user_id']) { ?>
-                                                                        <a class="msg_btn" href="<?php echo base_url('chat/abc/3/4/' . $row['user_id']); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                                    <a title="Message" class="msg_btn" href="<?php echo base_url('chat/abc/3/4/' . $row['user_id']); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                                         <?php
                                                                         $contition_array = array('invite_user_id' => $row['user_id'], 'post_id' => $postid, 'profile' => 'freelancer');
                                                                         $userdata = $this->common->select_data_by_condition('user_invite', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                         if ($userdata) {
                                                                             ?>
-                                                                            <a href="javascript:void(0);" class="button invited" id="<?php echo 'invited' . $row['user_id']; ?>" style="cursor: default;"><?php echo $this->lang->line("selected"); ?></a>       
+                                                                    <a title="Selected" href="javascript:void(0);" class="button invited" id="<?php echo 'invited' . $row['user_id']; ?>" style="cursor: default;"><?php echo $this->lang->line("selected"); ?></a>       
                                                                         <?php } else { ?>
-                                                                            <a class=""  href="javascript:void(0);" class="button invite_border" id="<?php echo 'invited' . $row['user_id']; ?>" onClick="inviteuserpopup(<?php echo $row['user_id']; ?>)"><?php echo $this->lang->line("select"); ?></a>
+                                                                    <a title="Invite" class=""  href="javascript:void(0);" class="button invite_border" id="<?php echo 'invited' . $row['user_id']; ?>" onClick="inviteuserpopup(<?php echo $row['user_id']; ?>)"><?php echo $this->lang->line("select"); ?></a>
                                                                         <?php } ?>
 
                                                                         <?php
@@ -288,7 +288,7 @@
         <script>
             function inviteuserpopup(abc) {
 
-                $('.biderror .mes').html("<div class='pop_content'>Do you want to select this freelancer for your project?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                $('.biderror .mes').html("<div class='pop_content'>Do you want to select this freelancer for your project?<div class='model_ok_cancel'><a title='Yes' class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a title='No' class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                 $('#bidmodal').modal('show');
             }
             function inviteuser(clicked_id)

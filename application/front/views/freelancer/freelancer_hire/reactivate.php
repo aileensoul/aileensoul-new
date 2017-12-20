@@ -19,10 +19,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <center><h2><?php echo $this->lang->line("reactive_massage"); ?></h2></center>
                         </div>
                         <div class="reactivate_btn_y">
-                            <a href="<?php echo base_url('freelancer-hire/reactivate'); ?>"><?php echo $this->lang->line("yes"); ?></a>
+                            <a title="yes" href="<?php echo base_url('freelancer-hire/reactivate'); ?>"><?php echo $this->lang->line("yes"); ?></a>
                         </div>
                         <div class="reactivate_btn_n">
-                            <a href="<?php echo base_url('dashboard'); ?>"><?php echo $this->lang->line("no"); ?></a>
+                            <a title="No" href="<?php echo base_url('dashboard'); ?>"><?php echo $this->lang->line("no"); ?></a>
                         </div>
                      
                     </div>
