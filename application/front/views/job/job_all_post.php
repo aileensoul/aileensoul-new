@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <!-- start head -->
+	<head>
+		<title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <!-- END HEAD -->
-
-        <title><?php echo $title; ?></title>
-
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">
     </head>
     <!-- END HEAD -->
     <!-- Start HEADER -->
-    <?php
+  
+    <!-- END HEADER -->
+    <body class="page-container-bg-solid page-boxed">
+	  <?php
     echo $header;
     echo $job_header2_border;
     ?>
-    <!-- END HEADER -->
-    <body class="page-container-bg-solid page-boxed">
         <div class="user-midd-section" id="paddingtop_fixed">
             <div class="container padding-360" >
                 <div class="">
