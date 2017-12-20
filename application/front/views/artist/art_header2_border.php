@@ -75,14 +75,14 @@
                        
                        <ul class="" id="dropdownclass">
                         
-                                    <li <?php if($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'home'){?> class="active" <?php } ?>><a href="<?php echo base_url('artist/home'); ?>"><span class="home-22x22-h"></span></a>
+                                    <li <?php if($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'home'){?> class="active" <?php } ?>><a href="<?php echo base_url('artist/home'); ?>" title="Home"><span class="home-22x22-h"></span></a>
                                     </li>
                                 <!-- Friend Request Start-->
                                 <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
                                                            <!--  <span class="badge bg-theme"><?php //echo $message_count;  ?></span> -->
                                         <?php } ?>
-                                        <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
+                                        <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()" title="Message"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 
                                             <span id="message_count"></span>
                                         </a>
@@ -94,7 +94,7 @@
 
 <div>
     <ul class="notification_data_in_h2">
-     <div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>   
+     <div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>   
     </ul></div>
 
                                             </div>
@@ -108,13 +108,13 @@
                                         <div class="my_S">Account</div>
                                             
       </span>
-      <a href="<?php echo site_url('artist/details/'.$url_id); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
-     <a href="<?php echo base_url('artist/artistic-information-update'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+      <a href="<?php echo site_url('artist/details/'.$url_id); ?>" title="View Profile"><span class="h2-img h2-srrt"></span> View Profile</a>
+     <a href="<?php echo base_url('artist/artistic-information-update'); ?>" title="Edit Profile"><span class="h3-img h2-srrt"></span> Edit Profile</a>
 
      <?php
       $userid = $this->session->userdata('aileenuser');
       ?>
- <a onClick="deactivate(<?php echo $userid; ?>)"><span class="h4-img h2-srrt"></span>Deactive Profile</a>
+ <a onClick="deactivate(<?php echo $userid; ?>)" title="Deactive Profile"><span class="h4-img h2-srrt"></span>Deactive Profile</a>
   </div>
 </div>
 </li>
@@ -180,7 +180,7 @@
 
 <div>
     <ul class="notification_data_in_h2" >
-      <div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>  
+      <div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>  
     </ul></div>
 
                                             </div>
