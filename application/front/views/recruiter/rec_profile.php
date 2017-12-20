@@ -86,13 +86,13 @@
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                         if ($info && $image[0]['profile_background'] != '') {
                             ?>
-                           <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                           <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $image[0]['profile_background']; ?>"/>
                      <?php
                         } else {
                             ?>
 
                              <div class="bg-images no-cover-upload">
-                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
+                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="<?php echo 'NOIMAGE'; ?>"/ >
                              </div>
                              <?php }
                              ?>
@@ -124,7 +124,7 @@
                          $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                       if ($recdata[0]['recruiter_user_image'] != '' && $info) { ?>
-                     <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
+                     <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
                                 <?php
                             } else {
                                 $a = $recdata[0]['rec_firstname'];
@@ -138,8 +138,13 @@
 
                                 </div>
                             <?php } ?>
+<<<<<<< HEAD
+                            <?php if ($returnpage == '') { ?>
+                                <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png" alt="<?php echo 'CAMERAIMAGE'; ?>"> Update Profile Picture</a>
+=======
                             <?php if ($this->uri->segment(3) == $userid) { ?>
                                 <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
+>>>>>>> eeb6f0b82793c8ba667523f6e0bda282b05fc457
                             <?php } ?>
                         </div>
                     </div>
@@ -585,14 +590,14 @@
                                                                 <li><b>Company Logo</b> <span>
 
                                                                        <?php if (IMAGEPATHFROM == 'upload') { ?>
-                                                                        <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['comp_logo']) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" >
+                                                                        <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['comp_logo']) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" alt="<?php echo $recdata[0]['comp_logo']; ?>">
                                                                         <?php } else{ 
 
                                 $filename = $this->config->item('rec_profile_thumb_upload_path') .$recdata[0]['comp_logo'];
                                     $s3 = new S3(awsAccessKey, awsSecretKey);
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                     if($info){  ?>
-                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['comp_logo']; ?>" name="image_src" id="image_src" /> 
+                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['comp_logo']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata[0]['comp_logo']; ?>"/> 
                                 <?php }else{
                                     echo PROFILENA;
                                  }?>
@@ -615,7 +620,7 @@
                                     $s3 = new S3(awsAccessKey, awsSecretKey);
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                     if($info){  ?>
-                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['comp_logo']; ?>" name="image_src" id="image_src" /> 
+                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['comp_logo']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata[0]['comp_logo']; ?>"/> 
                                                 <?php } else{
                                     echo PROFILENA;
                                  } }?>
@@ -667,7 +672,7 @@
                   <span class="mes">
                      <div id="popup-form">
 
-                        <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                        <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo 'LOADERIMAGE'; ?>"/></div>
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                     <div class="fw">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >

@@ -1034,7 +1034,7 @@
                                     <li>
                                         <a href="<?php echo base_url('job'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="<?php echo 'JOBIMAGE'; ?>">
                                             </div>
                                             <span>Job Profile</span>
                                         </a>
@@ -1042,7 +1042,7 @@
                                     <li>
                                         <a href="<?php echo base_url('recruiter'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>" alt="<?php echo 'RECIMAGE'; ?>">
                                             </div>
                                             <span>Recruiter Profile</span>
                                         </a>
@@ -1050,7 +1050,7 @@
                                     <li>
                                         <a href="<?php echo base_url('freelancer'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="<?php echo 'FREELANCERIMAGE'; ?>">
                                             </div>
                                             <span>Freelance Profile</span>
                                         </a>
@@ -1058,7 +1058,7 @@
                                     <li>
                                         <a href="<?php echo base_url('business-profile'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="<?php echo 'BUSINESSIMAGE'; ?>">
                                             </div>
                                             <span>Business Profile</span>
                                         </a>
@@ -1066,7 +1066,7 @@
                                     <li>
                                         <a href="<?php echo base_url('artist'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="<?php echo 'ARTISTICIMAGE'; ?>">
                                             </div>
                                             <span>Artistic Profile</span>
                                         </a>
