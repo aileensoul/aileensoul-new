@@ -14,17 +14,17 @@
 </head>
 <!-- END HEAD -->
 
-<!-- Start HEADER -->
+
+ 
+
+<body class="page-container-bg-solid page-boxed botton_footer">
+  <!-- Start HEADER -->
 <?php 
       echo $header; 
       echo $job_header2_border;  
       $userid = $this->session->userdata('aileenuser');
 ?>
 <!-- END HEADER -->
- 
-
-<body class="page-container-bg-solid page-boxed botton_footer">
-  
    <section>
       <div class="user-midd-section" id="paddingtop_fixed_job">
       <div class="common-form1">

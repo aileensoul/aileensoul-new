@@ -77,19 +77,19 @@ if(IS_CSS_MINIFY == '0'){
 if ($this->uri->segment(1) == 'profiles') {
     ?>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" async></script>-->
-    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-2.0.3.min.js?ver=' . time()); ?>"></script> 
+    <script src="<?php echo base_url('assets/js/jquery-2.0.3.min.js?ver=' . time()); ?>"></script> 
     <?php
 } else {
     ?>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" async></script>-->
-    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+    <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
 <?php }
 ?>
 
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" crossorigin="anonymous" async></script>-->
 <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
 crossorigin="anonymous"></script>-->
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>  
+<script src="<?php echo base_url('assets/js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>  
 <!--<script src="<?php // echo base_url('assets/js/fb_login.js?ver='.time());    ?>"></script>-->
 <!--<script src="<?php echo base_url('node_modules/socket.io/node_modules/socket.io-client/socket.io.js'); ?>"></script>-->
 <!--<script src="https://www.aileensoul.com:3000/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>-->
