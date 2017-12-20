@@ -119,10 +119,6 @@
                   <div class="row">
                        <div class="blog_post_outer col-md-9 col-sm-8 pr0">
                       <div class="job-contact-frnd">
-
-                                    
-                                                                                                          </a>
-                                     
                       <?php
                       if(count($blog_detail) > 0){
                       ?>
@@ -137,9 +133,9 @@
                                  </div>
                                  <div class="blog_main_post_second_part">
                                     <div class="blog_class_main_name">
-                                       <span>
+                                       
                                           <h1><?php echo $blog_detail[0]['title'];?></h1>
-                                       </span>
+                                      
                                     </div>
                                     <div class="blog_class_main_by">
                                     </div>
@@ -341,7 +337,7 @@
                       <?php }
                       ?>
                       </div> 
-                                                                                                  </li>
+                        
                                     <ul class="load-more-blog">
                                         <!--<li class="loadbutton"></li>-->
                                         <li class="loadcatbutton"></li>
@@ -385,7 +381,7 @@
                   </div>
                    
                </div>
-            </div>
+           
 
             <!-- Bid-modal  -->
       <div class="modal fade message-box biderror" id="bidmodal" role="dialog"  >
