@@ -49,10 +49,10 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
             <div class="common-form">
                <h3 class="user_list_head">User List</h3>
                <div class="seeall">
-                  <a href="<?php echo base_url('artist/userlist'); ?>">All User</a>
+                  <a href="<?php echo base_url('artist/userlist'); ?>" title="All User">All User</a>
                </div>
                <div class="profile-boxProfileCard_follow fw  module">
-                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>     
+                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo 'LOADERIMAGE'; ?>"/></div>     
                </div>
              
             </div>
@@ -70,7 +70,7 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
          <div class="post-editor col-md-12">
             <div class="main-text-area col-md-12">
                <div class="popup-img">
-                <a href="<?php echo base_url('artist/dashboard/' .$get_url) ?>">
+                <a href="<?php echo base_url('artist/dashboard/' .$get_url) ?>" title="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>">
                   <?php
                      $userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
                      $userimageposted = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
@@ -133,10 +133,10 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
 				<div class="common-form">
 				   <h3 class="user_list_head">User List</h3>
 				   <div class="seeall">
-					  <a href="<?php echo base_url('artist/userlist'); ?>">All User</a>
+					  <a href="<?php echo base_url('artist/userlist'); ?>" title="All User">All User</a>
 				   </div>
 				   <div class="profile-boxProfileCard_follow fw  module">
-					<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>     
+					<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo 'LOADERIMAGE'; ?>"/></div>     
 				   </div>
 				 
 				</div>
@@ -162,11 +162,11 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
      
           <div class="all-profile-box">
                                 <div class="all-pro-head">
-                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
+                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right" title="All">All</a></h4>
                                 </div>
                                 <ul class="all-pr-list">
                                     <li>
-                                        <a href="<?php echo base_url('job'); ?>">
+                                        <a href="<?php echo base_url('job'); ?>" title="Job Profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
                                             </div>
@@ -174,7 +174,7 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('recruiter'); ?>">
+                                        <a href="<?php echo base_url('recruiter'); ?>" title="Recruiter Profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
                                             </div>
@@ -182,7 +182,7 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        <a href="<?php echo base_url('freelancer'); ?>" title="Freelance Profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
                                             </div>

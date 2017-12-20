@@ -1978,7 +1978,7 @@ class Recruiter extends MY_Controller {
             $postdata .= '<h4 class="page-heading  product-listing" style="border:0px;"> It will takes only few minutes.</h4>';
             $postdata .= '</div>';
             $postdata .= '<div  class="add-post-button add-post-custom">';
-            $postdata .= '<a title="Post a Job" class="btn btn-3 btn-3b"  href="' . base_url() . 'recruiter/add_post"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>';
+            $postdata .= '<a title="Post a Job" class="btn btn-3 btn-3b"  href="' . base_url() . 'recruiter/add-post"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>';
             $postdata .= '</div>';
             $postdata .= '</div>';
         } else {
