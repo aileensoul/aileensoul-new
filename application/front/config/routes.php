@@ -328,6 +328,7 @@ $route['recruiter/profile'] = "recruiter/rec_profile";
 $route['recruiter/profile/(:any)'] = "recruiter/rec_profile/$1";
 
 $route['recruiter/save-candidate'] = "recruiter/save_candidate";
+$route['recruiter/save-candidate/(:any)'] = "recruiter/save_candidate/$1";
 
 $route['recruiter/post'] = "recruiter/rec_post";
 $route['recruiter/post/(:any)'] = "recruiter/rec_post/$1";

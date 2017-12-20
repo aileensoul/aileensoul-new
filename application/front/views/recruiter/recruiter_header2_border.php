@@ -1,5 +1,5 @@
 
-<?php echo $userid = $this->data['user_id'] =  $this->session->userdata('aileenuser'); 
+<?php  $userid = $this->data['user_id'] =  $this->session->userdata('aileenuser'); 
 if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home')) { ?>
 
     <header>
