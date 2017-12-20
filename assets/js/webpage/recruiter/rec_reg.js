@@ -454,11 +454,17 @@ $("#submit").on('click', function ()
 ////DISABLE CUTTON ON ONE TIME CLICK END
 //login pop up open start
     function login_profile() {
+        $('#register').modal('hide');
         $('#login').modal('show');
     }
 //login pop up open end
 function forgot_profile() {
+     $('#login').modal('hide');
     $('#forgotPassword').modal('show');
+}
+function create_profile(){
+    $('#login').modal('hide');
+    $('#register').modal('show');
 }
   /* validation */
 
