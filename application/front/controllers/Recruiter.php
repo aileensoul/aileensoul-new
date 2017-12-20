@@ -1333,8 +1333,12 @@ class Recruiter extends MY_Controller {
             $this->rec_avail_check($id);
             //   $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $id, $data, $join_str = array());
         }
-
+        $this->data['reg_id'] = $id;
+        if($userid){
         $this->load->view('recruiter/rec_profile', $this->data);
+       }else{
+        $this->load->view('recruiter/rec_liveprofile', $this->data);
+       }
     }
 
 // RECRUITER PROFILE END
