@@ -368,12 +368,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3">
-                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                        <h2 class="logo"><a href="<?php echo base_url(); ?>" title="Aileensoul">Aileensoul</a></h2>
                     </div>
                     <div class="col-md-8 col-sm-9">
                         <div class="btn-right pull-right">
-                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
+                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2" title="Login">Login</a>
+                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3" title="Creat an account">Creat an account</a>
                         </div>
                     </div>
                 </div>
@@ -472,11 +472,11 @@
                                             </p>
 
                                             <p class=" text-center">
-                                                <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                                <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn" title="Forgot Password ?">Forgot Password ?</a>
                                             </p>
 
                                             <p class="pt15 text-center">
-                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();" title="Creat an account">Create an account</a>
                                             </p>
                                         </form>
 
@@ -628,10 +628,10 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our<br class="mob-none">
-                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>" title="Terms and Condition">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy">Privacy policy</a>.
                                         </p>
                                         <p>
-                                            <button tabindex="13" class="btn1">Create an account</button>
+                                            <button tabindex="13" class="btn1" title="Creat an account">Create an account</button>
                                         </p>
                                     </form>
 

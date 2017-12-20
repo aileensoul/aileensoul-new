@@ -40,7 +40,7 @@
                             <div class="profile-boxProfileCard  module">
                                 <div class="profile-boxProfileCard-cover"> 
                                     <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
-                                        <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
+                                        <a title="Recruiter Profile" class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
                                            aria-hidden="true" rel="noopener">
                                            <?php } else { ?>
                                             <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile/' . $recliveid . '?page=job') ?>" title="' . $cache_time1" tabindex="-1" 
@@ -153,13 +153,13 @@
                         <!--left bar box end-->
                         <div  class="add-post-button mob-block">
                             <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
-                                <a class="btn btn-3 btn-3b" id="rec_post_job2" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                                <a class="btn btn-3 btn-3b" id="rec_post_job2" href="<?php echo base_url('recruiter/add-post'); ?>" title="Post a Job"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                             <?php } ?>
                         </div>
                         <div class="mob-none">
                             <div  class="add-post-button">
                                 <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
-                                    <a class="btn btn-3 btn-3b" id="rec_post_job1" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                                    <a class="btn btn-3 btn-3b" id="rec_post_job1" href="<?php echo base_url('recruiter/add-post'); ?>" title="Post a Job"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                                 <?php } ?>
                             </div>
                         </div>
@@ -465,8 +465,8 @@
                                                                         </li>                                                   </li>
                                                                         <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                                                             <li class="fr">';
-                                                                                <a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
-                                                                                <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" class="button">Edit</a>
+                                                                                <a href="javascript:void(0);" title="Remove" class="button" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
+                                                                                <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" title="Edit" class="button">Edit</a>
                                                                                 <?php
                                                                                 $join_str[0]['table'] = 'job_reg';
                                                                                 $join_str[0]['join_table_id'] = 'job_reg.user_id';
@@ -479,7 +479,7 @@
                                                                                 $countt = count($apply_candida);
                                                                                 ?>
 
-                                                                                <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="button">Applied  Candidate : <?php echo $countt ?></a>
+                                                                                <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="button" title="Applied  Candidate : <?php echo $countt ?>">Applied  Candidate : <?php echo $countt ?></a>
                                                                             </li>
                                                                         <?php } else { ?>
                                                                             <li class="fr">
@@ -493,7 +493,7 @@
                                                                                 $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                                 if ($jobsave) {
                                                                                     ?>
-                                                                                    <a href="javascript:void(0);" class="button applied">Applied</a>
+                                                                                    <a href="javascript:void(0);" class="button applied" title="Applied">Applied</a>
                                                                                 <?php } else { ?>
                                                                                 <li class="fr"><a title="Apply" href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  button" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a></li>
                                                                                 <li class="fr">
@@ -508,7 +508,7 @@
                                                                                     $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                                     if ($jobsave) {
                                                                                         ?>
-                                                                                        <a class="button saved save_saved_btn">Saved</a>
+                                                                                        <a class="button saved save_saved_btn" title="Saved">Saved</a>
                                                                                     <?php } else { ?>
 
                                                                                         <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> button save_saved_btn">Save</a>
@@ -552,11 +552,11 @@
 
                                            <div class="all-profile-box">
                                 <div class="all-pro-head">
-                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
+                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" title="All Profile" class="pull-right">All</a></h4>
                                 </div>
                                 <ul class="all-pr-list">
                                     <li>
-                                        <a href="<?php echo base_url('job'); ?>">
+                                        <a href="<?php echo base_url('job'); ?>" title="Job Profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="<?php echo 'JOBIMAGE'; ?>">
                                             </div>
@@ -564,7 +564,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('recruiter'); ?>">
+                                        <a href="<?php echo base_url('recruiter'); ?>" title="Recruiter Profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i2.jpg'); ?>" alt="<?php echo 'RECIMAGE'; ?>">
                                             </div>
@@ -572,7 +572,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        <a href="<?php echo base_url('freelancer'); ?>" title="Freelancer Profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="<?php echo 'FREELANCERIMAGE'; ?>">
                                             </div>
@@ -580,15 +580,15 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('business-profile'); ?>" alt="<?php echo 'BUSINESSIMAGE'; ?>">
+                                        <a href="<?php echo base_url('business-profile'); ?>" title="Business Profile">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="<?php echo 'BUSINESSIMAGE'; ?>">
                                             </div>
                                             <span>Business Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('artist'); ?>">
+                                        <a href="<?php echo base_url('artist'); ?>" title="Artist Profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="<?php echo 'ARTISTIMAGE'; ?>">
                                             </div>
@@ -690,7 +690,7 @@
 
                                 function removepopup(id)
                                 {
-                                    $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                    $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal' title='Yes'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal' title='No'>No</a></div></div>");
                                     $('#bidmodal').modal('show');
                                 }
 
@@ -726,7 +726,7 @@
                                 //apply post start
                                 function applypopup(postid, userid)
                                 {
-                                    $('.biderror .mes').html("<div class='pop_content'>Do you want to apply this job?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + userid + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                    $('.biderror .mes').html("<div class='pop_content'>Do you want to apply this job?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + userid + ")' href='javascript:void(0);' data-dismiss='modal' title='Yes'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal' title='No'>No</a></div></div>");
                                     $('#bidmodal').modal('show');
                                 }
 

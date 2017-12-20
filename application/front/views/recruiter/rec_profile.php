@@ -140,7 +140,7 @@
                             <?php } ?>
 
                             <?php if ($this->uri->segment(3) == $userid) { ?>
-                                <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
+                                <a class="cusome_upload" title="Update profile pictuure" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
 
                             <?php } ?>
                         </div>
@@ -245,9 +245,9 @@
                                                 if ($this->uri->segment(3) != $userid) {
                                                     ?>
 
-                                                    <a href="<?php echo base_url('chat/abc/1/2/' . $this->uri->segment(3)); ?>">Message</a>
+                                                    <a href="<?php echo base_url('chat/abc/1/2/' . $this->uri->segment(3)); ?>" title="Message">Message</a>
     <?php } else { ?>
-                                                    <a href="<?php echo base_url('chat/abc/2/1/' . $this->uri->segment(3)); ?>">Message</a>
+                                                    <a href="<?php echo base_url('chat/abc/2/1/' . $this->uri->segment(3)); ?>" title="Message">Message</a>
 
     <?php } ?>
 
@@ -267,7 +267,7 @@
             </div>
             <div  class="add-post-button mob-block">
                 <?php if ($this->uri->segment(3) == $userid) { ?>
-                    <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                <a title="recruiter add post" class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
 <?php } ?>
             </div>
             <!-- menubar --> 
@@ -306,7 +306,7 @@
 
                     <div  class="add-post-button">
                         <?php if($this->uri->segment(3) == $userid) { ?>
-                            <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                            <a class="btn btn-3 btn-3b" title="recruiter add post" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
 <?php } ?>
                     </div>
                 </div>
@@ -443,7 +443,9 @@
 
                                                             if ($recdata[0]['re_comp_site']) {
                                                                 ?>
-                                                                <li> <b>Company Website</b><span><a target="_blank"><?php
+                                                                <li> <b>Company Website</b><span><a target="_blank" title="<?php
+                                                                    echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
+                                                                ?>"><?php
                                                                     echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
                                                                 ?></a></span>
                                                                 </li>
@@ -454,7 +456,9 @@
                                                         } else {
                                                             if ($recdata[0]['re_comp_site']) {
                                                                 ?>
-                                                                <li> <b>Company Website</b><span><a target="_blank"><?php
+                                                                <li> <b>Company Website</b><span><a target="_blank" title="<?php
+                                                                    echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
+                                                                ?>"><?php
                                                                     echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
                                                                 ?></a></span>
                                                                 </li>

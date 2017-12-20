@@ -100,7 +100,7 @@
                                                                                     <?php echo ucfirst(strtolower($row['fname'])) . ' ' . ucfirst(strtolower($row['lname'])); ?></a>
                                                                             </li>
                                                                             <li class="show">
-                                                                                <a  style="font-size: 13px;" href="javascript: void(0)">
+                                                                                <a  style="font-size: 13px;" href="javascript: void(0)" title="Designation">
                                                                                     <?php
                                                                                     if ($row['designation']) {
                                                                                         ?>
@@ -566,17 +566,17 @@
                                                                         ?>
 
 
-                                                                        <a  class="button invite_border" href="<?php echo base_url('chat/abc/2/1/' . $row['userid']); ?>">Message</a>
+                                                                        <a  class="button invite_border" href="<?php echo base_url('chat/abc/2/1/' . $row['userid']); ?>" title="Message">Message</a>
 
                                                                         <?php
                                                                         $contition_array = array('invite_user_id' => $row['userid'], 'post_id' => $postid);
                                                                         $userdata = $this->common->select_data_by_condition('user_invite', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                         if ($userdata) {
                                                                             ?>
-                                                                            <a href="javascript:void(0);" class="button invited" id="<?php echo 'invited' . $row['userid']; ?>" style="cursor: default;"> Invited</a>      
+                                                                            <a href="javascript:void(0);" class="button invited" id="<?php echo 'invited' . $row['userid']; ?>" style="cursor: default;" title="Invited"> Invited</a>      
                                                                         <?php } else { ?>
 
-                                                                            <a  href="javascript:void(0);" class="button invite_border" id="<?php echo 'invited' . $row['userid']; ?>" onClick="inviteusermodel(<?php echo $row['userid']; ?>)"> Invite</a>
+                                                                            <a  href="javascript:void(0);" class="button invite_border" id="<?php echo 'invited' . $row['userid']; ?>" onClick="inviteusermodel(<?php echo $row['userid']; ?>)" title="Invite"> Invite</a>
 
                                                                         <?php } ?>
 
@@ -584,11 +584,11 @@
 
                                                                         <?php if ($savedata) { ?> 
 
-                                                                            <a class="saved">Saved </a> 
+                                                                            <a class="saved" title="Saved">Saved </a> 
 
                                                                         <?php } else { ?>
                                                                             <input type="hidden" id="<?php echo 'hideenuser' . $row['userid']; ?>" value= "<?php echo $data[0]['save_id']; ?>"> 
-                                                                            <a class="button invite_border saveduser<?php echo $row['userid']; ?>"  id="<?php echo $row['userid']; ?>" onClick="savepopup(<?php echo $row['userid']; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $row['userid']; ?>">Save</a>
+                                                                            <a class="button invite_border saveduser<?php echo $row['userid']; ?>"  id="<?php echo $row['userid']; ?>" onClick="savepopup(<?php echo $row['userid']; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $row['userid']; ?>"  title="Save">Save</a>
                                                                             <?php
                                                                         }
                                                                     }
@@ -681,7 +681,7 @@
                                                                     //alert(abc);
 
 
-                                                                    $('.biderror .mes').html("<div class='pop_content'>Do you want to invite this candidate for interview?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                                                    $('.biderror .mes').html("<div class='pop_content'>Do you want to invite this candidate for interview?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal' title='Yes'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal' title='No'>No</a></div></div>");
                                                                     $('#bidmodal').modal('show');
 
                                                                 }

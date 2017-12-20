@@ -368,12 +368,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3">
-                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                        <h2 class="logo"><a href="<?php echo base_url(); ?>" title="Aileensoul">Aileensoul</a></h2>
                     </div>
                     <div class="col-md-8 col-sm-9">
                         <div class="btn-right pull-right">
-                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
+                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2" title="Login">Login</a>
+                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3" title="Creat an account">Creat an account</a>
                         </div>
                     </div>
                 </div>
@@ -389,7 +389,7 @@
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
-                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
+                                            <a title="Recruiter profile" class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
                                                aria-hidden="true" rel="noopener">
 <div class="bg-images no-cover-upload"> 
                                                 <?php
@@ -414,7 +414,7 @@
                                         <div class="profile-boxProfileCard-content clearfix">
                                             <div class="left_side_box_img buisness-profile-txext">
 
-                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  title="Recruiter profile" href="<?php echo base_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                                     <?php
                                                     $image_profile = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
 
@@ -758,10 +758,10 @@
                                                                             <li class=fr>
                                                                                 
                                                                                   
-                                                                                    <a href="" class= "applypost  button"> Apply</a>
+                                                                                    <a href="" title="Apply" class= "applypost  button"> Apply</a>
                                                                                 </li> 
                                                                                 <li>
-                                                                                        <a  class="savedpost> button">Save</a>
+                                                                                        <a  class="savedpost button" title="Save">Save</a>
 
                                                                             </li>                        
                                                                         </ul>
@@ -1064,10 +1064,10 @@
                                                                             <li class=fr>
                                                                                 
                                                                                   
-                                                                                    <a href="" class= "applypost  button"> Apply</a>
+                                                                                    <a href="" class= "applypost  button" title="Apply"> Apply</a>
                                                                                 </li> 
                                                                                 <li>
-                                                                                        <a  class="savedpost> button">Save</a>
+                                                                                        <a  class="savedpost button" title="Save">Save</a>
 
                                                                             </li>                        
                                                                         </ul>
@@ -1155,11 +1155,11 @@
                                             </p>
 
                                             <p class=" text-center">
-                                                <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                                <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn" title="Forgot Password ?">Forgot Password ?</a>
                                             </p>
 
                                             <p class="pt15 text-center">
-                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();" title="Create an account">Create an account</a>
                                             </p>
                                         </form>
 
@@ -1311,10 +1311,10 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our<br class="mob-none">
-                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>" title="Terms and Condition">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                         </p>
                                         <p>
-                                            <button tabindex="13" class="btn1">Create an account</button>
+                                            <button tabindex="13" class="btn1" title="Create an account">Create an account</button>
                                         </p>
                                     </form>
 

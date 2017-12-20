@@ -356,12 +356,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
-                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                        <h2 class="logo"><a href="<?php echo base_url(); ?>" title="Aileensoul">Aileensoul</a></h2>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                         <div class="btn-right pull-right">
-                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
+                            <a href="javascript:void(0);" onclick="login_profile();" title="Login" class="btn2">Login</a>
+                            <a href="javascript:void(0);" onclick="register_profile();" title="Creat an account" class="btn3">Creat an account</a>
                         </div>
                     </div>
                 </div>
@@ -836,11 +836,11 @@
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" tabindex="43" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            <a href="javascript:void(0)" tabindex="43" data-toggle="modal" onclick="forgot_profile();" title="Forgot Password ?" id="myBtn">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a class="db-479" href="javascript:void(0);" tabindex="44" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a class="db-479" href="javascript:void(0);" tabindex="44" data-toggle="modal" title="Create an account" onclick="register_profile();">Create an account</a>
                                         </p>
                                     </form>
 
@@ -945,7 +945,7 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our
-                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
+                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>" title="Privacy policy">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="38" class="btn1">Create an account</button>
@@ -953,7 +953,7 @@
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>
-                                                Already have an account ? <a tabindex="39" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
+                                                Already have an account ? <a tabindex="39" onClick="login_profile();" href="javascript:void(0);" title="Log In"> Log In </a>
                                             </p>
                                         </div>
                                     </form>

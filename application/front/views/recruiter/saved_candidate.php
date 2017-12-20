@@ -126,13 +126,13 @@
                                 </div>
                             <?php } ?>
                             <?php if ($returnpage == '') { ?>
-                                <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"  alt="<?php echo "cam.png"; ?>"> Update Profile Picture</a>
+                                <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();" title='Udate Profile'><img src="<?php echo base_url(); ?>assets/img/cam.png"  alt="<?php echo "cam.png"; ?>"> Update Profile Picture</a>
                             <?php } ?>
                         </div>
                     </div>
                     <!--PROFILE PIC CODE END-->
                     <div class="job-menu-profile mob-block">
-                        <a href="<?php echo site_url('recruiter/rec_profile/' . $recdata[0]['userid']); ?>"><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
+                        <a href="<?php echo site_url('recruiter/rec_profile/' . $recdata[0]['userid']); ?>" title='Recruiter Profile'><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
                         <!-- text head start -->
                         <div class="profile-text" >
 
@@ -207,7 +207,7 @@
 
             <div class="middle-part container rec_res">    
                 <div class="job-menu-profile mob-none  ">
-                    <a href="<?php echo site_url('recruiter/profile/' . $recdata[0]['userid']); ?>"><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
+                    <a href="<?php echo site_url('recruiter/profile/' . $recdata[0]['userid']); ?>" title='<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>'><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
                     <!-- text head start -->
                     <div class="profile-text" >
 

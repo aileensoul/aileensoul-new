@@ -31,7 +31,7 @@
                             <div class="full-box-module">   
                                 <div class="profile-boxProfileCard  module">
                                     <div class="profile-boxProfileCard-cover"> 
-                                        <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
+                                        <a title="Recruiter Profile" class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
                                            aria-hidden="true" rel="noopener">
                                             <div class="bg-images no-cover-upload">  
                                                 <?php
@@ -55,7 +55,7 @@
                                     <div class="profile-boxProfileCard-content clearfix">
                                         <div class="left_side_box_img buisness-profile-txext">
 
-                                            <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                            <a title="Recruiter Profile" class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
 
                                                 <?php
                                                 $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
@@ -121,7 +121,7 @@
 
                             <div  class="add-post-button">
 
-                                <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>Post a Job</a>
+                                <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>" title="Recruiter Add Post"><i class="fa fa-plus" aria-hidden="true"></i>Post a Job</a>
                             </div>
                           
                         </div>
@@ -166,11 +166,11 @@
 
                            <div class="all-profile-box">
                                 <div class="all-pro-head">
-                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
+                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right" title="All profiles">All</a></h4>
                                 </div>
                                 <ul class="all-pr-list">
                                     <li>
-                                        <a href="<?php echo base_url('job'); ?>">
+                                        <a href="<?php echo base_url('job'); ?>" title="Job">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="<?php echo 'JOBIAMGE'; ?>">
                                             </div>
@@ -178,7 +178,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('recruiter'); ?>">
+                                        <a href="<?php echo base_url('recruiter'); ?>" title="Recruiter">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i2.jpg'); ?>" alt="<?php echo 'RECIAMGE'; ?>">
                                             </div>
@@ -186,7 +186,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        <a href="<?php echo base_url('freelancer'); ?>" title="Freelancer">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="<?php echo 'FREELANCERIAMGE'; ?>">
                                             </div>
@@ -194,7 +194,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('business-profile'); ?>">
+                                        <a href="<?php echo base_url('business-profile'); ?>" title="Business Profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="<?php echo 'BUSIAMGE'; ?>">
                                             </div>
@@ -202,7 +202,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('artist'); ?>">
+                                        <a href="<?php echo base_url('artist'); ?>" title="Artist Profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="<?php echo 'ARTIAMGE'; ?>">
                                             </div>

@@ -36,11 +36,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 <center><h2>Are you sure you want to reactive your recruiter profile? </h2></center>
 		</div>
 		<div class="reactivate_btn_y">
-		<a href="<?php echo base_url('recruiter/reactivate'); ?>">Yes</a>
+		<a href="<?php echo base_url('recruiter/reactivate'); ?>" title="Yes">Yes</a>
 
 		</div>
 		<div class="reactivate_btn_n">
-		<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>">No</a>
+		<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" title="No">No</a>
 		</div>
 
 		</div>

@@ -117,7 +117,7 @@
                                 </div>
                             <?php } ?>
                             <?php if ($returnpage == '') { ?>
-                                <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
+                                <a href="javascript:void(0);" title="update profile picture" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
                             <?php } ?>
                         </div>
                     </div>
@@ -219,9 +219,9 @@
                                                 if ($returnpage == "job") {
                                                     ?>
 
-                                                    <a href="<?php echo base_url('chat/abc/1/2/' . $this->uri->segment(3)); ?>">Message</a>
+                                                    <a href="<?php echo base_url('chat/abc/1/2/' . $this->uri->segment(3)); ?>" title="Message">Message</a>
                                                 <?php } else { ?>
-                                                    <a href="<?php echo base_url('chat/abc/2/1/' . $this->uri->segment(3)); ?>">Message</a>
+                                                    <a href="<?php echo base_url('chat/abc/2/1/' . $this->uri->segment(3)); ?>" title="Message">Message</a>
 
                                                 <?php } ?>
 
@@ -240,13 +240,13 @@
             </div>
             <div  class="add-post-button mob-block">
                 <?php if ($returnpage == '') { ?>
-                    <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                    <a title="Post A Job" class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                 <?php } ?>
             </div>
             <!-- menubar --> 
             <div class="middle-part container rec_res">
                 <div class="job-menu-profile mob-none pt20">
-                    <a href="javascript:void(0);" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>"><h5><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h5></a>
+                    <a title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" href="javascript:void(0);" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>"><h5><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h5></a>
                     <!-- text head start -->
                     <div class="profile-text" >
 
@@ -272,7 +272,7 @@
 
                     <div  class="add-post-button">
                         <?php if ($returnpage == '') { ?>
-                            <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                            <a title="Recruiter Add Post" class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                         <?php } ?>
                     </div>
                 </div>

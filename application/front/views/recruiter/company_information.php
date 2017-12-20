@@ -51,8 +51,8 @@
                             <div class="left-side-bar">
                                 <ul class="left-form-each">
 
-                                    <li class="custom-none"><a href="<?php echo base_url('recruiter/basic-information'); ?>">Basic Information</a></li>
-                                    <li <?php if ($this->uri->segment(1) == 'recruiter') { ?> class="active init" <?php } ?>><a href="#">Company Information</a></li>
+                                    <li class="custom-none"><a href="<?php echo base_url('recruiter/basic-information'); ?>" title="Basic Information">Basic Information</a></li>
+                                    <li <?php if ($this->uri->segment(1) == 'recruiter') { ?> class="active init" <?php } ?>><a href="#" title="Company Information">Company Information</a></li>
 
                                 </ul>
                             </div>

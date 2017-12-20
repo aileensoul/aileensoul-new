@@ -14,7 +14,7 @@
                         <div class="col-sm-5 col-md-5 col-xs-12 h2-smladd fw-479">
                             <div class="search-mob-block">
                                 <div class="">
-                                    <a href="#search">
+                                    <a href="#search" title="Search">
                                         <label><i class="fa fa-search" aria-hidden="true"></i></label>
                                     </a>
                                 </div>
@@ -34,7 +34,7 @@
 
 
 
-                                    <li<?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a href="<?php echo base_url('recruiter/home'); ?>"><span class="home-22x22-h"></span></a>
+                                    <li<?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a href="<?php echo base_url('recruiter/home'); ?>" title="Recrutier Home"><span class="home-22x22-h"></span></a>
 
                                         <!-- Friend Request Start-->
 
@@ -43,7 +43,7 @@
                                         <?php if ($message_count) { ?>
                                                                    <!--  <span class="badge bg-theme"><?php //echo $message_count;   ?></span> -->
                                         <?php } ?>
-                                        <a class="action-button shadow animate dropbtn_common" href="javascript:void(0);" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
+                                        <a class="action-button shadow animate dropbtn_common" href="javascript:void(0);" id="InboxLink" onclick = "return getmsgNotification()" title="getmsgNotification"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 
                                             <span id="message_count"></span>
                                         </a>
@@ -70,14 +70,14 @@
                                                     <div class="my_S">Account</div>
 
                                                 </span>
-                                                <a href="<?php echo base_url('recruiter/profile'); ?>"><span class="icon-view-profile edit_data"></span> <sapn>View Profile</sapn></a>
-                                                <a href="<?php echo base_url('recruiter/basic-information'); ?>"><span class="icon-edit-profile edit_data"> </span>
+                                                <a href="<?php echo base_url('recruiter/profile'); ?>" title="Recrutier profile"><span class="icon-view-profile edit_data"></span> <sapn>View Profile</sapn></a>
+                                                <a href="<?php echo base_url('recruiter/basic-information'); ?>" title="Recrutier profile"><span class="icon-edit-profile edit_data"> </span>
                                                     <span>Edit Profile</span> </a>
 
                                                 <?php
                                                 $userid = $this->session->userdata('aileenuser');
                                                 ?>
-                                                <a onClick="deactivate(<?php echo $userid; ?>)"><span class="icon-delete edit_data"> </span><sapn> Deactive Profile </sapn></a>
+                                                <a onClick="deactivate(<?php echo $userid; ?>)" title="Deactive Profile"><span class="icon-delete edit_data"> </span><sapn> Deactive Profile </sapn></a>
                                             </div>
                                         </div>
                                     </li>
@@ -112,7 +112,7 @@
                         <div class="col-sm-5 col-md-5 col-xs-12 fw-479">
                             <div class="search-mob-block">
                                 <div class="">
-                                    <a href="#search">
+                                    <a href="#search" title="Deactive Profile">
                                         <label><i class="fa fa-search" aria-hidden="true"></i></label>
                                     </a>
                                 </div>
@@ -139,10 +139,10 @@
                                         <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add-post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit-post')) { ?>
 
 
-                                            <a href="javascript:void(0);" onclick="return leave_page(1)"><span class="home-22x22-h"></span></a> 
+                                            <a href="javascript:void(0);" onclick="return leave_page(1)" title="leave page"><span class="home-22x22-h"></span></a> 
                                         <?php } else { ?>
 
-                                            <a href="<?php echo base_url('recruiter/home'); ?>"><span class="home-22x22-h"></span></a>
+                                            <a href="<?php echo base_url('recruiter/home'); ?>" title="Recrutier Home"><span class="home-22x22-h"></span></a>
                                         <?php } ?>
 
 
@@ -157,7 +157,7 @@
                                         <?php if ($message_count) { ?>
                                                                  <!--  <span class="badge bg-theme"><?php //echo $message_count;   ?></span> -->
                                         <?php } ?>
-                                        <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em><span class="message3-24x24-h"></span>
+                                        <a title="Message Notification" class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em><span class="message3-24x24-h"></span>
                                             <span id="message_count"></span>
                                         </a>
 
@@ -190,11 +190,11 @@
 
                                                 <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add-post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit-post')) { ?>
 
-                                                    <a onclick="return leave_page(2)"><span class="icon-view-profile edit_data"></span>
+                                                    <a onclick="return leave_page(2)"><span class="icon-view-profile edit_data" title="Leave Page"></span>
                                                         <span> View Profile </span></a>
 
                                                 <?php } else { ?>
-                                                    <a href="<?php echo base_url('recruiter/profile'); ?>"><span class="icon-view-profile edit_data"></span>
+                                                    <a href="<?php echo base_url('recruiter/profile'); ?>" title="Recruiter Profile"><span class="icon-view-profile edit_data"></span>
                                                         <span> View Profile </span></a>
                                                 <?php } ?>
                                                 <!-- View profile popup show on different page of Recruiter ENd -->
@@ -203,12 +203,12 @@
                                                 <!-- Edit Profile popup show on different page of Recruiter Start -->
                                                 <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add-post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit-post')) { ?>
 
-                                                    <a onclick="return leave_page(3)"><span class="icon-edit-profile edit_data"></span>  
+                                                    <a onclick="return leave_page(3)" title="Leave Page"><span class="icon-edit-profile edit_data"></span>  
                                                         <span>Edit Profile </span></a>
 
 
                                                 <?php } else { ?>
-                                                    <a href="<?php echo base_url('recruiter/basic-information'); ?>"><span class="icon-edit-profile edit_data"></span>  
+                                                    <a href="<?php echo base_url('recruiter/basic-information'); ?>" title="Basic Information"><span class="icon-edit-profile edit_data"></span>  
                                                         <span>Edit Profile </span></a>
 
                                                 <?php } ?>
@@ -219,7 +219,7 @@
                                                 <?php
                                                 $userid = $this->session->userdata('aileenuser');
                                                 ?>
-                                                <a onClick="deactivate(<?php echo $userid; ?>)"><span class="icon-delete edit_data"></span>  <span>Deactive Profile</span></a>
+                                                <a onClick="deactivate(<?php echo $userid; ?>)" title="Deactivate"><span class="icon-delete edit_data"></span>  <span>Deactive Profile</span></a>
                                             </div>
                                         </div>
                                     </li>
@@ -261,7 +261,7 @@
 <script type="text/javascript">
 
     function deactivate(clicked_id) {
-        $('.biderror .mes').html("<div class='pop_content'> Are you sure you want to deactive your recruiter profile?<div class='model_ok_cancel'><a class='okbtn deactive' id=" + clicked_id + " onClick='deactivate_profile(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+        $('.biderror .mes').html("<div class='pop_content'> Are you sure you want to deactive your recruiter profile?<div class='model_ok_cancel'><a class='okbtn deactive' id=" + clicked_id + " onClick='deactivate_profile(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal' title='Yes'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal' title='No'>No</a></div></div>");
         $('#bidmodal').modal('show');
     }
 

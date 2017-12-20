@@ -128,7 +128,7 @@
                                 </div>
                             <?php } ?>
                             <?php if ($returnpage == '') { ?>
-                                <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png" alt="<?php echo 'CAMERAIMAGE'; ?>"> Update Profile Picture</a>
+                                <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();" title="Update profile picture"><img src="<?php echo base_url(); ?>assets/img/cam.png" alt="<?php echo 'CAMERAIMAGE'; ?>"> Update Profile Picture</a>
 <?php } ?>
                         </div>
                     </div>
@@ -196,9 +196,9 @@
                                                 $returnpage = $_GET['page'];
                                                 if ($returnpage == "job") {
                                                     ?>
-                                                    <a href="<?php echo base_url('chat/abc/1/2/' . $this->uri->segment(3)); ?>">Message</a>
+                                                    <a href="<?php echo base_url('chat/abc/1/2/' . $this->uri->segment(3)); ?>" title="Message">Message</a>
                                                 <?php } else { ?>
-                                                    <a href="<?php echo base_url('chat/abc/2/1/' . $this->uri->segment(3)); ?>">Message</a>
+                                                    <a href="<?php echo base_url('chat/abc/2/1/' . $this->uri->segment(3)); ?>" title="Message">Message</a>
     <?php } ?>
                                             </li>  <?php } ?>
                                     </ul>
@@ -209,7 +209,7 @@
                 </div>                       
             </div> <div  class="add-post-button mob-block">
                 <?php if ($returnpage == '') { ?>
-                    <a class="btn btn-3 btn-3b" id="rec_post_job2" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                    <a class="btn btn-3 btn-3b" id="rec_post_job2" href="<?php echo base_url('recruiter/add-post'); ?>" title="Post a Job"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
 <?php } ?>
             </div>
             <div class="middle-part container rec_res">

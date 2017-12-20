@@ -52,13 +52,13 @@
                             <div class="left-side-bar">
                                 <ul class="left-form-each">
 
-                                    <li <?php if ($this->uri->segment(1) == 'recruiter') { ?> class="active init" <?php } ?>><a href="#">Basic Information</a></li>
+                                    <li <?php if ($this->uri->segment(1) == 'recruiter') { ?> class="active init" <?php } ?>><a href="#" title="Basic Information">Basic Information</a></li>
 
                                     <li  class="custom-none <?php
                                     if ($recdata[0]['re_step'] < '1') {
                                         echo "khyati";
                                     }
-                                    ?>"><a href="<?php echo base_url('recruiter/company-information'); ?>">Company Information</a></li>
+                                    ?>"><a href="<?php echo base_url('recruiter/company-information'); ?>" title="Company Information">Company Information</a></li>
                                 </ul>
                             </div>
                         </div>
