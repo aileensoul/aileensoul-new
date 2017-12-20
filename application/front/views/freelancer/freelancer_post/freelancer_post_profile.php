@@ -4,6 +4,7 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
+       <?php if(!$this->session->userdata('aileenuser')){ ?>
         <style>
             /***  commen css  ***/
             .p0{padding: 0;} .p5{padding: 5px;} .p10{padding: 10px;} .p15{padding: 15px;} .p20{padding: 20px;}
@@ -385,15 +386,35 @@
             /*second*/
 
         </style>
+       <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed botton_footer">
-        <?php echo $header; ?>
+        <?php if($this->session->userdata('aileenuser')){ echo $header; }else{ ?>
+               <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
+                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                    </div>
+                    <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
+                        <div class="btn-right pull-right">
+                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
+                            <a href="javascript:void(0);" onclick="create_profile();" class="btn3">Create an account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+            
+     <?php    } ?>
         <?php
         // $returnpage = $_GET['page'];
+        if($this->session->userdata('aileenuser')){
         if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
             echo $freelancer_hire_header2_border;
         } else {
             echo $freelancer_post_header2_border;
+        }
         }
         ?>
         <section class="custom-row">

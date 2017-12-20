@@ -254,7 +254,7 @@ $(document).ready(function () {
                         email_reg1: function () {
                             return $("#email_reg1").val();
                         },
-                        'aileensoulnewfrontcsrf': get_csrf_hash,
+//                        'aileensoulnewfrontcsrf': get_csrf_hash,
                     },
                 },
 

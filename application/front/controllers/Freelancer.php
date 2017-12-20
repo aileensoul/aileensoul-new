@@ -1307,8 +1307,8 @@ class Freelancer extends MY_Controller {
                 $return_html .= '</span>
                 <p class="pull-right">';
                 if ($retur == '' && $id == 'null') {
-                    $return_html .= '<a href="javascript:void(0);" class="btn4" onclick="removepopup(' . $post['post_id'] . ')">Remove</a>';
-                    $return_html .= '<a href="' . base_url('freelancer-hire/edit-projects/' . $post['post_id']) . '" class="btn4")">Edit</a>';
+                    $return_html .= '<a title="Remove" href="javascript:void(0);" class="btn4" onclick="removepopup(' . $post['post_id'] . ')">Remove</a>';
+                    $return_html .= '<a title="Edit" href="' . base_url('freelancer-hire/edit-projects/' . $post['post_id']) . '" class="btn4")">Edit</a>';
 
                     $join_str[0]['table'] = 'freelancer_post_reg';
                     $join_str[0]['join_table_id'] = 'freelancer_post_reg.user_id';
@@ -1317,7 +1317,7 @@ class Freelancer extends MY_Controller {
 
                     $contition_array = array('freelancer_post_reg.status' => '1', 'freelancer_apply.post_id' => $post['post_id'], 'freelancer_apply.is_delete ' => '0');
                     $apply_count = $this->data['results'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = 'freelancer_apply.user_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-                    $return_html .= '<a href="' . base_url('freelancer-hire/freelancer-applied/' . $post['post_id']) . '" class="btn4" >Applied Persons:';
+                    $return_html .= '<a title="Applied Persons" href="' . base_url('freelancer-hire/freelancer-applied/' . $post['post_id']) . '" class="btn4" >Applied Persons:';
                     $return_html .= count($apply_count);
                     $return_html .= '</a>';
 
@@ -1337,7 +1337,7 @@ class Freelancer extends MY_Controller {
                     $contition_array = array('freelancer_apply.post_id' => $post['post_id'], 'freelancer_apply.is_delete' => '0', 'save.from_id' => $userid, 'save.save_type' => '2', 'save.status' => '2', 'freelancer_post_reg.status' => '1');
                     $data = 'freelancer_post_reg.user_id';
                     $shortlist = $this->data['shortlist'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-                    $return_html .= '<a href="' . base_url('freelancer-hire/freelancer-shortlisted/' . $post['post_id']) . '" class="btn4">Shortlisted Persons:';
+                    $return_html .= '<a title="Shortlisted Persons" href="' . base_url('freelancer-hire/freelancer-shortlisted/' . $post['post_id']) . '" class="btn4">Shortlisted Persons:';
                     $return_html .= count($shortlist);
                     $return_html .= '</a>';
                 } else {
@@ -1346,7 +1346,7 @@ class Freelancer extends MY_Controller {
                     $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                     if ($freelancerapply1) {
-                        $return_html .= '<a href="javascript:void(0);" class="btn4 applied">Applied</a>';
+                        $return_html .= '<a title="Applied"  href="javascript:void(0);" class="btn4 applied">Applied</a>';
                     } else {
                         if (is_numeric($this->uri->segment(3))) {
                             $id = $this->uri->segment(3);
@@ -1356,16 +1356,16 @@ class Freelancer extends MY_Controller {
 
                         $return_html .= '<input type="hidden" id="allpost' . $post['post_id'] . '" value="all">';
                         $return_html .= '<input type="hidden" id="userid' . $post['post_id'] . '" value="' . $post['user_id'] . '">';
-                        $return_html .= '<a href="javascript:void(0);" class="btn4 applypost' . $post['post_id'] . '" onclick="applypopup(' . $post['post_id'] . ',' . $id . ')">Apply</a>';
+                        $return_html .= '<a title ="Apply" href="javascript:void(0);" class="btn4 applypost' . $post['post_id'] . '" onclick="applypopup(' . $post['post_id'] . ',' . $id . ')">Apply</a>';
 
                         $userid = $this->session->userdata('aileenuser');
                         $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
                         $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                         if ($data) {
-                            $return_html .= '<a href="javascript:void(0);" class="btn4 savedpost' . $post['post_id'] . '" >Saved</a>';
+                            $return_html .= '<a title = "Saved" href="javascript:void(0);" class="btn4 savedpost' . $post['post_id'] . '" >Saved</a>';
                         } else {
                             $return_html .= '<input type="hidden" name="saveuser"  id="saveuser" value= "' . $data[0]['save_id'] . '">';
-                            $return_html .= '<a id="' . $post['post_id'] . '" href="javascript:void(0);" class="btn4 savedpost' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')">Save</a>';
+                            $return_html .= '<a title="Save" id="' . $post['post_id'] . '" href="javascript:void(0);" class="btn4 savedpost' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')">Save</a>';
                         }
                     }
                 }
@@ -1642,7 +1642,7 @@ class Freelancer extends MY_Controller {
             $return_html .= '<h4 class="page-heading  product-listing" style="border:0px;"> It will takes only few minutes.</h4>';
             $return_html .= '</div>';
             $return_html .= '<div  class="add-post-button add-post-custom">';
-            $return_html .= '<a class="btn btn-3 btn-3b"  href="' . base_url() . 'freelancer-hire/add-projects"><i class="fa fa-plus" aria-hidden="true"></i>  Post Project</a>';
+            $return_html .= '<a title="Post Project" class="btn btn-3 btn-3b"  href="' . base_url() . 'freelancer-hire/add-projects"><i class="fa fa-plus" aria-hidden="true"></i>  Post Project</a>';
             $return_html .= '</div>';
             $return_html .= '</div>';
             echo $return_html;
@@ -1901,12 +1901,12 @@ class Freelancer extends MY_Controller {
                             $return_html .= '</a>';
                         } elseif ($data[0]['status'] == 2) {
 
-                            $return_html .= '<a class = "saved">';
+                            $return_html .= '<a title ="Shortlisted" class = "saved">';
                             $return_html .= 'Shortlisted';
                             $return_html .= '</a>';
                         } else {
 
-                            $return_html .= '<a class = "saved">';
+                            $return_html .= '<a title="Saved" class = "saved">';
                             $return_html .= $this->lang->line("saved");
                             $return_html .= '</a>';
                         }
@@ -3476,7 +3476,7 @@ class Freelancer extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $freelancerpostdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'freelancer_hire_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage .= '<img src="' . FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_hire_user_image'] . '" alt="" >';
-            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();" class="cusome_upload"><img  src="' . base_url('../assets/img/cam.png') . '">';
+            $userimage .= '<a title = "update profile pic" href="javascript:void(0);" onclick="updateprofilepopup();" class="cusome_upload"><img  src="' . base_url('../assets/img/cam.png') . '">';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
 
@@ -3582,7 +3582,7 @@ class Freelancer extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $freelancerpostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage .= '<img src="' . FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image'] . '" alt="" >';
-            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();" class="cusome_upload"><img  src="' . base_url('../assets/img/cam.png') . '">';
+            $userimage .= '<a title = "update profile pic" href="javascript:void(0);" onclick="updateprofilepopup();" class="cusome_upload"><img  src="' . base_url('../assets/img/cam.png') . '">';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
 
@@ -4807,7 +4807,7 @@ class Freelancer extends MY_Controller {
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid.'">view</a></p>
+                                                <p><a title = "View Detail" class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid.'">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
@@ -4844,7 +4844,7 @@ class Freelancer extends MY_Controller {
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'notification/freelancer-hire/' . $postid . '">view</a></p>
+                                                <p><a title= "View Detail" class="btn" href="' . BASEURL . 'notification/freelancer-hire/' . $postid . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
@@ -4870,7 +4870,7 @@ class Freelancer extends MY_Controller {
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'notification/freelancer-hire/' . $postid . '">view</a></p>
+                                                <p><a title = "View Detail" class="btn" href="' . BASEURL . 'notification/freelancer-hire/' . $postid . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
@@ -5212,7 +5212,7 @@ class Freelancer extends MY_Controller {
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '">view</a></p>
+                                                <p><a title="View Detail" class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';

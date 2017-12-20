@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-4">
                             <div class="add-post-button">
-                                <a href="<?php echo base_url("freelancer-hire/projects"); ?>"><div class="back">
+                                <a title="Back to Post" href="<?php echo base_url("freelancer-hire/projects"); ?>"><div class="back">
                                         <div class="but1">
                                             <?php echo $this->lang->line("back_to_post"); ?>
                                         </div>
@@ -213,21 +213,21 @@
                                                                     ?>
 
                                                                     <?php if ($userid != $row['user_id']) { ?>
-                                                                        <a class="msg_btn" href="<?php echo base_url('chat/abc/3/4/' . $row['user_id']); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                                    <a title="Message" class="msg_btn" href="<?php echo base_url('chat/abc/3/4/' . $row['user_id']); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                                         <?php
                                                                         $contition_array = array('invite_user_id' => $row['user_id'], 'post_id' => $postid, 'profile' => 'freelancer');
                                                                         $userdata = $this->common->select_data_by_condition('user_invite', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                         if ($userdata) {
                                                                             ?>
-                                                                            <a href="javascript:void(0);" class="button invited" id="<?php echo 'invited' . $row['user_id']; ?>" style="cursor: default;"><?php echo $this->lang->line("selected"); ?></a>       
+                                                                    <a title="Selected" href="javascript:void(0);" class="button invited" id="<?php echo 'invited' . $row['user_id']; ?>" style="cursor: default;"><?php echo $this->lang->line("selected"); ?></a>       
                                                                         <?php } else { ?>
-                                                                            <a class=""  href="javascript:void(0);" class="button invite_border" id="<?php echo 'invited' . $row['user_id']; ?>" onClick="inviteuserpopup(<?php echo $row['user_id']; ?>)"><?php echo $this->lang->line("select"); ?></a>
+                                                                    <a title="Select" class=""  href="javascript:void(0);" class="button invite_border" id="<?php echo 'invited' . $row['user_id']; ?>" onClick="inviteuserpopup(<?php echo $row['user_id']; ?>)"><?php echo $this->lang->line("select"); ?></a>
                                                                         <?php } ?>
 
                                                                         <?php
                                                                         if ($savedata) {
                                                                             ?> 
-                                                                            <a class="saved" href="javascript:void(0);">Shortlisted</a>
+                                                                    <a title="Shortlisted" class="saved" href="javascript:void(0);">Shortlisted</a>
 
                                                                             <?php
                                                                         } else {
