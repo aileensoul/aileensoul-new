@@ -26,9 +26,9 @@
                             <ul class="">
                                 <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>>
                                     <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
-                                        <a href="javascript:void(0);" class="button" onclick="return leave_page(1)"><?php echo $this->lang->line("home"); ?></a>
+                                    <a title="Home" href="javascript:void(0);" class="button" onclick="return leave_page(1)"><?php echo $this->lang->line("home"); ?></a>
                                     <?php } else { ?>
-                                        <a href="<?php echo base_url('freelancer-hire/home'); ?>"><?php echo $this->lang->line("home"); ?>
+                                    <a title="Home" href="<?php echo base_url('freelancer-hire/home'); ?>"><?php echo $this->lang->line("home"); ?>
                                         </a>
                                     <?php } ?>
                                 </li>
@@ -37,18 +37,18 @@
                                         <span id="art_profile"><?php echo $this->lang->line("employer_details"); ?> <i class="fa fa-angle-down" aria-hidden="true"></i></span>
                                         <div class="dropdown-content_hover" id="dropdown-content_hover">
                                             <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
-                                                <a onclick="return leave_page(2)"><i class="fa fa-user" aria-hidden="true"></i><?php echo $this->lang->line("view_profile"); ?></a>
+                                            <a title="View Profile" onclick="return leave_page(2)"><i class="fa fa-user" aria-hidden="true"></i><?php echo $this->lang->line("view_profile"); ?></a>
                                             <?php } else { ?>
-                                                <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>"><i class="fa ffreelancer/freelancer_hire_profilea-user" aria-hidden="true"></i><?php echo $this->lang->line("view_profile"); ?></a>
+                                                <a title="View Profile" href="<?php echo base_url('freelancer-hire/employer-details'); ?>"><i class="fa ffreelancer/freelancer_hire_profilea-user" aria-hidden="true"></i><?php echo $this->lang->line("view_profile"); ?></a>
                                             <?php } ?>
                                             <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
-                                                <a onclick="return leave_page(3)"><i class="fa fa-pencil" aria-hidden="true"></i><?php echo $this->lang->line("edit_profile"); ?></a>
+                                                <a title="Edit Profile" onclick="return leave_page(3)"><i class="fa fa-pencil" aria-hidden="true"></i><?php echo $this->lang->line("edit_profile"); ?></a>
                                             <?php } else { ?>
-                                                <a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i><?php echo $this->lang->line("edit_profile"); ?></a>      <?php } ?>
+                                                <a title="Edit Profile" href="<?php echo base_url('freelancer-hire/basic-information'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i><?php echo $this->lang->line("edit_profile"); ?></a>      <?php } ?>
                                             <?php
                                             $userid = $this->session->userdata('aileenuser');
                                             ?>
-                                            <a onClick="deactivate(<?php echo $userid; ?>)"><i class="fa fa-minus-circle" aria-hidden="true"></i><?php echo $this->lang->line("deactivate_profile"); ?></a>
+                                                <a title="Deactivate Profile" onClick="deactivate(<?php echo $userid; ?>)"><i class="fa fa-minus-circle" aria-hidden="true"></i><?php echo $this->lang->line("deactivate_profile"); ?></a>
                                         </div>
                                     </div>
                                 </li>
@@ -103,7 +103,7 @@
 <script type="text/javascript">
 
     function deactivate(clicked_id) {
-        $('.biderror .mes').html("<div class='pop_content'> Are you sure you want to deactive your Freelancer Hire profile?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='deactivate_profile(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+        $('.biderror .mes').html("<div class='pop_content'> Are you sure you want to deactive your Freelancer Hire profile?<div class='model_ok_cancel'><a title='Yes' class='okbtn' id=" + clicked_id + " onClick='deactivate_profile(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a title='No' class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
         $('#bidmodal').modal('show');
     }
 

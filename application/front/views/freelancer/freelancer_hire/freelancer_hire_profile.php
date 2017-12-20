@@ -398,12 +398,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
-                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                        <h2 class="logo"><a title="Aileensoul" href="<?php echo base_url(); ?>">Aileensoul</a></h2>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                         <div class="btn-right pull-right">
-                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="create_profile();" class="btn3">Create an account</a>
+                            <a title="Login" href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
+                            <a title="Create an account" href="javascript:void(0);" onclick="create_profile();" class="btn3">Create an account</a>
                         </div>
                     </div>
                 </div>
@@ -527,13 +527,13 @@
                                 </div>
                             <?php } ?>
 <?php if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                <a href="javascript:void(0);"  class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
+                                        <a title="Update Profile Pic" href="javascript:void(0);"  class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
 <?php } ?>
                         </div>
                     </div>
 
                     <div class="job-menu-profile mob-block">
-                        <a href="javascript:void(0);">
+                        <a title="<?php echo ucwords($freelancerhiredata[0]['fullname']) . ' ' . ucwords($freelancerhiredata[0]['username']); ?>" href="javascript:void(0);">
                             <h3> <?php echo ucwords($freelancerhiredata[0]['fullname']) . ' ' . ucwords($freelancerhiredata[0]['username']); ?></h3>
                         </a>
                         <div class="profile-text">
@@ -542,7 +542,7 @@
                             if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) {
                                 if ($freelancerhiredata[0]['designation'] == '') {
                                     ?>
-                                    <a id="designation" href="javascript:void(0);" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
+                            <a title="<?php echo $this->lang->line("designation"); ?>" id="designation" href="javascript:void(0);" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
 
                                 <?php } else { ?> 
                                     <a id="designation" href="javascript:void(0);" class="designation" title="<?php echo ucwords($freelancerhiredata[0]['designation']); ?>"><?php echo ucwords($freelancerhiredata[0]['designation']); ?></a>
@@ -602,9 +602,9 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                                     <?php
                                                     if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) {
                                                         ?>
-                                                        <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                    <a title="Message" href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                     <?php } else { ?>
-                                                        <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                    <a title="Message" href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
         <?php }
         ?>
                                                 </li>
@@ -622,13 +622,13 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
 
 <?php if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
                     <div  class="add-post-button mob-block">
-                        <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo $this->lang->line("post_project"); ?></a>
+                        <a title="Post Projects" class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo $this->lang->line("post_project"); ?></a>
 
                     </div>
 <?php } ?>
                 <div class="middle-part">          
                     <div class="job-menu-profile mob-none pt20">
-                        <a href="javascript:void(0);">
+                        <a title="<?php echo ucwords($freelancerhiredata[0]['fullname']) . ' ' . ucwords($freelancerhiredata[0]['username']); ?>" href="javascript:void(0);">
                             <h3> <?php echo ucwords($freelancerhiredata[0]['fullname']) . ' ' . ucwords($freelancerhiredata[0]['username']); ?></h3>
                         </a>
                         <div class="profile-text">
@@ -637,7 +637,7 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                             if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) {
                                 if ($freelancerhiredata[0]['designation'] == '') {
                                     ?>
-                                    <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
+                            <a title="<?php echo $this->lang->line("designation"); ?>" id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
 
                                 <?php } else { ?> 
                                     <a id="designation" class="designation" title="<?php echo ucwords($freelancerhiredata[0]['designation']); ?>"><?php echo ucwords($freelancerhiredata[0]['designation']); ?></a>
@@ -659,7 +659,7 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
 
                         <div  class="add-post-button">
 <?php if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo $this->lang->line("post_project"); ?></a>
+                            <a title="Post Projects" class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo $this->lang->line("post_project"); ?></a>
 <?php } ?>
                         </div>
                     </div>
@@ -1002,7 +1002,7 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our
-                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                            <a title="Terms and Condition" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a title="Privacy policy" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
@@ -1010,7 +1010,7 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>
-                                                Already have an account ? <a tabindex="12" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
+                                                Already have an account ? <a title="Log In" tabindex="12" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
                                             </p>
                                         </div>
                                     </form>
@@ -1067,11 +1067,11 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            <a title="Forgot Password" href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a title="Create an account" class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                         </p>
                                     </form>
 
