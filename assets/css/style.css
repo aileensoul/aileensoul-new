@@ -2477,7 +2477,7 @@ word-break: break-word;}
         margin-top: -41px !important;
     }
 	.people-list .search input{width:95%;}
-    img{max-width: inherit;}
+    /*img{max-width: inherit;}*/
     .job-top-detail{width: 84%;}
 }
 
