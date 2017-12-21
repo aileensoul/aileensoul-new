@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html>
 <head>
    <meta charset="utf-8">
-	<title>Reactivate</title>
+	<title>Reactive | <?php echo $artistic_name; ?> - ArtisticProfile - Aileensoul</title>
 <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver='.time()); ?>">
 <!-- CSS START -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">

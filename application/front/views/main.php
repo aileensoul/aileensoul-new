@@ -48,7 +48,28 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
         <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script> 
-
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/cookieconsent.min.css') ?>" />
+        <script src="<?php echo base_url('assets/js/cookieconsent.min.js') ?>"></script>
+        <script>
+                        window.addEventListener("load", function () {
+                            window.cookieconsent.initialise({
+                                "palette": {
+                                    "popup": {
+                                        "background": "#eaf7f7",
+                                        "text": "#5c7291"
+                                    },
+                                    "button": {
+                                        "background": "#56cbdb",
+                                        "text": "#ffffff"
+                                    }
+                                },
+                                "type": "opt-out",
+                                "content": {
+                                    "href": "https://www.aileensoul.com/cookies-policy"
+                                }
+                            })
+                        });
+        </script>
     </head>
     <body class="custom-landscape">
     <!--    <script type="application/ld+json">
@@ -245,7 +266,7 @@
                         </div>
                     </div>
                 </div>
-               
+
                 <div id="myModal" class="modal">
                     <div class="modal-content md-2">
                         <?php
@@ -289,12 +310,12 @@
                 </script>
             </div>-->
         <script>
-                        var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
-                        var base_url = '<?php echo base_url(); ?>';
-                        var data = <?php echo json_encode($demo); ?>;
-                        var data1 = <?php echo json_encode($city_data); ?>;
-                        var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                        var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                                                    var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
+                                                    var base_url = '<?php echo base_url(); ?>';
+                                                    var data = <?php echo json_encode($demo); ?>;
+                                                    var data1 = <?php echo json_encode($city_data); ?>;
+                                                    var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                                                    var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
         <script src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>
     </body>

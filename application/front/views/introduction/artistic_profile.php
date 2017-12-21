@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Artistic Profile - Aileensoul.com</title>
+        <title>Artistic Profile - Aileensoul</title>
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <meta charset="utf-8">
         <?php

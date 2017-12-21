@@ -38,10 +38,11 @@ class Artist extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'status' => 0);
-        $artdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo "<pre>"; print_r($artdata); die();
         if ($artdata) {
 
+             $this->data['artistic_name'] = ucwords($artdata[0]['art_name']).' '. ucwords($artdata[0]['art_lastname']);
             $this->load->view('artist/reactivate', $this->data);
         } else {
 
@@ -215,7 +216,7 @@ class Artist extends MY_Controller {
             }
         }
 
-        $this->data['title'] = 'Artistic Profile' . TITLEPOSTFIX;
+        $this->data['title'] = 'BasicInformation | ArtisticProfile' . TITLEPOSTFIX;
         $this->load->view('artist/art_basic_information', $this->data);
     }
 
@@ -348,7 +349,7 @@ class Artist extends MY_Controller {
                 $this->data['pincode1'] = $userdata[0]['art_pincode'];
             }
         }
-        $this->data['title'] = 'Artistic Profile' . TITLEPOSTFIX;
+        $this->data['title'] = 'Address | ArtisticProfile' . TITLEPOSTFIX;
         $this->load->view('artist/art_address', $this->data);
     }
 
@@ -472,7 +473,7 @@ class Artist extends MY_Controller {
         }
         $this->data['get_url'] = $this->get_url($userid);
 
-        $this->data['title'] = 'Artistic Profile' . TITLEPOSTFIX;
+        $this->data['title'] = 'ArtInformation | ArtisticProfile' . TITLEPOSTFIX;
         $this->load->view('artist/art_information', $this->data);
     }
 
@@ -614,7 +615,7 @@ class Artist extends MY_Controller {
         } else {
             $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+            $this->data['title'] = 'Home | Artistic Profile'. TITLEPOSTFIX;
             $this->load->view('artist/art_post', $this->data);
         }
     }
@@ -650,7 +651,7 @@ class Artist extends MY_Controller {
             } else {
                 $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
                 $artistic_name = $this->get_artistic_name($id);
-                $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+                $this->data['title'] = 'Dashboard | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
                 $this->load->view('artist/art_manage_post', $this->data);
             }
         } else {
@@ -1927,7 +1928,7 @@ class Artist extends MY_Controller {
         if ($userid) {
             if ($this->data['artisticdata']) {
                 $artistic_name = $this->get_artistic_name($id);
-                $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+                $this->data['title'] =  $this->data['title'] = 'Details | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;;
                 $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
                 $this->load->view('artist/artistic_profile', $this->data);
             } else if (!$this->data['artisticdata'] && $id != $userid) {
@@ -1974,7 +1975,7 @@ class Artist extends MY_Controller {
         if ($this->data['artdata']) {
             $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+            $this->data['title'] = 'Userlist | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->load->view('artist/artistic_userlist', $this->data);
         } else {
             redirect('artist');
@@ -3362,7 +3363,7 @@ class Artist extends MY_Controller {
 
         if ($this->data['artisticdata']) {
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+             $this->data['title'] = 'Followers | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
             $this->load->view('artist/art_followers', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
@@ -3581,7 +3582,7 @@ class Artist extends MY_Controller {
 
         if ($this->data['artisticdata']) {
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+           $this->data['title'] = 'Following | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
 
             $this->load->view('artist/art_following', $this->data);
@@ -6455,7 +6456,7 @@ class Artist extends MY_Controller {
 
         if ($this->data['artisticdata']) {
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+            $this->data['title'] = 'PostDetail | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
             $this->load->view('artist/postnewpage', $this->data);
         } else {
@@ -6577,7 +6578,6 @@ class Artist extends MY_Controller {
             'status' => '1',
             'modified_date' => date('y-m-d h:i:s')
         );
-
         $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
         if ($updatdata) {
 
@@ -6831,7 +6831,7 @@ class Artist extends MY_Controller {
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+            $this->data['title'] = 'Photo | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->load->view('artist/art_photos', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -6872,7 +6872,7 @@ class Artist extends MY_Controller {
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+            $this->data['title'] = 'Video | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->load->view('artist/art_videos', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -6917,7 +6917,7 @@ class Artist extends MY_Controller {
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+           $this->data['title'] = 'Audio  | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->load->view('artist/art_audios', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -6962,7 +6962,7 @@ class Artist extends MY_Controller {
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+           $this->data['title'] = 'PDF | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->load->view('artist/art_pdf', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -11682,9 +11682,9 @@ class Artist extends MY_Controller {
 
                             if ($info) {
 
-                                $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
+                                $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="'. $art_userimage .'">';
                             } else {
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             }
                         }
                         $return_html .= '</a>';
@@ -11878,7 +11878,7 @@ class Artist extends MY_Controller {
 
                             $return_html .= '<div class="one-image">';
                             $return_html .= '<a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-                                                    <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+                                                    <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="'. $artmultiimage[0]['file_name'] . '">
 
                                                 </a>
                                             </div>';
@@ -11925,7 +11925,7 @@ class Artist extends MY_Controller {
                         } elseif (in_array($ext, $allowesaudio)) {
                             $return_html .= '<div class="audio_main_div">
                                                 <div class="audio_img">
-                                                    <img src="' . base_url('assets/images/music-icon.png') . '">  
+                                                    <img src="' . base_url('assets/images/music-icon.png') . '" alt="music-icon.png">  
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio controls>
@@ -11943,7 +11943,7 @@ class Artist extends MY_Controller {
                             $return_html .= '<div  class="two-images">
                                                 <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
 
-                                                <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
+                                                <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] . '">
                                                 </a>
                                             </div>';
                         }
@@ -11951,18 +11951,18 @@ class Artist extends MY_Controller {
 
                         $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-<img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+<img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="'. $artmultiimage[0]['file_name'] .'">
 </a>
 </div>
 <div class = "three-image" >
 
 <a href = "' . base_url('artist/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '">
+<img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '" alt="'. $artmultiimage[1]['file_name'] .'">
 </a>
 </div>
 <div class = "three-image" >
 <a href = "' . base_url('artist/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '">
+<img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '" alt="'. $artmultiimage[2]['file_name'] .'">
 </a>
 </div>';
                     } elseif (count($artmultiimage) == 4) {
@@ -11971,7 +11971,7 @@ class Artist extends MY_Controller {
 
                             $return_html .= '<div class="four-image">
                                                 <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-                                                    <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
+                                                    <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
                                                 </a>
                                             </div>';
                         }
@@ -11983,7 +11983,7 @@ class Artist extends MY_Controller {
                             $return_html .= '<div class="four-image">
                                                 <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
                                                    
-                                                    <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
+                                                    <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
                                                 </a>
                                             </div>';
 
@@ -11995,7 +11995,7 @@ class Artist extends MY_Controller {
                         $return_html .= '<div class="four-image">
                                             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
                                                 
-                                            <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '">
+                                            <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '" alt="'. $artmultiimage[3]['file_name'] .'">
 
                                             </a>
                                             <a class="text-center" href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '" >
@@ -12220,12 +12220,12 @@ class Artist extends MY_Controller {
                                 if ($art_userimage) {
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                                     } else {
-                                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                                     }
                                 } else {
-                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                                 }
                             } else {
 
@@ -12235,9 +12235,9 @@ class Artist extends MY_Controller {
 
                                 if ($info) {
 
-                                    $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
+                                    $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="'. $art_userimage .'">';
                                 } else {
-                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                                 }
                             }
 
@@ -12365,12 +12365,12 @@ class Artist extends MY_Controller {
                         if ($art_userimage) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                             }
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
 
@@ -12380,9 +12380,9 @@ class Artist extends MY_Controller {
 
                         if ($info) {
 
-                            $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
+                            $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="'. $art_userimage .'">';
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     }
 
@@ -12819,7 +12819,7 @@ class Artist extends MY_Controller {
 
             if ($singlearray2[0]['file_name']) {
                 //$fetchaudio .= '<td class="image_profile">';
-                $fetchaudio .= '<td class="image_profile"><a href="' . base_url('artist/audios/' . $get_url) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td class="image_profile"><a href="' . base_url('artist/audios/' . $get_url) . '"><img src = "' . base_url('assets/images/music-icon.png') . '" alt="music-icon.png"></a>';
                 $fetchaudio .= '<audio  controls>';
 
                 $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[0]['file_name'] . '" type="audio/mp3">';
@@ -12831,7 +12831,7 @@ class Artist extends MY_Controller {
 
             if ($singlearray2[1]['file_name']) {
                 //$fetchaudio .= '<td class="image_profile">';
-                $fetchaudio .= '<td class="image_profile"><a href="' . base_url('artist/audios/' . $get_url) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td class="image_profile"><a href="' . base_url('artist/audios/' . $get_url) . '"><img src = "' . base_url('assets/images/music-icon.png') . '" alt="music-icon.png"></a>';
                 $fetchaudio .= '<audio  controls>';
                 $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[1]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
@@ -12841,7 +12841,7 @@ class Artist extends MY_Controller {
             }
             if ($singlearray2[2]['file_name']) {
                 // $fetchaudio .= '<td class="image_profile">';
-                $fetchaudio .= '<td class="image_profile"><a href="' . base_url('artist/audios/' . $get_url) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td class="image_profile"><a href="' . base_url('artist/audios/' . $get_url) . '"><img src = "' . base_url('assets/images/music-icon.png') . '" alt="music-icon.png"></a>';
                 $fetchaudio .= '<audio  controls>';
                 $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[2]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
@@ -12854,7 +12854,7 @@ class Artist extends MY_Controller {
 
             if ($singlearray2[3]['file_name']) {
                 //$fetchaudio .= '<td class="image_profile">';
-                $fetchaudio .= '<td class="image_profile"> <a href="' . base_url('artist/audios/' . $get_url) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td class="image_profile"> <a href="' . base_url('artist/audios/' . $get_url) . '"><img src = "' . base_url('assets/images/music-icon.png') . '" alt="music-icon.png"></a>';
                 $fetchaudio .= '<audio  controls>';
                 $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[3]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
@@ -12864,7 +12864,7 @@ class Artist extends MY_Controller {
             }
             if ($singlearray2[4]['file_name']) {
                 //$fetchaudio .= '<td class="image_profile">';
-                $fetchaudio .= '<td class="image_profile"><a href="' . base_url('artist/audios/' . $get_url) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td class="image_profile"><a href="' . base_url('artist/audios/' . $get_url) . '"><img src = "' . base_url('assets/images/music-icon.png') . '" alt="music-icon.png"></a>';
                 $fetchaudio .= '<audio  controls>';
                 $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[4]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
@@ -12874,7 +12874,7 @@ class Artist extends MY_Controller {
             }
             if ($singlearray2[5]['file_name']) {
                 //$fetchaudio .= '<td class="image_profile">';
-                $fetchaudio .= '<td class="image_profile"><a href="' . base_url('artist/audios/' . $get_url) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td class="image_profile"><a href="' . base_url('artist/audios/' . $get_url) . '"><img src = "' . base_url('assets/images/music-icon.png') . '" alt="music-icon.png"></a>';
                 $fetchaudio .= '<audio  controls>';
                 $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[5]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
@@ -12937,7 +12937,7 @@ class Artist extends MY_Controller {
 
                 $fetch_pdf .= '<div class="image_profile">';
                 $fetch_pdf .= '<a href="' . ART_POST_MAIN_UPLOAD_URL . $mi['file_name'] . '"><div class = "pdf_img">';
-                $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '">';
+                $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '" alt="PDF.jpg">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 
@@ -13028,12 +13028,12 @@ class Artist extends MY_Controller {
                         if ($userimageposted) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
 
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" alt="" >';
+                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" alt="'. $userimageposted . '" >';
                             }
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
 
@@ -13044,12 +13044,12 @@ class Artist extends MY_Controller {
                         if ($info) {
 
                             $return_html .= '<a  class="post_dot" title="' . ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)) . '" href="' . base_url('artist/dashboard/' . $slugposted) . '">';
-                            $return_html .= '<img src = "' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" alt="'. $userimageposted .'"/>';
                             $return_html .= '</a>';
                         } else {
 
                             $return_html .= '<a  class="post_dot" title="' . ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)) . '" href="' . base_url('artist/dashboard/' . $geturl_post) . '">';
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             $return_html .= '</a>';
                         }
                     }
@@ -13059,12 +13059,12 @@ class Artist extends MY_Controller {
                         if ($userimage) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimage)) {
 
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userimage . '" alt="" >';
+                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userimage . '" alt="'. $userimage . '">';
                             }
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
 
@@ -13076,13 +13076,13 @@ class Artist extends MY_Controller {
 
                             $return_html .= '<a  class="post_dot" title="' . ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)) . '" href="' . base_url('artist/dashboard/' . $geturl) . '">';
 
-                            $return_html .= '<img src = "' . ART_PROFILE_THUMB_UPLOAD_URL . $userimage . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . ART_PROFILE_THUMB_UPLOAD_URL . $userimage . '" name = "image_src" id = "image_src" alt="'. $userimage .'"/>';
 
                             $return_html .= '</a>';
                         } else {
 
                             $return_html .= '<a  class="post_dot" title="' . ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)) . '" href="' . base_url('artist/dashboard/' . $geturl) . '">';
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
 
                             $return_html .= '</a>';
                         }
@@ -13234,7 +13234,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         $return_html .= '<div class="one-image">
             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
 
-           <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+           <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="'.$artmultiimage[0]['file_name'].'">
 
              </a>
         </div>';
@@ -13283,7 +13283,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     } elseif (in_array($ext, $allowesaudio)) {
                         $return_html .= '<div class="audio_main_div">
             <div class="audio_img">
-                <img src="' . base_url('assets/images/music-icon.png') . '">  
+                <img src="' . base_url('assets/images/music-icon.png') . '" alt="music-icon.png">  
             </div>
             <div class="audio_source">
                 <audio  controls>
@@ -13297,24 +13297,24 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     foreach ($artmultiimage as $multiimage) {
                         $return_html .= '<div  class="two-images" >
             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-             <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
+             <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
              </a>
         </div>';
                     }
                 } elseif (count($artmultiimage) == 3) {
                     $return_html .= '<div class="three-imag-top" >
             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-            <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+            <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="'. $artmultiimage[0]['file_name'] .'">
             </a>
         </div>
         <div class="three-image" >
             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-           <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '">
+           <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '" alt="'. $artmultiimage[1]['file_name'] .'">
             </a>
         </div>
         <div class="three-image" >
             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-            <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '">
+            <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '" alt="'. $artmultiimage[2]['file_name'] .'">
             </a>
         </div>';
                 } elseif (count($artmultiimage) == 4) {
@@ -13322,7 +13322,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     foreach ($artmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-            <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
+            <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
              </a>
         </div>';
                     }
@@ -13332,7 +13332,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     foreach ($artmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-            <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
+            <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
             </a>
         </div>';
                         $i++;
@@ -13341,7 +13341,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     }
                     $return_html .= '<div class="four-image">
             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-           <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '">
+           <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '" alt="'. $artmultiimage[3]['file_name'] .'">
              </a>
             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
                 <div class="more-image" >
@@ -13508,12 +13508,12 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                             if ($art_userimage) {
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                                 } else {
-                                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage . '" >';
                                 }
                             } else {
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             }
                         } else {
 
@@ -13524,10 +13524,10 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                             if ($info) {
 
-                                $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
+                                $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="'. $art_userimage .'">';
                             } else {
 
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             }
                         }
 
@@ -13642,12 +13642,12 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     if ($art_userimage) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         } else {
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                         }
                     } else {
-                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 } else {
 
@@ -13658,17 +13658,17 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                     if ($info) {
 
-                        $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
+                        $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="'. $art_userimage .'">';
                     } else {
 
-                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 }
                 $return_html .= '</a></div>
     <div id="content" class="col-md-12  inputtype-comment cmy_2" >
         <div contenteditable="true" class="editable_text edt_2" name="' . $row['art_post_id'] . '"  id="post_comment' . $row['art_post_id'] . '" placeholder="Add a Comment...." onClick="entercomment(' . $row['art_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
           <div class="mob-comment">       
-                            <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '">
+                            <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '" alt="send.png">
                             </button>
                         </div>
     </div>';
@@ -13685,7 +13685,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                                 <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('assets/img/art-no.png') . '">
+                                        <img src="' . base_url('assets/img/art-no.png') . '" alt="art-no.png">
 
                                     </div>
                                     <div class="art_no_post_text">
@@ -13744,12 +13744,12 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     if ($art_userimage) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                            $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         } else {
-                            $fourdata .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                            $fourdata .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                         }
                     } else {
-                        $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 } else {
 
@@ -13760,9 +13760,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                     if ($info) {
 
-                        $fourdata .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
+                        $fourdata .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="'. $art_userimage .'">';
                     } else {
-                        $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 }
 
@@ -14001,8 +14001,8 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $artistic_user = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-            $userimage .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artistic_user[0]['art_user_image'] . '" alt="" >';
-            $userimage .= ' <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="' . base_url() . 'assets/img/cam.png"> Update Profile Picture</a>';
+            $userimage .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artistic_user[0]['art_user_image'] . '" alt="'.$artistic_user[0]['art_user_image'].'" >';
+            $userimage .= ' <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="' . base_url() . 'assets/img/cam.png" alt="cam.png"> Update Profile Picture</a>';
 
             echo $userimage;
         }
@@ -14193,7 +14193,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
         if ($search_place) {
             $title .= $search_place;
         }
-        $this->data['title'] = "$title | Aileensoul";
+        $this->data['title'] = "Search | ArtisticProfile - Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
         $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
 
@@ -14378,12 +14378,12 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         if ($key['art_user_image']) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'])) {
 
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt="" >';
+                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt="'. $key['art_user_image'] .'" >';
                             }
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
 
@@ -14392,9 +14392,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                         if ($info) {
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt=" ">';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt="'. $key['art_user_image'] .'">';
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     }
                     $return_html .= '</a></div>
@@ -14528,12 +14528,12 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     if ($key['art_user_image']) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'])) {
 
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         } else {
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt="" >';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt="' . $key['art_user_image'] .'" >';
                         }
                     } else {
-                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 } else {
 
@@ -14543,9 +14543,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
 
                     if ($info) {
-                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt=" ">';
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt="'. $key['art_user_image'] .'">';
                     } else {
-                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 }
                 $return_html .= '</a>
@@ -14684,13 +14684,13 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         $return_html .= '<div class="one-image" >
              <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '">
 
-             <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+             <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="'. $artmultiimage[0]['file_name'] .'">
 
               </a>
           </div>';
                     } elseif (in_array($ext, $allowespdf)) {
                         $return_html .= '<div>
-<a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+<a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank" alt="'. $artmultiimage[0]['file_name'] .'"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
 </div>
 </a>
@@ -14735,7 +14735,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                         $return_html .= '<div class="audio_main_div">
                                                 <div class="audio_img">
-                                                    <img src="' . base_url('assets/images/music-icon.png') . '">  
+                                                    <img src="' . base_url('assets/images/music-icon.png') . '" alt="music-icon.png">  
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio controls>
@@ -14751,24 +14751,24 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     foreach ($artmultiimage as $multiimage) { //echo "<pre>"; print_r($multiimage); die();
                         $return_html .= '<div class="two-images">
                                                         <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '">
-                                                        <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
+                                                        <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
                                                          </a>
                                                     </div>';
                     }
                 } elseif (count($artmultiimage) == 3) {
                     $return_html .= '<div class="three-image-top">
                                                     <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '">
-                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="'. $artmultiimage[0]['file_name'] .'">
                                                      </a>
                                                 </div>
                                                <div class="three-image">
                                                     <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '">
-                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '">
+                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '" alt="'. $artmultiimage[1]['file_name'] .'">
                                                      </a>
                                                 </div>
                                               <div class="three-image">
                                                     <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '">
-                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '">
+                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '" alt="'. $artmultiimage[2]['file_name'] .'">
                                                      </a>
                                                 </div>';
                 } elseif (count($artmultiimage) == 4) {
@@ -14777,7 +14777,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                         $return_html .= '<div class="four-image">
                                                         <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '">
-                                                         <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
+                                                         <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
                                                         </a>
                                                    </div>';
                     }
@@ -14788,7 +14788,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                         $return_html .= '<div class="four-image">
                                                             <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '">
-                                                             <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
+                                                             <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
                                                              </a>
                                                         </div>';
 
@@ -14798,7 +14798,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     }
 
                     $return_html .= '<div class="four-image">
-                                                        <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '"><img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['file_name']) . '" > </a>
+                                                        <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '"><img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['file_name']) . '" alt="'. $artmultiimage[3]['file_name'] .'"> </a>
                                                         <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '" >
                                                     <div class="more-image" >
                                                 <span>
@@ -15013,12 +15013,12 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                             if ($art_userimage) {
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                                 } else {
-                                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                                 }
                             } else {
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             }
                         } else {
 
@@ -15028,9 +15028,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
 
                             if ($info) {
-                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt=" ">';
+                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                             } else {
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             }
                         }
 
@@ -15147,12 +15147,12 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     if ($art_userimage) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         } else {
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage . '">';
                         }
                     } else {
-                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 } else {
 
@@ -15162,9 +15162,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
 
                     if ($info) {
-                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt=" ">';
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage . ' ">';
                     } else {
-                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 }
 
@@ -15375,12 +15375,12 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         if ($key['art_user_image']) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'])) {
 
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt="" >';
+                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt="'. $key['art_user_image'] . '" >';
                             }
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
 
@@ -15390,9 +15390,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
 
                         if ($info) {
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt=" ">';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt="'. $key['art_user_image'] . '">';
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     }
                     $return_html .= '</div>
@@ -15515,12 +15515,12 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     if ($key['art_user_image']) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'])) {
 
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         } else {
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt="" >';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt="'. $key['art_user_image'] . '" >';
                         }
                     } else {
-                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 } else {
 
@@ -15530,9 +15530,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
 
                     if ($info) {
-                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt=" ">';
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'] . '" alt="'. $key['art_user_image'] .'">';
                     } else {
-                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 }
                 $return_html .= '</a>
@@ -15654,7 +15654,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                         $return_html .= '<div class="one-image" >
              <a href="javascript:void(0);" onclick="login_profile();">
-            <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+            <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="'. $artmultiimage[0]['file_name'] .'">
               </a>
           </div>';
                     } elseif (in_array($ext, $allowespdf)) {
@@ -15708,7 +15708,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     } elseif (in_array($ext, $allowesaudio)) {
                         $return_html .= '<div class="audio_main_div">
                                                 <div class="audio_img">
-                                                    <img src="' . base_url('assets/images/music-icon.png') . '">  
+                                                    <img src="' . base_url('assets/images/music-icon.png') . '" alt="music-icon.png">  
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio controls>
@@ -15725,24 +15725,24 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                         $return_html .= '<div class="two-images">
                                                         <a href="javascript:void(0);" onclick="login_profile();">
-                                                       <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
+                                                       <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
                                                          </a>
                                                     </div>';
                     }
                 } elseif (count($artmultiimage) == 3) {
                     $return_html .= '<div class="three-image-top">
                                                     <a href="javascript:void(0);" onclick="login_profile();">
-                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="'. $artmultiimage[0]['file_name'] .'">
                                                      </a>
                                                 </div>
                                                <div class="three-image">
                                                     <a href="javascript:void(0);" onclick="login_profile();">
-                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '">
+                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '" alt="'. $artmultiimage[1]['file_name'] .'">
                                                      </a>
                                                 </div>
                                               <div class="three-image">
                                                     <a href="javascript:void(0);" onclick="login_profile();">
-                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '">
+                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '" alt="'. $artmultiimage[2]['file_name'] .'">
                                                     </a>
                                                 </div>';
                 } elseif (count($artmultiimage) == 4) {
@@ -15751,7 +15751,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                         $return_html .= '<div class="four-image">
                                                         <a href="javascript:void(0);" onclick="login_profile();">
-                                                        <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
+                                                        <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
                                                         </a>
                                                    </div>';
                     }
@@ -15762,7 +15762,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                         $return_html .= '<div class="four-image">
                                                             <a href="javascript:void(0);" onclick="login_profile();">
-                                                            <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
+                                                            <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
                                                              </a>
                                                         </div>';
 
@@ -15773,7 +15773,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                     $return_html .= '<div class="four-image">
                                                         <a href="javascript:void(0);" onclick="login_profile();">
-                                                        <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '">
+                                                        <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '" alt="'. $artmultiimage[3]['file_name'] .'">
                                                         </a>
                                                         <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '" >
                                                     <div class="more-image" >
@@ -15962,12 +15962,12 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                             if ($art_userimage) {
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                                 } else {
-                                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                                 }
                             } else {
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             }
                         } else {
 
@@ -15977,9 +15977,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
 
                             if ($info) {
-                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt=" ">';
+                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                             } else {
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             }
                         }
 
