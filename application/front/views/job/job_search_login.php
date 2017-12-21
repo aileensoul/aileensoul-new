@@ -478,7 +478,7 @@
                                     <div class="job-contact-frnd ">
                                         <!--.........AJAX DATA......-->           
                                     </div>
-                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="loaderimage"/></div>
                                 </div>
 
                             </div>
@@ -493,40 +493,40 @@
                                 <ul class="all-pr-list">
                                     <li>
                                         <a href="<?php echo base_url('job'); ?>">
-                                            <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
+                                            <div class="all-pr-img" alt="job">
+                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="job">
                                             </div>
                                             <span>Job Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('recruiter'); ?>">
+                                        <a href="<?php echo base_url('recruiter'); ?>" >
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>" alt="recruiter">
                                             </div>
                                             <span>Recruiter Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        <a href="<?php echo base_url('freelancer'); ?>" >
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>"  alt="freelancer">
                                             </div>
                                             <span>Freelance Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('business-profile'); ?>">
+                                        <a href="<?php echo base_url('business-profile'); ?>" >
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="business profile">
                                             </div>
                                             <span>Business Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('artist'); ?>">
+                                        <a href="<?php echo base_url('artist'); ?>" >
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="artist">
                                             </div>
                                             <span>Artistic Profile</span>
                                         </a>

@@ -243,7 +243,7 @@
                                                 ?>
                                                 <div class="art-img-nn">
                                                     <div class="art_no_post_img">
-                                                        <img src="<?php echo base_url('assets/img/free-no1.png') ?>">
+                                                        <img alt="No Shortlist" src="<?php echo base_url('assets/img/free-no1.png') ?>">
                                                     </div>
                                                     <div class="art_no_post_text"><?php echo $this->lang->line("no_applied_freelancer"); ?></div> 
                                                 </div>

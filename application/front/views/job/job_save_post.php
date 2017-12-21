@@ -61,12 +61,12 @@
                         $image_ori = $image[0]['profile_background'];
                         if ($image_ori) {
                             ?>
-                            <img src="<?php echo JOB_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" / >
+                            <img src="<?php echo JOB_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $image[0]['profile_background']; ?>"/>
                             <?php
                         } else {
                             ?>
                                  <div class="bg-images no-cover-upload">
-                                <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
+                                <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="noimage"/>
                             </div>
                         <?php }
                         ?>
@@ -83,7 +83,7 @@
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
                             <?php if ($jobdata[0]['job_user_image'] != '') { ?>
-                                <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $jobdata[0]['job_user_image']; ?>" alt="" >
+                                <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $jobdata[0]['job_user_image']; ?>" alt="<?php echo $jobdata[0]['job_user_image']; ?>" >
                             <?php } else { ?>
                                 <?php
                                 $a = $jobdata[0]['fname'];
@@ -103,7 +103,7 @@
                                     <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
                                 </div>
                             <?php } ?>
-                            <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>assets/img/cam.png">Update Profile Picture</a>
+                                <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>assets/img/cam.png" alt="update profile picture">Update Profile Picture</a>
                         </div>
                     </div>
                     <div class="job-menu-profile mob-block">
@@ -191,7 +191,7 @@
                     </div>
                     <div class="job-contact-frnd1">
                     </div>
-                     <div class="loader"><p style="text-align:center;"><img  src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
+                     <div class="loader"><p style="text-align:center;"><img  src="<?php echo base_url('assets/images/loading.gif'); ?>" alt="loaderimage"/></p></div>
                 </div>
                 <?php
                 if ($count_profile == 100) {
@@ -205,7 +205,7 @@
                                 <div class="circles">
                                     <div class="second circle-1 ">
                                         <div class="true_progtree">
-                                            <img src="<?php echo base_url("img/true.png"); ?>">
+                                            <img src="<?php echo base_url("img/true.png"); ?>" alt="successimage">
                                         </div>
                                         <div class="tr_text">
                                             Successfully Completed
@@ -269,7 +269,7 @@
 
                             <div id="popup-form">
 
-                                <div class="fw" id="loader_popup"  style="text-align:center; display:none;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                                <div class="fw" id="loader_popup"  style="text-align:center; display:none;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="loaderimage"/></div>
 
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
 

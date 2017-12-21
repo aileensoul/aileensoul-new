@@ -6,7 +6,7 @@
         <?php echo $head; ?>
         <!-- Calender Css Start-->
 
-        <title>Freelancer Profile - Aileensoul.com</title>
+        <title><?php echo $title; ?></title>
 
         <!-- Calender Css End-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">

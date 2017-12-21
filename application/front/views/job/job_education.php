@@ -68,7 +68,7 @@
                            <div class="panel">
                               <div <?php if($this->uri->segment(3) =="primary"){ ?> class="panel-heading active" <?php }else{ ?> class="panel-heading" <?php } ?> id="panel-heading">
                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#bs-collapse" href="#one" id="toggle">
+                                     <a data-toggle="collapse" data-parent="#bs-collapse" href="#one" id="toggle" title="Primary">
                                     Primary
                                     </a>
                                  </h4>
@@ -204,7 +204,7 @@
                            <div class="panel">
                               <div  <?php if($this->uri->segment(3) =="secondary"){ ?> class="panel-heading active" <?php }else{ ?> class="panel-heading" <?php } ?>  id="panel-heading1">
                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#bs-collapse" href="#two" id="toggle1">
+                                     <a data-toggle="collapse" data-parent="#bs-collapse" href="#two" id="toggle1" title="Secondary">
                                     Secondary
                                     </a>
                                  </h4>
@@ -339,7 +339,7 @@
                            <div class="panel">
                               <div <?php if($this->uri->segment(3) =="higher-secondary"){ ?> class="panel-heading active" <?php }else{ ?> class="panel-heading" <?php } ?> id="panel-heading2">
                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#bs-collapse" href="#three" id="toggle2">
+                                    <a data-toggle="collapse" data-parent="#bs-collapse" href="#three" id="toggle2" title="Higher secondary">
                                     Higher secondary
                                     </a>
                                  </h4>
@@ -431,7 +431,7 @@
                                                    ?>
                                                        <div class="dele_highrt">
                                                         
-                                                      <a title="open pdf" class="fl" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL. $edu_certificate_higher_secondary1 ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red;" aria-hidden="true"></i></a>
+                                                      <a title="open pdf" class="fl" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL. $edu_certificate_higher_secondary1 ?>" title="job certificate"><i class="fa fa-file-pdf-o fa-2x" style="color: red;" aria-hidden="true"></i></a>
 
 
                                                          <div style="float: left;" id="higher_secondary_certi" class="tsecondary_certi"> 
@@ -493,7 +493,7 @@
                            <div class="panel">
                               <div <?php if($this->uri->segment(3) =="graduation"){ ?> class="panel-heading active" <?php }else{ ?> class="panel-heading" <?php } ?>  id="panel-heading3">
                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#bs-collapse" href="#four" id="toggle3">
+                                     <a data-toggle="collapse" data-parent="#bs-collapse" href="#four" id="toggle3" title=" Graduation / Post Graduation">
                                     Graduation / Post Graduation
                                     </a>
                                  </h4>
@@ -981,7 +981,7 @@
     var base_url = '<?php echo base_url(); ?>';
     var predefine_data =' <?php echo $predefine_data; ?>';
 
-    var html = '<h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata1 as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a>';
+    var html = '<h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata1 as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn" title="Ok">OK</a>';
 
    
 </script>

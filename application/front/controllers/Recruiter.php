@@ -1989,7 +1989,7 @@ class Recruiter extends MY_Controller {
         } else {
             $postdata .= '<div class="art-img-nn">';
             $postdata .= '    <div class="art_no_post_img">';
-            $postdata .= '<img src="' . base_url() . 'assets/img/job-no1.png">';
+            $postdata .= '<img src="' . base_url() . 'assets/img/job-no1.png" alt="nojobimage">';
 
             $postdata .= '</div>';
             $postdata .= '<div class="art_no_post_text">';
@@ -2125,9 +2125,9 @@ class Recruiter extends MY_Controller {
 
                                 if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) {
 
-                                    $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                                    $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                                 } else {
-                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
+                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '" alt="' . $cache_time . '">';
                                 }
                             } else {
 
@@ -2135,14 +2135,14 @@ class Recruiter extends MY_Controller {
                                 $s3 = new S3(awsAccessKey, awsSecretKey);
                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                 if ($info) {
-                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
+                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '" alt="' . $cache_time .'">';
                                 } else {
-                                    $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                                    $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                                 }
                             }
                         } else {
 
-                            $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                            $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                         }
                         $rec_post .= '</a>
                                         </div>';
@@ -2175,7 +2175,7 @@ class Recruiter extends MY_Controller {
             <div class="all-job-middle">
                 <p class="pb5">
                     <span class="location">';
-                        $rec_post .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                        $rec_post .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '" alt="locationimage">';
                         if ($cityname || $countryname) {
                             if ($cityname) {
                                 $rec_post .= $cityname . ', ';
@@ -2185,7 +2185,7 @@ class Recruiter extends MY_Controller {
                         $rec_post .= '      </span>
                     </span>';
                         $rec_post .= '<span class="exp">
-                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '">';
+                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '" alt="experienceimage">';
 
                         if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
                             $rec_post .= $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " " . "(Fresher can also apply)";
@@ -2299,9 +2299,9 @@ class Recruiter extends MY_Controller {
                         $rec_post .= '<div class="post-img">
                                             <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                         if ($cache_time_1) {
-                            $rec_post .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time) . '">';
+                            $rec_post .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time) . '" alt=' . $cache_time . '>';
                         } else {
-                            $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                            $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . ' alt="commonimage">';
                         }
                         $rec_post .= '</a>
                                         </div>';
@@ -2334,7 +2334,7 @@ class Recruiter extends MY_Controller {
             <div class="all-job-middle">
                 <p class="pb5">
                     <span class="location">';
-                        $rec_post .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                        $rec_post .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '" alt="location">';
                         if ($cityname || $countryname) {
                             if ($cityname) {
                                 $rec_post .= $cityname . ', ';
@@ -2344,7 +2344,7 @@ class Recruiter extends MY_Controller {
                         $rec_post .= '      </span>
                     </span>';
                         $rec_post .= '<span class="exp">
-                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '">';
+                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '"> alt="experience"';
 
                         if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
                             $rec_post .= $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " " . "(Fresher can also apply)";
@@ -2413,7 +2413,7 @@ class Recruiter extends MY_Controller {
             $rec_post .= '<div class="art-img-nn">
                                             <div class="art_no_post_img">
 
-                                                <img src="' . base_url('assets/img/job-no.png') . '">
+                                                <img src="' . base_url('assets/img/job-no.png') . '" alt="noimage">
 
                                             </div>
                                             <div class="art_no_post_text">
@@ -3670,7 +3670,7 @@ class Recruiter extends MY_Controller {
             $return_html .= '<div class="art-img-nn">
                                         <div class="art_no_post_img">
 
-                                            <img src="' . base_url() . 'assets/img/job-no1.png">
+                                            <img src="' . base_url() . 'assets/img/job-no1.png" alt="noimage">
 
                                         </div>
                                         <div class="art_no_post_text">
@@ -3794,7 +3794,7 @@ class Recruiter extends MY_Controller {
         }
         $this->data['reccdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
 
-        $coverpic = '<img  src="' . REC_BG_THUMB_UPLOAD_URL . $this->data['reccdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
+        $coverpic = '<img  src="' . REC_BG_THUMB_UPLOAD_URL . $this->data['reccdata'][0]['profile_background'] . '" name="image_src" id="image_src" alt="' . $this->data['reccdata'][0]['profile_background'] . '" />';
         echo $coverpic;
         //echo '<img src="' . $this->data['recdata'][0]['profile_background'] . '" />';
     }

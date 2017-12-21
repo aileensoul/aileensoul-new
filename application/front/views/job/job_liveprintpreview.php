@@ -299,13 +299,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                         if ($info && $image[0]['profile_background'] != '') {
                             ?>
-                           <img src = "<?php echo JOB_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                           <img src = "<?php echo JOB_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $image[0]['profile_background']; ?>"/>
                    
                      <?php
                         } else {
                             ?>
                     <div class="bg-images no-cover-upload">
-                     <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
+                     <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" title="NOIMAGE" />
                     </div>
                      <?php }
                         ?>
@@ -336,7 +336,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                          $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                       if ($job[0]['job_user_image'] != '' && $info) { ?>
-                     <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $job[0]['job_user_image']; ?>" alt="" >
+                     <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $job[0]['job_user_image']; ?>" alt="<?php echo $job[0]['job_user_image']; ?>" >
                      <?php } else { ?>
                      <?php
                         $a = trim($job[0]['fname']);
@@ -357,7 +357,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                      </div>
                      <?php } ?>
                      <?php if ($userid == $id) { ?>
-                     <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
+                     <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>assets/img/cam.png" alt="Update Profile Picture"> Update Profile Picture</a>
                      <?php } ?>
                   </div>
                </div>
@@ -1848,7 +1848,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                   <div class="circles">
                      <div class="second circle-1 ">
                         <div class="true_progtree">
-                           <img src="<?php echo base_url("img/true.png"); ?>">
+                           <img src="<?php echo base_url("img/true.png"); ?>" alt="Successimage">
                         </div>
                         <div class="tr_text">
                            Successfully Completed
@@ -1897,7 +1897,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                   <span class="mes">
                      <div id="popup-form">
 
-                     <div class="fw" id="loader_popup"  style="text-align:center; display:none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                     <div class="fw" id="loader_popup"  style="text-align:center; display:none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="Loaderimage"/></div>
 
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
 
@@ -2252,7 +2252,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         success: function (response)
                         {
                             if (response.data == "ok") { 
-                                $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Login');
+                                $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" alt="loaderimage"/> &nbsp; Login');
                                 if (response.is_job == '1') {
                                     window.location = "<?php echo base_url() ?>job/resume/" + site_url;
                                 } else {
@@ -2451,7 +2451,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         success: function (response)
                         {
                             if (response.okmsg == "ok") {
-                                $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
+                                $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" alt="loaderimage"/> &nbsp; Sign Up ...');
 //                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
                                 window.location = "<?php echo base_url() ?>recruiter";
                             } else {

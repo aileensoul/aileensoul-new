@@ -1,4 +1,25 @@
 ﻿<!DOCTYPE html>
+<?php
+
+if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+    // $date = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
+    header("HTTP/1.1 304 Not Modified");
+    exit();
+}
+
+$format = 'D, d M Y H:i:s \G\M\T';
+$now = time();
+
+$date = gmdate($format, $now);
+header('Date: '.$date);
+header('Last-Modified: '.$date);
+
+$date = gmdate($format, $now+30);
+header('Expires: '.$date);
+
+header('Cache-Control: public, max-age=30');
+
+?>
 <html lang="en" class="custom-main">
     <head>
         <meta charset="utf-8">
@@ -48,28 +69,28 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
         <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/cookieconsent.min.css') ?>" />
-        <script src="<?php echo base_url('assets/js/cookieconsent.min.js') ?>"></script>
+<!--        <link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/css/cookieconsent.min.css') ?>" />
+        <script src="<?php //echo base_url('assets/js/cookieconsent.min.js') ?>"></script>
         <script>
-                        window.addEventListener("load", function () {
-                            window.cookieconsent.initialise({
-                                "palette": {
-                                    "popup": {
-                                        "background": "#eaf7f7",
-                                        "text": "#5c7291"
-                                    },
-                                    "button": {
-                                        "background": "#56cbdb",
-                                        "text": "#ffffff"
-                                    }
-                                },
-                                "type": "opt-out",
-                                "content": {
-                                    "href": "https://www.aileensoul.com/cookies-policy"
-                                }
-                            })
-                        });
-        </script>
+                window.addEventListener("load", function () {
+                    window.cookieconsent.initialise({
+                        "palette": {
+                            "popup": {
+                                "background": "#eaf7f7",
+                                "text": "#5c7291"
+                            },
+                            "button": {
+                                "background": "#56cbdb",
+                                "text": "#ffffff"
+                            }
+                        },
+                        "type": "opt-out",
+                        "content": {
+                            "href": "https://www.aileensoul.com/privacy-policy"
+                        }
+                    })
+                });
+        </script>-->
     </head>
     <body class="custom-landscape">
     <!--    <script type="application/ld+json">
@@ -320,4 +341,3 @@
         <script src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>
     </body>
 </html>
-

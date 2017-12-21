@@ -6,9 +6,9 @@
             <div class="profile-pho">
                 <div class="user-pic">
                     <?php if ($freelancerdata[0]['freelancer_hire_user_image'] != '') { ?>
-                        <img src="<?php echo base_url(USERIMAGE . $freelancerdata[0]['freelancer_hire_user_image']); ?>" alt="" >
+                        <img src="<?php echo base_url(USERIMAGE . $freelancerdata[0]['freelancer_hire_user_image']); ?>" alt="<?php echo ucwords($userdata[0]['first_name']) . ' ' . ucwords($userdata[0]['last_name']); ?>" >
                     <?php } else { ?>
-                        <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
+                        <img alt="No image" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
                     <?php } ?>
                         <a title="Update Profile Picture" href="#popup-form" class="fancybox"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
                 </div>

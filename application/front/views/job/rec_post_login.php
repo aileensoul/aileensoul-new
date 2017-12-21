@@ -401,7 +401,7 @@
                                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                     if ($info && $recdata[0]['profile_background'] != '') {
                                                         ?>
-                                                        <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                                                        <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" alt='<?php echo $recdata[0]['profile_background']; ?>'/>
                                                         <?php
                                                     } else {
                                                         ?>
@@ -422,7 +422,7 @@
                                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                     if ($recdata[0]['recruiter_user_image'] != '' && $info) {
                                                         ?>
-                                                        <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
+                                                        <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
                                                         <?php
                                                     } else {
 
@@ -516,7 +516,7 @@
                                     <li>
                                         <a href="<?php echo base_url('job'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="job">
                                             </div>
                                             <span>Job Profile</span>
                                         </a>
@@ -524,7 +524,7 @@
                                     <li>
                                         <a href="<?php echo base_url('recruiter'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>" alt="recruiter">
                                             </div>
                                             <span>Recruiter Profile</span>
                                         </a>
@@ -532,7 +532,7 @@
                                     <li>
                                         <a href="<?php echo base_url('freelancer'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="freelancer">
                                             </div>
                                             <span>Freelance Profile</span>
                                         </a>
@@ -540,7 +540,7 @@
                                     <li>
                                         <a href="<?php echo base_url('business-profile'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="business-profile">
                                             </div>
                                             <span>Business Profile</span>
                                         </a>
@@ -548,7 +548,7 @@
                                     <li>
                                         <a href="<?php echo base_url('artist'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="artist">
                                             </div>
                                             <span>Artistic Profile</span>
                                         </a>
@@ -597,22 +597,22 @@
                                                     if (IMAGEPATHFROM == 'upload') {
                                                         if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) { 
                                                             ?>
-                                                           <img src="<?php echo  base_url('assets/images/commen-img.png') ?>">
+                                                <img src="<?php echo  base_url('assets/images/commen-img.png') ?>" title="commonimage">
                                                    <?php     } else { ?>
-                                                           <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
+                                                           <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>" title="<?php echo $cache_time; ?>">
                                                        <?php  }
                                                     } else {
                                                         $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
                                                         $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                         if ($info) { ?>
-                                                           <img src="<?php echo  REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
+                                                           <img src="<?php echo  REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>" title="<?php echo $cache_time; ?>">
                                                          <?php } else { ?>
-                                                          <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
+                                                          <img src="<?php echo base_url('assets/images/commen-img.png') ?>" title="commonimage">
                                                        <?php  }
                                                     }
                                                 } else { ?>
-                                                    <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
+                                                    <img src="<?php echo base_url('assets/images/commen-img.png') ?>" title="commonimage">
                                                 <?php } ?>
                                             </a>
                                         </div>
@@ -881,22 +881,22 @@
                                                     if (IMAGEPATHFROM == 'upload') {
                                                         if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) { 
                                                             ?>
-                                                           <img src="<?php echo  base_url('assets/images/commen-img.png') ?>">
+                                                           <img src="<?php echo  base_url('assets/images/commen-img.png') ?>" title="commonimage">
                                                    <?php     } else { ?>
-                                                           <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
+                                                           <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>" title="<?php echo $cache_time; ?>">
                                                        <?php  }
                                                     } else {
                                                         $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
                                                         $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                         if ($info) { ?>
-                                                           <img src="<?php echo  REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
+                                                           <img src="<?php echo  REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>" title="<?php echo $cache_time; ?>">
                                                          <?php } else { ?>
-                                                          <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
+                                                          <img src="<?php echo base_url('assets/images/commen-img.png') ?>" title="commonimage">
                                                        <?php  }
                                                     }
                                                 } else { ?>
-                                                    <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
+                                                    <img src="<?php echo base_url('assets/images/commen-img.png') ?>" title="commonimage">
                                                 <?php } ?>
                                                     
                                                 </a>
@@ -925,7 +925,7 @@
                                                         $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
                                                         $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                                                         ?>
-                                                        <span><img class="pr5" src="<?php echo base_url('assets/images/location.png'); ?>">
+                                                        <span><img class="pr5" src="<?php echo base_url('assets/images/location.png'); ?>" title="locationimage">
                                                             <?php
                                                             if ($cityname || $countryname) {
                                                                 if ($cityname) {
@@ -939,7 +939,7 @@
                                                 </p>
                                                 <p class="loca-exp">
                                                     <span class="exp">
-                                                        <span><img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">
+                                                        <span><img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>" title="experienceimage">
 
                                                             <?php
                                                             if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {

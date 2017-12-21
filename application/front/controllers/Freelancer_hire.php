@@ -75,6 +75,7 @@ class Freelancer_hire extends MY_Controller {
 //for search start
         $this->freelancer_hire_search();
 //for search end
+        $this->data['title'] = "Basic Information | Employer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_basic_info', $this->data);
     }
 
@@ -248,6 +249,7 @@ class Freelancer_hire extends MY_Controller {
 // code for search start
         $this->freelancer_hire_search();
 // code for search end
+        $this->data['title'] = "Address information | Employer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_address_info', $this->data);
     }
 
@@ -436,6 +438,7 @@ class Freelancer_hire extends MY_Controller {
 // code for search start
         $this->freelancer_hire_search();
 // code for search end
+        $this->data['title'] = "Professional Information | Employer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_professional_info', $this->data);
     }
 

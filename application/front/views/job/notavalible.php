@@ -14,7 +14,7 @@
                <div class="col-md-12">
                   <div class="text_center">
                      <div class="sory_image">
-                        <img src="<?php echo base_url('assets/img/sorry_img.png'); ?>" >
+                        <img src="<?php echo base_url('assets/img/sorry_img.png'); ?>" alt="sorry">
                      </div>
                      <div class="not_founde_head">Sorry !</div>
                      <div class="not_founde_head2">we coundn’t find any matches with your input.</div>

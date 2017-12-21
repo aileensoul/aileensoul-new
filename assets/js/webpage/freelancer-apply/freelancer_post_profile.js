@@ -344,6 +344,10 @@ function short_user(abc) {
 function forgot_profile() {
     $('#forgotPassword').modal('show');
 }
+function register_profile(){
+    
+    $('#register').modal('show');
+}
   /* validation */
 
     $("#login_form").validate({

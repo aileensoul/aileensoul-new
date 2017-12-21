@@ -245,7 +245,7 @@
                                                             else
                                                             {
                                                             ?>
-                                                         <img src="<?php echo JOB_WORK_MAIN_UPLOAD_URL . $work_certificate1 ?>" style="width:100px;height:100px;">
+                                                         <img src="<?php echo JOB_WORK_MAIN_UPLOAD_URL . $work_certificate1 ?>" style="width:100px;height:100px;" alt="<?php echo $work_certificate1; ?>">
                                                          <?php
                                                             }//else end
                                                             ?>
@@ -394,7 +394,7 @@
                                                          else
                                                          {
                                                          ?>
-                                                      <img src="<?php echo JOB_WORK_MAIN_UPLOAD_URL . $work_certificate1 ?>" style="width:100px;height:100px;">
+                                                      <img src="<?php echo JOB_WORK_MAIN_UPLOAD_URL . $work_certificate1 ?>" style="width:100px;height:100px;" alt="<?php echo $work_certificate1; ?>">
                                                       <?php
                                                          }//else end
                                                          ?>

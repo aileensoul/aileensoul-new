@@ -381,12 +381,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
-                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                        <h2 class="logo"><a href="<?php echo base_url(); ?>" title="Aileensoul">Aileensoul</a></h2>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                         <div class="btn-right pull-right">
-                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Create an account</a>
+                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2" title="Login">Login</a>
+                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3" title="Create an account">Create an account</a>
                         </div>
                     </div>
                 </div>
@@ -402,29 +402,29 @@
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
-                                            <a href="<?php echo base_url("jobs"); ?>" >All Jobs</a>
+                                            <a href="<?php echo base_url("jobs"); ?>" title="All Jobs">All Jobs</a>
                                             <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs/?city=Ahmedabad"); ?>" <?php if ($_GET['city'] == 'Ahmedabad') { ?> class="job_active" <?php } ?>>Ahmedabad Jobs</a>
+                                                <a href="<?php echo base_url("jobs/?city=Ahmedabad"); ?>" <?php if ($_GET['city'] == 'Ahmedabad') { ?> class="job_active" <?php } ?> title="Ahmedabad Jobs">Ahmedabad Jobs</a>
                                             </label>
                                             <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs/?city=Bengaluru"); ?>" <?php if ($_GET['city'] == 'Bengaluru') { ?> class="job_active" <?php } ?>>Bengaluru Jobs</a>
+                                                <a href="<?php echo base_url("jobs/?city=Bengaluru"); ?>" <?php if ($_GET['city'] == 'Bengaluru') { ?> class="job_active" <?php } ?> title="Bengaluru Jobs">Bengaluru Jobs</a>
                                             </label>
                                             <label for="City" class="lbpos fw"> 
-                                                <a href="<?php echo base_url("jobs/?city=Chennai"); ?>" <?php if ($_GET['city'] == 'Chennai') { ?> class="job_active" <?php } ?>>Chennai Jobs</a>
+                                                <a href="<?php echo base_url("jobs/?city=Chennai"); ?>" <?php if ($_GET['city'] == 'Chennai') { ?> class="job_active" <?php } ?> title="Chennai Jobs">Chennai Jobs</a>
                                             </label>
                                             <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs/?city=Delhi"); ?>" <?php if ($_GET['city'] == 'Delhi') { ?> class="job_active" <?php } ?>>Delhi Jobs</a>
+                                                <a href="<?php echo base_url("jobs/?city=Delhi"); ?>" <?php if ($_GET['city'] == 'Delhi') { ?> class="job_active" <?php } ?> title="Delhi Jobs">Delhi Jobs</a>
                                             </label>
                                             <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs/?city=Hyderabad"); ?>" <?php if ($_GET['city'] == 'Hyderabad') { ?> class="job_active" <?php } ?>>Hyderabad Jobs</a>
-                                            </label>
-
-                                            <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs/?city=Mumbai"); ?>" <?php if ($_GET['city'] == 'Mumbai') { ?> class="job_active" <?php } ?>>Mumbai Jobs</a>
+                                                <a href="<?php echo base_url("jobs/?city=Hyderabad"); ?>" <?php if ($_GET['city'] == 'Hyderabad') { ?> class="job_active" <?php } ?> title="Hyderabad Jobs">Hyderabad Jobs</a>
                                             </label>
 
                                             <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs/?city=pune"); ?>" <?php if ($_GET['city'] == 'pune') { ?> class="job_active" <?php } ?>>Pune Jobs</a>
+                                                <a href="<?php echo base_url("jobs/?city=Mumbai"); ?>" <?php if ($_GET['city'] == 'Mumbai') { ?> class="job_active" <?php } ?> title="Mumbai Jobs">Mumbai Jobs</a>
+                                            </label>
+
+                                            <label for="City" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs/?city=pune"); ?>" <?php if ($_GET['city'] == 'pune') { ?> class="job_active" <?php } ?> title="Pune Jobs">Pune Jobs</a>
                                             </label>
 
 
@@ -836,7 +836,7 @@
                                                                         <li class=fr>
 
 
-                                                                            <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button"> Apply</a>
+                                                                            <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button" title="Apply"> Apply</a>
                                                                         </li> 
                                                                         <!--                                                                                <li>
                                                                                                                                                                 <a  href="javascript:void(0);" onclick="login_profile();" class="savedpost> button">Save</a>
@@ -1166,7 +1166,7 @@
                                                                                 <li class=fr>
 
 
-                                                                                    <a href="javascript:void(0);" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button"> Apply</a>
+                                                                                    <a href="javascript:void(0);" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button" title="applypost"> Apply</a>
                                                                                 </li> 
                                                                                 <li>
                                                                                     <!--<a  href="javascript:void(0);" onclick="login_profile();" class="savedpost> button">Save</a>-->
@@ -1199,11 +1199,11 @@
 
                              <div class="all-profile-box">
                                 <div class="all-pro-head">
-                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
+                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right" title="All">All</a></h4>
                                 </div>
                                 <ul class="all-pr-list">
                                     <li>
-                                        <a href="<?php echo base_url('job'); ?>">
+                                        <a href="<?php echo base_url('job'); ?>" title="job">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
                                             </div>
@@ -1211,7 +1211,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('recruiter'); ?>">
+                                        <a href="<?php echo base_url('recruiter'); ?>" title="recruiter">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
                                             </div>
@@ -1219,7 +1219,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        <a href="<?php echo base_url('freelancer'); ?>" title="freelancer">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
                                             </div>
@@ -1227,7 +1227,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('business-profile'); ?>">
+                                        <a href="<?php echo base_url('business-profile'); ?>" title="business-profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
                                             </div>
@@ -1235,7 +1235,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('artist'); ?>">
+                                        <a href="<?php echo base_url('artist'); ?>" title="artist">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i5.jpg'); ?>">
                                             </div>
@@ -1313,11 +1313,11 @@
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn" title="Forgot Password ?">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();" title="Create an account">Create an account</a>
                                         </p>
                                     </form>
 
@@ -1377,11 +1377,11 @@
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn" title="Forgot Password ?">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();" title="Create an account">Create an account</a>
                                         </p>
                                     </form>
 
@@ -1538,7 +1538,7 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our
-                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>" title="Terms and Condition">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
@@ -1546,7 +1546,7 @@
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>
-                                                Already have an account ? <a tabindex="12" id ="postid" onClick="login_profile_apply()" href="javascript:void(0);"> Log In </a>
+                                                Already have an account ? <a tabindex="12" id ="postid" onClick="login_profile_apply()" href="javascript:void(0);" title="Log In"> Log In </a>
                                             </p>
                                         </div>
                                     </form>
@@ -1652,7 +1652,7 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our<br class="mob-none">
-                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>" title="Terms and Condition">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>

@@ -392,12 +392,12 @@
                                                         ?>
 
                                                         <!-- box image start -->
-                                                        <img src="<?php echo FREE_HIRE_BG_THUMB_UPLOAD_URL . $freelancr_user_data[0]['profile_background']; ?>" class="bgImage" alt="<?php echo $freelancr_user_data[0]['rec_firstname'] . ' ' . $freelancr_user_data[0]['rec_lastname']; ?>">
+                                                        <img src="<?php echo FREE_HIRE_BG_THUMB_UPLOAD_URL . $freelancr_user_data[0]['profile_background']; ?>" class="bgImage" alt="<?php echo $freelancr_user_data[0]['fullname'] . ' ' . $freelancr_user_data[0]['username']; ?>">
                                                         <!-- box image end -->
                                                         <?php
                                                     } else {
                                                         ?>
-                                                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $freelancr_user_data[0]['rec_firstname'] . ' ' . $freelancr_user_data[0]['rec_lastname']; ?>" >
+                                                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $freelancr_user_data[0]['fullname'] . ' ' . $freelancr_user_data[0]['username']; ?>" >
                                                         <?php
                                                     }
                                                     ?>
@@ -700,7 +700,7 @@
                                                                         <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                                                     </div>
                                                                 <?php } ?>
-                                                                <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" >
+                                                                <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname']." ".$user['freelancer_post_username']; ?>" >
                                                                 <?php
                                                             } else {
                                                                 $filename = $this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'];
@@ -708,7 +708,7 @@
                                                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                                 if ($info) {
                                                                     ?>
-                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" >
+                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname']." ".$user['freelancer_post_username']; ?>" >
                                                                 <?php } else { ?>
                                                                     <div class="post-img-user">
                                                                         <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
@@ -753,11 +753,11 @@
                                             ?>
                                             <div class="art-img-nn">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url() . 'img/job-no.png">
+                                                    <img alt="No Projects" src="' . base_url() . 'img/job-no.png">
 
                                                 </div>
                                                 <div class="art_no_post_text">
-                                                    No  Post Available.
+                                                    No  Projects Available.
                                                 </div>
                                             </div>
                                         <?php } ?>
