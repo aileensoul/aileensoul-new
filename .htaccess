@@ -60,11 +60,13 @@ RewriteRule (.*) https://www.aileensoul.com/images/favicon.png [R=301,L]
 
 <IfModule mod_php5.c>
     #Session timeout
-    php_value session.cookie_lifetime 144000
-    php_value session.gc_maxlifetime 144000
+    php_value session.cookie_lifetime 63072000
+    php_value session.gc_maxlifetime 63072000
 </IfModule>
 
 RewriteEngine On
+RewriteBase /aileensoul-new/
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]  

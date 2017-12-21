@@ -1,26 +1,7 @@
 <?php
 $userid = $this->session->userdata('aileenuser');
 ?>
-<?php
 
-if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
-    // $date = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
-    header("HTTP/1.1 304 Not Modified");
-    exit();
-}
-
-$format = 'D, d M Y H:i:s \G\M\T';
-$now = time();
-
-$date = gmdate($format, $now);
-header('Date: '.$date);
-header('Last-Modified: '.$date);
-
-$date = gmdate($format, $now+30);
-header('Expires: '.$date);
-
-header('Cache-Control: public, max-age=30');
-?>
 <script type="text/javascript">
     function show_contact_notification(contact_notification_count, contact_to_id) {
         var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
