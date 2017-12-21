@@ -604,7 +604,7 @@
                             $('ul.left-form-each-ul li#left-form-each-li-2').addClass('filled-box');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(3)').addClass('active');
-                            $scope.title = 'Descrption | Business profile - Aileensoul';
+                            $scope.title = 'Description | Business profile - Aileensoul';
                             getDescription();
                         }
                         function activeImage() {

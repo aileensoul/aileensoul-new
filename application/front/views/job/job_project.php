@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <!-- start head -->
+
       <?php  echo $head; ?>
-      <!-- END HEAD -->
+
 
       <title><?php echo $title; ?></title>
 
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">
    </head>
-   <!-- END HEAD -->
-   <!-- Start HEADER -->
-   <?php 
+
+   <body class="page-container-bg-solid page-boxed botton_footer">
+     <?php 
       echo $header; 
       echo $job_header2_border;  
       ?>
-   <!-- END HEADER -->
-   <div class="js">
-   <body class="page-container-bg-solid page-boxed botton_footer">
       <section>
          <div class="user-midd-section" id="paddingtop_fixed_job">
             <div class="common-form1">

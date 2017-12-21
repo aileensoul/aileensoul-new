@@ -31,7 +31,7 @@ class Artist extends MY_Controller {
         //This function is there only one time users slug created after remove it End
 
         include ('artistic_include.php');
-        $this->data['no_artistic_post_html'] = '<div class="art_no_post_avl"><h3>Artistic Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('assets/img/art-no.png') . '></div><div class="art_no_post_text">No Post Available.</div></div></div>';
+        $this->data['no_artistic_post_html'] = '<div class="art_no_post_avl"><h3>Artistic Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('assets/img/art-no.png') . ' alt="art-no.png"></div><div class="art_no_post_text">No Post Available.</div></div></div>';
     }
 
     public function index() {
@@ -1080,12 +1080,12 @@ class Artist extends MY_Controller {
                 if ($artdataposted[0]['art_user_image']) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdataposted[0]['art_user_image'])) {
 
-                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdataposted[0]['art_user_image'] . '" alt="" >';
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdataposted[0]['art_user_image'] . '" alt="'. $artdataposted[0]['art_user_image'] . '" >';
                     }
                 } else {
-                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
 
@@ -1094,9 +1094,9 @@ class Artist extends MY_Controller {
                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                 if ($info) {
-                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdataposted[0]['art_user_image'] . '" name="image_src" id="image_src" />';
+                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdataposted[0]['art_user_image'] . '" name="image_src" id="image_src" alt="'. $artdataposted[0]['art_user_image'] .'"/>';
                 } else {
-                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt= "NOARTIMAGE">';
                 }
             }
             $return_html .= '</a>';
@@ -1110,12 +1110,12 @@ class Artist extends MY_Controller {
                 if ($artdata[0]['art_user_image']) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
 
-                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" alt="" >';
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" alt="'. $artdata[0]['art_user_image'] .'" >';
                     }
                 } else {
-                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
 
@@ -1124,10 +1124,10 @@ class Artist extends MY_Controller {
                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                 if ($info) {
 
-                    $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
+                    $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="'. $artdata[0]['art_user_image'] .'">';
                 } else {
 
-                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             }
             $return_html .= '</a>';
@@ -1282,14 +1282,14 @@ class Artist extends MY_Controller {
 
                 $return_html .= '<div class="one-image">';
                 $return_html .= '<a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-                                                    <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+                                                    <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="'. $artmultiimage[0]['file_name'] .'">
                                                 </a>
                                             </div>';
             } elseif (in_array($ext, $allowespdf)) {
 
                 $return_html .= '<div>
 <a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
-    <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
+    <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF.jpg">
 </div>
 </a>
 </div>';
@@ -1331,7 +1331,7 @@ class Artist extends MY_Controller {
             } elseif (in_array($ext, $allowesaudio)) {
                 $return_html .= '<div class="audio_main_div">
                                                 <div class="audio_img">
-                                                    <img src="' . base_url('assets/images/music-icon.png') . '" alt="<?php echo "music-icon.png"; ?>">  
+                                                    <img src="' . base_url('assets/images/music-icon.png') . '" alt="music-icon.png">  
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio controls>
@@ -1347,7 +1347,7 @@ class Artist extends MY_Controller {
 
                 $return_html .= '<div  class="two-images">
                                                 <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-                                                     <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="<?php echo $multiimage["file_name"]; ?>">
+                                                     <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="'.$multiimage["file_name"].'">
                                                 </a>
                                             </div>';
             }
@@ -1355,18 +1355,18 @@ class Artist extends MY_Controller {
             $return_html .= '<div class="three-image-top" >
                                             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
 
-                                                <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="<?php echo $artmultiimage[0]["file_name"]; ?>">
+                                                <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="'.$artmultiimage[0]["file_name"].'">
                                             </a>
                                         </div>
                                         <div class="three-image" >
 
                                             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-                                                <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '">
+                                                <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '" alt="'.$artmultiimage[1]['file_name'].'">
                                             </a>
                                         </div>
                                         <div class="three-image" >
                                             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-                                                <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '"> 
+                                                <img class = "three-columns" alt="'.$artmultiimage[2]['file_name'].'" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '"> 
                                             </a>
                                         </div>';
         } elseif (count($artmultiimage) == 4) {
@@ -1375,7 +1375,7 @@ class Artist extends MY_Controller {
 
                 $return_html .= '<div class="four-image">
                                                 <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-                                                     <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
+                                                     <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'.$multiimage['file_name'].'">
                                                 </a>
                                             </div>';
             }
@@ -1386,7 +1386,7 @@ class Artist extends MY_Controller {
 
                 $return_html .= '<div class="four-image">
                                                 <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-                                                    <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
+                                                    <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'.$multiimage['file_name'].'">
                                                 </a>
                                             </div>';
 
@@ -1396,7 +1396,7 @@ class Artist extends MY_Controller {
             }
             $return_html .= '<div class="four-image">
                                             <a href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '">
-                                                <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '"> 
+                                                <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '"  alt="'.$artmultiimage[3]['file_name'].'"> 
                                             </a>
                                             <a class="text-center" href="' . base_url('artist/post-detail/' . $row['art_post_id']) . '" >
                                                 <div class="more-image" >
@@ -1586,12 +1586,12 @@ class Artist extends MY_Controller {
                 if ($art_userimage) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                     }
                 } else {
-                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
 
@@ -1601,10 +1601,10 @@ class Artist extends MY_Controller {
 
 
                 if ($info) {
-                    $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
+                    $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="'. $art_userimage . '">';
                 } else {
 
-                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             }
             $return_html .= '</a>';
@@ -1714,12 +1714,12 @@ class Artist extends MY_Controller {
             if ($artdata[0]['art_user_image']) {
                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
 
-                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 } else {
-                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" alt="" >';
+                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" alt="'. $artdata[0]['art_user_image'] . '" >';
                 }
             } else {
-                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
             }
         } else {
 
@@ -1728,10 +1728,10 @@ class Artist extends MY_Controller {
             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
             if ($info) {
-                $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
+                $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="'. $artdata[0]['art_user_image'] .'">';
             } else {
 
-                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
             }
         }
         $return_html .= '</a></div>
@@ -1741,7 +1741,7 @@ class Artist extends MY_Controller {
                       
                       ' . form_error('post_comment') . ' 
                         <div class="mob-comment">       
-                            <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '">
+                            <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '" alt="send.png">
                             </button>
                         </div>
                           </div>
@@ -1816,7 +1816,7 @@ class Artist extends MY_Controller {
          <h3> Post</h3>
           <div class="art-img-nn">
          <div class="art_no_post_img">
-           <img src="' . base_url('assets/img/art-no.png') . '">
+           <img src="' . base_url('assets/img/art-no.png') . '" alt="art-no.png">
          </div>
          <div class="art_no_post_text">
            No Post Available.
@@ -1890,7 +1890,7 @@ class Artist extends MY_Controller {
          <h3> Post</h3>
           <div class="art-img-nn">
          <div class="art_no_post_img">
-        <img src="' . base_url('assets/img/art-no.png') . '">
+        <img src="' . base_url('assets/img/art-no.png') . '" alt="art-no.png">
          </div>
          <div class="art_no_post_text">
            No Post Available.
@@ -2024,12 +2024,12 @@ class Artist extends MY_Controller {
                 if ($user['art_user_image']) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $user['art_user_image'])) {
 
-                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $user['art_user_image'] . '" alt="" >';
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $user['art_user_image'] . '" alt="'. $user['art_user_image'] .'" >';
                     }
                 } else {
-                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
 
@@ -2038,10 +2038,10 @@ class Artist extends MY_Controller {
                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                 if ($info) {
-                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $user['art_user_image'] . '" height="50px" width="50px" alt="" >';
+                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $user['art_user_image'] . '" height="50px" width="50px" alt="'. $user['art_user_image'] . '" >';
                 } else {
 
-                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             }
             $return_html .= '</a>';
@@ -2188,12 +2188,12 @@ class Artist extends MY_Controller {
                     if ($artdata[0]['art_user_image']) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         } else {
-                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" alt="'. $artdata[0]['art_user_image'] .'" width="50" height="50">';
                         }
                     } else {
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 } else {
 
@@ -2205,7 +2205,7 @@ class Artist extends MY_Controller {
                         $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
                     } else {
 
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 }
 
@@ -2378,12 +2378,12 @@ class Artist extends MY_Controller {
                     if ($artdata[0]['art_user_image']) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         } else {
-                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" alt="'. $artdata[0]['art_user_image'] . '" width="50" height="50">';
                         }
                     } else {
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 } else {
 
@@ -2395,7 +2395,7 @@ class Artist extends MY_Controller {
                         $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
                     } else {
 
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 }
 
@@ -2512,12 +2512,12 @@ class Artist extends MY_Controller {
                     if ($userlist['art_user_image']) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
 
-                            $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         } else {
-                            $third_user_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '" alt="" >';
+                            $third_user_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '" alt="'. $userlist['art_user_image'] . '" >';
                         }
                     } else {
-                        $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 } else {
 
@@ -2528,10 +2528,10 @@ class Artist extends MY_Controller {
 
 
                     if ($info) {
-                        $third_user_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
+                        $third_user_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="'. $userlist['art_user_image'] . '">';
                     } else {
 
-                        $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 }
                 $third_user_html .= '</a>';
@@ -2639,12 +2639,12 @@ class Artist extends MY_Controller {
                         if ($userlist['art_user_image']) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
 
-                                $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $third_user_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '" alt="" >';
+                                $third_user_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '" alt="'. $userlist['art_user_image'] . '" >';
                             }
                         } else {
-                            $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
 
@@ -2656,10 +2656,10 @@ class Artist extends MY_Controller {
 
                         if ($info) {
 
-                            $third_user_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
+                            $third_user_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="'. $userlist['art_user_image'] . '">';
                         } else {
 
-                            $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     }
                     $third_user_html .= '</a>';
@@ -2784,12 +2784,12 @@ class Artist extends MY_Controller {
                         if ($userlist['art_user_image']) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
 
-                                $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $third_user_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '" alt="" >';
+                                $third_user_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '" alt="'. $userlist['art_user_image'] . '" >';
                             }
                         } else {
-                            $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
 
@@ -2798,10 +2798,10 @@ class Artist extends MY_Controller {
                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                         if ($info) {
-                            $third_user_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
+                            $third_user_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="'. $userlist['art_user_image'] .'">';
                         } else {
 
-                            $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     }
                     $third_user_html .= '</a>';
@@ -2959,12 +2959,12 @@ class Artist extends MY_Controller {
                     if ($artdata[0]['art_user_image']) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         } else {
-                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" alt="'. $artdata[0]['art_user_image'] .'" width="50" height="50">';
                         }
                     } else {
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 } else {
 
@@ -2973,10 +2973,10 @@ class Artist extends MY_Controller {
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                     if ($info) {
-                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="'.$artdata[0]['art_user_image'].'" width="50" height="50">';
                     } else {
 
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 }
 
@@ -3127,12 +3127,12 @@ class Artist extends MY_Controller {
                     if ($artdata[0]['art_user_image']) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         } else {
-                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" alt="'. $artdata[0]['art_user_image'] . '" width="50" height="50">';
                         }
                     } else {
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 } else {
 
@@ -3141,10 +3141,10 @@ class Artist extends MY_Controller {
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                     if ($info) {
-                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="'. $artdata[0]['art_user_image'] .'" width="50" height="50">';
                     } else {
 
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 }
 
@@ -3318,7 +3318,7 @@ class Artist extends MY_Controller {
                     $notfound = '<div class="art-img-nn">
          <div class="art_no_post_img">
 
-           <img src="' . base_url('assets/img/icon_no_following.png') . '">
+           <img src="' . base_url('assets/img/icon_no_following.png') . '" alt="icon_no_following.png">
         
          </div>
          <div class="art_no_post_text">
@@ -3471,12 +3471,12 @@ class Artist extends MY_Controller {
                         if ($artaval[0]['art_user_image']) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'])) {
 
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'] . '" alt="" >';
+                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'] . '" alt="'. $artaval[0]['art_user_image'] . '" >';
                             }
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
                         $filename = $this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'];
@@ -3485,9 +3485,9 @@ class Artist extends MY_Controller {
 
                         if ($info) {
 
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'] . '" height="50px" width="50px" alt="" >';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'] . '" height="50px" width="50px" alt="'. $artaval[0]['art_user_image'] . '" >';
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     }
                     $return_html .= '</a>';
@@ -3543,7 +3543,7 @@ class Artist extends MY_Controller {
         } else {
             $return_html .= '<div class="art-img-nn" id= "art-blank" style="display: block">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url('assets/img/icon_no_follower.png') . '">
+                                                    <img src="' . base_url('assets/img/icon_no_follower.png') . '" alt="icon_no_follower.png">
                                                 </div>
                                                 <div class="art_no_post_text">
                                                     No Followers Available.
@@ -3692,12 +3692,12 @@ class Artist extends MY_Controller {
                         if ($artaval[0]['art_user_image']) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'])) {
 
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'] . '" alt="" >';
+                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'] . '" alt="'. $artaval[0]['art_user_image'] .'" >';
                             }
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
                         $filename = $this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'];
@@ -3706,9 +3706,9 @@ class Artist extends MY_Controller {
 
                         if ($info) {
 
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'] . '" height="50px" width="50px" alt="" >';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'] . '" height="50px" width="50px" alt="'. $artaval[0]['art_user_image'] .'" >';
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     }
                     $return_html .= '</a>';
@@ -3777,7 +3777,7 @@ class Artist extends MY_Controller {
 
             $return_html .= '<div class = "art-img-nn">
                                                     <div class = "art_no_post_img">
-                                                    <img src = "' . base_url('assets/img/icon_no_following.png') . '">
+                                                    <img src = "' . base_url('assets/img/icon_no_following.png') . '" alt="icon_no_following.png">
                                                     </div>
                                                     <div class = "art_no_post_text">
                                                     No Following Available.
@@ -3959,12 +3959,12 @@ class Artist extends MY_Controller {
                                 if ($artuserdata[0]['art_user_image']) {
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                     } else {
-                                        $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                                        $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                                     }
                                 } else {
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                 }
                             } else {
 
@@ -3975,10 +3975,10 @@ class Artist extends MY_Controller {
 
 
                                 if ($info) {
-                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                                 } else {
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                 }
                             }
                             // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
@@ -4204,12 +4204,12 @@ class Artist extends MY_Controller {
                                 if ($artuserdata[0]['art_user_image']) {
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                     } else {
-                                        $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                                        $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                                     }
                                 } else {
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                 }
                             } else {
 
@@ -4220,10 +4220,10 @@ class Artist extends MY_Controller {
 
 
                                 if ($info) {
-                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                                 } else {
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                 }
                             }
                             // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
@@ -4414,12 +4414,12 @@ class Artist extends MY_Controller {
                         if ($art_userimage) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                                $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                                $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                             }
                         } else {
-                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
 
@@ -4428,9 +4428,9 @@ class Artist extends MY_Controller {
                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                         if ($info) {
-                            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage . '">';
                         } else {
-                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     }
                     $cmtinsert .= '</a>';
@@ -4568,12 +4568,12 @@ class Artist extends MY_Controller {
                     if ($art_userimage) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         } else {
-                            $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                            $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage . '" >';
                         }
                     } else {
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 } else {
 
@@ -4582,10 +4582,10 @@ class Artist extends MY_Controller {
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                     if ($info) {
-                        $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                     } else {
 
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 }
 
@@ -4764,12 +4764,12 @@ class Artist extends MY_Controller {
                         if ($art_userimage) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                                $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                                $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                             }
                         } else {
-                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
 
@@ -4780,10 +4780,10 @@ class Artist extends MY_Controller {
 
                         if ($info) {
 
-                            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                         } else {
 
-                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     }
 
@@ -4917,12 +4917,12 @@ class Artist extends MY_Controller {
                     if ($art_userimage) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         } else {
-                            $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                            $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                         }
                     } else {
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 } else {
 
@@ -4932,9 +4932,9 @@ class Artist extends MY_Controller {
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                     if ($info) {
-                        $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                     } else {
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 }
                 $cmtinsert .= '</a>';
@@ -5171,12 +5171,12 @@ class Artist extends MY_Controller {
                                 if ($artuserdata[0]['art_user_image']) {
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                     } else {
-                                        $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                                        $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                                     }
                                 } else {
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                 }
                             } else {
 
@@ -5187,10 +5187,10 @@ class Artist extends MY_Controller {
 
 
                                 if ($info) {
-                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
+                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] .'" width="60" height="60">';
                                 } else {
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                 }
                             }
 
@@ -5495,12 +5495,12 @@ class Artist extends MY_Controller {
                         if ($artuserdata[0]['art_user_image']) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                                $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                             } else {
-                                $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                                $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                             }
                         } else {
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         }
                     } else {
 
@@ -5511,10 +5511,10 @@ class Artist extends MY_Controller {
 
 
                         if ($info) {
-                            $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="50">';
+                            $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] .'" width="60" height="50">';
                         } else {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         }
                     }
 
@@ -5562,12 +5562,12 @@ class Artist extends MY_Controller {
                     if ($art_userimage) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         } else {
-                            $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                            $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage . '" >';
                         }
                     } else {
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 } else {
 
@@ -5577,9 +5577,9 @@ class Artist extends MY_Controller {
 
                     if ($info) {
 
-                        $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage . '">';
                     } else {
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 }
                 $cmtinsert .= '</a>';
@@ -5739,12 +5739,12 @@ class Artist extends MY_Controller {
                     if ($artuserdata[0]['art_user_image']) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         } else {
-                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                         }
                     } else {
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 } else {
 
@@ -5755,10 +5755,10 @@ class Artist extends MY_Controller {
 
 
                     if ($info) {
-                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                     } else {
 
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 }
                 $email_html .= '</td>
@@ -5798,12 +5798,12 @@ class Artist extends MY_Controller {
                 if ($art_userimage) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                        $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                     }
                 } else {
-                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
                 $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
@@ -5811,9 +5811,9 @@ class Artist extends MY_Controller {
                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                 if ($info) {
-                    $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                 } else {
-                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             }
 
@@ -6014,12 +6014,12 @@ class Artist extends MY_Controller {
                         if ($artuserdata[0]['art_user_image']) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                                $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                             } else {
-                                $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                                $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                             }
                         } else {
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         }
                     } else {
 
@@ -6030,10 +6030,10 @@ class Artist extends MY_Controller {
 
 
                         if ($info) {
-                            $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
+                            $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] .'" width="60" height="60">';
                         } else {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         }
                     }
 
@@ -6088,12 +6088,12 @@ class Artist extends MY_Controller {
                     if ($art_userimage) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         } else {
-                            $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                            $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                         }
                     } else {
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 } else {
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
@@ -6102,10 +6102,10 @@ class Artist extends MY_Controller {
 
                     if ($info) {
 
-                        $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                     } else {
 
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 }
 
@@ -6393,7 +6393,7 @@ class Artist extends MY_Controller {
         }
 
         $this->data['artdata'] = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*', $join_str = array());
-        $coverpic = '<img id="image_src" name="image_src" src = "' . ART_BG_MAIN_UPLOAD_URL . $this->data['artdata'][0]['profile_background'] . '" />';
+        $coverpic = '<img id="image_src" name="image_src" src = "' . ART_BG_MAIN_UPLOAD_URL . $this->data['artdata'][0]['profile_background'] . '" alt="'. $this->data['artdata'][0]['profile_background'] . '"/>';
 
         echo $coverpic;
     }
@@ -6741,7 +6741,7 @@ class Artist extends MY_Controller {
                               <div class="art-img-nn">
                                <div class="art_no_post_img">
 
-                               <img src="' . base_url('assets/img/art-no.png') . '">
+                               <img src="' . base_url('assets/img/art-no.png') . '" alt="art-no.png">
         
                                 </div>
                                   <div class="art_no_post_text">
@@ -6759,7 +6759,7 @@ class Artist extends MY_Controller {
                               <div class="art-img-nn">
                                <div class="art_no_post_img">
 
-                               <img src="' . base_url('assets/img/art-no.png') . '">
+                               <img src="' . base_url('assets/img/art-no.png') . '" alt="art-no.png">
         
                                 </div>
                                   <div class="art_no_post_text">
@@ -7048,12 +7048,12 @@ class Artist extends MY_Controller {
                         if ($artuserdata[0]['art_user_image']) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                                $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                             } else {
-                                $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                                $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                             }
                         } else {
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         }
                     } else {
 
@@ -7063,10 +7063,10 @@ class Artist extends MY_Controller {
 
 
                         if ($info) {
-                            $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                            $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                         } else {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         }
                     }
 
@@ -7298,12 +7298,12 @@ class Artist extends MY_Controller {
                                 if ($artuserdata[0]['art_user_image']) {
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                     } else {
-                                        $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                                        $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                                     }
                                 } else {
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                 }
                             } else {
 
@@ -7313,10 +7313,10 @@ class Artist extends MY_Controller {
 
 
                                 if ($info) {
-                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                                 } else {
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                 }
                             }
                             $email_html .= '</td>
@@ -7489,12 +7489,12 @@ class Artist extends MY_Controller {
                     if ($artuserdata[0]['art_user_image']) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         } else {
-                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                         }
                     } else {
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 } else {
 
@@ -7504,10 +7504,10 @@ class Artist extends MY_Controller {
 
 
                     if ($info) {
-                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                     } else {
 
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 }
 
@@ -7553,12 +7553,12 @@ class Artist extends MY_Controller {
                 if ($art_userimage) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                        $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                     }
                 } else {
-                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
                 $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
@@ -7566,9 +7566,9 @@ class Artist extends MY_Controller {
                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                 if ($info) {
-                    $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                 } else {
-                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             }
             $cmtinsert .= '</a>';
@@ -7767,12 +7767,12 @@ class Artist extends MY_Controller {
                     if ($artuserdata[0]['art_user_image']) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         } else {
-                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="60" height="60">';
+                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] . '" width="60" height="60">';
                         }
                     } else {
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 } else {
 
@@ -7782,10 +7782,10 @@ class Artist extends MY_Controller {
 
 
                     if ($info) {
-                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                     } else {
 
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 }
 
@@ -7835,12 +7835,12 @@ class Artist extends MY_Controller {
                 if ($art_userimage) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                        $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                     }
                 } else {
-                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
                 $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
@@ -7849,10 +7849,10 @@ class Artist extends MY_Controller {
 
                 if ($info) {
 
-                    $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                 } else {
 
-                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             }
             $cmtinsert .= '</a>';
@@ -8025,12 +8025,12 @@ class Artist extends MY_Controller {
                     if ($artuserdata[0]['art_user_image']) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         } else {
-                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                         }
                     } else {
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 } else {
 
@@ -8040,10 +8040,10 @@ class Artist extends MY_Controller {
 
 
                     if ($info) {
-                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                     } else {
 
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 }
                 $email_html .= '</td>
@@ -8088,12 +8088,12 @@ class Artist extends MY_Controller {
                 if ($art_userimage) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                        $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                     }
                 } else {
-                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
                 $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
@@ -8102,10 +8102,10 @@ class Artist extends MY_Controller {
 
                 if ($info) {
 
-                    $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                 } else {
 
-                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             }
             $cmtinsert .= '</a> </div>';
@@ -8270,12 +8270,12 @@ class Artist extends MY_Controller {
                         if ($artuserdata[0]['art_user_image']) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                                $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                             } else {
-                                $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                                $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                             }
                         } else {
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         }
                     } else {
 
@@ -8285,10 +8285,10 @@ class Artist extends MY_Controller {
 
 
                         if ($info) {
-                            $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                            $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                         } else {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         }
                     }
                     $email_html .= '</td>
@@ -8421,12 +8421,12 @@ class Artist extends MY_Controller {
                                 if ($artuserdata[0]['art_user_image']) {
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                     } else {
-                                        $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                                        $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                                     }
                                 } else {
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                 }
                             } else {
 
@@ -8436,10 +8436,10 @@ class Artist extends MY_Controller {
 
 
                                 if ($info) {
-                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                                 } else {
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                 }
                             }
                             $email_html .= '</td>
@@ -8553,12 +8553,12 @@ class Artist extends MY_Controller {
                         if ($artuserdata[0]['art_user_image']) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                                $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                             } else {
-                                $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                                $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                             }
                         } else {
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         }
                     } else {
 
@@ -8568,10 +8568,10 @@ class Artist extends MY_Controller {
 
 
                         if ($info) {
-                            $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                            $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                         } else {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         }
                     }
                     $email_html .= '</td>
@@ -8677,12 +8677,12 @@ class Artist extends MY_Controller {
                                 if ($artuserdata[0]['art_user_image']) {
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                     } else {
-                                        $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                                        $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                                     }
                                 } else {
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                 }
                             } else {
 
@@ -8692,10 +8692,10 @@ class Artist extends MY_Controller {
 
 
                                 if ($info) {
-                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                                 } else {
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                                 }
                             }
                             $email_html .= '</td>
@@ -8828,12 +8828,12 @@ class Artist extends MY_Controller {
                 if ($art_userimage) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                        $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                     }
                 } else {
-                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
 
@@ -8843,10 +8843,10 @@ class Artist extends MY_Controller {
 
                 if ($info) {
 
-                    $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                 } else {
 
-                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             }
             $cmtinsert .= '</a>';
@@ -9026,12 +9026,12 @@ class Artist extends MY_Controller {
                     if ($art_userimage) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         } else {
-                            $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                            $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                         }
                     } else {
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 } else {
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
@@ -9040,9 +9040,9 @@ class Artist extends MY_Controller {
 
                     if ($info) {
 
-                        $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                     } else {
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     }
                 }
 
@@ -9257,12 +9257,12 @@ class Artist extends MY_Controller {
                         if ($art_userimage) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                                $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $fourdata .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                                $fourdata .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                             }
                         } else {
-                            $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
 
@@ -9272,9 +9272,9 @@ class Artist extends MY_Controller {
 
                         if ($info) {
 
-                            $fourdata .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
+                            $fourdata .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="'. $art_userimage . '">';
                         } else {
-                            $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     }
 
@@ -9415,12 +9415,12 @@ class Artist extends MY_Controller {
                 if ($art_userimage) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                        $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $fourdata .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                        $fourdata .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                     }
                 } else {
-                    $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
 
@@ -9430,10 +9430,10 @@ class Artist extends MY_Controller {
 
                 if ($info) {
 
-                    $fourdata .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
+                    $fourdata .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="'. $art_userimage .'">';
                 } else {
 
-                    $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             }
 
@@ -9586,12 +9586,12 @@ class Artist extends MY_Controller {
                 if ($art_image) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_image)) {
 
-                        $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $modal .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_image . '" alt="" >';
+                        $modal .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_image . '" alt="'. $art_image .'" >';
                     }
                 } else {
-                    $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
                 $filename = $this->config->item('art_profile_thumb_upload_path') . $art_image;
@@ -9599,9 +9599,9 @@ class Artist extends MY_Controller {
                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                 if ($info) {
-                    $modal .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_image . '"  alt="">';
+                    $modal .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_image . '"  alt="' . $art_image .'">';
                 } else {
-                    $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             }
             $modal .= '</div>';
@@ -9677,12 +9677,12 @@ class Artist extends MY_Controller {
                 if ($art_image) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_image)) {
 
-                        $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $modal .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_image . '" alt="" >';
+                        $modal .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_image . '" alt="'. $art_image .'" >';
                     }
                 } else {
-                    $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
 
@@ -9691,9 +9691,9 @@ class Artist extends MY_Controller {
                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                 if ($info) {
-                    $modal .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_image . '"  alt="">';
+                    $modal .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_image . '"  alt="'. $art_image .'">';
                 } else {
-                    $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             }
 
@@ -9796,12 +9796,12 @@ class Artist extends MY_Controller {
                     if ($artuserdata[0]['art_user_image']) {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
 
-                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                            $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                         } else {
-                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="" width="50" height="50">';
+                            $email_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" alt="'. $artuserdata[0]['art_user_image'] . '" width="50" height="50">';
                         }
                     } else {
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 } else {
 
@@ -9811,10 +9811,10 @@ class Artist extends MY_Controller {
 
 
                     if ($info) {
-                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="50" height="50">';
+                        $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="'. $artuserdata[0]['art_user_image'] .'" width="50" height="50">';
                     } else {
 
-                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
+                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE" width="50" height="50">';
                     }
                 }
 
@@ -9867,12 +9867,12 @@ class Artist extends MY_Controller {
                 if ($art_userimage) {
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                     } else {
-                        $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                        $cmtinsert .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'" >';
                     }
                 } else {
-                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             } else {
 
@@ -9882,10 +9882,10 @@ class Artist extends MY_Controller {
 
                 if ($info) {
 
-                    $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage .'">';
                 } else {
 
-                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                 }
             }
 
@@ -10588,7 +10588,7 @@ class Artist extends MY_Controller {
                         $usrsrch .= ' <div class="chat_heae_img">';
 
 
-                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
 
                         $usrsrch .= '</div>';
                     }
@@ -10820,12 +10820,12 @@ class Artist extends MY_Controller {
                     $usrsrch .= '<li class="clearfix">';
                     if ($user['user_image']) {
                         $usrsrch .= '<div class="chat_heae_img">';
-                        $usrsrch .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $user['user_image']) . '" alt="" >';
+                        $usrsrch .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $user['user_image']) . '" alt="'. $user['user_image']. '" >';
                         $usrsrch .= '</div>';
                     } else {
                         $usrsrch .= '<div class="chat_heae_img">';
 
-                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         $usrsrch .= '</div>';
                     }
                     $usrsrch .= '<div class="about">';
@@ -10961,7 +10961,7 @@ class Artist extends MY_Controller {
                     } else {
                         $usrsrch .= '<div class="chat_heae_img">';
 
-                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
 
 
                         $usrsrch .= '</div>';
@@ -11213,14 +11213,14 @@ class Artist extends MY_Controller {
                     $usrsrch .= '">';
                     if ($user['user_image']) {
                         $usrsrch .= '<div class="chat_heae_img">';
-                        $usrsrch .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $user['user_image']) . '" alt="" height="50px" weight="50px">';
+                        $usrsrch .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $user['user_image']) . '" alt="'. $user['user_image'] . '" height="50px" weight="50px">';
                         $usrsrch .= '</div>';
                     } else {
 
                         $usrsrch .= '<div class="chat_heae_img">';
 
 
-                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         $usrsrch .= '</div>';
                     }
                     $usrsrch .= '<div class="about">';
@@ -11250,12 +11250,12 @@ class Artist extends MY_Controller {
                     } $usrsrch .= '">';
                     if ($lstusrdata[0]['user_image']) {
                         $usrsrch .= '<div class="chat_heae_img">';
-                        $usrsrch .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $lstusrdata[0]['user_image']) . '" alt="" height="50px" weight="50px">';
+                        $usrsrch .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $lstusrdata[0]['user_image']) . '" alt="'. $lstusrdata[0]['user_image']. '" height="50px" weight="50px">';
                         $usrsrch .= '</div>';
                     } else {
                         $usrsrch .= '<div class="chat_heae_img">';
 
-                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
 
                         $usrsrch .= '</div>';
                     }
@@ -11289,12 +11289,12 @@ class Artist extends MY_Controller {
                         }
                         if ($user['user_image']) {
                             $usrsrch .= '<div class="chat_heae_img">';
-                            $usrsrch .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $user['user_image']) . '" alt="" height="50px" weight="50px">';
+                            $usrsrch .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $user['user_image']) . '" alt="'.$user['user_image'].'" height="50px" weight="50px">';
                             $usrsrch .= '</div>';
                         } else {
                             $usrsrch .= '<div class="chat_heae_img">';
 
-                            $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             $usrsrch .= '</div>';
                         }
                         $usrsrch .= '<div class="about">';
@@ -11404,12 +11404,12 @@ class Artist extends MY_Controller {
                         if ($userlist['art_user_image']) {
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
 
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             } else {
-                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '" alt="" >';
+                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '" alt="'. $userlist['art_user_image'] . '" >';
                             }
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     } else {
 
@@ -11418,9 +11418,9 @@ class Artist extends MY_Controller {
                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                         if ($info) {
-                            $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
+                            $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="'. $userlist['art_user_image'] . '">';
                         } else {
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                         }
                     }
                     $return_html .= '</a>';
@@ -11638,12 +11638,12 @@ class Artist extends MY_Controller {
                             if ($userimageposted) {
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
 
-                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                                 } else {
-                                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" alt="" >';
+                                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" alt="'. $userimageposted . '" >';
                                 }
                             } else {
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             }
                         } else {
 
@@ -11653,9 +11653,9 @@ class Artist extends MY_Controller {
 
                             if ($info) {
 
-                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name="image_src" id="image_src" />';
+                                $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name="image_src" id="image_src" alt="'. $userimageposted . '"/>';
                             } else {
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             }
                         }
                         $return_html .= '</a>';
@@ -11667,12 +11667,12 @@ class Artist extends MY_Controller {
                             if ($art_userimage) {
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                                 } else {
-                                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="" >';
+                                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="'. $art_userimage . '" >';
                                 }
                             } else {
-                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "NOARTIMAGE">';
                             }
                         } else {
 

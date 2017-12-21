@@ -9,7 +9,7 @@
         <?php
         if ($_SERVER['HTTP_HOST'] != "localhost") {
             ?>
-            
+
             <script>
                 (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
@@ -31,13 +31,13 @@
             <?php
         }
         ?>
-            <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
-                (adsbygoogle = window.adsbygoogle || []).push({
-                    google_ad_client: "ca-pub-6060111582812113",
-                    enable_page_level_ads: true
-                });
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-6060111582812113",
+                enable_page_level_ads: true
+            });
         </script>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()) ?>">
@@ -52,19 +52,19 @@
                     <div class="all-site-link cust-link">
                         <!-- <h3>Job Profile <span>Categories</span></h3> -->
                         <h2 style="margin-left: -2px;">Job Profile</h2>
-                       <ul>
+                        <ul>
                             <li style="margin-bottom: 35px;list-style-type: none;margin-left: -14px;"><a href="https://www.aileensoul.com/jobs">All Jobs</a></li>
                         </ul>
                         <div class="all-site-link ">
-                     
-                        
-                     <h3 style="padding-bottom: 15px;">Job Posts by Location</h3>
-                        <div class="linkbox">
+
+
+                            <h3 style="padding-bottom: 15px;">Job Posts by Location</h3>
+                            <div class="linkbox">
+                            </div>
+
                         </div>
-                           
-                        </div>
                         <div class="linkbox">
-<?php
+                            <?php
                             foreach ($getJobDataByLocation as $key => $value) {
                                 ?>
                                 <div class="smap-catbox">
@@ -72,19 +72,21 @@
                                         <h5><?php echo $key ?></h5>
                                     </div>
                                     <ul class="catbox-right">
-                                        <?php foreach ($value as $business) {
-                                            
+                                        <?php
+                                        foreach ($value as $business) {
+
                                             if ($business['post_name'] != '') {
-                        $text = strtolower($this->common->clean($business['post_name']));
-                    } else {
-                        $text = '';
-                    } 
-                     if ($business['city_name'] != '') {
-                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($business['city_name']));
-                    } else {
-                        $cityname = '';
-                    }?>
-                                        <li><a href="<?php echo base_url('recruiter/jobpost/' . $text . $cityname . '-' . $business['user_id'] . '-' . $business['post_id']) ?>" target="_blank"><?php echo $business['post_name'] . '(' . $business['re_comp_name'] . ")"; ?></a></li>    
+                                                $text = strtolower($this->common->clean($business['post_name']));
+                                            } else {
+                                                $text = '';
+                                            }
+                                            if ($business['city_name'] != '') {
+                                                $cityname = '-vacancy-in-' . strtolower($this->common->clean($business['city_name']));
+                                            } else {
+                                                $cityname = '';
+                                            }
+                                            ?>
+                                            <li><a href="<?php echo base_url('recruiter/jobpost/' . $text . $cityname . '-' . $business['user_id'] . '-' . $business['post_id']) ?>" target="_blank"><?php echo $business['post_name'] . '<span class="business_category">(' . $business['re_comp_name'] . ")</span>"; ?></a></li>    
                                         <?php } ?>
                                     </ul>
                                 </div>
@@ -93,17 +95,28 @@
                             ?>
                         </div>
 
-                    </div>
-                      
-                    </div>
+                        <div class="all-site-link ">
+                            <h3 style="padding-bottom: 15px;">Recruiters</h3>
+                            <div class="linkbox">
+                                <div class="smap-catbox">
+                                    <ul class="catbox-right artist-sitemap">
+                                        <?php foreach ($getRecruiter as $recruiter) { ?>
+                                            <li><a href="<?php echo base_url('recruiter/profile/' . $recruiter['user_id']) ?>" target="_blank"><?php echo $recruiter['rec_firstname'] . ' ' . $recruiter['rec_lastname'] . '<span class="business_category">(' . $recruiter['re_comp_name'] . ")</span>"; ?></a></li>    
+                                        <?php } ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
                 </div>
-
-            </section>
-            <?php
-            echo $login_footer
-            ?>
         </div>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
-    </body>
+
+    </section>
+    <?php
+    echo $login_footer
+    ?>
+</div>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
+</body>
 </html>

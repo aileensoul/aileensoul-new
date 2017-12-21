@@ -124,14 +124,14 @@
                                                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
                                                                     ?>
 
-                                                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
 
                                                                 <?php } else { ?>
-                                                                    <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>"  alt="">
+                                                                    <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>"  alt="<?php echo $userimageposted; ?>">
                                                                 <?php }
                                                             } else {
                                                                 ?>
-                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                                                 <?php
                                                             }
                                                         } else {
@@ -143,12 +143,12 @@
                                                             if ($info) {
                                                                 ?>
 
-                                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>" name="image_src" id="image_src" />
+                                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>" name="image_src" id="image_src" alt="<?php echo $userimageposted; ?>" />
 
 
             <?php } else { ?>
 
-                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
 
                                                             <?php }
                                                         }
@@ -168,14 +168,14 @@
                                                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                     ?>
 
-                                                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
 
                                                                 <?php } else { ?>
-                                                                    <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                                                    <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="<?php echo $art_userimage; ?>">
                                                                 <?php }
                                                             } else {
                                                                 ?>
-                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                                                 <?php
                                                             }
                                                         } else {
@@ -186,10 +186,10 @@
 
                                                             if ($info) {
                                                                 ?>
-                                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
+                                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" alt="<?php echo $art_userimage; ?>" />
                                                             <?php } else { ?>
 
-                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                                         <?php } ?>
                                                         </a>
 
@@ -217,7 +217,7 @@
 
                                                                 <div class="else_post_d">
                                                                     <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_postwithid); ?>"><?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?> </a>
-                                                                    <p class="posted_with" > Posted With </p><a class="post_dot"  href="<?php echo base_url('artist/dashboard/' . $url_postid); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                                    <p class="posted_with" > Posted With </p><a class="post_dot"  title="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_postid); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                                     <span role="presentation" aria-hidden="true" style="color: #91949d; font-size: 14px;"> · </span>
                                                                     <span class="ctre_date"> 
         <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?>
@@ -242,7 +242,7 @@
 
 
                                                     <li><div class="post-design-product">
-                                                            <a><?php
+                                                            <a title="<?php echo $designation; ?>"><?php
                                                                 if ($designation) {
                                                                     echo $designation;
                                                                 } else {
@@ -265,9 +265,9 @@
 
                                                         if ($this->session->userdata('aileenuser') == $art_data[0]['posted_user_id']) {
                                                             ?>
-                                                            <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>
+                                                            <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)" title="Delete Post"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>
 
-                                                            <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="editpost(this.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+                                                            <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="editpost(this.id)" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
 
         <?php } else {
             ?>
@@ -287,11 +287,11 @@
         $userid = $this->session->userdata('aileenuser');
         if ($art_data[0]['user_id'] == $userid) {
             ?>
-                                                            <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Post</a>
+                                                            <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)" title="Delete Post"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Post</a>
 
-                                                            <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="editpost(this.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+                                                            <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="editpost(this.id)" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
                                                         <?php } else { ?>
-                                                            <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deletepostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>
+                                                            <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deletepostmodel(this.id)" title="Delete Post"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>
 
                                                                            <!--  <a href="<?php echo base_url('artist/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
             <?php
@@ -304,7 +304,7 @@
                                                 <span> 
 
                                                     <div id="<?php echo 'editpostdata' . $art_data[0]['art_post_id']; ?>" style="display:block;">
-                                                        <a class="ft-15 t_artd" id="<?php echo 'editpostval' . $art_data[0]['art_post_id']; ?>"><?php echo $this->common->make_links($art_data[0]['art_post']); ?></a>
+                                                        <a class="ft-15 t_artd" id="<?php echo 'editpostval' . $art_data[0]['art_post_id']; ?>" title="<?php echo $art_data[0]['art_post']; ?>"><?php echo $this->common->make_links($art_data[0]['art_post']); ?></a>
                                                     </div>
 
                                                     <div id="<?php echo 'editpostbox' . $art_data[0]['art_post_id']; ?>" style="display:none; margin-bottom: 10px;">
@@ -398,7 +398,7 @@
                                                                          <!-- <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '"> -->
 
                                                             <img src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $data['file_name']; ?>" onclick="openModal();
-                                                                            currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                            currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" alt="<?php echo $data['file_name']; ?>">
 
                                                                             <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $data['file_name']) ?>"  onclick="openModal();
                                                                                     currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
@@ -691,14 +691,14 @@
                                                                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                                     ?>
 
-                                                                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
 
                     <?php } else { ?>
-                                                                                    <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                                                                    <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="<?php echo $art_userimage; ?>">
                                                                                 <?php }
                                                                             } else {
                                                                                 ?>
-                                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
 
                                                                                 <?php
                                                                             }
@@ -711,10 +711,10 @@
 
                                                                             if ($info) {
                                                                                 ?>
-                                                                                <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                                                                <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="<?php echo $art_userimage; ?>">
                 <?php } else { ?>
 
-                                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                 <?php }
             }
             ?>
@@ -808,11 +808,11 @@
                                                                         <span role="presentation" aria-hidden="true"> · </span>
                                                                         <div class="comment-details-menu">
                                                                             <div id="<?php echo 'editcommentbox' . $rowdata['artistic_post_comment_id']; ?>" style="display:block;">
-                                                                                <a id="<?php echo $rowdata['artistic_post_comment_id']; ?>" onClick="comment_editbox(this.id,<?php echo $art_data[0]['art_post_id']; ?>)" class="editbox">Edit
+                                                                                <a id="<?php echo $rowdata['artistic_post_comment_id']; ?>" onClick="comment_editbox(this.id,<?php echo $art_data[0]['art_post_id']; ?>)" class="editbox" title="Edit">Edit
                                                                                 </a>
                                                                             </div>
                                                                             <div id="<?php echo 'editcancle' . $rowdata['artistic_post_comment_id']; ?>" style="display:none;">
-                                                                                <a id="<?php echo $rowdata['artistic_post_comment_id']; ?>" onClick="comment_editcancle(this.id,<?php echo $art_data[0]['art_post_id']; ?>)">Cancel
+                                                                                <a id="<?php echo $rowdata['artistic_post_comment_id']; ?>" onClick="comment_editcancle(this.id,<?php echo $art_data[0]['art_post_id']; ?>)" tilte="Cancel">Cancel
                                                                                 </a>
                                                                             </div>
                                                                         </div>
@@ -829,7 +829,7 @@
                                                                         <span role="presentation" aria-hidden="true"> · </span>
                                                                         <div class="comment-details-menu">
                                                                             <input type="hidden" name="post_delete"  id="<?php echo 'post_delete' . $rowdata['artistic_post_comment_id']; ?>" value= "<?php echo $rowdata['art_post_id']; ?>">
-                                                                            <a id="<?php echo $rowdata['artistic_post_comment_id']; ?>"   onClick="comment_delete(this.id)"> Delete<span class="<?php echo 'insertcomment' . $rowdata['artistic_post_comment_id']; ?>">
+                                                                            <a id="<?php echo $rowdata['artistic_post_comment_id']; ?>"   onClick="comment_delete(this.id)" title="Delete"> Delete<span class="<?php echo 'insertcomment' . $rowdata['artistic_post_comment_id']; ?>">
                                                                                 </span>
                                                                             </a>
                                                                         </div>
@@ -912,14 +912,14 @@
             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                 ?>
 
-                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
 
                                                             <?php } else { ?>
-                                                                <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                                                <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="<?php echo $art_userimage; ?>">
                                                             <?php }
                                                         } else {
                                                             ?>
-                                                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
 
                                                             <?php
                                                         }
@@ -931,10 +931,10 @@
 
                                                         if ($info) {
                                                             ?>
-                                                            <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
+                                                            <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" alt="<?php echo $art_userimage; ?>"/>
         <?php } else { ?>
 
-                                                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
         <?php }
     }
     ?>
@@ -945,7 +945,7 @@
                                                     <div contenteditable="true"  class="editable_text edt_2" name="<?php echo $art_data[0]['art_post_id']; ?>"  id="<?php echo "post_comment" . $art_data[0]['art_post_id']; ?>" placeholder="Add a Comment ..." onClick="entercomment(<?php echo $art_data[0]['art_post_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);" ></div>
 
                                                     <div class="mob-comment">
-                                                        <button id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="insert_comment(this.id)"><img src="<?php echo base_url('assets/img/send.png') ?>"></button> 
+                                                        <button id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="insert_comment(this.id)"><img src="<?php echo base_url('assets/img/send.png') ?>" alt="<?php echo "send.png"; ?>"></button> 
 
                                                     </div>
 
@@ -970,7 +970,7 @@
                                     <div class="art-img-nn">
                                         <div class="art_no_post_img">
 
-                                            <img src="<?php echo base_url('assets/img/art-no.png') ?>">
+                                            <img src="<?php echo base_url('assets/img/art-no.png') ?>" alt="<?php echo "art-no.png"; ?>">
 
                                         </div>
                                         <div class="art_no_post_text">
@@ -989,45 +989,45 @@
 
                         <div class="all-profile-box">
                                 <div class="all-pro-head">
-                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
+                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right" title="All">All</a></h4>
                                 </div>
                                 <ul class="all-pr-list">
                                     <li>
-                                        <a href="<?php echo base_url('job'); ?>">
+                                        <a href="<?php echo base_url('job'); ?>" title="Job Profile">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="<?php echo "i1.jpg"; ?>">
                                             </div>
                                             <span>Job Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('recruiter'); ?>">
+                                        <a href="<?php echo base_url('recruiter'); ?>" title="Recruiter Profile">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>" alt="<?php echo "i2.jpg"; ?>">
                                             </div>
                                             <span>Recruiter Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        <a href="<?php echo base_url('freelancer'); ?>" title="Freelance Profile">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="<?php echo "i3.jpg"; ?>">
                                             </div>
                                             <span>Freelance Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('business-profile'); ?>">
+                                        <a href="<?php echo base_url('business-profile'); ?>" title="Business Profile">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="<?php echo "i4.jpg"; ?>">
                                             </div>
                                             <span>Business Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('artist'); ?>">
+                                        <a href="<?php echo base_url('artist'); ?>" title="Artistic Profile">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="<?php echo "i5.jpg"; ?>">
                                             </div>
                                             <span>Artistic Profile</span>
                                         </a>
@@ -1065,7 +1065,7 @@
                         <div class="slider_img">
 
                                                                 <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artdata['file_name']) ?>"> -->
-                            <img src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $artdata['file_name']; ?>">
+                            <img src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $artdata['file_name']; ?>" alt="<?php echo $artdata['file_name']; ?>">
                             <a class="prev" style="left: 0;" onclick="plusSlides( - 1)">&#10094;</a>
                             <a class="next" style="right:  0;" onclick="plusSlides(1)">&#10095;</a>
                         </div>
@@ -1298,14 +1298,14 @@
                                                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                         ?>
 
-                                                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
 
                                                                     <?php } else { ?>
-                                                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="<?php echo $art_userimage; ?>">
                                                                     <?php }
                                                                 } else {
                                                                     ?>
-                                                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
 
                                                                     <?php
                                                                 }
@@ -1317,10 +1317,10 @@
 
                                                                 if ($info) {
                                                                     ?>
-                                                                    <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                                                    <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="<?php echo $art_userimage; ?>">
                                                                     <?php } else { ?>
 
-                                                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                                                     <?php }
                                                                 }
                                                                 ?>
@@ -1397,11 +1397,11 @@
                                                             <div class="comment-details-menu">
                                                                 <div id="<?php echo 'editcommentboximg' . $rowdata['post_image_comment_id']; ?>" style="display:block;">
 
-                                                                    <a id="<?php echo $rowdata['post_image_comment_id']; ?>" onClick="comment_editboximg(this.id, <?php echo $artdata['post_files_id']; ?>)" class="editbox">Edit
+                                                                    <a id="<?php echo $rowdata['post_image_comment_id']; ?>" onClick="comment_editboximg(this.id, <?php echo $artdata['post_files_id']; ?>)" class="editbox" title="Edit">Edit
                                                                     </a>
                                                                 </div>
                                                                 <div id="<?php echo 'editcancleimg' . $rowdata['post_image_comment_id']; ?>" style="display:none;">
-                                                                    <a id="<?php echo $rowdata['post_image_comment_id']; ?>" onClick="comment_editcancleimg(this.id, <?php echo $artdata['post_files_id']; ?>)">Cancel
+                                                                    <a id="<?php echo $rowdata['post_image_comment_id']; ?>" onClick="comment_editcancleimg(this.id, <?php echo $artdata['post_files_id']; ?>)" title="Cancel">Cancel
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -1418,7 +1418,7 @@
                                                             <span role="presentation" aria-hidden="true"> · </span>
                                                             <div class="comment-details-menu">
                                                                 <input type="hidden" name="post_deleteimg"  id="post_deleteimg<?php echo $rowdata['post_image_comment_id']; ?>" value= "<?php echo $rowdata['post_image_id']; ?>">
-                                                                <a id="<?php echo $rowdata['post_image_comment_id']; ?>"   onClick="comment_deleteimg(this.id)"> Delete<span class="<?php echo 'insertcommentimg' . $rowdata['post_image_comment_id']; ?>">
+                                                                <a id="<?php echo $rowdata['post_image_comment_id']; ?>"   onClick="comment_deleteimg(this.id)" title="Delete"> Delete<span class="<?php echo 'insertcommentimg' . $rowdata['post_image_comment_id']; ?>">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -1468,14 +1468,14 @@
                                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                 ?>
 
-                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
 
                                             <?php } else { ?>
-                                                <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                                <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="<?php echo $art_userimage; ?>">
                                             <?php }
                                         } else {
                                             ?>
-                                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
 
                                             <?php
                                         }
@@ -1487,10 +1487,10 @@
 
                                         if ($info) {
                                             ?>
-                                            <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
+                                            <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" alt="<?php echo $art_userimage; ?>"/>
             <?php } else { ?>
 
-                                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="<?php echo "NOARTIMAGE"; ?>">
                                         <?php }
                                     }
                                     ?>
@@ -1499,7 +1499,7 @@
                                     <div id="content" class="col-md-12 inputtype-comment cmy_2" >
                                         <div contenteditable="true"  class="editable_text edt_2" name="<?php echo $artdata['post_files_id']; ?>"  id="<?php echo "post_commentimg" . $artdata['post_files_id']; ?>" placeholder="Add a Comment ..." onclick="entercommentimg(<?php echo $artdata['post_files_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);" ></div>
                                         <div class="mob-comment">       
-                                            <button id="<?php echo $artdata['post_files_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php echo base_url('assets/img/send.png') ?> ;">
+                                            <button id="<?php echo $artdata['post_files_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php echo base_url('assets/img/send.png'); ?> alt="<?php echo "send.png"; ?>">
                                             </button>
                                         </div>
                                     </div>

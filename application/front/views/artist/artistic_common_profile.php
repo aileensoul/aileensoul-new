@@ -102,7 +102,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 <div class="business-profile-right">
                     <div class="bui-menu-profile">
                         <div class="profile-left">
-                            <h4 class="profile-head-text"><a href="javascript:void(0);" onclick="login_profile();">
+                            <h4 class="profile-head-text"><a href="javascript:void(0);" title="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>" onclick="login_profile();">
                                  <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?></a>
                             </h4>
 
@@ -114,10 +114,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     ?>
 
                     <?php if ($artisticdata[0]['user_id'] == $userid) { ?>
-                        <a id="designation" class="designation" title="Designation">Current Work    </a>
+                        <a id="designation" class="designation" title="Designation" title="Current Work">Current Work </a>
 
                     <?php } else{?>
-                    <a>Current Work </a>
+                    <a title="Current Work">Current Work </a>
                     <?php }?>
 
                 <?php } else { ?> 
@@ -131,7 +131,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                         <!-- <a id="myBtn"><?php echo ucwords($artisticdata[0]['designation']); ?></a> -->
                     <?php } else { ?>
-                        <a><?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?></a>
+                        <a title="<?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?></a>
                     <?php } ?>
 
                 <?php } ?>
@@ -205,7 +205,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 $userid = $this->session->userdata('aileenuser');
                                 if ($userid != $artisticdata[0]['user_id']) {
                                     ?>
-                                <li> <a onclick="login_profile();">Message</a> </li>
+                                <li> <a onclick="login_profile();" title="Message">Message</a> </li>
                             <?php } ?>
                         </ul>
                     </div>
