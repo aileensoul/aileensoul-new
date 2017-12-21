@@ -32,7 +32,7 @@
                                            href="<?php echo base_url('job/resume'); ?>"
                                            tabindex="-1"
                                            aria-hidden="true"
-                                           rel="noopener">
+                                           rel="noopener" title="job resume">
                                             <div class="bg-images no-cover-upload"> 
                                                 <?php
                                                 if ($jobdata[0]['profile_background'] != '') {
@@ -87,12 +87,12 @@
                                         <div class="right_left_box_design ">
                                             <span class="profile-company-name ">
                                                 <span class="profile-company-name ">
-                                                    <a   href="<?php echo site_url('job/resume/' . $jobdata[0]['slug']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
+                                                    <a   href="<?php echo site_url('job/resume/' . $jobdata[0]['slug']); ?>" title="<?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
                                                 </span>
                                             </span>
                                                     <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => '1'))->row()->industry_name; ?>
                                             <div class="profile-boxProfile-name">
-                                                <a  href="<?php echo base_url('job/resume/' . $jobdata[0]['slug']); ?>"><?php
+                                                <a  href="<?php echo base_url('job/resume/' . $jobdata[0]['slug']); ?>" title="designation"><?php
                                                     if (ucwords($jobdata[0]['designation'])) {
                                                         echo ucwords($jobdata[0]['designation']);
                                                     } else {
@@ -102,12 +102,12 @@
                                             </div>
                                             <ul class=" left_box_menubar">
                                                 <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume') { ?> class="active" <?php } ?>>
-                                                    <a class="padding_less_left" title="Details" href="<?php echo base_url('job/resume'); ?>"> Details</a>
+                                                    <a class="padding_less_left" title="Details" href="<?php echo base_url('job/resume'); ?>" title="job resume"> Details</a>
                                                 </li>
                                                 <?php // if (($this->uri->segment(1) == 'job') && ($this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'resume' || $this->uri->segment(2) == 'search' || $this->uri->segment(2) == 'saved-job' || $this->uri->segment(2) == 'applied-job') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) {  ?>
-                                                <li <?php if ($this->uri->segment(1) == 'search' && $this->uri->segment(2) == 'saved-job') { ?> class="active" <?php } ?>><a title="Saved Job" href="<?php echo base_url('job/saved-job'); ?>">Saved </a>
+                                                <li <?php if ($this->uri->segment(1) == 'search' && $this->uri->segment(2) == 'saved-job') { ?> class="active" <?php } ?>><a title="Saved Job" href="<?php echo base_url('job/saved-job'); ?>" title="Saved">Saved </a>
                                                 </li>
-                                                <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'applied-job') { ?> class="active" <?php } ?>><a class="padding_less_right" title="Applied Job" href="<?php echo base_url('job/applied-job'); ?>">Applied </a>
+                                                <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'applied-job') { ?> class="active" <?php } ?>><a class="padding_less_right" title="Applied Job" href="<?php echo base_url('job/applied-job'); ?>" title="Applied">Applied </a>
                                                 </li>
 <?php // }  ?>
                                             </ul>
@@ -149,11 +149,11 @@
 
                          <div class="all-profile-box">
                                 <div class="all-pro-head">
-                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
+                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right" title="All">All</a></h4>
                                 </div>
                                 <ul class="all-pr-list">
                                     <li>
-                                        <a href="<?php echo base_url('job'); ?>">
+                                        <a href="<?php echo base_url('job'); ?>" title="job">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="JOBPROFILE">
                                             </div>
@@ -161,7 +161,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('recruiter'); ?>">
+                                        <a href="<?php echo base_url('recruiter'); ?>" title="recruiter">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i2.jpg'); ?>" alt="RECRUITERPROFILE">
                                             </div>
@@ -169,7 +169,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        <a href="<?php echo base_url('freelancer'); ?>" title="freelancer">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="FREELANCERPROFILE">
                                             </div>
@@ -177,7 +177,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('business-profile'); ?>">
+                                        <a href="<?php echo base_url('business-profile'); ?>" title="business-profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="BUSINESSPROFILE">
                                             </div>
@@ -185,7 +185,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('artist'); ?>">
+                                        <a href="<?php echo base_url('artist'); ?>" title="artist">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="ARTISTPROFILE">
                                             </div>

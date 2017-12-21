@@ -83,7 +83,7 @@
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
                             <?php if ($jobdata[0]['job_user_image'] != '') { ?>
-                                <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $jobdata[0]['job_user_image']; ?>" alt="" >
+                                <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $jobdata[0]['job_user_image']; ?>" alt="<?php echo $jobdata[0]['job_user_image']; ?>" >
                             <?php } else { ?>
                                 <?php
                                 $a = $jobdata[0]['fname'];
@@ -103,11 +103,11 @@
                                     <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
                                 </div>
                             <?php } ?>
-                            <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>assets/img/cam.png" alt="update profile pic">Update Profile Picture</a>
+                                <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();" title="update profile picture"><img  src="<?php echo base_url(); ?>assets/img/cam.png" alt="update profile pic">Update Profile Picture</a>
                         </div>
                     </div>
                     <div class="job-menu-profile mob-block">
-                        <a  href="javascript:void(0);">
+                        <a  href="javascript:void(0);" title="<?php echo $jobdata[0]['fname'] . ' ' . $jobdata[0]['lname']; ?>">
                             <h5 class="profile-head-text"> <?php echo $jobdata[0]['fname'] . ' ' . $jobdata[0]['lname']; ?></h5>
                         </a>
                         <!-- text head start -->
@@ -127,7 +127,7 @@
             </div>
             <div class="middle-part container padding_set_res ">
                 <div class="job-menu-profile job_edit_menu mob-none" >
-                    <a  href="javascript:void(0);">
+                    <a  href="javascript:void(0);" title="<?php echo $jobdata[0]['fname'] . ' ' . $jobdata[0]['lname']; ?>">
                         <h3 class="profile-head-text"> <?php echo $jobdata[0]['fname'] . ' ' . $jobdata[0]['lname']; ?></h3>
                     </a>
                     <div class="profile-text" >
@@ -155,7 +155,7 @@
                                 <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
                                 <p class="mob-edit-pro">
 
-                                    <a href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
+                                    <a href="javascript:void(0);" title="Successfully Completed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
 
 
                                 </p>
@@ -174,7 +174,7 @@
                             <p class="mob-edit-pro">
 
 
-                                <a href="<?php echo base_url('job/basic-information') ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
+                                <a href="<?php echo base_url('job/basic-information') ?>" title="Basic information"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
 
 
                             </p>
@@ -231,7 +231,7 @@
                                 <div class="second circle-1">
                                     <div>
                                         <strong></strong>
-                                        <a href="<?php echo base_url('job/basic-information') ?>" class="edit_profile_job">Edit Profile
+                                        <a href="<?php echo base_url('job/basic-information') ?>" class="edit_profile_job" title="Edit Profile">Edit Profile
                                         </a>
                                     </div>
                                 </div>

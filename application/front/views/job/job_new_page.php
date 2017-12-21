@@ -39,12 +39,12 @@
                                                if ($jobdata[0]['profile_background'] != '') {
                                                    ?>
                                                 <!-- box image start -->
-                                                <img src="<?php echo JOB_BG_MAIN_UPLOAD_URL . $jobdata[0]['profile_background']; ?>" class="bgImage" alt="" >
+                                                <img src="<?php echo JOB_BG_MAIN_UPLOAD_URL . $jobdata[0]['profile_background']; ?>" class="bgImage" alt="<?php echo $jobdata[0]['profile_background']; ?>" >
                                                 <!-- box image end -->
                                                 <?php
                                             } else {
                                                 ?>
-                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="">
+                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="noimage">
                                                 <?php
                                             }
                                             ?>
@@ -129,7 +129,7 @@
                                                 <div class="circles">
                                                     <div class="second circle-1 ">
                                                         <div class="true_progtree">
-                                                            <img src="<?php echo base_url("assets/img/true.png"); ?>">
+                                                            <img src="<?php echo base_url("assets/img/true.png"); ?>" alt="success image">
                                                         </div>
                                                         <div class="tr_text">
                                                             Successfully Completed
@@ -196,9 +196,9 @@
                                         <div class="post-img">
                                             <a href="#">
                                                 <?php if ($cache_time) { ?>
-                                                    <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time) ?>">
+                                                    <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time) ?>" alt="<?php echo $cache_time;?>">
                                                 <?php } else { ?> 
-                                                    <img src="<?php echo base_url('assets/images/commen-img.png'); ?>">
+                                                    <img src="<?php echo base_url('assets/images/commen-img.png'); ?>" alt="common image">
                                                 <?php } ?>
                                             </a>
                                         </div>
@@ -231,10 +231,10 @@
                                     <div class="all-job-middle">
                                         <p class="pb5">
                                             <span class="location">
-                                                <span><img class="pr5" src="<?php echo base_url('assets/images/location.png'); ?>">Ahmedabad,(India)</span>
+                                                <span><img class="pr5" src="<?php echo base_url('assets/images/location.png'); ?>" alt="Ahmedabad,(India)">Ahmedabad,(India)</span>
                                             </span>
                                             <span class="exp">
-                                                <span><img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">
+                                                <span><img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>" alt="experience">
                                                     <?php
                                                     if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
                                                         echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " " . "(Fresher can also apply)";
@@ -296,8 +296,8 @@
                                 <ul class="all-pr-list">
                                     <li>
                                         <a href="<?php echo base_url('job'); ?>">
-                                            <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
+                                            <div class="all-pr-img" >
+                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="job">
                                             </div>
                                             <span>Job Profile</span>
                                         </a>
@@ -305,7 +305,7 @@
                                     <li>
                                         <a href="<?php echo base_url('recruiter'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>" alt="recruiter">
                                             </div>
                                             <span>Recruiter Profile</span>
                                         </a>
@@ -313,7 +313,7 @@
                                     <li>
                                         <a href="<?php echo base_url('freelancer'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="freelancer">
                                             </div>
                                             <span>Freelance Profile</span>
                                         </a>
@@ -321,7 +321,7 @@
                                     <li>
                                         <a href="<?php echo base_url('business-profile'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="business-profile">
                                             </div>
                                             <span>Business Profile</span>
                                         </a>
@@ -329,7 +329,7 @@
                                     <li>
                                         <a href="<?php echo base_url('artist'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="artist">
                                             </div>
                                             <span>Artistic Profile</span>
                                         </a>

@@ -55,7 +55,7 @@
                                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                 if ($info && $recdata[0]['profile_background'] != '') {
                                                     ?>
-                                                    <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                                                    <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata[0]['profile_background']; ?>"/>
                                                     <?php
                                                 } else {
                                                     ?>
@@ -79,7 +79,7 @@
                                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                 if ($recdata[0]['recruiter_user_image'] != '' && $info) {
                                                     ?>
-                                                    <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
+                                                    <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
                                                     <?php
                                                 } else {
 
@@ -159,7 +159,7 @@
                                     <li>
                                         <a href="<?php echo base_url('job'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="job">
                                             </div>
                                             <span>Job Profile</span>
                                         </a>
@@ -167,7 +167,7 @@
                                     <li>
                                         <a href="<?php echo base_url('recruiter'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>" alt="recruiter">
                                             </div>
                                             <span>Recruiter Profile</span>
                                         </a>
@@ -175,13 +175,13 @@
                                     <li>
                                         <a href="<?php echo base_url('freelancer'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="freelancer">
                                             </div>
                                             <span>Freelance Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('business-profile'); ?>">
+                                        <a href="<?php echo base_url('business-profile'); ?>" alt="business-profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
                                             </div>
@@ -191,7 +191,7 @@
                                     <li>
                                         <a href="<?php echo base_url('artist'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="artist">
                                             </div>
                                             <span>Artistic Profile</span>
                                         </a>
@@ -248,22 +248,22 @@
                                                     if (IMAGEPATHFROM == 'upload') {
                                                         if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) { 
                                                             ?>
-                                                           <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
+                                                <img src="<?php echo base_url('assets/images/commen-img.png') ?>" alt="commonimage">
                                                    <?php     } else { ?>
-                                                            <img src="<?php echo  REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
+                                                            <img src="<?php echo  REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>" alt="<?php echo $cache_time; ?>">
                                                        <?php  }
                                                     } else {
                                                         $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
                                                         $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                         if ($info) { ?>
-                                                           <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $cache_time  ?>">
+                                                           <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $cache_time  ?>" alt="<?php echo $cache_time; ?>">
                                                          <?php } else { ?>
-                                                          <img src="<?php echo  base_url('assets/images/commen-img.png') ?>">
+                                                          <img src="<?php echo  base_url('assets/images/commen-img.png') ?>" alt="commonimage">
                                                        <?php  }
                                                     }
                                                 } else { ?>
-                                                    <img src="<?php echo  base_url('assets/images/commen-img.png') ?>">
+                                                    <img src="<?php echo  base_url('assets/images/commen-img.png') ?>" alt="commonimage">
                                                <?php  } ?>
                                             </a>
                                         </div>
@@ -603,7 +603,7 @@
                             ?>
                             <div class="art-img-nn">
                                 <div class="art_no_post_img">
-                                    <img src="' . base_url() . 'img/job-no.png">
+                                    <img src="' . base_url() . 'img/job-no.png" alt="nojobimage">
 
                                 </div>
                                 <div class="art_no_post_text">
@@ -631,7 +631,7 @@
                         <span class="mes">
                             <div id="popup-form">
 
-                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="loaderimage"/></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                     <div class="col-md-5">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
@@ -727,7 +727,7 @@
 
                                                                                 if (numItems == '0') {
 
-                                                                                    var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src='" + base_url + "img/job-no.png'/></div><div class='art_no_post_text'> No Post Available.</div></div>";
+                                                                                    var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src='" + base_url + "img/job-no.png' alt='nojobimage'/></div><div class='art_no_post_text'> No Post Available.</div></div>";
                                                                                     $('.contact-frnd-post').html(nodataHtml);
                                                                                 }
 

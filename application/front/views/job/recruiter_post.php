@@ -61,13 +61,13 @@
                         if (file_exists($image_ori) && $rec_data[0]['profile_background'] != '') {
                             ?>
 
-                            <img src="<?php echo base_url($this->config->item('rec_bg_main_upload_path') . $rec_data[0]['profile_background']); ?>" name="image_src" id="image_src" / >
+                            <img src="<?php echo base_url($this->config->item('rec_bg_main_upload_path') . $rec_data[0]['profile_background']); ?>" name="image_src" id="image_src" alt="<?php echo $rec_data[0]['profile_background']; ?>"/>
                             <?php
                         } else {
                             ?>
 
                              <div class="bg-images no-cover-upload">
-                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
+                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="NOIMAGE"/>
                              </div>
                              <?php }
                              ?>
@@ -85,7 +85,7 @@
                             $imageee = $this->config->item('rec_profile_thumb_upload_path') . $rec_data[0]['recruiter_user_image'];
                             if (file_exists($imageee) && $rec_data[0]['recruiter_user_image'] != '') {
                                 ?>
-                                <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $rec_data[0]['recruiter_user_image']); ?>" alt="" >
+                                <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $rec_data[0]['recruiter_user_image']); ?>" alt="<?php echo $rec_data[0]['recruiter_user_image']; ?>" >
                                 <?php
                             } else {
                                 $a = $rec_data[0]['rec_firstname'];
@@ -188,7 +188,7 @@
                                          <div class = "job-contact-frnd">
                                        <!--AJAX DATA START FOR RECOMMAND CANDIDATE-->
                                          </div>
-                                       <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                       <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt='loaderimage'/></div>
                                     </div>
                         </div>
                     </div>
@@ -209,7 +209,7 @@
                   <span class="mes">
                      <div id="popup-form">
 
-                        <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                        <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt='loaderimage'/></div>
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                     <div class="col-md-5">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
