@@ -248,7 +248,7 @@
                                        <ul>
                                           <li class="comment-list">
                                              <div class="c-user-img">
-                                                <img src="<?php echo base_url(NOIMAGE); ?>" alt="Blog">
+                                                <img src="<?php echo base_url(NOIMAGE); ?>" alt="Noimage">
                                              </div>
                                              <div class="c-user-comments">
                                                 <h5><?php echo $comment['name']; ?></h5>
@@ -308,7 +308,7 @@
 								<div class="col-md-4 col-sm-12">
 									<div class="rel-blog-box">
 										<a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><div class="rel-blog-img">
-											<img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $random['image']) ?>" alt="Blog">
+											<img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $random['image']) ?>" alt="<?php echo $random['image']; ?>">
 										</div></a>
 										<h5> <a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><?php echo $random['title']; ?> </a> </h5>
 									</div>
@@ -326,7 +326,7 @@
                           <div class="art_no_post_avl">
                                     <div class="art-img-nn">
                                         <div class="art_no_post_img">
-                                            <img src="<?php echo base_url('assets/img/bui-no.png') ?>" alt="Blog">
+                                            <img src="<?php echo base_url('assets/img/bui-no.png') ?>" alt="Noimage">
                                         </div>
                                         <div class="art_no_post_text">
                                             Sorry, this content isn't available at the moment
@@ -356,7 +356,7 @@
                                     <div class="post_inside_data">
                                        <div class="post_latest_left">
                                           <div class="lateaqt_post_img">
-                                             <a href="<?php echo base_url('blog/'.$blog['blog_slug'])?>"> <img src="<?php echo base_url($this->config->item('blog_main_upload_path')  . $blog['image']) ?>" alt="Blog"></a>
+                                             <a href="<?php echo base_url('blog/'.$blog['blog_slug'])?>"> <img src="<?php echo base_url($this->config->item('blog_main_upload_path')  . $blog['image']) ?>" alt="<?php echo $blog['image']; ?>"></a>
                                           </div>
                                        </div>
                                        <div class="post_latest_right">
