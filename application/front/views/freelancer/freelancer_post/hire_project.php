@@ -41,7 +41,7 @@
                                                 <?php } else if ($hire_user) { ?>
                                                     <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="javascript:void(0);" aria-hidden="true" rel="noopener">
                                                     <?php } else { ?>
-                                                        <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('freelancer-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>" onclick="login_profile();" tabindex="-1" 
+                                                        <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('freelancer-hire/employer-details/' . $recliveid); ?>" onclick="login_profile();" tabindex="-1" 
                                                            aria-hidden="true" rel="noopener">
                                                            <?php } ?>
                                                         <div class="bg-images no-cover-upload"> 
@@ -436,7 +436,7 @@
                                                                                                 ?>
                                                                                                 <div class="art-img-nn">
                                                                                                     <div class="art_no_post_img">
-                                                                                                        <img src="' . base_url() . 'img/job-no.png">
+                                                                                                        <img alt="No projects" src="' . base_url() . 'img/job-no.png">
 
                                                                                                     </div>
                                                                                                     <div class="art_no_post_text">
@@ -479,11 +479,11 @@
                                                                                                                             <?php } ?>
                                                                                                                         <?php } ?>
                                                                                                                         <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                            <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug'] . '?page=freelancer_hire'); ?>">
-                                                                                                                                <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" > </a>
+                                                                                                                            <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
+                                                                                                                                <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname']." ". $user['freelancer_post_username']; ?>" > </a>
                                                                                                                         <?php } else { ?>
                                                                                                                             <a>
-                                                                                                                                <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" > </a>
+                                                                                                                                <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname']." ". $user['freelancer_post_username']; ?>" > </a>
                                                                                                                         <?php } ?>
                                                                                                                         <?php
                                                                                                                     } else {
@@ -493,15 +493,15 @@
                                                                                                                         if ($info) {
                                                                                                                             ?>
                                                                                                                             <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                                <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug'] . '?page=freelancer_hire'); ?>">
-                                                                                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" > </a>
+                                                                                                                                <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
+                                                                                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname']." ". $user['freelancer_post_username']; ?>" > </a>
                                                                                                                             <?php } else { ?>
                                                                                                                                 <a>
-                                                                                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" > </a>
+                                                                                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname']." ". $user['freelancer_post_username']; ?>" > </a>
                                                                                                                             <?php } ?>
                                                                                                                         <?php } else { ?>
                                                                                                                             <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                                <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug'] . '?page=freelancer_hire'); ?>" >
+                                                                                                                                <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>" >
                                                                                                                                     <div class="post-img-user">
                                                                                                                                         <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
 
@@ -616,7 +616,7 @@
                                                                                                     <span class="mes">
                                                                                                         <div id="popup-form">
 
-                                                                                                            <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                                                                                                            <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                                                                                             <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                                                                                                 <div class="col-md-5">
                                                                                                                     <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
@@ -703,7 +703,7 @@
                                                                                                             var numItems = $('.contact-frnd-post .job-contact-frnd').length;
                                                                                                             if (numItems == '0') {
                                                                                                                 // var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Project Found.</h4></div>";
-                                                                                                                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../img/free-no1.png"></div><div class="art_no_post_text">No Project Found</div></div>';
+                                                                                                                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img alt="No Projects" src="../img/free-no1.png"></div><div class="art_no_post_text">No Project Found</div></div>';
                                                                                                                 $('.contact-frnd-post').html(nodataHtml);
 
                                                                                                             }

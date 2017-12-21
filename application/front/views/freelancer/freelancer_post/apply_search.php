@@ -499,7 +499,7 @@
                                 
 
                             </div>
-                            <div id="loader" style="display: none;"><p style="text-align:center;"><img class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
+                            <div id="loader" style="display: none;"><p style="text-align:center;"><img  alt="loader" class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
                         </div>
                     </div>
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
