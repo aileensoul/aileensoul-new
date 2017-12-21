@@ -1591,6 +1591,12 @@ label.error{font-size: 11px; color: #ff0000 !important; font-weight:normal;}
 #selmonth.error{ border-bottom: 1px solid red !important;}
 #selyear.error{ border-bottom: 1px solid red !important;}
 #selgen.error{ border-bottom: 1px solid red !important;}
+
+#selday.error:focus{ border-bottom: 1px solid #1b8ab9 !important;}
+#selmonth.error:focus{ border-bottom: 1px solid #1b8ab9 !important;}
+#selyear.error:focus{ border-bottom: 1px solid #1b8ab9 !important;}
+#selgen.error:focus{ border-bottom: 1px solid #1b8ab9 !important;}
+
 .about-content{width: 80% !important;line-height: 35px !important; text-align:justify;}
 .about-content.text-center{text-align:center;}
 select:focus{ outline: none; }

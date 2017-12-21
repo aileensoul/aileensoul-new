@@ -55,12 +55,12 @@
                         $image_ori = $image[0]['profile_background'];
                         if ($image_ori) {
                             ?>
-                            <img src="<?php echo FREE_HIRE_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                        <img alt="<?php echo $freelancr_user_data[0]['fullname']. " ".$freelancr_user_data[0]['username']; ?>" src="<?php echo FREE_HIRE_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
                             <?php
                         } else {
                             ?>
                             <div class="bg-images no-cover-upload">
-                                <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                                <img alt="No Image" src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
                             </div>
                         <?php }
                         ?>
@@ -95,7 +95,7 @@
                                         </div>
                                     <?php } else {
                                         ?>
-                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
+                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freelancr_user_data[0]['fullname']. " ".$freelancr_user_data[0]['username']; ?>" >
                                         <?php
                                     }
                                 } else {
@@ -104,7 +104,7 @@
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                     if ($info) {
                                         ?>
-                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
+                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freelancr_user_data[0]['fullname']. " ".$freelancr_user_data[0]['username']; ?>" >
                                         <?php
                                     } else {
                                         ?>
@@ -120,7 +120,7 @@
                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
-                                        <a title="update Profile Pic" href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
+                                        <a title="update Profile Pic" href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img alt="Profile pic"  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
 
                         </div>
                     </div>
@@ -188,7 +188,7 @@
                         <h3><?php echo $this->lang->line("saved_freelancer"); ?></h3>
                         <div class="contact-frnd-post">
                             <!--.......AJAX DATA.......-->
-                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                            <div class="fw" id="loader" style="text-align:center;"><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                         </div>
                     </div>
                 </div>
@@ -220,7 +220,7 @@
                 <div class="modal-body">
                     <span class="mes">
                         <div id="popup-form">
-                            <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                            <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                             <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                 <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));       ?>
 <!--                                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">

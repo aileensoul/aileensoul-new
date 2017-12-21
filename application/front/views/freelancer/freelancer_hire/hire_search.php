@@ -475,7 +475,7 @@
                                            
                                         
                                         </div>
-                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>"</div>
+                                        <div class="fw" id="loader" style="text-align:center;"><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>"</div>
                                     </div>
                                 </div>
                             </div>
@@ -784,7 +784,7 @@
                         success: function (response)
                         {
                             if (response.data == "ok") {
-                                $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                                $("#btn1").html('<img alt="loader" src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                                 if(response.is_freelancer_hire == 1){
                                 window.location = "<?php echo base_url() ?>freelancer-hire/search?skills=" + skill + '&searchplace' + place;
                             }
@@ -983,7 +983,7 @@
                         success: function (response)
                         {
                             if (response == "ok") {
-                                $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
+                                $("#btn-register").html('<img  alt="loader" src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
                                 window.location = "<?php echo base_url()?>freelancer-hire/basic-information";
 //                                window.location = "<?php //echo base_url() ?>freelancer-hire/search?skills=" + skill + '&searchplace' + place;
                             } else {

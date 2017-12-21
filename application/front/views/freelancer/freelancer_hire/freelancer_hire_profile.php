@@ -462,12 +462,12 @@
                         $image_ori = $image[0]['profile_background'];
                         if ($image_ori) {
                             ?>
-                            <img src="<?php echo FREE_HIRE_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" / >
+                        <img alt="<?php echo $freelancerhiredata[0]['fullname']." ".$freelancerhiredata[0]['username']; ?>" src="<?php echo FREE_HIRE_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" / >
     <?php
 } else {
     ?>
                                  <div class="bg-images no-cover-upload">
-                                <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                                     <img alt="No Image" src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
                             </div>
 <?php }
 ?>
@@ -502,7 +502,7 @@
                                         <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                         </div>
                                     <?php } else { ?>
-                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerhiredata[0]['freelancer_hire_user_image']; ?>" alt="" >
+                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerhiredata[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freelancerhiredata[0]['fullname']." ".$freelancerhiredata[0]['username']; ?>" >
                                         <?php
                                     }
                                 } else {
@@ -511,7 +511,7 @@
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                     if ($info) {
                                         ?>
-                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerhiredata[0]['freelancer_hire_user_image']; ?>" alt="" >
+                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerhiredata[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freelancerhiredata[0]['fullname']." ".$freelancerhiredata[0]['username']; ?>" >
                                         <?php } else {
                                             ?>
                                         <div class="post-img-user">
@@ -890,7 +890,7 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                     <div class="fw">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">

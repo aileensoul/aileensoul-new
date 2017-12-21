@@ -21,7 +21,7 @@ class Notification extends MY_Controller {
     //     $this->load->view('Notification/index', $this->data);
     // }
     public function index() {
-        $this->data['title']  = "View All Notification | Aileensoul";
+        $this->data['title']  = "Notification | Aileensoul";
         $userid = $this->session->userdata('aileenuser');
         $this->load->view('notification/index', $this->data);
     }

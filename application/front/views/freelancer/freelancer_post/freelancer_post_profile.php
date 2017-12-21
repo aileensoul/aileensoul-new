@@ -467,12 +467,12 @@
                         if ($image_ori) {
                             ?>
 
-                            <img src="<?php echo FREE_POST_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" / >
+                        <img alt="<?php echo $freelancerpostdata[0]['freelancer_post_fullname']." ".$freelancerpostdata[0]['freelancer_post_username']; ?>" src="<?php echo FREE_POST_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" / >
                             <?php
                         } else {
                             ?>
                                  <div class="bg-images no-cover-upload">
-                                <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                                     <img alt="No Image" src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
                             </div>
 
                         <?php }
@@ -509,7 +509,7 @@
                                         </div>
                                     <?php } else {
                                         ?>
-                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="user_image" >        
+                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freelancerpostdata[0]['freelancer_post_fullname']." ".$freelancerpostdata[0]['freelancer_post_username']; ?>" >        
                                         <?php
                                     }
                                 } else {
@@ -519,7 +519,7 @@
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                     if ($info) {
                                         ?>
-                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="" >
+                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freelancerpostdata[0]['freelancer_post_fullname']." ".$freelancerpostdata[0]['freelancer_post_username']; ?>" >
                                     <?php } else { ?>
                                         <div class="post-img-user">
                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
@@ -534,7 +534,7 @@
                                 </div>
                             <?php } ?>
                             <?php if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                        <a title="update Profile pic" href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
+                                        <a title="update Profile pic" href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img alt="Update profile pic"  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
                             <?php } ?>
                         </div>
                     </div>
@@ -599,6 +599,7 @@
                                 $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_type' => '2');
                                 $data = $this->common->select_data_by_condition('save', $contition_array, $data = 'status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                 //  echo "<pre>"; print_r($data); die();
+                                if($this->session->userdata('aileenuser')){
                                 if ($userid != $id) {
                                     if ($this->uri->segment(3) != "") {
                                         ?>
@@ -649,6 +650,7 @@
                                         </div>
                                         <?php
                                     }
+                                }
                                 }
                                 ?>
 
@@ -1333,7 +1335,7 @@
                                                                     <li> <b><?php echo $this->lang->line("attach"); ?></b><span>
                                                                             <div class="free_attc">
                                                                                 <a title="pdf" href="<?php echo base_url('freelancer/pdf/' . $freelancerpostdata[0]['user_id']) ?>">
-                                                                                    <img src="<?php echo base_url('assets/images/PDF.jpg') ?>" > 
+                                                                                    <img alt="PDF" src="<?php echo base_url('assets/images/PDF.jpg') ?>" > 
                                                                                 </a>
                                                                         </span>
 
@@ -1382,7 +1384,7 @@
                                                                 <li> <b><?php echo $this->lang->line("attach"); ?></b><span>
                                                                         <div class="free_attc">
                                                                             <a title="pdf" href="<?php echo base_url('freelancer/pdf/' . $freelancerpostdata[0]['user_id']) ?>">
-                                                                                <img src="<?php echo base_url('assets/images/PDF.jpg') ?>" > 
+                                                                                <img alt="pdf" src="<?php echo base_url('assets/images/PDF.jpg') ?>" > 
                                                                             </a>
                                                                     </span>
                                                                 </li>
@@ -1435,7 +1437,7 @@
                                     <div class="circles">
                                         <div class="second circle-1 ">
                                             <div class="true_progtree">
-                                                <img src="<?php echo base_url("assets/img/true.png"); ?>">
+                                                <img alt="Completed" src="<?php echo base_url("assets/img/true.png"); ?>">
                                             </div>
                                             <div class="tr_text">
                                                 Successfully Completed
@@ -1495,7 +1497,7 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                     <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));            ?>
                                     <div class="fw">
@@ -1738,6 +1740,7 @@
 
 
         <script  src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+        <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>">
         </script>
