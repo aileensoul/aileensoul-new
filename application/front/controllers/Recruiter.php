@@ -3670,7 +3670,7 @@ class Recruiter extends MY_Controller {
             $return_html .= '<div class="art-img-nn">
                                         <div class="art_no_post_img">
 
-                                            <img src="' . base_url() . 'assets/img/job-no1.png">
+                                            <img src="' . base_url() . 'assets/img/job-no1.png" alt="noimage">
 
                                         </div>
                                         <div class="art_no_post_text">
@@ -3794,7 +3794,7 @@ class Recruiter extends MY_Controller {
         }
         $this->data['reccdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
 
-        $coverpic = '<img  src="' . REC_BG_THUMB_UPLOAD_URL . $this->data['reccdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
+        $coverpic = '<img  src="' . REC_BG_THUMB_UPLOAD_URL . $this->data['reccdata'][0]['profile_background'] . '" name="image_src" id="image_src" alt="' . $this->data['reccdata'][0]['profile_background'] . '" />';
         echo $coverpic;
         //echo '<img src="' . $this->data['recdata'][0]['profile_background'] . '" />';
     }
