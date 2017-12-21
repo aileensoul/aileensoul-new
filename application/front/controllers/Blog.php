@@ -279,7 +279,7 @@ class Blog extends CI_Controller {
                                                         <div class="blog_main_post_first_part">
                                                             <div class="blog_main_post_img">';
             $blog_data .= '<a target="_blank" href="' .
-                    base_url('blog/' . $blog['blog_slug']) . '"> <img src="' . base_url($this->config->item('blog_main_upload_path') . $blog['image']) . '" ></a>';
+                    base_url('blog/' . $blog['blog_slug']) . '"> <img src="' . base_url($this->config->item('blog_main_upload_path') . $blog['image']) . '" alt="' . $blog['image'] . '"></a>';
             $blog_data .= '</div>
                                                         </div>
                                                         <div class="blog_main_post_second_part">
@@ -450,7 +450,7 @@ class Blog extends CI_Controller {
                                                         <div class="blog_main_post_first_part">
                                                             <div class="blog_main_post_img">';
             $blog_data .= '<a target="_blank" href="' .
-                    base_url('blog/' . $blog['blog_slug']) . '"> <img src="' . base_url($this->config->item('blog_main_upload_path') . $blog['image']) . '" ></a>';
+                    base_url('blog/' . $blog['blog_slug']) . '"> <img src="' . base_url($this->config->item('blog_main_upload_path') . $blog['image']) . '" alt="' . $blog['image'] . '" ></a>';
             $blog_data .= '</div>
                                                         </div>
                                                         <div class="blog_main_post_second_part">
