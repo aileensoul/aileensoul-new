@@ -61,12 +61,12 @@
                         $image_ori = $image[0]['profile_background'];
                         if ($image_ori) {
                             ?>
-                            <img src="<?php echo JOB_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" / >
+                            <img src="<?php echo JOB_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $image[0]['profile_background']; ?>" />
                             <?php
                         } else {
                             ?>
                                  <div class="bg-images no-cover-upload">
-                                <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
+                                <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="<?php echo 'NOIMAGE'; ?>"/>
                             </div>
                         <?php }
                         ?>
@@ -103,7 +103,7 @@
                                     <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
                                 </div>
                             <?php } ?>
-                            <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>assets/img/cam.png">Update Profile Picture</a>
+                            <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>assets/img/cam.png" alt="update profile pic">Update Profile Picture</a>
                         </div>
                     </div>
                     <div class="job-menu-profile mob-block">
@@ -194,7 +194,7 @@
                     <div class="job-contact-frnd1">
                     </div>
 
-                     <div class="loader"><p style="text-align:center;"><img class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
+                     <div class="loader"><p style="text-align:center;"><img class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>" alt="LAODERIMAGE"/></p></div>
                      
                 </div>
                 <?php
@@ -209,7 +209,7 @@
                                 <div class="circles">
                                     <div class="second circle-1 ">
                                         <div class="true_progtree">
-                                            <img src="<?php echo base_url("img/true.png"); ?>">
+                                            <img src="<?php echo base_url("img/true.png"); ?>" alt="SUCCESSIMAGE">
                                         </div>
                                         <div class="tr_text">
                                             Successfully Completed
@@ -266,7 +266,7 @@
                 <span class="mes">
                     <div id="popup-form">
 
-                        <div class="fw" id="loader_popup"  style="text-align:center; display:none;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                        <div class="fw" id="loader_popup"  style="text-align:center; display:none;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="LOADERIMAGE"/></div>
 
                         <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
 

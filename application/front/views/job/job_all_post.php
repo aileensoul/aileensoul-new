@@ -39,12 +39,12 @@
                                                if ($jobdata[0]['profile_background'] != '') {
                                                    ?>
                                                 <!-- box image start -->
-                                                <img src="<?php echo JOB_BG_MAIN_UPLOAD_URL . $jobdata[0]['profile_background']; ?>" class="bgImage" alt="" >
+                                                <img src="<?php echo JOB_BG_MAIN_UPLOAD_URL . $jobdata[0]['profile_background']; ?>" class="bgImage" alt="<?php echo $jobdata[0]['profile_background']; ?>" >
                                                 <!-- box image end -->
                                                 <?php
                                             } else {
                                                 ?>
-                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="">
+                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo 'NOIMAGE'; ?>">
                                                 <?php
                                             }
                                             ?>
@@ -56,7 +56,7 @@
                                                 <?php
                                                 if ($jobdata[0]['job_user_image']) {
                                                     ?>
-                                                    <div class="left_iner_img_profile"><img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $jobdata[0]['job_user_image']; ?>" alt="<?php echo $jobdata[0]['fname']; ?> " ></div>
+                                                    <div class="left_iner_img_profile"><img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $jobdata[0]['job_user_image']; ?>" alt="<?php echo $jobdata[0]['fname']; ?>" ></div>
                                                     <?php
                                                 } else {
                                                     ?>
@@ -129,7 +129,7 @@
                                                 <div class="circles">
                                                     <div class="second circle-1 ">
                                                         <div class="true_progtree">
-                                                            <img src="<?php echo base_url("assets/img/true.png"); ?>">
+                                                            <img src="<?php echo base_url("assets/img/true.png"); ?>" alt="<?php echo 'successimage'; ?>">
                                                         </div>
                                                         <div class="tr_text">
                                                             Successfully Completed
@@ -186,7 +186,7 @@
                         <div class="job-contact-frnd1">
                                 
                         </div>
-                        <div id="loader" style="display: none;"><p style="text-align:center;"><img src="<?php echo  base_url('assets/images/loading.gif');?>"/></p></div>
+                        <div id="loader" style="display: none;"><p style="text-align:center;"><img src="<?php echo  base_url('assets/images/loading.gif');?>" alt="<?php echo 'loaderimage'; ?>"/></p></div>
                     </div>
 
 
@@ -200,7 +200,7 @@
                                     <li>
                                         <a href="<?php echo base_url('job'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="<?php echo 'job profile'; ?>">
                                             </div>
                                             <span>Job Profile</span>
                                         </a>
@@ -208,7 +208,7 @@
                                     <li>
                                         <a href="<?php echo base_url('recruiter'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>"  alt="<?php echo 'recruiter profile'; ?>">
                                             </div>
                                             <span>Recruiter Profile</span>
                                         </a>
@@ -216,7 +216,7 @@
                                     <li>
                                         <a href="<?php echo base_url('freelancer'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="<?php echo 'freelancer profile'; ?>">
                                             </div>
                                             <span>Freelance Profile</span>
                                         </a>
@@ -224,7 +224,7 @@
                                     <li>
                                         <a href="<?php echo base_url('business-profile'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="<?php echo 'business profile'; ?>">
                                             </div>
                                             <span>Business Profile</span>
                                         </a>
