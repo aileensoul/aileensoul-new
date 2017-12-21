@@ -615,7 +615,7 @@ class Artist extends MY_Controller {
         } else {
             $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+            $this->data['title'] = 'Home | Artistic Profile'. TITLEPOSTFIX;
             $this->load->view('artist/art_post', $this->data);
         }
     }
