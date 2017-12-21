@@ -233,7 +233,7 @@
                                                         <div class="post_inside_data">
                                                             <div class="post_latest_left">
                                                                 <div class="lateaqt_post_img">
-                                                                    <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" alt="">
+                                                                    <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" alt="<?php echo $blog['image']; ?>">
                                                                 </div>
                                                             </div>
                                                             <div class="post_latest_right">
