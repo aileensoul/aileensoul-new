@@ -638,7 +638,7 @@ echo PROFILENA;
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                                <h4>Join Aileensoul - It's Free</h4>
+                                <h4>Signup first and register in Artistic profile</h4>
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">

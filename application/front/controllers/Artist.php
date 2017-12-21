@@ -38,10 +38,11 @@ class Artist extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'status' => 0);
-        $artdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo "<pre>"; print_r($artdata); die();
         if ($artdata) {
 
+             $this->data['artistic_name'] = ucwords($artdata[0]['art_name']).' '. ucwords($artdata[0]['art_lastname']);
             $this->load->view('artist/reactivate', $this->data);
         } else {
 
@@ -215,7 +216,7 @@ class Artist extends MY_Controller {
             }
         }
 
-        $this->data['title'] = 'Artistic Profile' . TITLEPOSTFIX;
+        $this->data['title'] = 'BasicInformation | ArtisticProfile' . TITLEPOSTFIX;
         $this->load->view('artist/art_basic_information', $this->data);
     }
 
@@ -348,7 +349,7 @@ class Artist extends MY_Controller {
                 $this->data['pincode1'] = $userdata[0]['art_pincode'];
             }
         }
-        $this->data['title'] = 'Artistic Profile' . TITLEPOSTFIX;
+        $this->data['title'] = 'Address | ArtisticProfile' . TITLEPOSTFIX;
         $this->load->view('artist/art_address', $this->data);
     }
 
@@ -472,7 +473,7 @@ class Artist extends MY_Controller {
         }
         $this->data['get_url'] = $this->get_url($userid);
 
-        $this->data['title'] = 'Artistic Profile' . TITLEPOSTFIX;
+        $this->data['title'] = 'ArtInformation | ArtisticProfile' . TITLEPOSTFIX;
         $this->load->view('artist/art_information', $this->data);
     }
 
@@ -614,7 +615,7 @@ class Artist extends MY_Controller {
         } else {
             $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+            $this->data['title'] = 'Home | Artistic Profile'. TITLEPOSTFIX;
             $this->load->view('artist/art_post', $this->data);
         }
     }
@@ -650,7 +651,7 @@ class Artist extends MY_Controller {
             } else {
                 $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
                 $artistic_name = $this->get_artistic_name($id);
-                $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+                $this->data['title'] = 'Dashboard | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
                 $this->load->view('artist/art_manage_post', $this->data);
             }
         } else {
@@ -1927,7 +1928,7 @@ class Artist extends MY_Controller {
         if ($userid) {
             if ($this->data['artisticdata']) {
                 $artistic_name = $this->get_artistic_name($id);
-                $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+                $this->data['title'] =  $this->data['title'] = 'Details | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;;
                 $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
                 $this->load->view('artist/artistic_profile', $this->data);
             } else if (!$this->data['artisticdata'] && $id != $userid) {
@@ -1974,7 +1975,7 @@ class Artist extends MY_Controller {
         if ($this->data['artdata']) {
             $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+            $this->data['title'] = 'Userlist | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->load->view('artist/artistic_userlist', $this->data);
         } else {
             redirect('artist');
@@ -3362,7 +3363,7 @@ class Artist extends MY_Controller {
 
         if ($this->data['artisticdata']) {
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+             $this->data['title'] = 'Followers | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
             $this->load->view('artist/art_followers', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
@@ -3581,7 +3582,7 @@ class Artist extends MY_Controller {
 
         if ($this->data['artisticdata']) {
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+           $this->data['title'] = 'Following | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
 
             $this->load->view('artist/art_following', $this->data);
@@ -6455,7 +6456,7 @@ class Artist extends MY_Controller {
 
         if ($this->data['artisticdata']) {
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+            $this->data['title'] = 'PostDetail | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
             $this->load->view('artist/postnewpage', $this->data);
         } else {
@@ -6577,7 +6578,6 @@ class Artist extends MY_Controller {
             'status' => '1',
             'modified_date' => date('y-m-d h:i:s')
         );
-
         $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
         if ($updatdata) {
 
@@ -6831,7 +6831,7 @@ class Artist extends MY_Controller {
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+            $this->data['title'] = 'Photo | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->load->view('artist/art_photos', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -6872,7 +6872,7 @@ class Artist extends MY_Controller {
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+            $this->data['title'] = 'Video | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->load->view('artist/art_videos', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -6917,7 +6917,7 @@ class Artist extends MY_Controller {
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+           $this->data['title'] = 'Audio  | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->load->view('artist/art_audios', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -6962,7 +6962,7 @@ class Artist extends MY_Controller {
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
+           $this->data['title'] = 'PDF | '.ucfirst(strtolower($artistic_name)).'- ArtisticProfile' . TITLEPOSTFIX;
             $this->load->view('artist/art_pdf', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -14193,7 +14193,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
         if ($search_place) {
             $title .= $search_place;
         }
-        $this->data['title'] = "$title | Aileensoul";
+        $this->data['title'] = "Search | ArtisticProfile - Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
         $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
 

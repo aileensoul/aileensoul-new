@@ -6,7 +6,7 @@
 <?php echo $head; ?>
 <!-- Calender Css Start-->
 
- <title>Artist Profile - Aileensoul.com</title>
+ <title>Registration | Artistic Profile - Aileensoul</title>
 
 <!-- Calender Css End-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
@@ -611,7 +611,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                                <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
+                                <div class="title"><h1>Signup first and register in Artistic profile</h1></div>
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
