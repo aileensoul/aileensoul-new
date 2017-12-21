@@ -2282,7 +2282,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 
 @media screen and (max-width: 360px) {
 	.main-inner .btn-right.pull-right a.btn2{padding:8px 18px;}
-	.main-inner .btn-right.pull-right a.btn3{padding:8px 18px;}
+	.main-inner .btn-right.pull-right a.btn3{padding:5px 18px;}
 	.banner {padding-top: 10px;}
 	.how-it-popup .modal-body h3{font-size:22px; margin-bottom:12px;}
 	/***  add  ***/
