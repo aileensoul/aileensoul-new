@@ -731,7 +731,7 @@
                                                                                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                                                                                             </div>
                                                                                                         <?php } ?>
-                                                                                                        <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" >
+                                                                                                        <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname']." ".$user['freelancer_post_username']; ?>" >
                                                                                                         <?php
                                                                                                     } else {
                                                                                                         $filename = $this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'];
@@ -739,7 +739,7 @@
                                                                                                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                                                                         if ($info) {
                                                                                                             ?>
-                                                                                                            <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" >
+                                                                                                            <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname']." ".$user['freelancer_post_username']; ?>" >
                                                                                                             <?php } else { ?>
                                                                                                             <div class="post-img-user">
                                                                                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>

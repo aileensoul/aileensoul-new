@@ -52,7 +52,7 @@
 
                                                     <div>
                                                         <ul class="notification_data_in_h2">
-<div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                                            <div class="fw" id="msg_not_loader" style="text-align:center;"><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
                                                         </ul></div>
 
                                                 </div>

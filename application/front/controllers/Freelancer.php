@@ -92,7 +92,7 @@ class Freelancer extends MY_Controller {
             }
         }
 
-
+        $this->data['title'] = "BasicInformation | Edit Profile - Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_basic_information', $this->data);
     }
 
@@ -335,6 +335,7 @@ class Freelancer extends MY_Controller {
                 $this->data['pincode1'] = $userdata[0]['freelancer_post_pincode'];
             }
         }
+        $this->data['title'] = "Address Information | Edit Profile - Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_address_information', $this->data);
     }
 
@@ -512,7 +513,7 @@ class Freelancer extends MY_Controller {
                 $this->data['experience_month1'] = $userdata[0]['freelancer_post_exp_month'];
             }
         }
-
+        $this->data['title'] = "Professional Information | Edit Profile - Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_professional_information', $this->data);
     }
 
@@ -638,6 +639,7 @@ class Freelancer extends MY_Controller {
                 $this->data['fixed_rate1'] = $userdata[0]['freelancer_post_fixed_rate'];
             }
         }
+        $this->data['title'] = "Rate | Edit Profile - Freelancer Profile - Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_rate', $this->data);
     }
 
@@ -728,7 +730,7 @@ class Freelancer extends MY_Controller {
                 $this->data['work_hour1'] = $userdata[0]['freelancer_post_work_hour'];
             }
         }
-
+        $this->data['title'] = "Avability | Edit Profile - Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_avability', $this->data);
     }
 
@@ -841,7 +843,7 @@ class Freelancer extends MY_Controller {
                 $this->data['pass_year1'] = $userdata[0]['freelancer_post_passingyear'];
             }
         }
-
+        $this->data['title'] = "Eduction | Edit Profile - Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_education', $this->data);
     }
 
@@ -977,6 +979,7 @@ class Freelancer extends MY_Controller {
                 $this->data['portfolio_attachment1'] = $userdata[0]['freelancer_post_portfolio_attachment'];
             }
         }
+        $this->data['title'] = "Portfolio | Edit Profile - Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_portfolio', $this->data);
     }
 
@@ -1131,7 +1134,7 @@ class Freelancer extends MY_Controller {
             $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
             $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
-        $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
+        $this->data['title'] ="Projects | ". $hire_data[0]['fullname'] . " " . $hire_data[0]['username']." - Employer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_post', $this->data);
     }
 
@@ -1231,7 +1234,7 @@ class Freelancer extends MY_Controller {
             <div class="all-job-middle">
                 <p class="pb5">
                     <span class="location">';
-                $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                $return_html .= '<span><img alt="location" class="pr5" src="' . base_url('assets/images/location.png') . '">';
                 $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
                 $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $country))->row()->country_name;
                 if ($cityname || $countryname) {
@@ -1243,7 +1246,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= '      </span>
                     </span>';
                 $return_html .= '<span class="exp">
-                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '">';
+                        <span><img alt="skill" class="pr5" src="' . base_url('assets/images/exp.png') . '">';
 
                 $comma = ", ";
                 $k = 0;
@@ -1379,7 +1382,7 @@ class Freelancer extends MY_Controller {
             $return_html .= '<div class="art-img-nn">
                                                 <div class="art_no_post_img">
 
-                                                    <img src="../assets/img/free-no1.png">
+                                                    <img alt="No Projects" src="../assets/img/free-no1.png">
 
                                                 </div>
                                                 <div class="art_no_post_text">';
@@ -1613,7 +1616,7 @@ class Freelancer extends MY_Controller {
         // code for display page start
         $this->freelancer_hire_check();
         // code for display page end
-        $this->data['title'] = 'Freelancer Hire' . TITLEPOSTFIX;
+        $this->data['title'] = 'Home | Employer Profile' . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/recommen_candidate', $this->data);
     }
 
@@ -1921,7 +1924,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= '<div class="art-img-nn">
                                                 <div class="art_no_post_img">
 
-                                                    <img src="../assets/img/free-no1.png">
+                                                    <img alt="No freelancer" src="../assets/img/free-no1.png">
 
                                                 </div>
                                                 <div class="art_no_post_text">';
@@ -2115,7 +2118,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1', 'free_post_step' => '7');
         $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $this->data['title'] = 'Freelancer Apply' . TITLEPOSTFIX;
+        $this->data['title'] = 'Home | Freelancer Profile' . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/post_apply', $this->data);
     }
 
@@ -2220,7 +2223,7 @@ class Freelancer extends MY_Controller {
             <div class="all-job-middle">
                 <p class="pb5">
                     <span class="location">';
-                $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                $return_html .= '<span><img alt= "location" class="pr5" src="' . base_url('assets/images/location.png') . '">';
                 $city = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
                 $cityname = $this->db->get_where('cities', array('city_id' => $city))->row()->city_name;
                 $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
@@ -2234,7 +2237,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= '      </span>
                     </span>';
                 $return_html .= '<span class="exp">
-                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '">';
+                        <span><img alt= "skill" class="pr5" src="' . base_url('assets/images/exp.png') . '">';
 
                 $comma = ", ";
                 $k = 0;
@@ -2326,7 +2329,7 @@ class Freelancer extends MY_Controller {
             $return_html .= '<div class="art-img-nn">
                                                 <div class="art_no_post_img">
 
-                                                    <img src="../assets/img/free-no1.png">
+                                                    <img alt="No recommended projects" src="../assets/img/free-no1.png">
 
                                                 </div>
                                                 <div class="art_no_post_text">';
@@ -2600,7 +2603,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('freelancer_apply.job_delete' => '0', 'freelancer_apply.user_id' => $userid);
         $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = 'freelancer_post.*, freelancer_apply.app_id, freelancer_apply.user_id as userid, freelancer_apply.modify_date, freelancer_apply.created_date ', $sortby = 'freelancer_apply.modify_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
-        $this->data['title'] = $jobdata[0]['freelancer_post_fullname'] . " " . $jobdata[0]['freelancer_post_username'] . TITLEPOSTFIX;
+        $this->data['title'] = "AppliedProjects  | ". $jobdata[0]['freelancer_post_fullname'] . " " . $jobdata[0]['freelancer_post_username'] .-  "Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_applied_post', $this->data);
     }
 
@@ -2678,7 +2681,7 @@ class Freelancer extends MY_Controller {
             <div class="all-job-middle">
                 <p class="pb5">
                     <span class="location">';
-                $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                $return_html .= '<span><img alt= "location" class="pr5" src="' . base_url('assets/images/location.png') . '">';
                 $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
                 $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $country))->row()->country_name;
                 if ($cityname || $countryname) {
@@ -2690,7 +2693,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= '      </span>
                     </span>';
                 $return_html .= '<span class="exp">
-                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '">';
+                        <span><img alt="skill" class="pr5" src="' . base_url('assets/images/exp.png') . '">';
 
                 $comma = ", ";
                 $k = 0;
@@ -2765,7 +2768,7 @@ class Freelancer extends MY_Controller {
             $return_html .= '<div class="art-img-nn">
                                                 <div class="art_no_post_img">
 
-                                                    <img src="../assets/img/free-no1.png">
+                                                    <img alt= "No applied Projects" src="../assets/img/free-no1.png">
 
                                                 </div>
                                                 <div class="art_no_post_text">';
@@ -2923,7 +2926,7 @@ class Freelancer extends MY_Controller {
         $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
         $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-        $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
+        $this->data['title'] = "Savedfreelancer | ". $hire_data[0]['fullname'] . " " . $hire_data[0]['username']."- Employer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_save', $this->data);
     }
 
@@ -3152,7 +3155,7 @@ class Freelancer extends MY_Controller {
         } else {
             $return_html .= '<div class="art-img-nn">
                                                 <div class="art_no_post_img">
-                                                    <img src="../assets/img/free-no1.png">
+                                                    <img alt="No Saved freelancer" src="../assets/img/free-no1.png">
                                                 </div>
                                                 <div class="art_no_post_text">';
             $return_html .= $this->lang->line("no_saved_freelancer");
@@ -3177,7 +3180,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1', 'free_post_step' => '7');
         $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname,freelancer_post_username', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $this->data['title'] = $jobdata[0]['freelancer_post_fullname'] . " " . $jobdata[0]['freelancer_post_username'] . TITLEPOSTFIX;
+        $this->data['title'] = "SavedProjects | ". $jobdata[0]['freelancer_post_fullname'] . " " . $jobdata[0]['freelancer_post_username']."- Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_save_post', $this->data);
     }
 
@@ -3265,7 +3268,7 @@ class Freelancer extends MY_Controller {
             <div class="all-job-middle">
                 <p class="pb5">
                     <span class="location">';
-                    $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                    $return_html .= '<span><img alt= "location" class="pr5" src="' . base_url('assets/images/location.png') . '">';
                     $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
                     $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $country))->row()->country_name;
                     if ($cityname || $countryname) {
@@ -3277,7 +3280,7 @@ class Freelancer extends MY_Controller {
                     $return_html .= '      </span>
                     </span>';
                     $return_html .= '<span class="exp">
-                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '">';
+                        <span><img alt= "skill" class="pr5" src="' . base_url('assets/images/exp.png') . '">';
 
                     $comma = ", ";
                     $k = 0;
@@ -3363,7 +3366,7 @@ class Freelancer extends MY_Controller {
             $return_html .= '<div class="art-img-nn">
                                                 <div class="art_no_post_img">
 
-                                                    <img src="../assets/img/free-no1.png">
+                                                    <img alt= "No Saved Projects" src="../assets/img/free-no1.png">
 
                                                 </div>
                                                 <div class="art_no_post_text">';
@@ -3475,8 +3478,8 @@ class Freelancer extends MY_Controller {
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $freelancerpostdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'freelancer_hire_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-            $userimage .= '<img src="' . FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_hire_user_image'] . '" alt="" >';
-            $userimage .= '<a title = "update profile pic" href="javascript:void(0);" onclick="updateprofilepopup();" class="cusome_upload"><img  src="' . base_url('../assets/img/cam.png') . '">';
+            $userimage .= '<img src="' . FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_hire_user_image'] . '" alt="User Image" >';
+            $userimage .= '<a title = "update profile pic" href="javascript:void(0);" onclick="updateprofilepopup();" class="cusome_upload"><img alt="Upload profile pic"  src="' . base_url('../assets/img/cam.png') . '">';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
 
@@ -3581,8 +3584,8 @@ class Freelancer extends MY_Controller {
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $freelancerpostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-            $userimage .= '<img src="' . FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image'] . '" alt="" >';
-            $userimage .= '<a title = "update profile pic" href="javascript:void(0);" onclick="updateprofilepopup();" class="cusome_upload"><img  src="' . base_url('../assets/img/cam.png') . '">';
+            $userimage .= '<img src="' . FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image'] . '" alt="User Image" >';
+            $userimage .= '<a title = "update profile pic" href="javascript:void(0);" onclick="updateprofilepopup();" class="cusome_upload"><img alt="Upload profile pic" src="' . base_url('../assets/img/cam.png') . '">';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
 
@@ -3616,7 +3619,7 @@ class Freelancer extends MY_Controller {
             $contition_array = array('user_id' => $id, 'status' => '1', 'free_hire_step' => '3');
             $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, professional_info, freelancer_hire_user_image, profile_background, user_id,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
-        $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
+        $this->data['title'] = "Details | ". $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] ."- Employer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_profile', $this->data);
     }
 
@@ -3644,8 +3647,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_HIRE REMOVE SAVED FREELANCER END
 //FREELANCER_APPLY PROFILE PAGE START
     public function freelancer_post_profile($id) {
+      //  echo "123"; die();
         if (is_numeric($id)) {
-            
+           
         } else {
             $id = $this->db->select('user_id')->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $id, 'status' => 1))->row()->user_id;
         }
@@ -3655,7 +3659,7 @@ class Freelancer extends MY_Controller {
         $this->freelancer_apply_deactivate_check();
         //code for check user deactivate end
         if ($id == $userid || $id == '') {
-           
+          // echo "555"; die();
             // code for display page start
             $this->freelancer_apply_check();
             // code for display page end
@@ -3665,19 +3669,19 @@ class Freelancer extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'status' => '1', 'free_post_step' => '7');
             $apply_data = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city,freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
-            // echo "222";die();
+           //  echo "222";die();
             
-            $contition_array = array('user_id' => $this->session->userdata('aileenuser'), 'free_hire_step' => '3', 'status' => '1');
-            $apply_data = $this->data['freelancer_hire'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            if($apply_data){
+//            $contition_array = array('user_id' => $this->session->userdata('aileenuser'), 'free_hire_step' => '3', 'status' => '1');
+//            $apply_data = $this->data['freelancer_hire'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//            if($apply_data){
             $contition_array = array('user_id' => $id, 'free_post_step' => '7', 'status' => '1');
             $apply_data = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image,  designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            }else{
-                redirect('freelancer-hire/home', refresh);
-            }
+//            }else{
+//                redirect('freelancer-hire/home', refresh);
+//            }
         }
         //   echo "<pre>"; print_r($apply_data);die();
-        $this->data['title'] = $apply_data[0]['freelancer_post_fullname'] . " " . $apply_data[0]['freelancer_post_username'] . TITLEPOSTFIX;
+        $this->data['title'] ="Details | ". $apply_data[0]['freelancer_post_fullname'] . " " . $apply_data[0]['freelancer_post_username']."- Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_profile', $this->data);
     }
 
@@ -3862,7 +3866,7 @@ class Freelancer extends MY_Controller {
 
         $this->data['jobdata'] = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
         // $coverpic = '<img  src="' . base_url($this->config->item('free_hire_bg_main_upload_path') . $this->data['jobdata'][0]['profile_background']) . '" name="image_src" id="image_src" />';
-        $coverpic = '<img id="image_src" name="image_src" src = "' . FREE_HIRE_BG_MAIN_UPLOAD_URL . $this->data['jobdata'][0]['profile_background'] . '" />';
+        $coverpic = '<img alt="User Image" id="image_src" name="image_src" src = "' . FREE_HIRE_BG_MAIN_UPLOAD_URL . $this->data['jobdata'][0]['profile_background'] . '" />';
 
         echo $coverpic;
     }
@@ -4016,7 +4020,7 @@ class Freelancer extends MY_Controller {
 
 
         $this->data['jobdata'] = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
-        $coverpic = '<img  src="' . FREE_POST_BG_MAIN_UPLOAD_URL . $this->data['jobdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
+        $coverpic = '<img alt="User Image" src="' . FREE_POST_BG_MAIN_UPLOAD_URL . $this->data['jobdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
         echo $coverpic;
         // echo '<img src="' . $this->data['jobdata'][0]['profile_background'] . '" />';
     }
@@ -4800,7 +4804,7 @@ class Freelancer extends MY_Controller {
             $sub_lname = substr($lname, 0, 1);
             $email_html .= '<div class="post-img-div">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
         } else {
-            $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $applydata[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
+            $email_html .= '<img alt="User Image" src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $applydata[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
         }
         $email_html .= '<td style="padding:5px;">
 						<p>Freelancer <b>' . $applydata[0]['freelancer_post_fullname'] . " " . $applydata[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
@@ -4830,7 +4834,7 @@ class Freelancer extends MY_Controller {
 					<tr>
                                             <td style="padding:5px;">';
         if ($this->data['freehiredata'][0]['freelancer_hire_user_image']) {
-            $email_html .= '<img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['freehiredata'][0]['freelancer_hire_user_image'] . '" width="60" height="60"></td>';
+            $email_html .= '<img alt="User Image" src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['freehiredata'][0]['freelancer_hire_user_image'] . '" width="60" height="60"></td>';
         } else {
             $fname = $this->data['freehiredata'][0]['fullname'];
             $lname = $this->data['freehiredata'][0]['username'];
@@ -4856,7 +4860,7 @@ class Freelancer extends MY_Controller {
 					<tr>
                                             <td style="padding:5px;">';
         if ($this->data['freehiredata'][0]['freelancer_hire_user_image']) {
-            $email_html .= '<img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['freehiredata'][0]['freelancer_hire_user_image'] . '" width="60" height="60"></td>';
+            $email_html .= '<img alt = "User Image" src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['freehiredata'][0]['freelancer_hire_user_image'] . '" width="60" height="60"></td>';
         } else {
             $fname = $this->data['freehiredata'][0]['fullname'];
             $lname = $this->data['freehiredata'][0]['username'];
@@ -4883,6 +4887,7 @@ class Freelancer extends MY_Controller {
     public function hire_registation($postid = '') {
         $contition_array = array('status' => 1);
         $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['title'] = "Registration | Employer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/hire_registration', $this->data);
     }
 
@@ -4946,6 +4951,7 @@ class Freelancer extends MY_Controller {
 
         $contition_array = array('status' => '1', 'type' => '1');
         $this->data['skill1'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['title'] = "Registration | Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/registation', $this->data);
     }
 
@@ -5205,7 +5211,7 @@ class Freelancer extends MY_Controller {
             $sub_lname = substr($lname, 0, 1);
             $email_html .= '<div class="post-img-div">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
         } else {
-            $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
+            $email_html .= '<img alt="User Image" src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
         }
         $email_html .= '<td style="padding:5px;">
 						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
