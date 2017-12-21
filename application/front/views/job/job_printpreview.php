@@ -85,7 +85,7 @@
                         } else {
                             ?>
                     <div class="bg-images no-cover-upload">
-                     <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="Noimage"/ >
+                     <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="Noimage">
                     </div>
                      <?php }
                         ?>
@@ -266,7 +266,7 @@
                                     <div class="profile-job-details">
                                        <ul>
                                           <li>
-                                             <p class="details_all_tital"> Basic Information</p>
+												<p class="details_all_tital"> Basic Information</p>
                                           </li>
                                        </ul>
                                     </div>
@@ -1266,7 +1266,7 @@
                                           </li>
                                          <?php } ?> -->
 
-                                                                                 <ul class="clearfix">
+                                        <ul class="clearfix">
                                            <?php   if($job[0]['experience'] == 'Experience'){ ?>
                                           <li> <b> Total Experience</b> <span>
 
@@ -1674,7 +1674,7 @@
             <div class="modal-content">
                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                <div class="modal-body">
-                  <span class="mes">
+                  <div class="mes">
                      <div id="popup-form">
 
                      <div class="fw" id="loader_popup"  style="text-align:center; display:none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="loaerimage">/></div>
@@ -1694,7 +1694,7 @@
                         </form>
                         
                      </div>
-                  </span>
+                  </div>
                </div>
             </div>
          </div>

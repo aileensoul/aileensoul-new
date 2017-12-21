@@ -1,4 +1,25 @@
 <!DOCTYPE html>
+<?php
+
+if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+    // $date = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
+    header("HTTP/1.1 304 Not Modified");
+    exit();
+}
+
+$format = 'D, d M Y H:i:s \G\M\T';
+$now = time();
+
+$date = gmdate($format, $now);
+header('Date: '.$date);
+header('Last-Modified: '.$date);
+
+$date = gmdate($format, $now+30);
+header('Expires: '.$date);
+
+header('Cache-Control: public, max-age=30');
+
+?>
 <html lang="en">
     <head>
         <title>Privacy Policy - Aileensoul.com</title>
@@ -42,6 +63,7 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
     </head>
     <body class="custom-tp privacy-cust outer-page">
         <div class="main-inner">
@@ -80,7 +102,7 @@
             <section class="middle-main bg_white">
                 <div class="container">
                     <div class="term_desc test_py">
-                        <p>This Privacy Policy applies to Aileensoul.com</p>
+                        <p>This Privacy Policy applies to <a href="https://www.aileensoul.com"><b>Aileensoul.com</b></a></p>
                         <p>Aileensoul.com recognizes the importance of maintaining your privacy. We value your privacy and appreciate your trust in us. This Policy describes how we treat user information we collect on https://www.aileensoul.com and other offline sources. This Privacy Policy applies to current and former visitors to our website and to our online users. By visiting and/or using our website, you agree to this Privacy Policy.
                             Aileensoul.com is a property of Aileensoul Private Limited, an Indian Company registered under the Companies Act, 2013 having its registered office at E- 912, titanium city centre, near sachin tower, 100 ft. Anandnagar road, Satellite, Ahmedabad, Gujarat.
                         </p>
@@ -117,8 +139,16 @@
                                 <li><h4>We use information as otherwise permitted by law.</h4> <p></p></li>  
                             </ol>
                         </div>
+						<div class="fourth_part_py">
+                            <h3>4. Cookie Policy</h3>
+							<ul><li>
+                            <p>Our website does not use cookies but third party vendors, including Google, use cookies to serve ads based on a user's prior visits to our website or other websites.
+							</p></li><li>
+							<p>Google's use of advertising cookies enables it and its partners to serve ads to users based on their visit to our sites and/or other sites on the Internet.</p></li><li>
+							<p>Users may opt out of personalized advertising by visiting Ads Settings. (Alternatively, you can direct users to opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a target="_blank" href="www.aboutads.info">www.aboutads.info <i class="fa fa-external-link" aria-hidden="true"></i></a>.)</p></li></ul>
+                        </div>
                         <div class="fourth_part_py">
-                            <h3>4. Sharing of information with third-parties</h3>
+                            <h3>5. Sharing of information with third-parties</h3>
                             <ol>
                                 <li><h4>We will share information with our business partners</h4><p>This includes a third party who provide or sponsor an event, or who operates a venue where we hold events. Our partners use the information we give them as described in their privacy policies. </p></li>
                                 <li><h4>We may share information if we think we have to in order to comply with the law or to
@@ -129,12 +159,12 @@
                         </div>
 
                         <div class="fifth_part_py">
-                            <h3>5. Email Opt-Out</h3>
-                            <h4>You can opt out of receiving our marketing emails</h4><p>To stop receiving our promotional emails, please email inquiry@aileensoul.com It may take about ten days to process your request. Even if you opt out of getting marketing messages, we will still be sending you transactional messages through email and SMS about your purchases. </p>
+                            <h3>6. Email Opt-Out</h3>
+                            <h4>You can opt out of receiving our marketing emails</h4><p>To stop receiving our promotional emails, please email <a href="mailto:inquiry@aileensoul.com"><b>inquiry@aileensoul.com</b></a> It may take about ten days to process your request. Even if you opt out of getting marketing messages, we will still be sending you transactional messages through email and SMS about your purchases. </p>
 
                         </div>
                         <div class="sixthh_part_py">
-                            <h3>6. Third party sites </h3>
+                            <h3>7. Third party sites </h3>
                             <p>If you click on one of the links to third party websites, you may be taken to websites we do not control. This policy does not apply to the privacy practices of those websites. Read the privacy policy of other websites carefully. We are not responsible for these third party sites.</p>
                         </div>
                         <div class="ex_py">
@@ -154,11 +184,15 @@
                             If you have any questions about this Policy or other privacy concerns, you can also email us at help desk of site
 
                             </p>
+							<h3>
+                                Consent
+                            </h3>
+							<p>If you use our Services, you consent to the collection, use and sharing of your personal data under this Privacy Policy (which includes usage of Cookies and other documents referenced in this Privacy Policy) and agree to our Terms & Conditions. We provide you choices that allow you to opt-out or control how we use and share your data.</p>
                             <h3>
                                 Updates to this policy
                             </h3>
                             <p>
-                                This Privacy Policy was last updated on 20.07.2017. From time to time we may change our privacy practices. We will notify you of any material changes to this policy as required by law. We will also post an updated copy on our website. Please check our site periodically for updates.
+                                This Privacy Policy was last updated on 20.12.2017. From time to time we may change our privacy practices. We will notify you of any material changes to this policy as required by law. We will also post an updated copy on our website. Please check our site periodically for updates.
                             </p>
                             <h3>
                                 Jurisdiction
