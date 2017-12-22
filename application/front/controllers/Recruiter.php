@@ -97,7 +97,7 @@ class Recruiter extends MY_Controller {
 
 // RECRUITER BASIC INFORMATION STEP START
     public function rec_basic_information() {
-        $this->data['title'] = 'BasicInformation | Edit Profile - Recruiter Profile - Aileensoul';
+        $this->data['title'] = 'Basic Information | Edit Profile - Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
@@ -127,7 +127,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER BASIC INFORMATION INSERT STEP START  
     public function basic_information() {
 
-        $this->data['title'] = 'BasicInformation | Edit Profile - Recruiter Profile - Aileensoul';
+        $this->data['title'] = 'Basic Information | Edit Profile - Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
@@ -269,7 +269,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER CHECK EMAIL FUCNTION IN BSIC INFORMATION END  
 // RECRUITER CHECK EMAIL FUCNTION IN COMPANY INFORMATION START  
     public function company_info_form() {
-        $this->data['title'] = 'CompanyInformation |  Edit Profile - Recruiter Profile - Aileensoul';
+        $this->data['title'] = 'Company Information |  Edit Profile - Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
@@ -578,7 +578,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER CHECK EMAIL COMAPNY FUNCTION END   
 // RECRUITER RECOMMANDED FUNCTION START
     public function recommen_candidate() {
-
+$this->data['title'] = 'Home | Recruiter Profile - Aileensoul';  
         $userid = $this->session->userdata('aileenuser');
         $this->recruiter_apply_check();
 
@@ -874,7 +874,8 @@ class Recruiter extends MY_Controller {
 // RECRUITER POST START
     public function rec_post($id = "") {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-        $this->data['title'] = 'Post  | RecruiterProfile - Aileensou';
+        $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
+        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Post | RecruiterProfile - Aileensou';
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -927,7 +928,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER EDIT POST START
     public function edit_post($id = "") {
 
-        $this->data['title'] = 'EditPost | RecruiterProfile - Aileensoul';
+        $this->data['title'] = 'Edit Post | RecruiterProfile - Aileensoul';
 
         $this->recruiter_apply_check();
 
@@ -1270,8 +1271,10 @@ class Recruiter extends MY_Controller {
 // RECRUITER SAVED CANDIDATE LIST START
     public function save_candidate() {
         $this->recruiter_apply_check();
-        $this->data['title'] = 'SavedCandidate   | RecruiterProfile - Aileensou';
-        $userid = $this->session->userdata('aileenuser');
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
+        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | SavedCandidate | RecruiterProfile - Aileensou';
+        
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -1318,8 +1321,10 @@ class Recruiter extends MY_Controller {
 // RECRUITER SAVED CANDIDATE LIST END
 // RECRUITER PROFILE START
     public function rec_profile($id = "") {
-        $this->data['title'] = 'Details | RecruiterProfile - Aileensou';
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
+      
+        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Details | RecruiterProfile - Aileensou';
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -1390,7 +1395,10 @@ class Recruiter extends MY_Controller {
 // REMOVE CANDIDATE END
 // VIEW APPLIED LIST START
     public function view_apply_list($id = "") {
-        $this->data['title'] = 'AppliedCandidate | Recruiter Profile - Aileensoul';
+         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
+        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Applied Candidate | RecruiterProfile - Aileensoul';
+
         $this->recruiter_apply_check();
 
         $userid = $this->session->userdata('aileenuser');
@@ -2473,7 +2481,8 @@ class Recruiter extends MY_Controller {
         if ($search_place) {
             $title .= $search_place;
         }
-        $this->data['title'] = "$title | Aileensoul";
+        $this->data['title'] = "Search | Recruiter Profile - Aileensoul";
+        
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
@@ -4751,7 +4760,7 @@ class Recruiter extends MY_Controller {
 //LIVE LOCATION END
 
     public function rec_reg() {
-
+     $this->data['title'] = 'Register | Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
