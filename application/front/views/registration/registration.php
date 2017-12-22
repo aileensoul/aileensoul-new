@@ -17,7 +17,7 @@ header('Last-Modified: '.$date);
 $date = gmdate($format, $now+30);
 header('Expires: '.$date);
 
-header('Cache-Control: public, max-age=30');
+//header('Cache-Control: public, max-age=30');
 
 ?>
 <html lang="en">
@@ -169,7 +169,7 @@ header('Cache-Control: public, max-age=30');
 
                                     <p class="clr-c fs12">
                                         By Clicking on create an account button you agree our 
-                                        <a tabindex="10" href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex="11" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                        <a tabindex="10" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex="11" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                     </p>
                                     <p>
                                         <button class="btn1" tabindex="9">Create an account</button>
