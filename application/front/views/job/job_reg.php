@@ -571,7 +571,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                              <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
+                              <div class="title"><h1>Signup first and register in job profile</h1></div>
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
