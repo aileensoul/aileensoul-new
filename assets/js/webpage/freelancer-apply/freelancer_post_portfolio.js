@@ -104,14 +104,14 @@ jQuery(document).ready(function ($) {
                                
                                 if (free_post_step == 7) {
                                    
-                                    window.location =  base_url + "freelancer-work/freelancer-details";
+                                    window.location =  base_url + "freelance-work/freelancer-details";
                                 } else {
                                     if(postid != ''){
                                         
-                                    window.location =  base_url + "freelancer-work/home/live-post";
+                                    window.location =  base_url + "freelance-work/home/live-post";
                                     
                                 }else{
-                                    window.location =  base_url + "freelancer-work/home";
+                                    window.location =  base_url + "freelance-work/home";
                                 }
                                 }
                             }

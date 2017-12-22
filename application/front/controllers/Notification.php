@@ -2023,7 +2023,7 @@ Your browser does not support the audio tag.
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('freelancer-work/freelancer-details/' . $total['not_from_id'] . '?page=freelancer_hire') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('freelance-work/freelancer-details/' . $total['not_from_id'] . '?page=freelancer_hire') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
                 $filename = $this->config->item('free_post_profile_thumb_upload_path') . $total['user_image'];
                     $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -2800,7 +2800,7 @@ Your browser does not support the audio tag.
             if ($message_from_profile == 4) {
                 $image_path = FCPATH . 'uploads/freelancer_hire_profile/thumbs/' . $msg['user_image'];
                 $user_image = base_url() . 'uploads/freelancer_hire_profile/thumbs/' . $msg['user_image'];
-                $profile_url = base_url() . 'freelancer-work/freelancer-details/' . $id . '?page=freelancer_hire';
+                $profile_url = base_url() . 'freelance-work/freelancer-details/' . $id . '?page=freelancer_hire';
             }
             if ($message_from_profile == 3) {
                 $image_path = FCPATH . 'uploads/freelancer_post_profile/thumbs/' . $msg['user_image'];
@@ -4411,7 +4411,7 @@ Your browser does not support the audio tag.
                 }
                 //20
                 if ($total['not_from'] == 4) {
-                    $return_html .= '<a href="' . base_url() . 'freelancer-work/freelancer-details/' . $total['not_from_id'] . '?page=freelancer_hire">';
+                    $return_html .= '<a href="' . base_url() . 'freelance-work/freelancer-details/' . $total['not_from_id'] . '?page=freelancer_hire">';
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';

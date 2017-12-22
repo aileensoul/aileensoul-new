@@ -196,17 +196,17 @@ $route['freelance-work/professional-information'] = "freelancer/freelancer_post_
 $route['freelance-work/professional-information/(:any)'] = "freelancer/freelancer_post_professional_information/$1";
 $route['freelance-work/rate'] = "freelancer/freelancer_post_rate";
 $route['freelance-work/rate/(:any)'] = "freelancer/freelancer_post_rate/$1";
-$route['freelancer-work/avability'] = "freelancer/freelancer_post_avability";
-$route['freelancer-work/avability/(:any)'] = "freelancer/freelancer_post_avability/$1";
-$route['freelancer-work/education'] = "freelancer/freelancer_post_education";
-$route['freelancer-work/education/(:any)'] = "freelancer/freelancer_post_education/$1";
-$route['freelancer-work/portfolio'] = "freelancer/freelancer_post_portfolio";
-$route['freelancer-work/portfolio/(:any)'] = "freelancer/freelancer_post_portfolio/$1";
-$route['freelancer-work/search'] = "search/freelancer_post_search";
-$route['freelancer-work/deactivate'] = "freelancer/deactivate";
-$route['freelancer-work/reactivate'] = "freelancer/reactivate";
-$route['freelancer-work/registration'] = "freelancer/registation";
-$route['freelancer-work'] = "freelancer/freelancer_post/freelancer_post_basic_information";
+$route['freelance-work/avability'] = "freelancer/freelancer_post_avability";
+$route['freelance-work/avability/(:any)'] = "freelancer/freelancer_post_avability/$1";
+$route['freelance-work/education'] = "freelancer/freelancer_post_education";
+$route['freelance-work/education/(:any)'] = "freelancer/freelancer_post_education/$1";
+$route['freelance-work/portfolio'] = "freelancer/freelancer_post_portfolio";
+$route['freelance-work/portfolio/(:any)'] = "freelancer/freelancer_post_portfolio/$1";
+$route['freelance-work/search'] = "search/freelancer_post_search";
+$route['freelance-work/deactivate'] = "freelancer/deactivate";
+$route['freelance-work/reactivate'] = "freelancer/reactivate";
+$route['freelance-work/registration'] = "freelancer/registation";
+$route['freelance-work'] = "freelancer/freelancer_post/freelancer_post_basic_information";
 
 
  $route['projects'] = "search/freelancer_post_search";
@@ -216,14 +216,14 @@ $route['(:any)-project'] = "search/freelancer_post_search";
 $route['project-in-(:any)'] = "search/freelancer_post_search";
 $route['(:any)-project-in-(:any)'] = "search/freelancer_post_search";
 
-$route['freelancer-work'] = "freelancer/freelancer_post";
-//$route['freelancer-work/home/'] = "freelancer/freelancer_apply_post";
-//$route['freelancer-work/home/live-post'] = "freelancer/freelancer_apply_post";
-//$route['freelancer-work/home/live-post/(:any)'] = "freelancer/freelancer_apply_post/$1";
+$route['freelance-work'] = "freelancer/freelancer_post";
+//$route['freelance-work/home/'] = "freelancer/freelancer_apply_post";
+//$route['freelance-work/home/live-post'] = "freelancer/freelancer_apply_post";
+//$route['freelance-work/home/live-post/(:any)'] = "freelancer/freelancer_apply_post/$1";
 
-//$route['freelancer-work/profile'] = "freelancer/freelancer_apply_reg";
-$route['freelancer-work/profile/live-post'] = "freelancer/registation";
-$route['freelancer-work/profile/live-post/(:any)'] = "freelancer/registation/$1";
+//$route['freelance-work/profile'] = "freelancer/freelancer_apply_reg";
+$route['freelance-work/profile/live-post'] = "freelancer/registation";
+$route['freelance-work/profile/live-post/(:any)'] = "freelancer/registation/$1";
 
 
 

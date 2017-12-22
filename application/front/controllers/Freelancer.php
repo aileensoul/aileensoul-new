@@ -45,22 +45,22 @@ class Freelancer extends MY_Controller {
             $jobdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($jobdata[0]['free_post_step'] == 1) {
-                redirect('freelancer-work/address-information', refresh);
+                redirect('freelance-work/address-information', refresh);
             } else if ($jobdata[0]['free_post_step'] == 2) {
-                redirect('freelancer-work/professional-information', refresh);
+                redirect('freelance-work/professional-information', refresh);
             } else if ($jobdata[0]['free_post_step'] == 3) {
-                redirect('freelancer-work/rate', refresh);
+                redirect('freelance-work/rate', refresh);
             } else if ($jobdata[0]['free_post_step'] == 4) {
-                redirect('freelancer-work/avability', refresh);
+                redirect('freelance-work/avability', refresh);
             } else if ($jobdata[0]['free_post_step'] == 5) {
-                redirect('freelancer-work/education', refresh);
+                redirect('freelance-work/education', refresh);
             } else if ($jobdata[0]['free_post_step'] == 6) {
-                redirect('freelancer-work/portfolio', refresh);
+                redirect('freelance-work/portfolio', refresh);
             } else if ($jobdata[0]['free_post_step'] == 7) {
-                redirect('freelancer-work/home', refresh);
+                redirect('freelance-work/home', refresh);
             } else {
-                redirect('freelancer-work/registration', refresh);
-                //  redirect('freelancer-work/basic-information', refresh);
+                redirect('freelance-work/registration', refresh);
+                //  redirect('freelance-work/basic-information', refresh);
                 // $this->load->view('freelancer/freelancer_post/freelancer_post_basic_information',$this->data);
             }
         }
@@ -167,16 +167,16 @@ class Freelancer extends MY_Controller {
                 if ($updatedata) {
                     //  $this->session->set_flashdata('success', 'Basic information updated successfully');
                     if ($postid) {
-                        redirect('freelancer-work/address-information/' . $postid, refresh);
+                        redirect('freelance-work/address-information/' . $postid, refresh);
                     } else {
-                        redirect('freelancer-work/address-information', refresh);
+                        redirect('freelance-work/address-information', refresh);
                     }
                 } else {
                     // $this->session->flashdata('error', 'Your data not inserted');
                     if ($postid) {
-                        redirect('freelancer-work/basic-information/' . $postid, refresh);
+                        redirect('freelance-work/basic-information/' . $postid, refresh);
                     } else {
-                        redirect('freelancer-work/basic-information', refresh);
+                        redirect('freelance-work/basic-information', refresh);
                     }
                 }
             } else {
@@ -200,17 +200,17 @@ class Freelancer extends MY_Controller {
                     // $this->session->set_flashdata('success', 'Basic information updated successfully');
 
                     if ($postid) {
-                        redirect('freelancer-work/address-information/' . $postid, refresh);
+                        redirect('freelance-work/address-information/' . $postid, refresh);
                     } else {
-                        redirect('freelancer-work/address-information', refresh);
+                        redirect('freelance-work/address-information', refresh);
                     }
                 } else {
 
                     //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     if ($postid) {
-                        redirect('freelancer-work/basic-information/' . $postid, refresh);
+                        redirect('freelance-work/basic-information/' . $postid, refresh);
                     } else {
-                        redirect('freelancer-work/basic-information', refresh);
+                        redirect('freelance-work/basic-information', refresh);
                     }
                 }
             }
@@ -293,7 +293,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
         $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         if ($freelancerpost_deactive) {
-            redirect('freelancer-work');
+            redirect('freelance-work');
         }
         //IF USER DEACTIVATE PROFILE THEN REDIRECT TO freelancer/freelancer_post/freelancer_post_basic_information END  
     }
@@ -440,16 +440,16 @@ class Freelancer extends MY_Controller {
                 if ($updatdata) {
                     //  $this->session->set_flashdata('success', 'Address information updated successfully');
                     if ($postid) {
-                        redirect('freelancer-work/professional-information/' . $postid, refresh);
+                        redirect('freelance-work/professional-information/' . $postid, refresh);
                     } else {
-                        redirect('freelancer-work/professional-information', refresh);
+                        redirect('freelance-work/professional-information', refresh);
                     }
                 } else {
                     //  $this->session->flashdata('error', 'Your data not inserted');
                     if ($postid) {
-                        redirect('freelancer-work/address-information/' . $postid, refresh);
+                        redirect('freelance-work/address-information/' . $postid, refresh);
                     } else {
-                        redirect('freelancer-work/address-information', refresh);
+                        redirect('freelance-work/address-information', refresh);
                     }
                 }
             }
@@ -594,16 +594,16 @@ class Freelancer extends MY_Controller {
                 if ($updatdata) {
                     // $this->session->set_flashdata('success', 'professional information updated successfully');
                     if ($postid) {
-                        redirect('freelancer-work/rate/' . $postid, refresh);
+                        redirect('freelance-work/rate/' . $postid, refresh);
                     } else {
-                        redirect('freelancer-work/rate', refresh);
+                        redirect('freelance-work/rate', refresh);
                     }
                 } else {
                     // $this->session->flashdata('error', 'Your data not inserted');
                     if ($postid) {
-                        redirect('freelancer-work/rate/' . $postid, refresh);
+                        redirect('freelance-work/rate/' . $postid, refresh);
                     } else {
-                        redirect('freelancer-work/rate', refresh);
+                        redirect('freelance-work/rate', refresh);
                     }
                 }
             }
@@ -690,16 +690,16 @@ class Freelancer extends MY_Controller {
             if ($updatdata) {
                 // $this->session->set_flashdata('success', 'Rate information updated successfully');
                 if ($postid) {
-                    redirect('freelancer-work/avability/' . $postid, refresh);
+                    redirect('freelance-work/avability/' . $postid, refresh);
                 } else {
-                    redirect('freelancer-work/avability', refresh);
+                    redirect('freelance-work/avability', refresh);
                 }
             } else {
                 //  $this->session->flashdata('error', 'Your data not inserted');
                 if ($postid) {
-                    redirect('freelancer-work/rate/' . $postid, refresh);
+                    redirect('freelance-work/rate/' . $postid, refresh);
                 } else {
-                    redirect('freelancer-work/rate', refresh);
+                    redirect('freelance-work/rate', refresh);
                 }
             }
         }
@@ -774,16 +774,16 @@ class Freelancer extends MY_Controller {
             if ($updatdata) {
                 // $this->session->set_flashdata('success', 'Avability information updated successfully');
                 if ($postid) {
-                    redirect('freelancer-work/education/' . $postid, refresh);
+                    redirect('freelance-work/education/' . $postid, refresh);
                 } else {
-                    redirect('freelancer-work/education', refresh);
+                    redirect('freelance-work/education', refresh);
                 }
             } else {
                 //  $this->session->flashdata('error', 'Your data not inserted');
                 if ($postid) {
-                    redirect('freelancer-work/avability/' . $postid, refresh);
+                    redirect('freelance-work/avability/' . $postid, refresh);
                 } else {
-                    redirect('freelancer-work/avability', refresh);
+                    redirect('freelance-work/avability', refresh);
                 }
             }
         }
@@ -941,16 +941,16 @@ class Freelancer extends MY_Controller {
         if ($updatdata) {
             // $this->session->set_flashdata('success', 'Education information updated successfully');
             if ($postid) {
-                redirect('freelancer-work/portfolio/' . $postid, refresh);
+                redirect('freelance-work/portfolio/' . $postid, refresh);
             } else {
-                redirect('freelancer-work/portfolio', refresh);
+                redirect('freelance-work/portfolio', refresh);
             }
         } else {
             // $this->session->flashdata('error', 'Your data not inserted');
             if ($postid) {
-                redirect('freelancer-work/education/' . $postid, refresh);
+                redirect('freelance-work/education/' . $postid, refresh);
             } else {
-                redirect('freelancer-work/education', refresh);
+                redirect('freelance-work/education', refresh);
             }
         }
     }
@@ -1708,13 +1708,13 @@ class Freelancer extends MY_Controller {
                     if ($row['freelancer_post_user_image']) {
                         if (IMAGEPATHFROM == 'upload') {
                             if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $row['freelancer_post_user_image'])) {
-                                $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                                $return_html .= '<a href = "' . base_url('freelance-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                                 $return_html .= '<div class = "post-img-div">';
                                 $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
                                 $return_html .= '</div>
                                  </a>';
                             } else {
-                                $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
+                                $return_html .= '<a href = "' . base_url('freelance-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
                 <img src = "' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image'] . '" alt = " ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
                 </a>';
                             }
@@ -1723,11 +1723,11 @@ class Freelancer extends MY_Controller {
                             $s3 = new S3(awsAccessKey, awsSecretKey);
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                             if ($info) {
-                                $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
+                                $return_html .= '<a href = "' . base_url('freelance-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
                 <img src = "' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image'] . '" alt = " ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
                 </a>';
                             } else {
-                                $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                                $return_html .= '<a href = "' . base_url('freelance-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                                 $return_html .= '<div class = "post-img-div">';
                                 $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
                                 $return_html .= '</div>
@@ -1735,7 +1735,7 @@ class Freelancer extends MY_Controller {
                             }
                         }
                     } else {
-                        $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                        $return_html .= '<a href = "' . base_url('freelance-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                         $return_html .= '<div class = "post-img-div">';
                         $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
                         $return_html .= '</div>
@@ -1746,7 +1746,7 @@ class Freelancer extends MY_Controller {
                 <div class = "designation_rec fl">
                 <ul>
                 <li>
-                <a href = " ' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
+                <a href = " ' . base_url('freelance-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
                 <h6>';
                     $return_html .= ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']);
                     $return_html .= '</h6>
@@ -2422,7 +2422,7 @@ class Freelancer extends MY_Controller {
                 
             }
         } else {
-            redirect('freelancer-work');
+            redirect('freelance-work');
         }
     }
 
@@ -2980,7 +2980,7 @@ class Freelancer extends MY_Controller {
                     $return_html .= '<a href="' . base_url('freelancer/freelancer_post_profile/' . $rec['freelancer_apply_slug']) . '" title="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '">
                                                         <img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $rec['freelancer_post_user_image'] . '" alt="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"></a>';
                 } else {
-                    $return_html .= '<a href="' . base_url('freelancer-work/freelancer-details/' . $rec['freelancer_apply_slug']) . '" title="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '">';
+                    $return_html .= '<a href="' . base_url('freelance-work/freelancer-details/' . $rec['freelancer_apply_slug']) . '" title="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '">';
                     $post_fname = $rec['freelancer_post_fullname'];
                     $post_lname = $rec['freelancer_post_username'];
                     $sub_post_fname = substr($post_fname, 0, 1);
@@ -2995,7 +2995,7 @@ class Freelancer extends MY_Controller {
                                         <div class="designation_rec" style="float: left;">
                                             <ul>
                                                 <li>
-                                                    <a  class="post_name" href="' . base_url('freelancer-work/freelancer-details/' . $rec['freelancer_apply_slug']) . '" title="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '">
+                                                    <a  class="post_name" href="' . base_url('freelance-work/freelancer-details/' . $rec['freelancer_apply_slug']) . '" title="' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '">
                                                         ' . ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']) . '</a></li>
                                                 <li style="display: block;"> <a>';
                 if ($rec['designation']) {
@@ -3593,7 +3593,7 @@ class Freelancer extends MY_Controller {
         } else {
 
             $this->session->flashdata('error', 'Your data not inserted');
-            redirect('freelancer-work/home', refresh);
+            redirect('freelance-work/home', refresh);
         }
     }
 
@@ -4101,7 +4101,7 @@ class Freelancer extends MY_Controller {
         $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
         if ($updatdata) {
 
-            redirect('freelancer-work/home', refresh);
+            redirect('freelance-work/home', refresh);
         } else {
 
             redirect('freelancer/reactivate', refresh);
@@ -4817,7 +4817,7 @@ class Freelancer extends MY_Controller {
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a title = "View Detail" class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '">view</a></p>
+                                                <p><a title = "View Detail" class="btn" href="' . BASEURL . 'freelance-work/freelancer-details/' . $userid . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
@@ -5077,17 +5077,17 @@ class Freelancer extends MY_Controller {
 //                $this->session->set_flashdata('success', 'Basic information updated successfully');
 //
 //                if ($postid) {
-//                    redirect('freelancer-work/home/' . $postid, refresh);
+//                    redirect('freelance-work/home/' . $postid, refresh);
 //                } else {
-//                    redirect('freelancer-work/home', refresh);
+//                    redirect('freelance-work/home', refresh);
 //                }
 //            } else {
 //
 //                $this->session->flashdata('error', 'Sorry!! Your data not inserted');
 //                if ($postid) {
-//                    redirect('freelancer-work/registation' . $postid, refresh);
+//                    redirect('freelance-work/registation' . $postid, refresh);
 //                } else {
-//                    redirect('freelancer-work/registation', refresh);
+//                    redirect('freelance-work/registation', refresh);
 //                }
 //            }
 //        }
@@ -5219,17 +5219,17 @@ class Freelancer extends MY_Controller {
 
                 if ($postliveid) {
 
-                    redirect('freelancer-work/home/live-post/', refresh);
+                    redirect('freelance-work/home/live-post/', refresh);
                 } else {
-                    redirect('freelancer-work/home', refresh);
+                    redirect('freelance-work/home', refresh);
                 }
             } else {
 
                 //   $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                 if ($postliveid) {
-                    redirect('freelancer-work/registation' . $postliveid, refresh);
+                    redirect('freelance-work/registation' . $postliveid, refresh);
                 } else {
-                    redirect('freelancer-work/registation', refresh);
+                    redirect('freelance-work/registation', refresh);
                 }
             }
         }
@@ -5263,7 +5263,7 @@ class Freelancer extends MY_Controller {
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a title="View Detail" class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '">view</a></p>
+                                                <p><a title="View Detail" class="btn" href="' . BASEURL . 'freelance-work/freelancer-details/' . $userid . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
