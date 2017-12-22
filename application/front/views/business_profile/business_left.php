@@ -14,7 +14,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                         if ($info && $business_common_data[0]['profile_background'] != '') {
                             ?>
-                           <img src = "<?php echo BUS_BG_MAIN_UPLOAD_URL . $business_common_data[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                           <img src = "<?php echo BUS_BG_MAIN_UPLOAD_URL . $business_common_data[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $business_common_data[0]['company_name']; ?>" />
                      <?php
                      
                 } else {
@@ -51,7 +51,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 <?php } else {
                                     ?>
                                    
-                                     <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="" >
+                                     <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="<?php echo $business_common_data[0]['company_name']; ?>" >
                                         <?php
                                 }
                             }
