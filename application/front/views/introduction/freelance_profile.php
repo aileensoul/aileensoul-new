@@ -22,7 +22,7 @@ header('Expires: '.$date);
 ?>
 <html lang="en">
     <head>
-        <title>Freelancer Profile - Aileensoul.com</title>
+        <title><?php echo $title; ?></title>
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <meta charset="utf-8">
         <?php
@@ -67,7 +67,7 @@ header('Expires: '.$date);
     <body class="outer-page">
         <div class="main-inner">
             <div class="profile-bnr">
-                <img style="width:auto;" src="<?php echo base_url('assets/img/fp.jpg'); ?>" alt="banner-image">
+                <img src="<?php echo base_url('assets/img/fp.jpg'); ?>" alt="banner-image">
 
                 <header class="profile-header">
                     <div class="container">

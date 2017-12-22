@@ -22,7 +22,7 @@ header('Expires: '.$date);
 ?>
 <html lang="en">
     <head>
-        <title>Recruiter Profile - Aileensoul.com</title>
+        <title><?php echo $title; ?></title>
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <meta charset="utf-8">
         <?php

@@ -21,6 +21,7 @@ class Introduction extends CI_Controller {
     }
 
     public function job_profile() {
+        $this->data['title'] = 'Job Profile  - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $profile = $this->check_profile();
@@ -29,6 +30,7 @@ class Introduction extends CI_Controller {
     }
 
     public function recruiter_profile() {
+        $this->data['title'] = 'Recruiter Profile - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $profile = $this->check_profile();
@@ -37,6 +39,7 @@ class Introduction extends CI_Controller {
     }
 
     public function freelance_profile() {
+         $this->data['title'] = 'Freelancer Profile - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $profile = $this->check_profile();
@@ -45,6 +48,7 @@ class Introduction extends CI_Controller {
     }
 
     public function business_profile() {
+         $this->data['title'] = 'Business Profile  - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $profile = $this->check_profile();
@@ -53,6 +57,7 @@ class Introduction extends CI_Controller {
     }
 
     public function artistic_profile() {
+         $this->data['title'] = 'Artistic Profile - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $profile = $this->check_profile();
