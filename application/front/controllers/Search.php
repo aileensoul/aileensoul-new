@@ -1428,8 +1428,8 @@ Your browser does not support the audio tag.
                             }
                         }
                     } else {
-                        $return_html .= '<a href="' . base_url('freelancer-hire/basic-information') . '"> Message </a>';
-                        $return_html .= '<a href="' . base_url('freelancer-hire/basic-information') . '"> Save </a>';
+                        $return_html .= '<a href="' . base_url('freelance-hire/basic-information') . '"> Message </a>';
+                        $return_html .= '<a href="' . base_url('freelance-hire/basic-information') . '"> Save </a>';
                     }
                 } else {
                     $return_html .= '<a href="javascript:void(0);" onclick="login_profile();"> Message </a>';
@@ -1720,10 +1720,10 @@ Your browser does not support the audio tag.
 
 
                     $return_html .= '<div class="job-top-detail">';
-                    $return_html .= '<h5><a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
+                    $return_html .= '<h5><a href="' . base_url('freelance-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
                     $return_html .= $post['post_name'];
                     $return_html .= '</a></h5>';
-                    $return_html .= '<p><a href="' . base_url('freelancer-hire/employer-details/' . $hireslug) . '">';
+                    $return_html .= '<p><a href="' . base_url('freelance-hire/employer-details/' . $hireslug) . '">';
                     $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                     $return_html .= '</a></p>
             </div>
@@ -1796,7 +1796,7 @@ Your browser does not support the audio tag.
                     $return_html .= $rest;
 
                     if (strlen($post['post_description']) > 150) {
-                        $return_html .= '.....<a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">Read more</a>';
+                        $return_html .= '.....<a href="' . base_url('freelance-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">Read more</a>';
                     }
                     $return_html .= '</p>
 
