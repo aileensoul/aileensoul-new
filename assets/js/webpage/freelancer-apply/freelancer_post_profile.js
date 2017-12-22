@@ -236,7 +236,7 @@ $(document).ready(function () {
                 //alert(postid);
                 var userid = response.userid;
                 if (response.okmsg == "ok") {
-                    window.location = base_url + "freelancer-hire/registration";
+                    window.location = base_url + "freelance-hire/registration";
                 } else {
                     $("#register_error").fadeIn(1000, function () {
                         $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');

@@ -557,7 +557,7 @@ function create_profile(){
                 if (response.data == "ok") {
                   //  alert("login");
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                    window.location = base_url + "freelancer-Work/home";
+                    window.location = base_url + "freelance-Work/home";
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login").classList.add('error');
