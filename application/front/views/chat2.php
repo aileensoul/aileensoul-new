@@ -136,7 +136,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <?php if ($last_user_image) { ?>                             
 
                                         <div class="chat_heae_img">
-                                            <img src="<?php echo $last_user_image; ?>" alt="" height="50px" weight="50px">
+                                            <img src="<?php echo $last_user_image; ?>" alt="<?php echo $last_user_image; ?>" height="50px" weight="50px">
                                         </div>
                                         <?php
                                     } else {
@@ -162,7 +162,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </a>
 
                                 <div class="chat_drop">
-                                    <a onclick="myFunction()" class="chatdropbtn fr"> <img src="<?php echo base_url('assets/img/t_dot.png') ?>" onclick="myFunction()"></a>
+                                    <a onclick="myFunction()" class="chatdropbtn fr"> <img src="<?php echo base_url('assets/img/t_dot.png') ?>" onclick="myFunction()" alt="dotimage"></a>
                                     <div id="mychat_dropdown" class="chatdropdown-content">
                                         <a href="javascript:void(0);" onClick="delete_history()">
                                             <span class="h4-img h2-srrt"></span>  Delete All
@@ -207,7 +207,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     $i = 0;
                                     foreach ($smiley_table as $key => $value) {
                                         ?>
-                                        <img id="<?php echo $i; ?>" src="<?php echo base_url() . 'uploads/smileys/' . $value[0]; ?>" alt='<img src="<?php echo base_url() . 'uploads/smileys/' . $value[0]; ?>  height="25" width="25">' height="25" width="25"onClick="followclose(<?php echo $i; ?>)">
+                                        <img id="<?php echo $i; ?>" src="<?php echo base_url() . 'uploads/smileys/' . $value[0]; ?>" alt='<img src="<?php echo base_url() . 'uploads/smileys/' . $value[0]; ?>  height="25" width="25">' height="25" width="25"onClick="followclose(<?php echo $i; ?>)" alt="<?php echo $value[0]; ?>">
 
 
                                         <?php
@@ -724,7 +724,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     // alert(img.getAttribute('src')); // foo.jpg
                     //alert(img.src); 
                     var img = img.src;
-                    $('#message').append("<img  src=" + img + " height='21' width='21' >");
+                    $('#message').append("<img  src=" + img + " height='21' width='21' alt='emoji'>");
                     }
                 </script>
                 <!-- script for selact smily for message end-->
