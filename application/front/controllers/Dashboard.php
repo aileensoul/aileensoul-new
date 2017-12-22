@@ -197,7 +197,9 @@ class Dashboard extends MY_Controller {
 
 
             $this->session->unset_userdata('aileenuser');
+            $this->session->unset_userdata('aileenuser_slug');
               $this->clear_all_cache();
+              $this->session->sess_destroy();
             redirect(base_url(), 'refresh');
         }
         //LOGOUT END  
