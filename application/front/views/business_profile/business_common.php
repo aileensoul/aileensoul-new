@@ -329,8 +329,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     </div>         
                                                 </li>
                                                 <li>
-                                                    <!--<a  href="<?php echo base_url('chat/abc/5/5/' . $business_common_data[0]['user_id']); ?>">Message</a></li>-->
-                                                    <a href="javascript:void(0);" onclick="send_message(<?php echo $business_common_data[0]['user_id'] ?>,<?php echo $business_common_data[0]['business_profile_id'] ?>);">Message</a></li>
+                                                    <a href="<?php echo base_url('chat/abc/5/5/' . $business_common_data[0]['user_id']); ?>">Message</a></li>
+                                                    <!--<a href="javascript:void(0);" onclick="send_message(<?php echo $business_common_data[0]['user_id'] ?>,<?php echo $business_common_data[0]['business_profile_id'] ?>);">Message</a></li>-->
                                             <?php } ?>
                                         </ul>   
                                     </div>

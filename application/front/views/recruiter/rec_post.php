@@ -98,7 +98,7 @@
                 <?php if ($returnpage == '') { ?>
                     <div class="upload-img">
                         <label  class="cameraButton"><span class="tooltiptext_rec">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
-                            <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
+                            <input type="file" id="upload" name="upload" accept="image/*" capture="camera" onclick="showDiv()">
                         </label>
                     </div>
                 <?php } ?>
@@ -266,23 +266,23 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>      
                     <div class="modal-body">
-                        <span class="mes">
+                        <div class="mes">
                             <div id="popup-form">
 
-                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="<?php echo 'LOADERIMAGE'; ?>"/></div>
+                                <div class="fw" id="profi_loader"  style="display:none; text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="<?php echo 'LOADERIMAGE'; ?>"/></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                     <div class="fw">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
                                     </div>
 
                                     <div class="col-md-7 text-center">
-                                        <div id="upload-demo-one" style="display:none;" style="width:350px"></div>
+                                        <div id="upload-demo-one" style="display:none; width:350px"></div>
                                     </div>
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
 
                             </div>
-                        </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -303,11 +303,11 @@
             <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
 
             <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <?php
         } else {
             ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
+            <script defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
 <?php } ?>
 
         <script>
@@ -325,19 +325,19 @@
         <?php
         if (IS_REC_JS_MINIFY == '0') { ?>
 
-             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_post.js'); ?>"></script>
+             <script src="<?php echo base_url('assets/js/webpage/recruiter/rec_post.js'); ?>"></script>
 
          <?php if($returnpage == 'job'){   ?>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>    
+<script src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>    
 <?php }else{ ?>
- <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
+ <script src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
 <?php } ?>
             
            
             <?php
         } else {
             ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_post.min.js?ver=' . time()); ?>"></script>
+            <script defer="defer" src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_post.min.js?ver=' . time()); ?>"></script>
 <?php } ?>
 
     </body>
