@@ -580,7 +580,7 @@
                             $('ul.left-form-each-ul li#left-form-each-li-1').addClass('active filled-box');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(1)').addClass('active');
-                            $scope.title = 'Business information | Business Profile - Aileensoul';
+                            $scope.title = 'Business Information | Business Profile - Aileensoul';
                             getCountry();
                             getBusinessInformation();
                         }

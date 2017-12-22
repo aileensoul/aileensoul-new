@@ -13,7 +13,7 @@ header('Last-Modified: '.$date);
 
 $date = gmdate($format, $now+30);
 header('Expires: '.$date);
-header('Cache-Control: public, max-age=30');
+//header('Cache-Control: public, max-age=30');
 ?>
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Cache-control" content="no-cache">

@@ -1,4 +1,24 @@
 <!DOCTYPE html>
+<?php
+if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+    // $date = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
+    header("HTTP/1.1 304 Not Modified");
+    exit();
+}
+
+$format = 'D, d M Y H:i:s \G\M\T';
+$now = time();
+
+$date = gmdate($format, $now);
+header('Date: '.$date);
+header('Last-Modified: '.$date);
+
+$date = gmdate($format, $now+30);
+header('Expires: '.$date);
+
+header('Cache-Control: public, max-age=30');
+
+?>
 <html lang="en">
     <head>
         <title>Sitemap | Aileensoul.com</title>

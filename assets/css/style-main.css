@@ -47,6 +47,17 @@ body{
     font-style: normal;
 
 }
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
+    src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), 
+	url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), 
+	url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), 
+	url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), 
+	url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 /***  commen css  ***/
@@ -741,7 +752,7 @@ textarea:focus::-webkit-input-placeholder
 	right:0;
 }*/
 .inner-form{
-	width:560px;
+	width:545px;
 	margin:0 auto;    
 }
 .pt-50{padding-top: 95px;}
@@ -1580,6 +1591,12 @@ label.error{font-size: 11px; color: #ff0000 !important; font-weight:normal;}
 #selmonth.error{ border-bottom: 1px solid red !important;}
 #selyear.error{ border-bottom: 1px solid red !important;}
 #selgen.error{ border-bottom: 1px solid red !important;}
+
+#selday.error:focus{ border-bottom: 1px solid #1b8ab9 !important;}
+#selmonth.error:focus{ border-bottom: 1px solid #1b8ab9 !important;}
+#selyear.error:focus{ border-bottom: 1px solid #1b8ab9 !important;}
+#selgen.error:focus{ border-bottom: 1px solid #1b8ab9 !important;}
+
 .about-content{width: 80% !important;line-height: 35px !important; text-align:justify;}
 .about-content.text-center{text-align:center;}
 select:focus{ outline: none; }
@@ -1726,8 +1743,8 @@ background-color: #FFFFFF !important;
 
 .contact header .logo a{text-shadow: 2px 2px #cbcbcb;}
 .contact header{border-bottom:1px solid #d9d9d9; background:rgba(255,255,255,0.4);}
-.contact .inner-form{float:left; margin:0 40px;}
-.contact-add{border:1px solid #c7c7c7; width:560px; float:right; margin:0 40px; border-radius:4px;}
+.contact .inner-form{float:left; margin:0 20px;}
+.contact-add{border:1px solid #c7c7c7; width:545px; float:right; margin:0 20px; border-radius:4px;}
 .con-address td{padding:15px; vertical-align:middle; color:#848484;}
 .con-address td a{color:#848484;}
 .con-address td:first-child{width:130px;}
@@ -1886,6 +1903,12 @@ header.profile-header .logo a{color:#5c5c5c;}
 .new-abput-page .text-custom p{font-size:22px; margin-bottom:15px; color:#5c5c5c;}
 /*** end new about us page  ***/
 .post-img img{border: 1px solid #d9d9d9;}
+
+.test_py p a .fa-external-link{font-size:12px;}
+.user-gen ol li{font-size:18px;}
+.user-gen ol li p{font-size:14px;}
+.user-gen ol li ul li{font-size:14px;}
+.third_ts.user-gen ol{margin-left:10px;}
 
 /***  media query  ***/
 @media screen and (min-height: 540px){
@@ -2276,7 +2299,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 
 @media screen and (max-width: 360px) {
 	.main-inner .btn-right.pull-right a.btn2{padding:8px 18px;}
-	.main-inner .btn-right.pull-right a.btn3{padding:8px 18px;}
+	.main-inner .btn-right.pull-right a.btn3{padding:5px 18px;}
 	.banner {padding-top: 10px;}
 	.how-it-popup .modal-body h3{font-size:22px; margin-bottom:12px;}
 	/***  add  ***/

@@ -917,7 +917,7 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                                <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
+                                <div class="title"><h1>Sign up First and Register in Freelancer Profile</h1></div>
                                 <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
