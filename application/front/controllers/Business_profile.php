@@ -31,9 +31,10 @@ class Business_profile extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'status' => '0');
-        $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,business_slug,company_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($businessdata) {
-            $this->data['title'] = 'Reactive | ' . ' Business Profile' . TITLEPOSTFIX;
+            //$company_name = $this->get_company_name($businessdata[0]['business_slug']);
+            $this->data['title'] = ucwords($businessdata[0]['company_name']). ' | Reactive | ' . ' Business Profile' . TITLEPOSTFIX;
             $this->load->view('business_profile/reactivate', $this->data);
         } else {
             $userid = $this->session->userdata('aileenuser');
@@ -5287,7 +5288,7 @@ Your browser does not support the audio tag.
         $this->data['busienss_data'] = $busienss_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $company_name = $this->get_company_name($slug_id);
-        $this->data['title'] = 'Post Detail | ' . $company_name . ' - Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = ucwords($company_name) . ' | Post Detail' . ' | Business Profile' . TITLEPOSTFIX;
         $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
 
         $this->load->view('business_profile/postnewpage', $this->data);
@@ -5577,7 +5578,7 @@ Your browser does not support the audio tag.
         }
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $company_name = $this->get_company_name($slug_id);
-        $this->data['title'] = 'Video | ' . $company_name . ' - Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = ucwords($company_name) . ' | Video' . ' | Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/business_videos', $this->data);
     }
 
@@ -5612,7 +5613,7 @@ Your browser does not support the audio tag.
         }
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $company_name = $this->get_company_name($slug_id);
-        $this->data['title'] = 'Audio | ' . $company_name . ' - Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = ucwords($company_name) . ' | Audio' . ' | Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/business_audios', $this->data);
     }
 
@@ -5647,7 +5648,7 @@ Your browser does not support the audio tag.
         }
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $company_name = $this->get_company_name($slug_id);
-        $this->data['title'] = 'PDF | ' . $company_name . ' - Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = ucwords($company_name) . ' | PDF' . ' | Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/business_pdf', $this->data);
     }
 
@@ -8300,7 +8301,7 @@ Your browser does not support the audio tag.
         $this->data['friendlist'] = array_merge($friendlist_con, $friendlist_req);
 
         $company_name = $this->get_company_name($slug_id);
-        $this->data['title'] = 'Contact Request | ' . $company_name . ' - Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = ucwords($company_name) . ' | Contact Request' . ' | Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/contact_list', $this->data);
     }
 
