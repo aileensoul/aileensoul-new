@@ -5380,6 +5380,64 @@ class Freelancer extends MY_Controller {
         $currency = $this->input->post('currency');
     }
 
+   
+        $skills = explode(',', $skills);
+       //skill code start
+            if (count($skills) > 0) {
+                foreach ($skills as $ski) {
+                    if ($ski != " ") {
+                        $contition_array = array('skill' => trim($ski), 'type' => '1');
+                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+                        if (count($skilldata) < 0) {
+                            $contition_array = array('skill' => trim($ski), 'type' => '5');
+                            $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                        }
+                        if ($skilldata) {
+                            $skill[] = $skilldata[0]['skill_id'];
+                        } else {
+                            $data = array(
+                                'skill' => trim($ski),
+                                'status' => '1',
+                                'type' => '5',
+                                'user_id' => $userid,
+                            );
+                            $skill[] = $this->common->insert_data_getid($data, 'skill');
+                        }
+                    }
+                }
+                $skill = array_unique($skill, SORT_REGULAR);
+                $skills = implode(',', $skill);
+            }
+            //skill code end
+            $post_name = trim($this->input->post('post_name'));
+            $data = array(
+                'post_name' => trim($this->input->post('post_name')),
+                'post_description' => trim($this->input->post('post_desc')),
+                'post_field_req' => trim($this->input->post('fields_req')),
+                'post_skill' => $skills,
+                'post_other_skill' => trim($this->input->post('other_skill')),
+                'post_est_time' => trim($this->input->post('est_time')),
+                'post_rate' => trim($this->input->post('rate')),
+                'post_currency' => trim($this->input->post('currency')),
+                'post_rating_type' => trim($this->input->post('rating')),
+                'post_exp_month' => trim($this->input->post('month')),
+                'post_exp_year' => trim($this->input->post('year')),
+                'post_last_date' => $lastdate,
+                'post_slug' => $this->common->clean($post_name),
+                //'post_location' => $this->input->post('location'),
+//                'country' => trim($this->input->post('country')),
+//                'state' => trim($this->input->post('state')),
+//                'city' => trim($this->input->post('city')),
+                'user_id' => $userid,
+                'created_date' => date('Y-m-d', time()),
+                'status' => '1',
+                'is_delete' => '0'
+            );
+    
+    
+    
+    
 //    public function add_project_login(){
 //        
 //    }
