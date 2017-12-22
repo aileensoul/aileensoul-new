@@ -145,15 +145,15 @@ class Main extends CI_Controller {
 
     //job user end
     public function terms_condition() {
-        $this->load->view('termcondition');
+        $this->load->view('termcondition',$this->data);
     }
 
     //job user end
     public function privacy_policy() {
-        $this->load->view('privacypolicy');
+        $this->load->view('privacypolicy',$this->data);
     }
     public function website_disclaimer() {
-        $this->load->view('websitedisclaimer');
+        $this->load->view('websitedisclaimer',$this->data);
     }
 
 }

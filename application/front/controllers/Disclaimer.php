@@ -14,6 +14,7 @@ class Disclaimer extends CI_Controller {
     }
 
     public function index() {
+        $this->data['title'] = 'Disclaimer policy - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data,TRUE);
         $this->load->view('disclaimerpolicy', $this->data);
