@@ -3801,7 +3801,7 @@ class Freelancer extends MY_Controller {
         $file = $user_bg_path . $imageName;
         $success = file_put_contents($file, $data);
         // file_put_contents($user_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
-
+      
         $main_image = $user_bg_path . $imageName;
         $main_image_size = filesize($main_image);
 
