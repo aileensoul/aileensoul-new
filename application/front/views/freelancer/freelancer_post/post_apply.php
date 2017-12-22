@@ -201,7 +201,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        <a href="<?php echo base_url('freelance'); ?>">
                                             <div class="all-pr-img">
                                                 <img alt="Freelance Profile" src="<?php echo base_url('assets/img/i3.jpg'); ?>">
                                             </div>
