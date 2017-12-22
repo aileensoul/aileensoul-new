@@ -752,7 +752,7 @@ textarea:focus::-webkit-input-placeholder
 	right:0;
 }*/
 .inner-form{
-	width:560px;
+	width:545px;
 	margin:0 auto;    
 }
 .pt-50{padding-top: 95px;}
@@ -1743,8 +1743,8 @@ background-color: #FFFFFF !important;
 
 .contact header .logo a{text-shadow: 2px 2px #cbcbcb;}
 .contact header{border-bottom:1px solid #d9d9d9; background:rgba(255,255,255,0.4);}
-.contact .inner-form{float:left; margin:0 40px;}
-.contact-add{border:1px solid #c7c7c7; width:560px; float:right; margin:0 40px; border-radius:4px;}
+.contact .inner-form{float:left; margin:0 20px;}
+.contact-add{border:1px solid #c7c7c7; width:545px; float:right; margin:0 20px; border-radius:4px;}
 .con-address td{padding:15px; vertical-align:middle; color:#848484;}
 .con-address td a{color:#848484;}
 .con-address td:first-child{width:130px;}

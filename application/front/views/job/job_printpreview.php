@@ -1677,7 +1677,7 @@
                   <div class="mes">
                      <div id="popup-form">
 
-                     <div class="fw" id="loader_popup"  style="text-align:center; display:none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="loaerimage">/></div>
+                     <div class="fw" id="loader_popup"  style="text-align:center; display:none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="loaerimage"></div>
 
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
 
@@ -1723,11 +1723,11 @@
     
       <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script> 
       <!-- script for skill textbox automatic end (option 2)-->
-      <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
+      <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
       <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <!--      <script type="text/javascript" src="<?php //echo base_url('assets/js/raphael-min.js
         // ?ver='.time()); ?>"></script>-->
-      <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver='.time()); ?>"></script>
+      <script src="<?php echo base_url('assets/js/progressloader.js?ver='.time()); ?>"></script>
 
       <script>
          var base_url = '<?php echo base_url(); ?>';
@@ -1735,10 +1735,10 @@
          var count_profile='<?php echo $count_profile;?>';
       </script>
 
-      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_printpreview.js?ver='.time()); ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/cover_profile_common.js?ver='.time()); ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/progressbar_common.js?ver='.time()); ?>"></script>
+      <script src="<?php echo base_url('assets/js/webpage/job/job_printpreview.js?ver='.time()); ?>"></script>
+      <script src="<?php echo base_url('assets/js/webpage/job/cover_profile_common.js?ver='.time()); ?>"></script>
+      <script src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
+      <script src="<?php echo base_url('assets/js/webpage/job/progressbar_common.js?ver='.time()); ?>"></script>
       
    </body>
 </html>
