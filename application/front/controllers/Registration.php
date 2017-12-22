@@ -346,7 +346,8 @@ class Registration extends CI_Controller {
     //User Name Checking with ajax End
 //Change Password Controller Start
     public function changepassword() {
-        $this->load->view('registration/changepassword');
+        $this->data['title'] = 'Setting | Change Password  - Aileensoul'; 
+        $this->load->view('registration/changepassword',$this->data);
     }
 
     public function changepassword_insert() {    // echo '<pre>'; print_r($_POST); die();

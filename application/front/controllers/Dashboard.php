@@ -28,6 +28,7 @@ class Dashboard extends MY_Controller {
     }
 
     public function index($id = " ") {
+       
                $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
                $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
 
@@ -62,7 +63,7 @@ class Dashboard extends MY_Controller {
         $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_step,status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo "<pre>"; print_r($this->data['artdata']); die();
 
-        $this->data['title'] = 'Dashboard' . TITLEPOSTFIX;
+         $this->data['title'] = 'Profiles  - Aileensoul';
         $this->load->view('dashboard/cover', $this->data);
     }
 
