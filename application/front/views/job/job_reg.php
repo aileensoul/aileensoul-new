@@ -6,7 +6,7 @@
 <?php echo $head; ?>
 <!-- Calender Css Start-->
 
- <title>Job Profile - Aileensoul.com</title>
+ <title><?php echo $title; ?></title>
 
 <!-- Calender Css End-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
