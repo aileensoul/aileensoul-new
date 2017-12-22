@@ -2714,9 +2714,13 @@ class Recruiter extends MY_Controller {
                                                     <div  class="buisness-profile-pic-candidate ">';
 
                 $imageee = $this->config->item('job_profile_thumb_upload_path') . $p['job_user_image'];
-                if (file_exists($imageee) && $p['job_user_image'] != '') {
-
-
+                
+                 $image_ori = $p['job_user_image'];
+                                                $filename = $this->config->item('job_profile_thumb_upload_path') . $p['job_user_image'];
+                                                $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                if ($info && $p['job_user_image'] != '') {
+                                
                     $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
                                     <img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $p['job_user_image'] . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
                                     </a>';
