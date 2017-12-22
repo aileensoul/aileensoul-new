@@ -439,7 +439,9 @@
                         <div class="col-md-3"></div>
                         <div class="clearfix">
                             <div class="job_reg_page_fprm">
-
+                                   <?php if($this->uri->segment(3) == 'live-post'){
+                         echo '<div class="alert alert-success">Your Project is automatically Post after completing Employer registation...!</div>';
+                     } ?>
                                 <div class="common-form job_reg_main">
                                     <h3>Welcome In Employer Profile</h3>
                                     <?php echo form_open(base_url('freelancer/hire_registation_insert'), array('id' => 'freelancerhire_regform', 'name' => 'freelancerhire_regform', 'class' => 'clearfix')); ?>
@@ -546,7 +548,7 @@
                                     <textarea tabindex="8"  name ="professional_info" tabindex="8" id="professional_info" rows="4" cols="50" placeholder="Enter professional information" style="resize: none;overflow: auto;" onpaste="OnPaste_StripFormatting(this, event);" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"></textarea>
                                     <?php echo form_error('professional_info'); ?> 
                                 </fieldset>
-
+                                    <input type="hidden" id="segment" name="segment" value="<?php echo  $this->uri->segment(3); ?>">
                                     <fieldset class=" full-width">
                                         <div class="job_reg">
                                            <!--<input type="reset">-->

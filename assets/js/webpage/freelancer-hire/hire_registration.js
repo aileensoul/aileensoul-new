@@ -325,15 +325,15 @@ function OnPaste_StripFormatting(elem, e) {
 //CODE FOR COPY-PASTE END
 //
 ////DISABLE BUTTON ON ONE TIME CLICK START
-$("#submit").on('click', function ()
-{
-    if ($('#freelancerhire_regform').valid())
-    {
-        $("#submit").addClass("register_disable");
-        return true;
-    }
-
-});
+//$("#submit").on('click', function ()
+//{
+//    if ($('#freelancerhire_regform').valid())
+//    {
+//        $("#submit").addClass("register_disable");
+//        return true;
+//    }
+//
+//});
 ////DISABLE CUTTON ON ONE TIME CLICK END
 //login pop up open start
     function login_profile() {
