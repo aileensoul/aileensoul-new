@@ -182,7 +182,7 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>" title="Freelance Profile">
+                                        <a href="<?php echo base_url('freelance'); ?>" title="Freelance Profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="<?php echo 'i3.jpg';?>">
                                             </div>

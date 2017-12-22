@@ -201,7 +201,7 @@ $mobile_agent = $this->agent->mobile;
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo base_url('freelancer') ?>">
+                                    <a href="<?php echo base_url('freelance') ?>">
                                         <div class="all-pr-img">
                                             <img src="<?php echo base_url() ?>assets/img/i3.jpg" alt="Freelance Profile">
                                         </div>
