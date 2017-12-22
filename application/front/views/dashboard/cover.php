@@ -205,7 +205,7 @@
                                 <?php } ?>
 
                                 <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
-                                    <img src="<?php echo base_url(); ?>assets/img/cam.png">Update Profile Picture</a>
+                                    <img src="<?php echo base_url(); ?>assets/img/cam.png" alt="Update Profile Picture">Update Profile Picture</a>
                             </div>
                         <?php } else { ?>
 
@@ -255,74 +255,7 @@
 
             <section class="all-profile-custom">
 
-                <div id="bus-scroll" class="custom-box odd">
-                    <div class="custom-width">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <div class="left-box">
-                                    <a href="<?php echo base_url('business-profile'); ?>"><img title="Business Profile" src="<?php echo base_url(); ?>assets/img/i4.jpg" alt="Business Profile"></a>
-                                </div>
-                            </div>
-                            <div class="col-md-8 col-sm-8 col-xs-12">
-                                <div class="right-box">
-                                    <h1><a title="Business Profile" href="<?php echo base_url('business-profile'); ?>">Business Profile</a></h1>
-                                    <p>Grow your business network.</p>
-                                    <div class="btns">
-                                        <?php if ($busdata[0]['business_step'] != 4) { ?>
-                                            <a title="Register" class="btn-1" id="business-register-btn" href="<?php echo base_url('business-profile'); ?>">Register</a> 
-                                        <?php } elseif ($busdata[0]['status'] == '0' && $busdata[0]['business_step'] == 4) {
-                                            ?>
-
-                                            <a class="btn-1" id="business-active-btn" href="<?php echo base_url('business-profile'); ?>">Active</a>
-                                        <?php } else {
-                                            ?>
-                                            <a title="Take me in" class="btn-4" id="business-take-btn" href="<?php echo base_url('business-profile'); ?>">Take me in</a> 
-
-                                        <?php } ?>
-                                        <a title="How it works" data-target="#bus-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div id="job-scroll" class="custom-box odd">
-                    <div class="custom-width">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-4">
-                                <div class="left-box">
-                                    <a  href="<?php echo base_url('job'); ?>"><img title="Job Profile" src="<?php echo base_url(); ?>assets/img/i1.png" alt="Job Profile"></a>
-                                </div>
-                            </div>
-                            <div class="col-md-8 col-sm-8">
-                                <div class="right-box">
-                                    <h1><a title="Job Profile" href="<?php echo base_url('job'); ?>">Job Profile</a></h1>
-                                    <p>Find best job options and connect with recruiters.</p>
-                                    <div class="btns">
-
-                                        <?php if ($job[0]['job_step'] != 10) { ?>
-                                            <a title="Register" class="btn-1" id="job-register-btn" href="<?php echo base_url('job/'); ?>">Register</a>
-                                        <?php } elseif ($job[0]['status'] == '0' && $job[0]['job_step'] == 10) {
-                                            ?>
-
-                                            <a class="btn-1" id="job-active-btn" href="<?php echo base_url('job/'); ?>">Active</a>
-                                        <?php } else {
-                                            ?> 
-
-                                            <a title="Take me in" class="btn-4" id="job-take-btn" href="<?php echo base_url('job/'); ?>">Take me in</a> 
-
-                                        <?php } ?>
-                                        <a title="How it works" data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+                
                 <div id="rec-scroll" class="custom-box odd">
                     <div class="custom-width">
                         <div class="row">
@@ -361,7 +294,74 @@
                         </div>
                     </div>
                 </div>
+                <div id="job-scroll" class="custom-box odd">
+                    <div class="custom-width">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4">
+                                <div class="left-box">
+                                    <a  href="<?php echo base_url('job'); ?>"><img title="Job Profile" src="<?php echo base_url(); ?>assets/img/i1.png" alt="Job Profile"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                                <div class="right-box">
+                                    <h1><a title="Job Profile" href="<?php echo base_url('job'); ?>">Job Profile</a></h1>
+                                    <p>Find best job options and connect with recruiters.</p>
+                                    <div class="btns">
 
+                                        <?php if ($job[0]['job_step'] != 10) { ?>
+                                            <a title="Register" class="btn-1" id="job-register-btn" href="<?php echo base_url('job/'); ?>">Register</a>
+                                        <?php } elseif ($job[0]['status'] == '0' && $job[0]['job_step'] == 10) {
+                                            ?>
+
+                                            <a class="btn-1" id="job-active-btn" href="<?php echo base_url('job/'); ?>">Active</a>
+                                        <?php } else {
+                                            ?> 
+
+                                            <a title="Take me in" class="btn-4" id="job-take-btn" href="<?php echo base_url('job/'); ?>">Take me in</a> 
+
+                                        <?php } ?>
+                                        <a title="How it works" data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+                <div id="bus-scroll" class="custom-box odd">
+                    <div class="custom-width">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="left-box">
+                                    <a href="<?php echo base_url('business-profile'); ?>"><img title="Business Profile" src="<?php echo base_url(); ?>assets/img/i4.jpg" alt="Business Profile"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <div class="right-box">
+                                    <h1><a title="Business Profile" href="<?php echo base_url('business-profile'); ?>">Business Profile</a></h1>
+                                    <p>Grow your business network.</p>
+                                    <div class="btns">
+                                        <?php if ($busdata[0]['business_step'] != 4) { ?>
+                                            <a title="Register" class="btn-1" id="business-register-btn" href="<?php echo base_url('business-profile'); ?>">Register</a> 
+                                        <?php } elseif ($busdata[0]['status'] == '0' && $busdata[0]['business_step'] == 4) {
+                                            ?>
+
+                                            <a class="btn-1" id="business-active-btn" href="<?php echo base_url('business-profile'); ?>">Active</a>
+                                        <?php } else {
+                                            ?>
+                                            <a title="Take me in" class="btn-4" id="business-take-btn" href="<?php echo base_url('business-profile'); ?>">Take me in</a> 
+
+                                        <?php } ?>
+                                        <a title="How it works" data-target="#bus-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
                 <div id="art-scroll" class="custom-box odd">
                     <div class="custom-width">
@@ -677,7 +677,7 @@
                         <div class=""> 
                             <div class="col-md-6 col-sm-6 pro_img">
                                 <h3>Job Profile</h3>
-                                <img src="<?php echo base_url(); ?>assets/img/how-it.png">
+                                <img src="<?php echo base_url(); ?>assets/img/how-it.png" alt="How It Works">
                             </div>
                             <div class="col-md-6 col-sm-6 por_content">
                                 <ul>
