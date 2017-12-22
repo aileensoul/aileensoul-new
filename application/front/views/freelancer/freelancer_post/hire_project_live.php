@@ -468,11 +468,11 @@
                                                         ?></a>
                                                 </div>
                                                 <ul class=" left_box_menubar">
-                                                    <li <?php if ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'employer-details') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Details" href="javascript:void(0);" onclick="register_profile();"> <?php echo $this->lang->line("details"); ?></a>
+                                                    <li <?php if ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'employer-details') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Details" href="javascript:void(0);" onclick="register_profile();"> <?php echo $this->lang->line("details"); ?></a>
                                                     </li>                                
                                                     <li id="rec_post_home" <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a title="Projects" href="javascript:void(0);" onclick="register_profile();"><?php echo $this->lang->line("Projects"); ?></a>
                                                     </li>
-                                                    <li <?php if ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'freelancer-save') { ?> class="active" <?php } ?>><a title="Saved Freelancer" class="padding_less_right" href="javascript:void(0);" onclick="register_profile();">Saved</a>
+                                                    <li <?php if ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'freelancer-save') { ?> class="active" <?php } ?>><a title="Saved Freelancer" class="padding_less_right" href="javascript:void(0);" onclick="register_profile();">Saved</a>
                                                     </li>
 
                                                 </ul>
@@ -527,9 +527,9 @@
                                                             ?>
                                                             <p>
                                                                 <?php if ($returnpage == 'freelancer_post') { ?>
-                                                                    <a href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                                    <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                                 <?php } else { ?>
-                                                                    <a href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                                    <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                                 <?php } ?>
                                                                 </a></p>
                                                             <p class="loca-exp">
@@ -789,9 +789,9 @@
                                                             ?>
                                                             <p>
                                                                 <?php if ($returnpage == 'freelancer_post') { ?>
-                                                                    <a href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                                    <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                                 <?php } else { ?>
-                                                                    <a href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                                    <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                                 <?php } ?>
                                                                 </a></p>
                                                             <p class="loca-exp">

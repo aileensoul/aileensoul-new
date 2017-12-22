@@ -496,7 +496,7 @@ function submitRegisterForm()
                         success: function (response) {
                             if (response.data == "ok") {
 
-                                window.location = base_url + "freelancer-hire/registration/live-post";
+                                window.location = base_url + "freelance-hire/registration/live-post";
                             }
                         }
                     });
@@ -655,7 +655,7 @@ function submitForm()
                         dataType: "json",
                         success: function (response) {
                             if (response.data == "ok") {
-                                window.location = base_url + "freelancer-hire/home";
+                                window.location = base_url + "freelance-hire/home";
                             }
                         }
                     });
@@ -697,7 +697,7 @@ function submitForm()
                             dataType: "json",
                             success: function (response) {
                                 if (response.data == "ok") {
-                                    window.location = base_url + "freelancer-hire/registration/live-post";
+                                    window.location = base_url + "freelance-hire/registration/live-post";
                                 }
                             }
                         });

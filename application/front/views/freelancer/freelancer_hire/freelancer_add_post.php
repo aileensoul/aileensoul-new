@@ -196,10 +196,10 @@
                                                 </fieldset>
                                                 <fieldset class="hs-submit half-width">
                                                     <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
-                                                    <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
+                                                    <?php if (($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                                     <a title="cancel" class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
                                                     <?php } else { ?>
-                                                    <a title="cancel" class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelancer-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
+                                                    <a title="cancel" class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelance-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
                                                     <?php } ?>
                                                     <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
                                                 </fieldset>
@@ -265,10 +265,10 @@
                                                                                                                                 </fieldset>
                                                                                                                                 <fieldset class="hs-submit half-width">
                                                                                                                                         <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
-                                        <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
+                                        <?php if (($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                                                                                                                                             <a class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
                                         <?php } else { ?>
-                                                                                                                                                            <a class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelancer-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
+                                                                                                                                                            <a class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelance-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
                                         <?php } ?>
                                                                                                                                         <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
                                                                                                                                 </fieldset>
@@ -347,15 +347,15 @@
                             {
                                 if (clicked_id == 1)
                                 {
-                                    location.href = '<?php echo base_url('freelancer-hire/home'); ?>';
+                                    location.href = '<?php echo base_url('freelance-hire/home'); ?>';
                                 }
                                 if (clicked_id == 2)
                                 {
-                                    location.href = '<?php echo base_url('freelancer-hire/employer-details'); ?>';
+                                    location.href = '<?php echo base_url('freelance-hire/employer-details'); ?>';
                                 }
                                 if (clicked_id == 3)
                                 {
-                                    location.href = '<?php echo base_url('freelancer-hire/basic-information'); ?>';
+                                    location.href = '<?php echo base_url('freelance-hire/basic-information'); ?>';
                                 }
                                 if (clicked_id == 4)
                                 {
@@ -367,14 +367,14 @@
 
                                         if (searchkeyword == "")
                                         {
-                                            location.href = '<?php echo base_url() ?>freelancer-hire/search/' + 0 + '/' + searchplace;
+                                            location.href = '<?php echo base_url() ?>freelance-hire/search/' + 0 + '/' + searchplace;
 
                                         } else if (searchplace == "")
                                         {
-                                            location.href = '<?php echo base_url() ?>freelancer-hire/search/' + searchkeyword + '/' + 0;
+                                            location.href = '<?php echo base_url() ?>freelance-hire/search/' + searchkeyword + '/' + 0;
                                         } else
                                         {
-                                            location.href = '<?php echo base_url() ?>freelancer-hire/search/' + searchkeyword + '/' + searchplace;
+                                            location.href = '<?php echo base_url() ?>freelance-hire/search/' + searchkeyword + '/' + searchplace;
                                         }
                                     }
                                 }
@@ -397,7 +397,7 @@
                                 if (clicked_id == 9)
                                 {
                                     if (page == 'professional') {
-                                        location.href = '<?php echo base_url('freelancer-hire/home'); ?>';
+                                        location.href = '<?php echo base_url('freelance-hire/home'); ?>';
                                     } else {
                                         location.href = 'javascript:history.back()';
                                     }
@@ -440,7 +440,7 @@
                             var url, data;
                             if (clicked_id == 4) {
 
-                                url = '<?php echo base_url() . "freelancer-hire/search" ?>';
+                                url = '<?php echo base_url() . "freelance-hire/search" ?>';
                                 data = 'id=' + clicked_id + '&skills=' + searchkeyword + '&searchplace=' + searchplace;
                             }
                             $.ajax({
@@ -450,27 +450,27 @@
                                 success: function (data) {
                                     if (clicked_id == 1)
                                     {
-                                        window.location = "<?php echo base_url('freelancer-hire/home'); ?>";
+                                        window.location = "<?php echo base_url('freelance-hire/home'); ?>";
                                     } else if (clicked_id == 2)
                                     {
-                                        window.location = "<?php echo base_url('freelancer-hire/employer-details'); ?>";
+                                        window.location = "<?php echo base_url('freelance-hire/employer-details'); ?>";
                                     } else if (clicked_id == 3)
                                     {
-                                        window.location = "<?php echo base_url('freelancer-hire/basic-information'); ?>";
+                                        window.location = "<?php echo base_url('freelance-hire/basic-information'); ?>";
                                     } else if (clicked_id == 4)
                                     {
 
                                         if (searchkeyword == "")
                                         {
-                                            window.location = "<?php echo base_url() ?>freelancer-hire/search/" + 0 + "/" + searchplace;
+                                            window.location = "<?php echo base_url() ?>freelance-hire/search/" + 0 + "/" + searchplace;
 
                                         } else if (searchplace == "")
                                         {
 
-                                            window.location = "<?php echo base_url() ?>freelancer-hire/search/" + searchkeyword + "/" + 0;
+                                            window.location = "<?php echo base_url() ?>freelance-hire/search/" + searchkeyword + "/" + 0;
                                         } else
                                         {
-                                            window.location = "<?php echo base_url() ?>freelancer-hire/search/" + searchkeyword + "/" + searchplace;
+                                            window.location = "<?php echo base_url() ?>freelance-hire/search/" + searchkeyword + "/" + searchplace;
                                         }
                                     } else if (clicked_id == 5)
                                     {
