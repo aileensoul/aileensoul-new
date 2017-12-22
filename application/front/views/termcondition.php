@@ -22,7 +22,7 @@ header('Cache-Control: public, max-age=30');
 ?>
 <html lang="en">
     <head>
-        <title>Terms and Condition - Aileensoul</title>
+        <title><?php echo $title; ?></title>
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <meta charset="utf-8">
         <?php
