@@ -22,7 +22,7 @@ header('Cache-Control: public, max-age=30');
 ?>
 <html lang="en">
     <head>
-        <title>Feedback to Aileensoul.com</title>
+        <title>Feedback - Aileensoul</title>
         <meta name="description" content="Feel free to share your views and thoughts about Aileensoul.com services." />
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver='.time()); ?>">
         <meta charset="utf-8">

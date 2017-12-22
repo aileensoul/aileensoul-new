@@ -16,6 +16,7 @@ class Sitemap extends CI_Controller {
     }
 
     public function index() {
+        $this->data['title'] = 'Sitemap - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
 
@@ -27,6 +28,7 @@ class Sitemap extends CI_Controller {
     }
 
     public function job_profile() {
+        $this->data['title'] = 'Job Profile | Sitemap - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['getJobDataByLocation'] = $this->sitemap_model->getJobDataByLocation();
@@ -35,6 +37,7 @@ class Sitemap extends CI_Controller {
     }
 
     public function recruiter_profile() {
+        $this->data['title'] = 'Recruiter Profile | Sitemap - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['getJobseekers'] = $this->sitemap_model->getJobseekers();
@@ -46,6 +49,7 @@ class Sitemap extends CI_Controller {
     }
 
     public function freelance_profile() {
+        $this->data['title'] = 'Freelance Profile | Sitemap - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['getFreepostDataByCategory'] = $this->sitemap_model->getFreepostDataByCategory();
@@ -55,6 +59,7 @@ class Sitemap extends CI_Controller {
     }
 
     public function business_profile() {
+        $this->data['title'] = 'Business Profile | Sitemap - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['getBusinessDataByCategory'] = $this->sitemap_model->getBusinessDataByCategory();
@@ -62,6 +67,7 @@ class Sitemap extends CI_Controller {
     }
 
     public function artistic_profile() {
+        $this->data['title'] = 'Artistic Profile | Sitemap - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['getArtistDataByCategory'] = $this->sitemap_model->getArtistDataByCategory();
