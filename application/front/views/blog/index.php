@@ -17,7 +17,7 @@ header('Last-Modified: '.$date);
 $date = gmdate($format, $now+30);
 header('Expires: '.$date);
 
-header('Cache-Control: public, max-age=30');
+//header('Cache-Control: public, max-age=30');
 
 ?>
 <html class="blog_cl" lang="en">
