@@ -176,7 +176,7 @@
 
                                     <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'recruiter_data') { ?> class="active" <?php } ?>>
                                         <?php if ($returnpage == 'job') { ?>
-                                            <a title="Details" href="<?php echo base_url('recruiter/profile/' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Details</a>
+                                            <a title="Details" href="<?php echo base_url('recruiter/profile/' . $this->uri->segment(3)); ?>">Details</a>
                                         <?php } else { ?>
                                             <a title="Post" href="javascript:void(0);" onclick="ChangeUrl('Page1', 'http://localhost/jquerydiv/screen1.php');">Details</a>
                                         <?php } ?>
@@ -188,7 +188,7 @@
 
                                         <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>>
                                             <?php if ($returnpage == 'job') { ?>
-                                                <a title="Post" href="<?php echo base_url('recruiter/post/' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Post</a>
+                                                <a title="Post" href="<?php echo base_url('recruiter/post/' . $this->uri->segment(3)); ?>">Post</a>
                                             <?php } else { ?>
                                                 <a title="Post" href="javascript:void(0);" onclick="ChangeUrl('Page2', 'http://localhost/jquerydiv/screen2.php');">Posts</a>
                                             <?php } ?>

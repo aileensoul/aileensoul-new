@@ -578,7 +578,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER CHECK EMAIL COMAPNY FUNCTION END   
 // RECRUITER RECOMMANDED FUNCTION START
     public function recommen_candidate() {
-$this->data['title'] = 'Home | Recruiter Profile - Aileensoul';  
+        $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
         $this->recruiter_apply_check();
 
@@ -892,7 +892,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
             $this->recruiter_apply_check();
 
             $contition_array = array('user_id' => $userid, 'is_delete' => '0');
-            $this->data['postdataone'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,recruiter_user_image,profile_background,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $this->data['postdataone'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,recruiter_user_image,profile_background,designation,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
 //
 //            $join_str[0]['table'] = 'recruiter';
@@ -910,7 +910,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
             $this->rec_avail_check($id);
 
             $contition_array = array('user_id' => $id, 'is_delete' => '0', 're_step' => '3');
-            $this->data['postdataone'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,recruiter_user_image,profile_background,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $this->data['postdataone'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,recruiter_user_image,profile_background,designation,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             //   echo "<pre>";print_r( $this->data['postdataone']);die();
 //            $join_str[0]['table'] = 'recruiter';
 //            $join_str[0]['join_table_id'] = 'recruiter.user_id';
@@ -1274,7 +1274,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
         $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | SavedCandidate | RecruiterProfile - Aileensoul';
-        
+
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -1323,7 +1323,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
     public function rec_profile($id = "") {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
-      
+
         $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Details | RecruiterProfile - Aileensoul';
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
@@ -1395,7 +1395,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
 // REMOVE CANDIDATE END
 // VIEW APPLIED LIST START
     public function view_apply_list($id = "") {
-         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
         $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Applied Candidate | RecruiterProfile - Aileensoul';
 
@@ -2089,11 +2089,13 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
         $rec_post .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
         $rec_post .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
+
 // LAZY LOADER CODE END
         // code start
         $returnpage = $_GET['returnpage'];
         if (count($rec_postdata1) > 0) {
-            if ($returnpage == 'job') {
+            if ($userid != $id && $id != '') {
+              
                 if (count($rec_postdata) != '') {
                     foreach ($rec_postdata as $post) {
 //                    $rec_post .= '<div class="job-contact-frnd ">';
@@ -2143,7 +2145,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
                                 $s3 = new S3(awsAccessKey, awsSecretKey);
                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                 if ($info) {
-                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '" alt="' . $cache_time .'">';
+                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '" alt="' . $cache_time . '">';
                                 } else {
                                     $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                                 }
@@ -2175,7 +2177,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
                         $rec_post .= '<p><a href = "' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                         $rec_post .= $cache_time1;
                         $rec_post .= '</a></p>';
-                        $rec_post .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '">';
+                        $rec_post .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id']) . '">';
                         $rec_post .= ucwords($cache_time2) . " " . ucfirst($cache_time3);
                         $rec_post .= '</a></p>
             </div>
@@ -2271,7 +2273,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
 //                                        </div>';
                 }
             } else {
-
+               
                 if (count($rec_postdata) != '') {
 
                     foreach ($rec_postdata as $post) {
@@ -2334,7 +2336,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
                         $rec_post .= '<p><a href = "' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                         $rec_post .= $cache_time1;
                         $rec_post .= '</a></p>';
-                        $rec_post .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '">';
+                        $rec_post .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id']) . '">';
                         $rec_post .= ucwords($cache_time2) . " " . ucfirst($cache_time3);
                         $rec_post .= '</a></p>
             </div>
@@ -2482,7 +2484,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
             $title .= $search_place;
         }
         $this->data['title'] = "Search | Recruiter Profile - Aileensoul";
-        
+
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
@@ -2723,13 +2725,13 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
                                                     <div  class="buisness-profile-pic-candidate ">';
 
                 $imageee = $this->config->item('job_profile_thumb_upload_path') . $p['job_user_image'];
-                
-                 $image_ori = $p['job_user_image'];
-                                                $filename = $this->config->item('job_profile_thumb_upload_path') . $p['job_user_image'];
-                                                $s3 = new S3(awsAccessKey, awsSecretKey);
-                                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                                if ($info && $p['job_user_image'] != '') {
-                                
+
+                $image_ori = $p['job_user_image'];
+                $filename = $this->config->item('job_profile_thumb_upload_path') . $p['job_user_image'];
+                $s3 = new S3(awsAccessKey, awsSecretKey);
+                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                if ($info && $p['job_user_image'] != '') {
+
                     $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
                                     <img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $p['job_user_image'] . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
                                     </a>';
@@ -4760,7 +4762,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
 //LIVE LOCATION END
 
     public function rec_reg() {
-     $this->data['title'] = 'Register | Recruiter Profile - Aileensoul';
+        $this->data['title'] = 'Register | Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START

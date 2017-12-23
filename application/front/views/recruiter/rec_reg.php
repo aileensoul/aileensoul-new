@@ -220,7 +220,7 @@
                 /*background:#fff;*/
                 width:100%;
                 margin:0 auto;
-                border:1px solid #c7c7c7;
+              /*  border:1px solid #c7c7c7;*/
                 border-radius:5px;
                 -webkit-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
                 -moz-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
@@ -633,7 +633,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                                <div class="title"><h1>Signup first and register in recruiter profile</h1></div>
+                              <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Recruiter Profile</h1></div>
                                 <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">

@@ -403,7 +403,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                             <div class="business-all-post">
                             </div>
-                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="loader" /></div>
                             <!-- middle section start -->
                             <!--                                <div class="nofoundpost">
                                                             </div>-->
@@ -765,7 +765,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         success: function (response)
                         {
                             if (response.data == "ok") {
-                                $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Login');
+                                $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" alt="Loader" /> &nbsp; Login');
                                 if (response.is_bussiness == '1') {
                                     window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
                                 } else {
@@ -964,7 +964,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         success: function (response)
                         {
                             if (response.okmsg == "ok") {
-                                $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
+                                $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" alt="Loader"/> &nbsp; Sign Up ...');
 //                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
                                 window.location = "<?php echo base_url() ?>business-profile/";
                             } else {

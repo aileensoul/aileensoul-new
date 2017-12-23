@@ -426,7 +426,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                         <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>>
                                             <?php if ($this->uri->segment(3) != $userid) { ?>
-                                                <a title="Post" href="<?php echo base_url('recruiter/post/' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Post</a>
+                                                <a title="Post" href="<?php echo base_url('recruiter/post/' . $this->uri->segment(3)); ?>">Post</a>
                                             <?php } else { ?>
                                                 <a title="Post" href="<?php echo base_url('recruiter/post'); ?>">Post</a>
     <?php } ?>
@@ -976,8 +976,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                     <div class="modal-body">
                         <div class="clearfix">
-                            <div class="col-md-12 col-sm-12">
-                                <h4>Signup first and register in recruiter profile</h4>
+                            <div class="">
+                             <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Recruiter Profile</h1></div>
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">

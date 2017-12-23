@@ -115,20 +115,20 @@ header("Pragma: no-cache"); // HTTP/1.0
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-lg-5">
-                            <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png') ?>" alt="logo"></a>
+                            <a tabindex="1"  href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png') ?>" alt="logo"></a>
                         </div>
                         <div class="col-lg-1"></div>
                         <div class="col-md-8 col-sm-9 col-lg-6">
                             <form class="header-login" name="login_form" id="login_form" method="post">
                                 <div class="input">
-                                    <input type="email" tabindex="1" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address">
+                                    <input type="email" tabindex="1"  name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address">
                                 </div>
                                 <div class="input">
-                                    <input type="password" tabindex="2" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password">
+                                    <input type="password" tabindex="1"  name="password_login" id="password_login" class="form-control input-sm" placeholder="Password">
                                 </div>
                                 <div class="btn-right">
-                                    <button id="login-new" title="Login" tabindex="2" class="btn1">Login</button>
-                                    <a tabindex="4" id="myBtn"  class="f-pass" href="javascript:void(0)" title="Forgot Password">Forgot Password?</a>
+                                    <button id="login-new" title="Login" tabindex="1"  class="btn1">Login</button>
+                                    <a tabindex="1" id="myBtn"  class="f-pass" href="javascript:void(0)" title="Forgot Password">Forgot Password?</a>
                                 </div>
                             </form>
                         </div>
@@ -207,26 +207,26 @@ header("Pragma: no-cache"); // HTTP/1.0
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                                    <input tabindex="1" autofocus type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                                    <input tabindex="2" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                            <input tabindex="3" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
                                         </div>
                                         <div class="form-group">
-                                            <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                            <input tabindex="4" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
                                             <span>
-                                                <select tabindex="9" class="day" name="selday" id="selday">
+                                                <select tabindex="5" class="day" name="selday" id="selday">
                                                     <option value="" disabled selected>Day</option>
                                                     <?php
                                                     for ($i = 1; $i <= 31; $i++) {
@@ -238,7 +238,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                                 </select>
                                             </span>
                                             <span>
-                                                <select tabindex="10" class="month" name="selmonth" id="selmonth">
+                                                <select tabindex="6" class="month" name="selmonth" id="selmonth">
                                                     <option value="" disabled selected>Month</option>
                                                     <option value="1">Jan</option>
                                                     <option value="2">Feb</option>
@@ -255,7 +255,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                                 </select>
                                             </span>
                                             <span>
-                                                <select tabindex="11" class="year" name="selyear" id="selyear">
+                                                <select tabindex="7" class="year" name="selyear" id="selyear">
                                                     <option value="" disabled selected>Year</option>
                                                     <?php
                                                     for ($i = date('Y'); $i >= 1900; $i--) {
@@ -269,7 +269,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                         <div class="dateerror" style="color:#f00; display: block;"></div>
                                         <div class="form-group gender-custom">
                                             <span>
-                                                <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                                <select tabindex="8" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                                     <option value="" disabled selected>Gender</option>
                                                     <option value="M">Male</option>
                                                     <option value="F">Female</option>
@@ -278,10 +278,10 @@ header("Pragma: no-cache"); // HTTP/1.0
                                         </div>
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our<br class="mob-none">
-                                            <a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" tabindex="14" target="_blank">Terms and Condition</a> and <a tabindex="15" href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a>.
+                                            <a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" tabindex="9" target="_blank">Terms and Condition</a> and <a tabindex="10" href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a>.
                                         </p>
                                         <p>
-                                            <button id="create-acc-new" title="Create an account" tabindex="13" class="btn1">Create an account</button>
+                                            <button id="create-acc-new" title="Create an account" tabindex="11" class="btn1">Create an account</button>
                                         </p>
                                     </form>
                                 </div>
