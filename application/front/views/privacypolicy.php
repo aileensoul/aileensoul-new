@@ -172,7 +172,8 @@ header('Cache-Control: public, max-age=30');
                             <div class="fw">
                                 <span class="em-py3">   Email : </span>
                                 <span class="em-py2">
-                                    <a href="mailto:info@aileensoul.com"> info@aileensoul.com</a>
+                                    <a href="mailto:aileensoulinquiry@gmail.com"> aileensoulinquiry@gmail.com</a>
+                                    <br><a href="mailto:inquiry@aileensoul.com"> inquiry@aileensoul.com</a>
                                     <br><a href="mailto:inquiry@aileensoul.com"> inquiry@aileensoul.com</a>
                                     <br><a href="mailto:hr@aileensoul.com"> hr@aileensoul.com</a></span>
                                 <br>
@@ -205,6 +206,6 @@ header('Cache-Control: public, max-age=30');
 
         <?php
             echo $login_footer
-            ?>
+        ?>
     </body>
 </html>

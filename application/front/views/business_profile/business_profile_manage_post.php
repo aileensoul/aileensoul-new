@@ -362,7 +362,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 <li>
                                     <a href="<?php echo base_url('recruiter') ?>">
                                         <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i2.jpg">
+                                            <img src="<?php echo base_url() ?>assets/img/i2.jpg" alt="art profli">
                                         </div>
                                         <span>Recruiter Profile</span>
                                     </a>
