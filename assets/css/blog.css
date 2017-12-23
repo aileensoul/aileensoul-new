@@ -419,7 +419,7 @@ max-width: inherit;}
 	.term_desc h3{font-size: 20px;}
 	.second_paret_ts h3{ font-size: 20px; }
 	.second_paret_ts ol li h4{ font-size: 15px;	  }
-	.term_desc{width: 80% !important;}
+	.term_desc{width: 100% !important;}
 	.comment_box{margin-bottom: 80px;}
 	.blog header h2.logo a{font-size: 32px;}
 
@@ -455,7 +455,7 @@ ol li h4{font-size: 16px;}
 @media screen and (max-width: 479px) {
 	.test_py{font-size: 12px;}
 	.term_desc{padding: 20px 0px 23px !important;}
-	.term_desc{width:90%!important; }
+	.term_desc{width:100%!important; }
 	.term_desc h3{font-size: 18px;}
 	.blog_header ul li{padding: 1px 6px; font-size: 11px;}
 	.blog_header{padding-top: 118px;}
