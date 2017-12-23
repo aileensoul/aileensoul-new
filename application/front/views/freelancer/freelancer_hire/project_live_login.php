@@ -1213,7 +1213,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                                    <div class="title"><h1>Sign up First and Register in Employer Profile</h1></div>
+                                    <div class="title"><h1 style="font-size: 24px">Sign up First and Register in Employer Profile</h1></div>
 									<div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
@@ -1329,7 +1329,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                                    <h4>Sign up First and Register in Employer Profile</h4>
+                                     <div class="title"><h1 style="font-size: 24px">Sign up First and Register in Employer Profile</h1></div>
 									<div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">

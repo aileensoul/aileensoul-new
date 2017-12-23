@@ -394,8 +394,8 @@
             -o-transform: translate(-50%,-50%);
             transform: translate(-50%,-50%);}
                 /*second*/
-            .cus-no-login .dob .error{bottom:-25px;}
-            .cus-no-login .gender-custom .error{bottom:-25px;}
+            /*.cus-no-login .dob .error{bottom:-25px;}
+            .cus-no-login .gender-custom .error{bottom:-25px;}*/
             .cus-no-login .job-saved-box{margin-bottom:15px;}
             .cus-no-login .job-post-detail{margin-bottom:0;}
             .cus-no-login .login p{font-size:14px; margin-bottom:9px;}
@@ -610,8 +610,8 @@
                     <!-- <button type="button" class="modal-close" data-dismiss="modal">&times;</button>          -->
                     <div class="modal-body">
                         <div class="clearfix">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="title"><h1>Signup first and register in Artistic profile</h1></div>
+                            <div class=" ">
+                                <div class="title"><h1 style="font-size: 24px;">Sign up first and register in Artistic Profile</h1></div>
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
