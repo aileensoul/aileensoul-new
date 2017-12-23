@@ -373,7 +373,7 @@
                 .profile-boxProfileCard-cover{width: 100%;border:none;padding-left: 10px;float: left;height: auto;}
                 .profile-boxProfileCard-cover a{color: black;}
                 .profile-boxProfileCard-cover a:hover{color: #1b8ab9;}
-                .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
+                .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 6px;/*text-transform: capitalize;*/}
                 .full-box-module{width: 100%;float: left;}
                 .profile-boxProfileCard{border: none;}
                 .d_o_b{color: #848484;font-size: 10px;font-weight: normal;line-height: 1;margin-bottom: 0;padding-left: 5px; width: 100%;}       
@@ -382,7 +382,7 @@
                           background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
                           -webkit-background-clip: text;
                           -webkit-text-fill-color: transparent;
-                          position:relative;margin-bottom:20px;text-transform:capitalize;}
+                          position:relative;margin-bottom:6px;text-transform:capitalize;}
                 .sign_in{width:100%; text-align:center;}
                 .sign_in p a:hover{text-decoration:underline;}
                 .login p a:hover{text-decoration:underline; color:#337ab7;}

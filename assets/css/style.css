@@ -2407,11 +2407,13 @@ word-break: break-word;}
 	.no-login .sign_in.pt10{padding-top:0;}
 	.alert.alert-success{margin-top:20px; width:100%;}
 	.outer-page header{position:relative; background:url('../img/mob-about-bg.jpg');}
+    .title h1{font-size: 20px !important;}
 	/***  advertise problem  ***/
 	.tablate-add-custom{display:none;}
 	/***  end advertise problem  ***/
 	.inner-right-part{width:100%;}
     h1, h1 a {font-size: 22px;line-height: 25px;}
+    .modal-dialog{height: auto;}
 
 @media screen and (max-width: 640px) {
 

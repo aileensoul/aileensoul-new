@@ -2210,9 +2210,9 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.profiles-details h2{font-size:19px;margin-top: 0px;}
 	.right-header{padding-top:15px;}
 	.profile-bnr{padding-top:100px;}
-
+	.title h1{font-size: 20px !important;}
 	#onload-Modal{display: none !important;}
-
+}
 @media screen and (max-width: 640px) {
 	.btns .btn-4{font-size: 14px!important;}
 	.custom-box .custom-width .right-box a.hew{font-size: 16px!important;}
@@ -2313,6 +2313,8 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.mid-trns .custom-padd{padding-right: 0px;padding-left: 0px;}
 	.login #register_form span::after{right: 16px;}
 	.login form{padding: 16px 8px 15px !important;}
+	.login .form-group select.day{width: 60px;}
+	.login .form-group select.month{width: 60px;}
 	/*** end add  ***/
 }
 
@@ -2325,6 +2327,10 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.login form{padding: 16px 8px 15px !important;}
 	.about-us .main-inner .btn-right.pull-right a.btn2{margin-bottom: 10px;}
 	.about-us .titlea h1{font-size: 32px;}
+	.login .form-group select{margin-right: 12px;}
+	.login .form-group select.day{width: 50px !important;}
+	.login .form-group select.month{width: 50px!important;}
+	.login .form-group select.year{width: 50px!important;}
 }
 @media screen and (max-width: 319px) {
 	footer ul li{width: 100%;}
