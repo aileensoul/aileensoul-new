@@ -3752,7 +3752,10 @@ class Freelancer extends MY_Controller {
 //FREELANCER_HIRE COVER PIC STRAT
     public function ajaxpro_hire() {
 
-        // echo "<pre>";print_r($_POST['image']);die();
+//         echo "<pre>";print_r($_POST['image']);
+//       
+//         die();
+//         
         $userid = $this->session->userdata('aileenuser');
 
 
@@ -3788,7 +3791,7 @@ class Freelancer extends MY_Controller {
         $data = $_POST['image'];
         $data = str_replace('data:image/png;base64,', '', $data);
         $data = str_replace(' ', '+', $data);
-
+//        echo $data;die();
 
         // $imageName = time() . '.png';
         // $base64string = $data;
@@ -3798,6 +3801,7 @@ class Freelancer extends MY_Controller {
         $user_bg_path = $this->config->item('free_hire_bg_main_upload_path');
         $imageName = time() . '.png';
         $data = base64_decode($data);
+      //  echo $data;die();
         $file = $user_bg_path . $imageName;
         $success = file_put_contents($file, $data);
         // file_put_contents($user_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));

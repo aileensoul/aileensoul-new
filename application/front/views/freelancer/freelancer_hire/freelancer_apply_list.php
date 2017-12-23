@@ -52,7 +52,7 @@
                                                                             <?php
                                                                             if ($row['freelancer_post_user_image']) {
                                                                                 ?>
-                                                                                <a href="<?php echo base_url('freelance-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire'); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"> <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image']; ?>" alt="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"> </a>
+                                                                                <a href="<?php echo base_url('freelance-work/freelancer-details/' . $row['user_id']); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"> <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image']; ?>" alt="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"> </a>
                                                                                 <?php
                                                                             } else {
                                                                                 $post_fname = $row['freelancer_post_fullname'];
@@ -71,11 +71,11 @@
                                                                     <div class="designation_rec fl">
                                                                         <ul>
                                                                             <li>        
-                                                                                <a href="<?php echo base_url('freelance-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire' . "&post_id=" . $postid); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"><h6>
+                                                                                <a href="<?php echo base_url('freelance-work/freelancer-details/' . $row['user_id']); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"><h6>
                                                                                         <?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?></h6>
                                                                                 </a>
                                                                             </li>
-                                                                            <li style="display: block;" ><a href="<?php echo base_url('freelance-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire' . "&post_id=" . $postid); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>" > <?php
+                                                                            <li style="display: block;" ><a href="<?php echo base_url('freelance-work/freelancer-details/' . $row['user_id']); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>" > <?php
                                                                                     if ($row['designation']) {
                                                                                         echo $row['designation'];
                                                                                     } else {
