@@ -6,11 +6,25 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
+
+         <?php
+        if (IS_JOB_CSS_MINIFY == '0') {
+            ?>
+
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>" />
             <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />      
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
+
+            <?php }else{?>
+             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>" />
+            <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
+
+            <?php }?>      
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
@@ -2490,10 +2504,24 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             });
         </script>
 
+<?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
+
       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_printpreview.js?ver='.time()); ?>"></script>
       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/cover_profile_common.js?ver='.time()); ?>"></script>
       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/progressbar_common.js?ver='.time()); ?>"></script>
+
+      <?php }else{?>
+
+  <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_printpreview.js?ver='.time()); ?>"></script>
+      <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/cover_profile_common.js?ver='.time()); ?>"></script>
+      <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver='.time()); ?>"></script>
+      <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/progressbar_common.js?ver='.time()); ?>"></script>
+
+
+      <?php }?>
       
    </body>
 </html>

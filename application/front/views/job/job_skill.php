@@ -7,13 +7,23 @@
 
       <title><?php echo $title; ?></title>
 
-    
+     <?php
+        if (IS_JOB_CSS_MINIFY == '0') {
+            ?>
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">
 
 <!-- This Css is used for call popup -->
 <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css?ver='.time()); ?>" />
+<?php }else{?>
 
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver='.time()); ?>">
+     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver='.time()); ?>">
+
+<!-- This Css is used for call popup -->
+<link rel="stylesheet" href="<?php echo base_url('assets/css_min/jquery.fancybox.css?ver='.time()); ?>" />
+
+<?php }?>
    </head>
    <!-- END HEAD -->
    <!-- Start HEADER -->
@@ -126,7 +136,9 @@
 <?php echo $login_footer ?>  
 <?php echo $footer;  ?>
 <!-- </footer> -->
-
+<?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
        
       <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
 
@@ -136,13 +148,36 @@
       
       <script type="text/javascript" src="<?php echo base_url('assets/js/additional-methods1.15.0.min.js?ver='.time()); ?>"></script>
       <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+
+  <?php }else{?>
+  
+
+   <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver='.time()) ?>"></script>
+
+     <!-- This Js is used for call popup -->
+         <script src="<?php echo base_url('assets/js_min/jquery.fancybox.js?ver='.time()); ?>"></script>
+      <!-- This Js is used for call popup -->
+      
+      <script type="text/javascript" src="<?php echo base_url('assets/js_min/additional-methods1.15.0.min.js?ver='.time()); ?>"></script>
+      <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
+
+  <?php }?>    
       <script>
          var base_url = '<?php echo base_url(); ?>';
       </script>
 
+
+<?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_skill.js?ver='.time()); ?>"></script>
       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_job_reg&skill.js?ver='.time()); ?>"></script>
-      
+     <?php }else{?>
+
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_skill.js?ver='.time()); ?>"></script>
+      <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver='.time()); ?>"></script>
+       <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_job_reg&skill.js?ver='.time()); ?>"></script>
+     <?php }?> 
    </body>
 </html>

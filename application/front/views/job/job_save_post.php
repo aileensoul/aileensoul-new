@@ -6,9 +6,17 @@
         <!-- END HEAD -->
 
         <title><?php echo $title; ?></title>
-
+<?php
+        if (IS_JOB_CSS_MINIFY == '0') {
+            ?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">
+
+  <?php }else{?>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver=' . time()); ?>">
+
+  <?php }?>      
     </head>
     <!-- END HEAD -->
     <!-- Start HEADER -->
@@ -302,6 +310,9 @@
         <!-- script for skill textbox automatic start-->
         <!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time());    ?>"></script>-->
 
+<?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
 
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
@@ -311,7 +322,19 @@
 //?ver='.time()); 
         ?>"></script>-->
         <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>"></script>
+<?php }else{?>
 
+        <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <!--<script type="text/javascript" src="<?php
+        // echo base_url('assets/js/raphael-min.js
+//?ver='.time()); 
+        ?>"></script>-->
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/progressloader.js?ver=' . time()); ?>"></script>
+
+<?php }?>
         <script>
                                 var base_url = '<?php echo base_url(); ?>';
                                 var count_profile_value = '<?php echo $count_profile_value; ?>';
@@ -319,10 +342,19 @@
                                 var aileenuser_id = '<?php echo $aileenuser_id; ?>';
         </script>
 
+<?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_save_post.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/cover_profile_common.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/progressbar_common.js?ver=' . time()); ?>"></script>
+<?php }else{?>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_save_post.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/cover_profile_common.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/progressbar_common.js?ver=' . time()); ?>"></script>
 
+<?php }?>
     </body>
 </html>

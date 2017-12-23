@@ -111,6 +111,11 @@
     var segment = '<?php echo "" . $this->uri->segment(1) . "" ?>';
     var seg='<?php $this->uri->segment(3) ?>';
 </script>
-
+<?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_header2_border.js?ver='.time()); ?>"></script>
+<?php }else{?>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_header2_border.js?ver='.time()); ?>"></script>
 
+<?php }?>

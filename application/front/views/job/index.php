@@ -7,8 +7,17 @@
       <!-- Calender Css Start-->
       <!--<link rel="stylesheet" type="text/css" href="<?php // echo base_url('assets/css/jquery.datetimepicker.css?ver='.time()); ?>">-->
       <!-- Calender Css End-->
+
+        <?php
+        if (IS_JOB_CSS_MINIFY == '0') {
+            ?>
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">
+     <?php }else{?>
+
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver='.time()); ?>">
+     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver='.time()); ?>">
+     <?php }?>
    </head>
    <!-- END HEAD -->
    <!-- start header -->
@@ -154,6 +163,9 @@
 <?php echo $footer;  ?>
 <!-- </footer> -->
 
+<?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
 
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
 <!--<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>-->
@@ -164,6 +176,19 @@
 
 <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver='.time()); ?>"></script>
 
+<?php }else{?>
+
+
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.js?ver='.time()); ?>"></script>
+<!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver='.time()) ?>"></script>-->
+
+<!-- js for modal start-->
+<script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
+<!-- js for modal end-->
+
+<script src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js?ver='.time()); ?>"></script>
+
+<?php }?>
 <script>
 var base_url = '<?php echo base_url(); ?>';
 var date_picker ='<?php echo date('Y-m-d',strtotime($job[0]['user_dob']));?>';
@@ -171,9 +196,18 @@ var  date_picker_edit='<?php echo date('Y-m-d',strtotime($dob1));?>';
 
 </script>
 
+<?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
 
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/index.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
 
+<?php }else{?>
+
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/index.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver='.time()); ?>"></script>
+
+<?php }?>
 </body>
 </html>

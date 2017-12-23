@@ -9,8 +9,18 @@
  <title><?php echo $title; ?></title>
 
 <!-- Calender Css End-->
+
+<?php
+        if (IS_JOB_CSS_MINIFY == '0') {
+            ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">
+
+<?php }else{?>
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver='.time()); ?>">
+<?php }?>
 <!-- This Css is used for call popup -->
 
 
@@ -780,10 +790,17 @@
 <?php echo $footer;  ?>
 <!-- </footer> -->
 
- 
+ <?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
    <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
   
+<?php }else{?>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver='.time()) ?>"></script>
+   <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
+
+<?php }?>  
 <!-- This Js is used for call popup -->
 
 <!-- This Js is used for call popup -->
@@ -841,9 +858,17 @@
      var user_id = '<?php echo $this->session->userdata('aileenuser');?>';
   </script>
 
-
+<?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
   <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_reg.js?ver='.time()); ?>"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_job_reg&skill.js?ver='.time()); ?>"></script>
+<?php }else{?>
 
+
+ <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_reg.js?ver='.time()); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_job_reg&skill.js?ver='.time()); ?>"></script>
+  
+<?php }?>
 </body>
 </html>

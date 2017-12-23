@@ -629,9 +629,18 @@
         <!-- </footer> -->
         <!-- END FOOTER -->
 
+ <?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>
 
+<?php }else{?>
+
+  <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver=' . time()); ?>"></script>
+
+<?php }?>
         <script>
                                 var base_url = '<?php echo base_url(); ?>';
                                 var data1 = <?php echo json_encode($de); ?>;

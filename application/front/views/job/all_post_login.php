@@ -1695,8 +1695,13 @@
 
         </script>
 
+        <?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/all_post_login.js?ver=' . time()); ?>"></script>
-
+        <?php }else{?>
+ <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/all_post_login.js?ver=' . time()); ?>"></script>
+        <?php }?>
         <script>
 
         </script>
