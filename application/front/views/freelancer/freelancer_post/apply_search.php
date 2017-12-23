@@ -3,8 +3,21 @@
     <head><title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
+
+        <?php
+        if (IS_APPLY_CSS_MINIFY == '0') {
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
+            <?php
+        } else {
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-apply.css?ver=' . time()); ?>">
+        <?php } ?>
+
+
+
         <style>
             /***  commen css  ***/
             .p0{padding: 0;} .p5{padding: 5px;} .p10{padding: 10px;} .p15{padding: 15px;} .p20{padding: 20px;}
@@ -352,13 +365,13 @@
             .no-login .left_side_posrt  a:hover{color: #1b8ab9 !important;}
             .job_active{color: #1b8ab9 !important;}
             .no-login .left_side_posrt .lbpos input{width: 10% !important; }
-             .profile-boxProfileCard-cover{width: 100%;border:none;padding-left: 10px;float: left;height: auto;}
-             .profile-boxProfileCard-cover a{color: black;}
-             .profile-boxProfileCard-cover a:hover{color: #1b8ab9;}
-             .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
-             .full-box-module{width: 100%;float: left;}
-             .profile-boxProfileCard{border: none;}
-             
+            .profile-boxProfileCard-cover{width: 100%;border:none;padding-left: 10px;float: left;height: auto;}
+            .profile-boxProfileCard-cover a{color: black;}
+            .profile-boxProfileCard-cover a:hover{color: #1b8ab9;}
+            .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
+            .full-box-module{width: 100%;float: left;}
+            .profile-boxProfileCard{border: none;}
+
             /*second*/
 
         </style>
@@ -399,87 +412,89 @@
                             <div class="full-box-module">   
                                 <div class="profile-boxProfileCard  module">
                                     <div class="profile-boxProfileCard-cover" style="padding-left: 0px;"> 
-                                         <div class="cust-div-h3">
-                                                <h3 style="color: #5c5c5c;text-align: center;font-size: 24px;">Projects by Fields</h3>
-                                            </div>
-                                       <ul style="list-style-type: none;text-align: justify;">
-                                        <li>
-                                        <label for="City" class="lbpos fw">
+                                        <div class="cust-div-h3">
+                                            <h3 style="color: #5c5c5c;text-align: center;font-size: 24px;">Projects by Fields</h3>
+                                        </div>
+                                        <ul style="list-style-type: none;text-align: justify;">
+                                            <li>
+                                                <label for="City" class="lbpos fw">
 
-                                            <a title="All Projects" href="<?php echo base_url("projects"); ?>" >All Projects</a>
-                                        </label>
-                                        </li>
-                                        <li>
-                                        <label for="City" class="lbpos fw">
-                                            <a title="Accounting & Consulting Projects" href="<?php echo base_url("Accounting-Consulting-project"); ?>" <?php if ($keyword == 'Accounting-Consulting') { ?> class="job_active" <?php } ?>>Accounting & Consulting Projects</a>
-                                        </label>
-                                        </li>
-                                        <li>
-                                        <label for="City" class="lbpos fw">
-                                            <a title="Admin Support Projects" href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword == 'Admin-Support') { ?> class="job_active" <?php } ?>>Admin Support Projects</a>
-                                        </label>
-                                        </li>
-                                        <li>
-                                        <label for="City" class="lbpos fw"> 
-                                            <a title="Customer Service Projects" href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword == 'Customer-Service') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
-                                        </label>
-                                        </li>
-                                        <li>
-                                        <label for="City" class="lbpos fw">
-                                            <a title="Data Science & Analytics Projects" href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword == 'Data-Science-Analytics') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
-                                        </label>
-                                        </li>
-                                        <li>
-                                        <label for="City" class="lbpos fw">
-                                            <a title="Design & Creative  Projects" href="<?php echo base_url("Design-Creative-project"); ?>" <?php if ($keyword == 'Design-Creative') { ?> class="job_active" <?php } ?>>Design & Creative  Projects</a>
-                                        </label>
-                                        </li>
-                                        <li>
-                                        <label for="City" class="lbpos fw">
-                                            <a title="Engineering & Architecture Projects" href="<?php echo base_url("Engineering-Architecture-project"); ?>" <?php if ($keyword == 'Engineering-Architecture') { ?> class="job_active" <?php } ?>>Engineering & Architecture Projects</a>
-                                        </label>
-                                        </li>
-                                        <li>
-                                        <label for="City" class="lbpos fw">
-                                            <a title="Legal Projects" href="<?php echo base_url("Legal-project"); ?>" <?php if ($keyword == 'Legal') { ?> class="job_active" <?php } ?>>Legal Projects</a>
-                                        </label>
-                                        </li>
-                                        <li>
-                                        <label for="City" class="lbpos fw">
-                                            <a title="Sales & Marketing Projects" href="<?php echo base_url("Sales-Marketing-project"); ?>" <?php if ($keyword == 'Sales-Marketing') { ?> class="job_active" <?php } ?>>Sales & Marketing Projects</a>
-                                      </label>
-                                      </li>
-                                      <li>
-                                        <label for="City" class="lbpos fw">
-                                            <a title="Translation Projects" href="<?php echo base_url("Translation-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Translation Projects</a>
-                                        </label>
-                                        </li>
-                                        <li>
-                                        <label for="City" class="lbpos fw">
-                                            <a title="Website,Mobile,Software Development,IT & Networking Projects" href="<?php echo base_url("WebsiteMobileSoftware-DevelopmentIT-Networking-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Website,Mobile,Software Development,IT & Networking Projects</a>
-                                        </label>
-                                        </li>
-                                        <li>
-                                        <label for="City" class="lbpos fw">
-                                            <a title="Writing & Content Projects" href="<?php echo base_url("Writing-Content-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
-                                        </label>
-                                        </li>
-                                    </ul>
+                                                    <a title="All Projects" href="<?php echo base_url("projects"); ?>" >All Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a title="Accounting & Consulting Projects" href="<?php echo base_url("Accounting-Consulting-project"); ?>" <?php if ($keyword == 'Accounting-Consulting') { ?> class="job_active" <?php } ?>>Accounting & Consulting Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a title="Admin Support Projects" href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword == 'Admin-Support') { ?> class="job_active" <?php } ?>>Admin Support Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw"> 
+                                                    <a title="Customer Service Projects" href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword == 'Customer-Service') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a title="Data Science & Analytics Projects" href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword == 'Data-Science-Analytics') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a title="Design & Creative  Projects" href="<?php echo base_url("Design-Creative-project"); ?>" <?php if ($keyword == 'Design-Creative') { ?> class="job_active" <?php } ?>>Design & Creative  Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a title="Engineering & Architecture Projects" href="<?php echo base_url("Engineering-Architecture-project"); ?>" <?php if ($keyword == 'Engineering-Architecture') { ?> class="job_active" <?php } ?>>Engineering & Architecture Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a title="Legal Projects" href="<?php echo base_url("Legal-project"); ?>" <?php if ($keyword == 'Legal') { ?> class="job_active" <?php } ?>>Legal Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a title="Sales & Marketing Projects" href="<?php echo base_url("Sales-Marketing-project"); ?>" <?php if ($keyword == 'Sales-Marketing') { ?> class="job_active" <?php } ?>>Sales & Marketing Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a title="Translation Projects" href="<?php echo base_url("Translation-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Translation Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a title="Website,Mobile,Software Development,IT & Networking Projects" href="<?php echo base_url("WebsiteMobileSoftware-DevelopmentIT-Networking-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Website,Mobile,Software Development,IT & Networking Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a title="Writing & Content Projects" href="<?php echo base_url("Writing-Content-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
+                                                </label>
+                                            </li>
+                                        </ul>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-							
+
                             </div> 
-							
+
                         </div>
                         <!--COVER PIC END-->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="page-title">
-                              
-                                <h3> <?php if($keyword == "" && $keyword1 == ""){
-                                    echo "Freelance Projects";
-                                }else{  ?>
-                                 
+
+                                <h3> <?php
+                                    if ($keyword == "" && $keyword1 == "") {
+                                        echo "Freelance Projects";
+                                    } else {
+                                        ?>
+
                                         <?php
                                         if ($keyword != "" && $keyword1 == "") {
                                             echo ucfirst($keyword) . " Projects";
@@ -491,12 +506,13 @@
                                             echo " In ";
                                             echo ucfirst($keyword1);
                                         }
-                                }  ?>
+                                    }
+                                    ?>
                                 </h3>
                             </div>
-							
+
                             <div class="job-contact-frnd1 fw">
-                                
+
 
                             </div>
                             <div id="loader" style="display: none;"><p style="text-align:center;"><img  alt="loader" class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
@@ -504,10 +520,10 @@
                     </div>
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
-                               
 
-                            </div>
-					
+
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -731,17 +747,17 @@
         <?php
         for ($i = 1; $i <= 31; $i++) {
             ?>
-                                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-            <?php
-        }
-        ?>
+                                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+    <?php
+}
+?>
                                                     </select></span>
                                                 <span><select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                         <option value="" disabled selected value>Month</option>
                                                         //<?php
 //                  for($i = 1; $i <= 12; $i++){
 //                  
-        ?>
+?>
                                                         <option value="1">Jan</option>
                                                         <option value="2">Feb</option>
                                                         <option value="3">Mar</option>
@@ -757,7 +773,7 @@
                                                         //<?php
 //                  }
 //                  
-        ?>
+?>
                                                     </select></span>
                                                 <span>
                                                     <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -765,10 +781,10 @@
         <?php
         for ($i = date('Y'); $i >= 1900; $i--) {
             ?>
-                                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-            <?php
-        }
-        ?>
+                                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+    <?php
+}
+?>
         
                                                     </select>
                                                 </span>
@@ -800,7 +816,7 @@
                     </div>
                 </div>-->
         <!-- register -->
-        <?php echo $footer; ?>
+<?php echo $footer; ?>
         <!-- script for skill textbox automatic start (option 2)-->
         <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
@@ -857,7 +873,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                                 <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Freelancer Profile</h1></div>
+                                <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Freelancer Profile</h1></div>
                                 <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
@@ -888,16 +904,16 @@
                                                 for ($i = 1; $i <= 31; $i++) {
                                                     ?>
                                                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                    <?php
-                                                }
-                                                ?>
+    <?php
+}
+?>
                                             </select>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
                                                 //<?php
 //                  for($i = 1; $i <= 12; $i++){
 //                  
-                                                ?>
+?>
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -913,7 +929,7 @@
                                                 //<?php
 //                  }
 //                  
-                                                ?>
+?>
                                             </select>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
@@ -921,9 +937,9 @@
                                                 for ($i = date('Y'); $i >= 1900; $i--) {
                                                     ?>
                                                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                    <?php
-                                                }
-                                                ?>
+    <?php
+}
+?>
 
                                             </select>
 
@@ -970,7 +986,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                               <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Freelancer Profile</h1></div>
+                                <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Freelancer Profile</h1></div>
                                 <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
@@ -1001,16 +1017,16 @@
                                                 for ($i = 1; $i <= 31; $i++) {
                                                     ?>
                                                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                    <?php
-                                                }
-                                                ?>
+    <?php
+}
+?>
                                             </select>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
                                                 //<?php
 //                  for($i = 1; $i <= 12; $i++){
 //                  
-                                                ?>
+?>
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -1026,7 +1042,7 @@
                                                 //<?php
 //                  }
 //                  
-                                                ?>
+?>
                                             </select>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
@@ -1034,9 +1050,9 @@
                                                 for ($i = date('Y'); $i >= 1900; $i--) {
                                                     ?>
                                                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                    <?php
-                                                }
-                                                ?>
+    <?php
+}
+?>
 
                                             </select>
 
