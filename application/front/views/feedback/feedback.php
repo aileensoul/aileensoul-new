@@ -66,7 +66,7 @@ header('Cache-Control: public, max-age=30');
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
        
     </head>
-    <body class="feedback-cus outer-page">
+    <body class="feedback-cus cust-outer-page">
         <div class="main-inner feedback">
            <!--  <?php
             //echo $login_header

@@ -2187,7 +2187,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.about-us .logo{padding-bottom: 10px;}
 	.custom-tp .logo{padding-bottom: 10px;}
 	.feedback-cus h2{line-height: 1.1;}
-	.feedback-cus .logo {padding-bottom: 10px;}
+	.feedback-cus .logo {padding-bottom: 0px;}
 	.feedback-cus .logo a{font-size: 24px !important;}
 	.site-map .logo{padding-bottom: 10px;}
 	.contact header{border-bottom:1px solid #d9d9d9; background:rgba(255,255,255,0.4) url('../img/mob-about-bg.jpg') !important; background-size:100% !important;}
