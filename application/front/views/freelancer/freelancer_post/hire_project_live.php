@@ -6,8 +6,19 @@
         <!-- END HEAD -->
 
         <title><?php echo $title; ?></title>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php
+        if (IS_APPLY_CSS_MINIFY == '0') {
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+
+            <?php
+        } else {
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+
+        <?php } ?>
 
 
     </head>
@@ -480,482 +491,482 @@
                                         </div>
                                     </div>      
                                 </div>
-                    
-                                 <div id="hideuserlist" class=" fixed_right_display animated fadeInRightBig"> 
 
-                                            
+                                <div id="hideuserlist" class=" fixed_right_display animated fadeInRightBig"> 
 
-                                                                                    </div>
+
+
+                                </div>
                                 <?php echo $left_footer; ?>
-								
+
 
 
 
                             </div>
 
                         </div>
+                        <?php
+
+                        function text2link($text) {
+                            $text = preg_replace('/(((f|ht){1}t(p|ps){1}:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '<a href="\\1" target="_blank" rel="nofollow">\\1</a>', $text);
+                            $text = preg_replace('/([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '\\1<a href="http://\\2" target="_blank" rel="nofollow">\\2</a>', $text);
+                            $text = preg_replace('/([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3})/i', '<a href="mailto:\\1" rel="nofollow" target="_blank">\\1</a>', $text);
+                            return $text;
+                        }
+                        ?>      
+                        <div class="inner-right-part">
+                            <div class="page-title">
+                                <h3>
                                     <?php
-
-                                    function text2link($text) {
-                                        $text = preg_replace('/(((f|ht){1}t(p|ps){1}:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '<a href="\\1" target="_blank" rel="nofollow">\\1</a>', $text);
-                                        $text = preg_replace('/([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '\\1<a href="http://\\2" target="_blank" rel="nofollow">\\2</a>', $text);
-                                        $text = preg_replace('/([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3})/i', '<a href="mailto:\\1" rel="nofollow" target="_blank">\\1</a>', $text);
-                                        return $text;
-                                    }
-                                    ?>      
-                                    <div class="inner-right-part">
-                                        <div class="page-title">
-                                            <h3>
-                                                <?php
-                                                echo $postdata[0]['post_name'];
-                                                ?>
-                                            </h3>
-                                        </div>
-								
-                                        <?php
-                                        if (count($postdata) > 0) {
-                                            foreach ($postdata as $post) {
-                                                ?>
-                                                <div class="all-job-box job-detail">
-                                                    <div class="all-job-top">
-                                                        <div class="job-top-detail">
-                                                            <h5><a href="javascript:void(0);"><?php echo $post['post_name']; ?></a></h5>
-                                                            
-                                                            <?php
-                                                            $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
-                                                            $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
-                                                            ?>
-                                                            <p>
-                                                                <?php if ($returnpage == 'freelancer_post') { ?>
-                                                                    <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
-                                                                <?php } else { ?>
-                                                                    <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
-                                                                <?php } ?>
-                                                                </a></p>
-                                                            <p class="loca-exp">
-                                                                <span class="location">
-                                                                    <?php $city = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city; ?>
-                                                                    <?php $country = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country; ?>
-
-                                                                    <?php
-                                                                    $cityname = $this->db->get_where('cities', array('city_id' => $city))->row()->city_name;
-                                                                    $countryname = $this->db->get_where('countries', array('country_id' => $country))->row()->country_name;
-                                                                    ?>
-                                                                    <span>
-
-                                                                        <?php
-                                                                        if ($cityname || $countryname) {
-                                                                            if ($cityname) {
-                                                                                echo $cityname . ', ';
-                                                                            }
-                                                                            echo $countryname . " (Location)";
-                                                                        }
-                                                                        ?>
-                                                                    </span>
-                                                                </span>
-                                                            </p>
-                                                            <p class="loca-exp">
-                                                                <span class="exp">
-                                                                    <span>
-                                                                        <!--<img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">-->
-
-                                                                        <?php
-                                                                        if ($post['post_exp_month'] || $post['post_exp_year']) {
-                                                                            if ($post['post_exp_year']) {
-                                                                                echo $post['post_exp_year'];
-                                                                            }
-                                                                            if ($post['post_exp_month']) {
-                                                                                if ($post['post_exp_year'] == '' || $post['post_exp_year'] == '0') {
-                                                                                    echo 0;
-                                                                                }
-                                                                                echo ".";
-                                                                                echo $post['post_exp_month'];
-                                                                            }
-                                                                            echo " Year" . " (Required Experience)";
-                                                                            // echo $post['post_exp_year'].".".$post['post_exp_month'];
-                                                                        }
-                                                                        ?> 
-                                                                    </span>
-                                                                </span>
-                                                            </p>
-                                                            <p class="pull-right job-top-btn">
-                                                                <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4"> Apply</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="detail-discription">
-                                                        <div class="all-job-middle">
-                                                            <ul>
-                                                                <li>
-                                                                    <b>Project description</b>
-                                                                    <span>
-                                                                        <pre><?php echo $this->common->make_links($post['post_description']); ?></pre>
-                                                                    </span>
-                                                                </li>
-                                                                <li>
-                                                                    <b>Key skill</b>
-                                                                    <span>  <?php
-                                                                        $comma = " , ";
-                                                                        $k = 0;
-                                                                        $aud = $post['post_skill'];
-                                                                        $aud_res = explode(',', $aud);
-
-                                                                        if (!$post['post_skill']) {
-
-                                                                            echo $post['post_other_skill'];
-                                                                        } else if (!$post['post_other_skill']) {
-                                                                            foreach ($aud_res as $skill) {
-                                                                                if ($k != 0) {
-                                                                                    echo $comma;
-                                                                                }
-                                                                                $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
-                                                                                echo $cache_time;
-                                                                                $k++;
-                                                                            }
-                                                                        } else if ($post['post_skill'] && $post['post_other_skill']) {
-
-                                                                            foreach ($aud_res as $skill) {
-                                                                                if ($k != 0) {
-                                                                                    echo $comma;
-                                                                                }
-                                                                                $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
-                                                                                echo $cache_time;
-                                                                                $k++;
-                                                                            } echo "," . $post['post_other_skill'];
-                                                                        }
-                                                                        ?>     
-
-                                                                    </span>
-                                                                </li>
-                                                                <li><b>Field of Requirements</b>
-                                                                    <span> 
-                                                                        <?php echo $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name; ?>
-                                                                    </span>
-                                                                </li>
-                                                                <li><b>Rate</b>
-                                                                    <span>  <?php
-                                                                        if ($post['post_rate']) {
-                                                                            echo $post['post_rate'];
-                                                                            echo "&nbsp";
-                                                                            echo $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
-                                                                            echo "&nbsp";
-                                                                            if ($post['post_rating_type'] == 0) {
-                                                                                echo "Hourly";
-                                                                            } else {
-                                                                                echo "Fixed";
-                                                                            }
-                                                                        } else {
-                                                                            echo PROFILENA;
-                                                                        }
-                                                                        ?>
-                                                                    </span>
-                                                                </li>
-
-                                                                <li><b>Estimated Time</b>
-                                                                    <span>
-                                                                        <?php
-                                                                        if ($post['post_est_time']) {
-                                                                            echo $post['post_est_time'];
-                                                                        } else {
-                                                                            echo PROFILENA;
-                                                                        }
-                                                                        ?>   
-                                                                    </span>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-                                                        <div class="all-job-bottom">
-                                                            <span class="job-post-date"><b>Posted on:  </b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
-                                                            <p class="pull-right">
-                                                                <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost btn4"> Apply</a>
-                                                            </p>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                 <!-- sortlisted employe -->
-
-                                <?php if ($shortlist) {
+                                    echo $postdata[0]['post_name'];
                                     ?>
-                                    <div class="sort-emp-mainbox">
-                                        <h3>
-                                            Shortlisted Freelancer
-                                        </h3>
+                                </h3>
+                            </div>
 
-                                        <div class="sort-emp">
-                                            <?php foreach ($shortlist as $user) { ?>
-                                                <div class="sort-emp-box">
-                                                    <div class="sort-emp-img">
-                                                        <?php
-                                                        $fname = $user['freelancer_post_fullname'];
-                                                        $lname = $user['freelancer_post_username'];
-                                                        $sub_fname = substr($fname, 0, 1);
-                                                        $sub_lname = substr($lname, 0, 1);
-                                                        if ($user['freelancer_post_user_image']) {
-                                                            if (IMAGEPATHFROM == 'upload') {
-                                                                if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'])) {
-                                                                    ?>
-                                                                    <div class="post-img-user">
-                                                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
-                                                                    </div>
-                                                                <?php } ?>
-                                                                <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname']." ".$user['freelancer_post_username']; ?>" >
-                                                                <?php
-                                                            } else {
-                                                                $filename = $this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'];
-                                                                $s3 = new S3(awsAccessKey, awsSecretKey);
-                                                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                                                if ($info) {
-                                                                    ?>
-                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname']." ".$user['freelancer_post_username']; ?>" >
-                                                                <?php } else { ?>
-                                                                    <div class="post-img-user">
-                                                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
-                                                                    </div>
-                                                                    <?php
-                                                                }
-                                                            }
-                                                        } else {
-                                                            ?>
-                                                            <div class="post-img-user">
-                                                                <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
-                                                            </div>
-                                                        <?php } ?>
-                                    <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
-                                                    </div>
-                                                    <div class="sort-emp-detail">
-                                                        <div><a><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></div>
-                                                        <p><?php
-                                                            if ($user['designation']) {
-                                                                echo $user['designation'];
-                                                            } else {
-                                                                echo "Designation";
-                                                            }
-                                                            ?></p>
-                                                    </div>
-                                                    <div class="sort-emp-msg">
-                                                        <!--                                                                                                <a class="btn1" href = " ' . base_url('chat/abc/3/4/' . $row['user_id']) . '">
-                                                                                                                                                            Message
-                                                                                                                                                        </a>-->
-                                                        <!--                                                                                                <a href="#" class="btn1">Message</a>-->
-                                                    </div>
-                                                </div>
-                                            <?php } ?>
-                                        </div>
-                                    <?php } ?>
-                                </div>
-                                <!-- end sortlisted employe -->
+                            <?php
+                            if (count($postdata) > 0) {
+                                foreach ($postdata as $post) {
+                                    ?>
+                                    <div class="all-job-box job-detail">
+                                        <div class="all-job-top">
+                                            <div class="job-top-detail">
+                                                <h5><a href="javascript:void(0);"><?php echo $post['post_name']; ?></a></h5>
 
                                                 <?php
-                                            }
-                                        } else {
-                                            ?>
-                                            <div class="art-img-nn">
-                                                <div class="art_no_post_img">
-                                                    <img alt="No Projects" src="' . base_url() . 'img/job-no.png">
+                                                $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
+                                                $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
+                                                ?>
+                                                <p>
+                                                    <?php if ($returnpage == 'freelancer_post') { ?>
+                                                        <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                    <?php } else { ?>
+                                                        <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                    <?php } ?>
+                                                    </a></p>
+                                                <p class="loca-exp">
+                                                    <span class="location">
+                                                        <?php $city = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city; ?>
+                                                        <?php $country = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country; ?>
 
-                                                </div>
-                                                <div class="art_no_post_text">
-                                                    No  Projects Available.
-                                                </div>
+                                                        <?php
+                                                        $cityname = $this->db->get_where('cities', array('city_id' => $city))->row()->city_name;
+                                                        $countryname = $this->db->get_where('countries', array('country_id' => $country))->row()->country_name;
+                                                        ?>
+                                                        <span>
+
+                                                            <?php
+                                                            if ($cityname || $countryname) {
+                                                                if ($cityname) {
+                                                                    echo $cityname . ', ';
+                                                                }
+                                                                echo $countryname . " (Location)";
+                                                            }
+                                                            ?>
+                                                        </span>
+                                                    </span>
+                                                </p>
+                                                <p class="loca-exp">
+                                                    <span class="exp">
+                                                        <span>
+                                                            <!--<img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">-->
+
+                                                            <?php
+                                                            if ($post['post_exp_month'] || $post['post_exp_year']) {
+                                                                if ($post['post_exp_year']) {
+                                                                    echo $post['post_exp_year'];
+                                                                }
+                                                                if ($post['post_exp_month']) {
+                                                                    if ($post['post_exp_year'] == '' || $post['post_exp_year'] == '0') {
+                                                                        echo 0;
+                                                                    }
+                                                                    echo ".";
+                                                                    echo $post['post_exp_month'];
+                                                                }
+                                                                echo " Year" . " (Required Experience)";
+                                                                // echo $post['post_exp_year'].".".$post['post_exp_month'];
+                                                            }
+                                                            ?> 
+                                                        </span>
+                                                    </span>
+                                                </p>
+                                                <p class="pull-right job-top-btn">
+                                                    <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4"> Apply</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="detail-discription">
+                                            <div class="all-job-middle">
+                                                <ul>
+                                                    <li>
+                                                        <b>Project description</b>
+                                                        <span>
+                                                            <pre><?php echo $this->common->make_links($post['post_description']); ?></pre>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <b>Key skill</b>
+                                                        <span>  <?php
+                                                            $comma = " , ";
+                                                            $k = 0;
+                                                            $aud = $post['post_skill'];
+                                                            $aud_res = explode(',', $aud);
+
+                                                            if (!$post['post_skill']) {
+
+                                                                echo $post['post_other_skill'];
+                                                            } else if (!$post['post_other_skill']) {
+                                                                foreach ($aud_res as $skill) {
+                                                                    if ($k != 0) {
+                                                                        echo $comma;
+                                                                    }
+                                                                    $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                                    echo $cache_time;
+                                                                    $k++;
+                                                                }
+                                                            } else if ($post['post_skill'] && $post['post_other_skill']) {
+
+                                                                foreach ($aud_res as $skill) {
+                                                                    if ($k != 0) {
+                                                                        echo $comma;
+                                                                    }
+                                                                    $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                                    echo $cache_time;
+                                                                    $k++;
+                                                                } echo "," . $post['post_other_skill'];
+                                                            }
+                                                            ?>     
+
+                                                        </span>
+                                                    </li>
+                                                    <li><b>Field of Requirements</b>
+                                                        <span> 
+                                                            <?php echo $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name; ?>
+                                                        </span>
+                                                    </li>
+                                                    <li><b>Rate</b>
+                                                        <span>  <?php
+                                                            if ($post['post_rate']) {
+                                                                echo $post['post_rate'];
+                                                                echo "&nbsp";
+                                                                echo $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+                                                                echo "&nbsp";
+                                                                if ($post['post_rating_type'] == 0) {
+                                                                    echo "Hourly";
+                                                                } else {
+                                                                    echo "Fixed";
+                                                                }
+                                                            } else {
+                                                                echo PROFILENA;
+                                                            }
+                                                            ?>
+                                                        </span>
+                                                    </li>
+
+                                                    <li><b>Estimated Time</b>
+                                                        <span>
+                                                            <?php
+                                                            if ($post['post_est_time']) {
+                                                                echo $post['post_est_time'];
+                                                            } else {
+                                                                echo PROFILENA;
+                                                            }
+                                                            ?>   
+                                                        </span>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                            <div class="all-job-bottom">
+                                                <span class="job-post-date"><b>Posted on:  </b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
+                                                <p class="pull-right">
+                                                    <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost btn4"> Apply</a>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- sortlisted employe -->
+
+                                    <?php if ($shortlist) {
+                                        ?>
+                                        <div class="sort-emp-mainbox">
+                                            <h3>
+                                                Shortlisted Freelancer
+                                            </h3>
+
+                                            <div class="sort-emp">
+                                                <?php foreach ($shortlist as $user) { ?>
+                                                    <div class="sort-emp-box">
+                                                        <div class="sort-emp-img">
+                                                            <?php
+                                                            $fname = $user['freelancer_post_fullname'];
+                                                            $lname = $user['freelancer_post_username'];
+                                                            $sub_fname = substr($fname, 0, 1);
+                                                            $sub_lname = substr($lname, 0, 1);
+                                                            if ($user['freelancer_post_user_image']) {
+                                                                if (IMAGEPATHFROM == 'upload') {
+                                                                    if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'])) {
+                                                                        ?>
+                                                                        <div class="post-img-user">
+                                                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                        </div>
+                                                                    <?php } ?>
+                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?>" >
+                                                                    <?php
+                                                                } else {
+                                                                    $filename = $this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'];
+                                                                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                                    if ($info) {
+                                                                        ?>
+                                                                        <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?>" >
+                                                                    <?php } else { ?>
+                                                                        <div class="post-img-user">
+                                                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                        </div>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                ?>
+                                                                <div class="post-img-user">
+                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                </div>
+                                                            <?php } ?>
+                                    <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
+                                                        </div>
+                                                        <div class="sort-emp-detail">
+                                                            <div><a><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></div>
+                                                            <p><?php
+                                                                if ($user['designation']) {
+                                                                    echo $user['designation'];
+                                                                } else {
+                                                                    echo "Designation";
+                                                                }
+                                                                ?></p>
+                                                        </div>
+                                                        <div class="sort-emp-msg">
+                                                            <!--                                                                                                <a class="btn1" href = " ' . base_url('chat/abc/3/4/' . $row['user_id']) . '">
+                                                                                                                                                                Message
+                                                                                                                                                            </a>-->
+                                                            <!--                                                                                                <a href="#" class="btn1">Message</a>-->
+                                                        </div>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                         <?php } ?>
                                     </div>
-                             
-                               
-                            
+                                    <!-- end sortlisted employe -->
 
-                                <!--recommen candidate start-->
-                                <?php if (count($recommandedpost) > 0) { ?>
-                                  <div class="inner-right-part">
-                                        <div class="page-title">
-                                            <h3>
-                                                Recommended Project
-                                            </h3>
-                                        </div>
-									
-                                        <?php
-                                            foreach ($recommandedpost as $post) {
-                                                ?>
-                                                <div class="all-job-box job-detail">
-                                                    <div class="all-job-top">
-                                                        <div class="job-top-detail">
-                                                            <h5><a href="javascript:void(0);"><?php echo $post['post_name']; ?></a></h5>
-                                                            
-                                                            <?php
-                                                            $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
-                                                            $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
-                                                            ?>
-                                                            <p>
-                                                                <?php if ($returnpage == 'freelancer_post') { ?>
-                                                                    <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
-                                                                <?php } else { ?>
-                                                                    <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
-                                                                <?php } ?>
-                                                                </a></p>
-                                                            <p class="loca-exp">
-                                                                <span class="location">
-                                                                    <?php $city = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city; ?>
-                                                                    <?php $country = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country; ?>
+                                    <?php
+                                }
+                            } else {
+                                ?>
+                                <div class="art-img-nn">
+                                    <div class="art_no_post_img">
+                                        <img alt="No Projects" src="' . base_url() . 'img/job-no.png">
 
-                                                                    <?php
-                                                                    $cityname = $this->db->get_where('cities', array('city_id' => $city))->row()->city_name;
-                                                                    $countryname = $this->db->get_where('countries', array('country_id' => $country))->row()->country_name;
-                                                                    ?>
-                                                                    <span>
-
-                                                                        <?php
-                                                                        if ($cityname || $countryname) {
-                                                                            if ($cityname) {
-                                                                                echo $cityname . ', ';
-                                                                            }
-                                                                            echo $countryname . " (Location)";
-                                                                        }
-                                                                        ?>
-                                                                    </span>
-                                                                </span>
-                                                            </p>
-                                                            <p class="loca-exp">
-                                                                <span class="exp">
-                                                                    <span>
-                                                                        <!--<img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">-->
-
-                                                                        <?php
-                                                                        if ($post['post_exp_month'] || $post['post_exp_year']) {
-                                                                            if ($post['post_exp_year']) {
-                                                                                echo $post['post_exp_year'];
-                                                                            }
-                                                                            if ($post['post_exp_month']) {
-                                                                                if ($post['post_exp_year'] == '' || $post['post_exp_year'] == '0') {
-                                                                                    echo 0;
-                                                                                }
-                                                                                echo ".";
-                                                                                echo $post['post_exp_month'];
-                                                                            }
-                                                                            echo " Year" . " (Required Experience)";
-                                                                            // echo $post['post_exp_year'].".".$post['post_exp_month'];
-                                                                        }
-                                                                        ?> 
-                                                                    </span>
-                                                                </span>
-                                                            </p>
-                                                            <p class="pull-right job-top-btn">
-                                                                <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4"> Apply</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="detail-discription">
-                                                        <div class="all-job-middle">
-                                                            <ul>
-                                                                <li>
-                                                                    <b>Project description</b>
-                                                                    <span>
-                                                                        <pre><?php echo $this->common->make_links($post['post_description']); ?></pre>
-                                                                    </span>
-                                                                </li>
-                                                                <li>
-                                                                    <b>Key skill</b>
-                                                                    <span>  <?php
-                                                                        $comma = " , ";
-                                                                        $k = 0;
-                                                                        $aud = $post['post_skill'];
-                                                                        $aud_res = explode(',', $aud);
-
-                                                                        if (!$post['post_skill']) {
-
-                                                                            echo $post['post_other_skill'];
-                                                                        } else if (!$post['post_other_skill']) {
-                                                                            foreach ($aud_res as $skill) {
-                                                                                if ($k != 0) {
-                                                                                    echo $comma;
-                                                                                }
-                                                                                $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
-                                                                                echo $cache_time;
-                                                                                $k++;
-                                                                            }
-                                                                        } else if ($post['post_skill'] && $post['post_other_skill']) {
-
-                                                                            foreach ($aud_res as $skill) {
-                                                                                if ($k != 0) {
-                                                                                    echo $comma;
-                                                                                }
-                                                                                $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
-                                                                                echo $cache_time;
-                                                                                $k++;
-                                                                            } echo "," . $post['post_other_skill'];
-                                                                        }
-                                                                        ?>     
-
-                                                                    </span>
-                                                                </li>
-                                                                <li><b>Field of Requirements</b>
-                                                                    <span> 
-                                                                        <?php echo $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name; ?>
-                                                                    </span>
-                                                                </li>
-                                                                <li><b>Rate</b>
-                                                                    <span>  <?php
-                                                                        if ($post['post_rate']) {
-                                                                            echo $post['post_rate'];
-                                                                            echo "&nbsp";
-                                                                            echo $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
-                                                                            echo "&nbsp";
-                                                                            if ($post['post_rating_type'] == 0) {
-                                                                                echo "Hourly";
-                                                                            } else {
-                                                                                echo "Fixed";
-                                                                            }
-                                                                        } else {
-                                                                            echo PROFILENA;
-                                                                        }
-                                                                        ?>
-                                                                    </span>
-                                                                </li>
-
-                                                                <li><b>Estimated Time</b>
-                                                                    <span>
-                                                                        <?php
-                                                                        if ($post['post_est_time']) {
-                                                                            echo $post['post_est_time'];
-                                                                        } else {
-                                                                            echo PROFILENA;
-                                                                        }
-                                                                        ?>   
-                                                                    </span>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-                                                        <div class="all-job-bottom">
-                                                            <span class="job-post-date"><b>Posted on:  </b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
-                                                            <p class="pull-right">
-                                                                <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button"> Apply</a>
-                                                            </p>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <?php
-                                            }?>
-                                       
                                     </div>
-									
-                                    <?php } ?>
-                                    <!--recommen candidate end-->
-                              
-                                <!--        </div>-->
+                                    <div class="art_no_post_text">
+                                        No  Projects Available.
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
 
-                               
 
-                         
-                            <!-- <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
-                               
+
+                        <!--recommen candidate start-->
+                        <?php if (count($recommandedpost) > 0) { ?>
+                            <div class="inner-right-part">
+                                <div class="page-title">
+                                    <h3>
+                                        Recommended Project
+                                    </h3>
+                                </div>
+
+                                <?php
+                                foreach ($recommandedpost as $post) {
+                                    ?>
+                                    <div class="all-job-box job-detail">
+                                        <div class="all-job-top">
+                                            <div class="job-top-detail">
+                                                <h5><a href="javascript:void(0);"><?php echo $post['post_name']; ?></a></h5>
+
+                                                <?php
+                                                $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
+                                                $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
+                                                ?>
+                                                <p>
+                                                    <?php if ($returnpage == 'freelancer_post') { ?>
+                                                        <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                    <?php } else { ?>
+                                                        <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                    <?php } ?>
+                                                    </a></p>
+                                                <p class="loca-exp">
+                                                    <span class="location">
+                                                        <?php $city = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city; ?>
+                                                        <?php $country = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country; ?>
+
+                                                        <?php
+                                                        $cityname = $this->db->get_where('cities', array('city_id' => $city))->row()->city_name;
+                                                        $countryname = $this->db->get_where('countries', array('country_id' => $country))->row()->country_name;
+                                                        ?>
+                                                        <span>
+
+                                                            <?php
+                                                            if ($cityname || $countryname) {
+                                                                if ($cityname) {
+                                                                    echo $cityname . ', ';
+                                                                }
+                                                                echo $countryname . " (Location)";
+                                                            }
+                                                            ?>
+                                                        </span>
+                                                    </span>
+                                                </p>
+                                                <p class="loca-exp">
+                                                    <span class="exp">
+                                                        <span>
+                                                            <!--<img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">-->
+
+                                                            <?php
+                                                            if ($post['post_exp_month'] || $post['post_exp_year']) {
+                                                                if ($post['post_exp_year']) {
+                                                                    echo $post['post_exp_year'];
+                                                                }
+                                                                if ($post['post_exp_month']) {
+                                                                    if ($post['post_exp_year'] == '' || $post['post_exp_year'] == '0') {
+                                                                        echo 0;
+                                                                    }
+                                                                    echo ".";
+                                                                    echo $post['post_exp_month'];
+                                                                }
+                                                                echo " Year" . " (Required Experience)";
+                                                                // echo $post['post_exp_year'].".".$post['post_exp_month'];
+                                                            }
+                                                            ?> 
+                                                        </span>
+                                                    </span>
+                                                </p>
+                                                <p class="pull-right job-top-btn">
+                                                    <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4"> Apply</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="detail-discription">
+                                            <div class="all-job-middle">
+                                                <ul>
+                                                    <li>
+                                                        <b>Project description</b>
+                                                        <span>
+                                                            <pre><?php echo $this->common->make_links($post['post_description']); ?></pre>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <b>Key skill</b>
+                                                        <span>  <?php
+                                                            $comma = " , ";
+                                                            $k = 0;
+                                                            $aud = $post['post_skill'];
+                                                            $aud_res = explode(',', $aud);
+
+                                                            if (!$post['post_skill']) {
+
+                                                                echo $post['post_other_skill'];
+                                                            } else if (!$post['post_other_skill']) {
+                                                                foreach ($aud_res as $skill) {
+                                                                    if ($k != 0) {
+                                                                        echo $comma;
+                                                                    }
+                                                                    $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                                    echo $cache_time;
+                                                                    $k++;
+                                                                }
+                                                            } else if ($post['post_skill'] && $post['post_other_skill']) {
+
+                                                                foreach ($aud_res as $skill) {
+                                                                    if ($k != 0) {
+                                                                        echo $comma;
+                                                                    }
+                                                                    $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                                    echo $cache_time;
+                                                                    $k++;
+                                                                } echo "," . $post['post_other_skill'];
+                                                            }
+                                                            ?>     
+
+                                                        </span>
+                                                    </li>
+                                                    <li><b>Field of Requirements</b>
+                                                        <span> 
+                                                            <?php echo $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name; ?>
+                                                        </span>
+                                                    </li>
+                                                    <li><b>Rate</b>
+                                                        <span>  <?php
+                                                            if ($post['post_rate']) {
+                                                                echo $post['post_rate'];
+                                                                echo "&nbsp";
+                                                                echo $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+                                                                echo "&nbsp";
+                                                                if ($post['post_rating_type'] == 0) {
+                                                                    echo "Hourly";
+                                                                } else {
+                                                                    echo "Fixed";
+                                                                }
+                                                            } else {
+                                                                echo PROFILENA;
+                                                            }
+                                                            ?>
+                                                        </span>
+                                                    </li>
+
+                                                    <li><b>Estimated Time</b>
+                                                        <span>
+                                                            <?php
+                                                            if ($post['post_est_time']) {
+                                                                echo $post['post_est_time'];
+                                                            } else {
+                                                                echo PROFILENA;
+                                                            }
+                                                            ?>   
+                                                        </span>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                            <div class="all-job-bottom">
+                                                <span class="job-post-date"><b>Posted on:  </b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
+                                                <p class="pull-right">
+                                                    <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button"> Apply</a>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php }
+                                ?>
 
                             </div>
-                     -->
-				
+
+                        <?php } ?>
+                        <!--recommen candidate end-->
+
+                        <!--        </div>-->
+
+
+
+
+                        <!-- <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+
+                           
+
+                        </div>
+                        -->
+
 
                     </div>
                 </div>
@@ -1280,7 +1291,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                               <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Freelancer Profile</h1></div>
+                                <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Freelancer Profile</h1></div>
                                 <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
