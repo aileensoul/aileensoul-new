@@ -22,7 +22,7 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
                             <?php
                         }
                         ?>
-<<<<<<< HEAD
+
                         <li><a title="Job Profile" href="<?php echo base_url('how-to-use-job-profile-in-aileensoul'); ?>" target="_blank">Job Profile</a></li>
                         <li><a title="Recruiter Profile" href="<?php echo base_url('how-to-use-recruiter-profile-in-aileensoul'); ?>" target="_blank">Recruiter Profile</a></li>
                         <li><a title="Freelance Profile" href="<?php echo base_url('how-to-use-freelance-profile-in-aileensoul'); ?>" target="_blank">Freelance Profile</a></li>
@@ -37,7 +37,7 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
                         <li><a title="Send Us Feedback" href="<?php echo base_url('feedback'); ?>" target="_blank">Send Us Feedback</a></li>
                         <li><a title="Sitemap" tabindex="0" href="<?php echo base_url('sitemap'); ?>" target="_blank">Sitemap</a></li>
 
-=======
+
                         <li><a tabindex="503" title="Job Profile" href="<?php echo base_url('how-to-use-job-profile-in-aileensoul'); ?>" target="_blank">Job Profile</a></li>
                         <li><a tabindex="504" title="Recruiter Profile" href="<?php echo base_url('how-to-use-recruiter-profile-in-aileensoul'); ?>" target="_blank">Recruiter Profile</a></li>
                         <li><a tabindex="505" title="Freelance Profile" href="<?php echo base_url('how-to-use-freelance-profile-in-aileensoul'); ?>" target="_blank">Freelance Profile</a></li>
@@ -57,7 +57,7 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
 <?php
                         }
                         ?>
->>>>>>> dadfe454c1273c1a4c66fcc704852708cd25b316
+
 
                     </ul>
                 </div>
