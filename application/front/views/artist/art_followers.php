@@ -5,10 +5,18 @@
 <?php echo $head; ?>
 <!-- <link rel="stylesheet" href="<?php //echo base_url('assets/css/bootstrap-3.min.css?ver='.time()); ?>"> -->
 
-
+ <?php
+        if (IS_ART_CSS_MINIFY == '0') {
+            ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">
+
+<?php }else{?>
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/artistic.css?ver='.time()); ?>">
+
+<?php }?>
 
 </head>
 <body  class="page-container-bg-solid page-boxed botton_footer">
@@ -91,18 +99,34 @@
   <?php echo $login_footer ?>
       <?php echo $footer;  ?>
 
-
+ <?php
+  if (IS_ART_JS_MINIFY == '0') { ?>
 <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
-
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
+
+<?php }else{?>
+
+<script src="<?php echo base_url('assets/js_min/croppie.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver='.time()); ?>"></script>
+
+<?php }?>
 <script>
 var base_url = '<?php echo base_url(); ?>';   
 var data= <?php echo json_encode($demo); ?>;   
 var data1 = <?php echo json_encode($city_data); ?>;
 var slug_id = '<?php echo $artisticdata[0]['user_id'] ?>';
 </script>
+
+<?php
+  if (IS_ART_JS_MINIFY == '0') { ?>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/followers.js?ver='.time()); ?>"></script>
+<?php }else{?>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/followers.js?ver='.time()); ?>"></script>
+
+<?php }?>
 </body>
 </html>
