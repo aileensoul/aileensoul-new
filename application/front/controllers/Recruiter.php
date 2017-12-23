@@ -2093,7 +2093,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
         // code start
         $returnpage = $_GET['returnpage'];
         if (count($rec_postdata1) > 0) {
-            if ($returnpage == 'job') {
+            if ($userid != $id) {
                 if (count($rec_postdata) != '') {
                     foreach ($rec_postdata as $post) {
 //                    $rec_post .= '<div class="job-contact-frnd ">';
@@ -2175,7 +2175,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
                         $rec_post .= '<p><a href = "' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                         $rec_post .= $cache_time1;
                         $rec_post .= '</a></p>';
-                        $rec_post .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '">';
+                        $rec_post .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id']) . '">';
                         $rec_post .= ucwords($cache_time2) . " " . ucfirst($cache_time3);
                         $rec_post .= '</a></p>
             </div>
@@ -2334,7 +2334,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
                         $rec_post .= '<p><a href = "' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                         $rec_post .= $cache_time1;
                         $rec_post .= '</a></p>';
-                        $rec_post .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '">';
+                        $rec_post .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id']) . '">';
                         $rec_post .= ucwords($cache_time2) . " " . ucfirst($cache_time3);
                         $rec_post .= '</a></p>
             </div>
