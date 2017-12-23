@@ -3,7 +3,7 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-         <?php
+        <?php
         if (IS_APPLY_CSS_MINIFY == '0') {
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
@@ -12,7 +12,7 @@
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-apply.css?ver=' . time()); ?>">
         <?php } ?>
-        
+
     </head>
     <body class="page-container-bg-solid page-boxed botton_footer">
         <?php echo $header; ?>
@@ -59,7 +59,7 @@
                         $image_ori = $image[0]['profile_background'];
                         if ($image_ori) {
                             ?>
-                        <img alt="<?php echo $freepostdata[0]['freelancer_post_fullname']." ". $freepostdata[0]['freelancer_post_username']; ?>" src="<?php echo FREE_POST_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                            <img alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . " " . $freepostdata[0]['freelancer_post_username']; ?>" src="<?php echo FREE_POST_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
                             <?php
                         } else {
                             ?>
@@ -95,7 +95,7 @@
                                         </div> 
                                     <?php } else {
                                         ?>
-                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname']." ".$freepostdata[0]['freelancer_post_username'];?>" >
+                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . " " . $freepostdata[0]['freelancer_post_username']; ?>" >
                                         <?php
                                     }
                                 } else {
@@ -104,7 +104,7 @@
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                     if ($info) {
                                         ?>
-                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname']." ".$freepostdata[0]['freelancer_post_username'];?>" >
+                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . " " . $freepostdata[0]['freelancer_post_username']; ?>" >
                                     <?php } else { ?>
                                         <div class="post-img-user">
                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
@@ -118,7 +118,7 @@
                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
-                                        <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img alt="Upload profile pic"  src="<?php echo base_url('assets/img/cam.png'); ?>"> <?php echo $this->lang->line("update_profile_picture"); ?></a>
+                            <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img alt="Upload profile pic"  src="<?php echo base_url('assets/img/cam.png'); ?>"> <?php echo $this->lang->line("update_profile_picture"); ?></a>
                         </div>
                     </div>      
                     <div class="job-menu-profile mob-block">
@@ -173,114 +173,106 @@
                         </div>
                     </div>
                     <div class="col-md-7 col-sm-12 col-xs-12 mob-clear">
-                        <?php if(!($returnpage))
-                {
-                  if($count_profile == 100)
-                  {
-                    if($freepostdata[0]['progressbar']==0)
-                    {
-          ?>
+                        <?php
+                        if (!($returnpage)) {
+                            if ($count_profile == 100) {
+                                if ($freepostdata[0]['progressbar'] == 0) {
+                                    ?>
 
-          <div class="mob-progressbar" >
-               <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
-               <p class="mob-edit-pro">
-                 
-                  <a href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
-                  
-                 
-               </p>
-               <div class="progress skill-bar ">
-                  <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile);?>" aria-valuemin="0" aria-valuemax="100">
-                     <span class="skill"><i class="val"><?php echo(round($count_profile));?>%</i></span>
-                  </div>
-               </div>
-            </div>
-            <?php
-          }
-        }else{
+                                    <div class="mob-progressbar" >
+                                        <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+                                        <p class="mob-edit-pro">
 
-            ?>
-            <div class="mob-progressbar" >
-               <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
-               <p class="mob-edit-pro">
-                  
-                    
-                  <a href="<?php echo base_url('freelance-work/basic-information')?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
-                  
-                    
-               </p>
-               <div class="progress skill-bar ">
-                  <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile);?>" aria-valuemin="0" aria-valuemax="100">
-                     <span class="skill"><i class="val"><?php echo(round($count_profile));?>%</i></span>
-                  </div>
-               </div>
-            </div>
+                                            <a href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
 
-            <?php
-          }}
-          ?>
-                       <div class="page-title">
+
+                                        </p>
+                                        <div class="progress skill-bar ">
+                                            <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile); ?>" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="skill"><i class="val"><?php echo(round($count_profile)); ?>%</i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                            } else {
+                                ?>
+                                <div class="mob-progressbar" >
+                                    <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+                                    <p class="mob-edit-pro">
+
+
+                                        <a href="<?php echo base_url('freelance-work/basic-information') ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
+
+
+                                    </p>
+                                    <div class="progress skill-bar ">
+                                        <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile); ?>" aria-valuemin="0" aria-valuemax="100">
+                                            <span class="skill"><i class="val"><?php echo(round($count_profile)); ?>%</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <?php
+                            }
+                        }
+                        ?>
+                        <div class="page-title">
                             <h3>Saved Projects</h3>
                         </div>
                         <div class="job-contact-frnd1">
-                                
+
                         </div>
-                        <div id="loader" style="display:none;"><p style="text-align:center;"><img alt="loader" class="loader" src="<?php echo  base_url('assets/images/loading.gif');?>"/></p></div>
+                        <div id="loader" style="display:none;"><p style="text-align:center;"><img alt="loader" class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
                     </div>
-                    <?php 
-               if(!($returnpage))
-                       {
-                           if($count_profile == 100)
-                           {
-                            if($freepostdata[0]['progressbar']==0)
-                            {
-                             
-               ?>
-            <div class="edit_profile_progress edit_pr_bar complete_profile">
-               <div class="progre_bar_text">
-                  <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
-               </div>
-               <div class="count_main_progress">
-                  <div class="circles">
-                     <div class="second circle-1 ">
-                        <div class="true_progtree">
-                            <img alt="Completed" src="<?php echo base_url("assets/img/true.png"); ?>">
-                        </div>
-                        <div class="tr_text">
-                           Successfully Completed
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <?php
-               }
-                  }
-               else
-               {
-                   ?>
-            <div class="edit_profile_progress edit_pr_bar">
-               <div class="progre_bar_text">
-                  <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
-               </div>
-               <div class="count_main_progress">
-                  <div class="circles">
-                     <div class="second circle-1">
-                        <div>
-                           <strong></strong>
-                           <a href="<?php echo base_url('freelance-work/basic-information')?>" class="edit_profile_job">Edit Profile
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <?php
-               }
-               ?>
-            <?php
-               }
-               ?>
+                    <?php
+                    if (!($returnpage)) {
+                        if ($count_profile == 100) {
+                            if ($freepostdata[0]['progressbar'] == 0) {
+                                ?>
+                                <div class="edit_profile_progress edit_pr_bar complete_profile">
+                                    <div class="progre_bar_text">
+                                        <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+                                    </div>
+                                    <div class="count_main_progress">
+                                        <div class="circles">
+                                            <div class="second circle-1 ">
+                                                <div class="true_progtree">
+                                                    <img alt="Completed" src="<?php echo base_url("assets/img/true.png"); ?>">
+                                                </div>
+                                                <div class="tr_text">
+                                                    Successfully Completed
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            ?>
+                            <div class="edit_profile_progress edit_pr_bar">
+                                <div class="progre_bar_text">
+                                    <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+                                </div>
+                                <div class="count_main_progress">
+                                    <div class="circles">
+                                        <div class="second circle-1">
+                                            <div>
+                                                <strong></strong>
+                                                <a href="<?php echo base_url('freelance-work/basic-information') ?>" class="edit_profile_job">Edit Profile
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                        <?php
+                    }
+                    ?>
                 </div>
                 <div class="clearfix"></div>
         </section>
@@ -309,7 +301,7 @@
                             <div id="popup-form">
                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));     ?>
+                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));      ?>
 <!--                                    <input type="file" id="profilepic" name="profilepic" accept="image/gif, image/jpeg, image/png">
                                     <input type="hidden" name="hitext" id="hitext" value="2">
                                     <div class="popup_previred">
@@ -324,7 +316,7 @@
                                     </div>
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-                                <?php //echo form_close();     ?>
+                                <?php //echo form_close();      ?>
                             </div>
                         </span>
                     </div>
@@ -332,35 +324,60 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>">
-        </script>
+        <?php
+        if (IS_APPLY_JS_MINIFY == '0') {
+            ?>
+           
+            <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>">
+            </script>
+            <?php
+        } else {
+            ?>
+            <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/progressloader.js?ver=' . time()); ?>">
+            </script>
+        <?php } ?>
+
+
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var no_saved = '<?php echo $this->lang->line("no_saved_freelancer"); ?>';
             var count_profile_value = '<?php echo $count_profile_value; ?>';
             var count_profile = '<?php echo $count_profile; ?>';
         </script>
+        <?php
+        if (IS_APPLY_JS_MINIFY == '0') {
+            ?>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_save_post.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/progressbar.js?ver=' . time()); ?>"></script>
+            <?php
+        } else {
+            ?>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_save_post.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/progressbar.js?ver=' . time()); ?>"></script>
+        <?php } ?>
 
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_save_post.js?ver=' . time()); ?>"></script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
-        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/progressbar.js?ver=' . time()); ?>"></script>
+
         <script>
             //APPLY FOR PROJECT CODE START
             function apply_post(abc, xyz)
             {
-              //  alert(123);
+                //  alert(123);
                 var alldata = 'all';
                 var user = <?php echo $aileenuser_id; ?>;
                 var appid = xyz;
-             //   alert(appid);
+                //   alert(appid);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "freelancer/apply_insert" ?>',
                     data: 'post_id=' + abc + '&allpost=' + alldata.value + '&userid=' + user,
                     success: function (data) {
-                      //  alert(data.status);
+                        //  alert(data.status);
                         $('#' + 'postdata' + appid).html(data.status);
                         $('#' + 'postdata' + appid).remove();
                         var numItems = $('.job-contact-frnd1 .all-job-box').length;
@@ -368,7 +385,7 @@
                             var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Saved Job Found.</h4></div>";
                             $('.job-contact-frnd1').html(nodataHtml);
                         }
-                        
+
                         if (data.notification.notification_count != 0) {
                             var notification_count = data.notification.notification_count;
                             var to_id = data.notification.to_id;

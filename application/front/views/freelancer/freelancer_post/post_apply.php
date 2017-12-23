@@ -4,7 +4,7 @@
     <head>
         <title> <?php echo $title; ?></title>
         <?php echo $head; ?> 
-         <?php
+        <?php
         if (IS_APPLY_CSS_MINIFY == '0') {
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
@@ -13,8 +13,8 @@
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-apply.css?ver=' . time()); ?>">
         <?php } ?>
-        
-        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">-->
+
+<!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
@@ -38,7 +38,7 @@
                                                    if ($freelancerdata[0]['profile_background'] != '') {
                                                        ?>
                                                     <div class="data_img">
-                                                        <img src="<?php echo FREE_POST_BG_THUMB_UPLOAD_URL . $freelancerdata[0]['profile_background']; ?>" class="bgImage" alt="<?php echo $freelancerdata[0]['freelancer_post_fullname']. "".$freelancerdata[0]['freelancer_post_username']; ?>" >
+                                                        <img src="<?php echo FREE_POST_BG_THUMB_UPLOAD_URL . $freelancerdata[0]['profile_background']; ?>" class="bgImage" alt="<?php echo $freelancerdata[0]['freelancer_post_fullname'] . "" . $freelancerdata[0]['freelancer_post_username']; ?>" >
                                                     </div>
                                                     <?php
                                                 } else {
@@ -126,10 +126,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-        <?php
-    }
-} else {
-    ?>
+                                            <?php
+                                        }
+                                    } else {
+                                        ?>
                                         <div class="edit_profile_progress">
                                             <div class="progre_bar_text">
                                                 <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
@@ -147,40 +147,40 @@
                                                 </div>
                                             </div>
                                         </div>
-    <?php
-}
-?>
+                                        <?php
+                                    }
+                                    ?>
                                 </div>
-                          
-<?php echo $left_footer; ?>
+
+                                <?php echo $left_footer; ?>
                             </div>
                         </div>
                         <!-- cover pic end -->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp cust-inner-part">
-                                <?php if ($this->uri->segment(3) == 'live-post') { ?>
+                            <?php if ($this->uri->segment(3) == 'live-post') { ?>
 
                                 <div>
-    <?php
-    if ($this->session->flashdata('error')) {
+                                    <?php
+                                    if ($this->session->flashdata('error')) {
 
-        echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
-    }
-    if ($this->session->flashdata('success')) {
+                                        echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
+                                    }
+                                    if ($this->session->flashdata('success')) {
 
-        echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
-    }
-    ?>
+                                        echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
+                                    }
+                                    ?>
                                 </div>
 
-                                    <?php
-                                }
-                                ?>
+                                <?php
+                            }
+                            ?>
                             <div class="page-title">
                                 <h3>Recommended Projects</h3>
                             </div>
-                       
+
                             <div class="job-contact-frnd1">
-                                
+
 
                             </div>
                             <div id="loader" style="display:none;"><p style="text-align:center;"><img alt="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
@@ -238,12 +238,12 @@
 
 
                         </div>
-                    
+
                     </div>
                 </div>
             </div>
         </section>
-<?php echo $footer; ?>
+        <?php echo $footer; ?>
 
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -257,18 +257,40 @@
             </div>
         </div>
         <!-- Model Popup Close -->
+        <?php
+        if (IS_APPLY_JS_MINIFY == '0') {
+            ?>
+            <script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>"></script>
+            <?php
+        } else {
+            ?>
+            <script async src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/progressloader.js?ver=' . time()); ?>"></script>
+        <?php } ?>
 
-        <script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>"></script>
+
 
         <script type="text/javascript">
-                                            $(".alert").delay(3200).fadeOut(300);
-                                            var base_url = '<?php echo base_url(); ?>';
-                                            var count_profile_value = '<?php echo $count_profile_value; ?>';
-                                            var count_profile = '<?php echo $count_profile; ?>';
+            $(".alert").delay(3200).fadeOut(300);
+            var base_url = '<?php echo base_url(); ?>';
+            var count_profile_value = '<?php echo $count_profile_value; ?>';
+            var count_profile = '<?php echo $count_profile; ?>';
         </script>
-        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/post_apply.js?ver=' . time()); ?>"></script>
-        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
-        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/progressbar.js?ver=' . time()); ?>"></script>
+        <?php
+        if (IS_APPLY_JS_MINIFY == '0') {
+            ?>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/post_apply.js?ver=' . time()); ?>"></script>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/progressbar.js?ver=' . time()); ?>"></script>
+            <?php
+        } else {
+            ?>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/post_apply.js?ver=' . time()); ?>"></script>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/progressbar.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+
+
     </body>               
 </html>

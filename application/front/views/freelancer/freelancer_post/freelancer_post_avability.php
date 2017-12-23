@@ -3,7 +3,7 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-         <?php
+        <?php
         if (IS_APPLY_CSS_MINIFY == '0') {
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
@@ -12,28 +12,29 @@
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-apply.css?ver=' . time()); ?>">
         <?php } ?>
-        
-      
+
+
     </head>
-   
+
     <body class="botton_footer">
-         
-            <?php echo $header; ?>
+
+        <?php echo $header; ?>
+        <?php
+        if ($freepostdata[0]['user_id'] && $freepostdata[0]['free_post_step'] == '7') {
+            echo $freelancer_post_header2_border;
+        }
+        ?>
+        <section>
             <?php
-            if ($freepostdata[0]['user_id'] && $freepostdata[0]['free_post_step'] == '7') {
-                echo $freelancer_post_header2_border;
-            }
-            ?>
-            <section>
-                 <?php
-                        $userid = $this->session->userdata('aileenuser');
-                        $contition_array = array('user_id' => $userid, 'status' => '1');
-                        $freepostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                        if ($freepostdata[0]['free_post_step'] == 7) { ?>
+            $userid = $this->session->userdata('aileenuser');
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $freepostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            if ($freepostdata[0]['free_post_step'] == 7) {
+                ?>
                 <div class="user-midd-section" id="paddingtop_fixed">
-                        <?php }else{ ?>
+                <?php } else { ?>
                     <div class="user-midd-section" id="paddingtop_make_fixed">
-                        <?php }?>
+                    <?php } ?>
                     <div class="common-form1">
                         <div class="col-md-3 col-sm-4"></div>
                         <?php
@@ -94,10 +95,10 @@
                                     ?>
                                     <fieldset class="col-md-6" <?php if ($inweek) { ?> class="error-msg" <?php } ?>>
 
-                                       
-                                       <?php     if ($livepostid) { ?>
-                                         <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid;?>">
-                                    <?php    }
+
+                                        <?php if ($livepostid) { ?>
+                                            <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid; ?>">
+                                        <?php }
                                         ?>
 
                                         <label class="custom-opt"><?php echo $this->lang->line("work_as"); ?><span class="optional">(optional)</span></label>
@@ -132,17 +133,38 @@
                         </div>
                     </div>
                 </div>
-            </section>
-                <?php echo $login_footer ?>
-                <?php echo $footer; ?>
-            <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
-            
-            <script>
-                var base_url = '<?php echo base_url(); ?>';
-               
-            </script>
-            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_avability.js?ver='.time()); ?>"></script>
-             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
-        </body>
-   
+        </section>
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
+        <?php
+        if (IS_APPLY_JS_MINIFY == '0') {
+            ?>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+            <?php
+        } else {
+            ?>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <?php } ?>
+
+
+
+        <script>
+            var base_url = '<?php echo base_url(); ?>';
+
+        </script>
+        <?php
+        if (IS_APPLY_JS_MINIFY == '0') {
+            ?>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_avability.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+            <?php
+        } else {
+            ?>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_post_avability.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+
+
+    </body>
+
 </html>

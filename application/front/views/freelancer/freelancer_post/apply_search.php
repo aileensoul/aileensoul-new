@@ -1113,9 +1113,21 @@
 
         </script>
         <!-- script for skill textbox automatic end -->
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_search_result.js?ver=' . time()); ?>"></script>
+        <?php
+        if (IS_APPLY_JS_MINIFY == '0') {
+            ?>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_search_result.js?ver=' . time()); ?>"></script>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/apply_search.js?ver=' . time()); ?>"></script>
+            <?php
+        } else {
+            ?>
+           <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_search_result.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/apply_search.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+
+        
     </body>
 </html>
 

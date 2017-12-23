@@ -1414,7 +1414,17 @@
                                                 var place = '<?php echo $this->input->get('searchplace'); ?>';
 
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/project_live_login.js?ver=' . time()); ?>"></script>
+        <?php
+        if (IS_APPLY_JS_MINIFY == '0') {
+            ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/project_live_login.js?ver=' . time()); ?>"></script>
+            <?php
+        } else {
+            ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/project_live_login.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+
+        
 
         <script>
 

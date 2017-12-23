@@ -3,7 +3,7 @@
     <head><title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-         <?php
+        <?php
         if (IS_APPLY_CSS_MINIFY == '0') {
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
@@ -12,7 +12,7 @@
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-apply.css?ver=' . time()); ?>">
         <?php } ?>
-        
+
     </head>
     <body>
         <?php echo $header; ?>
@@ -98,7 +98,7 @@
                                                 <span class="profile-company-name ">
                                                     <a href="<?php echo base_url('freelance-work/freelancer-details'); ?>"><?php echo ucwords($freepostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freepostdata[0]['freelancer_post_username']); ?></a>
                                                 </span>
-                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' =>'1'))->row()->industry_name; ?>
+                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => '1'))->row()->industry_name; ?>
                                                 <div class="profile-boxProfile-name">
                                                     <a  href="<?php echo base_url('freelance-work/freelancer-details'); ?>">
                                                         <?php
@@ -122,46 +122,44 @@
                                     </div>                             
                                 </div>
 
-                             
-                                  <?php echo $left_footer; ?>
+
+                                <?php echo $left_footer; ?>
                             </div>
                         </div>
                         <!--COVER PIC END-->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
-                             <div class="page-title">
-                            <h3>
-                                <?php
-                              $searchkeyword = $this->session->userdata('searchkeyword');
-                              $searchplace = $this->session->userdata('searchplace');
-                                ?>
-                                Search result of 
-                                        <?php
-                                        if($searchkeyword == '' && $searchplace == ''){
-                                            echo "All Projects";
-                                        }
-                                        elseif ($searchkeyword != "" && $searchplace == "") {
-                                            echo '"' . $searchkeyword . '"';
-                                        } elseif ($searchkeyword == "" && $searchplace != "") {
-                                            echo '"' . $searchplace . '"';
-                                        } else {
-                                            echo '"' . $searchkeyword . '"';
-                                            echo " In ";
-                                            echo '"' . $searchplace . '"';
-                                        }
-                                        
-                                        ?>
-                            </h3>
-                        </div>
-						
-                        <div class="job-contact-frnd1">
-                            
-                                
-                        </div>
-                            <div id="loader" style="display: none;"><p style="text-align:center;"><img alt="loader" class="loader" src="<?php echo  base_url('assets/images/loading.gif');?>"/></p></div>
+                            <div class="page-title">
+                                <h3>
+                                    <?php
+                                    $searchkeyword = $this->session->userdata('searchkeyword');
+                                    $searchplace = $this->session->userdata('searchplace');
+                                    ?>
+                                    Search result of 
+                                    <?php
+                                    if ($searchkeyword == '' && $searchplace == '') {
+                                        echo "All Projects";
+                                    } elseif ($searchkeyword != "" && $searchplace == "") {
+                                        echo '"' . $searchkeyword . '"';
+                                    } elseif ($searchkeyword == "" && $searchplace != "") {
+                                        echo '"' . $searchplace . '"';
+                                    } else {
+                                        echo '"' . $searchkeyword . '"';
+                                        echo " In ";
+                                        echo '"' . $searchplace . '"';
+                                    }
+                                    ?>
+                                </h3>
+                            </div>
+
+                            <div class="job-contact-frnd1">
+
+
+                            </div>
+                            <div id="loader" style="display: none;"><p style="text-align:center;"><img alt="loader" class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
                         </div>
 
                         <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-<div class="all-profile-box">
+                            <div class="all-profile-box">
                                 <div class="all-pro-head">
                                     <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
                                 </div>
@@ -209,13 +207,13 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
 
                     </div>
                 </div>
             </div>
         </section>
-<?php echo $footer; ?>
+        <?php echo $footer; ?>
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -229,15 +227,26 @@
         <!-- script for skill textbox automatic start (option 2)-->
 
         <script>
-                                            var base_url = '<?php echo base_url(); ?>';
-                                            var skill = '<?php echo $keyword; ?>';
-                                            var place = '<?php echo $keyword1; ?>';
-                                            // var button = '<?php //echo $this->input->get('search_submit');   ?>';
+            var base_url = '<?php echo base_url(); ?>';
+            var skill = '<?php echo $keyword; ?>';
+            var place = '<?php echo $keyword1; ?>';
+            // var button = '<?php //echo $this->input->get('search_submit');      ?>';
 
         </script>
         <!-- script for skill textbox automatic end -->
-        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_search_result.js?ver=' . time()); ?>"></script>
-        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+        <?php
+        if (IS_APPLY_JS_MINIFY == '0') {
+            ?>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_search_result.js?ver=' . time()); ?>"></script>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+            <?php
+        } else {
+            ?>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_search_result.js?ver=' . time()); ?>"></script>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+
+
     </body>
 </html>
 
