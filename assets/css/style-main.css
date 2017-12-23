@@ -1909,6 +1909,9 @@ header.profile-header .logo a{color:#5c5c5c;}
 .user-gen ol li p{font-size:14px;}
 .user-gen ol li ul li{font-size:14px;}
 .third_ts.user-gen ol{margin-left:10px;}
+.header-login .f-pass:focus{border-bottom: 1px solid #fff;}
+
+
 
 /***  media query  ***/
 @media screen and (min-height: 540px){

@@ -38,10 +38,6 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
                         <li><a title="Sitemap" tabindex="0" href="<?php echo base_url('sitemap'); ?>" target="_blank">Sitemap</a></li>
 
 
-                    <?php
-                        }
-                        ?>
-
 
                     </ul>
                 </div>
