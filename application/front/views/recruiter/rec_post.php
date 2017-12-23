@@ -19,8 +19,9 @@
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
         <?php echo $header; ?>
         <?php
+        $userid = $this->session->userdata('aileenuser');
        // $returnpage = $_GET['page'];
-        if ($this->uri->segment(3) != $userid) {
+        if ($postdataone[0]['user_id'] != $userid) {
             echo $job_header2_border;
         } elseif ($recdata[0]['re_step'] == 3) {
             echo $recruiter_header2_border;
@@ -95,7 +96,7 @@
                 </div>
             </div>
             <div class="container tablate-container art-profile">    
-                <?php if ($this->uri->segment(3) == $userid) { ?>
+                <?php if ($postdataone[0]['user_id'] == $userid) { ?>
                     <div class="upload-img">
                         <label  class="cameraButton"><span class="tooltiptext_rec">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*" capture="camera" onclick="showDiv()">
@@ -127,7 +128,7 @@
 
                                 </div>
                             <?php } ?>
-                            <?php if ($this->uri->segment(3) == $userid) { ?>
+                            <?php if ($postdataone[0]['user_id'] == $userid) { ?>
                                 <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();" title="Update profile picture"><img src="<?php echo base_url(); ?>assets/img/cam.png" alt="<?php echo 'CAMERAIMAGE'; ?>"> Update Profile Picture</a>
 <?php } ?>
                         </div>
