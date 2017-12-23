@@ -131,6 +131,7 @@
 		"js/webpage/profile/recommen_candidate.js" => "js_min/webpage/profile/recommen_candidate.js",
 		"js/webpage/profile/saved_candidate.js" => "js_min/webpage/profile/saved_candidate.js",
 		"js/webpage/profile/search.js" => "js_min/webpage/profile/search.js",
+		"js/webpage/registration/changepassword.js" => "js_min/webpage/registration/changepassword.js",
 	);
 	
 /*	$css = array(
