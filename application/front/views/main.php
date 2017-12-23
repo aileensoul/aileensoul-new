@@ -115,20 +115,20 @@ header("Pragma: no-cache"); // HTTP/1.0
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-lg-5">
-                            <a tabindex="600" href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png') ?>" alt="logo"></a>
+                            <a tabindex="1"  href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png') ?>" alt="logo"></a>
                         </div>
                         <div class="col-lg-1"></div>
                         <div class="col-md-8 col-sm-9 col-lg-6">
                             <form class="header-login" name="login_form" id="login_form" method="post">
                                 <div class="input">
-                                    <input type="email" tabindex="601" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address">
+                                    <input type="email" tabindex="1"  name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address">
                                 </div>
                                 <div class="input">
-                                    <input type="password" tabindex="602" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password">
+                                    <input type="password" tabindex="1"  name="password_login" id="password_login" class="form-control input-sm" placeholder="Password">
                                 </div>
                                 <div class="btn-right">
-                                    <button id="login-new" title="Login" tabindex="603" class="btn1">Login</button>
-                                    <a tabindex="604" id="myBtn"  class="f-pass" href="javascript:void(0)" title="Forgot Password">Forgot Password?</a>
+                                    <button id="login-new" title="Login" tabindex="1"  class="btn1">Login</button>
+                                    <a tabindex="1" id="myBtn"  class="f-pass" href="javascript:void(0)" title="Forgot Password">Forgot Password?</a>
                                 </div>
                             </form>
                         </div>
@@ -207,7 +207,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <input tabindex="1" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                                    <input tabindex="1" autofocus type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-md-6">

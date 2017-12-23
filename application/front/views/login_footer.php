@@ -17,24 +17,24 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
                         <?php
                         if (!$this->session->userdata('aileenuser')) {
                             ?>
-                            <li><a title="Login" tabindex="501" href="<?php echo base_url('login'); ?>" target="_blank">Login</a></li>
-                            <li><a tabindex="502" title="Create an Account" href="<?php echo base_url('registration'); ?>" target="_blank">Create an Account</a></li>
+                            <li><a title="Login" href="<?php echo base_url('login'); ?>" target="_blank">Login</a></li>
+                            <li><a title="Create an Account" href="<?php echo base_url('registration'); ?>" target="_blank">Create an Account</a></li>
                             <?php
                         }
                         ?>
-                        <li><a tabindex="503" title="Job Profile" href="<?php echo base_url('how-to-use-job-profile-in-aileensoul'); ?>" target="_blank">Job Profile</a></li>
-                        <li><a tabindex="504" title="Recruiter Profile" href="<?php echo base_url('how-to-use-recruiter-profile-in-aileensoul'); ?>" target="_blank">Recruiter Profile</a></li>
-                        <li><a tabindex="505" title="Freelance Profile" href="<?php echo base_url('how-to-use-freelance-profile-in-aileensoul'); ?>" target="_blank">Freelance Profile</a></li>
-                        <li><a tabindex="506" title="Business Profile" href="<?php echo base_url('how-to-use-business-profile-in-aileensoul'); ?>" target="_blank">Business Profile</a></li>
-                        <li><a tabindex="507" title="Artistic Profile" href="<?php echo base_url('how-to-use-artistic-profile-in-aileensoul'); ?>" target="_blank">Artistic Profile</a></li>
-                        <li><a tabindex="508" title="About Us" href="<?php echo base_url('about-us'); ?>"  target="_blank">About Us</a></li>
-                        <li><a tabindex="509" href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" target="_blank">Terms and Condition</a></li>
-                        <li><a tabindex="510" href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a></li>
-                        <li><a tabindex="511" title="Disclaimer" href="<?php echo base_url('Disclaimer'); ?>"  target="_blank">Disclaimer policy</a></li>
-                        <li><a tabindex="512" title="Contact Us" href="<?php echo base_url('contact-us'); ?>"  target="_blank">Contact Us</a></li>
-                        <li><a tabindex="513" title="Blog" href="<?php echo base_url('blog'); ?>" target="_blank">Blog</a></li>
-                        <li><a tabindex="514" title="Send Us Feedback" href="<?php echo base_url('feedback'); ?>" target="_blank">Send Us Feedback</a></li>
-                        <li><a tabindex="515" title="Sitemap" href="<?php echo base_url('sitemap'); ?>" target="_blank">Sitemap</a></li>
+                        <li><a title="Job Profile" href="<?php echo base_url('how-to-use-job-profile-in-aileensoul'); ?>" target="_blank">Job Profile</a></li>
+                        <li><a title="Recruiter Profile" href="<?php echo base_url('how-to-use-recruiter-profile-in-aileensoul'); ?>" target="_blank">Recruiter Profile</a></li>
+                        <li><a title="Freelance Profile" href="<?php echo base_url('how-to-use-freelance-profile-in-aileensoul'); ?>" target="_blank">Freelance Profile</a></li>
+                        <li><a title="Business Profile" href="<?php echo base_url('how-to-use-business-profile-in-aileensoul'); ?>" target="_blank">Business Profile</a></li>
+                        <li><a title="Artistic Profile" href="<?php echo base_url('how-to-use-artistic-profile-in-aileensoul'); ?>" target="_blank">Artistic Profile</a></li>
+                        <li><a title="About Us" href="<?php echo base_url('about-us'); ?>"  target="_blank">About Us</a></li>
+                        <li><a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" target="_blank">Terms and Condition</a></li>
+                        <li><a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a></li>
+                        <li><a title="Disclaimer" href="<?php echo base_url('Disclaimer'); ?>"  target="_blank">Disclaimer policy</a></li>
+                        <li><a title="Contact Us" href="<?php echo base_url('contact-us'); ?>"  target="_blank">Contact Us</a></li>
+                        <li><a title="Blog" href="<?php echo base_url('blog'); ?>" target="_blank">Blog</a></li>
+                        <li><a title="Send Us Feedback" href="<?php echo base_url('feedback'); ?>" target="_blank">Send Us Feedback</a></li>
+                        <li><a title="Sitemap" tabindex="0" href="<?php echo base_url('sitemap'); ?>" target="_blank">Sitemap</a></li>
 
 
                     </ul>
