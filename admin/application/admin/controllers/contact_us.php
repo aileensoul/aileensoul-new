@@ -283,7 +283,7 @@ public function delete_user()
 {
      $contact_id = $_POST['contact_id'];
       $data = array(
-            'is_delete' => 1
+            'is_delete' => '1'
         );
 
         $update = $this->common->update_data($data, 'contact_us', 'contact_id', $contact_id);
