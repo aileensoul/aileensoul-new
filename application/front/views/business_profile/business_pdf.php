@@ -86,7 +86,7 @@
                                                         ?>
                                                         <div class="art_no_pva_avl">
                                                             <div class="art_no_post_img">
-                                                                <img src="<?php echo base_url('assets/images/020.png'); ?>"  >
+                                                                <img src="<?php echo base_url('assets/images/020.png'); ?>" alt="No PDF Available">
                                                             </div>
                                                             <div class="art_no_post_text1">
                                                                 No Pdf Available.
