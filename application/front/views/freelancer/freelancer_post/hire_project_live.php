@@ -764,7 +764,7 @@
                                 ?>
                                 <div class="art-img-nn">
                                     <div class="art_no_post_img">
-                                        <img alt="No Projects" src="' . base_url() . 'img/job-no.png">
+                                        <img alt="No Projects" src="<?php echo base_url() . 'img/job-no.png' ?>">
 
                                     </div>
                                     <div class="art_no_post_text">

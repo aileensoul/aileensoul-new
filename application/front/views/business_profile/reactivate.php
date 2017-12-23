@@ -7,7 +7,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta charset="utf-8">
         <title><?php echo $title ?></title>
         <?php echo $head; ?>
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      
+   <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<?php } else { ?>
+     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<?php } ?>
     </head>
     <body>
         <?php echo $header; ?>

@@ -15,7 +15,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <?php
         } else {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business-common.min.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business.css?ver=' . time()); ?>">
         <?php } ?>
         <script>
             $(document).ready(function ()
@@ -1309,10 +1310,18 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             </div>
         </div>
         <?php echo $footer; ?>
-        <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());            ?>"></script>--> 
+        
+      <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
+    <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());            ?>"></script>--> 
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver=' . time());            ?>"></script>-->
+<?php } else { ?>
+    <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());            ?>"></script>--> 
+        <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver=' . time());            ?>"></script>-->
+<?php } ?>
         <!-- script for business autofill -->
         <script>
                                                 var base_url = '<?php echo base_url(); ?>';
@@ -1322,8 +1331,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/post_detail.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
-            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/post_detail.min.js?ver=' . time()); ?>"></script>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/post_detail.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } ?>
     </body>
 </html>

@@ -11,7 +11,8 @@
             <?php
         } else {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business-common.min.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business.css?ver=' . time()); ?>">
         <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
@@ -96,20 +97,23 @@
         </div>
         <!-- Model Popup Close -->
 
-        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <!-- script for business autofill -->
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var slug_id = '<?php echo $slug_id; ?>';
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
+        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/followers.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/followers.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/followers.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } ?>
     </body>
 </html>
