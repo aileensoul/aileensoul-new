@@ -11,7 +11,8 @@
             <?php
         } else {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
         <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
@@ -162,7 +163,6 @@
         
         
         
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
         <script>
                                         var base_url = '<?php echo base_url(); ?>';
                                         var data1 = <?php echo json_encode($de); ?>;
@@ -174,12 +174,15 @@
          <?php
         if (IS_REC_JS_MINIFY == '0') {
             ?>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/basic_info.js'); ?>"></script>
             <?php
         } else {
             ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_basic_info.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
+          <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/search.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/basic_info.js'); ?>"></script>
         <?php } ?>
        
     </body>

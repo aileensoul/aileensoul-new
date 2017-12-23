@@ -7,12 +7,12 @@
         if (IS_REC_CSS_MINIFY == '0') {
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
-
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
             <?php
         } else {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
         <?php } ?>
 
     </head>
@@ -298,18 +298,7 @@
 
 
         <!-- FIELD VALIDATION JS START -->
-        <?php
-        if (IS_REC_JS_MINIFY == '0') {
-            ?>
-            <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
-
-            <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-            <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-            <?php
-        } else {
-            ?>
-            <script defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
-<?php } ?>
+        
 
         <script>
                                 var base_url = '<?php echo base_url(); ?>';
@@ -325,7 +314,10 @@
         <!-- FIELD VALIDATION JS END -->
         <?php
         if (IS_REC_JS_MINIFY == '0') { ?>
+  <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
 
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+            <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
              <script src="<?php echo base_url('assets/js/webpage/recruiter/rec_post.js'); ?>"></script>
 
          <?php if($this->uri->segment(3) != $userid){   ?>
@@ -338,7 +330,17 @@
             <?php
         } else {
             ?>
-            <script defer="defer" src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_post.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/croppie.js'); ?>"></script>  
+
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+             <script src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_post.js'); ?>"></script>
+
+         <?php if($this->uri->segment(3) != $userid){   ?>
+<script src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver=' . time()); ?>"></script>    
+<?php }else{ ?>
+ <script src="<?php echo base_url('assets/js_min/webpage/recruiter/search.js'); ?>"></script>
+<?php } ?>
 <?php } ?>
 
     </body>

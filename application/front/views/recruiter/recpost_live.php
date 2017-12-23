@@ -12,7 +12,9 @@
             <?php
         } else {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
+               <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
         <?php } ?>
 
     </head>
@@ -666,16 +668,26 @@
             <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <?php
-        } else {
-            ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
-        <?php } ?>
-
-        <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
+         if ($this->session->userdata('aileenuser') == $recliveid) { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
         <?php } else { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>
-        <?php } ?>
+        <?php } 
+            
+        } else {
+            ?>
+            <script src="<?php echo base_url('assets/js_min/croppie.js'); ?>"></script>  
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <?php
+         if ($this->session->userdata('aileenuser') == $recliveid) { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/search.js'); ?>"></script>
+        <?php } else { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver=' . time()); ?>"></script>
+        <?php } 
+         } ?>
+
+       
         <script>
                                 var base_url = '<?php echo base_url(); ?>';
                                 var data1 = <?php echo json_encode($de); ?>;

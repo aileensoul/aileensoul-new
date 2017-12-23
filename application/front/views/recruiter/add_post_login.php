@@ -3,9 +3,21 @@
     <head>
         <?php echo $head; ?>
         <title><?php echo $title; ?></title>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+      
+    
+    <?php
+        if (IS_REC_CSS_MINIFY == '0') {
+            ?>
+          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
+            <?php
+        } else {
+            ?>
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
+        <?php } ?>
     </head>
      <style>
         /***  commen css  ***/
@@ -1013,9 +1025,7 @@
             </div>
         </div>
         
-        <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+       
              <script>
                                                  var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
                                                 var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
@@ -1026,6 +1036,21 @@
 
 
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/add_post_login.js?ver=' . time()); ?>"></script>
+        <?php
+        if (IS_REC_JS_MINIFY == '0') {
+            ?>
+    <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+           <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/add_post_login.js?ver=' . time()); ?>"></script>
+ <?php
+        } else {
+            ?>
+              <script src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/add_post_login.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+        
     </body>
 </html>

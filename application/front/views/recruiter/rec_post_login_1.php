@@ -15,7 +15,8 @@
             <?php
         } else {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
         <?php } ?>
    </head>
    <!-- END HEAD -->
@@ -1327,17 +1328,6 @@
         <!-- register -->
 
 <!-- script for skill textbox automatic start-->
-<?php
-        if (IS_REC_JS_MINIFY == '0') {
-            ?>
-         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
- <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
-            <?php
-        } else {
-            ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/bootstrap_validate.min.js?ver=' . time()); ?>"></script>
-        <?php } ?>
-
 
 
  <script>
@@ -1347,17 +1337,14 @@
                                               
 </script>
 
- <?php
-        if (IS_REC_JS_MINIFY == '0') { 
-           
-            ?>
+ <?php if (IS_REC_JS_MINIFY == '0') {  ?>
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+ <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_post_login.js?ver='.time()); ?>"></script>
-            <?php
-        } else {
-            
-            ?>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_post_login.js?ver='.time()); ?>"></script>
-            <!--<script type="text/javascript" defer="defer" src="<?php// echo base_url('assets/js_min/webpage/recruiter/rec_post_login.min.js?ver=' . time()); ?>"></script>-->
+            <?php } else { ?>
+<script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
+ <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_post_login.js?ver='.time()); ?>"></script>
         <?php } ?>
 </body>
 </html>

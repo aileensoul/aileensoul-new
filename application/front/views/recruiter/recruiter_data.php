@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
+  
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
-
+ 
+            <?php
+        if (IS_REC_CSS_MINIFY == '0') {
+            ?>
+         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
-    </head> <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css'); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css'); ?>" />
+            <?php
+        } else {
+            ?>
+          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/profiles/common/mobile.css'); ?>" />
+        <?php } ?>
+        
+      
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
         <?php if ($recdata[0]['re_step'] == 3) { ?>
@@ -665,10 +677,7 @@
         
         
         
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> 
-        <!--<script type="text/javascript" src="<?php //echo base_url('assets/js/jquery.validate.js');  ?>"></script>-->
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+  
         <script>
                                                  var base_url = '<?php echo base_url(); ?>';
                                                  //var data1 = <?php // echo json_encode($de);  ?>;
@@ -678,9 +687,27 @@
                                                  var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
         <!-- FIELD VALIDATION JS END -->
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
+     
+ <?php
+        if (IS_REC_JS_MINIFY == '0') {
+            ?>
+                   <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> 
+        <!--<script type="text/javascript" src="<?php //echo base_url('assets/js/jquery.validate.js');  ?>"></script>-->
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+   <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_profile.js'); ?>"></script>
+            <?php
+        } else {
+            ?>
+                 <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script> 
+        <!--<script type="text/javascript" src="<?php //echo base_url('assets/js/jquery.validate.js');  ?>"></script>-->
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+   <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/search.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_profile.js'); ?>"></script>
 
+        <?php } ?>
         <script type="text/javascript">
             
             $(document).ready(function () {

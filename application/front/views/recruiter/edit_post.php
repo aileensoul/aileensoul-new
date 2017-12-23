@@ -13,7 +13,9 @@
             <?php
         } else {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/jquery.fancybox.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
         <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
@@ -486,13 +488,7 @@
         <!-- END FOOTER -->
         
         
-        <!-- FIELD VALIDATION JS START -->
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
-        <script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
-        <!-- THIS SCRIPT ALWAYS PUT UNDER FANCYBOX JS-->
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> 
-        <!--SCRIPT FOR DATE START-->
-        <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js'); ?>"></script>
+       
         <script>
                                             var base_url = '<?php echo base_url(); ?>';
                                             var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
@@ -511,12 +507,27 @@
         <?php
         if (IS_REC_JS_MINIFY == '0') {
             ?>
+         <!-- FIELD VALIDATION JS START -->
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
+        <!-- THIS SCRIPT ALWAYS PUT UNDER FANCYBOX JS-->
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> 
+        <!--SCRIPT FOR DATE START-->
+        <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js'); ?>"></script>
      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/edit_post.js'); ?>"></script>
             <?php
         } else {
             ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/recruiter/rec_edit_post.min.js?ver=' . time()); ?>"></script>
+             <!-- FIELD VALIDATION JS START -->
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/jquery.fancybox.js'); ?>"></script>
+        <!-- THIS SCRIPT ALWAYS PUT UNDER FANCYBOX JS-->
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script> 
+        <!--SCRIPT FOR DATE START-->
+        <script src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js'); ?>"></script>
+     <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/search.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/edit_post.js'); ?>"></script>
         <?php } ?>
        
 

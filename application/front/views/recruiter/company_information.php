@@ -12,7 +12,9 @@
             <?php
         } else {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/jquery.fancybox.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
         <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
@@ -330,7 +332,9 @@
             <?php
         } else {
             ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/bootstrap_validate.min.js?ver=' . time()); ?>"></script>
+             <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/jquery.fancybox.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
         <?php } ?>
 
         <script>
@@ -349,7 +353,8 @@
             <?php
         } else {
             ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_company_info.min.js?ver=' . time()); ?>"></script>
+             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/search.js'); ?>"></script>
+       <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/company_info.js'); ?>"></script>
         <?php } ?>
       
        

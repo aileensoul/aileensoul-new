@@ -11,7 +11,8 @@
             <?php
         } else {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
+             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
         <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
@@ -658,7 +659,11 @@
             <?php
         } else {
             ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/val_boot_drop.min.js?ver=' . time()); ?>"></script>
+             <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script> 
+            <!--SCRIPT FOR DATE START-->
+            <script src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js'); ?>"></script>
+
         <?php } ?>
 
 
@@ -672,7 +677,18 @@
                                                                 var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
         <!-- FIELD VALIDATION JS END -->
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
+          <?php
+        if (IS_REC_JS_MINIFY == '0') {
+            ?>
+              <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
+
+            <?php
+        } else {
+            ?>
+                <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/search.js'); ?>"></script>
+
+        <?php } ?>
+    
         <script type="text/javascript">
 
 

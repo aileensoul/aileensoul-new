@@ -5,7 +5,18 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
        <?php echo $head; ?>
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
+   
+  
+     <?php
+        if (IS_REC_CSS_MINIFY == '0') {
+            ?>
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
+            <?php
+        } else {
+            ?>
+                 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
+        <?php } ?>
+   
    </head>
    <body>
 
