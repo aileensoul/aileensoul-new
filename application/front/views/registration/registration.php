@@ -115,6 +115,7 @@ header('Expires: '.$date);
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth *:</label>
                                         <!--span class="d_o_b">DOB </span-->
+                                       <span>
                                         <select class="day" name="selday" id="selday" tabindex="5">
                                             <option value="" disabled selected>Day</option>
                                             <?php
@@ -125,6 +126,8 @@ header('Expires: '.$date);
                                             }
                                             ?>
                                         </select>
+                                        </span>
+                                        <span>
                                         <select class="month" name="selmonth" id="selmonth" tabindex="6">
                                             <option value="" disabled selected>Month</option>
                                             <?php
@@ -146,6 +149,8 @@ header('Expires: '.$date);
                                             //  }
                                             ?>
                                         </select>
+                                        </span>
+                                        <span>
                                         <select class="year" name="selyear" id="selyear" tabindex="7">
                                             <option value="" disabled selected>Year</option>
                                             <?php
@@ -155,16 +160,18 @@ header('Expires: '.$date);
                                                 <?php
                                             }
                                             ?>
-                                        </select>
+                                        </select></span>
 
                                     </div>
 
                                     <div class="form-group gender-custom">
+                                        <span>
                                         <select class="gender" name="selgen" id="selgen" tabindex="8">
                                             <option value="" disabled selected>Gender*</option>
                                             <option value="M">Male</option>
                                             <option value="F">female</option>
                                         </select>
+                                        </span>
                                     </div>
 
                                     <p class="clr-c fs12">
