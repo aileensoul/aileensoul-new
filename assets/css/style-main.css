@@ -1894,6 +1894,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 .profiles-details h2:after{width:250px; height:2px; background:#5c5c5c; position:absolute; left:50%; margin-left:-125px; content:""; top:80px;}
 .profiles-details p{line-height:2; text-align:justify; font-size:16px;}
 .dis-box{padding:35px 0;}
+.profile-bnr .logo{text-align:left;}
 /*** end all profile detail  ***/
 /*** new about us page  ***/
 .new-abput-page{padding-left:0;}
