@@ -2309,7 +2309,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
                         if ($cache_time_1) {
                             $rec_post .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time) . '" alt=' . $cache_time . '>';
                         } else {
-                            $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . ' alt="commonimage">';
+                            $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                         }
                         $rec_post .= '</a>
                                         </div>';
@@ -2352,7 +2352,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
                         $rec_post .= '      </span>
                     </span>';
                         $rec_post .= '<span class="exp">
-                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '"> alt="experience"';
+                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '" alt="experience">';
 
                         if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
                             $rec_post .= $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " " . "(Fresher can also apply)";

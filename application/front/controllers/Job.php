@@ -2288,7 +2288,7 @@ class Job extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $job_reg_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
-            $userimage .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $job_reg_data[0]['job_user_image'] . '" alt="" >';
+            $userimage .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $job_reg_data[0]['job_user_image'] . '" alt="'.$job_reg_data[0]['job_user_image'].'" >';
             $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();" class="cusome_upload"><img  src="' . base_url('../assets/img/cam.png') . '">';
             $userimage .= 'Update Profile Picture';
             $userimage .= '</a>';

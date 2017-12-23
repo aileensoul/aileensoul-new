@@ -45,12 +45,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             if ($image_ori) {
                 ?>
                                                     <!--<img src="<?php echo base_url($this->config->item('bus_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />-->
-                <img src="<?php echo BUS_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" />
+            <img src="<?php echo BUS_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" alt="Profile Background Image" />
                 <?php
             } else {
                 ?>
                 <div class="bg-images no-cover-upload">
-                    <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                    <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="White Image"/>
                 </div>
             <?php }
             ?>
@@ -79,10 +79,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             if (IMAGEPATHFROM == 'upload') {
                                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image'])) {
                                     ?>
-                                    <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="" >
+                                    <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="No Business Image" >
                                 <?php } else {
                                     ?>
-                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="" >
+                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="Business User Image" >
                                     <?php
                                 }
                             } else {
@@ -90,15 +90,15 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                 if (!$info) {
                                     ?>
-                                    <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="" >
+                                    <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="No Business Image" >
                                 <?php } else {
                                     ?>
-                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="" >
+                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="Business User Image" >
                                 <?php }
                             }
                         } else {
                             ?>
-                            <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="" >
+                            <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="No Business Image" >
                         <?php } ?>
                     </div>
                 </div>
@@ -150,7 +150,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <div></div>
                                                     <div></div>
                                                     <div></div>
-                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>"></span></div>
+                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>" alt="Add To Contact"></span></div>
 
                                                 </div>
 
@@ -169,7 +169,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <div></div>
                                                     <div></div>
                                                     <div>
-                                                        <span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_cancel.png'); ?>"></span>
+                                                        <span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_cancel.png'); ?>" alt="Cancel"></span>
                                                     </div>
 
                                                 </div>
@@ -188,7 +188,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                                     <div class="in_your_contact_change">
                                                         <span class="in_your_contct_img">
-                                                            <img src="<?php echo base_url('assets/img/icon_contact_accept.png'); ?>">
+                                                            <img src="<?php echo base_url('assets/img/icon_contact_accept.png'); ?>" alt="Accept Contact">
                                                         </span>
                                                     </div>
 
@@ -208,7 +208,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <div></div>
                                                     <div></div>
                                                     <div></div>
-                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>"></span></div>
+                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>" alt="Add to Contact"></span></div>
 
                                                 </div>
 
@@ -226,7 +226,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <div></div>
                                                     <div></div>
                                                     <div></div>
-                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>"></span></div>
+                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>" alt="Add to Contact"></span></div>
 
                                                 </div>
 
