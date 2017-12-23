@@ -2095,7 +2095,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.header-login .input{width: 46%; margin-right: 2%; margin-left: 2%;}
 	.header-login .f-pass{padding-left: 2%;}
     .header-login input{padding-bottom: 0px;}
-    .logo{font-size: 24px;}
+    .logo{font-size: 24px;margin-bottom: 10px;}
     .mid-trns{/*transform: inherit ;top:inherit; position: inherit; left: inherit;*/ width:100%;}
     .f-pass{float: left;}
     .main-login .middle-main{/*padding: 40px 0 120px*/; background-position: 0 16%; background-size: 150% auto;}
