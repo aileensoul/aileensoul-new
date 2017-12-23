@@ -600,7 +600,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
 // RECRUITER RECOMMANDED FUNCTION END
 // RECRUITER ADD POST START
     public function add_post() {
-        $this->data['title'] = 'AddPost | RecruiterProfile - Aileensouls';
+        $this->data['title'] = 'AddPost | RecruiterProfile - Aileensoul';
 
         if ($this->session->userdata('aileenuser')) {
 
@@ -875,7 +875,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
     public function rec_post($id = "") {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
-        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Post | RecruiterProfile - Aileensou';
+        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Post | RecruiterProfile - Aileensoul';
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -1273,7 +1273,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
         $this->recruiter_apply_check();
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
-        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | SavedCandidate | RecruiterProfile - Aileensou';
+        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | SavedCandidate | RecruiterProfile - Aileensoul';
         
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
@@ -1324,7 +1324,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
       
-        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Details | RecruiterProfile - Aileensou';
+        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Details | RecruiterProfile - Aileensoul';
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -4697,7 +4697,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
         $cityname = $this->db->get_where('cities', array('city_id' => $this->data['postdata'][0]['city']))->row()->city_name;
 
 
-        $this->data['title'] = $cache_time1 . ' Job Vacancy in ' . $cityname . ' - Aileensoul.com';
+        $this->data['title'] = $cache_time1 . ' Job Vacancy in ' . $cityname . ' - Aileensoul';
 
         $contition_array = array('post_id !=' => $postid, 'status' => '1', 'rec_post.is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
         $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
@@ -4752,7 +4752,7 @@ $this->data['title'] = 'Home | Recruiter Profile - Aileensoul';
         $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $cityname = $this->db->get_where('cities', array('city_id' => $this->data['postdata'][0]['city']))->row()->city_name;
-        $this->data['title'] = 'Job in ' . $cityname . ' - Aileensoul.com';
+        $this->data['title'] = 'Job in ' . $cityname . ' - Aileensoul';
 
         $this->load->view('recruiter/rec_location_login', $this->data);
     }
