@@ -451,12 +451,7 @@
                                                     </select>
                                                     <?php echo form_error('fields_req'); ?>
                                                 </fieldset>
-                                                <!--                                    <fieldset class="full-width" <?php if ($other_skill) { ?> class="error-msg" <?php } ?> >
-<label class="control-label"><?php echo $this->lang->line("other_skill"); ?>:</label>
-<input name="other_skill" class="keyskil"  type="text" id="other_skill" tabindex="5" placeholder="Enter Your Other Skill" />
-<span id="fullname-error"></span>
-                                                <?php echo form_error('other_skill'); ?>
-</fieldset>-->
+                                              
 
                                                 <fieldset class="full-width two-select-box fullwidth_experience" <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
                                                     <label><?php echo $this->lang->line("required_experiance"); ?>:<span class="optional">(optional)</span></label>
@@ -533,7 +528,7 @@
                                                     <?php echo form_error('currency'); ?>
                                                 </fieldset>
                                                 <fieldset class="col-md-12 pl10 work_type_custom">
-                                                    <label class=""><?php echo $this->lang->line("work_type"); ?>:<span class="optional">(optional)</span></label><input type="radio" tabindex="13" class="worktype_minheight" name="rating" value="0" checked> Hourly
+                                                    <label class=""><?php echo $this->lang->line("work_type"); ?>:<span class="optional">(optional)</span></label><input type="radio" tabindex="13" class="worktype_minheight" name="rating"  value="0" checked> Hourly
                                                     <input type="radio" tabindex="14"  name="rating" value="1"> Fixed
                                                     <?php echo form_error('rating'); ?>
                                                 </fieldset>
@@ -629,7 +624,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                                <div class="title"><h1>Sign up First and Register in Employer Profile</h1></div>
+                                <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Employer Profile</h1></div>
                                 <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
@@ -788,8 +783,8 @@
             <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
              <script>
                                                 var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
-                                                var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                                var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+//                                                var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+//                                                var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
                                                 var base_url = '<?php echo base_url(); ?>';
                                                 var postslug = '<?php echo $this->uri->segment(3); ?>';
                                                 

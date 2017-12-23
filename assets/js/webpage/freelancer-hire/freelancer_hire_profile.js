@@ -215,7 +215,7 @@ $(document).ready(function () {
                 //alert(postid);
                 var userid = response.userid;
                 if (response.okmsg == "ok") {
-                    window.location = base_url + "freelancer-work/registration";
+                    window.location = base_url + "freelance-work/registration";
                 } else {
                     $("#register_error").fadeIn(1000, function () {
                         $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
@@ -321,7 +321,7 @@ function forgot_profile() {
                 if (response.data == "ok") {
                   //  alert("login");
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                    window.location = base_url + "freelancer-hire/employer-details/" + segment3;
+                    window.location = base_url + "freelance-hire/employer-details/" + segment3;
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login").classList.add('error');

@@ -97,7 +97,7 @@ class Recruiter extends MY_Controller {
 
 // RECRUITER BASIC INFORMATION STEP START
     public function rec_basic_information() {
-        $this->data['title'] = 'BasicInformation | Edit Profile - Recruiter Profile - Aileensoul';
+        $this->data['title'] = 'Basic Information | Edit Profile - Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
@@ -127,7 +127,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER BASIC INFORMATION INSERT STEP START  
     public function basic_information() {
 
-        $this->data['title'] = 'BasicInformation | Edit Profile - Recruiter Profile - Aileensoul';
+        $this->data['title'] = 'Basic Information | Edit Profile - Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
@@ -269,7 +269,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER CHECK EMAIL FUCNTION IN BSIC INFORMATION END  
 // RECRUITER CHECK EMAIL FUCNTION IN COMPANY INFORMATION START  
     public function company_info_form() {
-        $this->data['title'] = 'CompanyInformation |  Edit Profile - Recruiter Profile - Aileensoul';
+        $this->data['title'] = 'Company Information |  Edit Profile - Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
@@ -578,7 +578,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER CHECK EMAIL COMAPNY FUNCTION END   
 // RECRUITER RECOMMANDED FUNCTION START
     public function recommen_candidate() {
-
+$this->data['title'] = 'Home | Recruiter Profile - Aileensoul';  
         $userid = $this->session->userdata('aileenuser');
         $this->recruiter_apply_check();
 
@@ -600,7 +600,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER RECOMMANDED FUNCTION END
 // RECRUITER ADD POST START
     public function add_post() {
-        $this->data['title'] = 'AddPost | RecruiterProfile - Aileensouls';
+        $this->data['title'] = 'AddPost | RecruiterProfile - Aileensoul';
 
         if ($this->session->userdata('aileenuser')) {
 
@@ -874,7 +874,8 @@ class Recruiter extends MY_Controller {
 // RECRUITER POST START
     public function rec_post($id = "") {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-        $this->data['title'] = 'Post  | RecruiterProfile - Aileensou';
+        $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
+        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Post | RecruiterProfile - Aileensoul';
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -927,7 +928,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER EDIT POST START
     public function edit_post($id = "") {
 
-        $this->data['title'] = 'EditPost | RecruiterProfile - Aileensoul';
+        $this->data['title'] = 'Edit Post | RecruiterProfile - Aileensoul';
 
         $this->recruiter_apply_check();
 
@@ -1270,8 +1271,10 @@ class Recruiter extends MY_Controller {
 // RECRUITER SAVED CANDIDATE LIST START
     public function save_candidate() {
         $this->recruiter_apply_check();
-        $this->data['title'] = 'SavedCandidate   | RecruiterProfile - Aileensou';
-        $userid = $this->session->userdata('aileenuser');
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
+        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | SavedCandidate | RecruiterProfile - Aileensoul';
+        
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -1318,8 +1321,10 @@ class Recruiter extends MY_Controller {
 // RECRUITER SAVED CANDIDATE LIST END
 // RECRUITER PROFILE START
     public function rec_profile($id = "") {
-        $this->data['title'] = 'Details | RecruiterProfile - Aileensou';
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
+      
+        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Details | RecruiterProfile - Aileensoul';
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -1390,7 +1395,10 @@ class Recruiter extends MY_Controller {
 // REMOVE CANDIDATE END
 // VIEW APPLIED LIST START
     public function view_apply_list($id = "") {
-        $this->data['title'] = 'AppliedCandidate | Recruiter Profile - Aileensoul';
+         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
+        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Applied Candidate | RecruiterProfile - Aileensoul';
+
         $this->recruiter_apply_check();
 
         $userid = $this->session->userdata('aileenuser');
@@ -2301,7 +2309,7 @@ class Recruiter extends MY_Controller {
                         if ($cache_time_1) {
                             $rec_post .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time) . '" alt=' . $cache_time . '>';
                         } else {
-                            $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . ' alt="commonimage">';
+                            $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                         }
                         $rec_post .= '</a>
                                         </div>';
@@ -2344,7 +2352,7 @@ class Recruiter extends MY_Controller {
                         $rec_post .= '      </span>
                     </span>';
                         $rec_post .= '<span class="exp">
-                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '"> alt="experience"';
+                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '" alt="experience">';
 
                         if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
                             $rec_post .= $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " " . "(Fresher can also apply)";
@@ -2473,7 +2481,8 @@ class Recruiter extends MY_Controller {
         if ($search_place) {
             $title .= $search_place;
         }
-        $this->data['title'] = "$title | Aileensoul";
+        $this->data['title'] = "Search | Recruiter Profile - Aileensoul";
+        
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
@@ -2714,9 +2723,13 @@ class Recruiter extends MY_Controller {
                                                     <div  class="buisness-profile-pic-candidate ">';
 
                 $imageee = $this->config->item('job_profile_thumb_upload_path') . $p['job_user_image'];
-                if (file_exists($imageee) && $p['job_user_image'] != '') {
-
-
+                
+                 $image_ori = $p['job_user_image'];
+                                                $filename = $this->config->item('job_profile_thumb_upload_path') . $p['job_user_image'];
+                                                $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                if ($info && $p['job_user_image'] != '') {
+                                
                     $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
                                     <img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $p['job_user_image'] . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
                                     </a>';
@@ -4684,7 +4697,7 @@ class Recruiter extends MY_Controller {
         $cityname = $this->db->get_where('cities', array('city_id' => $this->data['postdata'][0]['city']))->row()->city_name;
 
 
-        $this->data['title'] = $cache_time1 . ' Job Vacancy in ' . $cityname . ' - Aileensoul.com';
+        $this->data['title'] = $cache_time1 . ' Job Vacancy in ' . $cityname . ' - Aileensoul';
 
         $contition_array = array('post_id !=' => $postid, 'status' => '1', 'rec_post.is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
         $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
@@ -4739,7 +4752,7 @@ class Recruiter extends MY_Controller {
         $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $cityname = $this->db->get_where('cities', array('city_id' => $this->data['postdata'][0]['city']))->row()->city_name;
-        $this->data['title'] = 'Job in ' . $cityname . ' - Aileensoul.com';
+        $this->data['title'] = 'Job in ' . $cityname . ' - Aileensoul';
 
         $this->load->view('recruiter/rec_location_login', $this->data);
     }
@@ -4747,7 +4760,7 @@ class Recruiter extends MY_Controller {
 //LIVE LOCATION END
 
     public function rec_reg() {
-
+     $this->data['title'] = 'Register | Recruiter Profile - Aileensoul';
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START

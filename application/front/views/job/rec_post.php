@@ -35,7 +35,7 @@
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container padding-360">
                     <!-- MIDDLE SECTION START -->
-                    <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
+                    <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" style="position: absolute !important;">
                         <!--left bar box start-->
                         <div class="full-box-module">   
                             <div class="profile-boxProfileCard  module">
@@ -173,7 +173,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        <a href="<?php echo base_url('freelance'); ?>">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="freelancer">
                                             </div>
@@ -200,8 +200,7 @@
                             </div>
 
                                                                                     </div>
-																					 <?php echo $left_footer; ?>
-
+																					
                         <!--left bar box end-->
                         <div  class="add-post-button mob-block">
                             <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
@@ -666,7 +665,7 @@
         <!--PROFILE PIC MODEL END-->
         <!-- START FOOTER -->
         <!-- <footer> -->
-
+        <?php echo $login_footer ?>
         <?php echo $footer; ?>
         <!-- </footer> -->
         <!-- END FOOTER -->

@@ -1585,6 +1585,19 @@ font-weight: 500; color: #5c5c5c; background:#fff;}
 .all-job-bottom p.pull-right a.btn4:first-child {padding: 3px 12px !important;}
 p.pull-right a.btn4:first-child {padding: 3px 12px !important;line-height: 22px;}
 p.pull-right a.btn4:last-child {line-height: 22px;}
+
+.login #register_form  span:after {
+    content:"\f0d7";   
+    font-family: "FontAwesome";
+    font-size: 14px;
+    color:#aaa;
+    right:28px; top:0px;
+    padding:0 0 2px;
+    position:relative;
+    pointer-events:none;
+}
+
+
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
     .common-form fieldset.mgrd input[type="radio"] {

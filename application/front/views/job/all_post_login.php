@@ -1219,7 +1219,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>" title="freelancer">
+                                        <a href="<?php echo base_url('freelance'); ?>" title="freelancer">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
                                             </div>
@@ -1453,7 +1453,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                                <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
+                                <div class="title"><h1>Signup first and register in job profile</h1></div>
                                 <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">

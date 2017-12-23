@@ -87,14 +87,14 @@
                         <div class="col-md-5 col-sm-5">
                             <div class=" ">
                                 <ul class="">
-                                    <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'home')) { ?> class="active" <?php } ?>><a title="Home"  href="<?php echo base_url('freelancer-work/home'); ?>"><?php echo $this->lang->line("home"); ?></a>
+                                    <li <?php if (($this->uri->segment(1) == 'freelance-work') && ($this->uri->segment(2) == 'home')) { ?> class="active" <?php } ?>><a title="Home"  href="<?php echo base_url('freelance-work/home'); ?>"><?php echo $this->lang->line("home"); ?></a>
                                     </li>
                                     <li>
                                         <div class="dropdown_hover">
                                             <span id="art_profile"><?php echo $this->lang->line("freelancer_profile"); ?> <i class="fa fa-angle-down" aria-hidden="true"></i></span>
                                             <div class="dropdown-content_hover" id="dropdown-content_hover">
-                                                <a title="View Profile" href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><i class="fa fa-user" aria-hidden="true"></i><?php echo $this->lang->line("view_profile"); ?></a>
-                                                <a title="Edit Profile" href="<?php echo base_url('freelancer-work/basic-information'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i> <?php echo $this->lang->line("edit_profile"); ?></a>
+                                                <a title="View Profile" href="<?php echo base_url('freelance-work/freelancer-details'); ?>"><i class="fa fa-user" aria-hidden="true"></i><?php echo $this->lang->line("view_profile"); ?></a>
+                                                <a title="Edit Profile" href="<?php echo base_url('freelance-work/basic-information'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i> <?php echo $this->lang->line("edit_profile"); ?></a>
                                                 <?php
                                                 $userid = $this->session->userdata('aileenuser');
                                                 ?>

@@ -633,7 +633,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                                <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
+                                <div class="title"><h1>Signup first and register in recruiter profile</h1></div>
                                 <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
@@ -709,11 +709,13 @@
                                         <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                         <div class="form-group gender-custom">
+                                           <span>
                                             <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                                 <option value="" disabled selected value>Gender</option>
                                                 <option value="M">Male</option>
                                                 <option value="F">Female</option>
                                             </select>
+                                            </span>
                                         </div>
 
                                         <p class="form-text">

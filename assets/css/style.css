@@ -670,6 +670,16 @@ label.error {
 }
 
 
+.login #register_form  span:after {
+    content:"\f0d7";   
+    font-family: "FontAwesome";
+    font-size: 14px;
+    color:#aaa;
+    right:28px; top:0px;
+    padding:0 0 2px;
+    position:relative;
+    pointer-events:none;
+}
 
 
 /***---------  model css  -------------***/

@@ -353,7 +353,7 @@ public function delete_user()
 {
      $feedback_id = $_POST['feedback_id'];
       $data = array(
-            'is_delete' => 1
+            'is_delete' => '1'
         );
 
         $update = $this->common->update_data($data, 'feedback', 'feedback_id', $feedback_id);

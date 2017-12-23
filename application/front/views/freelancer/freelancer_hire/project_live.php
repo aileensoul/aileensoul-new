@@ -35,11 +35,11 @@
                                              <?php $hire_user = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $this->session->userdata('aileenuser'), $data = 'user_id', $join_str = array()); 
                                                    $post_user = $this->common->select_data_by_id('freelancer_post', 'post_id', $postid, $data = 'user_id', $join_str = array()); ?>
                                             <?php if ($this->session->userdata('aileenuser') == $post_user[0]['user_id']) { ?>
-                                                <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('freelancer-hire/employer-details'); ?>"  aria-hidden="true" rel="noopener">
+                                                <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('freelance-hire/employer-details'); ?>"  aria-hidden="true" rel="noopener">
                                                    <?php } else if($hire_user) { ?>
                                                     <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="javascript:void(0);" aria-hidden="true" rel="noopener">
                                                    <?php } else { ?>
-                                                    <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('freelancer-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>" onclick="login_profile();" tabindex="-1" 
+                                                    <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('freelance-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>" onclick="login_profile();" tabindex="-1" 
                                                        aria-hidden="true" rel="noopener">
                                                        <?php } ?>
                                                     <div class="bg-images no-cover-upload"> 
@@ -64,12 +64,12 @@
                                         <div class="profile-boxProfileCard-content clearfix">
                                             <div class="left_side_box_img buisness-profile-txext">
                                                 <?php if ($this->session->userdata('aileenuser') == $post_user[0]['user_id']) { ?>
-                                                    <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('freelancer-hire/employer-details'); ?>"  title="<?php echo $freelancr_user_data[0]['fullname'] . ' ' . $freelancr_user_data[0]['username']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                                    <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('freelance-hire/employer-details'); ?>"  title="<?php echo $freelancr_user_data[0]['fullname'] . ' ' . $freelancr_user_data[0]['username']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                                     <?php } else if($hire_user) { ?>
                                                         <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="javascript:void(0);"  title="<?php echo $freelancr_user_data[0]['fullname'] . ' ' . $freelancr_user_data[0]['username']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                                             <?php
                                                         } else { ?>
-                                                            <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('freelancer-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>"  title="<?php echo $freelancr_user_data[0]['fullname'] . ' ' . $freelancr_user_data[0]['username']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                                            <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('freelance-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>"  title="<?php echo $freelancr_user_data[0]['fullname'] . ' ' . $freelancr_user_data[0]['username']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                                        <?php  } 
                                                         $fname = $freelancr_user_data[0]['fullname'];
                                                         $lname = $freelancr_user_data[0]['username'];
@@ -116,22 +116,22 @@
                                             <div class="right_left_box_design ">
                                                 <span class="profile-company-name ">
                                                     <?php if ($this->session->userdata('aileenuser') == $post_user[0]['user_id']) { ?>
-                                                        <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data['username'])); ?>">   <?php echo ucfirst(strtolower($freelancr_user_data[0]['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data[0]['username'])); ?></a>
+                                                        <a href="<?php echo base_url('freelance-hire/employer-details'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data['username'])); ?>">   <?php echo ucfirst(strtolower($freelancr_user_data[0]['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data[0]['username'])); ?></a>
                                                     <?php } else if($hire_user) { ?>
                                                         <a href="javascript:void(0);"  title="<?php echo ucfirst(strtolower($freelancr_user_data['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data['username'])); ?>">   <?php echo ucfirst(strtolower($freelancr_user_data[0]['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data[0]['username'])); ?></a>
                                                     <?php } else{ ?>
-                                                        <a href="<?php echo base_url('freelancer-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data['username'])); ?>">   <?php echo ucfirst(strtolower($freelancr_user_data[0]['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data[0]['username'])); ?></a>
+                                                        <a href="<?php echo base_url('freelance-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data['username'])); ?>">   <?php echo ucfirst(strtolower($freelancr_user_data[0]['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data[0]['username'])); ?></a>
                                                     <?php } ?>
                                                 </span>
 
                                                 <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;   ?>
                                                 <div class="profile-boxProfile-name">
                                                     <?php if ($this->session->userdata('aileenuser') == $post_user[0]['user_id']) { ?>
-                                                        <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
+                                                        <a href="<?php echo base_url('freelance-hire/employer-details'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
                                                         <?php } else if($hire_user) { ?>
                                                             <a href="javascript:void(0);"  title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
                                                             <?php } else{ ?>
-                                                                <a href="<?php echo base_url('freelancer-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
+                                                                <a href="<?php echo base_url('freelance-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
                                                             <?php } ?>
                                                             <?php
                                                             if (ucfirst(strtolower($freelancr_user_data[0]['designation']))) {
@@ -144,21 +144,21 @@
                                                 <ul class=" left_box_menubar">
                                                     
                                                     <?php if ($this->session->userdata('aileenuser') == $post_user[0]['user_id']) { ?>
-                                                        <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>><a title="Employer Details"  class="padding_less_left" href="<?php echo base_url('freelancer-hire/employer-details'); ?>" ><?php echo $this->lang->line("details"); ?></a></li>
+                                                        <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>><a title="Employer Details"  class="padding_less_left" href="<?php echo base_url('freelance-hire/employer-details'); ?>" ><?php echo $this->lang->line("details"); ?></a></li>
                                                     <?php } else if($hire_user) { ?>
-                                                        <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>><a title="Employer Details"  class="padding_less_left" href="javascript:void(0);" ><?php echo $this->lang->line("details"); ?></a></li>
+                                                        <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>><a title="Employer Details"  class="padding_less_left" href="javascript:void(0);" ><?php echo $this->lang->line("details"); ?></a></li>
                                                     <?php } else { ?>
-                                                        <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>><a title="Employer Details"  class="padding_less_left" href="<?php echo base_url('freelancer-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>" ><?php echo $this->lang->line("details"); ?></a></li>
+                                                        <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>><a title="Employer Details"  class="padding_less_left" href="<?php echo base_url('freelance-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>" ><?php echo $this->lang->line("details"); ?></a></li>
                                                     <?php } ?>
                                                     <?php if ($this->session->userdata('aileenuser') == $post_user[0]['user_id']) { ?>
-                                                        <li><a title="Projects" href="<?php echo base_url('freelancer-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a></li>
+                                                        <li><a title="Projects" href="<?php echo base_url('freelance-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a></li>
                                                     <?php } else if($hire_user) { ?>
                                                         <li><a title="Projects" href="javascript:void(0);"><?php echo $this->lang->line("Projects"); ?></a></li>
                                                     <?php } else{ ?>
-                                                        <li><a title="Projects" href="<?php echo base_url('freelancer-hire/projects/' . $recliveid . '?page=freelancer_post'); ?>"><?php echo $this->lang->line("Projects"); ?></a></li>
+                                                        <li><a title="Projects" href="<?php echo base_url('freelance-hire/projects/' . $recliveid . '?page=freelancer_post'); ?>"><?php echo $this->lang->line("Projects"); ?></a></li>
                                                     <?php }?>
                                                     <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
-                                                        <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer"  class="padding_less_right" href="<?php echo base_url('freelancer-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved"); ?></a></li>
+                                                        <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer"  class="padding_less_right" href="<?php echo base_url('freelance-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved"); ?></a></li>
                                                     <?php } ?>
 
                                                 </ul>
@@ -225,7 +225,7 @@
                                                                                 $hireuser = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $this->session->userdata('aileenuser'), $data = 'user_id', $join_str = array());
                                                                                 if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) {
                                                                                     ?>
-                                                                                    <a class="display_inline" title="<?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>" href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>
+                                                                                    <a class="display_inline" title="<?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>" href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>
                                                                                     </a>
 
                                                                                     <?php if ($cityname || $countryname) { ?>
@@ -254,7 +254,7 @@
                                                                                         </div>
                                                                                     <?php } ?>
                                                                                 <?php } else { ?>
-                                                                                    <a class="display_inline" title="<?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>" href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>
+                                                                                    <a class="display_inline" title="<?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>" href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>
                                                                                     </a> 
                                                                                     <?php if ($cityname || $countryname) { ?>
                                                                                         <div class="fr lction display_inline">
@@ -397,7 +397,7 @@
                                                                                     <?php } else if ($applyuser) { ?>
                                                                                         <a href="javascript:void(0);"  class= "applypost  button"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
                                                                                     <?php } else { ?> 
-                                                                                        <a href="<?php echo base_url('freelancer-work/profile/live-post/' . $post['post_id']); ?>"  class= "applypost  button"> Apply</a>
+                                                                                        <a href="<?php echo base_url('freelance-work/profile/live-post/' . $post['post_id']); ?>"  class= "applypost  button"> Apply</a>
                                                                                         <?php
                                                                                     }
                                                                                     ?>
@@ -458,7 +458,7 @@
                                                                                                             if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'])) {
                                                                                                                 ?>
                                                                                                                 <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                    <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug'] . '?page=freelancer_hire'); ?>">
+                                                                                                                    <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug'] . '?page=freelancer_hire'); ?>">
                                                                                                                         <div class="post-img-user">
                                                                                                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                                                                                                         </div>
@@ -470,7 +470,7 @@
                                                                                                                 <?php } ?>
                                                                                                             <?php } ?>
                                                                                                             <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
+                                                                                                                <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
                                                                                                                     <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname']." ".$user['freelancer_post_username'];  ?>" > </a>
                                                                                                             <?php } else { ?>
                                                                                                                 <a href="javascript: void(0);">
@@ -484,7 +484,7 @@
                                                                                                             if ($info) {
                                                                                                                 ?>
                                                                                                                 <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                    <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
+                                                                                                                    <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
                                                                                                                         <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname']." ".$user['freelancer_post_username'];  ?>" > </a>
                                                                                                                 <?php } else { ?>
                                                                                                                     <a href="javascript:void(0);">
@@ -492,7 +492,7 @@
                                                                                                                 <?php } ?>
                                                                                                             <?php } else { ?>
                                                                                                                 <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                    <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>" >
+                                                                                                                    <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>" >
                                                                                                                         <div class="post-img-user">
                                                                                                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
 
@@ -510,7 +510,7 @@
                                                                                                     } else {
                                                                                                         ?>
                                                                                                         <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                            <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['user_id'] . '?page=freelancer_hire'); ?>">
+                                                                                                            <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['user_id'] . '?page=freelancer_hire'); ?>">
                                                                                                                 <div class="post-img-user">
                                                                                                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?> 
                                                                                                                 </div>
@@ -526,7 +526,7 @@
                                                                                                 <div class="sort-emp-detail">
                                                                                                     <h4>
                                                                                                         <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                            <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['user_id'] . '?page=freelancer_hire'); ?>"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
+                                                                                                            <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['user_id'] . '?page=freelancer_hire'); ?>"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
                                                                                                         <?php } else { ?>
                                                                                                             <a href="javascript:void(0);"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
                                                                                                         <?php } ?>

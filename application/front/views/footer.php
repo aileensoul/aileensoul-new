@@ -9,7 +9,7 @@
             type: "POST",
             dataType: 'json',
             beforeSend: function () {
-                $(".as").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
+                $(".as").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif" alt="Loader"/></p>');
             },
             success: function (data) {
                 $('.as').html(data.return_html);
@@ -90,7 +90,7 @@
             data: '',
             beforeSend: function () {
                 $('#gen_not_loader').show();
-                $('ul.notification_data_in').html('<div class="fw" id="gen_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>');
+                $('ul.notification_data_in').html('<div class="fw" id="gen_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="Loader" /></div>');
             },
 
             complete: function () {

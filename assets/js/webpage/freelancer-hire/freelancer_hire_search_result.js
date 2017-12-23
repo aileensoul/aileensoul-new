@@ -39,7 +39,7 @@ function freelancerhire_search(pagenum)
          **/
         return;
     }
-    // url = '<?php echo base_url() . "freelancer-hire/search?page=" ?>'+clicked_id+"&skill="  + encodeURIComponent(searchkeyword) + "&place=" + searchplace;
+    // url = '<?php echo base_url() . "freelance-hire/search?page=" ?>'+clicked_id+"&skill="  + encodeURIComponent(searchkeyword) + "&place=" + searchplace;
     isProcessing = true;
     
     $.ajax({

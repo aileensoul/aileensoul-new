@@ -487,44 +487,44 @@
                                             <input ng-model="busRegStep" type="hidden" value="" id="busRegStep">
                                             <li id="left-form-each-li-1">
                                                 <a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">
-                                                    <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/basic-info.png'); ?>"></span><span class="edit-form-name">Business Information</span>
+                                                    <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/basic-info.png'); ?>" alt="Business Information"></span><span class="edit-form-name">Business Information</span>
                                                 </a>
                                             </li>
                                             <?php if ($business_common_data[0]['business_step'] >= '1' && $business_common_data[0]['business_step'] != '') { ?>
                                                 <li id="left-form-each-li-2">
                                                     <a href="#contact_information" ng-click="tab_active(2);" data-toggle="tab">
-                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/contact-info.png'); ?>"></span><span class="edit-form-name">Contact Information</span>
+                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/contact-info.png'); ?>" alt="Contact Information"></span><span class="edit-form-name">Contact Information</span>
                                                     </a>
                                                 </li>
                                             <?php } else { ?>
                                                 <li id="left-form-each-li-2"><a href="javascript:void(0);">
-                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/contact-info.png'); ?>"></span><span class="edit-form-name">Contact Information</span>
+                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/contact-info.png'); ?>" alt="Contact Information"></span><span class="edit-form-name">Contact Information</span>
                                                     </a>
                                                 </li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
                                                 <li id="left-form-each-li-3">
                                                     <a href="#description" ng-click="tab_active(3)" data-toggle="tab">
-                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/discription.png'); ?>"></span><span class="edit-form-name">Description</span>
+                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/discription.png'); ?>" alt="Description"></span><span class="edit-form-name">Description</span>
                                                     </a>
                                                 </li>
                                             <?php } else { ?>
                                                 <li id="left-form-each-li-3">
                                                     <a href="javascript:void(0);">
-                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/discription.png'); ?>"></span><span class="edit-form-name">Description</span>
+                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/discription.png'); ?>" alt="Description"></span><span class="edit-form-name">Description</span>
                                                     </a>
                                                 </li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
                                                 <li id="left-form-each-li-4">
                                                     <a href="#business_image" ng-click="tab_active(4)" data-toggle="tab">
-                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/upload-img.png'); ?>"></span><span class="edit-form-name">Business Images</span>
+                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/upload-img.png'); ?>" alt="Business Images"></span><span class="edit-form-name">Business Images</span>
                                                     </a>
                                                 </li>
                                             <?php } else { ?>
                                                 <li id="left-form-each-li-4">
                                                     <a href="javascript:void(0);">
-                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/upload-img.png'); ?>"></span><span class="edit-form-name">Business Images</span>
+                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/upload-img.png'); ?>" alt="Business Images"></span><span class="edit-form-name">Business Images</span>
                                                     </a>
                                                 </li>
                                             <?php } ?> 
@@ -718,7 +718,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                                <h4>Join Aileensoul - It's Free</h4>
+                                <h4>Signup first and register in Business Profile</h4>
                                 <form role="form" name="register_form" id="register_form" method="post" ng-submit="submitRegistrationForm()" ng-validate="registrationValidate">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">

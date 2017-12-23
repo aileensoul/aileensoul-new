@@ -34,7 +34,7 @@
    </script>-->
 <!-- header -->
 <header class="">
-    <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'freelancer-work' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'home')) { ?>
+    <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'freelance-work' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'home')) { ?>
         <div class="header animated fadeInDownBig">
             <?php
         } else {
@@ -60,7 +60,7 @@
                             <div class="main-menu-right">
                                 <ul class="">
                                     <li id="a_li">
-                                        <a id="alink" class="action-button shadow animate dropbtn_common"  <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add-post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>onclick="return leave_page(5)" <?php } ?>> <span class="all"></span></a>
+                                        <a id="alink" class="action-button shadow animate dropbtn_common"  <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add-post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>onclick="return leave_page(5)" <?php } ?>> <span class="all"></span></a>
                                         <div id="acon"  class="dropdown2_content">
                                             <div id="atittle">Profiles <a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="fr">All</a></div>
                                             <div id="abody" class="as">
@@ -134,7 +134,7 @@
                                                     <i class="fa fa-cog" aria-hidden="true"></i> Setting</a> 
                                             </li>
                                             <li class="logout">
-                                                <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add-post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
+                                                <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add-post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                                     <a  onclick="return leave_page(8)">
                                                         <i class="fa fa-power-off" aria-hidden="true"></i> Logout</a> 
                                                 <?php } else { ?>

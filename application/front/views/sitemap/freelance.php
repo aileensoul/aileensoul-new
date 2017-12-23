@@ -82,7 +82,7 @@ header('Cache-Control: public, max-age=30');
                                 <ul class="catbox-right artist-sitemap">
                                     <li style="list-style-type: circle;font-size: 20px;">Login/Register</li>
                                     <li style="padding-bottom: 30px;">Register/Takeme in</li>
-                                    <!--<li><a href="<?php echo base_url() ?>freelancer-hire/add-projects" target="_blank">Post a Project</a></li>-->
+                                    <!--<li><a href="<?php echo base_url() ?>freelance-hire/add-projects" target="_blank">Post a Project</a></li>-->
                                     <li style="margin-left: -20px;padding-left: 38px;font-size: 20px;cursor: text;"><a style="text-transform: none;color: #333;pointer-events: none;" href=""> Post a Project </a></li>
                                 </ul>
                             </div>
@@ -102,7 +102,7 @@ header('Cache-Control: public, max-age=30');
                                     </div>
                                     <ul class="catbox-right">
                                         <?php foreach ($value as $freelancers) { ?>
-                                        <li><a href="<?php echo base_url('freelancer-work/freelancer-details/' . $freelancers['freelancer_apply_slug']) ?>" target="_blank"><?php echo $freelancers['freelancer_post_fullname'] . ' ' .$freelancers['freelancer_post_username'] ; ?></a></li>    
+                                        <li><a href="<?php echo base_url('freelance-work/freelancer-details/' . $freelancers['freelancer_apply_slug']) ?>" target="_blank"><?php echo $freelancers['freelancer_post_fullname'] . ' ' .$freelancers['freelancer_post_username'] ; ?></a></li>    
                                         <?php } ?>
                                     </ul>
                                 </div>
@@ -141,7 +141,7 @@ header('Cache-Control: public, max-age=30');
                                                 $cityname = '';
                                             }
                                             ?>
-                                            <li><a href="<?php echo base_url('freelancer-hire/project/' . $text . $cityname . '-' . $projects['user_id'] . '-' . $projects['post_id']) ?>"><?php echo $projects['post_name'] . '(' . $projects['fullname'] . ' ' . $projects['username'] . ')'; ?></a></li>
+                                            <li><a href="<?php echo base_url('freelance-hire/project/' . $text . $cityname . '-' . $projects['user_id'] . '-' . $projects['post_id']) ?>"><?php echo $projects['post_name'] . '(' . $projects['fullname'] . ' ' . $projects['username'] . ')'; ?></a></li>
                                         <?php } ?>
                                     </ul>
                                 </div>
@@ -156,7 +156,7 @@ header('Cache-Control: public, max-age=30');
                                 <ul class="catbox-right artist-sitemap">
                                     <?php 
                                     foreach ($getEmployees as $employees) { ?>
-                                    <li><a href="<?php echo base_url('freelancer-hire/employer-details/' . $employees['freelancer_hire_slug']) ?>" target="_blank"><?php echo $employees['username'] . ' ' . $employees['fullname']; ?></a></li>
+                                    <li><a href="<?php echo base_url('freelance-hire/employer-details/' . $employees['freelancer_hire_slug']) ?>" target="_blank"><?php echo $employees['username'] . ' ' . $employees['fullname']; ?></a></li>
                                     <?php } ?>
                                 </ul>
                             </div>

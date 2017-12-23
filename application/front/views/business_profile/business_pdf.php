@@ -69,7 +69,7 @@
                                                                         <!--<a href="<?php echo base_url('business_profile/creat_pdf/' . $pdfv['post_files_id']) ?>">-->
                                                                         <a href="<?php echo BUS_POST_MAIN_UPLOAD_URL . $pdfv['file_name'] ?>" target="_blank">
                                                                             <div class="" style="margin: 0!important;">
-                                                                                <img src="<?php echo base_url('assets/images/PDF.jpg') ?>" style="height: 100%; width: 100%;">
+                                                                                <img src="<?php echo base_url('assets/images/PDF.jpg') ?>" style="height: 100%; width: 100%;" alt="PDF">
                                                                             </div>
                                                                         </a>
                                                                     </div>
@@ -86,7 +86,7 @@
                                                         ?>
                                                         <div class="art_no_pva_avl">
                                                             <div class="art_no_post_img">
-                                                                <img src="<?php echo base_url('assets/images/020.png'); ?>"  >
+                                                                <img src="<?php echo base_url('assets/images/020.png'); ?>" alt="No PDF Available">
                                                             </div>
                                                             <div class="art_no_post_text1">
                                                                 No Pdf Available.

@@ -393,31 +393,32 @@
         <?php
         if ($this->session->userdata('aileenuser')) {
             echo $header;
-        } else { ?>
-                <header>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
-                        <h2 class="logo"><a title="Aileensoul" href="<?php echo base_url(); ?>">Aileensoul</a></h2>
-                    </div>
-                    <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
-                        <div class="btn-right pull-right">
-                            <a title="Login" href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a title="Create an account" href="javascript:void(0);" onclick="create_profile();" class="btn3">Create an account</a>
+        } else {
+            ?>
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
+                            <h2 class="logo"><a title="Aileensoul" href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                        </div>
+                        <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
+                            <div class="btn-right pull-right">
+                                <a title="Login" href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
+                                <a title="Create an account" href="javascript:void(0);" onclick="create_profile();" class="btn3">Create an account</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
         <?php }
         ?>
         <?php
         if ($this->session->userdata('aileenuser')) {
-        if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) {
-            echo $freelancer_post_header2_border;
-        } else {
-            echo $freelancer_hire_header2_border;
-        }
+            if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) {
+                echo $freelancer_post_header2_border;
+            } else {
+                echo $freelancer_hire_header2_border;
+            }
         }
         ?>
         <section class="custom-row">
@@ -461,28 +462,46 @@
                         $image = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                         $image_ori = $image[0]['profile_background'];
                         if ($image_ori) {
+                            if (IMAGEPATHFROM == 'upload') {
+                                if (!file_exists($this->config->item('free_hire_bg_main_upload_path') . $freelancerhiredata[0]['freelancer_hire_user_image'])) {
+                                    ?>
+                                    <img alt="No Image" src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                                <?php } else { ?>
+                                    <img alt="<?php echo $freelancerhiredata[0]['fullname'] . " " . $freelancerhiredata[0]['username']; ?>" src="<?php echo FREE_HIRE_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" / >
+                                    <?php
+                                }
+                            } else {
+                                $filename = $this->config->item('free_hire_profile_main_upload_path') . $freelancerhiredata[0]['freelancer_hire_user_image'];
+                                $s3 = new S3(awsAccessKey, awsSecretKey);
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if ($info) {
+                                    ?>
+                                         <img alt="<?php echo $freelancerhiredata[0]['fullname'] . " " . $freelancerhiredata[0]['username']; ?>" src="<?php echo FREE_HIRE_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" / >
+                                     <?php } else { ?>
+                                         <img alt="No Image" src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+
+                                    <?php
+                                }
+                            }
+                        } else {
                             ?>
-                        <img alt="<?php echo $freelancerhiredata[0]['fullname']." ".$freelancerhiredata[0]['username']; ?>" src="<?php echo FREE_HIRE_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" / >
-    <?php
-} else {
-    ?>
-                                 <div class="bg-images no-cover-upload">
-                                     <img alt="No Image" src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                            <div class="bg-images no-cover-upload">
+                                <img alt="No Image" src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
                             </div>
-<?php }
-?>
+                        <?php }
+                        ?>
                     </div>
                 </div>
             </div>
             <div class="container tablate-container  art-profile">    
 
-<?php if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
+                <?php if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
                     <div class="upload-img">
                         <label class="cameraButton"><span class="tooltiptext"><?php echo $this->lang->line("upload_cover_photo"); ?></span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
                         </label>
                     </div>
-<?php } ?>
+                <?php } ?>
 
 
 
@@ -499,10 +518,10 @@
                                     if (!file_exists($this->config->item('free_hire_profile_main_upload_path') . $freelancerhiredata[0]['freelancer_hire_user_image'])) {
                                         ?>
                                         <div class="post-img-user">
-                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                         </div>
                                     <?php } else { ?>
-                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerhiredata[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freelancerhiredata[0]['fullname']." ".$freelancerhiredata[0]['username']; ?>" >
+                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerhiredata[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freelancerhiredata[0]['fullname'] . " " . $freelancerhiredata[0]['username']; ?>" >
                                         <?php
                                     }
                                 } else {
@@ -511,11 +530,11 @@
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                     if ($info) {
                                         ?>
-                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerhiredata[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freelancerhiredata[0]['fullname']." ".$freelancerhiredata[0]['username']; ?>" >
-                                        <?php } else {
-                                            ?>
+                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerhiredata[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freelancerhiredata[0]['fullname'] . " " . $freelancerhiredata[0]['username']; ?>" >
+                                    <?php } else {
+                                        ?>
                                         <div class="post-img-user">
-                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                         </div>
                                         <?php
                                     }
@@ -523,12 +542,12 @@
                             } else {
                                 ?>
                                 <div class="post-img-user">
-                                <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
-<?php if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                        <a title="Update Profile Pic" href="javascript:void(0);"  class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
-<?php } ?>
+                            <?php if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
+                                <a title="Update Profile Pic" href="javascript:void(0);"  class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
+                            <?php } ?>
                         </div>
                     </div>
 
@@ -542,7 +561,7 @@
                             if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) {
                                 if ($freelancerhiredata[0]['designation'] == '') {
                                     ?>
-                            <a title="<?php echo $this->lang->line("designation"); ?>" id="designation" href="javascript:void(0);" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
+                                    <a title="<?php echo $this->lang->line("designation"); ?>" id="designation" href="javascript:void(0);" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
 
                                 <?php } else { ?> 
                                     <a id="designation" href="javascript:void(0);" class="designation" title="<?php echo ucwords($freelancerhiredata[0]['designation']); ?>"><?php echo ucwords($freelancerhiredata[0]['designation']); ?></a>
@@ -571,21 +590,21 @@
                                 ?>     
                                 <ul class="current-user pro-fw">
 
-                                        <?php } else { ?>
+                                <?php } else { ?>
                                     <ul class="pro-fw4">
-<?php } ?>  
-                                    <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>>
-                                        <?php if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) { ?><a title="Employer Details" href="<?php echo base_url('freelancer-hire/employer-details/' . $this->uri->segment(3)); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } else { ?> <a title="Employer Details" href="<?php echo base_url('freelancer-hire/employer-details'); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } ?>
+                                    <?php } ?>  
+                                    <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>>
+                                        <?php if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) { ?><a title="Employer Details" href="<?php echo base_url('freelance-hire/employer-details/' . $this->uri->segment(3)); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } else { ?> <a title="Employer Details" href="<?php echo base_url('freelance-hire/employer-details'); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } ?>
                                     </li>
-                                    <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>> 
-                                    <?php if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) { ?><a title="Projects"  href="<?php echo base_url('freelancer-hire/projects/' . $this->uri->segment(3)); ?>"><?php echo $this->lang->line("Projects"); ?></a><?php } else { ?><a title="Projects" href="<?php echo base_url('freelancer-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a><?php } ?>
+                                    <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>> 
+                                        <?php if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) { ?><a title="Projects"  href="<?php echo base_url('freelance-hire/projects/' . $this->uri->segment(3)); ?>"><?php echo $this->lang->line("Projects"); ?></a><?php } else { ?><a title="Projects" href="<?php echo base_url('freelance-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a><?php } ?>
                                     </li>
-<?php
-if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects' || $this->uri->segment(2) == 'employer-details' || $this->uri->segment(2) == 'add-projects' || $this->uri->segment(2) == 'freelancer-save') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) {
-    ?>
-                                        <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer" href="<?php echo base_url('freelancer-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved_freelancer"); ?></a>
+                                    <?php
+                                    if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'projects' || $this->uri->segment(2) == 'employer-details' || $this->uri->segment(2) == 'add-projects' || $this->uri->segment(2) == 'freelancer-save') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) {
+                                        ?>
+                                        <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer" href="<?php echo base_url('freelance-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved_freelancer"); ?></a>
                                         </li>
-                                <?php } ?>
+                                    <?php } ?>
                                 </ul>                          
                                 <?php
                                 $userid = $this->session->userdata('aileenuser');
@@ -602,11 +621,11 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                                     <?php
                                                     if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) {
                                                         ?>
-                                                    <a title="Message" href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                        <a title="Message" href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                     <?php } else { ?>
-                                                    <a title="Message" href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
-        <?php }
-        ?>
+                                                        <a title="Message" href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                    <?php }
+                                                    ?>
                                                 </li>
                                             </ul>
                                         </div>
@@ -620,12 +639,12 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                 </div>
 
 
-<?php if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
+                <?php if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
                     <div  class="add-post-button mob-block">
-                        <a title="Post Projects" class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo $this->lang->line("post_project"); ?></a>
+                        <a title="Post Projects" class="btn btn-3 btn-3b" href="<?php echo base_url('freelance-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo $this->lang->line("post_project"); ?></a>
 
                     </div>
-<?php } ?>
+                <?php } ?>
                 <div class="middle-part">          
                     <div class="job-menu-profile mob-none pt20">
                         <a title="<?php echo ucwords($freelancerhiredata[0]['fullname']) . ' ' . ucwords($freelancerhiredata[0]['username']); ?>" href="javascript:void(0);">
@@ -637,7 +656,7 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                             if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) {
                                 if ($freelancerhiredata[0]['designation'] == '') {
                                     ?>
-                            <a title="<?php echo $this->lang->line("designation"); ?>" id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
+                                    <a title="<?php echo $this->lang->line("designation"); ?>" id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
 
                                 <?php } else { ?> 
                                     <a id="designation" class="designation" title="<?php echo ucwords($freelancerhiredata[0]['designation']); ?>"><?php echo ucwords($freelancerhiredata[0]['designation']); ?></a>
@@ -646,11 +665,11 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                             } else {
                                 if ($freelancerhiredata[0]['designation'] == '') {
                                     ?>
-                                        <?php echo $this->lang->line("designation"); ?>
-                                    <?php } else {
-                                        ?>
+                                    <?php echo $this->lang->line("designation"); ?>
+                                <?php } else {
+                                    ?>
                                     <a style="cursor: default;"  title=" <?php echo ucwords($freelancerhiredata[0]['designation']); ?>">
-                                    <?php echo ucwords($freelancerhiredata[0]['designation']); ?> </a>
+                                        <?php echo ucwords($freelancerhiredata[0]['designation']); ?> </a>
                                     <?php
                                 }
                             }
@@ -658,9 +677,9 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                         </div>
 
                         <div  class="add-post-button">
-<?php if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                            <a title="Post Projects" class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo $this->lang->line("post_project"); ?></a>
-<?php } ?>
+                            <?php if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
+                                <a title="Post Projects" class="btn btn-3 btn-3b" href="<?php echo base_url('freelance-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo $this->lang->line("post_project"); ?></a>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="col-md-7 col-sm-12 mob-clear">
@@ -713,11 +732,11 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("skype_id"); ?></b> <span> <?php echo $freelancerhiredata[0]['skyupid']; ?> </span>
                                                                 </li> 
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
+                                                                <?php
+                                                            } else {
+                                                                ?>
                                                                 <li><b><?php echo $this->lang->line("skype_id"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?></span>
+                                                                        <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
                                                             }
@@ -737,11 +756,11 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                                             if ($freelancerhiredata[0]['phone']) {
                                                                 ?>
                                                                 <li><b><?php echo $this->lang->line("phone_number"); ?></b> <span><?php echo $freelancerhiredata[0]['phone']; ?></span> </li>
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
+                                                                <?php
+                                                            } else {
+                                                                ?>
                                                                 <li><b><?php echo $this->lang->line("phone_number"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?></span>
+                                                                        <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
                                                             }
@@ -768,7 +787,7 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                                             <li> <b><?php echo $this->lang->line("state"); ?></b><span><?php
                                                                     echo
                                                                     $this->db->get_where('states', array('state_id' => $freelancerhiredata[0]['state']))->row()->state_name;
-                                                        ?> </span>
+                                                                    ?> </span>
                                                             </li>
 
                                                             <?php
@@ -776,9 +795,9 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                                                 if ($freelancerhiredata[0]['city']) {
                                                                     ?>
                                                                     <li><b><?php echo $this->lang->line("city"); ?></b> <span><?php
-                                                                        echo
-                                                                        $this->db->get_where('cities', array('city_id' => $freelancerhiredata[0]['city']))->row()->city_name;
-                                                                        ?></span> </li>
+                                                                            echo
+                                                                            $this->db->get_where('cities', array('city_id' => $freelancerhiredata[0]['city']))->row()->city_name;
+                                                                            ?></span> </li>
                                                                         <?php
                                                                     } else {
                                                                         echo "";
@@ -787,14 +806,14 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                                                     if ($freelancerhiredata[0]['city']) {
                                                                         ?>
                                                                     <li><b><?php echo $this->lang->line("city"); ?></b> <span><?php
-                                                                        echo
-                                                                        $this->db->get_where('cities', array('city_id' => $freelancerhiredata[0]['city']))->row()->city_name;
-                                                                        ?></span> </li>
-                                                                            <?php
-                                                                        } else {
-                                                                            ?>
+                                                                            echo
+                                                                            $this->db->get_where('cities', array('city_id' => $freelancerhiredata[0]['city']))->row()->city_name;
+                                                                            ?></span> </li>
+                                                                        <?php
+                                                                    } else {
+                                                                        ?>
                                                                     <li><b><?php echo $this->lang->line("city"); ?></b> <span>
-                                                                    <?php echo PROFILENA; ?></span>
+                                                                            <?php echo PROFILENA; ?></span>
                                                                     </li>
                                                                     <?php
                                                                 }
@@ -816,11 +835,11 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                                                     ?>
                                                                     <li> <b><?php echo $this->lang->line("pincode"); ?></b><span><?php echo $freelancerhiredata[0]['pincode']; ?></span>
                                                                     </li>
-                                                                            <?php
-                                                                        } else {
-                                                                            ?>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
                                                                     <li><b><?php echo $this->lang->line("pincode"); ?></b> <span>
-                                                                    <?php echo PROFILENA; ?></span>
+                                                                            <?php echo PROFILENA; ?></span>
                                                                     </li>
                                                                     <?php
                                                                 }
@@ -867,8 +886,8 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                     </div>
                 </div>
         </section>
-<?php echo $login_footer ?>
-<?php echo $footer; ?>
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
         <!-- model for popup start -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -917,7 +936,7 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                                <div class="title"><h1>Sign up First and Register in Freelancer Profile</h1></div>
+                               <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Employer Profile</h1></div>
                                 <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
@@ -948,9 +967,9 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                                     for ($i = 1; $i <= 31; $i++) {
                                                         ?>
                                                         <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-    <?php
-}
-?>
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </select></span>
                                             <span>
                                                 <select tabindex="10" class="month" name="selmonth" id="selmonth">
@@ -958,7 +977,7 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                                     //<?php
 //                  for($i = 1; $i <= 12; $i++){
 //                  
-?>
+                                                    ?>
                                                     <option value="1">Jan</option>
                                                     <option value="2">Feb</option>
                                                     <option value="3">Mar</option>
@@ -974,7 +993,7 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                                     //<?php
 //                  }
 //                  
-?>
+                                                    ?>
                                                 </select></span>
                                             <span>
                                                 <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -983,9 +1002,9 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
                                                     for ($i = date('Y'); $i >= 1900; $i--) {
                                                         ?>
                                                         <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-    <?php
-}
-?>
+                                                        <?php
+                                                    }
+                                                    ?>
 
                                                 </select>
                                             </span>
@@ -1131,7 +1150,7 @@ if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 
         </div>
         <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script  src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <!--<script type="text/javascript" src="<?php //echo base_url('assets/js/jquery.validate.js?ver='.time());              ?>">-->
+        <!--<script type="text/javascript" src="<?php //echo base_url('assets/js/jquery.validate.js?ver='.time());                    ?>">-->
         <!--</script>-->
         <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script>

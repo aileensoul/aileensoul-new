@@ -51,12 +51,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
             if ($image_ori) { 
                 ?>                                                    
-                <img src="<?php echo ART_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" />
+                <img src="<?php echo ART_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" alt="<?php echo  $image[0]['profile_background']; ?>"/>
                 <?php
             } else { 
                 ?>
                 <div class="bg-images no-cover-upload">
-                    <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                    <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="NO IMAGE"/>
                 </div>
             <?php } 
             ?>
@@ -76,12 +76,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 if($artisticdata[0]['art_user_image']){
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
                                        
-                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="NOARTIMAGE">
                                         
                                     <?php } else { ?>
-                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="<?php echo $artisticdata[0]['art_user_image'];?>">
                                    <?php } }else{ ?>
-                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="NOARTIMAGE">
                                   <?php }
                                 } else{
 
@@ -90,11 +90,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                    if ($info) { ?>
-                 <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>" alt="" >
+                 <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>" alt="<?php echo $artisticdata[0]['art_user_image']; ?>" >
                 <?php
                 } else { ?>
 
-                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="NOARTIMAGE">
                        <?php } }?>
                     </div>
                 </div>

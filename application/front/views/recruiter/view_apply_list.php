@@ -171,6 +171,7 @@
                                                                     <?php
                                                                     if ($row['work_job_city']) {
                                                                         $work_city = explode(',', $row['work_job_city']);
+                                                                        $cities = array();
                                                                         foreach ($work_city as $city) {
                                                                             $contition_array = array('city_id' => $city);
                                                                             $citydata = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
@@ -187,8 +188,6 @@
 
                                                                     <?php
                                                                     $contition_array = array('user_id' => $row['userid'], 'experience' => 'Experience', 'status' => '1');
-
-
                                                                     $experiance = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -210,7 +209,7 @@
                                                                                     echo "1 year";
                                                                                 } elseif ($total_work_year != '0 year' && $total_work_month >= '12 month') {
                                                                                     $month = explode(' ', $total_work_year);
-                                                                                    //print_r($month);
+                                                                                    // print_r($month);
                                                                                     $year = $month[0];
                                                                                     $y = 0;
                                                                                     for ($i = 0; $i <= $y; $i++) {

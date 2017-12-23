@@ -54,7 +54,7 @@ $(document).ready(function () {
                 if (response.data == "ok") {
                     //  alert("login");
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                    window.location = base_url + "freelancer-work/home";
+                    window.location = base_url + "freelance-work/home";
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login").classList.add('error');
@@ -250,13 +250,13 @@ $(document).ready(function () {
                 if (response.okmsg == "ok") {
                     if (postid == '') {
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                        window.location = base_url + "freelancer-work/profile/live-post";
+                        window.location = base_url + "freelance-work/profile/live-post";
                         sendmail(userid);
                     } else {
 
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
                         //  alert(base_url + 'job/profile/live-post?postid=' + postid);
-                        window.location = base_url + 'freelancer-work/profile/live-post/' + postid;
+                        window.location = base_url + 'freelance-work/profile/live-post/' + postid;
                         sendmail(userid);
 
 //                        var alldata = 'all';
@@ -469,7 +469,7 @@ $(document).ready(function () {
                         // alert(id);
                         $.ajax({
                             type: 'POST',
-                            url: base_url + 'freelancer/apply_insert',
+                            url: base_url + 'freelance/apply_insert',
                             data: 'post_id=' + postid + '&allpost=' + alldata + '&userid=' + id,
                             datatype: 'json',
                             success: function (data)
@@ -480,14 +480,14 @@ $(document).ready(function () {
 //                                    var to_id = data.notification.to_id;
 //                                    show_header_notification(notification_count, to_id);
 //                                }
-                                window.location = base_url + "freelancer-work/home/live-post";
+                                window.location = base_url + "freelance-work/home/live-post";
                             }
                         });
 
                     } else
                     {
 
-                        window.location = base_url + "freelancer-work/";
+                        window.location = base_url + "freelance-work/";
                     }
 
                 } else if (response.data == "password") {

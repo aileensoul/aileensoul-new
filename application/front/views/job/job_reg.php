@@ -6,7 +6,7 @@
 <?php echo $head; ?>
 <!-- Calender Css Start-->
 
- <title>Job Profile - Aileensoul.com</title>
+ <title><?php echo $title; ?></title>
 
 <!-- Calender Css End-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
@@ -218,7 +218,7 @@
                 /*background:#fff;*/
                 width:100%;
                 margin:0 auto;
-                border:1px solid #c7c7c7;
+              /*  border:1px solid #c7c7c7;*/
                 border-radius:5px;
                 -webkit-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
                 -moz-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
@@ -393,8 +393,8 @@
             -o-transform: translate(-50%,-50%);
             transform: translate(-50%,-50%);}
                 /*second*/
-             .cus-no-login .dob .error{bottom:-25px;}
-            .cus-no-login .gender-custom .error{bottom:-25px;}
+             /*.cus-no-login .dob .error{bottom:-25px;}
+            .cus-no-login .gender-custom .error{bottom:-25px;}*/
             .cus-no-login .job-saved-box{margin-bottom:15px;}
             .cus-no-login .job-post-detail{margin-bottom:0;}
             .cus-no-login .login p{font-size:14px; margin-bottom:9px;}
@@ -570,8 +570,8 @@
                     <!-- <button type="button" class="modal-close" data-dismiss="modal">&times;</button>   -->       
                     <div class="modal-body">
                         <div class="clearfix">
-                            <div class="col-md-12 col-sm-12">
-                              <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
+                            <div class=" ">
+                              <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Job Profile</h1></div>
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">

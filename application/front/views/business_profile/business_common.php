@@ -45,12 +45,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             if ($image_ori) {
                 ?>
                                                                                                 <!--<img src="<?php echo base_url($this->config->item('bus_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />-->
-                <img src="<?php echo BUS_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" />
+            <img src="<?php echo BUS_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" alt="<?php echo BUS_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" />
                 <?php
             } else {
                 ?>
                 <div class="bg-images no-cover-upload">
-                    <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                    <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="White Image" />
                 </div>
             <?php }
             ?>
@@ -89,10 +89,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             if (IMAGEPATHFROM == 'upload') {
                                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image'])) {
                                     ?>
-                                    <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="" >
+                                    <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="Bo Business Image" >
                                 <?php } else {
                                     ?>
-                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="" >
+                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" >
                                     <?php
                                 }
                             } else {
@@ -100,22 +100,22 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                 if (!$info) {
                                     ?>
-                                    <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="" >
+                                    <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="No Business Image" >
                                 <?php } else {
                                     ?>
-                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="" >
+                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" >
                                     <?php
                                 }
                             }
                         } else {
                             ?>
-                            <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="" >
+                            <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="No Business Image" >
                         <?php } ?>
                         <?php
                         $userid = $this->session->userdata('aileenuser');
                         if ($business_common_data[0]['user_id'] == $userid) {
                             ?>                                                                                                                        <!-- <a href="#popup-form" class="fancybox"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a> -->
-                            <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
+                            <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png" alt="Update Profile Picture"> Update Profile Picture</a>
                         <?php } ?>
                     </div>
                 </div>
@@ -190,7 +190,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <div></div>
                                                     <div></div>
                                                     <div></div>
-                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>"></span></div>
+                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>" alt="Add Contact"></span></div>
 
                                                 </div>
 
@@ -209,7 +209,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <div></div>
                                                     <div></div>
                                                     <div>
-                                                        <span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_cancel.png'); ?>"></span>
+                                                        <span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_cancel.png'); ?>" alt="Cancel"></span>
                                                     </div>
 
                                                 </div>
@@ -228,7 +228,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                                     <div class="in_your_contact_change" style="cursor: pointer;">
                                                         <span class="in_your_contct_img">
-                                                            <img src="<?php echo base_url('assets/img/icon_contact_accept.png'); ?>">
+                                                            <img src="<?php echo base_url('assets/img/icon_contact_accept.png'); ?>" alt="Contact Accept">
                                                         </span>
                                                     </div>
 
@@ -248,7 +248,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <div></div>
                                                     <div></div>
                                                     <div></div>
-                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>"></span></div>
+                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>" alt="Add Contact"></span></div>
 
                                                 </div>
 
@@ -266,7 +266,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <div></div>
                                                     <div></div>
                                                     <div></div>
-                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>"></span></div>
+                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>" alt="Add to Contact"></span></div>
 
                                                 </div>
 
@@ -350,7 +350,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 <div class="modal-body">
                     <span class="mes">
                         <div id="popup-form">
-                            <div class="fw" id="profile_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                            <div class="fw" id="profile_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="Loader" /></div>
                             <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                 <div class="fw">
                                     <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >

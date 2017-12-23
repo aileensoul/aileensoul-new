@@ -406,25 +406,25 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-4">
                                 <div class="left-box">
-                                    <a href="<?php echo base_url('freelancer'); ?>"><img title="Freelance Profile" src="<?php echo base_url(); ?>assets/img/i3.jpg" alt="Freelance Profile"></a>
+                                    <a href="<?php echo base_url('freelance'); ?>"><img title="Freelance Profile" src="<?php echo base_url(); ?>assets/img/i3.jpg" alt="Freelance Profile"></a>
                                 </div>
                             </div>
                             <div class="col-md-8 col-sm-8">
                                 <div class="right-box">
-                                    <h1><a title="Freelance Profile" href="<?php echo base_url('freelancer'); ?>">Freelance Profile</a></h1>
+                                    <h1><a title="Freelance Profile" href="<?php echo base_url('freelance'); ?>">Freelance Profile</a></h1>
                                     <p>Hire freelancers and also find freelance work.</p>
                                     <div class="btns">
 
                                         <?php if ($hiredata[0]['free_hire_step'] != 3 && $workdata[0]['free_post_step'] != 7) { ?>
-                                            <a title="Register" class="btn-1" id="free-hire-register-btn" href="<?php echo base_url('freelancer'); ?>">Register</a>
+                                            <a title="Register" class="btn-1" id="free-hire-register-btn" href="<?php echo base_url('freelance'); ?>">Register</a>
                                         <?php } elseif (($workdata[0]['status'] == '0' && $workdata[0]['free_post_step'] == 7) || ($hiredata[0]['free_hire_step'] == 3 && $hiredata[0]['status'] == '0')) {
                                             ?>
 
-                                            <a class="btn-1" id="free-hire-active-btn" href="<?php echo base_url('freelancer'); ?>">Active</a>
+                                            <a class="btn-1" id="free-hire-active-btn" href="<?php echo base_url('freelance'); ?>">Active</a>
                                         <?php } else {
                                             ?>
 
-                                            <a title="Take me in" class="btn-4" id="free-hire-take-btn" href="<?php echo base_url('freelancer'); ?>">Take me in</a>
+                                            <a title="Take me in" class="btn-4" id="free-hire-take-btn" href="<?php echo base_url('freelance'); ?>">Take me in</a>
 
                                         <?php } ?>
                                         <a title="How it works" data-target="#fre-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
@@ -791,10 +791,10 @@
                     <div class="modal-footer">
 
                         <?php if ($hiredata[0]['free_hire_step'] != 3 && $workdata[0]['free_post_step'] != 7) { ?>
-                            <a class="btn-4" href="<?php echo base_url('freelancer'); ?>">Register Now</a>
+                            <a class="btn-4" href="<?php echo base_url('freelance'); ?>">Register Now</a>
 
 <?php } else { ?>
-                            <a class="btn-4" href="<?php echo base_url('freelancer'); ?>">Take me in</a>
+                            <a class="btn-4" href="<?php echo base_url('freelance'); ?>">Take me in</a>
 
 
 <?php } ?>

@@ -139,12 +139,12 @@ header('Expires: '.$date);
                             <?php
                             if (!$this->session->userdata('aileenuser') || $is_profile['is_freelance_hire'] != '1') {
                                 ?>
-                                <div class="text-center pb20 introduce_button col-md-6 col-sm-6"><a href="<?php echo base_url('freelancer-hire/registration') ?>" class="btn-new1" title="Create Freelance Hire Profile" target="_blank">Create Freelance Hire Profile</a></div>
+                                <div class="text-center pb20 introduce_button col-md-6 col-sm-6"><a href="<?php echo base_url('freelance-hire/registration') ?>" class="btn-new1" title="Create Freelance Hire Profile" target="_blank">Create Freelance Hire Profile</a></div>
                                 <?php
                             }
                             if (!$this->session->userdata('aileenuser') || $is_profile['is_freelance_apply'] != '1') {
                                 ?>
-                                <div class="text-center pb20 introduce_button col-md-6 col-sm-6"><a href="<?php echo base_url('freelancer-work/registration') ?>" class="btn-new1" title="Create Freelance Apply Profile" target="_blank">Create Freelance Apply Profile</a></div>
+                                <div class="text-center pb20 introduce_button col-md-6 col-sm-6"><a href="<?php echo base_url('freelance-work/registration') ?>" class="btn-new1" title="Create Freelance Apply Profile" target="_blank">Create Freelance Apply Profile</a></div>
                                 <?php
                             }
                             ?>

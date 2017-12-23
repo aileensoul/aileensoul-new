@@ -1,6 +1,6 @@
 <div class="col-sm-7 col-md-7 col-xs-6 hidden-mob">
                         <div class="job-search-box1 clearfix">
-                         <form action=<?php echo base_url('freelancer-work/search')?> method="get">
+                         <form action=<?php echo base_url('freelance-work/search')?> method="get">
                             <fieldset class="col-md-3 col-sm-5 col-xs-5">
                               <input type="text" class="skill_keyword" id="tags" name="skills" placeholder="Post Title, Skills, Keywords">
                                 </select>

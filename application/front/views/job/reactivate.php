@@ -6,7 +6,7 @@
 <html>
    <head>
       <meta charset="utf-8">
-      <title>Reactivate</title>  
+      <title><?php echo $title; ?></title>  
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
 	   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">
    </head>

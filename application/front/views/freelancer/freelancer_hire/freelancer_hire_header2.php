@@ -24,11 +24,11 @@
                     <div class="col-md-5 col-sm-5">
                         <div class="">
                             <ul class="">
-                                <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>>
-                                    <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
+                                <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>>
+                                    <?php if (($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                     <a title="Home" href="javascript:void(0);" class="button" onclick="return leave_page(1)"><?php echo $this->lang->line("home"); ?></a>
                                     <?php } else { ?>
-                                    <a title="Home" href="<?php echo base_url('freelancer-hire/home'); ?>"><?php echo $this->lang->line("home"); ?>
+                                    <a title="Home" href="<?php echo base_url('freelance-hire/home'); ?>"><?php echo $this->lang->line("home"); ?>
                                         </a>
                                     <?php } ?>
                                 </li>
@@ -36,15 +36,15 @@
                                     <div class="dropdown_hover">
                                         <span id="art_profile"><?php echo $this->lang->line("employer_details"); ?> <i class="fa fa-angle-down" aria-hidden="true"></i></span>
                                         <div class="dropdown-content_hover" id="dropdown-content_hover">
-                                            <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
+                                            <?php if (($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                             <a title="View Profile" onclick="return leave_page(2)"><i class="fa fa-user" aria-hidden="true"></i><?php echo $this->lang->line("view_profile"); ?></a>
                                             <?php } else { ?>
-                                                <a title="View Profile" href="<?php echo base_url('freelancer-hire/employer-details'); ?>"><i class="fa ffreelancer/freelancer_hire_profilea-user" aria-hidden="true"></i><?php echo $this->lang->line("view_profile"); ?></a>
+                                                <a title="View Profile" href="<?php echo base_url('freelance-hire/employer-details'); ?>"><i class="fa ffreelancer/freelancer_hire_profilea-user" aria-hidden="true"></i><?php echo $this->lang->line("view_profile"); ?></a>
                                             <?php } ?>
-                                            <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
+                                            <?php if (($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
                                                 <a title="Edit Profile" onclick="return leave_page(3)"><i class="fa fa-pencil" aria-hidden="true"></i><?php echo $this->lang->line("edit_profile"); ?></a>
                                             <?php } else { ?>
-                                                <a title="Edit Profile" href="<?php echo base_url('freelancer-hire/basic-information'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i><?php echo $this->lang->line("edit_profile"); ?></a>      <?php } ?>
+                                                <a title="Edit Profile" href="<?php echo base_url('freelance-hire/basic-information'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i><?php echo $this->lang->line("edit_profile"); ?></a>      <?php } ?>
                                             <?php
                                             $userid = $this->session->userdata('aileenuser');
                                             ?>
@@ -111,7 +111,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '<?php echo base_url() . "freelancer-hire/deactivate" ?>',
+            url: '<?php echo base_url() . "freelance-hire/deactivate" ?>',
             data: 'id=' + clicked_id,
             success: function (data) {
                 window.location = "<?php echo base_url() ?>dashboard";

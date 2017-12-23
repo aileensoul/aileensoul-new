@@ -386,7 +386,7 @@
                 <div class="container padding-360">
                     <div class="row4">
 
-                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt"><div class="">
+                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" style="position: absolute !important;"><div class="">
 
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
@@ -530,7 +530,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        <a href="<?php echo base_url('freelance'); ?>">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="freelancer">
                                             </div>
@@ -1342,7 +1342,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                                <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
+                                <div class="title"><h1>Signup first and register in job profile</h1></div>
                                 <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">

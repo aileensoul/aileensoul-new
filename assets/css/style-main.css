@@ -2094,7 +2094,7 @@ header.profile-header .logo a{color:#5c5c5c;}
     .logo{font-size: 24px;}
     .mid-trns{/*transform: inherit ;top:inherit; position: inherit; left: inherit;*/ width:100%;}
     .f-pass{float: left;}
-    .main-login .middle-main{padding: 40px 0 120px; background-position: 0 16%; background-size: 150% auto;}
+    .main-login .middle-main{/*padding: 40px 0 120px*/; background-position: 0 16%; background-size: 150% auto;}
 	.main-login{background-size: cover;}
 	header h2{text-align:center; /*padding-bottom:15px;*/}
 	.header-login{text-align:center;}

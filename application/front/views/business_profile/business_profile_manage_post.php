@@ -193,10 +193,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             if (IMAGEPATHFROM == 'upload') {
                                                 if (!file_exists($this->config->item('bus_profile_main_upload_path') . $business_login_user_image)) {
                                                     ?>
-                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Business Image">
                                                 <?php } else {
                                                     ?>
-                                                    <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>"  alt="">
+                                                    <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>"  alt="Business Login User">
                                                     <?php
                                                 }
                                             } else {
@@ -204,16 +204,16 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                 if (!$info) {
                                                     ?>
-                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Business Image">
                                                 <?php } else {
                                                     ?>
-                                                    <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>"  alt="">
+                                                    <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>"  alt="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>">
                                                     <?php
                                                 }
                                             }
                                         } else {
                                             ?>
-                                            <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                            <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Business Image">
                                         <?php } ?>
                                     </div>
                                     <div id="myBtn1"  class="editor-content popup-text">
@@ -336,7 +336,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 <!--                                    <div class="nofoundpost"> 
                                                                     </div>-->
                             </div>
-                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="Loader" /></div>
                             <!-- middle section start -->
                             <!--                                <div class="nofoundpost">
                                                             </div>-->
@@ -346,6 +346,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
+<<<<<<< HEAD
                         <div class="all-profile-box">
                             <div class="all-pro-head">
                                 <h4>Profiles<a href="<?php echo base_url('profiles/').$this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
@@ -394,6 +395,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             </ul>
                         </div>
 
+=======
+>>>>>>> 9e48c37545d8724eecbc5cd42678f3553962092b
                     </div>
                     
                 </div>

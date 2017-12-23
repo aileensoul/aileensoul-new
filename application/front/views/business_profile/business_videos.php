@@ -115,7 +115,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                         ?>
                                                                         <div class="art_no_pva_avl">
                                                                             <div class="art_no_post_img">
-                                                                                <img src="<?php echo base_url('assets/images/010.png'); ?>"  >
+                                                                                <img src="<?php echo base_url('assets/images/010.png'); ?>"  alt="Video">
                                                                             </div>
                                                                             <div class="art_no_post_text1">
                                                                                 No video Available.
@@ -179,7 +179,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                                             <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                                                                             <input type="hidden" name="hitext" id="hitext" value="10">
                                                                                             <div class="popup_previred">
-                                                                                                <img id="preview" src="#" alt="your image""/>
+                                                                                                <img id="preview" src="#" alt="your image"/>
                                                                                             </div>
                                                                                             <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                                                                             <?php echo form_close(); ?>
