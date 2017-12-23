@@ -718,7 +718,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                                <h4>Join Aileensoul - It's Free</h4>
+                                <h4>Signup first and register in Business Profile</h4>
                                 <form role="form" name="register_form" id="register_form" method="post" ng-submit="submitRegistrationForm()" ng-validate="registrationValidate">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
