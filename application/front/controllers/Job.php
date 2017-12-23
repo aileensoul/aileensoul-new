@@ -5650,7 +5650,7 @@ class Job extends MY_Controller {
                                                                             <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                                                     </td>
                                                                     <td style="padding:5px;">
-                                                                        <p><a class="btn" href="' . BASEURL . 'job/resume/' . $jobdata[0]['slug'] . '?page=recruiter">view</a></p>
+                                                                        <p><a class="btn" href="' . BASEURL . 'job/resume/' . $jobdata[0]['slug'] . '">view</a></p>
                                                                     </td>
                                                                 </tr>
                                                             </table>';
