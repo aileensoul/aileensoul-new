@@ -6,11 +6,25 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
+
+             <?php
+        if (IS_ART_CSS_MINIFY == '0') {
+            ?>
+
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>" />
             <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver=' . time()); ?>">
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />      
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />  
+            <?php }else{?>
+
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>" />
+            <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/artistic.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />  
+
+            <?php }?>    
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
@@ -679,6 +693,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
 <?php echo $footer; ?>
 
+ <?php
+  if (IS_ART_JS_MINIFY == '0') { ?>
+
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
@@ -691,7 +708,22 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+<?php }else{?>
 
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+        <script type = "text/javascript" src="<?php echo base_url('assets/js_min/jquery.form.3.51.js') ?>"></script> 
+        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());          ?>"></script>-->
+        <script src="<?php echo base_url('assets/dragdrop/js_min/plugins/sortable.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/js_min/fileinput.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/js_min/locales/fr.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/js_min/locales/es.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+
+<?php }?>
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                             var base_url = '<?php echo base_url(); ?>';
@@ -1025,8 +1057,17 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             });
         </script>
         
+        <?php
+  if (IS_ART_JS_MINIFY == '0') { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/user_dashboard.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/artist/common.js?ver=' . time()); ?>"></script>
+
+ <?php }else{?>
+ 
+     <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/user_dashboard.js?ver=' . time()); ?>"></script>
+    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/artist/common.js?ver=' . time()); ?>"></script>
+
+ <?php }?>           
         
         <script>
             $(document).on('click', '[data-toggle*=modal]', function () {

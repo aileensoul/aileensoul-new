@@ -9,9 +9,21 @@
  <title>Registration | Artistic Profile - Aileensoul</title>
 
 <!-- Calender Css End-->
+
+         <?php
+        if (IS_ART_CSS_MINIFY == '0') {
+            ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">
  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">
+
+ <?php }else{?>
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver='.time()); ?>">
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/artistic.css?ver='.time()); ?>">
+
+ <?php }?>
 <!-- This Css is used for call popup -->
 
 
@@ -819,12 +831,25 @@
 <?php echo $login_footer ?> 
 <?php echo $footer;  ?>
 <!-- </footer> -->
+
+ <?php
+  if (IS_ART_JS_MINIFY == '0') { ?>
+
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.multi-select.js?ver=' . time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
-
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/profile.js?ver='.time()); ?>"></script>
+
+<?php }else{?>
+
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver='.time()) ?>"></script>
+<script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js_min/jquery.multi-select.js?ver=' . time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/profile.js?ver='.time()); ?>"></script>
+
+<?php }?>
  <script>
      var base_url = '<?php echo base_url(); ?>';  
      var profile_login = '<?php echo $profile_login; ?>';

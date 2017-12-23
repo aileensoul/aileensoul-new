@@ -3,15 +3,37 @@
 <title><?php echo $title; ?></title>
 <?php echo $head; ?>
 
+ <?php
+        if (IS_ART_CSS_MINIFY == '0') {
+            ?>
 <link href="<?php echo base_url('assets/css/fileinput.css?ver='.time());?>" media="all" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url('assets/js/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+
+<?php }else{?>
+
+<link href="<?php echo base_url('assets/css_min/fileinput.css?ver='.time());?>" media="all" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url('assets/js/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+
+<?php }?>
 </head>
+
+<?php
+        if (IS_ART_CSS_MINIFY == '0') {
+            ?>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">
-  
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">  
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
+<?php }else{?>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/artistic.css?ver='.time()); ?>">  
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
+
+<?php }?>
  <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
@@ -180,14 +202,24 @@
 
 
 
-
+<?php
+  if (IS_ART_JS_MINIFY == '0') { ?>
 <script src="<?php echo base_url('assets/js/plugins/sortable.js?ver='.time()); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
-
 <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
 
+<?php }else{?>
+
+<script src="<?php echo base_url('assets/js_min/plugins/sortable.js?ver='.time()); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/js_min/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+
+
+<?php }?>
  <script type="text/javascript">
 var base_url = '<?php echo base_url(); ?>';      
 var data = <?php echo json_encode($demo); ?>;
@@ -195,7 +227,17 @@ var data1 = <?php echo json_encode($de); ?>;
 var keyword = '<?php echo $keyword; ?>';
 var keyword1 = '<?php echo $keyword1; ?>';
 </script>
+
+<?php
+  if (IS_ART_JS_MINIFY == '0') { ?>
+
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/recommen_candidate.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
+
+<?php }else{?>
+
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/recommen_candidate.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
+<?php }?>
 </body>
 </html>

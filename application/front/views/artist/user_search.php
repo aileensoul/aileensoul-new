@@ -2,9 +2,22 @@
 <head>
 <title>Search - Aileensoul.com</title>
 
+
+  <?php
+        if (IS_ART_CSS_MINIFY == '0') {
+            ?>
 <link href="<?php echo base_url('assets/css/fileinput.css?ver='.time());?>" media="all" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url('assets/js/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+
+<?php }else{?>
+<link href="<?php echo base_url('assets/css_min/fileinput.css?ver='.time());?>" media="all" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url('assets/js/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+<?php }?>
 </head>
+
+  <?php
+        if (IS_ART_CSS_MINIFY == '0') {
+            ?>
  <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
@@ -12,7 +25,17 @@
  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">  
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
+<?php }else{?>
 
+ <link rel="stylesheet" href="<?php echo base_url('assets/css_min/common-style.css?ver='.time()); ?>">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver='.time()); ?>">
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver='.time()) ?>" />
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/artistic.css?ver='.time()); ?>">  
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
+
+<?php } ?>
     <style>
             /***  commen css  ***/
             .p0{padding: 0;} .p5{padding: 5px;} .p10{padding: 10px;} .p15{padding: 15px;} .p20{padding: 20px;}
@@ -657,14 +680,26 @@
 <!-- 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
-<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<?php
+  if (IS_ART_JS_MINIFY == '0') { ?>
 
+
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script  src="<?php echo base_url('assets/js/fileinput.js?ver='.time()); ?>" type="text/javascript"></script>
 <script  src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
 <script  src="<?php echo base_url('assets/js/jquery.highlite.js?ver='.time()); ?>"></script>
 <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
+<?php }else{?>
 
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script  src="<?php echo base_url('assets/js_min/fileinput.js?ver='.time()); ?>" type="text/javascript"></script>
+<script  src="<?php echo base_url('assets/js_min/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
+<script  src="<?php echo base_url('assets/js_min/jquery.highlite.js?ver='.time()); ?>"></script>
+<script  src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
+<script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver='.time()) ?>"></script>
+
+<?php }?>
 
  <script type="text/javascript">
 var base_url = '<?php echo base_url(); ?>';      
@@ -672,7 +707,15 @@ var base_url = '<?php echo base_url(); ?>';
 var keyword = '<?php echo $keyword; ?>';
 var keyword1 = '<?php echo $keyword1; ?>';
 </script>
+
+<?php
+  if (IS_ART_JS_MINIFY == '0') { ?>
 <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/user_search.js?ver='.time()); ?>"></script>
+
+<?php }else{?>
+<script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/user_search.js?ver='.time()); ?>"></script>
+
+<?php }?>
 <script type="text/javascript">
             function login()
             {
