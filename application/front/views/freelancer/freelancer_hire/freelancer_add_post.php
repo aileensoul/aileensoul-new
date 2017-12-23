@@ -6,9 +6,11 @@
             <?php echo $title; ?>
         </title>
         <?php echo $head; ?> 
-
-
+        <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } else {?>
+         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } ?>
         <style type="text/css">
             .last_date_error{
                 background: none;
@@ -315,12 +317,23 @@
                 </div>
             </div>
         </div>
-        <!-- Model Popup Close -->
+       
+        <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+       <!-- Model Popup Close -->
         <!-- Calender JS Start-->
         <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
         <!-- Calender Js End-->
         <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-
+        
+            <?php } else {  ?>
+          <!-- Model Popup Close -->
+        <!-- Calender JS Start-->
+        <script src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
+        <!-- Calender Js End-->
+        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        
+        <?php } ?>
+         
         <script>
                         var base_url = '<?php echo base_url(); ?>';
 
@@ -497,9 +510,16 @@
                         }
                         // LEAVE PAGE ON ADD AND EDIT POST PAGE END 
         </script>
+        
+         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
-
+            <?php } else {  ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+        
+     
         <style type="text/css">
             #skills-error{margin-top: 42px;}
             #example2-error{margin-top: 41px;}

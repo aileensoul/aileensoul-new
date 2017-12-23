@@ -3,7 +3,12 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
+     <?php
+        if (IS_HIRE_CSS_MINIFY == '0') {?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } else {?>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } ?>
     </head>
     <body class="pushmenu-push">
         <?php echo $header; ?>
@@ -215,7 +220,13 @@
         <script>
                                             var base_url = '<?php echo base_url(); ?>';
         </script>
-        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>
+        <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+          <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>
         <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+            <?php } else {  ?>
+           <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>
+        <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+        
     </body>
 </html>

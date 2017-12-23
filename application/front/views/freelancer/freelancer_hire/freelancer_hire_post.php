@@ -3,7 +3,11 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
+     <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } else {?>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
         <?php echo $header; ?>
@@ -336,18 +340,35 @@
         </div>
         <!-- Model Popup Close -->
 
+         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+    
         <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
         </script>
         <script  src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>">
         </script>
+            <?php } else {  ?>
+       <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
+        </script>
+        <script  src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>">
+        </script>
+        <?php } ?>
+     
 
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var returnpage = '<?php echo $returnpage; ?>';
             var user_id =<?php echo json_encode($this->uri->segment(3)) ?>;
         </script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_post.js?ver=' . time()); ?>"></script>
+      
+   <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+      <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_post.js?ver=' . time()); ?>"></script>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+            <?php } else {  ?>
+         <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_post.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+    
     </body>
 </html>

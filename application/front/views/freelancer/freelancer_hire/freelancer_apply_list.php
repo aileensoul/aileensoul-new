@@ -3,7 +3,11 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
+    <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } else {?>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed">
         <?php echo $header; ?>
@@ -285,13 +289,25 @@
             </div>
         </div>
         <!-- Model Popup Close -->
+        <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
         </script>
+            <?php } else {  ?>
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>">
+        </script>
+        <?php } ?>
         <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
+            
+            <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
         <script   type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+            <?php } else {  ?>
+         <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
+        <script   type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+       
         <script>
             function inviteuserpopup(abc) {
                 $('.biderror .mes').html("<div class='pop_content'>Do you want to select this freelancer for your project?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
