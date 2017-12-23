@@ -4201,6 +4201,20 @@ div .comment {
 .f-width{width: 100%;float: left;}
 .business_data .art_audios .image_profile .mejs__audio{margin-top: 60px;}
 
+
+.login #register_form  span:after {
+    content:"\f0d7";   
+    font-family: "FontAwesome";
+    font-size: 14px;
+    color:#aaa;
+    right:28px; top:0px;
+    padding:0 0 2px;
+    position:relative;
+    pointer-events:none;
+}
+
+
+
 /***  media query  ***/
 @media screen and (max-width: 1280px) {
     .mian_middle_post_box {

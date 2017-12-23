@@ -709,11 +709,13 @@
                                         <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                         <div class="form-group gender-custom">
+                                           <span>
                                             <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                                 <option value="" disabled selected value>Gender</option>
                                                 <option value="M">Male</option>
                                                 <option value="F">Female</option>
                                             </select>
+                                            </span>
                                         </div>
 
                                         <p class="form-text">

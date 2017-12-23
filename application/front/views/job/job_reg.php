@@ -218,7 +218,7 @@
                 /*background:#fff;*/
                 width:100%;
                 margin:0 auto;
-                border:1px solid #c7c7c7;
+              /*  border:1px solid #c7c7c7;*/
                 border-radius:5px;
                 -webkit-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
                 -moz-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
