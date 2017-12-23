@@ -40,7 +40,7 @@ $id = $this->db->get_where('job_reg', array('slug' => $this->uri->segment(3)))->
                 </li>
 
                 <?php
-                if ($userid == $id) {
+                if ($id == '' || $userid == $id) {
                     if (($this->uri->segment(1) == 'job') && ($this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'resume' || $this->uri->segment(2) == 'job_resume' || $this->uri->segment(2) == 'saved-job' || $this->uri->segment(2) == 'applied-job')) {
                         ?>
                         <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'saved-job') { ?> class="active" <?php } ?>><a title="Saved Job" href="<?php echo base_url('job/saved-job'); ?>">Saved </a>

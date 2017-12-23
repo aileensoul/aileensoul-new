@@ -439,27 +439,23 @@
 
 
                                                         <?php
-                                                        if ($this->uri->segment(3) != $userid) {
+                                                        if ($this->uri->segment(3) != $userid) { 
 
                                                             if ($recdata[0]['re_comp_site']) {
                                                                 ?>
-                                                                <li> <b>Company Website</b><span><a target="_blank" title="<?php
-                                                                    echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
-                                                                ?>"><?php
-                                                                    echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
+                                                                <li> <b>Company Website</b><span><a target="_blank"><?php
+                                                                   echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
                                                                 ?></a></span>
                                                                 </li>
                                                                 <?php
                                                             } else {
                                                                 echo "";
                                                             }
-                                                        } else {
+                                                        } else { 
                                                             if ($recdata[0]['re_comp_site']) {
                                                                 ?>
-                                                                <li> <b>Company Website</b><span><a target="_blank" title="<?php
-                                                                    echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
-                                                                ?>"><?php
-                                                                    echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
+                                                                <li> <b>Company Website</b><span><a target="_blank"><?php
+                                                                  echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
                                                                 ?></a></span>
                                                                 </li>
                                                                 <?php

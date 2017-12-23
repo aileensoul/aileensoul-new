@@ -6,9 +6,14 @@
       <!-- END HEAD -->
 
       <title><?php echo $title; ?></title>
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
+		
+ <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
+       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
-
+        <?php } else {?>
+       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } ?>
 
    </head>
    <!-- END HEAD -->
@@ -1431,7 +1436,7 @@
 
 <!-- script for skill textbox automatic start-->
 <?php
-        if (IS_REC_JS_MINIFY == '0') {
+        if (IS_HIRE_JS_MINIFY == '0') {
             ?>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
@@ -1452,8 +1457,11 @@
       var place = '<?php echo  $this->input->get('searchplace'); ?>';
                                               
 </script>
+<?php if (IS_HIRE_JS_MINIFY == '0') { ?>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/project_live_login.js?ver='.time()); ?>"></script>
- 		
+            <?php } else {  ?>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/project_live_login.js?ver='.time()); ?>"></script>
+        <?php } ?>
 		<script>
 			
 		</script>
