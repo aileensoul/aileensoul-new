@@ -2626,7 +2626,9 @@ word-break: break-word;}
 	/***  end new flow  ***/
 	.all-job-top .post-img{width:45px; height:45px;}
 	.job-top-detail h5 a{font-size:14px;}
-
+    .login form{padding: 16px 8px 15px !important;}
+    .login .form-group select.day{width: 60px;}
+    .login .form-group select.month{width: 60px;}
 	
 }
 
@@ -2637,8 +2639,18 @@ word-break: break-word;}
 	/****/
 	.created_date {font-size: 8px; letter-spacing: 0.5px;}
     .no-login .login .form-group select{margin-right:5px !important;}/*d*/
-}
+    .login .form-group select{margin-right: 27px !important;}
+    .login .form-group select.day{width: 50px !important;}
+    .login .form-group select.month{width: 50px!important;}
+    .login .form-group select.year{width: 50px!important;}
 
+}
+@media screen and (max-width: 280px){
+    .login .form-group select.day{width: 45px !important;}
+    .login .form-group select.month{width: 45px!important;}
+    .login .form-group select.year{width: 44px!important;}
+    .login .form-group select{margin-right: 20px !important;}    
+}
 
 
 @keyframes bounce_floatBarsG {
