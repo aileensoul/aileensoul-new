@@ -444,7 +444,7 @@
                                                                             <div class="mySlides">
                                                                                 <div class="numbertext"><?php echo $i ?> / <?php echo count($busimagedata); ?></div>
                                                                                 <div class="slider_img">
-                                                                                    <img src="<?php echo BUS_DETAIL_MAIN_UPLOAD_URL . $image['image_name']; ?> " >
+                                                                                    <img src="<?php echo BUS_DETAIL_MAIN_UPLOAD_URL . $image['image_name']; ?>" alt="Business detail Image">
                                                                                 </div>
                                                                             </div>
 
@@ -801,7 +801,7 @@
                         success: function (response)
                         {
                             if (response.data == "ok") {
-                                $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                                $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" alt="Loader" /> &nbsp; Login ...');
                                 if (response.is_bussiness == '1') {
                                     window.location = "<?php echo base_url() ?>business-profile/details/" + slug;
                                 } else {
@@ -999,7 +999,7 @@
                         success: function (response)
                         {
                             if (response.okmsg == "ok") {
-                                $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
+                                $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" alt="loader"/> &nbsp; Sign Up ...');
                                 window.location = "<?php echo base_url() ?>business-profile/details/" + slug;
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
