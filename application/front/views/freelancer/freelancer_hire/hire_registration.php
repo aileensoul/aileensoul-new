@@ -7,12 +7,14 @@
         <!-- Calender Css Start-->
 
         <title><?php  echo $title; ?></title>
-
-        <!-- Calender Css End-->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
+ <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
+       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">
-        <!-- This Css is used for call popup -->
-
+        <?php } else {?>
+       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-apply.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver=' . time()); ?>">
+        <?php } ?>
+     
         <?php if(!$this->session->userdata('aileenuser')){ ?>
 
          <style>
@@ -809,10 +811,18 @@
         <?php echo $login_footer ?> 
         <?php echo $footer; ?>
         <!-- </footer> -->
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        
+<?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+<script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/hire_registration.js?ver=' . time()); ?>"></script>
-
+                 
+            <?php } else {  ?>
+    <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/hire_registration.js?ver=' . time()); ?>"></script>
+           
+        <?php } ?>
         <script>
 //                                        var get_csrf_token_name = '<?php //echo $this->security->get_csrf_token_name(); ?>';
 //                                        var csrf_hash = '<?php //echo $this->security->get_csrf_hash(); ?>';

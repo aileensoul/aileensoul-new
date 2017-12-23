@@ -3,8 +3,11 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
+<?php if (IS_HIRE_CSS_MINIFY == '0') {?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
-
+        <?php } else {?>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push freeh3">
         <?php echo $header; ?>
@@ -623,23 +626,29 @@
                                                                         </body>
 
                                                                         <!-- END FOOTER -->
+                        
+                                                                            
+                                                                            <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
 
                                                                         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
                                                                         <!-- FIELD VALIDATION JS START -->
                                                                         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/project_live.js?ver=' . time()); ?>"></script>
                                                                         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
-                                                                        <?php
-                                                                        if (IS_REC_JS_MINIFY == '0') {
-                                                                            ?>
                                                                             <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
-
                                                                             <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
                                                                             <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-                                                                            <?php
-                                                                        } else {
-                                                                            ?>
-                                                                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
-                                                                        <?php } ?>
+                 
+            <?php } else {  ?>
+
+                                                                        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+                                                                        <!-- FIELD VALIDATION JS START -->
+                                                                        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/project_live.js?ver=' . time()); ?>"></script>
+                                                                        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+                                                                            <script src="<?php echo base_url('assets/js_min/croppie.js'); ?>"></script>  
+                                                                            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+                                                                            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+                 
+        <?php } ?>
 
                                                                         <script>
                                                                                     var base_url = '<?php echo base_url(); ?>';
