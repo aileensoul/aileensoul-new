@@ -212,7 +212,7 @@
 
                                         <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>>
                                             <?php if ($this->uri->segment(3) != $userid) { ?>
-                                                <a title="Post" href="<?php echo base_url('recruiter/post/' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Post</a>
+                                                <a title="Post" href="<?php echo base_url('recruiter/post/' . $this->uri->segment(3)); ?>">Post</a>
                                             <?php } else { ?>
                                                 <a title="Post" href="<?php echo base_url('recruiter/post'); ?>">Post</a>
     <?php } ?>

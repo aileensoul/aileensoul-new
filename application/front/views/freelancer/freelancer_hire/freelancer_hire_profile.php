@@ -546,7 +546,7 @@
                                 </div>
                             <?php } ?>
                             <?php if ($freelancerhiredata[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                <a title="Update Profile Pic" href="javascript:void(0);"  class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
+                                <a title="Update Profile Pic" href="javascript:void(0);"  class="cusome_upload" onclick="updateprofilepopup();"><img alt="Upload profile pic"  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
                             <?php } ?>
                         </div>
                     </div>

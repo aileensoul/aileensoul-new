@@ -19,8 +19,8 @@
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
         <?php echo $header; ?>
         <?php
-        $returnpage = $_GET['page'];
-        if ($returnpage == 'job') {
+       // $returnpage = $_GET['page'];
+        if ($this->uri->segment(3) != $userid) {
             echo $job_header2_border;
         } elseif ($recdata[0]['re_step'] == 3) {
             echo $recruiter_header2_border;
@@ -95,7 +95,7 @@
                 </div>
             </div>
             <div class="container tablate-container art-profile">    
-                <?php if ($returnpage == '') { ?>
+                <?php if ($this->uri->segment(3) == $userid) { ?>
                     <div class="upload-img">
                         <label  class="cameraButton"><span class="tooltiptext_rec">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*" capture="camera" onclick="showDiv()">
@@ -127,7 +127,7 @@
 
                                 </div>
                             <?php } ?>
-                            <?php if ($returnpage == '') { ?>
+                            <?php if ($this->uri->segment(3) == $userid) { ?>
                                 <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();" title="Update profile picture"><img src="<?php echo base_url(); ?>assets/img/cam.png" alt="<?php echo 'CAMERAIMAGE'; ?>"> Update Profile Picture</a>
 <?php } ?>
                         </div>
@@ -138,7 +138,7 @@
                         <a href="javascript:void(0);" title="<?php echo $postdataone[0]['rec_firstname'] . ' ' . $postdataone[0]['rec_lastname']; ?>"><h3><?php echo $postdataone[0]['rec_firstname'] . ' ' . $postdataone[0]['rec_lastname']; ?></h3></a>
                         <div class="profile-text" >
                             <?php
-                            if ($returnpage == '') {
+                            if ($this->uri->segment(3) == $userid) {
                                 if ($recdata[0]['designation'] == '') {
                                     ?>
                                     <a id="designation" class="designation" title="Designation">Designation</a>
@@ -170,15 +170,15 @@
                                     <ul class="pro-fw">
                                         <?php } ?>  
                                     <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>>
-                                        <?php if ($returnpage == 'job') { ?>
-                                            <a title="Details" href="<?php echo base_url('recruiter/profile/' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Details</a>
+                                        <?php if ($this->uri->segment(3) != $userid) { ?>
+                                            <a title="Details" href="<?php echo base_url('recruiter/profile/' . $this->uri->segment(3)); ?>">Details</a>
                                         <?php } else { ?>
                                             <a title="Details" href="<?php echo base_url('recruiter/profile'); ?>">Details</a>
                                         <?php } ?>
                                     </li>
                                     <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>>
-                                        <?php if ($returnpage == 'job') { ?>
-                                            <a title="Post" href="<?php echo base_url('recruiter/post/' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Post</a>
+                                        <?php if ($this->uri->segment(3) != $userid) { ?>
+                                            <a title="Post" href="<?php echo base_url('recruiter/post/' . $this->uri->segment(3) ); ?>">Post</a>
                                         <?php } else { ?>
                                             <a title="Post" href="<?php echo base_url('recruiter/post'); ?>">Post</a>
                                     <?php } ?>
@@ -194,7 +194,7 @@
                                             <li>
                                                 <?php
                                                 $returnpage = $_GET['page'];
-                                                if ($returnpage == "job") {
+                                                if ($this->uri->segment(3) != $userid) {
                                                     ?>
                                                     <a href="<?php echo base_url('chat/abc/1/2/' . $this->uri->segment(3)); ?>" title="Message">Message</a>
                                                 <?php } else { ?>
@@ -208,7 +208,7 @@
                     <!-- menubar -->    
                 </div>                       
             </div> <div  class="add-post-button mob-block">
-                <?php if ($returnpage == '') { ?>
+                <?php if ($this->uri->segment(3) == $userid) { ?>
                     <a class="btn btn-3 btn-3b" id="rec_post_job2" href="<?php echo base_url('recruiter/add-post'); ?>" title="Post a Job"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
 <?php } ?>
             </div>
@@ -218,7 +218,7 @@
                     <!-- text head start -->
                     <div class="profile-text" >
                         <?php
-                            if ($returnpage == '') {
+                            if ($this->uri->segment(3) == $userid) {
                                 if ($recdata[0]['designation'] == '') {
                                     ?>
                                     <a id="designation" class="designation" title="Designation">Designation</a>
@@ -238,7 +238,7 @@
                             ?>
                     </div>
                     <div  class="add-post-button">
-                        <?php if ($returnpage == '') { ?>
+                        <?php if ($this->uri->segment(3) == $userid) { ?>
                             <a title="Post  a Job" class="btn btn-3 btn-3b" id="rec_post_job1" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
 <?php } ?>
                     </div>
@@ -327,7 +327,7 @@
 
              <script src="<?php echo base_url('assets/js/webpage/recruiter/rec_post.js'); ?>"></script>
 
-         <?php if($returnpage == 'job'){   ?>
+         <?php if($this->uri->segment(3) != $userid){   ?>
 <script src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>    
 <?php }else{ ?>
  <script src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
