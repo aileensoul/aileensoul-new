@@ -134,7 +134,7 @@ class Registration extends CI_Controller {
                         'verify_date' => date('Y-m-d h:i:s', time()),
                         'user_verify' => '0',
                         'user_slider' => '1',
-                        'user_slug' => $this->setuser_slug($this->input->post('first_name') . '-' . $this->input->post('last_name'), 'user_slug', 'user'),
+                       // 'user_slug' => $this->setuser_slug($this->input->post('first_name') . '-' . $this->input->post('last_name'), 'user_slug', 'user'),
                     );
 
                       
