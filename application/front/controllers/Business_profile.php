@@ -2068,8 +2068,9 @@ Your browser does not support the audio tag.
             $contition_array = array('user_id' => $this->data['business_common_data'][0]['user_id'], 'is_delete' => '0');
             $this->data['busimagedata'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
-        $company_name = $this->get_company_name($id);
-        $this->data['title'] = ucwords($company_name) .' | Details' .TITLEPOSTFIX;
+     $this->data['company_name'] =  $company_name = $this->get_company_name($id);
+    
+     $this->data['title'] = ucwords($company_name) .' | Details' .TITLEPOSTFIX;
 
 //manage post end
         if (count($business_data) == 0) {
@@ -11445,6 +11446,13 @@ Your browser does not support the audio tag.
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         return $company_name = $businessdata[0]['company_name'];
+    }
+    public function get_description($id = '') {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $contition_array = array('business_slug' => $id, 'is_deleted' => '0', 'status' => '1');
+        $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,country,city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        return $company_name = $businessdata;
     }
 
     public function ajax_business_skill() {
