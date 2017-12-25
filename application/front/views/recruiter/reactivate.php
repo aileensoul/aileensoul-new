@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html>
 <head>
    <meta charset="utf-8">
-	<title>Reactivate</title>
+   <title><?php echo ucfirst($userdata[0]['first_name'])." ".ucfirst($userdata[0]['last_name']). " | Reactive | Recruiter Profile - Aileensoul"; ?></title>
 
 
  

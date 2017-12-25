@@ -1194,7 +1194,7 @@ class Job extends MY_Controller {
             }
         }
 
-        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+        $this->data['title'] = 'Project And Training Internship  |  Edit Profile - Job Profile - Aileensoul';
 
         $this->load->view('job/job_project', $this->data);
     }

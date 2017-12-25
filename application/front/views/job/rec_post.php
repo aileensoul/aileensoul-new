@@ -87,7 +87,9 @@
                                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                 if ($recdata[0]['recruiter_user_image'] != '' && $info) {
                                                     ?>
-                                                    <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
+                                                    <div class="left_iner_img_profile">
+                                                        <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
+                                                    </div>
                                                     <?php
                                                 } else {
 
