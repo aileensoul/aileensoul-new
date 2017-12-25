@@ -6834,7 +6834,7 @@ class Artist extends MY_Controller {
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
             $artistic_name = $this->get_artistic_name($this->data['artisticdata'][0]['user_id']);
-            $this->data['title'] = $artistic_name.' | Photo'.' | Artistic Profile' . TITLEPOSTFIX;
+            $this->data['title'] = $artistic_name.' | Photos'.' | Artistic Profile' . TITLEPOSTFIX;
             $this->load->view('artist/art_photos', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -14187,16 +14187,17 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
         $this->data['artpostdata'] = $artpost;
 
         $title = '';
-        if ($searchskill) {
-            $title .= $searchskill;
+        if (!$searchskill) {
+             $title .= ucwords($search_place);
+          
         }
         if ($searchskill && $search_place) {
-            $title .= ' Art in ';
+            $title .= ucwords($searchskill) .' in '.ucwords($search_place);
         }
-        if ($search_place) {
-            $title .= $search_place;
+        if (!$search_place) {
+             $title .= ucwords($searchskill);
         }
-        $this->data['title'] = "Search | Artistic Profile - Aileensoul";
+        $this->data['title'] = $title. " | Artistic Profile - Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
         $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
 

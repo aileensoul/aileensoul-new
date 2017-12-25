@@ -184,9 +184,11 @@
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module">
                         <table class="business_data_table">
+                             <a href="<?php echo base_url('artist/audios/' . $get_url) ?>"> 
                             <div class="head_details">
                                  <h5><i class="fa fa-music" aria-hidden="true"></i>  Audio</h5>
                             </div>
+                             </a>
                             <div class="art_audios">
                                  <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                             </div>
