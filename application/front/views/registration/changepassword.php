@@ -3,7 +3,14 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+         <?php
+if(IS_OUTSIDE_CSS_MINIFY == '0'){
+?>
+     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+<?php } else{ ?>
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+<?php } ?>
+    
        
     </head>
     <style type="text/css">
@@ -69,8 +76,14 @@ color: #1b8ab9 !important;}
         </div>
         <?php echo $login_footer ?>
         <?php echo $footer; ?>
-
-       <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
+  <?php
+if(IS_OUTSIDE_JS_MINIFY == '0'){
+?>
+   <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
+<?php } else{ ?>
+     <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver='.time()); ?>"></script>
+<?php } ?>
+       
 <!-- validation for edit email formate form strat -->
 
 <script>

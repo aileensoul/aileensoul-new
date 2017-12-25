@@ -1,16 +1,29 @@
 <!-- start head -->
 <?php echo $head; ?>
+ <?php
+if(IS_OUTSIDE_JS_MINIFY == '0'){
+?>
+ <script src="<?php echo base_url('assets/js/fb_login.js'); ?>"></script>
+<?php } else{ ?>
+ <script src="<?php echo base_url('assets/js_min/fb_login.js'); ?>"></script>
+<?php } ?>
 
-<script src="<?php echo base_url('assets/js/fb_login.js'); ?>"></script>
 
 <!--post save success pop up style strat -->
 
   
 
 
-
+<?php
+if(IS_OUTSIDE_JS_MINIFY == '0'){
+?>
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+<?php } else{ ?>
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+<?php } ?>
 <!-- END HEAD -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+
+
 
 <!-- start header -->
 <?php echo $header; ?>

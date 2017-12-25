@@ -126,9 +126,16 @@
 <!--This Script is also used For Image preview Start-->
 
 <!--This Script is also used For Image preview End-->
-
+<?php
+if(IS_OUTSIDE_JS_MINIFY == '0'){
+?>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+<?php } else{ ?>
+ <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+<?php } ?>
+
 
 <!-- Field Validation Js End -->
 
