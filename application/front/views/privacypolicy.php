@@ -57,11 +57,26 @@ header('Cache-Control: public, max-age=30');
             });
         </script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css'); ?>">
+       
+        <?php
+        if (IS_OUTSIDE_CSS_MINIFY == '0') {
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
+            <?php
+        } else {
+            ?>
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/gyc.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css'); ?>">
+        <?php } ?>
+        
+        
     </head>
     <body class="custom-tp privacy-cust outer-page">
         <div class="main-inner">

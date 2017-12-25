@@ -66,11 +66,34 @@ header("Pragma: no-cache"); // HTTP/1.0
         <meta name="p:domain_verify" content="d0a13cf7576745459dc0ca6027df5513"/>
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+     
+        <?php
+        if (IS_OUTSIDE_CSS_MINIFY == '0') {
+            ?>
+           <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
+            <?php
+        } else {
+            ?>
+             
+        <script src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script> 
+        <?php } ?>
+        
+        <?php
+        if (IS_OUTSIDE_JS_MINIFY == '0') {
+            ?>
         <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script> 
+            <?php
+        } else {
+            ?>
+        <script src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script> 
+        <?php } ?>
+        
+       
 <!--        <link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/css/cookieconsent.min.css') ?>" />
         <script src="<?php //echo base_url('assets/js/cookieconsent.min.js') ?>"></script>
         <script>
@@ -340,6 +363,15 @@ header("Pragma: no-cache"); // HTTP/1.0
                                                     var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
                                                     var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
-        <script src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>
+          <?php
+        if (IS_OUTSIDE_CSS_MINIFY == '0') {
+            ?>
+           <script src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>
+            <?php
+        } else {
+            ?>
+             <script src="<?php echo base_url('assets/js_min/webpage/main.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+        
     </body>
 </html>
