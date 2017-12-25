@@ -54,14 +54,14 @@
 
             }
             .btn1:hover{
-                border:2px solid #1b8ab9;
+               /* border:2px solid #1b8ab9;*/
                 color:#fff;
-                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8ab9), color-stop(56%, #3bb0ac), color-stop(100%, #3bb0ac)); 
-                background: -webkit-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
-                background: -o-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%);
-                background: -ms-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
-                background: linear-gradient(354deg, #3bb0ac 0%, #1b8ab9 44%, #1b8ab9 100%); 
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b8ab9', endColorstr='#3bb0ac',GradientType=0 ); 
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8ab9), color-stop(56%, #3bb0ac), color-stop(100%, #3bb0ac))!important; 
+                background: -webkit-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%)!important; 
+                background: -o-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%)!important;
+                background: -ms-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%)!important; 
+                background: linear-gradient(354deg, #3bb0ac 0%, #1b8ab9 44%, #1b8ab9 100%)!important; 
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b8ab9', endColorstr='#3bb0ac',GradientType=0 )!important; 
 
             }
 
@@ -396,8 +396,31 @@
             -o-transform: translate(-50%,-50%);
             transform: translate(-50%,-50%);}
                 /*second*/
-            /*second*/
+        .pt-20{padding-bottom: 20px;}
 
+        .cus-error .error-msg p, .cus-error label.error{
+        background: none;
+        color: red !important;
+        position: absolute;
+        z-index: 8;
+        right: inherit;
+        padding:inherit !important;
+        line-height: 15px;
+        padding-right: 0px !important;
+        font-size: 11px !important;
+        }
+        .dob  label.error {
+            margin-top: 35px;
+            left: 30px;
+        }
+        .gender-custom label.error {
+            margin-top: 35px;
+            left: 30px;
+        }
+        .cus-forgot label.error {
+            padding: 0px !important;            
+            left: 16px;
+        }
         </style>
             
             
@@ -410,7 +433,7 @@
 
 <!-- start header -->
 <!-- END HEADER -->
-<body class="botton_footer">
+<body class="botton_footer cus-error">
     <?php echo $header; ?>
         
    <section>
