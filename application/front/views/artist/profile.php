@@ -415,6 +415,34 @@
             .cus-no-login .inner-form1{width:560px;}
             .cus-no-login.modal-open{overflow-y:auto;}
             .cus-no-login .title h1{text-align: center;margin-top: 20px;line-height: 1.2;}
+
+            
+            .cus-error .error-msg p, .cus-error label.error{
+                background: none;
+                color: red !important;
+                position: absolute;
+                z-index: 8;
+                right: inherit;
+                padding:inherit !important;
+                line-height: 15px;
+                padding-right: 0px !important;
+                font-size: 11px !important;
+            }
+            .dob  label.error {
+                margin-top: 35px;
+                left: 30px;
+            }
+            .gender-custom label.error {
+                margin-top: 35px;
+                left: 30px;
+            }
+            .cus-forgot label.error {
+                padding: 0px !important;            
+                left: 16px;
+            }
+
+
+            
         </style>
 </head>
 <!-- END HEAD -->
