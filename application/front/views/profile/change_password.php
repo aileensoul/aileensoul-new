@@ -6,8 +6,16 @@
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
+        <?php
+if(IS_OUTSIDE_CSS_MINIFY == '0'){
+?>
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
+<?php } else{ ?>
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver='.time()); ?>">
+<?php } ?>
+      
         
     </head>
     <body class="contact">
@@ -83,9 +91,18 @@
 
 
 
-
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
+ <?php
+if(IS_OUTSIDE_JS_MINIFY == '0'){
+    
+?>
+  <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
+
+<?php } else{ ?>
+   <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
+
+<?php } ?>
 
 <script type="text/javascript">
 $(document).ready(function () { //alert("hii");

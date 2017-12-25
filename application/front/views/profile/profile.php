@@ -172,17 +172,39 @@ color: #1b8ab9 !important;}
             <?php echo $login_footer ?>
             <?php echo $footer; ?>
          </footer> 
-        <script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
+        <?php
+if(IS_OUTSIDE_JS_MINIFY == '0'){
+    
+?>
+   <script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
        
         <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
         
         </script>
+
+<?php } else{ ?>
+   <script src="<?php echo base_url('assets/js_min/jquery.js'); ?>"></script>
+       
+        <script type="text/javascript" src="<?php echo base_url() ?>js_min/jquery.validate.min.js"></script>
+        
+        </script>
+
+<?php } ?>
+       
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
             var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/profile/profile.js'); ?>"></script>
+        
+        <?php
+if(IS_OUTSIDE_JS_MINIFY == '0'){
+?>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/profile/profile.js'); ?>"></script>
+<?php } else{ ?>
+   <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/profile/profile.js'); ?>"></script>
+<?php } ?>
+       
     </body>
 </html>
