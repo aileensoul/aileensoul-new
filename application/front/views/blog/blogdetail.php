@@ -52,7 +52,14 @@ header('Expires: '.$date);
         }
         ?>
         <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+
+       <?php if (IS_OUTSIDE_JS_MINIFY == '0'){
+        ?>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <?php }else{?>
+        <script async src="//pagead2.googlesyndication.com/pagead/js_min/adsbygoogle.js"></script>
+
+        <?php }?>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({
                 google_ad_client: "ca-pub-6060111582812113",
@@ -76,11 +83,23 @@ header('Expires: '.$date);
       <meta name="twitter:image" content="http://placekitten.com/250/250">
       <meta name="twitter:domain" content="<?php base_url('blog/'.$blog_detail[0]['blog_slug']) ?>">
       
+
+      <?php if (IS_OUTSIDE_CSS_MINIFY == '0'){
+        ?>
+
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
+    <?php }else{?>
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css'); ?>">
+    <?php }?>
       <!-- This Css is used for call popup -->
 
       
@@ -418,16 +437,28 @@ header('Expires: '.$date);
       <!-- Model Popup Close -->
 
     </section>
- <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
-      <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
- 
 
+    <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
+ <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+  <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+ 
+<?php }else{?>
+
+ <script src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+  <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
+<?php }?>
       <?php
             echo $login_footer
             ?>
 
+ <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
 <script src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.validate.js'); ?>"></script>
+<?php }else{?>
+
+<script src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/js_min/jquery.validate.js'); ?>"></script>
+<?php }?>
 <!-- This Js is used for call popup -->
 
 <script>
@@ -534,7 +565,11 @@ header('Expires: '.$date);
 //    }
 //AJAX DATA LOAD BY LAZZY LOADER END
 </script>
-
+ <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
 <script src="<?php echo base_url('assets/js/webpage/blog/blog_detail.js'); ?>"></script>
+<?php }else{?>
+<script src="<?php echo base_url('assets/js_min/webpage/blog/blog_detail.js'); ?>"></script>
+
+<?php }?>
    </body>
 </html>
