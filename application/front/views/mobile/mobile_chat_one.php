@@ -13,25 +13,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
         <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">-->
         <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+        <?php if (IS_MSG_JS_MINIFY == '0'){?>
+
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+        <?php }else{?>
+          <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+        <?php }?>
         <!-- http://bootsnipp.com/snippets/4jXW -->
 
+            <?php if (IS_MSG_CSS_MINIFY == '0'){?>
                <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css'); ?>">
                 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
                 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style_new.css'); ?>">
                 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style_harshad.css'); ?>">
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/media.css'); ?>">
-              
-
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
                 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css'); ?>">
-
 			  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css'); ?>">
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
 			  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/sprite_img.css'); ?>">
 
-
+<?php }else{?>
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css'); ?>">
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css'); ?>">
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style_new.css'); ?>">
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style_harshad.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/media.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css'); ?>">
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/sprite_img.css'); ?>">
+<?php }?>
         <style type="text/css">
             .msg_right:hover .messagedelete{ visibility: visible;opacity: 1;}
             .msg_right .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
@@ -820,8 +835,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
 
                 </script>
+
+                <?php if (IS_MSG_JS_MINIFY == '0'){?>
                 <script src="<?php echo base_url('assets/js/demo/jquery-1.9.1.js'); ?>"></script>
                 <script src="<?php echo base_url('assets/js/demo/jquery-ui-1.9.1.js'); ?>"></script>
+                <?php }else{?>
+                 <script src="<?php echo base_url('assets/js_min/demo/jquery-1.9.1.js'); ?>"></script>
+                <script src="<?php echo base_url('assets/js_min/demo/jquery-ui-1.9.1.js'); ?>"></script>
+                <?php }?>
                 <script>
                     jQuery.noConflict();
 

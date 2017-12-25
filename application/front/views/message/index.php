@@ -7,9 +7,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+        <?php if (IS_MSG_CSS_MINIFY == '0'){?> 
         <link href="<?php echo base_url() ?>assets/css/style-main.css" rel="stylesheet">
+        <?php }else{?>
+        <link href="<?php echo base_url() ?>assets/css_min/style-main.css" rel="stylesheet">
+        <?php }?>
+
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+         <?php if (IS_MSG_JS_MINIFY == '0'){?> 
         <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
+
+        <?php }else{?>
+         <script src="<?php echo base_url() ?>assets/js_min/bootstrap.min.js"></script>
+        <?php }?>
         <style type="text/css">
             .msg_right:hover .messagedelete{ visibility: visible;opacity: 1;}
             .msg_right .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
