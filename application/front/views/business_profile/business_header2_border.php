@@ -462,7 +462,7 @@ $userid = $this->session->userdata('aileenuser');
                 }
                 var not_contact_count = $('.addcontact-left').length;
                 if (not_contact_count == 0) {
-                    var data_html = "<li><div class='art-img-nn' id='art-blank'><div class='art_no_post_img'><img src='<?php echo base_url(); ?>img/No_Contact_Request.png' alt='No Contact Request'></div><div class='art_no_post_text'>No Contact Request Available.</div></div></li>";
+                    var data_html = "<li><div class='art-img-nn' id='art-blank'><div class='art_no_post_img'><img src='<?php echo base_url('img/No_Contact_Request.png?ver='.time()); ?>' alt='No Contact Request'></div><div class='art_no_post_text'>No Contact Request Available.</div></div></li>";
                     $('#notification_main_in').html(data_html);
                     $('#seecontact').hide();
                 }

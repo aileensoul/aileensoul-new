@@ -13,13 +13,13 @@ $mobile_agent = $this->agent->mobile;
             <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css?ver='.time()); ?>" />
         <?php } else { ?>
            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>">
             <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business.css?ver=' . time()); ?>">
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css?ver='.time()); ?>" />
         <?php } ?>
         <style type="text/css">
             .two-images, .three-image, .four-image{
@@ -92,7 +92,7 @@ $mobile_agent = $this->agent->mobile;
                                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                 <?php } else {
                                                     ?>
-                                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="<?php echo $business_common_data[0]['company_name']; ?>">
+                                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image'] .'?ver='.time(); ?>"  alt="<?php echo $business_common_data[0]['company_name']; ?>">
                                                     <?php
                                                 }
                                             } else {
@@ -103,7 +103,7 @@ $mobile_agent = $this->agent->mobile;
                                                     <img src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
                                                 <?php } else {
                                                     ?>
-                                                    <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="<?php echo $business_common_data[0]['company_name']; ?>">
+                                                    <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image'] .'?ver='.time(); ?>"  alt="<?php echo $business_common_data[0]['company_name']; ?>">
                                                     <?php
                                                 }
                                             }
@@ -177,7 +177,7 @@ $mobile_agent = $this->agent->mobile;
                             <div class="business-all-post">
                                 <div class="nofoundpost"></div>
                             </div>
-                            <div class="fw" id="loader" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="Loader" /></div>
+                            <div class="fw" id="loader" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) .'?ver='.time() ?>" alt="Loader" /></div>
                         </div>
                     </div>
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
@@ -190,7 +190,7 @@ $mobile_agent = $this->agent->mobile;
                                 <li>
                                     <a href="<?php echo base_url('job') ?>">
                                         <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i1.png" alt="Job Profile">
+                                            <img src="<?php echo base_url('assets/img/i1.png?ver='.time()) ?>" alt="Job Profile">
                                         </div>
                                         <span>Job Profile</span>
                                     </a>
@@ -198,7 +198,7 @@ $mobile_agent = $this->agent->mobile;
                                 <li>
                                     <a href="<?php echo base_url('recruiter') ?>">
                                         <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i2.jpg" alt="Recruiter Profile">
+                                            <img src="<?php echo base_url('assets/img/i2.jpg?ver='.time()) ?>" alt="Recruiter Profile">
                                         </div>
                                         <span>Recruiter Profile</span>
                                     </a>
@@ -206,7 +206,7 @@ $mobile_agent = $this->agent->mobile;
                                 <li>
                                     <a href="<?php echo base_url('freelance') ?>">
                                         <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i3.jpg" alt="Freelance Profile">
+                                            <img src="<?php echo base_url('assets/img/i3.jpg?ver='.time()) ?>" alt="Freelance Profile">
                                         </div>
                                         <span>Freelance Profile</span>
                                     </a>
@@ -214,7 +214,7 @@ $mobile_agent = $this->agent->mobile;
                                 <li>
                                     <a href="<?php echo base_url('business-profile') ?>">
                                         <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i4.jpg" alt="Business Profile">
+                                            <img src="<?php echo base_url('assets/img/i4.jpg?ver='.time()) ?>" alt="Business Profile">
                                         </div>
                                         <span>Business Profile</span>
                                     </a>
@@ -222,7 +222,7 @@ $mobile_agent = $this->agent->mobile;
                                 <li>
                                     <a href="<?php echo base_url('artist') ?>">
                                         <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i5.jpg" alt="Artistic Profile">
+                                            <img src="<?php echo base_url('assets/img/i5.jpg?ver='.time()) ?>" alt="Artistic Profile">
                                         </div>
                                         <span>Artistic Profile</span>
                                     </a>
@@ -254,7 +254,7 @@ $mobile_agent = $this->agent->mobile;
                                         <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
                                     <?php } else {
                                         ?>
-                                        <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="<?php echo $business_common_data[0]['company_name']; ?>">
+                                        <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image'] .'?ver='.time(); ?>"  alt="<?php echo $business_common_data[0]['company_name']; ?>">
                                         <?php
                                     }
                                 } else {
@@ -265,7 +265,7 @@ $mobile_agent = $this->agent->mobile;
                                         <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
                                     <?php } else {
                                         ?>
-                                        <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="<?php echo $business_common_data[0]['company_name']; ?>">
+                                        <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image'] . '?ver='.time(); ?>"  alt="<?php echo $business_common_data[0]['company_name']; ?>">
                                         <?php
                                     }
                                 }
