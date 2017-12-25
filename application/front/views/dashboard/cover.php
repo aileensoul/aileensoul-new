@@ -391,7 +391,7 @@
 
                                         <?php if ($artdata[0]['art_step'] != 4) { ?>
                                             <a class="btn-1" id="artistic-register-btn" href="<?php echo base_url('artist'); ?>">Register</a> 
-                                        <?php } elseif ($artdata[0]['status'] == '0' && $artdata[0]['art_step'] == 4) {
+                                        <?php } elseif ($artdata[0]['status'] == 0 && $artdata[0]['art_step'] == 4) {
                                             ?>
 
                                             <a class="btn-1" id="artistic-active-btn" href="<?php echo base_url('artist'); ?>">Active</a>
@@ -888,7 +888,7 @@
                     <div class="modal-footer">
                         <?php if ($artdata[0]['art_step'] != 4) { ?>
                             <a class="btn-4" href="<?php echo base_url('artist'); ?>">Register Now</a>
-                        <?php } elseif ($artdata[0]['status'] == '0' && $artdata[0]['art_step'] == 4) { ?>
+                        <?php } elseif ($artdata[0]['status'] == 0 && $artdata[0]['art_step'] == 4) { ?>
                             <a class="btn-4" href="<?php echo base_url('artist'); ?>">Active</a>
 
                         <?php } else { ?>

@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html>
 <head>
    <meta charset="utf-8">
-	<title>Reactive | <?php echo $artistic_name; ?> - ArtisticProfile - Aileensoul</title>
+	<title><?php echo $artistic_name; ?> | Reactive |  Artistic Profile - Aileensoul</title>
 
 	  <?php
         if (IS_ART_CSS_MINIFY == '0') {

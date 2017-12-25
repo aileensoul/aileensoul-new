@@ -145,6 +145,7 @@ class Main extends CI_Controller {
 
     //job user end
     public function terms_condition() {
+        $this->data['title'] = 'Terms and Condition - Aileensoul';
         $this->load->view('termcondition',$this->data);
     }
 

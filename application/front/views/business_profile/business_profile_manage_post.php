@@ -158,9 +158,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         <!-- <a href="<?php echo base_url('business-profile/audios/' . $business_common_data[0]['business_slug']) ?>"> -->
                         <div class="full-box-module business_data">
                             <div class="profile-boxProfileCard  module">
-                                <div class="head_details1">
-                                    <h5><i class="fa fa-music" aria-hidden="true"></i>Audio</h5>
-                                </div>
+                                <a href="<?php echo base_url('business-profile/audios/' . $business_common_data[0]['business_slug']) ?>"> 
+                                    <div class="head_details1">
+                                        <h5><i class="fa fa-music" aria-hidden="true"></i>Audio</h5>
+                                    </div>
+                                </a>
                                 <table class="business_data_table">
                                     <div class="bus_audios"> 
                                     </div>
@@ -334,7 +336,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="business-all-post">
                                 <!--                                    <div class="nofoundpost"> 
                                                                     </div>-->
@@ -349,59 +351,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
-<<<<<<< HEAD
-                        <div class="all-profile-box">
-                            <div class="all-pro-head">
-                                <h4>Profiles<a href="<?php echo base_url('profiles/').$this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
-                            </div>
-                            <ul class="all-pr-list">
-                                <li>
-                                    <a href="<?php echo base_url('job') ?>">
-                                        <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i1.png">
-                                        </div>
-                                        <span>Job Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('recruiter') ?>">
-                                        <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i2.jpg" alt="art profli">
-                                        </div>
-                                        <span>Recruiter Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('freelancer') ?>">
-                                        <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i3.jpg">
-                                        </div>
-                                        <span>Freelance Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('business-profile') ?>">
-                                        <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i4.jpg">
-                                        </div>
-                                        <span>Business Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('artist') ?>">
-                                        <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i5.jpg">
-                                        </div>
-                                        <span>Artistic Profile</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
 
-=======
->>>>>>> 9e48c37545d8724eecbc5cd42678f3553962092b
                     </div>
-                    
+
                 </div>
             </div>
         </section>
@@ -470,47 +422,47 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <!-- <footer> -->
         <?php echo $footer; ?>
         <!-- </footer> -->
-         <script>
-                                        var base_url = '<?php echo base_url(); ?>';
-                                        var slug = '<?php echo $slugid; ?>';
-                                        var no_business_post_html = '<?php echo $no_business_post_html ?>';
+        <script>
+            var base_url = '<?php echo base_url(); ?>';
+            var slug = '<?php echo $slugid; ?>';
+            var no_business_post_html = '<?php echo $no_business_post_html ?>';
         </script>
-        
-        
-       
+
+
+
 
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
 
-        <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());           ?>"></script>-->
-        <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
-        <!-- POST BOX JAVASCRIPT END --> 
+            <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
+            <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());            ?>"></script>-->
+            <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+            <!-- POST BOX JAVASCRIPT END --> 
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/dashboard.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
             <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
 
-        <script type = "text/javascript" src="<?php echo base_url('assets/js_min/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());           ?>"></script>-->
-        <script src="<?php echo base_url('assets/dragdrop/js_min/plugins/sortable.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js_min/fileinput.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js_min/locales/fr.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js_min/locales/es.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
-        <!-- POST BOX JAVASCRIPT END --> 
+            <script type = "text/javascript" src="<?php echo base_url('assets/js_min/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
+            <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());            ?>"></script>-->
+            <script src="<?php echo base_url('assets/dragdrop/js_min/plugins/sortable.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/js_min/fileinput.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/js_min/locales/fr.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/js_min/locales/es.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+            <!-- POST BOX JAVASCRIPT END --> 
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/dashboard.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } ?>

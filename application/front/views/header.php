@@ -48,7 +48,7 @@
                     <div class="col-md-4 col-sm-5 col-xs-5 mob-zindex">
                         <div class="logo">
                             <a tabindex="-200" href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>">
-                                <p><img src="<?php echo base_url('assets/img/logo-name.png') ?>" alt="Aileensoul"></p>
+                                <p><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="Aileensoul"></p>
                             </a>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                                             <!-- <div id="hi" class="notifications"> -->
                                             <?php if ($userdata[0]['user_image'] != '') { ?>
                                                 <div id="profile-photohead" class="profile-head">
-                                                    <img alt="<?php echo $userdata[0]['first_name'] ?>" class="img-circle" src="<?php echo USER_THUMB_UPLOAD_URL . $userdata[0]['user_image']; ?>" height="50" width="50" alt="Smiley face" />
+                                                    <img alt="<?php echo $userdata[0]['first_name'] ?>" class="img-circle" src="<?php echo USER_THUMB_UPLOAD_URL . $userdata[0]['user_image'] . '?ver='.time(); ?>" height="50" width="50" alt="Smiley face" />
                                                 </div>
 
                                                 <?php
