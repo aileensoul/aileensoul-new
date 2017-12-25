@@ -140,19 +140,19 @@
 
     $(document).ready(function () {
         // MAIN NOTIFICATION
-        var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
+      //  var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
         //var socket = io.connect();
-        socket.on('notification_count', function (data) {
-            $("#notification_count" + data.to_id).html(data.notification_count);
-            $('#notification_count' + data.to_id).css({
-                "background-color": "#FF4500",
-                "padding": "5px 6px",
-                "border-radius": "50px",
-            });
-            $('#notificationLink').addClass('notification_available');
-            document.getElementById('notification_count' + data.to_id).style.display = 'block';
-            $('#notif_audio')[0].play();
-        });
+//        socket.on('notification_count', function (data) {
+//            $("#notification_count" + data.to_id).html(data.notification_count);
+//            $('#notification_count' + data.to_id).css({
+//                "background-color": "#FF4500",
+//                "padding": "5px 6px",
+//                "border-radius": "50px",
+//            });
+//            $('#notificationLink').addClass('notification_available');
+//            document.getElementById('notification_count' + data.to_id).style.display = 'block';
+//            $('#notif_audio')[0].play();
+//        });
 
 
         //waitForMsg();
@@ -213,12 +213,12 @@
     // CLICK ON ESCAPE NOTIFICATION & MESSAGE DROP DOWN CLOSE END
 
     function show_header_notification(notification_count, to_id) {
-        var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
+       // var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
         //var socket = io.connect();
-        socket.emit('notification_count', {
-            notification_count: notification_count,
-            to_id: to_id,
-        });
+//        socket.emit('notification_count', {
+//            notification_count: notification_count,
+//            to_id: to_id,
+//        });
     }
 </script>
 <script type="text/javascript">
