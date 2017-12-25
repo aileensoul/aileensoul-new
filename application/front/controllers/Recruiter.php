@@ -4698,8 +4698,11 @@ class Recruiter extends MY_Controller {
 
         $cityname = $this->db->get_where('cities', array('city_id' => $this->data['postdata'][0]['city']))->row()->city_name;
 
+        $segment3 = array_splice($segment3, 0, -2);
+        $segment3 = implode('-', $segment3);
+        $segment3 = ucfirst($segment3);
 
-        $this->data['title'] = $cache_time1 . ' Job Vacancy in ' . $cityname . ' - Aileensoul';
+        $this->data['title'] = $segment3.' - Aileensoul';
 
         $contition_array = array('post_id !=' => $postid, 'status' => '1', 'rec_post.is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
         $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');

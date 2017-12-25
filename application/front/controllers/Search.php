@@ -1080,7 +1080,7 @@ Your browser does not support the audio tag.
 
         $title = '';
         if ($searchkeyword) {
-            $title .= 'Hire ';
+            
             $title .= $searchkeyword;
         }
         if ($searchkeyword && $search_place) {
