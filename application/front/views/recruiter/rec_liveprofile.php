@@ -465,23 +465,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             <?php if ($this->uri->segment(3) != "" && $this->uri->segment(3) != $userid) { ?>
                                       <div class="flw_msg_btn fr">
                                     <ul>      
-                                    <li>
-                                                <?php
-                                                $returnpage = $_GET['page'];
-
-                                                if ($this->uri->segment(3) != $userid) {
-                                                    ?>
-
-                                                    <a href="<?php echo base_url('chat/abc/1/2/' . $this->uri->segment(3)); ?>">Message</a>
-    <?php } else { ?>
-                                                    <a href="<?php echo base_url('chat/abc/2/1/' . $this->uri->segment(3)); ?>">Message</a>
-
-    <?php } ?>
-
-
-
-
-                                            </li> 
+                                    <li> 
+                                <a onclick="register_profile();">Message</a> 
+                            </li>
    </ul>
                                 </div>
  <?php } ?>  
