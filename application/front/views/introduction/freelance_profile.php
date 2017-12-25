@@ -152,7 +152,7 @@ header('Expires: '.$date);
                                 <?php
                             }else{ ?>
 
-                              <div class="text-center pb20 introduce_button col-md-6 col-sm-6"><a href="<?php echo base_url('freelance-hire/registration') ?>" class="btn-new1" title="Take me in" target="_blank">Take me in</a></div>
+                              <div class="text-center pb20 introduce_button col-md-6 col-sm-6"><a href="<?php echo base_url('freelance-hire') ?>" class="btn-new1" title="Freelance hire Profile Take me in" target="_blank">Freelance Hire Profile Take me in</a></div>
 
                            <?php }
                             if (!$this->session->userdata('aileenuser') || $is_profile['is_freelance_apply'] != '1') {
@@ -161,7 +161,7 @@ header('Expires: '.$date);
                                 <?php
                             }else{?>
 
-                                 <div class="text-center pb20 introduce_button col-md-6 col-sm-6"><a href="<?php echo base_url('freelance-work/registration') ?>" class="btn-new1" title="Take me in" target="_blank">Take me in</a></div>
+                                 <div class="text-center pb20 introduce_button col-md-6 col-sm-6"><a href="<?php echo base_url('freelance-work') ?>" class="btn-new1" title="Freelance Apply Profile Take me in" target="_blank">Freelance Apply Profile Take me in</a></div>
                             <?php }?>
                         </div>
                     </div>
