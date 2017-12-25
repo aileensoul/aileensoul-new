@@ -5171,7 +5171,7 @@ class Freelancer extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
             $userdata1 = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if($userdata1){
-                
+                redirect('freelance-work/home', refresh);
             }else{
             if (count($skills) > 0) {
                 foreach ($skills as $ski) {

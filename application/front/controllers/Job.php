@@ -111,7 +111,7 @@ class Job extends MY_Controller {
         $skildata = explode(',', $userdata[0]['language']);
         $this->data['selectdata'] = $skildata;
 
-        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+        $this->data['title'] = 'Basic Information | Edit Profile -  Job Profile' . TITLEPOSTFIX;
 
         $this->load->view('job/index', $this->data);
     }
@@ -290,7 +290,7 @@ class Job extends MY_Controller {
             }
         }
 
-        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+        $this->data['title'] = 'Qualification | Edit Profile - Job Profile' . TITLEPOSTFIX;
         $this->load->view('job/job_education', $this->data);
     }
 
@@ -1309,7 +1309,7 @@ class Job extends MY_Controller {
         $this->data['work_skill'] = implode(',', $detailes);
         $this->data['work_city'] = implode(',', $cities);
 
-        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+        $this->data['title'] = 'Work Area | Edit Profile - Job Profile' . TITLEPOSTFIX;
 
         $this->load->view('job/job_skill', $this->data);
     }
@@ -1451,7 +1451,7 @@ class Job extends MY_Controller {
             }
         }
 
-        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+        $this->data['title'] = 'Work Experiance | Edit Profile - Job Profile' . TITLEPOSTFIX;
 
         $this->load->view('job/job_work_exp', $this->data);
     }
@@ -1926,7 +1926,7 @@ class Job extends MY_Controller {
 //For Counting Profile data END
 
         $jobseeker_name = $this->get_jobseeker_name($id);
-        $this->data['title'] = $jobseeker_name . TITLEPOSTFIX;
+        $this->data['title'] = $jobseeker_name. " | Details | Job Profile" . TITLEPOSTFIX;
 
 //for deactive profile and slug not found then see page start
 
@@ -1958,7 +1958,7 @@ class Job extends MY_Controller {
 
         $this->progressbar();
 
-        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+        $this->data['title'] = 'Home | Job Profile' . TITLEPOSTFIX;
         // echo "<pre>";print_r($this->data['job_reg'][0]['progressbar']);die();
         $contition_array = array('status' => '1', 'is_delete' => '0');
         $this->data['govjob_category'] = $govjob_category = $this->common->select_data_by_condition('gov_category', $contition_array, $data = 'id,name', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2094,7 +2094,7 @@ class Job extends MY_Controller {
         //For Counting Profile data End
 
         $jobseeker_name = $this->get_jobseeker_name($id);
-        $this->data['title'] = $jobseeker_name . TITLEPOSTFIX;
+        $this->data['title'] = $jobseeker_name ." | Applied Job | Job Profile" . TITLEPOSTFIX;
 
         $this->load->view('job/job_applied_post', $this->data);
     }
@@ -2187,7 +2187,7 @@ class Job extends MY_Controller {
 
 
         $jobseeker_name = $this->get_jobseeker_name($id);
-        $this->data['title'] = $jobseeker_name . TITLEPOSTFIX;
+        $this->data['title'] = $jobseeker_name." | Saved Job | Job Profile" . TITLEPOSTFIX;
 
         $this->load->view('job/job_save_post', $this->data);
     }
@@ -3133,6 +3133,7 @@ class Job extends MY_Controller {
         }else{
             $this->data['profile_login'] = "live";
         }
+        $this->data['title'] = 'Register | Job Profile ' . TITLEPOSTFIX;
         $this->load->view('job/job_reg', $this->data);
     }
 
