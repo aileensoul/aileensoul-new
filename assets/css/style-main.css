@@ -728,7 +728,7 @@ textarea:focus::-webkit-input-placeholder
 }
 
 .title h1{
-    font-family: 'robotoregular';
+    font-family: 'Arial';
 	display:inline-block; 
 	text-align:center; 
 	font-size:38px; 
@@ -1911,6 +1911,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 .user-gen ol li ul li{font-size:14px;}
 .third_ts.user-gen ol{margin-left:10px;}
 .header-login .f-pass:focus{border-bottom: 1px solid #fff;}
+
 
 
 

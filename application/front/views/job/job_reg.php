@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver='.time()); ?>">
 <?php }?>
 <!-- This Css is used for call popup -->
-
+    
 
 <style>
             /***  commen css  ***/
@@ -374,12 +374,12 @@
              .profile-boxProfileCard-cover{width: 100%;border:none;padding-left: 10px;float: left;height: auto;}
              .profile-boxProfileCard-cover a{color: black;}
              .profile-boxProfileCard-cover a:hover{color: #1b8ab9;}
-             .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
+             .title h1{font-family: 'Arial';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
              .full-box-module{width: 100%;float: left;}
              .profile-boxProfileCard{border: none;}
              .d_o_b{color: #848484;font-size: 10px;font-weight: normal;line-height: 1;margin-bottom: 0;padding-left: 5px; width: 100%;}       
              .title{text-align:center;margin: 0 auto;border-bottom: 1px solid #c7c7c7;border-top-left-radius: 5px;  border-top-right-radius: 5px;}
-             .title h1{font-family: 'robotoregular';display:inline-block;text-align:center;font-size:38px;color:#1b8ab9;
+             .title h1{font-family: 'Arial';display:inline-block;text-align:center;font-size:38px;color:#1b8ab9;
             background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -388,7 +388,7 @@
            .sign_in p a:hover{text-decoration:underline;}
            .login p a:hover{text-decoration:underline; color:#337ab7;}
            #forgot_password .modal-header label{color: #1b8ab9 !important; margin-bottom: 0px;}
-           #forgot_password .modal-body label{color: #5b5b5b !important;}
+           /*#forgot_password .modal-body label{color: #5b5b5b !important;}*/
            #forgot_password .submit_btn{text-align:center;}
            .modal-content{padding: 0px !important;width: 560px;}
             .sign_in p{font-size:14px; margin-bottom:9px;}
@@ -413,6 +413,32 @@
             .cus-no-login.modal-open{overflow-y:auto;}
             .cus-no-login .title h1{text-align: center;margin-top: 20px;line-height: 1.2;}
             .modal-footer{border: none;}
+
+        .cus-error .error-msg p, .cus-error label.error{
+            background: none;
+            color: red !important;
+            position: absolute;
+            z-index: 8;
+            right: inherit;
+            padding:inherit !important;
+            line-height: 15px;
+            padding-right: 0px !important;
+            font-size: 11px !important;
+        }
+        .dob  label.error {
+            margin-top: 35px;
+            left: 30px;
+        }
+        .gender-custom label.error {
+            margin-top: 35px;
+            left: 30px;
+        }
+        .cus-forgot label.error {
+            padding: 0px !important;            
+            left: 16px;
+        }
+
+
         </style>
 </head>
 <!-- END HEAD -->
@@ -422,7 +448,7 @@
 <!-- start header -->
 <?php echo $header; ?>
 <!-- END HEADER -->
-<body class="cus-no-login botton_footer">
+<body class="cus-no-login botton_footer cus-error">
    <section>
       <div class="user-midd-section " id="paddingtop_fixed">
          <div class="container">
@@ -762,7 +788,7 @@
                         <button type="button" class="modal-close" data-dismiss="modal">&times;</button>  
                         <label style="color: #a0b3b0;">Forgot Password</label>
                     </div>
-                    <div class="modal-body" style="text-align: center;padding: 15px!important;">
+                    <div class="modal-body cus-forgot" style="text-align: center;padding: 15px!important;">
                         <label  style="margin-bottom: 15px; color: #a0b3b0;"> Enter your e-mail address below to get your password.</label>
                         <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
                         <div id="error2" style="display:block;">

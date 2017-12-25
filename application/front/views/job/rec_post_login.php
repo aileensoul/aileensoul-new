@@ -362,9 +362,33 @@
         }
         /*second*/
 
+   .cus-error .error-msg p, label.error{
+            background: none;
+            color: red !important;
+            position: absolute;
+            z-index: 8;
+            right: inherit;
+            padding:inherit !important;
+            line-height: 15px;
+            padding-right: 0px !important;
+            font-size: 11px !important;
+        }
+        .dob  label.error {
+            margin-top: 35px;
+            left: 30px;
+        }
+        .gender-custom label.error {
+            margin-top: 35px;
+            left: 30px;
+        }
+        .cus-forgot label.error {
+            padding: 0px !important;            
+            left: 16px;
+        }
+
 
     </style>
-    <body class="page-container-bg-solid page-boxed no-login freeh3 cust-job-width paddnone">
+    <body class="page-container-bg-solid page-boxed no-login freeh3 cust-job-width paddnone cus-error">
 
         <header>
             <div class="container">
@@ -1290,7 +1314,7 @@
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
+                    <div class="modal-body cus-forgot">
                         <div class="right-main">
                             <div class="right-main-inner">
                                 <div class="">
