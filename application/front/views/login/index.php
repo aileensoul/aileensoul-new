@@ -31,7 +31,7 @@ header('Expires: '.$date);
        
       
 <?php
-        if (IS_REC_CSS_MINIFY == '0') {
+        if (IS_OUTSIDE_CSS_MINIFY == '0') {
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
@@ -275,8 +275,16 @@ echo form_open('profile/forgot_password', $form_attribute);
 
 
         <!-- script for login  user valoidtaion start -->
-
-         <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+<?php
+        if (IS_OUTSIDE_JS_MINIFY == '0') {
+            ?>
+              <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <?php
+        } else {
+            ?>
+              <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+       
         <script>
                                             function login()
                                             {
