@@ -29,14 +29,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <title>Chat | Aileensoul</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
+       
+                  <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
+        <?php
+        if (IS_MSG_CSS_MINIFY == '0') {
+            ?>
         <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>-->
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
         <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/css/1.10.3.jquery-ui.css');  ?>">-->
         <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+            <?php
+        } else {
+            ?>
+        <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>-->
+        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+        <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/css/1.10.3.jquery-ui.css');  ?>">-->
+        <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+        <?php } ?>
+         <?php
+        if (IS_MSG_JS_MINIFY == '0') {
+            ?>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-        <!-- http://bootsnipp.com/snippets/4jXW -->
+            <?php
+        } else {
+            ?>
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+        <?php } ?>
+        
 
+        <!-- http://bootsnipp.com/snippets/4jXW -->
+     <?php
+        if (IS_MSG_JS_MINIFY == '0') {
+            ?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css'); ?>">
 
@@ -44,6 +68,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
 
+            <?php
+        } else {
+            ?>
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css'); ?>">
+
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css'); ?>">
+
+        <?php } ?>
+       
         <style type="text/css">
             .msg_right:hover .messagedelete{ visibility: visible;opacity: 1;}
             .msg_right .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
@@ -1538,7 +1574,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     //ARTUSTIC POST SERACH
                 </script>
                 
-                    <sc                            ript> 
+                    <script> 
                                 var message_from_profile = <?php echo $message_from_profile ?>;
 
                                                       // business data start

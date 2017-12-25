@@ -65,7 +65,7 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <link rel="canonical" href="http://www.aileensoul.com" />
 <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
 <?php
-if(IS_CSS_MINIFY == '0'){
+if(IS_OUTSIDE_CSS_MINIFY == '0'){
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/media.css?ver=' . time()); ?>">
@@ -78,8 +78,23 @@ if(IS_CSS_MINIFY == '0'){
 <link rel="stylesheet" href="<?php echo base_url('assets/js/scrollbar/jquery.mCustomScrollbar.css') ?>">
 <?php
 }else{ ?>
-<link rel="stylesheet"  type="text/css" href="<?php echo base_url('assets/css_min/common-header.min.css?ver=' . time()); ?>">    
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/media.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/animate.css?ver=' . time()) ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css?ver=' . time()); ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/js_min/scrollbar/style.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/js_min/scrollbar/jquery.mCustomScrollbar.css') ?>">
 <?php }
+?>
+
+
+
+
+<?php
+if(IS_OUTSIDE_JS_MINIFY == '0'){
 ?>
 <?php
 if ($this->uri->segment(1) == 'profiles') {
@@ -92,4 +107,20 @@ if ($this->uri->segment(1) == 'profiles') {
 <?php }
 ?>
 <script src="<?php echo base_url('assets/js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>  
+<?php
+}else{ ?>
+<?php
+if ($this->uri->segment(1) == 'profiles') {
+    ?>
+    <script src="<?php echo base_url('assets/js_min/jquery-2.0.3.min.js?ver=' . time()); ?>"></script> 
+    <?php
+} else {
+    ?>
+    <script src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+<?php }
+?>
+<script src="<?php echo base_url('assets/js_min/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>  
+<?php }
+?>
+
 <script src="<?php echo base_url('node_modules/socket.io/node_modules/socket.io-client/socket.io.js'); ?>"></script>
