@@ -51,18 +51,31 @@ header('Expires: '.$date);
         }
         ?>
             <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+
+            <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <?php }else{?>
+        <script async src="//pagead2.googlesyndication.com/pagead/js_min/adsbygoogle.js"></script>
+        <?php }?>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({
                 google_ad_client: "ca-pub-6060111582812113",
                 enable_page_level_ads: true
             });
         </script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />  
+
+        <?php if (IS_OUTSIDE_CSS_MINIFY == '0'){?>      
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
+        <?php }else{?>
+         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/gyc.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css'); ?>">
+        <?php }?>
     </head>
     <body class="outer-page">
         <div class="main-inner">
