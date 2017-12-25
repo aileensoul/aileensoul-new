@@ -34,7 +34,7 @@ class Business_profile extends MY_Controller {
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,business_slug,company_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($businessdata) {
             //$company_name = $this->get_company_name($businessdata[0]['business_slug']);
-            $this->data['title'] = ucwords($businessdata[0]['company_name']). ' | Reactive | ' . ' Business Profile' . TITLEPOSTFIX;
+            $this->data['title'] = ucwords($businessdata[0]['company_name']). ' | Reactive | ' . ' Business Profile - Aileensoul';
             $this->load->view('business_profile/reactivate', $this->data);
         } else {
             $userid = $this->session->userdata('aileenuser');

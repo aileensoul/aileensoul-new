@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="h_w">
     <head>
-        <title><?php echo $title; ?></title>
+        <title>Home | Freelance Profile - Aileensoul</title>
         <?php echo $head; ?>  
 
     </head>
