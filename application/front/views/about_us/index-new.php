@@ -32,15 +32,26 @@
         }
         ?>
         <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+       <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <?php }else{?>
+        <script async src="//pagead2.googlesyndication.com/pagead/js_min/adsbygoogle.js"></script>
+
+        <?php }?>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({
                 google_ad_client: "ca-pub-6060111582812113",
                 enable_page_level_ads: true
             });
         </script>
+
+         <?php if (IS_OUTSIDE_CSS_MINIFY == '0'){?>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver='.time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver='.time()) ?>">
+        <?php }else{?>
+         <link rel="stylesheet" href="<?php echo base_url('assets/css_min/common-style.css?ver='.time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css?ver='.time()) ?>">
+        <?php }?>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 
@@ -268,6 +279,10 @@
             </section>
             <?php echo $login_footer ?>
         </div>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
+       <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
+        <script src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
+        <?php }else{?>
+        <script src="<?php echo base_url('assets/js_min/webpage/aboutus.js'); ?>"></script>
+        <?php }?>
     </body>
 </html>
