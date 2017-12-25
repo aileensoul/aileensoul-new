@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Reactivate</title>
+        <title><?php echo $userdata[0]['first_name']." ".$userdata[0]['last_name'] . " | Reactivate | Freelancer Profile - Aileensoul" ?></title>
         <!-- http://bootsnipp.com/snippets/4jXW -->
       
     </head>

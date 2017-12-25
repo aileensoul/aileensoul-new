@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Reactivate</title>
+        <title><?php echo $userdata[0]['first_name']." ".$userdata[0]['last_name'] . " | Reactivate | Employer Profile - Aileensoul" ?></title>
         <?php echo $head; ?>
      <?php
         if (IS_HIRE_CSS_MINIFY == '0') {?>
