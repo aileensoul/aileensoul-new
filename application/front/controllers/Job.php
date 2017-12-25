@@ -3451,7 +3451,7 @@ class Job extends MY_Controller {
         if (empty($search_job) && empty($search_place)) {
             $title .= 'Find Latest Job Vacancies at Your Location';
         }
-        $this->data['title'] = "$title | Aileensoul";
+        $this->data['title'] = "Search | ".$title ." - Job Profile - Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
 

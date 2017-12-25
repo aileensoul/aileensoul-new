@@ -4785,6 +4785,7 @@ class Freelancer extends MY_Controller {
         // echo "<pre>"; print_r($segment3);die();
         $segment3 = array_splice($segment3, 0, -2);
         $segment3 = implode('-', $segment3);
+        $segment3 = ucfirst($segment3);
 
         $this->data['title'] = $segment3 . TITLEPOSTFIX;
         if ($this->session->userdata('aileenuser')) {
