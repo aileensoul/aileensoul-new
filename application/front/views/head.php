@@ -74,8 +74,8 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css?ver=' . time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver=' . time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/js/scrollbar/style.css') ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/js/scrollbar/jquery.mCustomScrollbar.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/js/scrollbar/style.css?ver='.time()) ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/js/scrollbar/jquery.mCustomScrollbar.css?ver='.time()) ?>">
 <?php
 }else{ ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
@@ -85,8 +85,8 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css?ver=' . time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver=' . time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css?ver=' . time()); ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/js_min/scrollbar/style.css') ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/js_min/scrollbar/jquery.mCustomScrollbar.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/js_min/scrollbar/style.css?ver='.time()) ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/js_min/scrollbar/jquery.mCustomScrollbar.css?ver='.time()) ?>">
 <?php }
 ?>
 
@@ -123,4 +123,4 @@ if ($this->uri->segment(1) == 'profiles') {
 <?php }
 ?>
 
-<script src="<?php echo base_url('node_modules/socket.io/node_modules/socket.io-client/socket.io.js'); ?>"></script>
+<script src="<?php echo base_url('node_modules/socket.io/node_modules/socket.io-client/socket.io.js?ver='.time()); ?>"></script>
