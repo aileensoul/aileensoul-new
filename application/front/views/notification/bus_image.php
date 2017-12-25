@@ -1103,10 +1103,18 @@
             </div>
         </div>
         <?php echo $footer; ?>
+
+           <?php if(IS_NOT_JS_MINIFY == '0'){ ?>  
         <script src="<?php echo base_url('assets/js/jquery.wallform.js?ver=' . time()); ?>"></script> 
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery.jMosaic.js?ver=' . time()); ?>"></script>
+        <?php }else{?>
+         <script src="<?php echo base_url('assets/js_min/jquery.wallform.js?ver=' . time()); ?>"></script> 
+        <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/jquery.jMosaic.js?ver=' . time()); ?>"></script>
+        <?php }?>
         <!-- script for business autofill -->
         <script>
                                         var base_url = '<?php echo base_url(); ?>';

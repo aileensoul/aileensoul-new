@@ -153,7 +153,13 @@
  <script>
                                                                                 var base_url = '<?php echo base_url(); ?>';
   </script>
+
+     <?php if(IS_NOT_JS_MINIFY == '0'){ ?>  
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/notification/notification.js'); ?>"></script>
+<?php }else{?>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/notification/notification.js'); ?>"></script>
+
+<?php }?>
 <script type="text/javascript">
    function not_active(not_id)
    { 
