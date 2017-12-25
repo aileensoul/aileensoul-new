@@ -3,10 +3,20 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
 
+         <?php
+        if (IS_JOB_CSS_MINIFY == '0') {
+            ?>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-3.min.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css'); ?>">
+        <?php }else{?>
+
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/bootstrap-3.min.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css'); ?>">
+
+        <?php }?>
        
        <!--  <link rel="stylesheet" href="css/jquery.fancybox.css"> -->
     </head>
@@ -239,12 +249,19 @@
         <!-- FIELD VALIDATION JS START -->
         
         
-        
+        <?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
           
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
        <!--  <script type="text/javascript" src="<?php// echo base_url('assets/js/jquery.fancybox.js'); ?>"></script> -->
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-       
+       <?php }else{?>
+        <script src="<?php echo base_url('assets/js_min/croppie.js'); ?>"></script>  
+       <!--  <script type="text/javascript" src="<?php// echo base_url('assets/js/jquery.fancybox.js'); ?>"></script> -->
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+
+       <?php }?>
         <script>
                   var base_url = '<?php echo base_url(); ?>';
                   var id = '<?php echo $rec_data[0]['user_id'];?>';
@@ -252,7 +269,16 @@
         </script>
 
         <!-- FIELD VALIDATION JS END -->
+
+          <?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/recruiter_post.js'); ?>"></script>
+        <?php }else{?>
+
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_common.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/recruiter_post.js'); ?>"></script>
+        <?php }?>
     </body>
 </html>

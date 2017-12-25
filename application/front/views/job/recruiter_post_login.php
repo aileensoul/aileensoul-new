@@ -7,9 +7,18 @@
 
       <title><?php echo $title; ?></title>
 
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-      
+ <?php
+        if (IS_JOB_CSS_MINIFY == '0') {
+            ?>
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">      
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">
+
+ <?php }else{?>
+ 
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver='.time()); ?>">      
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver='.time()); ?>">
+
+ <?php }?>     
    </head>
    <!-- END HEAD -->
    <style>
@@ -758,9 +767,16 @@
 <!-- script for skill textbox automatic start-->
 <!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
 
+<?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
  <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
+<?php }else{?>
+<script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
+ <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.js?ver='.time()); ?>"></script>
 
+<?php }?>
 <script>
     var base_url = '<?php echo base_url(); ?>';
     var id = '<?php echo $rec_data[0]['user_id'];?>';
@@ -770,7 +786,12 @@
     var csrf_token_name='<?php echo $this->security->get_csrf_token_name(); ?>';
     var csrf_hash='<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
-
+<?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
   <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/recruiter_post_login.js'); ?>"></script>
+  <?php }else{?>
+  <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/recruiter_post_login.js'); ?>"></script>
+  <?php }?>
 </body>
 </html>

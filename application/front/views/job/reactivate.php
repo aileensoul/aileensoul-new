@@ -6,9 +6,20 @@
 <html>
    <head>
       <meta charset="utf-8">
-      <title><?php echo $title; ?></title>  
+      <title><?php echo $title; ?></title> 
+
+      <?php
+        if (IS_JOB_CSS_MINIFY == '0') {
+            ?>
+
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
 	   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">
+
+      <?php }else{?>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver='.time()); ?>">
+
+      <?php }?>
    </head>
    <!--header start-->
    <?php echo $header; ?>
@@ -38,7 +49,13 @@
 <?php echo $footer;  ?>
 <!-- </footer> -->
     
+    <?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
      <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+<?php }else{?>
+     <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
 
+<?php }?>
    </body>
 </html>
