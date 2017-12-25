@@ -14,7 +14,15 @@
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
         <?php } ?>
+
+         <?php
+        if (IS_JOB_CSS_MINIFY == '0') {
+            ?>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">
+        <?php }else{?>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver='.time()); ?>">
+
+        <?php }?>
 
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push freeh3 cust-job-width paddnone">
@@ -684,11 +692,26 @@
             <script defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
 
+        <?php
+        if (IS_JOB_JS_MINIFY == '0') {
+            ?>
+
         <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
             <script src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
         <?php } else { ?>
             <script src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>
         <?php } ?>
+
+        <?php }else{?>
+
+
+        <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
+            <script src="<?php echo base_url('assets/js_min/webpage/recruiter/search.js'); ?>"></script>
+        <?php } else { ?>
+            <script src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+        
+        <?php }?>
         <script>
                                                                     var base_url = '<?php echo base_url(); ?>';
                                                                     var data1 = <?php echo json_encode($de); ?>;
