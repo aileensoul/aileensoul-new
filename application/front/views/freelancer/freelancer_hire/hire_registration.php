@@ -405,6 +405,30 @@
             .cus-no-login.modal-open{overflow-y:auto;}
 
                 /*second*/
+
+        .cus-error .error-msg p, .cus-error label.error{
+        background: none;
+        color: red !important;
+        position: absolute;
+        z-index: 8;
+        right: inherit;
+        padding:inherit !important;
+        line-height: 15px;
+        padding-right: 0px !important;
+        font-size: 11px !important;
+        }
+        .dob  label.error {
+            margin-top: 35px;
+            left: 30px;
+        }
+        .gender-custom label.error {
+            margin-top: 35px;
+            left: 30px;
+        }
+        .cus-forgot label.error {
+            padding: 0px !important;            
+            left: 16px;
+        }
             
 
         </style>
@@ -433,7 +457,7 @@
             
   <?php  } ?>
     <!-- END HEADER -->
-    <body class="cus-no-login botton_footer">
+    <body class="cus-no-login botton_footer cus-error">
         <section>
             <div class="user-midd-section " id="paddingtop_fixed">
                 <div class="container">
