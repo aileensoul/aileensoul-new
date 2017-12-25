@@ -132,8 +132,12 @@ echo $head;
 </style>
 
 <!--post save success pop up style end -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
 
+ <?php if(IS_NOT_CSS_MINIFY == '0'){ ?>  
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+<?php }else{?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+<?php }?>
 
 
 <style type="text/css" media="screen">
@@ -589,9 +593,11 @@ echo $head;
 
 
 
-
+ <?php if(IS_NOT_JS_MINIFY == '0'){ ?>  
             <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
-
+<?php }else{?>
+             <script src="<?php echo base_url('assets/js_min/croppie.js'); ?>"></script>
+<?php }?>
             <script>
 
                     var data = <?php echo json_encode($demo); ?>;
@@ -623,7 +629,12 @@ echo $head;
                     });
 
             </script>
+
+            <?php if(IS_NOT_JS_MINIFY == '0'){ ?>  
             <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+            <?php }else{?>
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+            <?php }?>
             <script>
                     function removepopup(id) {
                         $('.biderror .mes').html("<div class='pop_content'>Are you sure want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");

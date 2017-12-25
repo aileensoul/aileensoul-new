@@ -3792,7 +3792,6 @@ class Freelancer extends MY_Controller {
         $data = str_replace('data:image/png;base64,', '', $data);
         $data = str_replace(' ', '+', $data);
 //        echo $data;die();
-
         // $imageName = time() . '.png';
         // $base64string = $data;
         // file_put_contents('uploads/free_hire_bg/' . $imageName, base64_decode(explode(',', $base64string)[1]));
@@ -3801,11 +3800,11 @@ class Freelancer extends MY_Controller {
         $user_bg_path = $this->config->item('free_hire_bg_main_upload_path');
         $imageName = time() . '.png';
         $data = base64_decode($data);
-      //  echo $data;die();
+        //  echo $data;die();
         $file = $user_bg_path . $imageName;
         $success = file_put_contents($file, $data);
         // file_put_contents($user_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
-      
+
         $main_image = $user_bg_path . $imageName;
         $main_image_size = filesize($main_image);
 
@@ -5169,7 +5168,11 @@ class Freelancer extends MY_Controller {
             $this->load->view('freelancer/freelancer_post/registation');
         } else {
 
-
+            $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
+            $userdata1 = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            if($userdata1){
+                
+            }else{
             if (count($skills) > 0) {
                 foreach ($skills as $ski) {
                     if ($ski != " ") {
@@ -5236,6 +5239,7 @@ class Freelancer extends MY_Controller {
                     redirect('freelance-work/registation', refresh);
                 }
             }
+        }
         }
     }
 
@@ -5397,6 +5401,7 @@ class Freelancer extends MY_Controller {
         $count = $result[0]['total'];
         return $count;
     }
+
 //function user when live link and login start
     public function add_post_added() {
         $userid = $this->session->userdata('aileenuser');
@@ -5471,7 +5476,7 @@ class Freelancer extends MY_Controller {
         ));
     }
 
-    public function add_project_login(){
+    public function add_project_login() {
         $userid = $this->session->userdata('aileenuser');
         $postname = $this->input->post('post_name');
         $post_desc = $this->input->post('post_desc');
@@ -5484,7 +5489,7 @@ class Freelancer extends MY_Controller {
         $rate = $this->input->post('rate');
         $currency = $this->input->post('currency');
         $worktype = $this->input->post('Worktype');
-        
+
         $skills = explode(',', $skills);
         //skill code start
         if (count($skills) > 0) {
@@ -5514,7 +5519,7 @@ class Freelancer extends MY_Controller {
             $skills = implode(',', $skill);
         }
         //skill code end
-        
+
         $data = array(
             'post_name' => trim($postname),
             'post_description' => trim($post_desc),
@@ -5533,9 +5538,9 @@ class Freelancer extends MY_Controller {
             'status' => '1',
             'is_delete' => '0'
         );
-        
+
         $insert_id = $this->common->insert_data_getid($data, 'freelancer_post');
-        
+
         if ($insert_id) {
             $data = "ok";
             echo json_encode(
@@ -5552,8 +5557,6 @@ class Freelancer extends MY_Controller {
                         "id" => $userid,
             ));
         }
-        
-
-        
     }
+
 }

@@ -1,6 +1,13 @@
 
 <?php echo $head; ?>
+
+   <?php if(IS_NOT_CSS_MINIFY == '0'){ ?>  
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+
+<?php }else{?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+
+<?php }?>
 <?php echo $header; ?>
 
 <body   class="page-container-bg-solid page-boxed ">

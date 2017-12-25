@@ -101,9 +101,12 @@ body {
 </style>
 
 <!--post save success pop up style end -->
-
+ <?php if(IS_NOT_CSS_MINIFY == '0'){ ?>  
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+<?php }else{?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
 
+<?php }?>
 <!--<link rel="stylesheet" href="<?php// echo base_url('assets/css/bootstrap-3.min.css'); ?>">-->
 
 
