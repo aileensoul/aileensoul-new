@@ -2069,7 +2069,7 @@ Your browser does not support the audio tag.
             $this->data['busimagedata'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
         $company_name = $this->get_company_name($id);
-        $this->data['title'] = ucwords($company_name) .' | Detail' .TITLEPOSTFIX;
+        $this->data['title'] = ucwords($company_name) .' | Details' .TITLEPOSTFIX;
 
 //manage post end
         if (count($business_data) == 0) {
@@ -5545,7 +5545,7 @@ Your browser does not support the audio tag.
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         }
         $company_name = $this->get_company_name($slug_id);
-        $this->data['title'] = ucwords($company_name) .' | Photo' .  ' | Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = ucwords($businessdata1[0]['company_name']) .' | Photo' .  ' | Business Profile' . TITLEPOSTFIX;
 
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $this->load->view('business_profile/business_photos', $this->data);
@@ -5581,7 +5581,7 @@ Your browser does not support the audio tag.
         }
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $company_name = $this->get_company_name($slug_id);
-        $this->data['title'] = ucwords($company_name) . ' | Video' . ' | Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = ucwords($businessdata1[0]['company_name']) . ' | Video' . ' | Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/business_videos', $this->data);
     }
 
@@ -5616,7 +5616,7 @@ Your browser does not support the audio tag.
         }
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $company_name = $this->get_company_name($slug_id);
-        $this->data['title'] = ucwords($company_name) . ' | Audio' . ' | Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = ucwords($businessdata1[0]['company_namebusiness_pdf']) . ' | Audio' . ' | Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/business_audios', $this->data);
     }
 
@@ -5651,7 +5651,7 @@ Your browser does not support the audio tag.
         }
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $company_name = $this->get_company_name($slug_id);
-        $this->data['title'] = ucwords($company_name) . ' | PDF' . ' | Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = ucwords($businessdata1[0]['company_name']) . ' | PDF' . ' | Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/business_pdf', $this->data);
     }
 
@@ -8283,7 +8283,7 @@ Your browser does not support the audio tag.
         $this->is_business_profile_register();
 
         $bussdata = $this->common->select_data_by_id('business_profile', 'user_id', $userid, $data = '*', $join_str = array());
-
+       
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'contact_person.contact_from_id';
@@ -8304,7 +8304,7 @@ Your browser does not support the audio tag.
         $this->data['friendlist'] = array_merge($friendlist_con, $friendlist_req);
 
         $company_name = $this->get_company_name($slug_id);
-        $this->data['title'] = ucwords($company_name) . ' | Contact Request' . ' | Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = ucwords($bussdata[0]['company_name']) . ' | Contact Request' . ' | Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/contact_list', $this->data);
     }
 

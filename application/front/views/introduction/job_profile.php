@@ -147,7 +147,11 @@ header('Expires: '.$date);
                             ?>
                             <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('job/profile') ?>" target="_blank" title="Create Job Profile" class="btn-new1">Create Job Profile</a></div>
                             <?php
-                        }
+                        }else{ ?>
+
+                        <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('job') ?>" target="_blank" title="Take me in" class="btn-new1">Take me in</a></div>
+
+                       <?php }
                         ?>
                     </div>
                 </div>
