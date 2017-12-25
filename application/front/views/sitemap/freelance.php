@@ -91,7 +91,7 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
                                     <li style="list-style-type: circle;font-size: 20px;">Login/Register</li>
                                     <li style="padding-bottom: 30px;">Register/Takeme in</li>
                                     <!--<li><a href="<?php echo base_url() ?>freelance-hire/add-projects" target="_blank">Post a Project</a></li>-->
-                                    <li style="margin-left: -20px;padding-left: 38px;font-size: 20px;cursor: text;"><a style="text-transform: none;color: #333;pointer-events: none;" href=""> Post a Project </a></li>
+                                    <li style="margin-left: -20px;padding-left: 38px;font-size: 20px;cursor: text;"><a style="text-transform: none;color: #333;pointer-events: none;" href="<?php echo base_url('freelance-hire/add-projects'); ?>"> Post a Project </a></li>
                                 </ul>
                             </div>
                         </div>
