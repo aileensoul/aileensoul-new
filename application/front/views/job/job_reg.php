@@ -421,6 +421,7 @@
             z-index: 8;
             right: inherit;
             padding:inherit !important;
+            padding: 0px !important; 
             line-height: 15px;
             padding-right: 0px !important;
             font-size: 11px !important;
