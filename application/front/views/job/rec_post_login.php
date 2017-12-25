@@ -374,15 +374,15 @@
             padding-right: 0px !important;
             font-size: 11px !important;
         }
-        .dob  label.error {
+        .dob  label.error{
             margin-top: 35px;
             left: 30px;
         }
-        .gender-custom label.error {
+        .gender-custom label.error{
             margin-top: 35px;
             left: 30px;
         }
-        .cus-forgot label.error {
+        .cus-forgot label.error{
             padding: 0px !important;            
             left: 16px;
         }
