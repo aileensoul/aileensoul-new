@@ -77,9 +77,11 @@ $id = $this->db->get_where('job_reg', array('slug' => $this->uri->segment(3)))->
                                     </a>
                                 </li>
         <?php } ?>
+                                <?php if($this->session->userdata('aileenuser')){ ?>
                             <li> 
                                 <a href="<?php echo base_url('chat/abc/2/1/' . $id); ?>">Message</a> 
                             </li>
+                                <?php } ?>
                         </ul>
                     </div>              <?php }
 } ?>
