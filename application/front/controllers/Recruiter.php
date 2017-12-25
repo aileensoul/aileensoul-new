@@ -875,7 +875,7 @@ class Recruiter extends MY_Controller {
     public function rec_post($id = "") {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
-        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Post | RecruiterProfile - Aileensoul';
+        $this->data['title'] = $this->data['recdata'][0]['rec_firstname'] . ' ' . $this->data['recdata'][0]['rec_lastname'] . ' | Post | RecruiterProfile - Aileensoul';
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -1324,7 +1324,7 @@ class Recruiter extends MY_Controller {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
 
-        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Details | RecruiterProfile - Aileensoul';
+        
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -1343,6 +1343,8 @@ class Recruiter extends MY_Controller {
             $this->rec_avail_check($id);
             //   $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $id, $data, $join_str = array());
         }
+       
+         $this->data['title'] = $this->data['recdata'][0]['rec_firstname'] . ' ' . $this->data['recdata'][0]['rec_lastname'] . ' | Details | RecruiterProfile - Aileensoul'; 
         $this->data['reg_id'] = $id;
         if ($userid) {
             $this->load->view('recruiter/rec_profile', $this->data);
@@ -4699,7 +4701,7 @@ class Recruiter extends MY_Controller {
         $cityname = $this->db->get_where('cities', array('city_id' => $this->data['postdata'][0]['city']))->row()->city_name;
 
         $segment3 = array_splice($segment3, 0, -2);
-        $segment3 = implode('-', $segment3);
+        $segment3 = implode(' ', $segment3);
         $segment3 = ucfirst($segment3);
 
         $this->data['title'] = $segment3.' - Aileensoul';
