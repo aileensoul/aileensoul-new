@@ -367,7 +367,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             <?php } ?>
 
                             <?php if ($this->uri->segment(3) == $userid) { ?>
-                                <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
+                     <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png" alt="cameraimage"> Update Profile Picture</a>
 
                             <?php } ?>
                         </div>
