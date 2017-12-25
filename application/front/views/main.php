@@ -70,13 +70,13 @@ header("Pragma: no-cache"); // HTTP/1.0
         <?php
         if (IS_OUTSIDE_CSS_MINIFY == '0') {
             ?>
-           <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+           <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver="<?php echo time() ?>>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
             <?php
         } else {
             ?>
-         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver="<?php echo time() ?>>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
         <?php } ?>
@@ -138,7 +138,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-lg-5">
-                            <a tabindex="1"  href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png') ?>" alt="logo"></a>
+                            <a tabindex="1"  href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
                         </div>
                         <div class="col-lg-1"></div>
                         <div class="col-md-8 col-sm-9 col-lg-6">
