@@ -5,12 +5,24 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+         <?php if (IS_OUTSIDE_CSS_MINIFY == '0'){?>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css') ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/slider.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css') ?>">
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+
+        <?php }else{?>
+
+         <link rel="stylesheet" href="<?php echo base_url('assets/css_min/jquery.fancybox.css') ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/slider.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css') ?>">
+        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css_min/font-awesome.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+        <?php }?>
         <style>
             .cover .modal.in .modal-dialog{
                 top:inherit;
@@ -954,10 +966,19 @@
 <?php echo $login_footer ?>
 <?php echo $footer ?>
 
+ <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
+
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
+<?php }else{?>
+
+       <script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.fancybox.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/croppie.js'); ?>"></script>
+<?php }?>
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
 
@@ -1088,8 +1109,15 @@
         <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>
+
+         <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/dashboard/cover.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/jquery.popupoverlay.js'); ?>"></script>
+        <?php }else{?>
+
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/dashboard/cover.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/jquery.popupoverlay.js'); ?>"></script>
+        <?php }?>
         <script>document.body.className += ' fade-out';</script>
         <script>
             $(document).ready(function () {
