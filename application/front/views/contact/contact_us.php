@@ -53,17 +53,27 @@ header('Expires: '.$date);
         }
         ?>
         <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+         <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <?php }else{?>
+        <script async src="//pagead2.googlesyndication.com/pagead/js_min/adsbygoogle.js"></script>
+        <?php }?>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({
                 google_ad_client: "ca-pub-6060111582812113",
                 enable_page_level_ads: true
             });
         </script>
+         <?php if (IS_OUTSIDE_CSS_MINIFY == '0'){?>
        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
-       
+       <?php }else{?>
+
+         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver='.time()); ?>">
+       <?php }?>
     </head>
     <body class="contact outer-page">
         <div class="main-inner">
@@ -173,9 +183,17 @@ header('Expires: '.$date);
     var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
     var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
+ <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/webpage/contactus.js?ver='.time()); ?>"></script>
+<?php }else{?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js_min/webpage/contactus.js?ver='.time()); ?>"></script>
+<?php }?>
 </body>
 </html>
