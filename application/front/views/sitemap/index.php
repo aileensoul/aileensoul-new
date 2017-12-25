@@ -59,8 +59,17 @@ header('Cache-Control: public, max-age=30');
                     enable_page_level_ads: true
                 });
         </script>
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()) ?>">
+         <?php
+if(IS_OUTSIDE_CSS_MINIFY == '0'){
+?>
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()) ?>">
+<?php } else{ ?>
+    <link rel="stylesheet" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()) ?>">
+
+<?php } ?>
+       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body class="site-map outer-page" >
@@ -80,6 +89,15 @@ header('Cache-Control: public, max-age=30');
             echo $login_footer
             ?>
         </div>
-        <script src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
+        
+         <?php
+if(IS_OUTSIDE_JS_MINIFY == '0'){
+?>
+   <script src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
+<?php } else{ ?>
+   <script src="<?php echo base_url('assets/js_min/webpage/aboutus.js'); ?>"></script>
+
+<?php } ?>
+     
     </body>
 </html>

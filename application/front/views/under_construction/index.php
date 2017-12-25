@@ -5,8 +5,15 @@
 <meta name="description" content="">
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:regular,bold"> 
+<?php
+if(IS_OUTSIDE_CSS_MINIFY == '0'){
+?>
 <link rel="stylesheet" type="text/css" href="assets/css/under-bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/under-styles.css">
+<?php }else{ ?>
+<link rel="stylesheet" type="text/css" href="assets/css_min/under-bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css_min/under-styles.css"><?php } ?>
+
 </head>
 
 <body id="home">
@@ -84,10 +91,19 @@
     </div>
   </div>
 </section>
+    <?php
+if(IS_OUTSIDE_JS_MINIFY == '0'){
+?>
 <!--Scripts-->
 <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-3.2.1.min.js"></script> 
 <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.countdown.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script>
+<?php } else{ ?>
+<!--Scripts-->
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js_min/jquery-3.2.1.min.js"></script> 
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js_min/jquery.countdown.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js_min/global.js"></script>
 
+<?php } ?>
 </body>
 </html>
