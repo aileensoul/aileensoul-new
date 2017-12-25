@@ -650,11 +650,11 @@ class Artist extends MY_Controller {
                 redirect('artist');
             } else {
                 $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
-                $artistic_name = $this->get_artistic_name($id);
-                $this->data['title'] = ucfirst(strtolower($artistic_name)).' | Dashboard'.'- ArtisticProfile' . TITLEPOSTFIX;
+                $artistic_name = $this->get_artistic_name($this->data['artid']);
+                $this->data['title'] = $artistic_name.' | Dashboard'.'- Artistic Profile' . TITLEPOSTFIX;
                 $this->load->view('artist/art_manage_post', $this->data);
             }
-        } else {
+        } else { 
 
 
             if (!$this->data['artisticdata'] && !$this->data['artsdata']) { //echo "22222222"; die();
@@ -1927,8 +1927,8 @@ class Artist extends MY_Controller {
         $this->data['get_url'] = $this->get_url($this->data['artisticdata'][0]['user_id']);
         if ($userid) {
             if ($this->data['artisticdata']) {
-                $artistic_name = $this->get_artistic_name($id);
-                $this->data['title'] =  $this->data['title'] = ucfirst(strtolower($artistic_name)).' | Details'.'- ArtisticProfile' . TITLEPOSTFIX;;
+                $artistic_name = $this->get_artistic_name($this->data['artisticdata'][0]['user_id']);
+                $this->data['title'] =  $this->data['title'] = $artistic_name.' | Details'.'- Artistic Profile' . TITLEPOSTFIX;;
                 $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
                 $this->load->view('artist/artistic_profile', $this->data);
             } else if (!$this->data['artisticdata'] && $id != $userid) {
@@ -1974,8 +1974,8 @@ class Artist extends MY_Controller {
 
         if ($this->data['artdata']) {
             $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
-            $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)).' | Userlist'.'- ArtisticProfile' . TITLEPOSTFIX;
+            $artistic_name = $this->get_artistic_name($artisticdata[0]['user_id']);
+            $this->data['title'] = $artistic_name.' | Userlist'.'- Artistic Profile' . TITLEPOSTFIX;
             $this->load->view('artist/artistic_userlist', $this->data);
         } else {
             redirect('artist');
@@ -3362,8 +3362,8 @@ class Artist extends MY_Controller {
 
 
         if ($this->data['artisticdata']) {
-            $artistic_name = $this->get_artistic_name($id);
-             $this->data['title'] = ucfirst(strtolower($artistic_name)).' | Followers'.'- ArtisticProfile' . TITLEPOSTFIX;
+            $artistic_name = $this->get_artistic_name($this->data['artisticdata'][0]['user_id']);
+             $this->data['title'] = $artistic_name.' | Followers'.'- Artistic Profile' . TITLEPOSTFIX;
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
             $this->load->view('artist/art_followers', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
@@ -3581,8 +3581,8 @@ class Artist extends MY_Controller {
 
 
         if ($this->data['artisticdata']) {
-            $artistic_name = $this->get_artistic_name($id);
-           $this->data['title'] = ucfirst(strtolower($artistic_name)).' | Following'.'- ArtisticProfile' . TITLEPOSTFIX;
+            $artistic_name = $this->get_artistic_name($this->data['artisticdata'][0]['user_id']);
+           $this->data['title'] = $artistic_name.' | Following'.'- Artistic Profile' . TITLEPOSTFIX;
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
 
             $this->load->view('artist/art_following', $this->data);
@@ -6452,11 +6452,14 @@ class Artist extends MY_Controller {
         $contition_array = array('art_post_id' => $id, 'status' => '1', 'is_delete' => '0');
         $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+
+        $artistdata = $this->common->select_data_by_id('art_reg', 'user_id', $this->data['art_data'][0]['user_id'], $data = 'user_id');
+
         $this->data['get_url'] = $this->get_url($artisticdata[0]['user_id']);
 
         if ($this->data['artisticdata']) {
-            $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)).' | Post Detail'.' | ArtisticProfile' . TITLEPOSTFIX;
+            $artistic_name = $this->get_artistic_name($artistdata[0]['user_id']);
+            $this->data['title'] = $artistic_name.' | Post Detail'.' | Artistic Profile' . TITLEPOSTFIX;
             $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
             $this->load->view('artist/postnewpage', $this->data);
         } else {
@@ -6830,8 +6833,8 @@ class Artist extends MY_Controller {
 
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
-            $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)).' | Photo'.' | Artistic Profile' . TITLEPOSTFIX;
+            $artistic_name = $this->get_artistic_name($this->data['artisticdata'][0]['user_id']);
+            $this->data['title'] = $artistic_name.' | Photo'.' | Artistic Profile' . TITLEPOSTFIX;
             $this->load->view('artist/art_photos', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -6871,8 +6874,8 @@ class Artist extends MY_Controller {
 
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
-            $artistic_name = $this->get_artistic_name($id);
-            $this->data['title'] = ucfirst(strtolower($artistic_name)).' | Video'.'- Artistic Profile' . TITLEPOSTFIX;
+            $artistic_name = $this->get_artistic_name($this->data['artisticdata'][0]['user_id']);
+            $this->data['title'] = $artistic_name.' | Video'.'- Artistic Profile' . TITLEPOSTFIX;
             $this->load->view('artist/art_videos', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -6916,8 +6919,8 @@ class Artist extends MY_Controller {
 
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
-            $artistic_name = $this->get_artistic_name($id);
-           $this->data['title'] = ucfirst(strtolower($artistic_name)).' | Audio'.' | Artistic Profile' . TITLEPOSTFIX;
+            $artistic_name = $this->get_artistic_name($this->data['artisticdata'][0]['user_id']);
+           $this->data['title'] = $artistic_name.' | Audio'.' | Artistic Profile' . TITLEPOSTFIX;
             $this->load->view('artist/art_audios', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -6961,8 +6964,8 @@ class Artist extends MY_Controller {
 
         if ($this->data['artisticdata']) {
             $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
-            $artistic_name = $this->get_artistic_name($id);
-           $this->data['title'] = ucfirst(strtolower($artistic_name)).' | PDF'.' | Artistic Profile' . TITLEPOSTFIX;
+            $artistic_name = $this->get_artistic_name($this->data['artisticdata'][0]['user_id']);
+           $this->data['title'] = $artistic_name.' | PDF'.' | Artistic Profile' . TITLEPOSTFIX;
             $this->load->view('artist/art_pdf', $this->data);
         } else if (!$this->data['artisticdata'] && $id != $userid) {
 
@@ -14013,10 +14016,10 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
         $userid = $this->session->userdata('aileenuser');
 
-        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+        $contition_array = array('user_id' => $id, 'status' => '1', 'is_delete' => '0');
         $artdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        return $artistic_name = $artdata[0]['art_name'] . ' ' . $artdata[0]['art_lastname'];
+        return $artistic_name = ucfirst($artdata[0]['art_name']) . ' ' . ucwords($artdata[0]['art_lastname']);
     }
 
 //Get Job Seeker Name for title End
