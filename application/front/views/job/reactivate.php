@@ -6,7 +6,7 @@
 <html>
    <head>
       <meta charset="utf-8">
-      <title><?php echo $title; ?></title> 
+      <title><?php echo $userdata[0]['first_name']." ".$userdata[0]['last_name'] . " | Reactivate | Job Profile - Aileensoul" ?></title> 
 
       <?php
         if (IS_JOB_CSS_MINIFY == '0') {
