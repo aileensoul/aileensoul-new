@@ -5616,6 +5616,7 @@ body.reg-form{background: #fff}
 	.file-preview{width:435px;}
     .more-image{width: calc(100% - 2px);}
     .bui_popup_img{width: 33.33%}
+    .loader-cust {top:48px;}
 }
 @media screen and (max-width: 540px) {
     .reactivate_btn_n,
