@@ -937,7 +937,7 @@
                                     number: true,
                                     minlength: 8,
                                     maxlength: 15,
-                                    regx2: /^[1-9][0-9]*/
+                                    regx2: /^[0-9][0-9]*/
                                 },
                                 email: {
                                     required: true,
