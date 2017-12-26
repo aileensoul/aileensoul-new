@@ -21,9 +21,9 @@
 
 
     </head>
-    <!--    <div class="js">-->
+   
     <body class="botton_footer">
-        <!--<div id="preloader"></div>-->
+      
         <?php echo $header; ?>
         <?php
         if ($freepostdata[0]['user_id'] && $freepostdata[0]['free_post_step'] == '7') {
@@ -104,9 +104,7 @@
                                 <div class="common-form common-form_border">
                                     <h3><?php echo $this->lang->line("professional_info"); ?></h3>
 <?php echo form_open(base_url('freelancer/freelancer_post_professional_information_insert'), array('id' => 'freelancer_post_professional', 'name' => 'freelancer_post_professional', 'class' => 'clearfix')); ?>
-                                    <!-- <div>
-                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php // echo $this->lang->line("filed_required");     ?></span>
-                                    </div> -->
+                                   
                                     <?php
                                     $field = form_error('field');
                                     $area = form_error('area');
@@ -152,10 +150,7 @@
                                         ?>">
 <?php echo form_error('area'); ?>
                                     </fieldset>
-                                    <!--                                    <fieldset>
-                                                                            <label><?php echo $this->lang->line("other_skill"); ?> :</label>          
-                                                                            <input type="text" class="keyskil" name="otherskill" tabindex="3" id="otherskill" value="<?php echo $otherskill1; ?>" placeholder="Enter other skill" >
-                                                                        </fieldset>-->
+                                    
                                     <fieldset  class="full-width">
                                         <label><?php echo $this->lang->line("skill_brief"); ?> :<span class="red">*</span></label>
 
@@ -234,11 +229,10 @@
             <div class="modal-dialog modal-lm">
                 <div class="modal-content message">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
-                    <!--                    <div class="message" style="width:300px;">-->
                     <h2>Add Field</h2>         
                     <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
                     <div class="fw"><a title="Ok" id="field" class="btn">OK</a></div>
-                    <!--                    </div>-->
+                  
                 </div>
             </div>
         </div>
@@ -259,7 +253,6 @@
 
 
         <script>
-                        // var complex = <?php echo json_encode($selectdata); ?>;
                         var base_url = '<?php echo base_url(); ?>';
         </script>
         <?php
@@ -283,5 +276,5 @@
 
 
     </body>
-    <!--</div>-->
+  
 </html>

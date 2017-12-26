@@ -4,21 +4,21 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
 
- <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
-        <?php } else {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+        <?php if (IS_HIRE_CSS_MINIFY == '0') { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
         <?php } ?>
         <style type="text/css">
-             .autoposition{
+            .autoposition{
                 position: absolute!important;
                 z-index: 999 !important;
-                
+
             }
         </style>
 
     </head>
-    
+
     <body class="page-container-bg-solid page-boxed botton_footer">
         <?php echo $header; ?>
         <?php echo $freelancer_hire_header2_border; ?>
@@ -65,12 +65,6 @@
                                             ?>">
                                                    <?php echo form_error('skills'); ?>
                                         </fieldset>
-        <!--                                <fieldset class="full-width" <?php if ($other_skill) { ?> class="error-msg" <?php } ?> >
-                                            <label class="control-label"><?php echo $this->lang->line("other_skill"); ?>:</label>
-                                            <input name="other_skill" tabindex="5" type="text" id="other_skill" class="keyskil" placeholder="Enter Your Other Skill" value="<?php echo $freelancerpostdata[0]['post_other_skill']; ?>" />
-                                            <span id="fullname-error"></span>
-                                        <?php echo form_error('other_skill'); ?>
-                                        </fieldset>-->
                                         <fieldset class="full-width" <?php if ($fields_req) { ?> class="error-msg" <?php } ?>>
                                             <label><?php echo $this->lang->line("field_of_requirement"); ?>:<span style="color:red">*</span></label>
                                             <select tabindex="4" name="fields_req" id="fields_req" class="field_other">
@@ -192,10 +186,10 @@
                                         </fieldset>
                                         <fieldset class="hs-submit full-width">
                                             <?php if (($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
-                                            <a title="Cancel" class="add_post_btnc" onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
+                                                <a title="Cancel" class="add_post_btnc" onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
                                             <?php } else { ?>
 
-                                            <a title="Cancel" class="add_post_btnc"  href="javascript:history.back()"><?php echo $this->lang->line("cancel"); ?></a>
+                                                <a title="Cancel" class="add_post_btnc"  href="javascript:history.back()"><?php echo $this->lang->line("cancel"); ?></a>
                                             <?php } ?>
                                             <input type="submit" tabindex="18" id="submit" class="add_post_btns" name="submit" value="Save">
                                         </fieldset>
@@ -203,104 +197,7 @@
 
                                     </div>
                                 </div>
-
-                                <!--                                <div class="custom-add-box">
-                                                                    <h3 class="freelancer_editpost_title">Location</h3>
-                                                                    <div class="p15 fw">
-                                                                        <fieldset class="fw" <?php if ($country) { ?> class="error-msg" <?php } ?>>
-                                                                            <label><?php echo $this->lang->line("country"); ?>:<span style="color:red">*</span></label>
-                                                                            <select name="country" id="country" tabindex="15">
-                                                                                <option value="" selected option disabled><?php echo $this->lang->line("select_country"); ?></option>
-                                <?php
-                                if (count($countries) > 0) {
-                                    foreach ($countries as $cnt) {
-                                        if ($country1) {
-                                            ?>
-                                                                                                                    <option value="<?php echo $cnt['country_id']; ?>" <?php if ($cnt['country_id'] == $country1) echo 'selected'; ?>><?php echo $cnt['country_name']; ?></option>
-                                                        
-                                            <?php
-                                        }
-                                        else {
-                                            ?>
-                                                                                                                    <option value="<?php echo $cnt['country_id']; ?>"><?php echo $cnt['country_name']; ?></option>
-                                            <?php
-                                        }
-                                    }
-                                }
-                                ?>
-                                                                            </select><span id="country-error"></span>
-                                <?php echo form_error('country'); ?>
-                                                                        </fieldset>
-                                                                        <fieldset class="fw" <?php if ($state) { ?> class="error-msg" <?php } ?>>
-                                                                            <label><?php echo $this->lang->line("state"); ?>:<span class="red">*</span></label>
-                                                                            <select tabindex="16" name="state" id="state">
-                                <?php
-                                if ($state1) {
-                                    foreach ($states as $cnt) {
-                                        ?>
-                                                
-                                                                                                        <option value="<?php echo $cnt['state_id']; ?>" <?php if ($cnt['state_id'] == $state1) echo 'selected'; ?>><?php echo $cnt['state_name']; ?></option>
-                                                
-                                        <?php
-                                    }
-                                }
-                                else {
-                                    ?>
-                                                                                            <option value=""><?php echo $this->lang->line("country_first"); ?></option>
-                                    <?php
-                                }
-                                ?>
-                                                                            </select>
-                                <?php echo form_error('state'); ?>
-                                                                        </fieldset>
-                                                                        <fieldset class="fw">
-                                                                            <label><?php echo $this->lang->line("city"); ?>:</label>
-                                                                            <select name="city" id="city" tabindex="17">
-                                <?php
-                                if ($city1) {
-                                    foreach ($cities as $cnt) {
-                                        ?>
-                                                
-                                                                                                        <option value="<?php echo $cnt['city_id']; ?>" <?php if ($cnt['city_id'] == $city1) echo 'selected'; ?>><?php echo $cnt['city_name']; ?></option>
-                                                
-                                        <?php
-                                    }
-                                }
-                                else if ($state1) {
-                                    ?>
-                                                                                            <option value=""><?php echo $this->lang->line("select_city"); ?></option>
-                                    <?php
-                                    foreach ($cities as $cnt) {
-                                        ?>
-                                                
-                                                                                                        <option value="<?php echo $cnt['city_id']; ?>"><?php echo $cnt['city_name']; ?></option>
-                                                
-                                        <?php
-                                    }
-                                } else {
-                                    ?>
-                                                                                            <option value=""><?php echo $this->lang->line("state_first"); ?></option>
-                                        
-                                    <?php
-                                }
-                                ?>
-                                                                            </select><span id="city-error"></span>
-                                <?php echo form_error('city'); ?>
-                                                                        </fieldset>
-                                                                        <fieldset class="hs-submit half-width">
-                                <?php if (($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
-                                                                                        <a class="add_post_btnc" onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
-                                <?php } else { ?>
-                                        
-                                                                                        <a class="add_post_btnc"  href="javascript:history.back()"><?php echo $this->lang->line("cancel"); ?></a>
-                                <?php } ?>
-                                                                            <input type="submit" tabindex="18" id="submit" class="add_post_btns" name="submit" value="Save">
-                                                                        </fieldset>
                                 <?php echo form_close(); ?>
-                                
-                                                                    </div>
-                                                                </div>-->
-
                             </div>
                         </div>
                     </div>
@@ -335,31 +232,31 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-      
-  
+
+
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <script  src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>">
-        </script>
-            <?php } else {  ?>
-         <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <script  src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js?ver=' . time()); ?>">
-        </script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script  src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>">
+            </script>
+        <?php } else { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script  src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js?ver=' . time()); ?>">
+            </script>
         <?php } ?>
-        
+
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var date_picker1 = '<?php echo date('Y-m-d', strtotime($freelancerpostdata[0]['post_last_date'])); ?>';
         </script>
-       
+
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-           <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
-            <?php } else {  ?>
-          <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <?php } ?>
-        
+
         <script type="text/javascript">
             //Leave Page on add and edit post page start
             function leave_page(clicked_id)

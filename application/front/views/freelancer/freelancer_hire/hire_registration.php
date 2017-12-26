@@ -849,8 +849,7 @@
            
         <?php } ?>
         <script>
-//                                        var get_csrf_token_name = '<?php //echo $this->security->get_csrf_token_name(); ?>';
-//                                        var csrf_hash = '<?php //echo $this->security->get_csrf_hash(); ?>';
+
                                         var base_url = '<?php echo base_url(); ?>';
                                         var site = '<?php echo base_url(); ?>';
                                         var user_session = '<?php echo $this->session->userdata('aileenuser'); ?>';

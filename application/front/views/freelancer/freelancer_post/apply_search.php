@@ -377,8 +377,6 @@
         </style>
     </head>
     <body class="no-login">
-        <?php //echo $header; ?>
-        <?php //echo $freelancer_post_header2_border; ?>
         <?php
         $userid = $this->session->userdata('aileenuser');
         if (!$userid) {
@@ -710,112 +708,7 @@
 
 
         <!-- model for forgot password end -->
-        <!-- register -->
-
-        <!--        <div class="modal fade register-model login" id="register" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
-                            <div class="modal-body">
-                                <div class="clearfix">
-                                    <div class="col-md-12 col-sm-12">
-                                        <h4>Join Aileensoul - It's Free</h4>
-                                        <form role="form" name="register_form" id="register_form" method="post">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
-                                                    </div>
-                                                </div>
-                                            </div>
-        
-                                            <div class="form-group">
-                                                <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
-                                            </div>
-                                            <div class="form-group">
-                                                <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
-                                            </div>
-                                            <div class="form-group dob">
-                                                <label class="d_o_b"> Date Of Birth :</label>
-                                                <span><select tabindex="9" class="day" name="selday" id="selday">
-                                                        <option value="" disabled selected value>Day</option>
-        <?php
-        for ($i = 1; $i <= 31; $i++) {
-            ?>
-                                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-    <?php
-}
-?>
-                                                    </select></span>
-                                                <span><select tabindex="10" class="month" name="selmonth" id="selmonth">
-                                                        <option value="" disabled selected value>Month</option>
-                                                        //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-?>
-                                                        <option value="1">Jan</option>
-                                                        <option value="2">Feb</option>
-                                                        <option value="3">Mar</option>
-                                                        <option value="4">Apr</option>
-                                                        <option value="5">May</option>
-                                                        <option value="6">Jun</option>
-                                                        <option value="7">Jul</option>
-                                                        <option value="8">Aug</option>
-                                                        <option value="9">Sep</option>
-                                                        <option value="10">Oct</option>
-                                                        <option value="11">Nov</option>
-                                                        <option value="12">Dec</option>
-                                                        //<?php
-//                  }
-//                  
-?>
-                                                    </select></span>
-                                                <span>
-                                                    <select tabindex="11" class="year" name="selyear" id="selyear">
-                                                        <option value="" disabled selected value>Year</option>
-        <?php
-        for ($i = date('Y'); $i >= 1900; $i--) {
-            ?>
-                                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-    <?php
-}
-?>
-        
-                                                    </select>
-                                                </span>
-                                            </div>
-                                            <div class="dateerror" style="color:#f00; display: block;"></div>
-        
-                                            <div class="form-group gender-custom">
-                                                <span><select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
-                                                        <option value="" disabled selected value>Gender</option>
-                                                        <option value="M">Male</option>
-                                                        <option value="F">Female</option>
-                                                    </select>
-                                                </span>
-                                            </div>
-        
-                                            <p class="form-text">
-                                                By Clicking on create an account button you agree our<br class="mob-none">
-                                                <a href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
-                                            </p>
-                                            <p>
-                                                <button tabindex="13" class="btn1">Create an account</button>
-                                            </p>
-                                        </form>
-        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-        <!-- register -->
+      
 <?php echo $footer; ?>
         <!-- script for skill textbox automatic start (option 2)-->
         <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
@@ -1102,14 +995,9 @@
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var skill = '<?php echo $keyword; ?>';
-            // var skill = skill.replace('-', ' ');
             var place = '<?php echo $keyword1; ?>';
             var csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
             var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
-
-//            var skill = '<?php echo $this->input->get('skills'); ?>';
-//            var place = '<?php echo $this->input->get('searchplace'); ?>';
-//            var button = '<?php echo $this->input->get('search_submit'); ?>';
 
         </script>
         <!-- script for skill textbox automatic end -->

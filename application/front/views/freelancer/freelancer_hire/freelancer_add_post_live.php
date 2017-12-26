@@ -404,12 +404,6 @@
 
                                     <div class="job-saved-box">
 
-                                        <?php // echo form_open(base_url('freelancer/freelancer_add_post_insert'), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit', 'onsubmit' => "imgval()")); ?>
-
-                                        <!--                                    <div>
-                                                                                <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> 
-                                                                                <span style="color:#7f7f7e"><?php //ceho $this->lang->line("filed_required");    ?></span>
-                                                                            </div>-->
                                         <form id="postinfo" name="postinfo" class="clearfix">
                                         <?php
                                         $post_name = form_error('post_name');
@@ -544,7 +538,7 @@
                                                 <fieldset class="hs-submit half-width">
                                                     <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                                     <input type="submit" title="Post" id="submit"  class="add_post_btns" tabindex="18" name="submit" value="Post">
-                                                    <!--<input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">-->    
+                                                   
                                                 </fieldset>
                                            
                                             </div>
@@ -800,8 +794,6 @@
         
             <script>
                                                 var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
-//                                                var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-//                                                var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
                                                 var base_url = '<?php echo base_url(); ?>';
                                                 var postslug = '<?php echo $this->uri->segment(3); ?>';
                                                 

@@ -230,7 +230,7 @@
             var base_url = '<?php echo base_url(); ?>';
             var skill = '<?php echo $keyword; ?>';
             var place = '<?php echo $keyword1; ?>';
-            // var button = '<?php //echo $this->input->get('search_submit');      ?>';
+     
 
         </script>
         <!-- script for skill textbox automatic end -->

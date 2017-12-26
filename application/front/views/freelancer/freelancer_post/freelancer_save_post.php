@@ -284,7 +284,6 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                     <div class="modal-body">
-                        <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                         <span class="mes"></span>
                     </div>
                 </div>
@@ -301,13 +300,7 @@
                             <div id="popup-form">
                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));      ?>
-<!--                                    <input type="file" id="profilepic" name="profilepic" accept="image/gif, image/jpeg, image/png">
-                                    <input type="hidden" name="hitext" id="hitext" value="2">
-                                    <div class="popup_previred">
-                                        <img id="preview" src="#" alt="your image" />
-                                    </div>
-                                    <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">-->
+                                   
                                     <div class="fw">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
@@ -316,7 +309,7 @@
                                     </div>
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-                                <?php //echo form_close();      ?>
+                               
                             </div>
                         </span>
                     </div>
@@ -367,17 +360,17 @@
             //APPLY FOR PROJECT CODE START
             function apply_post(abc, xyz)
             {
-                //  alert(123);
+               
                 var alldata = 'all';
                 var user = <?php echo $aileenuser_id; ?>;
                 var appid = xyz;
-                //   alert(appid);
+              
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "freelancer/apply_insert" ?>',
                     data: 'post_id=' + abc + '&allpost=' + alldata.value + '&userid=' + user,
                     success: function (data) {
-                        //  alert(data.status);
+                       
                         $('#' + 'postdata' + appid).html(data.status);
                         $('#' + 'postdata' + appid).remove();
                         var numItems = $('.job-contact-frnd1 .all-job-box').length;

@@ -196,79 +196,11 @@
                                                     <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
                                                 </fieldset>
 
-                                                <?php echo form_close(); ?>
-
 
                                             </div>
                                         </div>
-                                        <!--									<div class="custom-add-box">
-                                                                                                                        <h3 class="freelancer_editpost_title">Location</h3>
-                                                                                                                        <div class="p15 fw">
-                                                                                                                                <fieldset class="fw" <?php if ($country) { ?> class="error-msg" <?php } ?>>
-                                                                                                                                        <label><?php echo $this->lang->line("country"); ?>:<span style="color:red">*</span></label>
-                                                                                                                                        <select tabindex="15" name="country" id="country">
-                                                                                                                                                <option value="" selected option disabled><?php echo $this->lang->line("select_country"); ?></option>
-                                        <?php
-                                        if (count($countries) > 0) {
-                                            foreach ($countries as $cnt) {
-                                                if ($country1) {
-                                                    ?>
-                                                                                                                                                                                                            <option value="<?php echo $cnt['country_id']; ?>" <?php if ($cnt['country_id'] == $country1) echo 'selected'; ?>><?php echo $cnt['country_name']; ?></option>
-                                                    <?php
-                                                }
-                                                else {
-                                                    ?>
-                                                                                                                                                                                                            <option value="<?php echo $cnt['country_id']; ?>"><?php echo $cnt['country_name']; ?></option>
-                                                    <?php
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                                                                                                                        </select><span id="country-error"></span>
-                                        <?php echo form_error('country'); ?>
-                                                                                                                                </fieldset>
-                                                                                                                                <fieldset class="fw">
-                                                                                                                                        <label><?php echo $this->lang->line("state"); ?>:<span style="color:red">*</span></label>
-                                                                                                                                        <select tabindex="16" name="state" id="state">
-                                        <?php ?>
-                                                                                                                                                <option value="" selected option disabled><?php echo $this->lang->line("country_first"); ?></option>
-                                                                                                                                        </select>
-                                                                                                                                </fieldset>
-                                                                                                                                <fieldset class="fw">
-                                                                                                                                        <label><?php echo $this->lang->line("city"); ?>:</label>
-                                                                                                                                        <select tabindex="17" name="city" id="city">
-                                        <?php
-                                        if ($city1) {
-                                            foreach ($cities as $cnt) {
-                                                ?>
-                                                                                                                                                                                        <option value="<?php echo $cnt['city_id']; ?>" <?php if ($cnt['city_id'] == $city1) echo 'selected'; ?>><?php echo $cnt['city_name']; ?></option>
-                                                <?php
-                                            }
-                                        }
-                                        else {
-                                            ?>
-                                                                                                                                                                    <option value=""><?php echo $this->lang->line("state_first"); ?></option>
-                                                    
-                                            <?php
-                                        }
-                                        ?>
-                                                                                                                                        </select><span id="city-error"></span>
-                                        <?php echo form_error('city'); ?>
-                                                                                                                                </fieldset>
-                                                                                                                                <fieldset class="hs-submit half-width">
-                                                                                                                                        <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
-                                        <?php if (($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
-                                                                                                                                                            <a class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
-                                        <?php } else { ?>
-                                                                                                                                                            <a class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelance-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
-                                        <?php } ?>
-                                                                                                                                        <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
-                                                                                                                                </fieldset>
-                                                                                                                        
-                                        <?php echo form_close(); ?>
-                                                                                                                                
-                                                                                                                        </div>
-                                                                                                                </div>   -->
+                                     
+                                         <?php echo form_close(); ?>
                                     </div>
                                     <div class="col-md-1">
                                     </div>
@@ -299,11 +231,9 @@
             <div class="modal-dialog modal-lm">
                 <div class="modal-content message">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
-                    <!--                    <div class="message" style="width:300px;">-->
                     <h2>Add Field</h2>         
                     <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
                     <div class="fw"><a title="OK" id="field" class="btn">OK</a></div>
-                    <!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -330,7 +260,7 @@
                         // LEAVE PAGE ON ADD AND EDIT POST PAGE START
                         function leave_page(clicked_id)
                         {
-                            //alert('jjjj');
+                           
                             var post_name = document.getElementById('post_name').value;
                             var post_desc = document.getElementById('post_desc').value;
                             var fields_req = document.getElementById('fields_req').value;

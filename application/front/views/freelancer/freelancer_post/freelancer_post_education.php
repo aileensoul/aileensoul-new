@@ -17,9 +17,9 @@
         <!-- This Css is used for call popup -->
 
     </head>
-    <!--    <div class="js">-->
+  
     <body class="botton_footer">
-        <!--            <div id="preloader"></div>-->
+     
         <?php echo $header; ?>
         <?php
         if ($freepostdata[0]['user_id'] && $freepostdata[0]['free_post_step'] == '7') {
@@ -235,10 +235,8 @@
             <div class="modal-dialog modal-lm">
                 <div class="modal-content message">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
-                    <!--                    <div class="message" style="width:300px;">-->
                     <h2>Add University</h2> 
                     <input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()">
-                    <!--<input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">-->
                     <div class="fw"><a title="Ok" id="univer" class="btn">OK</a></div>
                     <!--                    </div>-->
                 </div>
@@ -250,14 +248,11 @@
             <div class="modal-dialog modal-lm">
                 <div class="modal-content message2">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
-                    <!--                    <div class="message" style="width:300px;">-->
                     <h2>Add Degree</h2>         
                     <input type="text" name="other_degree" id="other_degree" onkeypress="return remove_validation()">
                     <h2>Add Stream</h2>
                     <select name="other_stream" id="other_stream" class="other_stream" onchange="return remove_validation1()">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream) { ?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select>
-                    <!--<input type="text" name="other_degree" id="other_degree" onkeypress="return remove_validation()">-->
                     <div class="fw text-center"><a title="Ok" id="univer2" class="btn">OK</a></div>
-                    <!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -267,12 +262,9 @@
             <div class="modal-dialog modal-lm">
                 <div class="modal-content message1">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
-                    <!--                    <div class="message" style="width:300px;">-->
                     <h2>Add stream</h2> 
                     <input type="text" name="other_degree1" id="other_degree1" onkeypress="return remove_validation_stream()">
-                    <!--<input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">-->
                     <div class="fw"><a title="Ok" id="univer1" class="btn">OK</a></div>
-                    <!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -290,7 +282,6 @@
 
         <script>
                         var base_url = '<?php echo base_url(); ?>';
-                        //  var html = '<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream) { ?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>';
         </script>
         <?php
         if (IS_APPLY_JS_MINIFY == '0') {
@@ -308,5 +299,4 @@
 
 
     </body>
-    <!--</div>-->
 </html>

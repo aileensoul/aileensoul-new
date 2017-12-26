@@ -3,10 +3,10 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-       <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
-        <?php } else {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+        <?php if (IS_HIRE_CSS_MINIFY == '0') { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
         <?php } ?>
         <style type="text/css">
             #popup-form img{display: block;}
@@ -59,7 +59,7 @@
                         $image_ori = $image[0]['profile_background'];
                         if ($image_ori) {
                             ?>
-                        <img alt="<?php echo $freelancr_user_data[0]['fullname']. " ".$freelancr_user_data[0]['username']; ?>" src="<?php echo FREE_HIRE_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                            <img alt="<?php echo $freelancr_user_data[0]['fullname'] . " " . $freelancr_user_data[0]['username']; ?>" src="<?php echo FREE_HIRE_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
                             <?php
                         } else {
                             ?>
@@ -99,7 +99,7 @@
                                         </div>
                                     <?php } else {
                                         ?>
-                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freelancr_user_data[0]['fullname']. " ".$freelancr_user_data[0]['username']; ?>" >
+                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freelancr_user_data[0]['fullname'] . " " . $freelancr_user_data[0]['username']; ?>" >
                                         <?php
                                     }
                                 } else {
@@ -108,7 +108,7 @@
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                     if ($info) {
                                         ?>
-                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freelancr_user_data[0]['fullname']. " ".$freelancr_user_data[0]['username']; ?>" >
+                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freelancr_user_data[0]['fullname'] . " " . $freelancr_user_data[0]['username']; ?>" >
                                         <?php
                                     } else {
                                         ?>
@@ -124,7 +124,7 @@
                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
-                                        <a title="update Profile Pic" href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img alt="Profile pic"  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
+                            <a title="update Profile Pic" href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img alt="Profile pic"  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
 
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                     <?php
                     if ($freelancr_user_data[0]['designation'] == '') {
                         ?>
-                    <a title="<?php echo $this->lang->line("designation"); ?>" id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
+                        <a title="<?php echo $this->lang->line("designation"); ?>" id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
 
                     <?php } else { ?> 
                         <a id="designation" class="designation" title="<?php echo ucwords($freelancr_user_data[0]['designation']); ?>"><?php echo ucwords($freelancr_user_data[0]['designation']); ?></a>  <?php } ?>
@@ -226,13 +226,7 @@
                         <div id="popup-form">
                             <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                             <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));       ?>
-<!--                                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                                <input type="hidden" name="hitext" id="hitext" value="3">
-                                <div class="popup_previred">
-                                    <img id="preview" src="#" alt="your image" />
-                                </div>
-                                <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >-->
+
                                 <div class="fw">
                                     <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                 </div>
@@ -241,7 +235,7 @@
                                 </div>
                                 <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                             </form>
-                            <?php //echo form_close();       ?>
+
                         </div>
                     </span>
                 </div>
@@ -262,31 +256,31 @@
         </div>
     </div>
     <!-- Model Popup Close -->
-  
+
     <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-  <script  src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-    <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>">
-    </script>
-    
-            <?php } else {  ?>
-      <script  src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
-    <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>">
-    </script>
-    
-        <?php } ?>
-    
+        <script  src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>">
+        </script>
+
+    <?php } else { ?>
+        <script  src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>">
+        </script>
+
+    <?php } ?>
+
     <script>
         var base_url = '<?php echo base_url(); ?>';
         var no_saved = '<?php echo $this->lang->line("no_saved_freelancer"); ?>';
     </script>
-    
+
     <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-<script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_save.js?ver=' . time()); ?>"></script>
-    <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
-            <?php } else {  ?>
-    <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_save.js?ver=' . time()); ?>"></script>
-    <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
-        <?php } ?>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_save.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+    <?php } else { ?>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_save.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+    <?php } ?>
 
 
 

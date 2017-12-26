@@ -2,11 +2,11 @@
 <?php echo $head; ?>
 <!-- END HEAD -->
 <!-- start header -->
-<?php echo $header; ?>
+
 <!-- END HEADER -->
 <title><?php echo $title; ?></title>
 <body class="page-container-bg-solid page-boxed">
-
+<?php echo $header; ?>
     <?php echo $dash_header; ?>
     <!-- BEGIN HEADER MENU -->
     <?php echo $dash_header_menu; ?>

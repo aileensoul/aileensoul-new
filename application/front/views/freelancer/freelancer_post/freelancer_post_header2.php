@@ -117,7 +117,6 @@
             <div class="modal-content">
                 <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                 <div class="modal-body">
-                    <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                     <span class="mes"></span>
                 </div>
             </div>

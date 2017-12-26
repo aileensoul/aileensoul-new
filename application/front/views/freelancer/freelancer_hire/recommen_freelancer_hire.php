@@ -142,8 +142,6 @@
                                         <div class="job-contact-frnd ">
                                             <!--.........AJAX DATA......-->
 
-
-
                                         </div>
                                         <div class="fw" id="loader" style="text-align:center;"><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>"</div>
                                     </div>
@@ -200,10 +198,7 @@
                                     </li>
                                 </ul>
                             </div>
-
                     </div>
-                    
-
                 </div>
             </div>
         </section>

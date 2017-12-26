@@ -6155,7 +6155,7 @@ body.reg-form{background: #fff}
 }
 @media screen and (max-width: 360px) {
     #paddingtop_fixed {
-        padding-top: 70px !important;
+        padding-top: 69px !important;
     }
     .folle_text {
         /*width: 37%;*/
@@ -6336,6 +6336,7 @@ body.reg-form{background: #fff}
     .profile-job-profile-menu .buisness-profile-pic .column1{width: 100%;}
     .comment-details{width: 86% ;}
     .more-image{height: 119px;} 
+    .header2{top:41;}
 
 }
 @media screen and (max-width: 319px) {

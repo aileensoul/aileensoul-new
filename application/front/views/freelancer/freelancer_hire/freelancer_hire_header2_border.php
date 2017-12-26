@@ -93,7 +93,7 @@
         <div class="modal-content">
             <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
             <div class="modal-body">
-                <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
+           
                 <span class="mes"></span>
             </div>
         </div>
@@ -131,7 +131,7 @@
     });
     $(document).on('keydown', function (e) {
         if (e.keyCode === 27) {
-            //$( "#bidmodal" ).hide();
+         
             $('#bidmodal').modal('hide');
         }
     });
@@ -143,7 +143,7 @@
     function addmsg1(type, msg)
     {
         if (msg == 0)
-        { //alert(1234);
+        { 
             $("#message_count").html('');
             $("#message_count").removeAttr("style");
             $('#InboxLink').removeClass('msg_notification_available');
@@ -151,7 +151,6 @@
         } else
         {
             $('#message_count').html(msg);
-            //     $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
             $('#InboxLink').addClass('msg_notification_available');
             $('#message_count').addClass('count_add');
             document.getElementById('message_count').style.display = "block";
@@ -177,10 +176,6 @@
                         );
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-//                addmsg1("error", textStatus + " (" + errorThrown + ")");
-//                setTimeout(
-//                        waitForMsg1,
-//                        15000);
             }
         });
     }
@@ -222,14 +217,6 @@
                 url: '<?php echo base_url() . "chat/userajax/3/4" ?>',
                 dataType: 'json',
                 data: '',
-//                beforeSend: function () {
-//            
-//                $('#msg_not_loader').show();
-//           },
-//        
-//        complete: function () {
-//            $('#msg_not_loader').show();
-//        },
                 success: function (data) { //alert(data);
 
                     $('#userlist').html(data.leftbar);
@@ -259,15 +246,12 @@
             //data: {uid: 12341234}, //this sends the user-id to php as a post variable, in php it can be accessed as $_POST['uid']
             success: function (data) {
                 data = JSON.parse(data);
-                //alert(data);
-                //update some fields with the updated data
-                //you can access the data like 'data["driver"]'
             }
         });
     }
     function msgheader()
     {
-        // $("#fad" + clicked_id).fadeOut(6000);
+        
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url() . "notification/msg_header/" . $this->uri->segment(3) . "" ?>',
