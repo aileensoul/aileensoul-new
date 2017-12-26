@@ -164,8 +164,7 @@ class Recruiter extends MY_Controller {
                 }
             }
 
-            echo $this->data['title'];
-            die();
+         
             $this->load->view('recruiter/rec_basic_information', $this->data);
         } else {
             //  $contition_array = array('user_id' => $userid, 're_status' => '1');
@@ -1273,7 +1272,7 @@ class Recruiter extends MY_Controller {
         $this->recruiter_apply_check();
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
-        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | SavedCandidate | Recruiter Profile - Aileensoul';
+        $this->data['title'] = $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname'] . ' | Saved Candidate | Recruiter Profile - Aileensoul';
 
 
 //if user deactive profile then redirect to recruiter/index untill active profile start

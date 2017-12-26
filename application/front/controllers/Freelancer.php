@@ -92,7 +92,7 @@ class Freelancer extends MY_Controller {
             }
         }
 
-        $this->data['title'] = "BasicInformation | Edit Profile - Freelancer Profile" . TITLEPOSTFIX;
+        $this->data['title'] = "Basic Information | Edit Profile - Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_basic_information', $this->data);
     }
 
@@ -1134,7 +1134,7 @@ class Freelancer extends MY_Controller {
             $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
             $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
-        $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . " | Projects | Employer Profile " . TITLEPOSTFIX;
+        $this->data['title'] = ucfirst($hire_data[0]['fullname']) . " " . ucfirst($hire_data[0]['username']) . " | Projects | Employer Profile " . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_post', $this->data);
     }
 
@@ -1431,7 +1431,7 @@ class Freelancer extends MY_Controller {
             $data = 'username,fullname';
             $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-            $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
+            $this->data['title'] = ucfirst($hire_data[0]['fullname']) . " " . ucfirst($hire_data[0]['username']) . TITLEPOSTFIX;
             $this->load->view('freelancer/freelancer_hire/freelancer_add_post', $this->data);
         } else {
 
@@ -2018,7 +2018,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => '3');
         $data = 'username,fullname';
         $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-        $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
+        $this->data['title'] = ucfirst($hire_data[0]['fullname']) . " " . ucfirst($hire_data[0]['username']) . TITLEPOSTFIX;
 
         $this->load->view('freelancer/freelancer_hire/freelancer_edit_post', $this->data);
     }
@@ -2603,7 +2603,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('freelancer_apply.job_delete' => '0', 'freelancer_apply.user_id' => $userid);
         $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = 'freelancer_post.*, freelancer_apply.app_id, freelancer_apply.user_id as userid, freelancer_apply.modify_date, freelancer_apply.created_date ', $sortby = 'freelancer_apply.modify_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
-        $this->data['title'] = $jobdata[0]['freelancer_post_fullname'] . " " . $jobdata[0]['freelancer_post_username'] . " | Applied Projects | Freelancer Profile" . TITLEPOSTFIX;
+        $this->data['title'] = ucfirst($jobdata[0]['freelancer_post_fullname']) . " " . ucfirst($jobdata[0]['freelancer_post_username']) . " | Applied Projects | Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_applied_post', $this->data);
     }
 
@@ -2864,7 +2864,7 @@ class Freelancer extends MY_Controller {
         $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = 'freelancer_apply.modify_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
         //echo '<pre>'; print_r($postdata); die();
-        $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . " | Applied Freelancers | Employer Profile" . TITLEPOSTFIX;
+        $this->data['title'] = ucfirst($hire_data[0]['fullname']) . " " . ucfirst($hire_data[0]['username']) . " | Applied Freelancers | Employer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_apply_list', $this->data);
     }
 
@@ -2926,7 +2926,7 @@ class Freelancer extends MY_Controller {
         $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
         $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-        $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . " | Saved Freelancer | Employer Profile" . TITLEPOSTFIX;
+        $this->data['title'] = ucfirst($hire_data[0]['fullname']) . " " . ucfirst($hire_data[0]['username']) . " | Saved Freelancer | Employer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_save', $this->data);
     }
 
@@ -3180,7 +3180,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1', 'free_post_step' => '7');
         $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname,freelancer_post_username', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $this->data['title'] = $jobdata[0]['freelancer_post_fullname'] . " " . $jobdata[0]['freelancer_post_username'] . " | Saved Projects | Freelancer Profile " . TITLEPOSTFIX;
+        $this->data['title'] = ucfirst($jobdata[0]['freelancer_post_fullname']) . " " . ucfirst($jobdata[0]['freelancer_post_username']) . " | Saved Projects | Freelancer Profile " . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_save_post', $this->data);
     }
 
@@ -3619,7 +3619,7 @@ class Freelancer extends MY_Controller {
             $contition_array = array('user_id' => $id, 'status' => '1', 'free_hire_step' => '3');
             $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, professional_info, freelancer_hire_user_image, profile_background, user_id,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
-        $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . " | Details | Employer Profile" . TITLEPOSTFIX;
+        $this->data['title'] = ucfirst($hire_data[0]['fullname']) . " " . ucfirst($hire_data[0]['username']) . " | Details | Employer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_profile', $this->data);
     }
 
@@ -3680,7 +3680,7 @@ class Freelancer extends MY_Controller {
 //            }
         }
         //   echo "<pre>"; print_r($apply_data);die();
-        $this->data['title'] = $apply_data[0]['freelancer_post_fullname'] . " " . $apply_data[0]['freelancer_post_username'] . " | Details | Freelancer Profile" . TITLEPOSTFIX;
+        $this->data['title'] = ucfirst($apply_data[0]['freelancer_post_fullname']) . " " . ucfirst($apply_data[0]['freelancer_post_username']) . " | Details | Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_profile', $this->data);
     }
 
@@ -4708,7 +4708,7 @@ class Freelancer extends MY_Controller {
         $data = 'freelancer_post_reg.user_id, freelancer_post_reg.freelancer_apply_slug, freelancer_post_reg.freelancer_post_fullname, freelancer_post_reg.freelancer_post_username, freelancer_post_reg.designation, freelancer_post_reg.freelancer_post_area, freelancer_post_reg.freelancer_post_otherskill, freelancer_post_reg.freelancer_post_city, freelancer_post_reg.freelancer_post_skill_description, freelancer_post_reg.freelancer_post_work_hour, freelancer_post_reg.freelancer_post_hourly, freelancer_post_reg.freelancer_post_ratestate, freelancer_post_reg.freelancer_post_fixed_rate, freelancer_post_reg.freelancer_post_exp_year, freelancer_post_reg.freelancer_post_exp_month, freelancer_post_reg.freelancer_post_user_image';
         $shortlist = $this->data['shortlist'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
-        $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . " | Shortlisted Freelancers | Employer Profile" . TITLEPOSTFIX;
+        $this->data['title'] = ucfirst($hire_data[0]['fullname']) . " " . ucfirst($hire_data[0]['username']) . " | Shortlisted Freelancers | Employer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_shortlist', $this->data);
     }
 
