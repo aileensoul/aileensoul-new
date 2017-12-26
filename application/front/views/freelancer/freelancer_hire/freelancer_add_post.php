@@ -57,10 +57,6 @@
 
                                         <?php echo form_open(base_url('freelancer/freelancer_add_post_insert'), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit', 'onsubmit' => "imgval()")); ?>
 
-                                        <!--                                    <div>
-                                                                                <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> 
-                                                                                <span style="color:#7f7f7e"><?php //ceho $this->lang->line("filed_required");    ?></span>
-                                                                            </div>-->
                                         <?php
                                         $post_name = form_error('post_name');
                                         $skills = form_error('skills');
@@ -110,12 +106,6 @@
                                                     </select>
                                                     <?php echo form_error('fields_req'); ?>
                                                 </fieldset>
-                                                <!--                                    <fieldset class="full-width" <?php if ($other_skill) { ?> class="error-msg" <?php } ?> >
-<label class="control-label"><?php echo $this->lang->line("other_skill"); ?>:</label>
-<input name="other_skill" class="keyskil"  type="text" id="other_skill" tabindex="5" placeholder="Enter Your Other Skill" />
-<span id="fullname-error"></span>
-                                                <?php echo form_error('other_skill'); ?>
-</fieldset>-->
 
                                                 <fieldset class="full-width two-select-box fullwidth_experience" <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
                                                     <label><?php echo $this->lang->line("required_experiance"); ?>:<span class="optional">(optional)</span></label>
