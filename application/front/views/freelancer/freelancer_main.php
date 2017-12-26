@@ -30,19 +30,6 @@
         
        
             <?php echo $footer; ?>
-            <!--            <div class="copyright">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <p><i class="fa fa-copyright" aria-hidden="true"></i> 2017 All Rights Reserved </p>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
-       
-
         <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>

@@ -3,7 +3,6 @@
         <form action=<?php echo base_url('freelance-hire/search') ?> method="get">
             <fieldset class="col-md-3 col-sm-5 col-xs-5 sec_h2">
                 <input type="text" class="skill_keyword" id="tags" name="skills" placeholder="Designation, Skills, Field">
-                <!--<input id="skills2" name="skills" tabindex="7" size="90" placeholder="Enter SKills">-->
             </fieldset>
             <fieldset class="col-md-3 col-sm-5 col-xs-5 sec_h2">
                 <input type="text" class="skill_place" id="searchplace" name="searchplace" placeholder="Find Location"> 

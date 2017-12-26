@@ -3,10 +3,10 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
-        <?php } else {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+        <?php if (IS_HIRE_CSS_MINIFY == '0') { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
         <?php } ?>
         <?php if (!$this->session->userdata('aileenuser')) { ?>
             <style>
@@ -403,7 +403,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
-                          <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
+                            <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                             <div class="btn-right pull-right">
@@ -771,7 +771,6 @@
                                                         }
                                                         ?>
 
-
                                                     </ul>
                                                 </div>
                                                 <div class="profile-job-post-title clearfix">
@@ -898,7 +897,6 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                     <div class="modal-body">
-                        <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                         <span class="mes"></span>
                     </div>
                 </div>
@@ -921,7 +919,6 @@
                                     <div class="col-md-7 text-center">
                                         <div id="upload-demo-one" style="width:350px; display: none"></div>
                                     </div>
-<!--<input type="submit" name="profilepicsubmit" id="upload-result-one" value="Save" >-->
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
                             </div>
@@ -940,7 +937,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                               <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Employer Profile</h1></div>
+                                <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Employer Profile</h1></div>
                                 <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
@@ -1152,42 +1149,34 @@
                 </div>
             </div>
         </div>
-        <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script  src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <!--<script type="text/javascript" src="<?php //echo base_url('assets/js/jquery.validate.js?ver='.time());                    ?>">-->
-        <!--</script>-->
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        
+
+
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
- <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script  src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <!--<script type="text/javascript" src="<?php //echo base_url('assets/js/jquery.validate.js?ver='.time());                    ?>">-->
-        <!--</script>-->
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        
-            <?php } else {  ?>
-    <script  src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script  src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
-        <!--<script type="text/javascript" src="<?php //echo base_url('assets/js/jquery.validate.js?ver='.time());                    ?>">-->
-        <!--</script>-->
-        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        
+            <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script  src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+
+        <?php } else { ?>
+            <script  src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script  src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+
         <?php } ?>
-    
-    
+
+
         <script>
                                                 var base_url = '<?php echo base_url(); ?>';
                                                 var user_session = '<?php echo $this->session->userdata('aileenuser'); ?>';
                                                 var segment3 = '<?php echo $this->uri->segment(3); ?>'
         </script>
-        
+
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-  <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_profile.js?ver=' . time()); ?>"></script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
-            <?php } else {  ?>
-   <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_profile.js?ver=' . time()); ?>"></script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_profile.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_profile.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <?php } ?>
-       
+
     </body>
 </html>

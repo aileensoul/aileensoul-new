@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +6,6 @@
         <!-- Calender Css Start-->
 
         <title><?php echo $title; ?></title>
-
         <!-- Calender Css End-->
         <?php
         if (IS_APPLY_CSS_MINIFY == '0') {
@@ -665,7 +663,6 @@
 
                                     <fieldset class=" full-width">
                                         <div class="job_reg">
-                                           <!--<input type="reset">-->
                                             <input title="Register" tabindex="12" type="submit" id="submit" name="" value="Register">
                                         </div>
                                     </fieldset>
@@ -696,7 +693,6 @@
             <div class="modal-dialog modal-lm">
                 <div class="modal-content message">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
-                    <!--                    <div class="message" style="width:300px;">-->
                     <h2>Add Field</h2>         
                     <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
                     <div class="fw"><a id="field" class="btn">OK</a></div>
@@ -871,16 +867,11 @@
                                             Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="create_profile();">Create an account</a>
                                         </p>
                                     </form>
-
-
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
-
             </div>
         </div>
         <!-- Login -->

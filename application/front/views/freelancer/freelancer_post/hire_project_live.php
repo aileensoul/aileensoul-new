@@ -372,7 +372,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
-                       <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
+                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                         <div class="btn-right pull-right">
@@ -397,8 +397,6 @@
                                                aria-hidden="true" rel="noopener">
                                                 <div class="bg-images no-cover-upload"> 
                                                     <?php
-                                                    // $image_ori = $this->config->item('rec_bg_thumb_upload_path') . $freelancr_user_data[0]['profile_background'];
-
                                                     if ($freelancr_user_data[0]['profile_background'] != '') {
                                                         ?>
 
@@ -467,7 +465,7 @@
                                                     <a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($freelancr_user_data['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data['username'])); ?>">   <?php echo ucfirst(strtolower($freelancr_user_data[0]['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data[0]['username'])); ?></a>
                                                 </span>
 
-                                                <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;  ?>
+                                               
                                                 <div class="profile-boxProfile-name">
                                                     <a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
                                                         <?php
@@ -498,10 +496,6 @@
 
                                 </div>
                                 <?php echo $left_footer; ?>
-
-
-
-
                             </div>
 
                         </div>
@@ -568,8 +562,6 @@
                                                 <p class="loca-exp">
                                                     <span class="exp">
                                                         <span>
-                                                            <!--<img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">-->
-
                                                             <?php
                                                             if ($post['post_exp_month'] || $post['post_exp_year']) {
                                                                 if ($post['post_exp_year']) {
@@ -583,7 +575,7 @@
                                                                     echo $post['post_exp_month'];
                                                                 }
                                                                 echo " Year" . " (Required Experience)";
-                                                                // echo $post['post_exp_year'].".".$post['post_exp_month'];
+                                                              
                                                             }
                                                             ?> 
                                                         </span>
@@ -606,34 +598,34 @@
                                                     <li>
                                                         <b>Key skill</b>
                                                         <span>  <?php
-                                                            $comma = " , ";
-                                                            $k = 0;
-                                                            $aud = $post['post_skill'];
-                                                            $aud_res = explode(',', $aud);
+                                                    $comma = " , ";
+                                                    $k = 0;
+                                                    $aud = $post['post_skill'];
+                                                    $aud_res = explode(',', $aud);
 
-                                                            if (!$post['post_skill']) {
+                                                    if (!$post['post_skill']) {
 
-                                                                echo $post['post_other_skill'];
-                                                            } else if (!$post['post_other_skill']) {
-                                                                foreach ($aud_res as $skill) {
-                                                                    if ($k != 0) {
-                                                                        echo $comma;
-                                                                    }
-                                                                    $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
-                                                                    echo $cache_time;
-                                                                    $k++;
-                                                                }
-                                                            } else if ($post['post_skill'] && $post['post_other_skill']) {
-
-                                                                foreach ($aud_res as $skill) {
-                                                                    if ($k != 0) {
-                                                                        echo $comma;
-                                                                    }
-                                                                    $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
-                                                                    echo $cache_time;
-                                                                    $k++;
-                                                                } echo "," . $post['post_other_skill'];
+                                                        echo $post['post_other_skill'];
+                                                    } else if (!$post['post_other_skill']) {
+                                                        foreach ($aud_res as $skill) {
+                                                            if ($k != 0) {
+                                                                echo $comma;
                                                             }
+                                                            $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                            echo $cache_time;
+                                                            $k++;
+                                                        }
+                                                    } else if ($post['post_skill'] && $post['post_other_skill']) {
+
+                                                        foreach ($aud_res as $skill) {
+                                                            if ($k != 0) {
+                                                                echo $comma;
+                                                            }
+                                                            $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                            echo $cache_time;
+                                                            $k++;
+                                                        } echo "," . $post['post_other_skill'];
+                                                    }
                                                             ?>     
 
                                                         </span>
@@ -733,23 +725,19 @@
                                                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                                                 </div>
                                                             <?php } ?>
-                                    <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
                                                         </div>
                                                         <div class="sort-emp-detail">
                                                             <div><a><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></div>
                                                             <p><?php
-                                                                if ($user['designation']) {
-                                                                    echo $user['designation'];
-                                                                } else {
-                                                                    echo "Designation";
-                                                                }
-                                                                ?></p>
+                                                            if ($user['designation']) {
+                                                                echo $user['designation'];
+                                                            } else {
+                                                                echo "Designation";
+                                                            }
+                                                            ?></p>
                                                         </div>
                                                         <div class="sort-emp-msg">
-                                                            <!--                                                                                                <a class="btn1" href = " ' . base_url('chat/abc/3/4/' . $row['user_id']) . '">
-                                                                                                                                                                Message
-                                                                                                                                                            </a>-->
-                                                            <!--                                                                                                <a href="#" class="btn1">Message</a>-->
+                                                                                                                                                   <a href="#" class="btn1">Message</a>-->
                                                         </div>
                                                     </div>
                                                 <?php } ?>
@@ -830,7 +818,6 @@
                                                 <p class="loca-exp">
                                                     <span class="exp">
                                                         <span>
-                                                            <!--<img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">-->
 
                                                             <?php
                                                             if ($post['post_exp_month'] || $post['post_exp_year']) {
@@ -845,7 +832,6 @@
                                                                     echo $post['post_exp_month'];
                                                                 }
                                                                 echo " Year" . " (Required Experience)";
-                                                                // echo $post['post_exp_year'].".".$post['post_exp_month'];
                                                             }
                                                             ?> 
                                                         </span>
@@ -868,34 +854,34 @@
                                                     <li>
                                                         <b>Key skill</b>
                                                         <span>  <?php
-                                                            $comma = " , ";
-                                                            $k = 0;
-                                                            $aud = $post['post_skill'];
-                                                            $aud_res = explode(',', $aud);
+                                                    $comma = " , ";
+                                                    $k = 0;
+                                                    $aud = $post['post_skill'];
+                                                    $aud_res = explode(',', $aud);
 
-                                                            if (!$post['post_skill']) {
+                                                    if (!$post['post_skill']) {
 
-                                                                echo $post['post_other_skill'];
-                                                            } else if (!$post['post_other_skill']) {
-                                                                foreach ($aud_res as $skill) {
-                                                                    if ($k != 0) {
-                                                                        echo $comma;
-                                                                    }
-                                                                    $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
-                                                                    echo $cache_time;
-                                                                    $k++;
-                                                                }
-                                                            } else if ($post['post_skill'] && $post['post_other_skill']) {
-
-                                                                foreach ($aud_res as $skill) {
-                                                                    if ($k != 0) {
-                                                                        echo $comma;
-                                                                    }
-                                                                    $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
-                                                                    echo $cache_time;
-                                                                    $k++;
-                                                                } echo "," . $post['post_other_skill'];
+                                                        echo $post['post_other_skill'];
+                                                    } else if (!$post['post_other_skill']) {
+                                                        foreach ($aud_res as $skill) {
+                                                            if ($k != 0) {
+                                                                echo $comma;
                                                             }
+                                                            $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                            echo $cache_time;
+                                                            $k++;
+                                                        }
+                                                    } else if ($post['post_skill'] && $post['post_other_skill']) {
+
+                                                        foreach ($aud_res as $skill) {
+                                                            if ($k != 0) {
+                                                                echo $comma;
+                                                            }
+                                                            $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                            echo $cache_time;
+                                                            $k++;
+                                                        } echo "," . $post['post_other_skill'];
+                                                    }
                                                             ?>     
 
                                                         </span>
@@ -947,27 +933,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <?php }
+                                <?php }
                                 ?>
 
                             </div>
 
                         <?php } ?>
-                        <!--recommen candidate end-->
-
-                        <!--        </div>-->
-
-
-
-
-                        <!-- <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-
-                           
-
-                        </div>
-                        -->
-
-
+                      
                     </div>
                 </div>
 
@@ -987,7 +959,7 @@
         <!-- Model Popup Close -->
 
         <!--footer>        
-        <?php //echo $footer;  ?>
+        <?php //echo $footer;   ?>
         </footer-->
 
         <!-- Login  -->
@@ -1378,7 +1350,6 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-                                                                                        <!--<p class="next">Next</p>-->
                                         </p>
                                     </form>
                                 </div>
@@ -1424,7 +1395,7 @@
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/project_live_login.js?ver=' . time()); ?>"></script>
         <?php } ?>
 
-        
+
 
         <script>
 

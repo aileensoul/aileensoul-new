@@ -14,7 +14,6 @@
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-apply.css?ver=' . time()); ?>">
         <?php } ?>
 
-<!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
@@ -105,7 +104,7 @@
                                 </div>
                                 <div class="edi_origde">
                                     <?php
-                                    //echo $count_profile;
+                                    
                                     if ($count_profile == 100) {
                                         if ($freepostdata[0]['progressbar'] == 0) {
                                             ?>

@@ -3,10 +3,10 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-    <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
-        <?php } else {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+        <?php if (IS_HIRE_CSS_MINIFY == '0') { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
         <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed">
@@ -217,21 +217,21 @@
                                                                     ?>
 
                                                                     <?php if ($userid != $row['user_id']) { ?>
-                                                                    <a title="Message" class="msg_btn" href="<?php echo base_url('chat/abc/3/4/' . $row['user_id']); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                                        <a title="Message" class="msg_btn" href="<?php echo base_url('chat/abc/3/4/' . $row['user_id']); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                                         <?php
                                                                         $contition_array = array('invite_user_id' => $row['user_id'], 'post_id' => $postid, 'profile' => 'freelancer');
                                                                         $userdata = $this->common->select_data_by_condition('user_invite', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                         if ($userdata) {
                                                                             ?>
-                                                                    <a title="Selected" href="javascript:void(0);" class="button invited" id="<?php echo 'invited' . $row['user_id']; ?>" style="cursor: default;"><?php echo $this->lang->line("selected"); ?></a>       
+                                                                            <a title="Selected" href="javascript:void(0);" class="button invited" id="<?php echo 'invited' . $row['user_id']; ?>" style="cursor: default;"><?php echo $this->lang->line("selected"); ?></a>       
                                                                         <?php } else { ?>
-                                                                    <a title="Select" class=""  href="javascript:void(0);" class="button invite_border" id="<?php echo 'invited' . $row['user_id']; ?>" onClick="inviteuserpopup(<?php echo $row['user_id']; ?>)"><?php echo $this->lang->line("select"); ?></a>
+                                                                            <a title="Select" class=""  href="javascript:void(0);" class="button invite_border" id="<?php echo 'invited' . $row['user_id']; ?>" onClick="inviteuserpopup(<?php echo $row['user_id']; ?>)"><?php echo $this->lang->line("select"); ?></a>
                                                                         <?php } ?>
 
                                                                         <?php
                                                                         if ($savedata) {
                                                                             ?> 
-                                                                    <a title="Shortlisted" class="saved" href="javascript:void(0);">Shortlisted</a>
+                                                                            <a title="Shortlisted" class="saved" href="javascript:void(0);">Shortlisted</a>
 
                                                                             <?php
                                                                         } else {
@@ -258,9 +258,7 @@
                                                     </div>
                                                     <div class="art_no_post_text"><?php echo $this->lang->line("no_applied_freelancer"); ?></div> 
                                                 </div>
-                                                <!--                                                <div class="text-center rio">
-                                                                                                    <h4 class="page-heading  product-listing" ><?php //echo $this->lang->line("no_applied_freelancer");   ?></h4>
-                                                                                                </div>-->
+
                                                 <?php
                                             }
                                             ?>
@@ -290,24 +288,24 @@
         </div>
         <!-- Model Popup Close -->
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
-        </script>
-            <?php } else {  ?>
-        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>">
-        </script>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
+            </script>
+        <?php } else { ?>
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>">
+            </script>
         <?php } ?>
         <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>
-            
-            <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
-        <script   type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
-            <?php } else {  ?>
-         <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
-        <script   type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+
+        <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
+            <script   type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
+            <script   type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <?php } ?>
-       
+
         <script>
             function inviteuserpopup(abc) {
                 $('.biderror .mes').html("<div class='pop_content'>Do you want to select this freelancer for your project?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");

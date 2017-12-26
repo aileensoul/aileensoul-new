@@ -71,9 +71,9 @@
 
                                             <div id="InboxContainer" class="dropdown2_content">
                                                 <div id="InboxBody" class="Inbox">
-                                                    <!--<div id="notificationTitle">Messages   <span class="see_link"> <a href="<?php //echo base_url('chat/abc/5/5');  ?>">See All</a></span></div>-->
+                                                   
                                                     <div id="notificationTitle">Messages   <span class="see_link" id="seemsg"> </span></div>
-                                                    <!-- <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark"> -->
+                                                    
                                                     <div>
                                                         <ul class="notification_data_in_h2">
                                                             <div class="fw" id="msg_not_loader" style="text-align:center;"><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>  
@@ -120,7 +120,7 @@
             <div class="modal-content">
                 <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                 <div class="modal-body">
-                    <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
+                  
                     <span class="mes"></span>
                 </div>
             </div>
@@ -177,34 +177,13 @@
     </script>
     <!-- all popup close close using esc end -->
 
-<!--    <script type="text/javascript">
-    $(document).ready(function() {
-var images = new Array()
-            function preload(image) {
-              
-                for (i = 0; i < preload.arguments.length; i++) {
-                    images[i] = new Image()
-                    images[i].src = preload.arguments[i]
-                }
-            }
-            preload(
-                    
-                  
-                      <?php echo base_url('assets/img/h3.png'); ?>,
-                      <?php echo base_url('assets/img/index.png'); ?>,
-                      <?php echo base_url('assets/img/edit_profile.png'); ?>,
-
-                   
-            )
-});
-</script>-->
 
     <script type="text/javascript" charset="utf-8">
 
         function addmsg1(type, msg)
         {
             if (msg == 0)
-            { //alert(1234);
+            { 
                 $("#message_count").html('');
                 $("#message_count").removeAttr("style");
                 $('#InboxLink').removeClass('msg_notification_available');
@@ -212,7 +191,6 @@ var images = new Array()
             } else
             {
                 $('#message_count').html(msg);
-                //     $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
                 $('#InboxLink').addClass('msg_notification_available');
                 $('#message_count').addClass('count_add');
                 document.getElementById('message_count').style.display = "block";
@@ -238,10 +216,7 @@ var images = new Array()
                             );
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    //                addmsg1("error", textStatus + " (" + errorThrown + ")");
-                    //                setTimeout(
-                    //                        waitForMsg1,
-                    //                        15000);
+                  
                 }
             });
         }
@@ -285,14 +260,7 @@ var images = new Array()
                 url: '<?php echo base_url() . "chat/userajax/4/3" ?>',
                 dataType: 'json',
                 data: '',
-                //                beforeSend: function () {
-                //            
-                //                $('#msg_not_loader').show();
-                //           },
-                //        
-                //        complete: function () {
-                //            $('#msg_not_loader').show();
-                //        },
+             
                 success: function (data) { //alert(data);
 
                     $('#userlist').html(data.leftbar);
@@ -320,18 +288,16 @@ var images = new Array()
             $.ajax({
                 url: "<?php echo base_url(); ?>notification/update_msg_noti/4",
                 type: "POST",
-                //data: {uid: 12341234}, //this sends the user-id to php as a post variable, in php it can be accessed as $_POST['uid']
+              
                 success: function (data) {
                     data = JSON.parse(data);
-                    //alert(data);
-                    //update some fields with the updated data
-                    //you can access the data like 'data["driver"]'
+                    
                 }
             });
         }
         function msgheader()
         {
-            // $("#fad" + clicked_id).fadeOut(6000);
+          
             $.ajax({
                 type: 'POST',
                 url: '<?php echo base_url() . "notification/msg_header/" . $this->uri->segment(3) . "" ?>',

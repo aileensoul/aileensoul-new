@@ -19,7 +19,7 @@
         <?php echo $header; ?>
         <?php
         $returnpage = $_GET['page'];
-        //echo $returnpage;die();
+       
         if ($this->session->userdata('aileenuser') != $recliveid) {
             echo $freelancer_post_header2_border;
         } elseif ($freelancr_user_data[0]['free_hire_step'] == 3) {
@@ -55,7 +55,7 @@
                                                            <?php } ?>
                                                         <div class="bg-images no-cover-upload"> 
                                                             <?php
-                                                            // $image_ori = $this->config->item('rec_bg_thumb_upload_path') . $freelancr_user_data[0]['profile_background'];
+                                                            
 
                                                             if ($freelancr_user_data[0]['profile_background'] != '') {
                                                                 ?>
@@ -193,7 +193,7 @@
                                                                                     </div>
                                                                                     <?php
                                                                                     $applyuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $this->session->userdata('aileenuser'), $data = 'user_id', $join_str = array());
-                                                                                    //  if ($applyuser) {
+                                                                                  
                                                                                     ?>
 
 
@@ -273,7 +273,7 @@
                                                                                                                                 echo $post['post_exp_month'];
                                                                                                                             }
                                                                                                                             echo " Year" . " (Required Experience)";
-                                                                                                                            // echo $post['post_exp_year'].".".$post['post_exp_month'];
+                                                                                                                        
                                                                                                                         }
                                                                                                                         ?> 
                                                                                                                     </span>
@@ -313,9 +313,7 @@
                                                                                                                     <?php
                                                                                                                 }
                                                                                                                 ?>
-
-                                                                                                                <!--                                                    <a href="#" class="btn4">Save</a>
-                                                                                                                                                                                            <a href="#" class="btn4">Apply</a>-->
+                                                                       
                                                                                                             </p>
                                                                                                         </div>
                                                                                                     </div>
@@ -434,8 +432,7 @@
                                                                                                                     <?php
                                                                                                                 }
                                                                                                                 ?>
-                                                                                                                <!--                                                    <a href="#" class="btn4">Save</a>
-                                                                                                                                                                    <a href="#" class="btn4">Apply</a>-->
+                                                                                                               
                                                                                                             </p>
 
                                                                                                         </div>
@@ -541,7 +538,6 @@
                                                                                                                             </div>
                                                                                                                         <?php } ?>
                                                                                                                     <?php } ?>
-            <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
                                                                                                                 </div>
                                                                                                                 <div class="sort-emp-detail">
                                                                                                                     <div>
@@ -569,7 +565,7 @@
                                                                                                                             Message
                                                                                                                         </a>
                                                                                                                     <?php } ?>
-                                                                                                                    <!--                                                                                                <a href="#" class="btn1">Message</a>-->
+                                                                                                                  
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         <?php } ?>
@@ -579,35 +575,7 @@
                                                                                         <?php } ?>
                                                                                         <!--shortlisted employy end-->
                                                                                     </div>
-
-                                                                                    <?php //} else {  ?>
-                                                                                    <!--                                                                                        <div class="inner-right-part cust-inner-part">
-                                                                                                                                                                                <div class="common-form">
-                                                                                                                                                                                    <div class="job-saved-box">
-                                                                                                                                                                                        <h3>Freelancer</h3>
-                                                                                                                                                                                        <div class="contact-frnd-post">
-                                                                                                                                                                                            <div class="art-img-nn">
-                                                                                                                                                                                                <div class="art_no_post_img">
-                                                                                                                                                                                                    <img src="/assets/img/free-no.png">
-                                                                                                                                                                                                </div>
-                                                                                                                                                                                                <div class="art_no_post_text">   You must have a freelancer  profile for applying to this post </div>
-                                                                                                                                                                                            </div>
-                                                                                    
-                                                                                                                                                                                        </div>
-                                                                                                                                                                                    </div>
-                                                                                                                                                                                </div>
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        
-                                                                                                                                                                            </div>-->
-
-                                                                                    <?php //}  ?>
-
-                                                                                    <!--  <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
- 
-                                                                                         
- 
-                                                                                     </div> -->
-
+                                                                                   
                                                                                     </div>
 
 

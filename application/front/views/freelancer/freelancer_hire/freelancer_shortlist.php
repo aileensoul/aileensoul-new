@@ -3,11 +3,11 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-      
-    <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
-         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
-        <?php } else {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+
+        <?php if (IS_HIRE_CSS_MINIFY == '0') { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
         <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed">
@@ -212,30 +212,18 @@
                                                                     ?>
 
                                                                     <?php if ($userid != $row['user_id']) { ?>
-                                                                    <a title="Message" class="msg_btn" href="<?php echo base_url('chat/abc/3/4/' . $row['user_id']); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                                        <a title="Message" class="msg_btn" href="<?php echo base_url('chat/abc/3/4/' . $row['user_id']); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                                         <?php
                                                                         $contition_array = array('invite_user_id' => $row['user_id'], 'post_id' => $postid, 'profile' => 'freelancer');
                                                                         $userdata = $this->common->select_data_by_condition('user_invite', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                         if ($userdata) {
                                                                             ?>
-                                                                    <a title="Selected" href="javascript:void(0);" class="button invited" id="<?php echo 'invited' . $row['user_id']; ?>" style="cursor: default;"><?php echo $this->lang->line("selected"); ?></a>       
+                                                                            <a title="Selected" href="javascript:void(0);" class="button invited" id="<?php echo 'invited' . $row['user_id']; ?>" style="cursor: default;"><?php echo $this->lang->line("selected"); ?></a>       
                                                                         <?php } else { ?>
-                                                                    <a title="Invite" class=""  href="javascript:void(0);" class="button invite_border" id="<?php echo 'invited' . $row['user_id']; ?>" onClick="inviteuserpopup(<?php echo $row['user_id']; ?>)"><?php echo $this->lang->line("select"); ?></a>
+                                                                            <a title="Invite" class=""  href="javascript:void(0);" class="button invite_border" id="<?php echo 'invited' . $row['user_id']; ?>" onClick="inviteuserpopup(<?php echo $row['user_id']; ?>)"><?php echo $this->lang->line("select"); ?></a>
                                                                         <?php } ?>
 
                                                                         <?php
-                                                                        if ($savedata) {
-                                                                            ?> 
-                                                                                            <!--<a class="saved" href="javascript:void(0);"><?php echo $this->lang->line("saved"); ?> </a>-->
-
-                                                                            <?php
-                                                                        } else {
-                                                                            ?>
-                                                                                            <!--<input type="hidden" id="<?php echo 'hideenuser' . $row['user_id']; ?>" value= "<?php echo $data[0]['save_id']; ?>">-->
-
-                                                                                            <!--<a id="<?php echo $row['user_id']; ?>" onClick="savepopup(<?php echo $row['user_id']; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $row['user_id']; ?>"><?php echo $this->lang->line("save"); ?></a>-->
-                                                                            <?php
-                                                                        }
                                                                     }
                                                                     ?>
                                                                 </div>
@@ -252,9 +240,7 @@
                                                     </div>
                                                     <div class="art_no_post_text"><?php echo $this->lang->line("no_applied_freelancer"); ?></div> 
                                                 </div>
-                                                <!--                                                <div class="text-center rio">
-                                                                                                    <h4 class="page-heading  product-listing" ><?php //echo $this->lang->line("no_applied_freelancer");  ?></h4>
-                                                                                                </div>-->
+
                                                 <?php
                                             }
                                             ?>
@@ -283,49 +269,49 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        
+
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>  
-            <?php } else {  ?>
-    <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>  
+        <?php } else { ?>
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
         <script>
-            var base_url = '<?php echo base_url(); ?>';
+                                                                                var base_url = '<?php echo base_url(); ?>';
         </script>
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
-        <script   type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
-            <?php } else {  ?>
-    <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
-        <script   type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
+            <script   type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
+            <script   type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <?php } ?>
-        
+
         <script>
-            function inviteuserpopup(abc) {
+                                                                                function inviteuserpopup(abc) {
 
-                $('.biderror .mes').html("<div class='pop_content'>Do you want to select this freelancer for your project?<div class='model_ok_cancel'><a title='Yes' class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a title='No' class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                $('#bidmodal').modal('show');
-            }
-            function inviteuser(clicked_id)
-            {
-                var post_id = "<?php echo $postid; ?>";
+                                                                                    $('.biderror .mes').html("<div class='pop_content'>Do you want to select this freelancer for your project?<div class='model_ok_cancel'><a title='Yes' class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a title='No' class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                                                                    $('#bidmodal').modal('show');
+                                                                                }
+                                                                                function inviteuser(clicked_id)
+                                                                                {
+                                                                                    var post_id = "<?php echo $postid; ?>";
 
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo base_url() . "freelancer/free_invite_user" ?>',
-                    data: 'post_id=' + post_id + '&invited_user=' + clicked_id,
-                    dataType: 'json',
-                    success: function (data) { //alert(data);
-                        $('#' + 'invited' + clicked_id).html(data).addClass('button invited').removeClass('invite_border').removeAttr("onclick");
-                        $('#' + 'invited' + clicked_id).css('cursor', 'default');
-                        if (data.notification.notification_count != 0) {
-                            var notification_count = data.notification.notification_count;
-                            var to_id = data.notification.to_id;
-                            show_header_notification(notification_count, to_id);
-                        }
-                    }
-                });
-            }
+                                                                                    $.ajax({
+                                                                                        type: 'POST',
+                                                                                        url: '<?php echo base_url() . "freelancer/free_invite_user" ?>',
+                                                                                        data: 'post_id=' + post_id + '&invited_user=' + clicked_id,
+                                                                                        dataType: 'json',
+                                                                                        success: function (data) { //alert(data);
+                                                                                            $('#' + 'invited' + clicked_id).html(data).addClass('button invited').removeClass('invite_border').removeAttr("onclick");
+                                                                                            $('#' + 'invited' + clicked_id).css('cursor', 'default');
+                                                                                            if (data.notification.notification_count != 0) {
+                                                                                                var notification_count = data.notification.notification_count;
+                                                                                                var to_id = data.notification.to_id;
+                                                                                                show_header_notification(notification_count, to_id);
+                                                                                            }
+                                                                                        }
+                                                                                    });
+                                                                                }
         </script>
     </body>
 </html>
