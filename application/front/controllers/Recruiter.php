@@ -2479,12 +2479,12 @@ class Recruiter extends MY_Controller {
             $title .= $searchkeyword;
         }
         if ($searchkeyword && $search_place) {
-            $title .= ' Job Seeker in ';
+            $title .= $searchkeyword.' in '.$search_place;
         }
         if ($search_place) {
             $title .= $search_place;
         }
-        $this->data['title'] = "Search | Recruiter Profile - Aileensoul";
+        $this->data['title'] = $title." | Recruiter Profile - Aileensoul";
 
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 

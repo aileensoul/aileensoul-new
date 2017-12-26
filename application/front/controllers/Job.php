@@ -3440,7 +3440,7 @@ class Job extends MY_Controller {
             $title .= $search_job;
         }
         if ($search_job && $search_place) {
-            $title .= ' Job Opening in ';
+            $title .= $search_job.' in '.$search_place;
         }
         if ($search_place) {
             $title .= $search_place;

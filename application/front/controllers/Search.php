@@ -131,12 +131,12 @@ class Search extends MY_Controller {
             $title .= $search_business;
         }
         if ($search_business && $search_place) {
-            $title .= ' Business in ';
+            $title .= $search_business.' in '.$search_place;
         }
         if ($search_place) {
             $title .= $search_place;
         }
-        $this->data['title'] = "$title | Aileensoul";
+        $this->data['title'] = $title." | Business Profile - Aileensoul";
 
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
@@ -1084,12 +1084,12 @@ Your browser does not support the audio tag.
             $title .= $searchkeyword;
         }
         if ($searchkeyword && $search_place) {
-            $title .= ' Freelancer in ';
+            $title .= $searchkeyword.' in '.$search_place;
         }
         if ($search_place) {
             $title .= $search_place;
         }
-        $this->data['title'] = "$title | Aileensoul";
+        $this->data['title'] = $title." | Employer Profile - Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
         if ($this->session->userdata('aileenuser')) {
@@ -1522,12 +1522,12 @@ Your browser does not support the audio tag.
             $title .= $search_skill;
         }
         if ($search_skill && $search_place) {
-            $title .= ' Freelancer in ';
+            $title .= $search_skill.' in '.$search_place;
         }
         if ($search_place) {
             $title .= $search_place;
         }
-        $this->data['title'] = "$title | Aileensoul";
+        $this->data['title'] = $title." | Freelancer Profile - Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
