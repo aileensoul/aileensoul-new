@@ -2,7 +2,6 @@
 <?php
 
 if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
-    // $date = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
     header("HTTP/1.1 304 Not Modified");
     exit();
 }
@@ -16,9 +15,6 @@ header('Last-Modified: '.$date);
 
 $date = gmdate($format, $now+30);
 header('Expires: '.$date);
-
-//header('Cache-Control: public, max-age=30');
-
 ?>
 <html lang="en">
    <head>
@@ -138,15 +134,7 @@ header('Expires: '.$date);
                </div>
                <div class="col-md-8 col-sm-7 col-xs-9 header-left-menu">
                   <div class="main-menu-right">
-<!-- <ul class="">
-                                    <?php// foreach ($blog_category as $category) { ?>
-                                        <li class="category">
-                                            <div id="category_<?php// echo $cateory['id']; ?>"  onclick="return category_data(<?php echo $category['id']; ?>);">
-                                                <?php //echo $category['name']; ?>
-                                            </div>
-                                        </li>
-                                    <?php //} ?>
-                                </ul>-->
+
                   </div>
                </div>
             </div>
@@ -379,7 +367,6 @@ header('Expires: '.$date);
                       </div> 
                         
                                     <ul class="load-more-blog">
-                                        <!--<li class="loadbutton"></li>-->
                                         <li class="loadcatbutton"></li>
                                     </ul>
                        </div>
@@ -465,104 +452,7 @@ header('Expires: '.$date);
                                        var base_url = '<?php echo base_url(); ?>';
 </script>
 <script>
-//AJAX DATA LOAD BY LAZZY LOADER START
-//    $(document).ready(function () {
-//       // blog_post();
-//
-//    });
 
-//    function category_data(catid, pagenum) {
-//        $('.job-contact-frnd').html("");
-//      //  $('.loadbutton').html("");
-//        cat_post(catid, pagenum);
-//    }
-//
-//    $('.loadcatbutton').click(function () {
-//        var pagenum = parseInt($(".page_number:last").val()) + 1;
-//        var catid = $(".catid").val();
-//        cat_post(catid, pagenum);
-//    });
-//
-//    var isProcessing = false;
-//    function cat_post(catid, pagenum) {
-//        if (isProcessing) {
-//            /*
-//             *This won't go past this condition while
-//             *isProcessing is true.
-//             *You could even display a message.
-//             **/
-//            return;
-//        }
-//        isProcessing = true;
-//        $.ajax({
-//            type: 'POST',
-//            url: base_url + "blog/cat_ajax?page=" + pagenum + "&cateid=" + catid,
-//            data: {total_record: $("#total_record").val()},
-//            dataType: "json",
-//            beforeSend: function () {
-//
-//            },
-//            complete: function () {
-//                $('#loader').hide();
-//            },
-//            success: function (data) {
-//                $('.loader').remove();
-//                $('.job-contact-frnd').append(data.blog_data);
-//                $('.loadcatbutton').html(data.load_msg)
-//                // second header class add for scroll
-//                var nb = $('.post-design-box').length;
-//                if (nb == 0) {
-//                    $("#dropdownclass").addClass("no-post-h2");
-//                } else {
-//                    $("#dropdownclass").removeClass("no-post-h2");
-//                }
-//                isProcessing = false;
-//            }
-//        });
-//    }
-
-
-//    $('.loadbutton').click(function () {
-//        var pagenum = parseInt($(".page_number:last").val()) + 1;
-//        blog_post(pagenum);
-//    });
-  //  var isProcessing = false;
-//    function blog_post(pagenum) {
-//        if (isProcessing) {
-//            /*
-//             *This won't go past this condition while
-//             *isProcessing is true.
-//             *You could even display a message.
-//             **/
-//            return;
-//        }
-//        isProcessing = true;
-//        $.ajax({
-//            type: 'POST',
-//            url: base_url + "blog/blog_ajax?page=" + pagenum,
-//            data: {total_record: $("#total_record").val()},
-//            dataType: "json",
-//            beforeSend: function () {
-//
-//            },
-//            complete: function () {
-//                $('#loader').hide();
-//            },
-//            success: function (data) {
-//                $('.loader').remove();
-//                $('.job-contact-frnd').append(data.blog_data);
-//                $('.loadbutton').html(data.load_msg)
-//                // second header class add for scroll
-//                var nb = $('.post-design-box').length;
-//                if (nb == 0) {
-//                    $("#dropdownclass").addClass("no-post-h2");
-//                } else {
-//                    $("#dropdownclass").removeClass("no-post-h2");
-//                }
-//                isProcessing = false;
-//            }
-//        });
-//    }
 //AJAX DATA LOAD BY LAZZY LOADER END
 </script>
  <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
