@@ -69,10 +69,6 @@ class Job extends MY_Controller {
         $data = 'fname,lname,email,phnno,pincode,address,dob,gender,job_step,city_id,language,count(*) as total';
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        //echo "<pre>"; print_r($userdata);die();
-//        $contition_array = array('status' => '1');
-//        $this->data['nation'] = $this->common->select_data_by_condition('nation', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
         $contition_array = array('status' => '1');
         $this->data['language1'] = $this->common->select_data_by_condition('language', $contition_array, $data = '*', $sortby = 'language_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -128,8 +124,6 @@ class Job extends MY_Controller {
         $this->form_validation->set_rules('dob', 'Date of Birth', 'required');
         $this->form_validation->set_rules('gender', 'Gender', 'required');
         $this->form_validation->set_rules('city', 'City', 'required');
-        //  $this->form_validation->set_rules('pincode', 'Pincode', 'required');
-        // $this->form_validation->set_rules('address', 'Address', 'required');
         // Language  start   
         $language = $this->input->post('language');
         $language = explode(',', $language);
@@ -183,10 +177,8 @@ class Job extends MY_Controller {
 
             $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
             if ($updatedata) {
-                // $this->session->set_flashdata('success', 'Basic information updated successfully');
                 redirect('job/qualification', refresh);
             } else {
-                // $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/basic-information', refresh);
             }
         }
@@ -465,11 +457,9 @@ class Job extends MY_Controller {
 
             //Update only one field into database End 
 
-            if ($updatedata) {
-                // $this->session->set_flashdata('success', 'Primary Education updated successfully');
+            if ($updatedata) {            
                 redirect('job/qualification/secondary');
             } else {
-                // $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/qualification', refresh);
             }
         } else {
@@ -485,10 +475,10 @@ class Job extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'job_add_edu');
 
             if ($insert_id) {
-                // $this->session->set_flashdata('success', 'Primary Education updated successfully');
+          
                 redirect('job/qualification/secondary');
             } else {
-                // $this->session->flashdata('error', 'Your data not inserted');
+               
                 redirect('job/qualification', refresh);
             }
         }
@@ -571,7 +561,6 @@ class Job extends MY_Controller {
             //Creating Thumbnail
             $this->$instanse->resize();
             $thumberror = $this->$instanse->display_errors();
-            //echo "<pre>";print_r($thumberror);die();
             $thumberror = '';
             //Configuring Thumbnail End
             //S3 BUCKET STORE THUMB IMAGE START
@@ -660,10 +649,9 @@ class Job extends MY_Controller {
             //Update only one field into database End 
 
             if ($updatedata) {
-                // $this->session->set_flashdata('success', 'Secondary Education updated successfully');
                 redirect('job/qualification/higher-secondary');
             } else {
-                // $this->session->flashdata('error', 'Your data not inserted');
+                
                 redirect('job/qualification', refresh);
             }
         } else {
@@ -679,10 +667,8 @@ class Job extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'job_add_edu');
 
             if ($insert_id) {
-                //   $this->session->set_flashdata('success', 'Secondary Education updated successfully');
                 redirect('job/qualification/higher-secondary');
             } else {
-                //  $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/qualification', refresh);
             }
         }
@@ -767,7 +753,6 @@ class Job extends MY_Controller {
             //Creating Thumbnail
             $this->$instanse->resize();
             $thumberror = $this->$instanse->display_errors();
-            //echo "<pre>";print_r($thumberror);die();
             $thumberror = '';
             //Configuring Thumbnail End
             //S3 BUCKET STORE THUMB IMAGE START
@@ -856,10 +841,9 @@ class Job extends MY_Controller {
 
 
             if ($updatedata) {
-                // $this->session->set_flashdata('success', 'Higher Secondary Education updated successfully');
                 redirect('job/qualification/graduation');
             } else {
-                //  $this->session->flashdata('error', 'Your data not inserted');
+              
                 redirect('job/qualification', refresh);
             }
         } else {
@@ -877,10 +861,8 @@ class Job extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'job_add_edu');
 
             if ($insert_id) {
-                // $this->session->set_flashdata('success', 'Higher Secondary Education updated successfully');
                 redirect('job/qualification/graduation');
             } else {
-                //  $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/qualification', refresh);
             }
         }
@@ -954,7 +936,7 @@ class Job extends MY_Controller {
             if ($this->upload->do_upload('certificate')) {
 
                 $response['result'][] = $this->upload->data();
-                // echo "<pre>";print_r( $response);
+              
                 $main_image_size = $_FILES['certificate']['size'];
 
                 if ($main_image_size > '1000000') {
@@ -980,8 +962,6 @@ class Job extends MY_Controller {
                 $instanse10 = "image10_$i";
                 $this->load->library('image_lib', $job[$i], $instanse10);
                 $this->$instanse10->watermark();
-
-                //  echo "<pre>";print_r($job);
 
                 /* RESIZE */
 
@@ -1156,11 +1136,9 @@ class Job extends MY_Controller {
 
         if ($insert_id || $updatedata1) {
 
-            // $this->session->set_flashdata('success', 'Education updated successfully');
             redirect('job/project');
         } else {
-            //echo "welome";die();
-            // $this->session->flashdata('error', 'Your data not inserted');
+           
             redirect('job/qualification', 'refresh');
         }
     }
@@ -1225,11 +1203,9 @@ class Job extends MY_Controller {
 
 
             if ($updatedata) {
-
-                //  $this->session->set_flashdata('success', 'Project And Training / Internship updated successfully');
                 redirect('job/work-area');
             } else {
-                //  $this->session->flashdata('error', 'Your data not inserted');
+                
                 redirect('job/project', 'refresh');
             }
         }
@@ -1244,9 +1220,6 @@ class Job extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-//        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
-//        $search_condition = "((status = '1'))";
-//        $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name !=' => "Others");
         $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1257,11 +1230,11 @@ class Job extends MY_Controller {
 
         $contition_array = array('is_delete' => '0', 'is_other' => '0', 'industry_name !=' => "Others");
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-        //  $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
 
         $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
         $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//echo '<pre>'; print_r($this->data['industry_otherdata']); die();
+
         $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id' => $userid);
         $post = $this->data['postdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_id,work_job_title,work_job_industry,work_job_city,keyskill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -1353,7 +1326,6 @@ class Job extends MY_Controller {
             }
 
             // skills  start   
-            //echo "<pre>";print_r($skills);die();
             if (count($skills) > 0) {
 
                 foreach ($skills as $ski) {
@@ -1389,7 +1361,6 @@ class Job extends MY_Controller {
 
                 foreach ($cities as $cit) {
                     $contition_array = array('city_name' => $cit);
-                    //$search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
                     $citydata = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
                     if ($citydata) {
                         $city[] = $citydata[0]['city_id'];
@@ -1417,10 +1388,8 @@ class Job extends MY_Controller {
             $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
 
             if ($updatedata) {
-                //  $this->session->set_flashdata('success', 'Skill updated successfully');
                 redirect('job/work-experience');
             } else {
-                //  $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/work-area', 'refresh');
             }
         }
@@ -1544,10 +1513,8 @@ class Job extends MY_Controller {
 
 
                 if ($updatedata && $updatedata1 || $updatedata && $insertid) {
-                    //  $this->session->set_flashdata('success', 'Work Experience updated successfully');
                     redirect('job/home');
                 } else {
-                    //  $this->session->flashdata('error', 'Your data not inserted');
                     redirect('job/work-experience', 'refresh');
                 }
             } else {
@@ -1841,10 +1808,8 @@ class Job extends MY_Controller {
 
 
                 if ($insert_id && $updatedata || $updatedata1 && $updatedata) {
-                    //  $this->session->set_flashdata('success', 'Work Experience updated successfully');
                     redirect('job/home');
                 } else {
-                    //    $this->session->flashdata('error', 'Your data not inserted');
                     redirect('job/work-experience', 'refresh');
                 }
             }
@@ -1925,7 +1890,6 @@ class Job extends MY_Controller {
 //For Counting Profile data start
 //For Counting Profile data END
 
-       // $jobseeker_name = $this->get_jobseeker_name($id);
         $this->data['title'] = $job_details[0]['fname']." ".$job_details[0]['lname'] . " | Details | Job Profile" . TITLEPOSTFIX;
 
 //for deactive profile and slug not found then see page start
@@ -1935,10 +1899,9 @@ class Job extends MY_Controller {
         $availuser = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if (($availuser[0]['total'] > 0 || count($id) == 0) && $slug != '') {
-//            echo "1111";die();
+
             $this->load->view('job/notavalible');
         } else {
-//            echo "2222";die();
             if ($userid) {
                 $this->load->view('job/job_printpreview', $this->data);
             } else {
@@ -1961,9 +1924,6 @@ class Job extends MY_Controller {
         // echo "<pre>";print_r($this->data['job_reg'][0]['progressbar']);die();
         $contition_array = array('status' => '1', 'is_delete' => '0');
         $this->data['govjob_category'] = $govjob_category = $this->common->select_data_by_condition('gov_category', $contition_array, $data = 'id,name', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        //echo "<pre>"; print_r($govjob_category); die();
-
 
         $this->load->view('job/job_all_post', $this->data);
     }
@@ -2071,7 +2031,7 @@ class Job extends MY_Controller {
                 $this->apply_email($notid);
                 $applypost = 'Applied';
             }
-//            echo $applypost;
+
             // GET NOTIFICATION COUNT
             $not_count = $this->job_notification_count($notid);
 
@@ -2164,7 +2124,7 @@ class Job extends MY_Controller {
                 'job_delete' => '1',
                 'job_save' => '2'
             );
-            //  echo "<pre>"; print_r($data);die();
+           
             $insert_id = $this->common->insert_data_getid($data, 'job_apply');
             if ($insert_id) {
 
@@ -3012,9 +2972,6 @@ class Job extends MY_Controller {
 
 
         $this->data['livepost'] = $this->uri->segment(3);
-
-
-        //$postid = $_GET['postid']; 
         // job aply wothout login start
 
         if ($postid != '') {
@@ -3124,7 +3081,7 @@ class Job extends MY_Controller {
         $contition_array = array('is_delete' => '0', 'industry_name' => "Others", 'is_other' => '0');
         $search_condition = "((status = '1'))";
         $this->data['other_industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        //echo "<pre>";print_r($this->data['other_industry']);die();
+      
         if ($userid) {
             $this->data['profile_login'] = "login";
         } else {
@@ -3259,14 +3216,12 @@ class Job extends MY_Controller {
             }
         }
         if ($insert_id) {
-            // $this->session->set_flashdata('success', 'Basic information updated successfully');
             if ($poslivtid) {
                 redirect('job/home/' . $poslivtid, 'refresh');
             } else {
                 redirect('job/home', 'refresh');
             }
         } else {
-            //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
             if ($poslivtid) {
                 $postdata = $this->common->select_data_by_id('rec_post', 'post_id', $poslivtid, $data = 'user_id,post_id', $join_str = array());
 
@@ -3422,15 +3377,14 @@ class Job extends MY_Controller {
 
             $search_job = trim($skill[0]);
             $search_job = trim($skill[0], '-');
-            //  $search_job = str_replace('-', ' ', $search_job);
             $search_place = $location[1];
         }
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         // search keyword insert into database start
-        // $search_job = trim($this->input->get('skills'));
+       
         $this->data['keyword'] = $search_job;
-        //  $search_place = trim($this->input->get('searchplace'));
+       
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
         $this->data['keyword1'] = $search_place;
@@ -3574,7 +3528,6 @@ class Job extends MY_Controller {
         $rectitle = count(array_filter($recommendata_title));
 
 // Retrieve data according to  Job Title match End
-//echo "<pre>";print_r($recommendata);die();
 
         if ($recskill != 0 && $reccity == 0 && $recindustry == 0 && $rectitle == 0) {
 
@@ -3602,12 +3555,7 @@ class Job extends MY_Controller {
         } else {
 
             $unique = array_merge((array) $recommendata, (array) $recommendata_city, (array) $recommendata_industry, (array) $recommendata_title);
-//            $newArray = array();
-//            foreach ($unique as $key => $innerArr1) {
-//                foreach ($innerArr1 as $key1 => $innerArr) {
-//                    $newArray[][] = $innerArr;
-//                }
-//            }
+
             $newArray = array_reduce($unique, 'array_merge', array());
             $qbc = array_unique($newArray, SORT_REGULAR);
             $qbc = array_filter($qbc);
@@ -3781,9 +3729,9 @@ class Job extends MY_Controller {
 
 </div>
 </div>';
-            }//foreach ($postdetail1 as $post) end
-// }//foreach ($postdetail as $post_key => $postdetail1) end
-        }//if (count($postdetail) > 0) end
+            }
+
+        }
         else {
 
             $return_html .= '<div class="art-img-nn">
@@ -3794,7 +3742,7 @@ class Job extends MY_Controller {
         No  Recommended Post Available.
     </div>
 </div>';
-        }//else end
+        }
 
         echo $return_html;
     }
@@ -3830,7 +3778,7 @@ class Job extends MY_Controller {
 
         $contition_array = array('job_apply.job_delete' => '1', 'job_apply.user_id' => $userid, 'job_apply.job_save' => '2');
         $postdetail = $this->data['postdetail'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = 'rec_post.*,job_apply.app_id,job_apply.user_id as userid', $sortby = 'job_apply.modify_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-        //  echo "<pre>"; print_r($postdetail);die();
+        
         $postdetail1 = array_slice($postdetail, $start, $perpage);
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($postdetail);
@@ -3984,8 +3932,8 @@ class Job extends MY_Controller {
 
 </div>
 </div>';
-            }//foreach ($postdetail as $post) end
-        }//if ($postdetail) end
+            }
+        }
         else {
             $return_html .= '<div class="art-img-nn">
     <div class="art_no_post_img">
@@ -3995,7 +3943,7 @@ class Job extends MY_Controller {
         No  Saved Post Available.
     </div>
 </div>';
-        }//else end
+        }
 
         echo $return_html;
     }
@@ -4203,13 +4151,6 @@ class Job extends MY_Controller {
         $search_job = trim($_GET["skill"]);
         $search_place = trim($_GET["place"]);
 
-//        $searchvalue = $this->uri->segment(1); 
-//      
-//        $skill = explode('-jobs', $searchvalue);
-//        $location = explode('in-', $searchvalue);
-//          
-//           $search_job =  $skill[0]; 
-//           $search_place =  $location[1]; 
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
 
@@ -4246,13 +4187,7 @@ class Job extends MY_Controller {
             $unique = $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         } elseif ($search_job == "") {
 
-//            if ($search_place == 'bangalore' || $search_place == 'Bangalore') {
-//                $search_place = 'Bengaluru';
-//            }
-//            if ($search_place == 'bombay' || $search_place == 'Bombay') {
-//                $search_place = 'Mumbai';
-//            }
-//          echo $search_place;die();
+
             $contition_array = array('slug' => $search_place, 'state_id !=' => '0');
             $groupid = $this->common->select_data_by_condition('cities', $contition_array, $data = 'group_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -4272,8 +4207,7 @@ class Job extends MY_Controller {
             $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
             $search_condition = "city IN ('$city_names')";
             $unique = $this->data['results'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-// $unique = $this->data['results'] = $this->common->select_data_by_search('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
-//echo "<pre>"; print_r($unique);die();
+
         } elseif ($search_place == "") {
 
             //Search FOr Skill Start
@@ -4287,7 +4221,7 @@ class Job extends MY_Controller {
             $join_str[0]['join_table_id'] = 'recruiter.user_id';
             $join_str[0]['from_table_id'] = 'rec_post.user_id';
             $join_str[0]['join_type'] = '';
-//echo "<pre>"; print_r($results_skill);die();
+
 
             $contition_array = array('recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3, 'rec_post.is_delete' => 0, 'rec_post.status' => '1');
 
@@ -4364,14 +4298,14 @@ class Job extends MY_Controller {
             }
         }
         $postdetail = $this->data['postdetail'] = $unique;
-        //  echo "<pre>";print_r($postdetail);die();
+      
 //Total Search All End
 
         $postdetail1 = array_slice($postdetail, $start, $perpage);
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($postdetail);
         }
-//echo "<pre>"; print_r($postdetail);die();
+
         $return_html = '';
         $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
         $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
@@ -4665,7 +4599,7 @@ class Job extends MY_Controller {
             // FETCH INDUSTERY WISE JOB END
 
             $recommendata = array_merge((array) $titlearray, (array) $skillaarray, (array) $indarray);
-            //echo '<pre>';  print_r($recommendata); die();
+           
             $recommendata[] = array_reduce($recommendata, 'array_merge', array());
             $newdata[] = array_unique($recommendata, SORT_REGULAR);
         }
@@ -4673,9 +4607,7 @@ class Job extends MY_Controller {
         $postdetail = array_unique($recommanarray, SORT_REGULAR);
 
 //JOB CHANGES END
-        //  $postdetail = $this->data['postdetail'] = $qbc;
-
-
+    
         $postdetail1 = array_slice($postdetail, $start, $perpage);
 
         if (empty($_GET["total_record"])) {
@@ -5230,8 +5162,6 @@ class Job extends MY_Controller {
         if ($start < 0)
             $start = 0;
 
-        // $this->recruiter_apply_check();
-        //    $userid = $this->session->userdata('aileenuser');
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
         $contition_array = array('user_id' => $id, 're_status' => '0', 'is_delete' => '0');
         $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -5239,8 +5169,7 @@ class Job extends MY_Controller {
             redirect('recruiter/');
         }
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
-        //if ($id == $userid || $id == '') {
-        // $this->recruiter_apply_check();
+        
 
         $contition_array = array('user_id' => $id, 'is_delete' => '0', 're_status' => '0');
         $postdataone = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,recruiter_user_image,profile_background,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
@@ -5257,7 +5186,7 @@ class Job extends MY_Controller {
 
         $contition_array = array('rec_post.user_id' => $id, 'rec_post.is_delete' => '0', 'rec_post.post_id' => $postid);
         $rec_postdata = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit, $offset, $join_str, $groupby = '');
-        //  echo "<pre>";print_r( $rec_postdata);die();
+      
         $rec_postdata1 = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
@@ -5276,7 +5205,7 @@ class Job extends MY_Controller {
         $returnpage = $_GET['returnpage'];
         if (count($rec_postdata1) > 0) {
 
-//                    $rec_post .= '<div class="job-contact-frnd ">';
+
             $rec_post .= '<div class="profile-job-post-detail clearfix" id="removepost"' . $rec_postdata[0]['post_id'] . '">';
             $rec_post .= '<div class="profile-job-post-title clearfix">';
             $rec_post .= '<div class="profile-job-profile-button clearfix">';
@@ -5487,7 +5416,7 @@ class Job extends MY_Controller {
                     }
                     $rec_post .= '>Save</a>';
                 }
-                //$rec_post .= '</li>';
+               
             }
             $rec_post .= '</div>
                                                                     </div>
@@ -5514,7 +5443,7 @@ class Job extends MY_Controller {
     // RECRUITER POST AJAX LAZZY LOADER DATA END
     //FOR RECRUITER POST START
     public function rec_profile($id = "") {
-        // echo $user_id;die();
+        
         $user_id = $this->db->get_where('rec_post', array('post_id' => $id))->row()->user_id;
 
         $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 're_status' => '1');
@@ -5665,7 +5594,7 @@ class Job extends MY_Controller {
     public function all_post($city = '') {
 
         $city = $_GET['city'];
-        //echo $city[0]['city'] ; die();
+     
         $this->data['title'] = 'Find Latest Job Vacancies at Your Location' . TITLEPOSTFIX;
         if ($city[0]['city']) {
 
@@ -5697,22 +5626,6 @@ class Job extends MY_Controller {
         }
     }
 
-    //    public function job_city_search() {
-    //        echo 132;
-    //        exit;
-    //        $search_place = $_GET['city'];
-    //        echo $search_place;die();
-    //        $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
-    //
-                                                            //        $join_str[0]['table'] = 'recruiter';
-    //        $join_str[0]['join_table_id'] = 'recruiter.user_id';
-    //        $join_str[0]['from_table_id'] = 'rec_post.user_id';
-    //        $join_str[0]['join_type'] = '';
-    //        $contition_array = array('city' => $cache_time, 're_status' => '1', 'rec_post.is_delete' => '0');
-    //        $unique = $this->data['results'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
-    //        
-    //        echo "<pre>"; print_r($unique);die();
-//    }
 
     public function job_notification_count($to_id = '') {
         $contition_array = array('not_read' => '2', 'not_to_id' => $to_id, 'not_type !=' => '1', 'not_type !=' => '2');
@@ -5838,23 +5751,13 @@ class Job extends MY_Controller {
         } else {
 
             $unique = array_merge((array) $recommendata, (array) $recommendata_city, (array) $recommendata_industry, (array) $recommendata_title);
-//            $newArray = array();
-//            foreach ($unique as $key => $innerArr1) {
-//                foreach ($innerArr1 as $key1 => $innerArr) {
-//                    $newArray[][] = $innerArr;
-//                }
-//            }
+
             $newArray = array_reduce($unique, 'array_merge', array());
             $qbc = array_unique($newArray, SORT_REGULAR);
             $qbc = array_filter($qbc);
         }
 
         $postdetail = $this->data['postdetail'] = $qbc;
-
-        // echo "<pre>"; print_r($postdetail);die();
-
-
-
 
         $this->load->view('job/job_new_page', $this->data);
     }

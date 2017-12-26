@@ -658,14 +658,7 @@
 
                                                                         </span>
                                                                     </li>
-                                                                    <!-- <li><b>Other Skill</b><span> <?php
-                                                                    if ($post['other_skill'] != '') {
-                                                                        echo $post['other_skill'];
-                                                                    } else {
-                                                                        echo PROFILENA;
-                                                                    }
-                                                                    ?></span>
-                                                                    </li> -->
+                                                                   
                                                                     <li><b>Job Description</b><span><pre><?php echo $this->common->make_links($post['post_description']); ?></pre></span>
                                                                     </li>
                                                                     <li><b>Interview Process</b><span>
@@ -866,7 +859,7 @@
 <?php }
 ?>
                                         <!--.........AJAX DATA END......-->           
-                                   <!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>-->
+                                  
                                     </div>
 
                                 </div>
@@ -988,14 +981,7 @@
 
                                                                                 </span>
                                                                             </li>
-                                                                            <!-- <li><b>Other Skill</b><span> <?php
-                                                                            if ($post['other_skill'] != '') {
-                                                                                echo $post['other_skill'];
-                                                                            } else {
-                                                                                echo PROFILENA;
-                                                                            }
-                                                                            ?></span>
-                                                                            </li> -->
+                                                                           
                                                                             <li><b>Job Description</b><span><pre><?php echo $this->common->make_links($post['post_description']); ?></pre></span>
                                                                             </li>
                                                                             <li><b>Interview Process</b><span>
@@ -1169,7 +1155,7 @@
                                                                                     <a href="javascript:void(0);" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button" title="applypost"> Apply</a>
                                                                                 </li> 
                                                                                 <li>
-                                                                                    <!--<a  href="javascript:void(0);" onclick="login_profile();" class="savedpost> button">Save</a>-->
+                                                                                    
 
                                                                                 </li>                        
                                                                             </ul>
@@ -1184,7 +1170,7 @@
                                                     }
                                                     ?>
                                                     <!--.........AJAX DATA END......-->           
-                                               <!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>-->
+                                              
                                                 </div>
 
                                             </div>
@@ -1491,10 +1477,7 @@
                                             <span>
                                                 <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                     <option value="" disabled selected value>Month</option>
-                                                    //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                    ?>
+                                                   
                                                     <option value="1">Jan</option>
                                                     <option value="2">Feb</option>
                                                     <option value="3">Mar</option>
@@ -1507,10 +1490,7 @@
                                                     <option value="10">Oct</option>
                                                     <option value="11">Nov</option>
                                                     <option value="12">Dec</option>
-                                                    //<?php
-//                  }
-//                  
-                                                    ?>
+                                                    
                                                 </select></span>
                                             <span>
                                                 <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -1606,10 +1586,7 @@
                                             </select>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
-                                                //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                ?>
+                                                
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -1622,10 +1599,7 @@
                                                 <option value="10">Oct</option>
                                                 <option value="11">Nov</option>
                                                 <option value="12">Dec</option>
-                                                //<?php
-//                  }
-//                  
-                                                ?>
+                                                
                                             </select>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
@@ -1656,7 +1630,7 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-                                                                                        <!--<p class="next">Next</p>-->
+                                                                                       
                                         </p>
                                     </form>
                                 </div>
