@@ -21,7 +21,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4 col-sm-5">
-						<div class="logo"><a href="index.html"><img src="<?php echo base_url('assets/images/logo-white.png'); ?>"></a></div>
+						<div class="logo"><a href="index.html"><img src="<?php echo base_url('assets/images/logo-white.png?ver='.time()); ?>"></a></div>
 					</div>
 					<div class="col-md-8 col-sm-7">
 					
@@ -88,7 +88,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="footer-logo">
-							<a href="index.html"><img src="<?php echo base_url('assets/images/logo-white.png'); ?>"></a>
+							<a href="index.html"><img src="<?php echo base_url('assets/images/logo-white.png?ver='.time()); ?>"></a>
 						</div>
 						<ul>
 							<li>E-912 Titanium City Center Anandngar Ahmedabad-380015</li>
@@ -129,11 +129,11 @@
 <?php
 if(IS_OUTSIDE_JS_MINIFY == '0'){
 ?>
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <?php } else{ ?>
- <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+ <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver='.time()) ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
 <?php } ?>
 
 

@@ -3,9 +3,9 @@
  <?php
 if(IS_OUTSIDE_JS_MINIFY == '0'){
 ?>
- <script src="<?php echo base_url('assets/js/fb_login.js'); ?>"></script>
+ <script src="<?php echo base_url('assets/js/fb_login.js?ver='.time()); ?>"></script>
 <?php } else{ ?>
- <script src="<?php echo base_url('assets/js_min/fb_login.js'); ?>"></script>
+ <script src="<?php echo base_url('assets/js_min/fb_login.js?ver='.time()); ?>"></script>
 <?php } ?>
 
 
@@ -17,9 +17,9 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
 <?php
 if(IS_OUTSIDE_JS_MINIFY == '0'){
 ?>
- <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
 <?php } else{ ?>
- <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver='.time()); ?>">
 <?php } ?>
 <!-- END HEAD -->
 
