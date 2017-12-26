@@ -3692,6 +3692,7 @@ class Freelancer extends MY_Controller {
             'is_delete' => '1',
             'modify_date' => date('y-m-d h:i:s')
         );
+       
         $updatedata = $this->common->update_data($data, 'freelancer_post', 'post_id', $postid);
     }
 
