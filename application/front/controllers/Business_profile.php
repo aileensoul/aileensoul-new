@@ -8299,8 +8299,7 @@ Your browser does not support the audio tag.
         $join_str[0]['join_type'] = '';
 
         $contition_array = array('contact_from_id' => $userid, 'contact_person.status' => 'confirm');
-        $friendlist_con = $this->data['friendlist_con'] = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = strtotime('created_date'), $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
-
+        $friendlist_con = $this->data['friendlist_con'] = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'business_profile.business_profile_id,business_profile.company_name,business_profile.country,business_profile.state,business_profile.city,business_profile.pincode,business_profile.address,business_profile.contact_person,business_profile.contact_mobile,business_profile.contact_email,business_profile.business_type,business_profile.industriyal,business_profile.details,business_profile.user_id,business_profile.status,business_profile.is_deleted, business_profile.created_date,business_profile.business_user_image, business_profile.business_slug,contact_person.contact_id,contact_person.contact_from_id,contact_person.contact_to_id,contact_person.contact_type,contact_person.created_date,contact_person.status,contact_person.not_read', $sortby = 'contact_person.created_date', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $this->data['friendlist'] = array_merge($friendlist_con, $friendlist_req);
 

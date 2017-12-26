@@ -160,7 +160,7 @@
                                                                         </div>
 
                                                                         <div class="cq_desc_post">
-                                                                            <span class="cq_rifght_desc">  <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($friend['modify_date']))); ?> </span>
+                                                                            <span class="cq_rifght_desc">  <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($friend['created_date']))); ?> </span>
                                                                         </div>  
                                                                     </div>
                                                                 </div>
