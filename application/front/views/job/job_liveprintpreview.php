@@ -8,7 +8,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <?php echo $head; ?>  
 
          <?php
-        if (IS_JOB_CSS_MINIFY == '0') {
+        if (IS_JOB_CSS_MINIFY == '1') {
             ?>
 
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>" />
@@ -1990,7 +1990,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <div class="modal fade login register-model" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                    <!--<button type="button" class="modal-close" data-dismiss="modal">&times;</button>-->         
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
@@ -2465,7 +2465,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </script>
 
 <?php
-        if (IS_JOB_JS_MINIFY == '0') {
+        if (IS_JOB_JS_MINIFY == '1') {
             ?>
 
       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_printpreview.js?ver='.time()); ?>"></script>

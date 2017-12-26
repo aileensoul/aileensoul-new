@@ -130,3 +130,10 @@ $('document').ready(function(){
  
 
    $(".alert").delay(3200).fadeOut(300);
+   
+   
+   $(document).ready(function () {
+                setTimeout(function () {
+                    $('#register').modal('show');
+                }, 2000);
+            });
