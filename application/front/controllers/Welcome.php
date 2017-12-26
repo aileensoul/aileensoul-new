@@ -72,7 +72,6 @@ class Welcome extends CI_Controller {
         public function bootstarp(){
               include ('include.php');
            $this->load->view('bootstrap', $this->data);
-           // echo "hi"; die();
         }
                 
 }

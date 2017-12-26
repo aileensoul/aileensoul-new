@@ -2,7 +2,7 @@
 <?php
 
 if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
-    // $date = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
+
     header("HTTP/1.1 304 Not Modified");
     exit();
 }
@@ -16,8 +16,6 @@ header('Last-Modified: '.$date);
 
 $date = gmdate($format, $now+30);
 header('Expires: '.$date);
-
-//header('Cache-Control: public, max-age=30');
 
 ?>
 <html lang="en">

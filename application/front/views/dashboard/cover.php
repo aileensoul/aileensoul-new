@@ -67,8 +67,7 @@
             $this->db->where('created_date BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW()');
             $this->db->where('user_id', $userid);
             $result = $this->db->get('user')->result_array();
-            //echo "<pre>"; print_r($result);
-            if ($userdata[0]['user_verify'] == 0 && count($result) > 0) { //echo "hii"; die();
+            if ($userdata[0]['user_verify'] == 0 && count($result) > 0) { 
                 ?>
                 <div class="profile-text1 animated fadeInDownBig" id="verifydiv">
                     <div class="alert alert-warning  vs-o">
@@ -108,7 +107,6 @@
                                     </span>
                                     <span class="ves_c">
                                         <span class="fw-50"> <a class="vert_email " onClick="sendmail(this.id)" id="<?php echo $userdata[0]['user_email']; ?>">Verify Email Address</a></span>
-                                      <!--   <span class="fw-50"> <a class="chng_email" href="">Change Email Address</a> </span> -->
                                     </span>
                                     <span class="fr cls-ve" onclick="return closever();"><i class="fa fa-times" aria-hidden="true"></i> </span>
                                 </span>
@@ -220,8 +218,6 @@
                                     <img src="<?php echo base_url(); ?>assets/img/cam.png" alt="Update Profile Picture">Update Profile Picture</a>
                             </div>
                         <?php } else { ?>
-
-                            <!-- <div class="profile-photo no-image-upload"> -->
                             <div class="profile-photo">
                                 <?php
                                 $a = $first_name;
@@ -238,7 +234,6 @@
                         <?php } ?>
                         <div class="profile-detail">
                             <h2> <?php echo ucwords($userdata[0]['first_name']) . ' ' . ucwords($userdata[0]['last_name']); ?></h2>
-                            <!-- <p>Ahmedabad, Gujarat</p> -->
                         </div>
                     </div>
                 </section>
@@ -936,32 +931,12 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                     <div class="modal-body">
-                        <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                         <span class="mes"></span>
                     </div>
                 </div>
             </div>
         </div>
         <!-- model for popup -->
-        <!--a class="initialism fadeandscale_open btn btn-success" href="#fadeandscale">Fade &amp; scale</a-->
-        <!--					<div id="fadeandscale" class="well">
-                                                        <h4>Fade &amp; scale example</h4>
-                                                        <pre class="prettyprint">
-                                                        <code>$('#fadeandscale').popup({
-                                                          transition: 'all 0.3s'
-                                                        });</code>
-                                                        </pre>
-                                                        <pre class="prettyprint">
-                                                        <code>#fadeandscale {
-                                                          transform: scale(0.8);
-                                                        }
-                                                        .popup_visible #fadeandscale {
-                                                          transform: scale(1);
-                                                        }</code>
-                                                        </pre>
-                                                        <button class="fadeandscale_close slide_open btn btn-default">Next example</button>
-                                                        <button class="fadeandscale_close btn btn-default">Close</button>
-                                                </div>-->
 
 <?php echo $login_footer ?>
 <?php echo $footer ?>
@@ -995,13 +970,6 @@
             });
             $(document).ready(function () {
                 $("body").click(function (event) {
-                    //$("#onload-Modal").modal('hide').fadeOut("slow");
-                    //$(".modal").css('display','none');
-                    //$("#onload-Modal").fadeOut("slow");
-
-                    // event.stopPropagation();
-                    //$("#onload-Modal").fadeOut('slow');
-                    //$("#onload-Modal").removeClass("in").fadeOut('slow');
                 });
 
             });

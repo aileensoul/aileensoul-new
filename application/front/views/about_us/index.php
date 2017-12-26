@@ -131,14 +131,7 @@ header('Expires: '.$date);
                             All our niche profiles have been thoughtfully designed to touch upon every possible aspect that can influence your career progression - be it full-time/freelance job search, networking, real-time collaboration with recruiters or a platform to showcase your skills and arouse the interest of potential clients or companies.
                             </p>
                         </div>
-                       <!--  <p class="text-center"><img src="<?php //echo base_url('assets/img/message.png'); ?>"></p> -->
-                        <!-- <div class="text-center">
-                            <ul class="mail-sent">
-                                <li><a title="Email us" href="mailto:hr@aileensoul.com">hr@aileensoul.com</a></li>
-                                <li><a title="Email us" href="mailto:info@aileensoul.com">info@aileensoul.com</a></li>
-                                <li><a title="Email us" href="mailto:inquiry@aileensoul.com">inquiry@aileensoul.com</a></li>
-                            </ul>
-                        </div> -->
+                       
                     </div>
                 </div>
                     <div class="container">
