@@ -62,7 +62,6 @@ class Business_userprofile extends CI_Controller {
                 } else if ($userdata[0]['business_step'] == 3) {
                     redirect('business-profile/image', refresh);
                 } else if ($userdata[0]['business_step'] == 4) {
-//redirect('business_profile/addmore', refresh);
                     redirect('business-profile/home', refresh);
                 } else if ($userdata[0]['business_step'] == 5) {
                     redirect('business-profile/home', refresh);
@@ -113,7 +112,7 @@ class Business_userprofile extends CI_Controller {
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
-// manage post start
+// MANAGE POST START
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
@@ -158,7 +157,6 @@ class Business_userprofile extends CI_Controller {
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -173,7 +171,6 @@ class Business_userprofile extends CI_Controller {
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -194,7 +191,6 @@ class Business_userprofile extends CI_Controller {
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -209,7 +205,6 @@ class Business_userprofile extends CI_Controller {
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -230,7 +225,6 @@ class Business_userprofile extends CI_Controller {
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[2]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -245,7 +239,6 @@ class Business_userprofile extends CI_Controller {
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[2]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -269,7 +262,6 @@ class Business_userprofile extends CI_Controller {
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[3]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -284,7 +276,6 @@ class Business_userprofile extends CI_Controller {
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[3]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -305,7 +296,6 @@ class Business_userprofile extends CI_Controller {
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[4]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -320,7 +310,6 @@ class Business_userprofile extends CI_Controller {
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[4]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -341,7 +330,6 @@ class Business_userprofile extends CI_Controller {
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[5]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -356,16 +344,13 @@ class Business_userprofile extends CI_Controller {
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[5]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
                 }
             }
             $fetch_video .= '</tr>';
-        } else {
-            //$fetch_video .= '<div class = "not_available"> <p> Video Not Available </p></div>';
-        }
+        } 
 
         $fetch_video .= '<div class = "dataconvideo"></div>';
 
@@ -490,7 +475,6 @@ class Business_userprofile extends CI_Controller {
     public function bus_user_pdf() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
-// manage post start
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
@@ -534,8 +518,6 @@ class Business_userprofile extends CI_Controller {
     }
 
     public function business_user_dashboard_post($id = '') {
-// manage post start
-
         $perpage = 5;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
@@ -766,12 +748,6 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 </a>
 </div>';
                     } elseif (in_array($ext, $allowespdf)) {
-//                        $return_html .= '<div>
-//<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
-//    <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
-//</div>
-//</a>
-//</div>';
                         
                 $return_html .= '<div>
 <a title = "click to open" href = "javascript:void(0);" onclick="open_profile();"><div class = "pdf_img">
@@ -1212,7 +1188,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
     }
 
     // BUSIENSS PROFILE USER FOLLOWER COUNT END
-    // 
+    
     public function business_user_contacts_count($business_profile_id = '') {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
