@@ -639,7 +639,7 @@ class Freelancer extends MY_Controller {
                 $this->data['fixed_rate1'] = $userdata[0]['freelancer_post_fixed_rate'];
             }
         }
-        $this->data['title'] = "Rate | Edit Profile - Freelancer Profile - Freelancer Profile" . TITLEPOSTFIX;
+        $this->data['title'] = "Rate | Edit Profile - Freelancer Profile" . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_rate', $this->data);
     }
 
