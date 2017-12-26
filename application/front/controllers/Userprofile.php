@@ -10,11 +10,7 @@ class Userprofile extends MY_Controller {
         $this->load->library('S3');
         //AWS access info end
          $this->load->library('form_validation');
-		// if ($this->session->userdata('aileensoul_front') == '') {
-  //           redirect('login', 'refresh');
-  //       }
-        
-        
+	
         include ('include.php');
     }
 
