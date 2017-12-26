@@ -2,7 +2,6 @@
 <?php
 
 if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
-    // $date = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
     header("HTTP/1.1 304 Not Modified");
     exit();
 }
@@ -19,8 +18,6 @@ header('Expires: '.$date);
 header("Cache-Control: no-store, no-cache, must-revalidate"); // HTTP/1.1
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache"); // HTTP/1.0
-//header('Cache-Control: public, max-age=30');
-
 ?>
 <html lang="en" class="custom-main">
     <head>
@@ -92,47 +89,8 @@ header("Pragma: no-cache"); // HTTP/1.0
         <script src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script> 
         <?php } ?>
-        
-       
-<!--        <link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/css/cookieconsent.min.css') ?>" />
-        <script src="<?php //echo base_url('assets/js/cookieconsent.min.js') ?>"></script>
-        <script>
-                window.addEventListener("load", function () {
-                    window.cookieconsent.initialise({
-                        "palette": {
-                            "popup": {
-                                "background": "#eaf7f7",
-                                "text": "#5c7291"
-                            },
-                            "button": {
-                                "background": "#56cbdb",
-                                "text": "#ffffff"
-                            }
-                        },
-                        "type": "opt-out",
-                        "content": {
-                            "href": "https://www.aileensoul.com/privacy-policy"
-                        }
-                    })
-                });
-        </script>-->
     </head>
     <body class="custom-landscape">
-    <!--    <script type="application/ld+json">
-            {
-            "@context": "http://schema.org",
-            "@type": "Organization",
-            "name": "Aileensoul",
-            "url": "https://www.aileensoul.com",
-            "sameAs": [
-            "https://www.facebook.com/aileensouldotcom/",
-            "https://twitter.com/aileen_soul"
-            "https://instagram.com/aileensoul_com",
-            "https://in.linkedin.com/in/aileensouldotcom",
-            "https://plus.google.com/+Aileensoul",
-            ]
-            }
-        </script>-->
         <div class="main-login">
             <header>
                 <div class="container">
@@ -158,9 +116,6 @@ header("Pragma: no-cache"); // HTTP/1.0
                     </div>
                 </div>
             </header>
-            <!-- model for forgot password start -->
-            <!-- model for forgot password end -->
-            <!--   <div id="error"></div> -->
             <section class="middle-main">
                 <div class="container">
                     <div class="mid-trns">
@@ -226,7 +181,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                             <div class="col-md-5 col-sm-6 custom-padd">
                                 <div class="login">
                                     <h4>Join Aileensoul - It's Free</h4>
-                                    <form name="register_form" id="register_form" method="post">
+                                    <form name="register_form" id="register_form" method="post" autocomplete="off">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
@@ -241,10 +196,10 @@ header("Pragma: no-cache"); // HTTP/1.0
                                         </div>
 
                                         <div class="form-group">
-                                            <input tabindex="3" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                            <input tabindex="3" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                         </div>
                                         <div class="form-group">
-                                            <input tabindex="4" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                            <input tabindex="4" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
@@ -312,7 +267,6 @@ header("Pragma: no-cache"); // HTTP/1.0
                         </div>
                     </div>
                 </div>
-
                 <div id="myModal" class="modal">
                     <div class="modal-content md-2">
                         <?php
@@ -335,26 +289,10 @@ header("Pragma: no-cache"); // HTTP/1.0
                         <?php echo form_close(); ?>
                     </div>
                 </div>
-
-
             </section>
             <?php echo $login_footer ?>
         </div>
         <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-    <!--    <script>
-                                                var loader = document.getElementById('adsense-loader');
-                                                document.getElementById("adsense").appendChild(loader);
-        </script>-->
-
-        <!--    <div id="adsense-loader" style="display:block;">
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <script>
-                                                    (adsbygoogle = window.adsbygoogle || []).push({
-                                                        google_ad_client: "ca-pub-6060111582812113",
-                                                        enable_page_level_ads: true
-                                                    });
-                </script>
-            </div>-->
         <script>
                                                     var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
                                                     var base_url = '<?php echo base_url(); ?>';
@@ -372,6 +310,5 @@ header("Pragma: no-cache"); // HTTP/1.0
             ?>
              <script src="<?php echo base_url('assets/js_min/webpage/main.js?ver=' . time()); ?>"></script>
         <?php } ?>
-        
     </body>
 </html>

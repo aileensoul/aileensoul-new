@@ -17,16 +17,13 @@ class Notification extends MY_Controller {
         include ('include.php');
     }
     public function index() {
-        $this->data['title'] = "Notification | Aileensoul";
+        $this->data['title']  = "Notification | Aileensoul";
         $userid = $this->session->userdata('aileenuser');
         $this->load->view('notification/index', $this->data);
     }
 
-//recruiter post for notification start
-
     public function recruiter_post($id) {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-
 
         $join_str[0]['table'] = 'recruiter';
         $join_str[0]['join_table_id'] = 'recruiter.user_id';
@@ -40,8 +37,6 @@ class Notification extends MY_Controller {
 
         $this->load->view('notification/rec_post1', $this->data);
     }
-
-// recruiter post for notifiaction end 
 
 
     public function rec_profile($id = "") {
@@ -87,9 +82,6 @@ class Notification extends MY_Controller {
         $this->load->view('notification/rec_post', $this->data);
     }
 
-//artistic display post from notifiacation  start 
-
-
     public function art_post($id) {
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $userid, 'status' => '1');
@@ -120,13 +112,8 @@ class Notification extends MY_Controller {
             $i++;
         }
         $this->data['count'] = $count;
-        //code search
         $contition_array = array('status' => '1', 'is_delete' => '0');
-
-
         $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
         $return_array = array();
 
         foreach ($artdata as $get) {
@@ -142,16 +129,12 @@ class Notification extends MY_Controller {
         }
 
         $contition_array = array('status' => '1', 'type' => '2');
-
         $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-      
+     
         $uni = array_merge($return_array, $artpost);
-
         foreach ($uni as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
-
-
                     $result[] = $val;
                 }
             }
@@ -163,14 +146,8 @@ class Notification extends MY_Controller {
         }
 
         $this->data['demo'] = array_values($result1);
-
-
         $this->load->view('notification/art_image', $this->data);
     }
-
-//artistics post end
-    //business_profile notification post start
-
 
     public function business_post($id) {
         $userid = $this->session->userdata('aileenuser');
@@ -206,8 +183,6 @@ class Notification extends MY_Controller {
         $this->data['count'] = $count;
 
         $contition_array = array('status' => '1', 'business_profile.is_deleted' => '0');
-
-
         $businessdata = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         $contition_array = array('status' => '1', 'is_delete' => '0');
@@ -229,14 +204,11 @@ class Notification extends MY_Controller {
         }
 
         $this->data['demo'] = $result1;
-
         $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
-
         $this->load->view('notification/bus_image', $this->data);
     }
 
     public function ajax_business_home_post($post_id) {
-// return html
         $userid = $this->session->userdata('aileenuser');
         include ('business_include.php');
         $business_login_slug = $this->data['business_login_slug'];
@@ -314,7 +286,7 @@ class Notification extends MY_Controller {
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
                         $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "noimage">';
                     } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" alt = "' . $posted_business_user_image . '"/>';
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" alt = "'. $posted_business_user_image .'"/>';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -495,7 +467,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                     $return_html .= '<div class = "one-image">';
 
                     $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" alt="' . $businessmultiimage[0]['file_name'] . '">
+<img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" alt="'. $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>';
                 } elseif (in_array($ext, $allowespdf)) {
@@ -539,7 +511,7 @@ Your browser does not support the audio tag.
 
                     $return_html .= '<div class = "two-images">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">
+<img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
 </a>
 </div>';
                 }
@@ -547,18 +519,18 @@ Your browser does not support the audio tag.
 
                 $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" alt="' . $businessmultiimage[0]['file_name'] . '">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" alt="'. $businessmultiimage[0]['file_name'] .'">
 </a>
 </div>
 <div class = "three-image" >
 
-<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '" alt="' . $business_login_slug . '">
-<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '" alt="' . $businessmultiimage[1]['file_name'] . '">
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '" alt="'.$business_login_slug.'">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '" alt="'.$businessmultiimage[1]['file_name'].'">
 </a>
 </div>
 <div class = "three-image" >
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '" alt="' . $businessmultiimage[2]['file_name'] . '">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '" alt="'.$businessmultiimage[2]['file_name'].'">
 </a>
 </div>';
             } elseif (count($businessmultiimage) == 4) {
@@ -567,7 +539,7 @@ Your browser does not support the audio tag.
 
                     $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">
+<img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'.$multiimage['file_name'].'">
 </a>
 </div>';
                 }
@@ -578,7 +550,7 @@ Your browser does not support the audio tag.
 
                     $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">
+<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'.$multiimage['file_name'].'">
 </a>
 </div>';
 
@@ -589,7 +561,7 @@ Your browser does not support the audio tag.
 
                 $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '" alt="' . $businessmultiimage[3]['file_name'] . '">
+<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '" alt="'.$businessmultiimage[3]['file_name'].'">
 </a>
 <a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <div class = "more-image" >
@@ -777,7 +749,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "noimage">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "' . $business_userimage . '">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "'.$business_userimage.'">';
                         }
                         $return_html .= '</a>';
                     } else {
@@ -897,7 +869,7 @@ Your browser does not support the audio tag.
 
                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "noimage">';
                 } else {
-                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "' . $business_userimage . '">';
+                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "'.$business_userimage.'">';
                 }
             } else {
 
@@ -978,10 +950,6 @@ Your browser does not support the audio tag.
         $count = count($updatedata);
         echo $count;
     }
-
-//artistic display post from notifiacation  start
-//Notification count select & update for apply,save,like,comment,contact and follow start
-
     public function select_notification($to_id = '') { //echo "hello"; die();
         $to_id = $this->db->select('user_id')->get_where('business_profile', array('business_profile_id' => $to_id))->row()->user_id;
 
@@ -1410,7 +1378,7 @@ Your browser does not support the audio tag.
                 $s3 = new S3(awsAccessKey, awsSecretKey);
                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                 if ($total['user_image'] != '' && $info) {
-                    $notification .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                    $notification .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                 } else {
                     $a = $total['first_name'];
                     $b = $total['last_name'];
@@ -1449,7 +1417,7 @@ Your browser does not support the audio tag.
                 $filepath = $s3->getObjectInfo(bucket, $filename);
 
                 if ($total['user_image'] && $filepath) {
-                    $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                    $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                 } else {
                     $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                 }
@@ -1479,7 +1447,7 @@ Your browser does not support the audio tag.
 
               
                 if ($total['user_image'] && $filepath) {
-                    $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                    $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                 } else {
                     $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noartimage">';
                 }
@@ -1513,7 +1481,7 @@ Your browser does not support the audio tag.
 
              
                 if ($total['user_image'] && $filepath) {
-                    $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                    $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                 } else {
                     $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                 }
@@ -1542,7 +1510,7 @@ Your browser does not support the audio tag.
 
               
                     if ($total['user_image'] && $filepath) {
-                        $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                        $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                     } else {
                         $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                     }
@@ -1572,7 +1540,7 @@ Your browser does not support the audio tag.
 
                 
                     if ($total['user_image'] && $filepath) {
-                        $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                        $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                     } else {
                         $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                     }
@@ -1603,7 +1571,7 @@ Your browser does not support the audio tag.
 
                    
                     if ($total['user_image'] && $filepath) {
-                        $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                        $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                     } else {
                         $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                     }
@@ -1635,7 +1603,7 @@ Your browser does not support the audio tag.
 
                    
                     if ($total['user_image'] && $filepath) {
-                        $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '" >';
+                        $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                     } else {
                         $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                     }
@@ -1662,19 +1630,13 @@ Your browser does not support the audio tag.
                 $notification .= '><a href="' . base_url('notification/business-profile-post/' . $total['business_profile_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
                 $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
-                $s3 = new S3(awsAccessKey, awsSecretKey);
-                $filepath = $s3->getObjectInfo(bucket, $filename);
+                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                    $filepath = $s3->getObjectInfo(bucket, $filename);
 
 
-<<<<<<< HEAD
                  
                     if ($total['user_image'] && $filepath) {
                         $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
-=======
-                // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                if ($total['user_image'] && $filepath) {
-                    $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
->>>>>>> 5295c27996e925fad84241e10515a3aaa7e15e79
                 } else {
 
                     $notification .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
@@ -1698,18 +1660,12 @@ Your browser does not support the audio tag.
                 $notification .= '<div class="notification-pic">';
 
                 $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
-                $s3 = new S3(awsAccessKey, awsSecretKey);
-                $filepath = $s3->getObjectInfo(bucket, $filename);
+                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                    $filepath = $s3->getObjectInfo(bucket, $filename);
 
 
-<<<<<<< HEAD
                     if ($total['user_image'] && $filepath) {
                         $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
-=======
-                // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                if ($total['user_image'] && $filepath) {
-                    $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
->>>>>>> 5295c27996e925fad84241e10515a3aaa7e15e79
                 } else {
 
 
@@ -1734,18 +1690,12 @@ Your browser does not support the audio tag.
                 $notification .= '><a href="' . base_url('notification/business-profile-post/' . $total['business_profile_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
                 $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
-                $s3 = new S3(awsAccessKey, awsSecretKey);
-                $filepath = $s3->getObjectInfo(bucket, $filename);
+                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                    $filepath = $s3->getObjectInfo(bucket, $filename);
 
 
-<<<<<<< HEAD
                     if ($total['user_image'] && $filepath) {
                         $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
-=======
-                // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                if ($total['user_image'] && $filepath) {
-                    $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
->>>>>>> 5295c27996e925fad84241e10515a3aaa7e15e79
                 } else {
 
 
@@ -1769,14 +1719,14 @@ Your browser does not support the audio tag.
                     $notification .= '><a href="' . base_url('notification/business-profile-post/' . $total['business_profile_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')">
                     <div class="notification-database"> <div class="notification-pic" >';
 
-                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
+                   $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                     $s3 = new S3(awsAccessKey, awsSecretKey);
                     $filepath = $s3->getObjectInfo(bucket, $filename);
 
 
                 
                     if ($total['user_image'] && $filepath) {
-                        $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                        $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                     } else {
 
                         $notification .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
@@ -1808,7 +1758,7 @@ Your browser does not support the audio tag.
 
                   
                     if ($total['user_image'] && $filepath) {
-                        $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                        $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                     } else {
 
                         $notification .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
@@ -1841,7 +1791,7 @@ Your browser does not support the audio tag.
 
                   
                     if ($total['user_image'] && $filepath) {
-                        $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                        $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                     } else {
 
                         $notification .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
@@ -1874,7 +1824,7 @@ Your browser does not support the audio tag.
 
                    
                     if ($total['user_image'] && $filepath) {
-                        $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                        $notification .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                     } else {
 
                         $notification .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
@@ -1904,7 +1854,7 @@ Your browser does not support the audio tag.
                 $s3 = new S3(awsAccessKey, awsSecretKey);
                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                 if ($total['user_image'] != '' && $info) {
-                    $notification .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                    $notification .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                 } else {
                     $a = $total['first_name'];
                     $b = $total['last_name'];
@@ -1932,19 +1882,13 @@ Your browser does not support the audio tag.
                 $notification .= '><a href="' . base_url('freelance-work/freelancer-details/' . $total['not_from_id'] . '?page=freelancer_hire') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
                 $filename = $this->config->item('free_post_profile_thumb_upload_path') . $total['user_image'];
-                $s3 = new S3(awsAccessKey, awsSecretKey);
-                $filepath = $s3->getObjectInfo(bucket, $filename);
+                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                    $filepath = $s3->getObjectInfo(bucket, $filename);
 
 
-<<<<<<< HEAD
                    
                     if ($total['user_image'] && $filepath) {
                         $notification .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
-=======
-                // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                if ($total['user_image'] && $filepath) {
-                    $notification .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
->>>>>>> 5295c27996e925fad84241e10515a3aaa7e15e79
                 } else {
                     $a = $total['first_name'];
                     $b = $total['last_name'];
@@ -1971,14 +1915,14 @@ Your browser does not support the audio tag.
                 $notification .= '"';
                 $notification .= '><a href="' . base_url('notification/freelance-hire/' . $total['post_id'] . '?page=freelancer_post') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
-                $filename = $this->config->item('free_hire_profile_thumb_upload_path') . $total['user_image'];
-                $s3 = new S3(awsAccessKey, awsSecretKey);
-                $filepath = $s3->getObjectInfo(bucket, $filename);
+                 $filename = $this->config->item('free_hire_profile_thumb_upload_path') . $total['user_image'];
+                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                    $filepath = $s3->getObjectInfo(bucket, $filename);
 
 
-                // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                if ($total['user_image'] && $filepath) {
-                    $notification .= '<img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                    // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                    if ($total['user_image'] && $filepath) {
+                        $notification .= '<img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                 } else {
                     $a = $total['first_name'];
                     $b = $total['last_name'];
@@ -1998,7 +1942,6 @@ Your browser does not support the audio tag.
 
             // 19 shortlisted
             if ($total['not_from'] == 5 && $total['not_type'] == 9) {
-                //  echo "123";die();
                 $notification .= '<li class="';
                 if ($total['not_active'] == 1) {
                     $notification .= 'active2';
@@ -2006,14 +1949,13 @@ Your browser does not support the audio tag.
                 $notification .= '"';
                 $notification .= '><a href="' . base_url('notification/freelance-hire/' . $total['post_id'] . '?page=freelancer_post') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
-                $filename = $this->config->item('free_hire_profile_thumb_upload_path') . $total['user_image'];
-                $s3 = new S3(awsAccessKey, awsSecretKey);
-                $filepath = $s3->getObjectInfo(bucket, $filename);
+                 $filename = $this->config->item('free_hire_profile_thumb_upload_path') . $total['user_image'];
+                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                    $filepath = $s3->getObjectInfo(bucket, $filename);
 
 
-                // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                if ($total['user_image'] && $filepath) {
-                    $notification .= '<img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                    if ($total['user_image'] && $filepath) {
+                        $notification .= '<img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                 } else {
                     $a = $total['first_name'];
                     $b = $total['last_name'];
@@ -2064,7 +2006,6 @@ Your browser does not support the audio tag.
         $message_to_profile = $_POST['message_to_profile'];
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-        // khyati chnages 22-7 start
         // last message user fetch
 
         if ($id == "") {
@@ -2282,7 +2223,6 @@ Your browser does not support the audio tag.
             $toid = $this->data['toid'] = $lastchat[0]['message_from'];
         }
 
-        //20-7@nkit
         if ($message_from_profile == 1) {
             $loginuser = $this->common->select_data_by_id('job_reg', 'user_id', $userid, $data = 'fname as first_name,lname as last_name,user_id');
         }
@@ -2326,7 +2266,6 @@ Your browser does not support the audio tag.
         // last user first name last name
         if ($lstusr) {
 
-            //20-7@nkit
             if ($message_from_profile == 1) {
                 $lastuser = $this->common->select_data_by_id('job_reg', 'user_id', $lstusr, $data = 'fname as first_name,lname as last_name,user_id');
             }
@@ -2351,8 +2290,6 @@ Your browser does not support the audio tag.
                 $lastuser = $this->common->select_data_by_id('art_reg', 'user_id', $lstusr, $data = 'art_name as first_name,art_lastname as last_name,user_id');
             }
 
-//            $lastuser = $this->common->select_data_by_id('user', 'user_id', $lstusr, $data = 'first_name,last_name');
-
             $this->data['lstfname'] = $lastuser[0]['first_name'];
             $this->data['lstlname'] = $lastuser[0]['last_name'];
         }
@@ -2361,7 +2298,6 @@ Your browser does not support the audio tag.
         $contition_array = array('is_delete' => '0', 'status' => '1');
         $search_condition = "((message_from = '$id' OR message_to = '$id') && (message_to != '$userid'))  AND ((message_from_profile = $message_from_profile AND message_to_profile = $message_to_profile) OR (message_from_profile = $message_to_profile AND message_to_profile = $message_from_profile)) AND (message_from_profile_id = $message_from_profile_id OR message_to_profile_id = $message_from_profile_id) AND is_message_from_delete != $userid AND is_message_to_delete != $userid";
 
-        //20-7-2017@nkit
         if ($message_from_profile == 2) {
             $join_str1[0]['table'] = 'messages';
             $join_str1[0]['join_table_id'] = 'messages.message_to';
@@ -2416,7 +2352,6 @@ Your browser does not support the audio tag.
         $contition_array = array('is_delete' => '0', 'status' => '1');
         $search_condition = "((message_from = '$id' OR message_to = '$id') && (message_from != '$userid')) AND ((message_from_profile = $message_from_profile AND message_to_profile = $message_to_profile) OR (message_from_profile = $message_to_profile AND message_to_profile = $message_from_profile)) AND (message_from_profile_id = $message_from_profile_id OR message_to_profile_id = $message_from_profile_id) AND is_message_from_delete != $userid AND is_message_to_delete != $userid";
 
-        //20-7-2017@nkit
         if ($message_from_profile == 2) {
             $join_str2[0]['table'] = 'messages';
             $join_str2[0]['join_table_id'] = 'messages.message_from';
@@ -2468,7 +2403,6 @@ Your browser does not support the audio tag.
 
         $selectuser = array_merge($seltousr, $selfromusr);
         $selectuser = $this->aasort($selectuser, "id");
-        // replace name of message_to in user_id in select user
 
         $return_arraysel = array();
         $i = 0;
@@ -2511,7 +2445,6 @@ Your browser does not support the audio tag.
         $contition_array = array('is_delete' => '0', 'status' => '1', 'message_to !=' => $userid);
         $search_condition = "((message_from = '$userid') && (message_to != '$id')) AND ((message_from_profile = $message_from_profile AND message_to_profile = $message_to_profile) OR (message_from_profile = $message_to_profile AND message_to_profile = $message_from_profile)) AND (message_from_profile_id = $message_from_profile_id OR message_to_profile_id = $message_from_profile_id) AND is_message_from_delete != $userid AND is_message_to_delete != $userid";
 
-        //20-7-2017@nkit
         if ($message_from_profile == 2) {
             $join_str3[0]['table'] = 'messages';
             $join_str3[0]['join_table_id'] = 'messages.message_to';
@@ -2571,7 +2504,6 @@ Your browser does not support the audio tag.
             }
         }
 
-        // replace name of message_to in user_id
         $return_arrayto = array();
 
         foreach ($tolist as $to_list) {
@@ -2595,7 +2527,6 @@ Your browser does not support the audio tag.
         $contition_array = array('is_delete' => '0', 'status' => '1', 'message_from !=' => $userid);
         $search_condition = "((message_to = '$userid') && (message_from != '$id')) AND ((message_from_profile = $message_from_profile AND message_to_profile = $message_to_profile) OR (message_from_profile = $message_to_profile AND message_to_profile = $message_from_profile)) AND (message_from_profile_id = $message_from_profile_id OR message_to_profile_id = $message_from_profile_id) AND is_message_from_delete != $userid AND is_message_to_delete != $userid";
 
-        //20-7-2017@nkit
         if ($message_from_profile == 2) {
             $join_str4[0]['table'] = 'messages';
             $join_str4[0]['join_table_id'] = 'messages.message_from';
@@ -2654,8 +2585,6 @@ Your browser does not support the audio tag.
             }
         }
 
-// replace name of message_to in user_id
-// echo '<pre>'; print_r($fromlist); die();
         $return_arrayfrom = array();
 
         foreach ($fromlist as $from_list) {
@@ -2694,8 +2623,7 @@ Your browser does not support the audio tag.
 
 
         $user_message = array_merge($return_arraysel, $userlist);
-        // $user_message = array_merge($return_arraysel, $userlist);
-
+        
         foreach ($user_message as $msg) {
             $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slug;
             if ($message_from_profile == 2) {
@@ -2758,7 +2686,6 @@ Your browser does not support the audio tag.
             }
 
             $notmsg .= '</div><div class="notification-data-inside">';
-//            $notmsg .= '<h6>' . ucwords($msg['first_name']) . ' ' . ucwords($msg['last_name']) . '</h6>';
             $notmsg .= '<h6>' . ucwords($msg['first_name']) . '</h6>';
             $notmsg .= '<div class="msg_desc_a">';
 
@@ -2770,15 +2697,9 @@ Your browser does not support the audio tag.
 
             $notmsg .= '' . $message . '';
             $notmsg .= '</div><div class="data_noti_msg"><span class="day-text2">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($not[0]['not_created_date']))) . '</span></div>';
-//            $notmsg .= '</div><div class="data_noti_msg"><span class="day-text2">'. $not[0]['not_created_date'] . '</span></div>';
             $notmsg .= '</div></div></a></li>';
         }
         $notmsg .= '</div>';
-        // if ($user_message) {
-        //     $notmsg .= '<div id="InboxFooter"><a href="' . base_url('chat') . '/abc/' . $user_message[0]['user_id'] . '/' . $message_from_profile . '/' . $message_to_profile . '">See All</a></div>';
-        // } else {
-        //     $notmsg .= '<div class=""><div id="InboxFooter"><a class="no_msg_h">No Messages</a></div></div>';
-        // }
         echo $notmsg;
     }
 
@@ -2804,7 +2725,6 @@ Your browser does not support the audio tag.
 
     public function khhhhyy() {
         $userid = $this->session->userdata('aileenuser');
-// 1-5 notification start
 // recruiter notfication start 
 
         $contition_array = array('notification.not_type' => '3', 'notification.not_to_id' => $userid, 'notification.not_from' => '2', 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
@@ -2880,8 +2800,6 @@ Your browser does not support the audio tag.
 
         $work_post = $this->data['work_post'] = $work_post = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'invite_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
-
-//         echo '<pre>'; print_r($this->data['work_post']); die();
 // freelancer post notification end
 //artistic notification start
 // follow notification start
@@ -2901,7 +2819,6 @@ Your browser does not support the audio tag.
         $data = array('notification.*', ' follow.*', ' user.user_id', 'user.first_name', 'user.user_image', 'user.last_name');
 
         $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'follow_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//echo '<pre>'; print_r($this->data['artfollow']); die();
 // follow notification end
 //post comment notification start
 
@@ -3036,7 +2953,6 @@ Your browser does not support the audio tag.
         $data = array('notification.*', 'business_profile_post_comment.*', 'user.user_id', 'user.first_name', 'user.user_image', 'user.last_name');
 
         $buscommnet = $this->data['buscommnet'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'business_profile_post_comment_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//echo '<pre>'; print_r($this->data['buscommnet']);
         $contition_array = array('notification.not_type' => '6', 'not_img' => '4', 'notification.not_from' => '6', 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
                 'join_type' => '',
@@ -3053,7 +2969,6 @@ Your browser does not support the audio tag.
 
         $this->data['busimgcommnet'] = $busimgcommnet = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_image_comment_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
-//echo '<pre>'; print_r($this->data['busimgcommnet']); die(); 
 // comment notification end
 // like notification start
         $contition_array = array('notification.not_type' => '5', 'not_img' => '2', 'notification.not_from' => '6', 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
@@ -3286,8 +3201,6 @@ Your browser does not support the audio tag.
         if ($start < 0)
             $start = 0;
         $userid = $this->session->userdata('aileenuser');
-// 1-5 notification start
-// recruiter notfication start 
 
         $contition_array = array('notification.not_type' => '3', 'notification.not_to_id' => $userid, 'notification.not_from' => '2', 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
@@ -3303,8 +3216,6 @@ Your browser does not support the audio tag.
         );
         $data = array('notification.*', 'job_apply.*', 'job_reg.user_id as user_id', 'job_reg.fname as first_name', 'job_reg.job_user_image as user_image', 'job_reg.lname as last_name');
         $rec_not = $this->data['rec_not'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'app_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-// recruiter notification end
-// job notfication start 
 
         $contition_array = array('notification.not_type' => '4', 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
@@ -3322,8 +3233,6 @@ Your browser does not support the audio tag.
 
         $job_not = $this->data['job_not'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'app_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
-// job notification end
-// freelancer hire  notification start
         $contition_array = array('notification.not_type' => '3', 'notification.not_from' => '4', 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
 
         $join_str = array(
@@ -3344,7 +3253,6 @@ Your browser does not support the audio tag.
         // freelancer hire notification end
 // freelancer post notification start
         // $this->data['work_post'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'app_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//echo '<pre>'; print_r($hire_not); die();
         $contition_array = array('notification.not_type' => '4', 'notification.not_from' => '5', 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
                 'join_type' => '',
@@ -3515,8 +3423,7 @@ Your browser does not support the audio tag.
         $data = array('notification.*', 'business_profile_post_comment.*', 'business_profile.user_id as user_id', 'business_profile.company_name as first_name', 'business_profile.business_user_image as user_image');
 
         $buscommnet = $this->data['buscommnet'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'business_profile_post_comment_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//echo '<pre>'; print_r($this->data['buscommnet']);
-        $contition_array = array('notification.not_type' => '6', 'not_img' => '4', 'notification.not_from' => '6', 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
+       $contition_array = array('notification.not_type' => '6', 'not_img' => '4', 'notification.not_from' => '6', 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
                 'join_type' => '',
                 'table' => 'bus_post_image_comment',
@@ -3532,7 +3439,6 @@ Your browser does not support the audio tag.
 
         $this->data['busimgcommnet'] = $busimgcommnet = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_image_comment_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
-//echo '<pre>'; print_r($this->data['busimgcommnet']); die(); 
 // comment notification end
 // like notification start
         $contition_array = array('notification.not_type' => '5', 'not_img' => '2', 'notification.not_from' => '6', 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
@@ -3606,8 +3512,6 @@ Your browser does not support the audio tag.
         $return_html = '';
 
         $totalnotification1 = array_slice($totalnotification, $start, $perpage);
-        //echo count($candidatejob);
-        //echo count($candidatejob1); die();
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($totalnotification);
         }
@@ -3630,12 +3534,12 @@ Your browser does not support the audio tag.
                     $return_html .= '">';
                     $return_html .= '<a href="' . base_url() . 'notification/recruiter_post/' . $total['post_id'] . '">';
                     $return_html .= '<div class="notification-pic" id="noti_pc" >';
-
+      
                     $filename = $this->config->item('rec_profile_thumb_upload_path') . $total['user_image'];
-                    $s3 = new S3(awsAccessKey, awsSecretKey);
-                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                    if ($total['user_image'] != '' && $info) {
-                        $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="" >';
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="" >';
                     } else {
                         $a = $total['first_name'];
                         $b = $total['last_name'];
@@ -3661,7 +3565,7 @@ Your browser does not support the audio tag.
 
                     $geturl = $this->get_url($total['user_id']);
 
-
+                    
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
@@ -3674,10 +3578,8 @@ Your browser does not support the audio tag.
                     $s3 = new S3(awsAccessKey, awsSecretKey);
                     $filepath = $s3->getObjectInfo(bucket, $filename);
 
-                    //$filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-
                     if ($total['user_image'] && $filepath) {
-                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                     } else {
                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                     }
@@ -3711,10 +3613,9 @@ Your browser does not support the audio tag.
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $filepath = $s3->getObjectInfo(bucket, $filename);
 
-                        // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-
+                        
                         if ($total['user_image'] && $filepath) {
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                         } else {
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                         }
@@ -3747,10 +3648,8 @@ Your browser does not support the audio tag.
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $filepath = $s3->getObjectInfo(bucket, $filename);
 
-                        // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-
                         if ($total['user_image'] && $filepath) {
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                         } else {
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                         }
@@ -3785,10 +3684,8 @@ Your browser does not support the audio tag.
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $filepath = $s3->getObjectInfo(bucket, $filename);
 
-                        //$filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-
                         if ($total['user_image'] && $filepath) {
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                         } else {
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                         }
@@ -3820,10 +3717,9 @@ Your browser does not support the audio tag.
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $filepath = $s3->getObjectInfo(bucket, $filename);
 
-                        //$filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-
+                        
                         if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                         } else {
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                         }
@@ -3854,10 +3750,8 @@ Your browser does not support the audio tag.
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $filepath = $s3->getObjectInfo(bucket, $filename);
 
-                        //$filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-
                         if ($total['user_image'] && $filepath) {
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                         } else {
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                         }
@@ -3893,10 +3787,8 @@ Your browser does not support the audio tag.
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $filepath = $s3->getObjectInfo(bucket, $filename);
 
-                        // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-
                         if ($total['user_image'] && $filepath) {
-                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '">';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'">';
                         } else {
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "noimage">';
                         }
@@ -3927,13 +3819,13 @@ Your browser does not support the audio tag.
                     $return_html .= '<div class="notification-pic" id="noti_pc" >';
 
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
-                    $s3 = new S3(awsAccessKey, awsSecretKey);
-                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                    if ($total['user_image'] != '' && $info) {
-                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '" >';
-                    } else {
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
-                    }
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
+                        } else {
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
+                        }
                     $return_html .= '</div>
                                             
                                             <div class="notification-data-inside" id="notification_inside">
@@ -3955,12 +3847,13 @@ Your browser does not support the audio tag.
                         } $return_html .= '"> <a href="' . base_url() . 'notification/business-profile-post-detail/' . $postid . '/' . $total['post_image_id'] . '">';
 
                         $return_html .= '<div class="notification-pic" id="noti_pc" >';
-
-                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
-                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if ($total['user_image'] != '' && $info) {
-                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '" >';
+                       
+                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
+                        
                         } else {
                             $a = $companyname;
                             $acr = substr($a, 0, 1);
@@ -3995,10 +3888,11 @@ Your browser does not support the audio tag.
                         $return_html .= '<a href="' . base_url() . 'notification/business-profile-post-detail/' . $postid . '/' . $total['post_image_id'] . '">';
                         $return_html .= '<div class="notification-pic" id="noti_pc" >';
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
-                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if ($total['user_image'] != '' && $info) {
-                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '" >';
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
+                        
                         } else {
                             $a = $companyname;
                             $acr = substr($a, 0, 1);
@@ -4036,10 +3930,10 @@ Your browser does not support the audio tag.
                         $return_html .= '<a href="' . base_url() . 'business-profile/details/' . $id . '">';
                         $return_html .= '<div class="notification-pic" id="noti_pc" >';
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
-                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if ($total['user_image'] != '' && $info) {
-                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '" >';
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                         } else {
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
@@ -4070,10 +3964,10 @@ Your browser does not support the audio tag.
                         $return_html .= '<a href="' . base_url() . 'notification/business-profile-post/' . $total['business_profile_post_id'] . '">';
                         $return_html .= '<div class="notification-pic" id="noti_pc">';
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
-                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if ($total['user_image'] != '' && $info) {
-                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '" >';
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                         } else {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                         }
@@ -4099,13 +3993,13 @@ Your browser does not support the audio tag.
                             $return_html .= 'active2';
                         } $return_html .= '">';
                         $return_html .= '<a href="' . base_url() . 'notification/business-profile-post/' . $total['business_profile_post_id'] . '">';
-
+                        
                         $return_html .= '<div class="notification-pic" id="noti_pc">';
-                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
-                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if ($total['user_image'] != '' && $info) {
-                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '" >';
+                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                         } else {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                         }
@@ -4136,11 +4030,11 @@ Your browser does not support the audio tag.
                         } $return_html .= '">';
                         $return_html .= '<a href="' . base_url('notification/business-profile-post-detail/' . $total['post_id'] . '/' . $total['post_files_id']) . '">';
                         $return_html .= '<div class="notification-pic" id="noti_pc" >';
-                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
-                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if ($total['user_image'] != '' && $info) {
-                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '" >';
+                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                         } else {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                         }
@@ -4168,11 +4062,11 @@ Your browser does not support the audio tag.
                         }
                         $return_html .= '"><a href="' . base_url() . 'job/resume/' . $job_slug . '?page=recruiter">
                                                 <div class="notification-pic" id="noti_pc" >';
-                        $filename = $this->config->item('job_profile_thumb_upload_path') . $total['user_image'];
-                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if ($total['user_image'] != '' && $info) {
-                            $return_html .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '" >';
+                          $filename = $this->config->item('job_profile_thumb_upload_path') . $total['user_image'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $return_html .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                         } else {
                             $a = $total['first_name'];
                             $b = $total['last_name'];
@@ -4198,7 +4092,6 @@ Your browser does not support the audio tag.
                 }
 
 
-                //   foreach ($work_not as $art) {
                 if ($total['not_from'] == 5 && $total['not_type'] == 4) {
                     //    19
 
@@ -4207,14 +4100,14 @@ Your browser does not support the audio tag.
                         $return_html .= 'active2';
                     } $return_html .= '">';
                     $return_html .= '<a href="' . base_url() . 'freelancer/freelancer_post_profile/' . $total['user_id'] . '?page=freelancer_post">';
-
+                    
                     $return_html .= '<div class="notification-pic" id="noti_pc" >';
-
+                                                               
                     $filename = $this->config->item('free_hire_profile_main_upload_path') . $total['user_image'];
-                    $s3 = new S3(awsAccessKey, awsSecretKey);
-                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                    if ($total['user_image'] != '' && $info) {
-                        $return_html .= '<img src="' . FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '" >';
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $return_html .= '<img src="' . FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                     } else {
                         $a = $total['first_name'];
                         $b = $total['last_name'];
@@ -4245,12 +4138,12 @@ Your browser does not support the audio tag.
                     } $return_html .= '">
                         <a href="' . base_url() . 'freelance-work/freelancer-details/' . $total['not_from_id'] . '?page=freelancer_hire">
                                             <div class="notification-pic" id="noti_pc" >';
-
+                                                             
                     $filename = $this->config->item('free_post_profile_main_upload_path') . $total['user_image'];
-                    $s3 = new S3(awsAccessKey, awsSecretKey);
-                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                    if ($total['user_image'] != '' && $info) {
-                        $return_html .= '<img src="' . FREE_POST_PROFILE_MAIN_UPLOAD_URL . $total['user_image'] . '" alt="' . $total['user_image'] . '" >';
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $return_html .= '<img src="' . FREE_POST_PROFILE_MAIN_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                     } else {
                         $a = $total['first_name'];
                         $b = $total['last_name'];
