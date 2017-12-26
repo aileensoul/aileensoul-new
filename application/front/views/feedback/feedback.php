@@ -2,7 +2,6 @@
 <?php
 
 if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
-    // $date = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
     header("HTTP/1.1 304 Not Modified");
     exit();
 }
@@ -83,10 +82,7 @@ header('Cache-Control: public, max-age=30');
     </head>
     <body class="feedback-cus cust-outer-page">
         <div class="main-inner feedback">
-           <!--  <?php
-            //echo $login_header
-            ?> -->
-
+           
             <div class="terms-con-cus">
             <header class="terms-con bg-none cust-header">
                 <div class="overlaay">
@@ -112,9 +108,8 @@ header('Cache-Control: public, max-age=30');
                 <div class="cus-about" >
             <section class="">
                 <div class="main-comtai">
-                    <!-- <h1>Terms and Conditions</h1> -->
+                    
                     <h2 class="about-h2">YOUR &nbsp;FEEDBACK &nbsp;MATTERS</h2>
-<!--                     <p class="about-para" >We provide platform & opportunities to every person in the world to make their career.</p> -->
                 </div>
             </section>
             </div>
