@@ -68,7 +68,20 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 
             <?php } else if($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume') { ?>
         <meta name="description" content="View full resume detail like education, work area, experience of <?php echo $fdescname . $ldescname; ?> at Aileenoul.com" />
-<?php } else {?>
+<?php } else if($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'project'){ 
+   
+    if($this->data['projectdata'][0]['post_rate']){ 
+        $for="for";
+        }else{
+            $for='';
+        }
+    ?>
+    <meta name="description" content="<?php echo $fieldname. " Project " .$for ." " .$currencyname. " ".$rate." ".$this->data['projectdata'][0]['post_description']; ?>" />
+<?php } else if($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'employer-details'){ ?>
+    <meta name="description" content="<?php echo 'Employer ' . ucfirst($employerdata[0]['fullname']) . ' ' . ucfirst($employerdata[0]['username']). " seeking for highly skilled Freelancers. View full detail at Aileensoul.com"; ?>" />
+ <?php } else if($this->uri->segment(1) == 'freelance-work' && $this->uri->segment(2) == 'freelancer-details'){ ?>
+     <meta name="description" content="<?php echo 'Hire ' . ucfirst($freelancerdata[0]['freelancer_post_fullname']) . ' ' . ucfirst($freelancerdata[0]['freelancer_post_username']). " freelancer, View his/her complete ". $fieldname1 . " freelancing portfolio."; ?>" />
+ <?php } else {?>
         <meta name="description" content=" " />
 <?php } ?>
         <meta name="keywords" content=" " />
