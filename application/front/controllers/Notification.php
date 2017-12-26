@@ -3711,14 +3711,12 @@ Your browser does not support the audio tag.
                 //1 
                 if ($total['not_from'] == 1) {
                     $companyname = $this->db->get_where('recruiter', array('user_id' => $total['user_id']))->row()->re_comp_name;
-                    $return_html .= '<a href="' . base_url() . 'notification/recruiter_post/' . $total['post_id'] . '">';
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
                     }
-
                     $return_html .= '">';
-
+                    $return_html .= '<a href="' . base_url() . 'notification/recruiter_post/' . $total['post_id'] . '">';
                     $return_html .= '<div class="notification-pic" id="noti_pc" >';
       
                     $filename = $this->config->item('rec_profile_thumb_upload_path') . $total['user_image'];
@@ -3742,10 +3740,7 @@ Your browser does not support the audio tag.
                             $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                             '</div>
                                             </div>
-                                            
-
-                                        </li>
-                                        </a>';
+                                            </a></li>';
                 }
 
 
@@ -3754,12 +3749,12 @@ Your browser does not support the audio tag.
 
                     $geturl = $this->get_url($total['user_id']);
 
-                    $return_html .= '<a href="' . base_url() . 'artist/dashboard/' . $geturl . '">';
+                    
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
                     } $return_html .= '">';
-
+                    $return_html .= '<a href="' . base_url() . 'artist/dashboard/' . $geturl . '">';
                     $return_html .= '<div class="notification-pic" id="noti_pc">';
 
 
@@ -3783,9 +3778,9 @@ Your browser does not support the audio tag.
                             $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                             '</div>
                                             </div>
-                                            
+                                            </a>
                                         </li>
-                                        </a>';
+                                        ';
                 }
 
 
@@ -3793,12 +3788,11 @@ Your browser does not support the audio tag.
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 1) {
 
-                        $return_html .= '<a href="' . base_url() . 'notification/art-post/' . $total['art_post_id'] . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
                         } $return_html .= '">
-                                             
+                                         <a href="' . base_url() . 'notification/art-post/' . $total['art_post_id'] . '">    
                                                 <div class="notification-pic" id="noti_pc">';
 
                         $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
@@ -3820,9 +3814,8 @@ Your browser does not support the audio tag.
                                 $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                                 '</div>
                                                 </div>
-                                                
-                                            </li>
-                                            </a>';
+                                            </a>    
+                                            </li>';
                     }
                 }
 
@@ -3831,12 +3824,11 @@ Your browser does not support the audio tag.
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 2) {
 
-                        $return_html .= '<a href="' . base_url() . 'notification/art-post/' . $total['art_post_id'] . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
                         } $return_html .= '">';
-
+                        $return_html .= '<a href="' . base_url() . 'notification/art-post/' . $total['art_post_id'] . '">';
                         $return_html .= '<div class="notification-pic" id="noti_pc" >';
 
                         $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
@@ -3858,9 +3850,8 @@ Your browser does not support the audio tag.
                                 $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                                 '</div>
                                                 </div>
-                                                
-                                            </li>
-                                            </a>';
+                                              </a>  
+                                            </li>';
                     }
                 }
 
@@ -3871,12 +3862,11 @@ Your browser does not support the audio tag.
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 3) {
 
-                        $return_html .= '<a href="' . base_url() . 'notification/art-post/' . $total['art_post_id'] . '">
-                                            <li class="';
+                        $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
                         }
-                        $return_html .= '">
+                        $return_html .= '"><a href="' . base_url() . 'notification/art-post/' . $total['art_post_id'] . '">
                                                 <div class="notification-pic" id="noti_pc" >';
 
                         $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
@@ -3898,9 +3888,8 @@ Your browser does not support the audio tag.
                                 $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                                 '</div>
                                                 </div>
-                                                
-                                            </li>
-                                            </a>';
+                                                </a>
+                                            </li>';
                     }
                 }
 
@@ -3908,11 +3897,10 @@ Your browser does not support the audio tag.
                 //   6
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 5) {
-                        $return_html .= '<a href="' . base_url() . 'notification/art_post_img/' . $total['post_id'] . '/' . $total['post_files_id'] . '">
-                                            <li class="';
+                        $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
-                        } $return_html .= '">';
+                        } $return_html .= '"> <a href="' . base_url() . 'notification/art_post_img/' . $total['post_id'] . '/' . $total['post_files_id'] . '">';
 
                         $return_html .= '<div class="notification-pic"  id="noti_pc">';
 
@@ -3935,9 +3923,8 @@ Your browser does not support the audio tag.
                                 $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                                 '</div>
                                                 </div>
-                                                
-                                            </li>
-                                            </a>';
+                                            </a>    
+                                            </li>';
                     }
                 }
 
@@ -3945,11 +3932,10 @@ Your browser does not support the audio tag.
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 4) {
                         $postid = $this->db->get_where('post_files', array('post_files_id' => $total['post_image_id']))->row()->post_id;
-                        $return_html .= '<a href="' . base_url() . 'notification/art_post_img/' . $postid . '/' . $total['post_image_id'] . '">
-                                            <li class="';
+                        $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
-                        } $return_html .= '">
+                        } $return_html .= '"><a href="' . base_url() . 'notification/art_post_img/' . $postid . '/' . $total['post_image_id'] . '">
                                             <div class="notification-pic" id="noti_pc" >';
 
                         $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
@@ -3972,9 +3958,8 @@ Your browser does not support the audio tag.
                                 . $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                                 '</div>
                                             </div>
-                                            
-                                        </li>
-                                        </a>';
+                                        </a>    
+                                        </li>';
                     }
                 }
 
@@ -3985,12 +3970,11 @@ Your browser does not support the audio tag.
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 6) {
                         $postid = $this->db->get_where('post_files', array('post_files_id' => $total['post_image_id']))->row()->post_id;
-                        $return_html .= '<a href="' . base_url() . 'notification/art_post_img/' . $postid . '/' . $total['post_image_id'] . '">
-                                            <li class="';
+                        $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
                         } $return_html .= '">
-                                            
+                                            <a href="' . base_url() . 'notification/art_post_img/' . $postid . '/' . $total['post_image_id'] . '">
                                             <div class="notification-pic" id="noti_pc">';
 
                         $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
@@ -4012,9 +3996,8 @@ Your browser does not support the audio tag.
                                 . $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                                 '</div>
                                             </div>
-                                            
-                                        </li>
-                                        </a>';
+                                            </a>
+                                        </li>';
                     }
                 }
 
@@ -4024,27 +4007,12 @@ Your browser does not support the audio tag.
                 if ($bus_from1 == '6' && $bus_img1 == '1') {
                     $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
 
-                    $return_html .= '<a href="' . base_url() . 'notification/business-profile-post/' . $total['business_profile_post_id'] . '"  onClick="not_active(' . $total['not_id'] . ')">
-                                        <li class="';
+                    $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
-                    } $return_html .= '">';
+                    } $return_html .= '"><a href="' . base_url() . 'notification/business-profile-post/' . $total['business_profile_post_id'] . '"  onClick="not_active(' . $total['not_id'] . ')">';
 
                     $return_html .= '<div class="notification-pic" id="noti_pc" >';
-
-                    // $filepath = FCPATH . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
-
-                    // if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                    //     $return_html .= '<img src="' . base_url() . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'] . '" >';
-                    // } else {
-                    //     $a = $companyname;
-                    //     $acr = substr($a, 0, 1);
-
-
-                    //     $return_html .= '<div class="post-img-div">' .
-                    //             ucwords($acr) .
-                    //             '</div>';
-                    // }
 
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -4052,15 +4020,8 @@ Your browser does not support the audio tag.
                       if ($total['user_image'] != '' && $info) { 
                     $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                         } else {
-//                            $a = $companyname;
-//                            $acr = substr($a, 0, 1);
-//                            $return_html .= '<div class="post-img-div">' .
-//                                    ucwords($acr) .
-//                                    '</div>';
-
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                         }
-
                     $return_html .= '</div>
                                             
                                             <div class="notification-data-inside" id="notification_inside">
@@ -4069,20 +4030,17 @@ Your browser does not support the audio tag.
                             . $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                             '</div>
                                             </div>
-                                            
-                                        </li>
-                                        </a>';
+                                        </a></li>';
                 }
                 //10
                 if ($total['not_from'] == 6) {
                     if ($total['not_img'] == 4) {
                         $postid = $this->db->get_where('post_files', array('post_files_id' => $total['post_image_id']))->row()->post_id;
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
-                        $return_html .= '<a href="' . base_url() . 'notification/business-profile-post-detail/' . $postid . '/' . $total['post_image_id'] . '">
-                                            <li class="';
+                        $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
-                        } $return_html .= '">';
+                        } $return_html .= '"> <a href="' . base_url() . 'notification/business-profile-post-detail/' . $postid . '/' . $total['post_image_id'] . '">';
 
                         $return_html .= '<div class="notification-pic" id="noti_pc" >';
                        
@@ -4109,9 +4067,7 @@ Your browser does not support the audio tag.
                                 . $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                                 '</div>
                                             </div>
-                                           
-                                        </li>
-                                         </a>';
+                        </a></li>';
                     }
                 }
 
@@ -4121,12 +4077,11 @@ Your browser does not support the audio tag.
                     if ($total['not_img'] == 6) {
                         $postid = $this->db->get_where('post_files', array('post_files_id' => $total['post_image_id']))->row()->post_id;
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
-                        $return_html .= '<a href="' . base_url() . 'notification/business-profile-post-detail/' . $postid . '/' . $total['post_image_id'] . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
                         } $return_html .= '">';
-
+                        $return_html .= '<a href="' . base_url() . 'notification/business-profile-post-detail/' . $postid . '/' . $total['post_image_id'] . '">';
                         $return_html .= '<div class="notification-pic" id="noti_pc" >';
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -4151,9 +4106,8 @@ Your browser does not support the audio tag.
                                 $this->common->time_elapsed_string($total['not_created_date'], $full = false) . '
                                                 </div>
                                             </div>
-                                            
-                                        </li>
-                                        </a>';
+                                            </a>
+                                        </li>';
                     }
                 }
 
@@ -4165,12 +4119,11 @@ Your browser does not support the audio tag.
                     $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
                     if ($id) {
 
-                        $return_html .= '<a href="' . base_url() . 'business-profile/details/' . $id . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
                         } $return_html .= '">';
-
+                        $return_html .= '<a href="' . base_url() . 'business-profile/details/' . $id . '">';
                         $return_html .= '<div class="notification-pic" id="noti_pc" >';
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -4178,11 +4131,6 @@ Your browser does not support the audio tag.
                       if ($total['user_image'] != '' && $info) { 
                     $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                         } else {
-//                            $a = $companyname;
-//                            $acr = substr($a, 0, 1);
-//                            $return_html .= '<div class="post-img-div">' .
-//                                    ucwords($acr) .
-//                                    '</div>';
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                         }
@@ -4195,9 +4143,8 @@ Your browser does not support the audio tag.
                                 $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                                 '</div>
                                                 </div>
-                                                
-                                           </li>
-                                            </a>';
+                                                </a>
+                                           </li>';
                     }
                 }
 
@@ -4206,12 +4153,11 @@ Your browser does not support the audio tag.
                 if ($total['not_from'] == 6) {
                     if ($total['not_img'] == 2) {
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
-
-                        $return_html .= '<a href="' . base_url() . 'notification/business-profile-post/' . $total['business_profile_post_id'] . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
                         } $return_html .= '">';
+                        $return_html .= '<a href="' . base_url() . 'notification/business-profile-post/' . $total['business_profile_post_id'] . '">';
                         $return_html .= '<div class="notification-pic" id="noti_pc">';
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -4219,27 +4165,17 @@ Your browser does not support the audio tag.
                       if ($total['user_image'] != '' && $info) { 
                     $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                         } else {
-//                            $a = $companyname;
-//                            $acr = substr($a, 0, 1);
-//                            $return_html .= '<div class="post-img-div">' .
-//                                    ucwords($acr) .
-//                                    '</div>';
-
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                         }
-
-
                         $return_html .= '</div>
-                                            
                                                 <div class="notification-data-inside" id="notification_inside">
                                                     <h6><b>' . '  ' . ucwords($companyname) . '</b> Likes your post in business profile.</h6>
                                                    <div  class="hout_noti">' .
                                 $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                                 '</div>
                                                 </div>
-                                                
-                                            </li>
-                                            </a>';
+                                                </a>
+                                            </li>';
                     }
                 }
 
@@ -4248,11 +4184,12 @@ Your browser does not support the audio tag.
                     if ($total['not_img'] == 3) {
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
 
-                        $return_html .= '<a href="' . base_url() . 'notification/business-profile-post/' . $total['business_profile_post_id'] . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
                         } $return_html .= '">';
+                        $return_html .= '<a href="' . base_url() . 'notification/business-profile-post/' . $total['business_profile_post_id'] . '">';
+                        
                         $return_html .= '<div class="notification-pic" id="noti_pc">';
                          $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -4260,11 +4197,6 @@ Your browser does not support the audio tag.
                       if ($total['user_image'] != '' && $info) { 
                     $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                         } else {
-//                            $a = $companyname;
-//                            $acr = substr($a, 0, 1);
-//                            $return_html .= '<div class="post-img-div">' .
-//                                    ucwords($acr) .
-//                                    '</div>';
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                         }
                         $return_html .= '</div>
@@ -4275,9 +4207,8 @@ Your browser does not support the audio tag.
                                 . $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                                 '</div>
                                                 </div>
-                                                
-                                            </li>
-                                            </a>';
+                                                </a>
+                                            </li>';
                     }
                 }
 
@@ -4289,12 +4220,11 @@ Your browser does not support the audio tag.
                     if ($total['not_img'] == 5) {
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
 
-                        $return_html .= '<a href="' . base_url('notification/business-profile-post-detail/' . $total['post_id'] . '/' . $total['post_files_id']) . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
                         } $return_html .= '">';
-
+                        $return_html .= '<a href="' . base_url('notification/business-profile-post-detail/' . $total['post_id'] . '/' . $total['post_files_id']) . '">';
                         $return_html .= '<div class="notification-pic" id="noti_pc" >';
                          $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -4302,26 +4232,17 @@ Your browser does not support the audio tag.
                       if ($total['user_image'] != '' && $info) { 
                     $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="'.$total['user_image'].'" >';
                         } else {
-//                            $a = $companyname;
-//                            $acr = substr($a, 0, 1);
-//                            $return_html .= '<div class="post-img-div">' .
-//                                    ucwords($acr) .
-//                                    '</div>';
-
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                         }
-
                         $return_html .= '</div>
-                                               
                                                 <div class="notification-data-inside" id="notification_inside">
                                                     <h6><b>' . '  ' . ucwords($companyname) . '</b> Likes your photo in business profile.</h6>
                                                  <div  class="hout_noti">'
                                 . $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                                 '</div>
                                                 </div>
-                                                
-                                            </li>
-                                            </a>';
+                                                </a>
+                                            </li>';
                     }
                 }
 
@@ -4331,12 +4252,11 @@ Your browser does not support the audio tag.
                     $id = $this->db->get_where('job_reg', array('user_id' => $total['not_to_id']))->row()->job_id;
                     if ($id) {
                         $job_slug = $this->db->get_where('job_reg', array('user_id' => $total['not_from_id']))->row()->slug;
-                        $return_html .= '<a href="' . base_url() . 'job/resume/' . $job_slug . '?page=recruiter">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
                         }
-                        $return_html .= '">
+                        $return_html .= '"><a href="' . base_url() . 'job/resume/' . $job_slug . '?page=recruiter">
                                                 <div class="notification-pic" id="noti_pc" >';
                           $filename = $this->config->item('job_profile_thumb_upload_path') . $total['user_image'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -4362,9 +4282,8 @@ Your browser does not support the audio tag.
                                 $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                                 '</div>
                                                 </div>
-                                                
-                                            </li>
-                                            </a>';
+                                                </a>
+                                            </li>';
                     }
                 }
 
@@ -4373,12 +4292,12 @@ Your browser does not support the audio tag.
                 if ($total['not_from'] == 5 && $total['not_type'] == 4) {
                     //    19
 
-                    $return_html .= '<a href="' . base_url() . 'freelancer/freelancer_post_profile/' . $total['user_id'] . '?page=freelancer_post">';
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
                     } $return_html .= '">';
-
+                    $return_html .= '<a href="' . base_url() . 'freelancer/freelancer_post_profile/' . $total['user_id'] . '?page=freelancer_post">';
+                    
                     $return_html .= '<div class="notification-pic" id="noti_pc" >';
                                                                
                     $filename = $this->config->item('free_hire_profile_main_upload_path') . $total['user_image'];
@@ -4405,17 +4324,16 @@ Your browser does not support the audio tag.
                             $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                             '</div>
                                                 </div>
-                                                
-                                            </li>
-                                            </a>';
+                                                </a>
+                                            </li>';
                 }
                 //20
                 if ($total['not_from'] == 4) {
-                    $return_html .= '<a href="' . base_url() . 'freelance-work/freelancer-details/' . $total['not_from_id'] . '?page=freelancer_hire">';
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
                     } $return_html .= '">
+                        <a href="' . base_url() . 'freelance-work/freelancer-details/' . $total['not_from_id'] . '?page=freelancer_hire">
                                             <div class="notification-pic" id="noti_pc" >';
                                                              
                     $filename = $this->config->item('free_post_profile_main_upload_path') . $total['user_image'];
@@ -4442,9 +4360,8 @@ Your browser does not support the audio tag.
                             $this->common->time_elapsed_string($total['not_created_date'], $full = false) .
                             '</div>
                                             </div>
-                                            
-                                        </li>
-                                        </a>';
+                                            </a>
+                                        </li>';
                 }
             }
         } else {
