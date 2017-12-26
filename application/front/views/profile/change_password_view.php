@@ -48,12 +48,9 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
  <div class="main_otp_box_middle_submit">
    <label>New Password</label>
  <input type="password" name="new_password" id="new_password" value="" placeholder="Enter new password">
-<!-- <input type="hidden" name="usercon" id="usercon" value="<?php echo $userid; ?>"> -->
-
 <span>
 <a href="#" onclick="toggle_password('new_password');" id="showhide">Show</a>
-  <!-- <input type="submit" name="" value="hide" id="showhide" onclick="toggle_password('new_password');"> -->
- 
+
 </span>
  </div>
 </div>
@@ -75,9 +72,6 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
 
 </div>
 </div>
-<!--  <input type="password" name="new_password" id="new_password" value="">
-<input type="hidden" name="usercon" id="usercon" value="<?php //echo $userid; ?>">
-<input type="submit" name="submitnew" id="submitnew"> -->
   <?php echo form_close(); ?>
     </div>
     </div>
@@ -100,7 +94,7 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
 
 <?php } ?>
 <script type="text/javascript">
-$(document).ready(function () { //alert("hii");
+$(document).ready(function () { 
           /* validation */
           $("#newpassword").validate({
               rules: {

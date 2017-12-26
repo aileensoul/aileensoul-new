@@ -57,7 +57,6 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
  <div class="main_otp_box_middle_submit">
    
  <input type="text" name="code" id="code" value="" placeholder="Enter Code">
-<!-- <input type="hidden" name="userid" id="userid" value="<?php echo $user_changeid; ?>"> -->
  </div>
 </div>
 
@@ -65,9 +64,6 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
 
 
 <div class="otp_bottom fw">
-<!-- <div class="fl otp_bottom_link">
-  <a href="">Resend Verification Code</a>
-</div> -->
 <div class="fr otp_bottom_submit">  
 <input type="submit" name="sublitcode" value="Continue" id="submitcode">
  <input type="reset" name="" id="cancel" class="cancel_password" value="Cancel">
@@ -105,7 +101,7 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
 <?php } ?>
 
 <script type="text/javascript">
-$(document).ready(function () { //alert("hii");
+$(document).ready(function () { 
           /* validation */
           $("#codecheck").validate({
               rules: {
@@ -118,7 +114,6 @@ $(document).ready(function () { //alert("hii");
                                       type: "post",
                                       data: {
                                      email_reg: function () {
-                                     // alert("hi");
                                         return $("#code").val();
                                     },
                                     '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
