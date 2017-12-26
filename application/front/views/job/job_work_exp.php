@@ -162,7 +162,7 @@
                                                 
                                                 <input type="hidden" name="exp_data[]" value="old" class="exp_data" id="exp_data<?php echo $y; ?>">
                                                 <div id="input<?php echo $y; ?>" style="margin-bottom:4px;position: relative;" class="job_work_experience_main_div clonedInput job_work_edit_<?php echo $workdata[$x]['work_id']?>">
-                                                   <!--<div class="job_work_experience_main_div">-->
+                                                   
                                                       <label>Experience:<span class="red">*</span></label>
                                                       <select style="width: 47%; margin-right: 4%; float: left;" tabindex="1" autofocus name="experience_year[]" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change_edittime();">
                                                          <option value="" selected option disabled>Year</option>
@@ -251,7 +251,7 @@
                                                         
                                                          <a title="open pdf" href="<?php echo JOB_WORK_MAIN_UPLOAD_URL . $work_certificate1 ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                                          <?php
-                                                            }//if($ext[1] == 'pdf')
+                                                            }
                                                             else
                                                             {
                                                             ?>
@@ -309,7 +309,7 @@
                                                        ?>
                                                 <!--clone div start-->              
                                                 <div id="input1" style="margin-bottom:4px;position: relative;" class="clonedInput job_work_experience_main_div">
-                                                    <!--<div class="job_work_experience_main_div">-->
+                                                  
                                                    <label>Experience:<span class="red">*</span></label>
                                                    <select style="width:45%; float: left; margin-right: 4%;" name="experience_year[]" id="experience_year" class="experience_year keyskil" onchange="expyear_change();">
                                                       <option value="" selected option disabled>Year</option>
@@ -400,13 +400,13 @@
                                                      
                                                       <a title="open pdf" href="<?php echo JOB_WORK_MAIN_UPLOAD_URL . $work_certificate1 ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                                       <?php
-                                                         }//if($ext[1] == 'pdf')
+                                                         }
                                                          else
                                                          {
                                                          ?>
                                                       <img src="<?php echo JOB_WORK_MAIN_UPLOAD_URL . $work_certificate1 ?>" style="width:100px;height:100px;" alt="<?php echo $work_certificate1; ?>">
                                                       <?php
-                                                         }//else end
+                                                         }
                                                          ?>
                                                    </div>
                                                    <?php
@@ -414,7 +414,7 @@
                                                       ?>
                                                    <span id="certificate-error"> </span>
                                                    <?php echo form_error('certificate'); ?>
-                                                <!--</div>-->
+                                               
                                                 </div>
                                                
                                                 <div class="hs-submit full-width fl" style="width: 100%; text-align: center;">
@@ -461,13 +461,10 @@
       </div>
       <!-- Model Popup Close -->
 
-<!-- <footer>    -->   
+
 <?php echo $login_footer ?>  
 <?php echo $footer;  ?>
-<!-- </footer> -->
 
-<!--<script type="text/javascript" src="<?php //echo base_url('assets/js/jquery-ui.js?ver='.time()) ?>"></script>-->
-<!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
 
 <!-- This Js is used for call popup -->
 

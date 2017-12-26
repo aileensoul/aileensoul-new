@@ -347,25 +347,6 @@
                             </div>
                     </div>
 
-
-                    <!-- <div class="gov-job-detail-right">
-                         <div class="gov-job-right-title">
-                                 <h3>Government job<a href="<?php echo base_url('goverment/allpost/'); ?>" class="pull-right">All Job</a></h3>
-                         </div>
-                         <div class="gov-job-list">
-                                 <ul>
-                    <?php foreach ($govjob_category as $gov_key => $gov_value) { ?>
-                                                                           <li>
-                                                                             <a href="<?php echo base_url('goverment/allpostdetail/' . $gov_value['id']); ?>"><?php echo $gov_value['name'] ?></a></li>
-                    <?php } ?>						
-                                         </ul>					
-                         </div>
-                 </div> -->
-
-
-
-
-                    
                     </section>
                     <!-- Model Popup Open -->
                     <!-- Bid-modal  -->
@@ -386,28 +367,19 @@
 
                     <!-- script for skill textbox automatic start-->
 
-<!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());                 ?>"></script>-->
-
                     <!-- script for skill textbox automatic end -->
 <?php
         if (IS_JOB_JS_MINIFY == '0') {
             ?>
                     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
                     <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-                    <!--<script type="text/javascript" src="<?php
-                    // echo base_url('assets/js/raphael-min.js
-//?ver='.time()); 
-                    ?>"></script>-->
+                    
                     <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>"></script>
 <?php }else{?>
 
 
 <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
                     <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-                    <!--<script type="text/javascript" src="<?php
-                    // echo base_url('assets/js/raphael-min.js
-//?ver='.time()); 
-                    ?>"></script>-->
                     <script type="text/javascript" src="<?php echo base_url('assets/js_min/progressloader.js?ver=' . time()); ?>"></script>
 
 <?php }?>

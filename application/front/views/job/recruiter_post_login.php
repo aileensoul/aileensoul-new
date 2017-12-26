@@ -702,10 +702,7 @@
                                             <span>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
-                                                //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                ?>
+                                                
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -718,10 +715,7 @@
                                                 <option value="10">Oct</option>
                                                 <option value="11">Nov</option>
                                                 <option value="12">Dec</option>
-                                                //<?php
-//                  }
-//                  
-                                                ?>
+                                                
                                             </select></span>
                                             <span>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -765,7 +759,6 @@
         <!-- register -->
 
 <!-- script for skill textbox automatic start-->
-<!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
 
 <?php
         if (IS_JOB_JS_MINIFY == '0') {

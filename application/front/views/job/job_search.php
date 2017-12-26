@@ -1,4 +1,3 @@
-<!--<form action=<?php// echo base_url('job/search')?> method="get">-->
 <form  class="recsearch_form" name="recsearch_form" id="recsearch_form" method="post">
 <fieldset class="col-md-4 col-sm-5 col-xs-5 sec_h2">
    <input type="text" id="tags" name="skills" class="tags" placeholder="Job Title, Skill, Company" maxlength="255">

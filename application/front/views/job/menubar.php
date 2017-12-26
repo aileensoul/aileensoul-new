@@ -20,10 +20,7 @@ $id = $this->db->get_where('job_reg', array('slug' => $this->uri->segment(3)))->
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('status' => '1', 'user_id' => $userid);
                 $slugdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                //echo "<pre>"; print_r($slugdata); die();
-
-              
-                
+            
                 ?>
 
                 <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume') { ?> class="active" <?php } ?>>

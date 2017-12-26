@@ -109,9 +109,6 @@
             $userid = $this->session->userdata('aileenuser');
 
             $id = $this->db->get_where('job_reg', array('slug' =>$this->uri->segment(3)))->row()->user_id;
-
-           // echo $userid; echo $id; die();
-
             if ($userid == $id) { ?>
             <div class="upload-img ">
                <label class="cameraButton"> <span class="tooltiptext">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
@@ -1258,24 +1255,7 @@
                                        </div>
                                          <div class="profile-job-profile-menu">                          
                                         <ul class="clearfix">
-                                           <!-- <?php   if($job[0]['experience'] == 'Experience'){ ?>
-                                          <li> <b> Total Experience</b> <span><?php  if($job[0]['exp_y'] != " " && $job[0]['exp_m'] != " "){ 
-                                         if ($job[0]['exp_m'] == '12 month' && $job[0]['exp_y'] == '0 year') {
-                                                    echo "1 year";
-                                                } else {
-                                                  
-                                                if($job[0]['exp_y'] != '0 year'){
-                                                    echo $job[0]['exp_y'];
-                                                }
-                                                    if ($job[0]['exp_m'] != '0 month') {
-                                                        echo ' ' . $job[0]['exp_m'];
-                                                        
-                                                    } 
-                                                }
-                                             } ?> </span>
-                                          </li>
-                                         <?php } ?> -->
-
+                                          
                                         <ul class="clearfix">
                                            <?php   if($job[0]['experience'] == 'Experience'){ ?>
                                           <li> <b> Total Experience</b> <span>
@@ -1294,16 +1274,9 @@
                                                     echo "1 year";
                                                 } else {
                                                   
-                                                // if($job[0]['exp_y'] != '0 year'){
-                                                //     echo $job[0]['exp_y'];
-                                                // }
-                                                //     if ($job[0]['exp_m'] != '0 month') {
-                                                //         echo ' ' . $job[0]['exp_m'];
-                                                        
-                                                //     } 
+                                                
 
                                                   $month = explode(' ', $total_work_year);
-                                                    //print_r($month);
                                                     $year = $month[0];
                                                     $y = 0;
                                                     for ($i = 0; $i <= $y; $i++) {
@@ -1385,7 +1358,7 @@
                                                     echo "1 year";
                                                 } else {
                                                     $month = explode(' ', $total_work_year);
-                                                    //print_r($month);
+                                                   
                                                     $year = $month[0];
                                                     $y = 0;
                                                     for ($i = 0; $i <= $y; $i++) {
@@ -1723,13 +1696,10 @@
       </div>
       <!-- Model Popup Close -->
 
-<!-- <footer>   -->   
+
 <?php echo $login_footer ?>   
 <?php echo $footer;  ?>
-<!-- </footer> -->
-
       <!-- script for skill textbox automatic start-->
-      <!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
    <?php
         if (IS_JOB_JS_MINIFY == '0') {
             ?> 
@@ -1737,8 +1707,7 @@
       <!-- script for skill textbox automatic end (option 2)-->
       <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
       <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
-<!--      <script type="text/javascript" src="<?php //echo base_url('assets/js/raphael-min.js
-        // ?ver='.time()); ?>"></script>-->
+
       <script src="<?php echo base_url('assets/js/progressloader.js?ver='.time()); ?>"></script>
 <?php }else{?>
 
@@ -1746,8 +1715,6 @@
       <!-- script for skill textbox automatic end (option 2)-->
       <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver='.time()) ?>"></script>
       <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
-<!--      <script type="text/javascript" src="<?php //echo base_url('assets/js/raphael-min.js
-        // ?ver='.time()); ?>"></script>-->
       <script src="<?php echo base_url('assets/js_min/progressloader.js?ver='.time()); ?>"></script>
 
 <?php }?>

@@ -119,7 +119,7 @@
                                             <?php } ?>
                                         </span>
 
-                                        <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;  ?>
+                                    
                                         <div class="profile-boxProfile-name">
                                             <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                                 <a href="<?php echo site_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
@@ -335,20 +335,7 @@
                                             <p class="pull-right job-top-btn">
 
                                                 <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
-            <!--                                                        <a href="javascript:void(0);" class="btn4" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
-                                                                    <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" class="btn4">Edit</a>
-                                                    <?php
-                                                    $join_str[0]['table'] = 'job_reg';
-                                                    $join_str[0]['join_table_id'] = 'job_reg.user_id';
-                                                    $join_str[0]['from_table_id'] = 'job_apply.user_id';
-                                                    $join_str[0]['join_type'] = '';
-
-                                                    $condition_array = array('post_id' => $post['post_id'], 'job_apply.job_delete' => '0', 'job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_reg.job_step' => '10');
-                                                    $data = "job_apply.*,job_reg.job_id";
-                                                    $apply_candida = $this->common->select_data_by_condition('job_apply', $condition_array, $data, $short_by = '', $order_by = '', $limit, $offset, $join_str, $groupby = '');
-                                                    $countt = count($apply_candida);
-                                                    ?>
-                                                                    <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="btn4">Applied  Candidate : <?php echo $countt ?></a>-->
+           
                                                     <?php
                                                 } else {
                                                     $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
@@ -384,8 +371,7 @@
                                                 }
                                                 ?>
 
-                                                <!--    <a href="#" class="btn4">Save</a>
-                                                 <a href="#" class="btn4">Apply</a>-->
+                                               
                                             </p>
                                         </div>
                                     </div>
@@ -599,8 +585,7 @@
                                                     }
                                                 }
                                                 ?>
-                                                <!--                                                    <a href="#" class="btn4">Save</a>
-                                                                                                    <a href="#" class="btn4">Apply</a>-->
+                                                
                                             </p>
 
                                         </div>
