@@ -230,7 +230,7 @@
                                                                                                                 <?php } else if ($hireuser) { ?>
                                                                                                                     <a><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                                                                                 <?php } else { ?>
-                                                                                                                    <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                                                                                    <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                                                                                 <?php } ?>
                                                                                                                 </a></p>
                                                                                                             <p class="loca-exp">
@@ -289,7 +289,7 @@
                                                                                                                         ?>
                                                                                                                         <a class="btn4 applied">Applied</a>
                                                                                                                     <?php } else if ($applyuser) { ?>
-                                                                                                                        <a  class= "applypost btn4"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
+                                                                                                                        <a href="javascript:void(0);"  class= "applypost btn4"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
                                                                                                                         <?php
                                                                                                                         $userid = $this->session->userdata('aileenuser');
                                                                                                                         $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
@@ -299,7 +299,7 @@
                                                                                                                             ?>
                                                                                                                             <a class="btn4 saved savedpost<?php echo $post['post_id']; ?>">Saved</a>
                                                                                                                         <?php } else { ?>
-                                                                                                                            <a id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id']; ?>)" class="btn4 savedpost<?php echo $post['post_id']; ?>">Save</a>
+                                                                                                                            <a href="javascript:void(0);" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id']; ?>)" class="btn4 savedpost<?php echo $post['post_id']; ?>">Save</a>
 
                                                                                                                         <?php }
                                                                                                                         ?>

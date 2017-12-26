@@ -211,7 +211,6 @@ class Business_profile_registration extends MY_Controller {
         // Getting posted data and decodeing json
         $_POST = json_decode(file_get_contents('php://input'), true);
 
-// checking for blank values.
         if (empty($_POST['companyname']))
             $errors['companyname'] = 'Companyname is required.';
 
@@ -827,7 +826,6 @@ class Business_profile_registration extends MY_Controller {
 
     public function mail_test() {
         $send_email = $this->email_model->test_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
-        //    $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
     }
 
     public function reg_country() {

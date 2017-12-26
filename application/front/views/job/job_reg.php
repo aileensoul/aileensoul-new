@@ -524,7 +524,7 @@
                                                          <option value="19 year">19 year</option>
                                                          <option value="20 year">20 year</option>
                                                       </select>
-                                                    <!--   <?php// echo form_error('experience_year'); ?> -->
+                                                  
                                                       <select style="width: 45%;" name="experience_month" tabindex="7"   id="experience_month" class="experience_month keyskil" onclick="expmonth_click();">
                                                          <option value="" selected option disabled>Month</option>
                                                          <option value="0 month">0 month</option>
@@ -572,7 +572,7 @@
                         </fieldset>
                         <fieldset class=" full-width">
                            <div class="job_reg">
-                              <!--<input type="reset">-->
+                        
                               <input title="Register" type="submit" id="submit" name="" value="Register" tabindex="12">
                            </div>
                         </fieldset>
@@ -604,7 +604,7 @@
         <div class="modal fade login register-model" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
-                    <!-- <button type="button" class="modal-close" data-dismiss="modal">&times;</button>   -->       
+                   
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class=" ">
@@ -644,10 +644,7 @@
                                         <span>
                                         <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
-                                            //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-?>
+                                           
                                             <option value="1">Jan</option>
                                             <option value="2">Feb</option>
                                             <option value="3">Mar</option>
@@ -660,10 +657,7 @@
                                             <option value="10">Oct</option>
                                             <option value="11">Nov</option>
                                             <option value="12">Dec</option>
-                                            //<?php
-//                  }
-//                  
-?>
+                                            
                                         </select></span>
                                         <span>
                                         <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -719,7 +713,7 @@
         <div class="modal login fade" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
-                    <!-- <button type="button" class="modal-close" data-dismiss="modal">&times;</button>   -->       
+                    
                     <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">
@@ -812,10 +806,9 @@
             </div>
         <!-- model for forgot password end -->
 
-<!-- <footer>        -->
+
 <?php echo $login_footer ?> 
 <?php echo $footer;  ?>
-<!-- </footer> -->
 
  <?php
         if (IS_JOB_JS_MINIFY == '0') {
@@ -861,23 +854,6 @@
             $('#experience_month').attr('disabled', 'disabled');
         }
 }
-
-//function expmonth_click() { 
-//        var experience_year = document.querySelector("#experience_year").value;
-//        
-//        if (experience_year == "")
-//        {  
-//           
-//                $("#experience_month option[value='0 month']").attr('disabled', true);
-//           
-//        } else
-//        {//alert(11100);
-//                $("#experience_month option[value='0 month']").attr('disabled', false);
-//          //  $('#experience_month').attr('disabled', 'disabled');
-//        }
-//}
-
-
 
        $(".alert").delay(3200).fadeOut(300);
      var base_url = '<?php echo base_url(); ?>';

@@ -563,12 +563,8 @@
     </div>
     <!-- Model Popup Close -->
 
-    <?php //echo  $login_footer  ?>        
+       
     <?php echo $footer; ?>
-
-    <!--footer>        
-    <?php //echo $footer;   ?>
-    </footer-->
 
     <!-- Login  -->
     <div class="modal fade login" id="login" role="dialog">
@@ -791,10 +787,7 @@
                                         <span>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
-                                                //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                ?>
+                                                
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -807,10 +800,7 @@
                                                 <option value="10">Oct</option>
                                                 <option value="11">Nov</option>
                                                 <option value="12">Dec</option>
-                                                //<?php
-//                  }
-//                  
-                                                ?>
+                                               
                                             </select></span>
                                         <span>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -842,7 +832,7 @@
                                     </p>
                                     <p>
                                         <button tabindex="13" class="btn1">Create an account</button>
-                                                                                    <!--<p class="next">Next</p>-->
+                                                                                   
                                     </p>
                                     <div class="sign_in pt10">
                                         <p>
@@ -906,10 +896,7 @@
                                         </select>
                                         <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
-                                            //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                            ?>
+                                           
                                             <option value="1">Jan</option>
                                             <option value="2">Feb</option>
                                             <option value="3">Mar</option>
@@ -922,10 +909,7 @@
                                             <option value="10">Oct</option>
                                             <option value="11">Nov</option>
                                             <option value="12">Dec</option>
-                                            //<?php
-//                  }
-//                  
-                                            ?>
+                                           
                                         </select>
                                         <select tabindex="11" class="year" name="selyear" id="selyear">
                                             <option value="" disabled selected value>Year</option>
@@ -956,7 +940,7 @@
                                     </p>
                                     <p>
                                         <button tabindex="13" class="btn1">Create an account</button>
-                                                                                    <!--<p class="next">Next</p>-->
+                                                                                   
                                     </p>
                                 </form>
                             </div>
@@ -970,8 +954,7 @@
     <!-- register for apply end -->
 
     <!-- script for skill textbox automatic start-->
-    <!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());    ?>"></script>-->
-
+    
     <?php
         if (IS_JOB_JS_MINIFY == '0') {
             ?>

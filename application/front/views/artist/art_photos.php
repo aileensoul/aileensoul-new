@@ -63,8 +63,6 @@
                                        <li>
                                           <div class="pht_ph_dash"> 
 
-                                           <!-- <img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $data['file_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor"/> -->
-
                                             <img src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $data['file_name']; ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" alt="<?php echo $data['file_name']; ?>">
                                           </div>
                                        </li>
@@ -133,7 +131,7 @@
 
                                              <img src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $artdata['file_name']; ?>" alt="<?php echo $artdata['file_name']; ?>">
 
-                                             <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artdata['file_name']) ?>"> -->
+                                             
                                           </div>
                                           <div class="likeduserlistimg<?php echo $artdata['post_files_id']; ?>">
                                             
@@ -143,7 +141,7 @@
                                              <?php
                                                 $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                                 $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = 'post_image_like_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                // echo '<pre>'; print_r($commnetcount);
+                                              
                                                 foreach ($commnetcount as $comment) {
                                                     $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => '1'))->row()->art_name;
                                                     $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => '1'))->row()->art_lastname;
@@ -205,8 +203,7 @@
                              <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                <div class=" ">
 
-                                <!-- <div class="user_profile"></div> -->
-
+                      
                                 <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
 
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
@@ -229,7 +226,6 @@
       <div class="modal-content">
          <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
          <div class="modal-body">
-            <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
             <span class="mes"></span>
          </div>
       </div>

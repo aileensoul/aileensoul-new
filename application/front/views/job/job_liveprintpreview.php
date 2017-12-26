@@ -334,8 +334,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
             $id = $this->db->get_where('job_reg', array('slug' =>$this->uri->segment(3)))->row()->user_id;
 
-           // echo $userid; echo $id; die();
-
             if ($userid == $id) { ?>
             <div class="upload-img ">
                <label class="cameraButton"> <span class="tooltiptext">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
@@ -832,7 +830,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           <a class="example-image-link" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_add_edu[0]['edu_certificate_primary'] ?>" data-lightbox="example-1">certificate </a>
                                           <?php
                                              }//else complete
-                                             }//if ($job_add_edu[0]['edu_certificate_primary']) complete
+                                             }
                                              ?>
                                           </span>
                                        </li>
@@ -1124,7 +1122,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                          if(($job[0]['project_name'] != "" || $job[0]['project_duration'] != "" || $job[0]['project_description'] != "" || $job[0]['training_as'] != "" || $job[0]['training_duration'] != "" || $job[0]['training_organization'] != "") || ($userid != $id && ($job[0]['project_name'] != "" || $job[0]['project_duration'] != "" || $job[0]['project_description'] != "" || $job[0]['training_as'] != "" || $job[0]['training_duration'] != "" || $job[0]['training_organization'] != "")))
                                          {
                                  ?>
-                              <!--khyati 22-5 chanegs end-->
+                             
                               <?php
                                  if ($userid != $id) {
                                  
@@ -1482,25 +1480,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                        </div>
                                          <div class="profile-job-profile-menu">                          
                                         <ul class="clearfix">
-                                           <!-- <?php   if($job[0]['experience'] == 'Experience'){ ?>
-                                          <li> <b> Total Experience</b> <span><?php  if($job[0]['exp_y'] != " " && $job[0]['exp_m'] != " "){ 
-                                         if ($job[0]['exp_m'] == '12 month' && $job[0]['exp_y'] == '0 year') {
-                                                    echo "1 year";
-                                                } else {
-                                                  
-                                                if($job[0]['exp_y'] != '0 year'){
-                                                    echo $job[0]['exp_y'];
-                                                }
-                                                    if ($job[0]['exp_m'] != '0 month') {
-                                                        echo ' ' . $job[0]['exp_m'];
-                                                        
-                                                    } 
-                                                }
-                                             } ?> </span>
-                                          </li>
-                                         <?php } ?> -->
+                                          
 
-                                                                                 <ul class="clearfix">
+                                            <ul class="clearfix">
                                            <?php   if($job[0]['experience'] == 'Experience'){ ?>
                                           <li> <b> Total Experience</b> <span>
 
@@ -1518,16 +1500,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     echo "1 year";
                                                 } else {
                                                   
-                                                // if($job[0]['exp_y'] != '0 year'){
-                                                //     echo $job[0]['exp_y'];
-                                                // }
-                                                //     if ($job[0]['exp_m'] != '0 month') {
-                                                //         echo ' ' . $job[0]['exp_m'];
-                                                        
-                                                //     } 
-
                                                   $month = explode(' ', $total_work_year);
-                                                    //print_r($month);
+                                                    
                                                     $year = $month[0];
                                                     $y = 0;
                                                     for ($i = 0; $i <= $y; $i++) {
@@ -1788,7 +1762,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                        $i++;
                                        }
                                        ?>
-                                    <!--khyati chnages 22-5 start--> 
+                                    
                                     <?php if ($job_work[0]['experience'] != "Fresher") {
                                        ?>                                  
                                     <div class="tab pagi_exp" onload="opengrad(event, 'work6')">
@@ -1807,7 +1781,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     <?php } ?>
                                  </div>
                                  <!--profile-job-post-title clearfix -->
-                                 <!--khyati 22-5 chanegs end--> 
+                                
                                  <?php
                                     }
                                      else {
@@ -2056,10 +2030,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         <span>
                                         <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
-                                            //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-?>
+                                            
                                             <option value="1">Jan</option>
                                             <option value="2">Feb</option>
                                             <option value="3">Mar</option>
@@ -2072,10 +2043,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             <option value="10">Oct</option>
                                             <option value="11">Nov</option>
                                             <option value="12">Dec</option>
-                                            //<?php
-//                  }
-//                  
-?>
+                                            
                                         </select></span>
                                         <span>
                                         <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -2166,14 +2134,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 <!-- </footer> -->
 
       <!-- script for skill textbox automatic start-->
-      <!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
     
       <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script> 
-      <!-- script for skill textbox automatic end (option 2)-->
       <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
       <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
-<!--      <script type="text/javascript" src="<?php //echo base_url('assets/js/raphael-min.js
-        // ?ver='.time()); ?>"></script>-->
       <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver='.time()); ?>"></script>
 
       <script>
@@ -2188,7 +2152,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 $('#register').modal('show');
             }
              function login_data() { 
-                //$('#login').modal('show');
                 $('#login').modal('show');
                 $('#register').modal('hide');
 
@@ -2206,7 +2169,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
     
     $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
         $('#register').modal('hide');
          $('#login').modal('hide');
     }
@@ -2318,7 +2280,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 type: "post",
                                 data: {
                                     email_reg: function () {
-                                        // alert("hi");
                                         return $("#email_reg").val();
                                     },
                                     '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
@@ -2432,7 +2393,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     $(".dateerror").html("This month has only 30 days.");
                                     return false;
                                 }
-                            } else if (selmonth == 2) { //alert("hii");
+                            } else if (selmonth == 2) { 
                                 if (selday == 31 || selday == 30) {
                                     $(".dateerror").html("This month has only 29 days.");
                                     return false;
@@ -2466,7 +2427,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         {
                             if (response.okmsg == "ok") {
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" alt="loaderimage"/> &nbsp; Sign Up ...');
-//                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
                                 window.location = "<?php echo base_url() ?>recruiter";
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
@@ -2483,7 +2443,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </script>
         <!-- forgot password script end -->
         <script type="text/javascript">
-            $(document).ready(function () { //aletr("hii");
+            $(document).ready(function () { 
                 /* validation */
                 $("#forgot_password").validate({
                     rules: {

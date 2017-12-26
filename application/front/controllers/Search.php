@@ -1638,7 +1638,7 @@ Your browser does not support the audio tag.
 
 
             $search_condition = "(freelancer_post.post_slug LIKE '%$search_skill%' or freelancer_post.post_other_skill LIKE '%$search_skill%' or freelancer_post.post_est_time LIKE '%$search_skill%' or freelancer_post.post_rate LIKE '%$search_skill%' or  freelancer_post.post_exp_year LIKE '%$search_skill%' or  freelancer_post.post_exp_month LIKE '%$search_skill%')";
-            $contion_array = array('freelancer_hire_reg.city' => $cache_time, 'freelancer_post.user_id !=' => $userid);
+            $contion_array = array('freelancer_hire_reg.city' => $cache_time, 'freelancer_post.user_id !=' => $userid,'freelancer_post.status' => '1', 'freelancer_post.is_delete' => '0');
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contion_array, $data = '*', $sortby = 'freelancer_post.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
             $unique = array_merge((array) $freeskillpost, (array) $freeldata, (array) $fieldfound);

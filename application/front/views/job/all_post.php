@@ -97,7 +97,6 @@
                                             <a   href="<?php echo site_url('job/resume/' . $jobdata[0]['slug']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
                                         </span>
 
-                                        <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;     ?>
                                         <div class="profile-boxProfile-name">
                                             <a  href="<?php echo base_url('job/resume/' . $jobdata[0]['slug']); ?>" title="<?php echo $jobdata[0]['slug']; ?>"><?php
                                                 if (ucwords($jobdata[0]['designation'])) {
@@ -112,12 +111,12 @@
                                             <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume') { ?> class="active" <?php } ?>>
                                                 <a class="padding_less_left" title="Details" href="<?php echo base_url('job/resume'); ?>" title="jobresume" > Details</a>
                                             </li>
-                                            <?php // if (($this->uri->segment(1) == 'job') && ($this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'resume' || $this->uri->segment(2) == 'search' || $this->uri->segment(2) == 'saved-job' || $this->uri->segment(2) == 'applied-job') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) {     ?>
+                                           
                                             <li <?php if ($this->uri->segment(1) == 'search' && $this->uri->segment(2) == 'saved-job') { ?> class="active" <?php } ?>><a title="Saved Job" href="<?php echo base_url('job/saved-job'); ?>" title="savejob">Saved </a>
                                             </li>
                                             <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'applied-job') { ?> class="active" <?php } ?>><a class="padding_less_right" title="Applied Job" href="<?php echo base_url('job/applied-job'); ?>" title="applied">Applied </a>
                                             </li>
-                                            <?php // }     ?>
+                                           
                                         </ul>
 
                                     </div>
@@ -151,9 +150,7 @@
                                         All Jobs
                                     </h3>
                                     <div class="contact-frnd-post">
-                                        <!--                                <div class = "job-contact-frnd">
-                                                                            AJAX DATA START FOR RECOMMAND CANDIDATE
-                                                                        </div>-->
+                                        
                                         <?php
                                         if (count($postdata) > 0) {
                                             foreach ($postdata as $post) {
@@ -260,14 +257,7 @@
 
                                                                         </span>
                                                                     </li>
-                                                                    <!-- <li><b>Other Skill</b><span> <?php
-                                                                    if ($post['other_skill'] != '') {
-                                                                        echo $post['other_skill'];
-                                                                    } else {
-                                                                        echo PROFILENA;
-                                                                    }
-                                                                    ?></span>
-                                                                    </li> -->
+                                                                   
                                                                     <li><b>Job Description</b><span><pre><?php echo $this->common->make_links($post['post_description']); ?></pre></span>
                                                                     </li>
                                                                     <li><b>Interview Process</b><span>
@@ -514,7 +504,7 @@
                                             </div>
                                         <?php }
                                         ?>
-<!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>-->
+
                                     </div>
                                 </div>
                             </div>

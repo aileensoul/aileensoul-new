@@ -121,7 +121,6 @@
                     <div class="modal-content">
                         <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                         <div class="modal-body">
-                            <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                             <span class="mes"></span>
                         </div>
                     </div>
@@ -142,7 +141,6 @@
  <div class="popup_previred">
                         <img id="preview" src="#" alt="your image" >
                         </div>
-                        <!--<input type="submit" name="cancel3" id="cancel3" value="Cancel">-->
                         <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
 <?php echo form_close(); ?>
                     </div>

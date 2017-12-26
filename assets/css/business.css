@@ -66,7 +66,7 @@ select.year:focus {
     color: #1b8ab9!important;
 }
 .common-form select:focus {
-    border-bottom: 1px solid #1b8ab9 !important;
+    border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
 }
 .common-form textarea:focus {
@@ -5616,6 +5616,7 @@ body.reg-form{background: #fff}
 	.file-preview{width:435px;}
     .more-image{width: calc(100% - 2px);}
     .bui_popup_img{width: 33.33%}
+    .loader-cust {top:48px;}
 }
 @media screen and (max-width: 540px) {
     .reactivate_btn_n,

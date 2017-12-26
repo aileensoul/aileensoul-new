@@ -18,7 +18,6 @@
 
         <?php }?>
        
-       <!--  <link rel="stylesheet" href="css/jquery.fancybox.css"> -->
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
         <?php echo $header; ?>
@@ -254,11 +253,9 @@
             ?>
           
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
-       <!--  <script type="text/javascript" src="<?php// echo base_url('assets/js/jquery.fancybox.js'); ?>"></script> -->
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
        <?php }else{?>
         <script src="<?php echo base_url('assets/js_min/croppie.js'); ?>"></script>  
-       <!--  <script type="text/javascript" src="<?php// echo base_url('assets/js/jquery.fancybox.js'); ?>"></script> -->
         <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
 
        <?php }?>

@@ -113,7 +113,7 @@
                                                 <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume') { ?> class="active" <?php } ?>>
                                                     <a class="padding_less_left" title="Details" href="<?php echo base_url('job/resume'); ?>" title="job resume"> Details</a>
                                                 </li>
-                                                <?php // if (($this->uri->segment(1) == 'job') && ($this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'resume' || $this->uri->segment(2) == 'search' || $this->uri->segment(2) == 'saved-job' || $this->uri->segment(2) == 'applied-job') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) {  ?>
+                                                
                                                 <li <?php if ($this->uri->segment(1) == 'search' && $this->uri->segment(2) == 'saved-job') { ?> class="active" <?php } ?>><a title="Saved Job" href="<?php echo base_url('job/saved-job'); ?>" title="Saved">Saved </a>
                                                 </li>
                                                 <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'applied-job') { ?> class="active" <?php } ?>><a class="padding_less_right" title="Applied Job" href="<?php echo base_url('job/applied-job'); ?>" title="Applied">Applied </a>
@@ -226,7 +226,6 @@
 
 
                     <!-- script for skill textbox automatic start-->
-                    <!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time());  ?>"></script>-->
 <?php
         if (IS_JOB_JS_MINIFY == '0') {
             ?>
@@ -239,27 +238,12 @@
                     <script>
                                                                                                 var base_url = '<?php echo base_url(); ?>';
                                                                                                 var skill = '<?php echo $keyword; ?>';
-                                                                                                //var skill = skill.replace('-', ' ');
-
+                                                                                                
                                                                                                 var place = '<?php echo $keyword1; ?>';
-                                                                                                // var place = place.replace('-', ' ');
+                                                                                              
 
                                                                                                 var csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
                                                                                                 var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
-
-
-                    //           if(skill == ""){
-                    //            var  searchurl = 'jobs-in-' + place;
-                    //             
-                    //           } else if(place == ""){
-                    //             var  searchurl = skill + '-jobs';
-                    //              
-                    //           }else{ 
-                    //             var  searchurl =  skill + '-jobs-in-' + place;
-                    //              
-                    //           }
-
-
                     </script>
 
 <?php

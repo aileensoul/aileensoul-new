@@ -162,28 +162,31 @@ function save_post(abc)
 }
 //CODE FOR SAVE POST END
 //CODE FOR REMOVE POST START
-function removepopup(id) {
-    $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this project?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-    $('#bidmodal').modal('show');
-}
 function remove_post(abc)
-{
+{ 
+  
     $.ajax({
         type: 'POST',
         url: base_url + "freelancer/remove_post",
         data: 'post_id=' + abc,
-        success: function (data) {
-            $('#' + 'removeapply' + abc).html(data);
-            $('#' + 'removeapply' + abc).parent().removeClass();
-            var numItems = $('.contact-frnd-post .job-contact-frnd').length;
+        success: function () {
+            $('#' + 'removeapply' + abc).remove();
+            var numItems = $('.job-contact-frnd1 .all-job-box').length;
             if (numItems == '0') {
                 var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../assets/img/free-no1.png"></div><div class="art_no_post_text">No Project Found</div></div>';
-                $('.contact-frnd-post').html(nodataHtml);
+                $('.job-contact-frnd1').html(nodataHtml);
+                $('.job-contact-frnd1').addClass('cust-border');
             }
         }
     });
 
 }
+
+function removepopup(id) {
+    $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this project?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('#bidmodal').modal('show');
+}
+
 //CODE FOR REMOVE POST END
 //CODE FOR APPLY POST START
 function applypopup(postid, userid) {

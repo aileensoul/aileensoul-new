@@ -418,7 +418,7 @@
                                   }
               ?>                               
                   </h3>
-                  <!--        <div class="contact-frnd-post"> -->
+                
                   <div class="job-contact-frnd ">
 
                  <!-- AJAX DATA... -->
@@ -611,10 +611,7 @@
                                             <span>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
-                                                //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                ?>
+                                                
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -627,10 +624,7 @@
                                                 <option value="10">Oct</option>
                                                 <option value="11">Nov</option>
                                                 <option value="12">Dec</option>
-                                                //<?php
-//                  }
-//                  
-                                                ?>
+                                                
                                             </select></span>
                                             <span>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -674,11 +668,7 @@
         <!-- register -->
          
             <?php echo $footer; ?>
-       
-
-<!-- <script src="<?php //echo base_url('assets/js/plugins/sortable.js?ver='.time()); ?>" type="text/javascript"></script> -->
-<!-- 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    
 
 <?php
   if (IS_ART_JS_MINIFY == '0') { ?>
@@ -940,7 +930,7 @@ var keyword1 = '<?php echo $keyword1; ?>';
                                     $(".dateerror").html("This month has only 30 days.");
                                     return false;
                                 }
-                            } else if (selmonth == 2) { //alert("hii");
+                            } else if (selmonth == 2) { 
                                 if (selday == 31 || selday == 30) {
                                     $(".dateerror").html("This month has only 29 days.");
                                     return false;
@@ -988,7 +978,7 @@ var keyword1 = '<?php echo $keyword1; ?>';
         </script>
         <!-- forgot password script end -->
         <script type="text/javascript">
-            $(document).ready(function () { //aletr("hii");
+            $(document).ready(function () { 
                 /* validation */
                 $("#forgot_password").validate({
                     rules: {

@@ -283,17 +283,10 @@
 
         <?php } else {
             ?>
-
-                                                                            <!--  <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deletepostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a> -->
-
-                                                                           <!--  <a href="<?php echo base_url('artist/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
-
             <?php
         }
     } else {
         ?>  
-
-
 
         <?php
         $userid = $this->session->userdata('aileenuser');
@@ -305,7 +298,6 @@
                                                         <?php } else { ?>
                                                             <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deletepostmodel(this.id)" title="Delete Post"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>
 
-                                                                           <!--  <a href="<?php echo base_url('artist/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
             <?php
         }
     }
@@ -339,21 +331,8 @@
 
                                                     </div>
 
-        <!-- <div class="margin_btm" id="<?php echo 'editpostdetails' . $art_data[0]['art_post_id']; ?>" style="display:block;"><span class="show">
-    <?php print $this->common->make_links($art_data[0]['art_description']); ?></span>
-        </div> -->
-
-
                                                     <div id="<?php echo "khyati" . $art_data[0]['art_post_id']; ?>" style="display:block;">
-                                                        <!-- <?php
-                                                        $small = substr($art_data[0]['art_description'], 0, 180);
-                                                        echo $this->common->make_links($small);
-
-                                                        if (strlen($art_data[0]['art_description']) > 180) {
-                                                            echo '... <span id="kkkk" onClick="khdiv(' . $art_data[0]['art_post_id'] . ')">View More</span>';
-                                                        }
-                                                        ?> -->
-
+                                                        
                                                         <?php
                                                         $num_words = 29;
                                                         $words = array();
@@ -407,14 +386,9 @@
 
                                                         <div class="one-image" >
 
-                                                                         <!-- <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '"> -->
-
                                                             <img src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $data['file_name']; ?>" onclick="openModal();
                                                                             currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" alt="<?php echo $data['file_name']; ?>">
-
-                                                                            <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $data['file_name']) ?>"  onclick="openModal();
-                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
-                                                            -->
+   
                                                         </div>
 
         <?php } elseif (in_array($ext, $allowesvideo)) { ?>
@@ -471,11 +445,7 @@
                                                                 <i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>
                                                                 <?php } ?>
                                                             <span  class="like_As_count">
-                                                                <?php
-//                                                        if ($art_data[0]['art_likes_count'] > 0) {
-//                                                            echo $art_data[0]['art_likes_count'];
-//                                                        }
-                                                                ?>
+                                                                
                                                             </span>
                                                         </a>
                                                     </li>
@@ -485,13 +455,7 @@
                                                                 $commnetcount = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                 ?>
                                                         <a class="ripple like_h_w" title="Comment"  onClick="commentall(this.id)" id="<?php echo $art_data[0]['art_post_id']; ?>"><i class="fa fa-comment-o" aria-hidden="true"> 
-                                                                <?php
-//                                                        if (count($commnetcount) > 0) {
-//                                                            echo count($commnetcount);
-//                                                        } else {
-//                                                            
-//                                                        }
-                                                                ?>
+                                                                
                                                             </i> 
                                                         </a>
                                                     </li>
@@ -851,11 +815,7 @@
 
                                                                     <div class="comment-details-menu">
                                                                         <p> <?php
-                                                                            /*   $new_date = date('Y-m-d H:i:s',strtotime($rowdata['created_date']));
-                                                                             */
-                                                                            /*                          $new_time = $this->time_elapsed_string($new_date);
-                                                                             */
-//                          echo $new_time. '<br>';
+                                                                            
                                                                             echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date'])));
                                                                             echo '</br>';
                                                                             ?>
@@ -1074,9 +1034,7 @@
                     ?>
                     <div class="mySlides">
                         <div class="numbertext"><?php echo $i ?> / <?php echo count($databus1) ?></div>
-                        <div class="slider_img">
-
-                                                                <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artdata['file_name']) ?>"> -->
+                        <div class="slider_img">                        
                             <img src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $artdata['file_name']; ?>" alt="<?php echo $artdata['file_name']; ?>">
                             <a class="prev" style="left: 0;" onclick="plusSlides( - 1)">&#10094;</a>
                             <a class="next" style="right:  0;" onclick="plusSlides(1)">&#10095;</a>
@@ -1110,9 +1068,6 @@
                                             $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                             $likecount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-//                                                                                if ($likecount) {
-//                                                                                    echo count($likecount);
-//                                                                                }
                                                     ?>
 
                                                 </span>
@@ -1127,11 +1082,7 @@
 
                                             <a class="ripple like_h_w" onClick="commentallimg(this.id)" id="<?php echo $artdata['post_files_id']; ?>">
                                                 <i class="fa fa-comment-o" aria-hidden="true">
-        <?php
-//                                                                                if (count($commnetcount) > 0) {
-//                                                                                    echo count($commnetcount);
-//                                                                                }
-        ?>
+       
                                                 </i> 
                                             </a>
                                         </li>
@@ -1185,7 +1136,7 @@
                                     <?php
                                     $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                    // echo '<pre>'; print_r($commnetcount);
+                               
                                     foreach ($commnetcount as $comment) {
                                         $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => '1'))->row()->art_name;
                                         $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => '1'))->row()->art_lastname;
@@ -1232,7 +1183,7 @@
                                 <?php
                                 $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                 $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                // echo '<pre>'; print_r($commnetcount);
+                              
                                 foreach ($commnetcount as $comment) {
                                     $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => '1'))->row()->art_name;
                                     $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => '1'))->row()->art_lastname;
@@ -1440,11 +1391,7 @@
 
                                                         <div class="comment-details-menu">
                                                             <p> <?php
-                                                /*   $new_date = date('Y-m-d H:i:s',strtotime($rowdata['created_date']));
-                                                 */
-                                                /*                          $new_time = $this->time_elapsed_string($new_date);
-                                                 */
-//                          echo $new_time. '<br>';
+                                               
                                                 echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date'])));
                                                 echo '</br>';
                                                 ?>
@@ -1548,7 +1495,6 @@
                     <button type="button" class="modal-close" data-dismiss="modal">&times;
                     </button>       
                     <div class="modal-body">
-                      <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                         <span class="mes">
                         </span>
                     </div>

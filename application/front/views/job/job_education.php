@@ -517,7 +517,7 @@
                                           $predefine_data = 1;
                                           if ($jobgrad) {
                                               $count = count($jobgrad);
-                                            //  echo"<pre>";print_r($count);die();
+                                         
                                               for ($x = 0; $x < $count; $x++) {
                                           
                                                   $degree1 = $jobgrad[$x]['degree'];
@@ -540,8 +540,7 @@
                                                   ?>   
                                        <div id="input<?php echo $y ?>" style="margin-bottom:4px;position: relative;" class="job_work_experience_main_div clonedInput job_work_edit_<?php echo $jobgrad[$x]['job_graduation_id']?>">
                                           <input type="hidden" name="education_data[]" value="old" class="exp_data" id="exp_data<?php echo $y; ?>">
-                                          <!--<div class="job_work_experience_main_div">-->
-                                             <!--   <fieldset class="full-width"> -->
+                                        
                                              <h6>Degree :<span class="red">*</span></h6>
                                              <select name="degree[]" id="degree1" tabindex="1" autofocus class="degree">
                                                 <option value="" Selected option disabled="">Select your Degree</option>
@@ -565,7 +564,7 @@
         <option value="<?php echo $degree_otherdata[0]['degree_id']; ?> "><?php echo $degree_otherdata[0]['degree_name']; ?></option>  
                                              </select>
                                              <?php echo form_error('degree[]'); ?>
-                                             <!--    </fieldset> -->
+                                           
                                              <?php
                                             
            $contition_array = array('is_delete' => '0', 'degree_id' => $degree1);
@@ -698,7 +697,7 @@
                                                 ?>
                                                 </div>
                                           <?php
-                                             }//if ($edu_certificate1) rnd
+                                             }
                                           ?>
 
                                            <?php if($edu_certificate1)
@@ -734,7 +733,7 @@
                                                 </div>
                                              </div>
                                              <?php } ?>
-                                          <!--</div>-->
+                                         
                                         
                                        </div>
                                        <?php
@@ -973,9 +972,6 @@
 <!-- </footer> -->
 
 <!-- Calender JS Start-->
-<!--<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.js?ver='.time()) ?>"></script>-->
-<!--<script src="<?php// echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
-
 <!-- This Js is used for call popup -->
 
 <?php

@@ -474,7 +474,6 @@
                                                     <a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
                                                 </span>
 
-                                                <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;   ?>
                                                 <div class="profile-boxProfile-name">
                                                     <a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
                                                         <?php
@@ -499,36 +498,7 @@
                                     </div>                             
                                 </div>
                                 <?php if ($_GET['page'] == all_jobs) { ?>
-                                    <!--                                    <div class="full-box-module">   
-                                                                            <div class="profile-boxProfileCard  module">
-                                                                                <div class="profile-boxProfileCard-cover"> 
-                                                                                    <a href="<?php echo base_url("jobs"); ?>" >All Jobs</a>
-                                                                                    <label for="City" class="lbpos fw">
-                                                                                        <a href="<?php echo base_url("jobs/?city=Ahmedabad"); ?>" <?php if ($_GET['city'] == 'Ahmedabad') { ?> class="job_active" <?php } ?>>Ahmedabad Jobs</a>
-                                                                                    </label>
-                                                                                    <label for="City" class="lbpos fw">
-                                                                                        <a href="<?php echo base_url("jobs/?city=Bengaluru"); ?>" <?php if ($_GET['city'] == 'Bengaluru') { ?> class="job_active" <?php } ?>>Bengaluru Jobs</a>
-                                                                                    </label>
-                                                                                    <label for="City" class="lbpos fw"> 
-                                                                                        <a href="<?php echo base_url("jobs/?city=Chennai"); ?>" <?php if ($_GET['city'] == 'Chennai') { ?> class="job_active" <?php } ?>>Chennai Jobs</a>
-                                                                                    </label>
-                                                                                    <label for="City" class="lbpos fw">
-                                                                                        <a href="<?php echo base_url("jobs/?city=Delhi"); ?>" <?php if ($_GET['city'] == 'Delhi') { ?> class="job_active" <?php } ?>>Delhi Jobs</a>
-                                                                                    </label>
-                                                                                    <label for="City" class="lbpos fw">
-                                                                                        <a href="<?php echo base_url("jobs/?city=Hyderabad"); ?>" <?php if ($_GET['city'] == 'Hyderabad') { ?> class="job_active" <?php } ?>>Hyderabad Jobs</a>
-                                                                                    </label>
                                     
-                                                                                    <label for="City" class="lbpos fw">
-                                                                                        <a href="<?php echo base_url("jobs/?city=Mumbai"); ?>" <?php if ($_GET['city'] == 'Mumbai') { ?> class="job_active" <?php } ?>>Mumbai Jobs</a>
-                                                                                    </label>
-                                    
-                                                                                    <label for="City" class="lbpos fw">
-                                                                                        <a href="<?php echo base_url("jobs/?city=pune"); ?>" <?php if ($_GET['city'] == 'pune') { ?> class="job_active" <?php } ?>>Pune Jobs</a>
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>-->
                                 <?php } ?>
 
                                 
@@ -593,7 +563,7 @@
 
                         </div>
 
-                        <!--<div class="custom-right-art mian_middle_post_box animated fadeInUp">-->
+                       
                         <div class="inner-right-part">
                             <div class="page-title">
                                 <h3>
@@ -667,7 +637,7 @@
                                                     $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                                                     ?>
                                                     <span>
-                                                        <!--<img class="pr5" src="<?php echo base_url('assets/images/location.png'); ?>">-->
+                                                      
                                                         <?php
                                                         if ($cityname || $countryname) {
                                                             if ($cityname) {
@@ -682,8 +652,7 @@
                                             <p class="loca-exp">
                                                 <span class="exp">
                                                     <span>
-                                                        <!-- <img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>"> -->
-
+                                                        
                                                         <?php
                                                         if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
 
@@ -982,7 +951,6 @@
                                                     </span>
                                                 </p>
                                                 <p class="pull-right job-top-btn">
-                                                    <!--<a href="#" class="btn4">Save</a>-->
                                                     <a href="javascript:void(0);"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
                                                 </p>
                                             </div>
@@ -1406,10 +1374,7 @@
                                             <span>
                                                 <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                     <option value="" disabled selected value>Month</option>
-                                                    //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                    ?>
+                                                   
                                                     <option value="1">Jan</option>
                                                     <option value="2">Feb</option>
                                                     <option value="3">Mar</option>
@@ -1422,10 +1387,7 @@
                                                     <option value="10">Oct</option>
                                                     <option value="11">Nov</option>
                                                     <option value="12">Dec</option>
-                                                    //<?php
-//                  }
-//                  
-                                                    ?>
+                                                   
                                                 </select></span>
                                             <span>
                                                 <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -1521,10 +1483,7 @@
                                             </select>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
-                                                //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                ?>
+                                                
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -1537,10 +1496,7 @@
                                                 <option value="10">Oct</option>
                                                 <option value="11">Nov</option>
                                                 <option value="12">Dec</option>
-                                                //<?php
-//                  }
-//                  
-                                                ?>
+                                                
                                             </select>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
@@ -1571,7 +1527,7 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-                                                                                        <!--<p class="next">Next</p>-->
+                                                                                      
                                         </p>
                                     </form>
                                 </div>
@@ -1617,8 +1573,12 @@
             <?php
         } else {
             ?>
+<<<<<<< HEAD
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_post_login.js?ver=' . time()); ?>"></script>
                         <!--<script type="text/javascript" defer="defer" src="<?php // echo base_url('assets/js_min/webpage/recruiter/rec_post_login.min.js?ver=' . time());      ?>"></script>-->
+=======
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_post_login.js?ver=' . time()); ?>"></script>
+>>>>>>> 18b8e040c805704518a14f2326341e643bb1dfa5
         <?php } ?>
 
         <script>

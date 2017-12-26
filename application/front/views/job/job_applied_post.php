@@ -298,15 +298,11 @@
     </div>
 </div>
 <!-- Model Popup Close -->
-
-<!-- <footer>   -->
 <?php echo $login_footer ?>      
 <?php echo $footer; ?>
-<!-- </footer> -->
+
 
 <!-- script for skill textbox automatic start-->
-<!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time());   ?>"></script>-->
-
 <?php
         if (IS_JOB_JS_MINIFY == '0') {
             ?>
@@ -316,10 +312,6 @@
 
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-<!--<script type="text/javascript" src="<?php
-// echo base_url('assets/js/raphael-min.js
-//?ver='.time()); 
-?>"></script>-->
 <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>"></script>
 
 <?php }else{?>
@@ -330,10 +322,7 @@
 
 <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
 <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-<!--<script type="text/javascript" src="<?php
-// echo base_url('assets/js/raphael-min.js
-//?ver='.time()); 
-?>"></script>-->
+
 <script type="text/javascript" src="<?php echo base_url('assets/js_min/progressloader.js?ver=' . time()); ?>"></script>
 
 <?php }?>
