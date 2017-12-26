@@ -58,11 +58,12 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
-<?php if($this->uri->segment(1) == 'business-profile') { ?>
+<?php if($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'details') { ?>
 <meta name="description" content="<?php echo  $business_common_data[0]['company_name'] . ' in '; if($city_name){ echo $city_name . '-';} echo $country_name . ' View full business details like address, contact number, photos and more at Aileensoul.com.';?>" />
-<?php }  else {?>
-        <meta name="description" content=" " />
-<?php } ?>
+<?php }  else if($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'jobpost') {?>
+        <meta name="description" content="Job Description for the post of <?php echo $exp_title; ?> in <?php echo  $recdata[0]['re_comp_name']; ?> in <?php if($city_name){ echo $city_name . '-';}echo $state_name; ?> for <?php echo $exp_descp; ?> of experience. Apply Now!" />
+<?php } else { ?>
+<?php }?>
         <meta name="keywords" content=" " />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
