@@ -127,9 +127,9 @@ echo $login_footer
          <?php
 if(IS_OUTSIDE_CSS_MINIFY == '0'){
 ?>
-   <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
+   <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/aboutus.js?ver='.time()); ?>"></script>
 <?php } else{ ?>
-   <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/aboutus.js'); ?>"></script>
+   <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/aboutus.js?ver='.time()); ?>"></script>
 <?php } ?>
        
     </body>

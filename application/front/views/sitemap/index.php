@@ -93,9 +93,9 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
          <?php
 if(IS_OUTSIDE_JS_MINIFY == '0'){
 ?>
-   <script src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
+   <script src="<?php echo base_url('assets/js/webpage/aboutus.js?ver='.time()); ?>"></script>
 <?php } else{ ?>
-   <script src="<?php echo base_url('assets/js_min/webpage/aboutus.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js_min/webpage/aboutus.js?ver='.time()); ?>"></script>
 
 <?php } ?>
      
