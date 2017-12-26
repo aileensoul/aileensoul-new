@@ -3436,18 +3436,16 @@ class Job extends MY_Controller {
         $this->data['keyword1'] = $search_place;
 
         $title = '';
-        if ($search_job) {
-            $title .= $search_job;
-        }
-        if ($search_job && $search_place) {
-            $title .= $search_job.' in '.$search_place;
-        }
-        if ($search_place) {
-            $title .= $search_place;
-        }
         if (empty($search_job) && empty($search_place)) {
-            $title .= 'Find Latest Job Vacancies at Your Location';
+            $title = 'Find Latest Job Vacancies at Your Location';
+        }elseif ($search_job && $search_place) {
+            $title = $search_job.' in '.$search_place;
+        }elseif ($search_job) {
+            $title = $search_job;
+        }elseif ($search_place) {
+            $title = $search_place;
         }
+        
         $this->data['title'] = $title . " - Job Profile - Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 

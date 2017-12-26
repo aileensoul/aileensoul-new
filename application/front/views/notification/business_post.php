@@ -61,7 +61,7 @@
                                 <!-- GET USER FOLLOE SUGESSION LIST START -->
                                 <!-- follower list end  -->
                             </div>
-                            <div class="custom_footer_left fw">
+                            <!-- <div class="custom_footer_left fw">
                                 <div class="fl">
                                     <ul>
                                         <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
@@ -76,7 +76,8 @@
 
                                 </div>
 
-                            </div>
+                            </div> -->
+                             <?php echo $left_footer; ?>
                         </div>
                         <br>
                         <div id="result"></div>   

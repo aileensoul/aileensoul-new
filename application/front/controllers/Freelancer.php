@@ -5287,6 +5287,12 @@ class Freelancer extends MY_Controller {
 
 //CHECK FOR MAIL DESIGNING END
     public function session() {
+        if($this->session->userdata('searchkeyword')){
+             $this->session->unset_userdata('searchkeyword');
+         }
+         if($this->session->userdata('searchplace')){
+            $this->session->unset_userdata('searchplace'); 
+         }
         $keyword = $_POST['keyword'];
         $keyword1 = $_POST['keyword1'];
         $this->session->set_userdata('searchkeyword', $keyword);
