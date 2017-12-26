@@ -69,7 +69,6 @@
                  <li>
                             <audio controls>
                             <source src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $audiov['file_name']; ?>" type = "audio/mp3">
-                            <!-- <source src="<?php echo base_url($this->config->item('art_post_main_upload_path').$audiov['file_name'])?>" type="audio/ogg"> -->
                             <source src="movie.ogg" type="audio/mpeg">
                            Your browser does not support the audio tag.
                             </audio>
@@ -85,8 +84,7 @@
        </div>                                    
                <?php }?>             
                 </ul>
-               </div>
-                              <!--   <div class="add_audio"> -->                             
+               </div>                           
 </div>
 </div>
 </div></div>
@@ -106,7 +104,6 @@
                     <div class="modal-content">
                         <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                         <div class="modal-body">
-                            <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                             <span class="mes"></span>
                         </div>
                     </div>
@@ -123,8 +120,6 @@
                             <div id="popup-form">
                              <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                <div class=" ">
-
-                               <!--  <div class="user_profile"></div> -->
 
                                <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
 

@@ -30,9 +30,6 @@
             <?php echo $art_header2_border; ?>
         <?php } ?>
 
-<!-- <div class="js">
-<div id="preloader"></div> -->
-
       <section>    
        <?php 
                        
@@ -76,13 +73,7 @@
                 <div class="col-md-6 col-sm-8">
 
                      <div class="art-alert">
-                        <!-- <?php
-                                        if ($this->session->flashdata('error')) {
-                                            echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
-                                        }
-                                        if ($this->session->flashdata('success')) {
-                                            echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
-                                        }?> -->
+                      
                     </div>
 
                         <div class="common-form common-form_border">
@@ -92,20 +83,20 @@
                         
                             <?php echo form_open_multipart(base_url('artist/art_information_insert'), array('id' => 'artinfo','name' => 'artinfo','class' => 'clearfix', 'onsubmit' => "return validation_other(event)")); ?>
 
-                            <!-- <form name="artinfo" method="post" id="artinfo" class="clearfix"  enctype="multipart/form-data" onsubmit="portfolio_form_submit(event);"> -->
+                         
                           
                                 <?php
                                  $artname =  form_error('artname');
                                  $othercategory =  form_error('othercategory');
                                  $skills =  form_error('skills');
-                                 //$desc_art =  form_error('desc_art');
+                                
                                   
                                  ?>
                                     <fieldset class="full-width art-cat-custom <?php if($skills) {  ?> error-msg <?php } ?>">
                                         <label>Art category:<span style="color:red">*</span></label>
 
                           <select name="skills[]" id="skills" tabindex="1" autofocus multiple>
-                         <!--  <option value="">Ex:- Dancer, Photographer, Writer, Singer, Actor</option> -->
+                        
                             <?php                             
                                       foreach($art_category as $cnt){ 
                                           if($art_category1)
@@ -135,14 +126,14 @@
                                       <?php }?>
                                     <fieldset class="full-width <?php if($artname) {  ?> error-msg <?php } ?>">
                                     <label>Other category:<span style="color:red">*</span></label>
-                                    <input name="othercategory"  type="text" id="othercategory" tabindex="2" placeholder="Other category" value="<?php if($othercategory1){ echo $othercategory1; } ?>" onkeyup= "return removevalidation();"/><!-- <span id="artname-error"></span> -->
+                                    <input name="othercategory"  type="text" id="othercategory" tabindex="2" placeholder="Other category" value="<?php if($othercategory1){ echo $othercategory1; } ?>" onkeyup= "return removevalidation();"/>
                                      <?php echo form_error('othercategory'); ?>
                                    </fieldset>
                                  </div>
 
                                 <fieldset class="full-width <?php if($artname) {  ?> error-msg <?php } ?>">
                                     <label>Speciality in art<span class="optional">(optional)</span>:</label>
-                                    <input name="artname"  type="text" id="artname" tabindex="2" placeholder="Ex:- Classical dancing, Contemporary, Zumba, Hip Hop " value="<?php if($artname1){ echo $artname1; } ?>"/><!-- <span id="artname-error"></span> -->
+                                    <input name="artname"  type="text" id="artname" tabindex="2" placeholder="Ex:- Classical dancing, Contemporary, Zumba, Hip Hop " value="<?php if($artname1){ echo $artname1; } ?>"/>
                                      <?php echo form_error('artname'); ?>
                                 </fieldset>
 
@@ -156,8 +147,6 @@
            
                                <?php if($userdata[0]['art_bestofmine']){?>
                                 <div style="visibility:show;" id ="pdffile">
-
-                                 <!-- <a title="<?php echo ucfirst(strtolower($userdata[0]['art_bestofmine'])); ?>" href="<?php echo base_url($this->config->item('art_portfolio_main_upload_path') . $userdata[0]['art_bestofmine']) ?>"> -->
 
                                   <a title="<?php echo ucfirst(strtolower($userdata[0]['art_bestofmine'])); ?>" href="<?php echo ART_PORTFOLIO_MAIN_UPLOAD_URL . $userdata[0]['art_bestofmine']; ?>">
 

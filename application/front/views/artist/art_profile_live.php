@@ -154,9 +154,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             a:hover{
                 /*text-decoration:none;*/
             }
-            /*.pt-100{padding-top: 100px;}*/
-            /***  middle part  ***/
-            /*.middle-main{height:90vh;}*/
 
             .main-login .middle-main{
                 padding:100px 0;
@@ -545,7 +542,6 @@ echo PROFILENA;
                     <div class="modal-content">
                         <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                         <div class="modal-body">
-                            <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                             <span class="mes"></span>
                         </div>
                     </div>
@@ -562,8 +558,6 @@ echo PROFILENA;
                             <div id="popup-form">
                              <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                <div class="col-md-5">
-
-                               <!--  <div class="user_profile"></div> -->
 
                                <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
 
@@ -690,9 +684,7 @@ echo PROFILENA;
                                         <span>
                                         <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
-                                            //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
+                                          
 ?>
                                             <option value="1">Jan</option>
                                             <option value="2">Feb</option>
@@ -706,9 +698,7 @@ echo PROFILENA;
                                             <option value="10">Oct</option>
                                             <option value="11">Nov</option>
                                             <option value="12">Dec</option>
-                                            //<?php
-//                  }
-//                  
+                                          
 ?>
                                         </select></span>
                                         <span>
@@ -776,7 +766,6 @@ echo PROFILENA;
                 $('#register').modal('show');
             }
              function login_data() { 
-                //$('#login').modal('show');
                 $('#login').modal('show');
                 $('#register').modal('hide');
 
@@ -794,7 +783,6 @@ echo PROFILENA;
     
     $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
         $('#register').modal('hide');
          $('#login').modal('hide');
     }
@@ -906,7 +894,7 @@ echo PROFILENA;
                                 type: "post",
                                 data: {
                                     email_reg: function () {
-                                        // alert("hi");
+                                     
                                         return $("#email_reg").val();
                                     },
                                     '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
@@ -1020,7 +1008,7 @@ echo PROFILENA;
                                     $(".dateerror").html("This month has only 30 days.");
                                     return false;
                                 }
-                            } else if (selmonth == 2) { //alert("hii");
+                            } else if (selmonth == 2) { 
                                 if (selday == 31 || selday == 30) {
                                     $(".dateerror").html("This month has only 29 days.");
                                     return false;
@@ -1054,7 +1042,6 @@ echo PROFILENA;
                         {
                             if (response.okmsg == "ok") {
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
-//                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
                                 window.location = "<?php echo base_url() ?>artist";
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
@@ -1071,7 +1058,7 @@ echo PROFILENA;
         </script>
         <!-- forgot password script end -->
         <script type="text/javascript">
-            $(document).ready(function () { //aletr("hii");
+            $(document).ready(function () { 
                 /* validation */
                 $("#forgot_password").validate({
                     rules: {

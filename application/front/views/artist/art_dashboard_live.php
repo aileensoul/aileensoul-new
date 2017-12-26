@@ -623,10 +623,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         <span>
                                         <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
-                                            //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-?>
+                                           
+             
+
                                             <option value="1">Jan</option>
                                             <option value="2">Feb</option>
                                             <option value="3">Mar</option>
@@ -639,10 +638,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             <option value="10">Oct</option>
                                             <option value="11">Nov</option>
                                             <option value="12">Dec</option>
-                                            //<?php
-//                  }
-//                  
-?>
+                                        
                                         </select></span>
                                         <span>
                                         <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -700,7 +696,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js') ?>"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());          ?>"></script>-->
+      
         <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
@@ -714,7 +710,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('assets/js_min/jquery.form.3.51.js') ?>"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());          ?>"></script>-->
+      
         <script src="<?php echo base_url('assets/dragdrop/js_min/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js_min/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js_min/locales/fr.js?ver=' . time()); ?>"></script>
@@ -734,12 +730,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <!-- script for login  user valoidtaion start -->
         <script>
             function login_profile() {
-                //$('#login').modal('show');
+               
                 $('#register').modal('show');
 
             }
             function login_data() { 
-                //$('#login').modal('show');
+              
                 $('#login').modal('show');
                 $('#register').modal('hide');
 
@@ -757,7 +753,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
     
     $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
         $('#register').modal('hide');
          $('#login').modal('hide');
     }
@@ -871,7 +866,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 type: "post",
                                 data: {
                                     email_reg: function () {
-                                        // alert("hi");
+                                      
                                         return $("#email_reg").val();
                                     },
                                     '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
@@ -985,7 +980,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     $(".dateerror").html("This month has only 30 days.");
                                     return false;
                                 }
-                            } else if (selmonth == 2) { //alert("hii");
+                            } else if (selmonth == 2) { 
                                 if (selday == 31 || selday == 30) {
                                     $(".dateerror").html("This month has only 29 days.");
                                     return false;
@@ -1019,7 +1014,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         {
                             if (response.okmsg == "ok") {
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" alt="<?php echo "btn-ajax-loader.gif"; ?>"/> &nbsp; Sign Up ...');
-//                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
+
                                 window.location = "<?php echo base_url() ?>artist";
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
@@ -1036,7 +1031,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </script>
         <!-- forgot password script end -->
         <script type="text/javascript">
-            $(document).ready(function () { //aletr("hii");
+            $(document).ready(function () { 
                 /* validation */
                 $("#forgot_password").validate({
                     rules: {

@@ -502,7 +502,7 @@
                                         <label>Art category:<span style="color:red">*</span></label>
 
                           <select name="skills[]" id="skills" multiple>
-                         <!--  <option value="">Ex:- Dancer, Photographer, Writer, Singer, Actor</option> -->
+                        
                             <?php                             
                                       foreach($art_category as $cnt){ 
                                           if($art_category1)
@@ -531,7 +531,7 @@
                                       <?php }?>
                                     <fieldset class="full-width <?php if($artname) {  ?> error-msg <?php } ?>">
                                     <label>Other category:<span style="color:red">*</span></label>
-                                    <input name="othercategory"  type="text" id="othercategory" tabindex="2" placeholder="Other category" value="<?php if($othercategory1){ echo $othercategory1; } ?>" onkeyup= "return removevalidation();"/><!-- <span id="artname-error"></span> -->
+                                    <input name="othercategory"  type="text" id="othercategory" tabindex="2" placeholder="Other category" value="<?php if($othercategory1){ echo $othercategory1; } ?>" onkeyup= "return removevalidation();"/>
                                      <?php echo form_error('othercategory'); ?>
                                  </div>
                                    </fieldset>
@@ -611,10 +611,7 @@
 
                         <fieldset class=" full-width">
                            <div class="job_reg">
-                              <!--<input type="reset">-->
-                              <!-- <input tabindex="9" title="Register" type="submit" id="submit" name="btnsubmit" value="Register">
- -->
-
+                            
                                     <input type="submit"  id="next" name="next" value="Register" tabindex="9" onclick="return validate();">
 
                            </div>
@@ -647,7 +644,6 @@
         <div class="modal fade login register-model" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
-                    <!-- <button type="button" class="modal-close" data-dismiss="modal">&times;</button>          -->
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class=" ">
@@ -687,10 +683,7 @@
                                         <span>
                                         <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
-                                            //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-?>
+                                    
                                             <option value="1">Jan</option>
                                             <option value="2">Feb</option>
                                             <option value="3">Mar</option>
@@ -703,10 +696,7 @@
                                             <option value="10">Oct</option>
                                             <option value="11">Nov</option>
                                             <option value="12">Dec</option>
-                                            //<?php
-//                  }
-//                  
-?>
+                                            
                                         </select></span>
                                         <span>
                                         <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -762,7 +752,6 @@
         <div class="modal login fade" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
-                    <!-- <button type="button" class="modal-close" data-dismiss="modal">&times;</button>          -->
                     <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">

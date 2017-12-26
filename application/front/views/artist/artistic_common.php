@@ -174,8 +174,6 @@
                             <?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?>
 
                         </a>
-
-                                        <!-- <a id="myBtn"><?php echo ucwords($artisticdata[0]['designation']); ?></a> -->
                     <?php } else { ?>
                         <a title="<?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?></a>
                     <?php } ?>
@@ -215,8 +213,6 @@
                     if ($artisticdata[0]['user_id'] == $userid) {
                         ?> 
 
-                        <!-- <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'userlist') { ?> class="active" <?php } ?>><a title="Userlist" href="<?php echo base_url('artist/userlist'); ?>">Userlist<br> (<?php echo (count($userlistcount)); ?>)</a>
-                        </li> -->
                     <?php } ?>
 
 
@@ -303,7 +299,7 @@
                                 $bup_id = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                                 $status = $this->db->select('follow_status')->get_where('follow', array('follow_type' => '1', 'follow_from' => $bup_id[0]['art_id'], 'follow_to' => $artisticdata[0]['art_id']))->row()->follow_status;
-                                //echo "<pre>"; print_r($status); die();
+                              
 
                                 if ($status == 0 || $status == " ") {
                                     ?>
