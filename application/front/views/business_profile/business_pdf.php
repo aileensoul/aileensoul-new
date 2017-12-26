@@ -32,7 +32,6 @@
                     <div  class="col-sm-12 border_tag padding_low_data padding_les" >
                         <div class="padding_les main_art" >
                             <?php echo $file_header; ?>
-                            <!-- Tab panes -->
                             <div class="tab-content">
                                 <div class="tab-pane active" id="home">
                                     <div class="common-form">
@@ -67,7 +66,6 @@
                                                             <li>
                                                                 <div class="main_box_pdf">
                                                                     <div class="main_box_img">
-                                                                        <!--<a href="<?php echo base_url('business_profile/creat_pdf/' . $pdfv['post_files_id']) ?>">-->
                                                                         <a href="<?php echo BUS_POST_MAIN_UPLOAD_URL . $pdfv['file_name'] ?>" target="_blank">
                                                                             <div class="" style="margin: 0!important;">
                                                                                 <img src="<?php echo base_url('assets/images/PDF.jpg') ?>" style="height: 100%; width: 100%;" alt="PDF">
@@ -107,10 +105,6 @@
                 </div>
             </div>
         </section>
-
-
-
-        <!-- Bid-modal for this modal appear or not start -->
         <div class="modal fade message-box" id="query" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -122,10 +116,6 @@
                 </div>
             </div>
         </div>
-        <!-- Bid-modal for this modal appear or not  Popup Close -->
-
-
-        <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -136,8 +126,6 @@
                 </div>
             </div>
         </div>
-        <!-- Model Popup Close -->
-        <!-- Bid-modal-2  -->
         <div class="modal fade message-box" id="bidmodal-2" role="dialog">
             <div class="modal-dialog modal-lm" style="z-index: 9999;">
                 <div class="modal-content">
@@ -157,25 +145,23 @@
                 </div>
             </div>
         </div>
-        <!-- Model Popup Close -->
         <?php echo $login_footer ?>
         <?php echo $footer; ?>
-         <script>
+        <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>
-       
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/pdf.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/pdf.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
-       <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/pdf.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/pdf.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } ?>
     </body>
 </html>

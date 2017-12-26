@@ -191,8 +191,6 @@
                                                                 ?>
                                                                 <div class="modal fade modal_popup" id="myModal" role="dialog" style="z-index: 1003">
                                                                     <div class="modal-dialog" style="width: 88%;">
-
-                                                                        <!-- Modal content-->
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
@@ -213,11 +211,7 @@
 
                                                                                 </div>
                                                                             </div>
-                                                                            <!--                                                                            <div class="modal-footer">
-                                                                                                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                                                                                                        </div>-->
                                                                         </div>
-
                                                                     </div>
                                                                 </div>
 
@@ -250,7 +244,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <!-- popup -->
                                                             </div>
                                                         </div> 
                                                     </div>
@@ -264,7 +257,6 @@
                             </div>
                         </div>
                         </section>
-                        <!-- Bid-modal  -->
                         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
                             <div class="modal-dialog modal-lm">
                                 <div class="modal-content">
@@ -276,9 +268,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Model Popup Close -->
-
-                        <!-- Bid-modal for this modal appear or not start -->
                         <div class="modal fade message-box" id="query" role="dialog">
                             <div class="modal-dialog modal-lm">
                                 <div class="modal-content">
@@ -290,42 +279,13 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Bid-modal for this modal appear or not  Popup Close -->
-
-                        <!-- Bid-modal-2  -->
-                        <!--                        <div class="modal fade message-box" id="bidmodal-2" role="dialog">
-                                                    <div class="modal-dialog modal-lm">
-                                                        <div class="modal-content">
-                                                            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                                                            <div class="modal-body">
-                                                                <span class="mes">
-                                                                    <div id="popup-form">
-                        <?php echo form_open_multipart(base_url('business-profile/user-image-change'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-                                                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                                                                        <input type="hidden" name="hitext" id="hitext" value="4">
-                                                                        <div class="popup_previred">
-                                                                            <img id="preview" src="#" alt="your image"/>
-                                                                        </div>
-                                                                        <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                        <?php echo form_close(); ?>
-                                                                    </div>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>-->
-                        <!-- Model Popup Close -->
-                        <!-- <footer> -->
                             <?php echo $login_footer ?>
                             <?php echo $footer; ?>
-                    <!-- </footer> -->
-                      <!-- script for business autofill -->
                         <script>
                                                                             var base_url = '<?php echo base_url(); ?>';
                         </script>
                        
                         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-                         <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js');    ?>"></script>-->
                         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> 
                         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
                         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>

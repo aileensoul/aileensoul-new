@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- start head -->
         <?php echo $head; ?>
-        <!-- END HEAD -->
-
         <title><?php echo $title; ?></title>
-<?php
-                    if (IS_BUSINESS_JS_MINIFY == '0') {
-                        ?>
-                           <script src="<?php echo base_url('assets/js/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
-                    <?php } else {
-                        ?>
-                           <script src="<?php echo base_url('assets/js_min/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('assets/js_min/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
-                    <?php } ?>
-        
-     
+        <?php
+        if (IS_BUSINESS_JS_MINIFY == '0') {
+            ?>
+            <script src="<?php echo base_url('assets/js/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
+            <script src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <?php } else {
+            ?>
+            <script src="<?php echo base_url('assets/js_min/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
+            <script src="<?php echo base_url('assets/js_min/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <?php } ?>
+
+
         <?php
         if (IS_BUSINESS_CSS_MINIFY == '0') {
             ?>
-        <link href="<?php echo base_url('assets/css/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo base_url('assets/js/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+            <link href="<?php echo base_url('assets/css/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+            <link href="<?php echo base_url('assets/js/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
             <?php
         } else {
             ?>
-             <link href="<?php echo base_url('assets/css_min/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo base_url('assets/js_min/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+            <link href="<?php echo base_url('assets/css_min/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+            <link href="<?php echo base_url('assets/js_min/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
             <link rel="stylesheet" type="text/css_min" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css_min" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
         <?php } ?>
@@ -239,10 +236,6 @@
         a:hover{
             /*text-decoration:none;*/
         }
-        /*.pt-100{padding-top: 100px;}*/
-        /***  middle part  ***/
-        /*.middle-main{height:90vh;}*/
-
         .main-login .middle-main{
             padding:100px 0;
             background:url('../img/bg.png') no-repeat;
@@ -476,11 +469,7 @@
                         </div>
                     </div>
                     <!-- Model Popup Close -->
-
-                    <!-- <footer>  -->       
-                        <?php echo $footer; ?>
-                    <!-- </footer> -->
-
+                    <?php echo $footer; ?>
                     <!-- Login  -->
                     <div class="modal fade login" id="login" role="dialog">
                         <div class="modal-dialog">
@@ -585,9 +574,6 @@
                         </div>
                     </div>
 
-
-
-
                     <!-- model for forgot password end -->
 
                     <!-- register -->
@@ -634,10 +620,6 @@
                                                     </select>
                                                     <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                         <option value="" disabled selected value>Month</option>
-                                                        //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                        ?>
                                                         <option value="1">Jan</option>
                                                         <option value="2">Feb</option>
                                                         <option value="3">Mar</option>
@@ -650,10 +632,6 @@
                                                         <option value="10">Oct</option>
                                                         <option value="11">Nov</option>
                                                         <option value="12">Dec</option>
-                                                        //<?php
-//                  }
-//                  
-                                                        ?>
                                                     </select>
                                                     <select tabindex="11" class="year" name="selyear" id="selyear">
                                                         <option value="" disabled selected value>Year</option>
@@ -693,27 +671,23 @@
                             </div>
                         </div>
                     </div>
-                    <!-- register -->
-
-                    <!-- POST BOX JAVASCRIPT END --> 
-
                     <script>
-                                                        var base_url = '<?php echo base_url(); ?>';
-                                                        var keyword = '<?php echo $keyword; ?>';
-                                                        var keyword1 = '<?php echo $keyword1; ?>';
-                                                        var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                                        var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                        var base_url = '<?php echo base_url(); ?>';
+                        var keyword = '<?php echo $keyword; ?>';
+                        var keyword1 = '<?php echo $keyword1; ?>';
+                        var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                        var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
                     </script>
                     <?php
                     if (IS_BUSINESS_JS_MINIFY == '0') {
                         ?>
                         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+                        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
                         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/bus_search_login.js?ver=' . time()); ?>"></script>
                     <?php } else {
                         ?>
-                          <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
+                        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+                        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
                         <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/bus_search_login.js?ver=' . time()); ?>"></script>
                     <?php } ?>
                     </body>

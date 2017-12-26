@@ -486,21 +486,16 @@
                                             </div>
                                             <div id="errorpass"></div> 
                                         </div>
-
                                         <p class="pt-20 ">
                                             <button class="btn1" onclick="login()">Login</button>
                                         </p>
-
                                         <p class=" text-center">
                                             <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
                                         </p>
-
                                         <p class="pt15 text-center">
                                             Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                         </p>
                                     </form>
-
-
                                 </div>
                             </div>
                         </div>

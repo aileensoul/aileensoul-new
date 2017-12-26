@@ -42,11 +42,8 @@
                 </div>
             </div>
         </section>
-        <!-- <footer> -->
             <?php echo $login_footer ?>
             <?php echo $footer; ?>
-        <!-- </footer> -->
-        <!-- Bid-modal for this modal appear or not start -->
         <div class="modal fade message-box" id="query" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -58,10 +55,6 @@
                 </div>
             </div>
         </div>
-        <!-- Bid-modal for this modal appear or not  Popup Close -->
-
-
-        <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -72,8 +65,6 @@
                 </div>
             </div>
         </div>
-        <!-- Model Popup Close -->
-        <!-- Bid-modal-2  -->
         <div class="modal fade message-box" id="bidmodal-2" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -95,9 +86,6 @@
                 </div>
             </div>
         </div>
-        <!-- Model Popup Close -->
-
-        <!-- script for business autofill -->
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var slug_id = '<?php echo $slug_id; ?>';

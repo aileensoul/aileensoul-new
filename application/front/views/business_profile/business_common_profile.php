@@ -44,8 +44,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             $image_ori = $image[0]['profile_background'];
             if ($image_ori) {
                 ?>
-                                                    <!--<img src="<?php echo base_url($this->config->item('bus_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />-->
-            <img src="<?php echo BUS_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" alt="Profile Background Image" />
+                <img src="<?php echo BUS_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" alt="Profile Background Image" />
                 <?php
             } else {
                 ?>
@@ -71,7 +70,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     <?php
                 }
                 ?>
-                <!--PROFILE PIC START-->
                 <div class="profile-pho-bui">
                     <div class="user-pic padd_img">
                         <?php if ($business_common_data[0]['business_user_image'] != '') { ?>
@@ -94,15 +92,15 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 <?php } else {
                                     ?>
                                     <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="Business User Image" >
-                                <?php }
+                                <?php
+                                }
                             }
                         } else {
                             ?>
                             <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="No Business Image" >
-                        <?php } ?>
+<?php } ?>
                     </div>
                 </div>
-                <!--PROFILE PIC START-->
                 <div class="business-profile-right">
                     <div class="bui-menu-profile">
                         <div class="profile-left">
@@ -137,7 +135,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
                                 ?>
 
-                                    <?php if ($contactperson[0]['status'] == 'cancel' || $contactperson[0]['status'] == '' || $contactperson[0]['status'] == 'reject') { ?>
+    <?php if ($contactperson[0]['status'] == 'cancel' || $contactperson[0]['status'] == '' || $contactperson[0]['status'] == 'reject') { ?>
                                     <a href="javascript:void(0);" onclick="login_profile();">
 
                                         <?php } elseif ($contactperson[0]['status'] == 'pending' || $contactperson[0]['status'] == 'confirm') { ?>   
@@ -161,8 +159,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </div> 
 
                                             </div>
-    <?php } elseif ($contactperson[0]['status'] == 'pending') {
-        ?>
+                                        <?php } elseif ($contactperson[0]['status'] == 'pending') {
+                                            ?>
                                             <div class="cance_req_main_box">   
                                                 <div class="add-contact">
                                                     <div></div>
@@ -181,8 +179,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </div> 
 
                                             </div>
-    <?php } elseif ($contactperson[0]['status'] == 'confirm') {
-        ?> 
+                                        <?php } elseif ($contactperson[0]['status'] == 'confirm') {
+                                            ?> 
                                             <div class="fw in_mian_chng">   
                                                 <div class="in_your_contact">
 
@@ -201,8 +199,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </div> 
 
                                             </div>
-    <?php } elseif ($contactperson[0]['status'] == 'reject') {
-        ?>
+                                        <?php } elseif ($contactperson[0]['status'] == 'reject') {
+                                            ?>
                                             <div>   
                                                 <div class="add-contact">
                                                     <div></div>
@@ -219,8 +217,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </div> 
 
                                             </div>
-    <?php } else {
-        ?> 
+                                        <?php } else {
+                                            ?> 
                                             <div>   
                                                 <div class="add-contact">
                                                     <div></div>
@@ -243,8 +241,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             </div>
 <?php } ?>
                     </div>
-                    <!-- PICKUP -->
-                    <!-- menubar -->
                     <div class="business-data-menu padding_less_right ">
                         <div class="profile-main-box-buis-menu">  
                             <?php
@@ -290,7 +286,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </li>
                                                 <li>
                                                     <a href="javascript:void(0);" onclick="login_profile();" >Message</a></li>
-                                    <?php } ?>
+    <?php } ?>
                                         </ul>   
                                     </div>
 <?php } ?>
@@ -301,4 +297,3 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             </div>
         </div>
     </div>
-    
