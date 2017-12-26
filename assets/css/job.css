@@ -1486,11 +1486,11 @@ label.cameraButton input[accept*="camera"] {
     border-top-right-radius: 3px;
     padding: 15px 0px;
     font-size: 24px;
-    background: #fff;
+   /* background: #fff;
    color:#1b8ab9;
     background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;*/
   
     text-align: center;
 }
