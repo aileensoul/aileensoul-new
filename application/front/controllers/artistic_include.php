@@ -16,6 +16,8 @@ $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $con
 $contition_array = array('art_id' => $regid, 'is_delete' => '0', 'status' => '1');
 $this->data['meta_des'] = $meta_des = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_city,art_skill,other_skill,user_id,status,is_delete,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+//echo "<pre>"; print_r($meta_des); die();
+
 $this->data['location_city'] = $this->db->select('city_name')->get_where('cities', array('city_id' => $this->data['meta_des'][0]['art_city']))->row()->city_name;
 
 $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $this->data['meta_des'][0]['other_skill']))->row()->other_category;
@@ -31,14 +33,14 @@ $art_othercategory = $this->db->select('other_category')->get_where('art_other_c
                                     $listfinal1 = array_diff($categorylist, array('Other'));
                                     $listFinal = implode('/', $listfinal1);
                                        
-                                    if(!in_array(26, $category)){
+                                    if(!in_array(26, $category)){ 
                                      $this->data['keyskill_meta'] = $listFinal;
-                                   }else if($meta_des[0]['art_skill'] && $meta_des[0]['other_skill']){
+                                   }else if($this->data['meta_des'][0]['art_skill'] && $this->data['meta_des'][0]['other_skill']){ 
 
                                     $trimdata = $listFinal .'/'.ucwords($art_othercategory);
                                     $this->data['keyskill_meta'] = trim($trimdata, ',');
                                    }
-                                   else{
+                                   else{ 
                                      $this->data['keyskill_meta'] = ucwords($art_othercategory);  
                                   }
 
