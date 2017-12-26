@@ -164,7 +164,7 @@ class Recruiter extends MY_Controller {
                 }
             }
 
-         
+
             $this->load->view('recruiter/rec_basic_information', $this->data);
         } else {
             //  $contition_array = array('user_id' => $userid, 're_status' => '1');
@@ -1323,7 +1323,7 @@ class Recruiter extends MY_Controller {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());
 
-        
+
 
 //if user deactive profile then redirect to recruiter/index untill active profile start
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -1342,8 +1342,8 @@ class Recruiter extends MY_Controller {
             $this->rec_avail_check($id);
             //   $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $id, $data, $join_str = array());
         }
-       
-         $this->data['title'] = $this->data['recdata'][0]['rec_firstname'] . ' ' . $this->data['recdata'][0]['rec_lastname'] . ' | Details | Recruiter Profile - Aileensoul'; 
+
+        $this->data['title'] = $this->data['recdata'][0]['rec_firstname'] . ' ' . $this->data['recdata'][0]['rec_lastname'] . ' | Details | Recruiter Profile - Aileensoul';
         $this->data['reg_id'] = $id;
         if ($userid) {
             $this->load->view('recruiter/rec_profile', $this->data);
@@ -2096,7 +2096,7 @@ class Recruiter extends MY_Controller {
         $returnpage = $_GET['returnpage'];
         if (count($rec_postdata1) > 0) {
             if ($userid != $id && $id != '') {
-              
+
                 if (count($rec_postdata) != '') {
                     foreach ($rec_postdata as $post) {
 //                    $rec_post .= '<div class="job-contact-frnd ">';
@@ -2274,7 +2274,7 @@ class Recruiter extends MY_Controller {
 //                                        </div>';
                 }
             } else {
-               
+
                 if (count($rec_postdata) != '') {
 
                     foreach ($rec_postdata as $post) {
@@ -2475,16 +2475,15 @@ class Recruiter extends MY_Controller {
 
 
         $title = '';
-        if ($searchkeyword) {
-            $title .= $searchkeyword;
-        }
         if ($searchkeyword && $search_place) {
-            $title .= $searchkeyword.' in '.$search_place;
+            $title = ucfirst($searchkeyword) . ' in ' . ucfirst($search_place);
+        } elseif ($search_place) {
+            $title = ucfirst($search_place);
+        } elseif ($searchkeyword) {
+            $title = ucfirst($searchkeyword);
         }
-        if ($search_place) {
-            $title .= $search_place;
-        }
-        $this->data['title'] = $title." | Recruiter Profile - Aileensoul";
+
+        $this->data['title'] = $title . " | Recruiter Profile - Aileensoul";
 
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
@@ -4703,7 +4702,7 @@ class Recruiter extends MY_Controller {
         $segment3 = implode(' ', $segment3);
         $segment3 = ucfirst($segment3);
 
-        $this->data['title'] = $segment3.' - Aileensoul';
+        $this->data['title'] = $segment3 . ' - Aileensoul';
 
         $contition_array = array('post_id !=' => $postid, 'status' => '1', 'rec_post.is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
         $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');

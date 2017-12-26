@@ -114,7 +114,7 @@ function checkvalue() {
     var searchplace = searchplace1.replace(' ', '-');
     var searchplace = searchplace.replace(/[^a-zA-Z0-9\-]/g, '');
 
-
+    
 
     if (searchkeyword == "" && searchplace == "") {
      
