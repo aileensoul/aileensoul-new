@@ -23,7 +23,7 @@ header('Expires: '.$date);
 <html lang="en">
    <head>
       <title><?php echo $blog_detail[0]['title'];?> - Aileensoul.com</title>
-      <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
+      <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       <?php
@@ -87,18 +87,18 @@ header('Expires: '.$date);
       <?php if (IS_OUTSIDE_CSS_MINIFY == '0'){
         ?>
 
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver=' . time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css?ver=' . time()); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
     <?php }else{?>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css'); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver=' . time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css?ver=' . time()); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css?ver=' . time()); ?>">
     <?php }?>
       <!-- This Css is used for call popup -->
 
@@ -452,12 +452,12 @@ header('Expires: '.$date);
             ?>
 
  <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
-<script src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/jquery.validate.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.validate.js?ver=' . time()); ?>"></script>
 <?php }else{?>
 
 <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/js_min/jquery.validate.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js_min/jquery.validate.js?ver=' . time()); ?>"></script>
 <?php }?>
 <!-- This Js is used for call popup -->
 
@@ -566,9 +566,9 @@ header('Expires: '.$date);
 //AJAX DATA LOAD BY LAZZY LOADER END
 </script>
  <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
-<script src="<?php echo base_url('assets/js/webpage/blog/blog_detail.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/webpage/blog/blog_detail.js?ver=' . time()); ?>"></script>
 <?php }else{?>
-<script src="<?php echo base_url('assets/js_min/webpage/blog/blog_detail.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js_min/webpage/blog/blog_detail.js?ver=' . time()); ?>"></script>
 
 <?php }?>
    </body>
