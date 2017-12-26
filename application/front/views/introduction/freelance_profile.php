@@ -23,7 +23,7 @@ header('Expires: '.$date);
 <html lang="en">
     <head>
         <title><?php echo $title; ?></title>
-        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
+        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver='.time()); ?>">
         <meta charset="utf-8">
         <?php
         if ($_SERVER['HTTP_HOST'] != "localhost") {
@@ -62,27 +62,27 @@ header('Expires: '.$date);
 
         <?php if (IS_OUTSIDE_CSS_MINIFY == '0'){?>  
 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css?ver='.time()); ?>">
         <?php }else{?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/gyc.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/gyc.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css?ver='.time()); ?>">
         <?php }?>
     </head>
     <body class="outer-page">
         <div class="main-inner">
             <div class="profile-bnr">
-                <img src="<?php echo base_url('assets/img/fp.jpg'); ?>" alt="banner-image">
+                <img src="<?php echo base_url('assets/img/fp.jpg?ver='.time()); ?>" alt="banner-image">
 
                 <header class="profile-header">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4 col-sm-3 left-header">
-                                <div class="logo"><a href="<?php echo base_url(); ?>"><img style="height:30px; width:auto;" src="<?php echo base_url('assets/img/logo2.png'); ?>" alt="logo"></a></div>
+                                <div class="logo"><a href="<?php echo base_url(); ?>"><img style="height:30px; width:auto;" src="<?php echo base_url('assets/img/logo2.png?ver='.time()); ?>" alt="logo"></a></div>
                             </div>
                             <div class="col-md-8 col-sm-9 right-header">
                                 <div class="btn-right pull-right">
@@ -123,7 +123,7 @@ header('Expires: '.$date);
                         <div class="row dis-box">
                             <h2>How to Register With Aileensoul’s Freelance Profile?</h2>
                             <div class="col-md-6 col-sm-12 pb20 pull-right">
-                                <img style="width:100%;" src="<?php echo base_url('assets/img/fre2.jpg'); ?>" alt="freelance-image">
+                                <img style="width:100%;" src="<?php echo base_url('assets/img/fre2.jpg?ver='.time()); ?>" alt="freelance-image">
                             </div>
                             <div class="col-md-6 col-sm-12 pb20 pull-left">
                                 <p>Depending on whether you are an individual who is exploring freelance work or an employer who is looking to hire a freelancer for his or her project, you will first have to register yourself with Aileensoul’s platform and then create your freelance profile by choosing the ‘Apply’ or ‘Hire’ option as appropriate for you.<br> 
@@ -135,7 +135,7 @@ header('Expires: '.$date);
                         <div class="row dis-box">
                             <h2>Additional Features of Aileensoul’s Freelance Profile:</h2>
                             <div class="col-md-6 col-sm-12 pb20">
-                                <img style="width:100%;" src="<?php echo base_url('assets/img/fre3.jpg'); ?>" alt="freelance-image">
+                                <img style="width:100%;" src="<?php echo base_url('assets/img/fre3.jpg?ver='.time()); ?>" alt="freelance-image">
                             </div>
                             <div class="col-md-6 col-sm-12 pb20">
                                 <p>Unlike many freelance websites in India that do not allow individuals to communicate with their prospective employers unless the client chooses to initiate a chat for discussion, Aileensoul encourages free-flowing communication between the employer and the prospect by enabling either party to begin a chat as per their need and convenience. <br>

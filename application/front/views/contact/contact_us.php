@@ -79,7 +79,7 @@ header('Expires: '.$date);
         <div class="main-inner">
             <?php echo $login_header; ?>
 			<div class="contact-banner">
-				<img src="<?php echo base_url('assets/img/contactus.jpg'); ?>" alt="contactus">
+				<img src="<?php echo base_url('assets/img/contactus.jpg?ver=' . time()); ?>" alt="contactus">
 			</div>
             <section class="middle-main">
                 <div class="container">

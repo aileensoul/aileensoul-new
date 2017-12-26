@@ -23,7 +23,7 @@ header('Expires: '.$date);
 <html lang="en">
     <head>
         <title><?php echo $title; ?></title>
-        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
+        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver='.time()); ?>">
         <meta charset="utf-8">
         <?php
         if ($_SERVER['HTTP_HOST'] != "localhost") {
@@ -61,21 +61,21 @@ header('Expires: '.$date);
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />    
 
          <?php if (IS_OUTSIDE_CSS_MINIFY == '0'){?>    
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css?ver='.time()); ?>">
         <?php }else{?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/gyc.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/gyc.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css?ver='.time()); ?>">
         <?php }?>
     </head>
     <body class="outer-page">
         <div class="main-inner">
             <div class="profile-bnr">
-                <img src="<?php echo base_url('assets/img/bp.jpg'); ?>" alt="banner-image">
+                <img src="<?php echo base_url('assets/img/bp.jpg?ver='.time()); ?>" alt="banner-image">
 
                 <header class="profile-header">
                     <div class="container">
@@ -112,7 +112,7 @@ header('Expires: '.$date);
                         <div class="row dis-box">
                             <h2>Aileensoul - Cost-Free and Enriching Business Collaboration Is Now at Your Fingertips</h2>
                             <div class="col-md-6 col-sm-12 pb20">
-                                <img style="width:100%;" src="<?php echo base_url('assets/img/bus1.jpg'); ?>" alt="business-image">
+                                <img style="width:100%;" src="<?php echo base_url('assets/img/bus1.jpg?ver='.time()); ?>" alt="business-image">
                             </div>
                             <div class="col-md-6 col-sm-12 pb20">
                                 <p>One of the common challenges faced by many small-sized companies and upcoming ventures is their relative unfamiliarity and unpreparedness for the typical bottlenecks of their industry, owing to their lack of adequate awareness and experience in their respective fields and domains. Often, such firms struggle to find the right channel or resources to help them manage and overcome their growth-limiting issues and obstacles. <br>
@@ -133,7 +133,7 @@ header('Expires: '.$date);
                         <div class="row dis-box">
                             <h2>Additional Features of Aileensoul’s Business Profile:</h2>
                             <div class="col-md-6 col-sm-12 pb20">
-                                <img style="width:100%;" src="<?php echo base_url('assets/img/bus3.jpg'); ?>" alt="business-image">
+                                <img style="width:100%;" src="<?php echo base_url('assets/img/bus3.jpg?ver='.time()); ?>" alt="business-image">
                             </div>
                             <div class="col-md-6 col-sm-12 pb20">
                                 <p>Other than networking, entrepreneurs, professionals and business owners can follow specific business categories of their interest and relevance to stay updated with the latest happenings in their chosen space in the form of regular and continuous newsfeed. They can even demonstrate their preference and inclination for specific type of content by liking and commenting on the posts of others. Additionally, they can promote and spread awareness about their own brands by uploading interesting and thought-provoking posts and PDF attachments along with photos, videos and audios to spark the curiosity and interest of their target audience.  

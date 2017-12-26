@@ -68,13 +68,13 @@ header('Cache-Control: public, max-age=30');
         </script>
 
          <?php if (IS_OUTSIDE_CSS_MINIFY == '0'){?>
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
          <?php }else{?>
 
-           <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
+           <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver='.time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver='.time()); ?>">
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver='.time()); ?>">
@@ -185,17 +185,17 @@ var base_url = '<?php echo base_url(); ?>';
 </script>
 
  <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js?ver=<?php echo time(); ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/js/webpage/feedback.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/webpage/feedback.js?ver='.time()); ?>); ?>"></script>
 
 <?php }else{?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js?ver=<?php echo time(); ?>"></script>
 <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/js_min/webpage/feedback.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js_min/webpage/feedback.js?ver='.time()); ?>); ?>"></script>
 
 <?php }?>
     </body>
