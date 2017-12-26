@@ -1343,7 +1343,7 @@ class Recruiter extends MY_Controller {
             //   $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $id, $data, $join_str = array());
         }
 
-        $this->data['title'] = $this->data['recdata'][0]['rec_firstname'] . ' ' . $this->data['recdata'][0]['rec_lastname'] . ' | Details | Recruiter Profile - Aileensoul';
+        $this->data['title'] = 'Recruiter ' . $this->data['recdata'][0]['rec_firstname'] . ' ' . $this->data['recdata'][0]['rec_lastname'] . ' from ' . $this->data['recdata'][0]['re_comp_name'] . ' | Details | Recruiter Profile - Aileensoul';
         $this->data['reg_id'] = $id;
         if ($userid) {
             $this->load->view('recruiter/rec_profile', $this->data);

@@ -1890,7 +1890,7 @@ class Job extends MY_Controller {
 //For Counting Profile data start
 //For Counting Profile data END
 
-        $this->data['title'] = $job_details[0]['fname']." ".$job_details[0]['lname'] . " | Details | Job Profile" . TITLEPOSTFIX;
+        $this->data['title'] = "Resume of" . $job_details[0]['fname']." ".$job_details[0]['lname'] . " | Details | Job Profile" . TITLEPOSTFIX;
 
 //for deactive profile and slug not found then see page start
 
