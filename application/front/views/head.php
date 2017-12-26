@@ -63,6 +63,7 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <?php }  else if($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'jobpost') {?>
         <meta name="description" content="Job Description for the post of <?php echo $exp_title; ?> in <?php echo  $recdata[0]['re_comp_name']; ?> in <?php if($city_name){ echo $city_name . '-';}echo $state_name; ?> for <?php echo $exp_descp; ?> of experience. Apply Now!" />
 <?php } else { ?>
+        <meta name="description" content=" " />
 <?php }?>
         <meta name="keywords" content=" " />
 
