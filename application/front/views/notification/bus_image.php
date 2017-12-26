@@ -12,7 +12,8 @@
             <?php
         } else {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business-common.min.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business.css?ver=' . time()); ?>">
         <?php } ?>
         <script>
             $(document).ready(function ()
@@ -363,7 +364,6 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <!-- multiple image code  end-->
                                         </div>
                                         <div class="post-design-like-box col-md-12">
                                             <div class="post-design-menu">
@@ -432,8 +432,6 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <!-- like user list start -->
-                                        <!-- pop up box start-->
                                         <?php
                                         if ($busienss_data[0]['business_likes_count'] > 0) {
                                             ?>
@@ -1125,8 +1123,8 @@
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/notification/bus_image.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
-            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/notification/bus_image.min.js?ver=' . time()); ?>"></script>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/notification/bus_image.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } ?>
     </body>
 </html>
