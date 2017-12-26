@@ -51,43 +51,13 @@
     background-color: #f9f9f9;font-weight: normal;
     color: #5c5c5c;">View Notification</h3>
 
-                        <!-- BEGIN CONTAINER -->
-                        <!--  <div class="page-container">
-                        -->     <!-- BEGIN CONTENT -->
-                        <!--  <div class="page-content-wrapper">
-                        -->     <!-- BEGIN CONTENT BODY -->
-                        <!-- BEGIN PAGE HEAD-->
-                        <!-- <div class="page-head">
-                        --> <!--        <div class="container">
-                        -->           <!-- BEGIN PAGE TITLE -->
-                        <!--                 <div class="page-title">
-                        -->                  <!--   <h1>Notification List</h1>
-                        -->
-                        <!--         <div id="notificationsBody" class="notifications">
-        <div class="notification-data">
-          <ul> -->
+                    
                         
                         <div class="notification-box bg">
 
                            
                             <div class="common-form">
                            <div class="">
-
-<?php   //if(count($totalnotification) == 0){?>
-<!--                              <div class="all-box">
-                                 <ul>
-                                    <div class="main_pdf_box">
-                                       <div class=" ">
-                                          <img src="img/icon_notification_big.png">
-                                          <div>
-                                             <div class="not_txt"> No Notifications</div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    </ul>
-                              </div>
-                             -->
-                              <?php// }?>
                              
                            </div>
                         </div>
@@ -114,15 +84,6 @@
 <div class="page-content">
     <div class="container">
         <!-- BEGIN PAGE BREADCRUMBS -->
-        <!-- <ul class="page-breadcrumb breadcrumb">
-            <li>
-                <a href="index.html">Home</a>
-                <i class="fa fa-circle"></i>
-            </li>
-            <li>
-                <span>Layouts</span>
-            </li>
-        </ul> -->
         <!-- END PAGE BREADCRUMBS -->
         <!-- BEGIN PAGE CONTENT INNER -->
         <div class="page-content">

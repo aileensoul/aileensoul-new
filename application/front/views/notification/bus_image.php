@@ -282,7 +282,7 @@
                                                 $i = 1;
                                                 foreach ($businessmultiimage as $data) {
                                                     $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-//                                                    $allowed = VALID_IMAGE;
+
                                                     $allowespdf = array('pdf');
                                                     $allowesvideo = array('mp4', '3gp');
                                                     $allowesaudio = array('mp3');
@@ -732,12 +732,10 @@
                         <div class="mySlides">
                             <div class="numbertext"><?php echo $i ?> / <?php echo count($databus1) ?></div>
                             <div class="slider_img">
-                               <!--  <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $busdata['file_name']) ?>" > -->
                                  <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $busdata['file_name'] ?>" >
                                 <a class="prev" style="left: 0px" onclick="plusSlides( - 1)">&#10094;</a>
                                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
                             </div>
-                            <!-- like comment start -->
                             <?php
                             if (count($databus1) > 1) {
                                 ?>
@@ -929,7 +927,7 @@
                                                             </div>
                                                             <div class="comment-details" id= "<?php echo "imgshowcomment" . $rowdata['post_image_comment_id']; ?>">
                                                                 <?php
-//                                                                    echo $this->common->make_links($rowdata['comment']);
+
                                                                 $new_product_comment = $this->common->make_links($rowdata['comment']);
                                                                 echo nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
                                                                 ?>

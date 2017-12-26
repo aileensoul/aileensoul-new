@@ -290,9 +290,6 @@
 
                                                 <?php } else {
                                                     ?>
-
-                                                    <!--<a id="<?php //echo $art_data[0]['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>-->
-
                                                     <a href="<?php echo base_url('artist/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>
 
                                                     <?php
@@ -310,7 +307,7 @@
 
                                                     <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="editpost(this.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
                                                 <?php } else { ?>
-                                                    <!--<a href="<?php echo "#popup5" . $row['art_post_id']; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Post</a>-->
+                                                    
 
                                                     <a href="<?php echo base_url('artist/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>
                                                     <?php
@@ -472,9 +469,7 @@
                                                                                 $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                                                                 $likecount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-//                                                                                if ($likecount) {
-//                                                                                    echo count($likecount);
-//                                                                                }
+//                                                                               
                                                                                 ?>
 
                                                                             </span>
@@ -489,11 +484,7 @@
 
                                                                         <a class="ripple like_h_w" onClick="commentallimg(this.id)" id="<?php echo $artdata['post_files_id']; ?>">
                                                                             <i class="fa fa-comment-o" aria-hidden="true">
-                                                                                <?php
-//                                                                                if (count($commnetcount) > 0) {
-//                                                                                    echo count($commnetcount);
-//                                                                                }
-                                                                                ?>
+                                                                                
                                                                             </i> 
                                                                         </a>
                                                                     </li>
@@ -590,7 +581,7 @@
                                                             <?php
                                                             $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                                             $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                            // echo '<pre>'; print_r($commnetcount);
+                                                           
                                                             foreach ($commnetcount as $comment) {
                                                                 $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => '1'))->row()->art_name;
                                                                 $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => '1'))->row()->art_lastname;
@@ -728,7 +719,8 @@
                           <?php } }?>
 
 
-                             <!-- <img  src="<?php //echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>"  alt=""> -->
+                             
+
                                     </div>
                             <div class="comment-name">
                             <b> 
@@ -827,11 +819,7 @@
 
                                                                                     <div class="comment-details-menu">
                                                                                         <p> <?php
-                                                                                            /*   $new_date = date('Y-m-d H:i:s',strtotime($rowdata['created_date']));
-                                                                                             */
-                                                                                            /* 							$new_time =	$this->time_elapsed_string($new_date);
-                                                                                             */
-//							echo $new_time. '<br>';
+                                                                                            
                                                                                             echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date'])));
                                                                                             echo '</br>';
                                                                                             ?>
@@ -851,7 +839,7 @@
 
                                                         </div>
 
-                                                        <?php //  }    ?>
+                                                        
                                                         <div class="post-design-commnet-box col-md-12">
                                                             <?php
                                                             $userid = $this->session->userdata('aileenuser');
@@ -937,11 +925,7 @@
                                                         <i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>
                                                     <?php } ?>
                                                     <span  class="like_As_count">
-                                                        <?php
-//                                                        if ($art_data[0]['art_likes_count'] > 0) {
-//                                                            echo $art_data[0]['art_likes_count'];
-//                                                        }
-                                                        ?>
+                                                        
                                                     </span>
                                                 </a>
                                             </li>
@@ -951,13 +935,7 @@
                                                 $commnetcount = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                 ?>
                                                 <a class="ripple like_h_w" title="Comment"  onClick="commentall(this.id)" id="<?php echo $art_data[0]['art_post_id']; ?>"><i class="fa fa-comment-o" aria-hidden="true"> 
-                                                        <?php
-//                                                        if (count($commnetcount) > 0) {
-//                                                            echo count($commnetcount);
-//                                                        } else {
-//                                                            
-//                                                        }
-                                                        ?>
+                                                        
                                                     </i> 
                                                 </a>
                                             </li>
@@ -1242,11 +1220,7 @@
 
                                                             <div class="comment-details-menu">
                                                                 <p> <?php
-                                                                    /*   $new_date = date('Y-m-d H:i:s',strtotime($rowdata['created_date']));
-                                                                     */
-                                                                    /* 							$new_time =	$this->time_elapsed_string($new_date);
-                                                                     */
-//							echo $new_time. '<br>';
+                                                                    
                                                                     echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date'])));
                                                                     echo '</br>';
                                                                     ?>
@@ -1324,7 +1298,6 @@
                                     <button type="button" class="modal-close" data-dismiss="modal">&times;
                                     </button>       
                                     <div class="modal-body">
-                                      <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                                         <span class="mes">
                                         </span>
                                     </div>
@@ -1363,7 +1336,7 @@
 
             
                     </html>
-                    <!-- script for skill textbox automatic start (option 2)-->
+                    
                     
                     
    <?php if(IS_NOT_JS_MINIFY == '0'){ ?>                  
