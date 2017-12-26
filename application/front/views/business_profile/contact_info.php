@@ -55,23 +55,6 @@
                             <div class="col-md-3 col-sm-4">
                                 <div class="left-side-bar">
                                     <ul class="left-form-each">
-    <!--                                    <li class="custom-none"><a href="<?php echo base_url('business-profile/business-information-update'); ?>">Business Information</a></li> 
-    
-                                        <li <?php if ($this->uri->segment(1) == 'business-profile') { ?> class="active init" <?php } ?>><a href="#">Contact Information</a></li>
-    
-                                        <li class="custom-none <?php
-                                        if ($business_common_data[0]['business_step'] < '2') {
-                                            echo "active";
-                                        }
-                                        ?>"><a href="<?php echo base_url('business-profile/description'); ?>">Description</a></li>
-    
-                                        <li class="custom-none <?php
-                                        if ($business_common_data[0]['business_step'] < '3') {
-                                            echo "active";
-                                        }
-                                        ?>"><a href="<?php echo base_url('business-profile/image'); ?>">Business Images</a></li>
-                                        -->
-
                                         <li class="custom-none"><a href="<?php echo base_url('business-profile/business-information-update'); ?>"><?php echo $this->lang->line("business_information"); ?></a></li>
                                         <li class="custom-none active init"><a href="javascript:void(0);"><?php echo $this->lang->line("contact_information"); ?></a></li>
                                         <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
@@ -86,16 +69,10 @@
                                             <li class="custom-none"><a href="javascript:void(0);"><?php echo $this->lang->line("business_images"); ?></a></li>
                                         <?php }
                                         ?>
-
-
                                     </ul>
                                 </div>
                             </div>
-
-                            <!-- middle section start -->
-
                             <div class="col-md-6 col-sm-8">
-
                                 <div>
                                     <?php
                                     if ($this->session->flashdata('error')) {
@@ -106,18 +83,11 @@
                                     }
                                     ?>
                                 </div>
-
                                 <div class="common-form common-form_border">
                                     <h3>
                                         Contact Information
                                     </h3>
-
                                     <?php echo form_open(base_url('business-profile/contact-information-insert'), array('id' => 'contactinfo', 'name' => 'contactinfo', 'class' => 'clearfix')); ?>
-
-                                    <!-- <div>
-                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
-                                    </div> -->
-
                                     <?php
                                     $contactname = form_error('contactname');
                                     $contactmobile = form_error('contactmobile');
@@ -170,12 +140,8 @@
                     </div>
                 </div>
         </section>
-        <!-- <footer> -->
         <?php echo $login_footer ?>
         <?php echo $footer; ?>
-        <!-- </footer> -->
-        <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());      ?>"></script>-->
-        <!-- POST BOX JAVASCRIPT END --> 
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var slug = '<?php echo $slugid; ?>';

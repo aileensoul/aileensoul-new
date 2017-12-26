@@ -11,13 +11,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
             <?php
         } else {
             ?>
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
         <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
@@ -30,7 +30,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     <div  class="col-sm-12 border_tag padding_low_data padding_les" >
                         <div class="padding_les main_art" >
                             <?php echo $file_header; ?>
-                            <!-- Tab panes -->
                             <div class="tab-content">
                                 <div class="tab-pane active" id="home">
                                     <div class="common-form">
@@ -45,29 +44,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                                     $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => '0', 'post_files.insert_profile' => '2', 'post_format' => 'video');
                                                     $busvideo = $this->data['businessvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
-
-//                                                    $contition_array = array('user_id' => $businessdata1[0]['user_id']);
-//                                                    $busvideo = $this->data['busvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//                                                    foreach ($busvideo as $val) {
-//                                                        $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
-//                                                        $busmultivideo = $this->data['busmultivideo'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//                                                        $multiplevideo[] = $busmultivideo;
-//                                                    }
                                                     ?>
                                                     <?php
-//                                                    $allowesvideo = array('mp4', '3gp', 'webm', 'mov', 'MP4');
-//                                                    foreach ($multiplevideo as $mke => $mval) {
-//                                                        foreach ($mval as $mke1 => $mval1) {
-//                                                            $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
-//                                                            if (in_array($ext, $allowesvideo)) {
-//                                                                $singlearray1[] = $mval1;
-//                                                            }
-//                                                        }
-//                                                    }
-                                                    ?>
-                                                    <?php
-//                                                    if ($singlearray1) {
-//                                                        foreach ($singlearray1 as $videov) {
                                                     if ($busvideo) {
                                                         foreach ($busvideo as $videov) {
                                                             ?>
@@ -90,20 +68,17 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                         } else {
                                                                             $filename = $this->config->item('bus_post_main_upload_path') . $videov['file_name'];
                                                                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                                                           // echo "<pre>"; print_r($info); die();
-                                                                            if ($info) { 
+                                                                            if ($info) {
                                                                                 ?>
                                                                                 <video preload="none" poster="<?php echo BUS_POST_MAIN_UPLOAD_URL . $post_poster; ?>" controls playsinline webkit-playsinline>
                                                                                     <?php
-                                                                                } else { 
+                                                                                } else {
                                                                                     ?>
                                                                                     <video preload="none" controls playsinline webkit-playsinline>
                                                                                         <?php
                                                                                     }
                                                                                 }
                                                                                 ?>
-                                                                                <!-- <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $videov['file_name']); ?>" type="video/mp4"> -->
-
                                                                                 <source src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $videov['file_name']; ?>" type="video/mp4">
 
                                                                                 <source src="movie.ogg" type="video/ogg">
@@ -139,9 +114,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                     </div>
                                                                     </div>
                                                                     </section>
-
-
-                                                                    <!-- Bid-modal for this modal appear or not start -->
                                                                     <div class="modal fade message-box" id="query" role="dialog">
                                                                         <div class="modal-dialog modal-lm">
                                                                             <div class="modal-content">
@@ -153,23 +125,16 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- Bid-modal for this modal appear or not  Popup Close -->
-
-
-                                                                    <!-- Bid-modal  -->
                                                                     <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
                                                                         <div class="modal-dialog modal-lm">
                                                                             <div class="modal-content">
                                                                                 <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                                                                                 <div class="modal-body">
-                                                                                   <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                                                                                     <span class="mes"></span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- Model Popup Close -->
-                                                                    <!-- Bid-modal-2  -->
                                                                     <div class="modal fade message-box" id="bidmodal-2" role="dialog">
                                                                         <div class="modal-dialog modal-lm" style="z-index: 9999;">
                                                                             <div class="modal-content">
@@ -191,29 +156,26 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- Model Popup Close -->
                                                                     <?php echo $login_footer ?>
                                                                     <?php echo $footer; ?>
                                                                     <script>
                                                                         var base_url = '<?php echo base_url(); ?>';
                                                                     </script>
-                                                                   
+
                                                                     <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-                                                                     <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver='.time());                ?>"></script>-->
-                                                                    <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-                                                                    <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-                                                                    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-                                                                    <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
-                                                                    <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+                                                                        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+                                                                        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+                                                                        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+                                                                        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+                                                                        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
                                                                         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/videos.js?ver=' . time()); ?>"></script>
                                                                         <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
                                                                     <?php } else { ?>
-                                                                        <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver='.time());                ?>"></script>-->
-                                                                    <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
-                                                                    <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-                                                                    <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
-                                                                    <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
-                                                                    <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+                                                                        <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+                                                                        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+                                                                        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+                                                                        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+                                                                        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
                                                                         <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/videos.js?ver=' . time()); ?>"></script>
                                                                         <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
                                                                     <?php } ?>

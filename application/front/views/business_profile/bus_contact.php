@@ -42,12 +42,8 @@
                 </div> 
             </div>
         </section>
-        <!-- <footer> -->
-            <?php echo $login_footer ?>
-            <?php echo $footer; ?>
-        <!-- </footer> -->
-
-
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
         <!-- Bid-modal for this modal appear or not start -->
         <div class="modal fade message-box" id="query" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -61,8 +57,6 @@
             </div>
         </div>
         <!-- Bid-modal for this modal appear or not  Popup Close -->
-
-
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -94,7 +88,7 @@
                 </div>
             </div>
         </div>
-     
+
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var slug = '<?php echo $slug_id; ?>';
@@ -103,16 +97,16 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-           <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/contacts.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
-            <?php } else {
+        <?php } else {
             ?>
-             <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/contacts.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } ?>

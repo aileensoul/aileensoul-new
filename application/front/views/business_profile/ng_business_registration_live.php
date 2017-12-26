@@ -8,13 +8,13 @@
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>" />
             <?php
         } else {
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css'); ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css'); ?>" />
         <?php } ?>
         <style type="text/css">
             span.error{
@@ -223,10 +223,6 @@
                 a:hover{
                     /*text-decoration:none;*/
                 }
-                /*.pt-100{padding-top: 100px;}*/
-                /***  middle part  ***/
-                /*.middle-main{height:90vh;}*/
-
                 .main-login .middle-main{
                     padding:100px 0;
                     background:url('../img/bg.png') no-repeat;
@@ -814,8 +810,6 @@
                 </div>
             </div>
         </div>
-        <!-- Bid-modal for Registration Close -->
-        <!-- Login  -->
         <div class="modal login fade" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
@@ -874,9 +868,6 @@
                 </div>
             </div>
         </div>
-        <!-- Login -->
-
-        <!-- model for forgot password start -->
         <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog login-frm">
                 <div class="modal-content">
@@ -902,43 +893,31 @@
                                         </div>
                                         <div id="errorlogin"></div> 
                                     </div>
-
                                     <p class="pt-20 text-center">
                                         <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
                                     </p>
-
-
                                     </form>
-
-
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <!-- model for forgot password end -->
-
-        <?php //echo $footer; ?>
-       
-         <?php
+        <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
             <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/angular-validate.min.js?ver=' . time()) ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/angular-validate.min.js?ver=' . time()) ?>"></script>
         <?php } else {
             ?>
-          <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/angular-validate.min.js?ver=' . time()) ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/angular-validate.min.js?ver=' . time()) ?>"></script>
         <?php } ?>
-        
-        
+
+
         <script>
                                                 var base_url = '<?php echo base_url(); ?>';
                                                 var slug = '<?php echo $slugid; ?>';
@@ -1460,14 +1439,14 @@
 
 
         </script>
-            
-            <?php
+
+        <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
         <?php } else {
             ?>
-         <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
     </body>
 </html>

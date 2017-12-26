@@ -18,16 +18,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php echo $header; ?>
         <div class="container" id="paddingtop_fixed">
             <div class="row">
-
                 <center> 
                     <div class="reactivatebox">
-
                         <div class="reactivate_header">
                             <center><h2> Are you sure you want to reactive your business profile?</h2></center>
                         </div>
                         <div class="reactivate_btn_y">
                             <a href="<?php echo base_url('business_profile/reactivate'); ?>">Yes</a>
-
                         </div>
                         <div class="reactivate_btn_n">
                             <a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>">No</a>
@@ -39,6 +36,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php echo $footer; ?>
     </body>
 </html>
-
-
-

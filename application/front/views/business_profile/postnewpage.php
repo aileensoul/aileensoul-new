@@ -21,7 +21,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script>
             $(document).ready(function ()
             {
-            /* Uploading Profile BackGround Image */
             $('body').on('change', '#bgphotoimg', function ()
             {
             $("#bgimageform").ajaxForm({target: '#timelineBackground',
@@ -33,7 +32,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     error: function () {
                     }}).submit();
             });
-            /* Banner position drag */
             $("body").on('mouseover', '.headerimage', function ()
             {
             var y1 = $('#timelineBackground').height();
@@ -55,7 +53,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     }
             });
             });
-            /* Bannert Position Save*/
             $("body").on('click', '.bgSave', function ()
             {
             var id = $(this).attr("id");
@@ -89,9 +86,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </script>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
-        <!-- START HEADER -->
         <?php echo $header; ?>
-        <!-- END HEADER -->
         <?php echo $business_header2_border; ?>
         <section>
             <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
@@ -100,17 +95,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                             <div class="">
                                 <?php echo $business_left; ?>
-                                
                             </div>
                         </div>
-                        <!-- Trigger/Open The Modal -->
-                        <!-- The Modal -->
                         <div class=" custom-right-art post_detailbox mian_middle_post_box animated fadeInUp" >
-                            <!-- body content start-->
                             <?php if (count($busienss_data) > 0) { ?>
-                                
                                 <div class="col-md-12 col-sm-12 post-design-box">
-                                    <!-- pop up box start-->
                                     <div id="popup1" class="overlay">
                                         <div class="popup">
                                             <div class="pop_content">
@@ -119,8 +108,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- pop up box end-->
                                     <div  class="">
                                         <div class="post-design-top col-md-12" >
                                             <div class="post-design-pro-img " style="padding-left: 17px;"> 
@@ -129,7 +116,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 $companynameposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id']))->row()->company_name;
                                                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => '1'))->row()->business_user_image;
                                                 $business_slug = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => '1'))->row()->business_slug;
-
                                                 $userimageposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id']))->row()->business_user_image;
                                                 $slugname = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => '1'))->row()->business_slug;
                                                 $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id'], 'status' => '1'))->row()->business_slug;
@@ -190,7 +176,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                 }
                                                             }
                                                             ?>
-            <!--<img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="10">-->
                                                         </a>
                                                     <?php } else { ?>
                                                         <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
@@ -217,7 +202,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                     <a  class="other_name name_business post_dot" href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>"><?php echo ucfirst(strtolower($companynameposted)); ?></a>
                                                                     <p class="posted_with" > Posted With </p>
                                                                     <a  class="other_name name_business post_dot" href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>"><?php echo ucfirst(strtolower($companyname)); ?></a>
-                                                                    <!--<span role="presentation" aria-hidden="true"> · </span>-->
                                                                     <span class="ctre_date">
                                                                         <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($busienss_data[0]['created_date']))); ?>                     
                                                                     </span> 
@@ -227,7 +211,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <?php } else { ?>
                                                         <li>
                                                             <div class="post-design-product"><a class="post_dot" href="<?php echo base_url('business-profile/details/' . $slugname); ?>"> <span class="span_main_name">  <?php echo ucfirst(strtolower($companyname)); ?> </span> </a>
-                                                                <!--<span role="presentation" aria-hidden="true"> · </span>-->
                                                                 <span class="ctre_date"> 
                                                                     <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($busienss_data[0]['created_date']))); ?>      
                                                                 </span>
@@ -323,7 +306,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             </div>
                                         </div>
                                         <div class="post-design-mid col-md-12">
-                                            <!-- multiple image code  start-->
                                             <div>
                                                 <?php
                                                 $contition_array = array('post_id' => $busienss_data[0]['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
@@ -333,7 +315,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 $i = 1;
                                                 foreach ($businessmultiimage as $data) {
                                                     $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-//                                                    $allowed = VALID_IMAGE;
                                                     $allowespdf = array('pdf');
                                                     $allowesvideo = array('mp4', '3gp');
                                                     $allowesaudio = array('mp3');
@@ -343,43 +324,34 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     if (in_array($ext, $allowed)) {
                                                         ?>
                                                         <?php if (count($businessmultiimage) == 1) { ?>
-                                                            <!-- two image start -->
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>" onclick="openModal();
-                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
-                                                            <!-- two image end -->
                                                         <?php } elseif (count($businessmultiimage) == 2) { ?>
-                                                            <!-- two image start -->
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>" onclick="openModal();
-                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
-                                                            <!-- two image end -->
                                                         <?php } elseif (count($businessmultiimage) == 3) { ?>
-                                                            <!-- two image start -->
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>"  onclick="openModal();
-                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
-                                                            <!-- two image end -->
                                                         <?php } elseif (count($businessmultiimage) == 4) { ?>
-                                                            <!-- two image start -->
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>" onclick="openModal();
-                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
-                                                            <!-- two image end -->
                                                         <?php } else { ?>
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>"  onclick="openModal();
-                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                             <?php
                                                         }
                                                     } elseif (in_array($ext, $allowespdf)) {
                                                         ?>
-                                                        <!-- one pdf start -->
                                                         <div>
                                                             <a href="<?php echo base_url('business_profile/creat_pdf/' . $data['post_files_id']) ?>">
                                                                 <div class="pdf_img">
@@ -387,9 +359,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                 </div>
                                                             </a>
                                                         </div>
-                                                        <!-- one pdf end -->
                                                     <?php } elseif (in_array($ext, $allowesvideo)) { ?>
-                                                        <!-- one video start -->
                                                         <div>
                                                             <video width="320" height="240" controls>
                                                                 <source src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $data['file_name']); ?>" type="video/mp4">
@@ -397,9 +367,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                 Your browser does not support the video tag.
                                                             </video>
                                                         </div>
-                                                        <!-- one video end -->
                                                     <?php } elseif (in_array($ext, $allowesaudio)) { ?>
-                                                        <!-- one audio start -->
                                                         <div>
                                                             <audio width="120" height="100" controls>
                                                                 <source src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $data['file_name']); ?>" type="audio/mp3">
@@ -407,7 +375,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                 Your browser does not support the audio tag.
                                                             </audio>
                                                         </div>
-                                                        <!-- one audio end -->
                                                     <?php } ?>
                                                     <?php
                                                     $i++;
@@ -483,8 +450,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </ul>
                                             </div>
                                         </div>
-                                        <!-- like user list start -->
-                                        <!-- pop up box start-->
                                         <?php
                                         if ($busienss_data[0]['business_likes_count'] > 0) {
                                             ?>
@@ -499,8 +464,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
                                                 }
                                                 ?>
-                                                <!-- pop up box end-->
-
                                                 <?php
                                                 $contition_array = array('business_profile_post_id' => $busienss_data[0]['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                                                 $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -534,7 +497,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         <?php } ?>
                                                     </a>
                                                 </div>
-
                                             </div>
                                             <?php
                                         }
@@ -550,8 +512,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
                                             }
                                             ?>
-                                            <!-- pop up box end-->
-
                                             <?php
                                             $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                                             $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -582,13 +542,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             </div>
 
                                         </div>
-                                        <!-- like user list end -->
-                                        <!-- all comment start-->
                                         <div class="art-all-comment col-md-12">
-                                            <!-- all fourcomment comment start-->
                                             <div id="<?php echo "fourcomment" . $busienss_data[0]['business_profile_post_id']; ?>" style="display:none;">
                                             </div>
-                                            <!-- all fourcomment comment end-->
                                             <div  id="<?php echo "threecomment" . $busienss_data[0]['business_profile_post_id']; ?>" style="display:block">
                                                 <div class="hidebottomborder <?php echo 'insertcomment' . $busienss_data[0]['business_profile_post_id']; ?>">
                                                     <?php
@@ -735,7 +691,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     ?>
                                                 </div>
                                             </div>
-                                            <!-- all comment end -->
                                         </div>
                                         <div class="post-design-commnet-box col-md-12">
                                             <div class="post-design-proo-img hidden-mob"> 
@@ -800,7 +755,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     </div>
                                 </div>
                             <?php } ?>
-                            <!-- body content end-->
                         </div>
                     </div>
 
@@ -809,7 +763,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                         <div class="all-profile-box">
                             <div class="all-pro-head">
-                                <h4>Profiles<a href="<?php echo base_url('profiles/').$this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
+                                <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
                             </div>
                             <ul class="all-pr-list">
                                 <li>
@@ -856,19 +810,15 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         </div>
 
                     </div>
-                    
+
                 </div>
             </div>
-            <!-- silder start -->
             <div id="myModal1" class="modal2">
                 <span class="close2 cursor" onclick="closeModal()">&times;</span>
                 <div class="modal-content2">
-
-                    <!--  multiple image start -->
-                    <?php
+                <?php
                     $i = 1;
                     $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-//                        $allowed = VALID_IMAGE;
                     foreach ($businessmultiimage as $mke => $mval) {
                         $ext = pathinfo($mval['file_name'], PATHINFO_EXTENSION);
                         if (in_array($ext, $allowed)) {
@@ -891,15 +841,15 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     }
                                 } else {
                                     $filename = $this->config->item('bus_post_main_upload_path') . $busdata['file_name'];
-                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename); ?>
-                                        <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $busdata['file_name']; ?>" alt="12">
-                                   <?php 
+                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                    ?>
+                                    <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $busdata['file_name']; ?>" alt="12">
+                                    <?php
                                 }
                                 ?>
                                 <a class="prev" style="left: 0px" onclick="plusSlides( - 1)">&#10094;</a>
                                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
                             </div>
-                            <!-- like comment start -->
                             <?php
                             if (count($databus1) > 1) {
                                 ?>
@@ -912,9 +862,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         <?php
                                                         $userid = $this->session->userdata('aileenuser');
                                                         $contition_array = array('post_image_id' => $busdata['post_files_id'], 'user_id' => $userid, 'is_unlike' => '0');
-
                                                         $activedata = $this->data['activedata'] = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
                                                         if ($activedata) {
                                                             ?>
                                                             <i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>
@@ -985,8 +933,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userdata['user_id'], 'status' => '1'))->row()->company_name;
                                             }
                                             ?>
-                                            <!-- pop up box end-->
-
                                             <?php
                                             $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                             $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1030,8 +976,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userdata['user_id'], 'status' => '1'))->row()->company_name;
                                         }
                                         ?>
-                                        <!-- pop up box end-->
-
                                         <?php
                                         $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                         $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1058,7 +1002,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         </div>
 
                                     </div>
-                                    <!-- show comment div start -->
                                     <div class="art-all-comment">
                                         <div  id="<?php echo "threeimgcomment" . $busdata['post_files_id']; ?>" style="display:block">
                                             <div class="<?php echo 'insertimgcomment' . $busdata['post_files_id']; ?>">
@@ -1116,21 +1059,17 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                             </div>
                                                             <div class="comment-details" id= "<?php echo "imgshowcomment" . $rowdata['post_image_comment_id']; ?>">
                                                                 <?php
-//                                                                    echo $this->common->make_links($rowdata['comment']);
                                                                 $new_product_comment = $this->common->make_links($rowdata['comment']);
                                                                 echo nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
                                                                 ?>
                                                             </div>
-                                                            <!-- edit box start -->
                                                             <div class="edit-comment-box">
                                                                 <div class="inputtype-edit-comment">
                                                                     <div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="<?php echo $rowdata['post_image_comment_id']; ?>"  id="<?php echo "imgeditcomment" . $rowdata['post_image_comment_id']; ?>" placeholder="Add a Comment ... " value= ""  onkeyup="imgcommentedit(<?php echo $rowdata['post_image_comment_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"><?php echo $rowdata['comment']; ?></div>
                                                                     <span class="comment-edit-button"><button id="<?php echo "imgeditsubmit" . $rowdata['post_image_comment_id']; ?>" style="display:none" onClick="imgedit_comment(<?php echo $rowdata['post_image_comment_id']; ?>)">Save</button></span>
                                                                 </div>
                                                             </div>
-                                                            <!-- edit box end -->
                                                             <div class="art-comment-menu-design">
-                                                                <!-- comment like start -->
                                                                 <div class="comment-details-menu"  id="<?php echo 'imglikecomment' . $rowdata['post_image_comment_id']; ?>">
                                                                     <a id="<?php echo $rowdata['post_image_comment_id']; ?>"   onClick="imgcomment_like(this.id)">
                                                                         <?php
@@ -1156,8 +1095,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                         </span>
                                                                     </a>
                                                                 </div>
-                                                                <!--   comment like end -->
-                                                                <!-- comment edit start -->
                                                                 <?php
                                                                 $userid = $this->session->userdata('aileenuser');
                                                                 if ($rowdata['user_id'] == $userid) {
@@ -1171,8 +1108,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                         </div>
                                                                     </div>
                                                                 <?php } ?>
-                                                                <!-- comment edit end -->
-                                                                <!-- comment delete start -->
                                                                 <?php
                                                                 $userid = $this->session->userdata('aileenuser');
                                                                 $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['post_image_id'], 'status' => '1'))->row()->user_id;
@@ -1185,8 +1120,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                             </span> </a> 
                                                                     </div>
                                                                 <?php } ?>
-                                                                <!-- comment delete end -->
-                                                                <!-- created date start -->
                                                                 <span role="presentation" aria-hidden="true"> · </span>
                                                                 <div class="comment-details-menu">
                                                                     <p><?php
@@ -1195,7 +1128,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                         ?>
                                                                     </p>
                                                                 </div>
-                                                                <!-- created date end -->
                                                             </div>
                                                         </div>
                                                         <?php
@@ -1206,8 +1138,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         </div>
                                         <div id="<?php echo "fourimgcomment" . $busdata['post_files_id']; ?>" style="display:none;"></div>
                                     </div>
-                                    <!-- show comment div end -->
-                                    <!-- insert comment code start -->
                                     <div class="post-design-commnet-box col-md-12">
                                         <div class="post-design-proo-img hidden-mob"> 
                                             <?php
@@ -1260,22 +1190,17 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 <?php
                             }
                             ?>
-                            <!-- like comment end -->
                         </div>
                         <?php
                         $i++;
                     }
                     ?>
-                    <!-- slider image rotation end  -->
-
                     <div class="caption-container">
                         <p id="caption"></p>
                     </div>
                 </div>
             </div>
-            <!-- slider end -->
         </section>
-        <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog" style="z-index: 999999 !important;">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -1287,8 +1212,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 </div>
             </div>
         </div>
-        <!-- Model Popup Close -->
-        <!-- Bid-modal-2  -->
         <div class="modal fade message-box" id="likeusermodal" role="dialog" style="z-index: 999999 !important;">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -1310,22 +1233,17 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             </div>
         </div>
         <?php echo $footer; ?>
-        
-      <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-    <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());            ?>"></script>--> 
-        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver=' . time());            ?>"></script>-->
-<?php } else { ?>
-    <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());            ?>"></script>--> 
-        <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver=' . time());            ?>"></script>-->
-<?php } ?>
-        <!-- script for business autofill -->
+
+        <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
+            <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+            <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <?php } ?>
         <script>
-                                                var base_url = '<?php echo base_url(); ?>';
-                                                var post_id = '<?php echo $post_id; ?>';
+                                        var base_url = '<?php echo base_url(); ?>';
+                                        var post_id = '<?php echo $post_id; ?>';
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/post_detail.js?ver=' . time()); ?>"></script>

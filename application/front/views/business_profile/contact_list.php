@@ -17,15 +17,11 @@
         <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
-        <!-- START HEADER -->
         <?php echo $header; ?>
-        <!-- END HEADER -->
-        <?php echo $business_header2_border; ?><!-- start head -->
+        <?php echo $business_header2_border; ?>
         <?php echo $dash_header; ?>
         <?php echo $dash_header_menu; ?>
-
         <div class="user-midd-section" id="paddingtop_fixed">
-
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-xs-12  hidden-md hidden-sm hidden-lg pb20 ">
@@ -83,9 +79,7 @@
                                                     ?>
                                                     <li><div class="art-img-nn" id= "art-blank">
                                                             <div class="art_no_post_img">
-
                                                                 <img src="<?php echo base_url('assets/img/No_Contact_Request.png') ?>" width="100">
-
                                                             </div>
                                                             <div class="art_no_post_text" style="font-size: 20px;">
                                                                 No Notifiaction Available.
@@ -189,49 +183,25 @@
                         </div>
                     </div>
                 </div>
-                <!-- END PAGE HEAD-->
-                <!-- BEGIN PAGE CONTENT BODY -->
                 <div class="page-content">
                     <div class="container">
-                        <!-- BEGIN PAGE CONTENT INNER -->
                         <div class="page-content">
                             <div class="container">
-                                <!-- BEGIN PAGE CONTENT INNER -->
                                 <div class="page-content-inner">
                                     <div class="row">
                                         <div class="col-md-12">
-
                                         </div>
                                     </div>
                                 </div>
-                                <!-- END PAGE CONTENT INNER -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- END PAGE CONTENT BODY -->
-                <!-- END CONTENT BODY -->
             </div>
-            <!-- END CONTENT -->
         </div>
-        <!-- END CONTAINER -->
-        <!-- BEGIN FOOTER -->
-        <!-- BEGIN INNER FOOTER -->
-        <!-- <footer> -->
         <?php echo $login_footer ?>
         <?php echo $footer; ?>
-        <!-- </footer> -->
-        <!-- script for update all read notification start-->
         <script type="text/javascript">
-//            function contactperson() {
-//                $.ajax({
-//                    url: "<?php echo base_url(); ?>business_profile/contact_notification",
-//                    type: "POST",
-//                    success: function (data) {
-//                        $('#addcontactBody').html(data);
-//                    }
-//                });
-//            }
             function contactapprove1(toid, status) {
                 $.ajax({
                     url: "<?php echo base_url(); ?>business_profile/contact_list_approve",
@@ -247,7 +217,6 @@
                 business_contact_list();
 
                 $(window).scroll(function () {
-                    //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
                     if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
 
                         var page = $(".page_number:last").val();
@@ -260,7 +229,6 @@
                             if (mod_page > 0) {
                                 available_page = available_page + 1;
                             }
-                            //if ($(".page_number:last").val() <= $(".total_record").val()) {
                             if (parseInt(page) <= parseInt(available_page)) {
                                 var pagenum = parseInt($(".page_number:last").val()) + 1;
                                 business_contact_list(pagenum);
@@ -272,11 +240,6 @@
             var isProcessing = false;
             function business_contact_list(pagenum) {
                 if (isProcessing) {
-                    /*
-                     *This won't go past this condition while
-                     *isProcessing is true.
-                     *You could even display a message.
-                     **/
                     return;
                 }
                 isProcessing = true;
@@ -287,7 +250,6 @@
                     dataType: "html",
                     beforeSend: function () {
                         if (pagenum == 'undefined') {
-                            // $(".contactlist").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
                         } else {
                             $('#loader').show();
                         }
