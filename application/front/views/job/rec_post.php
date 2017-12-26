@@ -12,7 +12,9 @@
             <?php
         } else {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
         <?php } ?>
 
          <?php
@@ -676,7 +678,9 @@
             <?php
         } else {
             ?>
-            <script defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
+              <script src="<?php echo base_url('assets/js_min/croppie.js'); ?>"></script>  
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
 
         <?php

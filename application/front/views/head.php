@@ -62,9 +62,15 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <meta name="description" content="<?php echo  $business_common_data[0]['company_name'] . ' in '; if($city_name){ echo $city_name . '-';} echo $country_name . ' View full business details like address, contact number, photos and more at Aileensoul.com.';?>" />
 <?php }  else if($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'jobpost') {?>
         <meta name="description" content="Job Description for the post of <?php echo $exp_title; ?> in <?php echo  $recdata[0]['re_comp_name']; ?> in <?php if($city_name){ echo $city_name . '-';}echo $state_name; ?> for <?php echo $exp_descp; ?> of experience. Apply Now!" />
-<?php } else { ?>
+        
+            <?php }  else if($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?>
+        <meta name="description" content="<?php echo 'View full profile of Recruiter ' . $recdescdata[0]['rec_firstname'] . ' ' . $recdescdata[0]['rec_lastname'] ?> in <?php echo $recdescdata[0]['re_comp_name']; ?> at <?php if($citydesc_name){ echo $citydesc_name . '-';}echo $statedesc_name;?>." />
+
+            <?php } else if($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume') { ?>
+        <meta name="description" content="View full resume detail like education, work area, experience of <?php echo $fdescname . $ldescname; ?> at Aileenoul.com" />
+<?php } else {?>
         <meta name="description" content=" " />
-<?php }?>
+<?php } ?>
         <meta name="keywords" content=" " />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -129,4 +135,4 @@ if ($this->uri->segment(1) == 'profiles') {
 <?php }
 ?>
 
-<script src="<?php echo base_url('node_modules/socket.io/node_modules/socket.io-client/socket.io.js?ver='.time()); ?>"></script>
+<!--<script src="<?php //echo base_url('node_modules/socket.io/node_modules/socket.io-client/socket.io.js?ver='.time()); ?>"></script>-->

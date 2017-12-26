@@ -14,6 +14,16 @@ $this->data['user_notification_count'] = $count = $result[0]['total'];
 $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
 $this->data['jobdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+if($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume'){
+ $contition_array = array('slug' => $this->uri->segment(3), 'is_delete' => '0', 'status' => '1');
+$jobdescription = $this->data['jobdescription'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'fname,lname', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');   
+
+$this->data['fdescname'] = $fdescname = $jobdescription[0]['fname'];
+$this->data['ldescname'] = $ldescname = $jobdescription[0]['lname'];
+
+}
+
+
 $this->data['head'] = $this->load->view('head', $this->data, true);
 $this->data['header'] = $this->load->view('header', $this->data, true);
 $this->data['footer'] = $this->load->view('footer', $this->data, true);
