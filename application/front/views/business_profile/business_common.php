@@ -67,7 +67,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             </label>
         </div>
     <?php } ?>
-    <!-- coer image end-->
     <div class="profile-photo">
         <?php
         $userid = $this->session->userdata('aileenuser');
@@ -81,7 +80,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     <?php
                 }
                 ?>
-                <!--PROFILE PIC START-->
                 <div class="profile-pho-bui">
                     <div class="user-pic padd_img">
                         <?php if ($business_common_data[0]['business_user_image'] != '') { ?>
@@ -119,7 +117,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         <?php } ?>
                     </div>
                 </div>
-                <!--PROFILE PIC START-->
                 <div class="business-profile-right">
                     <div class="bui-menu-profile">
                         <div class="profile-left">
@@ -283,8 +280,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             </div>
                         <?php } ?>
                     </div>
-                    <!-- PICKUP -->
-                    <!-- menubar -->
                     <div class="business-data-menu padding_less_right ">
                         <div class="profile-main-box-buis-menu">  
                             <?php
@@ -330,7 +325,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </li>
                                                 <li>
                                                     <a href="<?php echo base_url('chat/abc/5/5/' . $business_common_data[0]['user_id']); ?>">Message</a></li>
-                                                    <!--<a href="javascript:void(0);" onclick="send_message(<?php echo $business_common_data[0]['user_id'] ?>,<?php echo $business_common_data[0]['business_profile_id'] ?>);">Message</a></li>-->
                                             <?php } ?>
                                         </ul>   
                                     </div>
@@ -338,7 +332,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         </div>
                     </div>
                 </div>
-                <!-- pickup -->
             </div>
         </div>
     </div>
@@ -383,13 +376,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         var business_slug = '<?php echo $business_common_data[0]['business_slug'] ?>';
         
         function send_message(user_id, business_profile_id) {
-//            $('#messageModel .mes').html("<h5 class='modal-title'>Send Message</h5><hr><div class='form-group'><div class='col-md-12'><div class='post-design-proo-img hidden-mob'>".
-//                    ."<img src='<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image ?>' alt='<?php echo $business_login_company_name; ?>'>".
-//                    ."</div><div id='content' class='col-md-12  inputtype-comment cmy_2'>".
-//                    ."<div contenteditable='true' class='edt_2 editable_text' name='message' id='message' placeholder='Enter Message ...' onclick='enterMessage();' onpaste='OnPaste_StripFormatting(this, event);' style='text-align: left;'></div>".
-//                    ."</div><div class='comment-edit-butn hidden-mob'><button onclick='enter_message();' style='padding:10px 20px; margin: -10px;'>Send</button>".
-//                    ."</div></div></div>");
-
             $('#messageModel .mes').html("<h5 class='modal-title'>Send Message</h5><hr><div class='form-group'><div class='col-md-12'><div class='post-design-proo-img hidden-mob'><img src='<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image ?>' alt='<?php echo $business_login_company_name; ?>'></div><div id='content' class='col-md-12  inputtype-comment cmy_2'><div contenteditable='true' class='edt_2 editable_text' name='message' id='message' placeholder='Enter Message ...' onclick='enterMessage(" + user_id + "," + business_profile_id + ");' onpaste='OnPaste_StripFormatting(this, event);' style='text-align: left;'></div></div><div class='comment-edit-butn hidden-mob'><button id='enterMessage' onclick='enterMessage(" + user_id + "," + business_profile_id + ");' style='padding:10px 20px; margin: -10px;'>Send</button></div></div></div>");
             $('#messageModel').modal('show');
         }

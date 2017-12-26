@@ -39,11 +39,8 @@
                 </div>
             </div>
         </section>
-        <!-- <footer> -->
             <?php echo $login_footer ?>
             <?php echo $footer; ?>
-        <!-- </footer> -->
-        <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -54,9 +51,6 @@
                 </div>
             </div>
         </div>
-        <!-- Model Popup Close -->
-
-        <!-- Bid-modal for this modal appear or not start -->
         <div class="modal fade message-box" id="query" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -68,9 +62,6 @@
                 </div>
             </div>
         </div>
-        <!-- Bid-modal for this modal appear or not  Popup Close -->
-
-        <!-- Bid-modal-2  -->
         <div class="modal fade message-box" id="bidmodal-2" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -92,35 +83,20 @@
                 </div>
             </div>
         </div>
-        <!-- Model Popup Close -->
-
-
-      
-        <!-- script for business autofill -->
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var slug_id = '<?php echo $slug_id; ?>';
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-          <!-- script for skill textbox automatic start (option 2)-->
-        <!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());  ?>"></script>-->
-        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>-->
-        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>-->
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <!-- script for skill textbox automatic end (option 2)-->
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/following.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
-       <!-- script for skill textbox automatic start (option 2)-->
-        <!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());  ?>"></script>-->
-        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>-->
-        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>-->
         <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <!-- script for skill textbox automatic end (option 2)-->
         <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/following.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } ?>

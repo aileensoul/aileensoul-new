@@ -11,8 +11,11 @@
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
         <?php } else { ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business_profile_post.min.css?ver=' . time()); ?>">
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');  ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>">
+            <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
         <?php } ?>
         <style type="text/css">
             .two-images, .three-image, .four-image{
@@ -61,22 +64,10 @@
                                 <!-- GET USER FOLLOE SUGESSION LIST START -->
                                 <!-- follower list end  -->
                             </div>
-                            <!-- <div class="custom_footer_left fw">
-                                <div class="fl">
-                                    <ul>
-                                        <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
-                                        <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
-                                        <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
-                                        <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
-                                        <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
-                                        <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-
-                                </div>
-
-                            </div> -->
+<<<<<<< HEAD
+                            
+=======
+>>>>>>> 93149dc1d256712dca769116f6310dae511d3d9a
                              <?php echo $left_footer; ?>
                         </div>
                         <br>
@@ -194,8 +185,8 @@
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/notification/business_post.js?ver=' . time()); ?>"></script>
         <?php } else {
             ?>
-            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/notification/business_post.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/notification/business_post.js?ver=' . time()); ?>"></script>
         <?php }
         ?>
     </body>

@@ -8,13 +8,13 @@
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>" />
             <?php
         } else {
             ?>
-              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css'); ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css'); ?>" />
         <?php } ?>
         <style>
             /***  commen css  ***/
@@ -220,7 +220,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 fw-479 left-header">
-                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 fw-479 right-header">
                         <div class="btn-right pull-right">
@@ -404,8 +404,6 @@
                                                                 ?>
                                                                 <div class="modal fade modal_popup" id="myModal" role="dialog" style="z-index: 1003">
                                                                     <div class="modal-dialog" style="width: 88%;">
-
-                                                                        <!-- Modal content-->
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -426,17 +424,10 @@
 
                                                                                 </div>
                                                                             </div>
-                                                                            <!--                                                                            <div class="modal-footer">
-                                                                                                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                                                                                                        </div>-->
                                                                         </div>
-
                                                                     </div>
                                                                 </div>
-
                                                                 <div id="myModal1" class="modal2" style="padding-top: 7%;">
-
-
                                                                     <div class="modal-content2"> 
                                                                         <span class="close2 cursor" onclick="closeModal()">&times;</span>  
                                                                         <?php
@@ -463,7 +454,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <!-- popup -->
                                                             </div>
                                                         </div> 
                                                     </div>
@@ -476,26 +466,20 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                     <div class="modal-body">
-                        <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                         <span class="mes"></span>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Model Popup Close -->
-
-        <!-- Bid-modal-2  -->
         <div class="modal fade message-box" id="bidmodal-2" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -517,9 +501,6 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- Login  -->
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
@@ -531,9 +512,7 @@
                                     <div class="title">
                                         <h1 class="ttc">Welcome To Aileensoul</h1>
                                     </div>
-
                                     <form role="form" name="login_form" id="login_form" method="post">
-
                                         <div class="form-group">
                                             <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email address*">
                                             <div id="error2" style="display:block;">
@@ -579,9 +558,6 @@
                 </div>
             </div>
         </div>
-        <!-- Login -->
-
-        <!-- model for forgot password start -->
         <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
@@ -625,12 +601,6 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- model for forgot password end -->
-
-        <!-- register -->
-
         <div class="modal login fade register-model" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
@@ -661,62 +631,54 @@
                                     </div>
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth :</label>
-                                       <span> <select tabindex="9" class="day" name="selday" id="selday">
-                                            <option value="" disabled selected value>Day</option>
-                                            <?php
-                                            for ($i = 1; $i <= 31; $i++) {
-                                                ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                        <span> <select tabindex="9" class="day" name="selday" id="selday">
+                                                <option value="" disabled selected value>Day</option>
                                                 <?php
-                                            }
-                                            ?>
-                                        </select></span>
-                                        <span>
-                                        <select tabindex="10" class="month" name="selmonth" id="selmonth">
-                                            <option value="" disabled selected value>Month</option>
-                                            //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                            ?>
-                                            <option value="1">Jan</option>
-                                            <option value="2">Feb</option>
-                                            <option value="3">Mar</option>
-                                            <option value="4">Apr</option>
-                                            <option value="5">May</option>
-                                            <option value="6">Jun</option>
-                                            <option value="7">Jul</option>
-                                            <option value="8">Aug</option>
-                                            <option value="9">Sep</option>
-                                            <option value="10">Oct</option>
-                                            <option value="11">Nov</option>
-                                            <option value="12">Dec</option>
-                                            //<?php
-//                  }
-//                  
-                                            ?>
-                                        </select></span>
-                                        <span>
-                                        <select tabindex="11" class="year" name="selyear" id="selyear">
-                                            <option value="" disabled selected value>Year</option>
-                                            <?php
-                                            for ($i = date('Y'); $i >= 1900; $i--) {
+                                                for ($i = 1; $i <= 31; $i++) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
                                                 ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                            </select></span>
+                                        <span>
+                                            <select tabindex="10" class="month" name="selmonth" id="selmonth">
+                                                <option value="" disabled selected value>Month</option>
+                                                <option value="1">Jan</option>
+                                                <option value="2">Feb</option>
+                                                <option value="3">Mar</option>
+                                                <option value="4">Apr</option>
+                                                <option value="5">May</option>
+                                                <option value="6">Jun</option>
+                                                <option value="7">Jul</option>
+                                                <option value="8">Aug</option>
+                                                <option value="9">Sep</option>
+                                                <option value="10">Oct</option>
+                                                <option value="11">Nov</option>
+                                                <option value="12">Dec</option>
+                                            </select></span>
+                                        <span>
+                                            <select tabindex="11" class="year" name="selyear" id="selyear">
+                                                <option value="" disabled selected value>Year</option>
                                                 <?php
-                                            }
-                                            ?>
+                                                for ($i = date('Y'); $i >= 1900; $i--) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
 
-                                        </select>
-                                    </span>
+                                            </select>
+                                        </span>
                                     </div>
                                     <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                     <div class="form-group gender-custom">
                                         <span><select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
-                                            <option value="" disabled selected value>Gender</option>
-                                            <option value="M">Male</option>
-                                            <option value="F">Female</option>
-                                        </select></span>
+                                                <option value="" disabled selected value>Gender</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                            </select></span>
                                     </div>
 
                                     <p class="form-text">
@@ -734,36 +696,26 @@
                 </div>
             </div>
         </div>
-        <!-- register -->
-
-        <!-- Model Popup Close -->
-        <!-- <footer> -->
-            <?php echo $login_footer ?>
+        <?php echo $login_footer ?>
         <?php echo $footer; ?>
-    <!-- </footer> -->
-       
-        
-         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
+        <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
             <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
             <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
-        <!-- script for business autofill -->
         <script>
                                             var base_url = '<?php echo base_url(); ?>';
                                             var slug = '<?php echo $slugid; ?>';
         </script>
-        <!-- script for login  user valoidtaion start -->
         <script type="text/javascript">
             function login()
             {
                 document.getElementById('error1').style.display = 'none';
             }
-            //validation for edit email formate form
             $(document).ready(function () {
                 /* validation */
                 $("#login_form").validate({
@@ -1048,7 +1000,7 @@
         </script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/followers.js?ver=' . time()); ?>"></script>
         <script>
-            function open_profile(){
+            function open_profile() {
                 register_profile();
             }
             function login_profile() {

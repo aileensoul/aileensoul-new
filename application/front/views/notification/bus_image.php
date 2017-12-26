@@ -12,7 +12,8 @@
             <?php
         } else {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business-common.min.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business.css?ver=' . time()); ?>">
         <?php } ?>
         <script>
             $(document).ready(function ()
@@ -282,7 +283,7 @@
                                                 $i = 1;
                                                 foreach ($businessmultiimage as $data) {
                                                     $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-//                                                    $allowed = VALID_IMAGE;
+
                                                     $allowespdf = array('pdf');
                                                     $allowesvideo = array('mp4', '3gp');
                                                     $allowesaudio = array('mp3');
@@ -363,7 +364,6 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <!-- multiple image code  end-->
                                         </div>
                                         <div class="post-design-like-box col-md-12">
                                             <div class="post-design-menu">
@@ -432,8 +432,6 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <!-- like user list start -->
-                                        <!-- pop up box start-->
                                         <?php
                                         if ($busienss_data[0]['business_likes_count'] > 0) {
                                             ?>
@@ -732,12 +730,10 @@
                         <div class="mySlides">
                             <div class="numbertext"><?php echo $i ?> / <?php echo count($databus1) ?></div>
                             <div class="slider_img">
-                               <!--  <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $busdata['file_name']) ?>" > -->
                                  <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $busdata['file_name'] ?>" >
                                 <a class="prev" style="left: 0px" onclick="plusSlides( - 1)">&#10094;</a>
                                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
                             </div>
-                            <!-- like comment start -->
                             <?php
                             if (count($databus1) > 1) {
                                 ?>
@@ -929,7 +925,7 @@
                                                             </div>
                                                             <div class="comment-details" id= "<?php echo "imgshowcomment" . $rowdata['post_image_comment_id']; ?>">
                                                                 <?php
-//                                                                    echo $this->common->make_links($rowdata['comment']);
+
                                                                 $new_product_comment = $this->common->make_links($rowdata['comment']);
                                                                 echo nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
                                                                 ?>
@@ -1125,8 +1121,8 @@
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/notification/bus_image.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
-            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/notification/bus_image.min.js?ver=' . time()); ?>"></script>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/notification/bus_image.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } ?>
     </body>
 </html>

@@ -57,7 +57,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             </div>
             <div class="user-midd-section">
                 <div class="container art_container padding-360 manage-post-custom">
-
                     <div class="profile-box-custom left_side_posrt">
                         <div class="full-box-module business_data">
                             <div class="profile-boxProfileCard  module">
@@ -126,7 +125,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </table>
                             </div>
                         </div>
-                        <!-- user iamges start-->
                         <a href="<?php echo base_url('business-profile/photos/' . $business_common_data[0]['business_slug']) ?>">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module buisness_he_module" >
@@ -138,8 +136,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                         </a>
-                        <!-- user images end-->
-                        <!-- user video start-->
                         <a href="<?php echo base_url('business-profile/videos/' . $business_common_data[0]['business_slug']) ?>">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
@@ -153,9 +149,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                         </a>
-                        <!-- user video emd-->
-                        <!-- user audio start-->
-                        <!-- <a href="<?php echo base_url('business-profile/audios/' . $business_common_data[0]['business_slug']) ?>"> -->
                         <div class="full-box-module business_data">
                             <div class="profile-boxProfileCard  module">
                                 <a href="<?php echo base_url('business-profile/audios/' . $business_common_data[0]['business_slug']) ?>"> 
@@ -169,9 +162,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </table>
                             </div>
                         </div>
-                        <!-- </a> -->
-                        <!-- user audio end-->
-                        <!-- user pdf  start-->
                         <a href="<?php echo base_url('business-profile/pdf/' . $business_common_data[0]['business_slug']) ?>">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module buisness_he_module" >
@@ -182,7 +172,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                         </a>
-                        <!-- user pdf  end-->
                         <?php echo $left_footer; ?>
                     </div>
                     <div class=" custom-right-art mian_middle_post_box animated fadeInUp custom-right-business">
@@ -192,7 +181,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             <div class="post-editor col-md-12">
                                 <div class="main-text-area col-md-12">
                                     <div class="popup-img"> 
-
                                         <?php if ($business_login_user_image) { ?>
                                             <?php
                                             if (IMAGEPATHFROM == 'upload') {
@@ -231,9 +219,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                         <?php } ?>
-                        <!-- The Modal -->
                         <div id="myModal3" class="modal-post">
-                            <!-- Modal content -->
                             <div class="modal-content-post">
                                 <span class="close3">&times;</span>
                                 <div class="post-editor post-edit-popup" id="close">
@@ -290,7 +276,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     </div>
                                     <div class="preview"></div>
                                     <div id="data-vid" class="large-8 columns">
-                                        <!--video will be inserted here.-->
                                     </div>
                                     <h2 id="name-vid"></h2>
                                     <p id="size-vid"></p>
@@ -317,18 +302,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                         </div>
-                        <!-- popup end -->
                         <?php
                         if ($this->session->flashdata('error')) {
                             echo $this->session->flashdata('error');
                         }
                         ?>
                         <div class="fw">
-                            <!--                                <div class='progress' id="progress_div" style="display: none">
-                                                                <div class='bar' id='bar'></div>
-                                                                <div class='percent' id='percent'>0%</div>
-                                                            </div>-->
-
                             <div class="bs-example">
                                 <div class="progress progress-striped" id="progress_div">
                                     <div class="progress-bar" style="width: 0%;">
@@ -338,22 +317,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             </div>
 
                             <div class="business-all-post">
-                                <!--                                    <div class="nofoundpost"> 
-                                                                    </div>-->
                             </div>
                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="Loader" /></div>
-                            <!-- middle section start -->
-                            <!--                                <div class="nofoundpost">
-                                                            </div>-->
                         </div>
-                        <!-- business_profile _manage_post end -->
                     </div>
 
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-
-
                     </div>
-
                 </div>
             </div>
         </section>
@@ -391,9 +361,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 </div>
             </div>
         </div>
-
-
-        <!-- Bid-modal for this modal appear or not start -->
         <div class="modal fade message-box" id="query" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -417,27 +384,17 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 </div>
             </div>
         </div>
-
-        <!-- Bid-modal for this modal appear or not  Popup Close -->
-        <!-- <footer> -->
         <?php echo $footer; ?>
-        <!-- </footer> -->
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var slug = '<?php echo $slugid; ?>';
             var no_business_post_html = '<?php echo $no_business_post_html ?>';
         </script>
-
-
-
-
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
             <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-
             <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
-            <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());            ?>"></script>-->
             <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
             <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
             <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
@@ -445,16 +402,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
-            <!-- POST BOX JAVASCRIPT END --> 
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/dashboard.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
             <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
-
             <script type = "text/javascript" src="<?php echo base_url('assets/js_min/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
-            <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());            ?>"></script>-->
             <script src="<?php echo base_url('assets/dragdrop/js_min/plugins/sortable.js?ver=' . time()); ?>"></script>
             <script src="<?php echo base_url('assets/dragdrop/js_min/fileinput.js?ver=' . time()); ?>"></script>
             <script src="<?php echo base_url('assets/dragdrop/js_min/locales/fr.js?ver=' . time()); ?>"></script>
@@ -462,7 +416,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
-            <!-- POST BOX JAVASCRIPT END --> 
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/dashboard.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } ?>

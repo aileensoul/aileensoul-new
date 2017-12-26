@@ -11,14 +11,13 @@
             <?php
         } else {
             ?>
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business.css?ver=' . time()); ?>">
         <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed">
         <?php echo $header; ?>
         <?php echo $business_header2_border; ?>
-        <!-- END HEADER -->
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
@@ -36,7 +35,6 @@
                                 }
                                 ?>
                             </div>
-
                             <div>
                                 <div>
                                 </div> 
@@ -59,17 +57,11 @@
                                                 <input name="toemail"  type="hidden" id="toemail" placeholder="Enter Your Email Address" value="<?php echo $contactperson[0]['contact_email']; ?>">
                                                 <?php echo form_error('email'); ?>
                                             </fieldset>
-
-
-
-
                                             <fieldset class="full-width">
                                                 <label>Details</label>
                                                 <textarea name="msg" id="msg" placeholder="Enter Query"></textarea>
-
                                                 <?php echo form_error('msg'); ?>
                                             </fieldset>
-
                                             <fieldset class="hs-submit full-width">
                                                 <input type="submit"  id="submitcontact" name="submitcontact" value="send">
                                             </fieldset>
@@ -78,19 +70,15 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
         </section>
-        <!-- <footer> -->
-            <?php echo $footer; ?>
-        <!-- </footer> -->
+        <?php echo $footer; ?>
     </body>
 </html>
-<!-- script for business autofill -->
 <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-<script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
 <?php } else { ?>
-<script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
 <?php } ?>

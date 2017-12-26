@@ -67,7 +67,6 @@
                                     </ul>
                                 </div>
                             </div>
-                            <!-- middle section start -->
                             <div class="col-md-6 col-sm-8">
                                 <div>
                                     <?php
@@ -84,9 +83,6 @@
                                         <?php echo $this->lang->line("business_information"); ?>
                                     </h3>
                                     <?php echo form_open(base_url('business-profile/business-information-insert'), array('id' => 'businessinfo', 'name' => 'businessinfo', 'class' => 'clearfix')); ?>
-                                    <!--  <div>
-                                         <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
-                                     </div> -->
                                     <?php
                                     $companyname = form_error('companyname');
                                     $country = form_error('country');
@@ -109,11 +105,9 @@
                                             <?php
                                             if (count($countries) > 0) {
                                                 foreach ($countries as $cnt) {
-
                                                     if ($country1) {
                                                         ?>
                                                         <option value="<?php echo $cnt['country_id']; ?>" <?php if ($cnt['country_id'] == $country1) echo 'selected'; ?>><?php echo $cnt['country_name']; ?></option>
-
                                                         <?php
                                                     }
                                                     else {
@@ -127,7 +121,6 @@
                                         </select><span id="country-error"></span>
                                         <?php echo form_error('country'); ?> 
                                     </fieldset>
-
                                     <fieldset <?php if ($state) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("state"); ?>:<span style="color:red">*</span></label>
                                         <select name="state" id="state" tabindex="3" >
@@ -155,22 +148,17 @@
                                             if ($city1) {
                                                 foreach ($cities as $cnt) {
                                                     ?>
-
                                                     <option value="<?php echo $cnt['city_id']; ?>" <?php if ($cnt['city_id'] == $city1) echo 'selected'; ?>><?php echo $cnt['city_name']; ?></option>
-
                                                     <?php
                                                 }
                                             }
-
                                             else if ($state1) {
                                                 ?>
                                                 <option value=""><?php echo $this->lang->line("select_city"); ?></option>
                                                 <?php
                                                 foreach ($cities as $cnt) {
                                                     ?>
-
                                                     <option value="<?php echo $cnt['city_id']; ?>"><?php echo $cnt['city_name']; ?></option>
-
                                                     <?php
                                                 }
                                             } else {
@@ -194,7 +182,6 @@
 
                                     <fieldset class="full-width <?php if ($business_address) { ?> error-msg <?php } ?>">
                                         <label><?php echo $this->lang->line("postal_address"); ?>:<span style="color:red">*</span></label>
-                                        <!--<textarea name ="business_address" tabindex="6"  id="business_address" rows="4" cols="50" placeholder="<?php echo $this->lang->line("enter_address"); ?>" style="resize: none;"> -->
                                         <input name="business_address" tabindex="6" autofocus type="text" id="business_address" placeholder="<?php echo $this->lang->line("enter_address"); ?>" style="resize: none;" value="<?php
                                         if ($address1) {
                                             echo $address1;
@@ -215,10 +202,8 @@
                     </div>
                 </div>
         </section>
-        <!-- <footer> -->
         <?php echo $login_footer ?>
         <?php echo $footer; ?>
-        <!-- </footer> -->
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var slug = '<?php echo $slugid; ?>';
@@ -231,12 +216,12 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else {
             ?>
-           <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php }

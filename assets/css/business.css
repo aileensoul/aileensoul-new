@@ -1756,7 +1756,7 @@ label.cameraButton:active {
     padding-top: 19px;
     background-color: #fff;
     float: left;
-    position: relativ;
+    position: relative;
 }
 .buisness-menu:before {
     width: 100%;
@@ -2844,7 +2844,7 @@ label.cameraButton:active {
     transform: translate(0, -50%);
     cursor: pointer;
     position: absolute;
-    top: 230px;
+    top: 50%;
     width: auto;
     padding: 16px;
     color: white;
@@ -4416,7 +4416,7 @@ div .comment {
     width:45px;
     height: 20px;
 }
-.cancel-result:hover{color: #fff;background-color: #1b8ab9 !important;}
+.cancel-result:hover{color: #fff;background-color: #1b8ab9 !important; border:1px solid #1b8ab9;}
 .post-edit-popup .popup-text{padding:9px 0 7px 10px;}
 .post-edit-popup .camer_h i{padding-top:4px;}
 .krajee-default[data-template="audio"] .file-preview-audio {height:125px; background-image: url('../images/music-icon2.jpg'); background-size:83%; background-position:center top;}

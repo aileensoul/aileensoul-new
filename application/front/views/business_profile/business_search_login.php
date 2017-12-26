@@ -395,7 +395,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3">
-                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
                     </div>
                     <div class="col-md-8 col-sm-9">
                         <div class="btn-right pull-right">
@@ -486,21 +486,16 @@
                                             </div>
                                             <div id="errorpass"></div> 
                                         </div>
-
                                         <p class="pt-20 ">
                                             <button class="btn1" onclick="login()">Login</button>
                                         </p>
-
                                         <p class=" text-center">
                                             <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
                                         </p>
-
                                         <p class="pt15 text-center">
                                             Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                         </p>
                                     </form>
-
-
                                 </div>
                             </div>
                         </div>

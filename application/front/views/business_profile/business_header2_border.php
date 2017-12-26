@@ -3,72 +3,8 @@ $userid = $this->session->userdata('aileenuser');
 ?>
 
 <script type="text/javascript">
-    function show_contact_notification(contact_notification_count, contact_to_id) {
-       // var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
-        //var socket = io.connect();
-//        socket.emit('contact_request_count', {
-//            contact_request_count: contact_notification_count,
-//            contact_to_id: contact_to_id,
-//        });
-    }
-//    function addmsg_contact(type, msg)
-//    {
-//        if (msg == '0')
-//        {
-//            $("#addcontact_count").html('');
-//            $('#addcontact_count').css({"background-color": "", "padding": "0px"});
-//            $('#addcontactLink').removeClass('contact_notification_available');
-//        } else
-//        {
-//            $('#addcontact_count').html(msg);
-//            $('#addcontact_count').css({"background-color": "#FF4500", "padding": "3.5px 5px"});
-//            $('#addcontactLink').addClass('contact_notification_available');
-//        }
-//    }
-//    function waitForMsg_contact()
-//    {
-//        $.ajax({
-//            type: "GET",
-//            url: "<?php echo base_url(); ?>business_profile/contact_count",
-//            async: true,
-//            cache: false,
-//            timeout: 50000,
-//            success: function (data) {
-//                addmsg_contact("new", data);
-//                setTimeout(
-//                        waitForMsg_contact,
-//                        10000
-//                        );
-//            },
-//            error: function (XMLHttpRequest, textStatus, errorThrown) {
-//            }
-//        });
-//    }
-//
-//
-//    $(document).ready(function () {
-//
-//        waitForMsg_contact();
-//
-//    });
+    
     $(document).ready(function () {
-       // var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
-        //var socket = io.connect();
-        //var socket = io.connect(window.location.protocol + '//' + location.host + ':3000', {secure: true});
-//        socket.on('contact_request_count', function (data) {
-//            $("#addcontact_count" + data.contact_to_id).html(data.contact_request_count);
-//            $('#addcontact_count' + data.contact_to_id).css({
-//                "background-color": "#FF4500",
-//                "padding": "3.5px 5px",
-//                "border-radius": "50px",
-//            });
-//            $('#addcontactLink').addClass('contact_notification_available');
-//            //document.getElementById('addcontact_count' + data.contact_to_id).style.display = 'block';
-//            //$('#notif_audio')[0].play();
-//        });
-
-
-
         $menuLeft = $('.pushmenu-left');
         $nav_list = $('#nav_list');
 
@@ -80,7 +16,6 @@ $userid = $this->session->userdata('aileenuser');
     });
 
 </script>
-<!-- script for fetch all unread notification end-->
 
 <script>
     $(document).ready(function () {
@@ -90,7 +25,6 @@ $userid = $this->session->userdata('aileenuser');
         });
         $("body").click(function (event) {
             $("#addcontactContainer").hide();
-//            event.stopPropagation();
         });
     });
 </script>
@@ -130,7 +64,6 @@ $userid = $this->session->userdata('aileenuser');
             return false;
         });
     });
-//Document Click
 </script>
 
 <?php if (($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home')) { ?>
@@ -186,10 +119,8 @@ $userid = $this->session->userdata('aileenuser');
                                                 <?php
                                                 $contition_array = array('contact_to_id' => $userid, 'status' => 'pending');
                                                 $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
                                                 $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm');
                                                 $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
                                                 $unique_user = array_merge($contactperson_req, $contactperson_con);
 
                                                 $new = array();
@@ -203,7 +134,6 @@ $userid = $this->session->userdata('aileenuser');
                                                     $post[$key] = $row['contact_id'];
                                                 }
                                                 array_multisort($post, SORT_DESC, $new);
-
                                                 $contactperson = $new;
                                                 ?>
                                                 <div id="addcontactTitle">Contact Request <span class="see_link" id="seecontact"></span></div>
@@ -217,23 +147,18 @@ $userid = $this->session->userdata('aileenuser');
                                     </li>  
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                                            <!--  <span class="badge bg-theme"><?php //echo $message_count;         ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
-
                                             <span id="message_count"></span>
                                         </a>
-
                                         <div id="InboxContainer" class="dropdown2_content">
                                             <div id="InboxBody" class="Inbox">
                                                 <div id="notificationTitle">Messages<span class="see_link" id="seemsg"> </span></div>
                                                 <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
-
                                                     <div>
                                                         <ul class="notification_data_in_h2">
                                                             <div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="Loader" /></div>
                                                         </ul></div>
-
                                                 </div>
                                             </div>
                                     </li> 
@@ -244,11 +169,9 @@ $userid = $this->session->userdata('aileenuser');
                                                 <span class="my_account">
                                                     <div class="my_S">Account</div>
                                                 </span>
-                                                <!--<a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug']); ?>">-->
                                                 <a href="<?php echo base_url('business-profile/details/' . $business_login_slug); ?>">
                                                     <span class="icon-view-profile edit_data"></span>
                                                     <span> View Profile </span></a> 
-                                                <!--<a href="<?php echo base_url('business-profile/business-information-update'); ?>">-->
                                                 <a href="<?php echo base_url('business-profile/business-information'); ?>">
                                                     <span class="icon-edit-profile edit_data"></span>  
                                                     <span>Edit Profile </span></a>
@@ -331,7 +254,6 @@ $userid = $this->session->userdata('aileenuser');
                                     </li>   
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                                           <!--  <span class="badge bg-theme"><?php //echo $message_count;         ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 
@@ -342,12 +264,10 @@ $userid = $this->session->userdata('aileenuser');
                                             <div id="InboxBody" class="Inbox">
                                                 <div id="notificationTitle">Messages<span class="see_link" id="seemsg"> </span></div>
                                                 <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
-
                                                     <div>
                                                         <ul class="notification_data_in_h2">
                                                             <div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="Loader" /></div>
                                                         </ul></div>
-
                                                 </div>
                                             </div>
                                     </li>       
@@ -358,12 +278,9 @@ $userid = $this->session->userdata('aileenuser');
                                                 <span class="my_account">
                                                     <div class="my_S">Account</div>
                                                 </span>
-                                                <!--<a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug']); ?>">-->
                                                 <a href="<?php echo base_url('business-profile/details/' . $business_login_slug); ?>">
                                                     <span class="icon-view-profile edit_data"></span>
                                                     <span> View Profile </span></a> 
-                                                <!--<a href="<?php //echo base_url('business-profile/business-information-edit');       ?>">-->
-                                                <!--<a href="<?php echo base_url('business-profile/signup/edit/business-information'); ?>">-->
                                                 <a href="<?php echo base_url('business-profile/business-information'); ?>">
                                                     <span class="icon-edit-profile edit_data"></span>  
                                                     <span>Edit Profile </span></a>
@@ -384,11 +301,9 @@ $userid = $this->session->userdata('aileenuser');
     </div> 
     </header>
 <?php } ?>
-<!-- Bid-modal  -->
 <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
     <div class="modal-dialog modal-lm deactive">
         <div class="modal-content">
-            <!--<button type="button" class="modal-close" data-dismiss="modal">&times;</button>-->       
             <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
             <div class="modal-body">
                 <span class="mes"></span>
@@ -396,7 +311,6 @@ $userid = $this->session->userdata('aileenuser');
         </div>
     </div>
 </div>
-<!-- Model Popup Close -->
 <script type="text/javascript">
     function deactivate(clicked_id) {
         $('.biderror .mes').html("<div class='pop_content'> Are you sure you want to deactive your business profile?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='deactivate_profile(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
@@ -579,26 +493,19 @@ $userid = $this->session->userdata('aileenuser');
     ;
     function getmsgNotification() {
         msgNotification();
-//        msgheader();
     }
 
     function msgNotification() {
-        // first click alert('here'); 
         $.ajax({
             url: "<?php echo base_url(); ?>notification/update_msg_noti/6",
             type: "POST",
-            //data: {uid: 12341234}, //this sends the user-id to php as a post variable, in php it can be accessed as $_POST['uid']
             success: function (data) {
                 data = JSON.parse(data);
-                //alert(data);
-                //update some fields with the updated data
-                //you can access the data like 'data["driver"]'
             }
         });
     }
     function msgheader()
     {
-        // $("#fad" + clicked_id).fadeOut(6000);
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url() . "notification/msg_header/" . $this->uri->segment(3) . "" ?>',
@@ -610,14 +517,9 @@ $userid = $this->session->userdata('aileenuser');
 
     }
 </script>
-<!--  commen script harshad  -->
-
 <script type="text/javascript">
-
     $(document).ready(function () {
-
         document.getElementById('tags1').value = null;
         document.getElementById('searchplace1').value = null;
-
     });
 </script>

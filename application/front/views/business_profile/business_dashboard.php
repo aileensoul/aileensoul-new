@@ -242,7 +242,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 fw-479">
-                        <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 fw-479">
                         <div class="btn-right pull-right">
@@ -339,7 +339,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </table>
                             </div>
                         </div>
-                        <!-- user iamges start-->
                         <a href="javascript:void(0);" onclick="open_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module buisness_he_module" >
@@ -351,8 +350,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                         </a>
-                        <!-- user images end-->
-                        <!-- user video start-->
                         <a href="javascript:void(0);" onclick="open_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
@@ -366,8 +363,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                         </a>
-                        <!-- user video emd-->
-                        <!-- user audio start-->
                         <a href="javascript:void(0);" onclick="open_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
@@ -381,8 +376,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                         </a>
-                        <!-- user audio end-->
-                        <!-- user pdf  start-->
                         <a href="javascript:void(0);" onclick="open_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module buisness_he_module" >
@@ -393,7 +386,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                         </a>
-                        <!-- user pdf  end-->
                         <?php echo $left_footer; ?>
                     </div>
                     <div class=" custom-right-art mian_middle_post_box animated fadeInUp custom-right-business">
@@ -407,11 +399,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             <div class="business-all-post">
                             </div>
                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="loader" /></div>
-                            <!-- middle section start -->
-                            <!--                                <div class="nofoundpost">
-                                                            </div>-->
                         </div>
-                        <!-- business_profile _manage_post end -->
                     </div>
 
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
@@ -509,19 +497,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                         </p>
                                     </form>
-
-
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Login -->
-
-        <!-- model for forgot password start -->
         <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog login-frm">
                 <div class="modal-content">
@@ -548,29 +530,17 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         </div>
                                         <div id="errorlogin"></div> 
                                     </div>
-
                                     <p class="pt-20 text-center">
                                         <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
                                     </p>
-
-
                                     </form>
-
-
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <!-- model for forgot password end -->
-
-        <!-- register -->
-
         <div class="modal fade login register-model" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
@@ -614,10 +584,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         <span>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
-                                                //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                ?>
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -630,10 +596,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 <option value="10">Oct</option>
                                                 <option value="11">Nov</option>
                                                 <option value="12">Dec</option>
-                                                //<?php
-//                  }
-//                  
-                                                ?>
                                             </select></span>
                                         <span>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -645,7 +607,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <?php
                                                 }
                                                 ?>
-
                                             </select>
                                         </span>
                                     </div>
@@ -674,19 +635,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 </div>
             </div>
         </div>
-        <!-- Bid-modal for this modal appear or not  Popup Close -->
-        <!-- <footer> -->
         <?php echo $footer; ?>
-        <!-- </footer> -->
-       
-        
          <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-              <!-- </footer> -->
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js') ?>"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());           ?>"></script>-->
         <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
@@ -694,14 +648,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
-
         <?php } else { ?>
-              <!-- </footer> -->
         <script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('assets/js_min/jquery.form.3.51.js') ?>"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());           ?>"></script>-->
         <script src="<?php echo base_url('assets/dragdrop/js_min/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js_min/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js_min/locales/fr.js?ver=' . time()); ?>"></script>
@@ -709,18 +660,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
-
         <?php } ?>
-            
-            
-            
-            
-        <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                             var base_url = '<?php echo base_url(); ?>';
                                             var slug = '<?php echo $slugid; ?>';
         </script>
-        <!-- script for login  user valoidtaion start -->
         <script>
             function open_profile() {
                 register_profile();
@@ -744,9 +688,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             {
                 document.getElementById('error1').style.display = 'none';
             }
-            //validation for edit email formate form
             $(document).ready(function () {
-                /* validation */
                 $("#login_form").validate({
                     rules: {
                         email_login: {
@@ -767,8 +709,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             },
                     submitHandler: submitForm
                 });
-                /* validation */
-                /* login submit */
                 function submitForm()
                 {
 
@@ -813,16 +753,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     });
                     return false;
                 }
-                /* login submit */
             });
-
-
-
         </script>
         <script>
-
             $(document).ready(function () {
-
                 $.validator.addMethod("lowercase", function (value, element, regexpr) {
                     return regexpr.test(value);
                 }, "Email Should be in Small Character");
@@ -1007,17 +941,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             });
 
         </script>
-        <!-- forgot password script end -->
         <script type="text/javascript">
-            $(document).ready(function () { //aletr("hii");
-                /* validation */
+            $(document).ready(function () { 
                 $("#forgot_password").validate({
                     rules: {
                         forgot_email: {
                             required: true,
                             email: true,
                         }
-
                     },
                     messages: {
                         forgot_email: {
@@ -1025,8 +956,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         }
                     },
                 });
-                /* validation */
-
             });
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
@@ -1061,6 +990,5 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 }
             })
         </script>
-
     </body>
 </html>
