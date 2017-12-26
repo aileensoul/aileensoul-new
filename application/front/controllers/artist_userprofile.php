@@ -142,8 +142,7 @@ class Artist_userprofile extends CI_Controller {
                 $post_poster1 = explode('.', $post_poster);
                 $post_poster2 = end($post_poster1);
                 $post_poster = str_replace($post_poster2, 'png', $post_poster);
-                //echo "<pre>"; print_r($post_poster); die();
-
+        
                 if (IMAGEPATHFROM == 'upload') {
                     $fetch_video .= '<td class = "image_profile">';
                     if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
@@ -584,8 +583,6 @@ class Artist_userprofile extends CI_Controller {
         $return_html = '';
 
         $artsdata1 = array_slice($artsdata, $start, $perpage);
-        //echo "<pre>"; print_r($artsdata1);  count($artsdata1); 
-        //echo count($artsdata); die();
 
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($artsdata);
@@ -846,13 +843,6 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
              </a>
         </div>';
                     } elseif (in_array($ext, $allowespdf)) {
-
-        //                 $return_html .= '<div><a href = "javascript:void(0)" target="_blank" onclick="login_profile();"> 
-
-        //    <div class="pdf_img">
-        //            <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
-        //         </div></a>
-        // </div>';
 
                          $return_html .= '<div>
 <a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">

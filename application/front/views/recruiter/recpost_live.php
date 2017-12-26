@@ -110,7 +110,7 @@
                                             <?php } ?>
                                         </span>
 
-                                        <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;  ?>
+                                       
                                         <div class="profile-boxProfile-name">
                                             <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                                 <a href="<?php echo site_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
@@ -181,9 +181,7 @@
                                         }
                                         ?></h3>
                                     <div class="contact-frnd-post">
-                                        <!--                                <div class = "job-contact-frnd">
-                                                                            AJAX DATA START FOR RECOMMAND CANDIDATE
-                                                                        </div>-->
+                                       
                                         <?php
                                         if (count($postdata) > 0) {
                                             foreach ($postdata as $post) {
@@ -244,7 +242,7 @@
                                                                                 ?> </a>
                                                                         </li>
                                                                         <li class="fw"><a class="display_inline" title="Recruiter Name" href="javascript:void(0)"> <?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?> </a></li>
-                                                                        <!-- vishang 14-4 end -->    
+                                                                           
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -290,14 +288,7 @@
 
                                                                         </span>
                                                                     </li>
-                                                                    <!-- <li><b>Other Skill</b><span> <?php
-                                                                    if ($post['other_skill'] != '') {
-                                                                        echo $post['other_skill'];
-                                                                    } else {
-                                                                        echo PROFILENA;
-                                                                    }
-                                                                    ?></span>
-                                                                    </li> -->
+                                                                    
                                                                     <li><b>Job Description</b><span><pre><?php echo $this->common->make_links($post['post_description']); ?></pre></span>
                                                                     </li>
                                                                     <li><b>Interview Process</b><span>
@@ -456,15 +447,8 @@
                                                                 <div class="profile-job-details col-md-12">
                                                                     <ul><li class="job_all_post ">
                                                                         <li class="job_all_post last_date">
-<!--                                                                            Last Date :-->
-                                                                            <?php
-//                                                                            if ($post['post_last_date'] != "0000-00-00") {
-//                                                                                echo date('d-M-Y', strtotime($post['post_last_date']));
-//                                                                            } else {
-//                                                                                echo PROFILENA;
-//                                                                            }
-                                                                            ?>
-                                                                        </li>                                                   </li>
+
+                                                                        </li>  </li>
                                                                         <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                                                             <li class="fr">';
                                                                                 <a href="javascript:void(0);" title="Remove" class="button" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
@@ -544,7 +528,7 @@
                                             </div>
                                         <?php }
                                         ?>
-                        <!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>-->
+                      
                                     </div>
                                 </div>
                             </div>

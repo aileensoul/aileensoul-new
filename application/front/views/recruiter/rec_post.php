@@ -20,7 +20,6 @@
         <?php echo $header; ?>
         <?php
         $userid = $this->session->userdata('aileenuser');
-       // $returnpage = $_GET['page'];
         if ($postdataone[0]['user_id'] != $userid) {
             echo $job_header2_border;
         } elseif ($recdata[0]['re_step'] == 3) {
@@ -290,10 +289,9 @@
         </div>
         <!--PROFILE PIC MODEL END-->
         <!-- START FOOTER -->
-        <!-- <footer> -->
+      
 <?php echo $login_footer ?>
 <?php echo $footer; ?>
-        <!-- </footer> -->
         <!-- END FOOTER -->
 
 

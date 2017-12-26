@@ -407,8 +407,6 @@
 
                                 <div class="job-saved-box">
 
-
-                                    <?php //echo form_open(base_url('recruiter/add_post_login_insert'), array('id' => 'artpost', 'name' => 'artpost', 'class' => 'clearfix form_addedit', 'onsubmit' => "return imgval()")); ?>
                                     <form id="artpost" name="artpost" class="clearfix">
                                     <?php
                                     $postname = form_error('postname');
@@ -464,7 +462,7 @@
 
                                                 <textarea name="interview" id="interview" rows="4" tabindex="5" cols="50"  placeholder="Enter Interview Process" style="resize: none;"></textarea>
 
-                                                <?php //echo form_error('interview'); ?> 
+                                                
                                             </fieldset>
                                             <fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box1">
 
@@ -723,7 +721,7 @@
 
                                             <fieldset  class="hs-submit full-width">
 
-                                                <!--<a href="javascript:void(0);" onClick="register_profile();" class= "applypost  button"> Apply</a>-->
+                                               
                                                 <input type="submit" title="Post" id="submit"  class="add_post_btns" tabindex="24" name="submit" value="Post">
 
                                             </fieldset>
@@ -743,67 +741,7 @@
         </section>
         <?php echo $login_footer ?>
            <?php echo $footer; ?>
-<!--        Login  
-        <div class="modal fade login" id="login1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content login-frm">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
-                        <div class="right-main">
-                            <div class="right-main-inner">
-                                <div class="">
-                                        <div class="title">
-                                            <h1 class="ttc">Welcome To Aileensoul</h1>
-                                        </div>
 
-                                        <form role="form" name="login_form_not" id="login_form_not" method="post">
-
-                                            <div class="form-group">
-                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
-                                                <div id="error2" style="display:block;">
-                                                    <?php
-                                                    if ($this->session->flashdata('erroremail')) {
-                                                        echo $this->session->flashdata('erroremail');
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <div id="errorlogin"></div> 
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
-                                                <div id="error1" style="display:block;">
-                                                    <?php
-                                                    if ($this->session->flashdata('errorpass')) {
-                                                        echo $this->session->flashdata('errorpass');
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <div id="errorpass"></div> 
-                                            </div>
-
-                                            <p class="pt-20 ">
-                                                <button class="btn1" onclick="login()">Login</button>
-                                            </p>
-
-                                            <p class=" text-center">
-                                                <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
-                                            </p>
-
-                                            <p class="pt15 text-center">
-                                                Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
-                                            </p>
-                                        </form>
-
-                                   
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-         Login -->
          
            <!-- Login for submit post data -->
         <div class="modal fade login" id="login" role="dialog">
@@ -910,10 +848,7 @@
                                             <span>
                                                 <select tabindex="35" class="month1" name="selmonth" id="selmonth">
                                                     <option value="" disabled selected value>Month</option>
-                                                    //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                    ?>
+                                                   
                                                     <option value="1">Jan</option>
                                                     <option value="2">Feb</option>
                                                     <option value="3">Mar</option>
@@ -926,10 +861,7 @@
                                                     <option value="10">Oct</option>
                                                     <option value="11">Nov</option>
                                                     <option value="12">Dec</option>
-                                                    //<?php
-//                  }
-//                  
-                                                    ?>
+                                                    
                                                 </select></span>
                                             <span>
                                                 <select tabindex="36" class="year1" name="selyear" id="selyear">
@@ -961,7 +893,7 @@
                                         </p>
                                         <p>
                                             <button tabindex="38" class="btn1">Create an account</button>
-                                                                                        <!--<p class="next">Next</p>-->
+                                                                                       
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>

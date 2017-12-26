@@ -385,12 +385,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             if ($this->uri->segment(3) == $userid) {
                                 if ($recdata[0]['designation'] == '') {
                                     ?>
-                <!--<center><a id="myBtn" title="Designation">Designation</a></center>-->
+                
                                     <a id="designation" class="designation" title="Designation">Designation</a>
 
                                 <?php } else {
                                     ?> 
-                 <!--<a id="myBtn" title="<?php echo ucwords($job[0]['designation']); ?>"><?php echo ucwords($job[0]['designation']); ?></a>-->
+                
                                     <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
                                     <?php
                                 }
@@ -399,7 +399,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                 if ($recdata[0]['designation'] == '') {
                                     ?>
-                                    <!--<center><a id="myBtn" title="Designation">Designation</a></center>-->
+                                   
                                     <a id="designation"  title="Designation">Designation</a>
 
                                 <?php } else {  ?>
@@ -499,14 +499,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 <?php
                             } else {
                                 ?> 
-                                <!--<a id="myBtn" title="<?php echo ucwords($job[0]['designation']); ?>"><?php echo ucwords($job[0]['designation']); ?></a>-->
+                                
                                 <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
                             <?php
                             }
                         } else {
                            if ($recdata[0]['designation'] == '') {
                                     ?>
-                                    <!--<center><a id="myBtn" title="Designation">Designation</a></center>-->
+                                    
                                     <a id="designation"  title="Designation">Designation</a>
 
                                 <?php } else {  ?>
@@ -1012,10 +1012,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         <span>
                                         <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
-                                            //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-?>
+                                           
+
                                             <option value="1">Jan</option>
                                             <option value="2">Feb</option>
                                             <option value="3">Mar</option>
@@ -1028,10 +1026,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             <option value="10">Oct</option>
                                             <option value="11">Nov</option>
                                             <option value="12">Dec</option>
-                                            //<?php
-//                  }
-//                  
-?>
+                                            
                                         </select></span>
                                         <span>
                                         <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -1138,8 +1133,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         
         <script>
                                     var base_url = '<?php echo base_url(); ?>';
-                                    //var data1 = <?php// echo json_encode($de); ?>;
-                                   // var data = <?php //echo json_encode($demo); ?>;
                                     var jobdata = <?php echo json_encode($jobtitle); ?>;
                                     var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
                                     var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -1173,7 +1166,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 $('#register').modal('show');
             }
              function login_data() { 
-                //$('#login').modal('show');
                 $('#login').modal('show');
                 $('#register').modal('hide');
 
@@ -1192,7 +1184,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
     
     $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
         $('#register').modal('hide');
          $('#login').modal('hide');
     }
@@ -1304,7 +1295,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 type: "post",
                                 data: {
                                     email_reg: function () {
-                                        // alert("hi");
+                                       
                                         return $("#email_reg").val();
                                     },
                                     '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
@@ -1418,7 +1409,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     $(".dateerror").html("This month has only 30 days.");
                                     return false;
                                 }
-                            } else if (selmonth == 2) { //alert("hii");
+                            } else if (selmonth == 2) { 
                                 if (selday == 31 || selday == 30) {
                                     $(".dateerror").html("This month has only 29 days.");
                                     return false;
@@ -1452,7 +1443,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         {
                             if (response.okmsg == "ok") {
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
-//                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
                                 window.location = "<?php echo base_url() ?>job";
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
@@ -1469,7 +1459,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </script>
         <!-- forgot password script end -->
         <script type="text/javascript">
-            $(document).ready(function () { //aletr("hii");
+            $(document).ready(function () { 
                 /* validation */
                 $("#forgot_password").validate({
                     rules: {

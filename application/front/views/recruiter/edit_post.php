@@ -57,7 +57,6 @@
                                 $post_name = form_error('post_name');
                                 $skills_12 = form_error('skills');
                                 $month = form_error('month');
-                                //$interview =  form_error('interview');
                                 $position = form_error('position');
                                 $post_desc = form_error('post_desc');
                                 $last_date = form_error('last_date');
@@ -82,8 +81,6 @@
                                 </fieldset>
 								<fieldset  class="full-width">
                                     <label >Job Description:<span style="color:red">*</span></label>
-
-                                    <!--  <?php echo form_textarea(array('name' => 'post_desc', 'id' => 'varmailformat', 'class' => "ckeditor", 'value' => html_entity_decode($postdata[0]['post_description']))); ?> -->
 
                                     <textarea name="post_desc" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" tabindex="2" id="varmailformat" rows="8" cols="50"  placeholder="Enter Job Description" style="resize: none;"><?php echo $postdata[0]['post_description']; ?></textarea>
 
@@ -127,7 +124,7 @@
                                 </fieldset>
                                                                     
                                                                      <fieldset class="full-width">
-                                      <label>Interview process:<span class="optional">(optional)</span><!-- <span style="color:red">*</span> --></label>
+                                      <label>Interview process:<span class="optional">(optional)</span></label>
 
                                     <textarea name="interview" id="interview" tabindex="5" rows="4" placeholder="Enter Interview Process" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"><?php echo $postdata[0]['interview_process']; ?></textarea>
 
@@ -318,14 +315,14 @@
 
                                 </fieldset>
 								<fieldset class="half-width  pad_left" <?php if ($minsal) { ?> class="error-msg" <?php } ?>>
-                                          <label class="control-label">Minimum Salary:<span class="optional">(optional)</span><!-- <span style="color:red">*</span> --></label>
+                                          <label class="control-label">Minimum Salary:<span class="optional">(optional)</span></label>
                                     <input name="minsal" tabindex="17" type="text" id="minsal" value="<?php echo $postdata[0]['min_sal']; ?>"  placeholder="Enter Minimum Salary" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/><span id="fullname-error"></span>
 <?php echo form_error('minsal'); ?>
                                 </fieldset>
                              
 
                                 <fieldset class="half-width " <?php if ($maxsal) { ?> class="error-msg" <?php } ?>>
-                                   <label class="control-label">Maximum Salary:<span class="optional">(optional)</span><!-- <span style="color:red">*</span> --></label>
+                                   <label class="control-label">Maximum Salary:<span class="optional">(optional)</span></label>
                                     <input name="maxsal" type="text" tabindex="18" id="maxsal" value="<?php echo $postdata[0]['max_sal']; ?>"  placeholder="Enter Maximum Salary" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/><span id="fullname-error"></span>
 <?php echo form_error('maxsal'); ?>
                                 </fieldset>
@@ -406,7 +403,6 @@
                                         if ($postdata[0]['city']) {
                                             foreach ($cities as $cnt) {
 
-                                                //echo "hi";die();
                                                 ?>
 
                                                 <option value="<?php echo $cnt['city_id']; ?>" <?php if ($cnt['city_id'] == $postdata[0]['city']) echo 'selected'; ?>><?php echo $cnt['city_name']; ?></option>
@@ -522,7 +518,6 @@
              <!-- FIELD VALIDATION JS START -->
         <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
         <script src="<?php echo base_url('assets/js_min/jquery.fancybox.js'); ?>"></script>
-        <!-- THIS SCRIPT ALWAYS PUT UNDER FANCYBOX JS-->
         <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script> 
         <!--SCRIPT FOR DATE START-->
         <script src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js'); ?>"></script>

@@ -229,7 +229,7 @@
                                 </fieldset>
 
                                 <fieldset <?php if ($comp_profile) { ?> class="error-msg" <?php } ?> class="full-width">
-                                    <label>Company Profile:<span class="optional">(optional)</span><!-- <span style="color:red">*</span> -->
+                                    <label>Company Profile:<span class="optional">(optional)</span>
 
                                         <textarea tabindex="9" name ="comp_profile" id="comp_profile" rows="4" cols="50" placeholder="Enter Company Profile" style="resize: none;" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"><?php
                                             if ($comp_profile1) {
@@ -242,7 +242,7 @@
 
 
                                 <fieldset <?php if ($other_activities) { ?> class="error-msg" <?php } ?> class="full-width">
-                                    <label>Other activities:<!-- <span style="color:red">*</span> --><span class="optional">(optional)</span></label>
+                                    <label>Other activities:<span class="optional">(optional)</span></label>
 
 
                                     <textarea name ="other_activities" tabindex="10" id="other_activities" rows="4" cols="50" placeholder="Enter Other Activities" style="resize: none;"><?php

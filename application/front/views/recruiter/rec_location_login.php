@@ -514,8 +514,7 @@
                                                 
                                                 </span>
                                             </li>
-                                            <!-- <li><b>Other Skill</b><span> <?php if($post['other_skill'] != ''){ echo $post['other_skill']; } else{ echo PROFILENA;} ?></span>
-                                            </li> -->
+                                            
                                             <li><b>Job Description</b><span><pre><?php echo $this->common->make_links($post['post_description']); ?></pre></span>
                                             </li>
                                             <li><b>Interview Process</b><span>
@@ -529,7 +528,6 @@
                                             </span>
                                             </li>
 
-                                            <!-- vishang 14-4 start -->
                                               <li>
                                                 <b>Required Experience</b>
                                                  <span>
@@ -686,10 +684,7 @@
                                                                                   
                                                                                     <a href="javascript:void(0);" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button" title="Apply"> Apply</a>
                                                                                 </li> 
-<!--                                                                                <li>
-                                                                                        <a  href="javascript:void(0);" onclick="login_profile();" class="savedpost> button">Save</a>
 
-                                                                            </li>                        -->
                                                                         </ul>
                                                                     </div>
 
@@ -702,7 +697,7 @@
                     }
                     ?>
                               <!--.........AJAX DATA END......-->           
-                         <!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>-->
+                        
               </div>
 
             </div>
@@ -724,7 +719,7 @@
                         ?>
                         <div class="job-contact-frnd ">
                             <div class="profile-job-post-detail clearfix" id="<?php echo "removepost" . $post['post_id']; ?>">
-                                <!-- vishang 14-4 end -->
+                              
                                 <div class="profile-job-post-title clearfix">
                                     <div class="profile-job-profile-button clearfix">
        <div class="profile-job-details col-md-12">
@@ -779,7 +774,7 @@
              echo $out;?> </a>
               </li>
               <li class="fw"><a class="display_inline" title="Recruiter Name" href="javascript:void(0)"> <?php echo ucfirst(strtolower($post['rec_firstname'])).' '. ucfirst(strtolower($post['rec_lastname'])); ?> </a></li>
-                                                <!-- vishang 14-4 end -->    
+                                                  
                                             </ul>
                                         </div>
                                     </div>
@@ -827,8 +822,7 @@
                                                 
                                                 </span>
                                             </li>
-                                            <!-- <li><b>Other Skill</b><span> <?php if($post['other_skill'] != ''){ echo $post['other_skill']; } else{ echo PROFILENA;} ?></span>
-                                            </li> -->
+                                            
                                             <li><b>Job Description</b><span><pre><?php echo $this->common->make_links($post['post_description']); ?></pre></span>
                                             </li>
                                             <li><b>Interview Process</b><span>
@@ -842,7 +836,6 @@
                                             </span>
                                             </li>
 
-                                            <!-- vishang 14-4 start -->
                                               <li>
                                                 <b>Required Experience</b>
                                                  <span>
@@ -1000,7 +993,7 @@
                                                                                       <a href="javascript:void(0);" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button" title="Apply"> Apply</a>
                                                                                 </li> 
                                                                                 <li>
-                                                                                        <!--<a  href="javascript:void(0);" onclick="login_profile();" class="savedpost> button">Save</a>-->
+                                                                                       
 
                                                                             </li>                        
                                                                         </ul>
@@ -1015,7 +1008,7 @@
                     }
                     ?>
                               <!--.........AJAX DATA END......-->           
-                         <!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>-->
+                       
               </div>
 
             </div>
@@ -1096,10 +1089,7 @@
          </div>
       </div>
       <!-- Model Popup Close -->
-      
-<!--footer>        
-<?php //echo $footer;  ?>
-</footer-->
+    
 
 <!-- Login  -->
         <div class="modal fade login" id="login" role="dialog">
@@ -1321,10 +1311,7 @@
                                             </select>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
-                                                //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                ?>
+                                               
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -1337,10 +1324,7 @@
                                                 <option value="10">Oct</option>
                                                 <option value="11">Nov</option>
                                                 <option value="12">Dec</option>
-                                                //<?php
-//                  }
-//                  
-                                                ?>
+                                               
                                             </select>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
@@ -1371,7 +1355,7 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-											<!--<p class="next">Next</p>-->
+											
                                         </p>
 										<div class="sign_in pt10">
                                         <p>
@@ -1435,10 +1419,7 @@
                                             </select>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
-                                                //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                ?>
+                                                
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -1451,10 +1432,7 @@
                                                 <option value="10">Oct</option>
                                                 <option value="11">Nov</option>
                                                 <option value="12">Dec</option>
-                                                //<?php
-//                  }
-//                  
-                                                ?>
+                                                
                                             </select>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
@@ -1485,7 +1463,7 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-											<!--<p class="next">Next</p>-->
+											
                                         </p>
                                     </form>
 									</div>

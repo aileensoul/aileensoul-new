@@ -450,7 +450,7 @@
                                                     <a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
                                                 </span>
 
-                                                <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;   ?>
+                                               
                                                 <div class="profile-boxProfile-name">
                                                     <a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
                                                         <?php
@@ -475,36 +475,7 @@
                                     </div>                             
                                 </div>
                                 <?php if ($_GET['page'] == all_jobs) { ?>
-                                    <!--                                    <div class="full-box-module">   
-                                                                            <div class="profile-boxProfileCard  module">
-                                                                                <div class="profile-boxProfileCard-cover"> 
-                                                                                    <a href="<?php echo base_url("jobs"); ?>" >All Jobs</a>
-                                                                                    <label for="City" class="lbpos fw">
-                                                                                        <a href="<?php echo base_url("jobs/?city=Ahmedabad"); ?>" <?php if ($_GET['city'] == 'Ahmedabad') { ?> class="job_active" <?php } ?>>Ahmedabad Jobs</a>
-                                                                                    </label>
-                                                                                    <label for="City" class="lbpos fw">
-                                                                                        <a href="<?php echo base_url("jobs/?city=Bengaluru"); ?>" <?php if ($_GET['city'] == 'Bengaluru') { ?> class="job_active" <?php } ?>>Bengaluru Jobs</a>
-                                                                                    </label>
-                                                                                    <label for="City" class="lbpos fw"> 
-                                                                                        <a href="<?php echo base_url("jobs/?city=Chennai"); ?>" <?php if ($_GET['city'] == 'Chennai') { ?> class="job_active" <?php } ?>>Chennai Jobs</a>
-                                                                                    </label>
-                                                                                    <label for="City" class="lbpos fw">
-                                                                                        <a href="<?php echo base_url("jobs/?city=Delhi"); ?>" <?php if ($_GET['city'] == 'Delhi') { ?> class="job_active" <?php } ?>>Delhi Jobs</a>
-                                                                                    </label>
-                                                                                    <label for="City" class="lbpos fw">
-                                                                                        <a href="<?php echo base_url("jobs/?city=Hyderabad"); ?>" <?php if ($_GET['city'] == 'Hyderabad') { ?> class="job_active" <?php } ?>>Hyderabad Jobs</a>
-                                                                                    </label>
                                     
-                                                                                    <label for="City" class="lbpos fw">
-                                                                                        <a href="<?php echo base_url("jobs/?city=Mumbai"); ?>" <?php if ($_GET['city'] == 'Mumbai') { ?> class="job_active" <?php } ?>>Mumbai Jobs</a>
-                                                                                    </label>
-                                    
-                                                                                    <label for="City" class="lbpos fw">
-                                                                                        <a href="<?php echo base_url("jobs/?city=pune"); ?>" <?php if ($_GET['city'] == 'pune') { ?> class="job_active" <?php } ?>>Pune Jobs</a>
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>-->
                                 <?php } ?>
 
                       <?php echo $left_footer; ?>
@@ -593,7 +564,7 @@
                                                                             ?> </a>
                                                                     </li>
                                                                     <li class="fw"><a class="display_inline" title="Recruiter Name" href="javascript:void(0)"> <?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?> </a></li>
-                                                                    <!-- vishang 14-4 end -->    
+                                                                     
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -639,14 +610,7 @@
 
                                                                     </span>
                                                                 </li>
-                                                                <!-- <li><b>Other Skill</b><span> <?php
-                                                                if ($post['other_skill'] != '') {
-                                                                    echo $post['other_skill'];
-                                                                } else {
-                                                                    echo PROFILENA;
-                                                                }
-                                                                ?></span>
-                                                                </li> -->
+                                                                
                                                                 <li><b>Job Description</b><span><pre><?php echo $this->common->make_links($post['post_description']); ?></pre></span>
                                                                 </li>
                                                                 <li><b>Interview Process</b><span>
@@ -806,13 +770,8 @@
                                                                 <ul><li class="job_all_post ">
                                                                     <li class="job_all_post last_date">
                                                                         <!--Last Date :-->
-                                                                        <?php
-//                                                                        if ($post['post_last_date'] != "0000-00-00") {
-//                                                                            echo date('d-M-Y', strtotime($post['post_last_date']));
-//                                                                        } else {
-//                                                                            echo PROFILENA;
-//                                                                        }
-                                                                        ?>
+                                                                        
+
                                                                     </li>                                                              </li>
                                                                     <li class=fr>
 
@@ -835,7 +794,7 @@
                                         }
                                         ?>
                                         <!--.........AJAX DATA END......-->           
-                                   <!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>-->
+                                 
                                     </div>
 
                                 </div>
@@ -956,14 +915,7 @@
 
                                                                                 </span>
                                                                             </li>
-                                                                            <!-- <li><b>Other Skill</b><span> <?php
-                                                                            if ($post['other_skill'] != '') {
-                                                                                echo $post['other_skill'];
-                                                                            } else {
-                                                                                echo PROFILENA;
-                                                                            }
-                                                                            ?></span>
-                                                                            </li> -->
+                                                                           
                                                                             <li><b>Job Description</b><span><pre><?php echo $this->common->make_links($post['post_description']); ?></pre></span>
                                                                             </li>
                                                                             <li><b>Interview Process</b><span>
@@ -1137,8 +1089,7 @@
                                                                                     <a href="javascript:void(0);" title="login_profile_apply" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button"> Apply</a>
                                                                                 </li> 
                                                                                 <li>
-                                                                                    <!--<a  href="javascript:void(0);" onclick="login_profile();" class="savedpost> button">Save</a>-->
-
+                                                                                    
                                                                                 </li>                        
                                                                             </ul>
                                                                         </div>
@@ -1152,7 +1103,7 @@
                                                     }
                                                     ?>
                                                     <!--.........AJAX DATA END......-->           
-                                               <!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>-->
+                                               
                                                 </div>
 
                                             </div>
@@ -1233,11 +1184,6 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-
-        <!--footer>        
-        <?php //echo $footer;   ?>
-        </footer-->
-
         <!-- Login  -->
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
@@ -1459,10 +1405,7 @@
                                             <span>
                                                 <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                     <option value="" disabled selected value>Month</option>
-                                                    //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                    ?>
+                                                   
                                                     <option value="1">Jan</option>
                                                     <option value="2">Feb</option>
                                                     <option value="3">Mar</option>
@@ -1475,10 +1418,7 @@
                                                     <option value="10">Oct</option>
                                                     <option value="11">Nov</option>
                                                     <option value="12">Dec</option>
-                                                    //<?php
-//                  }
-//                  
-                                                    ?>
+                                                    
                                                 </select></span>
                                             <span>
                                                 <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -1510,7 +1450,7 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-                                                                                        <!--<p class="next">Next</p>-->
+                                                                                        
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>
@@ -1574,10 +1514,7 @@
                                             </select>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
-                                                //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                ?>
+                                               
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -1590,10 +1527,7 @@
                                                 <option value="10">Oct</option>
                                                 <option value="11">Nov</option>
                                                 <option value="12">Dec</option>
-                                                //<?php
-//                  }
-//                  
-                                                ?>
+                                                
                                             </select>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
@@ -1624,7 +1558,7 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-                                                                                        <!--<p class="next">Next</p>-->
+                                                                                       
                                         </p>
                                     </form>
                                 </div>

@@ -100,10 +100,7 @@
                     </label>
 
                 </div>
-                <!-- </div>
-                -->
-                <!-- </div>
-                -->   
+                
                 <div class="profile-photo">
                     <!--PROFILE PIC CODE START-->
                     <div class="profile-pho">
@@ -144,7 +141,7 @@
                                 <a id="designation" class="designation" title="Designation">Designation</a>
                                 <?php
                             } else {
-                                // echo "hello";
+                               
                                 ?> 
 
                                 <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
@@ -219,7 +216,6 @@
                             <a id="designation" class="designation" title="Designation">Designation</a>
                             <?php
                         } else {
-                            // echo "hello";
                             ?> 
 
                             <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
@@ -240,7 +236,6 @@
 
                     <!-- text head end -->
                 </div>
-                <!-- <?php //echo "<pre>"; print_r($recdata);die();  ?> -->
                 <div class="col-md-7 col-sm-12 mob-clear">
                     <div class="common-form">
                         <div class="job-saved-box">
