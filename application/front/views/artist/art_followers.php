@@ -3,8 +3,6 @@
 <head>
 <title><?php echo $title; ?></title>
 <?php echo $head; ?>
-<!-- <link rel="stylesheet" href="<?php //echo base_url('assets/css/bootstrap-3.min.css?ver='.time()); ?>"> -->
-
  <?php
         if (IS_ART_CSS_MINIFY == '0') {
             ?>
@@ -64,8 +62,6 @@
                             <div id="popup-form">
                              <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                <div class=" ">
-
-                                <!-- <div class="user_profile"></div> -->
                                 <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
 
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
@@ -88,7 +84,6 @@
          <div class="modal-content">
             <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
             <div class="modal-body">
-               <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                <span class="mes"></span>
             </div>
          </div>

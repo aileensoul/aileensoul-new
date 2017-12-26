@@ -78,7 +78,7 @@
                                   }
               ?>                               
                   </h3>
-                  <!--        <div class="contact-frnd-post"> -->
+              
                   <div class="job-contact-frnd art-search-extra pt10">
 				  	
 

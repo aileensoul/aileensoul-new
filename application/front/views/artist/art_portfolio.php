@@ -29,9 +29,6 @@
         <?php if ($artdata[0]['art_step'] == 4) { ?>
             <?php echo $art_header2_border; ?>
         <?php } ?>
-
-<!-- <div class="js">
-<div id="preloader"></div> -->
       <section>
         
        <?php 

@@ -43,30 +43,8 @@
 
                                                     <div class="all-box">
                                             <ul> 
-                                               <!-- <li>
-                                                    <img src="http://localhost/aileensoul/uploads/business_post/thumbs/file_1496664178_jh179.jpg">
-                                                </li>
-                                                <li>
-                                                    <img src="http://localhost/aileensoul/uploads/business_post/thumbs/file_1496664178_jh179.jpg">
-                                                </li>
-                                                <li>
-                                                    <img src="http://localhost/aileensoul/uploads/business_post/thumbs/file_1496664178_jh179.jpg">
-                                                </li>
-                                                <li>
-                                                    <img src="http://localhost/aileensoul/uploads/business_post/thumbs/file_1496664178_jh179.jpg">
-                                                </li>
-                                                <li>
-                                                    <img src="http://localhost/aileensoul/uploads/business_post/thumbs/file_1496664178_jh179.jpg">
-                                                </li>
-                                                <li>
-                                                    <img src="http://localhost/aileensoul/uploads/business_post/thumbs/file_1496664178_jh179.jpg">
-                                                </li>
-
-                                                <li>
-                                                    <img src="http://localhost/aileensoul/uploads/business_post/thumbs/file_1496664178_jh179.jpg">
-                                                </li> -->
-
-                                                                                <?php
+                                               
+        <?php
 
           $contition_array = array('user_id' => $artisticdata[0]['user_id']);
          $artisticimage = $this->data['artisticimage'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -116,13 +94,11 @@
              $artistictitle = $this->data['artistictitle'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
               ?>
 
-        <!-- <a href="<?php //echo base_url('artist/creat_pdf/'.$pdfv['post_files_id']) ?>"> -->
         <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url($this->config->item('art_post_main_upload_path') . $pdfv['file_name']) ?>">
 
         <div class="margin_less" >
               <img src="<?php echo base_url('assets/images/PDF.jpg')?>" style="height: 100%; width: 100%;" alt="<?php echo "PDF.jpg"; ?>"> 
-              <!-- <embed src="<?php echo ART_POST_MAIN_UPLOAD_URL . $pdfv['file_name'] ?>" width="100%" height="450px" /> -->
-                                                              
+                                                                      
               </div></a> </div> 
 
               
@@ -132,8 +108,7 @@
         </a> </div>
 </div>
 </li>
-        <!-- <a href="<?php echo base_url('artist/creat_pdf/'.$pdfv['post_files_id']) ?>">
-        <div class="pdf_name"><a title="Zalak infotech .in pdf" href="">Zalak infotech .in pdf</a> </div></a> -->
+      
 
         <?php } } else{?>
                                          
@@ -162,9 +137,6 @@
    
     </div>
 
-
-
-
 </div>
 </div>
 
@@ -178,7 +150,7 @@
                     <div class="modal-content">
                         <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                         <div class="modal-body">
-                            <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
+                          
                             <span class="mes"></span>
                         </div>
                     </div>

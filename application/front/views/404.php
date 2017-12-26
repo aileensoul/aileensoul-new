@@ -6,7 +6,7 @@
     </head>
 <body class="page-container-bg-solid page-boxed">
     <?php echo $header; ?>
-    <img src="<?php echo base_url() ?>assets/images/404.jpg" alt="404" />
+    <img src="<?php echo base_url() ?>assets/images/404.jpg?ver=<?php echo time(); ?>" alt="404" />
     <script>
         var base_url = '<?php echo base_url(); ?>';
     </script>

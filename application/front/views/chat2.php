@@ -61,22 +61,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      <?php
         if (IS_MSG_JS_MINIFY == '0') {
             ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css?ver='.time()); ?>">
 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver='.time()); ?>">
 
             <?php
         } else {
             ?>
- <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css'); ?>">
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css?ver='.time()); ?>">
 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css?ver='.time()); ?>">
 
         <?php } ?>
        

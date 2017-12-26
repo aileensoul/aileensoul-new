@@ -26,7 +26,7 @@ header('Expires: '.$date);
         <meta name="description" content="Register into Aileensoul.com for Free, Find job search, Hire employee, Get Freelance work, Grow business network & make Artistic Profiles.">
 
 
-        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
+        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver='.time()); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       <?php
@@ -80,7 +80,7 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-xs-3">
-                            <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png') ?>" alt="logo"></a>
+                            <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-9">
                             <div class="btn-right pull-right t-r-l">

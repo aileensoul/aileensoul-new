@@ -38,8 +38,7 @@
                     </div>
           <div class="tab-content">
             <div class="tab-pane active" id="home"><div class="common-form">
-                            <!-- <div class="add_audio" >
- -->
+                           
                                                   <div class="all-box">
                                             <ul class="video"> 
                                              
@@ -48,7 +47,7 @@
           $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'is_delete' => '0');
          $artvideo = $this->data['artvideo'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-          //echo "<pre>"; print_r($artvideo); die();
+         
             foreach ($artvideo as $val) {
              
             
@@ -66,7 +65,7 @@
                
         <?php  if(count($abc) > 0) {  
 
-            foreach ($abc as $videov) { //echo "<pre>"; print_r($videov); die();
+            foreach ($abc as $videov) { 
          ?>
          <li>
              <div class="vidoe_tag"> 
@@ -112,12 +111,7 @@
                       <source src="movie.ogg" type="video/ogg">
                         Your browser does not support the video tag.
                       </video>
-                <!--  <video controls>
-                  <source src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $videov['file_name']; ?>" type = "video/mp4"> -->
-                   <!--  <source src="<?php echo base_url($this->config->item('art_post_main_upload_path').$videov['image_name'])?>" type="video/mp4"> -->
-                   <!--  <source src="movie.ogg" type="video/ogg">
-               Your browser does not support the video tag.
-                  </video> -->
+                
               </div>
              </li>
 
@@ -153,7 +147,6 @@
                     <div class="modal-content">
                         <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                         <div class="modal-body">
-                            <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                             <span class="mes"></span>
                         </div>
                     </div>
@@ -171,9 +164,6 @@
                             <div id="popup-form">
                              <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                <div class=" ">
-
-                                <!-- <div class="user_profile"></div> -->
-
                                 <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
 
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">

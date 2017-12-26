@@ -21,7 +21,7 @@ header('Cache-Control: public, max-age=30');
 <html lang="en">
     <head>
         <title><?php echo $title; ?></title>
-        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
+        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver='.time()); ?>">
         <meta charset="utf-8">
         <?php
         if($_SERVER['HTTP_HOST'] != "localhost"){
@@ -61,19 +61,19 @@ header('Cache-Control: public, max-age=30');
         <?php
         if (IS_OUTSIDE_CSS_MINIFY == '0') {
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver='.time()); ?>">
             <?php
         } else {
             ?>
-              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/gyc.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/gyc.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css?ver='.time()); ?>">
         <?php } ?>
         
         

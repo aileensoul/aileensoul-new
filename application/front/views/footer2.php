@@ -177,10 +177,10 @@
 if(IS_OUTSIDE_JS_MINIFY == '0'){
 ?>
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
-<script type="text/javascript" src="<?php echo base_url('assets/js/scrollbar/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/scrollbar/jquery.mCustomScrollbar.concat.min.js?ver='.time()); ?>"></script>
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
 <?php }else{ ?>
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
-<script type="text/javascript" src="<?php echo base_url('assets/js_min/scrollbar/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js_min/scrollbar/jquery.mCustomScrollbar.concat.min.js?ver='.time()); ?>"></script>
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
 <?php } ?>

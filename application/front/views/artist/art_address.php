@@ -26,8 +26,7 @@
         <?php if ($artdata[0]['art_step'] == 4) { ?>
             <?php echo $art_header2_border; ?>
         <?php } ?>
-    <!-- <div class="js">
-    <div id="preloader"></div> -->
+   
       <section>
       <?php 
                        
@@ -66,13 +65,7 @@
                     <!-- middle section start -->
                     <div class="col-md-6 col-sm-8">
                     <div>
-                        <!-- <?php
-                                        if ($this->session->flashdata('error')) {
-                                            echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
-                                        }
-                                        if ($this->session->flashdata('success')) {
-                                            echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
-                                        }?> -->
+                        
                     </div>
                         <div class="common-form common-form_border">
                          <h3>
