@@ -210,7 +210,7 @@
                                                                                     echo "1 year";
                                                                                 } elseif ($total_work_year != '0 year' && $total_work_month >= '12 month') {
                                                                                     $month = explode(' ', $total_work_year);
-                                                                                    // print_r($month);
+                                                                                    
                                                                                     $year = $month[0];
                                                                                     $y = 0;
                                                                                     for ($i = 0; $i <= $y; $i++) {
@@ -636,7 +636,6 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                     <div class="modal-body">
-                     <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                         <span class="mes"></span>
                     </div>
                 </div>
@@ -693,9 +692,7 @@
 
 
                                                                 function inviteusermodel(abc) {
-                                                                    //alert(abc);
-
-
+                                                                    
                                                                     $('.biderror .mes').html("<div class='pop_content'>Do you want to invite this candidate for interview?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal' title='Yes'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal' title='No'>No</a></div></div>");
                                                                     $('#bidmodal').modal('show');
 
@@ -706,8 +703,7 @@
 
                                                                     var post_id = "<?php echo $postid; ?>";
                                                                     var post_id = "<?php echo $postid; ?>";
-                                                                    //alert(post_id);
-
+                                                                
                                                                     $.ajax({
                                                                         type: 'POST',
                                                                         url: '<?php echo base_url() . "recruiter/invite_user" ?>',
@@ -722,8 +718,6 @@
                                                                                 show_header_notification(notification_count, to_id);
                                                                             }
 
-                                                                            //    $('.biderror .mes').html("<div class='pop_content'>Candidate invite successfully.");
-                                                                            // $('#bidmodal').modal('show');
                                                                         }
 
                                                                     });
@@ -733,8 +727,7 @@
         </script>
         <script>
             function savepopup(id) {
-                //alert(id);
-
+              
                 save_user(id);
                 //                       
                 $('.biderror .mes').html("<div class='pop_content'>Candidate successfully saved.");
@@ -761,9 +754,6 @@
 
             }
         </script>
-
-<!--<script type="text/javascript" src="<?php //echo base_url('assets/js/webpage/recruiter/saved_candidate.js');  ?>"></script>-->
-
 
         <style type="text/css">
 

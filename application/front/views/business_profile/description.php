@@ -58,23 +58,6 @@
                             <div class="col-md-3 col-sm-4">
                                 <div class="left-side-bar">
                                     <ul class="left-form-each">
-                                        <!--<li class="custom-none"><a href="<?php echo base_url('business-profile/business-information-update'); ?>">Business Information</a></li>
-    
-                                        <li class="custom-none"><a href="<?php echo base_url('business-profile/contact-information'); ?>">Contact Information</a></li>
-    
-                                        <li <?php if ($this->uri->segment(1) == 'business-profile') { ?> class="active init" <?php } ?>><a href="#">Description</a></li>
-                                        <?php
-                                        if ($business_common_data[0]['business_step'] == '3' || $business_common_data[0]['business_step'] == '4') {
-                                            ?>
-                                                            <li class="custom-none"><a href="<?php echo base_url('business-profile/image'); ?>">Business Images</a></li>
-                                            <?php
-                                        } else {
-                                            ?>
-                                                            <li class="custom-none"><a href="javascript:void(0);">Business Images</a></li>
-                                            <?php
-                                        }
-                                        ?>
-                                        -->
                                         <li class="custom-none"><a href="<?php echo base_url('business-profile/business-information-update'); ?>"><?php echo $this->lang->line("business_information"); ?></a></li>
                                         <li class="custom-none"><a href="<?php echo base_url('business-profile/contact-information'); ?>"><?php echo $this->lang->line("contact_information"); ?></a></li>
                                         <li class="custom-none active init"><a href="javascript:void(0);"><?php echo $this->lang->line("description"); ?></a></li>
@@ -256,24 +239,21 @@
                     </div>
                 </div>
         </section>
-        <!-- <footer>     -->
         <?php echo $login_footer ?>
         <?php echo $footer; ?>
     </footer>
-    <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());     ?>"></script>-->
     <script>
-                                            var base_url = '<?php echo base_url(); ?>';
-                                            var slug = '<?php echo $slugid; ?>';
+        var base_url = '<?php echo base_url(); ?>';
+        var slug = '<?php echo $slugid; ?>';
     </script>
     <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/description.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     <?php } else { ?>
-    <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/description.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     <?php } ?>
 </body>
 </html>
-

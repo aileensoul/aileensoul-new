@@ -8,13 +8,11 @@
         if (IS_REC_CSS_MINIFY == '0') {
             ?>
            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
-    <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css'); ?>">
             <?php
         } else {
             ?>
           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
-    <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css'); ?>">
         <?php } ?>
             
@@ -449,7 +447,7 @@
                                  
                      <div class="common-form job_reg_main">
                         <h3>Welcome In Recruiter Profile</h3>
-                         <?php //echo form_open(base_url('recruiter/reg_insert'), array('id' => 'basicinfo', 'name' => 'basicinfo', 'class' => 'clearfix')); ?>
+                         
                         <form id="basicinfo" name="basicinfo" class="clearfix">
                         <fieldset>
                                         <label>First Name<span class="red">*</span>:</label>
@@ -619,7 +617,6 @@
                          
                         <fieldset class=" full-width">
                            <div class="job_reg">
-                              <!--<input type="reset">-->
                               <input title="Register" type="submit" id="submit" name="" value="Register" tabindex="11">
                            </div>
                         </fieldset>
@@ -654,7 +651,6 @@
         <div class="modal fade register-model login" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
-                    <!--<button type="button" class="modal-close" data-dismiss="modal">&times;</button>-->       
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
@@ -696,10 +692,7 @@
                                             <span>
                                                 <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                     <option value="" disabled selected value>Month</option>
-                                                    //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                                    ?>
+                                                    
                                                     <option value="1">Jan</option>
                                                     <option value="2">Feb</option>
                                                     <option value="3">Mar</option>
@@ -712,10 +705,7 @@
                                                     <option value="10">Oct</option>
                                                     <option value="11">Nov</option>
                                                     <option value="12">Dec</option>
-                                                    //<?php
-//                  }
-//                  
-                                                    ?>
+                                                    
                                                 </select></span>
                                             <span>
                                                 <select tabindex="11" class="year" name="selyear" id="selyear">
@@ -749,7 +739,7 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-                                                                                        <!--<p class="next">Next</p>-->
+                                                                                       
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>
@@ -771,7 +761,7 @@
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
-                    <!--<button type="button" class="modal-close" data-dismiss="modal">&times;</button>-->       
+                  
                     <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">
@@ -879,8 +869,6 @@
                                         var base_url = '<?php echo base_url(); ?>';
                                         var data1 = <?php echo json_encode($de); ?>;
                                         var data = <?php echo json_encode($demo); ?>;
-//                                        var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-//                                        var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
                                         var user_session = '<?php echo $this->session->userdata('aileenuser'); ?>';
         
   </script>
@@ -892,7 +880,6 @@
    <script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
-        <script type="text/javascript" src="<?php // echo base_url('assets/js/webpage/recruiter/basic_info.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_reg.js'); ?>"></script>
             <?php
         } else {
@@ -901,7 +888,6 @@
    <script src="<?php echo base_url('assets/js_min/jquery.fancybox.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
      <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/search.js'); ?>"></script>
-        <script type="text/javascript" src="<?php // echo base_url('assets/js/webpage/recruiter/basic_info.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_reg.js'); ?>"></script>
         <?php } ?>
 </body>

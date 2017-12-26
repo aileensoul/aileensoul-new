@@ -42,7 +42,7 @@ if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home'))
                                     </li>
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                   <!--  <span class="badge bg-theme"><?php //echo $message_count;   ?></span> -->
+                                                            
                                         <?php } ?>
                                         <a class="action-button shadow animate dropbtn_common" href="javascript:void(0);" id="InboxLink" onclick = "return getmsgNotification()" title="getmsgNotification"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 
@@ -156,7 +156,7 @@ if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home'))
                                     </li>
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                 <!--  <span class="badge bg-theme"><?php //echo $message_count;   ?></span> -->
+                                                               
                                         <?php } ?>
                                         <a title="Message Notification" class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em><span class="message3-24x24-h"></span>
                                             <span id="message_count"></span>
@@ -168,7 +168,7 @@ if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home'))
                                                 <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
 
                                                     <div>
-                                                        <!--<ul class="notification_data_in_h2" style=" width: 100%; text-align: center">-->
+                                                        
                                                         <ul class="notification_data_in_h2">
 <div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                                                         </ul></div>
@@ -247,7 +247,6 @@ if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home'))
         <div class="modal-content message">
             <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
             <div class="modal-body">
-             <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                 <span class="mes"></span>
             </div>
         </div>
@@ -297,7 +296,7 @@ if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home'))
 
     $(document).on('keydown', function (e) {
         if (e.keyCode === 27) {
-            //$( "#bidmodal" ).hide();
+         
             $('#bidmodal').modal('hide');
         }
     });
@@ -310,7 +309,7 @@ if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home'))
     function addmsg1(type, msg)
     {
         if (msg == 0)
-        { //alert(1234);
+        { 
             $("#message_count").html('');
             $("#message_count").removeAttr("style");
             $('#InboxLink').removeClass('msg_notification_available');
@@ -318,11 +317,11 @@ if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home'))
         } else
         {
             $('#message_count').html(msg);
-            //     $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
+           
             $('#InboxLink').addClass('msg_notification_available');
             $('#message_count').addClass('count_add');
             document.getElementById('message_count').style.display = "block";
-            //alert("welcome");
+            
         }
     }
 
@@ -344,10 +343,7 @@ if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home'))
                         );
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-//                addmsg1("error", textStatus + " (" + errorThrown + ")");
-//                setTimeout(
-//                        waitForMsg1,
-//                        15000);
+
             }
         });
     }
@@ -395,7 +391,7 @@ if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home'))
             dataType: 'json',
             data: '',
            
-            success: function (data) { //alert(data);
+            success: function (data) { 
 
                 $('#userlist').html(data.leftbar);
                 $('.notification_data_in_h2').html(data.headertwo);
@@ -413,7 +409,7 @@ if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home'))
 
     function getmsgNotification() {
         msgNotification();
-        //   msgheader();
+        
     }
 
     function msgNotification() {
@@ -421,10 +417,10 @@ if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home'))
         $.ajax({
             url: "<?php echo base_url(); ?>notification/update_msg_noti/2",
             type: "POST",
-            //data: {uid: 12341234}, //this sends the user-id to php as a post variable, in php it can be accessed as $_POST['uid']
+            
             success: function (data) {
                 data = JSON.parse(data);
-                //alert(data);
+                
                 //update some fields with the updated data
                 //you can access the data like 'data["driver"]'
             }
@@ -432,7 +428,7 @@ if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home'))
     }
     function msgheader()
     {
-        // $("#fad" + clicked_id).fadeOut(6000);
+      
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url() . "notification/msg_header/" . $this->uri->segment(3) . "" ?>',

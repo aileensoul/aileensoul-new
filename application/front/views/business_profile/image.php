@@ -26,9 +26,7 @@
         <?php if ($business_common_data[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>
         <?php } ?>
-        <!--<div class="js">-->
     <body class="page-container-bg-solid page-boxed botton_footer">
-        <!--<div id="preloader"></div>-->
         <section>
             <?php
             $userid = $this->session->userdata('aileenuser');
@@ -73,10 +71,7 @@
                                 </ul>
                             </div>
                         </div>
-
-                        <!-- middle section start -->
-
-                        <div class="col-md-6 col-sm-8">
+                       <div class="col-md-6 col-sm-8">
 
                             <div>
                                 <?php
@@ -106,9 +101,7 @@
                                         $y = 0;
                                         foreach ($busimage as $image) {
                                             $y = $y + 1;
-
-                                            //echo $image['bus_image_id']; 
-                                            ?>
+                                    ?>
                                             <div class="job_work_edit_<?php echo $image['bus_image_id'] ?>" id="image_main">
                                                 <input type="hidden" name="filedata[]" id="filename" value="old">
                                                 <input type="hidden" name="filename[]" id="filename" value="<?php echo $image['image_name']; ?>">
@@ -117,14 +110,9 @@
                                                 <div class="img_bui_data"> 
                                                     <div class="edit_bui_img">
                                                         <img id="imageold" src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name'] ?>" >
-                                                        <!--<img id="imageold" src="<?php // echo base_url($this->config->item('bus_profile_main_upload_path') . $image['file_name'])       ?>" >-->
                                                     </div>
-
-                                                    <?php // if ($y != 1) {
-                                                    ?>
                                                     <div style="float: left;">
                                                         <div class="hs-submit full-width fl">
-        <!--                                                                    <input id="bui_img_delete" type="button" onclick="delete_job_exp(<?php echo $image['bus_image_id']; ?>);" style="display: none;"> -->
                                                             <a href="javascript:void(0);" class="click_close_icon" onclick="delete_job_exp(<?php echo $image['bus_image_id']; ?>);">
                                                                 <div class="bui_close">
                                                                     <label for="bui_img_delete"><i class="fa fa-times" aria-hidden="true"></i></label>
@@ -132,14 +120,12 @@
                                                             </a>
                                                         </div>
                                                     </div>
-                                                    <?php // }  ?>
                                                 </div>
                                             </div>
                                             <?php
                                         }
                                     }
                                     ?>
-<!--<img id="preview" src="#" alt="your image"/>-->
                                 </fieldset>
                                 <fieldset class="hs-submit full-width">
                                     <input type="submit"  id="submit" name="submit" tabindex="2"  value="Submit">
@@ -151,19 +137,13 @@
                 </div>
             </div>
         </section>
-        <!--</div>-->
-        <!-- <footer> -->
         <?php echo $login_footer ?>
         <?php echo $footer; ?>
-        <!-- </footer> -->
-        <!--<script src="<?php // echo base_url('assets/js/jquery.wallform.js?ver='.time());       ?>"></script>-->
 <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <?php } else { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <?php } ?>
-       
-        <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                                         var base_url = '<?php echo base_url(); ?>';
                                                         var slug = '<?php echo $slugid; ?>';
@@ -177,4 +157,3 @@
         <?php } ?>
     </body>
 </html>
-

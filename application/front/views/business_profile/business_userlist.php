@@ -28,10 +28,8 @@
                             <div class="left_fixed">
                                 <?php echo $business_left ?>
                             </div>
-                            
                             <?php echo $left_footer; ?>
                         </div>
-
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="">  
                                 <div class="right_side_posrt fl"> 
@@ -39,7 +37,6 @@
                                         <div class="job-saved-box">
                                             <h3>User list</h3>
                                             <div class="contact-frnd-post">
-                                                
                                                 <!-- AJAX DATA... -->
                                             </div>
                                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="Loader" /></div>
@@ -53,62 +50,59 @@
                         <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
                             <div class="all-profile-box">
-                            <div class="all-pro-head">
-                                <h4>Profiles<a href="<?php echo base_url('profiles/').$this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
+                                <div class="all-pro-head">
+                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
+                                </div>
+                                <ul class="all-pr-list">
+                                    <li>
+                                        <a href="<?php echo base_url('job') ?>">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i1.png?ver=' . time()) ?>" alt="Job Profile">
+                                            </div>
+                                            <span>Job Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('recruiter') ?>">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg?ver=' . time()) ?>" alt="Recruiter Profile">
+                                            </div>
+                                            <span>Recruiter Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('freelance') ?>">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg?ver=' . time()) ?>" alt="Freelance Profile"> 
+                                            </div>
+                                            <span>Freelance Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('business-profile') ?>">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg?ver=' . time()) ?>" alt="Business Profile">
+                                            </div>
+                                            <span>Business Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('artist') ?>">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg?ver=' . time()) ?>" alt="Artistic Profile">
+                                            </div>
+                                            <span>Artistic Profile</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-                            <ul class="all-pr-list">
-                                <li>
-                                    <a href="<?php echo base_url('job') ?>">
-                                        <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i1.png" alt="Job Profile">
-                                        </div>
-                                        <span>Job Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('recruiter') ?>">
-                                        <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i2.jpg" alt="Recruiter Profile">
-                                        </div>
-                                        <span>Recruiter Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('freelance') ?>">
-                                        <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i3.jpg" alt="Freelance Profile"> 
-                                        </div>
-                                        <span>Freelance Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('business-profile') ?>">
-                                        <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i4.jpg" alt="Business Profile">
-                                        </div>
-                                        <span>Business Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('artist') ?>">
-                                        <div class="all-pr-img">
-                                            <img src="<?php echo base_url() ?>assets/img/i5.jpg" alt="Artistic Profile">
-                                        </div>
-                                        <span>Artistic Profile</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
-                        </div>
-                        
+
                     </div>
                 </div>
             </div>
         </section>
-        <!-- <footer> -->
         <?php echo $footer; ?>
-        <!-- </footer> -->
-        <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -119,8 +113,6 @@
                 </div>
             </div>
         </div>
-        <!-- Model Popup Close -->
-        <!-- Bid-modal-2  -->
         <div class="modal fade message-box" id="bidmodal-2" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -141,24 +133,20 @@
                 </div>
             </div>
         </div>
-        <!-- Model Popup Close -->
-        <!-- script for skill textbox automatic end (option 2)-->
-         <script>
-                                        var base_url = '<?php echo base_url(); ?>';
+        <script>
+            var base_url = '<?php echo base_url(); ?>';
         </script>
-      
+
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-          <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <!-- script for business autofill -->
+            <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/userlist.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
-                <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <!-- script for business autofill -->
+            <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/userlist.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } ?>

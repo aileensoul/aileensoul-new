@@ -17,9 +17,7 @@
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
         <?php echo $header; ?>
-        <?php //if ($recdata[0]['re_step'] == 3) { ?>
-            <?php //echo $recruiter_header2_border; ?>
-        <?php //} ?>
+       
         <?php
  $returnpage= $_GET['page'];
  $userid = $this->session->userdata('aileenuser');
@@ -159,12 +157,12 @@
                             if ($this->uri->segment(3) == $userid) {
                                 if ($recdata[0]['designation'] == '') {
                                     ?>
-                <!--<center><a id="myBtn" title="Designation">Designation</a></center>-->
+            
                                     <a id="designation" class="designation" title="Designation">Designation</a>
 
                                 <?php } else {
                                     ?> 
-                 <!--<a id="myBtn" title="<?php echo ucwords($job[0]['designation']); ?>"><?php echo ucwords($job[0]['designation']); ?></a>-->
+                 
                                     <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
                                     <?php
                                 }
@@ -173,7 +171,7 @@
 
                                 if ($recdata[0]['designation'] == '') {
                                     ?>
-                                    <!--<center><a id="myBtn" title="Designation">Designation</a></center>-->
+                                   
                                     <a id="designation"  title="Designation">Designation</a>
 
                                 <?php } else {  ?>
@@ -287,14 +285,14 @@
                                 <?php
                             } else {
                                 ?> 
-                                <!--<a id="myBtn" title="<?php echo ucwords($job[0]['designation']); ?>"><?php echo ucwords($job[0]['designation']); ?></a>-->
+                                
                                 <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
                             <?php
                             }
                         } else {
                            if ($recdata[0]['designation'] == '') {
                                     ?>
-                                    <!--<center><a id="myBtn" title="Designation">Designation</a></center>-->
+                                   
                                     <a id="designation"  title="Designation">Designation</a>
 
                                 <?php } else {  ?>
@@ -712,8 +710,6 @@
         
         <script>
                                     var base_url = '<?php echo base_url(); ?>';
-                                    //var data1 = <?php// echo json_encode($de); ?>;
-                                   // var data = <?php //echo json_encode($demo); ?>;
                                     var jobdata = <?php echo json_encode($jobtitle); ?>;
                                     var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
                                     var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';

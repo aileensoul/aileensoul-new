@@ -83,14 +83,6 @@
 
                                                 <input id="skills2" name="skills" tabindex="5" size="90" placeholder="Enter Skills">
 
-                                    <!-- <select class="skill_other full-width" name="skills[]" tabindex="2" id="skills" multiple="multiple">
-
-                                      <option></option>
-
-                                                <?php //foreach ($skill as $ski) {  ?>
-                                  <option value="<?php //echo $ski['skill_id'];          ?>"><?php // echo $ski['skill'];          ?></option>
-                                                <?php //} ?>
-                                    </select>  -->
                                                 <?php echo form_error('skills'); ?>
                                             </fieldset>
                                             <fieldset class="full-width" <?php if ($industry) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
@@ -117,7 +109,7 @@
 
                                                 <textarea name="interview" id="interview" rows="4" tabindex="7" cols="50"  placeholder="Enter Interview Process" style="resize: none;"></textarea>
 
-                                                <?php //echo form_error('interview'); ?> 
+                                               
                                             </fieldset>
                                             <fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box1">
 

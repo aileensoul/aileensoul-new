@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!--<title><?php echo $title; ?></title>-->
         <title>Search | Business Profile - Aileensoul</title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <?php if (IS_BUSINESS_CSS_MINIFY == '0') { ?>
-        <link href="<?php echo base_url('assets/css/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo base_url('assets/js/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
-            <?php } else { ?>
-        <link href="<?php echo base_url('assets/css_min/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo base_url('assets/js_min/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+            <link href="<?php echo base_url('assets/css/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+            <link href="<?php echo base_url('assets/js/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <?php } else { ?>
+            <link href="<?php echo base_url('assets/css_min/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+            <link href="<?php echo base_url('assets/js_min/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
         <?php } ?>
-      <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-   <script src="<?php echo base_url('assets/js/plugins/sortable.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('assets/js/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
-<?php } else { ?>
-    <script src="<?php echo base_url('assets/js_min/plugins/sortable.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('assets/js_min/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('assets/js_min/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
-<?php } ?>
-        
-        <?php if (IS_BUSINESS_CSS_MINIFY == '0') {  ?>
+        <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
+            <script src="<?php echo base_url('assets/js/plugins/sortable.js?ver=' . time()) ?>" type="text/javascript"></script>
+            <script src="<?php echo base_url('assets/js/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
+            <script src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <?php } else { ?>
+            <script src="<?php echo base_url('assets/js_min/plugins/sortable.js?ver=' . time()) ?>" type="text/javascript"></script>
+            <script src="<?php echo base_url('assets/js_min/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
+            <script src="<?php echo base_url('assets/js_min/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <?php } ?>
+
+        <?php if (IS_BUSINESS_CSS_MINIFY == '0') { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
-            <?php } else {  ?>
-          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business.css?ver=' . time()); ?>">
         <?php } ?>
         <script>
@@ -135,24 +134,14 @@
         </script>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
-        <!-- START HEADER -->
         <?php echo $header; ?>
-        <!-- END HEADER -->
-
         <?php
-        if ($is_business) {
-            echo $business_header2_border;
-        }
-        ?>
+        if ($is_business) { echo $business_header2_border; } ?>
         <section class="search-page">
             <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
                 <div class="container art_container padding-360">
                     <div class="">
-                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
-                            <div class="">
-                                <?php echo $business_left; ?>
-                            </div>
-                        </div>
+                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt"><div class=""><?php echo $business_left; ?></div></div>
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="common-form">
                                 <div class="job-saved-box">
@@ -170,7 +159,6 @@
                                         }
                                         ?>
                                     </h3>
-
                                     <div class="contact-frnd-post">
                                         <div class="job-contact-frnd">
                                             <!-- AJAX DATA... -->
@@ -179,9 +167,7 @@
                                 </div>
                             </div>
                         </div>
-
                         <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-
                             <div class="all-profile-box">
                                 <div class="all-pro-head">
                                     <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
@@ -190,7 +176,7 @@
                                     <li>
                                         <a href="<?php echo base_url('job') ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url() ?>assets/img/i1.png">
+                                                <img src="<?php echo base_url('assets/img/i1.png?ver='.time()) ?>">
                                             </div>
                                             <span>Job Profile</span>
                                         </a>
@@ -198,7 +184,7 @@
                                     <li>
                                         <a href="<?php echo base_url('recruiter') ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url() ?>assets/img/i2.jpg">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg?ver='.time()) ?>">
                                             </div>
                                             <span>Recruiter Profile</span>
                                         </a>
@@ -206,7 +192,7 @@
                                     <li>
                                         <a href="<?php echo base_url('freelance') ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url() ?>assets/img/i3.jpg">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg?ver='.time()) ?>">
                                             </div>
                                             <span>Freelance Profile</span>
                                         </a>
@@ -214,7 +200,7 @@
                                     <li>
                                         <a href="<?php echo base_url('business-profile') ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url() ?>assets/img/i4.jpg">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg?ver='.time()) ?>">
                                             </div>
                                             <span>Business Profile</span>
                                         </a>
@@ -222,7 +208,7 @@
                                     <li>
                                         <a href="<?php echo base_url('artist') ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url() ?>assets/img/i5.jpg">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg?ver='.time()) ?>">
                                             </div>
                                             <span>Artistic Profile</span>
                                         </a>
@@ -237,7 +223,6 @@
     </div>
 </div>
 </section>
-<!-- Bid-modal  -->
 <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
     <div class="modal-dialog modal-lm">
         <div class="modal-content">
@@ -249,8 +234,6 @@
         </div>
     </div>
 </div>
-<!-- Model Popup Close -->
-<!-- Bid-modal-2  -->
 <div class="modal fade message-box" id="likeusermodal" role="dialog">
     <div class="modal-dialog modal-lm">
         <div class="modal-content">
@@ -261,21 +244,16 @@
         </div>
     </div>
 </div>
-<!-- Model Popup Close -->
-<!-- <footer> -->
 <?php echo $footer ?>
-<!-- </footer> -->
-<!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());     ?>"></script>-->
 <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-   <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-<script src="<?php echo base_url('assets/js/jquery.highlite.js?ver=' . time()); ?>">
-</script>
+    <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+    <script src="<?php echo base_url('assets/js/jquery.highlite.js?ver=' . time()); ?>">
+    </script>
 <?php } else { ?>
     <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-<script src="<?php echo base_url('assets/js_min/jquery.highlite.js?ver=' . time()); ?>">
-</script>
+    <script src="<?php echo base_url('assets/js_min/jquery.highlite.js?ver=' . time()); ?>">
+    </script>
 <?php } ?>
-
 <script>
     $('#content').on('change keyup keydown paste cut', 'textarea', function () {
         $(this).height(0).height(this.scrollHeight);

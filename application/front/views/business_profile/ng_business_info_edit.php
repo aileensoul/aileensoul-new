@@ -144,11 +144,8 @@
                     var address_validation = '<?php echo $this->lang->line('address_validation') ?>';
         </script>
         <script>
-                    // Defining angularjs application.
                     var busInfoApp = angular.module('busInfoApp', []);
-                    // Controller function and passing $http service and $scope var.
                     busInfoApp.controller('busInfoController', function ($scope, $http) {
-                        // create a blank object to handle form data.
                         $scope.user = {};
 
                         $scope.countryList = undefined;

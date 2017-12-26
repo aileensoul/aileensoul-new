@@ -14,29 +14,7 @@
            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
         <?php } ?>
-<!--   <script type="text/javascript" language="javascript">
-                                        var aax_size = '300x250';
-                                        var aax_pubname = 'aileensoul-21';
-                                        var aax_src = '302';
-                            </script>-->
 
-<!--<script type="text/javascript">
-  var oldDocumentWrite = document.write
-
-// change document.write temporary
-document.write = function(node){
-    $("#khyati").append(node)
-}
-
-// get script
-$.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() {
-    // replace the temp document.write with the original version
-    setTimeout(function() {
-        document.write = oldDocumentWrite
-    }, 100000000)
-});
-
-</script>-->
 
 
     </head>
@@ -114,7 +92,7 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
                                                     <a href="<?php echo site_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
                                                 </span>
 
-                                                        <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;   ?>
+                                                        
                                                 <div class="profile-boxProfile-name">
                                                     <a href="<?php echo site_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
                                                         <?php
@@ -141,7 +119,7 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
 
 
 <?php echo $left_footer; ?>
-<?php // if (($candidatejob != NULL) || ($recruiterdata != NULL)) {  ?>
+
                                 <div  class="add-post-button">
                                     <a class="btn btn-3 btn-3b"  href="<?php echo base_url('recruiter/add-post'); ?>" title="Recruiter Add Post"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                                 </div> <?php //}  ?>
@@ -155,11 +133,11 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="common-form ">
                                 <div class="job-saved-box">
-<?php //if (($candidatejob != NULL) || ($recruiterdata != NULL)) {  ?>
+
                                     <h3>
                                         Recommended Candidate
                                     </h3>
-<?php // }  ?>
+
                                     <div class="contact-frnd-post">
 
                                         <div class = "job-contact-frnd">
@@ -238,7 +216,6 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                     <div class="modal-body">
-                        <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                         <span class="mes"></span>
                     </div>
                 </div>
@@ -254,14 +231,8 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
 
         <!-- FIELD VALIDATION JS START -->
 
-
-
-
-       
         <script>
             var base_url = '<?php echo base_url(); ?>';
-            //   var data1 = <?php //echo json_encode($de);  ?>;
-            //   var data = <?php //echo json_encode($demo);  ?>;
             var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
             var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
