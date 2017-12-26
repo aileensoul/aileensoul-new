@@ -59,7 +59,7 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 <?php if($this->uri->segment(1) == 'business-profile') { ?>
-<meta name="description" content="<?php echo  $business_common_data[0]['company_name'] . ' in ' . $city_name . '-' . $country_name . ' View full business details like address, contact number, photos and more at Aileensoul.com.'?>" />
+<meta name="description" content="<?php echo  $business_common_data[0]['company_name'] . ' in '; if($city_name){ echo $city_name . '-';} echo $country_name . ' View full business details like address, contact number, photos and more at Aileensoul.com.';?>" />
 <?php }  else {?>
         <meta name="description" content=" " />
 <?php } ?>
