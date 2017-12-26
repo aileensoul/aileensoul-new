@@ -7,9 +7,6 @@ class Job_profile extends MY_Controller {
     public function __construct() {
         parent::__construct();
          $this->load->library('form_validation');
-//        if (!$this->session->userdata('user_id')) {
-//            redirect('login', 'refresh');
-//        }
         //AWS access info start
         $this->load->library('S3');
         //AWS access info end
