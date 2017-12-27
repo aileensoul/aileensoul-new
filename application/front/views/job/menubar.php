@@ -26,7 +26,7 @@ $id = $this->db->get_where('job_reg', array('slug' => $this->uri->segment(3)))->
                 <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume') { ?> class="active" <?php } ?>>
                     <?php if ($userid) { ?>
                         <?php if ($userid != $id) { ?>
-                            <a title="Details" href="<?php echo base_url('job/resume/' . $slugdata[0]['slug']); ?>">Details</a>
+                            <a title="Details" href="<?php echo base_url('job/resume/' . $this->uri->segment(3)); ?>">Details</a>
                         <?php } else { ?>
                             <a title="Details" href="<?php echo base_url('job/resume'); ?>">Details</a>
                         <?php } ?>
