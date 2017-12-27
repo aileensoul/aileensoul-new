@@ -2638,6 +2638,7 @@ Your browser does not support the audio tag.
                 $profile_url = base_url() . 'recruiter/rec_profile/' . $id . '?page=job';
             }
             if ($message_from_profile == 4) {
+                
                 $image_path = FCPATH . 'uploads/freelancer_hire_profile/thumbs/' . $msg['user_image'];
                 $user_image = base_url() . 'uploads/freelancer_hire_profile/thumbs/' . $msg['user_image'];
                 $profile_url = base_url() . 'freelance-work/freelancer-details/' . $id . '?page=freelancer_hire';

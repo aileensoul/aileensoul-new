@@ -4452,7 +4452,7 @@ class Freelancer extends MY_Controller {
     public function apply_email($notid) {
 
         $userid = $this->session->userdata('aileenuser');
-        $applydata = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_user_image', $join_str = array());
+        $applydata = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_user_image,freelancer_apply_slug', $join_str = array());
         $hiremail = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $notid, $data = 'email', $join_str = array());
 
         $email_html = '';
@@ -4473,7 +4473,7 @@ class Freelancer extends MY_Controller {
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a title = "View Detail" class="btn" href="' . BASEURL . 'freelance-work/freelancer-details/' . $userid . '">view</a></p>
+                                                <p><a title = "View Detail" class="btn" href="' . BASEURL . 'freelance-work/freelancer-details/' . $applydata[0]['freelancer_apply_slug'] . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
@@ -4808,7 +4808,7 @@ class Freelancer extends MY_Controller {
     public function email_view() {
         $userid = 140;
         $notid = 103;
-        $postuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_user_image', $join_str = array());
+        $postuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_user_image,freelancer_apply_slug', $join_str = array());
 
         $hireuser = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $notid, $data = 'email', $join_str = array());
 
@@ -4831,7 +4831,7 @@ class Freelancer extends MY_Controller {
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a title="View Detail" class="btn" href="' . BASEURL . 'freelance-work/freelancer-details/' . $userid . '">view</a></p>
+                                                <p><a title="View Detail" class="btn" href="' . BASEURL . 'freelance-work/freelancer-details/' . $postuser[0]['freelancer_apply_slug'] . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';

@@ -601,7 +601,11 @@
                                         <?php if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) { ?><a title="Employer Details" href="<?php echo base_url('freelance-hire/employer-details/' . $this->uri->segment(3)); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } else { ?> <a title="Employer Details" href="<?php echo base_url('freelance-hire/employer-details'); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } ?>
                                     </li>
                                     <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>> 
+                                        <?php if($this->session->userdata('aileenuser')){ ?>
                                         <?php if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) { ?><a title="Projects"  href="<?php echo base_url('freelance-hire/projects/' . $this->uri->segment(3)); ?>"><?php echo $this->lang->line("Projects"); ?></a><?php } else { ?><a title="Projects" href="<?php echo base_url('freelance-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a><?php } ?>
+                                        <?php }else{ ?>
+                                        <a title="Projects"  href="javascript:void(0);"><?php echo $this->lang->line("Projects"); ?></a>
+                                        <?php } ?>
                                     </li>
                                     <?php
                                     if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'projects' || $this->uri->segment(2) == 'employer-details' || $this->uri->segment(2) == 'add-projects' || $this->uri->segment(2) == 'freelancer-save') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) {
