@@ -12,7 +12,7 @@
     <?php echo $dash_header_menu; ?>
 
     <!-- END HEADER MENU -->
-</div>
+
 <!-- END HEADER -->
 <style type="text/css">
     #noti_pc{ margin-bottom: 5px;
