@@ -624,6 +624,9 @@ class Artist extends MY_Controller {
         $this->data['artid'] = $this->data['artisticdata'][0]['user_id'];
         $this->data['get_url'] = $this->get_url($this->data['artisticdata'][0]['user_id']);
 
+                $artistic_name = $this->get_artistic_name($this->data['artid']);
+                $this->data['title'] = $artistic_name.' | Dashboard'.'- Artistic Profile' . TITLEPOSTFIX;
+
         if ($userid) {
 
             if (!$this->data['artisticdata'] && !$this->data['artsdata']) { 
@@ -632,8 +635,7 @@ class Artist extends MY_Controller {
                 redirect('artist');
             } else {
                 $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
-                $artistic_name = $this->get_artistic_name($this->data['artid']);
-                $this->data['title'] = $artistic_name.' | Dashboard'.'- Artistic Profile' . TITLEPOSTFIX;
+                
                 $this->load->view('artist/art_manage_post', $this->data);
             }
         } else { 
@@ -1905,10 +1907,13 @@ class Artist extends MY_Controller {
         $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $this->data['get_url'] = $this->get_url($this->data['artisticdata'][0]['user_id']);
+
+         $artistic_name = $this->get_artistic_name($this->data['artisticdata'][0]['user_id']);
+        $this->data['title'] =  $this->data['title'] = $artistic_name.' | Details'.'- Artistic Profile' . TITLEPOSTFIX;
+
         if ($userid) {
             if ($this->data['artisticdata']) {
-                $artistic_name = $this->get_artistic_name($this->data['artisticdata'][0]['user_id']);
-                $this->data['title'] =  $this->data['title'] = $artistic_name.' | Details'.'- Artistic Profile' . TITLEPOSTFIX;;
+               
                 $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
                 $this->load->view('artist/artistic_profile', $this->data);
             } else if (!$this->data['artisticdata'] && $id != $userid) {

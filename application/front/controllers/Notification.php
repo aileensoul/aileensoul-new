@@ -950,7 +950,7 @@ Your browser does not support the audio tag.
         $count = count($updatedata);
         echo $count;
     }
-    public function select_notification($to_id = '') { //echo "hello"; die();
+    public function select_notification($to_id = '') { 
         $to_id = $this->db->select('user_id')->get_where('business_profile', array('business_profile_id' => $to_id))->row()->user_id;
 
 
