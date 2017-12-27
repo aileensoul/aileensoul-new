@@ -338,14 +338,20 @@ function short_user(abc) {
 //SHAORTLIST USER END
 //login pop up open start
     function login_profile() {
+        $('#register').modal('hide');
         $('#login').modal('show');
     }
 //login pop up open end
+function login_profile1(){
+    $('#forgotPassword').modal('hide');
+     $('#login').modal('show');
+}
 function forgot_profile() {
+    $('#login').modal('hide');
     $('#forgotPassword').modal('show');
 }
 function register_profile(){
-    
+    $('#login').modal('hide');
     $('#register').modal('show');
 }
   /* validation */

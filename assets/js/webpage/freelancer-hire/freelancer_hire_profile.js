@@ -265,11 +265,21 @@ $(document).ready(function () {
 //FOR SCROLL PAGE AT PERTICUKAR POSITION IS END
 //login pop up open start
     function login_profile() {
+        $('#register').modal('hide');
         $('#login').modal('show');
     }
 //login pop up open end
+function login_profile1(){
+    $('#forgotPassword').modal('hide');
+     $('#login').modal('show');
+}
 function forgot_profile() {
+    $('#login').modal('hide');
     $('#forgotPassword').modal('show');
+}
+function create_profile(){
+    $('#login').modal('hide');
+    $('#register').modal('show');
 }
   /* validation */
 
