@@ -15,6 +15,9 @@ header('Last-Modified: '.$date);
 
 $date = gmdate($format, $now+30);
 header('Expires: '.$date);
+header("Cache-Control: no-store, no-cache, must-revalidate"); // HTTP/1.1
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache"); // HTTP/1.0
 
 ?>
 <html class="blog_cl" lang="en">
@@ -270,7 +273,7 @@ header('Expires: '.$date);
                                                         <div class="post_inside_data">
                                                             <div class="post_latest_left">
                                                                 <div class="lateaqt_post_img">
-                                                                    <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image'] .'?ver='.time()) ?>" alt="<?php echo $blog['image']; ?>">
+                                                                    <img src="<?php echo base_url($this->config->item('blog_thumb_upload_path') . $blog['image'] .'?ver='.time()) ?>" alt="<?php echo $blog['image']; ?>">
                                                                 </div>
                                                             </div>
                                                             <div class="post_latest_right">

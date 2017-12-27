@@ -482,7 +482,7 @@ $path = $CI->config->item('cache_path');
             $main_user = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage = '<img src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
             $userimage .= ' <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
-                                                <img src="' . base_url() . 'img/cam.png">Update Profile Picture</a>';
+                                                <img src="' . base_url('assets/img/cam.png?ver='.time()) . '">Update Profile Picture</a>';
         }
 
         $userimagehead = '<img class="img-circle" height="50" width="50" alt="Smiley face" src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';

@@ -1,38 +1,3 @@
-<!-- <Don't Remove this Script SEO> -->
-<!--<script>
-   $(function () {
-       var input = $(".common-form input");
-       var len = input.val().length;
-       input[0].focus();
-       input[0].setSelectionRange(len, len);
-   });
-   </script>-->
-<!--<script>
-   (function (i, s, o, g, r, a, m) {
-       i['GoogleAnalyticsObject'] = r;
-       i[r] = i[r] || function () {
-           (i[r].q = i[r].q || []).push(arguments)
-       }, i[r].l = 1 * new Date();
-       a = s.createElement(o),
-               m = s.getElementsByTagName(o)[0];
-       a.async = 1;
-       a.src = g;
-       m.parentNode.insertBefore(a, m)
-   })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-   
-   ga('create', 'UA-91486853-1', 'auto');
-   ga('send', 'pageview');
-   
-   </script>
-   
-   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-   <script>
-   (adsbygoogle = window.adsbygoogle || []).push({
-       google_ad_client: "ca-pub-6060111582812113",
-       enable_page_level_ads: true
-   });
-   </script>-->
-<!-- header -->
 <header class="">
     <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'freelance-work' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'home')) { ?>
         <div class="header animated fadeInDownBig">
