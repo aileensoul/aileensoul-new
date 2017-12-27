@@ -564,10 +564,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     </div>
 
                                     <div class="form-group">
-                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                     </div>
                                     <div class="form-group">
-                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="new-password">
                                     </div>
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth :</label>
