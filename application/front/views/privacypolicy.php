@@ -158,7 +158,7 @@ header('Cache-Control: public, max-age=30');
                             <p>Our website does not use cookies but third party vendors, including Google, use cookies to serve ads based on a user's prior visits to our website or other websites.
 							</p></li><li>
 							<p>Google's use of advertising cookies enables it and its partners to serve ads to users based on their visit to our sites and/or other sites on the Internet.</p></li><li>
-							<p>Users may opt out of personalized advertising by visiting Ads Settings. (Alternatively, you can direct users to opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a target="_blank" href="www.aboutads.info">www.aboutads.info <i class="fa fa-external-link" aria-hidden="true"></i></a>.)</p></li></ul>
+							<p>Users may opt out of personalized advertising by visiting Ads Settings. (Alternatively, you can direct users to opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a target="_blank" href="http://www.aboutads.info/">www.aboutads.info <i class="fa fa-external-link" aria-hidden="true"></i></a>.)</p></li></ul>
                         </div>
                         <div class="fourth_part_py">
                             <h3>5. Sharing of information with third-parties</h3>
