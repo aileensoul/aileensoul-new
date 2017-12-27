@@ -54,7 +54,7 @@
           
         <?php } ?>
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push reg-form botton_footer">
+    <body class="page-container-bg-solid page-boxed pushmenu-push reg-form botton_footer no-login">
         <header>
             <div class="container">
                 <div class="row">
@@ -329,8 +329,8 @@
                 <div class="modal-content inner-form1">
                     <div class="modal-body">
                         <div class="clearfix">
-                            <div class="col-md-12 col-sm-12">
-                                <h4>Signup first and register in Business Profile</h4>
+                            <div class="">
+                                  <div class="title"><h4>Signup first and register in Business Profile</h4></div>
                                 <form role="form" name="register_form" id="register_form" method="post" ng-submit="submitRegistrationForm()" ng-validate="registrationValidate">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
@@ -424,6 +424,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="modal login fade" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
