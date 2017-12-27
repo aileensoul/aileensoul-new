@@ -55,7 +55,7 @@ $id = $this->db->get_where('job_reg', array('slug' => $this->uri->segment(3)))->
                     ?>
                     <div class="flw_msg_btn fr">
                         <ul>
-                            <?php
+                            <?php if ($userid) { 
                             $id = $this->db->get_where('job_reg', array('slug' => $this->uri->segment(3), 'is_delete' => '0', 'status' => '1'))->row()->user_id;
 
                             $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_type' => '1', 'status' => '0');
@@ -73,7 +73,11 @@ $id = $this->db->get_where('job_reg', array('slug' => $this->uri->segment(3)))->
                                         Save
                                     </a>
                                 </li>
-        <?php } ?>
+                <?php } } else {?>
+                                 <li> 
+                                <a onclick="register_profile();">Save</a> 
+                            </li>
+                <?php } ?>
                                 <?php if ($userid) { ?>
                             <li> 
                                 <a href="<?php echo base_url('chat/abc/2/1/' . $id); ?>">Message</a> 

@@ -104,7 +104,7 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
                                         foreach ($value as $business) {
 
                                             if ($business['post_name'] != '') {
-                                                $text = strtolower($this->common->clean($business['post_name']));
+                                                $text = strtolower($this->common->clean(trim($business['post_name'])));
                                             } else {
                                                 $text = '';
                                             }
