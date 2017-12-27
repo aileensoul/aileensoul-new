@@ -1237,7 +1237,7 @@
                                             ?>
                                  <div class="profile-job-post-title clearfix">
                                     <?php
-                                       if($job[0]['experience'] == "Experience" && $job_work[0]['jobtitle'] == "" && $userid == $id)
+                                       if($job[0]['experience'] == "Experience" && $job_work[0]['jobtitle'] == "")
                                        {
                                        ?>
                                     <div class="profile-job-post-title-inside clearfix">
@@ -1254,10 +1254,10 @@
                                           </div>
                                        </div>
                                          <div class="profile-job-profile-menu">                          
-                                        <ul class="clearfix">
+                                      
                                           
                                         <ul class="clearfix">
-                                           <?php   if($job[0]['experience'] == 'Experience'){ ?>
+                                           <?php   if($job[0]['experience'] == 'Experience'){  ?>
                                           <li> <b> Total Experience</b> <span>
 
                                             <?php  if($job[0]['exp_y'] != " " && $job[0]['exp_m'] != " "){ 
@@ -1277,14 +1277,14 @@
                                          <?php } ?>
                                        </ul>
                                        
-                                       </ul>
+                                     
                                      </div>
 
 
 
 
 
-
+<?php if($userid == $id) { ?>
                                        <div class="profile-job-profile-menu">
                                           <ul class="clearfix">
                                              <div class="text-center">
@@ -1292,6 +1292,7 @@
                                              </div>
                                           </ul>
                                        </div>
+<?php } ?>
                                     </div>
                                     <?php
                                        }
