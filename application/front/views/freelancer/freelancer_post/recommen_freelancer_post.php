@@ -47,7 +47,7 @@
                                         <div class="profile-boxProfileCard-content clearfix">
                                             <div class="left_side_box_img buisness-profile-txext">
                                                 <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" 
-                                                   href="<?php echo base_url('freelance-work/freelancer-details/' . $freepostdata[0]['user_id']); ?>" title="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                                   href="<?php echo base_url('freelance-work/freelancer-details/' . $freepostdata[0]['freelancer_apply_slug']); ?>" title="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                                        <?php
                                                        $fname = $freepostdata[0]['freelancer_post_fullname'];
                                                        $lname = $freepostdata[0]['freelancer_post_username'];
