@@ -81,7 +81,12 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
     <meta name="description" content="<?php echo 'Employer ' . ucfirst($employerdata[0]['fullname']) . ' ' . ucfirst($employerdata[0]['username']). " seeking for highly skilled Freelancers. View full detail at Aileensoul.com"; ?>" />
  <?php } else if($this->uri->segment(1) == 'freelance-work' && $this->uri->segment(2) == 'freelancer-details'){ ?>
      <meta name="description" content="<?php echo 'Hire ' . ucfirst($freelancerdata[0]['freelancer_post_fullname']) . ' ' . ucfirst($freelancerdata[0]['freelancer_post_username']). " freelancer, View his/her complete ". $fieldname1 . " freelancing portfolio."; ?>" />
- <?php } else {?>
+ <?php }else if($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'details'){ ?>
+
+ <meta name="description" content="<?php echo ucfirst($meta_des[0]['art_name']) . ' ' . ucfirst($meta_des[0]['art_lastname']). ' is a '. $keyskill_meta . ' artist situated at '. ucfirst($location_city).'. '.'View full artistic detail & art portfolio at Aileensoul.com'; ?>" />
+
+<?php } 
+ else {?>
         <meta name="description" content=" " />
 <?php } ?>
         <meta name="keywords" content=" " />

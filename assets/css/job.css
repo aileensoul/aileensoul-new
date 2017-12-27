@@ -1480,20 +1480,20 @@ label.cameraButton input[accept*="camera"] {
 .job_reg_main form {
     border-radius: 3px;
 }
-.job_reg_main h3 {
+.job_reg_main h3  {
     border-bottom: 1px solid #d9d9d9;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     padding: 15px 0px;
     font-size: 24px;
-   /* background: #fff;
-   color:#1b8ab9;
-    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;*/
-  
+    color: #1b8ab9;
+    background:-webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
     text-align: center;
 }
+
+
 .job_reg_main h4 {
     border-bottom: 1px solid #d9d9d9;
     border-top-left-radius: 3px;
