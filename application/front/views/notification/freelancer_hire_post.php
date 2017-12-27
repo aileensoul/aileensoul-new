@@ -36,10 +36,11 @@
                                                             <?php
                                                             $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
                                                             $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
+                                                            $slug = $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->freelancer_hire_slug;
                                                             ?>
                                                             <p>
                                                                
-                                                                    <a href="<?php echo base_url('freelance-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                                    <a href="<?php echo base_url('freelance-hire/employer-details/' . $slug); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                               
                                                                 </a></p>
                                                             <p class="loca-exp">

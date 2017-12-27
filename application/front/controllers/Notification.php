@@ -1914,7 +1914,7 @@ Your browser does not support the audio tag.
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('notification/freelance-hire/' . $total['post_id'] . '?page=freelancer_post') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('notification/freelance-hire/' . $total['post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
                  $filename = $this->config->item('free_hire_profile_thumb_upload_path') . $total['user_image'];
                     $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -1948,7 +1948,7 @@ Your browser does not support the audio tag.
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('notification/freelance-hire/' . $total['post_id'] . '?page=freelancer_post') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('notification/freelance-hire/' . $total['post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
                  $filename = $this->config->item('free_hire_profile_thumb_upload_path') . $total['user_image'];
                     $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -4094,12 +4094,12 @@ Your browser does not support the audio tag.
 
                 if ($total['not_from'] == 5 && $total['not_type'] == 4) {
                     //    19
-
+                    $slug = $this->db->select('freelancer_apply_slug')->get_where('freelancer_post_reg', array('user_id' => $total['user_id']))->row()->freelancer_apply_slug;
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
                     } $return_html .= '">';
-                    $return_html .= '<a href="' . base_url() . 'freelancer/freelancer_post_profile/' . $total['user_id'] . '?page=freelancer_post">';
+                    $return_html .= '<a href="' . base_url() . 'freelance-work/freelancer-details/' . $slug .'">';
                     
                     $return_html .= '<div class="notification-pic" id="noti_pc" >';
                                                                
