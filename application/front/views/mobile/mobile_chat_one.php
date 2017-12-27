@@ -118,12 +118,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     $profile_url = base_url() . 'job/job_printpreview/' . $id . '?page=recruiter';
                                 }
                                 if ($message_from_profile == 3) {
+                                    $slug = $this->db->select('freelancer_apply_slug')->get_where('freelancer_post_reg', array('user_id' => $id))->row()->freelancer_apply_slug;
                                     $last_user_image = $last_user_data['user_image'];
-                                    $profile_url = base_url() . 'freelancer/freelancer_post_profile/' . $id . '?page=freelancer_hire';
+                                    $profile_url = base_url() . 'freelance-work/freelancer-details/' . $slug;
                                 }
                                 if ($message_from_profile == 4) {
+                                    $slug = $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $id))->row()->freelancer_hire_slug;
                                     $last_user_image = $last_user_data['user_image'];
-                                    $profile_url = base_url() . 'freelancer/freelancer_hire_profile/' . $id . '?page=freelancer_post';
+                                    $profile_url = base_url() . 'freelance-hire/employer-details/' . $slug;
                                 }
                                 if ($message_from_profile == 5) {
                                     $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $id, $data = 'business_slug');

@@ -198,8 +198,14 @@
                                                                                             <li><a title="Projects" href="<?php echo base_url('freelance-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a></li>
                                                                                         <?php } else if ($hire_user) { ?>
                                                                                             <li><a title="Projects" href="javascript:void(0);"><?php echo $this->lang->line("Projects"); ?></a></li>
-                                                                                        <?php } else { ?>
-                                                                                            <li><a title="Projects" href="<?php echo base_url('freelance-hire/projects/' . $recliveid . '?page=freelancer_post'); ?>"><?php echo $this->lang->line("Projects"); ?></a></li>
+                                                                                        <?php } else { 
+                                                                                             if (is_numeric($recliveid)) {
+                                                                                                $slug = $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $recliveid))->row()->freelancer_hire_slug;
+                                                                                            } else {
+                                                                                                $slug = $recliveid;
+                                                                                            }
+                                                                                            ?>
+                                                                                            <li><a title="Projects" href="<?php echo base_url('freelance-hire/projects/' . $slug); ?>"><?php echo $this->lang->line("Projects"); ?></a></li>
                                                                                         <?php } ?>
                                                                                         <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                                                                             <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer"  class="padding_less_right" href="<?php echo base_url('freelance-hire/freelancer-save'); ?>">Saved</a></li>

@@ -9,76 +9,73 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php echo $head; ?>
         <meta charset="utf-8">
 
-        <?php
-       
-
-        if ($message_from_profile == 1) { ?>
-           <title>Messages  | Job Profile - Aileensoul</title>
-    <?php   } else if ($message_from_profile == 2) { ?>
-           <title>Messages | Recruiter Profile - Aileensoul</title>
-      <?php   } else if ($message_from_profile == 3) { ?>
-           <title>Messages | Employer Profile - Aileensoul</title>
-    <?php   } else if ($message_from_profile == 4) { ?>
-            <title>Messages | Freelancer Profile - Aileensoul</title>
-       <?php  } else if ($message_from_profile == 5) { ?>
-           <title>Messages | Business Profile - Aileensoul</title>
+        <?php if ($message_from_profile == 1) { ?>
+               <title>Messages  | Job Profile - Aileensoul</title>
+        <?php } else if ($message_from_profile == 2) { ?>
+               <title>Messages | Recruiter Profile - Aileensoul</title>
+        <?php } else if ($message_from_profile == 3) { ?>
+               <title>Messages | Employer Profile - Aileensoul</title>
+        <?php } else if ($message_from_profile == 4) { ?>
+                <title>Messages | Freelancer Profile - Aileensoul</title>
+        <?php } else if ($message_from_profile == 5) { ?>
+               <title>Messages | Business Profile - Aileensoul</title>
         <?php } else if ($message_from_profile == 6) { ?>
-           <title>Messages | Artistic Profile - Aileensoul</title>
-       <?php }
+               <title>Messages | Artistic Profile - Aileensoul</title>
+        <?php }
         ?>
 
         <title>Chat | Aileensoul</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
        
                   <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
-        <?php
-        if (IS_MSG_CSS_MINIFY == '0') {
-            ?>
-        <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>-->
-        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-        <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/css/1.10.3.jquery-ui.css');  ?>">-->
-        <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+<?php
+if (IS_MSG_CSS_MINIFY == '0') {
+    ?>
+            <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>-->
+            <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+            <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/css/1.10.3.jquery-ui.css');  ?>">-->
+            <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+    <?php
+} else {
+    ?>
+            <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>-->
+            <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+            <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/css/1.10.3.jquery-ui.css');  ?>">-->
+            <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+<?php } ?>
+<?php
+if (IS_MSG_JS_MINIFY == '0') {
+    ?>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
             <?php
         } else {
             ?>
-        <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>-->
-        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-        <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/css/1.10.3.jquery-ui.css');  ?>">-->
-        <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
-        <?php } ?>
-         <?php
-        if (IS_MSG_JS_MINIFY == '0') {
-            ?>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-            <?php
-        } else {
-            ?>
-        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script>
         <?php } ?>
         
 
         <!-- http://bootsnipp.com/snippets/4jXW -->
-     <?php
-        if (IS_MSG_JS_MINIFY == '0') {
-            ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css?ver='.time()); ?>">
+<?php
+if (IS_MSG_JS_MINIFY == '0') {
+    ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css?ver=' . time()); ?>">
 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver='.time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
 
-            <?php
-        } else {
-            ?>
- <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css?ver='.time()); ?>">
+    <?php
+} else {
+    ?>
+     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css?ver=' . time()); ?>">
 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css?ver='.time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/header.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css?ver=' . time()); ?>">
 
-        <?php } ?>
+<?php } ?>
        
         <style type="text/css">
             .msg_right:hover .messagedelete{ visibility: visible;opacity: 1;}
@@ -88,23 +85,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </style>
 
     <body>
-        <?php
-        echo $header;
+<?php
+echo $header;
 
-        if ($message_from_profile == 1) {
-            echo $job_header2_border;
-        } else if ($message_from_profile == 2) {
-            echo $recruiter_header2_border;
-        } else if ($message_from_profile == 3) {
-            echo $freelancer_hire_header2_border;
-        } else if ($message_from_profile == 4) {
-            echo $freelancer_post_header2_border;
-        } else if ($message_from_profile == 5) {
-            echo $business_header2_border;
-        } else if ($message_from_profile == 6) {
-            echo $art_header2_border;
-        }
-        ?>
+if ($message_from_profile == 1) {
+    echo $job_header2_border;
+} else if ($message_from_profile == 2) {
+    echo $recruiter_header2_border;
+} else if ($message_from_profile == 3) {
+    echo $freelancer_hire_header2_border;
+} else if ($message_from_profile == 4) {
+    echo $freelancer_post_header2_border;
+} else if ($message_from_profile == 5) {
+    echo $business_header2_border;
+} else if ($message_from_profile == 6) {
+    echo $art_header2_border;
+}
+?>
         <div class="container">
             <div class="" id="paddingtop_fixed">
                 <!--                <div class="backdiv-mob">
@@ -130,173 +127,175 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </ul>
                     </div>
                     <!-- chat start -->
-                    <?php
-                    $lstusrdata = $this->common->select_data_by_id('user', 'user_id', $toid, $data = '*');
+<?php
+$lstusrdata = $this->common->select_data_by_id('user', 'user_id', $toid, $data = '*');
 
 
-                    if ($lstusrdata) {
-                        ?>
-                        <div class="chat" id="chat"  style="display:block;">
+if ($lstusrdata) {
+    ?>
+                            <div class="chat" id="chat"  style="display:block;">
 
-                            <div class="chat-header clearfix border_btm">
+                                <div class="chat-header clearfix border_btm">
 
-                                <?php
-                                if ($message_from_profile == 1) {
-                                    $last_user_image = $last_user_data['user_image'];
-                                    $profile_url = base_url() . 'recruiter/profile/' . $id . '?page=job';
-                                }
-                                if ($message_from_profile == 2) {
-                                    $last_user_image = $last_user_data['user_image'];
-                                    $slug = $this->db->get_where('job_reg', array('user_id' => $id, 'is_delete' => '0', 'status' => '1'))->row()->slug;
-                                    $profile_url = base_url() . 'job/job_printpreview/' . $slug . '?page=recruiter';
-                                }
-                                if ($message_from_profile == 3) {
-                                    $last_user_image = $last_user_data['user_image'];
-                                    $profile_url = base_url() . 'freelancer/freelancer_post_profile/' . $id . '?page=freelancer_hire';
-                                }
-                                if ($message_from_profile == 4) {
-                                    $last_user_image = $last_user_data['user_image'];
-                                    $profile_url = base_url() . 'freelancer/freelancer_hire_profile/' . $id . '?page=freelancer_post';
-                                }
-                                if ($message_from_profile == 5) {
-                                    $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $id, $data = 'business_slug');
-                                    $last_user_image = $last_user_data['user_image'];
-                                    $profile_url = base_url() . 'business-profile/dashboard/' . $busdata[0]['business_slug'];
-                                }
-                                if ($message_from_profile == 6) {
-                                    $last_user_image = $last_user_data['user_image'];
-                                    $profile_url = base_url() . 'artist/art_manage_post/' . $id;
-                                }
-                                ?>
-                                <a href="<?php echo $profile_url; ?>">
-                                    <?php if ($last_user_image) { ?>                             
+    <?php
+    if ($message_from_profile == 1) {
+        $last_user_image = $last_user_data['user_image'];
+        $profile_url = base_url() . 'recruiter/profile/' . $id . '?page=job';
+    }
+    if ($message_from_profile == 2) {
+        $last_user_image = $last_user_data['user_image'];
+        $slug = $this->db->get_where('job_reg', array('user_id' => $id, 'is_delete' => '0', 'status' => '1'))->row()->slug;
+        $profile_url = base_url() . 'job/job_printpreview/' . $slug . '?page=recruiter';
+    }
+    if ($message_from_profile == 3) {
+        $slug = $this->db->select('freelancer_apply_slug')->get_where('freelancer_post_reg', array('user_id' => $id))->row()->freelancer_apply_slug;
+        $last_user_image = $last_user_data['user_image'];
+        $profile_url = base_url() . 'freelance-work/freelancer-details/' . $slug;
+    }
+    if ($message_from_profile == 4) {
+        $slug = $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $id))->row()->freelancer_hire_slug;
+        $last_user_image = $last_user_data['user_image'];
+        $profile_url = base_url() . 'freelance-hire/employer-details/' . $slug;
+    }
+    if ($message_from_profile == 5) {
+        $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $id, $data = 'business_slug');
+        $last_user_image = $last_user_data['user_image'];
+        $profile_url = base_url() . 'business-profile/dashboard/' . $busdata[0]['business_slug'];
+    }
+    if ($message_from_profile == 6) {
+        $last_user_image = $last_user_data['user_image'];
+        $profile_url = base_url() . 'artist/art_manage_post/' . $id;
+    }
+    ?>
+                                    <a href="<?php echo $profile_url; ?>">
+                                <?php if ($last_user_image) { ?>                             
 
-                                        <div class="chat_heae_img">
-                                            <img src="<?php echo $last_user_image; ?>" alt="<?php echo $last_user_image; ?>" height="50px" weight="50px">
-                                        </div>
-                                        <?php
-                                    } else {
-                                        $a = $last_user_data['first_name'];
-                                        $b = $last_user_data['last_name'];
-                                        $acr = substr($a, 0, 1);
-                                        $bcr = substr($b, 0, 1);
-                                        ?>
-                                        <div class="post-img-div">
-                                            <?php echo ucwords($acr) . ucwords($bcr) ?>
-                                        </div>
-                                    <?php } ?>
-
-                                    <div class="chat-about">
-                                        <div class="chat-with">
-
-                                            <span><?php echo $last_user_data['first_name'] . ' ' . $last_user_data['last_name']; ?></span>  
-                                        </div>
-                                        <div class="chat-num-messages"> <?php
-                                            echo $last_user_data['user_designation'];
-                                            ?></div>
-                                    </div>
-                                </a>
-
-                                <div class="chat_drop">
-                                    <a onclick="myFunction()" class="chatdropbtn fr"> <img src="<?php echo base_url('assets/img/t_dot.png') ?>" onclick="myFunction()" alt="dotimage"></a>
-                                    <div id="mychat_dropdown" class="chatdropdown-content">
-                                        <a href="javascript:void(0);" onClick="delete_history()">
-                                            <span class="h4-img h2-srrt"></span>  Delete All
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="chat-history" id="chat-history">
-                                <ul  id="received" class="padding_less_right">
-
-                                </ul>
-
-                            </div>
-
-                            <div class="panel-footer">
-
-                                <div class="">
-                                    <div class="" id="msg_block">
-                                        <div class="input-group" id="set_input">
-                                            <form name="blog">
-                                                <div class="comment" contentEditable="true" name="comments" id="message" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;"></div>
-                                                <div for="smily"  class="smily_b" >
-                                                    <div id="notification_li1" >
-                                                        <a class="smil" href="#" id="notificationLink1" ">
-                                                            <i class="em em-blush"></i></a>
-
-                                                    </div>
+                                                <div class="chat_heae_img">
+                                                    <img src="<?php echo $last_user_image; ?>" alt="<?php echo $last_user_image; ?>" height="50px" weight="50px">
                                                 </div>
-                                            </form>
+        <?php
+    } else {
+        $a = $last_user_data['first_name'];
+        $b = $last_user_data['last_name'];
+        $acr = substr($a, 0, 1);
+        $bcr = substr($b, 0, 1);
+        ?>
+                                                <div class="post-img-div">
+                                        <?php echo ucwords($acr) . ucwords($bcr) ?>
+                                                </div>
+                                        <?php } ?>
 
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-warning btn-sm main_send" id="submit" >Send</button>
-                                            </span>
+                                        <div class="chat-about">
+                                            <div class="chat-with">
+
+                                                <span><?php echo $last_user_data['first_name'] . ' ' . $last_user_data['last_name']; ?></span>  
+                                            </div>
+                                            <div class="chat-num-messages"> <?php
+                                        echo $last_user_data['user_designation'];
+                                        ?></div>
+                                        </div>
+                                    </a>
+
+                                    <div class="chat_drop">
+                                        <a onclick="myFunction()" class="chatdropbtn fr"> <img src="<?php echo base_url('assets/img/t_dot.png') ?>" onclick="myFunction()" alt="dotimage"></a>
+                                        <div id="mychat_dropdown" class="chatdropdown-content">
+                                            <a href="javascript:void(0);" onClick="delete_history()">
+                                                <span class="h4-img h2-srrt"></span>  Delete All
+                                            </a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div id="notificationContainer1" style="display: none;">
-                                <div id="notificationsBody1" class="notifications1">
-                                    <?php
-                                    $i = 0;
-                                    foreach ($smiley_table as $key => $value) {
-                                        ?>
-                                        <img id="<?php echo $i; ?>" src="<?php echo base_url() . 'uploads/smileys/' . $value[0]; ?>" alt='<img src="<?php echo base_url() . 'uploads/smileys/' . $value[0]; ?>  height="25" width="25">' height="25" width="25"onClick="followclose(<?php echo $i; ?>)" alt="<?php echo $value[0]; ?>">
-
-
-                                        <?php
-                                        $i++;
-                                    }
-                                    ?>
 
                                 </div>
-                            </div>
-                        </div>
-                    <?php } else { ?>
+                                <div class="chat-history" id="chat-history">
+                                    <ul  id="received" class="padding_less_right">
 
-                        <div class="chat" id="chat" style="display:block;">
-                            <div class="chat-header clearfix ">
-                                <div class="chat-about">
-                                    <div class="chat-with">
-                                    </div>
-                                    <div class="chat-num-messages"></div>
+                                    </ul>
+
                                 </div>
-                            </div>
-                            <div class="chat-history" id="chat-history">
-                                <ul id="received" class="padding_less_right">
-                                </ul>
-                            </div>
-                            <div class="panel-footer">
-                                <div class="clearfix">
-                                    <div class="col-md-12" id="msg_block">
-                                        <div class="input-group">
-                                            <form name="blog">
-                                                <div class="form-control input-sm" contentEditable="true" name="comments" placeholder="Type your message here..." id="message  smily" style="position: relative;"></div>
-                                                <div for="smily"  class="smily_b">
-                                                    <div id="notification_li" >
-                                                        <a href="#" id="notificationLink"><i class="em em-blush"></i></a>
-                                                        <div id="notificationContainer" style="display: none;">
-                                                            <div id="notificationsBody" class="notifications"></div>
+
+                                <div class="panel-footer">
+
+                                    <div class="">
+                                        <div class="" id="msg_block">
+                                            <div class="input-group" id="set_input">
+                                                <form name="blog">
+                                                    <div class="comment" contentEditable="true" name="comments" id="message" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;"></div>
+                                                    <div for="smily"  class="smily_b" >
+                                                        <div id="notification_li1" >
+                                                            <a class="smil" href="#" id="notificationLink1" ">
+                                                                <i class="em em-blush"></i></a>
+
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </form>
+                                                </form>
 
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-warning btn-sm main_send" id="submit">Send</button>
-                                            </span>
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-warning btn-sm main_send" id="submit" >Send</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="notificationContainer1" style="display: none;">
+                                    <div id="notificationsBody1" class="notifications1">
+    <?php
+    $i = 0;
+    foreach ($smiley_table as $key => $value) {
+        ?>
+                                                <img id="<?php echo $i; ?>" src="<?php echo base_url() . 'uploads/smileys/' . $value[0]; ?>" alt='<img src="<?php echo base_url() . 'uploads/smileys/' . $value[0]; ?>  height="25" width="25">' height="25" width="25"onClick="followclose(<?php echo $i; ?>)" alt="<?php echo $value[0]; ?>">
+
+
+        <?php
+        $i++;
+    }
+    ?>
+
+                                    </div>
+                                </div>
+                            </div>
+<?php } else { ?>
+
+                            <div class="chat" id="chat" style="display:block;">
+                                <div class="chat-header clearfix ">
+                                    <div class="chat-about">
+                                        <div class="chat-with">
+                                        </div>
+                                        <div class="chat-num-messages"></div>
+                                    </div>
+                                </div>
+                                <div class="chat-history" id="chat-history">
+                                    <ul id="received" class="padding_less_right">
+                                    </ul>
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="clearfix">
+                                        <div class="col-md-12" id="msg_block">
+                                            <div class="input-group">
+                                                <form name="blog">
+                                                    <div class="form-control input-sm" contentEditable="true" name="comments" placeholder="Type your message here..." id="message  smily" style="position: relative;"></div>
+                                                    <div for="smily"  class="smily_b">
+                                                        <div id="notification_li" >
+                                                            <a href="#" id="notificationLink"><i class="em em-blush"></i></a>
+                                                            <div id="notificationContainer" style="display: none;">
+                                                                <div id="notificationsBody" class="notifications"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-warning btn-sm main_send" id="submit">Send</button>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php } ?>
+<?php } ?>
                     <!-- chat start -->
                 </div>
 
-                <?php echo $footer; ?>
+<?php echo $footer; ?>
                 </body>
                 </html>
                 <!-- Bid-modal  -->
@@ -396,7 +395,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             //   callback();
                             }
                     });
-                    //            $.getJSON('<?php // echo base_url() . 'api/send_message/' . $toid . '/' . $message_from_profile . '/' . $message_from_profile_id . '/' . $message_to_profile . '/' . $message_to_profile_id       ?>?message=' + encodeURIComponent(JSON.stringify(str)) + '&nickname=' + fname + ' ' + lname + '&guid=' + getCookie('user_guid'), function (data) {
+                    //            $.getJSON('<?php // echo base_url() . 'api/send_message/' . $toid . '/' . $message_from_profile . '/' . $message_from_profile_id . '/' . $message_to_profile . '/' . $message_to_profile_id        ?>?message=' + encodeURIComponent(JSON.stringify(str)) + '&nickname=' + fname + ' ' + lname + '&guid=' + getCookie('user_guid'), function (data) {
                     //                callback();
                     //            });
                     }
@@ -878,55 +877,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     return split(term).pop();
                     }
 
-                    $(".bus_search_loc").bind("keydown", function (event) {alert(1313);
-                    if (event.keyCode === $.ui.keyCode.TAB &&
-                            $(this).autocomplete("instance").menu.active) {
-                    event.preventDefault();
+                    $(".bus_search_loc").bind("keydown",  function (event) {alert(1313);
+                    if  (event.keyCode ===  $.ui.keyCode.TAB  &&
+                    $(this).autocomplete(" instance").menu.act ive) {
+                            event.preventDefault();
                     }
                     })
-                            .autocomplete({
-                            minLength: 2,
-                                    source: function (request, response) {
-                                    // delegate back to autocomplete, but extract the last term
-                                    $.getJSON(base_url + "business_profile/get_location", {term: extractLast(request.term)}, response);
-                                    },
+                    .autocomplete({
+                    minLength: 2,
+                            source: function (request,  response) {
+                                    // delegate back to autocomplete, but ex tract the last term
+                                    $.getJSON(base_url +  "business_profile/get_location",  {term: extractLast(request.term)},  response);
+                                     },
                                     focus: function () {
                                     // prevent value inserted on focus
                                     return false;
                                     },
-                                    select: function (event, ui) {
+                                    select: function (event,  ui) {
 
-                                    var text = this.value;
-                                    var terms = split(this.value);
-                                    text = text == null || text == undefined ? "" : text;
-                                    var checked = (text.indexOf(ui.item.value + ', ') > - 1 ? 'checked' : '');
-                                    if (checked == 'checked') {
+                                    var  text  =  this.value;
+                                    var  terms  =  split(this. value ); 
+                                    text  =  text = =  nul l  ||  text ==  undefined ? "" : text;
+                                    var  c hecked   =  (text.indexOf(ui.item.value +  ', ') >  -  1 ? 'checked' : ' ');
+                                       if  (che ck ed ==  'checked') {
 
-                                    terms.push(ui.item.value);
-                                    this.value = terms.split("");
-                                    }//if end
-
+                                    ter ms.push(ui.i tem.value);
+                                    this.value  =  terms.split("");
+                                    }//if en d
+ 
                                     else {
-                                    if (terms.length <= 1) {
-                                    // remove the current input
+                                    if  (terms.length <=  1) {
+                                    //  remove the curren t input
                                     terms.pop();
                                     // add the selected item
                                     terms.push(ui.item.value);
                                     // add placeholder to get the comma-and-space at the end
                                     terms.push("");
-                                    this.value = terms.join("");
-                                    return false;
-                                    } else {
-                                    var last = terms.pop();
-                                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                                    $(this).effect("highlight", {}, 1000);
-                                    $(this).attr("style", "border: solid 1px red;");
+                                    this.value  =  terms.join("");
+                                    retur n  false;
+                                    }  else {
+                                    var  last  =  t erms.pop();
+                                    $(th is ).val(this.value.substr(0,  this.value.length -  last.length -  2));  // removes t ext from input
+                                    $(this).effect("highlight",  {},  1000);
+                                    $( this ).attr("style",  "border: solid 1px red;");
                                     return false;
                                     }
                                     }
                                     }//end else
+                                    });
                             });
-                    });
                     $(function () {
                     function split(val) {
                     return val.split(/,\s*/);
@@ -935,49 +934,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     return split(term).pop();
                     }
 
-                    $(".bus_search_comp").bind("keydown", function (event) {
-                    if (event.keyCode === $.ui.keyCode.TAB &&
+                    $(".bus_search_comp").bind("keydown",  function (event) {
+                    if  (eve nt.keyCode ===  $.ui.keyCode.TAB &&
                             $(this).autocomplete("instance").menu.active) {
                     event.preventDefault();
                     }
                     })
-                            .autocomplete({
+                    .autocomplete({
                             minLength: 2,
-                                    source: function (request, response) {
+                                    source: function (request,  response) {
                                     // delegate back to autocomplete, but extract the last term
-                                    $.getJSON(base_url + "business_profile/get_all_data", {term: extractLast(request.term)}, response);
-                                    },
+                                    $.getJSON(base_url +  "business_profile/get_all_data",  {term: ex tractLast(request.term)},  respon se);
+                                     },
                                     focus: function () {
                                     // prevent value inserted on focus
                                     return false;
                                     },
-                                    select: function (event, ui) {
+                                    select: function (event,  ui) {
 
-                                    var text = this.value;
-                                    var terms = split(this.value);
-                                    text = text == null || text == undefined ? "" : text;
-                                    var checked = (text.indexOf(ui.item.value + ', ') > - 1 ? 'checked' : '');
-                                    if (checked == 'checked') {
+                                    var  text  =  this.value;
+                                    var  terms  =  split(this.value);
+                                    text  =  text ==  null ||  text ==  und ef ined ? " " : text ;
+                                    var  checked  =  (text.indexOf(ui .item.va lu e +  ', ') >  -  1 ? 'checked'  : '');
+                                    if  (checked ==  'checked' ) {
 
                                     terms.push(ui.item.value);
-                                    this.value = terms.split("");
+                                    this.value  =  terms.split("");
                                     }//if end
 
                                     else {
-                                    if (terms.length <= 1) {
+                                    if  (terms.length <=   1) {
                                     // remove the current input
                                     terms.pop();
                                     // add the selected item
                                     terms.push(ui.item.value);
                                     // add placeholder to get the comma-and-space at the end
                                     terms.push("");
-                                    this.value = terms.join("");
+                                    this.value  =  terms.join("");
                                     return false;
-                                    } else {
-                                    var last = terms.pop();
-                                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                                    $(this).effect("highlight", {}, 1000);
-                                    $(this).attr("style", "border: solid 1px red;");
+                                    }  else {
+                                    var  last  =  terms.pop();
+                                    $(this).val(this.value.substr(0,  this.value.length -  last.length -  2));  // removes text from input
+                                    $(this).effect("highlight",  {},  1000);
+                                    $(this).attr("style",  "border: solid 1px red;");
                                     return false;
                                     }
                                     }
@@ -988,9 +987,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     //BUSINESS PROFILE SEARCH END  
                     //FREELANCER HIRE SERACH  
 
-                    if (message_from_profile == 3) {
+                    if  (message_from_profile ==  3) {
                     //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD START
-                    var base_url = '<?php echo base_url(); ?>';
+                    var  base_url  =  '<?php echo base_url(); ?>';
                     $(function() {
                     function split(val) {
                     return val.split(/,\s*/);
@@ -1574,632 +1573,618 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     //ARTUSTIC POST SERACH
                 </script>
                 
-                    <script> 
-                                var message_from_profile = <?php echo $message_from_profile ?>;
+                    <script>
+                                    var message_from_profile = <?php echo $message_from_profile ?>;
+                                    // business data start
+                                    if (message_from_profile == 1) {
 
-                                                      // business data start
-                                        if (message_from_profile == 1) {
-           
-  var base_url = '<?php echo base_url(); ?>';
-$(function () {  
-    function split(val) {
-        return val.split(/,\s*/);
-    }
-    function extractLast(term) {
-        return split(term).pop();
-    }
+                                    var base_url = '<?php echo base_url(); ?>';
+                                    $(function () {
+                                    function split(val) {
+                                    return val.split(/,\s*/);
+                                    }
+                                    function extractLast(term) {
+                                    return split(term).pop();
+                                    }
 
-    $(".bus_search_loc").bind("keydown", function (event) {alert(1313); 
-        if (event.keyCode === $.ui.keyCode.TAB &&
-                $(this).autocomplete("instance").menu.active) {
-            event.preventDefault();
-                                }
-                                })
-                                .autocomplete({
-                minLength: 2,
-                source: function (request, response) {
-                    // delegate back to autocomplete, but extract the last term
-                    $.getJSON(base_url + "busine                                ss_profile/get_loca                                tion", {term: extractLast(request.term)}, response);
-                                },
-                                focus:                                function () {
-                                    // prevent value inserted on focus
-                    return false;
-                                },
-                                select: function (event, ui) {
+                                    $(".bus_search_loc").bind("keydown",  function (event) {alert(1313); 
+                                    if  (event.keyCode ===  $.ui.keyCode.TAB &&
+                                            $(this).autocomplete("instance").menu.active) {
+                                    event.preventDefault();
+                                    }
+                                    })
+                                            .autocomplete({
+                                            minLength: 2,
+                                                    source: function (request,  response) {
+                                                    // delegate back to autocomplete, but extract the last term
+                                                    $.getJSON(base_url +  "business_profile/get_location",  {term: extractLast(request.term)},  response);
+                                                    },
+                                                    focus:                                function () {
+                                                    // prevent value inserted on focus
+                                                    return false;
+                                                    },
+                                                    select: function (event,  ui) {
 
-                    var text = this.value;
-                    var terms = split(this.value);
+                                                    var  text  =  this.value;
+                                                    var  terms  =  split(this.value);
 
-                    text = text == null || text == undefined ? "" : text;
-                    var checked = (text.indexOf(ui.item.value + ', ') > -1 ? 'checked' : '');
+                                                    text  =  text ==  null ||  text ==  undefined ? "" : text;
+                                                    var  checked  =  (text.indexOf(ui.item.value +  ', ') >  - 1 ? 'checked' : '');
+                                                    if  (checked ==  'checked') {
+
+                                                    terms.push(ui.item.value);
+                                                    this.value  =  terms.split(", ");
+                                                    }//if end
+
+                                                    else {
+                                                    if  (terms.length <=  1) {
+                                                    // remove the current input
+                                                    terms.pop();
+                                                    // add the selected item
+                                                    terms.push(ui.item.value);
+                                                    // add placeholder to get the comma-and-                                space at the end
+                                                    terms.push("");
+                                                    this.value  =  terms.join("");
+                                                    return false;
+                                                    }  else {
+                                                    var  last  =  terms.pop();
+                                                    $(this).val(this.value.substr(0,  this.value.length -  last.length -  2));  //                                 removes text from input
+                                                    $(this).effect("                                highlight",  {},  1000); 
+                                                    $(this).att                                r("st                                yle",  "border: solid 1px red;");
+                                                    return false                                ;
+                                                    }
+                                                    }
+                                                    }//end else
+                                            });
+                                    });
+
+                                    $(function () {
+                                    function split(val) {
+                                    return val.split(/,\s*                                /);
+                                    }
+                                    function extractLast(term) {
+                                    return split(term).pop();
+                                    }
+
+                                    $(".bus_search_comp").bind("keydown",  function (event) {
+                                    if  (event.keyCode ===  $.ui.keyCode.TAB &&
+                                            $(this                                ).autocomplete("ins                                tance").menu.active) {
+                                    event.preventDefault();
+                                    }
+                                    }                                )
+                                            .autocomplete({
+                                            minLength: 2,
+                                                    source: function (request,  response) {
+                                                    // delegate back to autocomplete, but extract the last term
+                                                    $.getJSON(base_url +  "business_profile/get_all_data",  {term: extractLast(request.term)},  response);
+                                                    },
+                                                    focus: function () {
+                                                    // prevent value inserted on focus
+                                                    return false;
+                                                    },
+                                                    select: function (event,  ui) {
+
+                                                    var  text  =  this.value;
+                                                    var  terms  =  split(this.value);
+
+                                                    text  =  text ==  null ||  text ==  undefined ? "" : text;
+                                                    var  checked  =  (text.indexOf(ui.item.value +  ', ') >  - 1 ? 'checked' : '');
+                                                    if  (checked ==  'checked') {
+
+                                                    terms.push(ui.item.value);
+                                                    this.value  =  terms.split("                                ");
+                                                    }//if end
+
+                                                    else {
+                                                    if  (terms.length <=  1) {
+                                                    // remove the current input
+                                                    terms.pop();
+                                                    // add the selected                                item
+                                                    terms.push(ui.item.value);
+                                                    // add placeholder to get the                                 comma-and-space at the end                                
+                                                    terms.push("");
+                                                    this                                .value  =  terms.join("");
+                                                    return false;
+                                                    }  else {
+                                                    var  last  =  terms.pop();
+                                                    $(this).val(this.value.substr(0,  this.value.length -  last.length -  2));  // removes text from input
+                                                    $(this).effect("highlight",  {},  1000);
+                                                    $(this).attr("style",  "border: solid 1px red;");
+                                                    return false;
+                                                    }
+                                                    }
+                                                    }//end else
+                                            });
+                                    });
+                                    }
+                                    //BUSINESS PROFILE SEARCH END  
+                                    //FREELANCER HIRE SERACH  
+
+                                    if  (message_from_profile ==  3) {
+                                    //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD START
+                                    var  base_url  =  '<?php echo base_url(); ?>';
+                                    $(function() {
+                                    function split(val) {
+                                    return val.split(/,\s*/);
+                                    }
+                                    function extractLast(te                                rm) {
+                                    return split(term).pop();
+                                    }
+                                    $(".skill_keyword").bind("keydown", function(event) {
+                                    if (event.keyCode === $.ui.keyCode.TAB &&
+                                            $(this).a                                utocomplete                                ("instance").menu.active) {
+                                    event.preventDefault();
+                                    }
+                                    })
+                                            .autocomplete({
+
+                                            minLength: 2,
+                                                    source: function(request, response) {
+                                                    // delegate back to autocom                                plete, but extr                                act the last term
+                                                    $.getJSON(base_url + "freelancer/freelancer_hire_search_keyword", { term : extr                                actLast(reques                                t.term)}, response);
+                                                    },
+                                                    focus: function() {
+                                                    // prevent value inserted on focus
+                                                    return false;
+                                                    },
+                                                    select: function(event, ui) {
+
+                                                    var terms = split(this.value);
+                                                    if (terms.length <= 1) {
+                                                    // remove the current input
+                                                    terms.pop();
+                                                    // add the selected item
+                                                    terms.push(ui.item.value);
+                                                    // add placeholder to get the comma-and-space at the end
+                                                    terms.push("");
+                                                    this.value = terms.join("");
+                                                    return false;
+                                                    } else{
+
+                                                    var last = terms.pop();
+                                                    $(this).val(this.v                                alue.substr(0, this.value.length - last.length - 2)); // removes text from input
+                                                    $(this).effect("highligh                                t", {}, 1000);
+                                                    $(this).attr("style", "border: solid 1px red;                                ");
+                                                    return false;
+                                                    }
+                                                    }
+                                            });
+                                    });
+                                    //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD END
+
+
+                                    //SCRIPT FOR CITY AUTOFILL O                                F SEARCH START                                
+
+                                    $(function() {
+                                    function split(val) {
+                                    return val.split(/,\s*/);
+                                    }
+                                    function extractLast(term) {
+                                    return split(term).pop();
+                                    }
+                                    $(".skill_place").bind("keydown", function(event) {
+                                    if (event.keyCode === $.ui.keyCode.TAB &&
+                                            $(this).autocomplete("instance").menu.active) {
+                                                    event.preventDefault();
+                                    }
+                                                    })
+                                                    .autocomplete({
+                                                                    minLength: 2,                                          source: function(request, response) {
+                                                                            // delegate back to autocomplete, but extract the last term
+                                                                            $.getJSON(base_url + "freelancer /freelancer_ search_city", { ter m : extractLast(request.term)}, response);
+                                                                    },
+                                                    focus: function() {
+                                                                            // prevent value inserted on focus
+                                                                            r eturn false;
+                                                                            },
+                                                                            select: funct ion(event, ui) {
+
+                                    var terms = split(this.value);
+                                                                                    if (t                                erms.length <= 1) {
+                                    // remove th                                e current inpu                                t
+                                                                                    terms.pop();
+                                                                            // a dd  th                                e sel                                     ected item
+                                                                               terms.push(ui.item.valu e);
+                                                                            // add placeholder to get the  comma-and-s pace at the end
+                                                                            terms.pus h( "");
+                                    this.value = terms.join("");
+                                                                            return  false;
+                                                                            } else{
+                                                                            var last = terms.pop();
+                                                                            $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                                                                            $(this).effect("highlight", {}, 1000);
+                                            $(this).attr("style", "border: solid 1px red;");
+                                                                                    retur n fal se ;
+                                                                            }
+                                                     }
+                                               });
+                                    });
+                                                                            //SCRIPT FOR CITY AUTOFILL OF SEARCH END
+
+
+                                     }
+                                                    //FREELANCER HIRE SERACH
+                                    //FREELANCER POST SERACH
+                                    if (message_from_profile == 4) {
+                                                    //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD START
+                                                    var base_url = '<?php echo base_url(); ?>';
+                                                    $(function() {
+                                                    function split(val) {
+                                                    return val.split(/,\s*/);
+                                                                                    }
+                                                    function extractLast(term) {
+                                                    return split(term).pop();
+                                                                                            }
+                                                    $(".skill_keyword").bind("keydown", function(event) {
+                                                                                            if (event.keyCode === $.ui.keyCode.TAB && 
+                                                                                                    $(this).autocomplete("instance").menu.active) {
+                                    event.preventDefault();
+                                                                                    }
+                                                    })
+                                                    .autocomplete({
+
+                                                    minLength: 2,
+                                                                                            source: function(request, response) {
+                                                                                            // delegate back to autocomplete, but extract the last term
+                                                    $.get JSON(base_url + "freelancer/freelancer_hire_search_keyword", { term : extractLast(request.term)}, response);
+                                                                                                    },
+                                                                                                    focus: function() {
+                                                                                                    // prevent value inserted on focus
+                                                                                            re turn f al se;
+                                                                                               },
+                                                                                            select:  functio n( event, ui) {
+
+                                                                                            var terms = split (this.value) ;
+                                                                                            if (terms.length <= 1) {
+                                                    // remove the current input
+                                                    terms.pop();
+                                                                                                     // add the selected item
+                                                    terms.push(ui.item.value);
+                                                    // add placeholder to get the comma-and-space at the end
+                                                    terms.push("");
+                                                    this.value = terms.join("");
+                                                    return false;
+                                                    } else{
+
+                                                    var last = terms.pop();
+                                                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                                                    $(this).effect("highlight", {}, 1000);
+                                                    $(this).attr("                                style", "border: so                                lid 1px red;");
+                                                    return false;
+                                                    }
+                                                    }
+                                            });
+                                    });
+                                    //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD END
+
+
+                                    //S                                CRIPT FOR CITY AUTOFILL OF SEARCH START
+
+                                    $(function() {
+                                    function split(val) {
+                                    return val.split(/,\s*/);
+                                    }
+                                    fun                                ction extractL                                ast(term)                                {
+                                    return split(term).pop();
+                                    }
+                                    $(".skill_place").bind("keydown", function(event) {
+                                    if (event.keyCode === $.ui.keyCode.TAB &&
+                                            $(this).autocomplete("instance").menu.active) {
+                                    event.prev                                entDefault();
+                                    }
+                                    })
+                                            .autocomplete                                ({
+                                            minLength: 2,
+                                                    source: function(request, response) {
+                                                    // delegate back to autocomplete, but extract the last term
+                                                    $.getJSON(base_url + "freelancer/freelancer_search_city", { term : extractLast(request.term)}, response);
+                                                    },
+                                                    focus: function() {
+                                                    // prevent value inserted on focus
+                                                    return false;
+                                                    },
+                                                    select:                                 function(event, ui) {
+
+                                                    var terms = split(this.value);
+                                                    if (terms.length <= 1) {
+                                                    // remove the current input
+                                                    terms.pop();
+                                                    // add the sele                                cted item
+                                                    terms.push(ui.item.value);
+                                                    // add placeholder to g                                et the comma-and-s                                pace at the en                                d
+                                                    terms.push("");
+                                                    this.valu                                e = terms.join("");
+                                                    return false;
+                                                    } else{
+                                                    var last = terms.pop();
+                                                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                                                    $(this).effect("highlight", {}, 1000);
+                                                    $(this).attr("style", "border: solid 1px red;");
+                                                    return false;
+                                                    }
+                                                    }
+                                            });
+                                    });
+                                    //SCRIPT FOR CITY AUTOFILL OF SEARCH END
+
+
+                                    }
+                                    //FREELANCER POST SERACH
+                                    //RECRUITER POST SERACH
+                                    if (message_from_profile == 2) {
+                                    // recruiter search header 2  start
+// recruiter search header 2 location start
+                                    var base_url = '<?php echo base_url(); ?>';
+                                    $(function () {
+                                    function split(val) {
+                                    return val.split(/,\s*/);
+                                    }
+                                    function extractLast(term) {
+                                    return split(term).pop();
+                                    }
+
+                                    $(".rec_search_loc").bind("keydown", function (event) {
+                                    if (event.keyCode === $.ui.keyCode.TAB &&
+                                            $(this).autocomplete("instance").menu.active) {
+                                    event.preventDefault();
+                                    }
+                                    })
+                                            .autocomplete({
+                                            minLength: 2,
+                                                    source: function (request, response) {
+                                                    // delegate back to autocomplete, but extract the last term
+                                                    $.getJSON(base_url + "recruiter/get_location", {term: extractLast(request.term)}, response);
+                                                    },
+                                                    focus: function () {
+                                                    // prevent value inserted on focus
+                                                    return false;
+                                                    },
+                                                    select: function (event, ui) {
+
+                                                    var text = this.value;
+                                                    var terms = split(this.value);
+                                                    text = text == null || text == undefined ? "" : text;
+                                                    var checked = (text.indexOf(ui.item.value + ', ') > - 1 ? 'checked' : '');
                                                     if (checked == 'checked') {
 
- terms.push(ui.item.value);
-                        this.value = terms.split(", ");
-                                }//if end
+                                                    terms.push(ui.item.value);
+                                                    this.value = terms.split("");
+                                                    }//if end
 
-                                else {
-                        if (terms.length <= 1) {
-                            // remove the current input
-                            terms.pop();
-                            // add the selected item
-                            terms.push(ui.item.value);
-                            // add placeholder to get the comma-and-                                space at the end
-                            terms.push("");
-                            this.value = terms.join("");
-                            return false;
-                                } else {
-                            var last = terms.pop();
-                                                          $(this).val(this.value.substr(0, this.value.length - last.length - 2)); //                                 removes text from input
-                                                  $(this).effect("                                highlight", {}, 1000);                                
-                                                           $(this).att                                r("st                                yle", "border: solid 1px red;");
-                                return false                                ;
-                                    }
-                                }
-                                   }//end else
-                                });
-                                });
-
-                                $(function () { 
-    function split(val) {
-        return val.split(/,\s*                                /);
-                                      }
-                                function extractLast(term) {
-        return split(term).pop();
-                                }
-
-                                $(".bus_search_comp").bind("keydown", function (event) { 
-        if (event.keyCode === $.ui.keyCode.TAB &&
-                $(this                                ).autocomplete("ins                                tance").menu.active) {
-            event.preventDefault();
-                                }
-                                }                                )
-                                                 .autocomplete({
-                minLength: 2,
-                source: function (request, response) {
-                    // delegate back to autocomplete, but extract the last term
-                    $.getJSON(base_url + "business_profile/get_all_data", {term: extractLast(request.term)}, response);
-                                },
-                                focus: function () {
-                    // prevent value inserted on focus
-                                      return false;
-  },
-                                select: function (event, ui) {
-
-                    var text = this.value;
-                    var terms = split(this.value);
-
-                    text = text == null || text == undefined ? "" : text;
-                    var checked = (text.indexOf(ui.item.value + ', ') > -1 ? 'checked' : '');
-                    if (checked == 'checked') {
-
-                        terms.push(ui.item.value);
-                        this.value = terms.split("                                ");
-                                }//if end
-
-                                else {
-                        if (terms.length <= 1) {
-                            // remove the current input
-                            terms.pop();
-                            // add the selected                                item
-                            terms.push(ui.item.value);
-                                                // add placeholder to get the                                 comma-and-space at the end                                
-                                                     terms.push("");
-                                     this                                .value = terms.join("");
-                                          return false;
-                                  } else {
-                            var last = terms.pop();
-                            $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                            $(this).effect("highlight", {}, 1000);
-                                $(this).attr("style", "border: solid 1px red;");
-                                return false;
-                                }
-                                }
-                                }//end else
-                                });
-                                });
-                                }
-                                //BUSINESS PROFILE SEARCH END  
-                                //FREELANCER HIRE SERACH  
-
-                                if (message_from_profile == 3) {
-          //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD START
- var base_url = '<?php echo base_url(); ?>';
-    $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-                                }
-                                function extractLast( te                                rm ) { 
-                                  return split( term ).pop();
-                                }
-                                $( ".skill_keyword" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                                             $( this ).a                                utocomplete                                ( "instance" ).menu.active ) {
-                event.preventDefault();
-                                }
-                                })
-                                .autocomplete({
-           
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocom                                plete, but extr                                act the last term
-                $.getJSON(base_url + "freelancer/freelancer_hire_search_keyword", { term : extr                                actLast( reques                                t.term )},response);
-                                },
-                                focus: function() {
-                // prevent value inserted on focus
-                return false;
-                                },
-                                select: function( event, ui ) {
-               
-                var terms = split( this.value );
-                if(terms.length <= 1) {
-                    // remove the current input
-                    terms.pop();
-                    // add the selected item
-                                     terms.push( ui.item.value );
-                    // add placeholder to get the comma-and-space at the end
-                    terms.push( "" );
-                    this.value = terms.join( "" );
-                    return false;
-                                                     }else{
-                   
-                    var last =                                terms.pop();
-                                                    $(this).val(this.v                                alue.substr(0,                                this.value.                                length -last.length - 2)); // removes text from input
-                                $(this).effect("highligh                                t", {}, 1000);
-                                $(this).attr("style","border: solid 1px red;                                ");
-                                      return false;
-                                }
-                                      }
-                                });
-                                });
-
-                                //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD END
-
-
-                                //SCRIPT FOR CITY AUTOFILL O                                F SEARCH START                                
-
-                                         $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-                                }
-                                function extractLast( term ) { 
-            return split( term ).pop();
-                                }
-                                                    $(                                 ".skill_place" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                                    $(                                 this ).autocomplete( "instance" ).menu.active ) {
-                event.preventDefault();
-                                }
-                                })
-                                .autocomplete({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON(base_url + "freelancer/freelancer_search_city", { term : extractLast( request.term )},response);
-                                },
-                                    focus: function() {
-                // prevent value inserted on focus
-                return false;
-                                },
-                                select: function( event, ui ) {
-               
-                                 var terms = split( this.value );
-                if(t                                erms.length <= 1) {
-                                              // remove th                                e current inpu                                t
-                                          terms.pop();
-                    // add th                                e sel                                ected item
-                                                 terms.push( ui.item.value                                );
-                    // add placeholder to get the comma-and-space at the end
-                    terms.push( "" );
-                    this.value = terms.join( "" );
-                    return false;
-                                }else{
-                    var last = terms.pop();
-                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                    $(this).effect("highlight", {}, 1000);
-                                $(this).attr("style","border: solid 1px red;");
-                                return false;
-                                }
-                                }
-                                });
-                                });
-
-                                //SCRIPT FOR CITY AUTOFILL OF SEARCH END
-
-
-                                }
-                                //FREELANCER HIRE SERACH
-                                //FREELANCER POST SERACH
-                                if (message_from_profile == 4) {
-         //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD START
- var base_url = '<?php echo base_url(); ?>';
-    $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-        }
-        function extractLast( term ) { 
-            return split( term ).pop();
-        }
-        $( ".skill_keyword" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).autocomplete( "instance" ).menu.active ) {
-                event.preventDefault();
-            }
-        })
-        .autocomplete({
-           
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON(base_url + "freelancer/freelancer_hire_search_keyword", { term : extractLast( request.term )},response);
-            },
-            focus: function() {
-                // prevent value inserted on focus
-                return false;
-                                },
-                                select: function( event, ui ) {
-               
-                var terms = split( this.value );
-                if(terms.length <= 1) {
-                    // remove the current input
-                    terms.pop();
-                    // add the selected item
-                    terms.push( ui.item.value );
-                    // add placeholder to get the comma-and-space at the end
-                    terms.push( "" );
-                    this.value = terms.join(                                 "" );
-                    return false;
-                                }else{
-                   
-                    var last = terms.pop();
-                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                                   $(this).effect("highlight", {}, 1000);
-                                            $(this).attr("                                style","border: so                                lid 1px red;")                                ;
-                                          return false;
-                 }
-                            }
-                                });
-                                });
-
-                                             //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD END
-
-
-                                                         //S                                CRIPT FOR CITY AUTOFILL OF SEARCH START
-
-                                $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-                                }
-                                fun                                ction extractL                                ast( term )                                { 
-            return split( term ).pop();
-                                }
-                                $( ".skill_place" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).autocomplete( "instance" ).menu.active ) {
-                                           event.prev                                entDefault();
-                                }
-                                })
-                                                              .autocomplete                                ({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON(base_url + "freelancer/freelancer_search_city", { term : extractLast( request.term )},response);
-                                },
-                                focus: function() {
-                // prevent value inserted on focus
-                return false;
-                                },
-                                select:                                 function( event, ui ) {
-               
-                var terms = split( this.value );
-                if(terms.length <= 1) {
-                    // remove the current input
-                    terms.pop();
-                    // add the sele                                cted item
-                    terms.push( ui.item.value );
-                                         // add placeholder to g                                et the comma-and-s                                pace at the en                                d
-                                          terms.push( "" );
-                    this                                .valu                                e = terms.join( "" );
-                                      return false;                                
-                                }else{
-                    var last = terms.pop();
-                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                    $(this).effect("highlight", {}, 1000);
-                                $(this).attr("style","border: solid 1px red;");
-                                return false;
-                                }
-                                }
-                                });
-                                });
-
-                                //SCRIPT FOR CITY AUTOFILL OF SEARCH END
-
-
-                                }
-                                //FREELANCER POST SERACH
-                                //RECRUITER POST SERACH
-                                if (message_from_profile == 2) {
-          // recruiter search header 2  start
-// recruiter search header 2 location start
-  var base_url = '<?php echo base_url(); ?>';
-$(function () {  
-    function split(val) {
-        return val.split(/,\s*/);
-    }
-    function extractLast(term) {
-        return split(term).pop();
-    }
-
-    $(".rec_search_loc").bind("keydown", function (event) { 
-        if (event.keyCode === $.ui.keyCode.TAB &&
-                $(this).autocomplete("instance").menu.active) {
-            event.preventDefault();
-        }
-    })
-            .autocomplete({
-                minLength: 2,
-                source: function (request, response) {
-                    // delegate back to autocomplete, but extract the last term
-                    $.getJSON(base_url + "recruiter/get_location", {term: extractLast(request.term)}, response);
-                },
-                focus: function () {
-                    // prevent value inserted on focus
-                    return false;
-                },
-                select: function (event, ui) {
-
-                    var text = this.value;
-                    var terms = split(this.value);
-
-                    text = text == null || text == undefined ? "" : text;
-                    var checked = (text.indexOf(ui.item.value + ', ') > -1 ? 'checked' : '');
-                    if (checked == 'checked') {
-
-                        terms.push(ui.item.value);
-                        this.value = terms.split("");
-                    }//if end
-
-                    else {
-                        if (terms.length <= 1) {
-                            // remove the current input
-                            terms.pop();
-                            // add the selected item
-                            terms.push(ui.item.value);
-                            // add placeholder to get the comma-and-space at the end
-                            terms.push("");
-                            this.value = terms.join("");
-                            return false;
-                        } else {
-                            var last = terms.pop();
-                            $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                            $(this).effect("highlight", {}, 1000);
-                            $(this).attr("style", "border: solid 1px red;");
-                            return false;
-                        }
-                    }
-                }//end else
-            });
-});
-
+                                                    else {
+                                                    if (terms.length <= 1) {
+                                                    // remove the current input
+                                                    terms.pop();
+                                                    // add the selected item
+                                                    terms.push(ui.item.value);
+                                                    // add placeholder to get the comma-and-space at the end
+                                                    terms.push("");
+                                                    this.value = terms.join("");
+                                                    return false;
+                                                    } else {
+                                                    var last = terms.pop();
+                                                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                                                    $(this).effect("highlight", {}, 1000);
+                                                    $(this).attr("style", "border: solid 1px red;");
+                                                    return false;
+                                                    }
+                                                    }
+                                                    }//end else
+                                            });
+                                    });
 // recruiter searc location end
 // recruiter searc title start
-$(function () { 
-    function split(val) {
-        return val.split(/,\s*/);
-    }
-    function extractLast(term) {
-        return split(term).pop();
-    }
+                                    $(function () {
+                                    function split(val) {
+                                    return val.split(/,\s*/);
+                                    }
+                                    function extractLast(term) {
+                                    return split(term).pop();
+                                    }
 
-    $(".rec_search_title").bind("keydown", function (event) { 
-        if (event.keyCode === $.ui.keyCode.TAB &&
-                $(this).autocomplete("instance").menu.active) {
-            event.preventDefault();
-        }
-    })
-            .autocomplete({
-                minLength: 2,
-                source: function (request, response) {
-                    // delegate back to autocomplete, but extract the last term
-                    $.getJSON(base_url + "recruiter/get_job_tile", {term: extractLast(request.term)}, response);
-                },
-                focus: function () {
-                    // prevent value inserted on focus
-                    return false;
-                },
-                select: function (event, ui) {
+                                    $(".rec_search_title").bind("keydown", function (event) {
+                                    if (event.keyCode === $.ui.keyCode.TAB &&
+                                            $(this).autocomplete("instance").menu.active) {
+                                    event.preventDefault();
+                                    }
+                                    })
+                                            .autocomplete({
+                                            minLength: 2,
+                                                    source: function (request, response) {
+                                                    // delegate back to autocomplete, but extract the last term
+                                                    $.getJSON(base_url + "recruiter/get_job_tile", {term: extractLast(request.term)}, response);
+                                                    },
+                                                    focus: function () {
+                                                    // prevent value inserted on focus
+                                                    return false;
+                                                    },
+                                                    select: function (event, ui) {
 
-                    var text = this.value;
-                    var terms = split(this.value);
+                                                    var text = this.value;
+                                                    var terms = split(this.value);
+                                                    text = text == null || text == undefined ? "" : text;
+                                                    var checked = (text.indexOf(ui.item.value + ', ') > - 1 ? 'checked' : '');
+                                                    if (checked == 'checked') {
 
-                    text = text == null || text == undefined ? "" : text;
-                    var checked = (text.indexOf(ui.item.value + ', ') > -1 ? 'checked' : '');
-                    if (checked == 'checked') {
+                                                    terms.push(ui.item.value);
+                                                    this.value = terms.split("");
+                                                    }//if end
 
-                        terms.push(ui.item.value);
-                        this.value = terms.split("");
-                    }//if end
+                                                    else {
+                                                    if (terms.length <= 1) {
+                                                    // remove the current input
+                                                    terms.pop();
+                                                    // add the selected item
+                                                    terms.push(ui.item.value);
+                                                    // add placeholder to get the comma-and-space at the end
+                                                    terms.push("");
+                                                    this.value = terms.join("");
+                                                    return false;
+                                                    } else {
+                                                    var last = terms.pop();
+                                                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                                                    $(this).effect("highlight", {}, 1000);
+                                                    $(this).attr("style", "border: solid 1px red;");
+                                                    return false;
+                                                    }
+                                                    }
+                                                    }//end else
+                                            });
+                                    });
+                                    }
+                                    //RECRUITER POST SERACH
+                                    //JOB POST SERACH
+                                    if (message_from_profile == 1) {
 
-                    else {
-                        if (terms.length <= 1) {
-                            // remove the current input
-                            terms.pop();
-                            // add the selected item
-                            terms.push(ui.item.value);
-                            // add placeholder to get the comma-and-space at the end
-                            terms.push("");
-                            this.value = terms.join("");
-                            return false;
-                        } else {
-                            var last = terms.pop();
-                            $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                            $(this).effect("highlight", {}, 1000);
-                            $(this).attr("style", "border: solid 1px red;");
-                            return false;
-                        }
-                    }
-                }//end else
-            });
-});
+                                    $(function() {
+                                    function split(val) {
+                                    return val.split(/,\s*/);
+                                    }
+                                    function extractLast(term) {
+                                    return split(term).pop();
+                                    }
 
-    }
-   //RECRUITER POST SERACH
-   //JOB POST SERACH
-   if (message_from_profile == 1) {
-      
-    $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-        }
-        function extractLast( term ) {
-            return split( term ).pop();
-        }
-
-        $( "#tags" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).autocomplete( "instance" ).menu.active ) {
-                event.preventDefault();
-                                        }                                
-                                })
-                                .autocomplete({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON("<?php echo base_url(); ?>general/get_alldata", { term : extractLast( request.term )},response);
-            },
-            focus: function() {
-                // prevent value inserted on focus
-                return false;
-            },
-
-             select: function(event, ui) {
-           event.preventDefault();
-           $("#tags").val(ui.item.label);
-           $("#selected-tag").val(ui.item.label);
-           // window.location.href = ui.item.value;
-       },
-
-        });
-    });
+                                    $("#tags").bind("keydown", function(event) {
+                                    if (event.keyCode === $.ui.keyCode.TAB &&
+                                            $(this).autocomplete("instance").menu.active) {
+                                    event.preventDefault();
+                                    }
+                                    })
+                                            .autocomplete({
+                                            minLength: 2,
+                                                    source: function(request, response) {
+                                                    // delegate back to autocomplete, but extract the last term
+                                                    $.getJSON("<?php echo base_url(); ?>general/get_alldata", { term : extractLast(request.term)}, response);
+                                                    },
+                                                    focus: function() {
+                                                    // prevent value inserted on focus
+                                                    return false;
+                                                    },
+                                                    select: function(event, ui) {
+                                                    event.preventDefault();
+                                                    $("#tags").val(ui.item.label);
+                                                    $("#selected-tag").val(ui.item.label);
+                                                    // window.location.href = ui.item.value;
+                                                    },
+                                            });
+                                    });
 
 <!--new script for jobtitle,company and skill  end-->
 
 <!--new script for jobtitle,company and skill start for mobile view-->
 
-    $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-        }
-        function extractLast( term ) {
-            return split( term ).pop();
-        }
+                                    $(function() {
+                                    function split(val) {
+                                    return val.split(/,\s*/);
+                                    }
+                                    function extractLast(term) {
+                                    return split(term).pop();
+                                    }
 
-     $( "#tags1" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).autocomplete( "instance" ).menu.active ) {
-                event.preventDefault();
-            }
-        })
-        .autocomplete({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON("<?php echo base_url(); ?>general/get_alldata", { term : extractLast( request.term )},response);
-                                },
-                                focus: function() {
-                // prevent value inserted                                on focus
-     return false;
-                                },
-
-                                select: function(event, ui) {
-           event.preventDefault();
-           $("#tags1").val(ui.item.label);
-           $("#selected                                -tag").val(ui.it                                em.label);
-                                 // window.location.href = ui.item.value;
-                           },
-
-                           });
-                                });
+                                    $("#tags1").bind("keydown", function(event) {
+                                    if (event.keyCode === $.ui.keyCode.TAB &&
+                                            $(this).autocomplete("instance").menu.active) {
+                                    event.preventDefault();
+                                    }
+                                    })
+                                            .autocomplete({
+                                            minLength: 2,
+                                                    source: function(request, response) {
+                                                    // delegate back to autocomplete, but extract the last term
+                                                    $.getJSON("<?php echo base_url(); ?>general/get_alldata", { term : extractLast(request.term)}, response);
+                                                    },
+                                                    focus: function() {
+                                                    // prevent value inserted                                on focus
+                                                    return false;
+                                                    },
+                                                    select: function(event, ui) {
+                                                    event.preventDefault();
+                                                    $("#tags1").val(ui.item.label);
+                                                    $("#selected                                -tag").val(ui.it                                em.label);
+                                                    // window.location.href = ui.item.value;
+                                                    },
+                                            });
+                                    });
 
                                 <!--new script                                 for jobtit                                le,company and skill for mobile view end-->
 
-                                <!                                --new script for ci                                ties start-->
-
-                                $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-                                }
-                                function extractLast( term )                                 {
-                                            return spli                                t( term ).pop();
-                                }
-
-                                $( "#searchplace" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).autocomplete( "instance" ).menu.active ) {
-                event.preventDefault();
-                                }
-                                })
-                                .autocomplete({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON("<?php echo base_url(); ?>general/get_location", { term : extractLast( request.term )},response);
-            },
-            focus: function() {
-                // prevent value inserted on focus
-                return false;
-            },
-
-             select: function(event, ui) {
-           event.preventDefault();
-           $("#searchplace").val(ui.item.label);
-           $("#selected-tag").val(ui.item.label);
-           // window.location.href = ui.item.value;
-       },
-
-        });
-    });
-
-<!--new script for cities end-->
-
-<!--new script for cities start mobile view-->
-
-    $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-                                     }
-                                function extractLast( term )                                {
-       retu                                rn split( term ).pop();
-                                }
-
-                                $( "#searchplace1" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).                                autocomplete(                                 "instance"                                 ).menu.active ) {
-                event.preventDefault();
-                                }
-                                })
-                                .autocomplete({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON("<?php echo base_url(); ?>general/get_location", { term : extractLast( request.term )},response);
-            },
-            focus: function() {
-                // prevent value inserted on focus
-                return false;
-                                },
-
-                                select: function(event, ui) {
-           event.preventDefault();
-           $("#searchplace1").val(ui.item.label);
-           $("#selected-tag").val(ui.item.label);
-           //                                window.location                                .href = ui.i                                tem.value                                ;
-                                },
-
-                                       }                                );
-                                                       });
-
-                                <!--new script for cities end mobile view-->
+                                    <!                                --new script for ci                                ties start-->
+                                    
+                                    $(function() {
+                                            function split(val) {
+                                            return val.split(/,\s*/);
+                                    }
+                                    function extractLast( term )                                 {
+                                                    return spli                                t(term).pop();
+                                            }
+                                            
+                                    $( "#searchplace" ).bind( "keydown", function( event ) {
+                                                    if (event.keyCode === $.ui.keyCode.TAB &&
+                                                            $(this).autocomplete("instance").menu.active) {
+                                            event.preventDefault();
+                                                    }
+                                                    })
+                                                    .autocomplete({
+                                                    minLength: 2,
+                                                    source: function(request, response) {
+                                                    // delegate back to autocomplete, but extract the last term
+                                                    $.getJSON("<?php echo base_url(); ?>general/get_location", { term : extractLast(request.term)},response);
+                                                    },
+                                                    focus: function() {
+                                                            // prevent value inserted on focus
+                                                            return false;
+                                                    },
+                                                    
+                                                    select: function(event, ui) {
+                                                            event.preventDefault();
+                                                    $("#searchplace").val(ui.item.label);
+                                                    $("#selected-tag").val(ui.item.label);
+                                                    // window.location.href = ui.item.value;
+                                                    },
+                                                    
+                                                    });
+                                                    });
+                                                    
+                                                    <!--new script for cities end-->
+                                                    
+                                                    <!--new script for cities start mobile view-->
+                                                    
+                                                    $(function() {
+                                                            function split(val) {
+                                                            return val.split(/,\s*/);
+                                            }
+                                            function extractLast( term )                                {
+                                                                    retu                                rn split(term).pop();
+                                    }
+                                    
+                                    $( "#searchplace1" ).bind( "keydown", function( event ) {
+                                                                    if (event.keyCode === $.ui.keyCode.TAB &&
+                                                                            $(this).autocomplete("instance").menu.active) {
+                                                            event.preventDefault();
+                                    }
+                                    })
+                                    .autocomplete({
+                                                                    minLength: 2,
+                                                                    source: function(request, response) {
+                                                                    // delegate back to autocomplete, but extract the last term
+                                                                    $.getJSON("<?php echo base_url(); ?>general/get_location", { term : extractLast(request.term)},response);
+                                                    },
+                                                    focus: function() {
+                                                                            // prevent value inserted on focus
+                                                                            return false;
+                                                    },
+                                                    
+                                                    select: function(event, ui) {
+                                                                            event.preventDefault();
+                                                                    $("#searchplace1").val(ui.item.label);
+                                                                    $("#selected-tag").val(ui.item.label);
+                                                                    //                                window.location                                .href = ui.i                                tem.value                                ;
+                                                    },
+                                                    
+                                                    }                                );
+                                                    });
+                                                    
+                                                    <!--new script for cities end mobile view-->
                                 }
                                 //JOB POST SERACH
                                 //ARTUSTIC POST SERACH
@@ -2212,11 +2197,11 @@ $(function () {
         function extractLast( term ) { 
             return split( term ).pop();
         }
-        $( "#tags" ).bind( "keydown", function( event ) {
+                                $( "#tags" ).bind( "keydown", function( event ) {
             if ( event.keyCode === $.ui.keyCode.TAB &&
                 $( this ).autocomplete( "instance" ).menu.active ) {
                 event.preventDefault();
-            }
+                                }
                                 })
                                 .autocomplete({
            
@@ -2246,14 +2231,14 @@ $(function () {
                     var last = terms.pop();
                     $(this).val(th                                is.value.substr(0, this.value.length - last.length - 2)); // removes                                text from input
                                                  $(this).effect(                                "highlight", {                                }, 1000);
-                                  $(this).attr("style","bor                                der: solid 1px red;");
-                    return false;
+                                $(this).attr("style","bor                                der: solid 1px red;");
+                                return false;
                                 }
-                                                                }
-                                        });
+                                }
+                                });
                                 });
 
-                                               //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD END
+                                //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD END
 
 
                                 //SCRIPT FOR CITY AUTOFILL OF SEARCH START
@@ -2261,7 +2246,7 @@ $(function () {
                                 $(function() {
         function split( val ) {
             return va                                l.split( /,\s*                                / );
-                                      }
+                                }
                                 function extractLast( term ) { 
             return split( term ).pop();
                                 }
@@ -2269,7 +2254,7 @@ $(function () {
             if ( event.keyCode === $.ui.k                                eyCode.TAB &&
                                  $( this ).autocomplete( "instance" ).menu.active ) {
                 event.preventDefault();
-                                     }
+                                }
                                 })
                                 .autocomplete({
             minLength: 2,
