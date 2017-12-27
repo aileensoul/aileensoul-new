@@ -480,15 +480,9 @@
                                 <?php
                             } } else {
                             ?>
- <div class="art-img-nn">
-                                <div class="art_no_post_img">
-                                    <img src="<?php echo base_url() . 'assets/img/job-no.png';?>">
 
-                                </div>
-                                <div class="art_no_post_text">
-                                    No  Post Available.
-                                </div>
-                            </div>
+                            
+                            <div class="art_no_post_avl"><h3>Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src="<?php echo base_url() . 'assets/img/job-no.png';?>" alt="bui-no.png"></div><div class="art_no_post_text">No Post Available.</div></div></div>
                             <?php } ?>
                         </div>
 						

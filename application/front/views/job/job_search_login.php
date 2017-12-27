@@ -396,7 +396,7 @@
                 <div class="modal-body">
                     <div class="clearfix">
                         <div class="">
-                            <div class="title"><h1>Sign up First and Register in Job Profile</h1></div>
+                            <div class="title"><h4>Sign up First and Register in Job Profile</h4></div>
                             <div class="main-form">
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
@@ -413,10 +413,10 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                     </div>
                                     <div class="form-group">
-                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
                                         <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
                                     </div>
                                     <div class="form-group dob">
@@ -506,7 +506,7 @@
                 <div class="modal-body">
                     <div class="clearfix">
                         <div class="col-md-12 col-sm-12">
-                            <h4>Join Aileensoul - It's Free</h4>
+                          <h4>Sign up First and Register in Job Profile</h4>
                             <div class="main-form">
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
@@ -523,10 +523,10 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                     </div>
                                     <div class="form-group">
-                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
                                         <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
                                     </div>
                                     <div class="form-group dob">
