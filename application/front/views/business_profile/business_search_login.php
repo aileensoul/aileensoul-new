@@ -629,6 +629,11 @@
                                     <p>
                                         <button tabindex="13" class="btn1">Create an account</button>
                                     </p>
+                                    <div class="sign_in pt10">
+                                        <p>
+                                            Already have an account ? <a tabindex="10" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
+                                        </p>
+                                    </div>
                                 </form>
 
                             </div>
@@ -643,6 +648,24 @@
             var keyword1 = '<?php echo $keyword1; ?>';
             var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
             var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+        </script>
+        <script>
+            function open_profile() {
+                register_profile();
+            }
+            function login_profile() {
+                $('#register').modal('hide');
+                $('#login').modal('show');
+            }
+            function register_profile() {
+                $('#login').modal('hide');
+                $('#register').modal('show');
+            }
+            function forgot_profile() {
+                $('#forgotPassword').modal('show');
+                $('#register').modal('hide');
+                $('#login').modal('hide');
+            }
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
             <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>

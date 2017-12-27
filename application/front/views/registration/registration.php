@@ -22,7 +22,7 @@ header("Pragma: no-cache"); // HTTP/1.0
 ?>
 <html lang="en">
     <head>
-        <title>Register - Aileensoul</title>
+        <title>Registration - Aileensoul</title>
         <meta name="description" content="Register into Aileensoul.com for Free, Find job search, Hire employee, Get Freelance work, Grow business network & make Artistic Profiles.">
 
 

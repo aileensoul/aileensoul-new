@@ -39,7 +39,7 @@ class Introduction extends CI_Controller {
     }
 
     public function freelance_profile() {
-         $this->data['title'] = 'Freelancer Profile - Aileensoul';
+         $this->data['title'] = 'Freelance Profile - Aileensoul';
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $profile = $this->check_profile();

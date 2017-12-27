@@ -151,6 +151,7 @@ class Main extends CI_Controller {
 
     //job user end
     public function privacy_policy() {
+        $this->data['title'] = 'Privacy Policy - Aileensoul';
         $this->load->view('privacypolicy',$this->data);
     }
     public function website_disclaimer() {

@@ -567,7 +567,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                     </div>
                                     <div class="form-group">
-                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="new-password">
+                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
                                     </div>
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth :</label>
@@ -627,6 +627,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     <p>
                                         <button tabindex="13" class="btn1">Create an account</button>
                                     </p>
+                                    <div class="sign_in pt10">
+                                        <p>
+                                            Already have an account ? <a tabindex="10" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
+                                        </p>
+                                    </div>
                                 </form>
 
                             </div>
@@ -670,8 +675,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 register_profile();
             }
             function login_profile() {
-                $('#login').modal('show');
                 $('#register').modal('hide');
+                $('#login').modal('show');
             }
             function register_profile() {
                 $('#login').modal('hide');
