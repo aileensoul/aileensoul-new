@@ -22,8 +22,8 @@ class Business_profile extends MY_Controller {
 
         // FIX BUSINESS PROFILE NO POST DATA
 
-        $this->data['no_business_post_html'] = '<div class="art_no_post_avl"><h3>Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('assets/img/bui-no.png?ver='.time()) . ' alt="bui-no.png"></div><div class="art_no_post_text">No Post Available.</div></div></div>';
-        $this->data['no_business_contact_html'] = '<div class="art-img-nn"><div class="art_no_post_img"><img src="' . base_url('assets/img/No_Contact_Request.png?ver='.time()) . '"></div><div class="art_no_post_text">No Contacts Available.</div></div>';
+        $this->data['no_business_post_html'] = '<div class="art_no_post_avl"><h3>Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('assets/img/bui-no.png?ver=' . time()) . ' alt="bui-no.png"></div><div class="art_no_post_text">No Post Available.</div></div></div>';
+        $this->data['no_business_contact_html'] = '<div class="art-img-nn"><div class="art_no_post_img"><img src="' . base_url('assets/img/No_Contact_Request.png?ver=' . time()) . '"></div><div class="art_no_post_text">No Contacts Available.</div></div>';
     }
 
     public function index() {
@@ -33,7 +33,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'status' => '0');
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,business_slug,company_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($businessdata) {
-            $this->data['title'] = ucwords($businessdata[0]['company_name']). ' | Reactive | ' . ' Business Profile - Aileensoul';
+            $this->data['title'] = ucwords($businessdata[0]['company_name']) . ' | Reactive | ' . ' Business Profile - Aileensoul';
             $this->load->view('business_profile/reactivate', $this->data);
         } else {
             $userid = $this->session->userdata('aileenuser');
@@ -224,7 +224,7 @@ class Business_profile extends MY_Controller {
         }
 
         $company_name = $this->get_company_name($id);
-        $this->data['title'] = ucwords($company_name) .' | Dashboard' .  ' | Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = ucwords($company_name) . ' | Dashboard' . ' | Business Profile' . TITLEPOSTFIX;
         if (count($business_data) == 0) {
             $this->load->view('business_profile/notavalible');
         } else {
@@ -810,7 +810,7 @@ class Business_profile extends MY_Controller {
                     $this->session->set_flashdata('error', '<div class="col-md-7 col-sm-7 alert alert-danger1">Something went to wrong in uploded file.</div>');
                     exit;
                 }
-            } 
+            }
         }
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
@@ -917,15 +917,15 @@ class Business_profile extends MY_Controller {
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
                         $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                     } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '?ver='.time().'" name = "image_src" id = "image_src" alt="'. $posted_business_user_image .'"/>';
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '?ver=' . time() . '" name = "image_src" id = "image_src" alt="' . $posted_business_user_image . '"/>';
                     }
                 } else {
-                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image . '?ver='.time();
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image . '?ver=' . time();
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if (!$info) {
                         $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                     } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '?ver='.time().'" name = "image_src" id = "image_src" alt="'. $posted_business_user_image .'"/>';
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '?ver=' . time() . '" name = "image_src" id = "image_src" alt="' . $posted_business_user_image . '"/>';
                     }
                 }
 
@@ -942,7 +942,7 @@ class Business_profile extends MY_Controller {
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
                         $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                     } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '?ver='.time().'" alt = "'. $post_business_user_image .'">';
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '?ver=' . time() . '" alt = "' . $post_business_user_image . '">';
                     }
                 } else {
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image;
@@ -950,7 +950,7 @@ class Business_profile extends MY_Controller {
                     if (!$info) {
                         $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                     } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '?ver='.time().'" alt = "'. $post_business_user_image .'">';
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '?ver=' . time() . '" alt = "' . $post_business_user_image . '">';
                     }
                 }
                 $return_html .= '</a>';
@@ -1121,14 +1121,14 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                 $return_html .= '<div class = "one-image">';
 
                 $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '?ver='.time().'" alt="'. $businessmultiimage[0]['file_name'] .'">
+<img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '?ver=' . time() . '" alt="' . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>';
             } elseif (in_array($ext, $allowespdf)) {
 
                 $return_html .= '<div>
 <a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
-    <img src="' . base_url('assets/images/PDF.jpg?ver='.time()) . '" alt="PDF.jpg">
+    <img src="' . base_url('assets/images/PDF.jpg?ver=' . time()) . '" alt="PDF.jpg">
 </div>
 </a>
 </div>';
@@ -1167,11 +1167,11 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                 $return_html .= '<div class = "audio_main_div">
 <div class = "audio_img">
-<img src = "' . base_url('assets/images/music-icon.png?ver='.time()) . '" alt="music-icon.png">
+<img src = "' . base_url('assets/images/music-icon.png?ver=' . time()) . '" alt="music-icon.png">
 </div>
 <div class = "audio_source">
 <audio id = "audio_player" width = "100%" height = "100" controls>
-<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '?ver='.time().'" type = "audio/mp3">
+<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '?ver=' . time() . '" type = "audio/mp3">
 Your browser does not support the audio tag.
 </audio>
 </div>
@@ -1186,7 +1186,7 @@ Your browser does not support the audio tag.
 
                 $return_html .= '<div class = "two-images">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
+<img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">
 </a>
 </div>';
             }
@@ -1194,18 +1194,18 @@ Your browser does not support the audio tag.
 
             $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" alt="'. $businessmultiimage[0]['file_name'] .'">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" alt="' . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '" alt="'. $businessmultiimage[1]['file_name'] .'">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '" alt="' . $businessmultiimage[1]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '" alt="'. $businessmultiimage[2]['file_name'] .'">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '" alt="' . $businessmultiimage[2]['file_name'] . '">
 </a>
 </div>';
         } elseif (count($businessmultiimage) == 4) {
@@ -1214,7 +1214,7 @@ Your browser does not support the audio tag.
 
                 $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
+<img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">
 </a>
 </div>';
             }
@@ -1225,7 +1225,7 @@ Your browser does not support the audio tag.
 
                 $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '?ver='.time().'" alt="'. $multiimage['file_name'] .'">
+<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '?ver=' . time() . '" alt="' . $multiimage['file_name'] . '">
 </a>
 </div>';
 
@@ -1236,7 +1236,7 @@ Your browser does not support the audio tag.
 
             $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '?ver='.time().'" alt="'. $businessmultiimage[3]['file_name'] .'">
+<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '?ver=' . time() . '" alt="' . $businessmultiimage[3]['file_name'] . '">
 </a>
 <a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <div class = "more-image" >
@@ -1420,7 +1420,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver='.time().'" alt = "'. $business_userimage . '">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver=' . time() . '" alt = "' . $business_userimage . '">';
                         }
                     } else {
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -1428,7 +1428,7 @@ Your browser does not support the audio tag.
                         if (!$info) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver='.time().'" alt = "'. $business_userimage .'">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver=' . time() . '" alt = "' . $business_userimage . '">';
                         }
                     }
                     $return_html .= '</a>';
@@ -1547,7 +1547,7 @@ Your browser does not support the audio tag.
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                 } else {
-                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver='.time().'" alt = "'. $business_userimage .'">';
+                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver=' . time() . '" alt = "' . $business_userimage . '">';
                 }
             } else {
                 $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -1555,7 +1555,7 @@ Your browser does not support the audio tag.
                 if (!$info) {
                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                 } else {
-                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver='.time().'" alt = "'. $business_userimage .'">';
+                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver=' . time() . '" alt = "' . $business_userimage . '">';
                 }
             }
         } else {
@@ -1566,7 +1566,7 @@ Your browser does not support the audio tag.
 <div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
 <div contenteditable = "true" class = "edt_2 editable_text" name = "' . $post_business_profile_post_id . '" id = "post_comment' . $post_business_profile_post_id . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $post_business_profile_post_id . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
 <div class="mob-comment">       
-                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '?ver='.time().'" alt="send.png">
+                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '?ver=' . time() . '" alt="send.png">
                             </button>
                         </div>
 </div>
@@ -1930,8 +1930,8 @@ Your browser does not support the audio tag.
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
             $businesspostdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-            $userimage .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $businesspostdata[0]['business_user_image'] . '?ver='.time().'" alt="'. $businesspostdata[0]['business_user_image'] .'" >';
-            $userimage .= '<a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="' . base_url('assets/img/cam.png?ver='.time()) . '" alt="cam.png">';
+            $userimage .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $businesspostdata[0]['business_user_image'] . '?ver=' . time() . '" alt="' . $businesspostdata[0]['business_user_image'] . '" >';
+            $userimage .= '<a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="' . base_url('assets/img/cam.png?ver=' . time()) . '" alt="cam.png">';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
 
@@ -2032,9 +2032,9 @@ Your browser does not support the audio tag.
             $contition_array = array('user_id' => $this->data['business_common_data'][0]['user_id'], 'is_delete' => '0');
             $this->data['busimagedata'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
-     $this->data['company_name'] =  $company_name = $this->get_company_name($id);
-    
-     $this->data['title'] = ucwords($company_name) .' | Details' .TITLEPOSTFIX;
+        $this->data['company_name'] = $company_name = $this->get_company_name($id);
+
+        $this->data['title'] = ucwords($company_name) . ' | Details' . TITLEPOSTFIX;
 
         if (count($business_data) == 0) {
             $this->load->view('business_profile/notavalible');
@@ -2177,9 +2177,14 @@ Your browser does not support the audio tag.
         $limit = $perpage;
         $offset = $start;
 
-        $contition_array = array('business_step' => '4', 'is_deleted' => '0', 'status' => '1', 'user_id !=' => $userid);
-        $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'desc', $limit, $offset, $join_str = array(), $groupby = '');
-        $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $join_str[0]['table'] = 'user';
+        $join_str[0]['join_table_id'] = 'user.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile.user_id';
+        $join_str[0]['join_type'] = '';
+
+        $contition_array = array('business_profile.business_step' => '4', 'business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.user_id !=' => $userid, 'user.status'=>'1', 'user.is_delete' => '0');
+        $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'desc', $limit, $offset, $join_str, $groupby = '');
+        $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2227,7 +2232,7 @@ Your browser does not support the audio tag.
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $user['business_user_image'])) {
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $user['business_user_image'] . '?ver='.time().'" height="50px" width="50px" alt="'. $user['business_user_image'] .'" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $user['business_user_image'] . '?ver=' . time() . '" height="50px" width="50px" alt="' . $user['business_user_image'] . '" >';
                     }
                 } else {
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $user['business_user_image'];
@@ -2235,7 +2240,7 @@ Your browser does not support the audio tag.
                     if (!$info) {
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $user['business_user_image'] . '?ver='.time().'" height="50px" width="50px" alt="'. $user['business_user_image'] .'" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $user['business_user_image'] . '?ver=' . time() . '" height="50px" width="50px" alt="' . $user['business_user_image'] . '" >';
                     }
                 }
                 $return_html .= '</a>';
@@ -2358,7 +2363,7 @@ Your browser does not support the audio tag.
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -2427,7 +2432,7 @@ Your browser does not support the audio tag.
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -2575,7 +2580,7 @@ Your browser does not support the audio tag.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
                                 $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver='.time().'" alt = "'. $userlist['business_user_image'] .'">';
+                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver=' . time() . '" alt = "' . $userlist['business_user_image'] . '">';
                             }
                         } else {
                             $filename = $this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'];
@@ -2583,7 +2588,7 @@ Your browser does not support the audio tag.
                             if (!$info) {
                                 $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver='.time().'" alt = "'. $userlist['business_user_image'] .'">';
+                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver=' . time() . '" alt = "' . $userlist['business_user_image'] . '">';
                             }
                         }
                         $third_user_html .= '</a>';
@@ -2677,7 +2682,7 @@ Your browser does not support the audio tag.
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -2732,7 +2737,7 @@ Your browser does not support the audio tag.
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] . '"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -2829,7 +2834,7 @@ Your browser does not support the audio tag.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
                                 $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver='.time().'" alt = "'. $userlist['business_user_image'] .'">';
+                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver=' . time() . '" alt = "' . $userlist['business_user_image'] . '">';
                             }
                         } else {
                             $filename = $this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'];
@@ -2837,7 +2842,7 @@ Your browser does not support the audio tag.
                             if (!$info) {
                                 $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver='.time().'" alt = "'. $userlist['business_user_image'] .'">';
+                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver=' . time() . '" alt = "' . $userlist['business_user_image'] . '">';
                             }
                         }
                         $third_user_html .= '</a>';
@@ -2930,7 +2935,7 @@ Your browser does not support the audio tag.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
                                 $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver='.time().'" alt = "'. $userlist['business_user_image'] .'">';
+                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver=' . time() . '" alt = "' . $userlist['business_user_image'] . '">';
                             }
                         } else {
                             $filename = $this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'];
@@ -2938,7 +2943,7 @@ Your browser does not support the audio tag.
                             if (!$info) {
                                 $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver='.time().'" alt = "'. $userlist['business_user_image'] . '">';
+                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver=' . time() . '" alt = "' . $userlist['business_user_image'] . '">';
                             }
                         }
                         $third_user_html .= '</a>';
@@ -3017,8 +3022,9 @@ Your browser does not support the audio tag.
 
             $contition_array = array('not_type' => '8', 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => '6');
             $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = 'not_read', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            if ($busnotification[0]['not_read'] == 2) { 
-            } elseif ($busnotification[0]['not_read'] == 1) { 
+            if ($busnotification[0]['not_read'] == 2) {
+                
+            } elseif ($busnotification[0]['not_read'] == 1) {
                 $datafollow = array(
                     'not_read' => '2'
                 );
@@ -3043,7 +3049,7 @@ Your browser does not support the audio tag.
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image']. '"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -3102,7 +3108,7 @@ Your browser does not support the audio tag.
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -3236,7 +3242,7 @@ Your browser does not support the audio tag.
                     $notfound = ' <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('assets/img/icon_no_following.png') . '?ver='.time().'" alt="icon_no_following.png">
+                                        <img src="' . base_url('assets/img/icon_no_following.png') . '?ver=' . time() . '" alt="icon_no_following.png">
 
                                     </div>
                                     <div class="art_no_post_text">
@@ -3287,33 +3293,42 @@ Your browser does not support the audio tag.
         $slugid = $artdata[0]['business_slug'];
 
         if ($id == $slug_id || $id == '') {
-            $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
+            $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1');
             $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'follow';
             $join_str[0]['join_table_id'] = 'follow.follow_from';
             $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
             $join_str[0]['join_type'] = '';
+            $join_str[1]['table'] = 'user';
+            $join_str[1]['join_table_id'] = 'user.user_id';
+            $join_str[1]['from_table_id'] = 'business_profile.user_id';
+            $join_str[1]['join_type'] = '';
 
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1');
+            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-            $contition_array = array('business_slug' => $id, 'is_deleted' => '0', 'status' => '1', 'business_step' => '4');
+            $contition_array = array('business_profile.business_slug' => $id, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.business_step' => '4');
             $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'follow';
             $join_str[0]['join_table_id'] = 'follow.follow_from';
             $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
             $join_str[0]['join_type'] = '';
+            $join_str[1]['table'] = 'user';
+            $join_str[1]['join_table_id'] = 'user.user_id';
+            $join_str[1]['from_table_id'] = 'business_profile.user_id';
+            $join_str[1]['join_type'] = '';
+
 
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1');
+            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
@@ -3347,7 +3362,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $followerimage)) {
                             $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $followerimage . '?ver='.time().'" height="50px" width="50px" alt="'. $followerimage .'" >';
+                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $followerimage . '?ver=' . time() . '" height="50px" width="50px" alt="' . $followerimage . '" >';
                         }
                     } else {
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $followerimage;
@@ -3355,7 +3370,7 @@ Your browser does not support the audio tag.
                         if (!$info) {
                             $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $followerimage . '?ver='.time().'" height="50px" width="50px" alt="'. $followerimage .'" >';
+                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $followerimage . '?ver=' . time() . '" height="50px" width="50px" alt="' . $followerimage . '" >';
                         }
                     }
 
@@ -3417,7 +3432,7 @@ Your browser does not support the audio tag.
         } else {
             $return_html .= '<div class="art-img-nn" id= "art-blank">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url('assets/img/icon_no_follower.png?ver='.time()) . '" alt="icon_no_follower.png">
+                                                    <img src="' . base_url('assets/img/icon_no_follower.png?ver=' . time()) . '" alt="icon_no_follower.png">
                                                 </div>
                                                 <div class="art_no_post_text">
                                                     No Followers Available.
@@ -3437,7 +3452,7 @@ Your browser does not support the audio tag.
 
 
         $company_name = $this->get_company_name($id);
-        $this->data['title'] =  $company_name . ' | Following' .' | Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = $company_name . ' | Following' . ' | Business Profile' . TITLEPOSTFIX;
         if ($company_name == '') {
             $this->load->view('business_profile/notavalible');
         } else {
@@ -3470,11 +3485,15 @@ Your browser does not support the audio tag.
             $join_str[0]['join_table_id'] = 'follow.follow_to';
             $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
             $join_str[0]['join_type'] = '';
+            $join_str[1]['table'] = 'user';
+            $join_str[1]['join_table_id'] = 'user.user_id';
+            $join_str[1]['from_table_id'] = 'business_profile.user_id';
+            $join_str[1]['join_type'] = '';
 
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1', 'business_profile.is_deleted' => '0');
+            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1', 'business_profile.is_deleted' => '0', 'user.is_delete' => '0', 'user.status' => '1');
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
@@ -3486,11 +3505,15 @@ Your browser does not support the audio tag.
             $join_str[0]['join_table_id'] = 'follow.follow_to';
             $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
             $join_str[0]['join_type'] = '';
+            $join_str[1]['table'] = 'user';
+            $join_str[1]['join_table_id'] = 'user.user_id';
+            $join_str[1]['from_table_id'] = 'business_profile.user_id';
+            $join_str[1]['join_type'] = '';
 
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1', 'business_profile.is_deleted' => '0');
+            $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1', 'business_profile.is_deleted' => '0', 'user.is_delete' => '0', 'user.status' => '1');
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
@@ -3522,7 +3545,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $uimage)) {
                             $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image . '?ver='.time().'" height="50px" width="50px" alt="" >';
+                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image . '?ver=' . time() . '" height="50px" width="50px" alt="" >';
                         }
                     } else {
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $uimage;
@@ -3530,7 +3553,7 @@ Your browser does not support the audio tag.
                         if (!$info) {
                             $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image . '?ver='.time().'" height="50px" width="50px" alt="" >';
+                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image . '?ver=' . time() . '" height="50px" width="50px" alt="" >';
                         }
                     }
                     $return_html .= '</a>';
@@ -3605,7 +3628,7 @@ Your browser does not support the audio tag.
 
             $return_html .= '<div class = "art-img-nn">
                                                     <div class = "art_no_post_img">
-                                                    <img src = "' . base_url('assets/img/icon_no_following.png?ver='.time()) . '" alt="icon_no_following.png">
+                                                    <img src = "' . base_url('assets/img/icon_no_following.png?ver=' . time()) . '" alt="icon_no_following.png">
                                                     </div>
                                                     <div class = "art_no_post_text">
                                                     No Following Available.
@@ -3677,7 +3700,7 @@ Your browser does not support the audio tag.
                         $update = $this->common->update_data($data, 'business_profile', 'user_id', $session_uid);
                         if ($update) {
                             $path = base_url('uploads/user_image/');
-                            echo $bgSave . '<img src = "' . $path . $picture . '?ver='.time().'" id = "timelineBGload" class = "headerimage ui-corner-all" style = "top:0px"/>';
+                            echo $bgSave . '<img src = "' . $path . $picture . '?ver=' . time() . '" id = "timelineBGload" class = "headerimage ui-corner-all" style = "top:0px"/>';
                         } else {
                             echo "Fail upload folder with read access.";
                         }
@@ -3837,7 +3860,7 @@ Your browser does not support the audio tag.
 
         $this->data['busdata'] = $this->common->select_data_by_id('business_profile', 'user_id', $userid, $data = 'profile_background', $join_str = array());
 
-        echo '<img id="image_src" name="image_src" src = "' . BUS_BG_MAIN_UPLOAD_URL . $this->data['busdata'][0]['profile_background'] . '" alt="'. $this->data['busdata'][0]['profile_background'] . '"/>';
+        echo '<img id="image_src" name="image_src" src = "' . BUS_BG_MAIN_UPLOAD_URL . $this->data['busdata'][0]['profile_background'] . '" alt="' . $this->data['busdata'][0]['profile_background'] . '"/>';
     }
 
     public function imagedata() {
@@ -3945,7 +3968,7 @@ Your browser does not support the audio tag.
                         $email_html = '';
                         $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> like your comment in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -4084,7 +4107,7 @@ Your browser does not support the audio tag.
                         $email_html = '';
                         $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> like your comment in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -4125,7 +4148,7 @@ Your browser does not support the audio tag.
                             'status' => 'success',
                             'notification' => array('notification_count' => $not_count, 'to_id' => $to_id),
                 ));
-            } 
+            }
         } else {
 
             foreach ($likeuserarray as $key => $val) {
@@ -4206,7 +4229,7 @@ Your browser does not support the audio tag.
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if ($business_userimage != '') {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">  </div>';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">  </div>';
                 } else {
                     $cmtinsert .= '<img src="' . base_url() . NOBUSIMAGE . '" alt="NOBUSIMAGE"> </div>';
                 }
@@ -4339,7 +4362,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                             $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                         }
                     } else {
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -4347,7 +4370,7 @@ Your browser does not support the audio tag.
                         if (!$info) {
                             $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                         }
                     }
 
@@ -4534,7 +4557,7 @@ Your browser does not support the audio tag.
                         $email_html = '';
                         $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> like your post in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -4628,7 +4651,7 @@ Your browser does not support the audio tag.
                             "status" => 'success',
                             "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
                 ));
-            } 
+            }
         } else {
 
             foreach ($likeuserarray as $key => $val) {
@@ -4771,7 +4794,7 @@ Your browser does not support the audio tag.
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> is comment on your post in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -4805,7 +4828,7 @@ Your browser does not support the audio tag.
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                     }
                 } else {
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -4813,7 +4836,7 @@ Your browser does not support the audio tag.
                     if (!$info) {
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                     }
                 }
                 $cmtinsert .= '</div>';
@@ -4964,7 +4987,7 @@ Your browser does not support the audio tag.
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] . '"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> is comment on your post in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -4995,7 +5018,7 @@ Your browser does not support the audio tag.
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                     }
                 } else {
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -5003,7 +5026,7 @@ Your browser does not support the audio tag.
                     if (!$info) {
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                     }
                 }
                 $cmtinsert .= '</div>';
@@ -5392,7 +5415,7 @@ Your browser does not support the audio tag.
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         }
         $company_name = $this->get_company_name($slug_id);
-        $this->data['title'] = ucwords($businessdata1[0]['company_name']) .' | Photo' .  ' | Business Profile' . TITLEPOSTFIX;
+        $this->data['title'] = ucwords($businessdata1[0]['company_name']) . ' | Photo' . ' | Business Profile' . TITLEPOSTFIX;
 
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $this->load->view('business_profile/business_photos', $this->data);
@@ -5551,7 +5574,7 @@ Your browser does not support the audio tag.
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> is like your photo in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -5761,7 +5784,7 @@ Your browser does not support the audio tag.
                             $email_html = '';
                             $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> is like your photo in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -5893,7 +5916,7 @@ Your browser does not support the audio tag.
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> is comment on your photo in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -5930,7 +5953,7 @@ Your browser does not support the audio tag.
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                     }
                 } else {
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -5938,7 +5961,7 @@ Your browser does not support the audio tag.
                     if (!$info) {
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                     }
                 }
                 $cmtinsert .= '</div>';
@@ -6099,7 +6122,7 @@ Your browser does not support the audio tag.
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> is comment on your photo in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -6135,7 +6158,7 @@ Your browser does not support the audio tag.
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                     }
                 } else {
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -6143,7 +6166,7 @@ Your browser does not support the audio tag.
                     if (!$info) {
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage . '">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                     }
                 }
                 $cmtinsert .= '</div>';
@@ -6185,7 +6208,7 @@ Your browser does not support the audio tag.
 
 
             if (count($mulcountlike) > 0) {
-
+                
             }
             $cmtinsert .= '</span>';
             $cmtinsert .= '</a></div>';
@@ -6317,7 +6340,7 @@ Your browser does not support the audio tag.
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> is like your comment of photo in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -6431,7 +6454,7 @@ Your browser does not support the audio tag.
                             $email_html = '';
                             $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] . '"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> is like your comment of photo in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -6525,7 +6548,7 @@ Your browser does not support the audio tag.
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="' . $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> is like your comment of photo in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -6634,7 +6657,7 @@ Your browser does not support the audio tag.
                             $email_html = '';
                             $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> is like your comment of photo in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -6740,7 +6763,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                             $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                         }
                     } else {
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -6748,7 +6771,7 @@ Your browser does not support the audio tag.
                         if (!$info) {
                             $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                         }
                     }
 
@@ -6899,7 +6922,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                             $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                         }
                     } else {
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -6907,7 +6930,7 @@ Your browser does not support the audio tag.
                         if (!$info) {
                             $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="'. $business_userimage .'">';
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="' . $business_userimage . '">';
                         }
                     }
                     $cmtinsert .= '</div>';
@@ -7048,7 +7071,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage)) {
                             $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="'. $busienss_userimage .'">';
+                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="' . $busienss_userimage . '">';
                         }
                     } else {
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage;
@@ -7056,7 +7079,7 @@ Your browser does not support the audio tag.
                         if (!$info) {
                             $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="'. $busienss_userimage .'">';
+                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="' . $busienss_userimage . '">';
                         }
                     }
                 } else {
@@ -7169,7 +7192,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                             $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="'. $business_userimage .'">';
+                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="' . $business_userimage . '">';
                         }
                     } else {
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -7177,7 +7200,7 @@ Your browser does not support the audio tag.
                         if (!$info) {
                             $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="'. $business_userimage .'">';
+                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="' . $business_userimage . '">';
                         }
                     }
                     $fourdata .= '</div>';
@@ -7294,7 +7317,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                             $mulimgfour .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $mulimgfour .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="'. $business_userimage .'">';
+                            $mulimgfour .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="' . $business_userimage . '">';
                         }
                     } else {
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -7302,7 +7325,7 @@ Your browser does not support the audio tag.
                         if (!$info) {
                             $mulimgfour .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                         } else {
-                            $mulimgfour .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="'. $business_userimage .'">';
+                            $mulimgfour .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="' . $business_userimage . '">';
                         }
                     }
                     $mulimgfour .= '</div>';
@@ -7412,7 +7435,7 @@ Your browser does not support the audio tag.
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
                         $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="'. $bus_image .'">';
+                        $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="' . $bus_image . '">';
                     }
                 } else {
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $bus_image;
@@ -7420,7 +7443,7 @@ Your browser does not support the audio tag.
                     if (!$info) {
                         $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="'. $bus_image .'">';
+                        $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="' . $bus_image . '">';
                     }
                 }
             } else {
@@ -7481,7 +7504,7 @@ Your browser does not support the audio tag.
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
                         $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="'. $bus_image .'">';
+                        $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="' . $bus_image . '">';
                     }
                 } else {
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $bus_image;
@@ -7489,7 +7512,7 @@ Your browser does not support the audio tag.
                     if (!$info) {
                         $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="'. $bus_image .'">';
+                        $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="' . $bus_image . '">';
                     }
                 }
             } else {
@@ -7579,7 +7602,7 @@ Your browser does not support the audio tag.
 
                 $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'cancel' . "'" . ');" style="cursor: pointer;">';
                 $contactdata .= '<div><div class="add-contact"><div></div><div></div><div></div>
-                                    <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_add.png?ver='.time()) . '" alt="icon_contact_add.png"></span></div>
+                                    <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_add.png?ver=' . time()) . '" alt="icon_contact_add.png"></span></div>
                                     </div><div class="addtocont"><span class="ft-13"><i class="icon-user"></i>Add to contact </span></div></div>';
                 $contactdata .= '</a>';
             } elseif ($status == 'cancel') {
@@ -7596,7 +7619,7 @@ Your browser does not support the audio tag.
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
                 $contactdata .= '<div class="cance_req_main_box"><div class="add-contact"><div></div><div></div><div></div>
-                    <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_cancel.png?ver='.time()) . '" alt="icon_contact_cancel.png"></span></div>
+                    <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_cancel.png?ver=' . time()) . '" alt="icon_contact_cancel.png"></span></div>
                     </div><div class="addtocont"><span class="ft-13 cl_haed_s">Cancel request </span></div></div>';
                 $contactdata .= '</a>';
             } elseif ($status == 'confirm') {
@@ -7608,7 +7631,7 @@ Your browser does not support the audio tag.
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'cancel' . "'" . ');" style="cursor: pointer;">';
                 $contactdata .= '<div><div class="add-contact"><div></div><div></div><div></div>
-                                <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_add.png?ver='.time()) . '" alt="icon_contact_add.png"></span></div>
+                                <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_add.png?ver=' . time()) . '" alt="icon_contact_add.png"></span></div>
                                 </div><div class="addtocont"><span class="ft-13"><i class="icon-user"></i>Add to contact </span></div></div>';
                 $contactdata .= '</a>';
             } elseif ($status == 'reject') {
@@ -7624,7 +7647,7 @@ Your browser does not support the audio tag.
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
                 $contactdata .= '<div class="cance_req_main_box"><div class="add-contact"><div></div><div></div><div></div>
-                    <div><span class="cancel_req_busi">   <img src="' . base_url('assets/img/icon_contact_cancel.png?ver='.time()) . '" alt="icon_contact_cancel.png"></span></div>
+                    <div><span class="cancel_req_busi">   <img src="' . base_url('assets/img/icon_contact_cancel.png?ver=' . time()) . '" alt="icon_contact_cancel.png"></span></div>
                     </div><div class="addtocont"><span class="ft-13 cl_haed_s">Cancel request </span></div></div>';
                 $contactdata .= '</a>';
             }
@@ -7645,7 +7668,7 @@ Your browser does not support the audio tag.
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="' . $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> send contact request in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -7662,7 +7685,7 @@ Your browser does not support the audio tag.
 
             $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
             $contactdata .= '<div class="cance_req_main_box"><div class="add-contact"><div></div><div></div><div></div>
-                <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_cancel.png?ver='.time()) . '" alt="icon_contact_cancel.png"></span></div>
+                <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_cancel.png?ver=' . time()) . '" alt="icon_contact_cancel.png"></span></div>
                 </div><div class="addtocont"><span class="ft-13 cl_haed_s">Cancel request </span></div></div>';
             $contactdata .= '</a>';
         }
@@ -7718,7 +7741,7 @@ Your browser does not support the audio tag.
                                 $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '" alt="NOBUSIMAGE">';
                             } else {
 
-                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver='.time().'" alt="'. $busdata[0]['business_user_image'] .'">';
+                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver=' . time() . '" alt="' . $busdata[0]['business_user_image'] . '">';
                             }
                         } else {
                             $filename = $this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'];
@@ -7727,7 +7750,7 @@ Your browser does not support the audio tag.
                                 $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '" alt="NOBUSIMAGE">';
                             } else {
 
-                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver='.time().'" alt="'. $busdata[0]['business_user_image'] .'">';
+                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver=' . time() . '" alt="' . $busdata[0]['business_user_image'] . '">';
                             }
                         }
                     } else {
@@ -7764,15 +7787,15 @@ Your browser does not support the audio tag.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
                                 $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '" alt="NOBUSIMAGE">';
                             } else {
-                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver='.time().'" alt="'. $busdata[0]['business_user_image'] .'">';
+                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver=' . time() . '" alt="' . $busdata[0]['business_user_image'] . '">';
                             }
                         } else {
-                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'] . '?ver='.time();
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'] . '?ver=' . time();
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                             if (!$info) {
                                 $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '" alt="NOBUSIMAGE">';
                             } else {
-                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver='.time().'" alt="'. $busdata[0]['business_user_image'] .'">';
+                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver=' . time() . '" alt="' . $busdata[0]['business_user_image'] . '">';
                             }
                         }
                     } else {
@@ -7798,7 +7821,7 @@ Your browser does not support the audio tag.
         } else {
             $seeall = '<div class="fw"><div class="art-img-nn">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url('assets/img/No_Contact_Request.png?ver='.time()) . '" alt="No_Contact_Request.png">
+                                                    <img src="' . base_url('assets/img/No_Contact_Request.png?ver=' . time()) . '" alt="No_Contact_Request.png">
                                                 </div>
                                                 <div class="art_no_post_text_c">
                                                     No Contact Request Available.
@@ -7882,7 +7905,7 @@ Your browser does not support the audio tag.
                     $contactdata .= '<div class="addcontact-pic">';
 
                     if ($busdata[0]['business_user_image']) {
-                        $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver='.time().'" alt="'. $busdata[0]['business_user_image'] .'">';
+                        $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver=' . time() . '" alt="' . $busdata[0]['business_user_image'] . '">';
                     } else {
                         $contactdata .= '<img src="' . base_url(NOBUSIMAGE) . '" alt="NOBUSIMAGE">';
                     }
@@ -7911,7 +7934,7 @@ Your browser does not support the audio tag.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
                                 $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                             } else {
-                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver='.time().'" alt="'. $busdata[0]['business_user_image'] . '">';
+                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver=' . time() . '" alt="' . $busdata[0]['business_user_image'] . '">';
                             }
                         } else {
                             $filename = $this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'];
@@ -7919,7 +7942,7 @@ Your browser does not support the audio tag.
                             if (!$info) {
                                 $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                             } else {
-                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver='.time().'" alt="'. $busdata[0]['business_user_image'] .'">';
+                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver=' . time() . '" alt="' . $busdata[0]['business_user_image'] . '">';
                             }
                         }
                     } else {
@@ -7942,7 +7965,7 @@ Your browser does not support the audio tag.
 
             $contactdata = '<div class="art-img-nn">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url('assets/img/No_Contact_Request.png?ver='.time()) . '" alt="No_Contact_Request.png">
+                                                    <img src="' . base_url('assets/img/No_Contact_Request.png?ver=' . time()) . '" alt="No_Contact_Request.png">
                                                 </div>
                                                 <div class="art_no_post_text_c">
                                                     No Contact Request Available
@@ -7975,7 +7998,7 @@ Your browser does not support the audio tag.
         $this->is_business_profile_register();
 
         $bussdata = $this->common->select_data_by_id('business_profile', 'user_id', $userid, $data = '*', $join_str = array());
-       
+
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'contact_person.contact_from_id';
@@ -8060,7 +8083,7 @@ Your browser does not support the audio tag.
                                                         <div class="profile-img">';
                     if ($friend['business_user_image'] != '') {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $friend['business_slug']) . '">
-                                                                    <img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $friend['business_user_image'] . '?ver='.time().'" alt="'. $friend['business_user_image'] .'">
+                                                                    <img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $friend['business_user_image'] . '?ver=' . time() . '" alt="' . $friend['business_user_image'] . '">
                                                                 </a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $friend['business_slug']) . '">
@@ -8099,7 +8122,7 @@ Your browser does not support the audio tag.
             $return_html .= '<li><div class="art-img-nn" id= "art-blank">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('assets/img/No_Contact_Request.png?ver='.time()) . '" alt="No_Contact_Request.png">
+                                        <img src="' . base_url('assets/img/No_Contact_Request.png?ver=' . time()) . '" alt="No_Contact_Request.png">
 
                                     </div>
         <div class="art_no_post_text">
@@ -8143,7 +8166,7 @@ Your browser does not support the audio tag.
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver='.time().'" width="50" height="50" alt="'. $this->data['business_login_user_image'] .'"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '?ver=' . time() . '" width="50" height="50" alt="' . $this->data['business_login_user_image'] . '"></td>
                                             <td style="padding:5px;">
 						<p><b>' . $this->data['business_login_company_name'] . '</b> is approved your contact request in business profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
@@ -8184,7 +8207,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
                             $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '" alt="NOBUSIMAGE">';
                         } else {
-                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver='.time().'" alt="'. $busdata[0]['business_user_image'] . '">';
+                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver=' . time() . '" alt="' . $busdata[0]['business_user_image'] . '">';
                         }
                     } else {
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'];
@@ -8192,7 +8215,7 @@ Your browser does not support the audio tag.
                         if (!$info) {
                             $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '" alt="NOBUSIMAGE">';
                         } else {
-                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver='.time().'" alt="'. $busdata[0]['business_user_image'] .'">';
+                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '?ver=' . time() . '" alt="' . $busdata[0]['business_user_image'] . '">';
                         }
                     }
                 } else {
@@ -8217,7 +8240,7 @@ Your browser does not support the audio tag.
             $contactdata = '<li><div class="art-img-nn" id= "art-blank">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('assets/img/No_Contact_Request.png?ver='.time()) . '" width="100" alt="No_Contact_Request.png">
+                                        <img src="' . base_url('assets/img/No_Contact_Request.png?ver=' . time()) . '" width="100" alt="No_Contact_Request.png">
 
                                     </div>
         <div class="art_no_post_text" style="font-size: 20px;">
@@ -8312,7 +8335,7 @@ Your browser does not support the audio tag.
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_user_image) || $business_user_image == '') {
                         $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_user_image . '?ver='.time().'" height="50px" width="50px" alt="' . $company_name . '" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_user_image . '?ver=' . time() . '" height="50px" width="50px" alt="' . $company_name . '" >';
                     }
                 } else {
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_user_image;
@@ -8320,7 +8343,7 @@ Your browser does not support the audio tag.
                     if (!$info || $business_user_image == '') {
                         $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="NOBUSIMAGE">';
                     } else {
-                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_user_image . '?ver='.time().'" height="50px" width="50px" alt="' . $company_name . '" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_user_image . '?ver=' . time() . '" height="50px" width="50px" alt="' . $company_name . '" >';
                     }
                 }
 
@@ -8430,7 +8453,7 @@ Your browser does not support the audio tag.
             $nomsg = ' <div class = "art-img-nn">
 <div class = "art_no_post_img">
 
-<img src = "' . base_url('assets/img/No_Contact_Request.png') . '?ver='.time().'" alt="No_Contact_Request.png">
+<img src = "' . base_url('assets/img/No_Contact_Request.png') . '?ver=' . time() . '" alt="No_Contact_Request.png">
 
 </div>
 <div class = "art_no_post_text">
@@ -8659,7 +8682,7 @@ No Contacts Available.
         $delete_post_id = $delete_postdata[0]['delete_post_id'];
         $delete_post_id = str_replace(",", "','", $delete_post_id);
 
-        $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1','user.is_delete' => '0', 'user.status' => '1');
+        $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
         $search_condition = "`business_profile_post_id` NOT IN ('$delete_post_id') AND (business_profile_post.user_id IN ('$total_user_list')) OR (business_profile_post.posted_user_id ='$user_id' AND business_profile_post.is_delete=0)";
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
@@ -8733,7 +8756,7 @@ No Contacts Available.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '?ver='.time().'" name = "image_src" id = "image_src"  alt="'. $posted_business_user_image .'" />';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '?ver=' . time() . '" name = "image_src" id = "image_src"  alt="' . $posted_business_user_image . '" />';
                             }
                         } else {
                             $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
@@ -8741,7 +8764,7 @@ No Contacts Available.
                             if (!$info) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '?ver='.time().'" name = "image_src" id = "image_src" alt="'. $posted_business_user_image .'"/>';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '?ver=' . time() . '" name = "image_src" id = "image_src" alt="' . $posted_business_user_image . '"/>';
                             }
                         }
 
@@ -8758,7 +8781,7 @@ No Contacts Available.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '?ver='.time().'" alt = "'. $post_business_user_image .'">';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '?ver=' . time() . '" alt = "' . $post_business_user_image . '">';
                             }
                         } else {
                             $filename = $this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image;
@@ -8766,7 +8789,7 @@ No Contacts Available.
                             if (!$info) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '?ver='.time().'" alt = "'. $post_business_user_image .'">';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '?ver=' . time() . '" alt = "' . $post_business_user_image . '">';
                             }
                         }
 
@@ -8932,14 +8955,14 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                         $return_html .= '<div class = "one-image">';
 
                         $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '?ver='.time().'" alt="'. $businessmultiimage[0]['file_name'] .'">
+<img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '?ver=' . time() . '" alt="' . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>';
                     } elseif (in_array($ext, $allowespdf)) {
 
                         $return_html .= '<div>
 <a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
-    <img src="' . base_url('assets/images/PDF.jpg') . '?ver='.time().'" alt="PDF.jpg">
+    <img src="' . base_url('assets/images/PDF.jpg') . '?ver=' . time() . '" alt="PDF.jpg">
 </div>
 </a>
 </div>';
@@ -8960,7 +8983,7 @@ Your browser does not support the video tag.
 
                         $return_html .= '<div class = "audio_main_div">
 <div class = "audio_img">
-<img src = "' . base_url('assets/images/music-icon.png') . '?ver='.time().'" alt="music-icon.png">
+<img src = "' . base_url('assets/images/music-icon.png') . '?ver=' . time() . '" alt="music-icon.png">
 </div>
 <div class = "audio_source">
 <audio id = "audio_player" width = "100%" height = "100" controls>
@@ -8979,7 +9002,7 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<div class = "two-images">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
+<img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">
 </a>
 </div>';
                     }
@@ -8987,18 +9010,18 @@ Your browser does not support the audio tag.
 
                     $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" alt="'. $businessmultiimage[0]['file_name'] .'">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" alt="' . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '" alt="'. $businessmultiimage[1]['file_name'] .'">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '" alt="' . $businessmultiimage[1]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '" alt="'. $businessmultiimage[2]['file_name'] .'">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '" alt="' . $businessmultiimage[2]['file_name'] . '">
 </a>
 </div>';
                 } elseif (count($businessmultiimage) == 4) {
@@ -9007,7 +9030,7 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
+<img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">
 </a>
 </div>';
                     }
@@ -9018,7 +9041,7 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '?ver='.time().'" alt="'. $multiimage['file_name'] .'">
+<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '?ver=' . time() . '" alt="' . $multiimage['file_name'] . '">
 </a>
 </div>';
 
@@ -9029,7 +9052,7 @@ Your browser does not support the audio tag.
 
                     $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '?ver='.time().'" alt="'. $businessmultiimage[3]['file_name'] .'">
+<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '?ver=' . time() . '" alt="' . $businessmultiimage[3]['file_name'] . '">
 </a>
 <a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <div class = "more-image" >
@@ -9211,7 +9234,7 @@ Your browser does not support the audio tag.
                                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                                 } else {
-                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver='.time().'" alt = "'. $business_userimage .'">';
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver=' . time() . '" alt = "' . $business_userimage . '">';
                                 }
                             } else {
                                 $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -9219,7 +9242,7 @@ Your browser does not support the audio tag.
                                 if (!$info) {
                                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                                 } else {
-                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver='.time().'" alt = "'. $business_userimage .'">';
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver=' . time() . '" alt = "' . $business_userimage . '">';
                                 }
                             }
                             $return_html .= '</a>';
@@ -9318,7 +9341,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver='.time().'" alt = "'. $business_userimage . '">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver=' . time() . '" alt = "' . $business_userimage . '">';
                         }
                     } else {
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -9326,7 +9349,7 @@ Your browser does not support the audio tag.
                         if (!$info) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver='.time().'" alt = "'. $business_userimage .'">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver=' . time() . '" alt = "' . $business_userimage . '">';
                         }
                     }
                 } else {
@@ -9335,7 +9358,7 @@ Your browser does not support the audio tag.
                 $return_html .= '</div><div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
 <div contenteditable = "true" class = "edt_2 editable_text" name = "' . $post_business_profile_post_id . '" id = "post_comment' . $post_business_profile_post_id . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $post_business_profile_post_id . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
 <div class="mob-comment">      
-                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '?ver='.time().'" alt="send.png">
+                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '?ver=' . time() . '" alt="send.png">
                             </button>
                         </div>
 </div>
@@ -9408,7 +9431,7 @@ Your browser does not support the audio tag.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt="NOBUSIMAGE">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver='.time().'" alt = "'. $userlist['business_user_image'] . '">';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver=' . time() . '" alt = "' . $userlist['business_user_image'] . '">';
                             }
                         } else {
                             $filename = $this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'];
@@ -9416,7 +9439,7 @@ Your browser does not support the audio tag.
                             if (!$info) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt="NOBUSIMAGE">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver='.time().'" alt = "'. $userlist['business_user_image'] . '">';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '?ver=' . time() . '" alt = "' . $userlist['business_user_image'] . '">';
                             }
                         }
                         $return_html .= '</a>';
@@ -9488,7 +9511,7 @@ Your browser does not support the audio tag.
             $i = 0;
             foreach ($businessimage as $mi) {
                 $fetch_result .= '<div class="image_profile">';
-                $fetch_result .= '<img src="' . BUS_POST_RESIZE3_UPLOAD_URL . $mi['file_name'] . '?ver='.time().'" alt="' . $mi['file_name'] . '">';
+                $fetch_result .= '<img src="' . BUS_POST_RESIZE3_UPLOAD_URL . $mi['file_name'] . '?ver=' . time() . '" alt="' . $mi['file_name'] . '">';
                 $fetch_result .= '</div>';
 
                 $i++;
@@ -9496,6 +9519,7 @@ Your browser does not support the audio tag.
                     break;
             }
         } else {
+            
         }
 
         $fetch_result .= '<div class = "dataconphoto"></div>';
@@ -9789,7 +9813,7 @@ Your browser does not support the audio tag.
             }
             $fetch_video .= '</tr>';
         } else {
-          
+            
         }
 
         $fetch_video .= '<div class = "dataconvideo"></div>';
@@ -10047,6 +10071,7 @@ Your browser does not support the audio tag.
             }
             $fetch_video .= '</tr>';
         } else {
+            
         }
 
         $fetch_video .= '<div class = "dataconvideo"></div>';
@@ -10087,7 +10112,7 @@ Your browser does not support the audio tag.
             $fetchaudio .= '<tr>';
 
             if ($businessaudio[0]['file_name']) {
-                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '?ver='.time().'" alt="music-icon.png"></a>';
+                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '?ver=' . time() . '" alt="music-icon.png"></a>';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[0]['file_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
@@ -10096,7 +10121,7 @@ Your browser does not support the audio tag.
             }
 
             if ($businessaudio[1]['file_name']) {
-                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '?ver='.time().'" alt="music-icon.png"></a>';
+                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '?ver=' . time() . '" alt="music-icon.png"></a>';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[1]['file_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
@@ -10104,7 +10129,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '</td>';
             }
             if ($businessaudio[2]['file_name']) {
-                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '?ver='.time().'" alt="music-icon.png"></a>';
+                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '?ver=' . time() . '" alt="music-icon.png"></a>';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[2]['file_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
@@ -10115,7 +10140,7 @@ Your browser does not support the audio tag.
             $fetchaudio .= '<tr>';
 
             if ($businessaudio[3]['file_name']) {
-                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '?ver='.time().'" alt="music-icon.png"></a>';
+                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '?ver=' . time() . '" alt="music-icon.png"></a>';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[3]['file_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
@@ -10123,7 +10148,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '</td>';
             }
             if ($businessaudio[4]['file_name']) {
-                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '?ver='.time().'" alt="music-icon.png"></a>';
+                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '?ver=' . time() . '" alt="music-icon.png"></a>';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[4]['file_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
@@ -10131,7 +10156,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '</td>';
             }
             if ($businessaudio[5]['file_name']) {
-                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '?ver='.time().'" alt="music-icon.png"></a>';
+                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '?ver=' . time() . '" alt="music-icon.png"></a>';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[5]['file_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
@@ -10140,6 +10165,7 @@ Your browser does not support the audio tag.
             }
             $fetchaudio .= '</tr>';
         } else {
+            
         }
         $fetchaudio .= '<div class = "dataconaudio"></div>';
         echo $fetchaudio;
@@ -10180,7 +10206,7 @@ Your browser does not support the audio tag.
             foreach ($businesspdf as $mi) {
                 $fetch_pdf .= '<div class = "image_profile">';
                 $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $mi['file_name'] . '" target="_blank"><div class = "pdf_img">';
-                $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '?ver='.time().'" alt="PDF.jpg">';
+                $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '?ver=' . time() . '" alt="PDF.jpg">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 
@@ -10308,7 +10334,7 @@ Your browser does not support the audio tag.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '?ver='.time().'" name = "image_src" id = "image_src" alt="'. $posted_business_user_image .'"/>';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '?ver=' . time() . '" name = "image_src" id = "image_src" alt="' . $posted_business_user_image . '"/>';
                             }
                         } else {
                             $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
@@ -10316,7 +10342,7 @@ Your browser does not support the audio tag.
                             if (!$info) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '?ver='.time().'" name = "image_src" id = "image_src" alt="'. $posted_business_user_image .'"/>';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '?ver=' . time() . '" name = "image_src" id = "image_src" alt="' . $posted_business_user_image . '"/>';
                             }
                         }
                         $return_html .= '</a>';
@@ -10332,7 +10358,7 @@ Your browser does not support the audio tag.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '?ver='.time().'" alt = "'. $post_business_user_image .'">';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '?ver=' . time() . '" alt = "' . $post_business_user_image . '">';
                             }
                         } else {
                             $filename = $this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image;
@@ -10340,7 +10366,7 @@ Your browser does not support the audio tag.
                             if (!$info) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '?ver='.time().'" alt = "'. $post_business_user_image .'">';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '?ver=' . time() . '" alt = "' . $post_business_user_image . '">';
                             }
                         }
                         $return_html .= '</a>';
@@ -10499,14 +10525,14 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                         $return_html .= '<div class = "one-image">';
 
                         $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '?ver='.time().'" alt="'. $businessmultiimage[0]['file_name'] .'">
+<img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '?ver=' . time() . '" alt="' . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>';
                     } elseif (in_array($ext, $allowespdf)) {
 
                         $return_html .= '<div>
 <a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
-    <img src="' . base_url('assets/images/PDF.jpg') . '?ver='.time().'" alt="PDF.jpg">
+    <img src="' . base_url('assets/images/PDF.jpg') . '?ver=' . time() . '" alt="PDF.jpg">
 </div>
 </a>
 </div>';
@@ -10547,7 +10573,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                         $return_html .= '<div class = "audio_main_div">
 <div class = "audio_img">
-<img src = "' . base_url('assets/images/music-icon.png') . '?ver='.time().'" alt="music-icon.png">
+<img src = "' . base_url('assets/images/music-icon.png') . '?ver=' . time() . '" alt="music-icon.png">
 </div>
 <div class = "audio_source">
 <audio id = "audio_player" width = "100%" height = "100" controls>
@@ -10566,7 +10592,7 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<div class = "two-images">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] .'">
+<img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">
 </a>
 </div>';
                     }
@@ -10574,18 +10600,18 @@ Your browser does not support the audio tag.
 
                     $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" alt="'. $businessmultiimage[0]['file_name'] . '">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" alt="' . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '" alt="'. $businessmultiimage[1]['file_name'] .'">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '" alt="' . $businessmultiimage[1]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '" alt="'. $businessmultiimage[2]['file_name'] . '">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '" alt="' . $businessmultiimage[2]['file_name'] . '">
 </a>
 </div>';
                 } elseif (count($businessmultiimage) == 4) {
@@ -10594,7 +10620,7 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="'. $multiimage['file_name'] . '">
+<img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">
 </a>
 </div>';
                     }
@@ -10605,7 +10631,7 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '?ver='.time().'" alt="'. $multiimage['file_name'] .'">
+<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '?ver=' . time() . '" alt="' . $multiimage['file_name'] . '">
 </a>
 </div>';
 
@@ -10616,7 +10642,7 @@ Your browser does not support the audio tag.
 
                     $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
-<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '?ver='.time().'" alt="'. $businessmultiimage[3]['file_name'] . '">
+<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '?ver=' . time() . '" alt="' . $businessmultiimage[3]['file_name'] . '">
 </a>
 <a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <div class = "more-image" >
@@ -10793,7 +10819,7 @@ Your browser does not support the audio tag.
                                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                                 } else {
-                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver='.time().'" alt = "'. $business_userimage .'">';
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver=' . time() . '" alt = "' . $business_userimage . '">';
                                 }
                             } else {
                                 $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -10801,7 +10827,7 @@ Your browser does not support the audio tag.
                                 if (!$info) {
                                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                                 } else {
-                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver='.time().'" alt = "'. $business_userimage . '">';
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver=' . time() . '" alt = "' . $business_userimage . '">';
                                 }
                             }
 
@@ -10921,7 +10947,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver='.time().'" alt = "'. $business_userimage .'">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver=' . time() . '" alt = "' . $business_userimage . '">';
                         }
                     } else {
                         $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
@@ -10929,7 +10955,7 @@ Your browser does not support the audio tag.
                         if (!$info) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "NOBUSIMAGE">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver='.time().'" alt = "'. $business_userimage .'">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '?ver=' . time() . '" alt = "' . $business_userimage . '">';
                         }
                     }
                 } else {
@@ -10940,7 +10966,7 @@ Your browser does not support the audio tag.
 <div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
 <div contenteditable = "true" class = "edt_2 editable_text" name = "' . $post_business_profile_post_id . '" id = "post_comment' . $post_business_profile_post_id . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $post_business_profile_post_id . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
 <div class="mob-comment">       
-                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '?ver='.time().'" alt="send.png">
+                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '?ver=' . time() . '" alt="send.png">
                             </button>
                         </div>
 </div>
@@ -11044,6 +11070,7 @@ Your browser does not support the audio tag.
 
         return $company_name = $businessdata[0]['company_name'];
     }
+
     public function get_description($id = '') {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $contition_array = array('business_slug' => $id, 'is_deleted' => '0', 'status' => '1');
