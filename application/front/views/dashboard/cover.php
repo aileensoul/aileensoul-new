@@ -480,7 +480,7 @@
                                                         <img src="<?php echo base_url(); ?>assets/slicing/img_logo.png" alt="Aileensoul">
                                                     </div>
                                                     <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                        <img src="assets/slicing/img_screen_2.png" alt="Screen2">
+                                                        <img src="<?php echo base_url(); ?>assets/slicing/img_screen_2.png" alt="Screen2">
                                                     </div>
                                                 </div>
                                             </div>
