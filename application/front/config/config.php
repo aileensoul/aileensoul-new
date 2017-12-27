@@ -910,6 +910,11 @@ $config['blog_thumb_upload_path'] = 'uploads/blog/thumbs/';
 $config['blog_thumb_width'] = '150';
 $config['blog_thumb_height'] = '150';
 
+// BLOG RELATED THUMB
+$config['blog_related_upload_path'] = 'uploads/blog/related/';
+$config['blog_related_width'] = '150';
+$config['blog_related_height'] = '150';
+
 
 // BUSINESS MESSAGE IMAGE
 $config['rec_message_main_upload_path'] = 'uploads/recruiter_message/main/';

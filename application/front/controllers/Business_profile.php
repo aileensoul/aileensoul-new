@@ -8659,7 +8659,7 @@ No Contacts Available.
         $delete_post_id = $delete_postdata[0]['delete_post_id'];
         $delete_post_id = str_replace(",", "','", $delete_post_id);
 
-        $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1');
+        $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1','business_profile.is_deleted' => '0', 'business_profile.status' => '1');
         $search_condition = "`business_profile_post_id` NOT IN ('$delete_post_id') AND (business_profile_post.user_id IN ('$total_user_list')) OR (posted_user_id ='$user_id' AND is_delete=0)";
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
