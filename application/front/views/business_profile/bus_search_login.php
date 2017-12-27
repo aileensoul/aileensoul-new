@@ -585,7 +585,7 @@
                                 <div class="modal-body">
                                     <div class="clearfix">
                                         <div class="col-md-12 col-sm-12">
-                                            <h4>Join Aileensoul - It's Free</h4>
+                                            <h4>Signup first and register in Business Profile</h4>
                                             <form role="form" name="register_form" id="register_form" method="post">
                                                 <div class="row">
                                                     <div class="col-sm-6 col-md-6">
@@ -601,10 +601,10 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                                    <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                                    <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
                                                 </div>
                                                 <div class="form-group dob">
                                                     <label class="d_o_b"> Date Of Birth :</label>
