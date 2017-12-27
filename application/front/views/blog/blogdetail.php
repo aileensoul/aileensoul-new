@@ -146,7 +146,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                             <div class="blog_inside_post_main">
                                                 <div class="blog_main_post_first_part">
                                                     <div class="blog_main_post_img">
-                                                        <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog_detail[0]['image']) ?>"  alt="Blog">
+                                                        <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog_detail[0]['image'] .'?ver='.time()) ?>"  alt="Blog">
                                                     </div>
                                                 </div>
                                                 <div class="blog_main_post_second_part">
@@ -239,7 +239,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                                             <ul>
                                                                 <li class="comment-list">
                                                                     <div class="c-user-img">
-                                                                        <img src="<?php echo base_url(NOIMAGE); ?>" alt="Noimage">
+                                                                        <img src="<?php echo base_url(NOIMAGE) . '?ver='.time(); ?>" alt="Noimage">
                                                                     </div>
                                                                     <div class="c-user-comments">
                                                                         <h5><?php echo $comment['name']; ?></h5>
@@ -299,7 +299,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                                     <div class="col-md-4 col-sm-12">
                                                         <div class="rel-blog-box">
                                                             <a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><div class="rel-blog-img">
-                                                                    <img src="<?php echo base_url($this->config->item('blog_related_upload_path') . $random['image']) ?>" alt="<?php echo $random['image']; ?>">
+                                                                    <img src="<?php echo base_url($this->config->item('blog_related_upload_path') . $random['image'] . '?ver='.time()) ?>" alt="<?php echo $random['image']; ?>">
                                                                 </div></a>
                                                             <h5> <a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><?php echo $random['title']; ?> </a> </h5>
                                                         </div>
@@ -317,7 +317,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                     <div class="art_no_post_avl">
                                         <div class="art-img-nn">
                                             <div class="art_no_post_img">
-                                                <img src="<?php echo base_url('assets/img/bui-no.png') ?>" alt="Noimage">
+                                                <img src="<?php echo base_url('assets/img/bui-no.png?ver='.time()) ?>" alt="Noimage">
                                             </div>
                                             <div class="art_no_post_text">
                                                 Sorry, this content isn't available at the moment
@@ -345,7 +345,7 @@ foreach ($blog_last as $blog) {
                                                 <div class="post_inside_data">
                                                     <div class="post_latest_left">
                                                         <div class="lateaqt_post_img">
-                                                            <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> <img src="<?php echo base_url($this->config->item('blog_thumb_upload_path') . $blog['image']) ?>" alt="<?php echo $blog['image']; ?>"></a>
+                                                            <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> <img src="<?php echo base_url($this->config->item('blog_thumb_upload_path') . $blog['image'] . '?ver='.time()) ?>" alt="<?php echo $blog['image']; ?>"></a>
                                                         </div>
                                                     </div>
                                                     <div class="post_latest_right">
