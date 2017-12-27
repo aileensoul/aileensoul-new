@@ -336,7 +336,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <!-- Login -->
 
         <!-- model for forgot password start -->
-         <div id="forgotPassword" class="modal">
+          <div id="forgotPassword" class="modal">
                 <div class="modal-content md-2">
                     <?php
                     $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');

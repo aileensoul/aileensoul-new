@@ -299,7 +299,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                                     <div class="col-md-4 col-sm-12">
                                                         <div class="rel-blog-box">
                                                             <a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><div class="rel-blog-img">
-                                                                    <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $random['image']) ?>" alt="<?php echo $random['image']; ?>">
+                                                                    <img src="<?php echo base_url($this->config->item('blog_related_upload_path') . $random['image']) ?>" alt="<?php echo $random['image']; ?>">
                                                                 </div></a>
                                                             <h5> <a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><?php echo $random['title']; ?> </a> </h5>
                                                         </div>

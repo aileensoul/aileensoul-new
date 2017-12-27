@@ -134,12 +134,12 @@
         <!-- Login  -->
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content login-frm">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
-                        <div class="col-sm-12 right-main">
+                        <div class=" right-main">
                             <div class="right-main-inner">
-                                <div class="login-frm">
+                                <div class="">
                                         <div class="title">
                                             <h1 class="ttc">Welcome To Aileensoul</h1>
                                         </div>
