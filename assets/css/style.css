@@ -2174,7 +2174,7 @@ word-break: break-word;}
 }
 
 @media screen and (min-width: 768px) {
-	.modal-content{padding: 5px;}
+	/*.modal-content{padding: 5px;}*/
 	#likeusermodal.message-box span.mes{padding:0px 15px 0;}
 	#likeusermodal .modal-close1 {
 		padding: 4px 6px;
