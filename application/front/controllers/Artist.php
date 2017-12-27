@@ -624,6 +624,9 @@ class Artist extends MY_Controller {
         $this->data['artid'] = $this->data['artisticdata'][0]['user_id'];
         $this->data['get_url'] = $this->get_url($this->data['artisticdata'][0]['user_id']);
 
+                $artistic_name = $this->get_artistic_name($this->data['artid']);
+                $this->data['title'] = $artistic_name.' | Dashboard'.'- Artistic Profile' . TITLEPOSTFIX;
+
         if ($userid) {
 
             if (!$this->data['artisticdata'] && !$this->data['artsdata']) { 
@@ -632,8 +635,7 @@ class Artist extends MY_Controller {
                 redirect('artist');
             } else {
                 $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
-                $artistic_name = $this->get_artistic_name($this->data['artid']);
-                $this->data['title'] = $artistic_name.' | Dashboard'.'- Artistic Profile' . TITLEPOSTFIX;
+                
                 $this->load->view('artist/art_manage_post', $this->data);
             }
         } else { 
