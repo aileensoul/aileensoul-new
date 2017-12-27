@@ -180,6 +180,7 @@
                                             <p class="pt15 text-center">
                                                 Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();" title="Create an account">Create an account</a>
                                             </p>
+
                                         </form>
 
                                    
@@ -317,6 +318,11 @@
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
                                         </p>
+                                        <div class="sign_in pt10">
+                                        <p>
+                                            Already have an account ? <a tabindex="12" onclick="login_profile();" href="javascript:void(0);" title="Log In"> Log In </a>
+                                        </p>
+                                    </div>
                                     </form>
 
                             </div>
