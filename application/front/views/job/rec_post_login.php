@@ -565,7 +565,10 @@
 
                        
                         <div class="inner-right-part">
-                            <div class="page-title">
+                           
+                            <?php
+                            if($postdata){ ?>
+                                 <div class="page-title">
                                 <h3>
                                     <?php
                                     $cache_time = $this->db->get_where('job_title', array('title_id' => $postdata[0]['post_name']))->row()->name;
@@ -577,8 +580,7 @@
                                     ?>
                                 </h3>
                             </div>
-                            <?php
-                            foreach ($postdata as $post) {
+                      <?php      foreach ($postdata as $post) {
                                 ?>
                                 <div class="all-job-box job-detail">
                                     <div class="all-job-top">
@@ -843,10 +845,18 @@
                                     </div>
                                 </div>
                                 <?php
-                            }
+                            } } else {
                             ?>
+ <div class="art-img-nn">
+                                <div class="art_no_post_img">
+                                    <img src="<?php echo base_url() . 'assets/img/job-no.png';?>">
 
-
+                                </div>
+                                <div class="art_no_post_text">
+                                    No  Post Available.
+                                </div>
+                            </div>
+                            <?php } ?>
                         </div>
 						
                         
