@@ -729,7 +729,7 @@ if ($job[0]['job_user_image'] != '' && $info) {
 
                                                                                 if ($graduation['grade']) {
                                                                                     ?>
-                                                                                        <li> <b>Grade </b><span><?php echo $graduation['grade']; ?></span>
+                                                                                        <li> <b>Grade </b><span><?php echo ucwords($graduation['grade']); ?></span>
                                                                                         </li>
                                                                                                 <?php
                                                                                             } else {
@@ -738,7 +738,7 @@ if ($job[0]['job_user_image'] != '' && $info) {
                                                                                         } else {
                                                                                             if ($graduation['grade']) {
                                                                                                 ?>
-                                                                                        <li> <b>Grade </b><span><?php echo $graduation['grade']; ?></span>
+                                                                                        <li> <b>Grade </b><span><?php echo ucwords($graduation['grade']); ?></span>
                                                                                         </li>
                                                                                                 <?php
                                                                                             } else {
@@ -746,7 +746,7 @@ if ($job[0]['job_user_image'] != '' && $info) {
                                                                                         <li><b> Grade</b> 
                                                                                             <span>
                                                                                                 <?php
-                                                                                                echo PROFILENA;
+                                                                                                echo ucwords(PROFILENA);
                                                                                             }
                                                                                         }//else complete
                                                                                         ?>

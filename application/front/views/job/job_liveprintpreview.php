@@ -986,7 +986,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                  if ($graduation['grade']) 
                                              {
                                              ?>
-                                          <li> <b>Grade </b><span><?php echo $graduation['grade']; ?></span>
+                                          <li> <b>Grade </b><span><?php echo ucwords($graduation['grade']); ?></span>
                                           </li>
                                           <?php
                                              } else   {
@@ -998,7 +998,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                              if ($graduation['grade'])
                                              {
                                              ?>
-                                          <li> <b>Grade </b><span><?php echo $graduation['grade']; ?></span>
+                                          <li> <b>Grade </b><span><?php echo ucwords($graduation['grade']); ?></span>
                                           </li>
                                           <?php
                                              } 
@@ -1008,7 +1008,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           <li><b> Grade</b> 
                                              <span>
                                              <?php
-                                                echo PROFILENA;
+                                                echo ucwords(PROFILENA);
                                                     }
                                                 }//else complete
                                                 ?>
