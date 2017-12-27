@@ -405,8 +405,7 @@ $("#freelancer_regform").submit(function () {
         $('<span class="error" id="experience_error" style="float: right;color: red; font-size: 11px;">Experiance is required</span>').insertAfter('#experience_month');
         return false;
     } else {
-
-        consol.log();
+      //  consol.log();
         return true;
     }
 //    $('.experience_month').append('<label for="year-month" class="year-month" style="display: block;">Experiance is required.</label>');

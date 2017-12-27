@@ -103,7 +103,7 @@
                                                     <a  href="<?php echo base_url('freelance-work/freelancer-details'); ?>">
                                                         <?php
                                                         if ($freepostdata[0]['designation']) {
-                                                            echo ucwords($freepostdata[0]['designation']);
+                                                            echo $freepostdata[0]['designation'];
                                                         } else {
                                                             echo $this->lang->line("designation");
                                                         }

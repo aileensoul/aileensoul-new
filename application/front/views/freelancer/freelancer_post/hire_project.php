@@ -139,15 +139,15 @@
                                                                         <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;    ?>
                                                                         <div class="profile-boxProfile-name">
                                                                             <?php if ($this->session->userdata('aileenuser') == $post_user[0]['user_id']) { ?>
-                                                                                <a href="<?php echo base_url('freelance-hire/employer-details'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
+                                                                                <a href="<?php echo base_url('freelance-hire/employer-details'); ?>"  title="<?php echo $freelancr_user_data[0]['designation']; ?>">
                                                                                 <?php } else if ($hire_user) { ?>
-                                                                                    <a title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
+                                                                                    <a title="<?php echo $freelancr_user_data[0]['designation']; ?>">
                                                                                     <?php } else { ?>
-                                                                                        <a href="<?php echo base_url('freelance-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
+                                                                                        <a href="<?php echo base_url('freelance-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>"  title="<?php echo $freelancr_user_data[0]['designation']; ?>">
                                                                                         <?php } ?>
                                                                                         <?php
                                                                                         if (ucfirst(strtolower($freelancr_user_data[0]['designation']))) {
-                                                                                            echo ucfirst(strtolower($freelancr_user_data[0]['designation']));
+                                                                                            echo $freelancr_user_data[0]['designation'];
                                                                                         } else {
                                                                                             echo "Designation";
                                                                                         }
