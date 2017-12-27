@@ -412,7 +412,7 @@
                         <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                             <div class="btn-right pull-right">
                                 <a title="Login" href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                                <a title="Create an account" href="javascript:void(0);" onclick="create_profile();" class="btn3">Create an account</a>
+                                <a title="Create an account" href="javascript:void(0);" onclick="register_profile();" class="btn3">Create an account</a>
                             </div>
                         </div>
                     </div>
@@ -479,47 +479,47 @@
                             ?>
 
                             <img alt="<?php echo $freelancerpostdata[0]['freelancer_post_fullname'] . " " . $freelancerpostdata[0]['freelancer_post_username']; ?>" src="<?php echo FREE_POST_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" / >
-    <?php
-} else {
-    ?>
+                            <?php
+                        } else {
+                            ?>
                                  <div class="bg-images no-cover-upload">
                                 <img alt="No Image" src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
                             </div>
 
-<?php }
-?>
+                        <?php }
+                        ?>
 
                     </div>
                 </div>
             </div>
             <div class="container tablate-container art-profile">    
-<?php if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) { ?>
+                <?php if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) { ?>
                     <div class="upload-img">
                         <label class="cameraButton"><span class="tooltiptext"><?php echo $this->lang->line("upload_cover_photo"); ?></span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
                         </label>
                     </div>
-<?php } ?>
+                <?php } ?>
 
                 <div class="profile-photo">
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
-<?php
-$fname = $freelancerpostdata[0]['freelancer_post_fullname'];
-$lname = $freelancerpostdata[0]['freelancer_post_username'];
-$sub_fname = substr($fname, 0, 1);
-$sub_lname = substr($lname, 0, 1);
-if ($freelancerpostdata[0]['freelancer_post_user_image']) {
+                            <?php
+                            $fname = $freelancerpostdata[0]['freelancer_post_fullname'];
+                            $lname = $freelancerpostdata[0]['freelancer_post_username'];
+                            $sub_fname = substr($fname, 0, 1);
+                            $sub_lname = substr($lname, 0, 1);
+                            if ($freelancerpostdata[0]['freelancer_post_user_image']) {
 
-    if (IMAGEPATHFROM == 'upload') {
+                                if (IMAGEPATHFROM == 'upload') {
 
-        if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image'])) {
-            ?>
+                                    if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image'])) {
+                                        ?>
                                         <div class="post-img-user">
-                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                         </div>
-                                        <?php } else {
-                                            ?>
+                                    <?php } else {
+                                        ?>
                                         <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freelancerpostdata[0]['freelancer_post_fullname'] . " " . $freelancerpostdata[0]['freelancer_post_username']; ?>" >        
                                         <?php
                                     }
@@ -533,17 +533,17 @@ if ($freelancerpostdata[0]['freelancer_post_user_image']) {
                                         <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freelancerpostdata[0]['freelancer_post_fullname'] . " " . $freelancerpostdata[0]['freelancer_post_username']; ?>" >
                                     <?php } else { ?>
                                         <div class="post-img-user">
-                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                         </div>
-                                            <?php
-                                        }
+                                        <?php
                                     }
-                                } else {
-                                    ?>
+                                }
+                            } else {
+                                ?>
                                 <div class="post-img-user">
-                                <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
-                                <?php } ?>
+                            <?php } ?>
                             <?php if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) { ?>
                                 <a title="update Profile pic" href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img alt="Update profile pic"  src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
                             <?php } ?>
@@ -552,10 +552,10 @@ if ($freelancerpostdata[0]['freelancer_post_user_image']) {
                     <div class="job-menu-profile mob-block">
                         <a title="<?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?>" href="javascript:void(0);">   <h3> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h3></a>
                         <div class="profile-text">
-<?php
-if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) {
-    if ($freelancerpostdata[0]['designation'] == "") {
-        ?> 
+                            <?php
+                            if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) {
+                                if ($freelancerpostdata[0]['designation'] == "") {
+                                    ?> 
                                     <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
                                     <?php
                                 } else {
@@ -577,77 +577,77 @@ if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser'
                     </div>
                     <div class="profile-main-rec-box-menu profile-box-art col-md-12 padding_les">
                         <div class=" right-side-menu art-side-menu padding_less_right  right-menu-jr"> 
-<?php
-$userid = $this->session->userdata('aileenuser');
-if ($freelancerpostdata[0]['user_id'] == $userid) {
-    ?>     
+                            <?php
+                            $userid = $this->session->userdata('aileenuser');
+                            if ($freelancerpostdata[0]['user_id'] == $userid) {
+                                ?>     
                                 <ul class="current-user pro-fw">
-                            <?php } else { ?>
+                                <?php } else { ?>
                                     <ul class="pro-fw4">
-                                <?php } ?>  
+                                    <?php } ?>  
                                     <li <?php if (($this->uri->segment(1) == 'freelance-work') && ($this->uri->segment(2) == 'freelancer-details')) { ?> class="active" <?php } ?>>
-                                    <?php if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) { ?>
+                                        <?php if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) { ?>
                                             <a title="Freelancer Details" href="<?php echo base_url('freelance-work/freelancer-details/') . $this->uri->segment(3); ?>">Details</a><?php } else { ?><a title="Freelancer Details" href="<?php echo base_url('freelance-work/freelancer-details'); ?>"><?php echo $this->lang->line("freelancer_details"); ?></a><?php } ?>
                                     </li>
-<?php
-$id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => '1'))->row()->user_id;
-if (($this->uri->segment(1) == 'freelance-work') && ($this->uri->segment(2) == 'freelancer-details' || $this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'freelancer_save_post' || $this->uri->segment(2) == 'applied-projects') && ($id == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) {
-    ?>
+                                    <?php
+                                    $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => '1'))->row()->user_id;
+                                    if (($this->uri->segment(1) == 'freelance-work') && ($this->uri->segment(2) == 'freelancer-details' || $this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'freelancer_save_post' || $this->uri->segment(2) == 'applied-projects') && ($id == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) {
+                                        ?>
                                         <li <?php if (($this->uri->segment(1) == 'freelance-work') && ($this->uri->segment(2) == 'saved-projects')) { ?> class="active" <?php } ?>><a title="Saved Post" href="<?php echo base_url('freelance-work/saved-projects'); ?>"><?php echo $this->lang->line("saved_projects"); ?></a> </li>
                                         <li <?php if (($this->uri->segment(1) == 'freelance-work') && ($this->uri->segment(2) == 'applied-projects')) { ?> class="active" <?php } ?>><a title="Applied  Post" href="<?php echo base_url('freelance-work/applied-projects'); ?>"><?php echo $this->lang->line("applied_projects"); ?></a> </li>
-<?php } ?>
+                                    <?php } ?>
                                 </ul>
 
-<?php
-if (is_numeric($this->uri->segment(3))) {
-    $id = $this->uri->segment(3);
-} else {
-    $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => '1'))->row()->user_id;
-}
-$userid = $this->session->userdata('aileenuser');
+                                <?php
+                                if (is_numeric($this->uri->segment(3))) {
+                                    $id = $this->uri->segment(3);
+                                } else {
+                                    $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => '1'))->row()->user_id;
+                                }
+                                $userid = $this->session->userdata('aileenuser');
 
-$contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_type' => '2');
-$data = $this->common->select_data_by_condition('save', $contition_array, $data = 'status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_type' => '2');
+                                $data = $this->common->select_data_by_condition('save', $contition_array, $data = 'status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-if ($this->session->userdata('aileenuser')) {
-    if ($userid != $id) {
-        if ($this->uri->segment(3) != "") {
-            ?>
+                                if ($this->session->userdata('aileenuser')) {
+                                    if ($userid != $id) {
+                                        if ($this->uri->segment(3) != "") {
+                                            ?>
                                             <div class="flw_msg_btn fr">
                                                 <ul>
-            <?php
-            if ($data[0]['status'] == '1' || $data[0]['status'] == '') {
+                                                    <?php
+                                                    if ($data[0]['status'] == '1' || $data[0]['status'] == '') {
 
-                if ($_GET['post_id']) {
-                    ?> 
+                                                        if ($_GET['post_id']) {
+                                                            ?> 
                                                             <li>
                                                                 <a title="shortlist" id="<?php echo $id; ?>" onClick="shortlistpopup(<?php echo $id; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $id ?>"> Shortlist </a> 
 
                                                             </li>
-                <?php } else { ?>
+                                                        <?php } else { ?>
                                                             <li>
                                                                 <a title="save" id="<?php echo $id; ?>" onClick="savepopup(<?php echo $id; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $id ?>">
-                    <?php echo $this->lang->line("save"); ?>
+                                                                    <?php echo $this->lang->line("save"); ?>
                                                                 </a> 
 
                                                             </li> <?php
-                }
-            } elseif ($data[0]['status'] == '0') {
-                ?>
+                                                        }
+                                                    } elseif ($data[0]['status'] == '0') {
+                                                        ?>
                                                         <li> 
                                                             <a title="Saved" class="saved butt_rec <?php echo 'saveduser' . $id; ?> "><?php echo $this->lang->line("saved"); ?></a>
                                                         </li> <?php } else {
-                                        ?>
+                                                        ?>
                                                         <li> 
                                                             <a title="Shortlisted" class="saved butt_rec <?php echo 'saveduser' . $id; ?> ">Shortlisted</a>
                                                         </li> 
-            <?php }
-            ?>
+                                                    <?php }
+                                                    ?>
                                                     <li>
                                                         <input type="hidden" id="<?php echo 'hideenpostid'; ?>" value= "<?php echo $_GET['page']; ?>">
-            <?php
-            if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
-                ?>
+                                                        <?php
+                                                        if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
+                                                            ?>
                                                             <a title="Message" href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                         <?php } else { ?>
                                                             <a title="Message" href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
@@ -657,11 +657,11 @@ if ($this->session->userdata('aileenuser')) {
                                                     </li>
                                                 </ul>
                                             </div>
-            <?php
-        }
-    }
-}
-?>
+                                            <?php
+                                        }
+                                    }
+                                }
+                                ?>
 
                         </div>
                     </div>
@@ -671,15 +671,15 @@ if ($this->session->userdata('aileenuser')) {
                 <div class="job-menu-profile mob-none pt-20">
                     <a title="<?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?>" href="javascript:void(0);">   <h3> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h3></a>
                     <div class="profile-text pt5">
-<?php
-if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) {
-    if ($freelancerpostdata[0]['designation'] == "") {
-        ?> 
+                        <?php
+                        if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) {
+                            if ($freelancerpostdata[0]['designation'] == "") {
+                                ?> 
                                 <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
                                 <?php
                             } else {
                                 ?> 
-                                <a id="designation" class="designation" title="<?php echo ucwords($freelancerpostdata[0]['designation']); ?>"><?php echo ucwords($freelancerpostdata[0]['designation']); ?></a>
+                                <a id="designation" class="designation" title="<?php echo $freelancerpostdata[0]['designation']; ?>"><?php echo $freelancerpostdata[0]['designation']; ?></a>
                                 <?php
                             }
                         } else {
@@ -696,11 +696,11 @@ if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser'
                     </div>
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12 mob-clear">
-<?php
-if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) {
-    if ($count_profile == 100) {
-        if ($freepostdata[0]['progressbar'] == 0) {
-            ?>
+                    <?php
+                    if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) {
+                        if ($count_profile == 100) {
+                            if ($freepostdata[0]['progressbar'] == 0) {
+                                ?>
 
                                 <div class="mob-progressbar" >
                                     <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
@@ -716,10 +716,10 @@ if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser'
                                         </div>
                                     </div>
                                 </div>
-            <?php
-        }
-    } else {
-        ?>
+                                <?php
+                            }
+                        } else {
+                            ?>
                             <div class="mob-progressbar" >
                                 <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
                                 <p class="mob-edit-pro">
@@ -736,23 +736,23 @@ if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser'
                                 </div>
                             </div>
 
-        <?php
-    }
-}
-?>
+                            <?php
+                        }
+                    }
+                    ?>
                     <div class="common-form">
                         <div class="job-saved-box">
                             <h3><?php echo $this->lang->line("freelancer_details"); ?> </h3>
                             <div class=" fr rec-edit-pro">
-<?php
+                                <?php
 
-function text2link($text) {
-    $text = preg_replace('/(((f|ht){1}t(p|ps){1}:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '<a href="\\1" target="_blank" rel="nofollow">\\1</a>', $text);
-    $text = preg_replace('/([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '\\1<a href="http://\\2" target="_blank" rel="nofollow">\\2</a>', $text);
-    $text = preg_replace('/([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3})/i', '<a href="mailto:\\1" rel="nofollow" target="_blank">\\1</a>', $text);
-    return $text;
-}
-?>
+                                function text2link($text) {
+                                    $text = preg_replace('/(((f|ht){1}t(p|ps){1}:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '<a href="\\1" target="_blank" rel="nofollow">\\1</a>', $text);
+                                    $text = preg_replace('/([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '\\1<a href="http://\\2" target="_blank" rel="nofollow">\\2</a>', $text);
+                                    $text = preg_replace('/([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3})/i', '<a href="mailto:\\1" rel="nofollow" target="_blank">\\1</a>', $text);
+                                    return $text;
+                                }
+                                ?>
                                 <?php
                                 $userid = $this->session->userdata('aileenuser');
                                 if ($freelancerpostdata[0]['user_id'] === $userid) {
@@ -779,14 +779,14 @@ function text2link($text) {
                                                     </li>
                                                     <li> <b><?php echo $this->lang->line("email"); ?></b><span> <?php echo $freelancerpostdata[0]['freelancer_post_email']; ?> </span>
                                                     </li>
-<?php
-if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
-    if ($freelancerpostdata[0]['freelancer_post_phoneno']) {
-        ?>
+                                                    <?php
+                                                    if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
+                                                        if ($freelancerpostdata[0]['freelancer_post_phoneno']) {
+                                                            ?>
                                                             <li><b><?php echo $this->lang->line("phone_no"); ?></b> <span><?php echo $freelancerpostdata[0]['freelancer_post_phoneno']; ?></span> </li>
                                                             <?php
                                                         } else {
-                                                            echo "";
+                                                            echo PROFILENA;
                                                         }
                                                     } else {
                                                         if ($freelancerpostdata[0]['freelancer_post_phoneno']) {
@@ -796,12 +796,12 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                         } else {
                                                             ?>
                                                             <li><b><?php echo $this->lang->line("phone_no"); ?></b> <span>
-                                                            <?php echo PROFILENA; ?></span>
+                                                                    <?php echo PROFILENA; ?></span>
                                                             </li>
-                                                                    <?php
-                                                                }
-                                                            }
-                                                            ?>
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
                                                     <?php
                                                     if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
                                                         if ($freelancerpostdata[0]['freelancer_post_skypeid']) {
@@ -821,12 +821,12 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                         } else {
                                                             ?>
                                                             <li><b><?php echo $this->lang->line("skype_id"); ?></b> <span>
-                                                            <?php echo PROFILENA; ?></span>
+                                                                    <?php echo PROFILENA; ?></span>
                                                             </li>
-                                                                    <?php
-                                                                }
-                                                            }
-                                                            ?>
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
                                                 </ul>
                                             </div>
                                             <div class="profile-job-post-title clearfix">
@@ -842,39 +842,39 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                         <li> <b><?php echo $this->lang->line("country"); ?></b> <span> <?php echo $this->db->get_where('countries', array('country_id' => $freelancerpostdata[0]['freelancer_post_country']))->row()->country_name; ?></span>
                                                         </li>
                                                         <li> <b><?php echo $this->lang->line("state"); ?></b><span> <?php
-                                                    echo
-                                                    $this->db->get_where('states', array('state_id' => $freelancerpostdata[0]['freelancer_post_state']))->row()->state_name;
-                                                            ?> </span>
-                                                        </li>
-                                                                <?php
-                                                                if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
-                                                                    if ($freelancerpostdata[0]['freelancer_post_city']) {
-                                                                        ?>
-                                                                <li><b><?php echo $this->lang->line("city"); ?></b> <span><?php
                                                                 echo
-                                                                $this->db->get_where('cities', array('city_id' => $freelancerpostdata[0]['freelancer_post_city']))->row()->city_name;
-                                                                ?></span> </li>
-                                                                        <?php
-                                                                    } else {
-                                                                        echo "";
-                                                                    }
-                                                                } else {
-                                                                    if ($freelancerpostdata[0]['freelancer_post_city']) {
-                                                                        ?>
-                                                                <li><b><?php echo $this->lang->line("city"); ?></b> <span><?php
-                                                                    echo
-                                                                    $this->db->get_where('cities', array('city_id' => $freelancerpostdata[0]['freelancer_post_city']))->row()->city_name;
-                                                                    ?></span> </li>
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
-                                                                <li><b><?php echo $this->lang->line("city"); ?></b> <span>
-                                                                    <?php echo PROFILENA; ?></span>
-                                                                </li>
-                                                                        <?php
-                                                                    }
-                                                                }
+                                                                $this->db->get_where('states', array('state_id' => $freelancerpostdata[0]['freelancer_post_state']))->row()->state_name;
+                                                                ?> </span>
+                                                        </li>
+                                                        <?php
+                                                        if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
+                                                            if ($freelancerpostdata[0]['freelancer_post_city']) {
                                                                 ?>
+                                                                <li><b><?php echo $this->lang->line("city"); ?></b> <span><?php
+                                                                        echo
+                                                                        $this->db->get_where('cities', array('city_id' => $freelancerpostdata[0]['freelancer_post_city']))->row()->city_name;
+                                                                        ?></span> </li>
+                                                                    <?php
+                                                                } else {
+                                                                    echo "";
+                                                                }
+                                                            } else {
+                                                                if ($freelancerpostdata[0]['freelancer_post_city']) {
+                                                                    ?>
+                                                                <li><b><?php echo $this->lang->line("city"); ?></b> <span><?php
+                                                                        echo
+                                                                        $this->db->get_where('cities', array('city_id' => $freelancerpostdata[0]['freelancer_post_city']))->row()->city_name;
+                                                                        ?></span> </li>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                <li><b><?php echo $this->lang->line("city"); ?></b> <span>
+                                                                        <?php echo PROFILENA; ?></span>
+                                                                </li>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
                                                         <?php
                                                         if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
                                                             if ($freelancerpostdata[0]['freelancer_post_pincode']) {
@@ -894,12 +894,12 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                             } else {
                                                                 ?>
                                                                 <li><b><?php echo $this->lang->line("pincode"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?></span>
+                                                                        <?php echo PROFILENA; ?></span>
                                                                 </li>
-                                                                        <?php
-                                                                    }
-                                                                }
-                                                                ?>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -913,61 +913,61 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                 </div>
                                                 <div class="profile-job-profile-menu">
                                                     <ul class="clearfix">
-<?php $categoryname = $this->db->get_where('category', array('category_id' => $freelancerpostdata[0]['freelancer_post_field']))->row()->category_name; ?>
+                                                        <?php $categoryname = $this->db->get_where('category', array('category_id' => $freelancerpostdata[0]['freelancer_post_field']))->row()->category_name; ?>
                                                         <li> <b><?php echo $this->lang->line("field"); ?></b> <span> <?php echo $categoryname; ?> </span>
                                                         </li>
                                                         <?php
                                                         if ($freelancerpostdata[0]['freelancer_post_area']) {
                                                             ?>
                                                             <li> <b><?php echo $this->lang->line("skill"); ?></b><span>
-                                                            <?php
-                                                            $aud = $freelancerpostdata[0]['freelancer_post_area'];
-                                                            $aud_res = explode(',', $aud);
-                                                            foreach ($aud_res as $skill) {
+                                                                    <?php
+                                                                    $aud = $freelancerpostdata[0]['freelancer_post_area'];
+                                                                    $aud_res = explode(',', $aud);
+                                                                    foreach ($aud_res as $skill) {
 
-                                                                $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
-                                                                $skill1[] = $cache_time;
-                                                            }
-                                                            $listFinal = implode(', ', $skill1);
+                                                                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                                        $skill1[] = $cache_time;
+                                                                    }
+                                                                    $listFinal = implode(', ', $skill1);
 
-                                                            if (!$listFinal) {
+                                                                    if (!$listFinal) {
 
-                                                                echo $freelancerpostdata[0]['freelancer_post_otherskill'];
-                                                            } else if (!$freelancerpostdata[0]['freelancer_post_otherskill']) {
+                                                                        echo $freelancerpostdata[0]['freelancer_post_otherskill'];
+                                                                    } else if (!$freelancerpostdata[0]['freelancer_post_otherskill']) {
 
-                                                                echo $listFinal;
-                                                            } else if ($listFinal && $freelancerpostdata[0]['freelancer_post_otherskill']) {
-                                                                echo $listFinal . ',' . $freelancerpostdata[0]['freelancer_post_otherskill'];
-                                                            }
-                                                            ?>     
+                                                                        echo $listFinal;
+                                                                    } else if ($listFinal && $freelancerpostdata[0]['freelancer_post_otherskill']) {
+                                                                        echo $listFinal . ',' . $freelancerpostdata[0]['freelancer_post_otherskill'];
+                                                                    }
+                                                                    ?>     
                                                                 </span>
                                                             </li>
-                                                                <?php } ?>
+                                                        <?php } ?>
 
                                                         <li><b><?php echo $this->lang->line("skill_description"); ?></b> <span> <pre><?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_skill_description']); ?> </pre> </span> </li>
 
                                                         <li><b><?php echo $this->lang->line("total_experiance"); ?></b> <span>
-<?php
-if ($freelancerpostdata[0]['freelancer_post_exp_month'] == '12 month' && $freelancerpostdata[0]['freelancer_post_exp_year'] == '0 year') {
-    echo "1 year";
-} elseif ($freelancerpostdata[0]['freelancer_post_exp_year'] != '0 year' && $freelancerpostdata[0]['freelancer_post_exp_month'] == '12 month') {
-    $month = explode(' ', $freelancerpostdata[0]['freelancer_post_exp_year']);
-    $year = $month[0];
-    $years = $year + 1;
-    echo $years . " Years";
-} else {
-    echo $freelancerpostdata[0]['freelancer_post_exp_year'] . ' ' . $freelancerpostdata[0]['freelancer_post_exp_month'];
-}
-?>
+                                                                <?php
+                                                                if ($freelancerpostdata[0]['freelancer_post_exp_month'] == '12 month' && $freelancerpostdata[0]['freelancer_post_exp_year'] == '0 year') {
+                                                                    echo "1 year";
+                                                                } elseif ($freelancerpostdata[0]['freelancer_post_exp_year'] != '0 year' && $freelancerpostdata[0]['freelancer_post_exp_month'] == '12 month') {
+                                                                    $month = explode(' ', $freelancerpostdata[0]['freelancer_post_exp_year']);
+                                                                    $year = $month[0];
+                                                                    $years = $year + 1;
+                                                                    echo $years . " Years";
+                                                                } else {
+                                                                    echo $freelancerpostdata[0]['freelancer_post_exp_year'] . ' ' . $freelancerpostdata[0]['freelancer_post_exp_month'];
+                                                                }
+                                                                ?>
                                                             </span> </li>  
                                                     </ul>
                                                 </div>
                                             </div>
-<?php
-if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
-    $currancy = $this->db->get_where('currency', array('currency_id' => $freelancerpostdata[0]['freelancer_post_ratestate']))->row()->currency_name;
-    if ($freelancerpostdata[0]['freelancer_post_hourly'] != "" && $freelancerpostdata[0]['freelancer_post_ratestate'] != "0") {
-        ?>
+                                            <?php
+                                            if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
+                                                $currancy = $this->db->get_where('currency', array('currency_id' => $freelancerpostdata[0]['freelancer_post_ratestate']))->row()->currency_name;
+                                                if ($freelancerpostdata[0]['freelancer_post_hourly'] != "" && $freelancerpostdata[0]['freelancer_post_ratestate'] != "0") {
+                                                    ?>
                                                     <div class="profile-job-post-title clearfix">
                                                         <div class="profile-job-profile-button clearfix">
                                                             <div class="profile-job-details">
@@ -980,9 +980,9 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                         </div>
                                                         <div class="profile-job-profile-menu">
                                                             <ul class="clearfix">
-        <?php
-        if ($freelancerpostdata[0]['freelancer_post_hourly']) {
-            ?>
+                                                                <?php
+                                                                if ($freelancerpostdata[0]['freelancer_post_hourly']) {
+                                                                    ?>
                                                                     <li> <b><?php echo $this->lang->line("hourly"); ?></b> <span> <?php echo $freelancerpostdata[0]['freelancer_post_hourly'] . '  ' . $currancy; ?> </span>
                                                                     </li>
                                                                     <?php
@@ -1003,9 +1003,9 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                             </ul>
                                                         </div>
                                                     </div> <?php
-                                                    }
-                                                } else {
-                                                    ?>
+                                                }
+                                            } else {
+                                                ?>
                                                 <div class="profile-job-post-title clearfix">
                                                     <div class="profile-job-profile-button clearfix">
                                                         <div class="profile-job-details">
@@ -1019,9 +1019,9 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                     </div>
                                                     <div class="profile-job-profile-menu">
                                                         <ul class="clearfix">
-    <?php
-    if ($freelancerpostdata[0]['freelancer_post_hourly']) {
-        ?>
+                                                            <?php
+                                                            if ($freelancerpostdata[0]['freelancer_post_hourly']) {
+                                                                ?>
                                                                 <li> <b><?php echo $this->lang->line("hourly"); ?></b> <span> <?php echo $freelancerpostdata[0]['freelancer_post_hourly'] . '  ' . $currancy; ?> </span>
                                                                 </li>
                                                                 <?php
@@ -1030,9 +1030,9 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                                 <li> <b><?php echo $this->lang->line("hourly"); ?></b> <span>  <?php echo PROFILENA; ?> </span>
                                                                 </li>
                                                             <?php } ?>
-    <?php
-    if ($freelancerpostdata[0]['freelancer_post_fixed_rate'] == 1) {
-        ?>
+                                                            <?php
+                                                            if ($freelancerpostdata[0]['freelancer_post_fixed_rate'] == 1) {
+                                                                ?>
                                                                 <li><b><?php echo $this->lang->line("also_work_fixed"); ?></b> 
                                                                 </li>
                                                                 <?php
@@ -1043,8 +1043,8 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                         </ul>
                                                     </div>
                                                 </div>
-<?php }
-?>
+                                            <?php }
+                                            ?>
                                             <?php
                                             if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
                                                 if ($freelancerpostdata[0]['freelancer_post_job_type'] != "" || $freelancerpostdata[0]['freelancer_post_work_hour'] != "") {
@@ -1061,9 +1061,9 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                         </div>
                                                         <div class="profile-job-profile-menu">
                                                             <ul class="clearfix">
-        <?php
-        if ($freelancerpostdata[0]['freelancer_post_job_type']) {
-            ?>
+                                                                <?php
+                                                                if ($freelancerpostdata[0]['freelancer_post_job_type']) {
+                                                                    ?>
                                                                     <li> <b><?php echo $this->lang->line("timing"); ?></b> <span><?php echo $freelancerpostdata[0]['freelancer_post_job_type']; ?> </span>
                                                                     </li>
                                                                     <?php
@@ -1083,10 +1083,10 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                             </ul>
                                                         </div>
                                                     </div>
-        <?php
-    }
-} else {
-    ?>
+                                                    <?php
+                                                }
+                                            } else {
+                                                ?>
                                                 <div class="profile-job-post-title clearfix">
                                                     <div class="profile-job-profile-button clearfix">
                                                         <div class="profile-job-details">
@@ -1099,38 +1099,38 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                     </div>
                                                     <div class="profile-job-profile-menu">
                                                         <ul class="clearfix">
-    <?php
-    if ($freelancerpostdata[0]['freelancer_post_job_type']) {
-        ?>
+                                                            <?php
+                                                            if ($freelancerpostdata[0]['freelancer_post_job_type']) {
+                                                                ?>
                                                                 <li> <b><?php echo $this->lang->line("timing"); ?></b> <span><?php echo $freelancerpostdata[0]['freelancer_post_job_type']; ?> </span>
                                                                 </li>
                                                                 <?php
                                                             } else {
                                                                 ?>
                                                                 <li> <b>Timing<?php echo $this->lang->line("timing"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
-                                                                        <?php
-                                                                    }
-                                                                    if ($freelancerpostdata[0]['freelancer_post_work_hour']) {
-                                                                        ?>
+                                                                <?php
+                                                            }
+                                                            if ($freelancerpostdata[0]['freelancer_post_work_hour']) {
+                                                                ?>
                                                                 <li> <b><?php echo $this->lang->line("working_hours_week"); ?></b> <span> <?php echo $freelancerpostdata[0]['freelancer_post_work_hour']; ?></span>
                                                                 </li>
                                                                 <?php
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("working_hours_week"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
-                                                                    <?php } ?>
+                                                            <?php } ?>
                                                         </ul>
                                                     </div>
                                                 </div>
-    <?php
-}
-?>
+                                                <?php
+                                            }
+                                            ?>
                                             <?php
                                             if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
                                                 if ($freelancerpostdata[0]['freelancer_post_degree'] != "0" || $freelancerpostdata[0]['freelancer_post_stream'] != "0" || $freelancerpostdata[0]['freelancer_post_univercity'] != "0" || $freelancerpostdata[0]['freelancer_post_percentage'] != "" || $freelancerpostdata[0]['freelancer_post_passingyear'] != "0") {
@@ -1147,9 +1147,9 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                         </div>
                                                         <div class="profile-job-profile-menu">
                                                             <ul class="clearfix">
-        <?php
-        if ($freelancerpostdata[0]['freelancer_post_degree']) {
-            ?>
+                                                                <?php
+                                                                if ($freelancerpostdata[0]['freelancer_post_degree']) {
+                                                                    ?>
                                                                     <li> <b><?php echo $this->lang->line("degree"); ?></b> <span><?php echo $this->db->get_where('degree', array('degree_id' => $freelancerpostdata[0]['freelancer_post_degree']))->row()->degree_name; ?> </span>
                                                                     </li>
                                                                     <?php
@@ -1208,10 +1208,10 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                             </ul>
                                                         </div>
                                                     </div>
-        <?php
-    }
-} else {
-    ?>
+                                                    <?php
+                                                }
+                                            } else {
+                                                ?>
                                                 <div class="profile-job-post-title clearfix">
                                                     <div class="profile-job-profile-button clearfix">
                                                         <div class="profile-job-details">
@@ -1225,35 +1225,35 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                     </div>
                                                     <div class="profile-job-profile-menu">
                                                         <ul class="clearfix">
-    <?php
-    if ($freelancerpostdata[0]['freelancer_post_degree']) {
-        ?>
+                                                            <?php
+                                                            if ($freelancerpostdata[0]['freelancer_post_degree']) {
+                                                                ?>
                                                                 <li> <b><?php echo $this->lang->line("degree"); ?></b> <span><?php echo $this->db->get_where('degree', array('degree_id' => $freelancerpostdata[0]['freelancer_post_degree']))->row()->degree_name; ?> </span>
                                                                 </li>
                                                                 <?php
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("degree"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
-                                                                        <?php
-                                                                    }
+                                                                <?php
+                                                            }
 
-                                                                    if ($freelancerpostdata[0]['freelancer_post_stream']) {
-                                                                        ?>
+                                                            if ($freelancerpostdata[0]['freelancer_post_stream']) {
+                                                                ?>
                                                                 <li> <b><?php echo $this->lang->line("stream"); ?></b><span> <?php echo $this->db->get_where('stream', array('stream_id' => $freelancerpostdata[0]['freelancer_post_stream']))->row()->stream_name; ?> </span>
                                                                 </li>
                                                                 <?php
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("stream"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
+                                                                <?php
+                                                            }
+                                                            ?>
                                                             <?php
                                                             if ($freelancerpostdata[0]['freelancer_post_univercity']) {
                                                                 ?>
@@ -1262,12 +1262,12 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("university"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
+                                                                <?php
+                                                            }
+                                                            ?>
                                                             <?php
                                                             if ($freelancerpostdata[0]['freelancer_post_collage']) {
                                                                 ?>
@@ -1276,12 +1276,12 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("college"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
+                                                                <?php
+                                                            }
+                                                            ?>
 
                                                             <?php
                                                             if ($freelancerpostdata[0]['freelancer_post_percentage']) {
@@ -1292,12 +1292,12 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("percentage"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
+                                                                <?php
+                                                            }
+                                                            ?>
                                                             <?php
                                                             if ($freelancerpostdata[0]['freelancer_post_passingyear']) {
                                                                 ?>
@@ -1307,18 +1307,18 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("year_passing"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
+                                                                <?php
+                                                            }
+                                                            ?>
                                                         </ul>
                                                     </div>
                                                 </div>
-    <?php
-}
-?>
+                                                <?php
+                                            }
+                                            ?>
 
                                             <?php
                                             if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
@@ -1334,13 +1334,13 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                     <div class="profile-job-profile-menu">
                                                         <ul class="clearfix">
 
-        <?php
-        if ($freelancerpostdata[0]['freelancer_post_portfolio_attachment'] != "") {
-            $allowespdf = array('pdf');
-            $filename = $freelancerpostdata[0]['freelancer_post_portfolio_attachment'];
-            $ext = pathinfo($filename, PATHINFO_EXTENSION);
-            if (in_array($ext, $allowespdf)) {
-                ?>
+                                                            <?php
+                                                            if ($freelancerpostdata[0]['freelancer_post_portfolio_attachment'] != "") {
+                                                                $allowespdf = array('pdf');
+                                                                $filename = $freelancerpostdata[0]['freelancer_post_portfolio_attachment'];
+                                                                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                                                                if (in_array($ext, $allowespdf)) {
+                                                                    ?>
                                                                     <li> <b><?php echo $this->lang->line("attach"); ?></b><span>
                                                                             <div class="free_attc">
                                                                                 <a title="pdf" href="<?php echo base_url('freelancer/pdf/' . $freelancerpostdata[0]['user_id']) ?>">
@@ -1349,7 +1349,7 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                                         </span>
 
                                                                     </li>
-            <?php } ?>
+                                                                <?php } ?>
 
                                                                 <?php
                                                             } else {
@@ -1360,20 +1360,20 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                             if ($freelancerpostdata[0]['freelancer_post_portfolio']) {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("descri"); ?></b> <span><pre>
-                                                                <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </pre></span>
+                                                                            <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </pre></span>
                                                                 </li>
-                                                                            <?php
-                                                                        } else {
-                                                                            echo "";
-                                                                        }
-                                                                        ?>
+                                                                <?php
+                                                            } else {
+                                                                echo "";
+                                                            }
+                                                            ?>
 
                                                         </ul>
                                                     </div>
-        <?php
-    }
-} else {
-    ?>
+                                                    <?php
+                                                }
+                                            } else {
+                                                ?>
                                                 <div class="profile-job-profile-button clearfix">
                                                     <div class="profile-job-details">
                                                         <ul>
@@ -1383,13 +1383,13 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                 </div>
                                                 <div class="profile-job-profile-menu">
                                                     <ul class="clearfix">
-    <?php
-    if ($freelancerpostdata[0]['freelancer_post_portfolio_attachment'] != "") {
-        $allowespdf = array('pdf');
-        $filename = $freelancerpostdata[0]['freelancer_post_portfolio_attachment'];
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if (in_array($ext, $allowespdf)) {
-            ?>
+                                                        <?php
+                                                        if ($freelancerpostdata[0]['freelancer_post_portfolio_attachment'] != "") {
+                                                            $allowespdf = array('pdf');
+                                                            $filename = $freelancerpostdata[0]['freelancer_post_portfolio_attachment'];
+                                                            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                                                            if (in_array($ext, $allowespdf)) {
+                                                                ?>
                                                                 <li> <b><?php echo $this->lang->line("attach"); ?></b><span>
                                                                         <div class="free_attc">
                                                                             <a title="pdf" href="<?php echo base_url('freelancer/pdf/' . $freelancerpostdata[0]['user_id']) ?>">
@@ -1397,35 +1397,35 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                                                                             </a>
                                                                     </span>
                                                                 </li>
-        <?php } ?>
-        <?php
-    } else {
-        ?>
+                                                            <?php } ?>
+                                                            <?php
+                                                        } else {
+                                                            ?>
                                                             <li> <b><?php echo $this->lang->line("attach"); ?></b><span> 
-                                                            <?php echo PROFILENA; ?>
+                                                                    <?php echo PROFILENA; ?>
                                                                 </span>
 
                                                             </li>
-        <?php
-    }
+                                                            <?php
+                                                        }
 
-    if ($freelancerpostdata[0]['freelancer_post_portfolio']) {
-        ?>
+                                                        if ($freelancerpostdata[0]['freelancer_post_portfolio']) {
+                                                            ?>
                                                             <li> <b><?php echo $this->lang->line("descri"); ?></b> <span><p>
-                                                            <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </p></span>
+                                                                        <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </p></span>
                                                             </li>
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
+                                                            <?php
+                                                        } else {
+                                                            ?>
                                                             <li> <b><?php echo $this->lang->line("descri"); ?></b><span> 
-                                                            <?php echo PROFILENA; ?>
+                                                                    <?php echo PROFILENA; ?>
                                                                 </span>
                                                             </li>
-                                                                <?php }
-                                                                ?>
+                                                        <?php }
+                                                        ?>
                                                     </ul>
                                                 </div>
-                                                    <?php } ?>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -1433,11 +1433,11 @@ if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser'
                         </div>
                     </div>
                 </div>
-<?php
-if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) {
-    if ($count_profile == 100) {
-        if ($freepostdata[0]['progressbar'] == 0) {
-            ?>
+                <?php
+                if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser')) {
+                    if ($count_profile == 100) {
+                        if ($freepostdata[0]['progressbar'] == 0) {
+                            ?>
                             <div class="edit_profile_progress edit_pr_bar complete_profile">
                                 <div class="progre_bar_text">
                                     <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
@@ -1455,10 +1455,10 @@ if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser'
                                     </div>
                                 </div>
                             </div>
-            <?php
-        }
-    } else {
-        ?>
+                            <?php
+                        }
+                    } else {
+                        ?>
                         <div class="edit_profile_progress edit_pr_bar">
                             <div class="progre_bar_text">
                                 <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
@@ -1475,17 +1475,17 @@ if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser'
                                 </div>
                             </div>
                         </div>
-        <?php
-    }
-    ?>
+                        <?php
+                    }
+                    ?>
                     <?php
                 }
                 ?>
             </div>
             <div class="clearfix"></div>
         </section>
-<?php echo $login_footer ?>
-<?php echo $footer; ?>
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -1508,7 +1508,7 @@ if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser'
                             <div id="popup-form">
                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-<?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));               ?>
+                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));               ?>
                                     <div class="fw">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
@@ -1517,7 +1517,7 @@ if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser'
                                     </div>
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-<?php //echo form_close();               ?>
+                                <?php //echo form_close();               ?>
                             </div>
                         </span>
                     </div>
@@ -1561,9 +1561,9 @@ if ($freelancerpostdata['0']['user_id'] == $this->session->userdata('aileenuser'
                                             <label class="d_o_b"> Date Of Birth :</label>
                                             <span><select tabindex="9" class="day" name="selday" id="selday">
                                                     <option value="" disabled selected value>Day</option>
-<?php
-for ($i = 1; $i <= 31; $i++) {
-    ?>
+                                                    <?php
+                                                    for ($i = 1; $i <= 31; $i++) {
+                                                        ?>
                                                         <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                                         <?php
                                                     }
@@ -1596,9 +1596,9 @@ for ($i = 1; $i <= 31; $i++) {
                                             <span>
                                                 <select tabindex="11" class="year" name="selyear" id="selyear">
                                                     <option value="" disabled selected value>Year</option>
-<?php
-for ($i = date('Y'); $i >= 1900; $i--) {
-    ?>
+                                                    <?php
+                                                    for ($i = date('Y'); $i >= 1900; $i--) {
+                                                        ?>
                                                         <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                                         <?php
                                                     }
@@ -1659,22 +1659,22 @@ for ($i = date('Y'); $i >= 1900; $i--) {
                                         <div class="form-group">
                                             <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
                                             <div id="error2" style="display:block;">
-<?php
-if ($this->session->flashdata('erroremail')) {
-    echo $this->session->flashdata('erroremail');
-}
-?>
+                                                <?php
+                                                if ($this->session->flashdata('erroremail')) {
+                                                    echo $this->session->flashdata('erroremail');
+                                                }
+                                                ?>
                                             </div>
                                             <div id="errorlogin"></div> 
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
                                             <div id="error1" style="display:block;">
-<?php
-if ($this->session->flashdata('errorpass')) {
-    echo $this->session->flashdata('errorpass');
-}
-?>
+                                                <?php
+                                                if ($this->session->flashdata('errorpass')) {
+                                                    echo $this->session->flashdata('errorpass');
+                                                }
+                                                ?>
                                             </div>
                                             <div id="errorpass"></div> 
                                         </div>
@@ -1708,7 +1708,7 @@ if ($this->session->flashdata('errorpass')) {
         <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <button type="button" class="modal-close" data-dismiss="modal" onclick="login_profile1();">&times;</button>       
                     <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">
@@ -1717,18 +1717,18 @@ if ($this->session->flashdata('errorpass')) {
                                     <div class="title">
                                         <h1 class="ttc">Forgot Password</h1>
                                     </div>
-<?php
-$form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-echo form_open('profile/forgot_password', $form_attribute);
-?>
+                                    <?php
+                                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                                    echo form_open('profile/forgot_password', $form_attribute);
+                                    ?>
                                     <div class="form-group">
                                         <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
                                         <div id="error2" style="display:block;">
-<?php
-if ($this->session->flashdata('erroremail')) {
-    echo $this->session->flashdata('erroremail');
-}
-?>
+                                            <?php
+                                            if ($this->session->flashdata('erroremail')) {
+                                                echo $this->session->flashdata('erroremail');
+                                            }
+                                            ?>
                                         </div>
                                         <div id="errorlogin"></div> 
                                     </div>
@@ -1747,23 +1747,23 @@ if ($this->session->flashdata('erroremail')) {
             </div>
         </div>
 
-<?php
-if (IS_APPLY_JS_MINIFY == '0') {
-    ?>
+        <?php
+        if (IS_APPLY_JS_MINIFY == '0') {
+            ?>
             <script  src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
             <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
             <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>">
             </script>
-    <?php
-} else {
-    ?>
+            <?php
+        } else {
+            ?>
             <script  src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
             <script  src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
             <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/progressloader.js?ver=' . time()); ?>">
             </script>
-<?php } ?>
+        <?php } ?>
 
 
         <script>
@@ -1773,19 +1773,20 @@ if (IS_APPLY_JS_MINIFY == '0') {
             var count_profile_value = '<?php echo $count_profile_value; ?>';
             var count_profile = '<?php echo $count_profile; ?>';
         </script>
-<?php
-if (IS_APPLY_JS_MINIFY == '0') {
-    ?>
-            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_profile.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_profile.js?ver=' . time()); ?>"></script>
+        <?php
+        if (IS_APPLY_JS_MINIFY == '0') {
+            ?>
+            <!--<script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_profile.js?ver=' . time()); ?>"></script>-->
             <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
             <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/progressbar.js?ver=' . time()); ?>"></script>
-    <?php
-} else {
-    ?>
-            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_post_profile.js?ver=' . time()); ?>"></script>
+            <?php
+        } else {
+            ?>
+            <!--<script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_post_profile.js?ver=' . time()); ?>"></script>-->
             <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
             <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/progressbar.js?ver=' . time()); ?>"></script>
-<?php } ?>
+        <?php } ?>
 
 
     </body>

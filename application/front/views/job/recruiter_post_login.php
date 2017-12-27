@@ -666,7 +666,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                                    <h4>Signup first and register in job profile</h4>
+                                    <h4>Sign up First and Register in Job Profile</h4>
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
