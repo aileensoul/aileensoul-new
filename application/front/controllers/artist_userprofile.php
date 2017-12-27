@@ -845,7 +845,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     } elseif (in_array($ext, $allowespdf)) {
 
                          $return_html .= '<div>
-<a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+<a title = "click to open" href = "javascript:void(0)" target="_blank" onclick="login_profile();"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
 </div>
 </a>
