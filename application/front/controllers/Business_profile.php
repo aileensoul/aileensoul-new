@@ -8659,12 +8659,16 @@ No Contacts Available.
         $delete_post_id = $delete_postdata[0]['delete_post_id'];
         $delete_post_id = str_replace(",", "','", $delete_post_id);
 
-        $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1','business_profile.is_deleted' => '0', 'business_profile.status' => '1');
-        $search_condition = "`business_profile_post_id` NOT IN ('$delete_post_id') AND (business_profile_post.user_id IN ('$total_user_list')) OR (posted_user_id ='$user_id' AND is_delete=0)";
+        $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1','user.is_delete' => '0', 'user.status' => '1');
+        $search_condition = "`business_profile_post_id` NOT IN ('$delete_post_id') AND (business_profile_post.user_id IN ('$total_user_list')) OR (business_profile_post.posted_user_id ='$user_id' AND business_profile_post.is_delete=0)";
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
         $join_str[0]['join_type'] = '';
+        $join_str[1]['table'] = 'user';
+        $join_str[1]['join_table_id'] = 'user.user_id';
+        $join_str[1]['from_table_id'] = 'business_profile.user_id';
+        $join_str[1]['join_type'] = '';
         $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
         $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
         $business_profile_post1 = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
