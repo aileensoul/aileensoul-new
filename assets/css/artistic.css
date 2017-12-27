@@ -1867,7 +1867,7 @@ label.cameraButton:active {
 }
 .profile-head-text_dg a {
     font-size: 22px;
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 .profile-main-box-buis-menu li a {
     display: block;
