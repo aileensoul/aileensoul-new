@@ -233,6 +233,15 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
         return regexpr.test(value);
     }
 }, "Only space, only number and only special characters are not allow");
+$.validator.addMethod("regx1", function (value, element, regexpr) {
+    if (!value)
+    {
+        return true;
+    } else
+    {
+        return regexpr.test(value);
+    }
+}, "Enter a number between 8 to 15 digit");
 $(document).ready(function () {
 
     $("#freelancerhire_regform").validate({
@@ -259,6 +268,9 @@ $(document).ready(function () {
                 },
 
             },
+            phoneno: {
+                regx1: /^[0-9\-\+]{9,15}$/,
+            },
             country: {
                 required: true,
             },
@@ -284,6 +296,10 @@ $(document).ready(function () {
                 required: "Email id is required.",
                 email: "Please enter valid email id.",
                 remote: "Email already exists."
+            },
+            phoneno: {
+                minlength: "Minimum length 8 digit",
+                maxlength: "Maximum length 15 digit"
             },
             country: {
                 required: "Country is required.",
