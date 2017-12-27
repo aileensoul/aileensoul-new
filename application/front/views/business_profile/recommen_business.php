@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Search | Business Profile - Aileensoul</title>
+        <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <?php if (IS_BUSINESS_CSS_MINIFY == '0') { ?>
