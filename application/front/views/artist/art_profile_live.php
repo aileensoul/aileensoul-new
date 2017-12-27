@@ -10,10 +10,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <?php
         if (IS_ART_CSS_MINIFY == '0') {
             ?>
-
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>" />
             <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />    
@@ -472,6 +471,40 @@ if ($artisticdata[0]['art_bestofmine']) {
 
 
 <!-- Model Popup Close -->
+<!-- model for forgot password start -->
+        <div id="forgotPassword" class="modal">
+                <div class="modal-content md-2">
+                    <?php
+                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                    echo form_open('profile/forgot_password', $form_attribute);
+                    ?>
+                    <div class="modal-header" style=" text-align: center;">
+                        <button type="button" class="modal-close" data-dismiss="modal">&times;</button>  
+                        <label style="color: #a0b3b0;">Forgot Password</label>
+                    </div>
+                    <div class="modal-body" style="text-align: center;padding: 15px!important;">
+                        <label  style="margin-bottom: 15px; color: #a0b3b0;"> Enter your e-mail address below to get your password.</label>
+                        <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                        <div id="error2" style="display:block;">
+                            <?php
+                               if ($this->session->flashdata('erroremail')) {
+                                    echo $this->session->flashdata('erroremail');
+                                }
+                                ?>
+                        </div>
+                        <div id="errorlogin"></div> 
+
+                    </div>
+                    <div class="modal-footer ">
+                        <div class="submit_btn">              
+                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" onclick="submit_forgot();"/> 
+                        </div>
+                    </div>
+                    <?php echo form_close(); ?>
+                </div>
+            </div>
+
+        <!-- model for forgot password end -->
 
 <?php echo $footer; ?>
 
@@ -828,12 +861,12 @@ var slug = '<?php echo $artid; ?>';
   if (IS_ART_JS_MINIFY == '0') { ?>
 
 <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
-<script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/details.js?ver='.time()); ?>"></script>
+<script  type="text/javascript" src="<?php //echo base_url('assets/js/webpage/artist/details.js?ver='.time()); ?>"></script>
 
 <?php }else{?>
 
 <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
-<script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/details.js?ver='.time()); ?>"></script>
+<script  type="text/javascript" src="<?php // echo base_url('assets/js_min/webpage/artist/details.js?ver='.time()); ?>"></script>
 <?php }?>
  <script>
             $(document).on('click', '[data-toggle*=modal]', function () {

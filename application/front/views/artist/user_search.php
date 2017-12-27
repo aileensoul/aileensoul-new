@@ -25,7 +25,7 @@
  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">  
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
+
 <?php }else{?>
 
  <link rel="stylesheet" href="<?php echo base_url('assets/css_min/common-style.css?ver='.time()); ?>">
@@ -35,7 +35,7 @@
  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/artistic.css?ver='.time()); ?>">  
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver='.time()); ?>">
+
 
 <?php } ?>
     
@@ -195,7 +195,7 @@
         <!-- Login -->
          <!-- model for forgot password start -->
 
-         <div id="forgotPassword" class="modal">
+ <div id="forgotPassword" class="modal">
                 <div class="modal-content md-2">
                     <?php
                     $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
@@ -205,7 +205,7 @@
                         <button type="button" class="modal-close" data-dismiss="modal">&times;</button>  
                         <label style="color: #a0b3b0;">Forgot Password</label>
                     </div>
-                    <div class="modal-body" style="text-align: center;">
+                    <div class="modal-body" style="text-align: center;padding: 15px!important;">
                         <label  style="margin-bottom: 15px; color: #a0b3b0;"> Enter your e-mail address below to get your password.</label>
                         <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
                         <div id="error2" style="display:block;">
@@ -220,7 +220,7 @@
                     </div>
                     <div class="modal-footer ">
                         <div class="submit_btn">              
-                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" /> 
+                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" onclick="submit_forgot();"/> 
                         </div>
                     </div>
                     <?php echo form_close(); ?>
