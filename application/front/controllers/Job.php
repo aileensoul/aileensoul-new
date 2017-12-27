@@ -2519,7 +2519,7 @@ class Job extends MY_Controller {
                     'university_name' => $other_university,
                     'created_date' => date('Y-m-d h:i:s', time()),
                     'status' => 2,
-                    'is_delete' => 0,
+                    'is_delete' => '0',
                     'is_other' => '1',
                     'user_id' => $userid
                 );
@@ -2566,7 +2566,7 @@ class Job extends MY_Controller {
             "select" => $select,
             "select1" => $select1,
         ));
-        die();
+        
     }
 
 //add other_university into database End 
