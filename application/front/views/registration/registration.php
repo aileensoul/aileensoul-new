@@ -16,9 +16,9 @@ header('Last-Modified: '.$date);
 
 $date = gmdate($format, $now+30);
 header('Expires: '.$date);
-
-//header('Cache-Control: public, max-age=30');
-
+header("Cache-Control: no-store, no-cache, must-revalidate"); // HTTP/1.1
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache"); // HTTP/1.0
 ?>
 <html lang="en">
     <head>
@@ -115,10 +115,10 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="email" name="email_reg" id="email_reg" tabindex="3" class="form-control input-sm" placeholder="Email Address*">
+                                        <input type="email" name="email_reg" id="email_reg" tabindex="3" class="form-control input-sm" placeholder="Email Address*" autocomplete="new-email">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password_reg" id="password_reg" tabindex="4" class="form-control input-sm" placeholder="Password*">
+                                        <input type="password" name="password_reg" id="password_reg" tabindex="4" class="form-control input-sm" placeholder="Password*" autocomplete="new-password">
                                     </div>
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth *:</label>
