@@ -15,7 +15,7 @@
         </ul>
         <ul class="cus-full2">
             <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
-            <li><a title="Disclaimer" href="<?php echo base_url('Disclaimer'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Disclaimer policy</a></li>
+            <li><a title="Disclaimer Policy" href="<?php echo base_url('disclaimer-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Disclaimer Policy</a></li>
             <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blog</a></li>
         </ul>
         <ul class="cus-full2">

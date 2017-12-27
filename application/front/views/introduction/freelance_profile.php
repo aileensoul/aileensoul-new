@@ -18,7 +18,6 @@ $date = gmdate($format, $now+30);
 header('Expires: '.$date);
 
 //header('Cache-Control: public, max-age=30');
-
 ?>
 <html lang="en">
     <head>
