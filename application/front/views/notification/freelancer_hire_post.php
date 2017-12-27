@@ -67,8 +67,7 @@
                                                             <p class="loca-exp">
                                                                 <span class="exp">
                                                                     <span>
-                                                                        <!--<img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">-->
-
+                                                        
                                                                         <?php
                                                                         if ($post['post_exp_month'] || $post['post_exp_year']) {
                                                                             if ($post['post_exp_year']) {
@@ -82,15 +81,12 @@
                                                                                 echo $post['post_exp_month'];
                                                                             }
                                                                             echo " Year" . " (Required Experience)";
-                                                                            // echo $post['post_exp_year'].".".$post['post_exp_month'];
                                                                         }
                                                                         ?> 
                                                                     </span>
                                                                 </span>
                                                             </p>
-<!--                                                            <p class="pull-right job-top-btn">
-                                                                <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4"> Apply</a>
-                                                            </p>-->
+
                                                         </div>
                                                     </div>
                                                     <div class="detail-discription">
@@ -177,9 +173,7 @@
                                                         </div>
                                                         <div class="all-job-bottom">
                                                             <span class="job-post-date"><b>Posted on:  </b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
-<!--                                                            <p class="pull-right">
-                                                                <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost btn4"> Apply</a>
-                                                            </p>-->
+
 
                                                         </div>
                                                     </div>
@@ -202,10 +196,8 @@
         
         </div>
     </section>
-    <!-- <footer> -->
 <?php echo $login_footer ?>
     <?php echo $footer; ?>
-    <!-- </footer> -->
 </body>
 </html>
 <script>

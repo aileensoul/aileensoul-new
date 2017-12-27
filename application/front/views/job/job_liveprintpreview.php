@@ -8,7 +8,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <?php echo $head; ?>  
 
          <?php
-        if (IS_JOB_CSS_MINIFY == '0') {
+        if (IS_JOB_CSS_MINIFY == '1') {
             ?>
 
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>" />
@@ -1926,7 +1926,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <div class="modal login fade" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                    <!--<button type="button" class="modal-close" data-dismiss="modal">&times;</button>-->         
                     <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">
@@ -1990,7 +1990,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <div class="modal fade login register-model" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                    <!--<button type="button" class="modal-close" data-dismiss="modal">&times;</button>-->         
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
@@ -2102,7 +2102,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     echo form_open('profile/forgot_password', $form_attribute);
                     ?>
                     <div class="modal-header" style=" text-align: center;">
-                        <button type="button" class="modal-close" data-dismiss="modal">&times;</button>  
+                        <!--<button type="button" class="modal-close" data-dismiss="modal">&times;</button>-->  
                         <label style="color: #a0b3b0;">Forgot Password</label>
                     </div>
                     <div class="modal-body" style="text-align: center;padding: 15px!important;">
@@ -2169,8 +2169,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
     
     $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
-        $('#register').modal('hide');
-         $('#login').modal('hide');
+        //$('#register').modal('hide');
+        // $('#login').modal('hide');
     }
 });
 
@@ -2465,7 +2465,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </script>
 
 <?php
-        if (IS_JOB_JS_MINIFY == '0') {
+        if (IS_JOB_JS_MINIFY == '1') {
             ?>
 
       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_printpreview.js?ver='.time()); ?>"></script>

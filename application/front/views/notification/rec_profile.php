@@ -107,9 +107,6 @@ body {
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
 
 <?php }?>
-<!--<link rel="stylesheet" href="<?php// echo base_url('assets/css/bootstrap-3.min.css'); ?>">-->
-
-
 <style type="text/css" media="screen">
     #row2 { overflow: hidden; width: 100%; }
     #row2 img { height: 350px;width: 100%; }
@@ -237,25 +234,15 @@ body {
                             <?php } else { ?>
                             <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
                             <?php } ?>
-                            <!-- <a href="#popup-form" class="fancybox"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
- -->
+                           
                         <?php if($returnpage == ''){ ?>
                          <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
                         <?php }?>
                         </div>
                        
-                        <!-- <div id="popup-form">
-                        <?php echo form_open_multipart(base_url('recruiter/user_image_insert'), array('id' => 'userimage','name' => 'userimage', 'class' => 'clearfix')); ?>
-                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                        <input type="hidden" name="hitext" id="hitext" value="2">
-                        <input type="submit" name="cancel2" id="cancel2" value="Cancel">
-                        <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
-                     <?php echo form_close(); ?>
                       
-                </div> -->
-
                  </div>
-                    <!-- menubar --><div class="profile-main-rec-box-menu  col-md-12 ">
+                    <div class="profile-main-rec-box-menu  col-md-12 ">
 
 <div class="left-side-menu col-md-2">  </div>
 <div class="right-side-menu col-md-8">  
@@ -289,12 +276,7 @@ body {
                 <div class="flw_msg_btn fr">
                     <ul>
 
-                        <!-- <li class="fruser2">
-
-                                <div id="unfollowdiv">
-                                    <a id="unfollow2" onclick="unfollowuser(2)"> Following</a>
-                                </div>
-                        </li> -->
+                       
                         <li>
                             <a href="<?php echo  base_url('recruiter/recruiter_designation/');?>">Message</a></li>
 
@@ -315,38 +297,18 @@ body {
             if ($recdata[0]['designation'] == "") {
                
                 ?>
-                            <!--<center><a id="myBtn" title="Designation">Designation</a></center>-->
-                        
+                              
                 <center><a id="designation" class="designation" title="Designation">Current Work</a></center>
             <?php }
              else {
                
                 ?> 
-                <!--<a id="myBtn" title="<?php echo ucwords($job[0]['designation']); ?>"><?php echo ucwords($job[0]['designation']); ?></a>-->
                 <a id="designation" class="designation" title="<?php echo ucwords($recdata[0]['designation']); ?>"><?php echo ucwords($recdata[0]['designation']); ?></a>
              <?php }
              
              } else {  echo ucwords($recdata[0]['designation']);  }  ?>
 
-                    <!-- The Modal -->
-            <!--         <div id="myModal" class="modal">
-                      <!-- Modal content --><!-- <div class="col-md-2"></div> -->
-                      <!-- <div class="modal-content col-md-8">
-                        <span class="close">&times;</span>
-                        <fieldset></fieldset>
-                         <?php //echo form_open(base_url('recruiter/recruiter_designation/'), array('id' => 'recdesignation','name' => 'recdesignation', 'class' => 'clearfix')); ?>
-
-  <fieldset class="col-md-8"> <input type="text" name="designation" id="designation" placeholder="Enter Your Designation" value="<?php //echo $recdata[0]['designation']; ?>"></fieldset> -->
-        <!--  <input type="hidden" name="hitext" id="hitext" value="2">
-  <fieldset class="col-md-2"><input type="submit"  id="submitdes" name="submitdes" value="Submit"></fieldset>
-                        <?php// echo form_close();?>
-  
-                    
-                     
-                    </div>
-                    <div class="col-md-2"></div>
-              </div>
-             --> 
+              
             </div>
             
   <div  class="add-post-button">
@@ -696,134 +658,7 @@ function text2link($text){
 </body>
 
 </html>
-<!-- 
 
- 
-   
-    
-    
-       
-<script>
-
-var data= <?php echo json_encode($demo); ?>;
-//alert(data);
-
-        
-$(function() {
-    // alert('hi');
-$( "#tags" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#tags").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#tags").val(ui.item.label);
-    }
-});
-});
-  
-</script>
-
-  <script type="text/javascript">
-function checkvalue(){
-   //alert("hi");
-  var searchkeyword=document.getElementById('tags').value;
-  var searchplace=document.getElementById('searchplace').value;
-  // alert(searchkeyword);
-  // alert(searchplace);
-  if(searchkeyword == "" && searchplace == ""){
-     //alert('Please enter Keyword');
-    return false;
-  }
-}
-  
-</script>
-
-<script>
-//select2 autocomplete start for skill
-
-//select2 autocomplete End for skill
-
-//select2 autocomplete start for Location
-$('#searchplace').select2({
-        
-        placeholder: 'Find Your Location',
-         maximumSelectionLength: 1,
-        ajax:{
-
-         
-          url: "<?php echo base_url(); ?>recruiter/location",
-          dataType: 'json',
-          delay: 250,
-          
-          processResults: function (data) {
-            
-            return {
-              //alert(data);
-
-              results: data
-
-
-            };
-            
-          },
-           cache: true
-        }
-      });
-//select2 autocomplete End for Location
-
-
-
-  </script>
-
-  <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-<script>
-    function removepopup(id) {
-        $('.biderror .mes').html("<div class='pop_content'>Are you sure want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-        $('#bidmodal').modal('show');
-    }
-    function updateprofilepopup(id) {
-        $('#bidmodal-2').modal('show');
-    }
-</script>
-  <script>
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
 
 
 <!-- cover image start -->
@@ -832,12 +667,8 @@ function myFunction() {
    document.getElementById("upload-demo").style.visibility = "hidden";
    document.getElementById("upload-demo-i").style.visibility = "hidden";
    document.getElementById('message1').style.display = "block";
-
-   //setTimeout(function () { location.reload(1); }, 5000);
    
    }
-
-  // <?php //echo "hi"; ?>
 
     function showDiv() {
         //alert(hi);
@@ -894,8 +725,6 @@ function myFunction() {
 
 //aarati code start
     $('#upload').on('change', function () {
-           //alert("hello");
-
 
         var reader = new FileReader();
         reader.onload = function (e) {

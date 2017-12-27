@@ -7,9 +7,7 @@ class Profile extends CI_Controller {
     public function __construct() {
         parent::__construct();
          $this->load->library('form_validation');
-//        if (!$this->session->userdata('user_id')) {
-//            redirect('login', 'refresh');
-//        }
+
          $this->load->model('email_model');
         //AWS access info start
         $this->load->library('S3');
@@ -31,9 +29,7 @@ class Profile extends CI_Controller {
     }
 
     public function edit_profile() { 
-      //  echo '<pre>'; echo $id; print_r($_POST); die();
-
-       // echo $_FILES['profileimg']['name']; die();
+    
     $id = $this->session->userdata('aileenuser');
       
          
@@ -45,44 +41,11 @@ class Profile extends CI_Controller {
       $this->form_validation->set_rules('first_name', 'first Name', 'required');
         $this->form_validation->set_rules('last_name', 'last Name', 'required');
         $this->form_validation->set_rules('email', ' EmailId', 'required|valid_email');
-       //  $this->form_validation->set_rules('datepicker', ' datepicker', 'required');
      
       $this->form_validation->set_rules('gender', ' gender', 'required');
-     
-
-
-       // if (empty($_FILES['profileimg']['name']))
-       //       { //echo"hello"; die();
-       //           //echo "falgunifgf"; die();
-       //           $this->form_validation->set_rules('profileimg', 'Upload profilepic', 'required');
-       //      //$picture = '';
-       //      }
-            // else
-            // { //echo "hii";die();
-            //     $config['upload_path'] = 'uploads/user_image/';
-            //     $config['allowed_types'] = 'jpg|jpeg|png|gif|mp4|3gp|mpeg|mpg|mpe|qt|mov|avi|pdf';
-            //    // $config['file_name'] = $_FILES['picture']['name'];
-            //     $config['file_name'] = $_FILES['profilepic']['name'];
-            //     //$config['max_size'] = '1000000000000000';
-            //     //Load upload library and initialize configuration
-            //     $this->load->library('upload',$config);
-            //     $this->upload->initialize($config);
-                
-            //     if($this->upload->do_upload('profileimg'))
-            //     {
-            //         $uploadData = $this->upload->data();
-            //         //$picture = $uploadData['file_name']."-".date("Y_m_d H:i:s");
-            //         $picture = $uploadData['file_name'];
-            //     }
-            //     else
-            //     {
-            //         $picture = '';
-            //     }
+    
 
             $post_data = $this->input->post();
-           // echo "<pre>"; print_r($post_data);
-           // $dob = str_replace('/', '-', $post_data['datepicker']);
-           // echo $dob;die();
       $date = $this->input->post('selday');
       $month = $this->input->post('selmonth');
       $year = $this->input->post('selyear');
@@ -95,13 +58,12 @@ class Profile extends CI_Controller {
                 'user_dob' => date('Y-m-d',strtotime($dob)),
                 'user_email' => $this->input->post('email'),
                 'user_gender' => $this->input->post('gender')
-                //'user_image' => $picture
              );
 
             
     $updatdata =   $this->common->update_data($data,'user','user_id',$id);
 
-   if($updatdata ){ //echo"falguni"; die();
+   if($updatdata ){ 
            
               $this->session->set_flashdata('success', 'Profile information updated successfully');
              redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
@@ -157,13 +119,9 @@ class Profile extends CI_Controller {
         if ($forgot_email != '') {
 
             $forgot_email_check = $this->common->select_data_by_id('user', 'user_email', $forgot_email, '*', '');
-
-          //echo '<pre>'; print_r($forgot_email_check); die();
               
             if (count($forgot_email_check) > 0) {
-                
-           // $rand_password = rand(100000, 999999);
-           
+              
            $rand_password = $this->random_string(6);
 
 
@@ -173,16 +131,6 @@ class Profile extends CI_Controller {
          $lastname= $forgot_email_check[0]['last_name'];
             
             $toemail= $forgot_email; 
-
-            
-            
-           // $msg .= "Hey !" . $username ."<br/>"; 
-           // $msg .=  " " . $firstname . " " . $lastname . ",";
-           // $msg .= "This is your code.";
-           // $msg .= "<br>"; 
-           // $msg .= " " . $rand_password . " "; 
-           // $msg .= "<a href=" .  base_url('profile/change_password/' . $forgot_email_check[0]['user_id']) . ">Change password</a>"; 
-
 
                  
         $msg .= '<tr>
@@ -205,15 +153,9 @@ class Profile extends CI_Controller {
               </td>
             </tr>';
 
-
-          
-           //echo $msg; die();
             $subject = "Forgot password";
-
-
-   //$mail = $this->email_model->do_email($msg, $subject,$toemail,'');
    $mail = $this->email_model->sendEmail($app_name = '', $app_email = '', $toemail , $subject, $msg);
-//die();
+
    $data = array(
                 'password_code' => $rand_password
                  );
@@ -225,7 +167,6 @@ class Profile extends CI_Controller {
             $this->session->set_flashdata('success', '<div class="alert alert-success">We have successfully sent a code in provided email address.</div>');
                 redirect('login', 'refresh');
             } else {
-             //  echo "2222"; die();
                 $this->session->set_flashdata('error', '<div class="alert alert-danger">Code for new password successfully not send in your email id.</div>');
                 redirect('login', 'refresh');
             }
@@ -247,7 +188,6 @@ class Profile extends CI_Controller {
 
   }
   public function code_check($abc){
-//echo $abc; die();
      $code = $this->input->post('code');
      $this->data['userid'] = $userid = $this->input->post('userid');
 
@@ -276,8 +216,6 @@ class Profile extends CI_Controller {
 
   }
   public function new_forgetpassword($abc){
-
-   //$code_userid = $this->input->post('usercon');
     $new_password = $this->input->post('new_password');
 
      $data = array(
@@ -292,8 +230,6 @@ class Profile extends CI_Controller {
   }
 
      public function sendEmail($app_name = '', $app_email = '', $to_email = '', $subject = '', $mail_body = '') {
-//echo $to_email; die(); 
-     //echo "hii"; die();
         //Loading E-mail Class
         $this->load->library('email');
 
@@ -331,13 +267,9 @@ class Profile extends CI_Controller {
         $config['charset'] = "utf-8";
         $config['mailtype'] = "html";
         $config['newline'] = "\r\n";
-// echo '<pre>'; print_r($config); die();
         $this->email->initialize($config);
         $this->email->from($config['smtp_user'], $app_name);
         $this->email->to($to_email);
-
-        //    $this->email->cc($cc);
-
         $this->email->subject($subject);
         $this->email->message(html_entity_decode($mail_body));
 
@@ -375,13 +307,9 @@ public function random_string($length = 5, $allowed_chars = 'abcdefghijklmnopqrs
     }
 
 
-public function check_emailforget() { //echo "hello"; die();
-        // if ($this->input->is_ajax_request() && $this->input->post('email')) {
+public function check_emailforget() { 
 
         $email_reg = $this->input->post('email_reg');
-
-        // $userid = $this->session->userdata('aileenuser');
-
             $contition_array = array( 'is_delete' => '0' , 'status' => '1');
            $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -407,12 +335,9 @@ public function check_emailforget() { //echo "hello"; die();
 
             $forgot_email_check = $this->common->select_data_by_id('user', 'user_email', $forgot_email, '*', '');
 
-          //echo '<pre>'; print_r($forgot_email_check); die();
-              
+  
             if (count($forgot_email_check) > 0) {
-                
-           // $rand_password = rand(100000, 999999);
-           
+              
            $rand_password = $this->random_string(6);
 
 
@@ -423,17 +348,6 @@ public function check_emailforget() { //echo "hello"; die();
             
             $toemail= $forgot_email; 
 
-            
-            
-           // $msg .= "Hey !" . $username ."<br/>"; 
-           // $msg .=  " " . $firstname . " " . $lastname . ",";
-           // $msg .= "This is your code.";
-           // $msg .= "<br>"; 
-           // $msg .= " " . $rand_password . " "; 
-           // $msg .= "<a href=" .  base_url('profile/change_password/' . $forgot_email_check[0]['user_id']) . ">Change password</a>"; 
-
-
-                 
         $msg .= '<tr>
               <td style="text-align:center; padding:10px 0 30px; font-size:15px;">';
         $msg .= '<p style="margin:0; font-family:arial;">Hi,' . ucwords($firstname) .' '.ucwords($lastname) . '</p>
@@ -453,16 +367,10 @@ public function check_emailforget() { //echo "hello"; die();
     letter-spacing: 1px;" class="btn" href="' . base_url() . 'profile/changepassword/' . $forgot_email_check[0]['user_id'] . '">Reset password</a></p>
               </td>
             </tr>';
-
-
-          
-           //echo $msg; die();
+    
             $subject = "Forgot password";
 
-
-   //$mail = $this->email_model->do_email($msg, $subject,$toemail,'');
    $mail = $this->email_model->sendEmail($app_name = '', $app_email = '', $toemail , $subject, $msg);
-//die();
    $data = array(
                 'password_code' => $rand_password
                  );
@@ -476,8 +384,6 @@ public function check_emailforget() { //echo "hello"; die();
                                 "data" => 'success',
                                 "message" => '<div class="alert alert-success">We have successfully sent a code in provided email address.</div>',
                     ));
-           // $this->session->set_flashdata('success', '<div class="alert alert-success">We have successfully sent a code in provided email address.</div>');
-                //redirect('login', 'refresh');
             } else {
                 
                  echo json_encode(
@@ -485,9 +391,7 @@ public function check_emailforget() { //echo "hello"; die();
                                 "data" => 'error',
                                 "message" => '<div class="alert alert-danger">Code for new password successfully not send in your email id.</div>',
                     ));
-             //  echo "2222"; die();
-                //$this->session->set_flashdata('error', '<div class="alert alert-danger">Code for new password successfully not send in your email id.</div>');
-               // redirect('login', 'refresh');
+
             }
         } else {
             
@@ -496,8 +400,7 @@ public function check_emailforget() { //echo "hello"; die();
                                 "data" => 'error',
                                 "message" => '<div class="alert alert-danger">Please enter email id.</div>',
                     ));
-//            $this->session->set_flashdata('error', '<div class="alert alert-danger">Please enter email id.</div>');
-//            redirect('login', 'refresh');
+
         }
     }
 

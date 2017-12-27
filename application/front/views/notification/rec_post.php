@@ -1,74 +1,15 @@
 <!-- start head -->
 <?php
-//echo "<pre>"; print_r($recdata); die();
 echo $head;
 ?>
 <!--post save success pop up style strat -->
 <style>
-    /*body {
-        font-family: Arial, sans-serif;
-        background-size: cover;
-        height: 100vh;
-    }
-
-    .box {
-        width: 40%;
-        margin: 0 auto;
-        background: rgba(255,255,255,0.2);
-        padding: 35px;
-        border: 2px solid #fff;
-        border-radius: 20px/50px;
-        background-clip: padding-box;
-        text-align: center;
-    }
-
-    .overlay {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.3);
-        transition: opacity 500ms;
-        visibility: hidden;
-        opacity: 0;
-        z-index: 10;
-    }
-    .overlay:target {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    .popup {
-        margin: 70px auto;
-        padding: 20px;
-        background: #fff;
-        border-radius: 5px;
-        width: 30%;
-        height: 200px;
-        position: relative;
-        transition: all 5s ease-in-out;
-    }
-    */
+    
     .okk{
         text-align: center;
     }
 
-    /*   .popup .okbtn{
-           position: absolute;
-           transition: all 200ms;
-           font-size: 18px;
-           font-weight: bold;
-           text-decoration: none;
-           color: #fff;
-           padding: 8px 18px;
-           background-color: darkcyan;
-           left: 25px;
-           margin-top: 15px;
-           width: 100px; 
-           border-radius: 8px;
-       }
-    */
+    
     .pop_content .okbtn{
         position: absolute;
         transition: all 200ms;
@@ -83,20 +24,7 @@ echo $head;
         border-radius: 8px;
     }
 
-    /*  .popup .cnclbtn {
-          position: absolute;
-          transition: all 200ms;
-          font-size: 18px;
-          font-weight: bold;
-          text-decoration: none;
-          color: #fff;
-          padding: 8px 18px;
-          background-color: darkcyan;
-          right: 25px;
-          margin-top: 15px;
-          width: 100px;
-          border-radius: 8px;
-      } */
+
     .pop_content .cnclbtn {
         position: absolute;
         transition: all 200ms;
@@ -120,15 +48,6 @@ echo $head;
         width:200px !important;
     }
 
-    /*
-        @media screen and (max-width: 700px){
-            .box{
-                width: 70%;
-            }
-            .popup{
-                width: 70%;
-            }
-        } */
 </style>
 
 <!--post save success pop up style end -->
@@ -222,7 +141,6 @@ echo $head;
                     $userid = $this->session->userdata('aileenuser');
                     $contition_array = array('user_id' => $userid, 'is_delete' => '0', 're_status' => '1');
                     $image = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//echo "<pre>";print_r($image);
                     $image_ori = $image[0]['profile_background'];
                     if ($image_ori) {
                         ?>
@@ -254,8 +172,6 @@ echo $head;
         <?php } ?>
 
     </div>
-    <!--     </div>
-    -->
     <div class="profile-photo">
         <div class="profile-pho">
 
@@ -265,25 +181,11 @@ echo $head;
                 <?php } else { ?>
                     <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
                 <?php } ?>
-   <!--  <a href="#popup-form" class="fancybox"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
-                -->
                 <?php if ($returnpage == ' ') { ?>
                     <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
                 <?php } ?>
 
             </div>
-
-            <!-- <div id="popup-form">
-            <?php //echo form_open_multipart(base_url('recruiter/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                <input type="hidden" name="hitext" id="hitext" value="3">
-                <input type="submit" name="cancel3" id="cancel3" value="Cancel">
-                <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
-                </form>
-
-            </div> -->
-
-
         </div>
 
 
@@ -318,13 +220,6 @@ echo $head;
             <div class="col-md-2">
                 <div class="flw_msg_btn fr">
                     <ul>
-
-                        <!-- <li class="fruser2">
-
-                                <div id="unfollowdiv">
-                                    <a id="unfollow2" onclick="unfollowuser(2)"> Following</a>
-                                </div>
-                        </li> -->
                         <li>
                             <a href="http://35.165.1.109:81/chat/abc/4">Message</a></li>
 
@@ -344,12 +239,11 @@ echo $head;
             if ($returnpage == '') {
                 if ($postdata[0]['designation'] == "") {
                     ?>
-                                                    <!--<center><a id="myBtn" title="Designation">Designation</a></center>-->
+                                            
                     <center><a id="designation" class="designation" title="Designation">Current Work</a></center>
                     <?php
                 } else {
                     ?> 
-                    <!--<a id="myBtn" title="<?php echo ucwords($job[0]['designation']); ?>"><?php echo ucwords($job[0]['designation']); ?></a>-->
                     <a id="designation" class="designation" title="<?php echo ucwords($postdata[0]['designation']); ?>"><?php echo ucwords($postdata[0]['designation']); ?></a>
                     <?php
                 }
@@ -359,32 +253,8 @@ echo $head;
             ?>
 
 
-            <!-- The Modal -->
-            <!--   <div id="myModal" class="modal">
-            <!-- <!-- Modal content --><!-- <div class="col-md-2"></div> -->
-            <!--   <div class="modal-content col-md-8">
-                  <span class="close">&times;</span>
-                  <fieldset></fieldset> 
-            <?php //echo form_open(base_url('recruiter/recruiter_designation/'), array('id' => 'recdesignation', 'name' => 'recdesignation', 'class' => 'clearfix'));   ?> -->
-
-                   <!--  <fieldset class="col-md-8"> <input type="text" name="designation" id="designation" placeholder="Enter Your Designation" value="<?php //echo $recruiterdata[0]['designation'];    ?>"></fieldset>
-                    <input type="hidden" name="hitext" id="hitext" value="2">
-                    <fieldset class="col-md-2"><input type="submit"  id="submitdes" name="submitdes" value="Submit"></fieldset>
-            <?php //echo form_close();  ?>
-
-
-
-                </div> -->
-
-            <!--    <div class="col-md-2">
-
-               </div>
-
-           </div>  -->
-
         </div>
         <div  class="add-post-button">
-<!--   <a href="" class="btn btn-2 btn-2i"><i class="fa fa-plus" aria-hidden="true"></i></a> -->
             <?php if ($returnpage == '') { ?>
                 <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add_post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Add Post</a>
             <?php } ?>
@@ -435,7 +305,6 @@ echo $head;
                                                     <a class="display_inline" title="Company Name" href="#"> <?php echo $post['re_comp_name']; ?> </a>
                                                 </li>
                                                 <li><a class="display_inline" title="Recruiter Name" href="#"> <?php echo $post['rec_firstname']; ?> </a></li>
-                                                <!-- vishang 14-4 end -->    
                                             </ul>
                                         </div>
                                     </div>
@@ -471,7 +340,7 @@ echo $head;
                                             <li>
                                                 <b>Require Experience</b>
                                                 <span>
-                                                    <!--<p><?php if($post['min_year'] !='0' || $post['min_year'] ==''){ echo $post['min_year'].' Year '; } ?> <?php if($post['min_month'] !='0' || $post['min_month'] ==''){ echo $post['min_month']. ' Month'; } ?></p>-->  
+                                                 
                                                     <p><?php if($post['min_year'] !='0' || $post['min_year'] ==''){ echo $post['min_year'] .'.'; } ?> <?php if($post['min_month'] !='0' || $post['min_month'] ==''){ echo $post['min_month']. ' year'; } ?></p>  
                                                 </span>
                                             </li>
@@ -529,8 +398,6 @@ echo $head;
                                 </div>
 
 
-                                <!--- search end -->
-
                             </div>
                         </div>
                     </div>
@@ -549,7 +416,6 @@ echo $head;
                                             <?php echo form_open_multipart(base_url('recruiter/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
                                             <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                             <input type="hidden" name="hitext" id="hitext" value="1">
-                                            <!-- <input type="submit" name="cancel3" id="cancel2" value="Cancel"> -->
                                             <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
                                             <?php echo form_close(); ?>
                                         </div>
@@ -566,7 +432,6 @@ echo $head;
                             <div class="modal-content">
                                 <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                                 <div class="modal-body">
-                                    <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                                     <span class="mes"></span>
                                 </div>
                             </div>
@@ -601,11 +466,8 @@ echo $head;
             <script>
 
                     var data = <?php echo json_encode($demo); ?>;
-                    //alert(data);
-
-
+                  
                     $(function () {
-                        // alert('hi');
                         $("#tags").autocomplete({
                             source: function (request, response) {
                                 var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
@@ -618,7 +480,6 @@ echo $head;
                                 event.preventDefault();
                                 $("#tags").val(ui.item.label);
                                 $("#selected-tag").val(ui.item.label);
-                                // window.location.href = ui.item.value;
                             }
                             ,
                             focus: function (event, ui) {
@@ -647,13 +508,9 @@ echo $head;
 
             <script type="text/javascript">
                 function checkvalue() {
-                    //alert("hi");
                     var searchkeyword = document.getElementById('tags').value;
                     var searchplace = document.getElementById('searchplace').value;
-                    // alert(searchkeyword);
-                    // alert(searchplace);
                     if (searchkeyword == "" && searchplace == "") {
-                        // alert('Please enter Keyword');
                         return false;
                     }
                 }
@@ -677,8 +534,7 @@ echo $head;
                         processResults: function (data) {
 
                             return {
-                                //alert(data);
-
+                
                                 results: data
 
 
@@ -704,8 +560,7 @@ echo $head;
                         processResults: function (data) {
 
                             return {
-                                //alert(data);
-
+                            
                                 results: data
 
 
@@ -754,14 +609,10 @@ echo $head;
                     document.getElementById("upload-demo-i").style.visibility = "hidden";
                     document.getElementById('message1').style.display = "block";
 
-
-                    //setTimeout(function () { location.reload(1); }, 5000);
-
                 }
 
 
                 function showDiv() {
-                    //alert(hi);
                     document.getElementById('row1').style.display = "block";
                     document.getElementById('row2').style.display = "none";
                 }
@@ -783,7 +634,6 @@ echo $head;
 
 
                 $('.upload-result').on('click', function (ev) {
-                    //  alert("hi");
                     $uploadCrop.croppie('result', {
                         type: 'canvas',
                         size: 'viewport'
@@ -815,9 +665,7 @@ echo $head;
 
                 //aarati code start
                 $('#upload').on('change', function () {
-                    //alert("hello");
-
-
+            
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         $uploadCrop.croppie('bind', {
@@ -845,7 +693,6 @@ echo $head;
 
                     if (size > 4194304)
                     {
-                        //show an alert to the user
                         alert("Allowed file size exceeded. (Max. 4 MB)")
 
                         document.getElementById('row1').style.display = "none";
@@ -904,16 +751,6 @@ echo $head;
 
                 }
             </script>
-
-            <!-- remove  post end -->
-            <!-- <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-            <script>
-                function removepopup(id) {
-                    $('.biderror .mes').html("<div class='pop_content'>Are you sure want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id="+ id +" onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                    $('#bidmodal').modal('show');
-                }
-            </script> -->
-
 
             <script>
                 function divClicked() {

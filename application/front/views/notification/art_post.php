@@ -36,8 +36,7 @@
          <?php ?>
 <?php echo $left_artistic; ?>
   
-   <!-- <div class="right_middle_side_posrt animated fadeInRightBig fixed_right_display" id="hideuserlist" style="display: none">
-      -->
+  
          <div class="full-box-module_follow" style="margin-top: 0px;">
             <!-- follower list start  -->  
             <div class="common-form">
@@ -50,9 +49,7 @@
                <!-- follower list end  -->
             </div>
          </div>
-     
- <!--      </div>
- -->
+    
 
           <div class="full-box-module_follow fixed_right_display_none">
           
@@ -169,7 +166,6 @@
                              <?php
                     if (count($art_data) > 0) {
                        
-                            //  echo '<pre>'; print_r($finalsorting); die();
                             $userid = $this->session->userdata('aileenuser');
 
                             $contition_array = array('art_post_id' => $art_data[0]['art_post_id'], 'status' => '1');
@@ -401,8 +397,7 @@
                                                                        ?> </a>
 <span role="presentation" aria-hidden="true"> · </span>
                                                                     <div class="datespan">
-                                                                        <span class="ctre_date">  <?php // echo date('d-M-Y',strtotime($art_data[0]['created_date']));                                              ?>
-
+                                                                        <span class="ctre_date">  
                                                                             <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($art_data[0]['created_date']))); ?>
 
                                                                         </span> </div>
@@ -439,10 +434,6 @@
                                                             <?php } else {
                                                                 ?>
 
-                                                                <!--<a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>-->
-
-                                                             <!--    <a href="<?php echo base_url('artist/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
-
                                                             <?php
                                                             }
                                                         } else {
@@ -464,7 +455,6 @@
                 <?php } else { ?>
 
                                                     <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deletepostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>
-                                                                <!-- <a href="<?php echo base_url('artist/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
                                                             <?php
                                                             }
                                                         }
@@ -484,13 +474,7 @@
                                                             </div>
 
                                                         </div>
-                                                       <!--  <div  id="<?php echo 'editpostdetails' . $art_data[0]['art_post_id']; ?>" style="display:block ; ">
-                                                            <?php
-                                                            $text = $this->common->make_links($art_data[0]['art_description']);
-                                                            ?>
-                                                            <span class="show ft-13 "><?php echo $text; ?></span>
-                                                        </div> -->
-
+                                                      
 
                      <div id="<?php echo "khyati" . $art_data[0]['art_post_id']; ?>" style="display:block;">
                       <?php
@@ -715,11 +699,7 @@
                                                                         <?php }
                                                                         ?>
                                                                     <span>
-                                                                        <?php
-//                                                                        if ($art_data[0]['art_likes_count'] > 0) {
-//                                                                            echo $art_data[0]['art_likes_count'];
-//                                                                        }
-//                                                                        ?>
+                                                                        
                                                                     </span>
                                                                 </a>
                                                             </li>
@@ -730,11 +710,7 @@
                                                                 ?>
                                                                 <a  class="ripple like_h_w" onClick="commentall(this.id)" id="<?php echo $art_data[0]['art_post_id']; ?>">
                                                                     <i class="fa fa-comment-o" aria-hidden="true">
-                                                                        <?php
-//                                                                        if (count($commnetcount) > 0) {
-//                                                                            echo count($commnetcount);
-//                                                                        }
-                                                                        ?>
+                                                                        
                                                                     </i>  
                                                                 </a>
                                                             </li>
@@ -784,7 +760,7 @@
                                                         $likeuser = $commnetcount[0]['art_like_user'];
                                                         $countlike = $commnetcount[0]['art_likes_count'] - 1;
                                                         $likelistarray = explode(',', $likeuser);
-                                                        //  $likelistarray = array_reverse($likelistarray);
+                                                     
                                                         foreach ($likelistarray as $key => $value) {
                                                             $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => '1'))->row()->art_name;
                                                             $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => '1'))->row()->art_lastname;
@@ -1271,7 +1247,6 @@
                             <div class="modal-content">
                                 <button type="button" class="modal-close" data-dismiss="modal" id="common-limit">&times;</button>       
                                 <div class="modal-body">
-                                    <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                                     <span class="mes"></span>
                                 </div>
                             </div>
@@ -1404,12 +1379,9 @@
 
 <?php echo $footer; ?>
 
-<!-- <script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver='.time()); ?>"></script> -->
-
    <?php if(IS_NOT_JS_MINIFY == '0'){ ?>  
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver='.time()); ?>"></script>
-<!-- <script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver='.time()); ?>"></script> -->
 <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
@@ -1419,7 +1391,6 @@
 
 <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js_min/jquery.form.3.51.js?ver='.time()); ?>"></script>
-<!-- <script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver='.time()); ?>"></script> -->
 <script src="<?php echo base_url('assets/dragdrop/js_min/plugins/sortable.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/dragdrop/js_min/fileinput.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/dragdrop/js_min/locales/fr.js?ver='.time()); ?>"></script>

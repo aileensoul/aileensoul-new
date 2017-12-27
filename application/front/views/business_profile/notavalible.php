@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <?php echo $head; ?>
-    </head>
+    </head> 
     <body>
         <?php echo $header; ?>
         <?php echo $business_header2_border; ?>
