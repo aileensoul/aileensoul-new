@@ -14,11 +14,13 @@ $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $con
  $regid = $slugdata[0];
 //echo "<pre>"; print_r($regid); die();
 $contition_array = array('art_id' => $regid, 'is_delete' => '0', 'status' => '1');
-$this->data['meta_des'] = $meta_des = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_city,art_skill,other_skill,user_id,status,is_delete,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+$this->data['meta_des'] = $meta_des = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_city,art_country,art_skill,other_skill,user_id,status,is_delete,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 //echo "<pre>"; print_r($meta_des); die();
 
 $this->data['location_city'] = $this->db->select('city_name')->get_where('cities', array('city_id' => $this->data['meta_des'][0]['art_city']))->row()->city_name;
+
+$this->data['location_country'] = $this->db->select('country_name')->get_where('countries', array('country_id' => $this->data['meta_des'][0]['art_country']))->row()->country_name;
 
 $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $this->data['meta_des'][0]['other_skill']))->row()->other_category;
 

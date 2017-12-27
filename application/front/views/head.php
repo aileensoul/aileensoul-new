@@ -60,16 +60,16 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 
     <?php if($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'details') { ?>
-<meta name="description" content="<?php echo  $business_common_data[0]['company_name'] . 'in'; if($city_name){ echo $city_name . ', ';} echo $country_name . ' View full business details like address, contact number, photos and more at Aileensoul.com.';?>" />
+<meta name="description" content="<?php echo  ucfirst($business_common_data[0]['company_name']) . 'in'; if($city_name){ echo $city_name . ', ';} echo $country_name . ' View full business details like address, contact number, photos and more at Aileensoul.com.';?>" />
 
     <?php }  else if($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'jobpost') {?>
-        <meta name="description" content="Job Description for the post of <?php echo $exp_title; ?> in <?php echo  $recdata[0]['re_comp_name']; ?> in <?php if($city_name){ echo $city_name . '-';}echo $state_name; ?> for <?php echo $exp_descp; ?> of experience. Apply Now!" />
+        <meta name="description" content="Job Description for the post of <?php echo $exp_title; ?> in <?php echo  ucfirst($recdata[0]['re_comp_name']); ?> in <?php if($city_name){ echo $city_name . '-';}echo $state_name; ?> for <?php echo $exp_descp; ?> of experience. Apply Now!" />
         
             <?php }  else if($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?>
-        <meta name="description" content="<?php echo 'View full profile of Recruiter ' . $recdescdata[0]['rec_firstname'] . ' ' . $recdescdata[0]['rec_lastname'] ?> in <?php echo $recdescdata[0]['re_comp_name']; ?> at <?php if($citydesc_name){ echo $citydesc_name . ', ';}echo $statedesc_name;?>." />
+        <meta name="description" content="<?php echo 'View full profile of Recruiter ' . ucfirst($recdescdata[0]['rec_firstname']) . ' ' . ucfirst($recdescdata[0]['rec_lastname']) ?> in <?php echo ucfirst($recdescdata[0]['re_comp_name']); ?> at <?php if($citydesc_name){ echo $citydesc_name . ', ';}echo $statedesc_name;?>." />
 
             <?php } else if($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume') { ?>
-        <meta name="description" content="View full resume detail like education, work area, experience of <?php echo $fdescname .' ' . $ldescname; ?> at Aileenoul.com" />
+        <meta name="description" content="View full resume detail like education, work area, experience of <?php echo ucfirst($fdescname) .' ' . ucfirst($ldescname); ?> at Aileenoul.com" />
 
             <?php } else if($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'project'){ 
    
@@ -89,7 +89,7 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
  
          <?php }else if($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'details'){ ?>
 
- <meta name="description" content="<?php echo ucfirst($meta_des[0]['art_name']) . ' ' . ucfirst($meta_des[0]['art_lastname']). ' is a '. $keyskill_meta . ' artist situated at '. ucfirst($location_city).'. '.'View full artistic detail & art portfolio at Aileensoul.com'; ?>" />
+ <meta name="description" content="<?php echo ucfirst($meta_des[0]['art_name']) . ' ' . ucfirst($meta_des[0]['art_lastname']). ' is a '. $keyskill_meta . ' artist situated at '. ucfirst($location_city).','.ucfirst($location_country).'. '.'View full artistic detail & art portfolio at Aileensoul.com'; ?>" />
 
 <?php } 
  else {?>
