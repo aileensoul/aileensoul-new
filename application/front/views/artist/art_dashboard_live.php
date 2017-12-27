@@ -336,49 +336,37 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <!-- Login -->
 
         <!-- model for forgot password start -->
-        <div class="modal fade login" id="forgotPassword" role="dialog">
-            <div class="modal-dialog login-frm">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
-                    <div class="modal-body">
-                        <div class="right-main">
-                            <div class="right-main-inner">
-                                <div class="">
-                                    <div class="title">
-                                        <h1 class="ttc">Forgot Password</h1>
-                                    </div>
-                                    <?php
-                                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                                    echo form_open('profile/forgot_password', $form_attribute);
-                                    ?>
-                                    <div class="form-group">
-                                        <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
-                                        <div id="error2" style="display:block;">
-                                            <?php
-                                            if ($this->session->flashdata('erroremail')) {
-                                                echo $this->session->flashdata('erroremail');
-                                            }
-                                            ?>
-                                        </div>
-                                        <div id="errorlogin"></div> 
-                                    </div>
-
-                                    <p class="pt-20 text-center">
-                                        <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
-                                    </p>
-
-
-                                    </form>
-
-
-                                </div>
-                            </div>
+         <div id="forgotPassword" class="modal">
+                <div class="modal-content md-2">
+                    <?php
+                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                    echo form_open('profile/forgot_password', $form_attribute);
+                    ?>
+                    <div class="modal-header" style=" text-align: center;">
+                        <button type="button" class="modal-close" data-dismiss="modal">&times;</button>  
+                        <label style="color: #a0b3b0;">Forgot Password</label>
+                    </div>
+                    <div class="modal-body" style="text-align: center;padding: 15px!important;">
+                        <label  style="margin-bottom: 15px; color: #a0b3b0;"> Enter your e-mail address below to get your password.</label>
+                        <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                        <div id="error2" style="display:block;">
+                            <?php
+                               if ($this->session->flashdata('erroremail')) {
+                                    echo $this->session->flashdata('erroremail');
+                                }
+                                ?>
                         </div>
+                        <div id="errorlogin"></div> 
 
                     </div>
+                    <div class="modal-footer ">
+                        <div class="submit_btn">              
+                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" onclick="submit_forgot();"/> 
+                        </div>
+                    </div>
+                    <?php echo form_close(); ?>
                 </div>
             </div>
-        </div>
 
 
         <!-- model for forgot password end -->
