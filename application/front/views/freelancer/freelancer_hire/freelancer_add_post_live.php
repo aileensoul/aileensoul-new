@@ -644,10 +644,10 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                            <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                         </div>
                                         <div class="form-group">
-                                            <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                            <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
                                             <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
                                         </div>
                                         <div class="form-group dob">
