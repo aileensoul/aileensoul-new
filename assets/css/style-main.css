@@ -1576,14 +1576,14 @@ label.error{font-size: 11px; color: #ff0000 !important; font-weight:normal;}
 .dob .error{
 	position: absolute;
 	left: 0;
-	bottom: -20px;
+	bottom: -24px;
 	
 }
 .gender-custom{position: relative;}
 .gender-custom .error{
 	position: absolute;
 	left: 0;
-	bottom: -20px;
+	bottom: -24px;
 	
 }
 
@@ -1912,8 +1912,9 @@ header.profile-header .logo a{color:#5c5c5c;}
 .user-gen ol li ul li{font-size:14px;}
 .third_ts.user-gen ol{margin-left:10px;}
 .header-login .f-pass:focus{border-bottom: 1px solid #fff;}
-
-
+.modal.login{width: 100%;border: none;}
+.modal.login .modal-content{padding: 0px;}
+.pt-20 {padding-bottom: 20px;}
 
 
 /***  media query  ***/

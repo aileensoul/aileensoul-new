@@ -15317,14 +15317,14 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                                        <div class="fruser' . $key['art_id'] . '">';
 
                         $status = $this->db->select('follow_status')->get_where('follow', array('follow_type' => '1', 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $key['art_id']))->row()->follow_status;
-                        if ($status == '0' || $status == " ") {
+                        if ($status == 0 || $status == " ") {
 
                             $return_html .= '<div id="followdiv " class="user_btn">
                                             <button id="follow' . $key['art_id'] . '" onClick="login_profile();">
                                             <span>Follow</span> 
                                              </button>
                                           </div>';
-                        } elseif ($status == '1') {
+                        } elseif ($status == 1) {
 
                             $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
                                          <button class="bg_following" id="unfollow' . $key['art_id'] . '" onClick="login_profile();">

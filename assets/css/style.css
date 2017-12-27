@@ -2014,7 +2014,7 @@ body.no-login{padding-bottom:0;}
 .no-login .job-post-detail{margin-bottom:0;}
 .no-login .login p{font-size:14px; margin-bottom:9px;}
 .no-login .btn1{padding: 5px 20px; font-size:16px !important;}
-.no-login .inner-form1{width:560px;}
+.no-login .inner-form1{width:600px;}
 .no-login.modal-open{overflow-y:auto;}
 
 li.active2 .notification-data-inside h6 i{font-weight: normal;font-style: normal; }
@@ -2135,7 +2135,7 @@ word-break: break-word;}
 .all-profile-box ul li a{padding: 10px;display: inline-flex;width: 100%;}
 /*All profile right end*/
 .hout_noti{color:#4c4c4c;}
-
+.noti_cq .content{height: 344px;}
 /***  media query  ***/
 
 @media screen and (max-height: 540px){
@@ -2174,7 +2174,7 @@ word-break: break-word;}
 }
 
 @media screen and (min-width: 768px) {
-	.modal-content{padding: 5px;}
+	/*.modal-content{padding: 5px;}*/
 	#likeusermodal.message-box span.mes{padding:0px 15px 0;}
 	#likeusermodal .modal-close1 {
 		padding: 4px 6px;
