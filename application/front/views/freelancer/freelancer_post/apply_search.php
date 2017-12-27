@@ -385,7 +385,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
-                         <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
+                            <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                             <div class="btn-right pull-right">
@@ -708,8 +708,8 @@
 
 
         <!-- model for forgot password end -->
-      
-<?php echo $footer; ?>
+
+        <?php echo $footer; ?>
         <!-- script for skill textbox automatic start (option 2)-->
         <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
@@ -797,16 +797,16 @@
                                                 for ($i = 1; $i <= 31; $i++) {
                                                     ?>
                                                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-    <?php
-}
-?>
+                                                    <?php
+                                                }
+                                                ?>
                                             </select>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
                                                 //<?php
 //                  for($i = 1; $i <= 12; $i++){
 //                  
-?>
+                                                ?>
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -822,7 +822,7 @@
                                                 //<?php
 //                  }
 //                  
-?>
+                                                ?>
                                             </select>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
@@ -830,9 +830,9 @@
                                                 for ($i = date('Y'); $i >= 1900; $i--) {
                                                     ?>
                                                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-    <?php
-}
-?>
+                                                    <?php
+                                                }
+                                                ?>
 
                                             </select>
 
@@ -910,16 +910,16 @@
                                                 for ($i = 1; $i <= 31; $i++) {
                                                     ?>
                                                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-    <?php
-}
-?>
+                                                    <?php
+                                                }
+                                                ?>
                                             </select>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
                                                 //<?php
 //                  for($i = 1; $i <= 12; $i++){
 //                  
-?>
+                                                ?>
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -935,7 +935,7 @@
                                                 //<?php
 //                  }
 //                  
-?>
+                                                ?>
                                             </select>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
@@ -943,9 +943,9 @@
                                                 for ($i = date('Y'); $i >= 1900; $i--) {
                                                     ?>
                                                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-    <?php
-}
-?>
+                                                    <?php
+                                                }
+                                                ?>
 
                                             </select>
 
@@ -1005,17 +1005,17 @@
         if (IS_APPLY_JS_MINIFY == '0') {
             ?>
             <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_search_result.js?ver=' . time()); ?>"></script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/apply_search.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/apply_search.js?ver=' . time()); ?>"></script>
             <?php
         } else {
             ?>
-           <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_search_result.js?ver=' . time()); ?>"></script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/apply_search.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_search_result.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/apply_search.js?ver=' . time()); ?>"></script>
         <?php } ?>
 
-        
+
     </body>
 </html>
 
