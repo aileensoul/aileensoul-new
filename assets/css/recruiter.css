@@ -620,7 +620,8 @@ label.cameraButton input[accept*="camera"] {display: none;}
 
 /***---------- end  common css for all profile  -------------***/
 .date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year {
-    width: 32%;
+    /*width: 32%;*/
+    width: 29.5%;
     float: left;
     margin-right: 2%;
 }

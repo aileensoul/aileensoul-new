@@ -2188,7 +2188,7 @@ label.cameraButton input[accept*="camera"] {
  
 .cancel-result:hover{color: #fff;background-color: #1b8ab9;border-color:#1B8AB9 !important;}
 
-.custom-message .message, .custom-message .message2 , .custom-message .message1 {padding:20px 30px;}
+.custom-message .message, .custom-message .message2 , .custom-message .message1 {padding:20px 30px !important;}
 .custom-message .modal-content h2{font-size:20px; line-height:30px;} 
 .custom-message .modal-content input{padding: 9px 15px;} /*margin-bottom:15px;*/
 .custom-message .modal-content select{margin-bottom:15px;} 
