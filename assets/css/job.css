@@ -430,14 +430,14 @@ li.fr a {
     margin-bottom: 10px;
 }
 .profile-boxProfileCard {
-    border: 6px solid #ffffff;
+    /*border: 6px solid #ffffff;*/
     background: #fff;
     border-radius: 3px;
 }
 .profile-boxProfileCard-cover {
     border: 1px solid #efefef;
     border-bottom: none;
-    height: 88px;
+    height: 300px;
 }
 .profile-boxProfileCard-bg {
     background-size: 100%;
