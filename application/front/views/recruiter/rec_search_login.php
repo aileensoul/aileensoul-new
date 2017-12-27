@@ -623,7 +623,7 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our<br class="mob-none">
-                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>" title="Terms and Condition">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy">Privacy policy</a>.
+                                            <a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1" title="Creat an account">Create an account</button>
