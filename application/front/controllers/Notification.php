@@ -950,7 +950,7 @@ Your browser does not support the audio tag.
         $count = count($updatedata);
         echo $count;
     }
-    public function select_notification($to_id = '') { //echo "hello"; die();
+    public function select_notification($to_id = '') { 
         $to_id = $this->db->select('user_id')->get_where('business_profile', array('business_profile_id' => $to_id))->row()->user_id;
 
 
@@ -2781,8 +2781,6 @@ Your browser does not support the audio tag.
         $hire_not = $this->data['hire_not'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'app_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         // freelancer hire notification end
 // freelancer post notification start
-        // $this->data['work_post'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'app_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-
 
         $contition_array = array('notification.not_type' => '4', 'notification.not_from' => '4', 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
@@ -3252,7 +3250,6 @@ Your browser does not support the audio tag.
         $hire_not = $this->data['hire_noth'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'app_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         // freelancer hire notification end
 // freelancer post notification start
-        // $this->data['work_post'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'app_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         $contition_array = array('notification.not_type' => '4', 'notification.not_from' => '5', 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
                 'join_type' => '',
@@ -3289,7 +3286,7 @@ Your browser does not support the audio tag.
         $data = array('notification.*', ' follow.*', ' art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name', ' art_reg.slug as slug');
 
         $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'follow_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//echo '<pre>'; print_r($this->data['artfollow']); die();
+
 // follow notification end
 //post comment notification start
 

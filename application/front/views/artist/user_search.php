@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Search - Aileensoul.com</title>
+<title><?php echo $title; ?></title>
 
 
   <?php
