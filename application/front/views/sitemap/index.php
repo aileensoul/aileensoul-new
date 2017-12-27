@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
     // $date = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
     header("HTTP/1.1 304 Not Modified");
     exit();
@@ -10,14 +10,13 @@ $format = 'D, d M Y H:i:s \G\M\T';
 $now = time();
 
 $date = gmdate($format, $now);
-header('Date: '.$date);
-header('Last-Modified: '.$date);
+header('Date: ' . $date);
+header('Last-Modified: ' . $date);
 
-$date = gmdate($format, $now+30);
-header('Expires: '.$date);
+$date = gmdate($format, $now + 30);
+header('Expires: ' . $date);
 
 header('Cache-Control: public, max-age=30');
-
 ?>
 <html lang="en">
     <head>
@@ -29,7 +28,7 @@ header('Cache-Control: public, max-age=30');
         <?php
         if ($_SERVER['HTTP_HOST'] != "localhost") {
             ?>
-            
+
             <script>
                 (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
@@ -51,7 +50,7 @@ header('Cache-Control: public, max-age=30');
             <?php
         }
         ?>
-            <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
                 (adsbygoogle = window.adsbygoogle || []).push({
@@ -59,18 +58,18 @@ header('Cache-Control: public, max-age=30');
                     enable_page_level_ads: true
                 });
         </script>
-         <?php
-if(IS_OUTSIDE_CSS_MINIFY == '0'){
-?>
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()) ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()) ?>">
-<?php } else{ ?>
-    <link rel="stylesheet" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()) ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()) ?>">
+        <?php
+        if (IS_OUTSIDE_CSS_MINIFY == '0') {
+            ?>
+            <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()) ?>">
+            <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()) ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()) ?>">
+            <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()) ?>">
 
-<?php } ?>
-       
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <?php } ?>
+
+ <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     </head>
     <body class="site-map outer-page" >
         <div class="main-inner">
@@ -82,22 +81,24 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
                 <div class="site-map-img">
                     <img src="assets/img/sitemap.jpg" alt="sitemap">
                 </div>
-                
+
 
             </section>
             <?php
             echo $login_footer
             ?>
         </div>
-        
-         <?php
-if(IS_OUTSIDE_JS_MINIFY == '0'){
-?>
-   <script src="<?php echo base_url('assets/js/webpage/aboutus.js?ver='.time()); ?>"></script>
-<?php } else{ ?>
-<script src="<?php echo base_url('assets/js_min/webpage/aboutus.js?ver='.time()); ?>"></script>
 
-<?php } ?>
-     
+        <?php
+        if (IS_OUTSIDE_JS_MINIFY == '0') {
+            ?>
+        <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+            <script src="<?php echo base_url('assets/js/webpage/aboutus.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+            <script src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+            <script src="<?php echo base_url('assets/js_min/webpage/aboutus.js?ver=' . time()); ?>"></script>
+
+        <?php } ?>
+
     </body>
 </html>

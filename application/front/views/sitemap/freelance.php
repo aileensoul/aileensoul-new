@@ -74,7 +74,7 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
         <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()) ?>">
 <?php } ?>
        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     </head>
     <body class="site-map outer-page" >
         <div class="main-inner ">
@@ -182,8 +182,10 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
         <?php
 if(IS_OUTSIDE_JS_MINIFY == '0'){
 ?>
+        <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
   <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/aboutus.js?ver='.time()); ?>"></script>
 <?php } else{ ?>
+  <script src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
   <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/aboutus.js?ver='.time()); ?>"></script>
 <?php } ?>
        
