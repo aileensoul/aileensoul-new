@@ -15510,11 +15510,19 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
               </a>
           </div>';
                     } elseif (in_array($ext, $allowespdf)) {
+            //             $return_html .= '<div>
+            // <a href="javascript:void(0);" onclick="login_profile();"><div class="pdf_img">
+            //    <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+            //         </div></a>
+            //         </div>';
+
                         $return_html .= '<div>
-            <a href="javascript:void(0);" onclick="login_profile();"><div class="pdf_img">
-               <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
-                    </div></a>
-                    </div>';
+<a title = "click to open"  href = "javascript:void(0)" target="_blank" onclick="login_profile();" alt="'. $artmultiimage[0]['file_name'] .'"><div class = "pdf_img">
+    <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
+</div>
+</a>
+</div>';
+
                     } elseif (in_array($ext, $allowesvideo)) {
 
                         $post_poster = $artmultiimage[0]['file_name'];
