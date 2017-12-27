@@ -732,10 +732,10 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input tabindex="3" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                        <input tabindex="3" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                     </div>
                                     <div class="form-group">
-                                        <input tabindex="4" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                        <input tabindex="4" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
                                     </div>
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth :</label>
