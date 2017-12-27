@@ -1,10 +1,14 @@
-<!-- start head -->
-<?php echo $head; ?>
-<!-- END HEAD -->
-<!-- start header -->
+<!DOCTYPE html>
+<head>
+	<title><?php echo $title; ?></title>
+	<!-- start head -->
+	<?php echo $head; ?>
+	<!-- END HEAD -->
+	<!-- start header -->
 
-<!-- END HEADER -->
-<title><?php echo $title; ?></title>
+	<!-- END HEADER -->
+	
+</head>
 <body class="page-container-bg-solid page-boxed">
 <?php echo $header; ?>
     <?php echo $dash_header; ?>
@@ -76,10 +80,7 @@
                 </div>  
 
             </div>           </div>
-        <!-- END PAGE TITLE 
-    </div>
-</div>
-<!-- END PAGE HEAD-->
+
 <!-- BEGIN PAGE CONTENT BODY -->
 <div class="page-content">
     <div class="container">
