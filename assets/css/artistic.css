@@ -721,7 +721,7 @@ label.cameraButton:active {
     text-decoration-line: underline;
 }
 .follow_left_box_main {
-	position:relativ;
+	position:relative;
     height: 60px;
     padding:0;
 
@@ -1733,7 +1733,7 @@ label.cameraButton:active {
     padding-top: 19px;
     background-color: #fff;
     float: left;
-    position: relativ;
+    position: relative;
 }
 .buisness-menu:before {
     width: 100%;
@@ -1867,7 +1867,7 @@ label.cameraButton:active {
 }
 .profile-head-text_dg a {
     font-size: 22px;
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 .profile-main-box-buis-menu li a {
     display: block;
