@@ -1232,7 +1232,7 @@ class Recruiter extends MY_Controller {
             $this->rec_avail_check($id);
         }
 
-        $this->data['title'] = 'Recruiter ' . $this->data['recdata'][0]['rec_firstname'] . ' ' . $this->data['recdata'][0]['rec_lastname'] . ' from ' . $this->data['recdata'][0]['re_comp_name'] . ' | Details | Recruiter Profile - Aileensoul';
+        $this->data['title'] = 'Recruiter ' . ucwords($this->data['recdata'][0]['rec_firstname']) . ' ' . ucwords($this->data['recdata'][0]['rec_lastname']) . ' from ' . ucwords($this->data['recdata'][0]['re_comp_name']) . ' | Details | Recruiter Profile - Aileensoul';
         $this->data['reg_id'] = $id;
         if ($userid) {
             $this->load->view('recruiter/rec_profile', $this->data);

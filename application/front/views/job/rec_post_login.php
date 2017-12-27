@@ -1573,12 +1573,10 @@
             <?php
         } else {
             ?>
-<<<<<<< HEAD
+
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_post_login.js?ver=' . time()); ?>"></script>
                         <!--<script type="text/javascript" defer="defer" src="<?php // echo base_url('assets/js_min/webpage/recruiter/rec_post_login.min.js?ver=' . time());      ?>"></script>-->
-=======
-            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_post_login.js?ver=' . time()); ?>"></script>
->>>>>>> 18b8e040c805704518a14f2326341e643bb1dfa5
+
         <?php } ?>
 
         <script>
