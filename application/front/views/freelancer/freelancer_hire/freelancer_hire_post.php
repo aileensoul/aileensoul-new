@@ -170,6 +170,12 @@
                         <div class=" right-side-menu art-side-menu padding_less_right  right-menu-jr">  
                             <?php
                             $userid = $this->session->userdata('aileenuser');
+                            if(is_numeric($this->uri->segment(3))){
+                                $slug= $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $this->uri->segment(3)))->row()->freelancer_hire_slug;
+                            }else{
+                                $slug= $this->uri->segment(3);
+                            }
+                            
                             if ($freelancr_user_data[0]['user_id'] == $userid) {
                                 ?>     
                                 <ul class="current-user pro-fw">
@@ -177,10 +183,11 @@
                                     <ul class="pro-fw4">
                                     <?php } ?>  
                                     <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>>
-                                        <?php if ($freelancr_user_data[0]['user_id'] != $this->session->userdata('aileenuser')) { ?><a title="Employer Details" href="<?php echo base_url('freelance-hire/employer-details/' . $this->uri->segment(3)); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } else { ?> <a title="Employer Details" href="<?php echo base_url('freelance-hire/employer-details'); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } ?>
+                                        
+                                        <?php if ($freelancr_user_data[0]['user_id'] != $this->session->userdata('aileenuser')) { ?><a title="Employer Details" href="<?php echo base_url('freelance-hire/employer-details/' . $slug); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } else { ?> <a title="Employer Details" href="<?php echo base_url('freelance-hire/employer-details'); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } ?>
                                     </li>
                                     <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>>
-                                        <?php if ($freelancr_user_data[0]['user_id'] != $this->session->userdata('aileenuser')) { ?><a title="Projects" href="<?php echo base_url('freelance-hire/projects/' . $this->uri->segment(3)); ?>"> Projects</a> <?php } else { ?> <a title="Projects" href="<?php echo base_url('freelance-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a> <?php } ?>
+                                        <?php if ($freelancr_user_data[0]['user_id'] != $this->session->userdata('aileenuser')) { ?><a title="Projects" href="<?php echo base_url('freelance-hire/projects/' . $slug); ?>"> Projects</a> <?php } else { ?> <a title="Projects" href="<?php echo base_url('freelance-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a> <?php } ?>
                                     </li>
                                     <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'projects' || $this->uri->segment(2) == 'employer-details' || $this->uri->segment(2) == 'add-projects' || $this->uri->segment(2) == 'freelancer-save') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
                                         <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer" href="<?php echo base_url('freelance-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved_freelancer"); ?></a>
