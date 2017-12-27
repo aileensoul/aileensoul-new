@@ -95,7 +95,7 @@ function editableTextBlurred() {
     var html = $(this).val();
     var viewableText = $("<a>");
     if (html.match(/^\s*$/) || html == '') {
-        html = "Current Work";
+        html = "Designation";
     }
     viewableText.html(capitalize(html));
     $(this).replaceWith(viewableText);
