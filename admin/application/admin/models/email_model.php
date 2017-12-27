@@ -219,27 +219,27 @@ line-height: 1;}
                     <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                             <td style="text-align:center; padding:0 10px;" width="20%">
-                                <img src="' . base_url() . 'img/m1.png">
+                                <img src="' . base_url() . '../assets/img/m1.png">
                                 <h3 style="font-size:13px; font-family:arial;">Job Profile</h3>
                                 <p style="font-size:9px;">Find best job options and connect with recruiters.</p>
                             </td>
                             <td style="text-align:center; padding:0 10px;" width="20%">
-                                <img src="' . base_url() . 'img/m2.png">
+                                <img src="' . base_url() . '../assets/img/m2.png">
                                 <h3 style="font-size:13px; font-family:arial;">Recruiter Profile</h3>
                                 <p style="font-size:9px;">Hire quality employees here.</p>
                             </td>
                             <td style="text-align:center; padding:0 10px;" width="20%">
-                                <img src="' . base_url() . 'img/m3.png">
+                                <img src="' . base_url() . '../assets/img/m3.png">
                                 <h3 style="font-size:13px; font-family:arial; ">Freelance Profile</h3>
                                 <p style="font-size:9px;">Hire freelancers and also find freelance work.</p>
                             </td>
                             <td style="text-align:center; padding:0 10px;" width="20%">
-                                <img src="' . base_url() . 'img/m4.png">
+                                <img src="' . base_url() . '../assets/img/m4.png">
                                 <h3 style="font-size:13px; font-family:arial;">Business Profile</h3>
                                 <p style="font-size:9px;">Grow your business network.</p>
                             </td>
                             <td style="text-align:center; padding:0 10px;" width="20%">
-                                <img src="' . base_url() . 'img/m5.png">
+                                <img src="' . base_url() . '../assets/img/m5.png">
                                 <h3 style="font-size:13px; font-family:arial;">Artistic Profile</h3>
                                 <p style="font-size:9px;">Show your art & talent to the world.</p>
                             </td>
