@@ -13363,9 +13363,11 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                         $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
 
+                         $geturl = $this->get_url($rowdata['user_id']);
+
                         $return_html .= '<div class="all-comment-comment-box">
                 <div class="post-design-pro-comment-img">';
-                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                         $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->art_user_image;
 
@@ -13399,7 +13401,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         $return_html .= '</a>';
                         $return_html .= '</div>
                 <div class="comment-name">';
-                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">
+                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
 
                     <b>';
                         $return_html .= ucfirst(strtolower($artname)) . ' ' . ucfirst(strtolower($artlastname));

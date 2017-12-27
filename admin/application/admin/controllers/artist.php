@@ -155,7 +155,7 @@ public function delete_user()
 {
      $art_id = $_POST['art_id'];
       $data = array(
-            'is_delete' => 1
+            'is_delete' => '1'
         );
 
         $update = $this->common->update_data($data, 'art_reg', 'art_id', $art_id);
