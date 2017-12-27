@@ -14,9 +14,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />      
-            <?php
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">         
+   <?php
         } else {
             ?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_main/style-main.css'); ?>">         
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>" />
             <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
@@ -24,223 +26,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />      
         <?php } ?>
          
-        <style type="text/css">
-            .two-images, .three-image, .four-image{
-                height: auto !important;
-            }
-            .mejs__overlay-button {
-                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
-            }
-            .mejs__overlay-loading-bg-img {
-                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
-            }
-            .mejs__button > button {
-                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
-            }
-        </style>
+     
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>" />
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
             }
         </style>
-        <style>
-            /***  commen css  ***/
-            .p0{padding: 0;} .p5{padding: 5px;} .p10{padding: 10px;} .p15{padding: 15px;} .p20{padding: 20px;}
-            .pr0{padding-right: 0;} .pr5{padding-right: 5px;} .pr10{padding-right: 10px;} .pr15{padding-right: 15px;} .pr20{padding-right: 20px;}
-            .pl0{padding-left: 0;} .pl5{padding-left: 5px;} .pl10{padding-left: 10px;} .pl15{padding-left: 15px;} .pl20{padding-left: 20px;}
-            .pt0{padding-top: 0;} .pt5{padding-top: 5px;} .pt10{padding-top: 10px;} .pt15{padding-top: 15px;} .pt20{padding-top: 20px;}
-            .pb0{padding-bottom: 0;} .pb5{padding-bottom: 5px;} .pb10{padding-bottom: 10px;} .pb15{padding-bottom: 15px;} .pb20{padding-bottom: 20px;}
-            .main-inner .btn-right .btn3:hover{text-decoration: none;}
-
-            .fs12{font-size:12px;}
-
-            .pb0{padding-bottom: 0;} .pb5{padding-bottom: 5px;} .pb10{padding-bottom: 10px;} .pb15{padding-bottom: 15px;} 
-            .pb20{padding-bottom: 20px;}
-
-
-            .fs12{font-size:12px;}
-            .red{color:#ff0000;}
-            .ttc{text-transform:capitalize !important;}
-
-            /***  buttons  ***/
-
-            .clr-c a{color:#999;}
-            .main-login{
-                background-color:#fff;
-            }
-            .login-frm .login form{padding: 16px 60px 15px;}
-            /***  header  ***/
-            header{
-                z-index: 10;
-                position: fixed;
-                top: 0;
-                right: 0;
-                left: 0;
-                background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
-                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
-                background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
-                background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
-                background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
-                background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 ); /* ie6-9 */
-                padding:15px 0;
-            }
-            header .logo a{
-                color:#fff;
-            }
-            header .logo a:focus, header .logo a:hover {
-                text-decoration:none;
-            }
-            header h2{
-                margin:0; 
-                font-weight:bold;
-            }
-            .header-login .input{       
-                width:28%;      
-                float:left;     
-                margin-right:20px;      
-            }
-            .header-login input{
-                background:transparent;
-                border:none;
-                border-bottom:1px solid #fff;
-                border-radius:0px;
-                box-shadow:none;
-                font-size:14px;
-                color:#fff;
-                height:32px;
-
-            }
-            .header-login input:focus{
-                box-shadow:none;
-            }
-            .header-login .btn1{
-                font-size:15px;
-                padding-top:8px;
-                padding-bottom:8px;
-                line-height:1;
-                background:none;
-                color:#fff;
-                border:1px solid #fff;
-            }
-            .header-login .btn1:hover{
-                background:#fff;
-                color:#1b8ab9;
-                border:1px solid #fff;
-            }
-            .header-login input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-                color: #ddd;
-            }
-            .header-login input::-moz-placeholder { /* Firefox 19+ */
-                color: #ddd;
-            }
-            .header-login input:-ms-input-placeholder { /* IE 10+ */
-                color: #ddd;
-            }
-            .header-login input:-moz-placeholder { /* Firefox 18- */
-                color: #ddd;
-            }
-            .header-login .f-pass{
-                color:#fff;
-                padding-left:10px;
-            } 
-            .header-login .f-pass:hover{
-                text-decoration:underline;
-            }
-            a:hover{
-                /*text-decoration:none;*/
-            }
-            /*.pt-100{padding-top: 100px;}*/
-            /***  middle part  ***/
-            /*.middle-main{height:90vh;}*/
-
-            .main-login .middle-main{
-                padding:100px 0;
-                background:url('../img/bg.png') no-repeat;
-                background-size:100%;
-
-            }
-            .main-login .middle-main .container{height:100%; position:relative;}
-            .top-middle{
-                padding:45px 0 10px 50px;
-                min-height:190px;
-            }
-            .top-middle h3{
-                font-size:30px; 
-                color:#505050; 
-                line-height:1.5;
-                margin:0;
-            }
-            .top-middle .output {
-                display:none;
-            }
-            .top-middle .active:after {
-                content: '_';
-            }
-            /***  login form css  ***/
-
-
-            /*onclick*/
-            .form-group textarea:focus {
-                border-bottom: 1px solid #1b8ab9 !important;
-                color: #1b8ab9!important;
-            }
-            /* label focus color */
-            .form-group textarea[type=text]:focus + label {
-                color: #1b8ab9!important;
-            }
-            /* label underline focus color */
-            .form-group textarea[type=text]:focus {
-                border-bottom: 1px solid #1b8ab9;
-                color: #1b8ab9!important;
-
-            }
-            .form-group input:focus {
-                border-bottom: 1px solid #1b8ab9 !important;
-                color: #1b8ab9!important;
-            }
-            /* label focus color */
-            .form-group input[type=text]:focus + label {
-                color: #1b8ab9!important;
-            }
-            /* label underline focus color */
-            .form-group input[type=text]:focus {
-                border-bottom: 1px solid #1b8ab9;
-                color: #1b8ab9!important;
-
-            }
-            .form-group input::-webkit-input-placeholder {
-                color: #999;
-            }
-            textarea:focus::-webkit-input-placeholder
-            {
-                color:    #1b8ab9;
-            }
-
-            .form-group input:focus::-webkit-input-placeholder {
-                color: #1b8ab9;
-            }
-            /* Firefox < 19 */
-
-            .form-group input:focus:-moz-placeholder {
-                color: #1b8ab9;
-            }
-            /* Firefox > 19 */
-
-            .form-group input:focus::-moz-placeholder {
-                color: #1b8ab9;
-            }
-
-            /* Internet Explorer 10 */
-
-            .form-group input:focus:-ms-textarea-placeholder {
-                color: #1b8ab9;
-            }
-            /*second*/
-            .login{width:100%;}
-
-        </style>
+    
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
 
