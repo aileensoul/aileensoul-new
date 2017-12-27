@@ -1977,31 +1977,32 @@ Your browser does not support the audio tag.
             $join_str[4]['from_table_id'] = 'business_profile.industriyal';
             $join_str[4]['join_type'] = 'LEFT';
             $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile.company_name,countries.country_name,states.state_name,cities.city_name,business_profile.pincode,business_profile.address,business_profile.contact_person,business_profile.contact_mobile,business_profile.contact_email,business_profile.contact_website,business_type.business_name,industry_type.industry_name,business_profile.details,business_profile.other_business_type,business_profile.other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-        } else {
-            $userid = $this->session->userdata('aileenuser');
-            $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.business_step' => '4');
-            $join_str[0]['table'] = 'countries';
-            $join_str[0]['join_table_id'] = 'countries.country_id';
-            $join_str[0]['from_table_id'] = 'business_profile.country';
-            $join_str[0]['join_type'] = '';
-            $join_str[1]['table'] = 'states';
-            $join_str[1]['join_table_id'] = 'states.state_id';
-            $join_str[1]['from_table_id'] = 'business_profile.state';
-            $join_str[1]['join_type'] = '';
-            $join_str[2]['table'] = 'cities';
-            $join_str[2]['join_table_id'] = 'cities.city_id';
-            $join_str[2]['from_table_id'] = 'business_profile.city';
-            $join_str[2]['join_type'] = '';
-            $join_str[3]['table'] = 'business_type';
-            $join_str[3]['join_table_id'] = 'business_type.type_id';
-            $join_str[3]['from_table_id'] = 'business_profile.business_type';
-            $join_str[3]['join_type'] = 'LEFT';
-            $join_str[4]['table'] = 'industry_type';
-            $join_str[4]['join_table_id'] = 'industry_type.industry_id';
-            $join_str[4]['from_table_id'] = 'business_profile.industriyal';
-            $join_str[4]['join_type'] = 'LEFT';
-            $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile.company_name,countries.country_name,states.state_name,cities.city_name,business_profile.pincode,business_profile.address,business_profile.contact_person,business_profile.contact_mobile,business_profile.contact_email,business_profile.contact_website,business_type.business_name,industry_type.industry_name,business_profile.details,business_profile.other_business_type,business_profile.other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
+        // else {
+        //     $userid = $this->session->userdata('aileenuser');
+        //     $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.business_step' => '4');
+        //     $join_str[0]['table'] = 'countries';
+        //     $join_str[0]['join_table_id'] = 'countries.country_id';
+        //     $join_str[0]['from_table_id'] = 'business_profile.country';
+        //     $join_str[0]['join_type'] = '';
+        //     $join_str[1]['table'] = 'states';
+        //     $join_str[1]['join_table_id'] = 'states.state_id';
+        //     $join_str[1]['from_table_id'] = 'business_profile.state';
+        //     $join_str[1]['join_type'] = '';
+        //     $join_str[2]['table'] = 'cities';
+        //     $join_str[2]['join_table_id'] = 'cities.city_id';
+        //     $join_str[2]['from_table_id'] = 'business_profile.city';
+        //     $join_str[2]['join_type'] = '';
+        //     $join_str[3]['table'] = 'business_type';
+        //     $join_str[3]['join_table_id'] = 'business_type.type_id';
+        //     $join_str[3]['from_table_id'] = 'business_profile.business_type';
+        //     $join_str[3]['join_type'] = 'LEFT';
+        //     $join_str[4]['table'] = 'industry_type';
+        //     $join_str[4]['join_table_id'] = 'industry_type.industry_id';
+        //     $join_str[4]['from_table_id'] = 'business_profile.industriyal';
+        //     $join_str[4]['join_type'] = 'LEFT';
+        //     $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile.company_name,countries.country_name,states.state_name,cities.city_name,business_profile.pincode,business_profile.address,business_profile.contact_person,business_profile.contact_mobile,business_profile.contact_email,business_profile.contact_website,business_type.business_name,industry_type.industry_name,business_profile.details,business_profile.other_business_type,business_profile.other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+        // }
 
 
         $this->data['business_data']['company_name'] = $business_data[0]['company_name'] == '' ? PROFILENA : $business_data[0]['company_name'];
