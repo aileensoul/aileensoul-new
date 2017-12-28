@@ -428,6 +428,8 @@ li.fr a {
     border: 1px solid #d9d9d9;
     border-radius: 3px;
     margin-bottom: 10px;
+    width: 100%;
+    float: left;
 }
 .profile-boxProfileCard {
     border: 6px solid #ffffff;
