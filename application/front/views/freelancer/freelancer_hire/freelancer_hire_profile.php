@@ -344,7 +344,7 @@
                                                 </div>
                                                 <div class="profile-job-profile-menu">
                                                     <ul class="clearfix">
-                                                        <li> <b><?php echo $this->lang->line("name"); ?></b> <span> <?php echo $freelancerhiredata[0]['fullname'] . ' ' . $freelancerhiredata[0]['username']; ?> </span>
+                                                        <li> <b><?php echo $this->lang->line("name"); ?></b> <span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>> <?php echo $freelancerhiredata[0]['fullname'] . ' ' . $freelancerhiredata[0]['username']; ?> </span>
                                                         </li>
 
                                                         <li> <b><?php echo $this->lang->line("email"); ?> </b><span> <?php echo $freelancerhiredata[0]['email']; ?></span>
