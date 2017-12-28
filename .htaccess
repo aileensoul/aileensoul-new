@@ -1,30 +1,3 @@
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	
-	RewriteBase /
-
-	#Removes access to the system folder by users.
-	#Additionally this will allow you to create a System.php controller,
-	#previously this would not have been possible.
-	#'system' can be replaced if you have renamed your system folder.
-	RewriteCond %{REQUEST_URI} ^system.*
-	RewriteRule ^(.*)$ /index.php?/$1 [L]
-	
-	#When your application folder isn't in the system folder
-	#This snippet prevents user access to the application folder
-	#Submitted by: Fabdrol
-	#Rename 'application' to your applications folder name.
-	RewriteCond %{REQUEST_URI} ^application.*
-	RewriteRule ^(.*)$ /index.php?/$1 [L]
-
-	#Checks to see if the user is attempting to access a valid file,
-	#such as an image or css document, if this isn't true it sends the
-	#request to index.php
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-        RewriteRule ^(.*)$ /index.php?/$1 [L]
-</IfModule>
-
 ## EXPIRES CACHING ##
 <IfModule mod_expires.c>
 ExpiresActive On
@@ -54,48 +27,35 @@ AddType audio/ogg ogg oga
 AddType video/webm webm
 </IfModule>
 
+<ifmodule mod_rewrite.c>
+RewriteCond %{REQUEST_URI} !^/favicon\.ico [NC]
+RewriteCond %{REQUEST_URI} favicon\.ico    [NC]
+RewriteRule (.*) https://www.aileensoul.com/images/favicon.png [R=301,L]
+</ifmodule>
+
 <IfModule mod_php5.c>
     #Session timeout
     php_value session.cookie_lifetime 144000
     php_value session.gc_maxlifetime 144000
 </IfModule>
 
-# BEGIN Compress text files
-<ifModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/xml text/css text/plain
-  AddOutputFilterByType DEFLATE image/svg+xml application/xhtml+xml application/xml
-  AddOutputFilterByType DEFLATE application/rdf+xml application/rss+xml application/atom+xml
-  AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript application/json
-  AddOutputFilterByType DEFLATE application/x-font-ttf application/x-font-otf
-  AddOutputFilterByType DEFLATE font/truetype font/opentype
-</ifModule>
-# END Compress text files
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]  
 
-# BEGIN Cache-Control Headers
-<ifModule mod_headers.c>
-  <filesMatch "\.(ico|jpe?g|png|gif|swf)$">
-    Header set Cache-Control "public"
-  </filesMatch>
-  <filesMatch "\.(css)$">
-    Header set Cache-Control "public"
-  </filesMatch>
-  <filesMatch "\.(js)$">
-    Header set Cache-Control "private"
-  </filesMatch>
-  <filesMatch "\.(x?html?|php)$">
-    Header set Cache-Control "private, must-revalidate"
-  </filesMatch>
-</ifModule>
 
-# END Cache-Control Headers
-# BEGIN Turn ETags Off
-FileETag None
-# END Turn ETags Off
+ RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+    RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+    
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteCond $1 !^(index\.php|images|robots\.txt|css|docs|js|system)
+   RewriteRule ^(.*)$ /index.php?/$1 [L]
+   
+   RewriteCond %{HTTP_HOST} ^aileensoul.com [NC]
+   RewriteRule ^(.*)$ http://www.aileensoul.com/$1 [L,R=301,NC]
 
-<IfModule !mod_rewrite.c>
-	# If we don't have mod_rewrite installed, all 404's
-	# can be sent to index.php, and everything works as normal.
-	# Submitted by: ElliotHaughin
 
-	ErrorDocument 404 /index.php
-</IfModule>
+php_flag display_errors On
+
