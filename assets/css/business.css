@@ -3819,8 +3819,7 @@ label.cameraButton input[accept*="camera"] {
     color: #91949d;
     display: inline-block;
 	float:left;
-	line-height:1.3;
-	padding-top:2px;
+	line-height:16px;
 }
 .editav_2 {
     display: none;
@@ -4458,7 +4457,7 @@ div .comment {
 .onebyone-carosel .active.right { left: 33.33%; }
 .onebyone-carosel .next { left: 33.33%; }
 .onebyone-carosel .prev { left: -33.33%; }
-.post-design-name ul li .other_name{line-height: 1.3;}
+.post-design-name ul li .other_name{line-height: 16px;}
 
 .post-design-mid .mejs__audio{width: 300px !important; height: 40px!important}
 .profile-job-post-location-name .user_lst ul li .bg_following {margin-left: 0px;}
