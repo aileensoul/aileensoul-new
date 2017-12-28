@@ -310,16 +310,16 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                  </div>
                                  <div class="profile-job-profile-menu">
                                     <ul class="clearfix " >
-                                       <li> <b> Name </b> <span> <?php echo ucfirst($job[0]['fname']); ?> <?php echo ucfirst($job[0]['lname']); ?></span>
+                                       <li> <b> Name </b> <span class="text_blur"> <?php echo ucfirst($job[0]['fname']); ?> <?php echo ucfirst($job[0]['lname']); ?></span>
                                        </li>
-                                       <li> <b>Email </b><span> <?php echo $job[0]['email']; ?> </span>
+                                       <li> <b>Email </b><span class="text_blur"> <?php echo $job[0]['email']; ?> </span>
                                        </li>
                                        <?php
                                           if ($userid != $id) {
                                           
                                               if ($job[0]['phnno']) {
                                                   ?>
-                                       <li><b> Phone Number</b> <span><?php echo $job[0]['phnno']; ?></span> </li>
+                                       <li><b> Phone Number</b> <span class="text_blur"><?php echo $job[0]['phnno']; ?></span> </li>
                                        <?php
                                           } else {
                                               echo "";
@@ -327,7 +327,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           } else {
                                           if ($job[0]['phnno']) {
                                               ?>
-                                       <li><b> Phone Number</b> <span><?php echo $job[0]['phnno']; ?></span> </li>
+                                       <li><b> Phone Number</b> <span class="text_blur"><?php echo $job[0]['phnno']; ?></span> </li>
                                        <?php
                                           } else {
                                               ?>
@@ -345,7 +345,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                               if ($job[0]['language']) 
                                               {
                                           ?>
-                                       <li> <b>Language </b><span>  
+                                       <li> <b>Language </b><span class="text_blur">  
                                           <?php
                                              $aud = $job[0]['language'];
                                              
@@ -371,7 +371,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           
                                           ?>
                                        <li> <b>Language</b>
-                                          <span> 
+                                          <span class="text_blur"> 
                                           <?php 
                                              if($job[0]['language'])
                                              {
@@ -399,7 +399,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                               if ($job[0]['dob'] != '0000-00-00') 
                                               {
                                           ?>
-                                       <li> <b>Date Of Birth</b><span>  
+                                       <li> <b>Date Of Birth</b><span class="text_blur">  
                                           <?php echo date('d/m/Y', strtotime($job[0]['dob'])); 
                                              ?>
                                           </span>
@@ -415,7 +415,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           
                                           ?>
                                        <li> <b>Date Of Birth</b>
-                                          <span> 
+                                          <span class="text_blur"> 
                                           <?php 
                                              if($job[0]['dob'] != '0000-00-00')
                                              {
@@ -434,7 +434,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                               if ($job[0]['gender']) 
                                               {
                                           ?>
-                                       <li> <b>Gender</b><span>  
+                                       <li> <b>Gender</b><span class="text_blur">  
                                           <?php echo ucfirst($job[0]['gender']); ?>
                                           </span>
                                        </li>
@@ -449,7 +449,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           
                                           ?>
                                        <li> <b>Gender</b>
-                                          <span> 
+                                          <span class="text_blur"> 
                                           <?php 
                                              if($job[0]['gender'])
                                              {
@@ -467,7 +467,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           
                                               if ($job[0]['city_id']) {
                                                   ?>
-                                       <li><b> City</b> <span><?php
+                                       <li><b> City</b> <span class="text_blur"><?php
                                           $cache_time = $this->db->get_where('cities', array('city_id' => $job[0]['city_id']))->row()->city_name;
                                           echo $cache_time;
                                                   ?></span> </li>
@@ -478,7 +478,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           } else {
                                           if ($job[0]['city_id']) {
                                               ?>
-                                       <li><b> City</b> <span><?php
+                                       <li><b> City</b> <span class="text_blur"><?php
                                           $cache_time = $this->db->get_where('cities', array('city_id' => $job[0]['city_id']))->row()->city_name;
                                           echo $cache_time;
                                           ?></span> </li>
@@ -497,7 +497,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                  if ($job[0]['pincode']) {
                                                      ?></span>
                                        </li>
-                                       <li> <b>Pincode </b><span><?php echo $job[0]['pincode']; ?></span>
+                                       <li> <b>Pincode </b><span class="text_blur"><?php echo $job[0]['pincode']; ?></span>
                                        </li>
                                        <?php
                                           } else {
@@ -506,7 +506,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           } else {
                                           if ($job[0]['pincode']) {
                                               ?>
-                                       <li> <b>Pincode </b><span><?php echo $job[0]['pincode']; ?></span>
+                                       <li> <b>Pincode </b><span class="text_blur"><?php echo $job[0]['pincode']; ?></span>
                                        </li>
                                        <?php
                                           } else {
@@ -526,7 +526,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           ?>
                                        <li>
                                           <b>Address </b>
-                                          <span>
+                                          <span class="text_blur">
                                              <pre><?php echo $job[0]['address']; ?></pre>
                                           </span>
                                        </li>
@@ -541,7 +541,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                               ?>
                                        <li>
                                           <b>Address </b>
-                                          <span>
+                                          <span class="text_blur">
                                              <pre><?php echo $job[0]['address']; ?></pre>
                                           </span>
                                        </li>
@@ -609,13 +609,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                        <div class="text-center">
                                           <h5 class="head_title">Primary Education</h5>
                                        </div>
-                                       <li> <b>Board </b><span> <?php echo $job_add_edu[0]['board_primary']; ?></span>
+                                       <li> <b>Board </b><span class="text_blur"> <?php echo $job_add_edu[0]['board_primary']; ?></span>
                                        </li>
-                                       <li> <b>School </b><span> <?php echo $job_add_edu[0]['school_primary']; ?></span>
+                                       <li> <b>School </b><span class="text_blur"> <?php echo $job_add_edu[0]['school_primary']; ?></span>
                                        </li>
-                                       <li> <b>Percentage </b><span> <?php echo $job_add_edu[0]['percentage_primary']; ?>%</span>
+                                       <li> <b>Percentage </b><span class="text_blur"> <?php echo $job_add_edu[0]['percentage_primary']; ?>%</span>
                                        </li>
-                                       <li> <b>Year of Passing </b><span> <?php echo $job_add_edu[0]['pass_year_primary']; ?></span>
+                                       <li> <b>Year of Passing </b><span class="text_blur"> <?php echo $job_add_edu[0]['pass_year_primary']; ?></span>
                                        </li>
                                        <?php
                                           if ($job_add_edu[0]['edu_certificate_primary'] != "") {
@@ -655,13 +655,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                        <div class="text-center">
                                           <h5 class="head_title">Secondary Education</h5>
                                        </div>
-                                       <li> <b>Board </b><span> <?php echo $job_add_edu[0]['board_secondary']; ?></span>
+                                       <li> <b>Board </b><span class="text_blur"> <?php echo $job_add_edu[0]['board_secondary']; ?></span>
                                        </li>
-                                       <li> <b>School </b><span> <?php echo $job_add_edu[0]['school_secondary']; ?></span>
+                                       <li> <b>School </b><span class="text_blur"> <?php echo $job_add_edu[0]['school_secondary']; ?></span>
                                        </li>
-                                       <li> <b>Percentage </b><span> <?php echo $job_add_edu[0]['percentage_secondary']; ?>%</span>
+                                       <li> <b>Percentage </b><span class="text_blur"> <?php echo $job_add_edu[0]['percentage_secondary']; ?>%</span>
                                        </li>
-                                       <li> <b>Year of Passing </b><span> <?php echo $job_add_edu[0]['pass_year_secondary']; ?></span>
+                                       <li> <b>Year of Passing </b><span class="text_blur"> <?php echo $job_add_edu[0]['pass_year_secondary']; ?></span>
                                        </li>
                                        <?php
                                           if ($job_add_edu[0]['edu_certificate_secondary'] != "") {
@@ -699,15 +699,15 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                        <div class="text-center">
                                           <h5 class="head_title">Higher secondary Education</h5>
                                        </div>
-                                       <li> <b>Board </b><span> <?php echo $job_add_edu[0]['board_higher_secondary']; ?></span>
+                                       <li> <b>Board </b><span class="text_blur"> <?php echo $job_add_edu[0]['board_higher_secondary']; ?></span>
                                        </li>
-                                       <li> <b>Stream</b><span> <?php echo $job_add_edu[0]['stream_higher_secondary']; ?></span>
+                                       <li> <b>Stream</b><span class="text_blur"> <?php echo $job_add_edu[0]['stream_higher_secondary']; ?></span>
                                        </li>
-                                       <li> <b>School </b><span> <?php echo $job_add_edu[0]['school_higher_secondary']; ?></span>
+                                       <li> <b>School </b><span class="text_blur"> <?php echo $job_add_edu[0]['school_higher_secondary']; ?></span>
                                        </li>
-                                       <li> <b>Percentage </b><span> <?php echo $job_add_edu[0]['percentage_higher_secondary']; ?>%</span>
+                                       <li> <b>Percentage </b><span class="text_blur"> <?php echo $job_add_edu[0]['percentage_higher_secondary']; ?>%</span>
                                        </li>
-                                       <li> <b>Year of Passing </b><span> <?php echo $job_add_edu[0]['pass_year_higher_secondary']; ?></span>
+                                       <li> <b>Year of Passing </b><span class="text_blur"> <?php echo $job_add_edu[0]['pass_year_higher_secondary']; ?></span>
                                        </li>
                                        <?php
                                           if ($job_add_edu[0]['edu_certificate_higher_secondary'] != "") {
@@ -759,7 +759,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           ?>
                                        <div id="gra<?php echo $i; ?>" class="tabcontent data_exp">
                                           <li> <b> Degree</b> 
-                                             <span>
+                                             <span class="text_blur">
                                              <?php
                                                 $cache_time = $this->db->get_where('degree', array('degree_id' => $graduation['degree']))->row()->degree_name;
                                                 echo $cache_time;
@@ -767,7 +767,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                              </span>
                                           </li>
                                           <li> <b>Stream </b>
-                                             <span>
+                                             <span class="text_blur">
                                              <?php
                                                 $cache_time = $this->db->get_where('stream', array('stream_id' => $graduation['stream']))->row()->stream_name;
                                                 echo $cache_time;
@@ -775,14 +775,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                              </span>
                                           </li>
                                           <li><b> University</b> 
-                                             <span>
+                                             <span class="text_blur">
                                              <?php
                                                 $cache_time = $this->db->get_where('university', array('university_id' => $graduation['university']))->row()->university_name;
                                                 echo $cache_time;
                                                 ?>
                                              </span> 
                                           </li>
-                                          <li> <b>College  </b><span><?php echo $graduation['college']; ?></span>
+                                          <li> <b>College  </b><span class="text_blur"><?php echo $graduation['college']; ?></span>
                                           </li>
                                           <?php
                                              if ($userid != $id) 
@@ -791,7 +791,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                  if ($graduation['grade']) 
                                              {
                                              ?>
-                                          <li> <b>Grade </b><span><?php echo ucwords($graduation['grade']); ?></span>
+                                          <li> <b>Grade </b><span class="text_blur"><?php echo ucwords($graduation['grade']); ?></span>
                                           </li>
                                           <?php
                                              } else   {
@@ -803,7 +803,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                              if ($graduation['grade'])
                                              {
                                              ?>
-                                          <li> <b>Grade </b><span><?php echo ucwords($graduation['grade']); ?></span>
+                                          <li> <b>Grade </b><span class="text_blur"><?php echo ucwords($graduation['grade']); ?></span>
                                           </li>
                                           <?php
                                              } 
@@ -819,9 +819,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 ?>
                                              </span>
                                           </li>
-                                          <li> <b>Percentage </b><span><?php echo $graduation['percentage']; ?>%</span>
+                                          <li> <b>Percentage </b><span class="text_blur"><?php echo $graduation['percentage']; ?>%</span>
                                           </li>
-                                          <li> <b>Year Of Passing </b><span><?php echo $graduation['pass_year']; ?></span>
+                                          <li> <b>Year Of Passing </b><span class="text_blur"><?php echo $graduation['pass_year']; ?></span>
                                           </li>
                                           <?php
                                              if ($graduation['edu_certificate'] != "") 
@@ -960,7 +960,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                        <?php
                                           if ($job[0]['project_name']) {
                                               ?>
-                                       <li> <b> Project Name (Title)</b> <span><?php echo $job[0]['project_name']; ?></span>
+                                       <li> <b> Project Name (Title)</b> <span class="text_blur"><?php echo $job[0]['project_name']; ?></span>
                                        </li>
                                        <?php
                                           } else {
@@ -970,7 +970,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                        <?php
                                           if ($job[0]['project_duration']) {
                                               ?>
-                                       <li> <b>Duration</b><span><?php echo $job[0]['project_duration']; ?> month</span>
+                                       <li> <b>Duration</b><span class="text_blur"><?php echo $job[0]['project_duration']; ?> month</span>
                                        </li>
                                        <?php
                                           } else {
@@ -982,7 +982,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                               ?>
                                        <li>
                                           <b>Project Description</b> 
-                                          <span>
+                                          <span class="text_blur">
                                              <pre><?php echo $this->common->make_links($job[0]['project_description']); ?></pre>
                                           </span>
                                        </li>
@@ -1003,7 +1003,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                        <?php
                                           if ($job[0]['training_as']) {
                                               ?>
-                                       <li> <b>Intern / Trainee As </b><span><?php echo $this->common->make_links($job[0]['training_as']); ?></span>
+                                       <li> <b>Intern / Trainee As </b><span class="text_blur"><?php echo $this->common->make_links($job[0]['training_as']); ?></span>
                                        </li>
                                        <?php
                                           } else {
@@ -1013,7 +1013,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                        <?php
                                           if ($job[0]['training_duration']) {
                                               ?>
-                                       <li> <b>Duration</b><span> <?php echo $job[0]['training_duration']; ?> month</span>
+                                       <li> <b>Duration</b><span class="text_blur"> <?php echo $job[0]['training_duration']; ?> month</span>
                                        </li>
                                        <?php
                                           } else {
@@ -1023,7 +1023,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                        <?php
                                           if ($job[0]['training_organization']) {
                                               ?>
-                                       <li> <b>Name of Organization</b><span> <?php echo $this->common->make_links($job[0]['training_organization']); ?></span>
+                                       <li> <b>Name of Organization</b><span class="text_blur"> <?php echo $this->common->make_links($job[0]['training_organization']); ?></span>
                                        </li>
                                        <?php
                                           } else {
@@ -1058,7 +1058,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           <?php
                                              if ($job[0]['project_name']) {
                                                  ?>
-                                          <li> <b> Project Name (Title)</b> <span><?php echo $job[0]['project_name']; ?></span>
+                                          <li> <b> Project Name (Title)</b> <span class="text_blur"><?php echo $job[0]['project_name']; ?></span>
                                           </li>
                                           <?php
                                              } else {
@@ -1073,7 +1073,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     ?>
                                              </span>
                                           </li>
-                                          <li> <b>Duration</b><span><?php echo $job[0]['project_duration']; ?> month</span>
+                                          <li> <b>Duration</b><span class="text_blur"><?php echo $job[0]['project_duration']; ?> month</span>
                                           </li>
                                           <?php
                                              } else {
@@ -1090,7 +1090,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           </li>
                                           <li>
                                              <b>Project Description</b> 
-                                             <span>
+                                             <span class="text_blur">
                                                 <pre><?php echo $this->common->make_links($job[0]['project_description']); ?></pre>
                                              </span>
                                           </li>
@@ -1113,7 +1113,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                           <?php
                                              if ($job[0]['training_as']) {
                                                  ?>
-                                          <li> <b>Intern / Trainee As </b><span><?php echo $this->common->make_links($job[0]['training_as']); ?></span>
+                                          <li> <b>Intern / Trainee As </b><span class="text_blur"><?php echo $this->common->make_links($job[0]['training_as']); ?></span>
                                           </li>
                                           <?php
                                              } else {
@@ -1127,12 +1127,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 if ($job[0]['training_duration']) {
                                                     ?></span>
                                           </li>
-                                          <li> <b>Duration</b><span> <?php echo $job[0]['training_duration']; ?> month</span>
+                                          <li> <b>Duration</b><span class="text_blur"> <?php echo $job[0]['training_duration']; ?> month</span>
                                           </li>
                                           <?php
                                              } else {
                                                  ?>
-                                          <li><b>Duration</b> <span>
+                                          <li><b>Duration</b> <span class="text_blur">
                                              <?php
                                                 echo PROFILENA;
                                                 }
@@ -1142,7 +1142,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     ?>
                                              </span>
                                           </li>
-                                          <li> <b>Name of Organization</b><span> <?php echo $this->common->make_links($job[0]['training_organization']); ?></span>
+                                          <li> <b>Name of Organization</b><span class="text_blur"> <?php echo $this->common->make_links($job[0]['training_organization']); ?></span>
                                           </li>
                                           <?php
                                              } else {
@@ -1181,7 +1181,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                  $contition_array = array('title_id' => $job[0]['work_job_title']);
                                                  $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                  ?>
-                                          <li> <b> Job Title</b> <span>
+                                          <li> <b> Job Title</b> <span class="text_blur">
                                              <?php echo $jobtitle[0]['name']; ?>
                                              </span>
                                           </li>
@@ -1190,7 +1190,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                              if ($job[0]['keyskill']) {
                                              
                                                  ?>
-                                          <li> <b> Skills</b> <span>
+                                          <li> <b> Skills</b> <span class="text_blur">
                                              <?php
                                                 $comma = ", ";
                                                 $k = 0;
@@ -1219,7 +1219,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                  $contition_array = array('industry_id' => $job[0]['work_job_industry']);
                                                  $industry = $this->common->select_data_by_condition('job_industry', $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                  ?>
-                                          <li> <b> Industry</b> <span>
+                                          <li> <b> Industry</b> <span class="text_blur">
                                              <?php echo $industry[0]['industry_name']; ?>
                                              </span>
                                           </li>
@@ -1228,7 +1228,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                              if ($job[0]['work_job_city']) {
                                                 
                                                  ?>
-                                          <li> <b> Preferred Cites</b> <span>                                      
+                                          <li> <b> Preferred Cites</b> <span class="text_blur">                                      
                                              <?php
                                                 $comma = ", ";
                                                 $k = 0;
@@ -1289,7 +1289,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                         <ul class="clearfix">
                                            <?php   if($job[0]['experience'] == 'Experience'){  ?>
-                                          <li> <b> Total Experience</b> <span>
+                                          <li> <b> Total Experience</b> <span class="text_blur">
 
                                             <?php  if($job[0]['exp_y'] != " " && $job[0]['exp_m'] != " "){ 
 
@@ -1346,7 +1346,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                        <ul>
                                           <li>
                                              <b> Total Experience </b>
-                                             <span>
+                                             <span class="text_blur">
                                              <?php
                                              
                                              if($job[0]['exp_y'] != " " && $job[0]['exp_m'] != " "){ 
@@ -1420,13 +1420,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                              <?php
                                                 if ($work['experience'] == "Experience") {
                                                     ?>           
-                                             <li> <b> Job Title </b> <span> <?php echo $work['jobtitle']; ?> </span>
+                                             <li> <b> Job Title </b> <span class="text_blur"> <?php echo $work['jobtitle']; ?> </span>
                                              </li>
                                              <?php
                                                 }
                                                 if ($work['experience'] == "Experience") {
                                                     ?> 
-                                             <li> <b>Company Name </b><span><?php echo $work['companyname']; ?></span>
+                                             <li> <b>Company Name </b><span class="text_blur"><?php echo $work['companyname']; ?></span>
                                              </li>
                                              <?php
                                                 }
@@ -1436,7 +1436,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 
                                                     if ($work['experience'] == "Experience" && $work['companyemail']) {
                                                         ?>
-                                             <li><b> Company Email Address </b> <span><?php echo $work['companyemail']; ?></span> </li>
+                                             <li><b> Company Email Address </b> <span class="text_blur"><?php echo $work['companyemail']; ?></span> </li>
                                              <?php
                                                 } else {
                                                     echo "";
@@ -1444,13 +1444,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 } else {
                                                 if ($work['experience'] == "Experience" && $work['companyemail']) {
                                                     ?>
-                                             <li><b> Company Email Address </b> <span><?php echo $work['companyemail']; ?></span> </li>
+                                             <li><b> Company Email Address </b> <span class="text_blur"><?php echo $work['companyemail']; ?></span> </li>
                                              <?php
                                                 } else if ($job_work[0]['experience'] == "Fresher") {
                                                     echo "";
                                                 } else {
                                                     ?>
-                                             <li><b> Company Email Address</b> <span>
+                                             <li><b> Company Email Address</b> <span class="text_blur">
                                                 <?php
                                                    echo PROFILENA;
                                                    }
@@ -1464,7 +1464,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                    ?>
                                                 </span>
                                              </li>
-                                             <li> <b>Company Phone Number </b><span> <?php echo $work['companyphn']; ?></span>
+                                             <li> <b>Company Phone Number </b><span class="text_blur"> <?php echo $work['companyphn']; ?></span>
                                              </li>
                                              <?php
                                                 } else {
@@ -1473,7 +1473,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 } else {
                                                 if ($work['experience'] == "Experience" && $work['companyphn']) {
                                                     ?>
-                                             <li> <b>Company Phone Number </b><span> <?php echo $work['companyphn']; ?></span>
+                                             <li> <b>Company Phone Number </b><span class="text_blur"> <?php echo $work['companyphn']; ?></span>
                                              </li>
                                              <?php
                                                 } else if ($job_work[0]['experience'] == "Fresher") {
@@ -1490,7 +1490,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                    ?>
                                                 </span>
                                              </li>
-                                             <li> <b>Experience </b><span>
+                                             <li> <b>Experience </b><span class="text_blur">
                                                 <?php
                                                    if ($work['experience_year'] == "0 year" && $work['experience_month'] == "12 month") {
                                                        echo "1 Year";
@@ -1512,7 +1512,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 if ($work['work_certificate'] != "") {
                                                     ?>
                                              <li><b>Experience Certificate </b> 
-                                                <span>
+                                                <span class="text_blur">
                                                 <?php
                                                    $ext = explode('.', $work['work_certificate']);
                                                    if ($ext[1] == 'pdf') {
@@ -1789,10 +1789,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     </div>
 
                                     <div class="form-group">
-                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                     </div>
                                     <div class="form-group">
-                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
                                     </div>
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth :</label>
