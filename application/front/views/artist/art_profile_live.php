@@ -370,7 +370,7 @@ if ($artisticdata[0]['art_bestofmine']) {
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                              <div class="title"><h1 class="hth1">Sign up First and Register in Artistic Profile</h1></div>
+                              <div class="title"><h1 class="tlh1">Sign up First and Register in Artistic Profile</h1></div>
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
