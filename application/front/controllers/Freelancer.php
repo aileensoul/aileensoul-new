@@ -4436,7 +4436,7 @@ class Freelancer extends MY_Controller {
         $shortlist = $this->data['shortlist'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $segment3 = array_splice($segment3, 0, -2);
-        $segment3 = implode('-', $segment3);
+        $segment3 = implode(' ', $segment3);
         $segment3 = ucfirst($segment3);
 
         $this->data['title'] = $segment3 . TITLEPOSTFIX;
