@@ -995,10 +995,10 @@ $(document).ready(function () {
     
     $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
-            if($('#forgotPassword').modal('hide')){
+            if($('#forgotPassword').modal('show')){
          $('#forgotPassword').modal('hide');
          $('#login').modal('show');
-       }
+       } 
     }
 });
 

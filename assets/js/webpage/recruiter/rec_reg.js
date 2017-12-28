@@ -459,7 +459,7 @@ $("#submit").on('click', function ()
     }
 //login pop up open end
 function forgot_profile() {
-     $('#login').modal('hide');
+     $('#login').modal('show');
     $('#forgotPassword').modal('show');
 }
 function create_profile(){
@@ -467,6 +467,16 @@ function create_profile(){
     $('#register').modal('show');
 }
   /* validation */
+
+ $( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+            if($('#forgotPassword').modal('show')){
+         $('#forgotPassword').modal('hide');
+         $('#login').modal('show');
+       }
+    }
+});
+
 
     $("#login_form").validate({
 
