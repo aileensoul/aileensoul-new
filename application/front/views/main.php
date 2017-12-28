@@ -1,6 +1,12 @@
 ﻿<!DOCTYPE html>
 <?php
-
+if(empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
+    $redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    header('HTTP/1.1 301 Moved Permanently');
+    header('Location: ' . $redirect);
+    exit();
+}
+header("HTTP/1.1 301 Moved Permanently");
 if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
     header("HTTP/1.1 304 Not Modified");
     exit();
