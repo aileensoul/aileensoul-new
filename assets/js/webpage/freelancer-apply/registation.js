@@ -317,7 +317,7 @@ $(document).ready(function () {
                             return $("#email").val();
                         },
                         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
-                    },
+                    }, async:false
                 },
 
             },
