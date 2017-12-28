@@ -4469,10 +4469,21 @@ class Recruiter extends MY_Controller {
         } else {
             $cache_time1 = $this->data['postdata'][0]['post_name'];
         }
-
+        
+        if ($cache_time1 != '') {
+                            $text = strtolower($this->common->clean($cache_time1));
+                        } else {
+                            $text = '';
+                        }
+          
 
         $cityname = $this->db->get_where('cities', array('city_id' => $this->data['postdata'][0]['city']))->row()->city_name;
-
+if ($cityname != '') {
+                            $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                        } else {
+                            $cityname = '';
+                        }
+      $url = $text . $cityname . '-' . $this->data['postdata'][0]['user_id'] . '-' . $this->data['postdata'][0]['post_id']; 
         $segment3 = array_splice($segment3, 0, -2);
         $segment3 = implode(' ', $segment3);
         $segment3 = ucfirst($segment3);
@@ -4481,11 +4492,15 @@ class Recruiter extends MY_Controller {
 
         $contition_array = array('post_id !=' => $postid, 'status' => '1', 'rec_post.is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
         $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
+       
+        if($url == $this->uri->segment(3)){
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('job/rec_post', $this->data);
         } else {
             $this->load->view('job/rec_post_login', $this->data);
+        }
+        }else{
+            redirect('recruiter/jobpost/' . $url,refresh);
         }
     }
 
