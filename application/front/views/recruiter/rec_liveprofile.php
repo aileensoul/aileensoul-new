@@ -347,7 +347,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </div>
                                                 <div class="profile-job-profile-menu">
                                                     <ul class="clearfix">
-                                                        <li> <b> Name</b> <span> 
+                                                        <li> <b> Name</b> <span class="text_blur"> 
                                                                 <?php
                                                                 if ($recdata[0]['rec_firstname'] || $recdata[0]['rec_lastname']) {
                                                                     echo $recdata[0]['rec_firstname'] . '  ' . $recdata[0]['rec_lastname'];
@@ -357,7 +357,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                 ?> </span>
                                                         </li>
 
-                                                        <li> <b>Email </b><span> 
+                                                        <li> <b>Email </b><span class="text_blur"> 
                                                                 <?php
                                                                 if ($recdata[0]['rec_email']) {
                                                                     echo $recdata[0]['rec_email'];
@@ -374,7 +374,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                                             if ($recdata[0]['rec_phone']) {
                                                                 ?>
-                                                                <li><b> Phone Number</b> <span><?php echo $recdata[0]['rec_phone']; ?>
+                                                                <li><b> Phone Number</b> <span class="text_blur"><?php echo $recdata[0]['rec_phone']; ?>
 
                                                                     </span> </li>
 
@@ -385,7 +385,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         } else {
                                                             if ($recdata[0]['rec_phone']) {
                                                                 ?>
-                                                                <li><b> Phone Number</b> <span><?php echo $recdata[0]['rec_phone']; ?>
+                                                                <li><b> Phone Number</b> <span class="text_blur"><?php echo $recdata[0]['rec_phone']; ?>
 
                                                                     </span> </li>
 
@@ -417,7 +417,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </div>
                                                 <div class="profile-job-profile-menu">
                                                     <ul class="clearfix">
-                                                        <li> <b>Company Name</b><span><?php
+                                                        <li> <b>Company Name</b><span class="text_blur"><?php
                                                                 if ($recdata[0]['re_comp_name']) {
                                                                     echo $recdata[0]['re_comp_name'];
                                                                 } else {
@@ -425,14 +425,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                 }
                                                                 ?></span>
                                                         </li>
-                                                        <li><b> Company Email Address</b> <span><?php
+                                                        <li><b> Company Email Address</b> <span class="text_blur"><?php
                                                                 if ($recdata[0]['re_comp_email']) {
                                                                     echo $recdata[0]['re_comp_email'];
                                                                 } else {
                                                                     echo PROFILENA;
                                                                 }
                                                                 ?></span> </li>
-                                                        <li> <b>Company Phone Number</b><span> <?php
+                                                        <li> <b>Company Phone Number</b><span class="text_blur"> <?php
                                                                 if ($recdata[0]['re_comp_phone']) {
                                                                     echo $recdata[0]['re_comp_phone'];
                                                                 } else {
@@ -449,7 +449,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                                             if ($recdata[0]['re_comp_site']) {
                                                                 ?>
-                                                                <li> <b>Company Website</b><span><a target="_blank"><?php
+                                                                <li> <b>Company Website</b><span class="text_blur"><a target="_blank"><?php
                                                                     echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
                                                                 ?></a></span>
                                                                 </li>
@@ -460,14 +460,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         } else {
                                                             if ($recdata[0]['re_comp_site']) {
                                                                 ?>
-                                                                <li> <b>Company Website</b><span><a target="_blank"><?php
+                                                                <li> <b>Company Website</b><span class="text_blur"><a target="_blank"><?php
                                                                     echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
                                                                 ?></a></span>
                                                                 </li>
                                                                 <?php
                                                             } else {
                                                                 ?>
-                                                                <li><b> Company Website </b> <span>
+                                                                <li><b> Company Website </b> <span class="text_blur">
                                                                 <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
@@ -475,7 +475,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         }
                                                         ?>
 
-                                                        <li> <b> Country</b> <span><?php
+                                                        <li> <b> Country</b> <span class="text_blur"><?php
                                                                 $cache_time = $this->db->select('country_name')->get_where('countries', array('country_id' => $recdata[0]['re_comp_country']))->row()->country_name;
 
                                                                 if ($cache_time) {
@@ -486,7 +486,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                 ?></span>
                                                         </li>
 
-                                                        <li> <b>State </b><span> <?php
+                                                        <li> <b>State </b><span class="text_blur"> <?php
                                                                 $cache_time = $this->db->select('state_name')->get_where('states', array('state_id' => $recdata[0]['re_comp_state']))->row()->state_name;
                                                                 if ($cache_time) {
                                                                     echo $cache_time;
@@ -500,7 +500,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         if ($this->uri->segment(3) != $userid) {
                                                             if ($recdata[0]['re_comp_city']) {
                                                                 ?>
-                                                                <li><b> City</b> <span><?php
+                                                                <li><b> City</b> <span class="text_blur"><?php
                                                                         $cache_time = $this->db->select('city_name')->get_where('cities', array('city_id' => $recdata[0]['re_comp_city']))->row()->city_name;
                                                                         if ($cache_time) {
                                                                             echo $cache_time;
@@ -513,7 +513,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         } else {
                                                             if ($recdata[0]['re_comp_city']) {
                                                                 ?>
-                                                                <li><b> City</b> <span><?php
+                                                                <li><b> City</b> <span class="text_blur"><?php
                                                                         $cache_time = $this->db->select('city_name')->get_where('cities', array('city_id' => $recdata[0]['re_comp_city']))->row()->city_name;
                                                                         if ($cache_time) {
                                                                             echo $cache_time;
@@ -535,7 +535,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         if ($this->uri->segment(3) != $userid) {
                                                             if ($recdata[0]['re_comp_sector']) {
                                                                 ?>
-                                                                <li><b>Skill/Sector I Hire For</b><span><pre><?php echo $this->common->make_links($recdata[0]['re_comp_sector']); ?></pre></span></li>
+                                                                <li><b>Skill/Sector I Hire For</b><span class="text_blur"><pre><?php echo $this->common->make_links($recdata[0]['re_comp_sector']); ?></pre></span></li>
                                                                 <?php
                                                             } else {
                                                                 echo "";
@@ -543,7 +543,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         } else {
                                                             if ($recdata[0]['re_comp_sector']) {
                                                                 ?>
-                                                                <li><b>Skill/Sector I Hire For</b><span><pre><?php echo $this->common->make_links($recdata[0]['re_comp_sector']); ?></pre></span></li>
+                                                                <li><b>Skill/Sector I Hire For</b><span class="text_blur"><pre><?php echo $this->common->make_links($recdata[0]['re_comp_sector']); ?></pre></span></li>
                                                                 <?php
                                                             } else {
                                                                 ?>
@@ -560,7 +560,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         if ($this->uri->segment(3) != $userid) {
                                                             if ($recdata[0]['re_comp_profile']) {
                                                                 ?>
-                                                                <li><b>Company Profile</b> <span><pre>
+                                                                <li><b>Company Profile</b> <span class="text_blur"><pre>
                                                                             <?php
                                                                 echo $this->common->make_links($recdata[0]['re_comp_profile']);
                                                                 ?></pre></span> </li>
@@ -571,7 +571,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         } else {
                                                             if ($recdata[0]['re_comp_profile']) {
                                                                 ?>
-                                                                <li><b>Company Profile</b> <span><pre>
+                                                                <li><b>Company Profile</b> <span class="text_blur"><pre>
                                                                             <?php
                                                                 echo $this->common->make_links($recdata[0]['re_comp_profile']);
                                                                 ?></pre></span> </li>
@@ -590,7 +590,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         if ($this->uri->segment(3) != $userid) {
                                                             if ($recdata[0]['comp_logo']) {
                                                                 ?>
-                                                                <li><b>Company Logo</b> <span>
+                                                                <li><b>Company Logo</b> <span class="text_blur">
 
                                                                        <?php if (IMAGEPATHFROM == 'upload') { ?>
                                                                         <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['comp_logo']) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" alt="<?php echo $recdata[0]['comp_logo']; ?>">
@@ -614,7 +614,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         } else {
                                                             if ($recdata[0]['comp_logo']) {
                                                                 ?>
-                                                                <li><b>Company Logo</b> <span>
+                                                                <li><b>Company Logo</b> <span class="text_blur">
 
                                                                      <?php if (IMAGEPATHFROM == 'upload') { ?>
                                                                         <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['comp_logo']) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" >
@@ -701,7 +701,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <div class="modal login fade" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                  <!--   <button type="button" class="modal-close" data-dismiss="modal">&times;</button>  -->        
                     <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">
@@ -765,7 +765,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <div class="modal fade login register-model" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                   <!--  <button type="button" class="modal-close" data-dismiss="modal">&times;</button>  -->        
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
@@ -965,6 +965,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 <script type="text/javascript">
     
 
+$(document).ready(function () {
+                setTimeout(function () {
+                    $('#register').modal('show');
+                }, 500);
+            });
+
+
     function login_profile() {
                 $('#register').modal('show');
             }
@@ -980,6 +987,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             function forgot_profile() {
                 $('#forgotPassword').modal('show');
             }
+
 </script>
 
 
@@ -987,8 +995,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
     
     $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
-        $('#register').modal('hide');
-         $('#login').modal('hide');
+            if($('#forgotPassword').modal('hide')){
+         $('#forgotPassword').modal('hide');
+         $('#login').modal('show');
+       }
     }
 });
 
