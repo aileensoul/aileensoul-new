@@ -1342,8 +1342,8 @@ box-shadow: 2px 2px 17px 0.8px rgba(217,217,217,1);}
 .sub-text p{padding-left:15px; position:relative;}
 .sub-text p:before{width:8px; height:8px; background:#1b8ab9; position:absolute; position:relative; content:""; left:-15px; top:15px; border-radius:100%; display:block;}
 
-.modal .forgot_password .form-control.error{border:1px solid red;}
-
+.modal .forgot_password .form-control.error{border-bottom:1px solid red;}
+.modal.login{border: none !important;}
 .profile-detail h2{margin-top:20px;}
 .cover .modal{padding-top:0px;}
 .cover .modal .modal-content{padding:0;}
@@ -1915,7 +1915,9 @@ header.profile-header .logo a{color:#5c5c5c;}
 .modal.login{width: 100%;border: none;}
 .modal.login .modal-content{padding: 0px;}
 .pt-20 {padding-bottom: 20px;}
-
+.text_blur{color: transparent;
+    text-shadow: rgba(0,0,0,0.8) 0 0 8px;
+    user-select: none;}
 
 /***  media query  ***/
 @media screen and (min-height: 540px){
