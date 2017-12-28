@@ -17,8 +17,10 @@
      <?php }?>
    </head>
    <body>
+      <?php   if ($this->session->userdata('aileenuser')) { ?>
       <?php echo $header; ?>
       <?php echo $job_header2_border; ?>
+      <?php } ?>
       <div class="user-midd-section" id="paddingtop_fixed">
          <div class="container" id="paddingtop_fixed">
             <div class="row">

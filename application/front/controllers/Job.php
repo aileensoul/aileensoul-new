@@ -1899,7 +1899,6 @@ class Job extends MY_Controller {
         $availuser = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if (($availuser[0]['total'] > 0 || count($id) == 0) && $slug != '') {
-
             $this->load->view('job/notavalible');
         } else {
             if ($userid) {
