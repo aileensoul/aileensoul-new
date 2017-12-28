@@ -133,7 +133,7 @@ $('document').ready(function(){
    
    
    $(document).ready(function () {
-                setTimeout(function () {
+                // setTimeout(function () {
                     $('#register').modal('show');
-                }, 2000);
+                // }, 2000);
             });
