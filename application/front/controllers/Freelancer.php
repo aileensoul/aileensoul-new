@@ -265,7 +265,7 @@ class Freelancer extends MY_Controller {
 
         if ($check_result) {
             echo 'true';
-            //  die();
+              die();
         } else {
             echo 'false';
             die();
