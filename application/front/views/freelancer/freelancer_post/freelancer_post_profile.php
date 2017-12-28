@@ -273,12 +273,14 @@
                                                     <li>
                                                         <input type="hidden" id="<?php echo 'hideenpostid'; ?>" value= "<?php echo $_GET['page']; ?>">
                                                         <?php
+                                                        if($this->session->userdata('aileenuser')){
                                                         if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
                                                             ?>
                                                             <a title="Message" href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                         <?php } else { ?>
                                                             <a title="Message" href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                         <?php }
+                                                        }
                                                         ?>
 
                                                     </li>

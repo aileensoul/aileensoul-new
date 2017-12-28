@@ -1140,7 +1140,7 @@ class Freelancer extends MY_Controller {
                     $text = '';
                 }
                 $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
-                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
 
                 if ($cityname != '') {
                     $cityname1 = '-vacancy-in-' . strtolower($this->common->clean($cityname));
@@ -2537,7 +2537,7 @@ class Freelancer extends MY_Controller {
                     $text = '';
                 }
                 $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
-                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
 
                 if ($cityname != '') {
                     $cityname1 = '-vacancy-in-' . strtolower($this->common->clean($cityname));
@@ -3117,7 +3117,7 @@ class Freelancer extends MY_Controller {
                         $text = '';
                     }
                     $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
-                    $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                    $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
 
                     if ($cityname != '') {
                         $cityname1 = '-vacancy-in-' . strtolower($this->common->clean($cityname));
