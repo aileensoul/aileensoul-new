@@ -1803,7 +1803,7 @@ img{
 .cust-link ul li a:hover{color: #1b8ab9;}
 .cust-link h4{color:#5c5c5c;}
 .linkbox ul{margin-bottom:20px; padding-left:15px;}
-.linkbox h5{font-size:16px; margin-bottom:5px; margin-top:0;color: #5c5c5c;}
+.linkbox h5{font-size:16px; margin-bottom:5px; margin-top:0;color: #5c5c5c; word-wrap: break-word;}
 .linkbox ul li{padding:3px 20px; list-style-type:none; font-size:16px; position:relative; width:50%; float:left;}
 .linkbox ul li a{color:#91949d; text-transform: capitalize;}
 
