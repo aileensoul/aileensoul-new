@@ -21,9 +21,6 @@ header('Expires: '.$date);
 //header("Cache-Control: no-cache, must-revalidate"); 
 //header('Cache-Control: public, max-age=30');
 ?>
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Cache-control" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <meta charset="utf-8" />
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
@@ -98,7 +95,6 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
         <meta name="keywords" content=" " />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="canonical" href="http://www.aileensoul.com" />
 <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
 <?php
 if(IS_OUTSIDE_CSS_MINIFY == '0'){
@@ -125,10 +121,6 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
 <link rel="stylesheet" href="<?php echo base_url('assets/js_min/scrollbar/jquery.mCustomScrollbar.css?ver='.time()) ?>">
 <?php }
 ?>
-
-
-
-
 <?php
 if(IS_OUTSIDE_JS_MINIFY == '0'){
 ?>

@@ -18,9 +18,6 @@ header("Pragma: no-cache"); // HTTP/1.0
 header('Expires: '.$date);
 //header('Cache-Control: public, max-age=30');
 ?>
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Cache-control" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <meta charset="utf-8" />
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
@@ -57,21 +54,10 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, 
       minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<!-- SEO CHANGES END -->
-<!-- NEED TO ADD FOLLOWING TAG IN HEADER -->
-<link rel="canonical" href="http://www.aileensoul.com" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 <meta name="description" content=" " />
 <meta name="keywords" content=" " />
-<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-<!--<script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-6060111582812113",
-        enable_page_level_ads: true
-    });
-</script>-->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
 <?php
 if(IS_CSS_MINIFY == '0'){
