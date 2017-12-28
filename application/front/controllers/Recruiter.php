@@ -2161,6 +2161,7 @@ class Recruiter extends MY_Controller {
                         } else {
                             $cityname = '';
                         }
+                     
                         $rec_post .= '<div class="post-img">
                                             <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                         if ($cache_time_1) {
@@ -2182,7 +2183,7 @@ class Recruiter extends MY_Controller {
                         $cache_time3 = $this->db->get_where('recruiter', array(
                                     'user_id' => $post['user_id']
                                 ))->row()->rec_lastname;
-                        $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                        $city_name = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
                         $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                         $rec_post .= '<div class="job-top-detail">';
                         $rec_post .= '<h5><a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
@@ -2200,9 +2201,9 @@ class Recruiter extends MY_Controller {
                 <p class="pb5">
                     <span class="location">';
                         $rec_post .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '" alt="location">';
-                        if ($cityname || $countryname) {
+                        if ($city_name || $countryname) {
                             if ($cityname) {
-                                $rec_post .= $cityname . ', ';
+                                $rec_post .= $city_name . ', ';
                             }
                             $rec_post .= $countryname;
                         }
@@ -4483,8 +4484,13 @@ if ($cityname != '') {
                         } else {
                             $cityname = '';
                         }
+                        if($this->data['postdata'][0]['post_id'] != ''){
       $url = $text . $cityname . '-' . $this->data['postdata'][0]['user_id'] . '-' . $this->data['postdata'][0]['post_id']; 
-        $segment3 = array_splice($segment3, 0, -2);
+        
+                        }else{
+                          $url = '';  
+                        }
+                            $segment3 = array_splice($segment3, 0, -2);
         $segment3 = implode(' ', $segment3);
         $segment3 = ucfirst($segment3);
 
