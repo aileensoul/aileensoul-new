@@ -1711,7 +1711,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             <div class="right-main-inner">
                                 <div class="">
                                     <div class="title">
-                                        <h1 class="ttc">Welcome To Aileensoul</h1>
+                                        <h1 class="ttc tlh2">Welcome To Aileensoul</h1>
                                     </div>
 
                                     <form role="form" name="login_form" id="login_form" method="post">
@@ -1772,8 +1772,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     <!--<button type="button" class="modal-close" data-dismiss="modal">&times;</button>-->         
                     <div class="modal-body">
                         <div class="clearfix">
-                            <div class="col-md-12 col-sm-12">
-                                <h4>Sign up First and Register in Job Profile</h4>
+                            <div class="">
+                                <div class="title"><h1 class="tlh1">Sign up First and Register in Job Profile</h1></div>
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
@@ -1849,8 +1849,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         </select></span>
                                     </div>
 
-                                    <p class="form-text">
-                                        By Clicking on create an account button you agree our<br class="mob-none">
+                                    <p class="form-text" style="margin-bottom: 10px;">
+                                        By Clicking on create an account button you agree our
                                         <a href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                     </p>
                                     <p>
@@ -1884,7 +1884,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 <div class="">
                                     <div id="forgotbuton"></div> 
                                     <div class="title">
-                                        <h1 class="ttc">Forgot Password</h1>
+                                        <h1 class="ttc tlh2">Forgot Password</h1>
                                     </div>
                                     <?php
                                     $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');

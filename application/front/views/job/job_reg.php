@@ -33,7 +33,7 @@
 <!-- start header -->
 <?php echo $header; ?>
 <!-- END HEADER -->
-<body class="cus-no-login botton_footer cus-error">
+<body class="cus-login botton_footer cus-error">
    <section>
       <div class="user-midd-section " id="paddingtop_fixed">
          <div class="container">
@@ -192,7 +192,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class=" ">
-                              <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Job Profile</h1></div>
+                              <div class="title"><h1 class="tlh1">Sign up First and Register in Job Profile</h1></div>
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
@@ -268,16 +268,16 @@
                                         </select></span>
                                     </div>
 
-                                    <p class="form-text">
-                                        By Clicking on create an account button you agree our<br class="mob-none">
-                                        <a href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                    <p class="form-text" style="margin-bottom: 10px;">
+                                        By Clicking on create an account button you agree our
+                                        <a tabindex="110" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex="111" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                     </p>
                                     <p>
-                                        <button tabindex="109" class="btn1">Create an account</button>
+                                        <button tabindex="112" class="btn1">Create an account</button>
                                     </p>
                                     <div class="sign_in pt10">
                                         <p>
-                                            Already have an account ? <a tabindex="110" onclick="login_data();" href="javascript:void(0);"> Log In </a>
+                                            Already have an account ? <a tabindex="113" onclick="login_data();" href="javascript:void(0);"> Log In </a>
                                         </p>
                                     </div>
                                 </form>
@@ -303,7 +303,7 @@
                             <div class="right-main-inner">
                                 <div class="">
                                     <div class="title">
-                                        <h1 class="ttc">Welcome To Aileensoul</h1>
+                                        <h1 class="ttc tlh2">Welcome To Aileensoul</h1>
                                     </div>
 
                                     <form role="form" name="login_form" id="login_form" method="post">
@@ -356,38 +356,50 @@
         <!-- Login -->
 
  <!-- model for forgot password start -->
+ <div class="modal fade login" id="forgotPassword" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content login-frm">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body cus-forgot">
+                        <div class="right-main">
+                            <div class="right-main-inner">
+                                <div class="">
+                                    <div id="forgotbuton"></div> 
+                                    <div class="title">
+                                        <h1 class="ttc tlh2">Forgot Password</h1>
+                                    </div>
+                                    <?php
+                                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                                    echo form_open('profile/forgot_password', $form_attribute);
+                                    ?>
+                                    <div class="form-group">
+                                        <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                                        <div id="error2" style="display:block;">
+                                            <?php
+                                            if ($this->session->flashdata('erroremail')) {
+                                                echo $this->session->flashdata('erroremail');
+                                            }
+                                            ?>
+                                        </div>
+                                        <div id="errorlogin"></div> 
+                                    </div>
 
-         <div id="forgotPassword" class="modal">
-                <div class="modal-content md-2">
-                    <?php
-                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                    echo form_open('profile/forgot_password', $form_attribute);
-                    ?>
-                    <div class="modal-header" style=" text-align: center;">
-                        <button type="button" class="modal-close" data-dismiss="modal">&times;</button>  
-                        <label style="color: #a0b3b0;">Forgot Password</label>
-                    </div>
-                    <div class="modal-body cus-forgot" style="text-align: center;padding: 15px!important;">
-                        <label  style="margin-bottom: 15px; color: #a0b3b0;"> Enter your e-mail address below to get your password.</label>
-                        <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
-                        <div id="error2" style="display:block;">
-                            <?php
-                               if ($this->session->flashdata('erroremail')) {
-                                    echo $this->session->flashdata('erroremail');
-                                }
-                                ?>
-                        </div>
-                        <div id="errorlogin"></div> 
+                                    <p class="pt-20 text-center">
+                                        <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
+                                    </p>
 
-                    </div>
-                    <div class="modal-footer ">
-                        <div class="submit_btn">              
-                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" onclick="submit_forgot();"/> 
+                                    </form>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <?php echo form_close(); ?>
                 </div>
             </div>
+        </div>
+
+
+
         <!-- model for forgot password end -->
 
 
