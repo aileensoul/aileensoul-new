@@ -552,9 +552,7 @@
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    margin-left: 8px;
-    margin-top: 9px;
-    display: inline-block;
+    float:left;
 }
 .notification-pic img {
     height: 50px;
@@ -568,7 +566,6 @@
 .notification-data-inside h6 {
     font-size: 14px;
     line-height: 14px;
-    padding: 5px 0px 0;
     color: black;
     display: block;
     display: -webkit-box;

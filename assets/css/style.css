@@ -1159,7 +1159,7 @@ label.cameraButton input[accept*="camera"] {
 .job-saved-box .notification-box ul li {
     list-style: none;
     background-color: #fff;
-    padding: 10px;
+    padding: 15px;
     margin: 10px;
     position: relative;
     border-radius: 3px;
@@ -1177,14 +1177,7 @@ label.cameraButton input[accept*="camera"] {
     cursor: pointer;
 }
 .notification-pic img{border:1px solid #d9d9d9 !important;}
-#noti_pc{ 
-	margin-bottom: 5px;
-    border-radius: 50%;
-    margin-left: 10px;
-    display: inline-block;
-    margin-top: 5px;   
-}
-#notification_inside{ margin-left: 0px; margin-top: 0px;   padding: 5px 10px 9px 10px; 
+#notification_inside{ margin-left: 0px; margin-top: 0px;   padding: 5px 10px 0px 10px; 
 	margin-left: 11px; display: inline-block;
 }
 #noti_pc img{border-radius: none;}

@@ -18,20 +18,7 @@
     <!-- END HEADER MENU -->
 
 <!-- END HEADER -->
-<style type="text/css">
-    #noti_pc{ margin-bottom: 5px;
-    border-radius: 50%;
-    margin-left: 10px;
-    display: inline-block;
-    
-    margin-top: 5px;   }
-    .job-saved-box .notification-box ul li{display: flex!important;}
-    #notification_inside{ margin-left: 0px; margin-top: 0px;   padding: 5px 10px 9px 10px;
-    margin-left: 11px;
-    display: inline-block;}
-    #noti_pc img{border-radius: none;}
-      #notification_inside h6{font-size: 17px;}
-</style>
+
 <div class="user-midd-section" id="paddingtop_fixed">
     <div class="container">
         <div class="row">
