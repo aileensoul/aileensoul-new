@@ -2136,6 +2136,11 @@ word-break: break-word;}
 /*All profile right end*/
 .hout_noti{color:#4c4c4c;}
 .noti_cq .content{height: 344px;}
+.text_blur{color: transparent;
+    text-shadow: rgba(0,0,0,0.8) 0 0 8px;
+    user-select: none;}
+
+
 /***  media query  ***/
 
 @media screen and (max-height: 540px){
