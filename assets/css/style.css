@@ -2015,7 +2015,7 @@ body.no-login{padding-bottom:0;}
 .no-login .login p{font-size:14px; margin-bottom:9px;}
 .no-login .btn1{padding: 5px 20px; font-size:16px !important;}
 .no-login .inner-form1{width:600px;}
-.no-login.modal-open{overflow-y:auto;}
+
 
 li.active2 .notification-data-inside h6 i{font-weight: normal;font-style: normal; }
 #notification_main_in .notification_data_in_h2 li.active{background-color: #e9f6fc;}
@@ -2137,9 +2137,9 @@ word-break: break-word;}
 .hout_noti{color:#4c4c4c;}
 .noti_cq .content{height: 344px;}
 .text_blur{color: transparent;
-    text-shadow: rgba(0,0,0,0.8) 0 0 8px;
+    text-shadow: rgba(0,0,0,0.8) 0 0 5px;
     user-select: none;pointer-events: none;}
-
+body.modal-open{position: fixed;}
 
 /***  media query  ***/
 
