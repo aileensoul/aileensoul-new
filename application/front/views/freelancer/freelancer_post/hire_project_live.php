@@ -408,7 +408,7 @@
                                                                 ?></p>
                                                         </div>
                                                         <div class="sort-emp-msg">
-                                                            <a href="#" class="btn1">Message</a>-->
+                                                            <a href="javascript:void(0);" class="btn1">Message</a>
                                                         </div>
                                                     </div>
                                                 <?php } ?>
