@@ -347,7 +347,7 @@
                                                         <li> <b><?php echo $this->lang->line("name"); ?></b> <span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>> <?php echo $freelancerhiredata[0]['fullname'] . ' ' . $freelancerhiredata[0]['username']; ?> </span>
                                                         </li>
 
-                                                        <li> <b><?php echo $this->lang->line("email"); ?> </b><span> <?php echo $freelancerhiredata[0]['email']; ?></span>
+                                                        <li> <b><?php echo $this->lang->line("email"); ?> </b><span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>> <?php echo $freelancerhiredata[0]['email']; ?></span>
                                                         </li>
 
 
@@ -356,7 +356,7 @@
                                                         if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) {
                                                             if ($freelancerhiredata['skyupid']) {
                                                                 ?>
-                                                                <li> <b><?php echo $this->lang->line("skype_id"); ?></b> <span> <?php echo $freelancerhiredata[0]['skyupid']; ?> </span>
+                                                                <li> <b><?php echo $this->lang->line("skype_id"); ?></b> <span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>> <?php echo $freelancerhiredata[0]['skyupid']; ?> </span>
                                                                 </li> 
                                                                 <?php
                                                             } else {
@@ -365,7 +365,7 @@
                                                         } else {
                                                             if ($freelancerhiredata[0]['skyupid']) {
                                                                 ?>
-                                                                <li> <b><?php echo $this->lang->line("skype_id"); ?></b> <span> <?php echo $freelancerhiredata[0]['skyupid']; ?> </span>
+                                                                <li> <b><?php echo $this->lang->line("skype_id"); ?></b> <span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>> <?php echo $freelancerhiredata[0]['skyupid']; ?> </span>
                                                                 </li> 
                                                                 <?php
                                                             } else {
@@ -382,7 +382,7 @@
                                                         if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) {
                                                             if ($freelancerhiredata[0]['phone']) {
                                                                 ?>
-                                                                <li><b><?php echo $this->lang->line("phone_number"); ?></b> <span><?php echo $freelancerhiredata[0]['phone']; ?></span> </li>
+                                                                <li><b><?php echo $this->lang->line("phone_number"); ?></b> <span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>><?php echo $freelancerhiredata[0]['phone']; ?></span> </li>
                                                                 <?php
                                                             } else {
                                                                 echo "";
@@ -390,7 +390,7 @@
                                                         } else {
                                                             if ($freelancerhiredata[0]['phone']) {
                                                                 ?>
-                                                                <li><b><?php echo $this->lang->line("phone_number"); ?></b> <span><?php echo $freelancerhiredata[0]['phone']; ?></span> </li>
+                                                                <li><b><?php echo $this->lang->line("phone_number"); ?></b> <span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>><?php echo $freelancerhiredata[0]['phone']; ?></span> </li>
                                                                 <?php
                                                             } else {
                                                                 ?>

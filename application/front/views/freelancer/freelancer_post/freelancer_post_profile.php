@@ -404,15 +404,15 @@
                                             </div>
                                             <div class="profile-job-profile-menu">
                                                 <ul class="clearfix">
-                                                    <li> <b><?php echo $this->lang->line("name"); ?></b> <span> <?php echo $freelancerpostdata[0]['freelancer_post_fullname'] . '  ' . $freelancerpostdata[0]['freelancer_post_username']; ?> </span>
+                                                    <li> <b><?php echo $this->lang->line("name"); ?></b> <span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>> <?php echo $freelancerpostdata[0]['freelancer_post_fullname'] . '  ' . $freelancerpostdata[0]['freelancer_post_username']; ?> </span>
                                                     </li>
-                                                    <li> <b><?php echo $this->lang->line("email"); ?></b><span> <?php echo $freelancerpostdata[0]['freelancer_post_email']; ?> </span>
+                                                    <li> <b><?php echo $this->lang->line("email"); ?></b><span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>> <?php echo $freelancerpostdata[0]['freelancer_post_email']; ?> </span>
                                                     </li>
                                                     <?php
                                                     if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
                                                         if ($freelancerpostdata[0]['freelancer_post_phoneno']) {
                                                             ?>
-                                                            <li><b><?php echo $this->lang->line("phone_no"); ?></b> <span><?php echo $freelancerpostdata[0]['freelancer_post_phoneno']; ?></span> </li>
+                                                            <li><b><?php echo $this->lang->line("phone_no"); ?></b> <span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>><?php echo $freelancerpostdata[0]['freelancer_post_phoneno']; ?></span> </li>
                                                             <?php
                                                         } else {
                                                             echo "";
@@ -420,7 +420,7 @@
                                                     } else {
                                                         if ($freelancerpostdata[0]['freelancer_post_phoneno']) {
                                                             ?>
-                                                            <li><b><?php echo $this->lang->line("phone_no"); ?></b> <span><?php echo $freelancerpostdata[0]['freelancer_post_phoneno']; ?></span> </li> 
+                                                            <li><b><?php echo $this->lang->line("phone_no"); ?></b> <span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>><?php echo $freelancerpostdata[0]['freelancer_post_phoneno']; ?></span> </li> 
                                                             <?php
                                                         } else {
                                                             ?>
@@ -435,7 +435,7 @@
                                                     if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
                                                         if ($freelancerpostdata[0]['freelancer_post_skypeid']) {
                                                             ?>
-                                                            <li> <b><?php echo $this->lang->line("skype_id"); ?></b> <span> <?php echo $freelancerpostdata[0]['freelancer_post_skypeid']; ?> </span>
+                                                            <li> <b><?php echo $this->lang->line("skype_id"); ?></b> <span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>> <?php echo $freelancerpostdata[0]['freelancer_post_skypeid']; ?> </span>
                                                             </li> 
                                                             <?php
                                                         } else {
@@ -444,7 +444,7 @@
                                                     } else {
                                                         if ($freelancerpostdata[0]['freelancer_post_skypeid']) {
                                                             ?>
-                                                            <li> <b><?php echo $this->lang->line("skype_id"); ?></b> <span> <?php echo $freelancerpostdata[0]['freelancer_post_skypeid']; ?> </span>
+                                                            <li> <b><?php echo $this->lang->line("skype_id"); ?></b> <span <?php if(!$this->session->userdata('aileenuser')){?> class="text_blur" <?php }?>> <?php echo $freelancerpostdata[0]['freelancer_post_skypeid']; ?> </span>
                                                             </li> 
                                                             <?php
                                                         } else {
