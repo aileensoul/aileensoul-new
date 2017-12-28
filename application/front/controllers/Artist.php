@@ -16015,8 +16015,13 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
         $city_get = $this->common->clean($city_url);
 
-        $url = $arturl[0]['slug'] . '-' . $category_url . '-' . $city_get . '-' . $arturl[0]['art_id'];
-
+        if(!$city_get){
+         $url = $arturl[0]['slug'].'-'.$category_url . '-'. $arturl[0]['art_id'];
+        }else if(!$category_url){
+         $url = $arturl[0]['slug'].'-'.$city_get . '-' . $arturl[0]['art_id'];           
+        }else if($city_get && $category_url){
+         $url = $arturl[0]['slug'].'-'.$category_url . '-' . $city_get . '-' . $arturl[0]['art_id'];
+        }
         return $url;
     }
 

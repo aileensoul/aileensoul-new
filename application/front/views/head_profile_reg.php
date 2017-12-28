@@ -21,9 +21,6 @@ header('Expires: '.$date);
 
 //header('Cache-Control: public, max-age=30');
 ?>
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Cache-control" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <meta charset="utf-8" />
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
@@ -62,7 +59,6 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
       minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <!-- SEO CHANGES END -->
 <!-- NEED TO ADD FOLLOWING TAG IN HEADER -->
-<link rel="canonical" href="http://www.aileensoul.com" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 <meta name="description" content=" " />
 <meta name="keywords" content=" " />
