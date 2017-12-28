@@ -602,7 +602,7 @@ class Artist extends MY_Controller {
         }
     }
 
-    public function art_manage_post($id = "") {
+    public function art_manage_post($id = "") { 
 
         $userid = $this->session->userdata('aileenuser');
         //if user deactive profile then redirect to artist/index untill active profile start
@@ -622,7 +622,7 @@ class Artist extends MY_Controller {
         $contition_array = array('art_id' => $regid, 'status' => '1', 'art_step' => '4');
         $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,user_id,art_user_image,art_name,art_lastname,designation,slug,art_id,art_skill,art_yourart,art_desc_art,art_email,art_city,art_country,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $this->data['artid'] = $this->data['artisticdata'][0]['user_id'];
-        $this->data['get_url'] = $this->get_url($this->data['artisticdata'][0]['user_id']);
+        $this->data['get_url'] = $get_url = $this->get_url($this->data['artisticdata'][0]['user_id']);
 
                 $artistic_name = $this->get_artistic_name($this->data['artid']);
                 $this->data['title'] = $artistic_name.' | Dashboard'.'- Artistic Profile' . TITLEPOSTFIX;
@@ -633,10 +633,13 @@ class Artist extends MY_Controller {
                 $this->load->view('artist/notavalible');
             } else if ($this->data['artisticdata'][0]['art_step'] != '4') {  
                 redirect('artist');
-            } else {
+            } else { 
                 $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
-                
-                $this->load->view('artist/art_manage_post', $this->data);
+                if($get_url == $this->uri->segment(3)){
+                   $this->load->view('artist/art_manage_post', $this->data);  
+                }else{
+                redirect('artist/dashboard/'.$get_url, refresh);
+               }
             }
         } else { 
 
@@ -647,7 +650,11 @@ class Artist extends MY_Controller {
 
             include ('artistic_include.php');
             $this->data['artistic_common_profile'] = $this->load->view('artist/artistic_common_profile', $this->data, true);
+            if($get_url == $this->uri->segment(3)){
             $this->load->view('artist/art_dashboard_live', $this->data);
+             }else{
+                redirect('artist/dashboard/'.$get_url, refresh);
+             }
            }
         }
     }
