@@ -23,7 +23,7 @@
 
     </head>
     <!-- END HEAD -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
     <body class="page-container-bg-solid page-boxed no-login freeh3">
 
         <header>
@@ -166,19 +166,21 @@
                             return $text;
                         }
                         ?>      
-                        <div class="inner-right-part">
-                            <div class="page-title">
-                                <h3>
-                                    <?php
-                                    echo $postdata[0]['post_name'];
-                                    ?>
-                                </h3>
-                            </div>
 
-                            <?php
-                            if (count($postdata) > 0) {
-                                foreach ($postdata as $post) {
-                                    ?>
+
+
+                        <?php
+                        if (count($postdata) > 0) {
+                            foreach ($postdata as $post) {
+                                ?>
+                                <div class="inner-right-part">
+                                    <div class="page-title">
+                                        <h3>
+                                            <?php
+                                            echo $postdata[0]['post_name'];
+                                            ?>
+                                        </h3>
+                                    </div>
                                     <div class="all-job-box job-detail">
                                         <div class="all-job-top">
                                             <div class="job-top-detail">
@@ -408,30 +410,33 @@
                                                                 ?></p>
                                                         </div>
                                                         <div class="sort-emp-msg">
-                                                            <a href="javascript:void(0);" class="btn1">Message</a>
+                                                            <a href="javascript:void(0);" class="">Message</a>
                                                         </div>
                                                     </div>
                                                 <?php } ?>
                                             </div>
                                         <?php } ?>
                                     </div>
-                                    <!-- end sortlisted employe -->
+                                </div>
+                                <!-- end sortlisted employe -->
 
-                                    <?php
-                                }
-                            } else {
-                                ?>
+                                <?php
+                            }
+                        } else {
+                            ?>
+                            <div class="inner-right-part cust-border">
                                 <div class="art-img-nn">
                                     <div class="art_no_post_img">
-                                        <img alt="No Projects" src="<?php echo base_url() . 'img/job-no.png' ?>">
+                                        <img alt="No Projects" src="<?php echo base_url() . 'assets/img/job-no.png' ?>">
 
                                     </div>
                                     <div class="art_no_post_text">
                                         No  Projects Available.
                                     </div>
                                 </div>
-                            <?php } ?>
-                        </div>
+                            </div>
+                        <?php } ?>
+
 
 
 
@@ -458,7 +463,8 @@
                                                 $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
                                                 ?>
                                                 <p>
-                                                    <?php if ($returnpage == 'freelancer_post') {
+                                                    <?php
+                                                    if ($returnpage == 'freelancer_post') {
                                                         if (is_numeric($post['user_id'])) {
                                                             $slug = $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->freelancer_hire_slug;
                                                         } else {
@@ -466,7 +472,8 @@
                                                         }
                                                         ?>
                                                         <a href="<?php echo base_url('freelance-hire/employer-details/' . $slug); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
-                                                    <?php } else {
+                                                        <?php
+                                                    } else {
                                                         if (is_numeric($post['user_id'])) {
                                                             $slug = $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->freelancer_hire_slug;
                                                         } else {
@@ -642,7 +649,7 @@
         <!-- Model Popup Close -->
 
         <!--footer>        
-        <?php //echo $footer;    ?>
+        <?php //echo $footer;     ?>
         </footer-->
 
         <!-- Login  -->

@@ -4397,6 +4397,7 @@ class Freelancer extends MY_Controller {
 //FREELANCER HIRE POST LIVE LINK START
     public function live_post($userid = '', $postid = '', $posttitle = '') {
         $segment3 = explode('-', $this->uri->segment(3));
+        
         $slugdata = array_reverse($segment3);
         $postid = $slugdata[0];
         $this->data['recliveid'] = $userid = $slugdata[1];
@@ -4414,7 +4415,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('post_id' => $postid, 'freelancer_post.is_delete' => '0', 'freelancer_hire_reg.user_id' => $userid, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.free_hire_step' => '3');
         $data = 'freelancer_post.post_id,freelancer_post.post_name,freelancer_post.post_field_req,freelancer_post.post_est_time,freelancer_post.post_skill,freelancer_post.post_other_skill,freelancer_post.post_rate,freelancer_post.post_last_date,freelancer_post.post_description,freelancer_post.user_id,freelancer_post.created_date,freelancer_post.post_currency,freelancer_post.post_rating_type,freelancer_post.post_exp_month,freelancer_post.post_exp_year,freelancer_hire_reg.username,freelancer_hire_reg.fullname,freelancer_hire_reg.designation,freelancer_hire_reg.freelancer_hire_user_image,freelancer_hire_reg.country,freelancer_hire_reg.city';
         $this->data['postdata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data, $sortby = 'freelancer_post.post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-
+     
 
         $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $userid))->row()->city;
         $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
@@ -4472,7 +4473,12 @@ class Freelancer extends MY_Controller {
             if ($postname == $original) {
                 $this->load->view('freelancer/freelancer_post/hire_project_live', $this->data);
             } else {
+                if($this->data['postdata']){
                 redirect('freelance-hire/project/' .$url, refresh);
+                }else{
+                    $this->data['title'] = 'Content Not Avaible - Aileensoul';
+                    $this->load->view('freelancer/freelancer_post/hire_project_live', $this->data);
+                }
             }
         }
     }
