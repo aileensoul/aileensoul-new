@@ -270,14 +270,14 @@
 
                                     <p class="form-text" style="margin-bottom: 10px;">
                                         By Clicking on create an account button you agree our
-                                        <a tabindex="110" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex="111" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                        <a tabindex="109" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex="110" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                     </p>
                                     <p>
-                                        <button tabindex="112" class="btn1">Create an account</button>
+                                        <button tabindex="111" class="btn1">Create an account</button>
                                     </p>
                                     <div class="sign_in pt10">
                                         <p>
-                                            Already have an account ? <a tabindex="113" onclick="login_data();" href="javascript:void(0);"> Log In </a>
+                                            Already have an account ? <a tabindex="112" onclick="login_data();" href="javascript:void(0);"> Log In </a>
                                         </p>
                                     </div>
                                 </form>

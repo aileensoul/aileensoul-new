@@ -396,32 +396,32 @@
                 <div class="modal-body">
                     <div class="clearfix">
                         <div class="">
-                            <div class="title"><h4>Sign up First and Register in Job Profile</h4></div>
+                            <div class="title"><h1 class="tlh1">Sign up First and Register in Job Profile</h1></div>
                             <div class="main-form">
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                                <input tabindex="101" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                                <input tabindex="102" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
+                                        <input tabindex="103" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                     </div>
                                     <div class="form-group">
-                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
+                                        <input tabindex="104" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
                                         <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
                                     </div>
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth :</label>
-                                        <span> <select tabindex="9" class="day" name="selday" id="selday">
+                                        <span> <select tabindex="105" class="day" name="selday" id="selday">
                                                 <option value="" disabled selected value>Day</option>
                                                 <?php
                                                 for ($i = 1; $i <= 31; $i++) {
@@ -432,7 +432,7 @@
                                                 ?>
                                             </select></span>
                                         <span>
-                                            <select tabindex="10" class="month" name="selmonth" id="selmonth">
+                                            <select tabindex="106" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
                                                 
                                                 <option value="1">Jan</option>
@@ -450,7 +450,7 @@
                                                
                                             </select></span>
                                         <span>
-                                            <select tabindex="11" class="year" name="selyear" id="selyear">
+                                            <select tabindex="107" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
                                                 <?php
                                                 for ($i = date('Y'); $i >= 1900; $i--) {
@@ -466,7 +466,7 @@
                                     <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                     <div class="form-group gender-custom">
-                                        <span><select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                        <span><select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                                 <option value="" disabled selected value>Gender</option>
                                                 <option value="M">Male</option>
                                                 <option value="F">Female</option>
@@ -475,15 +475,15 @@
 
                                     <p class="form-text">
                                         By Clicking on create an account button you agree our
-                                        <a href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                        <a tabindex="109" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex="110" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                     </p>
                                     <p>
-                                        <button tabindex="13" class="btn1">Create an account</button>
+                                        <button tabindex="111" class="btn1">Create an account</button>
                                                                                    
                                     </p>
                                     <div class="sign_in pt10">
                                         <p>
-                                            Already have an account ? <a tabindex="12" id ="postid" onClick="login_profile_apply()" href="javascript:void(0);"> Log In </a>
+                                            Already have an account ? <a tabindex="112" id ="postid" onClick="login_profile_apply()" href="javascript:void(0);"> Log In </a>
                                         </p>
                                     </div>
                                 </form>
@@ -505,33 +505,35 @@
                 <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                 <div class="modal-body">
                     <div class="clearfix">
-                        <div class="col-md-12 col-sm-12">
-                          <h4>Sign up First and Register in Job Profile</h4>
+                        <div class="">
+                         <div class="title">
+                                        <h1 class="ttc tlh2">Welcome To Aileensoul</h1>
+                                    </div>
                             <div class="main-form">
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                                <input tabindex="101" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                                <input tabindex="102" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
+                                        <input tabindex="103" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                     </div>
                                     <div class="form-group">
-                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
+                                        <input tabindex="104" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
                                         <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
                                     </div>
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth :</label>
-                                        <select tabindex="9" class="day" name="selday" id="selday">
+                                        <select tabindex="105" class="day" name="selday" id="selday">
                                             <option value="" disabled selected value>Day</option>
                                             <?php
                                             for ($i = 1; $i <= 31; $i++) {
@@ -541,7 +543,7 @@
                                             }
                                             ?>
                                         </select>
-                                        <select tabindex="10" class="month" name="selmonth" id="selmonth">
+                                        <select tabindex="106" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
                                            
                                             <option value="1">Jan</option>
@@ -558,7 +560,7 @@
                                             <option value="12">Dec</option>
                                            
                                         </select>
-                                        <select tabindex="11" class="year" name="selyear" id="selyear">
+                                        <select tabindex="107" class="year" name="selyear" id="selyear">
                                             <option value="" disabled selected value>Year</option>
                                             <?php
                                             for ($i = date('Y'); $i >= 1900; $i--) {
@@ -574,7 +576,7 @@
                                     <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                     <div class="form-group gender-custom">
-                                        <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                        <select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                             <option value="" disabled selected value>Gender</option>
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
@@ -583,12 +585,17 @@
 
                                     <p class="form-text">
                                         By Clicking on create an account button you agree our<br class="mob-none">
-                                        <a href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                        <a tabindex="109" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex="110" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                     </p>
                                     <p>
-                                        <button tabindex="13" class="btn1">Create an account</button>
+                                        <button tabindex="111" class="btn1">Create an account</button>
                                                                                    
                                     </p>
+                                    <div class="sign_in pt10">
+                                            <p>
+                                                Already have an account ? <a tabindex="112" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
+                                            </p>
+                                        </div>
                                 </form>
                             </div>
 
