@@ -252,12 +252,14 @@
                                         <div class="flw_msg_btn fr">
                                             <ul> <li>
                                                     <?php
+                                                    if($this->session->userdata('aileenuser')){
                                                     if ($freelancerhiredata[0]['user_id'] != $this->session->userdata('aileenuser')) {
                                                         ?>
                                                         <a title="Message" href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                     <?php } else { ?>
                                                         <a title="Message" href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                     <?php }
+                                                    }
                                                     ?>
                                                 </li>
                                             </ul>
