@@ -700,14 +700,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
           <!-- Login  -->
         <div class="modal login fade" id="login" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content login-frm">
-                  <!--   <button type="button" class="modal-close" data-dismiss="modal">&times;</button>  -->        
+                <div class="modal-content login-frm">        
                     <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">
                                 <div class="">
                                     <div class="title">
-                                        <h1 class="ttc">Welcome To Aileensoul</h1>
+                                        <h1 class="ttc tlh2">Welcome To Aileensoul</h1>
                                     </div>
 
                                     <form role="form" name="login_form" id="login_form" method="post">
@@ -764,35 +763,34 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
         <div class="modal fade login register-model" id="register" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content inner-form1">
-                   <!--  <button type="button" class="modal-close" data-dismiss="modal">&times;</button>  -->        
+                <div class="modal-content inner-form1">      
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                             <div class="title"><h1 style="font-size: 24px;text-transform: none;">Sign up First and Register in Recruiter Profile</h1></div>
+                              <div class="title"><h1 class="tlh1">Sign up First and Register in Recruiter Profile</h1></div>
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                                <input tabindex="101" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                                <input tabindex="102" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
+                                        <input tabindex="103" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                     </div>
                                     <div class="form-group">
-                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
+                                        <input tabindex="104" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
                                     </div>
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth :</label>
-                                       <span> <select tabindex="9" class="day" name="selday" id="selday">
+                                       <span> <select tabindex="105" class="day" name="selday" id="selday">
                                             <option value="" disabled selected value>Day</option>
                                             <?php
                                             for ($i = 1; $i <= 31; $i++) {
@@ -803,7 +801,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 ?>
                                         </select></span>
                                         <span>
-                                        <select tabindex="10" class="month" name="selmonth" id="selmonth">
+                                        <select tabindex="106" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
                                            
 
@@ -822,7 +820,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             
                                         </select></span>
                                         <span>
-                                        <select tabindex="11" class="year" name="selyear" id="selyear">
+                                        <select tabindex="107" class="year" name="selyear" id="selyear">
                                             <option value="" disabled selected value>Year</option>
                                             <?php
                                             for ($i = date('Y'); $i >= 1900; $i--) {
@@ -839,23 +837,23 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                     <div class="form-group gender-custom">
                                         <span>
-                                        <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                        <select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                             <option value="" disabled selected value>Gender</option>
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
                                         </select></span>
                                     </div>
 
-                                    <p class="form-text">
-                                        By Clicking on create an account button you agree our<br class="mob-none">
-                                        <a href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                    <p class="form-text" style="margin-bottom: 10px;">
+                                        By Clicking on create an account button you agree our
+                                        <a tabindex="109" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex="110" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                     </p>
                                     <p>
-                                        <button tabindex="13" class="btn1">Create an account</button>
+                                        <button tabindex="111" class="btn1">Create an account</button>
                                     </p>
                                     <div class="sign_in pt10">
                                         <p>
-                                            Already have an account ? <a tabindex="12" onclick="login_data();" href="javascript:void(0);"> Log In </a>
+                                            Already have an account ? <a tabindex="112" onclick="login_data();" href="javascript:void(0);"> Log In </a>
                                         </p>
                                     </div>
                                 </form>
@@ -881,7 +879,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 <div class="">
                                     <div id="forgotbuton"></div> 
                                     <div class="title">
-                                        <h1 class="ttc">Forgot Password</h1>
+                                        <h1 class="ttc tlh2">Forgot Password</h1>
                                     </div>
                                     <?php
                                     $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
