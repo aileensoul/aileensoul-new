@@ -65,14 +65,6 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
         }
         ?>
             <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
-           
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-6060111582812113",
-                enable_page_level_ads: true
-            });
-        </script>
     </head>
     <body class="registeration outer-page">
         <div class="main-inner">
