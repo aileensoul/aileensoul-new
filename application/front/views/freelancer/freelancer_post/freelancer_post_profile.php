@@ -1281,11 +1281,12 @@
                                         <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                         <div class="form-group gender-custom">
-                                            <select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                            <span><select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                                 <option value="" disabled selected value>Gender</option>
                                                 <option value="M">Male</option>
                                                 <option value="F">Female</option>
                                             </select>
+                                            </span>
                                         </div>
 
                                         <p class="form-text" style="margin-bottom: 10px;">

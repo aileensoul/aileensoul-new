@@ -336,15 +336,10 @@
                                     <p class="pt-20 text-center">
                                         <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin-top:15px;" /> 
                                     </p>
-
-
                                     </form>
-
-
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -435,7 +430,7 @@
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
-                                            <select tabindex="105" class="day" name="selday" id="selday">
+                                            <span><select tabindex="105" class="day" name="selday" id="selday">
                                                 <option value="" disabled selected value>Day</option>
                                                 <?php
                                                 for ($i = 1; $i <= 31; $i++) {
@@ -444,7 +439,8 @@
                                                     <?php
                                                 }
                                                 ?>
-                                            </select>
+                                            </select></span>
+                                            <span>
                                             <select tabindex="106" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
                                                 //<?php
@@ -467,7 +463,8 @@
 //                  }
 //                  
                                                 ?>
-                                            </select>
+                                            </select></span>
+                                            <span>
                                             <select tabindex="107" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
                                                 <?php
@@ -479,16 +476,17 @@
                                                 ?>
 
                                             </select>
-
+                                        </span>
                                         </div>
                                         <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                         <div class="form-group gender-custom">
-                                            <select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                            <span><select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                                 <option value="" disabled selected value>Gender</option>
                                                 <option value="M">Male</option>
                                                 <option value="F">Female</option>
                                             </select>
+                                            </span>
                                         </div>
 
                                         <p class="form-text" style="margin-bottom: 10px;">
@@ -548,6 +546,7 @@
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
+                                            <span>
                                             <select tabindex="105" class="day" name="selday" id="selday">
                                                 <option value="" disabled selected value>Day</option>
                                                 <?php
@@ -557,7 +556,8 @@
                                                     <?php
                                                 }
                                                 ?>
-                                            </select>
+                                            </select></span>
+                                            <span>
                                             <select tabindex="106" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
                                                 //<?php
@@ -580,7 +580,8 @@
 //                  }
 //                  
                                                 ?>
-                                            </select>
+                                            </select></span>
+                                            <span>
                                             <select tabindex="107" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
                                                 <?php
@@ -592,16 +593,16 @@
                                                 ?>
 
                                             </select>
-
+                                            </span>
                                         </div>
                                         <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                         <div class="form-group gender-custom">
-                                            <select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                            <span><select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                                 <option value="" disabled selected value>Gender</option>
                                                 <option value="M">Male</option>
                                                 <option value="F">Female</option>
-                                            </select>
+                                            </select></span>
                                         </div>
 
                                         <p class="form-text" style="margin-bottom: 10px;">
