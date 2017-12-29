@@ -134,13 +134,14 @@
                                                                     if ($row['work_job_title']) {
                                                                         $contition_array = array('status' => 'publish', 'title_id' => $row['work_job_title']);
                                                                         $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                                        ?>
+                                                                       
+                                                                         if($jobtitle[0]['name']) { ?>
                                                                         <li> <b> Job Title</b> <span>
                                                                                 <?php echo $jobtitle[0]['name']; ?>
                                                                             </span>
                                                                         </li>
 
-                                                                    <?php } ?>
+                                                                         <?php }} ?>
                                                                     <?php
                                                                     if ($row['keyskill']) {
                                                                         $jobskil = array();
