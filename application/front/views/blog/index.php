@@ -53,19 +53,6 @@ header("Pragma: no-cache"); // HTTP/1.0
         }
         ?>
             <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
-
-            <?php if (IS_OUTSIDE_JS_MINIFY == '0'){?>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <?php }else{?>
-        <script async src="//pagead2.googlesyndication.com/pagead/js_min/adsbygoogle.js"></script>
-
-        <?php }?>
-        <script>
-                (adsbygoogle = window.adsbygoogle || []).push({
-                    google_ad_client: "ca-pub-6060111582812113",
-                    enable_page_level_ads: true
-                });
-        </script>
         <style>
             footer > .container{border:1px solid transparent!important;}
             .footer{border:1px solid #d9d9d9;}
