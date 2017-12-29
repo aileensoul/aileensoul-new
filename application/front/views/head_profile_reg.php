@@ -21,6 +21,9 @@ header('Expires: '.$date);
 
 //header('Cache-Control: public, max-age=30');
 ?>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta charset="utf-8" />
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
