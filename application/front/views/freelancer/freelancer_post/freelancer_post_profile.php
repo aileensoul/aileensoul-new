@@ -1290,7 +1290,7 @@
 
                                         <p class="form-text" style="margin-bottom: 10px;">
                                             By Clicking on create an account button you agree our
-                                            <a tabindex="109" title="Terms and Condition" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex=""110 title="Privacy policy" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                            <a tabindex="109" title="Terms and Condition" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex="110" title="Privacy policy" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="111" class="btn1">Create an account</button>
