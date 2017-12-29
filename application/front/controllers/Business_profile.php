@@ -1401,13 +1401,17 @@ Your browser does not support the audio tag.
 </div>
 <div id = "threecomment' . $post_business_profile_post_id . '" style = "display:block">
 <div class = "hidebottomborder insertcomment' . $post_business_profile_post_id . '">';
-
-        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
-        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+        
+        $join_str[0]['table'] = 'user';
+        $join_str[0]['join_table_id'] = 'user.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+        $join_str[0]['join_type'] = '';
+        
+        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1','user.status' => '1','user.is_delete'=> '0');
+        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
         if ($businessprofiledata) {
             foreach ($businessprofiledata as $rowdata) {
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
-
                 $slugname1 = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_slug;
 
                 $return_html .= '<div class = "all-comment-comment-box">
