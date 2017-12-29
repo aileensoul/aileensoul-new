@@ -245,7 +245,7 @@ class Search extends MY_Controller {
             $condition_array = array('business_step' => '4', 'business_profile_post.is_delete' => '0');
             $search_condition = "(`business_profile_post_id` NOT IN ('$delete_post_id')) AND (business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
 
-            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id,business_profile.business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
             $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.city' => $cache_time, 'business_profile.business_step' => '4','user.is_delete'=>'0', 'user.status'=>'1');
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
@@ -272,7 +272,7 @@ class Search extends MY_Controller {
 
             $condition_array = array('business_step' => '4', 'business_profile_post.is_delete' => '0');
             $search_condition = "(`business_profile_post_id` NOT IN ('$delete_post_id')) AND (business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
-            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
 
         $this->data['is_business'] = $is_business = $this->db->get_where('business_profile', array('user_id' => $userid))->row()->business_profile_id;
@@ -427,17 +427,10 @@ class Search extends MY_Controller {
                                     </div>
                                 </div>';
 
-
                         if ($post_posted_user_id) {
-
                             if ($posted_business_user_image) {
                                 $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
-
-                                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
-                                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
-                                } else {
-                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
-                                }
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
                                 $return_html .= '</a>';
                             } else {
                                 $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
@@ -447,15 +440,11 @@ class Search extends MY_Controller {
                         } else {
                             if ($post_business_user_image) {
                                 $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
-                                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
-                                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
-                                } else {
-                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
-                                }
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image1">';
                                 $return_html .= '</a>';
                             } else {
                                 $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
-                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image2">';
                                 $return_html .= '</a>';
                             }
                         }
@@ -946,9 +935,7 @@ Your browser does not support the audio tag.
                                     $return_html .= $rowdata['business_comment_likes_count'];
                                 }
 
-                                $return_html .= '</span>
-</a>
-</div>';
+                                $return_html .= '</span></a></div>';
                                 $userid = $this->session->userdata('aileenuser');
                                 if ($rowdata['user_id'] == $userid) {
 
@@ -2117,6 +2104,7 @@ Your browser does not support the audio tag.
                         $userimageposted = $this->db->get_where('business_profile', array('user_id' => $p['posted_user_id']))->row()->business_user_image;
                         $slugname = $this->db->get_where('business_profile', array('user_id' => $p['user_id'], 'status' => '1'))->row()->business_slug;
                         $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $p['posted_user_id'], 'status' => '1'))->row()->business_slug;
+                        
                         if ($p['posted_user_id']) {
 
                             if ($userimageposted) {
@@ -2129,7 +2117,7 @@ Your browser does not support the audio tag.
                             }
                             $return_html .= '</a>';
                         } else {
-                            if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) && $business_userimage) {
+                            if ($business_userimage) {
                                 $return_html .= '<a class="post_dot"  href="javascript:void(0);"  onClick="login_profile()" title="">
                                     <img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt=""> </a>';
                             } else {
@@ -2456,7 +2444,7 @@ Your browser does not support the audio tag.
                                 $return_html .= '<div class="all-comment-comment-box">
                                                 <div class="post-design-pro-comment-img">';
                                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $pdata['user_id'], 'status' => '1'))->row()->business_user_image;
-                                if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) && $business_userimage) {
+                                if ($business_userimage) {
                                     $return_html .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
                                 } else {
                                     $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
@@ -2555,7 +2543,7 @@ Your browser does not support the audio tag.
                             $userid = $this->session->userdata('aileenuser');
                             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_user_image;
                             $business_user = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->company_name;
-                            if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) && $business_userimage) {
+                            if ($business_userimage) {
                                 $return_html .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
                             } else {
                                 $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
