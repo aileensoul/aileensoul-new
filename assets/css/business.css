@@ -2369,7 +2369,8 @@ label.cameraButton:active{
     font-size:13px;
     display:inline-block;
     margin-left:0;
-    background:#fff
+    background:#fff;
+	width:100%;
 }
 .next,.prev{
     background-color:rgba(0,0,0,.3);
