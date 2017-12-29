@@ -259,7 +259,7 @@
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <input tabindex="101" type="text" name="first_name1" id="first_name1" class="form-control input-sm" placeholder="First Name">
+                                                    <input tabindex="101" autofocus="" type="text" name="first_name1" id="first_name1" class="form-control input-sm" placeholder="First Name">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-md-6">
