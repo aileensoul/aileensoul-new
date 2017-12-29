@@ -3,17 +3,17 @@
     <head>
         <?php echo $head; ?>
         <title><?php echo $title; ?></title>
-       
-    <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
-       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
-   
-        <?php } else {?>
-         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
-   
+
+        <?php if (IS_HIRE_CSS_MINIFY == '0') { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
+
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
+
         <?php } ?>
         <style type="text/css">
             .last_date_error{
@@ -27,16 +27,16 @@
                 padding-right: 0px!important;
                 font-size: 11px!important;
             }
-          
+
         </style>
     </head>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
     <body class="page-container-bg-solid page-boxed no-login freeh3 cust-add-live botton_footer">
-           <header>
+        <header>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
-                      <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
+                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                         <div class="btn-right pull-right">
@@ -71,11 +71,11 @@
                             </div> 
 
                             <div class="common-form custom-form">
-                                    <h3 class="col-chang"><?php echo $this->lang->line("project_post"); ?></h3>
+                                <h3 class="col-chang"><?php echo $this->lang->line("project_post"); ?></h3>
 
-                                    <div class="job-saved-box">
+                                <div class="job-saved-box">
 
-                                        <form id="postinfo" name="postinfo" class="clearfix">
+                                    <form id="postinfo" name="postinfo" class="clearfix">
                                         <?php
                                         $post_name = form_error('post_name');
                                         $skills = form_error('skills');
@@ -125,7 +125,7 @@
                                                     </select>
                                                     <?php echo form_error('fields_req'); ?>
                                                 </fieldset>
-                                              
+
 
                                                 <fieldset class="full-width two-select-box fullwidth_experience" <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
                                                     <label><?php echo $this->lang->line("required_experiance"); ?>:<span class="optional">(optional)</span></label>
@@ -209,29 +209,29 @@
                                                 <fieldset class="hs-submit half-width">
                                                     <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                                     <input type="submit" title="Post" id="submit"  class="add_post_btns" tabindex="18" name="submit" value="Post">
-                                                   
+
                                                 </fieldset>
-                                           
+
                                             </div>
                                         </div>
-                                   
-                                        </form>
 
-                                    </div>
-                                    <div class="col-md-1">
-                                    </div>
+                                    </form>
+
                                 </div>
+                                <div class="col-md-1">
+                                </div>
+                            </div>
                         </div>
 
                     </div>
                 </div>
                 <!-- MIDDLE SECTION END-->
         </section>
-        
-<?php echo $login_footer ?>
-   <?php echo $footer; ?>
-         
-           <!-- Login for submit post data -->
+
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
+
+        <!-- Login for submit post data -->
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
@@ -291,7 +291,7 @@
                 </div>
             </div>
         </div>
-             <div class="modal fade register-model login" id="register_profile" role="dialog">
+        <div class="modal fade register-model login" id="register_profile" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
@@ -405,11 +405,11 @@
         </div>
         <!-- Login -->
 
-                <!-- register -->
-
-      
         <!-- register -->
-    <div class="modal fade login" id="forgotPassword" role="dialog">
+
+
+        <!-- register -->
+        <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
@@ -451,45 +451,41 @@
             </div>
         </div>
 
-      
-            <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-      
-        <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+
+        <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+
+            <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-            <?php } else {  ?>
-        <script src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <?php } else { ?>
+            <script src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <?php } ?>
-        
-            <script>
+
+        <script>
                                                 var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
                                                 var base_url = '<?php echo base_url(); ?>';
                                                 var postslug = '<?php echo $this->uri->segment(3); ?>';
-                                                
+
 
 
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
-        <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-<<<<<<< HEAD
-       <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
-||||||| merged common ancestors
-       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
-=======
-       <!-- <script type="text/javascript" src="<?php// echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script> -->
->>>>>>> 3ba2db03c8634c4c8a2c3ee5676b9272a0e18b52
-            <?php } else {  ?>
-<<<<<<< HEAD
-         <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
-||||||| merged common ancestors
-         <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
-=======
-         <!-- <script type="text/javascript" src="<?php //echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script> -->
->>>>>>> 3ba2db03c8634c4c8a2c3ee5676b9272a0e18b52
-        <?php } ?>
         
-       
+        <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+
+           <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
+
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
+
+        <?php } else { ?>
+
+             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
+
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
+
+        <?php } ?>
+
+
     </body>
 </html>
