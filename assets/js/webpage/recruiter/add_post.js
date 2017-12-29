@@ -162,12 +162,12 @@ jQuery.validator.addMethod("isValid", function (value, element) {
     var todaydate_new = todaydate[1] + "/" + todaydate[0] + "/" + todaydate[2];
     var todaydate_new_one = new Date(todaydate_new).getTime();
 
-    if (lastdata_new_one >= todaydate_new_one) {
-        $('.day').addClass('error');
-        $('.month').addClass('error');
-        $('.year').addClass('error');
+    if (lastdata_new_one > todaydate_new_one) {
+       // $('.day').addClass('error');
+        //$('.month').addClass('error');
+       // $('.year').addClass('error');
         return true;
-    } else {
+    } else { 
         $('.day').addClass('error');
         $('.month').addClass('error');
         $('.year').addClass('error');
