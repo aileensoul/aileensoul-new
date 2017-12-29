@@ -15,6 +15,20 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
    
         <?php } ?>
+        <style type="text/css">
+            .last_date_error{
+                background: none;
+                color: red !important;
+                padding: 0px 10px !important;
+                position: absolute;
+                right: 8px;
+                z-index: 8;
+                line-height: 15px;
+                padding-right: 0px!important;
+                font-size: 11px!important;
+            }
+          
+        </style>
     </head>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
     <body class="page-container-bg-solid page-boxed no-login freeh3 cust-add-live botton_footer">
@@ -457,11 +471,11 @@
 
 
         </script>
-        
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
+       <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
             <?php } else {  ?>
-         <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
+         <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
         <?php } ?>
         
        

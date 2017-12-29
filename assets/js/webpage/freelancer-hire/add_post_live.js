@@ -244,7 +244,8 @@ function check_datevalidation() {
     }
 }
 
-$("form").submit(function () {
+$("#postinfo").submit(function () {
+    alert(123);
     var day = $('.day').val();
     var month = $('.month').val();
     var year = $('.year').val();

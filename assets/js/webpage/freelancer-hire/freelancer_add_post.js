@@ -470,7 +470,7 @@ function check_datevalidation() {
     }
 }
 
-$("form").submit(function () {
+$("#postinfo").submit(function () {
     var day = $('.day').val();
     var month = $('.month').val();
     var year = $('.year').val();
