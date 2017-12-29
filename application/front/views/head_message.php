@@ -18,6 +18,9 @@ header("Pragma: no-cache"); // HTTP/1.0
 header('Expires: '.$date);
 //header('Cache-Control: public, max-age=30');
 ?>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta charset="utf-8" />
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
@@ -51,6 +54,7 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
     <?php
 }
 ?>
+    
 <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, 
       minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
