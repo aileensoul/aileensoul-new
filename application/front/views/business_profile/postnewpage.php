@@ -814,8 +814,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 </div>
             </div>
             <div id="myModal1" class="modal2">
-                <span class="close2 cursor" onclick="closeModal()">&times;</span>
+                
                 <div class="modal-content2">
+				<span class="close2 cursor" onclick="closeModal()">&times;</span>
                 <?php
                     $i = 1;
                     $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');

@@ -2474,7 +2474,8 @@ label.cameraButton:active{
 .all-list{
     width:100%;
     float:left;
-    background-color:#fff
+    background-color:#fff;
+	padding:2px 0;
 }
 .all-list ul{
     padding:15px 0 10px
