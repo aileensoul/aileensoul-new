@@ -118,7 +118,7 @@
                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
-                            <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img alt="Upload profile pic"  src="<?php echo base_url('assets/img/cam.png'); ?>"> <?php echo $this->lang->line("update_profile_picture"); ?></a>
+                            <a title="Update Profile Picture" href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img alt="Update Profile Picture"  src="<?php echo base_url('assets/img/cam.png'); ?>"> <?php echo $this->lang->line("update_profile_picture"); ?></a>
                         </div>
                     </div>      
                     <div class="job-menu-profile mob-block">
@@ -300,7 +300,7 @@
                             <div id="popup-form">
                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                   
+
                                     <div class="fw">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
@@ -309,7 +309,7 @@
                                     </div>
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-                               
+
                             </div>
                         </span>
                     </div>
@@ -320,7 +320,7 @@
         <?php
         if (IS_APPLY_JS_MINIFY == '0') {
             ?>
-           
+
             <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
             <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>">
@@ -360,17 +360,17 @@
             //APPLY FOR PROJECT CODE START
             function apply_post(abc, xyz)
             {
-               
+
                 var alldata = 'all';
                 var user = <?php echo $aileenuser_id; ?>;
                 var appid = xyz;
-              
+
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "freelancer/apply_insert" ?>',
                     data: 'post_id=' + abc + '&allpost=' + alldata.value + '&userid=' + user,
                     success: function (data) {
-                       
+
                         $('#' + 'postdata' + appid).html(data.status);
                         $('#' + 'postdata' + appid).remove();
                         var numItems = $('.job-contact-frnd1 .all-job-box').length;
