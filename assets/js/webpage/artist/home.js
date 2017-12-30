@@ -1,3 +1,4 @@
+
 var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
@@ -8,11 +9,22 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
 btn.onclick = function () {
+    var product_name1 = document.getElementById("test-upload_product").value;
+
+    var product_trim1 = product_name1.trim();
+    var product_description1 = document.getElementById("test-upload_des").value;
+    var des_trim1 = product_description1.trim();
+
+    var product_fileInput1 = document.getElementById("file-1").value;
+
+    if (product_fileInput1 == '' && product_trim1 == '' && des_trim1 == '')
+    { 
     modal.style.display = "block";
+    }
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
+span.onclick = function () { 
     modal.style.display = "none";
 }
 
@@ -1275,30 +1287,30 @@ function commentall(clicked_id) {
 }
 
 
-var modal = document.getElementById('myModal');
+// var modal = document.getElementById('myModal');
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+// // Get the button that opens the modal
+// var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close1")[0];
+// // Get the <span> element that closes the modal
+// var span = document.getElementsByClassName("close1")[0];
 
-// When the user clicks the button, open the modal 
-btn.onclick = function () {
-    modal.style.display = "block";
-}
+// // When the user clicks the button, open the modal 
+// btn.onclick = function () {
+//     modal.style.display = "block";
+// }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
-}
+// // When the user clicks on <span> (x), close the modal
+// span.onclick = function () {
+//     modal.style.display = "none";
+// }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+// // When the user clicks anywhere outside of the modal, close it
+// window.onclick = function (event) {
+//     if (event.target == modal) {
+//         modal.style.display = "none";
+//     }
+// }
 
 //  multi image add post khyati start
 
