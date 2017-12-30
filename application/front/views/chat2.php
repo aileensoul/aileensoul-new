@@ -877,9 +877,9 @@ if ($lstusrdata) {
                     return split(term).pop();
                     }
 
-                    $(".bus_search_loc").bind("keydown",  function (event) {alert(1313);
+                    $(".bus_search_loc").bind("keydown",  function (event) {
                     if  (event.keyCode ===  $.ui.keyCode.TAB  &&
-                    $(this).autocomplete(" instance").menu.act ive) {
+                    $(this).autocomplete(" instance").menu.active) {
                             event.preventDefault();
                     }
                     })
@@ -897,11 +897,11 @@ if ($lstusrdata) {
 
                                     var  text  =  this.value;
                                     var  terms  =  split(this. value ); 
-                                    text  =  text = =  nul l  ||  text ==  undefined ? "" : text;
-                                    var  c hecked   =  (text.indexOf(ui.item.value +  ', ') >  -  1 ? 'checked' : ' ');
-                                       if  (che ck ed ==  'checked') {
+                                    text  =  text ==  null  ||  text ==  undefined ? "" : text;
+                                    var  checked   =  (text.indexOf(ui.item.value +  ', ') >  -  1 ? 'checked' : ' ');
+                                       if  (checked ==  'checked') {
 
-                                    ter ms.push(ui.i tem.value);
+                                    terms.push(ui.item.value);
                                     this.value  =  terms.split("");
                                     }//if en d
  
@@ -914,10 +914,10 @@ if ($lstusrdata) {
                                     // add placeholder to get the comma-and-space at the end
                                     terms.push("");
                                     this.value  =  terms.join("");
-                                    retur n  false;
+                                    return  false;
                                     }  else {
-                                    var  last  =  t erms.pop();
-                                    $(th is ).val(this.value.substr(0,  this.value.length -  last.length -  2));  // removes t ext from input
+                                    var  last  =  terms.pop();
+                                    $(this ).val(this.value.substr(0,  this.value.length -  last.length -  2));  // removes t ext from input
                                     $(this).effect("highlight",  {},  1000);
                                     $( this ).attr("style",  "border: solid 1px red;");
                                     return false;
@@ -935,7 +935,7 @@ if ($lstusrdata) {
                     }
 
                     $(".bus_search_comp").bind("keydown",  function (event) {
-                    if  (eve nt.keyCode ===  $.ui.keyCode.TAB &&
+                    if  (event.keyCode ===  $.ui.keyCode.TAB &&
                             $(this).autocomplete("instance").menu.active) {
                     event.preventDefault();
                     }
@@ -944,7 +944,7 @@ if ($lstusrdata) {
                             minLength: 2,
                                     source: function (request,  response) {
                                     // delegate back to autocomplete, but extract the last term
-                                    $.getJSON(base_url +  "business_profile/get_all_data",  {term: ex tractLast(request.term)},  respon se);
+                                    $.getJSON(base_url +  "business_profile/get_all_data",  {term: extractLast(request.term)},  response);
                                      },
                                     focus: function () {
                                     // prevent value inserted on focus
@@ -954,8 +954,8 @@ if ($lstusrdata) {
 
                                     var  text  =  this.value;
                                     var  terms  =  split(this.value);
-                                    text  =  text ==  null ||  text ==  und ef ined ? " " : text ;
-                                    var  checked  =  (text.indexOf(ui .item.va lu e +  ', ') >  -  1 ? 'checked'  : '');
+                                    text  =  text ==  null ||  text ==  undefined ? " " : text ;
+                                    var  checked  =  (text.indexOf(ui .item.value +  ', ') >  -  1 ? 'checked'  : '');
                                     if  (checked ==  'checked' ) {
 
                                     terms.push(ui.item.value);
@@ -1372,7 +1372,7 @@ if ($lstusrdata) {
                     $("#tags1").bind("keydown", function(event) {
                     if (event.keyCode === $.ui.keyCode.TAB &&
                             $(this).autocomplete("instance").menu.active) {
-                    event.pre                    ventDefault();
+                    event.preventDefault();
                     }
                     })
                             .autocomplete({
@@ -1398,7 +1398,7 @@ if ($lstusrdata) {
 
                     <!--new script for cities start-->
 
-                    $(func                    tion() {
+                    $(function() {
                     function split(val) {
                     return val.split(/,\s*/);
                     }
@@ -1407,7 +1407,7 @@ if ($lstusrdata) {
                     }
 
                     $("#searchplace").bind("keydown", function(event) {
-                    if (event.keyCode == = $.ui.keyCode.TAB &&
+                    if (event.keyCode === $.ui.keyCode.TAB &&
                             $(this).autocomplete("instance").menu.active) {
                     event.preventDefault();
                     }
@@ -1437,14 +1437,14 @@ if ($lstusrdata) {
 
                     $(function() {
                     function split(val) {
-                    return val.sp                    lit(/,\s*/);
+                    return val.split(/,\s*/);
                     }
                     function extractLast(term) {
                     return split(term).pop();
                     }
 
                     $("#searchplace1").bind("keydown", function(event) {
-                    if (event.key                    Code === $.ui.keyCode.TAB &&
+                    if (event.keyCode === $.ui.keyCode.TAB &&
                             $(this).autocomplete("instance").menu.active) {
                     event.preventDefault();
                     }
@@ -1514,7 +1514,7 @@ if ($lstusrdata) {
                                     $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
                                     $(this).effect("highlight", {}, 1000);
                                     $(this).attr("style", "border: solid 1px red;");
-                                    return fal                    se;
+                                    return false;
                                     }
                                     }
                             });
@@ -1522,7 +1522,7 @@ if ($lstusrdata) {
                     //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD END
 
 
-                    //SCRIPT FOR CITY A                    UTOFILL OF                    SEARCH START
+                    //SCRIPT FOR CITY AUTOFILL OF SEARCH START
 
                     $(function() {
                     function split(val)                     {
@@ -1531,7 +1531,7 @@ if ($lstusrdata) {
                     function extractLast(term) {
                     return split(term).pop();
                     }
-                    $("#searchplace").bind("keydown", func                    tion(event)                     {
+                    $("#searchplace").bind("keydown", function(event)                     {
                     if (event.keyCode === $.ui.keyCode.TAB &&
                             $(this).autocomplete("instance").menu.active) {
                     event.preventDefault();
@@ -1539,9 +1539,9 @@ if ($lstusrdata) {
                     })
                             .autocomplete({
                             minLength: 2,
-                                    source: function(requ                    est, response)                    {
+                                    source: function(request, response)                    {
                                     // delegate back to autocomplete, but extract the last term
-                                    $.getJSON(base_ur                    l + "artist/art                    istic_search_city", { term : extractLast(request.term)}, response);
+                                    $.getJSON(base_url + "artist/artistic_search_city", { term : extractLast(request.term)}, response);
                                     },
                                     focus: function() {
                                     // prevent value inserted on focus
@@ -1561,8 +1561,8 @@ if ($lstusrdata) {
                                     return false;
                                     } else{
                                     var last = terms.pop();
-                                    $(this).val(this.value.substr(0, this.value.length - las                    t.length - 2)); // removes text from input
-                                    $(this).effect("hig                    hlight", {}, 1000);
+                                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                                    $(this).effect("highlight", {}, 1000);
                                     $(this).attr("style", "border: solid 1px red;");
                                     return false;
                                     }
@@ -1629,9 +1629,9 @@ if ($lstusrdata) {
                                                     }  else {
                                                     var  last  =  terms.pop();
                                                     $(this).val(this.value.substr(0,  this.value.length -  last.length -  2));  //                                 removes text from input
-                                                    $(this).effect("                                highlight",  {},  1000); 
-                                                    $(this).att                                r("st                                yle",  "border: solid 1px red;");
-                                                    return false                                ;
+                                                    $(this).effect("highlight",  {},  1000); 
+                                                    $(this).attr("style",  "border: solid 1px red;");
+                                                    return false;
                                                     }
                                                     }
                                                     }//end else
@@ -1707,12 +1707,12 @@ if ($lstusrdata) {
                                     function split(val) {
                                     return val.split(/,\s*/);
                                     }
-                                    function extractLast(te                                rm) {
+                                    function extractLast(term) {
                                     return split(term).pop();
                                     }
                                     $(".skill_keyword").bind("keydown", function(event) {
                                     if (event.keyCode === $.ui.keyCode.TAB &&
-                                            $(this).a                                utocomplete                                ("instance").menu.active) {
+                                            $(this).autocomplete("instance").menu.active) {
                                     event.preventDefault();
                                     }
                                     })
@@ -1721,7 +1721,7 @@ if ($lstusrdata) {
                                             minLength: 2,
                                                     source: function(request, response) {
                                                     // delegate back to autocom                                plete, but extr                                act the last term
-                                                    $.getJSON(base_url + "freelancer/freelancer_hire_search_keyword", { term : extr                                actLast(reques                                t.term)}, response);
+                                                    $.getJSON(base_url + "freelancer/freelancer_hire_search_keyword", { term : extractLast(request.term)}, response);
                                                     },
                                                     focus: function() {
                                                     // prevent value inserted on focus
@@ -1742,9 +1742,9 @@ if ($lstusrdata) {
                                                     } else{
 
                                                     var last = terms.pop();
-                                                    $(this).val(this.v                                alue.substr(0, this.value.length - last.length - 2)); // removes text from input
-                                                    $(this).effect("highligh                                t", {}, 1000);
-                                                    $(this).attr("style", "border: solid 1px red;                                ");
+                                                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                                                    $(this).effect("highlight", {}, 1000);
+                                                    $(this).attr("style", "border: solid 1px red;");
                                                     return false;
                                                     }
                                                     }
@@ -1771,22 +1771,22 @@ if ($lstusrdata) {
                                                     .autocomplete({
                                                                     minLength: 2,                                          source: function(request, response) {
                                                                             // delegate back to autocomplete, but extract the last term
-                                                                            $.getJSON(base_url + "freelancer /freelancer_ search_city", { ter m : extractLast(request.term)}, response);
+                                                                            $.getJSON(base_url + "freelancer /freelancer_ search_city", { term : extractLast(request.term)}, response);
                                                                     },
                                                     focus: function() {
                                                                             // prevent value inserted on focus
-                                                                            r eturn false;
+                                                                            return false;
                                                                             },
-                                                                            select: funct ion(event, ui) {
+                                                                            select: function(event, ui) {
 
                                     var terms = split(this.value);
-                                                                                    if (t                                erms.length <= 1) {
-                                    // remove th                                e current inpu                                t
+                                                                                    if (terms.length <= 1) {
+                                    // remove the current input
                                                                                     terms.pop();
-                                                                            // a dd  th                                e sel                                     ected item
-                                                                               terms.push(ui.item.valu e);
+                                                                            // add  the selected item
+                                                                               terms.push(ui.item.value);
                                                                             // add placeholder to get the  comma-and-s pace at the end
-                                                                            terms.pus h( "");
+                                                                            terms.push("");
                                     this.value = terms.join("");
                                                                             return  false;
                                                                             } else{
@@ -1794,7 +1794,7 @@ if ($lstusrdata) {
                                                                             $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
                                                                             $(this).effect("highlight", {}, 1000);
                                             $(this).attr("style", "border: solid 1px red;");
-                                                                                    retur n fal se ;
+                                                                                    return false ;
                                                                             }
                                                      }
                                                });
@@ -1826,13 +1826,13 @@ if ($lstusrdata) {
                                                     minLength: 2,
                                                                                             source: function(request, response) {
                                                                                             // delegate back to autocomplete, but extract the last term
-                                                    $.get JSON(base_url + "freelancer/freelancer_hire_search_keyword", { term : extractLast(request.term)}, response);
+                                                    $.getJSON(base_url + "freelancer/freelancer_hire_search_keyword", { term : extractLast(request.term)}, response);
                                                                                                     },
                                                                                                     focus: function() {
                                                                                                     // prevent value inserted on focus
-                                                                                            re turn f al se;
+                                                                                            return false;
                                                                                                },
-                                                                                            select:  functio n( event, ui) {
+                                                                                            select:  function(event, ui) {
 
                                                                                             var terms = split (this.value) ;
                                                                                             if (terms.length <= 1) {
@@ -1864,16 +1864,16 @@ if ($lstusrdata) {
                                     function split(val) {
                                     return val.split(/,\s*/);
                                     }
-                                    fun                                ction extractL                                ast(term)                                {
+                                    function extractLast(term){
                                     return split(term).pop();
                                     }
                                     $(".skill_place").bind("keydown", function(event) {
                                     if (event.keyCode === $.ui.keyCode.TAB &&
                                             $(this).autocomplete("instance").menu.active) {
-                                    event.prev                                entDefault();
+                                    event.preventDefault();
                                     }
                                     })
-                                            .autocomplete                                ({
+                                            .autocomplete({
                                             minLength: 2,
                                                     source: function(request, response) {
                                                     // delegate back to autocomplete, but extract the last term
@@ -1889,11 +1889,11 @@ if ($lstusrdata) {
                                                     if (terms.length <= 1) {
                                                     // remove the current input
                                                     terms.pop();
-                                                    // add the sele                                cted item
+                                                    // add the selected item
                                                     terms.push(ui.item.value);
-                                                    // add placeholder to g                                et the comma-and-s                                pace at the en                                d
+                                                    // add placeholder to get the comma-and-space at the end
                                                     terms.push("");
-                                                    this.valu                                e = terms.join("");
+                                                    this.value = terms.join("");
                                                     return false;
                                                     } else{
                                                     var last = terms.pop();
@@ -2094,28 +2094,28 @@ if ($lstusrdata) {
                                                     $.getJSON("<?php echo base_url(); ?>general/get_alldata", { term : extractLast(request.term)}, response);
                                                     },
                                                     focus: function() {
-                                                    // prevent value inserted                                on focus
+                                                    // prevent value inserted on focus
                                                     return false;
                                                     },
                                                     select: function(event, ui) {
                                                     event.preventDefault();
                                                     $("#tags1").val(ui.item.label);
-                                                    $("#selected                                -tag").val(ui.it                                em.label);
+                                                    $("#selected-tag").val(ui.item.label);
                                                     // window.location.href = ui.item.value;
                                                     },
                                             });
                                     });
 
-                                <!--new script                                 for jobtit                                le,company and skill for mobile view end-->
+                                <!--new script for jobtitle,company and skill for mobile view end-->
 
-                                    <!                                --new script for ci                                ties start-->
+                                    <!--new script for cities start-->
                                     
                                     $(function() {
                                             function split(val) {
                                             return val.split(/,\s*/);
                                     }
                                     function extractLast( term )                                 {
-                                                    return spli                                t(term).pop();
+                                                    return split(term).pop();
                                             }
                                             
                                     $( "#searchplace" ).bind( "keydown", function( event ) {
@@ -2153,8 +2153,8 @@ if ($lstusrdata) {
                                                             function split(val) {
                                                             return val.split(/,\s*/);
                                             }
-                                            function extractLast( term )                                {
-                                                                    retu                                rn split(term).pop();
+                                            function extractLast( term ){
+                                                                    return split(term).pop();
                                     }
                                     
                                     $( "#searchplace1" ).bind( "keydown", function( event ) {
@@ -2208,9 +2208,9 @@ if ($lstusrdata) {
             minLength: 2,
             source: function( request, response ) { 
                 // delegate back to autocomplete, but extract the last term
-                $.getJSON(base_url + "artist/artistic_search_keyword", {                                term : extract                                Last( request.term )},response);
+                $.getJSON(base_url + "artist/artistic_search_keyword", {term : extractLast( request.term )},response);
                                 },
-                                focus: functi                                on() {
+                                focus: function() {
                                         // prevent value inserted on focus
                 return false;
                                 },
@@ -2229,9 +2229,9 @@ if ($lstusrdata) {
                                 }else{
                    
                     var last = terms.pop();
-                    $(this).val(th                                is.value.substr(0, this.value.length - last.length - 2)); // removes                                text from input
+                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes                                text from input
                                                  $(this).effect(                                "highlight", {                                }, 1000);
-                                $(this).attr("style","bor                                der: solid 1px red;");
+                                $(this).attr("style","border: solid 1px red;");
                                 return false;
                                 }
                                 }
@@ -2245,13 +2245,13 @@ if ($lstusrdata) {
 
                                 $(function() {
         function split( val ) {
-            return va                                l.split( /,\s*                                / );
+            return val.split( /,\s*/ );
                                 }
                                 function extractLast( term ) { 
             return split( term ).pop();
                                 }
                                 $( "#searchplace" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.k                                eyCode.TAB &&
+            if ( event.keyCode === $.ui.keyCode.TAB &&
                                  $( this ).autocomplete( "instance" ).menu.active ) {
                 event.preventDefault();
                                 }
@@ -2264,7 +2264,7 @@ if ($lstusrdata) {
                                 },
                                 focus: function() {
                 // prevent value inserted on focus
-                r                                eturn false;
+                return false;
                                 },
                                 select: function( event, ui ) {
                

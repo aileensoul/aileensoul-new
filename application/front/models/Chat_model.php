@@ -8,14 +8,14 @@ class Chat_model extends CI_Model {
         date_default_timezone_set('Asia/Kolkata');
         $data1 = array(
             'message' => (string) $message,
-            'nickname' => (string) $nickname,
+          //  'nickname' => (string) $nickname,
             'message_from' => (string) $userid,
             'message_to' => (string) $id,
             'message_from_profile' => (int) $message_from_profile,
             'message_from_profile_id' => (int) $message_from_profile_id,
             'message_to_profile' => (int) $message_to_profile,
             'message_to_profile_id' => (int) $message_to_profile_id,
-            'guid' => (string) $guid,
+           // 'guid' => (string) $guid,
             'timestamp' => time() + 92,
         );
 

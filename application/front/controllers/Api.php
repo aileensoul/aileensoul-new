@@ -23,7 +23,7 @@ class Api extends CI_Controller {
         //$message = $this->common->make_links($message);
         $message = str_replace('"', '', $message);
         //$message = str_replace('"', '', $message);
-        $nickname = $directions['nickname'];
+       // $nickname = $directions['nickname'];
         //$nickname = $this->input->post('nickname', '');
         $guid = $directions['guid'];
         //$guid = $this->input->post('guid', '');
@@ -38,7 +38,8 @@ class Api extends CI_Controller {
         $message_from_profile_id = $directions['message_from_profile_id'];
         //$message_from_profile_id = $this->input->post('message_from_profile_id');
 
-        $this->Chat_model->add_message($message, $nickname, $guid, $userid, $id, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id);
+//        $this->Chat_model->add_message($message, $nickname, $guid, $userid, $id, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id);
+        $this->Chat_model->add_message($message,$guid, $userid, $id, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id);
         $this->_setOutput($message);
     }
 
