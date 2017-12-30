@@ -23,8 +23,8 @@ class Blog extends CI_Controller {
         // blog category end
         if ($slug != '') {
 
-            $this->blog_check($slug);
-
+         $count =  $this->blog_check($slug); 
+            if($count == 1){
             //FOR GETTING ALL DATA
             $condition_array = array('status' => 'publish');
             $this->data['blog_all'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
@@ -47,6 +47,9 @@ class Blog extends CI_Controller {
             
             // random blog end 
             $this->load->view('blog/blogdetail', $this->data);
+            }else{
+                redirect('blog', refresh);
+            }
         } else {
             //THIS IF IS USED FOR WHILE SEARCH FOR RETRIEVE SAME PAGE START
             if ($this->input->get('q')) {
@@ -192,9 +195,7 @@ class Blog extends CI_Controller {
         $condition_array = array('blog_slug' => $slug);
         $availblog = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = '', $order_by = '', $limit, $offset, $join_str = array(), $groupby = '');
 
-        if (count($availblog) == NULL) {
-            $this->load->view('blog/notavalible');
-        }
+       return count($availblog);
     }
 
 // blog available check start end
