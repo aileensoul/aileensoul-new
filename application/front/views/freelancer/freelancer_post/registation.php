@@ -75,6 +75,8 @@
                                     $state = form_error('state');
                                     $field = form_error('field');
                                     $skill= form_error('skills');
+                                    $experiance= form_error('experiance');
+                                  //  echo $experiance;die();
                                     
                                     ?>
                                     <fieldset>
@@ -213,7 +215,7 @@
                                                <?php echo form_error('skills'); ?>
                                     </fieldset>
 
-                                    <fieldset  class="full-width" <?php if ($experience_year) { ?> class="error-msg" <?php } ?>>
+                                    <fieldset   <?php if ($experiance) { ?> class="error-msg full-width" <?php } else{ ?> class="full-width" <?php } ?>>
                                         <label><?php echo $this->lang->line("total_experiance"); ?> :<span class="red">*</span></label>  <select name="experience_year" placeholder="Year" tabindex="10" id="experience_year" class="experience_year col-md-5 day" onchange="return check_yearmonth();" style="margin-right: 4%;">
 
                                             <option value="" selected option disabled><?php echo $this->lang->line("year"); ?></option>
@@ -260,7 +262,7 @@
 
                                         </select>  
                                        
-
+                                        <?php echo form_error('experiance'); ?>
                                     </fieldset>
 
 

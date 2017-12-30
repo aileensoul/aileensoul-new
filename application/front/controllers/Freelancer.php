@@ -4611,7 +4611,10 @@ class Freelancer extends MY_Controller {
         $this->form_validation->set_rules('state', 'state', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('freelancer/freelancer_hire/hire_registration');
+            $contition_array = array('status' => 1);
+            $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $this->data['title'] = "Registration | Employer Profile" . TITLEPOSTFIX;
+            $this->load->view('freelancer/freelancer_hire/hire_registration', $this->data);
         } else {
             $first_lastname = trim($this->input->post('firstname')) . " " . trim($this->input->post('lastname'));
             $data = array(
@@ -4756,7 +4759,6 @@ class Freelancer extends MY_Controller {
                     $insert_id = $this->common->insert_data_getid($data, 'notification');
                     // end notoification
                     if ($insert_id) {
-
                         $this->apply_email($notid);
                         $applypost = 'Applied';
                     }
@@ -4779,9 +4781,12 @@ class Freelancer extends MY_Controller {
         $this->form_validation->set_rules('state', 'state', 'required');
         $this->form_validation->set_rules('field', 'Field', 'required');
         $this->form_validation->set_rules('skills', 'skill', 'required');
+        if(empty($this->input->post('experience_month')) && empty($this->input->post('experience_year'))){
+            $this->form_validation->set_rules('experiance', 'Experiance', 'required');
+        }
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('freelancer/freelancer_post/registation',$this->data);
+            $this->load->view('freelancer/freelancer_post/registation', $this->data);
         } else {
 
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');

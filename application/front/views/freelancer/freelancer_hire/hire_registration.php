@@ -6,30 +6,33 @@
         <?php echo $head; ?>
         <!-- Calender Css Start-->
 
-        <title><?php  echo $title; ?></title>
- <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
-       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">
-        <?php } else {?>
-       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-apply.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver=' . time()); ?>">
+        <title><?php echo $title; ?></title>
+        <?php if (IS_HIRE_CSS_MINIFY == '0') { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-apply.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver=' . time()); ?>">
         <?php } ?>
-     
-        <?php if(!$this->session->userdata('aileenuser')){ ?>
 
-       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
+        <?php if (!$this->session->userdata('aileenuser')) { ?>
+
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
         <?php } ?>
     </head>
     <!-- END HEAD -->
 
     <!-- start header -->
-    <?php if($this->session->userdata('aileenuser')){ 
-        echo $header; }else{ ?>
-                 <header>
+    <?php
+    if ($this->session->userdata('aileenuser')) {
+        echo $header;
+    } else {
+        ?>
+        <header>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
-                      <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
+                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                         <div class="btn-right pull-right">
@@ -40,8 +43,8 @@
                 </div>
             </div>
         </header>
-            
-  <?php  } ?>
+
+    <?php } ?>
     <!-- END HEADER -->
     <body class="cus-no-login botton_footer cus-error">
         <section>
@@ -51,21 +54,34 @@
                         <div class="col-md-3"></div>
                         <div class="clearfix">
                             <div class="job_reg_page_fprm">
-                                   <?php if($this->uri->segment(3) == 'live-post'){
-                         echo '<div class="alert alert-success">Your Project is automatically Post after completing Employer registation...!</div>';
-                     } ?>
+                                <?php
+                                if ($this->uri->segment(3) == 'live-post') {
+                                    echo '<div class="alert alert-success">Your Project is automatically Post after completing Employer registation...!</div>';
+                                }
+                                ?>
                                 <div class="common-form job_reg_main">
                                     <h3>Welcome In Employer Profile</h3>
                                     <?php echo form_open(base_url('freelancer/hire_registation_insert'), array('id' => 'freelancerhire_regform', 'name' => 'freelancerhire_regform', 'class' => 'clearfix')); ?>
-                                    <fieldset>
+
+                                    <?php
+                                    $fname = form_error('firstname');
+                                    $lname = form_error('lastname');
+                                    $email = form_error('email_reg1');
+                                    $country = form_error('country');
+                                    $state = form_error('state');
+                                    ?>
+
+
+
+                                    <fieldset <?php if ($fname) { ?> class="error-msg" <?php } ?>>
                                         <label >First Name <font  color="red">*</font> :</label>                          
-                                        <input type="text" name="firstname" id="firstname" tabindex="1" placeholder="Enter first name" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" value="<?php echo  $userdata[0]['first_name']; ?>" maxlength="35">
+                                        <input type="text" name="firstname" id="firstname" tabindex="1" placeholder="Enter first name" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" value="<?php echo $userdata[0]['first_name']; ?>" maxlength="35">
                                         <?php
                                         echo form_error('firstname');
                                         ;
                                         ?>
                                     </fieldset>
-                                    <fieldset>
+                                    <fieldset <?php if ($lname) { ?> class="error-msg" <?php } ?>>
                                         <label >Last Name <font  color="red">*</font>:</label>
                                         <input type="text" name="lastname" id="lastname" tabindex="2" placeholder="Enter last name" style="text-transform: capitalize;" onfocus="this.value = this.value;" value="<?php echo $userdata[0]['last_name']; ?>" maxlength="35">
                                         <?php
@@ -73,9 +89,9 @@
                                         ;
                                         ?>
                                     </fieldset>
-                                    <fieldset>
+                                    <fieldset <?php if ($email) { ?> class="error-msg" <?php } ?>>
                                         <label >Email Address <font  color="red">*</font> :</label>
-                                        <input type="email" name="email_reg1" id="email_reg1" tabindex="3" placeholder="Enter email address" value="<?php  echo $userdata[0]['user_email']; ?>" maxlength="255">
+                                        <input type="email" name="email_reg1" id="email_reg1" tabindex="3" placeholder="Enter email address" value="<?php echo $userdata[0]['user_email']; ?>" maxlength="255">
                                         <?php
                                         echo form_error('email');
                                         ;
@@ -84,7 +100,7 @@
                                     <fieldset>
                                         <label >Phone number:<span class="optional">(optional)</span></label>
                                         <input type="text" name="phoneno" id="phoneno" tabindex="4" placeholder="Enter phone number" value="" maxlength="255">
-                                       
+
                                     </fieldset>
 
                                     <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
@@ -155,12 +171,12 @@
                                         <?php echo form_error('city'); ?>
                                     </fieldset>                              
 
-                                      <fieldset class="full-width <?php if ($professional_info) { ?> error-msg <?php } ?>">
-                                    <label><?php echo $this->lang->line("professional_info"); ?>:<span class="optional">(optional)</span></label>
-                                    <textarea tabindex="8"  name ="professional_info" tabindex="8" id="professional_info" rows="4" cols="50" placeholder="Enter professional information" style="resize: none;overflow: auto;" onpaste="OnPaste_StripFormatting(this, event);" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"></textarea>
-                                    <?php echo form_error('professional_info'); ?> 
-                                </fieldset>
-                                    <input type="hidden" id="segment" name="segment" value="<?php echo  $this->uri->segment(3); ?>">
+                                    <fieldset class="full-width <?php if ($professional_info) { ?> error-msg <?php } ?>">
+                                        <label><?php echo $this->lang->line("professional_info"); ?>:<span class="optional">(optional)</span></label>
+                                        <textarea tabindex="8"  name ="professional_info" tabindex="8" id="professional_info" rows="4" cols="50" placeholder="Enter professional information" style="resize: none;overflow: auto;" onpaste="OnPaste_StripFormatting(this, event);" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"></textarea>
+                                        <?php echo form_error('professional_info'); ?> 
+                                    </fieldset>
+                                    <input type="hidden" id="segment" name="segment" value="<?php echo $this->uri->segment(3); ?>">
                                     <fieldset class=" full-width">
                                         <div class="job_reg">
                                            <!--<input type="reset">-->
@@ -190,7 +206,7 @@
         </div>
         <!-- Model Popup Close -->
 
-            <!-- register -->
+        <!-- register -->
 
         <div class="modal fade register-model login" id="register" role="dialog">
             <div class="modal-dialog">
@@ -220,7 +236,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input tabindex="104" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
-                                            
+
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
@@ -305,8 +321,8 @@
             </div>
         </div>
         <!-- register -->
-        
-                <!-- Login  -->
+
+        <!-- Login  -->
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
@@ -416,43 +432,42 @@
 
 
         <!-- model for forgot password end -->
-        
+
         <!-- <footer>        -->
         <?php echo $login_footer ?> 
         <?php echo $footer; ?>
         <!-- </footer> -->
-        
-<?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-<script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/hire_registration.js?ver=' . time()); ?>"></script>
-                 
-            <?php } else {  ?>
-    <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/hire_registration.js?ver=' . time()); ?>"></script>
-           
+
+        <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+            <!--<script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>-->
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/hire_registration.js?ver=' . time()); ?>"></script>
+
+        <?php } else { ?>
+            <!--<script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>-->
+            <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/hire_registration.js?ver=' . time()); ?>"></script>
+
         <?php } ?>
         <script>
 
-                                        var base_url = '<?php echo base_url(); ?>';
-                                        var site = '<?php echo base_url(); ?>';
-                                        var user_session = '<?php echo $this->session->userdata('aileenuser'); ?>';
+                                                var base_url = '<?php echo base_url(); ?>';
+                                                var site = '<?php echo base_url(); ?>';
+                                                var user_session = '<?php echo $this->session->userdata('aileenuser'); ?>';
         </script>
 
 
 
-<script type="text/javascript">
+        <script type="text/javascript">
 
-$('select').on('change', function() {
-  if ($(this).val()){ 
-    $(this).css('color', 'black');
-  } 
-  else{ 
-     $(this).css('color', '#acacac');
-  }
-})
+            $('select').on('change', function () {
+                if ($(this).val()) {
+                    $(this).css('color', 'black');
+                } else {
+                    $(this).css('color', '#acacac');
+                }
+            })
 
-</script>
+        </script>
     </body>
 </html>
