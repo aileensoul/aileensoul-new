@@ -14660,7 +14660,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     }
 
                     $return_html .= '<div class="four-image">
-                                                        <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '"><img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['file_name']) . '" alt="'. $artmultiimage[3]['file_name'] .'"> </a>
+                                                        <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '"><img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '" alt="'. $artmultiimage[3]['file_name'] .'"> </a>
                                                         <a href="' . base_url('artist/post-detail/' . $key['art_post_id']) . '" >
                                                     <div class="more-image" >
                                                 <span>
