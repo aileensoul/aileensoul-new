@@ -4,6 +4,12 @@ $userid = $this->session->userdata('aileenuser');
 $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
 $this->data['userdata'] = $this->common->select_data_by_condition('user', $contition_array, $data = 'first_name,last_name,user_email,user_image,user_id,profile_background,profile_background_main', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+// notification count 
+
+$contition_array = array('not_read' => '2', 'not_to_id' => $userid, 'not_type !=' => '1', 'not_type !=' => '2');
+$result = $this->common->select_data_by_condition('notification', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+$this->data['user_notification_count'] = $count = $result[0]['total'];
+
 // freelancer hire detail
 $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
 $this->data['freehiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'profile_background,username,fullname,freelancer_hire_user_image,profile_background,profile_background_main,designation,freelancer_hire_slug,free_hire_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');

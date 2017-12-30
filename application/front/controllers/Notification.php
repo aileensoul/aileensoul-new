@@ -957,7 +957,7 @@ Your browser does not support the audio tag.
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('not_read' => '2', 'not_to_id' => $to_id, 'not_type !=' => '1', 'not_type !=' => '2');
         $result = $this->common->select_data_by_condition('notification', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $count = $result[0]['total'];
+        $count = $result[0]['total']; 
         echo json_encode(array('count' => $count, 'to_id' => $to_id));
     }
 
