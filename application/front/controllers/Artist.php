@@ -9360,7 +9360,7 @@ class Artist extends MY_Controller {
             $fourdata .= '' . $rowdata['comment'] . '';
             $fourdata .= '</div>';
 
-            $fourdata .= '<button id="editsubmitimgtwo' . $rowdata['post_image_comment_id'] . '" style="display:none; margin-left:15px;" onClick="edit_commentimgtwo(' . $rowdata['post_image_comment_id'] . ')">Comment</button>';
+            $fourdata .= '<button id="editsubmitimgtwo' . $rowdata['post_image_comment_id'] . '" style="display:none; margin-left:15px;" onClick="edit_commentimgtwo(' . $rowdata['post_image_comment_id'] . ')">Save</button>';
 
             $fourdata .= '<div class="art-comment-menu-design">';
             $fourdata .= '<div class="comment-details-menu" id="likecommentimg' . $rowdata['post_image_comment_id'] . '">';

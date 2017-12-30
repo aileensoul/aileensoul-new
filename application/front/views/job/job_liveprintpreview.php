@@ -1940,12 +1940,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
       <script>
             function login_profile() {
                 $('#register').modal('show');
-                $('body').addClass('modal-open');
+               // $('body').addClass('modal-open');
             }
              function login_data() { 
                 $('#login').modal('show');
                 $('#register').modal('hide');
-                $('body').addClass('modal-open');
+                //$('body').addClass('modal-open');
 
             }
             function register_profile() {
@@ -1959,8 +1959,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
 
 $('.modal-close').click(function(e){ 
+   // $('body').addClass('modal-open'); 
     $('#login').modal('show');
-    $('body').addClass('modal-open'); 
 });
 
 
