@@ -35,7 +35,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </style>
     
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
+    <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer no-login">
 
         <header>
             <div class="container">
