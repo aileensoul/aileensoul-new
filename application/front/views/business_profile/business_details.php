@@ -824,22 +824,6 @@
 
             });
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/followers.js?ver=' . time()); ?>"></script>
-        <script>
-            function open_profile() {
-                register_profile();
-            }
-            function login_profile() {
-                $('#login').modal('show');
-            }
-            function register_profile() {
-                $('#login').modal('hide');
-                $('#register').modal('show');
-            }
-            function forgot_profile() {
-                $('#forgotPassword').modal('show');
-            }
-        </script>
         <script>
             $(document).on('click', '[data-toggle*=modal]', function () {
                 $('[role*=dialog]').each(function () {
