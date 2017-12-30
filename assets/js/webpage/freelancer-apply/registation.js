@@ -498,15 +498,15 @@ $(document).on('keydown', function (e) {
 });
 //CLOSE MODEL ON ESC KEY END
 //DISABLE BUTTON ON ONE TIME CLICK START
-$("#submit").on('click', function ()
-{
-    if ($('#freelancer_regform').valid())
-    {
-        $("#submit").addClass("register_disable");
-        return true;
-    }
-
-});
+//$("#submit").on('click', function ()
+//{
+//    if ($('#freelancer_regform').valid())
+//    {
+//        $("#submit").addClass("register_disable");
+//        return true;
+//    }
+//
+//});
 //DISABLE CUTTON ON ONE TIME CLICK END
 //login pop up open start
 function login_profile() {

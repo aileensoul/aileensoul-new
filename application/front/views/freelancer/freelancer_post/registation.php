@@ -67,6 +67,16 @@
                                 <div class="common-form job_reg_main">
                                     <h3>Welcome In Freelancer Profile</h3>
                                     <?php echo form_open(base_url('freelancer/registation_insert/' . $this->uri->segment(4)), array('id' => 'freelancer_regform', 'name' => 'freelancer_regform', 'class' => 'clearfix')); ?>
+                                    <?php
+                                    $fullname = form_error('firstname');
+                                    $lastname = form_error('lastname');
+                                    $email = form_error('email');
+                                    $country = form_error('country');
+                                    $state = form_error('state');
+                                    $field = form_error('field');
+                                    $skill= form_error('skills');
+                                    
+                                    ?>
                                     <fieldset>
                                         <label >First Name <font  color="red">*</font> :</label>                          
                                         <input type="text" name="firstname" id="firstname" tabindex="1" placeholder="Enter first name" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" value="<?php echo $userdata[0]['first_name']; ?>" maxlength="35">
@@ -91,9 +101,7 @@
                                     <fieldset>
                                         <label >Phone number:<span class="optional">(optional)</span></label>
                                         <input type="text" name="phoneno" id="phoneno" tabindex="4" placeholder="Enter phone number" value="<?php echo $job[0]['user_email']; ?>" maxlength="255">
-                                        <?php
-                                        echo form_error('email');
-                                        ?>
+                                       
                                     </fieldset>
 
                                     <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
@@ -161,10 +169,10 @@
                                             }
                                             ?>
                                         </select><span id="city-error"></span>
-                                        <?php echo form_error('city'); ?>
+                                        
                                     </fieldset>                              
 
-                                    <fieldset class="full-width" <?php if ($field) { ?> class="error-msg" <?php } ?>>
+                                    <fieldset  <?php if ($field) {  ?> class="full-width error-msg" <?php } else{ ?> class="full-width" <?php } ?>>
                                         <?php if ($livepostid) { ?>
                                             <input type="hidden" name="livepostid" id="livepostid" tabindex="8"  value="<?php echo $livepostid; ?>">
                                         <?php }
@@ -195,14 +203,14 @@
                                         <?php echo form_error('field'); ?>
                                     </fieldset>
 
-                                    <fieldset  <?php if ($area) { ?> class="error-msg" <?php } ?> class="full-width">
+                                    <fieldset  <?php if ($skill) { ?> class="error-msg full-width" <?php }else{ ?> class="full-width" <?php }?>>
                                         <label> <?php echo $this->lang->line("your_skill"); ?>:<span class="red">*</span></label>
                                         <input id="skills1" name="skills" tabindex="9"   placeholder="Enter skills" value="<?php
                                         if ($skill_2) {
                                             echo $skill_2;
                                         }
                                         ?>">
-                                               <?php echo form_error('area'); ?>
+                                               <?php echo form_error('skills'); ?>
                                     </fieldset>
 
                                     <fieldset  class="full-width" <?php if ($experience_year) { ?> class="error-msg" <?php } ?>>
@@ -251,7 +259,7 @@
                                             <option value="12 month"  <?php if ($experience_month1 == "12 month") echo 'selected'; ?>>12 Month</option>
 
                                         </select>  
-                                        <?php echo form_error('experience_year'); ?>
+                                       
 
                                     </fieldset>
 
@@ -525,14 +533,14 @@
         <?php
         if (IS_APPLY_JS_MINIFY == '0') {
             ?>
-            <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+            <!--<script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>-->
             <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
             <!--<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/registation.js?ver=' . time()); ?>"></script>-->
 
             <?php
         } else {
             ?>
-            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
+            <!--<script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>-->
             <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
             <!--<script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/registation.js?ver=' . time()); ?>"></script>-->
 

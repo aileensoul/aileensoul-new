@@ -4397,7 +4397,7 @@ class Freelancer extends MY_Controller {
 //FREELANCER HIRE POST LIVE LINK START
     public function live_post($userid = '', $postid = '', $posttitle = '') {
         $segment3 = explode('-', $this->uri->segment(3));
-        
+
         $slugdata = array_reverse($segment3);
         $postid = $slugdata[0];
         $this->data['recliveid'] = $userid = $slugdata[1];
@@ -4415,7 +4415,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('post_id' => $postid, 'freelancer_post.is_delete' => '0', 'freelancer_hire_reg.user_id' => $userid, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.free_hire_step' => '3');
         $data = 'freelancer_post.post_id,freelancer_post.post_name,freelancer_post.post_field_req,freelancer_post.post_est_time,freelancer_post.post_skill,freelancer_post.post_other_skill,freelancer_post.post_rate,freelancer_post.post_last_date,freelancer_post.post_description,freelancer_post.user_id,freelancer_post.created_date,freelancer_post.post_currency,freelancer_post.post_rating_type,freelancer_post.post_exp_month,freelancer_post.post_exp_year,freelancer_hire_reg.username,freelancer_hire_reg.fullname,freelancer_hire_reg.designation,freelancer_hire_reg.freelancer_hire_user_image,freelancer_hire_reg.country,freelancer_hire_reg.city';
         $this->data['postdata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data, $sortby = 'freelancer_post.post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-     
+
 
         $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $userid))->row()->city;
         $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
@@ -4460,23 +4460,23 @@ class Freelancer extends MY_Controller {
         $contition_array = array('freelancer_apply.post_id' => $postid, 'freelancer_apply.is_delete' => '0', 'save.from_id' => $userid, 'save.save_type' => '2', 'save.status' => '2');
         $data = 'freelancer_post_reg.user_id, freelancer_post_reg.freelancer_apply_slug, freelancer_post_reg.freelancer_post_fullname, freelancer_post_reg.freelancer_post_username, freelancer_post_reg.designation,freelancer_post_reg.freelancer_post_user_image,freelancer_post_reg.freelancer_apply_slug';
         $shortlist = $this->data['shortlist'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-        
+
         $segment3 = explode('-', $this->uri->segment(3));
         $segment3 = array_splice($segment3, 0, -2);
         $segment3 = implode(' ', $segment3);
         $segment3 = ucfirst($segment3);
 
         $this->data['title'] = $segment3 . TITLEPOSTFIX;
-      
+
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('freelancer/freelancer_post/hire_project', $this->data);
         } else {
             if ($postname == $original) {
                 $this->load->view('freelancer/freelancer_post/hire_project_live', $this->data);
             } else {
-                if($this->data['postdata']){
-                redirect('freelance-hire/project/' .$url, refresh);
-                }else{
+                if ($this->data['postdata']) {
+                    redirect('freelance-hire/project/' . $url, refresh);
+                } else {
                     $this->data['title'] = 'Content Not Avaible - Aileensoul';
                     $this->load->view('freelancer/freelancer_post/hire_project_live', $this->data);
                 }
@@ -4587,16 +4587,16 @@ class Freelancer extends MY_Controller {
         $contition_array = array('status' => 1);
         $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $this->data['title'] = "Registration | Employer Profile" . TITLEPOSTFIX;
-        
-        if($this->session->userdata('aileenuser')){
+
+        if ($this->session->userdata('aileenuser')) {
             $userid = $this->session->userdata('aileenuser');
-        $hireuser = $this->db->select('user_id')->get_where('freelancer_hire_reg', array('user_id' => $userid))->row()->user_id;
+            $hireuser = $this->db->select('user_id')->get_where('freelancer_hire_reg', array('user_id' => $userid))->row()->user_id;
         }
-        
-        if($hireuser){
+
+        if ($hireuser) {
             redirect('freelance-hire/home', refresh);
-        }else{
-        $this->load->view('freelancer/freelancer_hire/hire_registration', $this->data);
+        } else {
+            $this->load->view('freelancer/freelancer_hire/hire_registration', $this->data);
         }
     }
 
@@ -4697,16 +4697,15 @@ class Freelancer extends MY_Controller {
         $contition_array = array('status' => '1', 'type' => '1');
         $this->data['skill1'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $this->data['title'] = "Registration | Freelancer Profile" . TITLEPOSTFIX;
-        if($this->session->userdata('aileenuser')){
+        if ($this->session->userdata('aileenuser')) {
             $userid = $this->session->userdata('aileenuser');
-        $hireuser = $this->db->select('user_id')->get_where('freelancer_post_reg', array('user_id' => $userid))->row()->user_id;
+            $hireuser = $this->db->select('user_id')->get_where('freelancer_post_reg', array('user_id' => $userid))->row()->user_id;
         }
-        if($hireuser){
+        if ($hireuser) {
             redirect('freelance-work/home', refresh);
-        }else{
-        $this->load->view('freelancer/freelancer_post/registation', $this->data);
+        } else {
+            $this->load->view('freelancer/freelancer_post/registation', $this->data);
         }
-        
     }
 
     //FREELANCER APPLY NEW REGISTATION PROFILE END
@@ -4778,11 +4777,11 @@ class Freelancer extends MY_Controller {
         $this->form_validation->set_rules('email', 'EmailId', 'required|valid_email');
         $this->form_validation->set_rules('country', 'country', 'required');
         $this->form_validation->set_rules('state', 'state', 'required');
-        $this->form_validation->set_rules('field', 'field', 'required');
+        $this->form_validation->set_rules('field', 'Field', 'required');
         $this->form_validation->set_rules('skills', 'skill', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('freelancer/freelancer_post/registation');
+            $this->load->view('freelancer/freelancer_post/registation',$this->data);
         } else {
 
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
