@@ -21,7 +21,7 @@
 
         <!-- This Css is used for call popup -->
         <?php if (!$this->session->userdata('aileenuser')) { ?>
-       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
 
         <?php } ?>     
 
@@ -38,7 +38,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
-                      <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
+                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                         <div class="btn-right pull-right">
@@ -74,10 +74,9 @@
                                     $country = form_error('country');
                                     $state = form_error('state');
                                     $field = form_error('field');
-                                    $skill= form_error('skills');
-                                    $experiance= form_error('experiance');
-                                  //  echo $experiance;die();
-                                    
+                                    $skill = form_error('skills');
+                                    $experiance = form_error('experiance');
+                                    //  echo $experiance;die();
                                     ?>
                                     <fieldset>
                                         <label >First Name <font  color="red">*</font> :</label>                          
@@ -103,7 +102,7 @@
                                     <fieldset>
                                         <label >Phone number:<span class="optional">(optional)</span></label>
                                         <input type="text" name="phoneno" id="phoneno" tabindex="4" placeholder="Enter phone number" value="<?php echo $job[0]['user_email']; ?>" maxlength="255">
-                                       
+
                                     </fieldset>
 
                                     <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
@@ -171,10 +170,10 @@
                                             }
                                             ?>
                                         </select><span id="city-error"></span>
-                                        
+
                                     </fieldset>                              
 
-                                    <fieldset  <?php if ($field) {  ?> class="full-width error-msg" <?php } else{ ?> class="full-width" <?php } ?>>
+                                    <fieldset  <?php if ($field) { ?> class="full-width error-msg" <?php } else { ?> class="full-width" <?php } ?>>
                                         <?php if ($livepostid) { ?>
                                             <input type="hidden" name="livepostid" id="livepostid" tabindex="8"  value="<?php echo $livepostid; ?>">
                                         <?php }
@@ -205,7 +204,7 @@
                                         <?php echo form_error('field'); ?>
                                     </fieldset>
 
-                                    <fieldset  <?php if ($skill) { ?> class="error-msg full-width" <?php }else{ ?> class="full-width" <?php }?>>
+                                    <fieldset  <?php if ($skill) { ?> class="error-msg full-width" <?php } else { ?> class="full-width" <?php } ?>>
                                         <label> <?php echo $this->lang->line("your_skill"); ?>:<span class="red">*</span></label>
                                         <input id="skills1" name="skills" tabindex="9"   placeholder="Enter skills" value="<?php
                                         if ($skill_2) {
@@ -215,7 +214,7 @@
                                                <?php echo form_error('skills'); ?>
                                     </fieldset>
 
-                                    <fieldset   <?php if ($experiance) { ?> class="error-msg full-width" <?php } else{ ?> class="full-width" <?php } ?>>
+                                    <fieldset   <?php if ($experiance) { ?> class="error-msg full-width" <?php } else { ?> class="full-width" <?php } ?>>
                                         <label><?php echo $this->lang->line("total_experiance"); ?> :<span class="red">*</span></label>  <select name="experience_year" placeholder="Year" tabindex="10" id="experience_year" class="experience_year col-md-5 day" onchange="return check_yearmonth();" style="margin-right: 4%;">
 
                                             <option value="" selected option disabled><?php echo $this->lang->line("year"); ?></option>
@@ -261,7 +260,7 @@
                                             <option value="12 month"  <?php if ($experience_month1 == "12 month") echo 'selected'; ?>>12 Month</option>
 
                                         </select>  
-                                       
+
                                         <?php echo form_error('experiance'); ?>
                                     </fieldset>
 
@@ -392,10 +391,10 @@
 
                                         <div class="form-group gender-custom">
                                             <span><select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
-                                                <option value="" disabled selected value>Gender</option>
-                                                <option value="M">Male</option>
-                                                <option value="F">Female</option>
-                                            </select></span>
+                                                    <option value="" disabled selected value>Gender</option>
+                                                    <option value="M">Male</option>
+                                                    <option value="F">Female</option>
+                                                </select></span>
                                         </div>
 
                                         <p class="form-text" style="margin-bottom: 10px;">
@@ -535,14 +534,14 @@
         <?php
         if (IS_APPLY_JS_MINIFY == '0') {
             ?>
-            <!--<script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>-->
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
             <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
             <!--<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/registation.js?ver=' . time()); ?>"></script>-->
 
             <?php
         } else {
             ?>
-            <!--<script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>-->
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
             <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
             <!--<script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/registation.js?ver=' . time()); ?>"></script>-->
 

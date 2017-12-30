@@ -2,6 +2,39 @@
 $(".alert").delay(3200).fadeOut(300);
 //FLASH MESSAGE SCRIPT END
 //CODE FOR COUNTRY,STATE, CITY START
+  $('#country').on('change', function () {
+        var countryID = $(this).val();
+        if (countryID) {
+            $.ajax({
+                type: 'POST',
+                url: base_url + "freelancer/ajax_data",
+                data: 'country_id=' + countryID,
+                success: function (html) {
+                    $('#state').html(html);
+                    $('#city').html('<option value="">Select state first</option>');
+                }
+            });
+        } else {
+            $('#state').html('<option value="">Select country first</option>');
+            $('#city').html('<option value="">Select state first</option>');
+        }
+    });
+
+    $('#state').on('change', function () {
+        var stateID = $(this).val();
+        if (stateID) {
+            $.ajax({
+                type: 'POST',
+                url: base_url + "freelancer/ajax_data",
+                data: 'state_id=' + stateID,
+                success: function (html) {
+                    $('#city').html(html);
+                }
+            });
+        } else {
+            $('#city').html('<option value="">Select state first</option>');
+        }
+    });
 $(document).ready(function () {
     if (!user_session) {
         $('#register').modal('show');

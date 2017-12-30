@@ -4786,6 +4786,23 @@ class Freelancer extends MY_Controller {
         }
 
         if ($this->form_validation->run() == FALSE) {
+            $contition_array = array('status' => '1');
+        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('status' => '1', 'is_other' => '0');
+        $this->data['category'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
+        $search_condition = "( status = '1')";
+        $this->data['category_data'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('is_delete' => '0', 'status' => '1', 'category_name' => "Other");
+        $this->data['category_otherdata'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        $contition_array = array('status' => '1', 'type' => '1');
+        $this->data['skill1'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['title'] = "Registration | Freelancer Profile" . TITLEPOSTFIX;
             $this->load->view('freelancer/freelancer_post/registation', $this->data);
         } else {
 

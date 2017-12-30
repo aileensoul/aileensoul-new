@@ -93,7 +93,7 @@
                                         <label >Email Address <font  color="red">*</font> :</label>
                                         <input type="email" name="email_reg1" id="email_reg1" tabindex="3" placeholder="Enter email address" value="<?php echo $userdata[0]['user_email']; ?>" maxlength="255">
                                         <?php
-                                        echo form_error('email');
+                                        echo form_error('email_reg1');
                                         ;
                                         ?>
                                     </fieldset>
