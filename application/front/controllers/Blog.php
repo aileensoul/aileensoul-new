@@ -95,25 +95,25 @@ class Blog extends CI_Controller {
     }
 
     //READ MORE CLICK START
-    public function read_more() {
-
-        $id = $_POST['blog_id'];
-
-        //FOR INSERT READ MORE BLOG START
-        $data = array(
-            'blog_id' => $id,
-            'visiter_date' => date('Y-m-d H:i:s')
-        );
-        $insert_id = $this->common->insert_data_getid($data, 'blog_visit');
-
-        //FOR INSERT READ MORE BLOG END
-
-        if ($insert_id) {
-            echo 1;
-        } else {
-            echo 0;
-        }
-    }
+//    public function read_more() {
+//
+//        $id = $_POST['blog_id'];
+//
+//        //FOR INSERT READ MORE BLOG START
+//        $data = array(
+//            'blog_id' => $id,
+//            'visiter_date' => date('Y-m-d H:i:s')
+//        );
+//        $insert_id = $this->common->insert_data_getid($data, 'blog_visit');
+//
+//        //FOR INSERT READ MORE BLOG END
+//
+//        if ($insert_id) {
+//            echo 1;
+//        } else {
+//            echo 0;
+//        }
+//    }
 
     //READ MORE CLICK END
     //BLOGDETAIL FOR PERICULAR ONE POST START
@@ -342,7 +342,7 @@ class Blog extends CI_Controller {
             $blog_data .= '</ul>
                                                                 </div>';
             $blog_data .= '<div class="fr blog_view_link">';
-                $blog_data .= '<a title="Read more" id="read_more" blog_id="' . $blog['id'] . '" blog_slug="' . $blog['blog_slug'] . '", "' . $blog['blog_slug'] . '")"> Read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                $blog_data .= '<a title="Read more"  href="' .base_url('blog/' . $blog['blog_slug']) . '" target="_blank"> Read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -515,7 +515,7 @@ class Blog extends CI_Controller {
                                                                 </div>';
 
             $blog_data .= '<div class="fr blog_view_link">';
-            $blog_data .= "<a title='Read more' onclick='read_more('" . $blog['id'] . "', '" . $blog['blog_slug'] . "')'> Read more <i class='fa fa-long-arrow-right' aria-hidden='true'></i>
+            $blog_data .= "<a title='Read more' href='" .base_url('blog/' . $blog['blog_slug']) . "' target='_blank'> Read more <i class='fa fa-long-arrow-right' aria-hidden='true'></i>
                                                                     </a>
                                                                 </div>
                                                             </div>

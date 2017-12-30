@@ -140,7 +140,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                     <?php
                                 } else {
                                     ?>
-                                    <a href="javascript:void(0)">
+                                    <a href="<?php echo base_url('blog'); ?>">
                                         <h3  style="color: #1b8ab9;">Blog</h3>
                                     </a>
                                     <?php
