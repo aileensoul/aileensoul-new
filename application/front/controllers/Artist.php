@@ -8782,7 +8782,7 @@ class Artist extends MY_Controller {
             $cmtinsert .= '<div class="comment-details" id= "showcommentimg' . $art_comment['post_image_comment_id'] . '">';
             $cmtinsert .= $art_comment['comment'];
             $cmtinsert .= '</div>';
-            $cmtinsert .= '<div contenteditable="true"   class="editable_text" name="' . $art_comment['post_image_comment_id'] . '" id="editcommentimg' . $art_comment['post_image_comment_id'] . '"style="display:none;    width: 81%;
+            $cmtinsert .= '<div class="edit-comment-box"><div class ="inputtype-edit-comment"><div contenteditable="true"   class="editable_text" name="' . $art_comment['post_image_comment_id'] . '" id="editcommentimg' . $art_comment['post_image_comment_id'] . '"style="display:none;    width: 81%;
     min-height: 37px !important;
     margin-top: 0px !important;
     margin-left: 1.5% !important;" onkeyup="commenteditimg(' . $art_comment['post_image_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">';
@@ -8790,7 +8790,7 @@ class Artist extends MY_Controller {
             $cmtinsert .= '' . $this->common->make_links($art_comment['comment']) . '';
             $cmtinsert .= '</div>';
 
-            $cmtinsert .= '<button id="editsubmitimg' . $art_comment['post_image_comment_id'] . '" style="display:none; margin-left:15px;" onClick="edit_commentimg(' . $art_comment['post_image_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecommentimg' . $art_comment['post_image_comment_id'] . '">';
+            $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmitimg' . $art_comment['post_image_comment_id'] . '" style="display:none; margin-left:15px;" onClick="edit_commentimg(' . $art_comment['post_image_comment_id'] . ')">Save</button></span></div></div><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecommentimg' . $art_comment['post_image_comment_id'] . '">';
 
             $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
             $cmtinsert .= 'onClick="comment_likeimg(this.id)">';
@@ -8974,7 +8974,7 @@ class Artist extends MY_Controller {
                 $cmtinsert .= '<div class="comment-details" id= "showcommentimgtwo' . $art_comment['post_image_comment_id'] . '">';
                 $cmtinsert .= $this->common->make_links($art_comment['comment']);
                 $cmtinsert .= '</div>';
-                $cmtinsert .= '<div contenteditable="true" class="editable_text" name="' . $art_comment['post_image_comment_id'] . '" id="editcommentimgtwo' . $art_comment['post_image_comment_id'] . '"style="display:none;    width: 81%;
+                $cmtinsert .= '<div class="edit-comment-box"><div class ="inputtype-edit-comment"><div contenteditable="true" class="editable_text" name="' . $art_comment['post_image_comment_id'] . '" id="editcommentimgtwo' . $art_comment['post_image_comment_id'] . '"style="display:none;    width: 81%;
     min-height: 37px !important;
     margin-top: 0px !important;
     margin-left: 1.5% !important; margin-right10px;" onkeyup="commenteditimgtwo(' . $art_comment['post_image_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">';
@@ -8982,7 +8982,7 @@ class Artist extends MY_Controller {
                 $cmtinsert .= '' . $art_comment['comment'] . '';
                 $cmtinsert .= '</div>';
 
-                $cmtinsert .= '<button id="editsubmitimgtwo' . $art_comment['post_image_comment_id'] . '" style="display:none; margin-left:15px;" onClick="edit_commentimgtwo(' . $art_comment['post_image_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecommentimg' . $art_comment['post_image_comment_id'] . '">';
+                $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmitimgtwo' . $art_comment['post_image_comment_id'] . '" style="display:none; margin-left:15px;" onClick="edit_commentimgtwo(' . $art_comment['post_image_comment_id'] . ')">Save</button></span></div></div><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecommentimg' . $art_comment['post_image_comment_id'] . '">';
 
                 $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
                 $cmtinsert .= 'onClick="comment_likeimg(this.id)">';
@@ -9352,7 +9352,7 @@ class Artist extends MY_Controller {
             $fourdata .= '<div class="comment-details" id= "showcommentimgtwo' . $rowdata['post_image_comment_id'] . '">';
             $fourdata .= '' . $this->common->make_links($rowdata['comment']) . '</br></div>';
 
-            $fourdata .= '<div contenteditable="true" class="editable_text" name="' . $rowdata['post_image_comment_id'] . '" id="editcommentimgtwo' . $rowdata['post_image_comment_id'] . '" style="display:none  ;  width: 81%;
+            $fourdata .= '<div class="edit-comment-box"><div class ="inputtype-edit-comment"><div contenteditable="true" class="editable_text" name="' . $rowdata['post_image_comment_id'] . '" id="editcommentimgtwo' . $rowdata['post_image_comment_id'] . '" style="display:none  ;  width: 81%;
     min-height: 37px !important;
     margin-top: 0px !important;
     margin-left: 1.5% !important; margin-right10px;"  onClick="commenteditimgtwo(' . $rowdata['post_image_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">';
@@ -9360,7 +9360,7 @@ class Artist extends MY_Controller {
             $fourdata .= '' . $rowdata['comment'] . '';
             $fourdata .= '</div>';
 
-            $fourdata .= '<button id="editsubmitimgtwo' . $rowdata['post_image_comment_id'] . '" style="display:none; margin-left:15px;" onClick="edit_commentimgtwo(' . $rowdata['post_image_comment_id'] . ')">Comment</button>';
+            $fourdata .= '<span class="comment-edit-button"><button id="editsubmitimgtwo' . $rowdata['post_image_comment_id'] . '" style="display:none;" onClick="edit_commentimgtwo(' . $rowdata['post_image_comment_id'] . ')">Save</button></span></div></div>';
 
             $fourdata .= '<div class="art-comment-menu-design">';
             $fourdata .= '<div class="comment-details-menu" id="likecommentimg' . $rowdata['post_image_comment_id'] . '">';
@@ -9800,7 +9800,7 @@ class Artist extends MY_Controller {
             $cmtinsert .= '<div class="comment-details" id= "showcommentimgtwo' . $art_comment['post_image_comment_id'] . '"" >';
             $cmtinsert .= $this->common->make_links($art_comment['comment']);
             $cmtinsert .= '</div>';
-            $cmtinsert .= '<div contenteditable="true" class="editable_text" name="' . $art_comment['post_image_comment_id'] . '" id="editcommentimgtwo' . $art_comment['post_image_comment_id'] . '"style="display:none;    width: 81%;
+            $cmtinsert .= '<div class="edit-comment-box"><div class ="inputtype-edit-comment"><div contenteditable="true" class="editable_text" name="' . $art_comment['post_image_comment_id'] . '" id="editcommentimgtwo' . $art_comment['post_image_comment_id'] . '"style="display:none;    width: 81%;
     min-height: 37px !important;
     margin-top: 0px !important;
     margin-left: 1.5% !important ;" onkeyup="commenteditimgtwo(' . $art_comment['post_image_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">';
@@ -9808,7 +9808,7 @@ class Artist extends MY_Controller {
             $cmtinsert .= '' . $art_comment['comment'] . '';
             $cmtinsert .= '</div>';
 
-            $cmtinsert .= '<button id="editsubmitimgtwo' . $art_comment['post_image_comment_id'] . '" style="display:none; margin-left:15px;" onClick="edit_commentimgtwo(' . $art_comment['post_image_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecommentimg' . $art_comment['post_image_comment_id'] . '">';
+            $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmitimgtwo' . $art_comment['post_image_comment_id'] . '" style="display:none; margin-left:15px;" onClick="edit_commentimgtwo(' . $art_comment['post_image_comment_id'] . ')">Save</button></span></div></div><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecommentimg' . $art_comment['post_image_comment_id'] . '">';
 
             $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
             $cmtinsert .= 'onClick="comment_likeimgtwo(this.id)">';

@@ -1273,9 +1273,12 @@ Your browser does not support the audio tag.
 </a>
 </li>
 <li id = "insertcount' . $post_business_profile_post_id . '" style = "visibility:show">';
-
-        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
-        $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $join_str[0]['table'] = 'user';
+        $join_str[0]['join_table_id'] = 'user.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+        $join_str[0]['join_type'] = '';
+        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'business_profile_post_comment.status' => '1', 'business_profile_post_comment.is_delete' => '0', 'user.status' => '1', 'user.is_delete' => '0');
+        $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $return_html .= '<a onClick = "commentall(this.id)" id = "' . $post_business_profile_post_id . '" class = "ripple like_h_w">
 <i class = "fa fa-comment-o" aria-hidden = "true">
@@ -1401,13 +1404,13 @@ Your browser does not support the audio tag.
 </div>
 <div id = "threecomment' . $post_business_profile_post_id . '" style = "display:block">
 <div class = "hidebottomborder insertcomment' . $post_business_profile_post_id . '">';
-        
+
         $join_str[0]['table'] = 'user';
         $join_str[0]['join_table_id'] = 'user.user_id';
         $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
         $join_str[0]['join_type'] = '';
-        
-        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1','user.status' => '1','user.is_delete'=> '0');
+
+        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
         if ($businessprofiledata) {
             foreach ($businessprofiledata as $rowdata) {
@@ -1475,8 +1478,12 @@ Your browser does not support the audio tag.
 <a id = "' . $rowdata['business_profile_post_comment_id'] . '" onClick = "comment_like1(this.id)">';
 
                 $userid = $this->session->userdata('aileenuser');
-                $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
-                $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $join_str[0]['table'] = 'user';
+                $join_str[0]['join_table_id'] = 'user.user_id';
+                $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+                $join_str[0]['join_type'] = '';
+                $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+                $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
                 $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
                 if (!in_array($userid, $likeuserarray)) {
 
@@ -2186,7 +2193,7 @@ Your browser does not support the audio tag.
         $join_str[0]['from_table_id'] = 'business_profile.user_id';
         $join_str[0]['join_type'] = '';
 
-        $contition_array = array('business_profile.business_step' => '4', 'business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.user_id !=' => $userid, 'user.status'=>'1', 'user.is_delete' => '0');
+        $contition_array = array('business_profile.business_step' => '4', 'business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.user_id !=' => $userid, 'user.status' => '1', 'user.is_delete' => '0');
         $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'desc', $limit, $offset, $join_str, $groupby = '');
         $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -3910,8 +3917,12 @@ Your browser does not support the audio tag.
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST["post_id"];
-        $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
-        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $join_str[0]['table'] = 'user';
+        $join_str[0]['join_table_id'] = 'user.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+        $join_str[0]['join_type'] = '';
+        $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'business_profile_post_comment.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
+        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $business_comment_likes_count = $businessprofiledata[0]['business_comment_likes_count'];
         $likeuserarray = explode(',', $businessprofiledata[0]['business_comment_like_user']);
@@ -3990,9 +4001,12 @@ Your browser does not support the audio tag.
             }
 // end notification
 
-
-            $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
-            $businessprofiledata1 = $this->data['businessprofiledata1'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $join_str[0]['table'] = 'user';
+            $join_str[0]['join_table_id'] = 'user.user_id';
+            $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+            $join_str[0]['join_type'] = '';
+            $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+            $businessprofiledata1 = $this->data['businessprofiledata1'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
             if ($updatdata) {
 
@@ -4026,8 +4040,14 @@ Your browser does not support the audio tag.
 
 
             $updatdata = $this->common->update_data($data, 'business_profile_post_comment', 'business_profile_post_comment_id', $post_id);
-            $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
-            $businessprofiledata2 = $this->data['businessprofiledata2'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+            $join_str[0]['table'] = 'user';
+            $join_str[0]['join_table_id'] = 'user.user_id';
+            $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+            $join_str[0]['join_type'] = '';
+            $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+            $businessprofiledata2 = $this->data['businessprofiledata2'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
             if ($updatdata) {
 
@@ -4052,8 +4072,12 @@ Your browser does not support the audio tag.
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST['post_id'];
-        $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
-        $bus_not_to_id = $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $join_str[0]['table'] = 'user';
+        $join_str[0]['join_table_id'] = 'user.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+        $join_str[0]['join_type'] = '';
+        $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+        $bus_not_to_id = $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $business_comment_likes_count = $businessprofiledata[0]['business_comment_likes_count'];
         $likeuserarray = explode(',', $businessprofiledata[0]['business_comment_like_user']);
@@ -4128,8 +4152,12 @@ Your browser does not support the audio tag.
                 }
             }
 // end notification
-            $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
-            $businessprofiledata1 = $this->data['businessprofiledata1'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $join_str[0]['table'] = 'user';
+            $join_str[0]['join_table_id'] = 'user.user_id';
+            $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+            $join_str[0]['join_type'] = '';
+            $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+            $businessprofiledata1 = $this->data['businessprofiledata1'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
             if ($updatdata) {
                 $cmtlike1 = '<a id = "' . $businessprofiledata1[0]['business_profile_post_comment_id'] . '" onClick = "comment_like1(this.id)">';
@@ -4169,8 +4197,13 @@ Your browser does not support the audio tag.
 
 
             $updatdata = $this->common->update_data($data, 'business_profile_post_comment', 'business_profile_post_comment_id', $post_id);
-            $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
-            $businessprofiledata2 = $this->data['businessprofiledata2'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $join_str[0]['table'] = 'user';
+            $join_str[0]['join_table_id'] = 'user.user_id';
+            $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+            $join_str[0]['join_type'] = '';
+            $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+            $businessprofiledata2 = $this->data['businessprofiledata2'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
             if ($updatdata) {
 
@@ -4215,12 +4248,19 @@ Your browser does not support the audio tag.
 
         $updatdata = $this->common->update_data($data, 'business_profile_post_comment', 'business_profile_post_comment_id', $post_id);
 
+        $join_str[0]['table'] = 'user';
+        $join_str[0]['join_table_id'] = 'user.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+        $join_str[0]['join_type'] = '';
+        $contition_array = array('business_profile_post_id' => $post_delete, 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
 
-        $contition_array = array('business_profile_post_id' => $post_delete, 'status' => '1');
-        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('business_profile_post_id' => $post_delete, 'status' => '1');
-        $buscmtcnt = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $join_str[0]['table'] = 'user';
+        $join_str[0]['join_table_id'] = 'user.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+        $join_str[0]['join_type'] = '';
+        $contition_array = array('business_profile_post_id' => $post_delete, 'business_profile_post_comment.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
+        $buscmtcnt = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
 
         if (count($businessprofiledata) > 0) {
             foreach ($businessprofiledata as $business_profile) {
@@ -4251,8 +4291,12 @@ Your browser does not support the audio tag.
                 $cmtinsert .= 'onClick="comment_like1(this.id)">';
 
                 $userid = $this->session->userdata('aileenuser');
-                $contition_array = array('business_profile_post_comment_id' => $business_profile['business_profile_post_comment_id'], 'status' => '1');
-                $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $join_str[0]['table'] = 'user';
+                $join_str[0]['join_table_id'] = 'user.user_id';
+                $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+                $join_str[0]['join_type'] = '';
+                $contition_array = array('business_profile_post_comment_id' => $business_profile['business_profile_post_comment_id'], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+                $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
                 $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
 
                 if (!in_array($userid, $likeuserarray)) {
@@ -4348,9 +4392,12 @@ Your browser does not support the audio tag.
         );
         $updatdata = $this->common->update_data($data, 'business_profile_post_comment', 'business_profile_post_comment_id', $post_id);
 
-
-        $contition_array = array('business_profile_post_id' => $post_delete, 'status' => '1');
-        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'ASCdelete_commenttwo', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $join_str[0]['table'] = 'user';
+        $join_str[0]['join_table_id'] = 'user.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+        $join_str[0]['join_type'] = '';
+        $contition_array = array('business_profile_post_id' => $post_delete, 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str, $groupby = '');
 
         if (count($businessprofiledata) > 0) {
             foreach ($businessprofiledata as $business_profile) {
@@ -4814,12 +4861,19 @@ Your browser does not support the audio tag.
             }
         }
 // end notification
+        $join_str[0]['table'] = 'user';
+        $join_str[0]['join_table_id'] = 'user.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+        $join_str[0]['join_type'] = '';
+        $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
 
-        $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'status' => '1');
-        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'status' => '1');
-        $buscmtcnt = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $join_str[0]['table'] = 'user';
+        $join_str[0]['join_table_id'] = 'user.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+        $join_str[0]['join_type'] = '';
+        $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+        $buscmtcnt = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
 
         foreach ($businessprofiledata as $business_profile) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
@@ -4864,8 +4918,12 @@ Your browser does not support the audio tag.
             $cmtinsert .= 'onClick="comment_like1(this.id)">';
 
             $userid = $this->session->userdata('aileenuser');
-            $contition_array = array('business_profile_post_comment_id' => $business_profile['business_profile_post_comment_id'], 'status' => '1');
-            $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $join_str[0]['table'] = 'user';
+            $join_str[0]['join_table_id'] = 'user.user_id';
+            $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+            $join_str[0]['join_type'] = '';
+            $contition_array = array('business_profile_post_comment_id' => $business_profile['business_profile_post_comment_id'], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+            $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
 
             if (!in_array($userid, $likeuserarray)) {
@@ -5007,8 +5065,14 @@ Your browser does not support the audio tag.
             }
         }
 // end notification
-        $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'status' => '1');
-        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        $join_str[0]['table'] = 'user';
+        $join_str[0]['join_table_id'] = 'user.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+        $join_str[0]['join_type'] = '';
+        $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'business_profile_post_comment.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
+        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str, $groupby = '');
         $cmtinsert = '<div class="hidebottombordertwo insertcommenttwo' . $post_id . '">';
         foreach ($businessprofiledata as $business_profile) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
@@ -5054,8 +5118,12 @@ Your browser does not support the audio tag.
             $cmtinsert .= 'onClick="comment_like1(this.id)">';
 
             $userid = $this->session->userdata('aileenuser');
-            $contition_array = array('business_profile_post_comment_id' => $business_profile['business_profile_post_comment_id'], 'status' => '1');
-            $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $join_str[0]['table'] = 'user';
+            $join_str[0]['join_table_id'] = 'user.user_id';
+            $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+            $join_str[0]['join_type'] = '';
+            $contition_array = array('business_profile_post_comment_id' => $business_profile['business_profile_post_comment_id'], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+            $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
 
             if (!in_array($userid, $likeuserarray)) {
@@ -5153,8 +5221,11 @@ Your browser does not support the audio tag.
 
         $updatdata = $this->common->update_data($data, 'business_profile_post_comment', 'business_profile_post_comment_id', $post_id);
         if ($updatdata) {
-
-            $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
+            $join_str[0]['table'] = 'user';
+            $join_str[0]['join_table_id'] = 'user.user_id';
+            $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+            $join_str[0]['join_type'] = '';
+            $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
             $businessprofiledata = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = 'comments', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $cmtlike = '<div>';
@@ -7057,8 +7128,12 @@ Your browser does not support the audio tag.
 
         $fourdata = '<div class="hidebottombordertwo insertcommenttwo' . $post_id . '">';
 
-        $contition_array = array('business_profile_post_id' => $post_id, 'status' => '1');
-        $busienssdata = $this->data['busienssdata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $join_str[0]['table'] = 'user';
+        $join_str[0]['join_table_id'] = 'user.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+        $join_str[0]['join_type'] = '';
+        $contition_array = array('business_profile_post_id' => $post_id, 'business_profile_post_comment.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
+        $busienssdata = $this->data['busienssdata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str, $groupby = '');
 
         if ($busienssdata) {
             foreach ($busienssdata as $rowdata) {
@@ -7111,8 +7186,12 @@ Your browser does not support the audio tag.
                 $fourdata .= '<a id="' . $rowdata['business_profile_post_comment_id'] . '"   onClick="comment_like(this.id)">';
 
                 $userid = $this->session->userdata('aileenuser');
-                $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
-                $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $join_str[0]['table'] = 'user';
+                $join_str[0]['join_table_id'] = 'user.user_id';
+                $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+                $join_str[0]['join_type'] = '';
+                $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'business_profile_post_comment.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
+                $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
                 $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
 
                 if (!in_array($userid, $likeuserarray)) {
@@ -9096,9 +9175,12 @@ Your browser does not support the audio tag.
 </a>
 </li>
 <li id = "insertcount' . $post_business_profile_post_id . '" style = "visibility:show">';
-
-                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
-                $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $join_str[0]['table'] = 'user';
+                $join_str[0]['join_table_id'] = 'user.user_id';
+                $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+                $join_str[0]['join_type'] = '';
+                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'business_profile_post_comment.status' => '1', 'business_profile_post_comment.is_delete' => '0', 'user.status' => '1', 'user.is_delete' => '0');
+                $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
                 $return_html .= '<a onClick = "commentall(this.id)" id = "' . $post_business_profile_post_id . '" class = "ripple like_h_w">
 <i class = "fa fa-comment-o" aria-hidden = "true">
@@ -9219,9 +9301,12 @@ Your browser does not support the audio tag.
 </div>
 <div id = "threecomment' . $post_business_profile_post_id . '" style = "display:block">
 <div class = "hidebottomborder insertcomment' . $post_business_profile_post_id . '">';
-
-                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
-                $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+                $join_str[0]['table'] = 'user';
+                $join_str[0]['join_table_id'] = 'user.user_id';
+                $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+                $join_str[0]['join_type'] = '';
+                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'business_profile_post_comment.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
+                $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
                 if ($businessprofiledata) {
                     foreach ($businessprofiledata as $rowdata) {
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
@@ -9289,8 +9374,12 @@ Your browser does not support the audio tag.
 <a id = "' . $rowdata['business_profile_post_comment_id'] . '" onClick = "comment_like1(this.id)">';
 
                         $userid = $this->session->userdata('aileenuser');
-                        $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
-                        $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        $join_str[0]['table'] = 'user';
+                        $join_str[0]['join_table_id'] = 'user.user_id';
+                        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+                        $join_str[0]['join_type'] = '';
+                        $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+                        $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
                         $likeuserarray = explode(', ', $businesscommentlike[0]['business_comment_like_user']);
                         if (!in_array($userid, $likeuserarray)) {
 
@@ -10686,9 +10775,12 @@ Your browser does not support the audio tag.
 </a>
 </li>
 <li id = "insertcount' . $post_business_profile_post_id . '" style = "visibility:show">';
-
-                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
-                $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $join_str[0]['table'] = 'user';
+                $join_str[0]['join_table_id'] = 'user.user_id';
+                $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+                $join_str[0]['join_type'] = '';
+                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'business_profile_post_comment.status' => '1', 'business_profile_post_comment.is_delete' => '0', 'user.status' => '1', 'user.is_delete' => '0');
+                $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
                 $return_html .= '<a onClick = "commentall(this.id)" id = "' . $post_business_profile_post_id . '" class = "ripple like_h_w">
 <i class = "fa fa-comment-o" aria-hidden = "true">
@@ -10804,9 +10896,12 @@ Your browser does not support the audio tag.
 </div>
 <div id = "threecomment' . $post_business_profile_post_id . '" style = "display:block">
 <div class = "hidebottomborder insertcomment' . $post_business_profile_post_id . '">';
-
-                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
-                $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+                $join_str[0]['table'] = 'user';
+                $join_str[0]['join_table_id'] = 'user.user_id';
+                $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+                $join_str[0]['join_type'] = '';
+                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'business_profile_post_comment.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
+                $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
                 if ($businessprofiledata) {
                     foreach ($businessprofiledata as $rowdata) {
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
@@ -10875,8 +10970,12 @@ Your browser does not support the audio tag.
 <a id = "' . $rowdata['business_profile_post_comment_id'] . '" onClick = "comment_like1(this.id)">';
 
                         $userid = $this->session->userdata('aileenuser');
-                        $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
-                        $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        $join_str[0]['table'] = 'user';
+                        $join_str[0]['join_table_id'] = 'user.user_id';
+                        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+                        $join_str[0]['join_type'] = '';
+                        $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'business_profile_post_comment.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
+                        $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
                         $likeuserarray = explode(', ', $businesscommentlike[0]['business_comment_like_user']);
                         if (!in_array($userid, $likeuserarray)) {
 

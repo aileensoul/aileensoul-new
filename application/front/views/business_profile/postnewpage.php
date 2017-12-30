@@ -326,27 +326,27 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         <?php if (count($businessmultiimage) == 1) { ?>
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>" onclick="openModal();
-                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                         <?php } elseif (count($businessmultiimage) == 2) { ?>
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>" onclick="openModal();
-                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                         <?php } elseif (count($businessmultiimage) == 3) { ?>
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>"  onclick="openModal();
-                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                         <?php } elseif (count($businessmultiimage) == 4) { ?>
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>" onclick="openModal();
-                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                         <?php } else { ?>
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>"  onclick="openModal();
-                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                             <?php
                                                         }
@@ -412,8 +412,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     </li>
                                                     <li id="<?php echo 'insertcount' . $busienss_data[0]['business_profile_post_id']; ?>">
                                                         <?php
-                                                        $contition_array = array('business_profile_post_id' => $busienss_data[0]['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
-                                                        $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                        $join_str[0]['table'] = 'user';
+                                                        $join_str[0]['join_table_id'] = 'user.user_id';
+                                                        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+                                                        $join_str[0]['join_type'] = '';
+                                                        $contition_array = array('business_profile_post_id' => $busienss_data[0]['business_profile_post_id'], 'business_profile_post_comment.status' => '1', 'business_profile_post_comment.is_delete' => '0', 'user.is_delete' => '0', 'user.status' => '1');
+                                                        $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
                                                         ?>
                                                         <a  onClick="commentall(this.id)" id="<?php echo $busienss_data[0]['business_profile_post_id']; ?>"><i class="fa fa-comment-o" aria-hidden="true"> 
                                                             </i> 
@@ -548,8 +552,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             <div  id="<?php echo "threecomment" . $busienss_data[0]['business_profile_post_id']; ?>" style="display:block">
                                                 <div class="hidebottomborder <?php echo 'insertcomment' . $busienss_data[0]['business_profile_post_id']; ?>">
                                                     <?php
-                                                    $contition_array = array('business_profile_post_id' => $busienss_data[0]['business_profile_post_id'], 'status' => '1');
-                                                    $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+                                                    $join_str[0]['table'] = 'user';
+                                                    $join_str[0]['join_table_id'] = 'user.user_id';
+                                                    $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+                                                    $join_str[0]['join_type'] = '';
+                                                    $contition_array = array('business_profile_post_id' => $busienss_data[0]['business_profile_post_id'], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+                                                    $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
                                                     if ($businessprofiledata) {
                                                         foreach ($businessprofiledata as $rowdata) {
                                                             $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
@@ -628,8 +636,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                         <a id="<?php echo $rowdata['business_profile_post_comment_id']; ?>" onClick="comment_like1(this.id)">
                                                                             <?php
                                                                             $userid = $this->session->userdata('aileenuser');
-                                                                            $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
-                                                                            $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                                            $join_str[0]['table'] = 'user';
+                                                                            $join_str[0]['join_table_id'] = 'user.user_id';
+                                                                            $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
+                                                                            $join_str[0]['join_type'] = '';
+                                                                            $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
+                                                                            $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
                                                                             $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
 
                                                                             if (!in_array($userid, $likeuserarray)) {
@@ -814,10 +826,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 </div>
             </div>
             <div id="myModal1" class="modal2">
-                
+
                 <div class="modal-content2">
-				<span class="close2 cursor" onclick="closeModal()">&times;</span>
-                <?php
+                    <span class="close2 cursor" onclick="closeModal()">&times;</span>
+                    <?php
                     $i = 1;
                     $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                     foreach ($businessmultiimage as $mke => $mval) {
@@ -1243,8 +1255,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
         <script>
-                                        var base_url = '<?php echo base_url(); ?>';
-                                        var post_id = '<?php echo $post_id; ?>';
+                                                var base_url = '<?php echo base_url(); ?>';
+                                                var post_id = '<?php echo $post_id; ?>';
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/post_detail.js?ver=' . time()); ?>"></script>
