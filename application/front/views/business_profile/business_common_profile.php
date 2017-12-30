@@ -92,13 +92,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 <?php } else {
                                     ?>
                                     <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="Business User Image" >
-                                <?php
+                                    <?php
                                 }
                             }
                         } else {
                             ?>
                             <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="No Business Image" >
-<?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="business-profile-right">
@@ -135,14 +135,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
                                 ?>
 
-    <?php if ($contactperson[0]['status'] == 'cancel' || $contactperson[0]['status'] == '' || $contactperson[0]['status'] == 'reject') { ?>
-                                    <a href="javascript:void(0);" onclick="login_profile();">
+                                <?php if ($contactperson[0]['status'] == 'cancel' || $contactperson[0]['status'] == '' || $contactperson[0]['status'] == 'reject') { ?>
+                                    <a href="javascript:void(0);" onclick="open_profile();">
 
-                                        <?php } elseif ($contactperson[0]['status'] == 'pending' || $contactperson[0]['status'] == 'confirm') { ?>   
-                                        <a onclick="login_profile();" href="javascript:void(0);">
+                                    <?php } elseif ($contactperson[0]['status'] == 'pending' || $contactperson[0]['status'] == 'confirm') { ?>   
+                                        <a onclick="open_profile();" href="javascript:void(0);">
                                         <?php } ?>
 
-    <?php if ($contactperson[0]['status'] == 'cancel') { ?> 
+                                        <?php if ($contactperson[0]['status'] == 'cancel') { ?> 
                                             <div>   
                                                 <div class="add-contact">
                                                     <div></div>
@@ -235,11 +235,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </div> 
 
                                             </div>
-    <?php } ?>                            
+                                        <?php } ?>                            
 
                                     </a>
                             </div>
-<?php } ?>
+                        <?php } ?>
                     </div>
                     <div class="business-data-menu padding_less_right ">
                         <div class="profile-main-box-buis-menu">  
@@ -248,14 +248,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             if ($business_common_data[0]['user_id'] == $userid) {
                                 ?>     
                                 <ul class="current-user bpro-fw6">
-                                    <?php } else { ?>
+                                <?php } else { ?>
                                     <ul class="bpro-fw">
-<?php } ?>  
-                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'dashboard') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('business-profile/dashboard/' . $business_common_data[0]['business_slug']); ?>">Dashboard</a></li>
-                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'details') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug']); ?>"> Details</a></li>
-                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'contacts') { ?> class="active" <?php } ?>><a title="Contacts" href="javascript:void(0);" onclick="login_profile();"> Contacts <br>  (<span class="contactcount"><?php echo $business_user_contacts_count; ?></span>)</a></li>
-                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a title="Followers" href="javascript:void(0);" onclick="login_profile();">Followers <br>  <div id="countfollower">(<?php echo $business_user_follower_count; ?>)</div></a></li>
-                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="javascript:void(0);" onclick="login_profile();">Following <br> <div id="countfollow">(<?php echo $business_user_following_count; ?>)</div></a></li>
+                                    <?php } ?>  
+                                        <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'dashboard') { ?> class="active" <?php } ?>><a title="Dashboard" class="login_link" href="<?php echo base_url('business-profile/dashboard/' . $business_common_data[0]['business_slug']); ?>">Dashboard</a></li>
+                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'details') { ?> class="active" <?php } ?>><a title="Details" class="login_link" href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug']); ?>"> Details</a></li>
+                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'contacts') { ?> class="active" <?php } ?>><a title="Contacts" href="javascript:void(0);" onclick="open_profile();"> Contacts <br>  (<span class="contactcount"><?php echo $business_user_contacts_count; ?></span>)</a></li>
+                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a title="Followers" href="javascript:void(0);" onclick="open_profile();">Followers <br>  <div id="countfollower">(<?php echo $business_user_follower_count; ?>)</div></a></li>
+                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="javascript:void(0);" onclick="open_profile();">Following <br> <div id="countfollow">(<?php echo $business_user_following_count; ?>)</div></a></li>
                                 </ul>
                                 <?php
                                 $userid = $this->session->userdata('aileenuser');
@@ -275,21 +275,21 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         if ($status == 0 || $status == " ") {
                                                             ?>
                                                             <div class="msg_flw_btn_1" id= "followdiv">
-                                                                <button id="" onClick="login_profile();">Follow</button>
+                                                                <button id="" onClick="open_profile();">Follow</button>
                                                             </div>
-        <?php } elseif ($status == 1) { ?>
+                                                        <?php } elseif ($status == 1) { ?>
                                                             <div class="msg_flw_btn_1" id= "unfollowdiv">
-                                                                <button class="bg_following"  id="" onClick="login_profile();">Following </button>
+                                                                <button class="bg_following"  id="" onClick="open_profile();">Following </button>
                                                             </div>
-        <?php } ?>
+                                                        <?php } ?>
                                                     </div>         
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0);" onclick="login_profile();" >Message</a></li>
-    <?php } ?>
+                                                    <a href="javascript:void(0);" onclick="open_profile();" >Message</a></li>
+                                            <?php } ?>
                                         </ul>   
                                     </div>
-<?php } ?>
+                                <?php } ?>
                         </div>
                     </div>
                 </div>

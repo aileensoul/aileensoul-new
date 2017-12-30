@@ -12,10 +12,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
-               <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
         <?php } else { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>" />
-               <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver='.time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
             <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business.css?ver=' . time()); ?>">
@@ -41,14 +41,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 height: auto !important;
             }
         </style>
-      
+
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push no-login">
         <header>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4 fw-479">
-                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
+                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 fw-479">
                         <div class="btn-right pull-right">
@@ -210,10 +210,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
-                        
+
 
                     </div>
-                    
+
                 </div>
             </div>
         </section>
@@ -296,11 +296,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" class="login_link" id="myBtn">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" class="login_link" onclick="register_profile();">Create an account</a>
                                         </p>
                                     </form>
                                 </div>
@@ -435,7 +435,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     </p>
                                     <div class="sign_in pt10">
                                         <p>
-                                            Already have an account ? <a tabindex="112" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
+                                            Already have an account ? <a tabindex="112" onClick="login_profile();" class="login_link" href="javascript:void(0);"> Log In </a>
                                         </p>
                                     </div>
                                 </form>
@@ -447,34 +447,35 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             </div>
         </div>
         <?php echo $footer; ?>
-         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js') ?>"></script> 
-        <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+        <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+            <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js') ?>"></script> 
+            <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
-        <script type = "text/javascript" src="<?php echo base_url('assets/js_min/jquery.form.3.51.js') ?>"></script> 
-        <script src="<?php echo base_url('assets/dragdrop/js_min/plugins/sortable.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js_min/fileinput.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js_min/locales/fr.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js_min/locales/es.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/croppie.js?ver=' . time()); ?>"></script>
+            <script type = "text/javascript" src="<?php echo base_url('assets/js_min/jquery.form.3.51.js') ?>"></script> 
+            <script src="<?php echo base_url('assets/dragdrop/js_min/plugins/sortable.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/js_min/fileinput.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/js_min/locales/fr.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/js_min/locales/es.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
         <?php } ?>
         <script>
-                                            var base_url = '<?php echo base_url(); ?>';
-                                            var slug = '<?php echo $slugid; ?>';
+                                                var base_url = '<?php echo base_url(); ?>';
+                                                var slug = '<?php echo $slugid; ?>';
+                                                var no_business_post_html = '<?php echo $no_business_post_html ?>';
         </script>
         <script>
             function open_profile() {
@@ -753,7 +754,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
         </script>
         <script type="text/javascript">
-            $(document).ready(function () { 
+            $(document).ready(function () {
                 $("#forgot_password").validate({
                     rules: {
                         forgot_email: {
@@ -773,7 +774,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/user_dashboard.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
-             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/user_dashboard.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/user_dashboard.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } ?>
         <script>
@@ -799,7 +800,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 } else {
                     $(this).css('color', '#acacac');
                 }
-            })
+            });
+
+
         </script>
     </body>
 </html>
