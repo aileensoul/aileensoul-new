@@ -69,7 +69,7 @@ class Search extends MY_Controller {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => '4');
             $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($search_place == "") {
-            $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.business_step' => '4','user.is_delete' => '0','user.status'=>'1');
+            $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.business_step' => '4', 'user.is_delete' => '0', 'user.status' => '1');
 
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
@@ -80,7 +80,7 @@ class Search extends MY_Controller {
             } else {
                 $search_condition = "(company_name LIKE '%$search_business%' or contact_website LIKE '%$search_business%' or other_business_type LIKE '%$search_business%' or other_industrial LIKE '%$search_business%')";
             }
-            
+
             $join_str[0]['table'] = 'user';
             $join_str[0]['join_table_id'] = 'user.user_id';
             $join_str[0]['from_table_id'] = 'business_profile.user_id';
@@ -89,18 +89,18 @@ class Search extends MY_Controller {
             //   echo $search_condition; 
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-            
+
             $join_str[0]['table'] = 'business_profile';
             $join_str[0]['join_table_id'] = 'business_profile.user_id';
             $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
             $join_str[0]['join_type'] = '';
-            
+
             $condition_array = array('business_profile.business_step' => '4', 'business_profile_post.is_delete' => '0');
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
 
             $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-            $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.city' => $cache_time, 'business_profile.business_step' => '4','user.is_delete'=>'0','user.status'=>'1');
+            $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.city' => $cache_time, 'business_profile.business_step' => '4', 'user.is_delete' => '0', 'user.status' => '1');
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
             if ($searchbusiness1) {
@@ -110,19 +110,19 @@ class Search extends MY_Controller {
             } else {
                 $search_condition = "(company_name LIKE '%$search_business%' or contact_website LIKE '%$search_business%' or other_business_type LIKE '%$search_business%' or other_industrial LIKE '%$search_business%')";
             }
-            
+
             $join_str[0]['table'] = 'user';
             $join_str[0]['join_table_id'] = 'user.user_id';
             $join_str[0]['from_table_id'] = 'business_profile.user_id';
             $join_str[0]['join_type'] = '';
-            
+
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
             $join_str[0]['table'] = 'business_profile';
             $join_str[0]['join_table_id'] = 'business_profile.user_id';
             $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
             $join_str[0]['join_type'] = '';
-            
+
             $condition_array = array('business_profile.business_step' => '4', 'business_profile_post.is_delete' => '0');
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
             $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
@@ -140,10 +140,10 @@ class Search extends MY_Controller {
         }
         $title = '';
         if ($search_business && $search_place) {
-            $title = $search_business.' in '.$search_place;
-        }elseif ($search_business) {
+            $title = $search_business . ' in ' . $search_place;
+        } elseif ($search_business) {
             $title = $search_business;
-        }elseif ($search_place) {
+        } elseif ($search_place) {
             $title = $search_place;
         }
         $this->data['title'] = $title . " | Business Profile - Aileensoul";
@@ -220,7 +220,7 @@ class Search extends MY_Controller {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => '4', 'is_deleted' => '0');
             $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($search_place == "") {
-            $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1', 'business_step' => '4','user.is_delete' => '0','user.status'=>'1');
+            $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1', 'business_step' => '4', 'user.is_delete' => '0', 'user.status' => '1');
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
             if ($searchbusiness1) {
@@ -247,7 +247,7 @@ class Search extends MY_Controller {
 
             $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id,business_profile.business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-            $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.city' => $cache_time, 'business_profile.business_step' => '4','user.is_delete'=>'0', 'user.status'=>'1');
+            $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.city' => $cache_time, 'business_profile.business_step' => '4', 'user.is_delete' => '0', 'user.status' => '1');
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
             if ($searchbusiness1) {
@@ -257,12 +257,12 @@ class Search extends MY_Controller {
             } else {
                 $search_condition = "(company_name LIKE '%$search_business%' or contact_website LIKE '%$search_business%' or other_business_type LIKE '%$search_business%' or other_industrial LIKE '%$search_business%')";
             }
-            
+
             $join_str[0]['table'] = 'user';
             $join_str[0]['join_table_id'] = 'user.user_id';
             $join_str[0]['from_table_id'] = 'business_profile.user_id';
             $join_str[0]['join_type'] = '';
-            
+
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
             $join_str[0]['table'] = 'business_profile';
@@ -1085,11 +1085,11 @@ Your browser does not support the audio tag.
         }
 
         $title = '';
-         if ($searchkeyword && $search_place) {
+        if ($searchkeyword && $search_place) {
             $title = $searchkeyword . ' in ' . $search_place;
-        }elseif ($searchkeyword) {
+        } elseif ($searchkeyword) {
             $title = $searchkeyword;
-        }elseif ($search_place) {
+        } elseif ($search_place) {
             $title = $search_place;
         }
         $this->data['title'] = $title . " | Employer Profile - Aileensoul";
@@ -1470,23 +1470,27 @@ Your browser does not support the audio tag.
     }
 
     public function freelancer_post_search() {
-        // echo "hi";die();
 
         $searchvalue = $this->uri->segment(1);
-
         if ($searchvalue == 'projects') {
-            // $this->all_post();
             $search_skill = '';
             $search_place = '';
         } else {
             $skill = explode('project', $searchvalue);
             $location = explode('-in-', $searchvalue);
+           
 
+//             echo "<pre>";
+//            print_r($search_skill_title);
+//            die();
             $search_skill = trim($skill[0]);
             $search_skill = trim($skill[0], '-');
-            //  $search_skill = str_replace('-', ' ', $search_skill);
-            // echo $search_skill;die();
             $search_place = $location[1];
+
+//            $search_skill_title= $search_skill;
+            $search_skill_title = str_replace('-', ' ', $search_skill);
+            $search_place_title = str_replace('-', ' ', $search_place);
+          
         }
 
         $userid = $this->session->userdata('aileenuser');
@@ -1518,14 +1522,14 @@ Your browser does not support the audio tag.
 // code for insert search keyword into database end
         }
         $title = '';
-        if (empty($search_skill) && empty($search_place)) {
+        if (empty($search_skill_title) && empty($search_place_title)) {
             $title = 'Find Latest Projects at Your Location';
-        } elseif ($search_skill && $search_place) {
-            $title = $search_skill . ' in ' . $search_place;
-        } elseif ($search_skill) {
-            $title = $search_skill;
-        } elseif ($search_place) {
-            $title = $search_place;
+        } elseif ($search_skill_title && $search_place_title) {
+            $title = $search_skill_title . ' in ' . $search_place_title;
+        } elseif ($search_skill_title) {
+            $title = $search_skill_title;
+        } elseif ($search_place_title) {
+            $title = $search_place_title;
         }
 
         $this->data['title'] = $title . " | Freelancer Profile - Aileensoul";
@@ -1646,7 +1650,7 @@ Your browser does not support the audio tag.
 
 
             $search_condition = "(freelancer_post.post_slug LIKE '%$search_skill%' or freelancer_post.post_other_skill LIKE '%$search_skill%' or freelancer_post.post_est_time LIKE '%$search_skill%' or freelancer_post.post_rate LIKE '%$search_skill%' or  freelancer_post.post_exp_year LIKE '%$search_skill%' or  freelancer_post.post_exp_month LIKE '%$search_skill%')";
-            $contion_array = array('freelancer_hire_reg.city' => $cache_time, 'freelancer_post.user_id !=' => $userid,'freelancer_post.status' => '1', 'freelancer_post.is_delete' => '0');
+            $contion_array = array('freelancer_hire_reg.city' => $cache_time, 'freelancer_post.user_id !=' => $userid, 'freelancer_post.status' => '1', 'freelancer_post.is_delete' => '0');
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contion_array, $data = '*', $sortby = 'freelancer_post.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
             $unique = array_merge((array) $freeskillpost, (array) $freeldata, (array) $fieldfound);
@@ -2104,7 +2108,7 @@ Your browser does not support the audio tag.
                         $userimageposted = $this->db->get_where('business_profile', array('user_id' => $p['posted_user_id']))->row()->business_user_image;
                         $slugname = $this->db->get_where('business_profile', array('user_id' => $p['user_id'], 'status' => '1'))->row()->business_slug;
                         $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $p['posted_user_id'], 'status' => '1'))->row()->business_slug;
-                        
+
                         if ($p['posted_user_id']) {
 
                             if ($userimageposted) {

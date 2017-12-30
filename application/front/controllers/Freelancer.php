@@ -4467,6 +4467,7 @@ class Freelancer extends MY_Controller {
         $segment3 = ucfirst($segment3);
 
         $this->data['title'] = $segment3 . TITLEPOSTFIX;
+      
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('freelancer/freelancer_post/hire_project', $this->data);
         } else {
@@ -4586,7 +4587,17 @@ class Freelancer extends MY_Controller {
         $contition_array = array('status' => 1);
         $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $this->data['title'] = "Registration | Employer Profile" . TITLEPOSTFIX;
+        
+        if($this->session->userdata('aileenuser')){
+            $userid = $this->session->userdata('aileenuser');
+        $hireuser = $this->db->select('user_id')->get_where('freelancer_hire_reg', array('user_id' => $userid))->row()->user_id;
+        }
+        
+        if($hireuser){
+            redirect('freelance-hire/home', refresh);
+        }else{
         $this->load->view('freelancer/freelancer_hire/hire_registration', $this->data);
+        }
     }
 
     //FREELANCER HIRE NEW REGISTRATION PROFILE END
@@ -4686,7 +4697,16 @@ class Freelancer extends MY_Controller {
         $contition_array = array('status' => '1', 'type' => '1');
         $this->data['skill1'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $this->data['title'] = "Registration | Freelancer Profile" . TITLEPOSTFIX;
+        if($this->session->userdata('aileenuser')){
+            $userid = $this->session->userdata('aileenuser');
+        $hireuser = $this->db->select('user_id')->get_where('freelancer_post_reg', array('user_id' => $userid))->row()->user_id;
+        }
+        if($hireuser){
+            redirect('freelance-work/home', refresh);
+        }else{
         $this->load->view('freelancer/freelancer_post/registation', $this->data);
+        }
+        
     }
 
     //FREELANCER APPLY NEW REGISTATION PROFILE END

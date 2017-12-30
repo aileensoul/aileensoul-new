@@ -136,16 +136,16 @@
                                     ?>
                                     Search result of 
                                     <?php
-                                    if ($searchkeyword == '' && $searchplace == '') {
+                                    if ($keyword == "" && $keyword1 == "") {
                                         echo "All Projects";
-                                    } elseif ($searchkeyword != "" && $searchplace == "") {
-                                        echo '"' . $searchkeyword . '"';
-                                    } elseif ($searchkeyword == "" && $searchplace != "") {
-                                        echo '"' . $searchplace . '"';
+                                    } elseif ($keyword != "" && $keyword1 == "") {
+                                        echo '"' . $keyword . '"';
+                                    } elseif ($keyword == "" && $keyword1 != "") {
+                                        echo '"' . $keyword1 . '"';
                                     } else {
-                                        echo '"' . $searchkeyword . '"';
+                                        echo '"' . $keyword . '"';
                                         echo " In ";
-                                        echo '"' . $searchplace . '"';
+                                        echo '"' . $keyword1 . '"';
                                     }
                                     ?>
                                 </h3>
