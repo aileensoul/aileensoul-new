@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -46,7 +45,11 @@
 
     <?php } ?>
     <!-- END HEADER -->
+    <?php if (!$this->session->userdata('aileenuser')) { ?>
+    <body class="cus-no-login botton_footer cus-error no-login">
+    <?php }else{ ?>
     <body class="cus-no-login botton_footer cus-error">
+    <?php } ?>
         <section>
             <div class="user-midd-section " id="paddingtop_fixed">
                 <div class="container">
@@ -428,9 +431,6 @@
             </div>
         </div>
 
-
-
-
         <!-- model for forgot password end -->
 
         <!-- <footer>        -->
@@ -469,5 +469,6 @@
             })
 
         </script>
+        
     </body>
 </html>

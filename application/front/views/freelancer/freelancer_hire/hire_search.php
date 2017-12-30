@@ -13,7 +13,7 @@
         <?php } ?>
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
     </head>  
-    <body>
+    <body class="no-login">
         <?php $userid = $this->session->userdata('aileenuser'); 
         if(!$userid){?>
         <header>
