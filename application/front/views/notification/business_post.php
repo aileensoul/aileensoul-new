@@ -64,10 +64,7 @@
                                 <!-- GET USER FOLLOE SUGESSION LIST START -->
                                 <!-- follower list end  -->
                             </div>
-<<<<<<< HEAD
-                            
-=======
->>>>>>> 93149dc1d256712dca769116f6310dae511d3d9a
+
                              <?php echo $left_footer; ?>
                         </div>
                         <br>
