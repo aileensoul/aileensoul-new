@@ -4467,6 +4467,7 @@ class Freelancer extends MY_Controller {
         $segment3 = ucfirst($segment3);
 
         $this->data['title'] = $segment3 . TITLEPOSTFIX;
+      
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('freelancer/freelancer_post/hire_project', $this->data);
         } else {
