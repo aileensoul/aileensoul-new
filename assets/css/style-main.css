@@ -562,9 +562,9 @@ option{
     margin-top: 20px!important;
     line-height: 1.2;
 }
-#forgot_password input{
+/*#forgot_password input{
     padding: 6px 30px!important;
-}
+}*/
 .tlh2{
     font-size: 30px !important;
     text-transform: none;
