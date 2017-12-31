@@ -2337,6 +2337,17 @@ header.profile-header .logo a{
 .header-login .f-pass:focus{
     border-bottom:1px solid #fff
 }
+.dateerror{
+	color:#f00; 
+	display: block;
+}
+.fp-clr{
+	color: #a0b3b0;
+}
+.fp-clr1{
+	margin-bottom: 15px; 
+	color: #a0b3b0;
+}
 @media screen and (min-height:540px){
     .cover .modal-content{
         margin:0 auto

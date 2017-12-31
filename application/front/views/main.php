@@ -66,13 +66,13 @@ header("Pragma: no-cache"); // HTTP/1.0
         <?php
         if (IS_OUTSIDE_CSS_MINIFY == '0') {
             ?>
-           <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver="<?php echo time() ?>>
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
             <?php
         } else {
             ?>
-         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver="<?php echo time() ?>>
+         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
         <?php } ?>
@@ -80,13 +80,13 @@ header("Pragma: no-cache"); // HTTP/1.0
         <?php
         if (IS_OUTSIDE_JS_MINIFY == '0') {
             ?>
-        <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script> 
+        <script data-pagespeed-no-defer src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
+        <script data-pagespeed-no-defer src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script> 
             <?php
         } else {
             ?>
-        <script src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script> 
+        <script data-pagespeed-no-defer src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
+        <script data-pagespeed-no-defer src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script> 
         <?php } ?>
     </head>
     <body class="custom-landscape">
@@ -243,7 +243,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                                     ?>
                                                 </select></span>
                                         </div>
-                                        <div class="dateerror" style="color:#f00; display: block;"></div>
+                                        <div class="dateerror"></div>
                                         <div class="form-group gender-custom">
                                             <span>
                                                 <select tabindex="8" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
@@ -272,13 +272,13 @@ header("Pragma: no-cache"); // HTTP/1.0
                         $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
                         echo form_open('profile/forgot_password', $form_attribute);
                         ?>
-                        <div class="modal-header" style=" text-align: center;">
+                        <div class="modal-header text-center">
                             <span class="close">&times;</span>
-                            <label style="color: #a0b3b0;">Forgot Password</label>
+                            <label class="fp-clr">Forgot Password</label>
                         </div>
-                        <div class="modal-body" style="text-align: center;">
-                            <label  style="margin-bottom: 15px; color: #a0b3b0;"> Enter your e-mail address below to get your password.</label>
-                            <input style="" type="text" name="forgot_email" id="forgot_email" placeholder="Email*" autocomplete="off" class="form-control placeholder-no-fix">
+                        <div class="modal-body text-center">
+                            <label class="fp-clr1"> Enter your e-mail address below to get your password.</label>
+                            <input type="text" name="forgot_email" id="forgot_email" placeholder="Email*" autocomplete="off" class="form-control placeholder-no-fix">
                         </div>
                         <div class="modal-footer ">
                             <div class="submit_btn">              
