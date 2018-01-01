@@ -21,9 +21,9 @@
 
 
     </head>
-   
+
     <body class="botton_footer">
-      
+
         <?php echo $header; ?>
         <?php
         if ($freepostdata[0]['user_id'] && $freepostdata[0]['free_post_step'] == '7') {
@@ -38,9 +38,9 @@
             if ($freepostdata[0]['free_post_step'] == 7) {
                 ?>
                 <div class="user-midd-section" id="paddingtop_fixed">
-                    <?php } else { ?>
+                <?php } else { ?>
                     <div class="user-midd-section" id="paddingtop_make_fixed">
-<?php } ?>
+                    <?php } ?>
                     <div class="common-form1">
                         <div class="col-md-3 col-sm-4"></div>
                         <?php
@@ -52,7 +52,7 @@
                             ?>
                             <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("apply-regi-title"); ?></h3></div>
 
-<?php } ?>
+                        <?php } ?>
                     </div>
                     <div class="container">
                         <div class="row">
@@ -103,8 +103,8 @@
                                 </div>
                                 <div class="common-form common-form_border">
                                     <h3><?php echo $this->lang->line("professional_info"); ?></h3>
-<?php echo form_open(base_url('freelancer/freelancer_post_professional_information_insert'), array('id' => 'freelancer_post_professional', 'name' => 'freelancer_post_professional', 'class' => 'clearfix')); ?>
-                                   
+                                    <?php echo form_open(base_url('freelancer/freelancer_post_professional_information_insert'), array('id' => 'freelancer_post_professional', 'name' => 'freelancer_post_professional', 'class' => 'clearfix')); ?>
+
                                     <?php
                                     $field = form_error('field');
                                     $area = form_error('area');
@@ -139,7 +139,7 @@
                                             ?>
                                             <option value="<?php echo $category_otherdata[0]['category_id']; ?> "><?php echo $category_otherdata[0]['category_name']; ?></option>
                                         </select> 
-<?php echo form_error('field'); ?>
+                                        <?php echo form_error('field'); ?>
                                     </fieldset>
                                     <fieldset  <?php if ($area) { ?> class="error-msg" <?php } ?> class="full-width">
                                         <label> <?php echo $this->lang->line("your_skill"); ?>:<span class="red">*</span></label>
@@ -148,9 +148,9 @@
                                             echo $skill_2;
                                         }
                                         ?>">
-<?php echo form_error('area'); ?>
+                                               <?php echo form_error('area'); ?>
                                     </fieldset>
-                                    
+
                                     <fieldset  class="full-width">
                                         <label><?php echo $this->lang->line("skill_brief"); ?> :<span class="red">*</span></label>
 
@@ -160,7 +160,7 @@
                                             }
                                             ?></textarea>
 
-<?php echo form_error('skill_description'); ?>
+                                        <?php echo form_error('skill_description'); ?>
                                     </fieldset>
                                     <fieldset  class="" <?php if ($experience_year) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("total_experiance"); ?> :<span class="red">*</span></label>  <select name="experience_year" placeholder="Year" tabindex="4" id="experience_year" class="experience_year col-md-5 day" onchange="return check_yearmonth();" style="margin-right: 5px;">
@@ -208,13 +208,13 @@
                                             <option value="12 month"  <?php if ($experience_month1 == "12 month") echo 'selected'; ?>>12 Month</option>
 
                                         </select>  
-<?php echo form_error('experience_year'); ?>
+                                        <?php echo form_error('experience_year'); ?>
 
                                     </fieldset>
                                     <fieldset class="hs-submit full-width">
                                         <input type="submit"  id="next" name="next" tabindex="6" value="Next">
                                     </fieldset>
-<?php echo form_close(); ?>
+                                    <?php echo form_close(); ?>
                                 </div>
                             </div>
                         </div>
@@ -222,7 +222,7 @@
                 </div>
         </section>
         <?php echo $login_footer ?>
-<?php echo $footer; ?>
+        <?php echo $footer; ?>
 
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror custom-message" id="bidmodal2" role="dialog">
@@ -232,7 +232,7 @@
                     <h2>Add Field</h2>         
                     <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
                     <div class="fw"><a title="Ok" id="field" class="btn">OK</a></div>
-                  
+
                 </div>
             </div>
         </div>
@@ -247,7 +247,7 @@
             ?>
             <script  src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
             <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
-<?php } ?>
+        <?php } ?>
 
 
 
@@ -265,7 +265,7 @@
             ?>
             <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_post_professional_information.js?ver=' . time()); ?>"></script>
             <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
-<?php } ?>
+        <?php } ?>
 
 
 
@@ -276,5 +276,5 @@
 
 
     </body>
-  
+
 </html>

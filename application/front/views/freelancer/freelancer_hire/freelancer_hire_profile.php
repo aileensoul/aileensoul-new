@@ -12,6 +12,9 @@
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
         <?php } ?>
     </head>
+    <?php if (!$this->session->userdata('aileenuser')) { ?>
+     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer no-login">
+    <?php } ?>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
 
         <?php
