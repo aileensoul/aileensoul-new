@@ -180,6 +180,15 @@ $(document).ready(function () {
             },
             state: {
                 required: true,
+            },
+            rating:{
+                required: true,
+            },
+            rate:{
+                required: true,
+            },
+            currency:{
+                required: true,
             }
 
         },
@@ -190,10 +199,10 @@ $(document).ready(function () {
                 required: "Project name is required.",
             },
             skills: {
-                required: "Skill is required",
+                required: "Skill is required.",
             },
             fields_req: {
-                required: "Please select field of requirement",
+                required: "Please select field of requirement.",
             },
 
             post_desc: {
@@ -204,10 +213,19 @@ $(document).ready(function () {
             },
 
             country: {
-                required: "Please select country"
+                required: "Please select country."
             },
             state: {
-                required: "Please select state"
+                required: "Please select state."
+            },
+            rating:{
+                required: "Work type is required.",
+            },
+            rate:{
+                required: "Rate is required.",
+            },
+            currency:{
+                required: "Currency is required.",
             }
         }
     });

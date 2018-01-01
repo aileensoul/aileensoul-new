@@ -152,13 +152,13 @@
                                     <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?></h3>
                                     <div class="p15 fw">
                                         <fieldset style="padding-left: 8px;" class="col-md-6" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
-                                            <label class="control-label"><?php echo $this->lang->line("rate"); ?>:<span class="optional">(optional)</span></label>
+                                            <label class="control-label"><?php echo $this->lang->line("rate"); ?>:<span style="color:red">*</span></label>
                                             <input name="rate" type="number" id="rate" tabindex="11" placeholder="Enter your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
                                             <span id="fullname-error"></span>
                                             <?php echo form_error('rate'); ?>
                                         </fieldset>
                                         <fieldset class=" col-md-6"> 
-                                            <label><?php echo $this->lang->line("currency"); ?>:<span class="optional">(optional)</span></label>
+                                            <label><?php echo $this->lang->line("currency"); ?>:<span style="color:red">*</span></label>
                                             <select name="currency" id="currency" tabindex="12">
                                                 <option value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
                                                 <?php
@@ -179,7 +179,7 @@
                                             <?php echo form_error('currency'); ?>
                                         </fieldset>
                                         <fieldset style="padding-left: 8px;" class="col-md-6">
-                                            <label><?php echo $this->lang->line("work_type"); ?><span class="optional">(optional)</span></label>
+                                            <label><?php echo $this->lang->line("work_type"); ?><span style="color:red">*</span></label>
                                             <input type="radio" name="rating" tabindex="13" <?php if ($freelancerpostdata[0]['post_rating_type'] == '0') { ?> checked <?php } ?> value="0" > Hourly
                                             <input type="radio" name="rating" tabindex="14"  <?php if ($freelancerpostdata[0]['post_rating_type'] == '1') { ?> checked <?php } ?> value ="1"> Fixed
                                             <?php echo form_error('rating'); ?>
@@ -248,12 +248,12 @@
             var base_url = '<?php echo base_url(); ?>';
             var date_picker1 = '<?php echo date('Y-m-d', strtotime($freelancerpostdata[0]['post_last_date'])); ?>';
         </script>
-
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>
+            <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>-->
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
-            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>
+            <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>-->
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <?php } ?>
 

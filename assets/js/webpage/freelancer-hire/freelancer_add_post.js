@@ -93,6 +93,10 @@ $(document).ready(function () {
 //            },
             rate: {
                 number: true,
+                required: true,
+            },
+            currency:{
+                required: true,
             },
             country: {
                 required: true,
@@ -127,7 +131,12 @@ $(document).ready(function () {
 //            currency: {
 //                required: "Please select currency type",
 //            },
-          
+          rate: {
+                required: "Rate is required.",
+            },
+            currency:{
+                required: "Currency is required.",
+            },
             country: {
                 required: "Please select country."
             },
