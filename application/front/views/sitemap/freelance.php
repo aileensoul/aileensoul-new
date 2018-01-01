@@ -52,6 +52,10 @@ header('Cache-Control: public, max-age=30');
         }
         ?>
         <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+        <?php
+        $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        ?>
+        <link rel="canonical" href="<?php echo $actual_link ?>" />
         <style type="text/css">
             .full_page ul li{
                 width: 100% !important;

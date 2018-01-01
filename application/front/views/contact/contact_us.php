@@ -23,9 +23,9 @@ header('Expires: ' . $date);
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<?php
-if ($_SERVER['HTTP_HOST'] != "localhost") {
-    ?>
+        <?php
+        if ($_SERVER['HTTP_HOST'] != "localhost") {
+            ?>
 
             <script>
                 (function (i, s, o, g, r, a, m) {
@@ -45,25 +45,28 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 
             </script>
             <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
-    <?php
-}
-?>
+            <?php
+        }
+        ?>
         <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
-
-<?php if (IS_OUTSIDE_CSS_MINIFY == '0') { ?>
+        <?php
+        $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        ?>
+        <link rel="canonical" href="<?php echo $actual_link ?>" />
+        <?php if (IS_OUTSIDE_CSS_MINIFY == '0') { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver=' . time()); ?>">
-<?php } else { ?>
+        <?php } else { ?>
 
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver=' . time()); ?>">
-<?php } ?>
+        <?php } ?>
     </head>
     <body class="contact outer-page">
         <div class="main-inner">
-<?php echo $login_header; ?>
+            <?php echo $login_header; ?>
             <div class="contact-banner">
                 <img src="<?php echo base_url('assets/img/contactus.jpg?ver=' . time()); ?>" alt="contactus">
             </div>
@@ -150,7 +153,7 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 
             </section>
 
-<?php echo $login_footer; ?>
+            <?php echo $login_footer; ?>
         </div>
 
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog"  >
@@ -169,17 +172,17 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
             var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
             var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
-<?php if (IS_OUTSIDE_JS_MINIFY == '0') { ?>
+        <?php if (IS_OUTSIDE_JS_MINIFY == '0') { ?>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
             <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <script src="<?php echo base_url('assets/js/webpage/contactus.js?ver=' . time()); ?>"></script>
-<?php } else { ?>
+        <?php } else { ?>
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
             <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <script src="<?php echo base_url('assets/js_min/webpage/contactus.js?ver=' . time()); ?>"></script>
-<?php } ?>
+        <?php } ?>
     </body>
 </html>
