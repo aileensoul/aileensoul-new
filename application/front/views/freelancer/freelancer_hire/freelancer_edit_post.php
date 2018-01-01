@@ -180,8 +180,8 @@
                                         </fieldset>
                                         <fieldset style="padding-left: 8px;" class="col-md-6">
                                             <label><?php echo $this->lang->line("work_type"); ?><span class="optional">(optional)</span></label>
-                                            <input type="radio" name="rating" tabindex="13" <?php if ($freelancerpostdata[0]['post_rating_type'] == 0) { ?> checked <?php } ?> value="0" > Hourly
-                                            <input type="radio" name="rating" tabindex="14"  <?php if ($freelancerpostdata[0]['post_rating_type'] == 1) { ?> checked <?php } ?> value ="1"> Fixed
+                                            <input type="radio" name="rating" tabindex="13" <?php if ($freelancerpostdata[0]['post_rating_type'] == '0') { ?> checked <?php } ?> value="0" > Hourly
+                                            <input type="radio" name="rating" tabindex="14"  <?php if ($freelancerpostdata[0]['post_rating_type'] == '1') { ?> checked <?php } ?> value ="1"> Fixed
                                             <?php echo form_error('rating'); ?>
                                         </fieldset>
                                         <fieldset class="hs-submit full-width">

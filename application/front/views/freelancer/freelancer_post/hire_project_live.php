@@ -51,7 +51,7 @@
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
-                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="javascript:void(0);" onclick="login_profile();" tabindex="-1" 
+                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="javascript:void(0);" onclick="register_profile();" tabindex="-1" 
                                                aria-hidden="true" rel="noopener">
                                                 <div class="bg-images no-cover-upload"> 
                                                     <?php
@@ -184,33 +184,14 @@
                                     <div class="all-job-box job-detail">
                                         <div class="all-job-top">
                                             <div class="job-top-detail">
-                                                <h5><a href="javascript:void(0);"><?php echo $post['post_name']; ?></a></h5>
+                                                <h5><a href="javascript:void(0);" onclick="register_profile();"><?php echo $post['post_name']; ?></a></h5>
 
                                                 <?php
                                                 $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
                                                 $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
                                                 ?>
                                                 <p>
-                                                    <?php
-                                                    if ($returnpage == 'freelancer_post') {
-                                                        if (is_numeric($post['user_id'])) {
-                                                            $slug = $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->freelancer_hire_slug;
-                                                        } else {
-                                                            $slug = $post['user_id'];
-                                                        }
-                                                        ?>
-                                                        <a href="<?php echo base_url('freelance-hire/employer-details/' . $slug); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
-                                                        <?php
-                                                    } else {
-                                                        if (is_numeric($post['user_id'])) {
-                                                            $slug = $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->freelancer_hire_slug;
-                                                        } else {
-                                                            $slug = $post['user_id'];
-                                                        }
-                                                        ?>
-                                                        <a href="<?php echo base_url('freelance-hire/employer-details/' . $slug); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
-                                                    <?php } ?>
-                                                    </a></p>
+                                                    <a href="javascript:void(0);" onclick="register_profile();"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a></a></p>
                                                 <p class="loca-exp">
                                                     <span class="location">
                                                         <?php $city = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city; ?>
@@ -315,9 +296,9 @@
                                                                 echo "&nbsp";
                                                                 echo $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
                                                                 echo "&nbsp";
-                                                                if ($post['post_rating_type'] == 0) {
+                                                                if ($post['post_rating_type'] == '0') {
                                                                     echo "Hourly";
-                                                                } else {
+                                                                } else if ($post['post_rating_type'] == '1') {
                                                                     echo "Fixed";
                                                                 }
                                                             } else {
@@ -409,9 +390,9 @@
                                                                 }
                                                                 ?></p>
                                                         </div>
-                                                        <div class="sort-emp-msg">
-                                                            <a href="javascript:void(0);" class="">Message</a>
-                                                        </div>
+                                                        <!--                                                        <div class="sort-emp-msg">
+                                                                                                                    <a href="javascript:void(0);" class="">Message</a>
+                                                                                                                </div>-->
                                                     </div>
                                                 <?php } ?>
                                             </div>
@@ -456,33 +437,16 @@
                                     <div class="all-job-box job-detail">
                                         <div class="all-job-top">
                                             <div class="job-top-detail">
-                                                <h5><a href="javascript:void(0);"><?php echo $post['post_name']; ?></a></h5>
+                                                <h5><a href="javascript:void(0);" onclick="register_profile();"><?php echo $post['post_name']; ?></a></h5>
 
                                                 <?php
                                                 $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
                                                 $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
                                                 ?>
                                                 <p>
-                                                    <?php
-                                                    if ($returnpage == 'freelancer_post') {
-                                                        if (is_numeric($post['user_id'])) {
-                                                            $slug = $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->freelancer_hire_slug;
-                                                        } else {
-                                                            $slug = $post['user_id'];
-                                                        }
-                                                        ?>
-                                                        <a href="<?php echo base_url('freelance-hire/employer-details/' . $slug); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
-                                                        <?php
-                                                    } else {
-                                                        if (is_numeric($post['user_id'])) {
-                                                            $slug = $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->freelancer_hire_slug;
-                                                        } else {
-                                                            $slug = $post['user_id'];
-                                                        }
-                                                        ?>
-                                                        <a href="<?php echo base_url('freelance-hire/employer-details/' . $slug); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
-                                                    <?php } ?>
-                                                    </a></p>
+                                                    <a href="javascript:void(0);" onclick="register_profile();"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+
+                                                </p>
                                                 <p class="loca-exp">
                                                     <span class="location">
                                                         <?php $city = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city; ?>
@@ -588,9 +552,10 @@
                                                                 echo "&nbsp";
                                                                 echo $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
                                                                 echo "&nbsp";
-                                                                if ($post['post_rating_type'] == 0) {
+
+                                                                if ($post['post_rating_type'] == '0') {
                                                                     echo "Hourly";
-                                                                } else {
+                                                                } else if ($post['post_rating_type'] == '1') {
                                                                     echo "Fixed";
                                                                 }
                                                             } else {
@@ -913,12 +878,12 @@
                                         <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                         <div class="form-group gender-custom">
-                                           <span> <select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
-                                                <option value="" disabled selected value>Gender</option>
-                                                <option value="M">Male</option>
-                                                <option value="F">Female</option>
-                                            </select>
-                                        </span>
+                                            <span> <select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                                    <option value="" disabled selected value>Gender</option>
+                                                    <option value="M">Male</option>
+                                                    <option value="F">Female</option>
+                                                </select>
+                                            </span>
                                         </div>
 
                                         <p class="form-text" style="margin-bottom: 10px;">
@@ -1042,7 +1007,7 @@
                                         <p>
                                             <button tabindex="111" class="btn1">Create an account</button>
                                         </p>
-                                         <div class="sign_in pt10">
+                                        <div class="sign_in pt10">
                                             <p>
                                                 Already have an account ? <a tabindex="112" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
                                             </p>
@@ -1074,11 +1039,11 @@
 
         <script>
 
-                                                var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                                var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
-                                                var base_url = '<?php echo base_url(); ?>';
-                                                var skill = '<?php echo $this->input->get('skills'); ?>';
-                                                var place = '<?php echo $this->input->get('searchplace'); ?>';
+                                                    var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                                                    var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                                                    var base_url = '<?php echo base_url(); ?>';
+                                                    var skill = '<?php echo $this->input->get('skills'); ?>';
+                                                    var place = '<?php echo $this->input->get('searchplace'); ?>';
 
         </script>
         <?php

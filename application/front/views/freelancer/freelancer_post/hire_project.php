@@ -57,7 +57,7 @@
                                                             $slug = $recliveid;
                                                         }
                                                         ?>
-                                                        <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('freelance-hire/employer-details/' . $slug); ?>" onclick="login_profile();" tabindex="-1" 
+                                                        <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('freelance-hire/employer-details/' . $slug); ?>"  tabindex="-1" 
                                                            aria-hidden="true" rel="noopener">
                                                            <?php } ?>
                                                         <div class="bg-images no-cover-upload"> 
@@ -159,7 +159,7 @@
                                                                             <?php if ($this->session->userdata('aileenuser') == $post_user[0]['user_id']) { ?>
                                                                                 <a href="<?php echo base_url('freelance-hire/employer-details'); ?>"  title="<?php echo $freelancr_user_data[0]['designation']; ?>">
                                                                                 <?php } else if ($hire_user) { ?>
-                                                                                    <a title="<?php echo $freelancr_user_data[0]['designation']; ?>">
+                                                                                    <a class="eventnone" title="<?php echo $freelancr_user_data[0]['designation']; ?>">
                                                                                         <?php
                                                                                     } else {
                                                                                         if (is_numeric($recliveid)) {
@@ -425,9 +425,9 @@
                                                                                                                             echo "&nbsp";
                                                                                                                             echo $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
                                                                                                                             echo "&nbsp";
-                                                                                                                            if ($post['post_rating_type'] == 0) {
+                                                                                                                            if ($post['post_rating_type'] == '0') {
                                                                                                                                 echo "Hourly";
-                                                                                                                            } else {
+                                                                                                                            } else if($post['post_rating_type'] == '1') {
                                                                                                                                 echo "Fixed";
                                                                                                                             }
                                                                                                                         } else {
@@ -489,6 +489,129 @@
 
                                                                                                         </div>
                                                                                                     </div>
+                                                                                                    <!-- sortlisted employe -->
+                                                                                                    <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser') || $applyuser) { ?>
+                                                                                                        <?php if ($shortlist) {
+                                                                                                            ?>
+                                                                                                            <div class="sort-emp-mainbox">
+                                                                                                                <h3>
+                                                                                                                    Shortlisted Freelancer
+                                                                                                                </h3>
+
+                                                                                                                <div class="sort-emp">
+                                                                                                                    <?php foreach ($shortlist as $user) { ?>
+                                                                                                                        <div class="sort-emp-box">
+                                                                                                                            <div class="sort-emp-img">
+                                                                                                                                <?php
+                                                                                                                                $fname = $user['freelancer_post_fullname'];
+                                                                                                                                $lname = $user['freelancer_post_username'];
+                                                                                                                                $sub_fname = substr($fname, 0, 1);
+                                                                                                                                $sub_lname = substr($lname, 0, 1);
+                                                                                                                                if ($user['freelancer_post_user_image']) {
+                                                                                                                                    if (IMAGEPATHFROM == 'upload') {
+                                                                                                                                        if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'])) {
+                                                                                                                                            ?>
+                                                                                                                                            <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
+                                                                                                                                                <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
+                                                                                                                                                    <div class="post-img-user">
+                                                                                                                                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                                                                    </div>
+                                                                                                                                                </a>
+                                                                                                                                            <?php } else { ?>
+                                                                                                                                                <div class="post-img-user">
+                                                                                                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                                                                </div>
+                                                                                                                                            <?php } ?>
+                                                                                                                                        <?php } ?>
+                                                                                                                                        <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
+                                                                                                                                            <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
+                                                                                                                                                <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?>" > </a>
+                                                                                                                                        <?php } else { ?>
+                                                                                                                                            <a>
+                                                                                                                                                <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?>" > </a>
+                                                                                                                                        <?php } ?>
+                                                                                                                                        <?php
+                                                                                                                                    } else {
+                                                                                                                                        $filename = $this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'];
+                                                                                                                                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                                                                                                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                                                                                                        if ($info) {
+                                                                                                                                            ?>
+                                                                                                                                            <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
+                                                                                                                                                <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
+                                                                                                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?>" > </a>
+                                                                                                                                            <?php } else { ?>
+                                                                                                                                                <a>
+                                                                                                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?>" > </a>
+                                                                                                                                            <?php } ?>
+                                                                                                                                        <?php } else { ?>
+                                                                                                                                            <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
+                                                                                                                                                <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>" >
+                                                                                                                                                    <div class="post-img-user">
+                                                                                                                                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+
+                                                                                                                                                    </div>
+                                                                                                                                                </a>
+                                                                                                                                            <?php } else { ?>
+                                                                                                                                                <div class="post-img-user">
+                                                                                                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+
+                                                                                                                                                </div>
+                                                                                                                                            <?php } ?>
+                                                                                                                                            <?php
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                } else {
+                                                                                                                                    ?>
+                                                                                                                                    <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
+                                                                                                                                        <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
+                                                                                                                                            <div class="post-img-user">
+                                                                                                                                                <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?> 
+                                                                                                                                            </div>
+                                                                                                                                        </a>
+                                                                                                                                    <?php } else { ?>
+                                                                                                                                        <div class="post-img-user">
+                                                                                                                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?> 
+                                                                                                                                        </div>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } ?>
+                                                                                                                            </div>
+                                                                                                                            <div class="sort-emp-detail">
+                                                                                                                                <div>
+                                                                                                                                    <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
+                                                                                                                                        <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
+                                                                                                                                    <?php } else { ?>
+                                                                                                                                        <a><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
+                                                                                                                                    <?php } ?>
+                                                                                                                                </div>
+                                                                                                                                <p><?php
+                                                                                                                                    if ($user['designation']) {
+                                                                                                                                        echo $user['designation'];
+                                                                                                                                    } else {
+                                                                                                                                        echo "Designation";
+                                                                                                                                    }
+                                                                                                                                    ?></p>
+                                                                                                                            </div>
+                                                                                                                            <div class="sort-emp-msg">
+                                                                                                                                <?php
+                                                                                                                                $login_id = $this->session->userdata('aileenuser');
+                                                                                                                                $user_data = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $login_id, $data = 'user_id', $join_str = array());
+                                                                                                                                if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) {
+                                                                                                                                    ?>
+                                                                                                                                    <a class="btn1" href = "<?php echo base_url('chat/abc/3/4/' . $user['user_id']); ?>">
+                                                                                                                                        Message
+                                                                                                                                    </a>
+                                                                                                                                <?php } ?>
+
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    <?php } ?>
+                                                                                                                </div>
+                                                                                                            <?php } ?>
+                                                                                                        </div>
+                                                                                                    <?php } ?>
+                                                                                                    <!--shortlisted employy end-->
+
                                                                                                 </div>
                                                                                             </div>
                                                                                             <?php
@@ -507,128 +630,6 @@
                                                                                             </div>
                                                                                         </div>
                                                                                     <?php } ?>
-                                                                                    <!-- sortlisted employe -->
-                                                                                    <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser') || $applyuser) { ?>
-                                                                                        <?php if ($shortlist) {
-                                                                                            ?>
-                                                                                            <div class="sort-emp-mainbox">
-                                                                                                <h3>
-                                                                                                    Shortlisted Freelancer
-                                                                                                </h3>
-
-                                                                                                <div class="sort-emp">
-                                                                                                    <?php foreach ($shortlist as $user) { ?>
-                                                                                                        <div class="sort-emp-box">
-                                                                                                            <div class="sort-emp-img">
-                                                                                                                <?php
-                                                                                                                $fname = $user['freelancer_post_fullname'];
-                                                                                                                $lname = $user['freelancer_post_username'];
-                                                                                                                $sub_fname = substr($fname, 0, 1);
-                                                                                                                $sub_lname = substr($lname, 0, 1);
-                                                                                                                if ($user['freelancer_post_user_image']) {
-                                                                                                                    if (IMAGEPATHFROM == 'upload') {
-                                                                                                                        if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'])) {
-                                                                                                                            ?>
-                                                                                                                            <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                                <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
-                                                                                                                                    <div class="post-img-user">
-                                                                                                                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
-                                                                                                                                    </div>
-                                                                                                                                </a>
-                                                                                                                            <?php } else { ?>
-                                                                                                                                <div class="post-img-user">
-                                                                                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
-                                                                                                                                </div>
-                                                                                                                            <?php } ?>
-                                                                                                                        <?php } ?>
-                                                                                                                        <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                            <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
-                                                                                                                                <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?>" > </a>
-                                                                                                                        <?php } else { ?>
-                                                                                                                            <a>
-                                                                                                                                <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?>" > </a>
-                                                                                                                        <?php } ?>
-                                                                                                                        <?php
-                                                                                                                    } else {
-                                                                                                                        $filename = $this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'];
-                                                                                                                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                                                                                                                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                                                                                                        if ($info) {
-                                                                                                                            ?>
-                                                                                                                            <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                                <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
-                                                                                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?>" > </a>
-                                                                                                                            <?php } else { ?>
-                                                                                                                                <a>
-                                                                                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="<?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?>" > </a>
-                                                                                                                            <?php } ?>
-                                                                                                                        <?php } else { ?>
-                                                                                                                            <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                                <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>" >
-                                                                                                                                    <div class="post-img-user">
-                                                                                                                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
-
-                                                                                                                                    </div>
-                                                                                                                                </a>
-                                                                                                                            <?php } else { ?>
-                                                                                                                                <div class="post-img-user">
-                                                                                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
-
-                                                                                                                                </div>
-                                                                                                                            <?php } ?>
-                                                                                                                            <?php
-                                                                                                                        }
-                                                                                                                    }
-                                                                                                                } else {
-                                                                                                                    ?>
-                                                                                                                    <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                        <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>">
-                                                                                                                            <div class="post-img-user">
-                                                                                                                                <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?> 
-                                                                                                                            </div>
-                                                                                                                        </a>
-                                                                                                                    <?php } else { ?>
-                                                                                                                        <div class="post-img-user">
-                                                                                                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?> 
-                                                                                                                        </div>
-                                                                                                                    <?php } ?>
-                                                                                                                <?php } ?>
-                                                                                                            </div>
-                                                                                                            <div class="sort-emp-detail">
-                                                                                                                <div>
-                                                                                                                    <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                                                        <a href="<?php echo base_url('freelance-work/freelancer-details/' . $user['freelancer_apply_slug']); ?>"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
-                                                                                                                    <?php } else { ?>
-                                                                                                                        <a><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
-                                                                                                                    <?php } ?>
-                                                                                                                </div>
-                                                                                                                <p><?php
-                                                                                                                    if ($user['designation']) {
-                                                                                                                        echo $user['designation'];
-                                                                                                                    } else {
-                                                                                                                        echo "Designation";
-                                                                                                                    }
-                                                                                                                    ?></p>
-                                                                                                            </div>
-                                                                                                            <div class="sort-emp-msg">
-                                                                                                                <?php
-                                                                                                                $login_id = $this->session->userdata('aileenuser');
-                                                                                                                $user_data = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $login_id, $data = 'user_id', $join_str = array());
-                                                                                                                if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) {
-                                                                                                                    ?>
-                                                                                                                    <a class="btn1" href = "<?php echo base_url('chat/abc/3/4/' . $user['user_id']); ?>">
-                                                                                                                        Message
-                                                                                                                    </a>
-                                                                                                                <?php } ?>
-
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    <?php } ?>
-                                                                                                </div>
-                                                                                            <?php } ?>
-                                                                                        </div>
-                                                                                    <?php } ?>
-                                                                                    <!--shortlisted employy end-->
 
 
                                                                                     </div>
@@ -717,48 +718,48 @@
                                                                                     <?php } ?>
 
                                                                                     <script>
-                                                                                                                                var base_url = '<?php echo base_url(); ?>';
-                                                                                                                                var data1 = <?php echo json_encode($de); ?>;
-                                                                                                                                var data = <?php echo json_encode($demo); ?>;
-                                                                                                                                var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                                                                                                                var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
-                                                                                                                                var id = '<?php echo $this->uri->segment(3); ?>';
-                                                                                                                                var return_page = '<?php echo $_GET['page']; ?>';
+                                                                                                            var base_url = '<?php echo base_url(); ?>';
+                                                                                                            var data1 = <?php echo json_encode($de); ?>;
+                                                                                                            var data = <?php echo json_encode($demo); ?>;
+                                                                                                            var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                                                                                                            var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                                                                                                            var id = '<?php echo $this->uri->segment(3); ?>';
+                                                                                                            var return_page = '<?php echo $_GET['page']; ?>';
 
 
 
-                                                                                                                                function removepopup(id) {
+                                                                                                            function removepopup(id) {
 
-                                                                                                                                    $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this project?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                                                                                                                                    $('#bidmodal').modal('show');
-                                                                                                                                }
+                                                                                                                $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this project?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                                                                                                $('#bidmodal').modal('show');
+                                                                                                            }
 
-                                                                                                                                //remove post start
+                                                                                                            //remove post start
 
-                                                                                                                                function remove_post(abc)
-                                                                                                                                {
+                                                                                                            function remove_post(abc)
+                                                                                                            {
 
-                                                                                                                                    $.ajax({
-                                                                                                                                        type: 'POST',
-                                                                                                                                        url: '<?php echo base_url() . "freelancer/remove_post" ?>',
-                                                                                                                                        data: 'post_id=' + abc,
-                                                                                                                                        success: function (data) {
-                                                                                                                                            $('#' + 'removeapply' + abc).html(data);
-                                                                                                                                            $('#' + 'removeapply' + abc).parent().removeClass();
+                                                                                                                $.ajax({
+                                                                                                                    type: 'POST',
+                                                                                                                    url: '<?php echo base_url() . "freelancer/remove_post" ?>',
+                                                                                                                    data: 'post_id=' + abc,
+                                                                                                                    success: function (data) {
+                                                                                                                        $('#' + 'removeapply' + abc).html(data);
+                                                                                                                        $('#' + 'removeapply' + abc).parent().removeClass();
 
-                                                                                                                                            var numItems = $('.contact-frnd-post .job-contact-frnd').length;
-                                                                                                                                            if (numItems == '0') {
-                                                                                                                                                // var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Project Found.</h4></div>";
-                                                                                                                                                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img alt="No Projects" src="../img/free-no1.png"></div><div class="art_no_post_text">No Project Found</div></div>';
-                                                                                                                                                $('.contact-frnd-post').html(nodataHtml);
+                                                                                                                        var numItems = $('.contact-frnd-post .job-contact-frnd').length;
+                                                                                                                        if (numItems == '0') {
+                                                                                                                            // var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Project Found.</h4></div>";
+                                                                                                                            var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img alt="No Projects" src="../img/free-no1.png"></div><div class="art_no_post_text">No Project Found</div></div>';
+                                                                                                                            $('.contact-frnd-post').html(nodataHtml);
 
-                                                                                                                                            }
+                                                                                                                        }
 
 
-                                                                                                                                        }
-                                                                                                                                    });
+                                                                                                                    }
+                                                                                                                });
 
-                                                                                                                                }
+                                                                                                            }
                                                                                     </script>
 
                                                                                     </html>    

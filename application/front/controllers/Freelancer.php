@@ -4717,58 +4717,8 @@ class Freelancer extends MY_Controller {
     public function registation_insert($postliveid = '') {
         //  echo $postliveid;die();
 
-        if ($postliveid) {
-            $id = trim($postliveid);
 
-            $userid = $this->session->userdata('aileenuser');
-            $notid = $this->db->select('user_id')->get_where('freelancer_post', array('post_id' => $id))->row()->user_id;
 
-            $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => '0');
-            $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            if ($userid == $notid) {
-
-                $this->session->flashdata('error', 'you can not apply on your own post');
-            } else {
-                if ($userdata) {
-                    
-                } else {
-                    $data = array(
-                        'post_id' => $id,
-                        'user_id' => $userid,
-                        'status' => '1',
-                        'created_date' => date('Y-m-d h:i:s', time()),
-                        'modify_date' => date('Y-m-d h:i:s', time()),
-                        'is_delete' => '0',
-                        'job_delete' => '0',
-                        'job_save' => '3'
-                    );
-                    $insert_id = $this->common->insert_data_getid($data, 'freelancer_apply');
-                    // insert notification
-                    $data = array(
-                        'not_type' => '3',
-                        'not_from_id' => $userid,
-                        'not_to_id' => $notid,
-                        'not_read' => '2',
-                        'not_from' => '4',
-                        'not_product_id' => $insert_id,
-                        "not_active" => '1',
-                        'not_created_date' => date('Y-m-d H:i:s')
-                    );
-
-                    $insert_id = $this->common->insert_data_getid($data, 'notification');
-                    // end notoification
-                    if ($insert_id) {
-                        $this->apply_email($notid);
-                        $applypost = 'Applied';
-                    }
-                    // echo $applypost;
-                }
-            }
-        }
-        if ($this->input->post('livepostid')) {
-            
-        }
 
         $userid = $this->session->userdata('aileenuser');
         $skill1 = $this->input->post('skills');
@@ -4781,28 +4731,28 @@ class Freelancer extends MY_Controller {
         $this->form_validation->set_rules('state', 'state', 'required');
         $this->form_validation->set_rules('field', 'Field', 'required');
         $this->form_validation->set_rules('skills', 'skill', 'required');
-        if(empty($this->input->post('experience_month')) && empty($this->input->post('experience_year'))){
+        if (empty($this->input->post('experience_month')) && empty($this->input->post('experience_year'))) {
             $this->form_validation->set_rules('experiance', 'Experiance', 'required');
         }
 
         if ($this->form_validation->run() == FALSE) {
             $contition_array = array('status' => '1');
-        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('status' => '1', 'is_other' => '0');
-        $this->data['category'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('status' => '1', 'is_other' => '0');
+            $this->data['category'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
-        $search_condition = "( status = '1')";
-        $this->data['category_data'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
+            $search_condition = "( status = '1')";
+            $this->data['category_data'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'status' => '1', 'category_name' => "Other");
-        $this->data['category_otherdata'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'category_name' => "Other");
+            $this->data['category_otherdata'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        $contition_array = array('status' => '1', 'type' => '1');
-        $this->data['skill1'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $this->data['title'] = "Registration | Freelancer Profile" . TITLEPOSTFIX;
+            $contition_array = array('status' => '1', 'type' => '1');
+            $this->data['skill1'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $this->data['title'] = "Registration | Freelancer Profile" . TITLEPOSTFIX;
             $this->load->view('freelancer/freelancer_post/registation', $this->data);
         } else {
 
@@ -4860,6 +4810,56 @@ class Freelancer extends MY_Controller {
                 $insert_id = $this->common->insert_data_getid($data, 'freelancer_post_reg');
 
                 if ($insert_id) {
+
+                    if ($postliveid) {
+                        $id = trim($postliveid);
+
+                        $userid = $this->session->userdata('aileenuser');
+                        $notid = $this->db->select('user_id')->get_where('freelancer_post', array('post_id' => $id))->row()->user_id;
+
+                        $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => '0');
+                        $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                        if ($userid == $notid) {
+
+                            $this->session->flashdata('error', 'you can not apply on your own post');
+                        } else {
+                            if ($userdata) {
+                                
+                            } else {
+                                $data = array(
+                                    'post_id' => $id,
+                                    'user_id' => $userid,
+                                    'status' => '1',
+                                    'created_date' => date('Y-m-d h:i:s', time()),
+                                    'modify_date' => date('Y-m-d h:i:s', time()),
+                                    'is_delete' => '0',
+                                    'job_delete' => '0',
+                                    'job_save' => '3'
+                                );
+                                $insert_id = $this->common->insert_data_getid($data, 'freelancer_apply');
+                                // insert notification
+                                $data = array(
+                                    'not_type' => '3',
+                                    'not_from_id' => $userid,
+                                    'not_to_id' => $notid,
+                                    'not_read' => '2',
+                                    'not_from' => '4',
+                                    'not_product_id' => $insert_id,
+                                    "not_active" => '1',
+                                    'not_created_date' => date('Y-m-d H:i:s')
+                                );
+
+                                $insert_id = $this->common->insert_data_getid($data, 'notification');
+                                // end notoification
+                                if ($insert_id) {
+                                    $this->apply_email($notid);
+                                    $applypost = 'Applied';
+                                }
+                                // echo $applypost;
+                            }
+                        }
+                    }
 
                     if ($postliveid) {
 
