@@ -1946,14 +1946,54 @@ class Freelancer extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $skills = $this->input->post('skills');
         $skills = explode(',', $skills);
-        $this->form_validation->set_rules('post_name', 'Post Name', 'required');
-        $this->form_validation->set_rules('post_desc', 'Post description', 'required');
-        $this->form_validation->set_rules('rating', 'Rating', 'required');
-        $this->form_validation->set_rules('last_date', 'Last date', 'required');
+          
+        $this->form_validation->set_rules('post_name', 'Project Title', 'required');
+        $this->form_validation->set_rules('post_desc', 'Project description', 'required');
+        $this->form_validation->set_rules('fields_req', 'Field ', 'required');
+        $this->form_validation->set_rules('skills', 'Skill', 'required');
+        $this->form_validation->set_rules('latdate', 'Last date ', 'required');
+        $this->form_validation->set_rules('rate', 'Rate', 'required');
+        $this->form_validation->set_rules('currency', 'Currency', 'required');
+        $this->form_validation->set_rules('rating', 'Work type', 'required');
+        
 
         if ($this->form_validation->run() == FALSE) {
 
-            $this->load->view('freelancer/freelancer_hire/freelancer_edit_post');
+            $contition_array = array('post_id' => $id, 'is_delete' => '0');
+        $userdata = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //for getting univesity data Start
+        $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
+        $search_condition = "((is_other = '2' AND user_id = $userid) OR (status = '1'))";
+        $this->data['category_data'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('is_delete' => '0', 'status' => '1', 'category_name' => "Other");
+        $this->data['category_otherdata'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //for getting univesity data End
+
+        $contition_array = array('status' => '1', 'type' => '1');
+        $this->data['skill1'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('status' => '1');
+        $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+//Retrieve skill data Start
+
+        $skill_know = explode(',', $userdata[0]['post_skill']);
+        foreach ($skill_know as $lan) {
+            $contition_array = array('skill_id' => $lan, 'status' => '1');
+            $languagedata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+            $detailes[] = $languagedata[0]['skill'];
+        }
+
+        $this->data['skill_2'] = implode(',', $detailes);
+        //Retrieve skill data End
+        $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => '3');
+        $data = 'username,fullname';
+        $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            
+            $this->load->view('freelancer/freelancer_hire/freelancer_edit_post',$this->data);
         } else {
 
             $datereplace = $this->input->post('last_date');

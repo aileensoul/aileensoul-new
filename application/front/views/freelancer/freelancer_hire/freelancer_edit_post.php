@@ -41,22 +41,31 @@
                             <div class="common-form custom-form">
                                 <h3 class="col-chang"><?php echo $this->lang->line("edit_project"); ?></h3>
                                 <?php echo form_open(base_url('freelancer/freelancer_edit_post_insert/' . $freelancerpostdata[0]['post_id']), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit')); ?>
-
+                                <?php
+                                $post_name = form_error('post_name');
+                                $skills = form_error('skills');
+                                $post_desc = form_error('post_desc');
+                                $fields = form_error('fields_req');
+                                $lastdate = form_error('latdate');
+                                $rate = form_error('rate');
+                                $currency = form_error('currency');
+                                $rating = form_error('rating');
+                                ?>
                                 <div class="custom-add-box">
                                     <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("project_description"); ?></h3>
                                     <div class="p15 fw">
-                                        <fieldset class="full-width">
+                                        <fieldset  <?php if ($post_name) { ?> class="error-msg full-width" <?php } else{ ?> class="full-width" <?php }?>>
                                             <label><?php echo $this->lang->line("project_title"); ?>:<span style="color:red">*</span></label>
                                             <input name="post_name" type="text" id="post_name" maxlength="100" tabindex="1" autofocus placeholder="Enter post name" value="<?php echo $freelancerpostdata[0]['post_name'] ?> " onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/>
                                             <span id="fullname-error"></span>                        
                                             <?php echo form_error('post_name'); ?>
                                         </fieldset>
-                                        <fieldset class="full-width">
+                                        <fieldset  <?php if ($post_desc) { ?> class="error-msg full-width" <?php } else{ ?> class="full-width" <?php } ?>>
                                             <label><?php echo $this->lang->line("project_description"); ?>:<span style="color:red">*</span></label>
                                             <textarea row="8" style="resize: none; overflow: auto;" tabindex="2" name="post_desc" id="post_desc" placeholder="Enter description"><?php echo $freelancerpostdata[0]['post_description']; ?></textarea>
                                             <?php echo form_error('post_desc'); ?>
                                         </fieldset>
-                                        <fieldset class="full-width" <?php if ($post_skill) { ?> class="error-msg" <?php } ?>>
+                                        <fieldset  <?php if ($skills) { ?> class="error-msg full-width" <?php } else{ ?> class="full-width" <?php }?>>
                                             <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
                                             <input id="skills2" name="skills"  tabindex="3"  size="90" placeholder="Enter skills" value="<?php
                                             if ($skill_2) {
@@ -65,7 +74,7 @@
                                             ?>">
                                                    <?php echo form_error('skills'); ?>
                                         </fieldset>
-                                        <fieldset class="full-width" <?php if ($fields_req) { ?> class="error-msg" <?php } ?>>
+                                        <fieldset  <?php if ($fields) { ?> class="error-msg full-width" <?php } else { ?> class="full-width" <?php } ?>>
                                             <label><?php echo $this->lang->line("field_of_requirement"); ?>:<span style="color:red">*</span></label>
                                             <select tabindex="4" name="fields_req" id="fields_req" class="field_other">
                                                 <option value="" selected option disabled><?php echo $this->lang->line("select_filed"); ?></option>
@@ -138,10 +147,10 @@
                                             <span id="fullname-error"></span>
                                             <?php echo form_error('post_name'); ?>
                                         </fieldset>
-                                        <fieldset <?php if ($last_date) { ?> class="error-msg" <?php } ?>>
+                                        <fieldset <?php if ($lastdate) { ?> class="error-msg" <?php } ?>>
                                             <label><?php echo $this->lang->line("last_date_apply"); ?>:<span style="color:red">*</span></label>
-                                            <input type="hidden" id="example2">
-                                            <?php echo form_error('last_date'); ?> 
+                                            <input type="hidden" id="example2" name="latdate">
+                                            <?php echo form_error('latdate'); ?> 
                                         </fieldset>
 
 
@@ -151,13 +160,13 @@
                                 <div class="custom-add-box">
                                     <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?></h3>
                                     <div class="p15 fw">
-                                        <fieldset style="padding-left: 8px;" class="col-md-6" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
+                                        <fieldset style="padding-left: 8px;"  <?php if ($rate) { ?> class="error-msg col-md-6" <?php } else{ ?> class="col-md-6" <?php  }?> >
                                             <label class="control-label"><?php echo $this->lang->line("rate"); ?>:<span style="color:red">*</span></label>
                                             <input name="rate" type="number" id="rate" tabindex="11" placeholder="Enter your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
                                             <span id="fullname-error"></span>
                                             <?php echo form_error('rate'); ?>
                                         </fieldset>
-                                        <fieldset class=" col-md-6"> 
+                                        <fieldset  <?php if ($currency) { ?> class="error-msg col-md-6" <?php } else{ ?> class="col-md-6" <?php } ?>> 
                                             <label><?php echo $this->lang->line("currency"); ?>:<span style="color:red">*</span></label>
                                             <select name="currency" id="currency" tabindex="12">
                                                 <option value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
@@ -178,7 +187,7 @@
                                             </select>
                                             <?php echo form_error('currency'); ?>
                                         </fieldset>
-                                        <fieldset style="padding-left: 8px;" class="col-md-6">
+                                        <fieldset style="padding-left: 8px;"  <?php if ($rating) { ?> class="error-msg col-md-6" <?php } else{ ?> class="col-md-6" <?php }?>>
                                             <label><?php echo $this->lang->line("work_type"); ?><span style="color:red">*</span></label>
                                             <input type="radio" name="rating" tabindex="13" <?php if ($freelancerpostdata[0]['post_rating_type'] == '0') { ?> checked <?php } ?> value="0" > Hourly
                                             <input type="radio" name="rating" tabindex="14"  <?php if ($freelancerpostdata[0]['post_rating_type'] == '1') { ?> checked <?php } ?> value ="1"> Fixed
@@ -250,7 +259,7 @@
         </script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-            <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>-->
+                <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>-->
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
             <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>-->
