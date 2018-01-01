@@ -304,7 +304,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                 var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
         <?php
-        if (IS_OUTSIDE_CSS_MINIFY == '0') {
+        if (IS_OUTSIDE_JS_MINIFY == '0') {
             ?>
             <script src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>
             <?php
