@@ -44,12 +44,12 @@
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt cust-block">
                              <div class="">
                                 <div class="full-box-module">   
-                                    <div class="profile-boxProfileCard  module">
-                                        <div class="profile-boxProfileCard-cover"> 
+                                    <div class="">
+                                        <div class=""> 
                                             <div class="cust-div-h3">
                                                 <h3 style="color: #5c5c5c;text-align: center;font-size: 24px;">Job by Location</h3>
                                             </div>
-                                            <ul style="list-style-type: none;">
+                                            <ul class="jobs-loca-cus" style="list-style-type: none;padding-left: 10px;">
                                                 <li>
                                              <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("jobs"); ?>" >All Jobs</a>

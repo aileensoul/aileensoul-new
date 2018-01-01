@@ -2282,7 +2282,7 @@ label.cameraButton:active{
     height:220px;
     margin-bottom:15px;
     padding:5px;
-    cursor:pointer
+    /*cursor:pointer*/
 }
 .all-box li img{
     width:220px;

@@ -1639,7 +1639,7 @@ input.form-control{
 #forgot_password .modal-body label.error,#selgen.error,.error,label.error{
     color:red!important
 }
-.job_reg_page_fprm #forgot_password .modal-body label.error, #selgen.error, .error, label.error{color: #acacac !important;}
+/*.job_reg_page_fprm #forgot_password .modal-body label.error, #selgen.error, .error, label.error{color: #acacac !important;}*/
 .email-verify{
     width:100%;
     padding-left:3%

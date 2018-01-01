@@ -2233,6 +2233,10 @@ p.job-top-btn a.btn4:first-child{
     position:relative;
     pointer-events:none
 }
+
+.cust-div-h3 ul {padding-left: 10px;}
+.cust-div-h3 ul li{padding-left: 0px !important;}
+.lbpos a{color: #5c5c5c;}
 @media screen and (min-width:768px){
     .mob-progressbar.temp{
         display:none
