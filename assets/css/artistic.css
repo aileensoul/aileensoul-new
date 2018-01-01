@@ -5917,8 +5917,8 @@ div .comment {
     .contact-frnd-post{padding:10px 8px 0;}
     /*** end add  ***/
 	.file-preview{width:194px;}
-    .all-box ul.audio-sec li{width: 265px;}
-    .user-midd-section .tab-content  .all-box li .mejs__audio{width: 265px !important;}
+    .all-box ul.audio-sec li{width: 200px;}
+    .user-midd-section .tab-content  .all-box li .mejs__audio{width: 230px !important;}
 
 }
 
