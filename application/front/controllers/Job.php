@@ -4147,8 +4147,9 @@ class Job extends MY_Controller {
 
 // search keyword insert into database start
 
-         $search_job = trim($_GET["skill"]);
-         $search_place = trim($_GET["place"]); 
+        
+          $search_job = str_replace('-', ' ', trim($_GET["skill"]));
+          $search_place = str_replace('-', ' ', trim($_GET["place"]));
 
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
@@ -4222,17 +4223,17 @@ class Job extends MY_Controller {
             $join_str[0]['join_type'] = '';
 
 
-            $contition_array = array('recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3, 'rec_post.is_delete' => 0, 'rec_post.status' => '1');
+            $contition_array = array('recruiter.user_id !=' => $userid, 'recruiter.re_step' => '3', 'rec_post.is_delete' =>  '0', 'rec_post.status' => '1');
 
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name,rec_post.fresher,recruiter.re_comp_profile,rec_post.post_currency';
 
             $search_condition = "(rec_post.post_name LIKE '%$search_job%' or recruiter.re_comp_name LIKE '%$search_job%' or recruiter.rec_firstname LIKE '%$search_job%' or recruiter.rec_lastname LIKE '%$search_job%' or rec_post.other_skill LIKE '%$search_job%' or concat(
                     rec_firstname,' ',rec_lastname) LIKE '%$search_job%')";
+            
+         
 
-            $results_all = $recpostdata['data'] = $this->common->select_data_by_search('reddc_post', $search_condition, $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-           
-echo '<pre>'; print_r($results_all); die();            
-//Search For firstname,lastname,companyname,other_skill and concat(firstname,lastname) End
+            $results_all = $recpostdata['data'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+            //Search For firstname,lastname,companyname,other_skill and concat(firstname,lastname) End
 
 
             $join_str[0]['table'] = 'rec_post';
