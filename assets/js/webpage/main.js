@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('.ajax_load').hide();
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -71,6 +72,7 @@ $(document).ready(function () {
             {
                 $("#error").fadeOut();
                 //$(".btn1").html('Login');
+                $('#login_ajax_load').show();
             },
             success: function (response)
             {
@@ -83,6 +85,7 @@ $(document).ready(function () {
                 } else {
                     window.location = base_url + "login?error_msg=1";
                 }
+                $('#login_ajax_load').hide();
             }
         });
         return false;
@@ -261,6 +264,7 @@ $(document).ready(function () {
             {
                 $("#register_error").fadeOut();
                 $("#btn-register").html('Sign Up');
+                $('#registration_ajax_load').show();
             },
             success: function (response)
             {
@@ -275,6 +279,7 @@ $(document).ready(function () {
                         $("#btn-register").html('Sign Up');
                     });
                 }
+                $('#registration_ajax_load').hide();
             }
         });
         return false;
