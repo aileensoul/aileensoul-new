@@ -178,7 +178,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     <a href="javascript:void(0);" onclick="return contact_person_query(<?php echo $business_common_data[0]['user_id']; ?>,<?php echo "'" . $contactperson[0]['status'] . "'"; ?>);" >
 
                                     <?php } elseif ($contactperson[0]['status'] == 'pending' || $contactperson[0]['status'] == 'confirm') { ?>   
-                                        <a onclick="return contact_person_query(<?php echo $business_common_data[0]['user_id']; ?>,<?php echo "'" . $contactperson[0]['status'] . "'"; ?>)" >
+                                        <a href="javascript:void(0);" onclick="return contact_person_query(<?php echo $business_common_data[0]['user_id']; ?>,<?php echo "'" . $contactperson[0]['status'] . "'"; ?>)" >
                                         <?php } ?>
 
                                         <?php if ($contactperson[0]['status'] == 'cancel') { ?> 
