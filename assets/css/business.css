@@ -5959,6 +5959,8 @@ body.reg-form{
     .more-image{
         height:119px
     }
+    .all-box ul.audio-sec li{width: 265px;}
+    .user-midd-section .tab-content  .all-box li .mejs__audio{width: 265px !important;}
 }
 @media screen and (max-width:319px){
     .editor-content{
