@@ -2281,7 +2281,7 @@ label.cameraButton:active{
     width:220px;
     height:220px;
     margin-bottom:15px;
-    padding:5px;
+    padding:0px;
     /*cursor:pointer*/
 }
 .profile-boxProfileCard .mejs__button > button{margin: 6px 5px;}
