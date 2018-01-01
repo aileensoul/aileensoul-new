@@ -1061,6 +1061,8 @@ fieldset.fresher_radio label {
     pointer-events:none;
 }
 
+.job-menu-profile a h3{display: inline-block;}
+
 
 /***  media query  ***/
 

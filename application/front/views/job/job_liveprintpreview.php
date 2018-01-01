@@ -983,7 +983,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                        <li>
                                           <b>Project Description</b> 
                                           <span class="text_blur">
-                                             <pre><?php echo $this->common->make_links($job[0]['project_description']); ?></pre>
+                                             <pre class="text_blur"><?php echo $this->common->make_links($job[0]['project_description']); ?></pre>
                                           </span>
                                        </li>
                                        <?php
