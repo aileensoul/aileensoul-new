@@ -182,11 +182,12 @@
         <script type="text/javascript">
             var base_url = '<?php echo base_url(); ?>';
         </script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_address_info.js?ver=' . time()); ?>"></script>
          <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-          <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_address_info.js?ver=' . time()); ?>"></script>
+          <!--<script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_address_info.js?ver=' . time()); ?>"></script>-->
         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
             <?php } else {  ?>
-       <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_address_info.js?ver=' . time()); ?>"></script>
+       <!--<script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_address_info.js?ver=' . time()); ?>"></script>-->
         <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <?php } ?>
        

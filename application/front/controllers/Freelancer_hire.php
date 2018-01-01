@@ -255,7 +255,7 @@ class Freelancer_hire extends MY_Controller {
 
     public function ajax_data() {
 //ajax data for category and subcategory start
-        
+      
         if (isset($_POST["category_id"]) && !empty($_POST["category_id"])) {
             //Get all state data
             $contition_array = array('category_id' => $_POST["category_id"], 'status' => '1');
