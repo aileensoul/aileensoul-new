@@ -2286,7 +2286,7 @@ label.cameraButton:active{
 }
 .profile-boxProfileCard .mejs__button > button{margin: 6px 5px;}
 .profile-boxProfileCard .mejs__time{padding: 10px 5px;}
-
+.user-midd-section .tab-content  .all-box li .mejs__audio{width: 290px !important;}
 .all-box li img{
     width:220px;
     height:220px;
