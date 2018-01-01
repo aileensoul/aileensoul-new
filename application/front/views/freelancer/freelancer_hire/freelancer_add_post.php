@@ -182,7 +182,7 @@
                                                     <?php echo form_error('currency'); ?>
                                                 </fieldset>
                                                 <fieldset class="col-md-12 pl10 work_type_custom">
-                                                    <label class=""><?php echo $this->lang->line("work_type"); ?>:<span class="optional">(optional)</span></label><input type="radio" tabindex="13" class="worktype_minheight" name="rating" value="0"> Hourly
+                                                    <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="13" class="worktype_minheight" name="rating" value="0"> Hourly
                                                     <input type="radio" tabindex="14"  name="rating" value="1"> Fixed
                                                     <?php echo form_error('rating'); ?>
                                                 </fieldset>
@@ -430,12 +430,12 @@
                         }
                         // LEAVE PAGE ON ADD AND EDIT POST PAGE END 
         </script>
-        
-         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>
+         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+        <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>-->
         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
             <?php } else {  ?>
-            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>
+            <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>-->
         <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <?php } ?>
         

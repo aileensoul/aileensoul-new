@@ -102,6 +102,9 @@ $(document).ready(function () {
             },
             est_time: {
                 regx_num_space: /[0-9\s][a-zA-Z]/
+            },
+            rating:{
+                required: true,
             }
 
         },
@@ -130,6 +133,9 @@ $(document).ready(function () {
             },
             state: {
                 required: "Please select state."
+            },
+             rating:{
+                required: "Work type is required.",
             }
 
         },
