@@ -4147,8 +4147,8 @@ class Job extends MY_Controller {
 
 // search keyword insert into database start
 
-        $search_job = trim($_GET["skill"]);
-        $search_place = trim($_GET["place"]);
+         $search_job = trim($_GET["skill"]);
+         $search_place = trim($_GET["place"]); 
 
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
@@ -4229,8 +4229,10 @@ class Job extends MY_Controller {
             $search_condition = "(rec_post.post_name LIKE '%$search_job%' or recruiter.re_comp_name LIKE '%$search_job%' or recruiter.rec_firstname LIKE '%$search_job%' or recruiter.rec_lastname LIKE '%$search_job%' or rec_post.other_skill LIKE '%$search_job%' or concat(
                     rec_firstname,' ',rec_lastname) LIKE '%$search_job%')";
 
-            $results_all = $recpostdata['data'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-            //Search For firstname,lastname,companyname,other_skill and concat(firstname,lastname) End
+            $results_all = $recpostdata['data'] = $this->common->select_data_by_search('reddc_post', $search_condition, $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+           
+echo '<pre>'; print_r($results_all); die();            
+//Search For firstname,lastname,companyname,other_skill and concat(firstname,lastname) End
 
 
             $join_str[0]['table'] = 'rec_post';
