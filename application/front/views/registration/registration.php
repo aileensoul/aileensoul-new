@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <?php
-
-if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
     // $date = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
     header("HTTP/1.1 304 Not Modified");
     exit();
@@ -11,11 +10,11 @@ $format = 'D, d M Y H:i:s \G\M\T';
 $now = time();
 
 $date = gmdate($format, $now);
-header('Date: '.$date);
-header('Last-Modified: '.$date);
+header('Date: ' . $date);
+header('Last-Modified: ' . $date);
 
-$date = gmdate($format, $now+30);
-header('Expires: '.$date);
+$date = gmdate($format, $now + 30);
+header('Expires: ' . $date);
 header("Cache-Control: no-store, no-cache, must-revalidate"); // HTTP/1.1
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache"); // HTTP/1.0
@@ -26,23 +25,27 @@ header("Pragma: no-cache"); // HTTP/1.0
         <meta name="description" content="Register into Aileensoul.com for Free, Find job search, Hire employee, Get Freelance work, Grow business network & make Artistic Profiles.">
 
 
-        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver='.time()); ?>">
+        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-      <?php
-if(IS_OUTSIDE_JS_MINIFY == '0'){
-?>
- <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
-<?php } else{ ?>
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver='.time()); ?>">
-<?php } ?>
-       
+        <?php
+        $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        ?>
+        <link rel="canonical" href="<?php echo $actual_link ?>" />
+        <?php
+        if (IS_OUTSIDE_JS_MINIFY == '0') {
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
+        <?php } ?>
+
         <?php
         if ($_SERVER['HTTP_HOST'] != "localhost") {
             ?>
-            
+
             <script>
                 (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
@@ -64,7 +67,7 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
             <?php
         }
         ?>
-            <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
     </head>
     <body class="registeration outer-page">
         <div class="main-inner">
@@ -72,7 +75,7 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-xs-3">
-                            <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
+                            <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-9">
                             <div class="btn-right pull-right t-r-l">
@@ -115,62 +118,62 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth *:</label>
                                         <!--span class="d_o_b">DOB </span-->
-                                       <span>
-                                        <select class="day" name="selday" id="selday" tabindex="5">
-                                            <option value="" disabled selected>Day</option>
-                                            <?php
-                                            for ($i = 1; $i <= 31; $i++) {
-                                                ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                        <span>
+                                            <select class="day" name="selday" id="selday" tabindex="5">
+                                                <option value="" disabled selected>Day</option>
                                                 <?php
-                                            }
-                                            ?>
-                                        </select>
+                                                for ($i = 1; $i <= 31; $i++) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </span>
                                         <span>
-                                        <select class="month" name="selmonth" id="selmonth" tabindex="6">
-                                            <option value="" disabled selected>Month</option>
-                                            <?php
+                                            <select class="month" name="selmonth" id="selmonth" tabindex="6">
+                                                <option value="" disabled selected>Month</option>
+                                                <?php
 //                  for($i = 1; $i <= 12; $i++){
-                                            ?>
-                                            <option value="1">Jan</option>
-                                            <option value="2">Feb</option>
-                                            <option value="3">Mar</option>
-                                            <option value="4">Apr</option>
-                                            <option value="5">May</option>
-                                            <option value="6">Jun</option>
-                                            <option value="7">Jul</option>
-                                            <option value="8">Aug</option>
-                                            <option value="9">Sep</option>
-                                            <option value="10">Oct</option>
-                                            <option value="11">Nov</option>
-                                            <option value="12">Dec</option>
-                                            <?php
-                                            //  }
-                                            ?>
-                                        </select>
+                                                ?>
+                                                <option value="1">Jan</option>
+                                                <option value="2">Feb</option>
+                                                <option value="3">Mar</option>
+                                                <option value="4">Apr</option>
+                                                <option value="5">May</option>
+                                                <option value="6">Jun</option>
+                                                <option value="7">Jul</option>
+                                                <option value="8">Aug</option>
+                                                <option value="9">Sep</option>
+                                                <option value="10">Oct</option>
+                                                <option value="11">Nov</option>
+                                                <option value="12">Dec</option>
+                                                <?php
+                                                //  }
+                                                ?>
+                                            </select>
                                         </span>
                                         <span>
-                                        <select class="year" name="selyear" id="selyear" tabindex="7">
-                                            <option value="" disabled selected>Year</option>
-                                            <?php
-                                            for ($i = date('Y'); $i >= 1900; $i--) {
-                                                ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                            <select class="year" name="selyear" id="selyear" tabindex="7">
+                                                <option value="" disabled selected>Year</option>
                                                 <?php
-                                            }
-                                            ?>
-                                        </select></span>
+                                                for ($i = date('Y'); $i >= 1900; $i--) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select></span>
 
                                     </div>
 
                                     <div class="form-group gender-custom">
                                         <span>
-                                        <select class="gender" name="selgen" id="selgen" tabindex="8">
-                                            <option value="" disabled selected>Gender*</option>
-                                            <option value="M">Male</option>
-                                            <option value="F">female</option>
-                                        </select>
+                                            <select class="gender" name="selgen" id="selgen" tabindex="8">
+                                                <option value="" disabled selected>Gender*</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">female</option>
+                                            </select>
                                         </span>
                                     </div>
 
@@ -197,7 +200,7 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
                 </div>
             </section>
 
-              <?php
+            <?php
             echo $login_footer
             ?>
         </div>
@@ -254,16 +257,16 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
 
             });
         </script>
- <?php
-if(IS_OUTSIDE_JS_MINIFY == '0'){
-?>
- <script src="<?php echo base_url('assets/js/jquery.min.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
-<?php } else{ ?>
-  <script src="<?php echo base_url('assets/js_min/jquery.min.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver='.time()); ?>"></script>
-<?php } ?>
-        
+        <?php
+        if (IS_OUTSIDE_JS_MINIFY == '0') {
+            ?>
+            <script src="<?php echo base_url('assets/js/jquery.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+            <script src="<?php echo base_url('assets/js_min/jquery.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+
         <!-- validation for edit email formate form strat -->
 
         <script>
@@ -382,39 +385,39 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
 
                                 window.location = "<?php echo base_url() ?>profiles/<?php echo $this->session->userdata('aileenuser_slug'); ?>";
-                                sendmail(userid);
-                                // setTimeout(' window.location.href = "<?php //echo base_url()  ?>dashboard"; ', 4000);
-                            } else {
-                                $("#register_error").fadeIn(1000, function () {
-                                    $("#register_error").html('<div class="alert alert-danger registration"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
-                                    $("#btn-register").html('Sign Up');
-                                });
-                            }
-                        }
-                    });
-                    return false;
-                }
-            });
+                                                        sendmail(userid);
+                                                        // setTimeout(' window.location.href = "<?php //echo base_url()   ?>dashboard"; ', 4000);
+                                                    } else {
+                                                        $("#register_error").fadeIn(1000, function () {
+                                                            $("#register_error").html('<div class="alert alert-danger registration"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
+                                                            $("#btn-register").html('Sign Up');
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                            return false;
+                                        }
+                                    });
 
-function sendmail(userid){
+                                    function sendmail(userid) {
 
 
-    var post_data = {
-            'userid': userid,
-        }
+                                        var post_data = {
+                                            'userid': userid,
+                                        }
 
-    $.ajax({
-            type: 'POST',
-            url: base_url + 'registration/sendmail',
-            data: post_data,
-            success: function (response)
-            {
-            }
-        });
-        return false;
-}
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: base_url + 'registration/sendmail',
+                                            data: post_data,
+                                            success: function (response)
+                                            {
+                                            }
+                                        });
+                                        return false;
+                                    }
 
-</script>
+        </script>
 
 
 

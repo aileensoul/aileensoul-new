@@ -62,7 +62,10 @@ header("Pragma: no-cache"); // HTTP/1.0
         <meta name="twitter:creator" content="By Aileensoul">
         <meta name="twitter:image" content="http://placekitten.com/250/250">
         <meta name="twitter:domain" content="<?php base_url('blog/' . $blog_detail[0]['blog_slug']) ?>">
-
+        <?php
+        $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        ?>
+        <link rel="canonical" href="<?php echo $actual_link ?>" />
 
         <?php if (IS_OUTSIDE_CSS_MINIFY == '0') {
             ?>

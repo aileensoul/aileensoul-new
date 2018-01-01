@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <?php
-if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
     header("HTTP/1.1 304 Not Modified");
     exit();
 }
@@ -9,11 +9,11 @@ $format = 'D, d M Y H:i:s \G\M\T';
 $now = time();
 
 $date = gmdate($format, $now);
-header('Date: '.$date);
-header('Last-Modified: '.$date);
+header('Date: ' . $date);
+header('Last-Modified: ' . $date);
 
-$date = gmdate($format, $now+30);
-header('Expires: '.$date);
+$date = gmdate($format, $now + 30);
+header('Expires: ' . $date);
 header("Cache-Control: no-store, no-cache, must-revalidate"); // HTTP/1.1
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache"); // HTTP/1.0
@@ -62,31 +62,34 @@ header("Pragma: no-cache"); // HTTP/1.0
         <meta name="p:domain_verify" content="d0a13cf7576745459dc0ca6027df5513"/>
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-     
+        <?php
+        $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        ?>
+        <link rel="canonical" href="<?php echo $actual_link ?>" />
         <?php
         if (IS_OUTSIDE_CSS_MINIFY == '0') {
             ?>
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
             <?php
         } else {
             ?>
-         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
         <?php } ?>
-        
+
         <?php
         if (IS_OUTSIDE_JS_MINIFY == '0') {
             ?>
-        <script data-pagespeed-no-defer src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
-        <script data-pagespeed-no-defer src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script> 
+            <script data-pagespeed-no-defer src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
+            <script data-pagespeed-no-defer src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script> 
             <?php
         } else {
             ?>
-        <script data-pagespeed-no-defer src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
-        <script data-pagespeed-no-defer src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script> 
+            <script data-pagespeed-no-defer src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
+            <script data-pagespeed-no-defer src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script> 
         <?php } ?>
     </head>
     <body class="custom-landscape">
@@ -95,7 +98,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-lg-5">
-                            <a tabindex="1"  href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
+                            <a tabindex="1"  href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a>
                         </div>
                         <div class="col-lg-1"></div>
                         <div class="col-md-8 col-sm-9 col-lg-6">
@@ -293,21 +296,21 @@ header("Pragma: no-cache"); // HTTP/1.0
         </div>
         <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script>
-                                                    var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
-                                                    var base_url = '<?php echo base_url(); ?>';
-                                                    var data = <?php echo json_encode($demo); ?>;
-                                                    var data1 = <?php echo json_encode($city_data); ?>;
-                                                    var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                                    var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
+                var base_url = '<?php echo base_url(); ?>';
+                var data = <?php echo json_encode($demo); ?>;
+                var data1 = <?php echo json_encode($city_data); ?>;
+                var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
-          <?php
+        <?php
         if (IS_OUTSIDE_CSS_MINIFY == '0') {
             ?>
-           <script src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>
             <?php
         } else {
             ?>
-             <script src="<?php echo base_url('assets/js_min/webpage/main.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/webpage/main.js?ver=' . time()); ?>"></script>
         <?php } ?>
     </body>
 </html>

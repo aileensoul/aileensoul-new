@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
-
-if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
     // $date = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
     header("HTTP/1.1 304 Not Modified");
     exit();
@@ -11,41 +10,43 @@ $format = 'D, d M Y H:i:s \G\M\T';
 $now = time();
 
 $date = gmdate($format, $now);
-header('Date: '.$date);
-header('Last-Modified: '.$date);
+header('Date: ' . $date);
+header('Last-Modified: ' . $date);
 
-$date = gmdate($format, $now+30);
-header('Expires: '.$date);
+$date = gmdate($format, $now + 30);
+header('Expires: ' . $date);
 
 //header('Cache-Control: public, max-age=30');
-
 ?>
 <html lang="en" class="login-custom">
     <head>
-	<meta charset="utf-8">
+        <meta charset="utf-8">
         <title>Login - Aileensoul</title>
         <meta name="description" content="Login to Aileensoul.com dashboard and get updates on your profiles." />
-        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver='.time()); ?>">
+        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
         <meta name="keywords" content="Hire Freelancers, Freelance Jobs Online, Find Freelance Work, Freelance Jobs, Get Online Work, online freelance jobs, freelance websites, freelance portal, online freelance work, freelance job sites, freelance consulting jobs, hire freelancers online, best freelancing sites, online writing jobs for beginners, top freelance websites, freelance marketplace, jobs, Job search, job vacancies, Job Opportunities in India, jobs in India, job openings, Jobs Recruitment, Apply For Jobs, Find the right Job, online job applications, apply for jobs online, online job search, online jobs india, job posting sites, job seeking sites, job search websites, job websites in india, job listing websites, jobs hiring, how to find a job, employment agency, employment websites, employment vacancies, application for employment, employment in india, searching for a job, job search companies, job search in india, best jobs in india, job agency, job placement agencies, how to apply for a job, jobs for freshers, job vacancies for freshers, recruitment agencies, employment agencies, job recruitment, hiring agencies, hiring websites, recruitment sites, corporate recruiter, career recruitment, online recruitment, executive recruiters, job recruiting companies, online job recruitment, job recruitment agencies, it, recruitment agencies, recruitment websites, executive search firms, sales recruitment agencies, top executive search firms, recruitment services, technical recruiter, recruitment services, job recruitment agency, recruitment career" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-       
+        <?php
+        $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        ?>
+        <link rel="canonical" href="<?php echo $actual_link ?>" />
 <?php
-        if (IS_OUTSIDE_CSS_MINIFY == '0') {
-            ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
-       
-            <?php
-        } else {
-            ?>
-             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver='.time()); ?>">
-       
-        <?php } ?>
-           <?php
+if (IS_OUTSIDE_CSS_MINIFY == '0') {
+    ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
+
+    <?php
+} else {
+    ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
+
+<?php } ?>
+        <?php
         if ($_SERVER['HTTP_HOST'] != "localhost") {
             ?>
-            
+
             <script>
                 (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
@@ -64,10 +65,10 @@ header('Expires: '.$date);
 
             </script>
             <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
-            <?php
-        }
-        ?>
-            <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+    <?php
+}
+?>
+        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
     </head>
 
     <body class="outer-page">
@@ -76,7 +77,7 @@ header('Expires: '.$date);
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3">
-                           <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
+                            <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a>
                         </div>
                         <div class="col-md-8 col-sm-9">
                             <div class="btn-right pull-right">
@@ -94,14 +95,14 @@ header('Expires: '.$date);
 
                         <div id="error1">
 
-                            <?php
-                            if ($this->session->flashdata('error')) {
-                                echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
-                            }
-                            if ($this->session->flashdata('success')) {
-                                echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
-                            }
-                            ?>
+<?php
+if ($this->session->flashdata('error')) {
+    echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
+}
+if ($this->session->flashdata('success')) {
+    echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
+}
+?>
 
                         </div>
 
@@ -122,11 +123,11 @@ header('Expires: '.$date);
                                     <div class="form-group">
                                         <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
                                         <div id="error2">
-                                            <?php
-                                            if ($this->session->flashdata('erroremail')) {
-                                                echo $this->session->flashdata('erroremail');
-                                            }
-                                            ?>
+<?php
+if ($this->session->flashdata('erroremail')) {
+    echo $this->session->flashdata('erroremail');
+}
+?>
                                         </div>
                                         <div id="errorlogin"></div> 
                                     </div>
@@ -264,15 +265,15 @@ echo form_open('profile/forgot_password', $form_attribute);
 
         <!-- script for login  user valoidtaion start -->
 <?php
-        if (IS_OUTSIDE_JS_MINIFY == '0') {
-            ?>
-              <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+if (IS_OUTSIDE_JS_MINIFY == '0') {
+    ?>
+            <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <?php
         } else {
             ?>
-              <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
-       
+
         <script>
                                             function login()
                                             {
@@ -328,39 +329,39 @@ echo form_open('profile/forgot_password', $form_attribute);
                                                         {
                                                             if (response.data == "ok") {
                                                                 $("#btn-login").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                                                                if(redirect_url == ''){
+                                                                if (redirect_url == '') {
                                                                     window.location = "<?php echo base_url() ?>profiles/<?php echo $this->session->userdata('aileenuser_slug'); ?>";
-                                                                }else{
-                                                                    window.location = redirect_url;
-                                                                }
-                                                                //setTimeout(' window.location.href = "<?php //echo base_url()  ?>home"; ', 4000);
-                                                                // setTimeout(' window.location.href = ""; ', 4000);
-                                                            } else if (response.data == "password") {
+                                                                                            } else {
+                                                                                                window.location = redirect_url;
+                                                                                            }
+                                                                                            //setTimeout(' window.location.href = "<?php //echo base_url()   ?>home"; ', 4000);
+                                                                                            // setTimeout(' window.location.href = ""; ', 4000);
+                                                                                        } else if (response.data == "password") {
 
-                                                                //$("#error").fadeIn(1000, function () {
+                                                                                            //$("#error").fadeIn(1000, function () {
 
-                                                                //document.getElementById('error1').style.display = 'none';
-                                                                //         $("#error").html('<div class="alert alert-danger"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Please enter valid password' + ' !</div>');
-                                                                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
-                                                                document.getElementById("password_login").classList.add('error');
-                                                                document.getElementById("password_login").classList.add('error');
-                                                                $("#btn-login").html('Login');
-                                                                //    }); 
+                                                                                            //document.getElementById('error1').style.display = 'none';
+                                                                                            //         $("#error").html('<div class="alert alert-danger"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Please enter valid password' + ' !</div>');
+                                                                                            $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
+                                                                                            document.getElementById("password_login").classList.add('error');
+                                                                                            document.getElementById("password_login").classList.add('error');
+                                                                                            $("#btn-login").html('Login');
+                                                                                            //    }); 
 
-                                                            } else {
-                                                                //   document.getElementById('error1').style.display = 'none';
-                                                                //         $("#error").html('<div class="alert alert-danger"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Please enter valid password' + ' !</div>');
-                                                                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
-                                                                document.getElementById("email_login").classList.add('error');
-                                                                document.getElementById("email_login").classList.add('error');
-                                                                $("#btn-login").html('Login');
-                                                            }
-                                                        }
-                                                    });
-                                                    return false;
-                                                }
-                                                /* login submit */
-                                            });
+                                                                                        } else {
+                                                                                            //   document.getElementById('error1').style.display = 'none';
+                                                                                            //         $("#error").html('<div class="alert alert-danger"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Please enter valid password' + ' !</div>');
+                                                                                            $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
+                                                                                            document.getElementById("email_login").classList.add('error');
+                                                                                            document.getElementById("email_login").classList.add('error');
+                                                                                            $("#btn-login").html('Login');
+                                                                                        }
+                                                                                    }
+                                                                                });
+                                                                                return false;
+                                                                            }
+                                                                            /* login submit */
+                                                                        });
 
 
 

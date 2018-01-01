@@ -50,7 +50,10 @@ header('Cache-Control: public, max-age=30');
         ?>
         <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-       
+        <?php
+        $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        ?>
+        <link rel="canonical" href="<?php echo $actual_link ?>" />
         <?php
         if (IS_OUTSIDE_CSS_MINIFY == '0') {
             ?>

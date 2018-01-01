@@ -23,9 +23,9 @@ header('Expires: ' . $date);
         <title><?php echo $title; ?></title>
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">
-<?php
-if ($_SERVER['HTTP_HOST'] != "localhost") {
-    ?>
+        <?php
+        if ($_SERVER['HTTP_HOST'] != "localhost") {
+            ?>
 
             <script>
                 (function (i, s, o, g, r, a, m) {
@@ -45,21 +45,24 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 
             </script>
             <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
-    <?php
-}
-?>
+            <?php
+        }
+        ?>
         <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />  
-
-<?php if (IS_OUTSIDE_CSS_MINIFY == '0') { ?>      
+        <?php
+        $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        ?>
+        <link rel="canonical" href="<?php echo $actual_link ?>" />
+        <?php if (IS_OUTSIDE_CSS_MINIFY == '0') { ?>      
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
             <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css?ver=' . time()); ?>">
-<?php } else { ?>
+        <?php } else { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
             <link rel="stylesheet" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css?ver=' . time()); ?>">
-<?php } ?>
+        <?php } ?>
     </head>
     <body class="outer-page">
         <div class="main-inner">
@@ -74,10 +77,10 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
                             </div>
                             <div class="col-md-8 col-sm-9 right-header">
                                 <div class="btn-right pull-right">
-<?php if (!$this->session->userdata('aileenuser')) { ?>
+                                    <?php if (!$this->session->userdata('aileenuser')) { ?>
                                         <a href="<?php echo base_url('login'); ?>" class="btn-new1">Login</a>
                                         <a href="<?php echo base_url('registration'); ?>" class="btn3-cust">Create an account</a>
-<?php } ?>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -131,11 +134,11 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
                                 </p>
                             </div>
                         </div>
-<?php
-if (!$this->session->userdata('aileenuser') || $is_profile['is_artistic'] != '1') {
-    ?>
+                        <?php
+                        if (!$this->session->userdata('aileenuser') || $is_profile['is_artistic'] != '1') {
+                            ?>
                             <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('artist/profile') ?>" target="_blank" title="Create Artistic Profile" class="btn-new1">Create Artistic Profile</a></div>
-                            <?php } else {
+                        <?php } else {
                             ?>
                             <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('artist') ?>" target="_blank" title="Take me in" class="btn-new1">Take me in</a></div>  
                         <?php }
@@ -145,6 +148,6 @@ if (!$this->session->userdata('aileenuser') || $is_profile['is_artistic'] != '1'
             </section>
         </div>
 
-<?php echo $login_footer ?>
+        <?php echo $login_footer ?>
     </body>
 </html>
