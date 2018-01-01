@@ -192,14 +192,14 @@
                                                                     ?>
                                                                     <span class="images_add_bui"><h6>No Image Available</h6> 
 
-                                                                        <?php
+                                                                        <!-- <?php
                                                                         $userid = $this->session->userdata('aileenuser');
 
                                                                         if ($business_data['user_id'] == $userid) {
                                                                             ?>
                                                                             <a href="<?php echo base_url('business-profile/image') ?>">Add Images</a>
 
-                                                                        <?php } ?>
+                                                                        <?php } ?> -->
 
                                                                     </span>
                                                                     <?php
