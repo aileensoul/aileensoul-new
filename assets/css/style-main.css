@@ -541,17 +541,17 @@ footer ul li a{
     color:#1b8ab9!important
 }
 option:first-child,select{
-    color:#ccc
+    color:#acacac;
 }
 option{
-    color:#848484
+    color:#848484;
 }
 .form-group input[type=password]:focus+label,.form-group input[type=text]:focus+label,.form-group select:focus+label{
     color:#1b8ab9!important
 }
 .form-group input[type=text]:focus{
     border-bottom:1px solid #1b8ab9;
-    color:#1b8ab9!important
+    color:#1b8ab9!important;
 }
 .form-group input::-webkit-input-placeholder{
     color:#999
