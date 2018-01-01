@@ -1448,9 +1448,14 @@ class Freelancer extends MY_Controller {
         $skills = $this->input->post('skills');
         $skills = explode(',', $skills);
 
-        $this->form_validation->set_rules('post_name', 'Post Name', 'required');
-        $this->form_validation->set_rules('post_desc', 'Post description', 'required');
-        $this->form_validation->set_rules('fields_req', 'Field required', 'required');
+        $this->form_validation->set_rules('post_name', 'Project Title', 'required');
+        $this->form_validation->set_rules('post_desc', 'Project description', 'required');
+        $this->form_validation->set_rules('fields_req', 'Field ', 'required');
+        $this->form_validation->set_rules('skills', 'Skill', 'required');
+        $this->form_validation->set_rules('latdate', 'Last date ', 'required');
+        $this->form_validation->set_rules('rate', 'Rate', 'required');
+        $this->form_validation->set_rules('currency', 'Currency', 'required');
+        $this->form_validation->set_rules('rating', 'Work type', 'required');
 
         if ($this->form_validation->run() == FALSE) {
 

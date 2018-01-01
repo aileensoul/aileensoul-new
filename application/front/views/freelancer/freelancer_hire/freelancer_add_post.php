@@ -61,28 +61,34 @@
                                         $post_name = form_error('post_name');
                                         $skills = form_error('skills');
                                         $post_desc = form_error('post_desc');
+                                         $fields = form_error('fields_req');
+                                          $lastdate = form_error('latdate');
+                                           $rate = form_error('rate');
+                                            $currency = form_error('currency');
+                                             $rating = form_error('rating');
+                                             
                                         ?>
                                         <div class="custom-add-box">
                                             <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("project_description"); ?></h3>
                                             <div class="p15 fw">
-                                                <fieldset class="full-width" <?php if ($post_name) { ?> class="error-msg" <?php } ?>>
+                                                <fieldset  <?php if ($post_name) { ?> class="error-msg full-width" <?php } else { ?> class="full-width" <?php } ?>>
                                                     <label ><?php echo $this->lang->line("project_title"); ?>:<span style="color:red">*</span></label>                 
                                                     <input name="post_name" type="text" maxlength="100" id="post_name" autofocus tabindex="1" placeholder="Enter project name"/>
-                                                    <span id="fullname-error"></span>
+<!--                                                    <span id="fullname-error"></span>-->
                                                     <?php echo form_error('post_name'); ?>
                                                 </fieldset>
-                                                <fieldset class="full-width">
+                                                <fieldset  <?php if ($post_desc) { ?> class="error-msg full-width" <?php } else { ?> class="full-width" <?php } ?>>
                                                     <label><?php echo $this->lang->line("project_description"); ?> :<span style="color:red">*</span></label>
                                                     <textarea class="add-post-textarea" name="post_desc" id="post_desc" placeholder="Enter description" tabindex="2" onpaste="OnPaste_StripFormatting(this, event);"></textarea>
                                                     <?php echo form_error('post_desc'); ?>
                                                 </fieldset>
-                                                <fieldset class="full-width" <?php if ($skills) { ?> class="error-msg" <?php } ?>>
+                                                <fieldset  <?php if ($skills) { ?> class="error-msg full-width" <?php } else{ ?> class="full-width" <?php }?>>
                                                     <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
                                                     <input id="skills2" name="skills" tabindex="3" size="90" placeholder="Enter skills">
                                                     <span id="fullname-error"></span>
                                                     <?php echo form_error('skills'); ?>
                                                 </fieldset>
-                                                <fieldset class="full-width" <?php if ($fields_req) { ?> class="error-msg" <?php } ?>>
+                                                <fieldset  <?php if ($fields) { ?> class="error-msg full-width" <?php } else { ?> class="full-width" <?php }?>>
                                                     <label><?php echo $this->lang->line("field_of_requirement"); ?>:<span style="color:red">*</span></label>
                                                     <select tabindex="4" name="fields_req" id="fields_req" class="field_other">
                                                         <option  value="" selected option disabled><?php echo $this->lang->line("select_filed"); ?></option>
@@ -153,10 +159,10 @@
                                                     <input tabindex="7" name="est_time" type="text" id="est_time" placeholder="Enter estimated time in month/year" /><span id="fullname-error"></span>
                                                     <?php echo form_error('est_time'); ?>
                                                 </fieldset>           
-                                                <fieldset <?php if ($last_date) { ?> class="error-msg" <?php } ?>>
+                                                <fieldset <?php if ($lastdate) { ?> class="error-msg" <?php } ?>>
                                                     <label><?php echo $this->lang->line("last_date_apply"); ?>:<span style="color:red">*</span></label>
-                                                    <input type="hidden" id="example2">
-                                                    <?php echo form_error('last_date'); ?> 
+                                                    <input type="hidden" id="example2" name="latdate">
+                                                    <?php echo form_error('latdate');?> 
                                                 </fieldset>
 
 
@@ -165,13 +171,13 @@
                                         <div class="custom-add-box">
                                             <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?></h3>
                                             <div class="p15 fw">
-                                                <fieldset  class="col-md-6 pl10" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
+                                                <fieldset   <?php if ($rate) { ?> class="error-msg col-md-6 pl10" <?php } else{ ?> class="col-md-6 pl10" <?php } ?> >
                                                     <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:<span style="color:red">*</span></label>
                                                     <input tabindex="11" name="rate" type="text" id="rate" placeholder="Enter your rate"/>
                                                     <span id="fullname-error"></span>
                                                     <?php echo form_error('rate'); ?>
                                                 </fieldset>
-                                                <fieldset class="col-md-6" <?php if ($csurrency) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
+                                                <fieldset  <?php if ($currency) { ?> class="error-msg col-md-6 two-select-box" <?php } else { ?> class="col-md-6 two-select-box" <?php }?> > 
                                                     <label><?php echo $this->lang->line("currency"); ?>:<span style="color:red">*</span></label>
                                                     <select tabindex="12" name="currency" id="currency">
                                                         <option  value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
@@ -181,7 +187,7 @@
                                                     </select>
                                                     <?php echo form_error('currency'); ?>
                                                 </fieldset>
-                                                <fieldset class="col-md-12 pl10 work_type_custom">
+                                                <fieldset  <?php if($rating){ ?> class="error-msg col-md-12 pl10 work_type_custom" <?php } else{ ?> class="col-md-12 pl10 work_type_custom" <?php } ?>>
                                                     <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="13" class="worktype_minheight" name="rating" value="0"> Hourly
                                                     <input type="radio" tabindex="14"  name="rating" value="1"> Fixed
                                                     <?php echo form_error('rating'); ?>
