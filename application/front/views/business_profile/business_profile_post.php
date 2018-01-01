@@ -53,7 +53,7 @@ $mobile_agent = $this->agent->mobile;
                                         <h3 class="user_list_head">User List
                                         </h3>
                                         <div class="seeall">
-                                            <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
+                                            <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">View all
                                             </a>
                                         </div>
                                     </div>
@@ -130,7 +130,7 @@ $mobile_agent = $this->agent->mobile;
                                             <h3 class="user_list_head">User List
                                             </h3>
                                             <div class="seeall">
-                                                <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
+                                                <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">View all
                                                 </a>
                                             </div>
                                         </div>

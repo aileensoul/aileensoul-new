@@ -62,7 +62,7 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
             <div class="common-form">
                <h3 class="user_list_head">User List</h3>
                <div class="seeall">
-                  <a href="<?php echo base_url('artist/userlist'); ?>" title="All User">All User</a>
+                  <a href="<?php echo base_url('artist/userlist'); ?>" title="View all">View all</a>
                </div>
                <div class="profile-boxProfileCard_follow fw  module">
                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo 'LOADERIMAGE'; ?>"/></div>     
@@ -146,7 +146,7 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
 				<div class="common-form">
 				   <h3 class="user_list_head">User List</h3>
 				   <div class="seeall">
-					  <a href="<?php echo base_url('artist/userlist'); ?>" title="All User">All User</a>
+					  <a href="<?php echo base_url('artist/userlist'); ?>" title="View all">View all</a>
 				   </div>
 				   <div class="profile-boxProfileCard_follow fw  module">
 					<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo 'LOADERIMAGE'; ?>"/></div>     
