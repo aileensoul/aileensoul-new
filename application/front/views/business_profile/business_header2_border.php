@@ -3,7 +3,7 @@ $userid = $this->session->userdata('aileenuser');
 ?>
 
 <script type="text/javascript">
-    
+
     $(document).ready(function () {
         $menuLeft = $('.pushmenu-left');
         $nav_list = $('#nav_list');
@@ -376,7 +376,7 @@ $userid = $this->session->userdata('aileenuser');
                 }
                 var not_contact_count = $('.addcontact-left').length;
                 if (not_contact_count == 0) {
-                    var data_html = "<li><div class='art-img-nn' id='art-blank'><div class='art_no_post_img'><img src='<?php echo base_url('img/No_Contact_Request.png?ver='.time()); ?>' alt='No Contact Request'></div><div class='art_no_post_text'>No Contact Request Available.</div></div></li>";
+                    var data_html = "<li><div class='art-img-nn' id='art-blank'><div class='art_no_post_img'><img src='<?php echo base_url('img/No_Contact_Request.png?ver=' . time()); ?>' alt='No Contact Request'></div><div class='art_no_post_text'>No Contact Request Available.</div></div></li>";
                     $('#notification_main_in').html(data_html);
                     $('#seecontact').hide();
                 }
@@ -470,6 +470,25 @@ $userid = $this->session->userdata('aileenuser');
     });
     function chatmsg()
     {
+        /*$.ajax({
+         type: 'POST',
+         url: '<?php echo base_url() . "chat/userajax/5/5" ?>',
+         dataType: 'json',
+         data: '',
+         success: function (data) {
+         
+         $('#userlist').html(data.leftbar);
+         $('.notification_data_in_h2').html(data.headertwo);
+         $('#seemsg').html(data.seeall);
+         setTimeout(
+         chatmsg,
+         25000
+         );
+         },
+         error: function (XMLHttpRequest, textStatus, errorThrown) {
+         }
+         });*/
+
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url() . "chat/userajax/5/5" ?>',
@@ -480,10 +499,6 @@ $userid = $this->session->userdata('aileenuser');
                 $('#userlist').html(data.leftbar);
                 $('.notification_data_in_h2').html(data.headertwo);
                 $('#seemsg').html(data.seeall);
-                setTimeout(
-                        chatmsg,
-                        25000
-                        );
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             }
