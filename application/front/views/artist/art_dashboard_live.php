@@ -553,7 +553,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 $('#forgotPassword').modal('show');
                 $('#register').modal('hide');
                 $('#login').modal('hide');
-                
+
 
             }
         </script>
@@ -563,7 +563,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
     $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
         $('#register').modal('hide');
-         $('#login').modal('hide');
+        $('#login').modal('hide');
+        $('#forgotPassword').modal('hide');
     }
 });
 
