@@ -35,7 +35,15 @@
 <!-- start header -->
 <?php echo $header; ?>
 <!-- END HEADER -->
+
+<?php 
+        $userid = $this->session->userdata('aileenuser');
+        if($userid){
+?>
 <body class="cus-no-login botton_footer">
+  <?php }else{?>
+ <body class="cus-no-login botton_footer model-open">
+  <?php }?>
    <section>
       <div class="user-midd-section " id="paddingtop_fixed">
          <div class="container">
