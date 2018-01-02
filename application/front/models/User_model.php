@@ -57,5 +57,13 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    
+    public function getUserByEmail($user_email = '') {
+        $this->db->select("ul.user_id")->from("user_login ul");
+        $this->db->where(array('ul.email' => $user_email,'is_delete' => '0', 'status' => '1'));
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
 
 }
