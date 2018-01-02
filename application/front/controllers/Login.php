@@ -20,6 +20,7 @@ class Login extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('logins');
         $this->load->model('email_model');
+        $this->load->model('user_model');
     }
 
     public function index() {
@@ -34,13 +35,11 @@ class Login extends CI_Controller {
         }
         if ($this->input->get()) {
             if ($_GET['lwc'] != " ") {
-                $emaildata = $this->common->select_data_by_id('user', 'user_id', $_GET['lwc'], $data = 'user_email', $join_str = array());
-
+                $emaildata = $this->common->select_data_by_id('user_login', 'user_id', $_GET['lwc'], $data = 'user_email', $join_str = array());
                 $this->data['email'] = $emaildata[0]['user_email'];
                 if ($emaildata) {
                     $this->session->set_flashdata('errorpass', '<label for="email_login" class="error">Please enter a valid password.</label>');
                 } else {
-
                     $this->session->set_flashdata('erroremail', '<label for="email_login" class="error">Please enter a valid email address.</label>');
                 }
             }
@@ -65,20 +64,16 @@ class Login extends CI_Controller {
 
                 if ($user_check != 0) {
                     // cookie start
-
                     if ($this->input->post('remember')) {
-
-
                         $this->load->helper('cookie');
-
                         setcookie('user_name', $_POST['user_name'], time() + (10 * 365 * 24 * 60 * 60), '/');
                         setcookie('password', $_POST['password'], time() + (10 * 365 * 24 * 60 * 60), '/');
                     }
-
                     $this->session->set_userdata('aileenuser', $user_check[0]['user_id']);
-                    $this->session->set_userdata('aileenuser_slug', $user_check[0]['user_slug']);
+                    //$this->session->set_userdata('aileenuser_slug', $user_check[0]['user_slug']);
                     
-                    echo $this->session->userdata('aileenuser_slug', $user_check[0]['user_slug']); die();
+                    //echo $this->session->userdata('aileenuser_slug', $user_check[0]['user_slug']); 
+                    die();
                     //redirect('dashboard', 'refresh');
                 } else {
 
