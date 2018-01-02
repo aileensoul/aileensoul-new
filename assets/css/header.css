@@ -2321,7 +2321,7 @@ footer ul li a:hover{
     }
     footer{
         padding:0;
-        height:65px;
+        /*height:65px;*/
         text-align:center
     }
     footer .pt20{

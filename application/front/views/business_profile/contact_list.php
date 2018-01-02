@@ -199,8 +199,9 @@
                 </div>
             </div>
         </div>
-        <?php echo $login_footer ?>
+        
         <?php echo $footer; ?>
+        <?php echo $login_footer ?>
         <script type="text/javascript">
             function contactapprove1(toid, status) {
                 $.ajax({

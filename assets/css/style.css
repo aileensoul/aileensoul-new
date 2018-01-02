@@ -2006,7 +2006,7 @@ body.no-login{padding-bottom:0;}
 .no-login .gender-custom .error{bottom:-25px;}
 .no-login .job-saved-box{margin-bottom:15px;}
 .no-login .job-post-detail{margin-bottom:0;}
-.no-login .login p{font-size:14px; margin-bottom:9px;}
+/*.no-login .login p{font-size:14px; margin-bottom:9px;}*/
 .no-login .btn1{padding: 5px 20px; font-size:16px !important;}
 .no-login .inner-form1{width:600px;}
 
@@ -2134,7 +2134,7 @@ word-break: break-word;}
     text-shadow: rgba(0,0,0,0.8) 0 0 5px;
     user-select: none;pointer-events: none;}
 body.modal-open{position: fixed;}
-
+.pushmenu-push{position: initial;}
 /***  media query  ***/
 
 @media screen and (max-height: 540px){
