@@ -45,13 +45,73 @@ class Login extends CI_Controller {
             }
         }
 
-
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->load->view('login/index', $this->data);
     }
+    
+    public function check_login() {
+        $email_login = $this->input->post('email_login');
+        $password_login = $this->input->post('password_login');
+
+        $contition_array = array('email' => $email_login, 'is_delete' => '0');
+        $result = $this->common->select_data_by_condition('user_login', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $userinfo = $this->common->check_login($email_login, $password_login);
+
+        //For live link need this code start
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1');
+        $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $jobuser = $jobdata[0]['total'];
+        //For live link need this code End
+        //For live link of freelancer aplly user code start
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'free_post_step' => '7');
+        $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $freelancer_apply_user = $free_work_result[0]['total'];
+
+        //For live link of freelancer aplly user code end
+        //CHECK USER HAVE RECRUITER PROFILE
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 're_status' => '1');
+        $recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $recdata = $recdata[0]['total'];
+        //CHECK USER HAVE RECRUITER PROFILE END
+
+         //For live link of freelancer aplly user code start
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'free_hire_step' => '3');
+        $free_hire_result = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $freelancer_hire_user = $free_hire_result[0]['total'];
+        
+        //For live link of freelancer aplly user code end
+        
+        if ($this->session->userdata('searchkeyword')) {
+            $this->session->unset_userdata('searchkeyword');
+        }
+        if ($this->session->userdata('searchplace')) {
+            $this->session->unset_userdata('searchplace');
+        }
+
+        if (count($userinfo) > 0) {
+            if ($userinfo[0]['status'] == "2") {
+                echo 'Sorry, user is Inactive.';
+            } else {
+                $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
+                $this->session->set_userdata('aileenuser_slug', $userinfo[0]['user_slug']);
+                $data = 'ok';
+            }
+        } else if ($email_login == $result[0]['user_email']) {
+            $data = 'password';
+            $id = $result[0]['user_id'];
+        } else {
+            $data = 'email';
+        }
+//        echo $result[0]['user_id'];die();
+        echo json_encode(
+                array(
+                    "data" => $data,
+        ));
+    }
 
     // login check and email validation start
-    public function check_login() {
+    public function main_check_login() {
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
 
