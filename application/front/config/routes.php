@@ -154,7 +154,7 @@ $route['freelance'] = "freelancer";
 
 //FREELANCER HIRE ROUTES SETTINGS
 $route['freelance-hire'] = "freelancer_hire/freelancer_hire";
-$route['freelance-hire/home'] = "freelancer/recommen_candidate";
+$route['freelance-hire/home'] = "freelancer_hire/recommen_candidate";
 $route['freelance-hire/employer-details'] = "freelancer/freelancer_hire_profile";
 $route['freelance-hire/employer-details/(:any)'] = "freelancer/freelancer_hire_profile/$1";
 $route['freelance-hire/projects'] = "freelancer/freelancer_hire_post";
@@ -176,8 +176,8 @@ $route['notification/freelance-hire/(:any)'] = "notification/freelancer_hire_pos
 $route['freelance-hire/project'] = "freelancer/live_post";
 $route['freelance-hire/project/(:any)'] = "freelancer/live_post/$1";
 $route['freelance-hire/freelancer-shortlisted/(:any)'] = "freelancer/freelancer_shortlist_list/$1";
-$route['freelance-hire/registration'] = "freelancer/hire_registation";
-$route['freelance-hire/registration/live-post'] = "freelancer/hire_registation";
+$route['freelance-hire/registration'] = "freelancer_hire/hire_registation";
+$route['freelance-hire/registration/live-post'] = "freelancer_hire/hire_registation";
 //$route['freelance-hire'] = "freelancer_hire/freelancer_hire/freelancer_hire_basic_info";
 
 

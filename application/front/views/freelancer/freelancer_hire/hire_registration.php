@@ -64,7 +64,7 @@
                                 ?>
                                 <div class="common-form job_reg_main">
                                     <h3>Welcome In Employer Profile</h3>
-                                    <?php echo form_open(base_url('freelancer/hire_registation_insert'), array('id' => 'freelancerhire_regform', 'name' => 'freelancerhire_regform', 'class' => 'clearfix')); ?>
+                                    <?php echo form_open(base_url('freelancer_hire/hire_registation_insert'), array('id' => 'freelancerhire_regform', 'name' => 'freelancerhire_regform', 'class' => 'clearfix')); ?>
 
                                     <?php
                                     $fname = form_error('firstname');

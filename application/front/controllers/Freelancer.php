@@ -1028,19 +1028,7 @@ class Freelancer extends MY_Controller {
     }
 
 //FREELANCER_APPLY PORTFOLIO PAGE DATA INSERT END
-//FREELANCER_HIRE DEACTIVATE CHECK START
-    public function freelancer_hire_deactivate_check() {
-        $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerhire_deactive) {
-            redirect('freelance-hire');
-        }
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  End
-    }
 
-//FREELANCER_HIRE DEACTIVATE CHECK END
 //FREELANCER_HIRE POST(PROJECT) PAGE START
     public function freelancer_hire_post($id = "") {
         if (is_numeric($id)) {
@@ -1533,23 +1521,10 @@ class Freelancer extends MY_Controller {
     }
 
 //FREELANCER_HIRE ADD POST(PROJECT) DATA INSERT END
-//FREELANCER_HIRE HOME PAGE START
-    public function recommen_candidate() {
-        $userid = $this->session->userdata('aileenuser');
 
-        //check user deactivate start
-        $this->freelancer_hire_deactivate_check();
-        //check user deactivate end
-        // code for display page start
-        $this->freelancer_hire_check();
-        // code for display page end
-        $this->data['title'] = 'Home | Employer Profile' . TITLEPOSTFIX;
-        $this->load->view('freelancer/freelancer_hire/recommen_candidate', $this->data);
-    }
-
-//FREELANCER_HIRE HOME PAGE END
 //AJAX FREELANCER_HIRE HOME PAGE START
     public function ajax_recommen_candidate() {
+        echo "123"; die();
 
         $perpage = 5;
         $page = 1;
@@ -1864,33 +1839,7 @@ class Freelancer extends MY_Controller {
     }
 
 //AJAX FREELANCER_HIRE HOME PAGE END
-//FREELANCER_HIRE CHECK USER IS REGISTERD START
-    public function freelancer_hire_check() {
-        $userid = $this->session->userdata('aileenuser');
-        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
-        $hire_step = $this->data['hire_step'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'free_hire_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if (count($hire_step) > 0) {
-            if ($hire_step[0]['free_hire_step'] == '1') {
-                if ($this->uri->segment(2) == 'address-information') {
-                    
-                } else {
-                    redirect('freelancer_hire/freelancer_hire/freelancer_hire_address_info');
-                }
-            } elseif ($hire_step[0]['free_hire_step'] == '2') {
-                if ($this->uri->segment(2) == 'professional-information') {
-                    
-                } elseif ($this->uri->segment(2) == 'address-information') {
-                    
-                } else {
-                    redirect('freelancer_hire/freelancer_hire/freelancer_hire_professional_info');
-                }
-            }
-        } else {
-            redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
-        }
-    }
 
-//FREELANCER_HIRE CHECK USER IS REGISTERD END
 //FREELANCER_HIRE EDIT POST(PROJECT) PAGE START
     public function freelancer_edit_post($id) {
         $userid = $this->session->userdata('aileenuser');
@@ -4627,103 +4576,7 @@ class Freelancer extends MY_Controller {
         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
     }
 
-    //FREELANCER HIRE NEW REGISTRATION PROFILE START
-    public function hire_registation($postid = '') {
-        $contition_array = array('status' => 1);
-        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $this->data['title'] = "Registration | Employer Profile" . TITLEPOSTFIX;
 
-        if ($this->session->userdata('aileenuser')) {
-            $userid = $this->session->userdata('aileenuser');
-            $hireuser = $this->db->select('user_id')->get_where('freelancer_hire_reg', array('user_id' => $userid))->row()->user_id;
-        }
-
-        if ($hireuser) {
-            redirect('freelance-hire/home', refresh);
-        } else {
-            $this->load->view('freelancer/freelancer_hire/hire_registration', $this->data);
-        }
-    }
-
-    //FREELANCER HIRE NEW REGISTRATION PROFILE END
-    public function hire_registation_insert() {
-        $userid = $this->session->userdata('aileenuser');
-
-        $this->form_validation->set_rules('firstname', 'Full Name', 'required');
-        $this->form_validation->set_rules('lastname', 'Last Name', 'required');
-        $this->form_validation->set_rules('email_reg1', 'EmailId', 'required|valid_email');
-        $this->form_validation->set_rules('country', 'country', 'required');
-        $this->form_validation->set_rules('state', 'state', 'required');
-
-        if ($this->form_validation->run() == FALSE) {
-            $contition_array = array('status' => 1);
-            $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $this->data['title'] = "Registration | Employer Profile" . TITLEPOSTFIX;
-            $this->load->view('freelancer/freelancer_hire/hire_registration', $this->data);
-        } else {
-            $first_lastname = trim($this->input->post('firstname')) . " " . trim($this->input->post('lastname'));
-            $data = array(
-                'fullname' => trim($this->input->post('firstname')),
-                'username' => trim($this->input->post('lastname')),
-                'email' => trim($this->input->post('email_reg1')),
-                'freelancer_hire_slug' => $this->setcategory_slug($first_lastname, 'freelancer_hire_slug', 'freelancer_hire_reg'),
-                'phone' => trim($this->input->post('phoneno')),
-                'country' => trim($this->input->post('country')),
-                'state' => trim($this->input->post('state')),
-                'city' => trim($this->input->post('city')),
-                'professional_info' => trim($this->input->post('professional_info')),
-                'status' => '1',
-                'is_delete' => '0',
-                'created_date' => date('Y-m-d h:i:s'),
-                'user_id' => $userid,
-                'free_hire_step' => '3'
-            );
-            $insert_id1 = $this->common->insert_data($data, 'freelancer_hire_reg');
-            if ($this->input->post('segment') == 'live-post') {
-                $segment = $this->input->post('segment');
-
-                $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id' => $userid);
-                $temp = $this->common->select_data_by_condition('freelancer_post_live', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                $data = array(
-                    'post_name' => $temp[0]['post_name'],
-                    'post_description' => $temp[0]['post_description'],
-                    'post_field_req' => $temp[0]['post_field_req'],
-                    'post_skill' => $temp[0]['post_skill'],
-                    'post_other_skill' => $temp[0]['post_other_skill'],
-                    'post_est_time' => $temp[0]['post_est_time'],
-                    'post_rate' => $temp[0]['post_rate'],
-                    'post_currency' => $temp[0]['post_currency'],
-                    'post_rating_type' => $temp[0]['post_rating_type'],
-                    'post_exp_month' => $temp[0]['post_exp_month'],
-                    'post_exp_year' => $temp[0]['post_exp_year'],
-                    'post_last_date' => $temp[0]['post_last_date'],
-                    'post_slug' => $temp[0]['post_name'],
-                    'user_id' => $userid,
-                    'created_date' => date('Y-m-d', time()),
-                    'status' => '1',
-                    'is_delete' => '0',
-                );
-
-                $insert_id = $this->common->insert_data_getid($data, 'freelancer_post');
-
-                $data = array(
-                    'is_delete' => '1',
-                    'status' => '0',
-                    'modify_date' => date('y-m-d h:i:s')
-                );
-
-                $updatdata = $this->common->update_data($data, 'freelancer_post_live', 'post_id', $temp[0][post_id]);
-            }
-
-
-            if ($insert_id1) {
-                redirect('freelance-hire/home', refresh);
-            } else {
-                redirect('freelancer/hire_registation', refresh);
-            }
-        }
-    }
 
     //FREELANCER APPLY NEW REGISTATION PROFILE START
     public function registation($postid = '') {
