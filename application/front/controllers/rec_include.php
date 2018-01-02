@@ -2,11 +2,14 @@
 
 // user detail
 $userid = $this->data['user_id'] = $this->session->userdata('aileenuser');
+
 // USERDATA USE FOR HEADER NAME AND IMAGE START
-$contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-$data = 'user_image,first_name,last_name,user_email';
-$this->data['userdata'] = $this->common->select_data_by_condition('user', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-// USERDATA USE FOR HEADER NAME AND IMAGE END
+ $this->load->model('user_model');
+ $this->load->model('recruiter_model');
+// user detail
+$userid = $this->session->userdata('aileenuser');
+$this->data['userdata'] = $this->user_model->getUserData($userid);
+
 $contition_array = array('not_read' => '2', 'not_to_id' => $userid, 'not_type !=' => '1', 'not_type !=' => '2');
 $result = $this->common->select_data_by_condition('notification', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 $this->data['user_notification_count'] = $count = $result[0]['total'];
@@ -31,13 +34,9 @@ $id = $this->uri->segment(3);
 
 
 if (($id == $userid || $id == '') || $this->uri->segment(2) == 'edit-post' || $this->uri->segment(2) == 'apply-list' || $this->uri->segment(2) == 'recruiter_profile') {
-    $contition_array = array('user_id' => $userid, 'is_delete' => '0', 're_status' => '1');
-    $data = "rec_id,rec_firstname,rec_lastname,rec_email,re_status,rec_phone,re_comp_name,re_comp_email,re_comp_site,re_comp_country,re_comp_state,re_comp_city,user_id,re_comp_profile,re_comp_sector,re_comp_activities,re_step,re_comp_phone,recruiter_user_image,profile_background,profile_background_main,designation,comp_logo";
-    $recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    $recdata = $this->data['recdata'] = $this->recruiter_model->getRecruiterByUserid($userid);
 } else {
-    $contition_array = array('user_id' => $id, 'is_delete' => '0', 're_status' => '1');
-    $data = "rec_id,rec_firstname,rec_lastname,rec_email,re_status,rec_phone,re_comp_name,re_comp_email,re_comp_site,re_comp_country,re_comp_state,re_comp_city,user_id,re_comp_profile,re_comp_sector,re_comp_activities,re_step,re_comp_phone,recruiter_user_image,profile_background,profile_background_main,designation,comp_logo";
-    $recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    $recdata = $this->data['recdata'] = $this->recruiter_model->getRecruiterByUserid($id);
 }
 
 
