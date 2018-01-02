@@ -121,7 +121,7 @@ class Registration extends CI_Controller {
                     array(
                         "okmsg" => $datavl,
                         "userid" => $user_insert,
-                        "userslug" => $user[0]['user_slug'],
+                        "userslug" => $user_slug['user_slug'],
             ));
         } else {
             $this->session->flashdata('error', 'Sorry!! Your data not inserted');
