@@ -330,7 +330,7 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                                   <div class="title"><h1 class="tlh1">Signup first and register in Business Profile</h1></div>
+                                   <div class="title"><h1 class="tlh1">Sign up First and Register in Business Profile</h1></div>
                                 <form role="form" name="register_form" id="register_form" method="post" ng-submit="submitRegistrationForm()" ng-validate="registrationValidate">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
