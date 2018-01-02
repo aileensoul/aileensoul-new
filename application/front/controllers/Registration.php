@@ -51,7 +51,12 @@ class Registration extends CI_Controller {
     }
 
     public function reg_insert() {
+         
+        $date = $this->input->post('selday');
+        $month = $this->input->post('selmonth');
+        $year = $this->input->post('selyear');
 
+        $dob = $year . '-' . $month . '-' . $date;
 
         if ($this->session->userdata('fbuser')) {
             $this->session->unset_userdata('fbuser');
@@ -87,7 +92,7 @@ class Registration extends CI_Controller {
                 $user_data = array(
                     'first_name' => $this->input->post('first_name'),
                     'last_name' => $this->input->post('last_name'),
-                    'user_dob' => $this->input->post('selday') . '-' . $this->input->post('selmonth') . '-' . $this->input->post('selyear'),
+                    'user_dob' => $dob,
                     'user_gender' => $this->input->post('selgen'),
                     'user_agree' => '1',
                     'created_date' => date('Y-m-d h:i:s', time()),
