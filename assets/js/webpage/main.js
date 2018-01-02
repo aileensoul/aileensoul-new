@@ -61,7 +61,7 @@ $(document).ready(function () {
             'password_login': password_login,
             'aileensoulnewfrontcsrf': get_csrf_hash,
         }
-        
+
         $(".btn1").addClass("btn1active");
         $.ajax({
             type: 'POST',
@@ -101,9 +101,9 @@ $(document).ready(function () {
     $("#register_form #password_reg").val('');
 
     /*$.validator.addMethod("lowercase", function (value, element, regexpr) {
-        return regexpr.test(value);
-    }, "Email Should be in Small Character");
-*/
+     return regexpr.test(value);
+     }, "Email Should be in Small Character");
+     */
     $("#register_form").validate({
         rules: {
             first_name: {
@@ -286,22 +286,22 @@ $(document).ready(function () {
 });
 
 // forgot password script start 
-function sendmail(userid){
+function sendmail(userid) {
 
 
     var post_data = {
-            'userid': userid,
-        }
+        'userid': userid,
+    }
 
     $.ajax({
-            type: 'POST',
-            url: base_url + 'registration/sendmail',
-            data: post_data,
-            success: function (response)
-            {
-            }
-        });
-        return false;
+        type: 'POST',
+        url: base_url + 'registration/sendmail',
+        data: post_data,
+        success: function (response)
+        {
+        }
+    });
+    return false;
 }
 
 // Get the modal

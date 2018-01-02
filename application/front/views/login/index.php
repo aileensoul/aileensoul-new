@@ -30,19 +30,19 @@ header('Expires: ' . $date);
         $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         ?>
         <link rel="canonical" href="<?php echo $actual_link ?>" />
-<?php
-if (IS_OUTSIDE_CSS_MINIFY == '0') {
-    ?>
+        <?php
+        if (IS_OUTSIDE_CSS_MINIFY == '0') {
+            ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
 
-    <?php
-} else {
-    ?>
+            <?php
+        } else {
+            ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
 
-<?php } ?>
+        <?php } ?>
         <?php
         if ($_SERVER['HTTP_HOST'] != "localhost") {
             ?>
@@ -65,9 +65,9 @@ if (IS_OUTSIDE_CSS_MINIFY == '0') {
 
             </script>
             <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
-    <?php
-}
-?>
+            <?php
+        }
+        ?>
         <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
     </head>
 
@@ -91,121 +91,84 @@ if (IS_OUTSIDE_CSS_MINIFY == '0') {
             <section class="middle-main">
                 <div class="container">
                     <div class="form-pd row">
-
-
                         <div id="error1">
-
-<?php
-if ($this->session->flashdata('error')) {
-    echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
-}
-if ($this->session->flashdata('success')) {
-    echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
-}
-?>
-
+                            <?php
+                            if ($this->session->flashdata('error')) {
+                                echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
+                            }
+                            if ($this->session->flashdata('success')) {
+                                echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
+                            }
+                            ?>
                         </div>
-
-
-
-
-
-                        <!--         <div id="error"></div>-->
-
                         <div class="inner-form login-frm">
                             <div class="login">
                                 <div class="title">
                                     <h1 class="ttc">Welcome To Aileensoul</h1>
                                 </div>
-
                                 <form name="login_form" id="login_form" method="post">
-
                                     <div class="form-group">
                                         <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
                                         <div id="error2">
-<?php
-if ($this->session->flashdata('erroremail')) {
-    echo $this->session->flashdata('erroremail');
-}
-?>
+                                            <?php
+                                            if ($this->session->flashdata('erroremail')) {
+                                                echo $this->session->flashdata('erroremail');
+                                            }
+                                            ?>
                                         </div>
                                         <div id="errorlogin"></div> 
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
                                         <div id="error1">
-<?php
-if ($this->session->flashdata('errorpass')) {
-    echo $this->session->flashdata('errorpass');
-}
-?>
+                                            <?php
+                                            if ($this->session->flashdata('errorpass')) {
+                                                echo $this->session->flashdata('errorpass');
+                                            }
+                                            ?>
                                         </div>
                                         <div id="errorpass"></div> 
                                     </div>
-
                                     <p class="pt-20 ">
                                         <button class="btn1" onclick="login()">Login</button>
                                     </p>
-
                                     <p class=" text-center">
                                         <a href="javascript:void(0)" id="myBtn">Forgot Password ?</a>
                                     </p>
-
                                     <p class="pt15 text-center">
                                         Don't have an account? <a href="<?php echo base_url('registration'); ?>">Create an account</a>
                                     </p>
                                 </form>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
-
-
-            <!-- model for forgot password start -->
-
-
             <div id="myModal" class="modal">
                 <div class="modal-content md-2">
-
-
-<?php
-$form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-echo form_open('profile/forgot_password', $form_attribute);
-?>
-
+                    <?php
+                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                    echo form_open('profile/forgot_password', $form_attribute);
+                    ?>
                     <div class="modal-header" style="width: 100%; text-align: center;">
-
                         <span class="close">&times;</span>
                         <label style="color: #1b8ab9;">Forgot Password</label>
                     </div>
-
-
                     <div class="modal-body" style="    width: 100%;
                          text-align: center;">
                         <label  style="margin-bottom: 15px; color: #5b5b5b;"> Enter your e-mail address below to get your password.</label>
                         <input style="" type="text" name="forgot_email" id="forgot_email" placeholder="Email Address*" autocomplete="off" class="form-control placeholder-no-fix">
 
                     </div>
-
                     <div class="modal-footer ">
-                        <!--  <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                        -->  
                         <div class="submit_btn text-center">              
                             <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" /> 
                         </div>
                     </div>
-
                     </form>
-
                 </div>
             </div>
-            <!-- model for forgot password end -->
-
-
-<?php echo $login_footer ?>
+            <?php echo $login_footer ?>
         </div>
         <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>  
@@ -264,9 +227,9 @@ echo form_open('profile/forgot_password', $form_attribute);
 
 
         <!-- script for login  user valoidtaion start -->
-<?php
-if (IS_OUTSIDE_JS_MINIFY == '0') {
-    ?>
+        <?php
+        if (IS_OUTSIDE_JS_MINIFY == '0') {
+            ?>
             <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <?php
         } else {
@@ -317,7 +280,7 @@ if (IS_OUTSIDE_JS_MINIFY == '0') {
                                                     }
                                                     $.ajax({
                                                         type: 'POST',
-                                                        url: '<?php echo base_url() ?>registration/check_login',
+                                                        url: '<?php echo base_url() ?>login/check_login',
                                                         data: post_data,
                                                         dataType: "json",
                                                         beforeSend: function ()
@@ -330,38 +293,27 @@ if (IS_OUTSIDE_JS_MINIFY == '0') {
                                                             if (response.data == "ok") {
                                                                 $("#btn-login").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                                                                 if (redirect_url == '') {
-                                                                    window.location = "<?php echo base_url() ?>profiles/<?php echo $this->session->userdata('aileenuser_slug'); ?>";
-                                                                                            } else {
-                                                                                                window.location = redirect_url;
-                                                                                            }
-                                                                                            //setTimeout(' window.location.href = "<?php //echo base_url()   ?>home"; ', 4000);
-                                                                                            // setTimeout(' window.location.href = ""; ', 4000);
-                                                                                        } else if (response.data == "password") {
-
-                                                                                            //$("#error").fadeIn(1000, function () {
-
-                                                                                            //document.getElementById('error1').style.display = 'none';
-                                                                                            //         $("#error").html('<div class="alert alert-danger"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Please enter valid password' + ' !</div>');
-                                                                                            $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
-                                                                                            document.getElementById("password_login").classList.add('error');
-                                                                                            document.getElementById("password_login").classList.add('error');
-                                                                                            $("#btn-login").html('Login');
-                                                                                            //    }); 
-
-                                                                                        } else {
-                                                                                            //   document.getElementById('error1').style.display = 'none';
-                                                                                            //         $("#error").html('<div class="alert alert-danger"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Please enter valid password' + ' !</div>');
-                                                                                            $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
-                                                                                            document.getElementById("email_login").classList.add('error');
-                                                                                            document.getElementById("email_login").classList.add('error');
-                                                                                            $("#btn-login").html('Login');
-                                                                                        }
-                                                                                    }
-                                                                                });
-                                                                                return false;
-                                                                            }
-                                                                            /* login submit */
-                                                                        });
+                                                                    window.location = "<?php echo base_url() ?>profiles/" + response.user_slug;
+                                                                } else {
+                                                                    window.location = redirect_url;
+                                                                }
+                                                            } else if (response.data == "password") {
+                                                                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
+                                                                document.getElementById("password_login").classList.add('error');
+                                                                document.getElementById("password_login").classList.add('error');
+                                                                $("#btn-login").html('Login');
+                                                            } else {
+                                                                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
+                                                                document.getElementById("email_login").classList.add('error');
+                                                                document.getElementById("email_login").classList.add('error');
+                                                                $("#btn-login").html('Login');
+                                                            }
+                                                        }
+                                                    });
+                                                    return false;
+                                                }
+                                                /* login submit */
+                                            });
 
 
 
