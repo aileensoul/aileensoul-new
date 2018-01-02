@@ -29,7 +29,7 @@ function short_user(abc) {
     var postid = document.getElementById("hideenpostid");
     $.ajax({
         type: 'POST',
-        url:  base_url + "freelancer/shortlist_user",
+        url:  base_url + "freelancer_hire/shortlist_user",
         data: 'user_id=' + abc  + '&post_id=' + postid.value,
         dataType: 'json',
         success: function (data) {

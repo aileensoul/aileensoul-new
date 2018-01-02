@@ -2266,4 +2266,515 @@ class Freelancer_hire extends MY_Controller {
     }
 
     // FREELANCER HIRE SHORTLISTED CANDIDATE PAGE END
+    public function add_post_added() {
+        $userid = $this->session->userdata('aileenuser');
+
+        $postname = $this->input->post('post_name');
+        $post_desc = $this->input->post('post_desc');
+        $skills = $this->input->post('skill');
+        $field = $this->input->post('field');
+        $year = $this->input->post('year');
+        $month = $this->input->post('month');
+        $est_time = $this->input->post('est_time');
+        $last_date = $this->input->post('last_date');
+        $rate = $this->input->post('rate');
+        $currency = $this->input->post('currency');
+        $worktype = $this->input->post('Worktype');
+
+        $skills = explode(',', $skills);
+        //skill code start
+        if (count($skills) > 0) {
+            foreach ($skills as $ski) {
+                if ($ski != " ") {
+                    $contition_array = array('skill' => trim($ski), 'type' => '1');
+                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+                    if (count($skilldata) < 0) {
+                        $contition_array = array('skill' => trim($ski), 'type' => '5');
+                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                    }
+                    if ($skilldata) {
+                        $skill[] = $skilldata[0]['skill_id'];
+                    } else {
+                        $data = array(
+                            'skill' => trim($ski),
+                            'status' => '1',
+                            'type' => '5',
+                            'user_id' => $userid,
+                        );
+                        $skill[] = $this->common->insert_data_getid($data, 'skill');
+                    }
+                }
+            }
+            $skill = array_unique($skill, SORT_REGULAR);
+            $skills = implode(',', $skill);
+        }
+        //skill code end
+
+        $data = array(
+            'post_name' => trim($postname),
+            'post_description' => trim($post_desc),
+            'post_field_req' => trim($field),
+            'post_skill' => $skills,
+            'post_est_time' => trim($est_time),
+            'post_rate' => trim($rate),
+            'post_currency' => trim($currency),
+            'post_rating_type' => trim($worktype),
+            'post_exp_month' => trim($month),
+            'post_exp_year' => trim($year),
+            'post_last_date' => $last_date,
+            'user_id' => $userid,
+            'created_date' => date('Y-m-d', time()),
+            'status' => '1',
+            'is_delete' => '0'
+        );
+        $insert_id = $this->common->insert_data_getid($data, 'freelancer_post_live');
+        $data = "ok";
+        echo json_encode(
+                array(
+                    "data" => $data,
+        ));
+    }
+    public function add_project_login() {
+        $userid = $this->session->userdata('aileenuser');
+        $postname = $this->input->post('post_name');
+        $post_desc = $this->input->post('post_desc');
+        $skills = $this->input->post('skill');
+        $field = $this->input->post('field');
+        $year = $this->input->post('year');
+        $month = $this->input->post('month');
+        $est_time = $this->input->post('est_time');
+        $last_date = $this->input->post('last_date');
+        $rate = $this->input->post('rate');
+        $currency = $this->input->post('currency');
+        $worktype = $this->input->post('Worktype');
+
+        $skills = explode(',', $skills);
+        //skill code start
+        if (count($skills) > 0) {
+            foreach ($skills as $ski) {
+                if ($ski != " ") {
+                    $contition_array = array('skill' => trim($ski), 'type' => '1');
+                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+                    if (count($skilldata) < 0) {
+                        $contition_array = array('skill' => trim($ski), 'type' => '5');
+                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                    }
+                    if ($skilldata) {
+                        $skill[] = $skilldata[0]['skill_id'];
+                    } else {
+                        $data = array(
+                            'skill' => trim($ski),
+                            'status' => '1',
+                            'type' => '5',
+                            'user_id' => $userid,
+                        );
+                        $skill[] = $this->common->insert_data_getid($data, 'skill');
+                    }
+                }
+            }
+            $skill = array_unique($skill, SORT_REGULAR);
+            $skills = implode(',', $skill);
+        }
+        //skill code end
+
+        $data = array(
+            'post_name' => trim($postname),
+            'post_description' => trim($post_desc),
+            'post_field_req' => trim($field),
+            'post_skill' => $skills,
+            'post_est_time' => trim($est_time),
+            'post_rate' => trim($rate),
+            'post_currency' => trim($currency),
+            'post_rating_type' => trim($worktype),
+            'post_exp_month' => trim($month),
+            'post_exp_year' => trim($year),
+            'post_last_date' => $last_date,
+            'post_slug' => trim($postname),
+            'user_id' => $userid,
+            'created_date' => date('Y-m-d', time()),
+            'status' => '1',
+            'is_delete' => '0'
+        );
+
+        $insert_id = $this->common->insert_data_getid($data, 'freelancer_post');
+
+        if ($insert_id) {
+            $data = "ok";
+            echo json_encode(
+                    array(
+                        "data" => $data,
+                        "id" => $userid,
+            ));
+        } else {
+            $data = "notok";
+
+            echo json_encode(
+                    array(
+                        "data" => $data,
+                        "id" => $userid,
+            ));
+        }
+    }
+     public function ajax_dataforcity() {
+
+        if (isset($_POST["country_id"]) && !empty($_POST["country_id"])) {
+            //Get all state data
+            $contition_array = array('country_id' => $_POST["country_id"], 'status' => '1');
+            $state = $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            //Count total number of rows
+            //Display states list
+            if (count($state) > 0) {
+                echo '<option value = "">Select state</option>';
+                foreach ($state as $st) {
+                    echo '<option value = "' . $st['state_id'] . '">' . $st['state_name'] . '</option>';
+                }
+            } else {
+                echo '<option value = "">State not available</option>';
+            }
+        }
+
+        if (isset($_POST["state_id"]) && !empty($_POST["state_id"])) {
+            //Get all city data
+            $contition_array = array('state_id' => $_POST["state_id"], 'status' => '1');
+            $city = $this->data['city'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            //Display cities list
+            if (count($city) > 0) {
+                echo '<option value = "">Select city</option>';
+                foreach ($city as $cit) {
+                    echo '<option value = "' . $cit['city_id'] . '">' . $cit['city_name'] . '</option>';
+                }
+            } else {
+                echo '<option value = "">City not available</option>';
+            }
+        }
+    }
+    
+    //FREELANCER_HIRE  OTHER FIELD START
+    public function freelancer_hire_other_field() {
+
+        $other_field = $_POST['other_field'];
+
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        $contition_array = array('is_delete' => '0', 'category_name' => $other_field);
+        $search_condition = "((is_other = '2' AND user_id = $userid) OR (status = '1'))";
+        $userdata = $this->data['userdata'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $count = count($userdata);
+
+        if ($other_field != NULL) {
+            if ($count == 0) {
+                $data = array(
+                    'category_name' => $other_field,
+                    'created_date' => date('Y-m-d h:i:s', time()),
+                    'status' => '2',
+                    'is_delete' => '0',
+                    'is_other' => '2',
+                    'user_id' => $userid,
+                    'category_slug' => $this->common->clean($other_field)
+                );
+                $insert_id = $this->common->insert_data_getid($data, 'category');
+                if ($insert_id) {
+                    $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
+                    $search_condition = "((is_other = '2' AND user_id = $userid) OR (status = '1'))";
+                    $category = $this->data['category'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    if (count($category) > 0) {
+                        $select = '<option value="" selected option disabled>Select your field</option>';
+                        foreach ($category as $st) {
+                            $select .= '<option value="' . $st['category_id'] . '"';
+                            if ($st['category_name'] == $other_field) {
+                                $select .= 'selected';
+                            }
+                            $select .= '>' . $st['category_name'] . '</option>';
+                        }
+                    }
+//For Getting Other at end
+                    $contition_array = array('is_delete' => '0', 'status' => '1', 'category_name' => "Other");
+                    $category_otherdata = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $select .= '<option value="' . $category_otherdata[0]['category_id'] . '">' . $category_otherdata[0]['category_name'] . '</option>';
+                }
+            } else {
+                $select .= 0;
+            }
+        } else {
+            $select .= 1;
+        }
+
+
+        echo json_encode(array(
+            "select" => $select,
+        ));
+    }
+
+//FREELANCER_HIRE BOTH OTHER END
+ 
+    //FREELANCER HIRE SAVE FOR SHORTLISTED CANDIDATE START
+    public function shortlist_user($post_id = '', $saveuserid = '') {
+        $post_id = $_POST['post_id'];
+        $saveuser_id = $_POST['user_id'];
+        $word = 'Shortlisted';
+        $userid = $this->session->userdata('aileenuser');
+        //this condition for prevent dublicate entry of save
+        $contition_array = array('from_id' => $userid, 'to_id' => $saveuser_id, 'save_type' => '2');
+        $usershortlist = $this->common->select_data_by_condition('save', $contition_array, $data = 'save_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $save_id = $usershortlist[0]['save_id'];
+        if ($usershortlist) {
+
+            $data = array(
+                'status' => '2',
+                'post_id' => $post_id,
+                'modify_date' => date('Y-m-d', time())
+            );
+
+            $updatedata = $this->common->update_data($data, 'save', 'save_id', $save_id);
+            $data = array(
+                'not_type' => '9',
+                'not_from_id' => $userid,
+                'not_to_id' => $saveuser_id,
+                'not_read' => '2',
+                'not_from' => '5',
+                'not_product_id' => $save_id,
+                "not_active" => '1',
+                'not_created_date' => date('Y-m-d H:i:s')
+            );
+            $insertnotification = $this->common->insert_data_getid($data, 'notification');
+
+
+
+            if ($updatedata) {
+                $this->selectemail_user($saveuser_id, $post_id, $word);
+                $saveuser = 'shortlisted';
+                // GET NOTIFICATION COUNT
+                $not_count = $this->freelancer_notification_count($saveuser_id);
+
+                echo json_encode(
+                        array(
+                            "status" => 'shortlisted',
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $saveuser_id),
+                ));
+            }
+        } else {
+            $data = array(
+                'from_id' => $userid,
+                'to_id' => $saveuser_id,
+                'status' => '2',
+                'save_type' => '2',
+                'post_id' => $post_id,
+                'created_date' => date('Y-m-d', time())
+            );
+            $insert_id = $this->common->insert_data($data, 'save');
+
+            $contition_array = array('from_id' => $userid, 'to_id' => $saveuser_id, 'save_type' => '2');
+            $usersave = $this->common->select_data_by_condition('save', $contition_array, $data = 'save_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $save_id = $usersave[0]['save_id'];
+
+            $data = array(
+                'not_type' => '9',
+                'not_from_id' => $userid,
+                'not_to_id' => $saveuser_id,
+                'not_read' => '2',
+                'not_from' => '5',
+                'not_product_id' => $save_id,
+                "not_active" => '1',
+                'not_created_date' => date('Y-m-d H:i:s')
+            );
+            $insertnotification = $this->common->insert_data_getid($data, 'notification');
+
+            if ($insert_id) {
+                $this->selectemail_user($saveuser_id, $post_id, $word);
+                $saveuser = 'shortlisted';
+                // GET NOTIFICATION COUNT
+                $not_count = $this->freelancer_notification_count($saveuser_id);
+
+                echo json_encode(
+                        array(
+                            "status" => 'shortlisted',
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $saveuser_id),
+                ));
+            }
+        }
+    }
+
+//FREELANCER HIRE SAVE FOR SHORTLISTED CANDIDATE END
+   
+ //FREELANCER_HIRE SEARCH KEYWORD FOR AUTO COMPLETE START
+    public function freelancer_hire_search_keyword($id = "") {
+
+        $searchTerm = $_GET['term'];
+        if (!empty($searchTerm)) {
+            $contition_array = array('status' => '1', 'is_delete' => '0');
+            $search_condition = "(category_name LIKE '" . trim($searchTerm) . "%')";
+            $field = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = 'category_name', $sortby = 'category_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'category_name');
+
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => '7');
+            $search_condition = "(designation LIKE '" . trim($searchTerm) . "%')";
+            $freelancer_postdata = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'designation', $sortby = 'designation', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'designation');
+
+            $contition_array = array('status' => '1', 'type' => '1');
+            $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
+            $skill = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill', $sortby = 'skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
+        }
+        $unique = array_merge((array) $field, (array) $skill, (array) $freelancer_postdata);
+        foreach ($unique as $key => $value) {
+            foreach ($value as $ke => $val) {
+                if ($val != "") {
+                    $result[] = $val;
+                }
+            }
+        }
+        foreach ($result as $key => $value) {
+            $result1[$key]['value'] = $value;
+        }
+        $result1 = array_values($result);
+        echo json_encode($result1);
+    }
+
+//FREELANCER_HIRE SEARCH KEYWORD FOR AUTO COMPLETE END
+    //FREELANCER_HIRE SEARCH CITY FOR AUTO COMPLETE START
+    public function freelancer_search_city($id = "") {
+        $searchTerm = $_GET['term'];
+        if (!empty($searchTerm)) {
+            $contition_array = array('status' => '1', 'state_id !=' => '0');
+            $search_condition = "(city_name LIKE '" . trim($searchTerm) . "%')";
+            $location_list = $this->common->select_data_by_search('cities', $search_condition, $contition_array, $data = 'city_name', $sortby = 'city_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'city_name');
+            foreach ($location_list as $key1 => $value) {
+                foreach ($value as $ke1 => $val1) {
+                    $location[] = $val1;
+                }
+            }
+            foreach ($location as $key => $value) {
+                $city_data[$key]['value'] = $value;
+            }
+            echo json_encode($city_data);
+        }
+    }
+
+//FREELANCER_HIRE SEARCH CITY FOR AUTO COMPLETE END
+    //FREELANCER_HIRE DESIGNATION START
+    public function hire_designation() {
+
+        $userid = $this->session->userdata('aileenuser');
+
+
+        $data = array(
+            'designation' => trim($this->input->post('designation')),
+            'modified_date' => date('Y-m-d', time())
+        );
+        $updatdata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
+    }
+
+//FREELANCER_HIRE DESIGNATION END
+    //FREELANCER_HIRE REMOVE POST(PROJECT) STRAT
+    public function remove_post() {
+        $postid = $_POST['post_id'];
+        $data = array(
+            'is_delete' => '1',
+            'modify_date' => date('y-m-d h:i:s')
+        );
+
+        $updatedata = $this->common->update_data($data, 'freelancer_post', 'post_id', $postid);
+    }
+
+//FREELANCER_HIRE REMOVE POST(PROJECT) END
+    public function save_user() {
+        $id = $_POST['post_id'];
+        $userid = $this->session->userdata('aileenuser');
+
+        $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => '0');
+        $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'asc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $app_id = $userdata[0]['app_id'];
+        if ($userdata) {
+            $contition_array = array('job_delete' => '0');
+            $jobdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array = array(), $data = '*', $sortby = 'post_id', $orderby = 'asc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $data = array(
+                'job_delete' => '1',
+                'job_save' => '2',
+                'modify_date' => date('Y-m-d h:i:s', time())
+            );
+
+            $updatedata = $this->common->update_data($data, 'freelancer_apply', 'app_id', $app_id);
+            if ($updatedata) {
+
+                $savepost = 'Saved';
+            }
+            echo $savepost;
+        } else {
+
+            $data = array(
+                'post_id' => $id,
+                'user_id' => $userid,
+                'status' => '1',
+                'created_date' => date('Y-m-d h:i:s', time()),
+                'modify_date' => date('Y-m-d h:i:s', time()),
+                'is_delete' => '0',
+                'job_delete' => '1',
+                'job_save' => '2'
+            );
+
+            $insert_id = $this->common->insert_data_getid($data, 'freelancer_apply');
+            if ($insert_id) {
+
+                $savepost = 'Saved';
+            } echo $savepost;
+        }
+    }
+    public function save_user1($id, $save_id) {
+        $id = $_POST['user_id'];
+        $save_id = $_POST['save_id'];
+
+        $userid = $this->session->userdata('aileenuser');
+
+        //this condition for prevent dublicate entry of save
+        $contition_array = array('from_id' => $userid, 'to_id' => $id, 'status' => '0', 'save_type' => '2');
+        $usersearchdata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        if ($usersearchdata) {
+            $saveuser = 'Saved';
+            echo $saveuser;
+        } else {
+            $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_id' => $save_id);
+            $userdata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($userdata) {
+                $data = array(
+                    'status' => 0
+                );
+
+                $updatedata = $this->common->update_data($data, 'save', 'save_id', $save_id);
+                if ($updatedata) {
+                    $saveuser = 'Saved';
+                    echo $saveuser;
+                }
+            } else {
+                $data = array(
+                    'from_id' => $userid,
+                    'to_id' => $id,
+                    'status' => '0',
+                    'save_type' => '2'
+                );
+
+                $insert_id = $this->common->insert_data($data, 'save');
+                if ($insert_id) {
+                    $saveuser = 'Saved';
+                    echo $saveuser;
+                }
+            }
+        }
+    }
+    //FREELANCER_HIRE REMOVE SAVED FREELANCER START
+    public function remove_save() {
+        $saveid = $_POST['save_id'];
+
+        $userid = $this->session->userdata('aileenuser');
+        $data = array(
+            'status' => '1'
+        );
+        $updatedata = $this->common->update_data($data, 'save', 'save_id', $saveid);
+    }
+
+//FREELANCER_HIRE REMOVE SAVED FREELANCER END
 }

@@ -5,7 +5,7 @@ $(document).ready(function () {
         if (countryID) {
             $.ajax({
                 type: 'POST',
-                url: base_url + "freelancer/ajax_data",
+                url: base_url + "freelancer_hire/ajax_dataforcity",
                 data: 'country_id=' + countryID,
                 success: function (html) {
                     $('#state').html(html);
@@ -23,7 +23,7 @@ $(document).ready(function () {
         if (stateID) {
             $.ajax({
                 type: 'POST',
-                url: base_url + "freelancer/ajax_data",
+                url: base_url + "freelancer_hire/ajax_dataforcity",
                 data: 'state_id=' + stateID,
                 success: function (html) {
                     $('#city').html(html);

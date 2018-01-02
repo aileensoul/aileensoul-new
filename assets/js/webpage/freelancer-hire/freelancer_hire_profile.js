@@ -31,7 +31,7 @@ function editableTextBlurred() {
     viewableText.click(divClicked);
 
     $.ajax({
-        url: base_url + "freelancer/hire_designation",
+        url: base_url + "freelancer_hire/hire_designation",
         type: "POST",
         data: {"designation": html},
         success: function (response) {
