@@ -1641,6 +1641,7 @@ $(document).on('keydown', function (e) {
             });
         }
         document.getElementById('myModal').style.display = "none";
+         $('body').removeClass('modal-open');
     }
 });
 
@@ -1652,6 +1653,7 @@ window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+     $('body').removeClass('modal-open');
 }
 
 
