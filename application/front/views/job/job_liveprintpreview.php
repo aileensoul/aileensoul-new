@@ -1955,6 +1955,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             function forgot_profile() {
                 $('#forgotPassword').modal('show');
                 $('#login').modal('hide');
+
             }
 
 
