@@ -542,6 +542,8 @@ if ($artisticdata[0]['art_bestofmine']) {
             }
             function forgot_profile() {
                 $('#forgotPassword').modal('show');
+                $('#register').modal('hide');
+                $('#login').modal('hide');
             }
 </script>
 
@@ -551,6 +553,8 @@ if ($artisticdata[0]['art_bestofmine']) {
     if ( e.keyCode === 27 ) {
         $('#register').modal('hide');
          $('#login').modal('hide');
+        $('#forgotPassword').modal('hide');
+         
     }
 });
 

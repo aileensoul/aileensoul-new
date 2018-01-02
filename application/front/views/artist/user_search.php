@@ -686,6 +686,8 @@ var keyword1 = '<?php echo $keyword1; ?>';
             }
             function forgot_profile() {
                 $('#forgotPassword').modal('show');
+                $('#register').modal('hide');
+                $('#login').modal('hide');
             }
         </script>
         <script>
@@ -701,5 +703,19 @@ var keyword1 = '<?php echo $keyword1; ?>';
                 });
             });
         </script>
+
+<script type="text/javascript">
+    
+    $( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        $('#register').modal('hide');
+         $('#login').modal('hide');
+        $('#forgotPassword').modal('hide');
+         
+    }
+});
+
+</script>
+
 </body>
 </html>

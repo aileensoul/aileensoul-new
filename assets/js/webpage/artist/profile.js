@@ -50,12 +50,27 @@ function login_data() {
 
 function forgot_profile() {
                 $('#forgotPassword').modal('show');
+                 $('#login').modal('hide');
+                $('#register').modal('hide');
 }
  function register_profile() {
                 $('#login').modal('hide');
                 $('#register').modal('show');
 }
 // multiple skill start
+
+function forgot_close() {
+                $('#login').modal('show');
+}
+
+// $( document ).on( 'keydown', function ( e ) {
+//     if ( e.keyCode === 27 ) {  
+//         $('#forgotPassword').modal('hide');
+//         $('#login').modal('show');
+//     }
+// });
+
+
 
 $(function(){
         $('#skills').multiSelect();
