@@ -73,9 +73,8 @@ class Registration extends CI_Controller {
 
 
         $email_reg = $this->input->post('email_reg');
-        $contition_array = array('email' => $email_reg, 'is_delete' => '0', 'status' => '1');
-        $userdata = $this->common->select_data_by_condition('user_login', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+       
+        $userdata = $this->user_model->getUserByEmail($email_reg);
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('registration/registration');
