@@ -491,7 +491,7 @@ function submitRegisterForm()
                 if (post_name != '') {
                     $.ajax({
                         type: 'POST',
-                        url: base_url + 'freelancer/add_post_added',
+                        url: base_url + 'freelancer_hire/add_post_added',
                         data: post_data1,
                         dataType: "json",
                         success: function (response) {
@@ -651,7 +651,7 @@ function submitForm()
                     if(post_name != ''){
                     $.ajax({
                         type: 'POST',
-                        url: base_url + 'freelancer/add_project_login',
+                        url: base_url + 'freelancer_hire/add_project_login',
                         data: post_data1,
                         dataType: "json",
                         success: function (response) {
@@ -693,7 +693,7 @@ function submitForm()
                     if (post_name != '') {
                         $.ajax({
                             type: 'POST',
-                            url: base_url + 'freelancer/add_post_added',
+                            url: base_url + 'freelancer_hire/add_post_added',
                             data: post_data1,
                             dataType: "json",
                             success: function (response) {

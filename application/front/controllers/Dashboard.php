@@ -16,20 +16,21 @@ class Dashboard extends MY_Controller {
         $this->load->library('S3');
         $this->data['title'] = "Grow Business Network | Hiring | Search Jobs | Freelance Work | Artistic | It's Free";
 
-    //    include('include.php');
+        //    include('include.php');
     }
 
     public function index($id = " ") {
         $userid = $this->session->userdata('aileenuser');
         $userdata = $this->data['userdata'] = $this->user_model->getUserData($userid);
-        
+
+
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
         $this->data['header'] = $this->load->view('header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
 
         $this->load->library('form_validation');
-        
+
         if ($userdata[0]['user_slider'] == 1) {
             $data = array(
                 'user_slider' => '0'
@@ -52,104 +53,6 @@ class Dashboard extends MY_Controller {
         $this->load->view('dashboard/cover', $this->data);
     }
 
-    public function user_image_insert() {
-        $userid = $this->session->userdata('aileenuser');
-
-        if ($this->input->post('cancel')) {
-            redirect('profiles/' . $this->session->userdata('aileenuser_slug'), refresh);
-        }
-
-        if (empty($_FILES['profilepic']['name'])) {
-            $this->form_validation->set_rules('profilepic', 'Upload profilepic', 'required');
-        } else {
-
-            $user_image = '';
-            $user['upload_path'] = $this->config->item('user_main_upload_path');
-            $user['allowed_types'] = $this->config->item('user_main_allowed_types');
-            $user['max_size'] = $this->config->item('user_main_max_size');
-            $user['max_width'] = $this->config->item('user_main_max_width');
-            $user['max_height'] = $this->config->item('user_main_max_height');
-            $this->load->library('upload');
-            $this->upload->initialize($user);
-            //Uploading Image
-            $this->upload->do_upload('profilepic');
-            //Getting Uploaded Image File Data
-            $imgdata = $this->upload->data();
-            $imgerror = $this->upload->display_errors();
-            if ($imgerror == '') {
-                //Configuring Thumbnail 
-                $user_thumb['image_library'] = 'gd2';
-                $user_thumb['source_image'] = $user['upload_path'] . $imgdata['file_name'];
-                $user_thumb['new_image'] = $this->config->item('user_thumb_upload_path') . $imgdata['file_name'];
-                $user_thumb['create_thumb'] = TRUE;
-                $user_thumb['maintain_ratio'] = TRUE;
-                $user_thumb['thumb_marker'] = '';
-                $user_thumb['width'] = $this->config->item('user_thumb_width');
-                //$user_thumb['height'] = $this->config->item('user_thumb_height');
-                $user_thumb['height'] = 2;
-                $user_thumb['master_dim'] = 'width';
-                $user_thumb['quality'] = "100%";
-                $user_thumb['x_axis'] = '0';
-                $user_thumb['y_axis'] = '0';
-                //Loading Image Library
-                $this->load->library('image_lib', $user_thumb);
-                $dataimage = $imgdata['file_name'];
-                //Creating Thumbnail
-                $this->image_lib->resize();
-                $thumberror = $this->image_lib->display_errors();
-            } else {
-                $thumberror = '';
-            }
-            if ($imgerror != '' || $thumberror != '') {
-                $error[0] = $imgerror;
-                $error[1] = $thumberror;
-            } else {
-                $error = array();
-            }
-            if ($error) {
-                $this->session->set_flashdata('error', $error[0]);
-                $redirect_url = site_url('profiles/' . $this->session->userdata('aileenuser_slug'));
-                redirect($redirect_url, 'refresh');
-            } else {
-                $user_image = $imgdata['file_name'];
-            }
-
-            $data = array(
-                'user_image' => $user_image,
-                'modified_date' => date('Y-m-d', time())
-            );
-
-            $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
-
-            if ($updatdata) {
-                redirect('profiles/' . $this->session->userdata('aileenuser_slug'), refresh);
-            } else {
-                $this->session->flashdata('error', 'Your data not inserted');
-                redirect('profiles/' . $this->session->userdata('aileenuser_slug'), refresh);
-            }
-        }
-    }
-
-    public function check_login() {
-
-        $user_name = $this->input->post('user_name');
-        $user_password = $this->input->post('user_password');
-
-        if ($user_name != '' && $user_password != '') {
-            $admin_check = $this->logins->check_authentication($user_name, $user_password);
-            if ($admin_check != 0) {
-                $this->session->set_userdata('topgraffiti_admin', $admin_check[0]['admin_id']);
-                redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
-            } else {
-                $this->session->set_flashdata('error', '<div class="alert alert-danger">Please Enter Valid Credential.</div>');
-                redirect('login', 'refresh');
-            }
-        } else {
-            $this->session->set_flashdata('error', '<div class="alert alert-danger">Please Enter Valid Login Detail.</div>');
-            redirect('login', 'refresh');
-        }
-    }
-
     public function logout() {
 
         //PROGRESSBAR JOB START
@@ -158,14 +61,14 @@ class Dashboard extends MY_Controller {
         if ($this->data['count_profile'] == 100) {
             $data = array(
                 'progressbar' => '1',
-                'modified_date' => date('Y-m-d h:i:s', time())
+                'modified_date' => date('Y-m-d H:i:s', time())
             );
 
             $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
         } else {
             $data = array(
                 'progressbar' => '0',
-                'modified_date' => date('Y-m-d h:i:s', time())
+                'modified_date' => date('Y-m-d H:i:s', time())
             );
 
             $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
@@ -213,12 +116,10 @@ class Dashboard extends MY_Controller {
     public function ajaxpro() {
 
         $userid = $this->session->userdata('aileenuser');
+        $user_reg_data = $this->dashboard_model->getUserBackImage($userid);
 
-        $contition_array = array('user_id' => $userid);
-        $user_reg_data = $this->common->select_data_by_condition('user', $contition_array, $data = 'profile_background,profile_background_main', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $user_reg_prev_image = $user_reg_data[0]['profile_background'];
-        $user_reg_prev_main_image = $user_reg_data[0]['profile_background_main'];
+        $user_reg_prev_image = $user_reg_data['profile_background'];
+        $user_reg_prev_main_image = $user_reg_data['profile_background_main'];
 
         if ($user_reg_prev_image != '') {
             $user_image_main_path = $this->config->item('user_bg_main_upload_path');
@@ -242,7 +143,6 @@ class Dashboard extends MY_Controller {
         }
 
 
-
         $data = $_POST['image'];
         $data = str_replace('data:image/png;base64,', '', $data);
         $data = str_replace(' ', '+', $data);
@@ -253,7 +153,6 @@ class Dashboard extends MY_Controller {
         $success = file_put_contents($file, $data);
 
         $main_image = $user_bg_path . $imageName;
-
         $main_image_size = filesize($main_image);
 
         if ($main_image_size > '1000000') {
@@ -288,11 +187,13 @@ class Dashboard extends MY_Controller {
             'profile_background' => $imageName
         );
 
-        $update = $this->common->update_data($data, 'user', 'user_id', $userid);
-        $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
+        $update = $this->common->update_data($data, 'user_info', 'user_id', $userid);
+
+        $user_reg_data = $this->dashboard_model->getUserBackImage($userid);
+        $user_reg_back_image = $user_reg_data['profile_background'];
 
 //        echo '<img src = "' . $this->data['busdata'][0]['profile_background'] . '" />';
-        $coverpic = '  <div class="bg-images"><img id="image_src" name="image_src" src = "' . USER_BG_MAIN_UPLOAD_URL . $this->data['userdata'][0]['profile_background'] . '" /></div>';
+        $coverpic = '  <div class="bg-images"><img id="image_src" name="image_src" src = "' . USER_BG_MAIN_UPLOAD_URL . $user_reg_back_image . '" /></div>';
 
         echo $coverpic;
     }
@@ -318,10 +219,10 @@ class Dashboard extends MY_Controller {
 
         $data = array(
             'profile_background_main' => $image,
-            'modified_date' => date('Y-m-d h:i:s', time())
+            'modify_date' => date('Y-m-d H:i:s', time())
         );
 
-        $updatedata = $this->common->update_data($data, 'user', 'user_id', $userid);
+        $updatedata = $this->common->update_data($data, 'user_info', 'user_id', $userid);
         if ($updatedata) {
             echo $userid;
         } else {
@@ -337,7 +238,7 @@ class Dashboard extends MY_Controller {
         $userdata = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
 
         $email = $userdata[0]['user_email'];
-        $toemail = "raval.khyati13@gmail.com";
+        $toemail = "ankit.aileensoul@gmail.com";
 
         $msg = "Hey !" . $userdata[0]['user_name'] . "<br/>";
         $msg = "hi falgui";
@@ -350,19 +251,6 @@ class Dashboard extends MY_Controller {
             die();
         }
     }
-
-// resend email for account verify end 
-    public function template() { // echo "hoi"; die();
-        $mail = $this->email_model->sendEmail();
-        if ($mail) {
-            echo 1;
-            die();
-        } else {
-            echo 2;
-            die();
-        }
-    }
-
     public function closever() {
 
         $userid = $this->session->userdata('aileenuser');
@@ -379,10 +267,8 @@ class Dashboard extends MY_Controller {
     public function profilepic() {
         $userid = $this->session->userdata('aileenuser');
 
-        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
-        $user_reg_data = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $user_reg_prev_image = $user_reg_data[0]['user_image'];
+        $user_reg_data = $this->dashboard_model->getUserProfileImage($userid);
+        $user_reg_prev_image = $user_reg_data['user_image'];
 
         if ($user_reg_prev_image != '') {
             $user_image_main_path = $this->config->item('user_main_upload_path');
@@ -425,17 +311,6 @@ class Dashboard extends MY_Controller {
             $quality = "100%";
         }
 
-
-        // /* RESIZE */
-        // $user_profile['image_library'] = 'gd2';
-        // $user_profile['source_image'] =  $main_image;
-        // $user_profile['new_image'] =  $main_image;
-        // $user_profile['quality'] = $quality;
-        // $instanse10 = "image10";
-        // $this->load->library('image_lib', $user_profile, $instanse10);
-        // $this->$instanse10->watermark();
-        // /* RESIZE */
-
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
@@ -453,22 +328,22 @@ class Dashboard extends MY_Controller {
 
         $data = array(
             'user_image' => $imageName,
-            'modified_date' => date('Y-m-d', time())
+            'modify_date' => date('Y-m-d H:i:s', time())
         );
 
-        $update = $this->common->update_data($data, 'user', 'user_id', $userid);
-        //  echo "11111";die();
+        $update = $this->common->update_data($data, 'user_info', 'user_id', $userid);
 
         if ($update) {
 
-            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
-            $main_user = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-            $userimage = '<img src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
+            $user_reg_data = $this->dashboard_model->getUserProfileImage($userid);
+            $user_reg_prev_image = $user_reg_data['user_image'];
+
+            $userimage = '<img src="' . USER_THUMB_UPLOAD_URL . $user_reg_prev_image . '" alt="User Image" >';
             $userimage .= ' <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
                                                 <img src="' . base_url('assets/img/cam.png?ver=' . time()) . '">Update Profile Picture</a>';
         }
 
-        $userimagehead = '<img class="img-circle" height="50" width="50" alt="Smiley face" src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
+        $userimagehead = '<img class="img-circle" height="50" width="50" alt="Smiley face" src="' . USER_THUMB_UPLOAD_URL . $user_reg_prev_image . '" alt="" >';
 
         echo json_encode(
                 array(

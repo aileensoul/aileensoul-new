@@ -428,6 +428,8 @@ function register_profile() {
 //            }
 function forgot_profile() {
     $('#forgotPassword').modal('show');
+    $('#login').modal('hide');
+
 }
 
 $(document).on('click', '[data-toggle*=modal]', function () {

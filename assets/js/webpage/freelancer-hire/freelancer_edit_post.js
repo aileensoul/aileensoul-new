@@ -239,7 +239,7 @@ $(document).ready(function () {
         if (countryID) {
             $.ajax({
                 type: 'POST',
-                url: base_url + "freelancer/ajax_dataforcity",
+                url: base_url + "freelancer_hire/ajax_dataforcity",
                 data: 'country_id=' + countryID,
                 success: function (html) {
                     $('#state').html(html);
@@ -258,7 +258,7 @@ $(document).ready(function () {
         if (stateID) {
             $.ajax({
                 type: 'POST',
-                url: base_url + "freelancer/ajax_dataforcity",
+                url: base_url + "freelancer_hire/ajax_dataforcity",
                 data: 'state_id=' + stateID,
                 success: function (html) {
 
@@ -272,22 +272,7 @@ $(document).ready(function () {
 });
 // CODE FOR COUNTRY,STATE, CITY CODE END
 
-////SELECT2 AUTOCOMPLETE START FOR SKILL
-//$('#skills').select2({
-//    placeholder: 'Find Your Skills',
-//    ajax: {
-//        url: base_url + "freelancer/keyskill",
-//        dataType: 'json',
-//        delay: 250,
-//        processResults: function (data) {
-//            return {
-//                results: data
-//            };
-//        },
-//        cache: true
-//    }
-//});
-////SELECT2 AUTOCOMPLETE FOR SKILL END
+
 
 // SCRIPT FOR ADD OTHER FIELD  START
 $(document).on('change', '.field_other', function (event) {
@@ -313,7 +298,7 @@ $(document).on('change', '.field_other', function (event) {
                         textVal = $textbox.val();
                 $.ajax({
                     type: 'POST',
-                    url: base_url + "freelancer/freelancer_hire_other_field",
+                    url: base_url + "freelancer_hire/freelancer_hire_other_field",
                     dataType: 'json',
                     data: 'other_field=' + textVal,
                     success: function (response) {

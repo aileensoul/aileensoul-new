@@ -425,7 +425,14 @@ function register_profile() {
 //            }
 function forgot_profile() {
     $('#forgotPassword').modal('show');
+    $('#login').modal('hide');
 }
+
+
+$('.modal-close').click(function(e){ 
+   // $('body').addClass('modal-open'); 
+    $('#login').modal('show');
+});
 
 $(document).on('click', '[data-toggle*=modal]', function () {
     $('[role*=dialog]').each(function () {

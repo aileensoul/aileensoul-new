@@ -4,6 +4,22 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Dashboard_model extends CI_Model {
+    
+    function getUserBackImage($user_id = '') {
+        $this->db->select("profile_background,profile_background_main")->from("user_info");
+        $this->db->where("user_id", $user_id);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+    
+    function getUserProfileImage($user_id = '') {
+        $this->db->select("user_image")->from("user_info");
+        $this->db->where("user_id", $user_id);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
 
     function jobRegData($user_id = '') {
         $this->db->select("job_step,status")->from("job_reg");

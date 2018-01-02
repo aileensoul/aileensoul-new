@@ -4,7 +4,7 @@
         if (countryID) {
             $.ajax({
                 type: 'POST',
-                url: base_url + "freelancer/ajax_data",
+                url: base_url + "freelancer_hire/ajax_data",
                 data: 'country_id=' + countryID,
                 success: function (html) {
                     $('#state').html(html);
@@ -22,7 +22,7 @@
         if (stateID) {
             $.ajax({
                 type: 'POST',
-                url: base_url + "freelancer/ajax_data",
+                url: base_url + "freelancer_hire/ajax_data",
                 data: 'state_id=' + stateID,
                 success: function (html) {
                     $('#city').html(html);
@@ -259,7 +259,7 @@ $(document).ready(function () {
                 required: true,
                 email: true,
                 remote: {
-                    url: site + "freelancer/check_email",
+                    url: site + "freelancer_hire/check_email",
                     type: "post",
                     data: {
                         email_reg1: function () {

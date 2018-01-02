@@ -110,7 +110,7 @@ function editableTextBlurred() {
     viewableText.click(divClicked);
 
     $.ajax({
-        url: base_url + "freelancer/hire_designation",
+        url: base_url + "freelancer_hire/hire_designation",
         type: "POST",
         data: {"designation": html},
         success: function (response) {
@@ -147,7 +147,7 @@ function remove_user(abc)
 {
     $.ajax({
         type: 'POST',
-        url: base_url + "freelancer/remove_save",
+        url: base_url + "freelancer_hire/remove_save",
         data: 'save_id=' + abc,
         success: function (data) {
             $('#' + 'removeapply' + abc).html(data);
@@ -178,35 +178,7 @@ $(document).ready(function () {
     $('html,body').animate({scrollTop: 265}, 100);
 });
 //FOR SCROLL PAGE AT PERTICULAR POSITION JS END
-//UOPLOAD PROFILE PIC START
-function profile_pic() {
-    if (typeof FormData !== 'undefined') {
-        // var fd = new FormData();
-        var formData = new FormData($("#userimage")[0]);
-//    fd.append("image", $("#profilepic")[0].files[0]);
-//         files = this.files;
-        $.ajax({
-            // url: "<?php echo base_url(); ?>freelancer/user_image_insert",
-            url: base_url + "freelancer/user_image_insert",
-            type: "POST",
-            data: formData,
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function (data)
-            {
-                $('#bidmodal-2').modal('hide');
-                $(".user-pic").html(data);
-                document.getElementById('profilepic').value = null;
-                //document.getElementById('profilepic').value == '';
-                $('#preview').prop('src', '#');
-                $('.popup_previred').hide();
-            },
-        });
-        return false;
-    }
-}
-//UOPLOAD PROFILE PIC END
+
 
 
 

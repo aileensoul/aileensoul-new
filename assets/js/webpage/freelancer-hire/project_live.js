@@ -8,7 +8,7 @@ function save_post(abc)
 {
     $.ajax({
         type: 'POST',
-        url: base_url + "freelancer/save_user",
+        url: base_url + "freelancer_hire/save_user",
         data: 'post_id=' + abc,
         success: function (data) {
             $('.' + 'savedpost' + abc).html(data).addClass('saved');
