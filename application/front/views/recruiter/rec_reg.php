@@ -321,7 +321,6 @@
                                             </span>
                                         </div>
                                         <div class="dateerror" style="color:#f00; display: block;"></div>
-
                                         <div class="form-group gender-custom">
                                            <span>
                                             <select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
@@ -331,7 +330,6 @@
                                             </select>
                                             </span>
                                         </div>
-
                                         <p class="form-text" style="margin-bottom: 10px;">
                                             By Clicking on create an account button you agree our
                                             <a tabindex="109" href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition">Terms and Condition</a> and <a tabindex="110" href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy">Privacy policy</a>.

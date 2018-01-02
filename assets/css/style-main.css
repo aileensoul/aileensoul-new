@@ -575,7 +575,7 @@ option{
     font-size:38px;
     color:#1b8ab9;
     -webkit-text-fill-color:transparent;
-    text-transform:capitalize;
+    /*text-transform:capitalize;*/
     position:relative;
     display:inline-block;
     text-align:center
