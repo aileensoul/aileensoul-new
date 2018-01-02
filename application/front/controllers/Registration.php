@@ -192,111 +192,16 @@ class Registration extends CI_Controller {
         }
     }
 
-    //}
-//Registrtaion email already exist checking controller End
-    // main registratin image insert page Start
-    public function registration_image($user_id) {
-        //echo $user_id;die();
-        $data['user_id'] = $user_id;
-        //echo $data['data']; die();
-        $this->load->view('registration/registration_image', $data);
-    }
-
-    public function reg_image_insert() {
-        //echo "<pre>";print_r($_POST);die();
-        //form validation rule for registration
-        $user_id = $this->input->post('user_id');
-        //echo $user_id;
-        //$userid = $this->session->userdata('aileenuser');
-        //echo $userid; 
-        //die();
-        $this->form_validation->set_rules('checkbox', 'checkbox', 'required');
-        //echo "<pre>"; print_r($_POST); die();
-        // echo $userid; die();
-
-        $config['upload_path'] = 'uploads/user_image/';
-        $config['allowed_types'] = 'jpg|jpeg|png|gif';
-        // $config['file_name'] = $_FILES['picture']['name'];
-        $config['file_name'] = $_FILES['photo']['name'];
-
-        //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        //echo $this->upload->do_upload('photo'); die();
-        if ($this->upload->do_upload('photo')) {
-            //echo "hi";die();
-            $uploadData = $this->upload->data();
-            //$picture = $uploadData['file_name']."-".date("Y_m_d H:i:s");
-            $image = $uploadData['file_name'];
-            // echo $certificate;die();
-        } else {
-            //  echo "welcome";die();
-            $image = '';
-        }
-
-        if ($this->form_validation->run() == FALSE) {
-            // echo "hi";die();
-            $this->load->view('registration/registration_image');
-        } else {
-
-            $data = array(
-                'user_image' => $image,
-                'modified_date' => date('Y-m-d h:i:s', time())
-            );
-            // echo "<pre>"; print_r($data); die();
-
-            $updatedata = $this->common->update_data($data, 'user', 'user_id', $user_id);
-            //echo $updatedata;die();
-
-            if ($updatedata) {
-
-                $user = $this->common->select_data_by_id('user', 'user_id', $id, '*', '');
-
-                //$this->load->view('job/job_apply_for');
-                //$this->session->set_flashdata('success', 'Skill updated successfully'); 
-                //redirect('/');
-                $this->session->set_userdata('aileenuser', $user_id);
-                $this->session->set_userdata('aileenuser_slug', $user[0]['user_slug']);
-                redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
-            } else {
-                $this->session->flashdata('error', 'Your data not inserted');
-                redirect('registration/registration_image', 'refresh');
-            }
-        }
-    }
-
-    //main registratin image insert page End
-    //User Name Checking with ajax Start
-    function filename_exists() {
-        $uname = $this->input->post('uname');
-        //$exists = $this->common->filename_exists($uname);
-        $contition_array = array('user_name' => $uname);
-        $result = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        //echo '<pre>'; print_r($result); 
-        $count = count($result);
-
-        if ($count > 0) {
-
-            echo "<span style='color:brown;'>Sorry username already taken !!!</span>";
-        } else {
-
-            echo "<span style='color:green;'>Available</span>";
-            //echo "Sorry username already taken !!!";
-        }
-    }
-
-    //User Name Checking with ajax End
+   
+    
 //Change Password Controller Start
     public function changepassword() {
         $this->data['title'] = 'Setting | Change Password  - Aileensoul';
         $this->load->view('registration/changepassword', $this->data);
     }
 
-    public function changepassword_insert() {    // echo '<pre>'; print_r($_POST); die();
-        //$userid = $this->session->userdata('user_id');
-        $userid = $this->session->userdata('aileenuser'); //echo $userid; die();
-        //$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
+    public function changepassword_insert() {   
+        $userid = $this->session->userdata('aileenuser'); 
         $this->form_validation->set_rules('oldpassword', 'Old Password', 'required');
         $this->form_validation->set_rules('password1', 'Password', 'trim|required');
         $this->form_validation->set_rules('password2', 'Confirm Password', 'trim|required|matches[password1]');
