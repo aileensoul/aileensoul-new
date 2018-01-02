@@ -16,7 +16,7 @@
                         <div class="main_frlancer">
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <h2 class="font-white">I want to hire Freelancer</h2>
-                                <a href="<?php echo base_url('freelance-hire'); ?>" class="button" id="freelancer-hire-button">Hire</a>
+                                <a href="<?php echo base_url('freelance-hire');?>" class="button" id="freelancer-hire-button">Hire</a>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <h2 class="font-white">Apply as Freelancer</h2>
