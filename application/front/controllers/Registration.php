@@ -28,29 +28,8 @@ class Registration extends CI_Controller {
     }
 
     //Show main registratin page insert Start
-    public function index($id = " ") {
-        if ($this->session->userdata('fbuser')) {
+    public function index() {
 
-            $fbid = $this->session->userdata('fbuser');
-            $fbuser = $this->common->select_data_by_id('user', 'user_id', $fbid, '*', '');
-
-            if ($fbuser) {
-                //echo '<pre>'; print_r($fbuser); die();
-                $this->data['fsname'] = $fbuser[0]['first_name'];
-                $this->data['lname'] = $fbuser[0]['last_name'];
-                $this->data['gender'] = $fbuser[0]['user_gender'];
-                $this->data['email'] = $fbuser[0]['user_email'];
-            }
-        }
-
-
-        $user = $this->common->select_data_by_id('user', 'user_id', $id, '*', '');
-        if ($user) {
-            $this->data['fsname'] = $user[0]['first_name'];
-            $this->data['lname'] = $user[0]['last_name'];
-            $this->data['gender'] = $user[0]['user_gender'];
-        }
-        $this->load->view('registration/registration', $this->data);
     }
 
     public function verify($id = " ") {
@@ -74,12 +53,6 @@ class Registration extends CI_Controller {
 
     public function reg_insert() { 
 
-        $date = $this->input->post('selday');
-        $month = $this->input->post('selmonth');
-        $year = $this->input->post('selyear');
-        $email_reg = $this->input->post('email_reg');
-
-        $dob = $year . '-' . $month . '-' . $date;
 
         if ($this->session->userdata('fbuser')) {
             $this->session->unset_userdata('fbuser');
@@ -88,13 +61,11 @@ class Registration extends CI_Controller {
         //form validation rule for registration
 
         $ip = $this->input->ip_address();
-        // $this->form_validation->set_rules('uname', 'Username', 'required');
 
         $this->form_validation->set_rules('first_name', 'Firstname', 'required');
         $this->form_validation->set_rules('last_name', 'Lastname', 'required');
         $this->form_validation->set_rules('email_reg', 'Store  email', 'required|valid_email');
         $this->form_validation->set_rules('password_reg', 'Password', 'trim|required');
-        // $this->form_validation->set_rules('password2', 'Confirm Password', 'trim|required|matches[password]');
         $this->form_validation->set_rules('selday', 'date', 'required');
         $this->form_validation->set_rules('selmonth', 'month', 'required');
         $this->form_validation->set_rules('selyear', 'year', 'required');
@@ -102,6 +73,7 @@ class Registration extends CI_Controller {
         
 
         
+        $email_reg = $this->input->post('email_reg');
         $contition_array = array('email' => $email_reg, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('user_login', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
        
@@ -109,10 +81,14 @@ class Registration extends CI_Controller {
             if ($this->form_validation->run() == FALSE) {
                 $this->load->view('registration/registration');
             } else {
+                
+           if($userdata) {     
+           } else {
+        
                     $user_data = array(
                         'first_name' => $this->input->post('first_name'),
                         'last_name' => $this->input->post('last_name'),
-                        'user_dob' => $dob,
+                        'user_dob' => $this->input->post('selday') . '-' . $this->input->post('selmonth') . '-' . $this->input->post('selyear'),
                         'user_gender' => $this->input->post('selgen'),
                         'user_agree' => '1',
                         'created_date' => date('Y-m-d h:i:s', time()),
@@ -136,11 +112,12 @@ class Registration extends CI_Controller {
             }
                     
                 }
+    }
                 //for getting last insrert id
                 if ($insert_id) {
                     $user_slug = $this->user_model->getUserSlugById($userinfo[0]['user_id']);
                     $this->session->set_userdata('aileenuser', $insert_id);
-                    $this->session->set_userdata('aileenuser_slug', $user_slug);
+                    $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
                     $datavl = "ok";
                     echo json_encode(
                             array(
