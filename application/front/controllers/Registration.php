@@ -72,9 +72,8 @@ class Registration extends CI_Controller {
         }
     }
 
-    public function reg_insert() {
-//        $bod = $this->input->post('datepicker');
-//                $bod = str_replace('/', '-', $bod);
+    public function reg_insert() { 
+        echo '<pre>'; print_r($_POST); die();
 
         $date = $this->input->post('selday');
         $month = $this->input->post('selmonth');
@@ -86,7 +85,7 @@ class Registration extends CI_Controller {
         if ($this->session->userdata('fbuser')) {
             $this->session->unset_userdata('fbuser');
         }
-        //echo "<pre>";print_r($_POST);die();
+        
         //form validation rule for registration
 
         $ip = $this->input->ip_address();
@@ -102,52 +101,48 @@ class Registration extends CI_Controller {
         $this->form_validation->set_rules('selyear', 'year', 'required');
         $this->form_validation->set_rules('selgen', 'Gender', 'required');
         
-//        echo "<pre>"; print_r($_POST);die();
+
         
         $contition_array = array('user_email' => $email_reg, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
        
-        if ($userdata) {
-           
-        } else {
            
             if ($this->form_validation->run() == FALSE) {
-               
                 $this->load->view('registration/registration');
             } else {
-             
-                $userdata = $this->db->get_where('user', array('user_email' => $email_reg))->row()->user_id;
-                if ($userdata) {
-                    
-                } else {
-                    $data = array(
+                    $user_data = array(
                         'first_name' => $this->input->post('first_name'),
                         'last_name' => $this->input->post('last_name'),
-                        'user_email' => $this->input->post('email_reg'),
-                        'user_password' => md5($this->input->post('password_reg')),
                         'user_dob' => $dob,
                         'user_gender' => $this->input->post('selgen'),
                         'user_agree' => '1',
-                        'is_delete' => '0',
-                        'status' => '1',
                         'created_date' => date('Y-m-d h:i:s', time()),
                         'edit_ip' => $ip,
                         'verify_date' => date('Y-m-d h:i:s', time()),
                         'user_verify' => '0',
                         'user_slider' => '1',
-                       // 'user_slug' => $this->setuser_slug($this->input->post('first_name') . '-' . $this->input->post('last_name'), 'user_slug', 'user'),
+                        'user_slug' => $this->setuser_slug($this->input->post('first_name') . '-' . $this->input->post('last_name'), 'user_slug', 'user'),
                     );
 
                       
-                    $insert_id = $this->common->insert_data_getid($data, 'user');
+                    $user_insert = $this->common->insert_data_getid($user_data, 'user');
+                    if($user_insert) {
+                     $user_login_data = array(
+                        'user_email' => $this->input->post('email_reg'),
+                        'user_password' => md5($this->input->post('password_reg')),
+                        'is_delete' => '0',
+                        'status' => '1',
+                        'user_id' => $user_insert,
+                    );
+                   $user_login_insert = $this->common->insert_data_getid($user_login_data, 'user_login');
+            }
+                    
                 }
                 //for getting last insrert id
-
                 if ($insert_id) {
-
-                    $user = $this->common->select_data_by_id('user', 'user_id', $insert_id, 'user_slug', '');
+                    $user_slug = $this->user_model->getUserSlugById($userinfo[0]['user_id']);
                     $this->session->set_userdata('aileenuser', $insert_id);
-                    $this->session->set_userdata('aileenuser_slug', $user[0]['user_slug']);
+                    $this->session->set_userdata('aileenuser_slug', $user_slug);
                     $datavl = "ok";
                     echo json_encode(
                             array(
@@ -159,8 +154,8 @@ class Registration extends CI_Controller {
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('registration', 'refresh');
                 }
-            }
-        }
+           
+        
     }
 
     public function sendmail() {
@@ -211,42 +206,16 @@ class Registration extends CI_Controller {
     //Show main registratin page insert End
 //Registrtaion email already exist checking controller start
 
-    public function check_email() { //echo "hello"; die();
-        // if ($this->input->is_ajax_request() && $this->input->post('email')) {
+    public function check_email() { 
         $email_reg = $this->input->post('email_reg');
-
-        // $userid = $this->session->userdata('aileenuser');
-
-        $contition_array = array('is_delete' => '0', 'status' => '1');
-        $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        //$email1=$userdata[0]['email'];
-        // if ($this->input->post('business_profile_id')) {
-        //   //alert("hi1");
-        // $id = $this->input->post('business_profile_id');
-        // $check_result = $this->common->check_unique_avalibility('business_profile', 'contact_email', $email, 'business_profile_id', $id, $condition_array);
-        // } else {
-        //alert("hi");
-        //  if($email1)
-        //  {
-        //      $condition_array = array('is_delete' => '0', 'user_id !=' => $userid);
-        //     $check_result = $this->common->check_unique_avalibility('job_reg', 'email', $email, '', '', $condition_array);
-        //  }
-        // else
-        // {
-
+     
         $condition_array = array('is_delete' => '0', 'status' => '1');
-
-        $check_result = $this->common->check_unique_avalibility('user', 'user_email', $email_reg, '', '', $condition_array);
-
-        // }
+        $check_result = $this->common->check_unique_avalibility('user_login', 'email', $email_reg, '', '', $condition_array);
 
         if ($check_result) {
-            echo 'true';
-            die();
+            echo 'true'; die();
         } else {
-            echo 'false';
-            die();
+            echo 'false'; die();
         }
     }
 
