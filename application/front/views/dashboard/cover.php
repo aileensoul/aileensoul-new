@@ -53,11 +53,9 @@
                 /*margin: 0 auto;*/
                 width:600px;
             }
-
-
         </style>
     </head>
-    <body class="cover ">
+    <body class="cover">
         <?php echo $header; ?>
         <div class="middle-section">
             <!--verify link start-->
@@ -279,10 +277,10 @@
 
 
 
-                                        <?php if ($recrdata[0]['re_step'] != 3) { ?>
+                                        <?php if ($recrdata['re_step'] != 3) { ?>
 
                                             <a title="Register" class="btn-1" id="rec-register-btn" href="<?php echo base_url('recruiter'); ?>">Register</a>
-                                        <?php } elseif ($recrdata[0]['re_status'] == '0' && $recrdata[0]['re_step'] == 3) {
+                                        <?php } elseif ($recrdata['re_status'] == '0' && $recrdata['re_step'] == 3) {
                                             ?>
 
                                             <a class="btn-1" id="rec-active-btn" href="<?php echo base_url('recruiter'); ?>">Active</a>
@@ -315,9 +313,9 @@
                                     <p>Find best job options and connect with recruiters.</p>
                                     <div class="btns">
 
-                                        <?php if ($job[0]['job_step'] != 10) { ?>
+                                        <?php if ($job['job_step'] != 10) { ?>
                                             <a title="Register" class="btn-1" id="job-register-btn" href="<?php echo base_url('job/'); ?>">Register</a>
-                                        <?php } elseif ($job[0]['status'] == '0' && $job[0]['job_step'] == 10) {
+                                        <?php } elseif ($job['status'] == '0' && $job['job_step'] == 10) {
                                             ?>
 
                                             <a class="btn-1" id="job-active-btn" href="<?php echo base_url('job/'); ?>">Active</a>
@@ -350,9 +348,9 @@
                                     <h1><a title="Business Profile" href="<?php echo base_url('business-profile'); ?>">Business Profile</a></h1>
                                     <p>Grow your business network.</p>
                                     <div class="btns">
-                                        <?php if ($busdata[0]['business_step'] != 4) { ?>
+                                        <?php if ($busdata['business_step'] != 4) { ?>
                                             <a title="Register" class="btn-1" id="business-register-btn" href="<?php echo base_url('business-profile'); ?>">Register</a> 
-                                        <?php } elseif ($busdata[0]['status'] == '0' && $busdata[0]['business_step'] == 4) {
+                                        <?php } elseif ($busdata['status'] == '0' && $busdata['business_step'] == 4) {
                                             ?>
 
                                             <a class="btn-1" id="business-active-btn" href="<?php echo base_url('business-profile'); ?>">Active</a>
@@ -384,9 +382,9 @@
                                     <p>Show your art & talent to the world.</p>
                                     <div class="btns">
 
-                                        <?php if ($artdata[0]['art_step'] != 4) { ?>
+                                        <?php if ($artdata['art_step'] != 4) { ?>
                                             <a class="btn-1" id="artistic-register-btn" href="<?php echo base_url('artist'); ?>">Register</a> 
-                                        <?php } elseif ($artdata[0]['status'] == 0 && $artdata[0]['art_step'] == 4) {
+                                        <?php } elseif ($artdata['status'] == 0 && $artdata['art_step'] == 4) {
                                             ?>
 
                                             <a class="btn-1" id="artistic-active-btn" href="<?php echo base_url('artist'); ?>">Active</a>
@@ -422,9 +420,9 @@
                                     <p>Hire freelancers and also find freelance work.</p>
                                     <div class="btns">
 
-                                        <?php if ($hiredata[0]['free_hire_step'] != 3 && $workdata[0]['free_post_step'] != 7) { ?>
+                                        <?php if ($hiredata['free_hire_step'] != 3 && $workdata['free_post_step'] != 7) { ?>
                                             <a title="Register" class="btn-1" id="free-hire-register-btn" href="<?php echo base_url('freelance'); ?>">Register</a>
-                                        <?php } elseif (($workdata[0]['status'] == '0' && $workdata[0]['free_post_step'] == 7) || ($hiredata[0]['free_hire_step'] == 3 && $hiredata[0]['status'] == '0')) {
+                                        <?php } elseif (($workdata['status'] == '0' && $workdata['free_post_step'] == 7) || ($hiredata['free_hire_step'] == 3 && $hiredata['status'] == '0')) {
                                             ?>
 
                                             <a class="btn-1" id="free-hire-active-btn" href="<?php echo base_url('freelance'); ?>">Active</a>
@@ -698,7 +696,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <?php if ($job[0]['job_step'] != 10) { ?>
+                        <?php if ($job['job_step'] != 10) { ?>
                             <a class="btn-4" href="<?php echo base_url('job'); ?>">Register Now</a>
                         <?php } else { ?>
                             <a class="btn-4" href="<?php echo base_url('job'); ?>">Take me in</a>
@@ -735,7 +733,7 @@
                     </div>
                     <div class="modal-footer">
 
-                        <?php if ($recrdata[0]['re_step'] != 3) { ?>
+                        <?php if ($recrdata['re_step'] != 3) { ?>
                             <a class="btn-4" href="<?php echo base_url('recruiter'); ?>">Register Now</a>
                         <?php } else { ?>
                             <a class="btn-4" href="<?php echo base_url('recruiter'); ?>">Take me in</a>
@@ -797,7 +795,7 @@
                     </div>
                     <div class="modal-footer">
 
-                        <?php if ($hiredata[0]['free_hire_step'] != 3 && $workdata[0]['free_post_step'] != 7) { ?>
+                        <?php if ($hiredata['free_hire_step'] != 3 && $workdata['free_post_step'] != 7) { ?>
                             <a class="btn-4" href="<?php echo base_url('freelance'); ?>">Register Now</a>
 
 <?php } else { ?>
@@ -841,7 +839,7 @@
                     </div>
                     <div class="modal-footer">
 
-                        <?php if ($busdata[0]['business_step'] != 4) { ?>
+                        <?php if ($busdata['business_step'] != 4) { ?>
                             <a class="btn-4" href="<?php echo base_url('business-profile'); ?>">Register Now</a>
                         <?php } else { ?>
                             <a class="btn-4" href="<?php echo base_url('business-profile'); ?>">Take me in</a>
@@ -881,9 +879,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <?php if ($artdata[0]['art_step'] != 4) { ?>
+                        <?php if ($artdata['art_step'] != 4) { ?>
                             <a class="btn-4" href="<?php echo base_url('artist'); ?>">Register Now</a>
-                        <?php } elseif ($artdata[0]['status'] == 0 && $artdata[0]['art_step'] == 4) { ?>
+                        <?php } elseif ($artdata['status'] == 0 && $artdata['art_step'] == 4) { ?>
                             <a class="btn-4" href="<?php echo base_url('artist'); ?>">Active</a>
 
                         <?php } else { ?>

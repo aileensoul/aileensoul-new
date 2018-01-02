@@ -1995,7 +1995,7 @@ body.no-login{padding-bottom:0;}
 .no-login .login-frm{padding:5px 0 15px;}
 .no-login .title h1{text-align:center; margin-top:20px; line-height:1.2;}
 .no-login .login-frm .form-group{margin-bottom:15px;}
-.no-login .login form#login_form{padding: 16px 60px 15px;}
+/*.no-login .login form#login_form{padding: 16px 60px 15px;}*/
 .no-login .modal-content{padding:0px;}
 .no-login .right-header{padding-top:3px;}
 .no-login .form-group label.error {

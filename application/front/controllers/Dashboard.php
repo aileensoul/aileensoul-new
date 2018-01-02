@@ -12,30 +12,24 @@ class Dashboard extends MY_Controller {
         parent::__construct();
         $this->load->model('email_model');
         $this->load->model('user_model');
+        $this->load->model('dashboard_model');
         $this->load->library('S3');
         $this->data['title'] = "Grow Business Network | Hiring | Search Jobs | Freelance Work | Artistic | It's Free";
 
-        //This function is there only one time users slug created after remove it start
-//         $this->db->select('user_id,first_name,last_name');
-//         $res = $this->db->get('user')->result();
-//         foreach ($res as $k => $v) {
-//             $data = array('user_slug' => $this->setuser_slug($v->first_name."-". $v->last_name, 'user_slug', 'user'));
-//             $this->db->where('user_id', $v->user_id);
-//             $this->db->update('user', $data);
-//          }
-//        //This function is there only one time users slug created after remove it End
-
-        include('include.php');
+    //    include('include.php');
     }
 
     public function index($id = " ") {
+        $userid = $this->session->userdata('aileenuser');
+        $userdata = $this->data['userdata'] = $this->user_model->getUserData($userid);
+        
+        $this->data['head'] = $this->load->view('head', $this->data, TRUE);
+        $this->data['header'] = $this->load->view('header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
 
         $this->load->library('form_validation');
-        $userid = $this->session->userdata('aileenuser');
-        $userdata = $this->data['userdata'] = $this->user_model->getUserData($userid);
-
+        
         if ($userdata[0]['user_slider'] == 1) {
             $data = array(
                 'user_slider' => '0'
@@ -47,25 +41,12 @@ class Dashboard extends MY_Controller {
 
             $updatdata = $this->common->update_data($data, 'user_info', 'user_id', $userid);
         }
-
-        $contition_array = array('user_id' => $userid);
-        $this->data['job'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('user_id' => $userid);
-        $recrdata = $this->data['recrdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('user_id' => $userid);
-        $hiredata = $this->data['hiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('user_id' => $userid);
-        $workdata = $this->data['workdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('user_id' => $userid, 'is_deleted' => '0');
-        $this->data['busdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step,status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('user_id' => $userid, 'is_delete' => '0');
-        $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_step,status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        //echo "<pre>"; print_r($this->data['artdata']); die();
+        $this->data['job'] = $this->dashboard_model->jobRegData($userid);
+        $recrdata = $this->data['recrdata'] = $this->dashboard_model->recRegData($userid);
+        $hiredata = $this->data['hiredata'] = $this->dashboard_model->hireRegData($userid);
+        $workdata = $this->data['workdata'] = $this->dashboard_model->workRegData($userid);
+        $this->data['busdata'] = $this->dashboard_model->busRegData($userid);
+        $this->data['artdata'] = $this->dashboard_model->artRegData($userid);
 
         $this->data['title'] = 'Profiles  - Aileensoul';
         $this->load->view('dashboard/cover', $this->data);
