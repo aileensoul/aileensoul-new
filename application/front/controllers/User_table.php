@@ -16,7 +16,7 @@ $this->load->library('S3');
 
     public function index() {
         $contition_array = array();
-        $users_data = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_id,user_image,modified_date,edit_ip,profile_background,profile_background_main,user_email,user_password,is_delete,status,password_code', $sortby = '', $orderby = '', $limit = '2000', $offset = '2000', $join_str = array(), $groupby = '');
+        $users_data = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_id,user_image,modified_date,edit_ip,profile_background,profile_background_main,user_email,user_password,is_delete,status,password_code', $sortby = '', $orderby = '', $limit = '2000', $offset = '14000', $join_str = array(), $groupby = '');
         foreach($users_data as $user){
             $insert_data['user_id'] = $user['user_id'];
             $insert_data['user_image'] = $user['user_image'];

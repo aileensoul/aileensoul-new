@@ -64,8 +64,8 @@ class MY_Controller extends CI_Controller {
         ini_set('gd.jpeg_ignore_warning', 1);
 
         $user_id = $this->data['userid'];
-        $condition_array = array('status' => '1');
-        $this->data['loged_in_user'] = $this->common->select_data_by_id('user', 'user_id', $user_id, 'user_image', $condition_array);
+        $condition_array = array();
+        $this->data['loged_in_user'] = $this->common->select_data_by_id('user_info', 'user_id', $user_id, 'user_image', $condition_array);
         date_default_timezone_set('Asia/Calcutta');
     }
 

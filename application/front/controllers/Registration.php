@@ -10,6 +10,7 @@ class Registration extends CI_Controller {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('email_model');
+        $this->load->model('user_model');
         //AWS access info start
         $this->load->library('S3');
         //AWS access info end

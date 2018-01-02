@@ -11,9 +11,10 @@ class Dashboard extends MY_Controller {
 
         parent::__construct();
         $this->load->model('email_model');
+        $this->load->model('user_model');
         $this->load->library('S3');
         $this->data['title'] = "Grow Business Network | Hiring | Search Jobs | Freelance Work | Artistic | It's Free";
-       
+
         //This function is there only one time users slug created after remove it start
 //         $this->db->select('user_id,first_name,last_name');
 //         $res = $this->db->get('user')->result();
@@ -23,25 +24,28 @@ class Dashboard extends MY_Controller {
 //             $this->db->update('user', $data);
 //          }
 //        //This function is there only one time users slug created after remove it End
-        
+
         include('include.php');
     }
 
     public function index($id = " ") {
-       
-               $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
-               $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
+        $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
 
         $this->load->library('form_validation');
         $userid = $this->session->userdata('aileenuser');
-        $userdata = $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
+        $userdata = $this->data['userdata'] = $this->user_model->getUserData($userid);
+
         if ($userdata[0]['user_slider'] == 1) {
             $data = array(
-                'user_slider' => '0',
-                'modified_date' => date('Y-m-d', time())
+                'user_slider' => '0'
+            );
+            $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
+            $data = array(
+                'modify_date' => date('Y-m-d H:i:s', time())
             );
 
-            $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
+            $updatdata = $this->common->update_data($data, 'user_info', 'user_id', $userid);
         }
 
         $contition_array = array('user_id' => $userid);
@@ -63,7 +67,7 @@ class Dashboard extends MY_Controller {
         $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_step,status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo "<pre>"; print_r($this->data['artdata']); die();
 
-         $this->data['title'] = 'Profiles  - Aileensoul';
+        $this->data['title'] = 'Profiles  - Aileensoul';
         $this->load->view('dashboard/cover', $this->data);
     }
 
@@ -186,10 +190,10 @@ class Dashboard extends MY_Controller {
             $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
         }
         //PROGRESSBAR JOB END
-        if($this->session->userdata('searchkeyword')){
+        if ($this->session->userdata('searchkeyword')) {
             $this->session->unset_userdata('searchkeyword');
         }
-         if($this->session->userdata('searchplace')){
+        if ($this->session->userdata('searchplace')) {
             $this->session->unset_userdata('searchplace');
         }
         //LOGOUT START       
@@ -198,33 +202,31 @@ class Dashboard extends MY_Controller {
 
             $this->session->unset_userdata('aileenuser');
             $this->session->unset_userdata('aileenuser_slug');
-              $this->clear_all_cache();
-              $this->session->sess_destroy();
+            $this->clear_all_cache();
+            $this->session->sess_destroy();
             redirect(base_url(), 'refresh');
         }
         //LOGOUT END  
     }
-/**
- * Clears all cache from the cache directory
- */
-public function clear_all_cache()
-{
-    $CI =& get_instance();
-$path = $CI->config->item('cache_path');
 
-    $cache_path = ($path == '') ? APPPATH.'cache/' : $path;
+    /**
+     * Clears all cache from the cache directory
+     */
+    public function clear_all_cache() {
+        $CI = & get_instance();
+        $path = $CI->config->item('cache_path');
 
-    $handle = opendir($cache_path);
-    while (($file = readdir($handle))!== FALSE) 
-    {
-        //Leave the directory protection alone
-        if ($file != '.htaccess' && $file != 'index.html')
-        {
-           @unlink($cache_path.'/'.$file);
+        $cache_path = ($path == '') ? APPPATH . 'cache/' : $path;
+
+        $handle = opendir($cache_path);
+        while (($file = readdir($handle)) !== FALSE) {
+            //Leave the directory protection alone
+            if ($file != '.htaccess' && $file != 'index.html') {
+                @unlink($cache_path . '/' . $file);
+            }
         }
+        closedir($handle);
     }
-    closedir($handle);
-}
 
 // cover pic controller
     public function ajaxpro() {
@@ -482,7 +484,7 @@ $path = $CI->config->item('cache_path');
             $main_user = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage = '<img src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
             $userimage .= ' <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
-                                                <img src="' . base_url('assets/img/cam.png?ver='.time()) . '">Update Profile Picture</a>';
+                                                <img src="' . base_url('assets/img/cam.png?ver=' . time()) . '">Update Profile Picture</a>';
         }
 
         $userimagehead = '<img class="img-circle" height="50" width="50" alt="Smiley face" src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
@@ -597,12 +599,12 @@ $path = $CI->config->item('cache_path');
 //FOR PROGRESSBAR COUNT COMMON FUNCTION END
 
     public function header_all_dropdown_list() {
-        $return_html = '<ul><li> <div class="all-down"> <a href="'. base_url('artist') .'"> <div class="all-img"> <img alt="artist-profile" src="'. base_url('assets/img/i5.jpg').'"> </div><div class="text-all"> Artistic Profile </div></a> </div></li><li> <div class="all-down"> <a href="'. base_url('business-profile') .'"> <div class="all-img"> <img alt="business-profile" src="'. base_url('assets/img/i4.jpg') .'"> </div><div class="text-all"> Business Profile </div></a> </div></li><li><div class="all-down"> <a href="'.base_url('job').'"> <div class="all-img"> <img alt="job-profile" src="'.base_url('assets/img/i1.jpg') .'"> </div><div class="text-all"> Job Profile </div></a> </div></li><li> <div class="all-down"> <a href="'.base_url('recruiter').'"> <div class="all-img"> <img alt="Recruiter-profile" src="'. base_url('assets/img/i2.jpg') .'"> </div><div class="text-all"> Recruiter Profile </div></a> </div></li><li> <div class="all-down"> <a href="'. base_url('freelance') .'"> <div class="all-img"> <img alt="Freelance-profile" src="'. base_url('assets/img/i3.jpg') .'"> </div><div class="text-all"> Freelance Profile </div></a> </div></li></ul>';
-        
+        $return_html = '<ul><li> <div class="all-down"> <a href="' . base_url('artist') . '"> <div class="all-img"> <img alt="artist-profile" src="' . base_url('assets/img/i5.jpg') . '"> </div><div class="text-all"> Artistic Profile </div></a> </div></li><li> <div class="all-down"> <a href="' . base_url('business-profile') . '"> <div class="all-img"> <img alt="business-profile" src="' . base_url('assets/img/i4.jpg') . '"> </div><div class="text-all"> Business Profile </div></a> </div></li><li><div class="all-down"> <a href="' . base_url('job') . '"> <div class="all-img"> <img alt="job-profile" src="' . base_url('assets/img/i1.jpg') . '"> </div><div class="text-all"> Job Profile </div></a> </div></li><li> <div class="all-down"> <a href="' . base_url('recruiter') . '"> <div class="all-img"> <img alt="Recruiter-profile" src="' . base_url('assets/img/i2.jpg') . '"> </div><div class="text-all"> Recruiter Profile </div></a> </div></li><li> <div class="all-down"> <a href="' . base_url('freelance') . '"> <div class="all-img"> <img alt="Freelance-profile" src="' . base_url('assets/img/i3.jpg') . '"> </div><div class="text-all"> Freelance Profile </div></a> </div></li></ul>';
+
         echo json_encode(array('return_html' => $return_html));
     }
-    
-     // CREATE SLUG START
+
+    // CREATE SLUG START
     public function setuser_slug($slugname, $filedname, $tablename, $notin_id = array()) {
         $slugname = $oldslugname = $this->create_slug($slugname);
         $i = 1;
