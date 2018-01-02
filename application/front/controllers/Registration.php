@@ -73,7 +73,6 @@ class Registration extends CI_Controller {
     }
 
     public function reg_insert() { 
-        echo '<pre>'; print_r($_POST); die();
 
         $date = $this->input->post('selday');
         $month = $this->input->post('selmonth');
@@ -103,8 +102,8 @@ class Registration extends CI_Controller {
         
 
         
-        $contition_array = array('user_email' => $email_reg, 'is_delete' => '0', 'status' => '1');
-        $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('email' => $email_reg, 'is_delete' => '0', 'status' => '1');
+        $userdata = $this->common->select_data_by_condition('user_login', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
        
            
             if ($this->form_validation->run() == FALSE) {
@@ -117,7 +116,6 @@ class Registration extends CI_Controller {
                         'user_gender' => $this->input->post('selgen'),
                         'user_agree' => '1',
                         'created_date' => date('Y-m-d h:i:s', time()),
-                        'edit_ip' => $ip,
                         'verify_date' => date('Y-m-d h:i:s', time()),
                         'user_verify' => '0',
                         'user_slider' => '1',
@@ -128,8 +126,8 @@ class Registration extends CI_Controller {
                     $user_insert = $this->common->insert_data_getid($user_data, 'user');
                     if($user_insert) {
                      $user_login_data = array(
-                        'user_email' => $this->input->post('email_reg'),
-                        'user_password' => md5($this->input->post('password_reg')),
+                        'email' => $this->input->post('email_reg'),
+                        'password' => md5($this->input->post('password_reg')),
                         'is_delete' => '0',
                         'status' => '1',
                         'user_id' => $user_insert,
