@@ -498,6 +498,7 @@ header h2{
 .login .btn1{
     width:100%
 }
+.modal-open .btn1{padding: 5px 20px;font-size: 16px !important;}
 .fancybox-slide>*{
     font-size:24px;
     padding:45px!important
@@ -1596,7 +1597,7 @@ input.form-control{
     border:1px solid #dcdcdc!important
 }
 .main_otp_box_middle_submit input[type=password],.main_otp_box_middle_submit input[type=text]{
-    width:30%
+    width:50%
 }
 .main_otp_box_middle_submit input[type=password]::placeholder,.main_otp_box_middle_submit input[type=text]::placeholder{
     color:#d9d9d9
@@ -1964,9 +1965,10 @@ input:-webkit-autofill,input:-webkit-autofill:active,input:-webkit-autofill:focu
     text-shadow:2px 2px #cbcbcb
 }
 .contact header{
-    border-bottom:1px solid #d9d9d9;
-    background:rgba(255,255,255,.4);
-    position:absolute
+        border-bottom:1px solid #d9d9d9;
+        background:url(../img/mob-about-bg.jpg) rgba(255,255,255,.4)!important;
+        background-size:100%!important;
+        position:absolute;
 }
 .contact .inner-form{
     float:left;
@@ -3041,6 +3043,8 @@ header.profile-header .logo a{
     #onload-Modal{
         display:none!important
     }
+    .main_otp_box_middle_submit input[type=password],.main_otp_box_middle_submit input[type=text]{
+    width:50%
 }
 @media screen and (max-width:640px){
     .btns .btn-4{
@@ -3282,6 +3286,8 @@ header.profile-header .logo a{
     .login .form-group select.day,.login .form-group select.month{
         width:60px
     }
+    .main_otp_box_middle_submit input[type=password],.main_otp_box_middle_submit input[type=text]{
+    width:100%}
 }
 @media screen and (max-width:320px){
     .por_content ul li{
