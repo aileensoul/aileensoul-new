@@ -47,15 +47,11 @@ if ($this->uri->segment(2) == 'jobpost') {
     $postid = $slugdata[0];
     $this->data['recliveid'] = $userid = $slugdata[1];
 
-    $contition_array = array('user_id' => $userid, 'is_delete' => '0', 're_status' => '1');
-    $data = "re_comp_name";
-    $recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    
+    $recdata = $this->recruiter_model->getRecruiterCompanyname($userid);
 
-    $data = 'post_name,max_year,,min_year,fresher,city,state';
-    $contition_array = array('post_id' => $postid, 'status' => '1', 'rec_post.is_delete' => '0', 'rec_post.user_id' => $userid);
-    $postdata = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
+    $postdata = $this->recruiter_model->getRecruiterPostById($postid);
+echo '<pre>'; print_r($postdata); die();
     if (($postdata[0]['min_year'] != '0' || $postdata[0]['max_year'] != '0') && ($postdata[0]['fresher'] == 1)) {
         $exp_descp = $this->data['exp_descp'] = $postdata[0]['min_year'] . ' to ' . $postdata[0]['max_year'] . ' Years';
     } else {
