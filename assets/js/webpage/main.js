@@ -266,7 +266,7 @@ $(document).ready(function () {
                 $('#registration_ajax_load').show();
             },
             success: function (response)
-            {
+            { 
                 var userid = response.userid;
                 if (response.okmsg == "ok") {
                     $("#btn-register").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');

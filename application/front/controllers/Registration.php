@@ -29,7 +29,8 @@ class Registration extends CI_Controller {
 
     //Show main registratin page insert Start
     public function index() {
-        
+     
+        $this->load->view('registration/registration', $this->data);
     }
 
     public function verify($id = " ") {
@@ -112,15 +113,15 @@ class Registration extends CI_Controller {
             }
         }
         //for getting last insrert id
-        if ($insert_id) {
-            $user_slug = $this->user_model->getUserSlugById($userinfo[0]['user_id']);
-            $this->session->set_userdata('aileenuser', $insert_id);
+        if ($user_insert) { 
+            $user_slug = $this->user_model->getUserSlugById($user_insert);
+            $this->session->set_userdata('aileenuser', $user_insert);
             $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
             $datavl = "ok";
             echo json_encode(
                     array(
                         "okmsg" => $datavl,
-                        "userid" => $insert_id,
+                        "userid" => $user_insert,
                         "userslug" => $user[0]['user_slug'],
             ));
         } else {
