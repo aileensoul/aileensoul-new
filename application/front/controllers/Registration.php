@@ -574,7 +574,7 @@ class Registration extends CI_Controller {
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
 
-        $contition_array = array('user_email' => $email_login, 'is_delete' => '0');
+        $contition_array = array('email' => $email_login, 'is_delete' => '0');
         $result = $this->common->select_data_by_condition('user_login', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $userinfo = $this->common->check_login($email_login, $password_login);

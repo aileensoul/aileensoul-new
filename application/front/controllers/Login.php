@@ -35,8 +35,8 @@ class Login extends CI_Controller {
         }
         if ($this->input->get()) {
             if ($_GET['lwc'] != " ") {
-                $emaildata = $this->common->select_data_by_id('user_login', 'user_id', $_GET['lwc'], $data = 'user_email', $join_str = array());
-                $this->data['email'] = $emaildata[0]['user_email'];
+                $emaildata = $this->common->select_data_by_id('user_login', 'user_id', $_GET['lwc'], $data = 'email', $join_str = array());
+                $this->data['email'] = $emaildata[0]['email'];
                 if ($emaildata) {
                     $this->session->set_flashdata('errorpass', '<label for="email_login" class="error">Please enter a valid password.</label>');
                 } else {

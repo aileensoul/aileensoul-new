@@ -13,7 +13,7 @@ class Logins extends CI_Model {
         if (!empty($result)) {
             // if ((strtolower($result[0]['user_name']) == strtolower($user_name) || $result[0]['user_email'] == $user_name) && $result[0]['user_password'] == md5($user_password)) {
 
-            if (($result[0]['user_email'] == $user_name) && $result[0]['user_password'] == md5($user_password)) {
+            if (($result[0]['email'] == $user_name) && $result[0]['password'] == md5($user_password)) {
                 return $result;
             } else {
                 return 0;
