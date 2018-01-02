@@ -2,24 +2,19 @@
 
 class Logins extends CI_Model {
 
-    function check_authentication($user_name, $user_password) {
-        $this->db->select('*');
-        $this->db->where('password', md5($user_password));
+    function check_login($user_name, $user_password) {
+        $this->db->select("user_id,email,password,status");
+        $this->db->where("email", $user_name);
+        $this->db->where("password", md5($user_password));
         $this->db->where('is_delete', '0');
-        $this->db->where('status', '1');
-        $this->db->like('email', $user_name);
-        $result = $this->db->get('user_login')->result_array();
-
-        if (!empty($result)) {
-            // if ((strtolower($result[0]['user_name']) == strtolower($user_name) || $result[0]['user_email'] == $user_name) && $result[0]['user_password'] == md5($user_password)) {
-
-            if (($result[0]['email'] == $user_name) && $result[0]['password'] == md5($user_password)) {
-                return $result;
-            } else {
-                return 0;
-            }
+        $this->db->from("user_login");
+        $this->db->limit(1);
+        $query = $this->db->get();
+        if ($query->num_rows() == 1) {
+            $result = $query->row_array();
+            return $result;
         } else {
-            return 0;
+            return array();
         }
     }
 

@@ -25,7 +25,9 @@ class Main extends CI_Controller {
         if ($this->session->userdata('aileenuser')) {
             $userid = $this->session->userdata('aileenuser');
             $user_slug = $this->user_model->getUserSlugById($userid);
-            redirect('profiles/' . $user_slug['user_slug'], 'refresh');
+            $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
+            $userslug = $this->session->userdata('aileenuser_slug');
+            redirect('profiles/' . $userslug, 'refresh');
         } else {
             $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
             $ipaddress = trim($this->input->ip_address());

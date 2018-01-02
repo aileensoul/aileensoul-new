@@ -71,14 +71,13 @@ $(document).ready(function () {
             beforeSend: function ()
             {
                 $("#error").fadeOut();
-                //$(".btn1").html('Login');
                 $('#login_ajax_load').show();
             },
             success: function (response)
             {
                 if (response.data == "ok") {
                     $("#btn-login").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                    window.location = base_url + "profiles/" + user_slug;
+                    window.location = base_url + "profiles/" + response.user_slug;
                 } else if (response.data == "password") {
                     var id = response.id;
                     window.location = base_url + "login?error_msg=2&lwc=" + id;
