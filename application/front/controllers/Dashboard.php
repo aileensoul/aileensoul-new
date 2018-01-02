@@ -238,7 +238,7 @@ class Dashboard extends MY_Controller {
         $userdata = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
 
         $email = $userdata[0]['user_email'];
-        $toemail = "raval.khyati13@gmail.com";
+        $toemail = "ankit.aileensoul@gmail.com";
 
         $msg = "Hey !" . $userdata[0]['user_name'] . "<br/>";
         $msg = "hi falgui";
@@ -251,19 +251,6 @@ class Dashboard extends MY_Controller {
             die();
         }
     }
-
-// resend email for account verify end 
-    public function template() { // echo "hoi"; die();
-        $mail = $this->email_model->sendEmail();
-        if ($mail) {
-            echo 1;
-            die();
-        } else {
-            echo 2;
-            die();
-        }
-    }
-
     public function closever() {
 
         $userid = $this->session->userdata('aileenuser');
