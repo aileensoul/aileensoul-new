@@ -29,7 +29,7 @@ class Registration extends CI_Controller {
 
     //Show main registratin page insert Start
     public function index() {
-
+        
     }
 
     public function verify($id = " ") {
@@ -40,24 +40,22 @@ class Registration extends CI_Controller {
             'user_verify' => '1',
             'modified_date' => date('Y-m-d h:i:s', time())
         );
-        //echo "<pre>"; print_r($data); die();
-
+       
         $updatedata = $this->common->update_data($data, 'user', 'user_id', $id);
         if ($updatedata) {
             $this->session->set_userdata('aileenuser', $id);
             $this->session->set_userdata('aileenuser_slug', $user[0]['user_slug']);
             redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
-            // echo "hi";die();
         }
     }
 
-    public function reg_insert() { 
+    public function reg_insert() {
 
 
         if ($this->session->userdata('fbuser')) {
             $this->session->unset_userdata('fbuser');
         }
-        
+
         //form validation rule for registration
 
         $ip = $this->input->ip_address();
@@ -70,67 +68,65 @@ class Registration extends CI_Controller {
         $this->form_validation->set_rules('selmonth', 'month', 'required');
         $this->form_validation->set_rules('selyear', 'year', 'required');
         $this->form_validation->set_rules('selgen', 'Gender', 'required');
-        
 
-        
+
+
         $email_reg = $this->input->post('email_reg');
         $contition_array = array('email' => $email_reg, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('user_login', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-       
-           
-            if ($this->form_validation->run() == FALSE) {
-                $this->load->view('registration/registration');
-            } else {
-                
-           if($userdata) {     
-           } else {
-        
-                    $user_data = array(
-                        'first_name' => $this->input->post('first_name'),
-                        'last_name' => $this->input->post('last_name'),
-                        'user_dob' => $this->input->post('selday') . '-' . $this->input->post('selmonth') . '-' . $this->input->post('selyear'),
-                        'user_gender' => $this->input->post('selgen'),
-                        'user_agree' => '1',
-                        'created_date' => date('Y-m-d h:i:s', time()),
-                        'verify_date' => date('Y-m-d h:i:s', time()),
-                        'user_verify' => '0',
-                        'user_slider' => '1',
-                        'user_slug' => $this->setuser_slug($this->input->post('first_name') . '-' . $this->input->post('last_name'), 'user_slug', 'user'),
-                    );
 
-                      
-                    $user_insert = $this->common->insert_data_getid($user_data, 'user');
-                    if($user_insert) {
-                     $user_login_data = array(
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('registration/registration');
+        } else {
+
+            if ($userdata) {
+                
+            } else {
+
+                $user_data = array(
+                    'first_name' => $this->input->post('first_name'),
+                    'last_name' => $this->input->post('last_name'),
+                    'user_dob' => $this->input->post('selday') . '-' . $this->input->post('selmonth') . '-' . $this->input->post('selyear'),
+                    'user_gender' => $this->input->post('selgen'),
+                    'user_agree' => '1',
+                    'created_date' => date('Y-m-d h:i:s', time()),
+                    'verify_date' => date('Y-m-d h:i:s', time()),
+                    'user_verify' => '0',
+                    'user_slider' => '1',
+                    'user_slug' => $this->setuser_slug($this->input->post('first_name') . '-' . $this->input->post('last_name'), 'user_slug', 'user'),
+                );
+
+
+                $user_insert = $this->common->insert_data_getid($user_data, 'user');
+                if ($user_insert) {
+                    $user_login_data = array(
                         'email' => $this->input->post('email_reg'),
                         'password' => md5($this->input->post('password_reg')),
                         'is_delete' => '0',
                         'status' => '1',
                         'user_id' => $user_insert,
                     );
-                   $user_login_insert = $this->common->insert_data_getid($user_login_data, 'user_login');
+                    $user_login_insert = $this->common->insert_data_getid($user_login_data, 'user_login');
+                }
             }
-                    
-                }
-    }
-                //for getting last insrert id
-                if ($insert_id) {
-                    $user_slug = $this->user_model->getUserSlugById($userinfo[0]['user_id']);
-                    $this->session->set_userdata('aileenuser', $insert_id);
-                    $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
-                    $datavl = "ok";
-                    echo json_encode(
-                            array(
-                                "okmsg" => $datavl,
-                                "userid" => $insert_id,
-                                "userslug" => $user[0]['user_slug'],
-                    ));
-                } else {
-                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                    redirect('registration', 'refresh');
-                }
-           
-        
+        }
+        //for getting last insrert id
+        if ($insert_id) {
+            $user_slug = $this->user_model->getUserSlugById($userinfo[0]['user_id']);
+            $this->session->set_userdata('aileenuser', $insert_id);
+            $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
+            $datavl = "ok";
+            echo json_encode(
+                    array(
+                        "okmsg" => $datavl,
+                        "userid" => $insert_id,
+                        "userslug" => $user[0]['user_slug'],
+            ));
+        } else {
+            $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+            redirect('registration', 'refresh');
+        }
     }
 
     public function sendmail() {
@@ -181,16 +177,18 @@ class Registration extends CI_Controller {
     //Show main registratin page insert End
 //Registrtaion email already exist checking controller start
 
-    public function check_email() { 
+    public function check_email() {
         $email_reg = $this->input->post('email_reg');
-     
+
         $condition_array = array('is_delete' => '0', 'status' => '1');
         $check_result = $this->common->check_unique_avalibility('user_login', 'email', $email_reg, '', '', $condition_array);
 
         if ($check_result) {
-            echo 'true'; die();
+            echo 'true';
+            die();
         } else {
-            echo 'false'; die();
+            echo 'false';
+            die();
         }
     }
 
@@ -291,8 +289,8 @@ class Registration extends CI_Controller {
     //User Name Checking with ajax End
 //Change Password Controller Start
     public function changepassword() {
-        $this->data['title'] = 'Setting | Change Password  - Aileensoul'; 
-        $this->load->view('registration/changepassword',$this->data);
+        $this->data['title'] = 'Setting | Change Password  - Aileensoul';
+        $this->load->view('registration/changepassword', $this->data);
     }
 
     public function changepassword_insert() {    // echo '<pre>'; print_r($_POST); die();
@@ -513,7 +511,6 @@ class Registration extends CI_Controller {
         echo "yes";
     }
 
-    
     // for old password match start
 
     public function check_password() {

@@ -63,16 +63,16 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <?php echo $business_common_profile; ?>
             <div class="text-center tab-block">
                 <div class="container mob-inner-page">
-                    <a href="javascript:void(0);" onclick="open_profile();">
+                    <a href="javascript:void(0);" onclick="register_profile();">
                         Photo
                     </a>
-                    <a href="javascript:void(0);" onclick="open_profile();">
+                    <a href="javascript:void(0);" onclick="register_profile();">
                         Video
                     </a>
-                    <a href="javascript:void(0);" onclick="open_profile();">
+                    <a href="javascript:void(0);" onclick="register_profile();">
                         Audio
                     </a>
-                    <a href="javascript:void(0);" onclick="open_profile();">
+                    <a href="javascript:void(0);" onclick="register_profile();">
                         PDf
                     </a>
                 </div>
@@ -85,7 +85,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         <div class="full-box-module business_data">
                             <div class="profile-boxProfileCard  module">
                                 <div class="head_details1">
-                                    <span><a href="javascript:void(0);" onclick="open_profile();"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
+                                    <span><a href="javascript:void(0);" onclick="register_profile();"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
                                     </span>      
                                 </div>
                                 <table class="business_data_table">
@@ -145,7 +145,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </table>
                             </div>
                         </div>
-                        <a href="javascript:void(0);" onclick="open_profile();">
+                        <a href="javascript:void(0);" onclick="register_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module buisness_he_module" >
                                     <div class="head_details">
@@ -156,7 +156,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                         </a>
-                        <a href="javascript:void(0);" onclick="open_profile();">
+                        <a href="javascript:void(0);" onclick="register_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
                                     <table class="business_data_table">
@@ -169,7 +169,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                         </a>
-                        <a href="javascript:void(0);" onclick="open_profile();">
+                        <a href="javascript:void(0);" onclick="register_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
                                     <div class="head_details1">
@@ -182,7 +182,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                         </a>
-                        <a href="javascript:void(0);" onclick="open_profile();">
+                        <a href="javascript:void(0);" onclick="register_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module buisness_he_module" >
                                     <div class="head_details">
@@ -478,11 +478,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 var no_business_post_html = '<?php echo $no_business_post_html ?>';
         </script>
         <script>
-            function open_profile() {
-                register_profile();
-            }
-            function login_profile() {
-                $('#register').modal('hide');
+            // function open_profile() {
+            //     register_profile();
+            // }
+            function login_profile() { 
+                //$('#register').modal('hide');
                 $('#login').modal('show');
             }
             function register_profile() {
