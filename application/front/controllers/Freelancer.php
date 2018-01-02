@@ -4907,8 +4907,9 @@ class Freelancer extends MY_Controller {
                     }
 
                     if ($postliveid) {
-
+                        $this->session->set_flashdata('success', 'Applied Sucessfully ......');
                         redirect('freelance-work/home/live-post/', refresh);
+                        
                     } else {
                         redirect('freelance-work/home', refresh);
                     }
@@ -4916,6 +4917,7 @@ class Freelancer extends MY_Controller {
 
                     //   $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     if ($postliveid) {
+                        $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                         redirect('freelance-work/registation' . $postliveid, refresh);
                     } else {
                         redirect('freelance-work/registation', refresh);

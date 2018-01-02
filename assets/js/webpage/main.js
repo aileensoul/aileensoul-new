@@ -65,7 +65,7 @@ $(document).ready(function () {
         $(".btn1").addClass("btn1active");
         $.ajax({
             type: 'POST',
-            url: base_url + 'registration/check_login',
+            url: base_url + 'login/check_login',
             data: post_data,
             dataType: "json",
             beforeSend: function ()

@@ -5,6 +5,24 @@ if (!defined('BASEPATH'))
 
 class User_model extends CI_Model {
 
+    public function getUserData($user_id = '') {
+        $this->db->select("u.user_id,u.first_name,u.last_name,u.user_dob,u.user_gender,u.user_agree,u.created_date,u.verify_date,u.user_verify,u.user_slider,u.user_slug,ui.user_image,ui.modify_date,ui.edit_ip,ui.profile_background,ui.profile_background_main,ul.email,ul.password,ul.is_delete,ul.status,ul.password_code")->from("user u");
+        $this->db->join('user_info ui', 'ui.user_id = u.user_id');
+        $this->db->join('user_login ul', 'ul.user_id = u.user_id');
+        $this->db->where("u.user_id =" . $user_id);
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+
+    public function getUserSlugById($user_id = '') {
+        $this->db->select("u.user_slug")->from("user u");
+        $this->db->where("u.user_id =" . $user_id);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+
     public function getCountry() {
         $this->db->select('country_id,country_name')->from('countries');
         $this->db->where(array('status' => '1'));
@@ -38,16 +56,6 @@ class User_model extends CI_Model {
         $this->db->where(array('status' => '1', 'is_delete' => '0'));
         $query = $this->db->get();
         return $query->result_array();
-    }
-
-    public function getUserData($user_id = '') {
-        $this->db->select("u.user_id,u.first_name,u.last_name,u.user_dob,u.user_gender,u.user_agree,u.created_date,u.verify_date,u.user_verify,u.user_slider,u.user_slug,ui.user_image,ui.modify_date,ui.edit_ip,ui.profile_background,ui.profile_background_main,ul.email,ul.password,ul.is_delete,ul.status,ul.password_code")->from("user u");
-        $this->db->join('user_info ui', 'ui.user_id = u.user_id');
-        $this->db->join('user_login ul', 'ul.user_id = u.user_id');
-        $this->db->where("u.user_id =".$user_id);
-        $query = $this->db->get();
-        $result_array = $query->result_array();
-        return $result_array;
     }
 
 }
