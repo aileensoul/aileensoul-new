@@ -22,6 +22,14 @@ class User_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array;
     }
+    
+    public function getUserPasswordById($user_id = '') {
+        $this->db->select("ul.password")->from("user_login ul");
+        $this->db->where("ul.user_id =" . $user_id);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
 
     public function getCountry() {
         $this->db->select('country_id,country_name')->from('countries');
@@ -61,6 +69,14 @@ class User_model extends CI_Model {
     public function getUserByEmail($user_email = '') {
         $this->db->select("ul.user_id")->from("user_login ul");
         $this->db->where(array('ul.email' => $user_email,'is_delete' => '0', 'status' => '1'));
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+    
+    public function getUserPassword($userid = '',$oldpassword = '') {
+        $this->db->select("ul.user_id")->from("user_login ul");
+        $this->db->where(array('ul.user_id' => $userid,'password' => $oldpassword));
         $query = $this->db->get();
         $result_array = $query->row_array();
         return $result_array;

@@ -108,6 +108,13 @@ class Registration extends CI_Controller {
                         'user_id' => $user_insert,
                     );
                     $user_login_insert = $this->common->insert_data_getid($user_login_data, 'user_login');
+              
+                    $user_info_data = array(
+                        'user_id' => $user_insert,
+                    );
+                    $user_info_insert = $this->common->insert_data_getid($user_info_data, 'user_info');
+              
+                    
                 }
             }
         }
@@ -210,15 +217,10 @@ class Registration extends CI_Controller {
         $newpassword = $this->input->post('password1');
 
         if ($this->form_validation->run() == FALSE) {
-
             $this->load->view('registration/changepassword');
         } else {
-            $contition_array = array(
-                'user_id' => $userid,
-                'user_password' => md5($oldpassword)
-            );
-            $result = $this->data['result'] = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+            
+            $result = $this->user_model->getUserPassword($userid,md5($oldpassword));
 
             if ($result) {
 
@@ -229,10 +231,10 @@ class Registration extends CI_Controller {
                     $this->load->view('registration/changepassword', $data);
                 } else {
                     $data = array(
-                        'user_password' => md5($newpassword)
+                        'password' => md5($newpassword)
                     );
 
-                    $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
+                    $updatdata = $this->common->update_data($data, 'user_login', 'user_id', $userid);
                     if ($updatdata) {
 
                         redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
@@ -423,12 +425,9 @@ class Registration extends CI_Controller {
         $oldpassword = md5($this->input->post('oldpassword'));
 
         $userid = $this->session->userdata('aileenuser');
-
-        $contition_array = array('is_delete' => '0', 'status' => '1', 'user_id' => $userid);
-        $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        //echo "<pre>"; print_r($userdata); die();
-
-        if ($userdata[0]['user_password'] == $oldpassword) {
+        $userdata  = $this->user_model->getUserPasswordById($userid);
+     
+        if ($userdata['password'] == $oldpassword) {
             echo 'true';
             die();
         } else {
