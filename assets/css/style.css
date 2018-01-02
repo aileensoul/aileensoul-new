@@ -634,6 +634,7 @@ fieldset .add_post_btns {
 }
 
 .has-error input, input.error, select.error, .has-error textarea, textarea.error {border: 1px solid #ff0000 !important;}
+.no-login .has-error input, input.error, select.error, .has-error textarea, textarea.error {border-bottom:1px solid #ff0000 !important;}
 .error-msg input {
     border: 1px solid #f00;
 }
