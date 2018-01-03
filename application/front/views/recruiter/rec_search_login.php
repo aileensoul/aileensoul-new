@@ -155,12 +155,12 @@
         <!-- model for forgot password start -->
         <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                <div class="modal-content login-frm">
+                    <button type="button" class="modal-close" data-dismiss="modal" onclick="forgot_close();">&times;</button>       
                     <div class="modal-body">
-                        <div class="col-sm-12 right-main">
+                        <div class="right-main">
                             <div class="right-main-inner">
-                                <div class="login-frm">
+                                <div class="">
                                         <div class="title">
                                             <h1 class="ttc tlh2">Forgot Password</h1>
                                         </div>
@@ -180,8 +180,8 @@
                                             <div id="errorlogin"></div> 
                                         </div>
                                         
-                                        <p class="pt-20 ">
-                                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" /> 
+                                        <p class="pt-20 text-center">
+                                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin-top:15px;" /> 
                                         </p>
 
                                         </form>
@@ -323,8 +323,7 @@
  <script>
           var base_url = '<?php echo base_url(); ?>';
           var skill = '<?php echo  $this->input->get('skills'); ?>';
-          var place = '<?php echo  $this->input->get('searchplace'); ?>';
-                                              
+          var place = '<?php echo  $this->input->get('searchplace'); ?>';                         
 </script>
 
  <?php

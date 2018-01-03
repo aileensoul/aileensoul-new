@@ -1,3 +1,9 @@
+$(document).ready(function () { 
+
+
+     $('#register_profile').modal('show');
+ });
+
 function login_profile() {
 
     $('#register_profile').modal('hide');
@@ -8,7 +14,12 @@ function register_profile() {
     $('#register_profile').modal('show');
 }
 function forgot_profile() {
+    $('#login').modal('hide');
     $('#forgotPassword').modal('show');
+
+}
+function forgot_close() {
+       $('#login').modal('show');
 }
 //function login_profile1(){
 //    $('#register_apply').modal('hide');

@@ -1,5 +1,9 @@
  //AJAX DATA LOAD BY LAZZY LOADER START
 $(document).ready(function () { 
+
+
+     $('#register').modal('show');
+
     recommen_candidate_post();
     
     $(window).scroll(function () {
@@ -346,13 +350,19 @@ function recommen_candidate_post(pagenum) {
 
         function login_profile() {
                 $('#login').modal('show');
+                $('#register').modal('hide');
             }
             function register_profile() {
                 $('#login').modal('hide');
                 $('#register').modal('show');
             }
             function forgot_profile() {
+                
+                $('#login').modal('hide');
                 $('#forgotPassword').modal('show');
+            }
+            function forgot_close(){
+                $('#login').modal('show');
             }
 
       $(document).on('click', '[data-toggle*=modal]', function () {
