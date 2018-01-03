@@ -50,8 +50,8 @@ class Artist extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
             $artdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-            $this->data['art'] = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_id,first_name,last_name,user_email', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           
+            $this->data['art'] = $this->user_model->getUserData($userid);
 
             if (count($artdata) > 0) {
                 if ($artdata[0]['art_step'] == '1') {
