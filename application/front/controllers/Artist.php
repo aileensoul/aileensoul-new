@@ -1755,7 +1755,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -1763,7 +1763,7 @@ class Artist extends MY_Controller {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -1839,7 +1839,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
            
-            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -1848,7 +1848,7 @@ class Artist extends MY_Controller {
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
 
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -3858,7 +3858,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -3867,7 +3867,7 @@ class Artist extends MY_Controller {
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
                 
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -4091,7 +4091,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -4100,7 +4100,7 @@ class Artist extends MY_Controller {
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
 
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -4324,7 +4324,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
         
-            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -4333,7 +4333,7 @@ class Artist extends MY_Controller {
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
                 
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -4673,7 +4673,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -4682,7 +4682,7 @@ class Artist extends MY_Controller {
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
                
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -5038,7 +5038,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1') {
                 $return = 1;
@@ -5047,7 +5047,7 @@ class Artist extends MY_Controller {
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
         
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -5392,7 +5392,7 @@ class Artist extends MY_Controller {
             $return = 1;
 
             
-            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -5401,7 +5401,7 @@ class Artist extends MY_Controller {
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
                
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -5901,7 +5901,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -5910,7 +5910,7 @@ class Artist extends MY_Controller {
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
                
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -6204,7 +6204,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -6213,7 +6213,7 @@ class Artist extends MY_Controller {
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
                
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -6423,7 +6423,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $user_data =  $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data =  $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -6432,7 +6432,7 @@ class Artist extends MY_Controller {
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
                
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -9106,7 +9106,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -9115,7 +9115,7 @@ class Artist extends MY_Controller {
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
                
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -15950,7 +15950,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
             $return = 1;
 
             $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ul.status,ul.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -15959,7 +15959,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
 
-                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ul.status,ul.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
