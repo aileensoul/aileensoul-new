@@ -1,8 +1,7 @@
 <?php
 
 $userid = $this->session->userdata('aileenuser');
-$contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-$this->data['userdata'] = $this->common->select_data_by_condition('user', $contition_array, $data = 'first_name,last_name,user_email,user_image,user_id,profile_background,profile_background_main', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+$this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = 'u.first_name,u.last_name,ul.user_email,ui.user_image,u.user_id,ui.profile_background,ui.profile_background_main');
 
 // notification count 
 

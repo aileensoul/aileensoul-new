@@ -8,6 +8,7 @@ class Freelancer_hire extends MY_Controller {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('email_model');
+        $this->load->model('user_model');
         $this->lang->load('message', 'english');
         //AWS access info start
         $this->load->library('S3');

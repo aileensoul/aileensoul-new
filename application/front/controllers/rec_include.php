@@ -7,7 +7,6 @@ $userid = $this->data['user_id'] = $this->session->userdata('aileenuser');
  $this->load->model('user_model');
  $this->load->model('recruiter_model');
 // user detail
-$userid = $this->session->userdata('aileenuser');
 $this->data['userdata'] = $this->user_model->getUserData($userid);
 
 $contition_array = array('not_read' => '2', 'not_to_id' => $userid, 'not_type !=' => '1', 'not_type !=' => '2');
