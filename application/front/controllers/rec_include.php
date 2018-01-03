@@ -6,6 +6,7 @@ $userid = $this->data['user_id'] = $this->session->userdata('aileenuser');
 // USERDATA USE FOR HEADER NAME AND IMAGE START
  $this->load->model('user_model');
  $this->load->model('recruiter_model');
+ $this->load->model('job_model');
 // user detail
 $this->data['userdata'] = $this->user_model->getUserData($userid);
 

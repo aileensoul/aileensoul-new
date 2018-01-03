@@ -13,6 +13,8 @@ class Recruiter extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('email_model');
         $this->load->model('user_model');
+        $this->load->model('job_model');
+        $this->load->model('recruiter_model');
         $this->lang->load('message', 'english');
         $this->load->library('S3');
         include ('rec_include.php');
