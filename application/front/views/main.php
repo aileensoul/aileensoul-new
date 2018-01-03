@@ -261,7 +261,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                             <a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" tabindex="9" target="_blank">Terms and Condition</a> and <a tabindex="10" href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a>.
                                         </p>
                                         <p>
-                                            <button id="create-acc-new" title="Create an account" tabindex="11" class="btn1">Create an account<span class="ajax_load" id="registration_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+                                            <button id="create-acc-new" title="Create an account" tabindex="11" class="btn1">Create an account<span class="ajax_load pl10" id="registration_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                                         </p>
                                     </form>
                                 </div>
