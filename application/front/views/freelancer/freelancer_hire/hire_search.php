@@ -6,34 +6,39 @@
         </title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver='.time()); ?>">
-        <?php } else {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver='.time()); ?>">
+        <?php if (IS_HIRE_CSS_MINIFY == '0') { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
         <?php } ?>
-              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
     </head>  
     <body class="no-login">
-        <?php $userid = $this->session->userdata('aileenuser'); 
-        if(!$userid){?>
-        <header>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-3">
-                     <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
-                    </div>
-                    <div class="col-md-8 col-sm-9">
-                        <div class="btn-right pull-right">
-                            <a title="Login" href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a title="Create an account" href="javascript:void(0);" onclick="register_profile();" class="btn3">Create an account</a>
+        <?php
+        $userid = $this->session->userdata('aileenuser');
+        if (!$userid) {
+            ?>
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-3">
+                            <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a>
+                        </div>
+                        <div class="col-md-8 col-sm-9">
+                            <div class="btn-right pull-right">
+                                <a title="Login" href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
+                                <a title="Create an account" href="javascript:void(0);" onclick="register_profile();" class="btn3">Create an account</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </header>
-        <?php } else{ 
-        echo $header; } ?>
-        <?php //echo $freelancer_hire_header2_border; ?>
+            </header>
+            <?php
+        } else {
+            echo $header;
+        }
+        ?>
+        <?php //echo $freelancer_hire_header2_border;   ?>
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
@@ -41,7 +46,7 @@
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt"><div class="">
                             </div>
                         </div>
-                      
+
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="common-form">
                                 <div class="job-saved-box">
@@ -59,12 +64,12 @@
                                         ?></h3>
                                     <div class="contact-frnd-post">
                                         <div class="job-contact-frnd ">
-                                           <!--.........AJAX DATA......-->
-                                           
-                                           
-                                        
+                                            <!--.........AJAX DATA......-->
+
+
+
                                         </div>
-                                        <div class="fw" id="loader" style="text-align:center;"><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>"</div>
+                                        <div class="fw" id="loader" style="text-align:center;"><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>"</div>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +78,7 @@
                 </div>
             </div>
         </section>
-       
+
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -85,8 +90,8 @@
                 </div>
             </div>
         </div>
-         <!-- Model Popup Close -->
-            <!-- Login  -->
+        <!-- Model Popup Close -->
+        <!-- Login  -->
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
@@ -95,76 +100,14 @@
                         <div class="right-main">
                             <div class="right-main-inner">
                                 <div class="">
-                                        <div class="title">
-                                            <h1 class="ttc tlh2">Welcome To Aileensoul</h1>
-                                        </div>
+                                    <div class="title">
+                                        <h1 class="ttc tlh2">Welcome To Aileensoul</h1>
+                                    </div>
 
-                                        <form role="form" name="login_form" id="login_form" method="post">
+                                    <form role="form" name="login_form" id="login_form" method="post">
 
-                                            <div class="form-group">
-                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
-                                                <div id="error2" style="display:block;">
-                                                    <?php
-                                                    if ($this->session->flashdata('erroremail')) {
-                                                        echo $this->session->flashdata('erroremail');
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <div id="errorlogin"></div> 
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
-                                                <div id="error1" style="display:block;">
-                                                    <?php
-                                                    if ($this->session->flashdata('errorpass')) {
-                                                        echo $this->session->flashdata('errorpass');
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <div id="errorpass"></div> 
-                                            </div>
-
-                                            <p class="pt-20 ">
-                                                <button class="btn1" onclick="login()">Login</button>
-                                            </p>
-
-                                            <p class=" text-center">
-                                                <a title="Forgot Password" href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
-                                            </p>
-
-                                            <p class="pt15 text-center">
-                                                Don't have an account? <a title="Create an account" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
-                                            </p>
-                                        </form>
-
-                                   
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Login -->
-          <!-- model for forgot password start -->
-        <div class="modal fade login" id="forgotPassword" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content login-frm">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
-                    <div class="modal-body">
-                        <div class="right-main">
-                            <div class="right-main-inner">
-                                <div class="">
-                                        <div class="title">
-                                            <h1 class="ttc tlh2">Forgot Password</h1>
-                                        </div>
-                                        <?php
-                                        $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                                        echo form_open('profile/forgot_password', $form_attribute);
-                                        ?>
                                         <div class="form-group">
-                                            <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                                            <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
                                             <div id="error2" style="display:block;">
                                                 <?php
                                                 if ($this->session->flashdata('erroremail')) {
@@ -174,15 +117,77 @@
                                             </div>
                                             <div id="errorlogin"></div> 
                                         </div>
-                                        
-                                        <p class="pt-20 text-center">
-                                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin-top:15px;" /> 
+                                        <div class="form-group">
+                                            <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
+                                            <div id="error1" style="display:block;">
+                                                <?php
+                                                if ($this->session->flashdata('errorpass')) {
+                                                    echo $this->session->flashdata('errorpass');
+                                                }
+                                                ?>
+                                            </div>
+                                            <div id="errorpass"></div> 
+                                        </div>
+
+                                        <p class="pt-20 ">
+                                            <button class="btn1" onclick="login()">Login</button>
                                         </p>
 
+                                        <p class=" text-center">
+                                            <a title="Forgot Password" href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                        </p>
 
-                                        </form>
+                                        <p class="pt15 text-center">
+                                            Don't have an account? <a title="Create an account" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                        </p>
+                                    </form>
 
-                                    
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Login -->
+        <!-- model for forgot password start -->
+        <div class="modal fade login" id="forgotPassword" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content login-frm">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
+                    <div class="modal-body">
+                        <div class="right-main">
+                            <div class="right-main-inner">
+                                <div class="">
+                                    <div class="title">
+                                        <h1 class="ttc tlh2">Forgot Password</h1>
+                                    </div>
+                                    <?php
+                                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                                    echo form_open('profile/forgot_password', $form_attribute);
+                                    ?>
+                                    <div class="form-group">
+                                        <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                                        <div id="error2" style="display:block;">
+                                            <?php
+                                            if ($this->session->flashdata('erroremail')) {
+                                                echo $this->session->flashdata('erroremail');
+                                            }
+                                            ?>
+                                        </div>
+                                        <div id="errorlogin"></div> 
+                                    </div>
+
+                                    <p class="pt-20 text-center">
+                                        <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin-top:15px;" /> 
+                                    </p>
+
+
+                                    </form>
+
+
                                 </div>
                             </div>
                         </div>
@@ -194,7 +199,7 @@
 
 
         <!-- model for forgot password end -->
-                <!-- register -->
+        <!-- register -->
 
         <div class="modal fade register-model login" id="register" role="dialog">
             <div class="modal-dialog">
@@ -203,30 +208,30 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                                   <div class="title"><h1 class="tlh1">Sign up First and Register in Employer Profile</h1></div>
-                                    <form role="form" name="register_form" id="register_form" method="post">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <input tabindex="101" autofocus="" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <input tabindex="102" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
-                                                </div>
+                                <div class="title"><h1 class="tlh1">Sign up First and Register in Employer Profile</h1></div>
+                                <form role="form" name="register_form" id="register_form" method="post">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <input tabindex="101" autofocus="" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
                                             </div>
                                         </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <input tabindex="102" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                        <div class="form-group">
-                                            <input tabindex="103" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
-                                        </div>
-                                        <div class="form-group">
-                                            <input tabindex="104" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
-                                        </div>
-                                        <div class="form-group dob">
-                                            <label class="d_o_b"> Date Of Birth :</label>
-                                            <span><select tabindex="105" class="day" name="selday" id="selday">
+                                    <div class="form-group">
+                                        <input tabindex="103" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input tabindex="104" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
+                                    </div>
+                                    <div class="form-group dob">
+                                        <label class="d_o_b"> Date Of Birth :</label>
+                                        <span><select tabindex="105" class="day" name="selday" id="selday">
                                                 <option value="" disabled selected value>Day</option>
                                                 <?php
                                                 for ($i = 1; $i <= 31; $i++) {
@@ -236,7 +241,7 @@
                                                 }
                                                 ?>
                                             </select></span>
-                                            <span>
+                                        <span>
                                             <select tabindex="106" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
                                                 //<?php
@@ -260,7 +265,7 @@
 //                  
                                                 ?>
                                             </select></span>
-                                            <span>
+                                        <span>
                                             <select tabindex="107" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
                                                 <?php
@@ -273,31 +278,31 @@
 
                                             </select>
                                         </span>
-                                        </div>
-                                        <div class="dateerror" style="color:#f00; display: block;"></div>
+                                    </div>
+                                    <div class="dateerror" style="color:#f00; display: block;"></div>
 
-                                        <div class="form-group gender-custom">
-                                            <span><select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                    <div class="form-group gender-custom">
+                                        <span><select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                                 <option value="" disabled selected value>Gender</option>
                                                 <option value="M">Male</option>
                                                 <option value="F">Female</option>
                                             </select>
                                         </span>
-                                        </div>
+                                    </div>
 
-                                        <p class="form-text" style="margin-bottom: 10px;">
-                                            By Clicking on create an account button you agree our
-                                            <a tabindex="109" title="Terms and Condition" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex="110" title="Privacy policy" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
-                                        </p>
+                                    <p class="form-text" style="margin-bottom: 10px;">
+                                        By Clicking on create an account button you agree our
+                                        <a tabindex="109" title="Terms and Condition" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex="110" title="Privacy policy" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                    </p>
+                                    <p>
+                                        <button tabindex="111" class="btn1">Create an account</button>
+                                    </p>
+                                    <div class="sign_in pt10">
                                         <p>
-                                            <button tabindex="111" class="btn1">Create an account</button>
+                                            Already have an account ? <a title="Log In" tabindex="112" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
                                         </p>
-                                         <div class="sign_in pt10">
-                                            <p>
-                                                Already have an account ? <a title="Log In" tabindex="112" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
-                                            </p>
-                                        </div>
-                                    </form>
+                                    </div>
+                                </form>
 
                             </div>
                         </div>
@@ -306,14 +311,14 @@
             </div>
         </div>
         <!-- register -->
-            <?php echo $footer; ?>
-      
+        <?php echo $footer; ?>
+
         <!-- script for skill textbox automatic end (option 2)-->
-        
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
-        <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>">
+
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
         </script>
-           <script>
+        <script>
             function login_profile() {
                 $('#login').modal('show');
             }
@@ -367,7 +372,7 @@
                     }
                     $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url() ?>registration/user_check_login',
+                        url: '<?php echo base_url() ?>login/freelancer_hire_login',
                         data: post_data,
                         dataType: "json",
                         beforeSend: function ()
@@ -379,12 +384,11 @@
                         {
                             if (response.data == "ok") {
                                 $("#btn1").html('<img alt="loader" src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                                if(response.is_freelancer_hire == 1){
-                                window.location = "<?php echo base_url() ?>freelance-hire/search?skills=" + skill + '&searchplace' + place;
-                            }
-                            else{
-                                window.location = "<?php echo base_url()?>freelance-hire/basic-information";
-                            }
+                                if (response.freelancerhire == 1) {
+                                    window.location = "<?php echo base_url() ?>freelance-hire/search?skills=" + skill + '&searchplace' + place;
+                                } else {
+                                    window.location = "<?php echo base_url() ?>freelance-hire/basic-information";
+                                }
                             } else if (response.data == "password") {
                                 $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                                 document.getElementById("password_login").classList.add('error');
@@ -406,7 +410,7 @@
 
 
         </script>
-<script>
+        <script>
 
             $(document).ready(function () {
 
@@ -578,8 +582,8 @@
                         {
                             if (response == "ok") {
                                 $("#btn-register").html('<img  alt="loader" src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
-                                window.location = "<?php echo base_url()?>freelance-hire/basic-information";
-//                                window.location = "<?php //echo base_url() ?>freelance-hire/search?skills=" + skill + '&searchplace' + place;
+                                window.location = "<?php echo base_url() ?>freelance-hire/basic-information";
+                                //                                window.location = "<?php //echo base_url()    ?>freelance-hire/search?skills=" + skill + '&searchplace' + place;
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
                                     $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
@@ -594,7 +598,7 @@
 
         </script>
         <!-- forgot password script end -->
-       
+
         <script type="text/javascript">
             $(document).ready(function () { //aletr("hii");
                 /* validation */
@@ -616,7 +620,7 @@
 
             });
         </script>
-         <script>
+        <script>
             $(document).on('click', '[data-toggle*=modal]', function () {
                 $('[role*=dialog]').each(function () {
                     switch ($(this).css('display')) {
@@ -631,44 +635,42 @@
         </script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
-           
+
 
             //LEAVE PAGE AT ADD AND EDIT FREELANCER PAGE THEN PROBLEM SO BELOW CODE START
-            var seg3='<?php echo $this->uri->segment(3); ?>';
-            var seg4='<?php echo $this->uri->segment(4); ?>';
-           
-            if(seg3==0 && seg4!="")
+            var seg3 = '<?php echo $this->uri->segment(3); ?>';
+            var seg4 = '<?php echo $this->uri->segment(4); ?>';
+
+            if (seg3 == 0 && seg4 != "")
             {
                 var skill = "";
                 var place = seg4;
-            }
-            else if(seg4==0 && seg3!="")
+            } else if (seg4 == 0 && seg3 != "")
             {
                 var skill = seg3;
                 var place = "";
-            }
-            else if(seg3!="" && seg4!="")
+            } else if (seg3 != "" && seg4 != "")
             {
                 var skill = seg3;
                 var place = seg4;
-            }
-            else
+            } else
             {
-                var skill = '<?php echo  $this->input->get('skills'); ?>';
-                var place = '<?php echo  $this->input->get('searchplace'); ?>';
+                var skill = '<?php echo $this->input->get('skills'); ?>';
+                var place = '<?php echo $this->input->get('searchplace'); ?>';
             }
-           //LEAVE PAGE AT ADD AND EDIT FREELANCER PAGE THEN PROBLEM SO BELOW CODE END
-           
-        </script>
-                                                                   <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+            //LEAVE PAGE AT ADD AND EDIT FREELANCER PAGE THEN PROBLEM SO BELOW CODE END
 
-         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_search_result.js?ver='.time()); ?>"></script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>                                              
-                 
-            <?php } else {  ?>
-    <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_search_result.js?ver='.time()); ?>"></script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>                                              
-                 
+        </script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_search_result.js?ver=' . time()); ?>"></script>
+        <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+
+            <!--<script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_search_result.js?ver=' . time()); ?>"></script>-->
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>                                              
+
+        <?php } else { ?>
+            <!--<script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_search_result.js?ver=' . time()); ?>"></script>-->
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>                                              
+
         <?php } ?>
     </body>
 </html>

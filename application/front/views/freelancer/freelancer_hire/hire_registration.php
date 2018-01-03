@@ -46,10 +46,10 @@
     <?php } ?>
     <!-- END HEADER -->
     <?php if (!$this->session->userdata('aileenuser')) { ?>
-    <body class="cus-no-login botton_footer cus-error no-login">
-    <?php }else{ ?>
-    <body class="cus-no-login botton_footer cus-error">
-    <?php } ?>
+        <body class="cus-no-login botton_footer cus-error no-login">
+        <?php } else { ?>
+        <body class="cus-no-login botton_footer cus-error">
+        <?php } ?>
         <section>
             <div class="user-midd-section " id="paddingtop_fixed">
                 <div class="container">
@@ -294,10 +294,10 @@
                                         <div class="dateerror" style="color:#f00; display: block;"></div>
                                         <div class="form-group gender-custom">
                                             <span><select tabindex="108" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
-                                                <option value="" disabled selected value>Gender</option>
-                                                <option value="M">Male</option>
-                                                <option value="F">Female</option>
-                                            </select>
+                                                    <option value="" disabled selected value>Gender</option>
+                                                    <option value="M">Male</option>
+                                                    <option value="F">Female</option>
+                                                </select>
                                             </span>
                                         </div>
                                         <p class="form-text" style="margin-bottom: 10px;">
@@ -436,26 +436,23 @@
         <?php echo $login_footer ?> 
         <?php echo $footer; ?>
         <!-- </footer> -->
-
+        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/hire_registration.js?ver=' . time()); ?>"></script>
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
             <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
             <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-            <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/hire_registration.js?ver=' . time()); ?>"></script>
+            <!--<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/hire_registration.js?ver=' . time()); ?>"></script>-->
 
         <?php } else { ?>
             <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
             <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-            <script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/hire_registration.js?ver=' . time()); ?>"></script>
+            <!--<script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/hire_registration.js?ver=' . time()); ?>"></script>-->
 
         <?php } ?>
         <script>
-
-                                                var base_url = '<?php echo base_url(); ?>';
-                                                var site = '<?php echo base_url(); ?>';
-                                                var user_session = '<?php echo $this->session->userdata('aileenuser'); ?>';
+                        var base_url = '<?php echo base_url(); ?>';
+                        var site = '<?php echo base_url(); ?>';
+                        var user_session = '<?php echo $this->session->userdata('aileenuser'); ?>';
         </script>
-
-
 
         <script type="text/javascript">
 
@@ -468,6 +465,6 @@
             })
 
         </script>
-        
+
     </body>
 </html>
