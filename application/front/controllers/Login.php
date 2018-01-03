@@ -461,10 +461,45 @@ class Login extends CI_Controller {
         }
         echo json_encode(
                 array(
-                    "data" => $is_data, "id" => $id, "is_rec" => $rec
+                    "data" => $is_data, "id" => $id, "is_rec" => $rec,
         ));
     }
+    
+      public function job_check_login() {
+        $email_login = $this->input->post('email_login');
+        $password_login = $this->input->post('password_login');
 
+        $result = $this->user_model->getUserByEmail($email_login);
+        $userinfo = $this->logins->check_login($email_login, $password_login);
+
+        if (count($userinfo) > 0) {
+            if ($userinfo['status'] == "2") {
+                echo 'Sorry, user is Inactive.';
+            } else {
+                $this->session->set_userdata('aileenuser', $userinfo['user_id']);
+                $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
+                $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
+                $is_data = 'ok';
+            }
+        } else if ($email_login == $result[0]['user_email']) {
+            $is_data = 'password';
+            $id = $result[0]['user_id'];
+        } else {
+            $is_data = 'email';
+        }
+        $job_result = $this->job_model->isJobAvailable($userinfo['user_id']);
+        $job = 0;
+        if ($job_result['total'] > 0) {
+            $job = 1;
+        }
+        echo json_encode(
+                array(
+                    "data" => $is_data,
+                    "id" => $id,
+                    "is_job" => $job,
+        ));
+    }
+    
     public function business_check_login() {
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
