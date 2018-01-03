@@ -306,11 +306,11 @@ class Login extends CI_Controller {
         $userinfo = $this->logins->artistic_check_login($email_login, $password_login);
 
         if (count($userinfo) > 0) { 
-            if ($userinfo[0]['status'] == "2") {
+            if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
             } else {
-                $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
-                $this->session->set_userdata('aileenuser_slug', $userinfo[0]['user_slug']);
+                $this->session->set_userdata('aileenuser', $userinfo['user_id']);
+                $this->session->set_userdata('aileenuser_slug', $userinfo['user_slug']);
                 $is_data = 'ok';
             }
         } else if ($email_login == $result[0]['email']) { 
@@ -320,9 +320,8 @@ class Login extends CI_Controller {
             $is_data = 'email';
         }
 
-        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'art_step' => '4');
+        $contition_array = array('user_id' => $userinfo['user_id'], 'is_delete' => '0', 'status' => '1', 'art_step' => '4');
         $artistic_result = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
         $artistic = 0;
         if ($artistic_result[0]['total'] > 0) {
             $artistic = 1;

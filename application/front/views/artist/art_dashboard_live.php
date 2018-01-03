@@ -625,9 +625,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         {
                             if (response.data == "ok") { 
                                 $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" alt="<?php echo "btn-ajax-loader.gif"; ?>"/> &nbsp; Login');
-                                if (response.is_artistic == '1') { alert(2);
+                                if (response.is_artistic == '1') { 
                                     window.location = "<?php echo base_url() ?>artist/dashboard/" + site_url;
-                                } else { alert(3);
+                                } else { 
                                     window.location = "<?php echo base_url() ?>artist";
                                 }
                             } else if (response.data == "password") {
