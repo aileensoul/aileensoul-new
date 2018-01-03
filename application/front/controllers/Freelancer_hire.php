@@ -2801,13 +2801,16 @@ class Freelancer_hire extends MY_Controller {
         } else {
             $data1 = 'email';
         }
+
+        $select_data = 'freelancer_hire_slug';
+        $this->data['freehiredata'] = $this->freelancer_hire_model->getfreelancerhiredata($userinfo['user_id'], $select_data);
+        $freelancer_hire_user = count($this->data['freehiredata']);
         
-         //For live link of freelancer aplly user code start
-        $contition_array = array('user_id' => $userinfo['user_id'], 'is_delete' => '0', 'status' => '1', 'free_post_step' => '7');
-        $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $freelancer_apply_user = $free_work_result[0]['total'];
-        //For live link of freelancer aplly user code end
-        
+        $select_data = 'freelancer_apply_slug';
+        $this->data['freepostdata'] = $this->freelancer_apply_model->getfreelancerapplydata($userinfo['user_id'], $select_data);
+        $freelancer_apply_user = count($this->data['freepostdata']);
+       
+
         echo json_encode(
                 array(
                     "data" => $data1,
