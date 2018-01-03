@@ -5,6 +5,17 @@ if (!defined('BASEPATH'))
 
 class Business_model extends CI_Model {
     
+    function isBusinessAvailable($id=''){
+        $this->db->select('count(*) as total')->from('business_profile bp');
+        $this->db->where('bp.user_id', $id);
+        $this->db->where('bp.business_step', '4');
+        $this->db->where('bp.is_deleted', '0');
+        $this->db->where('bp.status', '1');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+    
     function business_followers($follow_to = '', $sortby = '', $orderby = '', $limit = '', $offset = '') {
         $this->db->select('*')->from('business_profile bp');
         $this->db->join('user_login ul', 'ul.user_id = bp.user_id');

@@ -21,6 +21,9 @@ class Login extends CI_Controller {
         $this->load->model('logins');
         $this->load->model('email_model');
         $this->load->model('user_model');
+        $this->load->model('business_model');
+        $this->load->model('job_model');
+        $this->load->model('recruiter_model');
         $this->load->model('freelancer_hire_model');
         $this->load->model('freelancer_apply_model');
     }
@@ -55,6 +58,8 @@ class Login extends CI_Controller {
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
 
+        $result = $this->user_model->getUserByEmail($email_login);
+
         $userinfo = $this->logins->check_login($email_login, $password_login);
         $user_slug = '';
         if ($userinfo['user_id'] != '') {
@@ -66,12 +71,13 @@ class Login extends CI_Controller {
                 $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
                 $data = 'ok';
             }
-        } else if ($email_login == $userinfo['email']) {
-            $data = 'password';
-            $id = $userinfo['user_id'];
+        } else if ($email_login == $result[0]['user_email']) {
+            $is_data = 'password';
+            $id = $result[0]['user_id'];
         } else {
-            $data = 'email';
+            $is_data = 'email';
         }
+
         echo json_encode(
                 array(
                     "data" => $data,
@@ -80,13 +86,13 @@ class Login extends CI_Controller {
     }
 
     // login check and email validation start
-    public function freelancer_hire_login(){
+    public function freelancer_hire_login() {
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
 
         $userinfo = $this->logins->check_login($email_login, $password_login);
         $user_slug = '';
-        
+
         if ($userinfo['user_id'] != '') {
             if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
@@ -102,11 +108,11 @@ class Login extends CI_Controller {
         } else {
             $data = 'email';
         }
-        
+
         $select_data = 'freelancer_hire_slug';
         $this->data['freehiredata'] = $this->freelancer_hire_model->getfreelancerhiredata($userinfo['user_id'], $select_data);
         $freelancer_hire_user = count($this->data['freehiredata']);
-        
+
         echo json_encode(
                 array(
                     "data" => $data,
@@ -114,14 +120,15 @@ class Login extends CI_Controller {
                     "freelancerhire" => $freelancer_hire_user
         ));
     }
-    public function freelancer_apply_login(){
-        
+
+    public function freelancer_apply_login() {
+
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
 
         $userinfo = $this->logins->check_login($email_login, $password_login);
         $user_slug = '';
-        
+
         if ($userinfo['user_id'] != '') {
             if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
@@ -137,11 +144,11 @@ class Login extends CI_Controller {
         } else {
             $data = 'email';
         }
-        
+
         $select_data = 'freelancer_apply_slug';
         $this->data['freepostdata'] = $this->freelancer_apply_model->getfreelancerapplydata($userinfo['user_id'], $select_data);
         $freelancer_apply_user = count($this->data['freepostdata']);
-        
+
         echo json_encode(
                 array(
                     "data" => $data,
@@ -149,6 +156,7 @@ class Login extends CI_Controller {
                     "freelancerapply" => $freelancer_apply_user
         ));
     }
+
     public function main_check_login() {
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
@@ -293,7 +301,6 @@ class Login extends CI_Controller {
     }
 
 //login validation end
-
 //artistic check login start
 
 
@@ -305,7 +312,7 @@ class Login extends CI_Controller {
         $result = $this->logins->getLoginData($email_login);
         $userinfo = $this->logins->artistic_check_login($email_login, $password_login);
 
-        if (count($userinfo) > 0) { 
+        if (count($userinfo) > 0) {
             if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
             } else {
@@ -313,7 +320,7 @@ class Login extends CI_Controller {
                 $this->session->set_userdata('aileenuser_slug', $userinfo['user_slug']);
                 $is_data = 'ok';
             }
-        } else if ($email_login == $result[0]['email']) { 
+        } else if ($email_login == $result[0]['email']) {
             $is_data = 'password';
             $id = $result[0]['user_id'];
         } else {
@@ -334,7 +341,6 @@ class Login extends CI_Controller {
                     "is_artistic" => $artistic
         ));
     }
-
 
     public function forgot_password() {
 
@@ -424,19 +430,20 @@ class Login extends CI_Controller {
         }
         echo json_encode(array('status' => $status, 'userid' => $userid));
     }
-    
-       public function rec_check_login() {
+
+    public function rec_check_login() {
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
 
         $result = $this->user_model->getUserByEmail($email_login);
-        $userinfo = $this->logins->check_login($email_login,$password_login);
+        $userinfo = $this->logins->check_login($email_login, $password_login);
         if (count($userinfo) > 0) {
             if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
             } else {
-                $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
-                $this->session->set_userdata('aileenuser_slug', $userinfo[0]['user_slug']);
+                $this->session->set_userdata('aileenuser', $userinfo['user_id']);
+                $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
+                $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
                 $is_data = 'ok';
             }
         } else if ($email_login == $result['user_email']) {
@@ -445,14 +452,50 @@ class Login extends CI_Controller {
         } else {
             $is_data = 'email';
         }
-        $rec_result = $this->recruiter_model->CheckRecruiterAvailable($id); 
+        $rec_result = $this->recruiter_model->CheckRecruiterAvailable($id);
         $rec = 0;
         if ($rec_result['total'] > 0) {
             $rec = 1;
         }
         echo json_encode(
-            array(
-                    "data" => $is_data,"id" => $id,"is_rec" => $rec
+                array(
+                    "data" => $is_data, "id" => $id, "is_rec" => $rec
+        ));
+    }
+
+    public function business_check_login() {
+        $email_login = $this->input->post('email_login');
+        $password_login = $this->input->post('password_login');
+
+        $result = $this->user_model->getUserByEmail($email_login);
+        $userinfo = $this->logins->check_login($email_login, $password_login);
+
+        if (count($userinfo) > 0) {
+            if ($userinfo['status'] == "2") {
+                echo 'Sorry, user is Inactive.';
+            } else {
+                $this->session->set_userdata('aileenuser', $userinfo['user_id']);
+                $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
+                $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
+                $is_data = 'ok';
+            }
+        } else if ($email_login == $result[0]['user_email']) {
+            $is_data = 'password';
+            $id = $result[0]['user_id'];
+        } else {
+            $is_data = 'email';
+        }
+        $business_result = $this->business_model->isBusinessAvailable($userinfo['user_id']);
+        $business = 0;
+        if ($business_result['total'] > 0) {
+            $business = 1;
+        }
+
+        echo json_encode(
+                array(
+                    "data" => $is_data,
+                    "id" => $id,
+                    "is_bussiness" => $business,
         ));
     }
 
