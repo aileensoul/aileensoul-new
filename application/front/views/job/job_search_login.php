@@ -223,7 +223,7 @@
                         <div class="right-main-inner">
                             <div class="">
                                 <div class="title">
-                                    <h1 class="ttc">Welcome To Aileensoul</h1>
+                                    <h1 class="ttc tlh2">Welcome To Aileensoul</h1>
                                 </div>
 
                                 <form role="form" name="login_form" id="login_form" method="post">
@@ -350,7 +350,7 @@
                             <div class="">
                                 <div id="forgotbuton"></div> 
                                 <div class="title">
-                                    <h1 class="ttc">Forgot Password</h1>
+                                    <h1 class="ttc tlh2">Forgot Password</h1>
                                 </div>
                                 <?php
                                 $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
