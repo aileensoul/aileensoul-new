@@ -12,6 +12,8 @@ class Business_userprofile extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('user_agent');
         $this->load->model('email_model');
+        $this->load->model('user_model');
+        $this->load->model('business_model');
         $this->lang->load('message', 'english');
         $this->load->helper('smiley');
         //AWS access info start
