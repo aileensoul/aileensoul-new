@@ -64,10 +64,7 @@ class Job extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         //Retrieve Data from main user registartion table start
-        $data = 'first_name,last_name,user_email,user_gender,user_dob';
-        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $this->data['job'] = $this->common->select_data_by_condition('user', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        $this->data['job'] = $this->user_model->getUserSelectedData($userid, $select_data = 'u.first_name,u.last_name,ul.email,u.user_gender,u.user_dob');
         //Retrieve Data from main user registartion table end
         $data = 'fname,lname,email,phnno,pincode,address,dob,gender,job_step,city_id,language,count(*) as total';
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
@@ -3046,17 +3043,14 @@ class Job extends MY_Controller {
                 );
 
                 $updatedata = $this->common->insert_data_getid($data, 'notification');
-                // end notoification
+                //end notoification
             }
         }
         // job apply without login end
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         //Retrieve Data from main user registartion table start
-        $data = 'first_name,last_name,user_email';
-        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $this->data['job'] = $this->common->select_data_by_condition('user', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        //Retrieve Data from main user registartion table end
+        $this->data['job'] = $this->user_model->getUserSelectedData($userid, $select_data = 'u.first_name,u.last_name,ul.email');
+//Retrieve Data from main user registartion table end
         //skill data fetch
         $contition_array = array('status' => 'publish');
         $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'name');
