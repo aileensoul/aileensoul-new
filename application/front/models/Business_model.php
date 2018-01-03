@@ -5,10 +5,6 @@ if (!defined('BASEPATH'))
 
 class Business_model extends CI_Model {
     
-    function business_like_comment(){
-        
-    }
-
     function business_followers($follow_to = '', $sortby = '', $orderby = '', $limit = '', $offset = '') {
         $this->db->select('*')->from('business_profile bp');
         $this->db->join('user_login ul', 'ul.user_id = bp.user_id');
@@ -79,6 +75,43 @@ class Business_model extends CI_Model {
         $this->db->select('bppc.*')->from('business_profile_post_comment bppc');
         $this->db->join('user_login ul', 'ul.user_id = bppc.user_id');
         $this->db->where('business_profile_post_id', $post_id);
+        $this->db->where('bppc.status', '1');
+        $this->db->where('bppc.is_delete', '0');
+        $this->db->where('ul.is_delete', '0');
+        $this->db->where('ul.status', '1');
+        if ($orderby != '') {
+            $this->db->order_by($sortby, $orderby);
+        }
+        if ($limit != '') {
+            $this->db->limit($limit);
+        }
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+    function getBusinessLikeComment($post_id = '') {
+        $this->db->select('bppc.*')->from('business_profile_post_comment bppc');
+        $this->db->join('user_login ul', 'ul.user_id = bppc.user_id');
+        $this->db->where('business_profile_post_comment_id', $post_id);
+        $this->db->where('bppc.status', '1');
+        $this->db->where('bppc.is_delete', '0');
+        $this->db->where('ul.is_delete', '0');
+        $this->db->where('ul.status', '1');
+        if ($orderby != '') {
+            $this->db->order_by($sortby, $orderby);
+        }
+        if ($limit != '') {
+            $this->db->limit($limit);
+        }
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+    
+    function getBusinessCommentData($post_id = '',$select_data='') {
+        $this->db->select($select_data)->from('business_profile_post_comment bppc');
+        $this->db->join('user_login ul', 'ul.user_id = bppc.user_id');
+        $this->db->where('business_profile_post_comment_id', $post_id);
         $this->db->where('bppc.status', '1');
         $this->db->where('bppc.is_delete', '0');
         $this->db->where('ul.is_delete', '0');
