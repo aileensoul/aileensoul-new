@@ -459,7 +459,7 @@ $("#submit").on('click', function ()
     }
 //login pop up open end
 function forgot_profile() {
-     $('#login').modal('show');
+     $('#login').modal('hide');
     $('#forgotPassword').modal('show');
 }
 function create_profile(){
