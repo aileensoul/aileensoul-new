@@ -412,12 +412,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     </li>
                                                     <li id="<?php echo 'insertcount' . $busienss_data[0]['business_profile_post_id']; ?>">
                                                         <?php
-                                                        $join_str[0]['table'] = 'user';
-                                                        $join_str[0]['join_table_id'] = 'user.user_id';
-                                                        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
-                                                        $join_str[0]['join_type'] = '';
-                                                        $contition_array = array('business_profile_post_id' => $busienss_data[0]['business_profile_post_id'], 'business_profile_post_comment.status' => '1', 'business_profile_post_comment.is_delete' => '0', 'user.is_delete' => '0', 'user.status' => '1');
-                                                        $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+                                                        $commnetcount = $this->business_model->getBusinessPostComment($post_id = $busienss_data[0]['business_profile_post_id'], $sortby = '', $orderby = '', $limit = '');
                                                         ?>
                                                         <a  onClick="commentall(this.id)" id="<?php echo $busienss_data[0]['business_profile_post_id']; ?>"><i class="fa fa-comment-o" aria-hidden="true"> 
                                                             </i> 
@@ -552,12 +547,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             <div  id="<?php echo "threecomment" . $busienss_data[0]['business_profile_post_id']; ?>" style="display:block">
                                                 <div class="hidebottomborder <?php echo 'insertcomment' . $busienss_data[0]['business_profile_post_id']; ?>">
                                                     <?php
-                                                    $join_str[0]['table'] = 'user';
-                                                    $join_str[0]['join_table_id'] = 'user.user_id';
-                                                    $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
-                                                    $join_str[0]['join_type'] = '';
-                                                    $contition_array = array('business_profile_post_id' => $busienss_data[0]['business_profile_post_id'], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
-                                                    $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
+                                                    $businessprofiledata = $this->data['businessprofiledata'] = $this->business_model->getBusinessPostComment($post_id = $busienss_data[0]['business_profile_post_id'], $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1');
                                                     if ($businessprofiledata) {
                                                         foreach ($businessprofiledata as $rowdata) {
                                                             $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
@@ -635,13 +625,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                     <div class="comment-details-menu" id="<?php echo 'likecomment1' . $rowdata['business_profile_post_comment_id']; ?>">
                                                                         <a id="<?php echo $rowdata['business_profile_post_comment_id']; ?>" onClick="comment_like1(this.id)">
                                                                             <?php
-                                                                            $userid = $this->session->userdata('aileenuser');
-                                                                            $join_str[0]['table'] = 'user';
-                                                                            $join_str[0]['join_table_id'] = 'user.user_id';
-                                                                            $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
-                                                                            $join_str[0]['join_type'] = '';
-                                                                            $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
-                                                                            $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+                                                                            $businesscommentlike = $this->data['businesscommentlike'] = $this->business_model->getBusinessLikeComment($post_id = $rowdata['business_profile_post_comment_id']);
                                                                             $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
 
                                                                             if (!in_array($userid, $likeuserarray)) {
