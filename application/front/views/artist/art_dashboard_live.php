@@ -613,7 +613,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     }
                     $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url() ?>registration/user_check_login',
+                        url: '<?php echo base_url() ?>login/artistic_check_login',
                         data: post_data,
                         dataType: "json",
                         beforeSend: function ()
@@ -623,11 +623,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         },
                         success: function (response)
                         {
-                            if (response.data == "ok") {
+                            if (response.data == "ok") { 
                                 $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" alt="<?php echo "btn-ajax-loader.gif"; ?>"/> &nbsp; Login');
-                                if (response.is_artistic == '1') {
+                                if (response.is_artistic == '1') { alert(2);
                                     window.location = "<?php echo base_url() ?>artist/dashboard/" + site_url;
-                                } else {
+                                } else { alert(3);
                                     window.location = "<?php echo base_url() ?>artist";
                                 }
                             } else if (response.data == "password") {

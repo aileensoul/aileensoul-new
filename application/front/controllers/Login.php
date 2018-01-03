@@ -223,6 +223,49 @@ class Login extends CI_Controller {
 
 //login validation end
 
+//artistic check login start
+
+
+    public function artistic_check_login() {
+
+        $email_login = $this->input->post('email_login');
+        $password_login = $this->input->post('password_login');
+
+        $result = $this->logins->getLoginData($email_login);
+        $userinfo = $this->logins->artistic_check_login($email_login, $password_login);
+
+        if (count($userinfo) > 0) {
+            if ($userinfo[0]['status'] == "2") {
+                echo 'Sorry, user is Inactive.';
+            } else {
+                $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
+                $this->session->set_userdata('aileenuser_slug', $userinfo[0]['user_slug']);
+                $is_data = 'ok';
+            }
+        } else if ($email_login == $result[0]['email']) {
+            $is_data = 'password';
+            $id = $result[0]['user_id'];
+        } else {
+            $is_data = 'email';
+        }
+
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'art_step' => '4');
+        $artistic_result = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $artistic = 0;
+        if ($artistic_result[0]['total'] > 0) {
+            $artistic = 1;
+        }
+
+        echo json_encode(
+                array(
+                    "data" => $is_data,
+                    "id" => $id,
+                    "is_artistic" => $artistic
+        ));
+    }
+
+
     public function forgot_password() {
 
         $forgot_email = $this->input->post('forgot_email');
