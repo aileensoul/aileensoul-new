@@ -391,7 +391,7 @@ function register_profile(){
         }
         $.ajax({
             type: 'POST',
-            url: base_url + 'registration/check_login',
+            url: base_url + 'login/freelancer_hire_login',
             data: post_data,
             dataType: "json",
             beforeSend: function ()
@@ -403,8 +403,12 @@ function register_profile(){
             {
                 if (response.data == "ok") {
                   //  alert("login");
+                  if(response.freelancerhire == 0){
+                      window.location = base_url + "freelance-hire/registration";
+                  }else{
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                    window.location = base_url + "freelance-Work/freelancer-details/" + segment3;
+                    window.location = base_url + "freelance-work/freelancer-details/" + segment3;
+                }
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login").classList.add('error');

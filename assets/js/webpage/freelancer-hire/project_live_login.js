@@ -41,7 +41,7 @@ $(document).ready(function () {
         }
         $.ajax({
             type: 'POST',
-            url: base_url + 'registration/check_login',
+            url: base_url + 'login/freelancer_apply_login',
             data: post_data,
             dataType: "json",
             beforeSend: function ()
@@ -52,9 +52,14 @@ $(document).ready(function () {
             success: function (response)
             {
                 if (response.data == "ok") {
-                  //  alert("login");
-                    $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                    window.location = base_url + "freelance-work/home";
+                    //  alert("login");
+                    if (response.freelancerapply == 0) {
+                        window.location = base_url + "freelance-work/registration";
+                    } else {
+                        $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                        window.location = base_url + "freelance-work/home";
+                    }
+
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login").classList.add('error');
@@ -158,7 +163,7 @@ $(document).ready(function () {
     /* register submit */
     function submitRegisterForm()
     {
-      //  alert(123);
+        //  alert(123);
         var postid = '';
         var first_name = $("#first_name").val();
         var last_name = $("#last_name").val();
@@ -245,21 +250,21 @@ $(document).ready(function () {
             },
             success: function (response)
             { //alert("ksjkskjds");
-              //alert(postid);
+                //alert(postid);
                 var userid = response.userid;
-                if (response.okmsg == "ok") { 
-                    if (postid == '') { 
-                       
+                if (response.okmsg == "ok") {
+                    if (postid == '') {
+
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
                         window.location = base_url + "freelance-work/profile/live-post";
                         sendmail(userid);
                     } else {
-                    
+
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                    //  alert(base_url + 'job/profile/live-post?postid=' + postid);
+                        //  alert(base_url + 'job/profile/live-post?postid=' + postid);
                         window.location = base_url + 'freelance-work/profile/live-post/' + postid;
-                       sendmail(userid);
-                        
+                        sendmail(userid);
+
 //                        var alldata = 'all';
 //                        var id = response.id;
 //                        $.ajax({
@@ -304,12 +309,12 @@ $(document).ready(function () { //aletr("hii");
         submitHandler: submitforgotForm
     });
     /* validation */
-    
-      function submitforgotForm()
+
+    function submitforgotForm()
     {
 
         var email_login = $("#forgot_email").val();
-        
+
         var post_data = {
             'forgot_email': email_login,
             csrf_token_name: csrf_hash
@@ -327,12 +332,12 @@ $(document).ready(function () { //aletr("hii");
             success: function (response)
             {
                 if (response.data == "success") {
-                  //  alert("login");
+                    //  alert("login");
                     $("#forgotbuton").html(response.data);
                     //window.location = base_url + "job/home/live-post";
                 } else {
                     $("#forgotbuton").html(response.message);
-                    
+
                 }
             }
         });
@@ -439,7 +444,7 @@ $(document).ready(function () {
         var email_login = $("#email_login_apply").val();
         var password_login = $("#password_login_apply").val();
         var postid = $("#password_login_postid").val();
-      
+
         var post_data = {
             'email_login': email_login,
             'password_login': password_login,
@@ -447,7 +452,7 @@ $(document).ready(function () {
         }
         $.ajax({
             type: 'POST',
-            url: base_url + 'registration/check_login',
+            url: base_url + 'login/freelancer_apply_login',
             data: post_data,
             dataType: "json",
             beforeSend: function ()
@@ -457,22 +462,22 @@ $(document).ready(function () {
             },
             success: function (response)
             {
-               // alert(3333);
+                // alert(3333);
                 if (response.data == "ok") {
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                     if (response.freelancerapply == 1)
                     {
                         var alldata = 'all';
                         var id = response.id;
-                       // alert(id);
+                        // alert(id);
                         $.ajax({
                             type: 'POST',
                             url: base_url + 'freelancer/apply_insert',
                             data: 'post_id=' + postid + '&allpost=' + alldata + '&userid=' + id,
-                             datatype:'json',
+                            datatype: 'json',
                             success: function (data)
                             {
-                              //  alert("sucess");
+                                //  alert("sucess");
                                 window.location = base_url + "freelance-work/home/live-post";
                             }
                         });
@@ -483,7 +488,7 @@ $(document).ready(function () {
                     }
 
                 } else if (response.data == "password") {
-                  //  alert("hi");
+                    //  alert("hi");
                     $("#errorpass_apply").html('<label for="email_login_apply" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login_apply").classList.add('error');
                     document.getElementById("password_login_apply").classList.add('error');
