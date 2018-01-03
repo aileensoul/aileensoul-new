@@ -21,6 +21,8 @@ class Login extends CI_Controller {
         $this->load->model('logins');
         $this->load->model('email_model');
         $this->load->model('user_model');
+        $this->load->model('freelancer_hire_model');
+        $this->load->model('freelancer_apply_model');
     }
 
     public function index() {
@@ -303,7 +305,7 @@ class Login extends CI_Controller {
         $result = $this->logins->getLoginData($email_login);
         $userinfo = $this->logins->artistic_check_login($email_login, $password_login);
 
-        if (count($userinfo) > 0) {
+        if (count($userinfo) > 0) { 
             if ($userinfo[0]['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
             } else {
@@ -311,7 +313,7 @@ class Login extends CI_Controller {
                 $this->session->set_userdata('aileenuser_slug', $userinfo[0]['user_slug']);
                 $is_data = 'ok';
             }
-        } else if ($email_login == $result[0]['email']) {
+        } else if ($email_login == $result[0]['email']) { 
             $is_data = 'password';
             $id = $result[0]['user_id'];
         } else {
