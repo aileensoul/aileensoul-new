@@ -22,9 +22,9 @@ class Recruiter_model extends CI_Model {
         return $result_array;
     }
     
-    public function getRecruiterPostById($post_id = '') {
+    public function getRecruiterPostById($post_id = '',$user_id = '') {
         $this->db->select("rp.post_name,rp.max_year,rp.min_year,rp.fresher,rp.city,rp.state")->from("rec_post rp");
-        $this->db->where(array('rp.post_id' => $post_id, 'rp.status' => '1', 'rp.is_delete' => '0', 'rp.user_id' => $userid));
+        $this->db->where(array('rp.post_id' => $post_id, 'rp.status' => '1', 'rp.is_delete' => '0', 'rp.user_id' => $user_id));
         $query = $this->db->get();
         $result_array = $query->row_array();
         return $result_array;
