@@ -311,7 +311,7 @@ function submitForm()
     }
     $.ajax({
         type: 'POST',
-        url: base_url + 'freelancer_hire/hire_login',
+        url: base_url + 'login/freelancer_apply_login',
         data: post_data,
         dataType: "json",
         beforeSend: function ()
@@ -322,7 +322,6 @@ function submitForm()
         success: function (response)
         {
             if (response.data == "ok") {
-                alert(response.freelancerapply);
                 if (response.freelancerapply == 0) {
                     window.location = base_url + "freelance-work/registration";
                 } else {

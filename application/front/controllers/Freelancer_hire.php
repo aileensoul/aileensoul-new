@@ -7,7 +7,6 @@ class Freelancer_hire extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('form_validation');
-        $this->load->model('logins');
         $this->load->model('email_model');
         $this->load->model('user_model');
         $this->load->model('freelancer_hire_model');
@@ -2777,46 +2776,6 @@ class Freelancer_hire extends MY_Controller {
         );
         $updatedata = $this->common->update_data($data, 'save', 'save_id', $saveid);
     }
-
 //FREELANCER_HIRE REMOVE SAVED FREELANCER END
-
-    public function hire_login() {
-        $email_login = $this->input->post('email_login');
-        $password_login = $this->input->post('password_login');
-
-        $userinfo = $this->logins->check_login($email_login, $password_login);
-        $user_slug = '';
-        if ($userinfo['user_id'] != '') {
-            if ($userinfo['status'] == "2") {
-                echo 'Sorry, user is Inactive.';
-            } else {
-                $this->session->set_userdata('aileenuser', $userinfo['user_id']);
-                $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
-                $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
-                $data1 = 'ok';
-            }
-        } else if ($email_login == $userinfo['email']) {
-            $data1 = 'password';
-            $id = $userinfo['user_id'];
-        } else {
-            $data1 = 'email';
-        }
-
-        $select_data = 'freelancer_hire_slug';
-        $this->data['freehiredata'] = $this->freelancer_hire_model->getfreelancerhiredata($userinfo['user_id'], $select_data);
-        $freelancer_hire_user = count($this->data['freehiredata']);
-        
-        $select_data = 'freelancer_apply_slug';
-        $this->data['freepostdata'] = $this->freelancer_apply_model->getfreelancerapplydata($userinfo['user_id'], $select_data);
-        $freelancer_apply_user = count($this->data['freepostdata']);
-       
-
-        echo json_encode(
-                array(
-                    "data" => $data1,
-                    "user_slug" => $user_slug['user_slug'],
-                    "freelancerapply" => $freelancer_apply_user,
-        ));
-    }
 
 }
