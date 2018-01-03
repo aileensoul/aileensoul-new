@@ -67,6 +67,13 @@
 //    });
 //}
 //AJAX DATA LOAD BY LAZZY LOADER END
+$(document).ready(function () { 
+
+
+     $('#register').modal('show');
+ });
+
+
 function login()
 {
     document.getElementById('error1').style.display = 'none';
@@ -427,6 +434,8 @@ function forgot_profile() {
     $('#forgotPassword').modal('show');
     $('#login').modal('hide');
 }
+
+
 
 
 $('.modal-close').click(function(e){ 

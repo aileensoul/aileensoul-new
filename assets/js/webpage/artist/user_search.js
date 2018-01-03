@@ -1,4 +1,5 @@
 $(document).ready(function () { 
+    $('#register').modal('show');
     artistic_search_user();
 
     $(window).scroll(function () {

@@ -1,18 +1,12 @@
 <?php
+// user detail
+$this->load->model('user_model');
+$this->load->model('artistic_model');
 $userid = $this->session->userdata('aileenuser');
-// USERDATA USE FOR HEADER NAME AND IMAGE START
-$userdata = $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = 'u.first_name,u.user_id,u.last_name,ul.user_email,ui.user_image');
 
-
-$userid = $this->session->userdata('aileenuser');
-$contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-$this->data['userdata'] = $this->common->select_data_by_condition('user', $contition_array, $data = 'first_name,user_id,last_name,user_email,user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+$this->data['userdata'] = $this->user_model->getUserData($userid);
 // artistics detail
-$contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-$this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_city,art_skill,other_skill,user_id,status,is_delete,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-
+$this->data['artdata'] = $this->artistic_model->getArtUserData($userid);
  $segment3 = explode('-', $this->uri->segment(3));
  $slugdata = array_reverse($segment3);
  $regid = $slugdata[0];
