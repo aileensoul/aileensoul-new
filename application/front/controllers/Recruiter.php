@@ -5090,9 +5090,9 @@ if ($cityname != '') {
 //        $password_login = $this->input->post('password_login');
         $password_login = '123456';
 
-        $result = $this->user_model->getUserByEmail($email_login);
+        $result[] = $this->user_model->getUserByEmail($email_login);
         $userinfo = $this->logins->check_login($email_login, md5($password_login));
-echo '<pre>'; print_r($result); die();
+echo '<pre>'; print_r($userinfo); die();
         if (count($userinfo) > 0) {
             if ($userinfo[0]['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
