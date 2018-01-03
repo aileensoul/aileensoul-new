@@ -51,7 +51,7 @@ if ($this->uri->segment(2) == 'jobpost') {
     $recdata = $this->recruiter_model->getRecruiterCompanyname($userid);
 
     $postdata = $this->recruiter_model->getRecruiterPostById($postid,$userid);
-echo '<pre>'; print_r($postdata); die();
+
     if (($postdata[0]['min_year'] != '0' || $postdata[0]['max_year'] != '0') && ($postdata[0]['fresher'] == 1)) {
         $exp_descp = $this->data['exp_descp'] = $postdata[0]['min_year'] . ' to ' . $postdata[0]['max_year'] . ' Years';
     } else {
