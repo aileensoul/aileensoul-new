@@ -14,6 +14,15 @@ class User_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
+    
+    public function getUserSelectedData($user_id = '',$select_data='') {
+        $this->db->select($select_data)->from("user u");
+        $this->db->join('user_info ui', 'ui.user_id = u.user_id','left');
+        $this->db->where("u.user_id =" . $user_id);
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
 
     public function getUserSlugById($user_id = '') {
         $this->db->select("u.user_slug")->from("user u");
