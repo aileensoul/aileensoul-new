@@ -406,12 +406,17 @@ class Chat extends MY_Controller {
 
         $join_str3[0]['table'] = 'messages';
         $join_str3[0]['join_table_id'] = 'messages.message_to';
-        $join_str3[0]['from_table_id'] = 'user.user_id';
+        $join_str3[0]['from_table_id'] = 'user_info.user_id';
+        $join_str3[0]['join_type'] = '';
+        
+        $join_str3[0]['table'] = 'user';
+        $join_str3[0]['join_table_id'] = 'user.user_id';
+        $join_str3[0]['from_table_id'] = 'user_info.user_id';
         $join_str3[0]['join_type'] = '';
 
         $search_condition = "((message_from = '$userid') && (message_to != '$lstusr'))";
 
-        $tolist = $this->common->select_data_by_search('user', $search_condition, $contition_array, $data = 'messages.id,message_to,first_name,user_image,message', $sortby = 'messages.id', $orderby = 'DESC', $limit = '', $offset = '', $join_str3, $groupby = '');
+        $tolist = $this->common->select_data_by_search('user_info', $search_condition, $contition_array, $data = 'messages.id,message_to,first_name,user_image,message', $sortby = 'messages.id', $orderby = 'DESC', $limit = '', $offset = '', $join_str3, $groupby = '');
 
 
 
@@ -448,13 +453,18 @@ class Chat extends MY_Controller {
 
         $join_str4[0]['table'] = 'messages';
         $join_str4[0]['join_table_id'] = 'messages.message_from';
-        $join_str4[0]['from_table_id'] = 'user.user_id';
+        $join_str4[0]['from_table_id'] = 'user_info.user_id';
+        $join_str4[0]['join_type'] = '';
+        
+        $join_str4[0]['table'] = 'user';
+        $join_str4[0]['join_table_id'] = 'user.user_id';
+        $join_str4[0]['from_table_id'] = 'user_info.user_id';
         $join_str4[0]['join_type'] = '';
 
         $search_condition = "((message_to = '$userid') && (message_from != '$lstusr'))";
 
 
-        $fromlist = $this->common->select_data_by_search('user', $search_condition, $contition_array, $data = 'messages.id,messages.message_from,first_name,user_image,message', $sortby = 'messages.id', $orderby = 'DESC', $limit = '', $offset = '', $join_str4, $groupby = '');
+        $fromlist = $this->common->select_data_by_search('user_info', $search_condition, $contition_array, $data = 'messages.id,messages.message_from,first_name,user_image,message', $sortby = 'messages.id', $orderby = 'DESC', $limit = '', $offset = '', $join_str4, $groupby = '');
 
 
         // uniq array of fromlist  
@@ -1219,13 +1229,18 @@ class Chat extends MY_Controller {
 
             $join_str5[0]['table'] = 'messages';
             $join_str5[0]['join_table_id'] = 'messages.message_to';
-            $join_str5[0]['from_table_id'] = 'user.user_id';
+            $join_str5[0]['from_table_id'] = 'user_info.user_id';
+            $join_str5[0]['join_type'] = '';
+            
+            $join_str5[0]['table'] = 'user';
+            $join_str5[0]['join_table_id'] = 'user.user_id';
+            $join_str5[0]['from_table_id'] = 'user_info.user_id';
             $join_str5[0]['join_type'] = '';
 
 
             $search_condition = "(first_name LIKE '" . trim($usrsearchdata) . "%')";
 
-            $tolist = $this->common->select_data_by_search('user', $search_condition, $contition_array, $data = 'message_to,first_name,user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5, $groupby = '');
+            $tolist = $this->common->select_data_by_search('user_info', $search_condition, $contition_array, $data = 'message_to,first_name,user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5, $groupby = '');
 
             // uniq array of tolist  
             foreach ($tolist as $k => $v) {
@@ -1259,12 +1274,17 @@ class Chat extends MY_Controller {
 
             $join_str6[0]['table'] = 'messages';
             $join_str6[0]['join_table_id'] = 'messages.message_from';
-            $join_str6[0]['from_table_id'] = 'user.user_id';
+            $join_str6[0]['from_table_id'] = 'user_info.user_id';
+            $join_str6[0]['join_type'] = '';
+            
+            $join_str6[0]['table'] = 'user';
+            $join_str6[0]['join_table_id'] = 'user.user_id';
+            $join_str6[0]['from_table_id'] = 'user_info.user_id';
             $join_str6[0]['join_type'] = '';
 
             $search_condition = "(first_name LIKE '$usrsearchdata%')";
 
-            $fromlist = $this->common->select_data_by_search('user', $search_condition, $contition_array, $data = 'messages.message_from,first_name,user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str6, $groupby = '');
+            $fromlist = $this->common->select_data_by_search('user_info', $search_condition, $contition_array, $data = 'messages.message_from,first_name,user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str6, $groupby = '');
 
             // uniq array of fromlist  
             foreach ($fromlist as $k => $v) {
@@ -1371,12 +1391,17 @@ class Chat extends MY_Controller {
 
             $join_str1[0]['table'] = 'messages';
             $join_str1[0]['join_table_id'] = 'messages.message_to';
-            $join_str1[0]['from_table_id'] = 'user.user_id';
+            $join_str1[0]['from_table_id'] = 'user_info.user_id';
+            $join_str1[0]['join_type'] = '';
+            
+            $join_str1[0]['table'] = 'user';
+            $join_str1[0]['join_table_id'] = 'user.user_id';
+            $join_str1[0]['from_table_id'] = 'user_info.user_id';
             $join_str1[0]['join_type'] = '';
 
             $search_condition = "((message_from = '$lstusr' OR message_to = '$lstusr') && (message_to != '$userid'))";
 
-            $seltousr = $this->common->select_data_by_search('user', $search_condition, $contition_array, $data = 'messages.id,message_to,first_name,user_image,message', $sortby = 'messages.id', $orderby = 'DESC', $limit = '', $offset = '', $join_str1, $groupby = '');
+            $seltousr = $this->common->select_data_by_search('user_info', $search_condition, $contition_array, $data = 'messages.id,message_to,first_name,user_image,message', $sortby = 'messages.id', $orderby = 'DESC', $limit = '', $offset = '', $join_str1, $groupby = '');
 
 
             // slected user chat from
@@ -1386,14 +1411,18 @@ class Chat extends MY_Controller {
 
             $join_str2[0]['table'] = 'messages';
             $join_str2[0]['join_table_id'] = 'messages.message_from';
-            $join_str2[0]['from_table_id'] = 'user.user_id';
+            $join_str2[0]['from_table_id'] = 'user_info.user_id';
             $join_str2[0]['join_type'] = '';
-
+            
+            $join_str2[0]['table'] = 'user';
+            $join_str2[0]['join_table_id'] = 'user.user_id';
+            $join_str2[0]['from_table_id'] = 'user_info.user_id';
+            $join_str2[0]['join_type'] = '';
 
 
             $search_condition = "((message_from = '$lstusr' OR message_to = '$lstusr') && (message_from != '$userid'))";
 
-            $selfromusr = $this->common->select_data_by_search('user', $search_condition, $contition_array, $data = 'messages.id,message_from,first_name,user_image,message', $sortby = 'messages.id', $orderby = 'DESC', $limit = '', $offset = '', $join_str2, $groupby = '');
+            $selfromusr = $this->common->select_data_by_search('user_info', $search_condition, $contition_array, $data = 'messages.id,message_from,first_name,user_image,message', $sortby = 'messages.id', $orderby = 'DESC', $limit = '', $offset = '', $join_str2, $groupby = '');
 
 
             $selectuser = array_merge($seltousr, $selfromusr);
@@ -1442,12 +1471,17 @@ class Chat extends MY_Controller {
 
             $join_str3[0]['table'] = 'messages';
             $join_str3[0]['join_table_id'] = 'messages.message_to';
-            $join_str3[0]['from_table_id'] = 'user.user_id';
+            $join_str3[0]['from_table_id'] = 'user_info.user_id';
+            $join_str3[0]['join_type'] = '';
+            
+            $join_str3[0]['table'] = 'user';
+            $join_str3[0]['join_table_id'] = 'user.user_id';
+            $join_str3[0]['from_table_id'] = 'user_info.user_id';
             $join_str3[0]['join_type'] = '';
 
             $search_condition = "((message_from = '$userid') && (message_to != '$lstusr'))";
 
-            $tolist = $this->common->select_data_by_search('user', $search_condition, $contition_array, $data = 'messages.id,message_to,first_name,user_image,message', $sortby = 'messages.id', $orderby = 'DESC', $limit = '', $offset = '', $join_str3, $groupby = '');
+            $tolist = $this->common->select_data_by_search('user_info', $search_condition, $contition_array, $data = 'messages.id,message_to,first_name,user_image,message', $sortby = 'messages.id', $orderby = 'DESC', $limit = '', $offset = '', $join_str3, $groupby = '');
 
 
 
@@ -1484,11 +1518,16 @@ class Chat extends MY_Controller {
 
             $join_str4[0]['table'] = 'messages';
             $join_str4[0]['join_table_id'] = 'messages.message_from';
-            $join_str4[0]['from_table_id'] = 'user.user_id';
+            $join_str4[0]['from_table_id'] = 'user_info.user_id';
             $join_str4[0]['join_type'] = '';
-
+            
+            $join_str4[0]['table'] = 'user';
+            $join_str4[0]['join_table_id'] = 'user.user_id';
+            $join_str4[0]['from_table_id'] = 'user_info.user_id';
+            $join_str4[0]['join_type'] = '';
+            
             $search_condition = "((message_to = '$userid') && (message_from != '$lstusr'))";
-            $fromlist = $this->common->select_data_by_search('user', $search_condition, $contition_array, $data = 'messages.id,messages.message_from,first_name,user_image,message', $sortby = 'messages.id', $orderby = 'DESC', $limit = '', $offset = '', $join_str4, $groupby = '');
+            $fromlist = $this->common->select_data_by_search('user_info', $search_condition, $contition_array, $data = 'messages.id,messages.message_from,first_name,user_image,message', $sortby = 'messages.id', $orderby = 'DESC', $limit = '', $offset = '', $join_str4, $groupby = '');
 
             // uniq array of fromlist  
             foreach ($fromlist as $k => $v) {
