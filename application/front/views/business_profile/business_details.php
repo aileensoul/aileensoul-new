@@ -578,7 +578,7 @@
                     }
                     $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url() ?>registration/user_check_login',
+                        url: '<?php echo base_url() ?>login/business_check_login',
                         data: post_data,
                         dataType: "json",
                         beforeSend: function ()
