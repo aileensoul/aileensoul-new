@@ -10,7 +10,7 @@ class Job_profile extends MY_Controller {
         //AWS access info start
         $this->load->library('S3');
         //AWS access info end
-        
+        $this->load->model('user_model');
         include ('include.php');
     }
 

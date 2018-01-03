@@ -10,6 +10,7 @@ class Artist extends MY_Controller {
 
         $this->load->library('form_validation');
         $this->load->model('email_model');
+        $this->load->model('user_model');
         $this->data['title'] = "Aileensoul";
         $this->load->helper('smiley');
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);

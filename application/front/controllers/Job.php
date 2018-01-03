@@ -12,6 +12,7 @@ class Job extends MY_Controller {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('email_model');
+        $this->load->model('user_model');
         $this->load->library('S3');
         $this->load->library('upload');
 

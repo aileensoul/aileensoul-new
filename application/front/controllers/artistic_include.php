@@ -1,5 +1,9 @@
 <?php
-// user detail
+$userid = $this->session->userdata('aileenuser');
+// USERDATA USE FOR HEADER NAME AND IMAGE START
+$userdata = $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = 'u.first_name,u.user_id,u.last_name,ul.user_email,ui.user_image');
+
+
 $userid = $this->session->userdata('aileenuser');
 $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
 $this->data['userdata'] = $this->common->select_data_by_condition('user', $contition_array, $data = 'first_name,user_id,last_name,user_email,user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');

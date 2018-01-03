@@ -18,6 +18,7 @@ class User_model extends CI_Model {
     public function getUserSelectedData($user_id = '',$select_data='') {
         $this->db->select($select_data)->from("user u");
         $this->db->join('user_info ui', 'ui.user_id = u.user_id','left');
+        $this->db->join('user_login ul', 'ul.user_id = u.user_id','left');
         $this->db->where("u.user_id =" . $user_id);
         $query = $this->db->get();
         $result_array = $query->result_array();
