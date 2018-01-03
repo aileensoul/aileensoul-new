@@ -47,10 +47,10 @@ if ($this->uri->segment(2) == 'jobpost') {
     $this->data['recliveid'] = $userid = $slugdata[1];
 
     
-    $recdata = $this->recruiter_model->getRecruiterCompanyname($userid);
+    $recdata[] = $this->recruiter_model->getRecruiterCompanyname($userid);
 
-    $postdata = $this->recruiter_model->getRecruiterPostById($postid,$userid);
-
+    $postdata[] = $this->recruiter_model->getRecruiterPostById($postid,$userid);
+   
     if (($postdata[0]['min_year'] != '0' || $postdata[0]['max_year'] != '0') && ($postdata[0]['fresher'] == 1)) {
         $exp_descp = $this->data['exp_descp'] = $postdata[0]['min_year'] . ' to ' . $postdata[0]['max_year'] . ' Years';
     } else {
@@ -61,12 +61,10 @@ if ($this->uri->segment(2) == 'jobpost') {
         }
     }
 
-    $exp_title = $this->data['exp_title'] = $this->db->get_where('job_title', array(
-                'title_id' => $postdata[0]['post_name']
-            ))->row()->name;
-
-    $state_name = $this->data['state_name'] = $this->db->get_where('states', array('state_id' => $postdata[0]['state']))->row()->state_name;
-    $city_name = $this->data['city_name'] = $this->db->get_where('cities', array('city_id' => $postdata[0]['city']))->row()->city_name;
+    $exp_title = $this->recruiter_model->getRecruiterWhere($table_name = 'job_title',$where = array('title_id' => $postdata[0]['post_name']),$fieldvalue = 'name');
+    $state_name = $this->data['state_name'] = $this->recruiter_model->getRecruiterWhere($table_name = 'states',$where = array('state_id' => $postdata[0]['state']),$fieldvalue = 'state_name');
+    $city_name = $this->data['city_name'] = $this->recruiter_model->getRecruiterWhere($table_name = 'cities',$where = array('city_id' => $postdata[0]['city']),$fieldvalue = 'city_name');
+    
 }
 
 if ($this->uri->segment(2) == 'profile') { 

@@ -29,5 +29,10 @@ class Recruiter_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array;
     }
+    
+     public function getRecruiterWhere($table_name = '',$where = '',$fieldvalue = '') {
+        
+       return $this->db->get_where($table_name, $where)->row()->$fieldvalue; 
+    }
    
 }
