@@ -156,7 +156,7 @@ function business_dashboard_post(slug, pagenum) {
             $('.art-all-comment').remove();
             $('.post-design-commnet-box').remove();
             $('a').on('click', function () {
-                var classNames = $(this).attr("class");
+                var classNames = $(this).attr("class").toString().split(' ').pop()  ;
                 if (classNames != 'login_link') {
                     open_profile();
                 }

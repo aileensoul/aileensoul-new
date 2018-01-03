@@ -52,8 +52,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 fw-479">
                         <div class="btn-right pull-right">
-                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Create an account</a>
+                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2 login_link">Login</a>
+                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3 login_link">Create an account</a>
                         </div>
                     </div>
                 </div>
@@ -478,9 +478,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 var no_business_post_html = '<?php echo $no_business_post_html ?>';
         </script>
         <script>
-            // function open_profile() {
-            //     register_profile();
-            // }
+             function open_profile() {
+                 register_profile();
+             }
             function login_profile() { 
                 $('#register').modal('hide');
                 $('#login').modal('show');
