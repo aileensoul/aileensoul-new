@@ -198,7 +198,7 @@
  <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <button type="button" class="modal-close" data-dismiss="modal" onclick="forgot_close();">&times;</button>       
                     <div class="modal-body cus-forgot">
                         <div class="right-main">
                             <div class="right-main-inner">
@@ -679,16 +679,21 @@ var keyword1 = '<?php echo $keyword1; ?>';
         <script>
             function login_profile() {
                 $('#login').modal('show');
+                $('#register').modal('hide');
             }
             function register_profile() {
                 $('#login').modal('hide');
                 $('#register').modal('show');
             }
             function forgot_profile() {
-                $('#forgotPassword').modal('show');
                 $('#register').modal('hide');
                 $('#login').modal('hide');
+                $('#forgotPassword').modal('show');
             }
+            function forgot_close() {
+                $('#login').modal('show');
+            }
+
         </script>
         <script>
             $(document).on('click', '[data-toggle*=modal]', function () {
