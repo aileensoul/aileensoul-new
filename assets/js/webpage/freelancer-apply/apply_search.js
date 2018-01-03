@@ -472,7 +472,7 @@ $(document).ready(function () {
                         // alert(id);
                         $.ajax({
                             type: 'POST',
-                            url: base_url + 'freelance/apply_insert',
+                            url: base_url + 'freelancer/apply_insert',
                             data: 'post_id=' + postid + '&allpost=' + alldata + '&userid=' + id,
                             dataType: 'json',
                             success: function (data)
