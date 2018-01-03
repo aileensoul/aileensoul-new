@@ -391,7 +391,7 @@
         <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <button type="button" class="modal-close" data-dismiss="modal" onclick="login_profile();">&times;</button>       
                     <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">
