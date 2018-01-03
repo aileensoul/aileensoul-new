@@ -92,10 +92,8 @@ class Recruiter extends MY_Controller {
                 $this->data['phone'] = $this->data['recdata'][0]['rec_phone'];
             }
         }
-
         $this->load->view('recruiter/rec_basic_information', $this->data);
     }
-
 // RECRUITER BASIC INFORMATION STEP END  
 // RECRUITER BASIC INFORMATION INSERT STEP START  
     public function basic_information() {
