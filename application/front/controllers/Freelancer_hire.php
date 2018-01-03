@@ -7,6 +7,7 @@ class Freelancer_hire extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->model('logins');
         $this->load->model('email_model');
         $this->load->model('user_model');
         $this->load->model('freelancer_hire_model');
@@ -709,10 +710,9 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //FREELANCER_HIRE HOME PAGE END
-    
 //AJAX FREELANCER_HIRE HOME PAGE START
     public function ajax_recommen_candidate() {
-       
+
 
         $perpage = 5;
         $page = 1;
@@ -1027,7 +1027,6 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //AJAX FREELANCER_HIRE HOME PAGE END
-    
     //FREELANCER_HIRE_PROFILE PAGE START
     public function freelancer_hire_profile($id = "") {
         if (is_numeric($id)) {
@@ -1591,7 +1590,7 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //AJAX FREELANCER_HIRE SAVE USER(FREELACER) END
- //FREELANCER_HIRE PROFILE PIC INSERT START
+    //FREELANCER_HIRE PROFILE PIC INSERT START
     public function user_image_insert1() {
         $userid = $this->session->userdata('aileenuser');
 
@@ -1672,7 +1671,7 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //FREELANCER_HIRE PROFILE PIC INSERT END
- //FREELANCER_HIRE COVER PIC STRAT
+    //FREELANCER_HIRE COVER PIC STRAT
     public function ajaxpro_hire() {
         $userid = $this->session->userdata('aileenuser');
 
@@ -1795,7 +1794,6 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //FREELANCER_HIRE COVER PIC END
- 
 //FREELANCER_HIRE ADD POST(PROJECT) START
     public function freelancer_add_post() {
         if ($this->session->userdata('aileenuser')) {
@@ -1850,7 +1848,7 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //FREELANCER_HIRE ADD POST(PROJECT) END
- //FREELANCER_HIRE ADD POST(PROJECT) DATA INSERT START
+    //FREELANCER_HIRE ADD POST(PROJECT) DATA INSERT START
     public function freelancer_add_post_insert() {
         $userid = $this->session->userdata('aileenuser');
         $skills = $this->input->post('skills');
@@ -1996,7 +1994,7 @@ class Freelancer_hire extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $skills = $this->input->post('skills');
         $skills = explode(',', $skills);
-          
+
         $this->form_validation->set_rules('post_name', 'Project Title', 'required');
         $this->form_validation->set_rules('post_desc', 'Project description', 'required');
         $this->form_validation->set_rules('fields_req', 'Field ', 'required');
@@ -2005,45 +2003,45 @@ class Freelancer_hire extends MY_Controller {
         $this->form_validation->set_rules('rate', 'Rate', 'required');
         $this->form_validation->set_rules('currency', 'Currency', 'required');
         $this->form_validation->set_rules('rating', 'Work type', 'required');
-        
+
 
         if ($this->form_validation->run() == FALSE) {
 
             $contition_array = array('post_id' => $id, 'is_delete' => '0');
-        $userdata = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $userdata = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //for getting univesity data Start
-        $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
-        $search_condition = "((is_other = '2' AND user_id = $userid) OR (status = '1'))";
-        $this->data['category_data'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            //for getting univesity data Start
+            $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
+            $search_condition = "((is_other = '2' AND user_id = $userid) OR (status = '1'))";
+            $this->data['category_data'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'status' => '1', 'category_name' => "Other");
-        $this->data['category_otherdata'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'category_name' => "Other");
+            $this->data['category_otherdata'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //for getting univesity data End
+            //for getting univesity data End
 
-        $contition_array = array('status' => '1', 'type' => '1');
-        $this->data['skill1'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('status' => '1', 'type' => '1');
+            $this->data['skill1'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('status' => '1');
-        $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('status' => '1');
+            $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 //Retrieve skill data Start
 
-        $skill_know = explode(',', $userdata[0]['post_skill']);
-        foreach ($skill_know as $lan) {
-            $contition_array = array('skill_id' => $lan, 'status' => '1');
-            $languagedata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-            $detailes[] = $languagedata[0]['skill'];
-        }
+            $skill_know = explode(',', $userdata[0]['post_skill']);
+            foreach ($skill_know as $lan) {
+                $contition_array = array('skill_id' => $lan, 'status' => '1');
+                $languagedata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                $detailes[] = $languagedata[0]['skill'];
+            }
 
-        $this->data['skill_2'] = implode(',', $detailes);
-        //Retrieve skill data End
-        $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => '3');
-        $data = 'username,fullname';
-        $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-            
-            $this->load->view('freelancer/freelancer_hire/freelancer_edit_post',$this->data);
+            $this->data['skill_2'] = implode(',', $detailes);
+            //Retrieve skill data End
+            $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => '3');
+            $data = 'username,fullname';
+            $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+            $this->load->view('freelancer/freelancer_hire/freelancer_edit_post', $this->data);
         } else {
 
             $datereplace = $this->input->post('last_date');
@@ -2104,7 +2102,7 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //FREELANCER_HIRE EDIT POST(PROJECT) PAGE DATA INSERT END
- //FREELANCER_HIRE DEACTIVATE START
+    //FREELANCER_HIRE DEACTIVATE START
     public function deactivate_hire() {
         $id = $_POST['id'];
         $data = array(
@@ -2234,7 +2232,7 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //FREELANCER HIRE POST LIVE LINK END
-        // FREELANCER HIRE SHORTLISTED CANDIDATE PAGE START
+    // FREELANCER HIRE SHORTLISTED CANDIDATE PAGE START
     public function freelancer_shortlist_list($post_id = '') {
 
         $userid = $this->session->userdata('aileenuser');
@@ -2337,6 +2335,7 @@ class Freelancer_hire extends MY_Controller {
                     "data" => $data,
         ));
     }
+
     public function add_project_login() {
         $userid = $this->session->userdata('aileenuser');
         $postname = $this->input->post('post_name');
@@ -2419,7 +2418,8 @@ class Freelancer_hire extends MY_Controller {
             ));
         }
     }
-     public function ajax_dataforcity() {
+
+    public function ajax_dataforcity() {
 
         if (isset($_POST["country_id"]) && !empty($_POST["country_id"])) {
             //Get all state data
@@ -2454,7 +2454,7 @@ class Freelancer_hire extends MY_Controller {
             }
         }
     }
-    
+
     //FREELANCER_HIRE  OTHER FIELD START
     public function freelancer_hire_other_field() {
 
@@ -2512,7 +2512,6 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //FREELANCER_HIRE BOTH OTHER END
- 
     //FREELANCER HIRE SAVE FOR SHORTLISTED CANDIDATE START
     public function shortlist_user($post_id = '', $saveuserid = '') {
         $post_id = $_POST['post_id'];
@@ -2602,8 +2601,7 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //FREELANCER HIRE SAVE FOR SHORTLISTED CANDIDATE END
-   
- //FREELANCER_HIRE SEARCH KEYWORD FOR AUTO COMPLETE START
+    //FREELANCER_HIRE SEARCH KEYWORD FOR AUTO COMPLETE START
     public function freelancer_hire_search_keyword($id = "") {
 
         $searchTerm = $_GET['term'];
@@ -2725,6 +2723,7 @@ class Freelancer_hire extends MY_Controller {
             } echo $savepost;
         }
     }
+
     public function save_user1($id, $save_id) {
         $id = $_POST['user_id'];
         $save_id = $_POST['save_id'];
@@ -2767,6 +2766,7 @@ class Freelancer_hire extends MY_Controller {
             }
         }
     }
+
     //FREELANCER_HIRE REMOVE SAVED FREELANCER START
     public function remove_save() {
         $saveid = $_POST['save_id'];
@@ -2779,4 +2779,41 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //FREELANCER_HIRE REMOVE SAVED FREELANCER END
+
+    public function hire_login() {
+        $email_login = $this->input->post('email_login');
+        $password_login = $this->input->post('password_login');
+
+        $userinfo = $this->logins->check_login($email_login, $password_login);
+        $user_slug = '';
+        if ($userinfo['user_id'] != '') {
+            if ($userinfo['status'] == "2") {
+                echo 'Sorry, user is Inactive.';
+            } else {
+                $this->session->set_userdata('aileenuser', $userinfo['user_id']);
+                $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
+                $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
+                $data1 = 'ok';
+            }
+        } else if ($email_login == $userinfo['email']) {
+            $data1 = 'password';
+            $id = $userinfo['user_id'];
+        } else {
+            $data1 = 'email';
+        }
+        
+         //For live link of freelancer aplly user code start
+        $contition_array = array('user_id' => $userinfo['user_id'], 'is_delete' => '0', 'status' => '1', 'free_post_step' => '7');
+        $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $freelancer_apply_user = $free_work_result[0]['total'];
+        //For live link of freelancer aplly user code end
+        
+        echo json_encode(
+                array(
+                    "data" => $data1,
+                    "user_slug" => $user_slug['user_slug'],
+                    "freelancerapply" => $freelancer_apply_user,
+        ));
+    }
+
 }
