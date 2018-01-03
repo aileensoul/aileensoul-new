@@ -9,12 +9,13 @@ class Freelancer_hire extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('email_model');
         $this->load->model('user_model');
+        $this->load->model('freelancer_hire_model');
         $this->lang->load('message', 'english');
         //AWS access info start
         $this->load->library('S3');
         //AWS access info end
 
-        include ('freelancer_include.php');
+        include ('freelancer_hire_include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
     }
 

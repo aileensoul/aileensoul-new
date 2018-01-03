@@ -13,6 +13,7 @@ class Freelancer extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('email_model');
         $this->load->model('user_model');
+        $this->load->model('freelancer_apply_model');
         $this->lang->load('message', 'english');
         $this->load->library('S3');
 
