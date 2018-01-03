@@ -1,5 +1,6 @@
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER START
 $(document).ready(function () {
+    $('#register').modal('show');
     job_search();
 
     $(window).scroll(function () {
@@ -429,8 +430,11 @@ function register_profile() {
 function forgot_profile() {
     $('#forgotPassword').modal('show');
     $('#login').modal('hide');
-
 }
+function forgot_close(){
+    $('#login').modal('show');
+}
+
 
 $(document).on('click', '[data-toggle*=modal]', function () {
     $('[role*=dialog]').each(function () {
