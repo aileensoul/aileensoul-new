@@ -12,6 +12,8 @@ class Business_userprofile extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('user_agent');
         $this->load->model('email_model');
+        $this->load->model('user_model');
+        $this->load->model('business_model');
         $this->lang->load('message', 'english');
         $this->load->helper('smiley');
         //AWS access info start
@@ -534,13 +536,7 @@ Your browser does not support the audio tag.
 </a>
 </li>
 <li id = "insertcount' . $post_business_profile_post_id . '" style = "visibility:show">';
-                $join_str[0]['table'] = 'user';
-                $join_str[0]['join_table_id'] = 'user.user_id';
-                $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
-                $join_str[0]['join_type'] = '';
-                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'business_profile_post_comment.status' => '1', 'business_profile_post_comment.is_delete' => '0', 'user.status' => '1', 'user.is_delete' => '0');
-                $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
+                $commnetcount = $this->business_model->getBusinessPostComment($post_id = $post_business_profile_post_id, $sortby = '', $orderby = '', $limit = '');
                 $return_html .= '<a onClick = "commentall(this.id)" id = "' . $post_business_profile_post_id . '" class = "ripple like_h_w">
 <i class = "fa fa-comment-o" aria-hidden = "true">
 </i>
@@ -655,12 +651,7 @@ Your browser does not support the audio tag.
 </div>
 <div id = "threecomment' . $post_business_profile_post_id . '" style = "display:block">
 <div class = "hidebottomborder insertcomment' . $post_business_profile_post_id . '">';
-                $join_str[0]['table'] = 'user';
-                $join_str[0]['join_table_id'] = 'user.user_id';
-                $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
-                $join_str[0]['join_type'] = '';
-                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'business_profile_post_comment.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
-                $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
+                $businessprofiledata = $this->data['businessprofiledata'] = $this->business_model->getBusinessPostComment($post_id = $post_business_profile_post_id, $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1');
                 if ($businessprofiledata) {
                     foreach ($businessprofiledata as $rowdata) {
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
@@ -728,13 +719,7 @@ Your browser does not support the audio tag.
 <div class = "comment-details-menu" id = "likecomment1' . $rowdata['business_profile_post_comment_id'] . '">
 <a id = "' . $rowdata['business_profile_post_comment_id'] . '" onClick = "comment_like1(this.id)">';
 
-                        $userid = $this->session->userdata('aileenuser');
-                        $join_str[0]['table'] = 'user';
-                        $join_str[0]['join_table_id'] = 'user.user_id';
-                        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
-                        $join_str[0]['join_type'] = '';
-                        $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'business_profile_post_comment.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
-                        $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+                        $businesscommentlike = $this->data['businesscommentlike'] = $this->business_model->getBusinessLikeComment($post_id = $rowdata['business_profile_post_comment_id']);
                         $likeuserarray = explode(', ', $businesscommentlike[0]['business_comment_like_user']);
                         if (!in_array($userid, $likeuserarray)) {
 

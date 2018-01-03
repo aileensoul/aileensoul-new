@@ -425,7 +425,7 @@ var keyword1 = '<?php echo $keyword1; ?>';
                     }
                     $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url() ?>registration/user_check_login',
+                        url: '<?php echo base_url() ?>login/artistic_check_login',
                         data: post_data,
                         dataType: "json",
                         beforeSend: function ()
