@@ -114,7 +114,7 @@ function recommen_candidate_post(pagenum) {
                     }
                     $.ajax({
                         type: 'POST',
-                        url: base_url + 'registration/check_login',
+                        url: base_url + 'login/rec_check_login',
                         data: post_data,
                         dataType: "json",
                         beforeSend: function ()

@@ -41,7 +41,7 @@ $(document).ready(function () {
         }
         $.ajax({
             type: 'POST',
-            url: base_url + 'registration/check_login',
+            url: base_url + 'login/job_check_login',
             data: post_data,
             dataType: "json",
             beforeSend: function ()
@@ -452,7 +452,7 @@ $(document).ready(function () {
         }
         $.ajax({
             type: 'POST',
-            url: base_url + 'registration/check_login',
+            url: base_url + 'login/job_check_login',
             data: post_data,
             dataType: "json",
             beforeSend: function ()
