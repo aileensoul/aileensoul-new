@@ -2483,7 +2483,7 @@ label.cameraButton:active{
 	padding:2px 0;
 }
 .all-list ul{
-    padding:15px 0 10px
+    padding:17px 0 17px
 }
 .all-list ul li{
     padding:25px;
@@ -5046,6 +5046,7 @@ body.reg-form{
         width:266px;
         height:189px
     }
+    .all-list ul{padding:10px 0 10px}
 }
 @media screen and (max-width:639px){
     .modal.in .modal-dialog .mes .pop_content{

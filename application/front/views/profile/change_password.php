@@ -50,7 +50,8 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
 
 <!-- middele data -->
       <div class="main_otp_box_middle">
-  Please check your email for the verification code.Your verification code has been sent to<a><?php echo $emailid[0]['user_email'] ?></a>
+  Please check your email for the verification code.Your verification code has been sent to 
+  <a class="cus_em"><?php echo $emailid[0]['user_email'] ?></a>
  Please enter verification code here to verify your account.
 
 

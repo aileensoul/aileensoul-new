@@ -2135,6 +2135,9 @@ word-break: break-word;}
     user-select: none;pointer-events: none;}
 body.modal-open{position: fixed;}
 .pushmenu-push{position: initial;}
+.cus_em:hover{text-transform: none;}
+
+
 /***  media query  ***/
 
 @media screen and (max-height: 540px){
