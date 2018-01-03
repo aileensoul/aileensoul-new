@@ -1274,12 +1274,7 @@ Your browser does not support the audio tag.
 </a>
 </li>
 <li id = "insertcount' . $post_business_profile_post_id . '" style = "visibility:show">';
-        $join_str[0]['table'] = 'user';
-        $join_str[0]['join_table_id'] = 'user.user_id';
-        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
-        $join_str[0]['join_type'] = '';
-        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'business_profile_post_comment.status' => '1', 'business_profile_post_comment.is_delete' => '0', 'user.status' => '1', 'user.is_delete' => '0');
-        $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+        $commnetcount = $this->business_model->getBusinessPostComment($post_business_profile_post_id);
 
         $return_html .= '<a onClick = "commentall(this.id)" id = "' . $post_business_profile_post_id . '" class = "ripple like_h_w">
 <i class = "fa fa-comment-o" aria-hidden = "true">
@@ -1406,13 +1401,8 @@ Your browser does not support the audio tag.
 <div id = "threecomment' . $post_business_profile_post_id . '" style = "display:block">
 <div class = "hidebottomborder insertcomment' . $post_business_profile_post_id . '">';
 
-        $join_str[0]['table'] = 'user';
-        $join_str[0]['join_table_id'] = 'user.user_id';
-        $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
-        $join_str[0]['join_type'] = '';
+        $businessprofiledata = $this->data['businessprofiledata'] = $this->business_model->getBusinessPostComment($post_business_profile_post_id, $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1');
 
-        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
-        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
         if ($businessprofiledata) {
             foreach ($businessprofiledata as $rowdata) {
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
@@ -1478,13 +1468,7 @@ Your browser does not support the audio tag.
 <div class = "comment-details-menu" id = "likecomment1' . $rowdata['business_profile_post_comment_id'] . '">
 <a id = "' . $rowdata['business_profile_post_comment_id'] . '" onClick = "comment_like1(this.id)">';
 
-                $userid = $this->session->userdata('aileenuser');
-                $join_str[0]['table'] = 'user';
-                $join_str[0]['join_table_id'] = 'user.user_id';
-                $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
-                $join_str[0]['join_type'] = '';
-                $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'business_profile_post_comment.status' => '1', 'user.status' => '1', 'user.is_delete' => '0');
-                $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+                $businesscommentlike = $this->data['businesscommentlike'] = $commnetcount = $this->business_model->getBusinessPostComment($rowdata['business_profile_post_comment_id']);
                 $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
                 if (!in_array($userid, $likeuserarray)) {
 
@@ -2189,14 +2173,8 @@ Your browser does not support the audio tag.
         $limit = $perpage;
         $offset = $start;
 
-        $join_str[0]['table'] = 'user';
-        $join_str[0]['join_table_id'] = 'user.user_id';
-        $join_str[0]['from_table_id'] = 'business_profile.user_id';
-        $join_str[0]['join_type'] = '';
-
-        $contition_array = array('business_profile.business_step' => '4', 'business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.user_id !=' => $userid, 'user.status' => '1', 'user.is_delete' => '0');
-        $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'desc', $limit, $offset, $join_str, $groupby = '');
-        $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+        $userlist = $this->business_model->business_userlist($userid, $sortby = 'business_profile_id', $orderby = 'desc', $limit, $offset);
+        $userlist1 = $this->business_model->business_userlist($userid, $sortby = 'business_profile_id', $orderby = 'desc');
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3308,41 +3286,20 @@ Your browser does not support the audio tag.
             $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1');
             $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $join_str[0]['table'] = 'follow';
-            $join_str[0]['join_table_id'] = 'follow.follow_from';
-            $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
-            $join_str[0]['join_type'] = '';
-            $join_str[1]['table'] = 'user';
-            $join_str[1]['join_table_id'] = 'user.user_id';
-            $join_str[1]['from_table_id'] = 'business_profile.user_id';
-            $join_str[1]['join_type'] = '';
-
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
-            $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
-            $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $userlist = $this->business_model->business_followers($follow_to = $businessdata1[0]['business_profile_id'], $sortby = '', $orderby = '', $limit, $offset);
+            $userlist1 = $this->business_model->business_followers($follow_to = $businessdata1[0]['business_profile_id']);
         } else {
             $contition_array = array('business_profile.business_slug' => $id, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.business_step' => '4');
             $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $join_str[0]['table'] = 'follow';
-            $join_str[0]['join_table_id'] = 'follow.follow_from';
-            $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
-            $join_str[0]['join_type'] = '';
-            $join_str[1]['table'] = 'user';
-            $join_str[1]['join_table_id'] = 'user.user_id';
-            $join_str[1]['from_table_id'] = 'business_profile.user_id';
-            $join_str[1]['join_type'] = '';
-
-
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
-            $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
-            $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $userlist = $this->business_model->business_followers($follow_to = $businessdata1[0]['business_profile_id'], $sortby = '', $orderby = '', $limit, $offset);
+            $userlist1 = $this->business_model->business_followers($follow_to = $businessdata1[0]['business_profile_id']);
         }
 
         if (empty($_GET["total_record"])) {
@@ -3489,45 +3446,23 @@ Your browser does not support the audio tag.
         $artdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $slugid = $artdata[0]['business_slug'];
         if ($id == $slug_id || $id == '') {
-
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $join_str[0]['table'] = 'follow';
-            $join_str[0]['join_table_id'] = 'follow.follow_to';
-            $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
-            $join_str[0]['join_type'] = '';
-            $join_str[1]['table'] = 'user';
-            $join_str[1]['join_table_id'] = 'user.user_id';
-            $join_str[1]['from_table_id'] = 'business_profile.user_id';
-            $join_str[1]['join_type'] = '';
-
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1', 'business_profile.is_deleted' => '0', 'user.is_delete' => '0', 'user.status' => '1');
-            $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
-            $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $userlist = $this->business_model->business_following($follow_from = $businessdata1[0]['business_profile_id'], $sortby = '', $orderby = '', $limit, $offset);
+            $userlist1 = $this->business_model->business_following($follow_from = $businessdata1[0]['business_profile_id']);
         } else {
-
             $contition_array = array('business_slug' => $id, 'business_step' => '4', 'status' => '1', 'is_deleted' => '0');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $join_str[0]['table'] = 'follow';
-            $join_str[0]['join_table_id'] = 'follow.follow_to';
-            $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
-            $join_str[0]['join_type'] = '';
-            $join_str[1]['table'] = 'user';
-            $join_str[1]['join_table_id'] = 'user.user_id';
-            $join_str[1]['from_table_id'] = 'business_profile.user_id';
-            $join_str[1]['join_type'] = '';
-
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1', 'business_profile.is_deleted' => '0', 'user.is_delete' => '0', 'user.status' => '1');
-            $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
-            $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $userlist = $this->business_model->business_following($follow_from = $businessdata1[0]['business_profile_id'], $sortby = '', $orderby = '', $limit, $offset);
+            $userlist1 = $this->business_model->business_following($follow_from = $businessdata1[0]['business_profile_id']);
         }
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($userlist1);
@@ -3918,10 +3853,12 @@ Your browser does not support the audio tag.
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST["post_id"];
+        
         $join_str[0]['table'] = 'user';
         $join_str[0]['join_table_id'] = 'user.user_id';
         $join_str[0]['from_table_id'] = 'business_profile_post_comment.user_id';
         $join_str[0]['join_type'] = '';
+        
         $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'business_profile_post_comment.status' => '1', 'user.is_delete' => '0', 'user.status' => '1');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -10029,7 +9966,7 @@ Your browser does not support the audio tag.
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];
         }
-        
+
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
