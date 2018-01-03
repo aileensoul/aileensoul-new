@@ -5085,46 +5085,33 @@ if ($cityname != '') {
     }
     
        public function rec_check_login() {
-//        $email_login = $this->input->post('email_login');
-        $email_login = 'dshah1341@gmail.com';
-//        $password_login = $this->input->post('password_login');
-        $password_login = '123456';
+        $email_login = $this->input->post('email_login');
+        $password_login = $this->input->post('password_login');
 
-        $result[] = $this->user_model->getUserByEmail($email_login);
-        $userinfo = $this->logins->check_login($email_login, md5($password_login));
-echo '<pre>'; print_r($userinfo); die();
+        $result = $this->user_model->getUserByEmail($email_login);
+        $userinfo = $this->logins->check_login($email_login,$password_login);
         if (count($userinfo) > 0) {
-            if ($userinfo[0]['status'] == "2") {
+            if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
             } else {
                 $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
                 $this->session->set_userdata('aileenuser_slug', $userinfo[0]['user_slug']);
                 $is_data = 'ok';
             }
-        } else if ($email_login == $result[0]['user_email']) {
+        } else if ($email_login == $result['user_email']) {
             $is_data = 'password';
-            $id = $result[0]['user_id'];
+            $id = $result['user_id'];
         } else {
             $is_data = 'email';
         }
-
-
-        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'job_step' => '10');
-        $job_result = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $job = 0;
-        if ($job_result[0]['total'] > 0) {
-            $job = 1;
+        $rec_result = $this->recruiter_model->CheckRecruiterAvailable($id); 
+        $rec = 0;
+        if ($rec_result['total'] > 0) {
+            $rec = 1;
         }
-
         echo json_encode(
-                array(
-                    "data" => $is_data,
-                    "id" => $id,
-                    "is_bussiness" => $business,
-                    "is_freelancer_work" => $free_work,
-                    "is_freelancer_hire" => $free_hire,
-                    "is_artistic" => $artistic,
-                    "is_job" => $job
+            array(
+                    "data" => $is_data,"id" => $id,"is_rec" => $rec
         ));
     }
 

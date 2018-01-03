@@ -33,5 +33,13 @@ class Recruiter_model extends CI_Model {
      public function getRecruiterWhere($table_name = '',$where = '',$fieldvalue = '') {
        return $this->db->get_where($table_name, $where)->row()->$fieldvalue; 
     }
+    
+    public function CheckRecruiterAvailable($user_id = '') {
+       $this->db->select("count(*) as total")->from("recruiter r");
+        $this->db->where(array('r.user_id' => $user_id, 'r.re_status' => '1', 'r.is_delete' => '0', 'r.re_step' => '3'));
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array; 
+    }
    
 }
