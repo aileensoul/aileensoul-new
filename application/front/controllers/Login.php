@@ -424,6 +424,37 @@ class Login extends CI_Controller {
         }
         echo json_encode(array('status' => $status, 'userid' => $userid));
     }
+    
+       public function rec_check_login() {
+        $email_login = $this->input->post('email_login');
+        $password_login = $this->input->post('password_login');
+
+        $result = $this->user_model->getUserByEmail($email_login);
+        $userinfo = $this->logins->check_login($email_login,$password_login);
+        if (count($userinfo) > 0) {
+            if ($userinfo['status'] == "2") {
+                echo 'Sorry, user is Inactive.';
+            } else {
+                $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
+                $this->session->set_userdata('aileenuser_slug', $userinfo[0]['user_slug']);
+                $is_data = 'ok';
+            }
+        } else if ($email_login == $result['user_email']) {
+            $is_data = 'password';
+            $id = $result['user_id'];
+        } else {
+            $is_data = 'email';
+        }
+        $rec_result = $this->recruiter_model->CheckRecruiterAvailable($id); 
+        $rec = 0;
+        if ($rec_result['total'] > 0) {
+            $rec = 1;
+        }
+        echo json_encode(
+            array(
+                    "data" => $is_data,"id" => $id,"is_rec" => $rec
+        ));
+    }
 
 }
 
