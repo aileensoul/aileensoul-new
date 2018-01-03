@@ -571,8 +571,8 @@
                                                 </p>
                                                 <p class="loca-exp">
                                                     <span class="exp">
-                                                        <span><img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>" title="experienceimage">
-
+                                                        <span><!-- <img class="pr5" src="<?php //echo base_url('assets/images/exp.png'); ?>" title="experienceimage">
+ -->
                                                             <?php
                                                             if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
 

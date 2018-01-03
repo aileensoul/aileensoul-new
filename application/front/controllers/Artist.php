@@ -1755,8 +1755,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -1764,8 +1763,7 @@ class Artist extends MY_Controller {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -1840,16 +1838,17 @@ class Artist extends MY_Controller {
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
-            $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
+
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
             } else {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -3858,8 +3857,8 @@ class Artist extends MY_Controller {
 
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
-            $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -3867,8 +3866,8 @@ class Artist extends MY_Controller {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -4092,8 +4091,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -4101,8 +4099,8 @@ class Artist extends MY_Controller {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -4325,8 +4323,8 @@ class Artist extends MY_Controller {
 
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
-            $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -4334,8 +4332,8 @@ class Artist extends MY_Controller {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -4675,8 +4673,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -4684,8 +4681,8 @@ class Artist extends MY_Controller {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+               
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -5041,8 +5038,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
 
             if ($user_data[0]['status'] == '1') {
                 $return = 1;
@@ -5050,8 +5046,8 @@ class Artist extends MY_Controller {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -5395,8 +5391,8 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -5404,8 +5400,8 @@ class Artist extends MY_Controller {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+               
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -5905,8 +5901,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -5914,8 +5909,8 @@ class Artist extends MY_Controller {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+               
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -6209,8 +6204,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -6218,8 +6212,8 @@ class Artist extends MY_Controller {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+               
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -6429,8 +6423,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $user_data =  $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -6438,8 +6431,8 @@ class Artist extends MY_Controller {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+               
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -9113,8 +9106,7 @@ class Artist extends MY_Controller {
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
 
-            $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -9122,8 +9114,8 @@ class Artist extends MY_Controller {
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+               
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
@@ -15958,7 +15950,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
             $return = 1;
 
             $condition_array = array('user_id' => $profile_data[0]['user_id']);
-            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $user_data = $this->user_model->getUserSelectedData($profile_data[0]['user_id'], $select_data = 'ui.status,ui.is_delete');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                 $return = 1;
@@ -15966,8 +15958,8 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 $return = 0;
             }
             if ($profile_data[0]['posted_user_id'] != '0') {
-                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
-                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                $user_data = $this->user_model->getUserSelectedData($profile_data[0]['posted_user_id'], $select_data = 'ui.status,ui.is_delete');
 
                 if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
                     $return = 1;
