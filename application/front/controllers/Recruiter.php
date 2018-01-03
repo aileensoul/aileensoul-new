@@ -5082,5 +5082,78 @@ if ($cityname != '') {
         }
         echo "yes";
     }
+    
+       public function rec_check_login() {
+        $email_login = $this->input->post('email_login');
+        $password_login = $this->input->post('password_login');
+
+        $userinfo = $this->logins->check_login($email_login, $password_login);
+
+        if (count($userinfo) > 0) {
+            if ($userinfo[0]['status'] == "2") {
+                echo 'Sorry, user is Inactive.';
+            } else {
+                $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
+                $this->session->set_userdata('aileenuser_slug', $userinfo[0]['user_slug']);
+                $is_data = 'ok';
+            }
+        } else if ($email_login == $result[0]['user_email']) {
+            $is_data = 'password';
+            $id = $result[0]['user_id'];
+        } else {
+            $is_data = 'email';
+        }
+
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_deleted' => '0', 'status' => '1', 'business_step' => '4');
+        $business_result = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $business = 0;
+        if ($business_result[0]['total'] > 0) {
+            $business = 1;
+        }
+
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'free_post_step' => '7');
+        $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $free_work = 0;
+        if ($free_work_result[0]['total'] > 0) {
+            $free_work = 1;
+        }
+
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'free_hire_step' => '3');
+        $free_hire_result = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $free_hire = 0;
+        if ($free_hire_result[0]['total'] > 0) {
+            $free_hire = 1;
+        }
+
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'art_step' => '4');
+        $artistic_result = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $artistic = 0;
+        if ($artistic_result[0]['total'] > 0) {
+            $artistic = 1;
+        }
+
+
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'job_step' => '10');
+        $job_result = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $job = 0;
+        if ($job_result[0]['total'] > 0) {
+            $job = 1;
+        }
+
+        echo json_encode(
+                array(
+                    "data" => $is_data,
+                    "id" => $id,
+                    "is_bussiness" => $business,
+                    "is_freelancer_work" => $free_work,
+                    "is_freelancer_hire" => $free_hire,
+                    "is_artistic" => $artistic,
+                    "is_job" => $job
+        ));
+    }
 
 }
