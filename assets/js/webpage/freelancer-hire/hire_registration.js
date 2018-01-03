@@ -1,37 +1,37 @@
 //CODE FOR COUNTRY,STATE, CITY START
-    $('#country').on('change', function () {
-        var countryID = $(this).val();
-        if (countryID) {
-            $.ajax({
-                type: 'POST',
-                url: base_url + "freelancer_hire/ajax_data",
-                data: 'country_id=' + countryID,
-                success: function (html) {
-                    $('#state').html(html);
-                    $('#city').html('<option value="">Select state first</option>');
-                }
-            });
-        } else {
-            $('#state').html('<option value="">Select country first</option>');
-            $('#city').html('<option value="">Select state first</option>');
-        }
-    });
+$('#country').on('change', function () {
+    var countryID = $(this).val();
+    if (countryID) {
+        $.ajax({
+            type: 'POST',
+            url: base_url + "freelancer_hire/ajax_data",
+            data: 'country_id=' + countryID,
+            success: function (html) {
+                $('#state').html(html);
+                $('#city').html('<option value="">Select state first</option>');
+            }
+        });
+    } else {
+        $('#state').html('<option value="">Select country first</option>');
+        $('#city').html('<option value="">Select state first</option>');
+    }
+});
 
-    $('#state').on('change', function () {
-        var stateID = $(this).val();
-        if (stateID) {
-            $.ajax({
-                type: 'POST',
-                url: base_url + "freelancer_hire/ajax_data",
-                data: 'state_id=' + stateID,
-                success: function (html) {
-                    $('#city').html(html);
-                }
-            });
-        } else {
-            $('#city').html('<option value="">Select state first</option>');
-        }
-    });
+$('#state').on('change', function () {
+    var stateID = $(this).val();
+    if (stateID) {
+        $.ajax({
+            type: 'POST',
+            url: base_url + "freelancer_hire/ajax_data",
+            data: 'state_id=' + stateID,
+            success: function (html) {
+                $('#city').html(html);
+            }
+        });
+    } else {
+        $('#city').html('<option value="">Select state first</option>');
+    }
+});
 //CODE FOR COUNTRY,STATE, CITY END
 $(document).ready(function () {
     if (!user_session) {
@@ -354,132 +354,135 @@ function OnPaste_StripFormatting(elem, e) {
 //});
 ////DISABLE CUTTON ON ONE TIME CLICK END
 //login pop up open start
-    function login_profile() {
-        $('#register').modal('hide');
-        $('#login').modal('show');
-    }
+function login_profile() {
+    $('#register').modal('hide');
+    $('#login').modal('show');
+}
 //login pop up open end
 function forgot_profile() {
     $('#login').modal('hide');
     $('#forgotPassword').modal('show');
 }
-function create_profile(){
+function create_profile() {
     $('#login').modal('hide');
     $('#register').modal('show');
 }
-  /* validation */
+/* validation */
 
-    $("#login_form").validate({
+$("#login_form").validate({
 
-        rules: {
-            email_login: {
-                required: true,
-            },
-            password_login: {
-                required: true,
-            }
+    rules: {
+        email_login: {
+            required: true,
         },
-        messages:
-                {
-                    email_login: {
-                        required: "Please enter email address",
-                    },
-                    password_login: {
-                        required: "Please enter password",
-                    }
-                },
-        submitHandler: submitForm
-    });
-    /* validation */
-    /* login submit */
-    function submitForm()
-    {
-
-        var email_login = $("#email_login").val();
-        var password_login = $("#password_login").val();
-        var post_data = {
-            'email_login': email_login,
-            'password_login': password_login,
-//            csrf_token_name: csrf_hash
+        password_login: {
+            required: true,
         }
-        $.ajax({
-            type: 'POST',
-            url: base_url + 'registration/check_login',
-            data: post_data,
-            dataType: "json",
-            beforeSend: function ()
+    },
+    messages:
             {
-                $("#error").fadeOut();
-                $("#btn1").html('Login ...');
+                email_login: {
+                    required: "Please enter email address",
+                },
+                password_login: {
+                    required: "Please enter password",
+                }
             },
-            success: function (response)
-            {
-                if (response.data == "ok") {
-                  //  alert("login");
+    submitHandler: submitForm
+});
+/* validation */
+/* login submit */
+function submitForm()
+{
+
+    var email_login = $("#email_login").val();
+    var password_login = $("#password_login").val();
+    var post_data = {
+        'email_login': email_login,
+        'password_login': password_login,
+//            csrf_token_name: csrf_hash
+    }
+    $.ajax({
+        type: 'POST',
+        url: base_url + 'login/freelancer_hire_login',
+        data: post_data,
+        dataType: "json",
+        beforeSend: function ()
+        {
+            $("#error").fadeOut();
+            $("#btn1").html('Login ...');
+        },
+        success: function (response)
+        {
+            if (response.data == "ok") {
+                if (response.freelancerhire == 0) {
+                    window.location = base_url + "freelance-hire/registration";
+                } else {
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                     window.location = base_url + "freelance-hire/home";
-                } else if (response.data == "password") {
-                    $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
-                    document.getElementById("password_login").classList.add('error');
-                    document.getElementById("password_login").classList.add('error');
-                    $("#btn1").html('Login');
-                } else {
-                    $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
-                    document.getElementById("email_login").classList.add('error');
-                    document.getElementById("email_login").classList.add('error');
-                    $("#btn1").html('Login');
                 }
+            } else if (response.data == "password") {
+                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
+                document.getElementById("password_login").classList.add('error');
+                document.getElementById("password_login").classList.add('error');
+                $("#btn1").html('Login');
+            } else {
+                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
+                document.getElementById("email_login").classList.add('error');
+                document.getElementById("email_login").classList.add('error');
+                $("#btn1").html('Login');
             }
-        });
-        return false;
-    }
-    /* login submit */
-    $("#forgot_password").validate({
-        rules: {
-            forgot_email: {
-                required: true,
-                email: true,
-            }
-
-        },
-        messages: {
-            forgot_email: {
-                required: "Email address is required.",
-            }
-        },
-        submitHandler: submitforgotForm
-    });
-    
-          function submitforgotForm()
-    {
-
-        var email_login = $("#forgot_email").val();
-        
-        var post_data = {
-            'forgot_email': email_login,
-//            csrf_token_name: csrf_hash
         }
-        $.ajax({
-            type: 'POST',
-            url: base_url + 'profile/forgot_live',
-            data: post_data,
-            dataType: "json",
-            beforeSend: function ()
-            {
-                $("#error").fadeOut();
-                $("#forgotbuton").html('Your credential has been send in your register email id');
-            },
-            success: function (response)
-            {
-                if (response.data == "success") {
-                  //  alert("login");
-                    $("#forgotbuton").html(response.data);
-                    //window.location = base_url + "job/home/live-post";
-                } else {
-                    $("#forgotbuton").html(response.message);
-                    
-                }
-            }
-        });
-        return false;
+    });
+    return false;
+}
+/* login submit */
+$("#forgot_password").validate({
+    rules: {
+        forgot_email: {
+            required: true,
+            email: true,
+        }
+
+    },
+    messages: {
+        forgot_email: {
+            required: "Email address is required.",
+        }
+    },
+    submitHandler: submitforgotForm
+});
+
+function submitforgotForm()
+{
+
+    var email_login = $("#forgot_email").val();
+
+    var post_data = {
+        'forgot_email': email_login,
+//            csrf_token_name: csrf_hash
     }
+    $.ajax({
+        type: 'POST',
+        url: base_url + 'profile/forgot_live',
+        data: post_data,
+        dataType: "json",
+        beforeSend: function ()
+        {
+            $("#error").fadeOut();
+            $("#forgotbuton").html('Your credential has been send in your register email id');
+        },
+        success: function (response)
+        {
+            if (response.data == "success") {
+                //  alert("login");
+                $("#forgotbuton").html(response.data);
+                //window.location = base_url + "job/home/live-post";
+            } else {
+                $("#forgotbuton").html(response.message);
+
+            }
+        }
+    });
+    return false;
+}
