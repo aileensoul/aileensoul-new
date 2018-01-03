@@ -477,6 +477,9 @@ function create_profile(){
     }
 });
 
+function forgot_close() {
+                $('#login').modal('show');
+}
 
     $("#login_form").validate({
 
