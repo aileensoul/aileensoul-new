@@ -39,6 +39,7 @@ function register_profile() {
     $('#register_profile').modal('show');
 }
 function forgot_profile() {
+    $('#login').modal('hide');
     $('#forgotPassword').modal('show');
 }
 $(function () {
@@ -606,7 +607,7 @@ function submitForm()
     }
     $.ajax({
         type: 'POST',
-        url: base_url + 'registration/check_login',
+        url: base_url + 'login/freelancer_hire_login',
         data: post_data,
         dataType: "json",
         beforeSend: function ()

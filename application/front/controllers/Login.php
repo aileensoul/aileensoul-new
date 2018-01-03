@@ -117,7 +117,8 @@ class Login extends CI_Controller {
                 array(
                     "data" => $data,
                     "user_slug" => $user_slug['user_slug'],
-                    "freelancerhire" => $freelancer_hire_user
+                    "freelancerhire" => $freelancer_hire_user,
+                    "id" => $userinfo['user_id']
         ));
     }
 
@@ -153,7 +154,8 @@ class Login extends CI_Controller {
                 array(
                     "data" => $data,
                     "user_slug" => $user_slug['user_slug'],
-                    "freelancerapply" => $freelancer_apply_user
+                    "freelancerapply" => $freelancer_apply_user,
+                    "id" => $userinfo['user_id']
         ));
     }
 

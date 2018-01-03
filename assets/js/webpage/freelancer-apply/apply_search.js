@@ -41,7 +41,7 @@ $(document).ready(function () {
         }
         $.ajax({
             type: 'POST',
-            url: base_url + 'registration/check_login',
+            url: base_url + 'login/freelancer_apply_login',
             data: post_data,
             dataType: "json",
             beforeSend: function ()
@@ -53,8 +53,12 @@ $(document).ready(function () {
             {
                 if (response.data == "ok") {
                     //  alert("login");
-                    $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                    window.location = base_url + "freelance-work/home";
+                    if (response.freelancerapply == 0) {
+                        window.location = base_url + "freelance-work/registration";
+                    } else {
+                        $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                        window.location = base_url + "freelance-work/home";
+                    }
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login").classList.add('error');
@@ -448,7 +452,7 @@ $(document).ready(function () {
         }
         $.ajax({
             type: 'POST',
-            url: base_url + 'registration/check_login',
+            url: base_url + 'login/freelancer_apply_login',
             data: post_data,
             dataType: "json",
             beforeSend: function ()
@@ -463,7 +467,6 @@ $(document).ready(function () {
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                     if (response.freelancerapply == 1)
                     {
-
                         var alldata = 'all';
                         var id = response.id;
                         // alert(id);
@@ -471,7 +474,7 @@ $(document).ready(function () {
                             type: 'POST',
                             url: base_url + 'freelance/apply_insert',
                             data: 'post_id=' + postid + '&allpost=' + alldata + '&userid=' + id,
-                            datatype: 'json',
+                            dataType: 'json',
                             success: function (data)
                             {
 //

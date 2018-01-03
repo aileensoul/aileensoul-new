@@ -471,18 +471,18 @@
 
 
         </script>
-        
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
 
-           <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
+           <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
 
-            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
+            <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
 
         <?php } else { ?>
 
-             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
+             <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
 
-            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
+            <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
 
         <?php } ?>
 
