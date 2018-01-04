@@ -36,7 +36,7 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
                                        
                                 ?>
 
-<?php echo form_open(base_url('profile/checkredirect/'. $user_changeid), array('id' => 'codecheck','name' => 'codecheck', 'class' => 'clearfix')); ?>
+<?php echo form_open(base_url('profile/newpassword/'. $user_changeid), array('id' => 'codecheck','name' => 'codecheck', 'class' => 'clearfix')); ?>
  <div class="inner-form login-frm otp_lform">
           <div class="login fw">
 <!-- main box -->

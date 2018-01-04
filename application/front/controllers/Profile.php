@@ -194,7 +194,7 @@ class Profile extends CI_Controller {
         }
     }
 
-    public function checkredirect($abc) {
+    public function newpassword($abc) {
 
         $this->data['userid'] = $abc;
 
