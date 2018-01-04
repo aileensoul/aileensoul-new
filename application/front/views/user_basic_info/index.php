@@ -47,8 +47,8 @@
                             <div class="form-group">
                                 <label for="text">Who are you?</label>
                                 <input type="text" class="form-control" id="jobTitle" ng-keyup="jobTitle()" ng-model="user.jobTitle" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, Developer, HR, BDE, CA, Doctor..">
-                                <ul id='searchResult' role='menu' aria-labelledby='jobTitle'>
-                                    <li ng-click="setTitleValue($index)" ng-repeat="titleResult in titleSearchResult" role="menuitem">{{titleResult.name}}</li>
+                                <ul id='searchResult'>
+                                    <li ng-click="setTitleValue($index)" ng-repeat="titleResult in titleSearchResult">{{titleResult.name}}</li>
                                 </ul>
                             </div>
                             <div class="form-group">
