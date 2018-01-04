@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="profileBasicInfoApp" ng-controller="profileBasicInfoController">
     <head>
-        <title>Aileensoul</title>
+        <title><?php echo $title; ?></title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css') ?>">
@@ -16,7 +16,6 @@
                 <div class="form-box">
                     <h2 class="text-center">Basic Information</h3>
                         <form class="">
-
                             <div class="form-group">
                                 <p class="student-or-not">If you are a student then <a data-target="#Student-info" data-toggle="modal" href="javascript:;">Click Here.</a></p>
                             </div>
@@ -25,8 +24,8 @@
                                 <input type="text" class="form-control" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, Developer, HR, BDE, CA, Doctor..">
                             </div>
                             <div class="form-group">
-                                <label for="pwd">Where are you from?</label>
-                                <input type="password" class="form-control" placeholder="Enter your city name">
+                                <label for="text">Where are you from?</label>
+                                <input type="text" class="form-control" placeholder="Enter your city name">
                             </div>
                             <div class="form-group">
                                 <label for="email">What is your field?</label>
@@ -80,7 +79,17 @@
             </div>
 
         </div>
+        <script src="<?php echo base_url('assets/js/angular/angular.min.1.5.7.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/angular/angular-route.1.6.4.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/angular-ui-bootstrap-modal.js') ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery.min.js') ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+        <script>
+            // Defining angularjs application.
+                    var profileBasicInfoApp = angular.module('profileBasicInfoApp', ['ui.bootstrap.modal']);
+                    profileBasicInfoApp.controller('profileBasicInfoController', function ($scope, $http) {
+                        
+                    });
+        </script>
     </body>
 </html>
