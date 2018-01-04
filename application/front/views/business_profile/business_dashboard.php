@@ -318,6 +318,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         <div class="right-main">
                             <div class="right-main-inner">
                                 <div class="">
+                                    <div id="forgotbuton"></div> 
                                     <div class="title">
                                         <h1 class="ttc tlh2">Forgot Password</h1>
                                     </div>
@@ -767,7 +768,46 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             required: "Email Address Is Required.",
                         }
                     },
+                     submitHandler: submitforgotForm
                 });
+
+function submitforgotForm()
+ {
+
+    var email_login = $("#forgot_email").val();
+
+    var post_data = {
+        'forgot_email': email_login,
+//            csrf_token_name: csrf_hash
+    }
+    $.ajax({
+        type: 'POST',
+        url: base_url + 'profile/forgot_live',
+        data: post_data,
+        dataType: "json",
+        beforeSend: function ()
+        {
+            $("#error").fadeOut();
+//            $("#forgotbuton").html('Your credential has been send in your register email id');
+        },
+        success: function (response)
+        {
+            if (response.data == "success") {
+                //  alert("login");
+                $("#forgotbuton").html(response.message);
+                setTimeout(function () {
+                    $('#forgotPassword').modal('hide');
+                    $('#login').modal('show');
+                }, 5000); // milliseconds
+                //window.location = base_url + "job/home/live-post";
+            } else {
+                $("#forgotbuton").html(response.message);
+
+            }
+        }
+    });
+    return false;
+}            /* validation */
             });
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
