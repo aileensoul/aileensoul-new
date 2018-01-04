@@ -19,13 +19,13 @@
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
         <?php echo $header; ?>
-        <?php if ($recdata[0]['re_step'] == 3) { ?>
+        <?php if ($recdata['re_step'] == 3) { ?>
             <?php echo $recruiter_header2_border; ?>
         <?php } ?>
         <div id="preloader"></div>
         <!-- START CONTAINER -->
         <section>
-               <?php if ($recdata[0]['re_step'] == 3) { ?>
+               <?php if ($recdata['re_step'] == 3) { ?>
             
             <div class="user-midd-section" id="paddingtop_fixed" >
                     <?php }else{ ?>
@@ -35,7 +35,7 @@
                     <div class="col-md-3 col-sm-4"></div>
 
                     <?php
-                    if ($recdata[0]['re_step'] == 3) {
+                    if ($recdata['re_step'] == 3) {
                         ?>
                         <div class="col-md-6 col-sm-8"><h3>You are updating your Recruiter Profile.</h3></div>
 
