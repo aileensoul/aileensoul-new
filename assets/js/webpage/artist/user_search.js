@@ -54,7 +54,7 @@ function artistic_search_user(pagenum) { //alert(keyword);
         success: function (data) { //alert(3); alert(data);
             $('.loader').remove();
             $('.job-contact-frnd').append(data);
-
+             $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom', '0px');
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {

@@ -15841,11 +15841,11 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         $return_html .= '</a></div>
                                                         <div class="comment-name">';
                         $return_html .= '<a href="javascript:void(0);" onclick="register_profile();">
-                                                            <b title="' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '>';
+                                                            <b title="' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '">';
 
-                        $return_html .= ucfirst(strtolower($artname));
-                        $return_html .= '&nbsp;';
-                        $return_html .= ucfirst(strtolower($artlastname));
+                         $return_html .= ucfirst(strtolower($artname));
+                         $return_html .= '&nbsp;';
+                         $return_html .= ucfirst(strtolower($artlastname));
                         $return_html .= '</b></br></a></div>
                                                           <div class="comment-details" id="showcomment' . $rowdata['artistic_post_comment_id'] . '">' . $this->common->make_links($rowdata['comments']) . '</div>';
 
