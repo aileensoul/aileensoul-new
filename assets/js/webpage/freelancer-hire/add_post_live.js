@@ -161,6 +161,15 @@ $(document).ready(function () {
             },
             est_time: {
                 regx_num_space: /[0-9\s][a-zA-Z]/
+            },
+            rate: {
+                required: true,
+            },
+            currency: {
+                required: true,
+            },
+            rating: {
+                required: true,
             }
 
         },
@@ -189,6 +198,15 @@ $(document).ready(function () {
             },
             state: {
                 required: "Please select state."
+            },
+            rate: {
+                required: "Rate is required."
+            },
+            currency: {
+                required: "Currency is required.",
+            },
+            rating: {
+                required: "Work type is required.",
             }
 
         },
@@ -246,7 +264,7 @@ function check_datevalidation() {
 }
 
 $("#postinfo").submit(function () {
-   
+
     var day = $('.day').val();
     var month = $('.month').val();
     var year = $('.year').val();
@@ -597,7 +615,7 @@ $("#login_form").validate({
 /* login submit */
 function submitForm()
 {
-    
+
     var email_login = $("#email_login").val();
     var password_login = $("#password_login").val();
     var post_data = {
@@ -617,7 +635,7 @@ function submitForm()
         },
         success: function (response)
         {
-           
+
             if (response.data == "ok") {
                 //  alert("login");
                 if (response.freelancerhire == 1) {
@@ -649,21 +667,21 @@ function submitForm()
                         'Worktype': Worktype,
 //                        csrf_token_name: csrf_hash
                     }
-                    if(post_name != ''){
-                    $.ajax({
-                        type: 'POST',
-                        url: base_url + 'freelancer_hire/add_project_login',
-                        data: post_data1,
-                        dataType: "json",
-                        success: function (response) {
-                            if (response.data == "ok") {
-                                window.location = base_url + "freelance-hire/home";
+                    if (post_name != '') {
+                        $.ajax({
+                            type: 'POST',
+                            url: base_url + 'freelancer_hire/add_project_login',
+                            data: post_data1,
+                            dataType: "json",
+                            success: function (response) {
+                                if (response.data == "ok") {
+                                    window.location = base_url + "freelance-hire/home";
+                                }
                             }
-                        }
-                    });
-                }else{
-                    window.location = base_url + "profiles/" + user_slug;
-                }
+                        });
+                    } else {
+                        window.location = base_url + "profiles/" + user_slug;
+                    }
                 } else {
                     var post_name = $("#post_name").val();
                     var post_desc = $("#post_desc").val();
