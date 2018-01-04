@@ -117,7 +117,7 @@ class Profile extends CI_Controller {
                 $username = $forgot_email_check[0]['user_name'];
                 $firstname = $forgot_email_check[0]['first_name'];
                 $lastname = $forgot_email_check[0]['last_name'];
-                
+
                 $toemail = $forgot_email;
 
 
@@ -314,7 +314,7 @@ class Profile extends CI_Controller {
 
         if ($forgot_email != '') {
 
-            $forgot_email_check = $this->common->select_data_by_id('user', 'user_email', $forgot_email, '*', '');
+            $forgot_email_check = $this->user_model->getUserDataByEmail($forgot_email);
 
 
             if (count($forgot_email_check) > 0) {
@@ -322,7 +322,7 @@ class Profile extends CI_Controller {
                 $rand_password = $this->random_string(6);
 
 
-                $email = $forgot_email_check[0]['user_email'];
+                $email = $forgot_email_check[0]['email'];
                 $username = $forgot_email_check[0]['user_name'];
                 $firstname = $forgot_email_check[0]['first_name'];
                 $lastname = $forgot_email_check[0]['last_name'];
@@ -357,7 +357,7 @@ class Profile extends CI_Controller {
                 );
 
 
-                $updatdata = $this->common->update_data($data, 'user', 'user_id', $forgot_email_check[0]['user_id']);
+                $updatdata = $this->common->update_data($data, 'user_login', 'user_id', $forgot_email_check[0]['user_id']);
 
 
                 echo json_encode(

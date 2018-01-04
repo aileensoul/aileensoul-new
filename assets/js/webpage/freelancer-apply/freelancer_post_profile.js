@@ -37,7 +37,7 @@ function divClicked() {
     // setup the blur event for this new textarea
     editableText.blur(editableTextBlurred);
 }
-function capitalize(s){
+function capitalize(s) {
     return s[0].toUpperCase() + s.slice(1);
 }
 function editableTextBlurred() {
@@ -62,10 +62,10 @@ function editableTextBlurred() {
 
 $(document).ready(function () {
     $("a.designation").click(divClicked);
-     if (!user_session) {
+    if (!user_session) {
         $('#register').modal('show');
     }
-      // for registation of main profile start
+    // for registation of main profile start
     $.validator.addMethod("lowercase", function (value, element, regexpr) {
         return regexpr.test(value);
     }, "Email should be in small character");
@@ -322,155 +322,164 @@ function short_user(abc) {
     var postid = document.getElementById("hideenpostid");
     $.ajax({
         type: 'POST',
-        url:  base_url + "freelancer/shortlist_user",
-        data: 'user_id=' + abc  + '&post_id=' + postid.value,
+        url: base_url + "freelancer/shortlist_user",
+        data: 'user_id=' + abc + '&post_id=' + postid.value,
         dataType: 'json',
         success: function (data) {
             $('.' + 'saveduser' + abc).html(data).addClass('butt_rec');
-             if (data.notification.notification_count != 0) {
-                            var notification_count = data.notification.notification_count;
-                            var to_id = data.notification.to_id;
-                            show_header_notification(notification_count, to_id);
-                        }
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }
 //SHAORTLIST USER END
 //login pop up open start
-    function login_profile() {
-        $('#register').modal('hide');
-        $('#login').modal('show');
-    }
+function login_profile() {
+    $('#register').modal('hide');
+    $('#login').modal('show');
+}
 //login pop up open end
-function login_profile1(){
+function login_profile1() {
     $('#forgotPassword').modal('hide');
-     $('#login').modal('show');
+    $('#login').modal('show');
 }
 function forgot_profile() {
     $('#login').modal('hide');
     $('#forgotPassword').modal('show');
 }
-function register_profile(){
+function register_profile() {
     $('#login').modal('hide');
     $('#register').modal('show');
 }
-  /* validation */
+/* validation */
 
-    $("#login_form").validate({
+$("#login_form").validate({
 
-        rules: {
-            email_login: {
-                required: true,
-            },
-            password_login: {
-                required: true,
-            }
+    rules: {
+        email_login: {
+            required: true,
         },
-        messages:
-                {
-                    email_login: {
-                        required: "Please enter email address",
-                    },
-                    password_login: {
-                        required: "Please enter password",
-                    }
-                },
-        submitHandler: submitForm
-    });
-    /* validation */
-    /* login submit */
-    function submitForm()
-    {
-
-        var email_login = $("#email_login").val();
-        var password_login = $("#password_login").val();
-        var post_data = {
-            'email_login': email_login,
-            'password_login': password_login,
-//            csrf_token_name: csrf_hash
+        password_login: {
+            required: true,
         }
-        $.ajax({
-            type: 'POST',
-            url: base_url + 'login/freelancer_hire_login',
-            data: post_data,
-            dataType: "json",
-            beforeSend: function ()
+    },
+    messages:
             {
-                $("#error").fadeOut();
-                $("#btn1").html('Login ...');
+                email_login: {
+                    required: "Please enter email address",
+                },
+                password_login: {
+                    required: "Please enter password",
+                }
             },
-            success: function (response)
-            {
-                if (response.data == "ok") {
-                  //  alert("login");
-                  if(response.freelancerhire == 0){
-                      window.location = base_url + "freelance-hire/registration";
-                  }else{
+    submitHandler: submitForm
+});
+/* validation */
+/* login submit */
+function submitForm()
+{
+
+    var email_login = $("#email_login").val();
+    var password_login = $("#password_login").val();
+    var post_data = {
+        'email_login': email_login,
+        'password_login': password_login,
+//            csrf_token_name: csrf_hash
+    }
+    $.ajax({
+        type: 'POST',
+        url: base_url + 'login/freelancer_hire_login',
+        data: post_data,
+        dataType: "json",
+        beforeSend: function ()
+        {
+            $("#error").fadeOut();
+            $("#btn1").html('Login ...');
+        },
+        success: function (response)
+        {
+            if (response.data == "ok") {
+                //  alert("login");
+                if (response.freelancerhire == 0) {
+                    window.location = base_url + "freelance-hire/registration";
+                } else {
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                     window.location = base_url + "freelance-work/freelancer-details/" + segment3;
                 }
-                } else if (response.data == "password") {
-                    $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
-                    document.getElementById("password_login").classList.add('error');
-                    document.getElementById("password_login").classList.add('error');
-                    $("#btn1").html('Login');
-                } else {
-                    $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
-                    document.getElementById("email_login").classList.add('error');
-                    document.getElementById("email_login").classList.add('error');
-                    $("#btn1").html('Login');
-                }
+            } else if (response.data == "password") {
+                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
+                document.getElementById("password_login").classList.add('error');
+                document.getElementById("password_login").classList.add('error');
+                $("#btn1").html('Login');
+            } else {
+                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
+                document.getElementById("email_login").classList.add('error');
+                document.getElementById("email_login").classList.add('error');
+                $("#btn1").html('Login');
             }
-        });
-        return false;
-    }
-    /* login submit */
-    $("#forgot_password").validate({
-        rules: {
-            forgot_email: {
-                required: true,
-                email: true,
-            }
-
-        },
-        messages: {
-            forgot_email: {
-                required: "Email address is required.",
-            }
-        },
-        submitHandler: submitforgotForm
-    });
-    
-          function submitforgotForm()
-    {
-
-        var email_login = $("#forgot_email").val();
-        
-        var post_data = {
-            'forgot_email': email_login,
-//            csrf_token_name: csrf_hash
         }
-        $.ajax({
-            type: 'POST',
-            url: base_url + 'profile/forgot_live',
-            data: post_data,
-            dataType: "json",
-            beforeSend: function ()
-            {
-                $("#error").fadeOut();
-                $("#forgotbuton").html('Your credential has been send in your register email id');
-            },
-            success: function (response)
-            {
-                if (response.data == "success") {
-                  //  alert("login");
-                    $("#forgotbuton").html(response.data);
-                    //window.location = base_url + "job/home/live-post";
-                } else {
-                    $("#forgotbuton").html(response.message);
-                    
-                }
-            }
-        });
-        return false;
+    });
+    return false;
+}
+/* login submit */
+$("#forgot_password").validate({
+    rules: {
+        forgot_email: {
+            required: true,
+            email: true,
+        }
+
+    },
+    messages: {
+        forgot_email: {
+            required: "Email address is required.",
+        }
+    },
+    submitHandler: submitforgotForm
+});
+
+function submitforgotForm()
+{
+
+    var email_login = $("#forgot_email").val();
+
+    var post_data = {
+        'forgot_email': email_login,
+//            csrf_token_name: csrf_hash
     }
+    $.ajax({
+        type: 'POST',
+        url: base_url + 'profile/forgot_live',
+        data: post_data,
+        dataType: "json",
+        beforeSend: function ()
+        {
+            $("#error").fadeOut();
+//            $("#forgotbuton").html('Your credential has been send in your register email id');
+        },
+        success: function (response)
+        {
+            if (response.data == "success") {
+                //  alert("login");
+                $("#forgotbuton").html(response.message);
+
+                setTimeout(function () {
+                    $('#login').modal('show');
+                }, 5000); // milliseconds
+
+                setTimeout(function () {
+                    $('#forgotPassword').modal('hide');
+                }, 5000); // milliseconds
+
+                //window.location = base_url + "job/home/live-post";
+            } else {
+                $("#forgotbuton").html(response.message);
+
+            }
+        }
+    });
+    return false;
+}
