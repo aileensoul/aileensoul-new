@@ -23,6 +23,10 @@
                 margin-bottom: 1px;
             }
 
+            #searchResult li.active{
+                background: #000000;
+            }
+
             #searchResult li:nth-child(even){
                 background: cadetblue;
                 color: white;
@@ -46,24 +50,18 @@
                             </div>
                             <div class="form-group">
                                 <label for="text">Who are you?</label>
-                                <input type="text" class="form-control" id="jobTitle" ng-keyup="jobTitle()" ng-model="user.jobTitle" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, Developer, HR, BDE, CA, Doctor..">
-                                <ul id='searchResult'>
-                                    <li ng-click="setTitleValue($index)" ng-repeat="titleResult in titleSearchResult">{{titleResult.name}}</li>
-                                </ul>
+                                <input type="text" class="form-control" ng-keyup="jobTitle()" ng-model="user.jobTitle" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, Developer, HR, BDE, CA, Doctor.." typeahead="item as item.name for item in titleSearchResult | filter:$viewValue">
                             </div>
                             <div class="form-group">
                                 <label for="text">Where are you from?</label>
-                                <input type="text" class="form-control" ng-keyup="cityList()" ng-model="user.cityList" placeholder="Enter your city name">
-                                <ul id='searchResult' >
-                                    <li ng-click="setCityValue($index)" ng-repeat="cityResult in citySearchResult" >{{cityResult.city_name}}</li>
-                                </ul>
+                                <input type="text" class="form-control" ng-keyup="cityList()" ng-model="user.cityList" placeholder="Enter your city name" typeahead="item as item.city_name for item in citySearchResult | filter:$viewValue">
                             </div>
                             <div class="form-group">
                                 <label for="text">What is your field?</label>
                                 <select name="field" ng-model="user.field" id="field">
                                     <option value="" selected="selected">Select your field</option>
                                     <option data-ng-repeat='fieldItem in fieldList' value='{{fieldItem.industry_id}}'>{{fieldItem.industry_name}}</option>             
-                                    <option value="0" selected="selected">Other</option>
+                                    <option value="0" onclick="otherField()" selected="selected">Other</option>
                                 </select>
                             </div>
                             <p class="text-center submit-btn">
@@ -87,7 +85,7 @@
                         </div>
                         <div class="form-group">
                             <label for="text">Where are you from?</label>
-                            <input type="text" class="form-control" placeholder="Enter your city name">
+                            <input type="text" class="form-control" ng-keyup="cityList1()" ng-model="user.cityList1" placeholder="Enter your city name">
                         </div>
                         <div class="form-group">
                             <label for="text">University / Collage / School </label>
@@ -104,14 +102,14 @@
 
         </div>
         <script src="<?php echo base_url('assets/js/angular/angular.min.1.5.7.js') ?>"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+        <script data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
         <script src="<?php echo base_url('assets/js/angular/angular-route.1.6.4.js') ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery.min.js') ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
         <script>
-                                        var base_url = '<?php echo base_url(); ?>';
-                                        var slug = '<?php echo $slugid; ?>';
-                                        var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+                                    var base_url = '<?php echo base_url(); ?>';
+                                    var slug = '<?php echo $slugid; ?>';
+                                    var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
         </script>
         <script>
             var profileBasicInfoApp = angular.module('profileBasicInfoApp', ['ui.bootstrap']);
@@ -137,11 +135,6 @@
                             });
                 }
 
-                $scope.setTitleValue = function (index) {
-                    $scope.user.jobTitle = $scope.titleSearchResult[index].name;
-                    $scope.titleSearchResult = {};
-                }
-
                 $scope.cityList = function () {
                     $http({
                         method: 'POST',
@@ -154,12 +147,11 @@
                                 $scope.citySearchResult = data;
                             });
                 }
-
-                $scope.setCityValue = function (index) {
-                    $scope.user.cityList = $scope.citySearchResult[index].city_name;
-                    $scope.citySearchResult = {};
+                
+                $scope.otherField = function(){
+                    alert(1212);
                 }
-               
+
             });
         </script>
     </body>

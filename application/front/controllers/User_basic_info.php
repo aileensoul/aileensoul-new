@@ -24,5 +24,10 @@ class User_basic_info extends MY_Controller {
         $this->data['title'] = "Basic Information | Aileensoul";
         $this->load->view('user_basic_info/index', $this->data);
     }
+    
+    public function autocomplete() {
+     
+        $this->load->view('autoselecteasy', $this->data);
+    }
 
 }

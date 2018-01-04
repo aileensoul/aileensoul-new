@@ -217,7 +217,7 @@ class Profile extends CI_Controller {
         );
 
 
-        $updatdata = $this->common->update_data($data, 'user', 'user_id', $abc);
+        $updatdata = $this->common->update_data($data, 'user_login', 'user_id', $abc);
         $this->session->set_userdata('aileenuser', $abc);
         redirect('profiles/' . $this->session->userdata('aileenuser_slug'), refresh);
     }
