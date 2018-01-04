@@ -51,7 +51,7 @@
                                     ?>
                                 </div>
                                 <div class="common-form custom-form">
-                                    <h3 class="col-chang"><?php echo $this->lang->line("project_post"); ?></h3>
+                                    <h3 class="col-chang">Please Post your requirement of the work that you need, we will recommend the freelancers accordingly.</h3>
 
                                     <div class="job-saved-box">
 

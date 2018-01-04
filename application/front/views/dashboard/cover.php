@@ -65,7 +65,7 @@
             $this->db->where('created_date BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW()');
             $this->db->where('user_id', $userid);
             $result = $this->db->get('user')->result_array();
-            if ($userdata[0]['user_verify'] == 0 && count($result) > 0) { 
+            if ($userdata['user_verify'] == 0 && count($result) > 0) { 
                 ?>
                 <div class="profile-text1 animated fadeInDownBig" id="verifydiv">
                     <div class="alert alert-warning  vs-o">
@@ -73,10 +73,10 @@
                             <span class="email-img"><img src="<?php echo base_url(); ?>assets/images/email.png" alt="Email"></span>
                             <span class="main-txt">
                                 <span class="as-p">
-                                    we have sent you verification mail to this <?php echo "<a>" . $userdata[0]['user_email'] . "</a>"; ?>. please verify your email address.
+                                    we have sent you verification mail to this <?php echo "<a>" . $userdata['email'] . "</a>"; ?>. please verify your email address.
                                 </span>
                                 <span class="ves_c">
-                                    <span class="fw-50"> <a class="vert_email " onClick="sendmail(this.id)" id="<?php echo $userdata[0]['user_email']; ?>">Verify</a></span>
+                                    <span class="fw-50"> <a class="vert_email " onClick="sendmail(this.id)" id="<?php echo $userdata['user_email']; ?>">Verify</a></span>
                                 </span>
                                 <span class="fr cls-ve" onclick="return closever();"><i class="fa fa-times" aria-hidden="true"></i> </span>
                             </span>
@@ -84,12 +84,12 @@
                     </div>
                 </div> 
                 <?php
-            } else if ($userdata[0]['user_verify'] == 2 && count($result) > 0) {
-                $d1 = strtotime($userdata[0]['verify_date']);
+            } else if ($userdata['user_verify'] == 2 && count($result) > 0) {
+                $d1 = strtotime($userdata['verify_date']);
                 $d2 = strtotime(date("Y-m-d H:i:s"));
                 $result_var = $d2 - $d1;
                 $hours = $result_var / 60 / 60;
-                if ($hours > 24 && $userdata[0]['user_verify'] == 2) {
+                if ($hours > 24 && $userdata['user_verify'] == 2) {
                     ?>
 
 
@@ -104,7 +104,7 @@
                                         We have send you an activation email address on your email , Click the link in the mail to verify your email address.   
                                     </span>
                                     <span class="ves_c">
-                                        <span class="fw-50"> <a class="vert_email " onClick="sendmail(this.id)" id="<?php echo $userdata[0]['user_email']; ?>">Verify Email Address</a></span>
+                                        <span class="fw-50"> <a class="vert_email " onClick="sendmail(this.id)" id="<?php echo $userdata['email']; ?>">Verify Email Address</a></span>
                                     </span>
                                     <span class="fr cls-ve" onclick="return closever();"><i class="fa fa-times" aria-hidden="true"></i> </span>
                                 </span>
@@ -158,19 +158,19 @@
 
                             <div class="" id="row2">
                                 <?php
-                                if ($userdata[0]['profile_background']) {
+                                if ($userdata['profile_background']) {
                                     ?>
 
 
                                     <?php
-                                    if (!file_exists($this->config->item('user_bg_main_upload_path') . $userdata[0]['profile_background'])) {
+                                    if (!file_exists($this->config->item('user_bg_main_upload_path') . $userdata['profile_background'])) {
                                         ?>
                                         <div class="bg-images no-cover-upload">
                                             <img src="<?php echo base_url() . WHITEIMAGE; ?>" name="image_src" id="image_src" alt="WHITE IMAGE" />
 
                                         </div>              <?php } else { ?>
                                         <div class="bg-images">
-                                            <img src="<?php echo USER_BG_MAIN_UPLOAD_URL . $userdata[0]['profile_background']; ?>" name="image_src" id="image_src" alt="User Image" />
+                                            <img src="<?php echo USER_BG_MAIN_UPLOAD_URL . $userdata['profile_background']; ?>" name="image_src" id="image_src" alt="User Image" />
                                         </div>
                                     <?php } ?>
                                     <?php
@@ -190,15 +190,15 @@
                     </div>
                     <div class="left-profile">
                         <?php
-                        $image_ori = $userdata[0]['user_image'];
-                        $first_name = $userdata[0]['first_name'];
-                        $last_name = $userdata[0]['last_name'];
+                        $image_ori = $userdata['user_image'];
+                        $first_name = $userdata['first_name'];
+                        $last_name = $userdata['last_name'];
 
                         if ($image_ori) {
                             ?>
                             <div class="profile-photo">
                                 <?php
-                                if ($userdata[0]['user_image'] == '') {
+                                if ($userdata['user_image'] == '') {
                                     $a = $first_name;
                                     $acr = substr($a, 0, 1);
                                     $b = $last_name;
@@ -209,7 +209,7 @@
                                     </div> 
                                     <?php } else {
                                     ?>
-                                    <img src="<?php echo USER_THUMB_UPLOAD_URL . $userdata[0]['user_image']; ?>" alt="<?php echo $userdata[0]['first_name']; ?>" class="main-pic">
+                                    <img src="<?php echo USER_THUMB_UPLOAD_URL . $userdata['user_image']; ?>" alt="<?php echo $userdata['first_name']; ?>" class="main-pic">
                                 <?php } ?>
 
                                 <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
@@ -231,7 +231,7 @@
                             </div>
                         <?php } ?>
                         <div class="profile-detail">
-                            <h2> <?php echo ucwords($userdata[0]['first_name']) . ' ' . ucwords($userdata[0]['last_name']); ?></h2>
+                            <h2> <?php echo ucwords($userdata['first_name']) . ' ' . ucwords($userdata['last_name']); ?></h2>
                         </div>
                     </div>
                 </section>
@@ -449,7 +449,7 @@
 
         </div>
 
-        <?php if ($userdata[0]['user_slider'] == 1) { ?>
+        <?php if ($userdata['user_slider'] == 1) { ?>
             <div id="onload-Modal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
@@ -632,9 +632,9 @@
                                                         <img src="<?php echo base_url(); ?>assets/slicing/latsgo.png" alt="Lets GO">
                                                     </div>
                                                     <div data-animation="animated fadeInUpBig" class="text_sl_head main_6_sl"> 
-                                                        <span class="mian_4_hed"><?php echo ucfirst($userdata[0]['first_name']);
+                                                        <span class="mian_4_hed"><?php echo ucfirst($userdata['first_name']);
         echo" ";
-        echo ucfirst($userdata[0]['last_name']); ?></span>
+        echo ucfirst($userdata['last_name']); ?></span>
                                                         <p>Welcome In Aileensoul</p>
                                                         <p>
                                                             <a class="btn-go" href="">Let's Go</a>

@@ -60,7 +60,7 @@
                             </div> 
 
                             <div class="common-form custom-form">
-                                <h3>Add New Job Post</h3>
+                                <h3>Please post your requirement, so that we can recommend you the candidates</h3>
 
                                 <div class="job-saved-box">
 

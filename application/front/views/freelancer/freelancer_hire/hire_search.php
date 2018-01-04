@@ -647,10 +647,7 @@
 
                 setTimeout(function () {
                     $('#login').modal('show');
-                }, 5000); // milliseconds
-
-                setTimeout(function () {
-                    $('#forgotPassword').modal('hide');
+                     $('#forgotPassword').modal('hide');
                 }, 5000); // milliseconds
 
                 //window.location = base_url + "job/home/live-post";
