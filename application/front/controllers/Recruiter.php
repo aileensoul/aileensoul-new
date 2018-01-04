@@ -5114,6 +5114,8 @@ if ($cityname != '') {
                     "data" => $is_data,"id" => $id,"is_rec" => $rec
         ));
     }
-    
+     public function testing(){
+         $this->load->view('angularselect');
+     }
      
 }
