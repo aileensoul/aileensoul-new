@@ -22,26 +22,22 @@ class Freelancer_hire extends MY_Controller {
     public function freelancer_hire() {
         $userid = $this->session->userdata('aileenuser');
 
+        $freelancerhiredata = $this->freelancer_hire_model->checkfreelanceruser($userid);
 
-        $contition_array = array('user_id' => $userid, 'status' => '0');
-        $freelancerhiredata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($freelancerhiredata) {
-
-            $this->load->view('freelancer/freelancer_hire/reactivate');
+            $this->load->view('freelancer/freelancer_hire/reactivate', $this->data);
         } else {
-
             $userid = $this->session->userdata('aileenuser');
-            $contition_array = array('user_id' => $userid, 'status' => '1');
-            $jobdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+            $select_data = 'free_hire_step';
+            $jobdata = $this->freelancer_hire_model->getfreelancerhiredata($userid, $select_data);
 
             if (count($jobdata) > 0) {
-
-                if ($jobdata[0]['free_hire_step'] == 1) {
+                if ($jobdata['free_hire_step'] == 1) {
                     redirect('freelance-hire/address-information', refresh);
-                } else if ($jobdata[0]['free_hire_step'] == 2) {
+                } else if ($jobdata['free_hire_step'] == 2) {
                     redirect('freelance-hire/professional-information', refresh);
-                } else if ($jobdata[0]['free_hire_step'] == 3) {
+                } else if ($jobdata['free_hire_step'] == 3) {
                     redirect('freelance-hire/home', refresh);
                 }
             } else {
@@ -2775,6 +2771,6 @@ class Freelancer_hire extends MY_Controller {
         );
         $updatedata = $this->common->update_data($data, 'save', 'save_id', $saveid);
     }
-//FREELANCER_HIRE REMOVE SAVED FREELANCER END
 
+//FREELANCER_HIRE REMOVE SAVED FREELANCER END
 }
