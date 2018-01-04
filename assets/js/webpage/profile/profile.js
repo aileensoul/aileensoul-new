@@ -17,8 +17,8 @@ $(document).ready(function () {
                         email: function () {
                             return $("#email").val();
                         },
-                        get_csrf_token_name: get_csrf_hash,
-                    },
+                        //get_csrf_token_name: get_csrf_hash,
+                    },async: false
                 },
             },
             selday: {

@@ -60,10 +60,17 @@ class Profile extends CI_Controller {
             'first_name' => $this->input->post('first_name'),
             'last_name' => $this->input->post('last_name'),
             'user_dob' => date('Y-m-d', strtotime($dob)),
-            'user_email' => $this->input->postforgot_password('email'),
             'user_gender' => $this->input->post('gender')
         );
         $updatdata = $this->common->update_data($data, 'user', 'user_id', $id);
+
+        $data_login = array(
+
+                'email' => $this->input->post('email')
+        );
+
+        $updatdata1 = $this->common->update_data($data_login, 'user_login', 'user_id', $id);
+
         if ($updatdata) {
             $this->session->set_flashdata('success', 'Profile information updated successfully');
             redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
@@ -81,13 +88,13 @@ class Profile extends CI_Controller {
 //        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
 //        $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $userdata = $this->user_model->getUserData($userid);
-        $email1 = $userdata[0]['user_email'];
+        $email1 = $userdata['email'];
         if ($email1) {
             $condition_array = array('is_delete' => '0', 'user_id !=' => $userid, 'status' => '1');
-            $check_result = $this->common->check_unique_avalibility('user_login', 'user_email', $email, '', '', $condition_array);
+            $check_result = $this->common->check_unique_avalibility('user_login', 'email', $email, '', '', $condition_array);
         } else {
             $condition_array = array('is_delete' => '0', 'status' => '1');
-            $check_result = $this->common->check_unique_avalibility('user_login', 'user_email', $email, '', '', $condition_array);
+            $check_result = $this->common->check_unique_avalibility('user_login', 'email', $email, '', '', $condition_array);
         }
         if ($check_result) {
             echo 'true';
@@ -182,7 +189,7 @@ class Profile extends CI_Controller {
 
         $this->data['forgetpassword_header'] = $this->load->view('forgetpassword_header', $this->data, TRUE);
 
-        $checkdata = $this->common->select_data_by_id('user', 'user_id', $abc, '*', '');
+        $checkdata = $this->common->select_data_by_id('user_login', 'user_id', $abc, '*', '');
 
 
         if ($checkdata[0]['password_code'] == $code) {
@@ -205,7 +212,7 @@ class Profile extends CI_Controller {
         $new_password = $this->input->post('new_password');
 
         $data = array(
-            'user_password' => md5($new_password),
+            'password' => md5($new_password),
             'password_code' => ''
         );
 

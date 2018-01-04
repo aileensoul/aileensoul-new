@@ -33,16 +33,16 @@ color: #1b8ab9 !important;}
                                     <?php echo form_open_multipart(base_url('profile/edit_profile'), array('id' => 'basicinfo', 'name' => 'basicinfo', 'class' => "clearfix common-form_border")); ?>
                                     <fieldset class="">
                                         <label >First Name </label>
-                                        <input tabindex="1" name="first_name" type="text" placeholder="Firstname..." id="first_name" value="<?php echo $userdata[0]['first_name'] ?>" onblur="return full_name();"/><span id="fullname-error"></span><?php echo form_error('first_name'); ?>
+                                        <input tabindex="1" name="first_name" type="text" placeholder="Firstname..." id="first_name" value="<?php echo $userdata['first_name'] ?>" onblur="return full_name();"/><span id="fullname-error"></span><?php echo form_error('first_name'); ?>
                                     </fieldset>
                                     <fieldset class="">
                                         <label>Last Name</label>
-                                        <input tabindex="2" name="last_name" placeholder="Lastname...." type="text" id="last_name" value="<?php echo $userdata[0]['last_name'] ?>" onblur="return full_name();"/><span id="fullname-error"></span>
+                                        <input tabindex="2" name="last_name" placeholder="Lastname...." type="text" id="last_name" value="<?php echo $userdata['last_name'] ?>" onblur="return full_name();"/><span id="fullname-error"></span>
                                         <?php echo form_error('last_name'); ?>
                                     </fieldset>
                                     <fieldset>           
                                         <label >E-mail Address:</label>
-                                        <input name="email" tabindex="4"  type="text" id="email" placeholder="EmailAddress..."  value="<?php echo $userdata[0]['user_email'] ?>"   onblur="return email_id();"/><span id="email-error"></span> <?php echo form_error('email'); ?>
+                                        <input name="email" tabindex="4"  type="text" id="email" placeholder="EmailAddress..."  value="<?php echo $userdata['email'] ?>"   onblur="return email_id();"/><span id="email-error"></span> <?php echo form_error('email'); ?>
                                     </fieldset>
                                     <fieldset>        
                                         <label>Birthday:</label>
@@ -145,12 +145,12 @@ color: #1b8ab9 !important;}
                                     <fieldset>
                                         <label>Gender</label>
                                         <input tabindex="8" type="radio" id="gen" name="gender" value="M" <?php
-                                        if ($userdata[0]['user_gender'] == M) {
+                                        if ($userdata['user_gender'] == M) {
                                             echo 'checked';
                                         }
                                         ?>>Male
                                         <input type="radio" id="gen" name="gender" value="F" <?php
-                                        if ($userdata[0]['user_gender'] == F) {
+                                        if ($userdata['user_gender'] == F) {
                                             echo 'checked';
                                         }
                                         ?>>Female
@@ -178,14 +178,14 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
 ?>
    <script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
        
-        <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.validate.min.js"></script>
         
         </script>
 
 <?php } else{ ?>
    <script src="<?php echo base_url('assets/js_min/jquery.js'); ?>"></script>
        
-        <script type="text/javascript" src="<?php echo base_url() ?>js_min/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/js_min/jquery.validate.min.js"></script>
         
         </script>
 
