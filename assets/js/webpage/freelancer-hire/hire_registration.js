@@ -480,11 +480,10 @@ function submitforgotForm()
 
                 setTimeout(function () {
                     $('#login').modal('show');
+                     $('#forgotPassword').modal('hide');
                 }, 5000); // milliseconds
 
-                setTimeout(function () {
-                    $('#forgotPassword').modal('hide');
-                }, 5000); // milliseconds
+           
 
                 //window.location = base_url + "job/home/live-post";
             } else {
