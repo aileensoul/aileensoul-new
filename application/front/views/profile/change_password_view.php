@@ -36,7 +36,7 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
 
 <!-- header small -->
           <div class="main_otp_box_head">
-            <h3>Create a new password </h3>
+            <h3 class="text-center">Create a new password </h3>
           </div>
 <!-- header small -->
 
@@ -50,7 +50,6 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
  <input type="password" name="new_password" id="new_password" value="" placeholder="Enter new password">
 <span>
 <a href="#" onclick="toggle_password('new_password');" id="showhide">Show</a>
-
 </span>
  </div>
 </div>

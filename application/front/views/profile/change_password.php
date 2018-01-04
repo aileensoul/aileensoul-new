@@ -44,7 +44,7 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
 
 <!-- header small -->
           <div class="main_otp_box_head">
-            <h3>Enter Verification Code </h3>
+            <h3 class="text-center">Enter Verification Code </h3>
           </div>
 <!-- header small -->
 

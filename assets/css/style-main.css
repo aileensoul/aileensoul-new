@@ -1529,9 +1529,9 @@ input.form-control{
     top:50%;
     transform:translate(-50%,-50%)
 }
-.otp_lform .login{
+/*.otp_lform .login{
     box-shadow:none
-}
+}*/
 .main_otp_box_head h3{
     font-size:23px;
     margin:0;
@@ -1973,6 +1973,7 @@ input:-webkit-autofill,input:-webkit-autofill:active,input:-webkit-autofill:focu
 .contact .inner-form{
     float:left;
     margin:0 20px
+    box-shadow{0 0 10px -1px rgba(217,217,217,1)}
 }
 .contact-add{
     border:1px solid #c7c7c7;
@@ -2352,6 +2353,10 @@ header.profile-header .logo a{
 	color: #a0b3b0;
 }
 .no-login .has-error input, input.error, select.error, .has-error textarea, textarea.error {border-bottom:1px solid #ff0000 !important;}
+.main_otp_box_middle_submit #new_password:focus{border-bottom: 1px solid #1b8ab9 !important;}
+.main_otp_box_middle_submit #code:focus{border-bottom: 1px solid #1b8ab9 !important;}
+.main_otp_box_middle span #showhide:focus{text-decoration: none;}
+
 
 @media screen and (min-height:540px){
     .cover .modal-content{
