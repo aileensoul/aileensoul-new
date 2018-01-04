@@ -343,46 +343,6 @@ class Login extends CI_Controller {
                     "is_artistic" => $artistic
         ));
     }
-
-    public function forgot_password() {
-
-        $forgot_email = $this->input->post('forgot_email');
-
-        if ($forgot_email != '' && $forgot_email != '') {
-
-            $forgot_email_check = $this->common->select_data_by_id('users', 'email', $forgot_email, '*', '');
-
-
-            if (count($forgot_email_check) > 0) {
-
-                $email_formate = $this->common->select_data_by_id('emails', 'emailid', '2', 'varsubject,varmailformat');
-                $rand_passwod = mt_rand(100000, 999999);
-
-                $mail_body = str_replace("%name%", $forgot_email_check[0]['name'], str_replace("%user_email%", $forgot_email_check[0]['email'], str_replace("%password%", $rand_passwod, stripslashes($email_formate[0]['varmailformat']))));
-
-                $send_email = $this->email_model->sendEmail($this->data['main_site_name'], $this->data['main_site_email'], $forgot_email, $email_formate[0]['varsubject'], $mail_body);
-
-                if ($send_email) {
-                    $update_array = array(
-                        'password' => md5($rand_passwod),
-                        'updated_date' => date('Y-m-d H:i:s')
-                    );
-
-                    $update_result = $this->common->update_data($update_array, 'users', 'user_id', $forgot_email_check[0]['user_id']);
-                }
-                $this->session->set_flashdata('success', '<div class="alert alert-success">Password successfully send in your email id.</div>');
-                redirect('login', 'refresh');
-            } else {
-
-                $this->session->set_flashdata('error', '<div class="alert alert-danger">Please enter register email id.</div>');
-                redirect('login', 'refresh');
-            }
-        } else {
-            $this->session->set_flashdata('error', '<div class="alert alert-danger">Please enter email id.</div>');
-            redirect('login', 'refresh');
-        }
-    }
-
     public function fblogin() {// echo '<pre>'; print_r($_POST); 
         if ($_POST['id'] != " ") {
             $fbid = $_POST['id'];

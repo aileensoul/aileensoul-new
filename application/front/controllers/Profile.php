@@ -12,6 +12,7 @@ class Profile extends CI_Controller {
         $this->load->library('form_validation');
 
         $this->load->model('email_model');
+        $this->load->model('user_model');
         //AWS access info start
         $this->load->library('S3');
         //AWS access info end
@@ -59,7 +60,7 @@ class Profile extends CI_Controller {
             'first_name' => $this->input->post('first_name'),
             'last_name' => $this->input->post('last_name'),
             'user_dob' => date('Y-m-d', strtotime($dob)),
-            'user_email' => $this->input->post('email'),
+            'user_email' => $this->input->postforgot_password('email'),
             'user_gender' => $this->input->post('gender')
         );
         $updatdata = $this->common->update_data($data, 'user', 'user_id', $id);
@@ -106,8 +107,7 @@ class Profile extends CI_Controller {
 
         if ($forgot_email != '') {
 
-            $forgot_email_check = $this->common->select_data_by_id('user', 'user_email', $forgot_email, '*', '');
-
+            $forgot_email_check = $this->user_model->getUserDataByEmail($forgot_email);
             if (count($forgot_email_check) > 0) {
 
                 $rand_password = $this->random_string(6);
@@ -117,7 +117,7 @@ class Profile extends CI_Controller {
                 $username = $forgot_email_check[0]['user_name'];
                 $firstname = $forgot_email_check[0]['first_name'];
                 $lastname = $forgot_email_check[0]['last_name'];
-
+                
                 $toemail = $forgot_email;
 
 
@@ -149,7 +149,7 @@ class Profile extends CI_Controller {
                 );
 
 
-                $updatdata = $this->common->update_data($data, 'user', 'user_id', $forgot_email_check[0]['user_id']);
+                $updatdata = $this->common->update_data($data, 'user_login', 'user_id', $forgot_email_check[0]['user_id']);
 
 
                 $this->session->set_flashdata('success', '<div class="alert alert-success">We have successfully sent a code in provided email address.</div>');
