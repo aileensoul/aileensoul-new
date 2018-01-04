@@ -385,11 +385,10 @@ function rec_post(pagenum) {
                     $("#forgotbuton").html(response.message);
                     setTimeout(function () {
                         $('#login').modal('show');
-                    }, 5000); // milliseconds
-
-                    setTimeout(function () {
                         $('#forgotPassword').modal('hide');
                     }, 5000); // milliseconds
+
+                   
                     //window.location = base_url + "job/home/live-post";
                 } else {
                     $("#forgotbuton").html(response.message);
