@@ -266,7 +266,7 @@ $(document).ready(function () {
                             return $("#email_reg1").val();
                         },
 //                        'aileensoulnewfrontcsrf': get_csrf_hash,
-                    },
+                    }, async: false
                 },
 
             },
