@@ -615,10 +615,54 @@
                             required: "Email Address Is Required.",
                         }
                     },
+                    submitHandler: submitforgotForm
                 });
                 /* validation */
 
             });
+            function submitforgotForm()
+{
+
+    var email_login = $("#forgot_email").val();
+
+    var post_data = {
+        'forgot_email': email_login,
+//            csrf_token_name: csrf_hash
+    }
+    $.ajax({
+        type: 'POST',
+        url: base_url + 'profile/forgot_live',
+        data: post_data,
+        dataType: "json",
+        beforeSend: function ()
+        {
+            $("#error").fadeOut();
+//            $("#forgotbuton").html('Your credential has been send in your register email id');
+        },
+        success: function (response)
+        {
+            if (response.data == "success") {
+                //  alert("login");
+                $("#forgotbuton").html(response.message);
+
+                setTimeout(function () {
+                    $('#login').modal('show');
+                }, 5000); // milliseconds
+
+                setTimeout(function () {
+                    $('#forgotPassword').modal('hide');
+                }, 5000); // milliseconds
+
+                //window.location = base_url + "job/home/live-post";
+            } else {
+                $("#forgotbuton").html(response.message);
+
+            }
+        }
+    });
+    return false;
+}
+
         </script>
         <script>
             $(document).on('click', '[data-toggle*=modal]', function () {

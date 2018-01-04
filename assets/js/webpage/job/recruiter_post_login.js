@@ -355,6 +355,7 @@ function rec_post(pagenum) {
                             required: "Email address is required.",
                         }
                     },
+                    submitHandler: submitforgotForm
                 });
                 /* validation */
 

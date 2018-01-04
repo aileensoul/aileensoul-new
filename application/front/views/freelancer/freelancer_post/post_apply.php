@@ -83,8 +83,8 @@
                                                 <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => '1'))->row()->industry_name; ?>
                                                 <div class="profile-boxProfile-name">
                                                     <a  href="<?php echo base_url('freelance-work/freelancer-details'); ?>"><?php
-                                                        if ($freepostdata[0]['designation']) {
-                                                            echo ucwords($freepostdata[0]['designation']);
+                                                        if ($freepostdata['designation']) {
+                                                            echo ucwords($freepostdata['designation']);
                                                         } else {
                                                             echo $this->lang->line("designation");
                                                         }
