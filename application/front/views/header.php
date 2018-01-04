@@ -65,15 +65,15 @@
                                     <li class="dropdown dropdown-user">
                                         <a class="dropbtn action-button shadow animate dropbtn_common" href="javascript:void(0)" type="button" id="menu1" data-toggle="dropdown" >
                                             <!-- <div id="hi" class="notifications"> -->
-                                            <?php if ($userdata[0]['user_image'] != '') { ?>
+                                            <?php if ($userdata['user_image'] != '') { ?>
                                                 <div id="profile-photohead" class="profile-head">
-                                                    <img alt="<?php echo $userdata[0]['first_name'] ?>" class="img-circle" src="<?php echo USER_THUMB_UPLOAD_URL . $userdata[0]['user_image'] . '?ver='.time(); ?>" height="50" width="50" alt="Smiley face" />
+                                                    <img alt="<?php echo $userdata['first_name'] ?>" class="img-circle" src="<?php echo USER_THUMB_UPLOAD_URL . $userdata['user_image'] . '?ver='.time(); ?>" height="50" width="50" alt="Smiley face" />
                                                 </div>
 
                                                 <?php
                                             } else {
 
-                                                $a = $userdata[0]['first_name'];
+                                                $a = $userdata['first_name'];
                                                 $acr = substr($a, 0, 1);
                                                 ?>
                                                 <div id="profile-photohead" class="profile-head">
@@ -84,8 +84,8 @@
                                                 </div>
                                             <?php } ?>
                                             <span class="u2 username username-hide-on-mobile hidden-xs"> <?php
-                                                if (isset($userdata[0]['first_name'])) {
-                                                    echo $userdata[0]['first_name'];
+                                                if (isset($userdata['first_name'])) {
+                                                    echo $userdata['first_name'];
                                                 }
                                                 ?> </span>
                                             <i class="fa fa-caret-down" aria-hidden="true"></i>
