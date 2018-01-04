@@ -59,7 +59,7 @@
                         $image_ori = $image[0]['profile_background'];
                         if ($image_ori) {
                             ?>
-                            <img alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . " " . $freepostdata[0]['freelancer_post_username']; ?>" src="<?php echo FREE_POST_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                            <img alt="<?php echo $freepostdata['freelancer_post_fullname'] . " " . $freepostdata['freelancer_post_username']; ?>" src="<?php echo FREE_POST_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
                             <?php
                         } else {
                             ?>
@@ -81,30 +81,30 @@
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
                             <?php
-                            $fname = $freepostdata[0]['freelancer_post_fullname'];
-                            $lname = $freepostdata[0]['freelancer_post_username'];
+                            $fname = $freepostdata['freelancer_post_fullname'];
+                            $lname = $freepostdata['freelancer_post_username'];
                             $sub_fname = substr($fname, 0, 1);
                             $sub_lname = substr($lname, 0, 1);
 
-                            if ($freepostdata[0]['freelancer_post_user_image']) {
+                            if ($freepostdata['freelancer_post_user_image']) {
                                 if (IMAGEPATHFROM == 'upload') {
-                                    if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $freepostdata[0]['freelancer_post_user_image'])) {
+                                    if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $freepostdata['freelancer_post_user_image'])) {
                                         ?>
                                         <div class="post-img-user">
                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                         </div> 
                                     <?php } else {
                                         ?>
-                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . " " . $freepostdata[0]['freelancer_post_username']; ?>" >
+                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata['freelancer_post_fullname'] . " " . $freepostdata['freelancer_post_username']; ?>" >
                                         <?php
                                     }
                                 } else {
-                                    $filename = $this->config->item('free_post_profile_main_upload_path') . $freepostdata[0]['freelancer_post_user_image'];
+                                    $filename = $this->config->item('free_post_profile_main_upload_path') . $freepostdata['freelancer_post_user_image'];
                                     $s3 = new S3(awsAccessKey, awsSecretKey);
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                     if ($info) {
                                         ?>
-                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . " " . $freepostdata[0]['freelancer_post_username']; ?>" >
+                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata['freelancer_post_fullname'] . " " . $freepostdata['freelancer_post_username']; ?>" >
                                     <?php } else { ?>
                                         <div class="post-img-user">
                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
@@ -122,16 +122,16 @@
                         </div>
                     </div>      
                     <div class="job-menu-profile mob-block">
-                        <a href="javascript:void(0);"> <h3> <?php echo ucwords($freepostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freepostdata[0]['freelancer_post_username']); ?></h3></a>
+                        <a href="javascript:void(0);"> <h3> <?php echo ucwords($freepostdata['freelancer_post_fullname']) . ' ' . ucwords($freepostdata['freelancer_post_username']); ?></h3></a>
                         <div class="profile-text">
                             <?php
-                            if ($freepostdata[0]['designation'] == "") {
+                            if ($freepostdata['designation'] == "") {
                                 ?> 
                                 <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
                                 <?php
                             } else {
                                 ?> 
-                                <a id="designation" class="designation" title="<?php echo ucwords($freepostdata[0]['designation']); ?>"><?php echo ucwords($freepostdata[0]['designation']); ?></a>
+                                <a id="designation" class="designation" title="<?php echo ucwords($freepostdata['designation']); ?>"><?php echo ucwords($freepostdata['designation']); ?></a>
                             <?php } ?>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                         <div class=" right-side-menu art-side-menu padding_less_right  right-menu-jr"> 
                             <?php
                             $userid = $this->session->userdata('aileenuser');
-                            if ($freepostdata[0]['user_id'] == $userid) {
+                            if ($freepostdata['user_id'] == $userid) {
                                 ?>     
                                 <ul class="current-user pro-fw">
                                 <?php } else { ?>
@@ -159,16 +159,16 @@
                 </div>
                 <div class="middle-part container">
                     <div class="job-menu-profile mob-none pt20">
-                        <a href="javascript:void(0);"> <h3> <?php echo ucwords($freepostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freepostdata[0]['freelancer_post_username']); ?></h3></a>
+                        <a href="javascript:void(0);"> <h3> <?php echo ucwords($freepostdata['freelancer_post_fullname']) . ' ' . ucwords($freepostdata['freelancer_post_username']); ?></h3></a>
                         <div class="profile-text">
                             <?php
-                            if ($freepostdata[0]['designation'] == "") {
+                            if ($freepostdata['designation'] == "") {
                                 ?> 
                                 <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
                                 <?php
                             } else {
                                 ?> 
-                                <a id="designation" class="designation" title="<?php echo ucwords($freepostdata[0]['designation']); ?>"><?php echo ucwords($freepostdata[0]['designation']); ?></a>
+                                <a id="designation" class="designation" title="<?php echo ucwords($freepostdata['designation']); ?>"><?php echo ucwords($freepostdata['designation']); ?></a>
                             <?php } ?>
                         </div>
                     </div>
@@ -176,7 +176,7 @@
                         <?php
                         if (!($returnpage)) {
                             if ($count_profile == 100) {
-                                if ($freepostdata[0]['progressbar'] == 0) {
+                                if ($freepostdata['progressbar'] == 0) {
                                     ?>
 
                                     <div class="mob-progressbar" >
@@ -228,7 +228,7 @@
                     <?php
                     if (!($returnpage)) {
                         if ($count_profile == 100) {
-                            if ($freepostdata[0]['progressbar'] == 0) {
+                            if ($freepostdata['progressbar'] == 0) {
                                 ?>
                                 <div class="edit_profile_progress edit_pr_bar complete_profile">
                                     <div class="progre_bar_text">

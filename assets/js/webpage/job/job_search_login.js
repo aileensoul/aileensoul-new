@@ -4,7 +4,7 @@ $(document).ready(function () {
     job_search();
 
     $(window).scroll(function () {
-        if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7) {
+        if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
@@ -17,13 +17,13 @@ $(document).ready(function () {
                 }
                 if (parseInt(page) <= parseInt(available_page)) {
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
-                    
+
                     job_search(pagenum);
                 }
             }
         }
     });
-    
+
 });
 var isProcessing = false;
 function job_search(pagenum)
@@ -39,8 +39,8 @@ function job_search(pagenum)
     isProcessing = true;
     $.ajax({
         type: 'POST',
-         url: base_url + "job/ajax_job_search?page=" + pagenum + "&skill="  + encodeURIComponent(skill) + "&place=" + place,
-        data: {total_record:$("#total_record").val()},
+        url: base_url + "job/ajax_job_search?page=" + pagenum + "&skill=" + encodeURIComponent(skill) + "&place=" + place,
+        data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
@@ -67,11 +67,11 @@ function job_search(pagenum)
         }
     });
 }
- 
+
 
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER END
 
- //AJAX DATA LOAD BY LAZZY LOADER END
+//AJAX DATA LOAD BY LAZZY LOADER END
 function login()
 {
     document.getElementById('error1').style.display = 'none';
@@ -126,7 +126,7 @@ $(document).ready(function () {
             success: function (response)
             {
                 if (response.data == "ok") {
-                  //  alert("login");
+                    //  alert("login");
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                     window.location = base_url + "job/home";
                 } else if (response.data == "password") {
@@ -318,7 +318,7 @@ $(document).ready(function () {
             },
             success: function (response)
             { //alert("ksjkskjds");
-              //alert(postid);
+                //alert(postid);
                 var userid = response.userid;
                 if (response.okmsg == "ok") {// alert(1111);
                     if (postid == '') { //alert(777);
@@ -326,14 +326,14 @@ $(document).ready(function () {
                         window.location = base_url + "job/profile";
                         sendmail(userid);
                     } else {//alert('aaaaa');
-                       
-                                    //  alert(postid);
-                   //  alert(8888)
+
+                        //  alert(postid);
+                        //  alert(8888)
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                    //  alert(base_url + 'job/profile/live-post?postid=' + postid);
+                        //  alert(base_url + 'job/profile/live-post?postid=' + postid);
                         window.location = base_url + 'job/profile/live-post/' + postid;
-                       sendmail(userid);
-                        
+                        sendmail(userid);
+
 //                        var alldata = 'all';
 //                        var id = response.id;
 //                        $.ajax({
@@ -378,12 +378,12 @@ $(document).ready(function () { //aletr("hii");
         submitHandler: submitforgotForm
     });
     /* validation */
-    
-      function submitforgotForm()
+
+    function submitforgotForm()
     {
 
         var email_login = $("#forgot_email").val();
-        
+
         var post_data = {
             'forgot_email': email_login,
             csrf_token_name: csrf_hash
@@ -396,17 +396,24 @@ $(document).ready(function () { //aletr("hii");
             beforeSend: function ()
             {
                 $("#error").fadeOut();
-                $("#forgotbuton").html('Your credential has been send in your register email id');
+//                $("#forgotbuton").html('Your credential has been send in your register email id');
             },
             success: function (response)
             {
                 if (response.data == "success") {
-                  //  alert("login");
-                    $("#forgotbuton").html(response.data);
+                    //  alert("login");
+                    $("#forgotbuton").html(response.message);
+                    setTimeout(function () {
+                        $('#login').modal('show');
+                    }, 5000); // milliseconds
+
+                    setTimeout(function () {
+                        $('#forgotPassword').modal('hide');
+                    }, 5000); // milliseconds
                     //window.location = base_url + "job/home/live-post";
                 } else {
                     $("#forgotbuton").html(response.message);
-                    
+
                 }
             }
         });
@@ -431,7 +438,7 @@ function forgot_profile() {
     $('#forgotPassword').modal('show');
     $('#login').modal('hide');
 }
-function forgot_close(){
+function forgot_close() {
     $('#login').modal('show');
 }
 
@@ -479,7 +486,7 @@ function create_profile_apply(postid) {
 //For Apply Button Click Process Start
 function login_profile_apply(postid) {
     var postid = document.getElementById("postid").getAttribute("class");
-     $('#register').modal('hide');
+    $('#register').modal('hide');
     $(".password_login").val('');
     $(".email_login").val('');
     $(".post_id_login").val(postid);
@@ -521,7 +528,7 @@ $(document).ready(function () {
         var email_login = $("#email_login_apply").val();
         var password_login = $("#password_login_apply").val();
         var postid = $("#password_login_postid").val();
-       // alert(postid)
+        // alert(postid)
         var post_data = {
             'email_login': email_login,
             'password_login': password_login,
@@ -552,7 +559,7 @@ $(document).ready(function () {
                             data: 'post_id=' + postid + '&allpost=' + alldata + '&userid=' + id,
                             success: function (data)
                             {
-                             //   alert("KHYTAI");
+                                //   alert("KHYTAI");
                                 window.location = base_url + "job/home/live-post";
                             }
                         });
@@ -563,7 +570,7 @@ $(document).ready(function () {
                     }
 
                 } else if (response.data == "password") {
-                  //  alert("hi");
+                    //  alert("hi");
                     $("#errorpass_apply").html('<label for="email_login_apply" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login_apply").classList.add('error');
                     document.getElementById("password_login_apply").classList.add('error');

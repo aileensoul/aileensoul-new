@@ -52,9 +52,9 @@ $(document).ready(function () {
             success: function (response)
             {
                 if (response.data == "ok") {
-                  //  alert("login");
+                    //  alert("login");
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                 // 8-11   window.location = base_url + "job/home";
+                    // 8-11   window.location = base_url + "job/home";
                     window.location = base_url + "recruiter/jobpost/" + postslug;
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
@@ -245,7 +245,7 @@ $(document).ready(function () {
             },
             success: function (response)
             { //alert("ksjkskjds");
-              //alert(postid);
+                //alert(postid);
                 var userid = response.userid;
                 if (response.okmsg == "ok") {// alert(1111);
                     if (postid == '') { //alert(777);
@@ -253,14 +253,14 @@ $(document).ready(function () {
                         window.location = base_url + "job/profile";
                         sendmail(userid);
                     } else {//alert('aaaaa');
-                       
-                                    //  alert(postid);
-                   //  alert(8888)
+
+                        //  alert(postid);
+                        //  alert(8888)
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                    //  alert(base_url + 'job/profile/live-post?postid=' + postid);
+                        //  alert(base_url + 'job/profile/live-post?postid=' + postid);
                         window.location = base_url + 'job/profile/live-post/' + postid;
-                       sendmail(userid);
-                        
+                        sendmail(userid);
+
 //                        var alldata = 'all';
 //                        var id = response.id;
 //                        $.ajax({
@@ -305,12 +305,12 @@ $(document).ready(function () { //aletr("hii");
         submitHandler: submitforgotForm
     });
     /* validation */
-    
-      function submitforgotForm()
+
+    function submitforgotForm()
     {
 
         var email_login = $("#forgot_email").val();
-        
+
         var post_data = {
             'forgot_email': email_login,
             csrf_token_name: csrf_hash
@@ -323,17 +323,24 @@ $(document).ready(function () { //aletr("hii");
             beforeSend: function ()
             {
                 $("#error").fadeOut();
-                $("#forgotbuton").html('Your credential has been send in your register email id');
+//                $("#forgotbuton").html('Your credential has been send in your register email id');
             },
             success: function (response)
             {
                 if (response.data == "success") {
-                  //  alert("login");
-                    $("#forgotbuton").html(response.data);
+                    //  alert("login");
+                    $("#forgotbuton").html(response.message);
+                    setTimeout(function () {
+                        $('#login').modal('show');
+                    }, 5000); // milliseconds
+
+                    setTimeout(function () {
+                        $('#forgotPassword').modal('hide');
+                    }, 5000); // milliseconds
                     //window.location = base_url + "job/home/live-post";
                 } else {
                     $("#forgotbuton").html(response.message);
-                    
+
                 }
             }
         });
@@ -393,16 +400,16 @@ function create_profile_apply(postid) {
     $(".post_id_login").val(postid);
 //            $(".regpostval").val(postid);
     $('.pt15').html(" Don't have an account? <a class='db-479' href='javascript:void(0);' data-toggle='modal' onclick='register_profile(" + postid + ");'>Create an account</a>");
-    $('#register').modal('show'); 
-   
+    $('#register').modal('show');
+
     $("#postid").attr("class", postid);
 
 }
 //For Apply Button Click Process Start
 function login_profile_apply(postid) {
-    
- var postid = document.getElementById("postid").getAttribute("class");
-     $('#register').modal('hide');
+
+    var postid = document.getElementById("postid").getAttribute("class");
+    $('#register').modal('hide');
     $(".password_login").val('');
     $(".email_login").val('');
     $(".post_id_login").val(postid);
@@ -444,7 +451,7 @@ $(document).ready(function () {
         var email_login = $("#email_login_apply").val();
         var password_login = $("#password_login_apply").val();
         var postid = $("#password_login_postid").val();
-       // alert(postid)
+        // alert(postid)
         var post_data = {
             'email_login': email_login,
             'password_login': password_login,
@@ -462,14 +469,14 @@ $(document).ready(function () {
             },
             success: function (response)
             {
-              
+
                 if (response.data == "ok") {
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                     if (response.jobuser == 1)
                     {
                         var alldata = 'all';
                         var id = response.id;
-                           
+
                         $.ajax({
                             type: 'POST',
                             url: base_url + 'job/job_apply_post',
@@ -477,7 +484,7 @@ $(document).ready(function () {
                             datatype: 'json',
                             success: function (data)
                             {
-                             //   alert("KHYTAI");
+                                //   alert("KHYTAI");
                                 window.location = base_url + "job/home/live-post";
                             }
                         });
@@ -488,7 +495,7 @@ $(document).ready(function () {
                     }
 
                 } else if (response.data == "password") {
-                  //  alert("hi");
+                    //  alert("hi");
                     $("#errorpass_apply").html('<label for="email_login_apply" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login_apply").classList.add('error');
                     document.getElementById("password_login_apply").classList.add('error');

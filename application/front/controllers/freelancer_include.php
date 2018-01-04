@@ -13,6 +13,8 @@ $this->data['user_notification_count'] = $count = $result[0]['total'];
 $select_data ='freelancer_post_fullname,freelancer_post_username,freelancer_post_user_image,profile_background,profile_background_main,designation,freelancer_apply_slug,free_post_step,user_id,progressbar';
 $this->data['freepostdata'] = $this->freelancer_apply_model->getfreelancerapplydata($userid, $select_data);
 
+//echo "<pre>"; print_r($this->data['freepostdata']);die();
+
 $this->data['header'] = $this->load->view('header', $this->data, true);
 $this->data['footer'] = $this->load->view('footer', $this->data, true);
 $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);

@@ -325,13 +325,20 @@ $(document).ready(function () { //aletr("hii");
             beforeSend: function ()
             {
                 $("#error").fadeOut();
-                $("#forgotbuton").html('Your credential has been send in your register email id');
+//                $("#forgotbuton").html('Your credential has been send in your register email id');
             },
             success: function (response)
             {
                 if (response.data == "success") {
                     //  alert("login");
-                    $("#forgotbuton").html(response.data);
+                    $("#forgotbuton").html(response.message);
+                    setTimeout(function () {
+                        $('#login').modal('show');
+                    }, 5000); // milliseconds
+
+                    setTimeout(function () {
+                        $('#forgotPassword').modal('hide');
+                    }, 5000); // milliseconds
                     //window.location = base_url + "job/home/live-post";
                 } else {
                     $("#forgotbuton").html(response.message);

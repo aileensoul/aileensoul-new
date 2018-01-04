@@ -836,13 +836,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     $filename = $artmultiimage[0]['file_name'];
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
                     if (in_array($ext, $allowed)) {
-                        $return_html .= '<div class="one-image">
-            <a href = "javascript:void(0)" target="_blank" onclick="login_profile();">
-
+                        $return_html .= '<a href = "javascript:void(0)" target="_blank" onclick="login_profile();"><div class="one-image">
            <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
-
-             </a>
-        </div>';
+        </div></a>';
                     } elseif (in_array($ext, $allowespdf)) {
 
                          $return_html .= '<div>
@@ -905,36 +901,26 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     }
                 } elseif (count($artmultiimage) == 2) {
                     foreach ($artmultiimage as $multiimage) {
-                        $return_html .= '<div  class="two-images" >
-            <a href = "javascript:void(0)" target="_blank" onclick="login_profile();">
+                        $return_html .= ' <a href = "javascript:void(0)" target="_blank" onclick="login_profile();"><div  class="two-images" >
              <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
-             </a>
-        </div>';
+        </div> </a>';
                     }
                 } elseif (count($artmultiimage) == 3) {
-                    $return_html .= '<div class="three-imag-top" >
-            <a href = "javascript:void(0)" target="_blank" onclick="login_profile();">
+                    $return_html .= '<a href = "javascript:void(0)" target="_blank" onclick="login_profile();"><div class="three-imag-top" >
             <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
-            </a>
         </div>
         <div class="three-image" >
-            <a href = "javascript:void(0)" target="_blank" onclick="login_profile();">
            <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '">
-            </a>
         </div>
         <div class="three-image" >
-            <a href = "javascript:void(0)" target="_blank" onclick="login_profile();">
             <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '">
-            </a>
-        </div>';
+        </div></a>';
                 } elseif (count($artmultiimage) == 4) {
 
                     foreach ($artmultiimage as $multiimage) {
-                        $return_html .= '<div class="four-image">
-            <a href = "javascript:void(0)" target="_blank" onclick="login_profile();">
+                        $return_html .= ' <a href = "javascript:void(0)" target="_blank" onclick="login_profile();"><div class="four-image">
             <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
-             </a>
-        </div>';
+        </div></a>';
                     }
                 } elseif (count($artmultiimage) > 4) {
 
