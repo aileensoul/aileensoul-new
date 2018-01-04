@@ -49,7 +49,7 @@ if(IS_OUTSIDE_CSS_MINIFY == '0'){
    <label>New Password</label>
  <input type="password" name="new_password" id="new_password" value="" placeholder="Enter new password">
 <span>
-<a href="#" onclick="toggle_password('new_password');" id="showhide">Show</a>
+<a href="javascript:void(0);" onclick="toggle_password('new_password');" id="showhide">Show</a>
 </span>
  </div>
 </div>
@@ -100,15 +100,15 @@ $(document).ready(function () {
                   new_password: {
                       required: true,
                         }
-                  
-                        },
+                      },
             messages:  {
                     new_password: {
                     required: "Password Is Required.",
                       }
-
-                    
                    },
+              errorPlacement: function(error, element) {
+                 error.insertAfter("#showhide");
+              }
                 });
             /* validation */
                                     
