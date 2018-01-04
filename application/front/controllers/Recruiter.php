@@ -39,11 +39,11 @@ class Recruiter extends MY_Controller {
 // RECRUITER USER STEP DETAIL FETCH CODE START
 // RECRUITER USER STEP DETAIL FETCH CODE END
 
-            if ($this->data['recdata'][0]['re_step'] == 1) {
+            if ($this->data['recdata']['re_step'] == 1) {
                 redirect('recruiter/company-information', refresh);
-            } else if ($this->data['recdata'][0]['re_step'] == 3) {
+            } else if ($this->data['recdata']['re_step'] == 3) {
                 redirect('recruiter/home', refresh);
-            } else if ($this->data['recdata'][0]['re_step'] == 0) {
+            } else if ($this->data['recdata']['re_step'] == 0) {
                 redirect('recruiter/registration', refresh);
             } else {
                 redirect('recruiter/registration', refresh);
