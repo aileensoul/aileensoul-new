@@ -24,10 +24,18 @@ class Freelancer_hire_model extends CI_Model {
 
     public function checkfreelanceruser($user_id = '') {
         $this->db->select("freelancer_hire_slug")->from("freelancer_hire_reg");
-        $this->db->where(array('user_id' => $user_id, 'status' => '0'));
+        $this->db->where(array('user_id' => $user_id, 'status' => '0','is_delete' => '0'));
         $query = $this->db->get();
         $result_array = $query->row_array();
         return $result_array;
+    }
+
+    public function getCountry() {
+        $this->db->select('country_id,country_name')->from('countries');
+        $this->db->order_by("country_name","ASC");
+        $this->db->where(array('status' => '1'));
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
 }

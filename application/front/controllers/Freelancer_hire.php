@@ -49,8 +49,7 @@ class Freelancer_hire extends MY_Controller {
 
     //FREELANCER HIRE NEW REGISTRATION PROFILE START
     public function hire_registation($postid = '') {
-        $contition_array = array('status' => 1);
-        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['countries'] = $this->freelancer_hire_model->getCountry();
         $this->data['title'] = "Registration | Employer Profile" . TITLEPOSTFIX;
 
         if ($this->session->userdata('aileenuser')) {
@@ -147,23 +146,21 @@ class Freelancer_hire extends MY_Controller {
 
     public function freelancer_hire_basic_info() {
         $userid = $this->session->userdata('aileenuser');
-        //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerhire_deactive) {
-            redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
-        }
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $userdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'fullname,username,email,skyupid,phone,user_id,free_hire_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //check user deactivate start
+        $this->freelancer_hire_deactivate_check();
+        //check user deactivate end
+
+        $select_data = 'fullname,username,email,skyupid,phone,user_id,free_hire_step';
+        $userdata = $this->freelancer_hire_model->getfreelancerhiredata($userid, $select_data);
+       
         if ($userdata) {
-            $step = $userdata[0]['free_hire_step'];
+            $step = $userdata['free_hire_step'];
             if ($step == 1 || $step > 1) {
-                $this->data['firstname1'] = $userdata[0]['fullname'];
-                $this->data['lastname1'] = $userdata[0]['username'];
-                $this->data['email1'] = $userdata[0]['email'];
-                $this->data['skypeid1'] = $userdata[0]['skyupid'];
-                $this->data['phoneno1'] = $userdata[0]['phone'];
+                $this->data['firstname1'] = $userdata['fullname'];
+                $this->data['lastname1'] = $userdata['username'];
+                $this->data['email1'] = $userdata['email'];
+                $this->data['skypeid1'] = $userdata['skyupid'];
+                $this->data['phoneno1'] = $userdata['phone'];
             }
         }
 
@@ -374,8 +371,7 @@ class Freelancer_hire extends MY_Controller {
         //ajax data for country and state and city
         if (isset($_POST["country_id"]) && !empty($_POST["country_id"])) {
             //Get all state data
-            echo $_POST["country_id"];
-            die();
+
             $contition_array = array('country_id' => $_POST["country_id"], 'status' => '1');
             $state = $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
