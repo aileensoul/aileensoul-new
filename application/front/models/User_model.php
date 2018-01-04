@@ -11,7 +11,7 @@ class User_model extends CI_Model {
         $this->db->join('user_login ul', 'ul.user_id = u.user_id','left');
         $this->db->where("u.user_id =" . $user_id);
         $query = $this->db->get();
-        $result_array = $query->result_array();
+        $result_array = $query->row_array();
         return $result_array;
     }
     
@@ -21,7 +21,7 @@ class User_model extends CI_Model {
         $this->db->join('user_login ul', 'ul.user_id = u.user_id','left');
         $this->db->where("u.user_id =" . $user_id);
         $query = $this->db->get();
-        $result_array = $query->result_array();
+        $result_array = $query->row_array();
         return $result_array;
     }
 

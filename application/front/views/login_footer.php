@@ -1,5 +1,5 @@
 <?php
-if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
+if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main' || $this->uri->segment(1) == 'profiles') {
     ?>
     <footer class="footer">
         <?php

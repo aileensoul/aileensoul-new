@@ -270,7 +270,8 @@ $(document).ready(function () {
                 var userid = response.userid;
                 if (response.okmsg == "ok") {
                     $("#btn-register").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
-                    window.location = base_url + "profiles/" + response.userslug;
+                    //window.location = base_url + "profiles/" + response.userslug;
+                    window.location = base_url + "profiles/basic-information/" + response.userslug;
                     sendmail(userid);
                 } else {
                     $("#register_error").fadeIn(1000, function () {
