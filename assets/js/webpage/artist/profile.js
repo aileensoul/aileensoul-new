@@ -108,8 +108,6 @@ $('#skills').change(function other_category(){
         if(n == true){ 
 
             $("span").removeClass("custom-mini-select");
-            var active = document.querySelector(".multi-select-container");        
-            active.classList.remove("multi-select-container--open");
             document.getElementById('other_category').style.display = "block";
         }else if(strUser1 == ''){
           $("span").addClass("custom-mini-select");
@@ -120,6 +118,16 @@ $('#skills').change(function other_category(){
             document.getElementById('other_category').style.display = "none"; 
         }
     });
+
+
+function otherchange(cat_id){
+
+        if(cat_id == 26){
+        var active = document.querySelector(".multi-select-container");
+        active.classList.remove("multi-select-container--open"); 
+      }
+}
+
 
 function removevalidation(){
 

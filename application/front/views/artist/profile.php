@@ -119,13 +119,13 @@
                                               $category = explode(',' , $art_category1);  
                                               ?>
                                                  <option value="<?php echo $cnt['category_id']; ?>"
-                                                  <?php if(in_array($cnt['category_id'], $category)) echo 'selected';?>><?php echo ucwords(ucfirst($cnt['art_category']));?></option>              
+                                                  <?php if(in_array($cnt['category_id'], $category)) echo 'selected';?> onchange="return otherchange(<?php echo $cnt['category_id']; ?>);"><?php echo ucwords(ucfirst($cnt['art_category']));?></option>              
                                                  <?php
                                                 }
                                                 else
                                                 {  
                                             ?>
-                            <option value="<?php echo $cnt['category_id']; ?>"><?php echo ucwords(ucfirst($cnt['art_category']));?></option>
+                            <option value="<?php echo $cnt['category_id']; ?>" onchange="return otherchange(<?php echo $cnt['category_id']; ?>);"><?php echo ucwords(ucfirst($cnt['art_category']));?></option>
                                 <?php    }       
                                             }
                                             ?>
