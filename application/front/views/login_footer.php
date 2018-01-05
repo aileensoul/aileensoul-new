@@ -45,7 +45,7 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main' || $this->u
                     </ul>
                 </div>
                 <div class="ftr-copuright text-center pt10 pb20 fw">
-                    <span>    &#9400; 2017 | by Aileensoul </span>
+                    <span>    &#9400; 2018 | by Aileensoul </span>
                 </div>
             </div>
         </div>
