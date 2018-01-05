@@ -455,7 +455,7 @@
         <?php if ($userdata['user_slider'] == 1) { ?>
             <div id="onload-Modal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
-                    <button type="button" class="modal-close" data-dismiss="modal" onclick="closever();">&times;</button>
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
                     <div class="main_sl">
                         <div class="main_box">
                             <div class="imagesl">

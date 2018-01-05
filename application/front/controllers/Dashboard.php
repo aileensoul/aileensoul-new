@@ -31,7 +31,7 @@ class Dashboard extends MY_Controller {
 
         $this->load->library('form_validation');
 
-        if ($userdata[0]['user_slider'] == 1) {
+        if ($userdata['user_slider'] == 1) {
             $data = array(
                 'user_slider' => '0'
             );
