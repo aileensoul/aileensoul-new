@@ -36,17 +36,17 @@
                                            aria-hidden="true" rel="noopener">
                                             <div class="bg-images no-cover-upload">  
                                                 <?php
-                                                $image_ori = $recdata[0]['profile_background'];
-                                                $filename = $this->config->item('rec_bg_main_upload_path') . $recdata[0]['profile_background'];
+                                                $image_ori = $recdata['profile_background'];
+                                                $filename = $this->config->item('rec_bg_main_upload_path') . $recdata['profile_background'];
                                                 $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                                if ($info && $recdata[0]['profile_background'] != '') {
+                                                if ($info && $recdata['profile_background'] != '') {
                                                     ?>
-                                                    <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata[0]['profile_background']; ?>"/>
+                                                    <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata['profile_background']; ?>"/>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
+                                                    <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?>" >
                                                     <?php
                                                 }
                                                 ?>
@@ -56,24 +56,24 @@
                                     <div class="profile-boxProfileCard-content clearfix">
                                         <div class="left_side_box_img buisness-profile-txext">
 
-                                            <a title="Recruiter Profile" class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                            <a title="Recruiter Profile" class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('recruiter/profile/' . $recdata['user_id']); ?>" title="<?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
 
                                                 <?php
-                                                $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
+                                                $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata['recruiter_user_image'];
                                                 $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                                if ($recdata[0]['recruiter_user_image'] != '' && $info) {
+                                                if ($recdata['recruiter_user_image'] != '' && $info) {
                                                     ?>
-                                                    <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
+                                                    <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata['recruiter_user_image']; ?>" alt="<?php echo $recdata['recruiter_user_image']; ?>" >
                                                     <?php
                                                 } else {
 
 
 
-                                                    $a = $recdata[0]['rec_firstname'];
+                                                    $a = $recdata['rec_firstname'];
                                                     $acr = substr($a, 0, 1);
 
-                                                    $b = $recdata[0]['rec_lastname'];
+                                                    $b = $recdata['rec_lastname'];
                                                     $acr1 = substr($b, 0, 1);
                                                     ?>
                                                     <div class="post-img-profile">
@@ -91,15 +91,15 @@
                                         </div>
                                         <div class="right_left_box_design ">
                                             <span class="profile-company-name ">
-                                                <a href="<?php echo site_url('recruiter/profile'); ?>" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
+                                                <a href="<?php echo site_url('recruiter/profile'); ?>" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?></a>
                                             </span>
 
 
                                             <div class="profile-boxProfile-name">
-                                                <a href="<?php echo site_url('recruiter/profile/' . $recruiterdata1[0]['user_id']); ?>" title="<?php echo ucfirst(strtolower($recruiterdata1[0]['designation'])); ?>">
+                                                <a href="<?php echo site_url('recruiter/profile/' . $recdata['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>">
                                                     <?php
-                                                    if (ucfirst(strtolower($recruiterdata1[0]['designation']))) {
-                                                        echo ucfirst(strtolower($recruiterdata1[0]['designation']));
+                                                    if (ucfirst(strtolower($recdata['designation']))) {
+                                                        echo ucfirst(strtolower($recdata['designation']));
                                                     } else {
                                                         echo "Designation";
                                                     }
