@@ -50,12 +50,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="text">Who are you?</label>
-                                <input type="text" name="jobTitle" id="jobTitle" class="form-control" ng-keyup="jobTitle()" ng-model="user.jobTitle" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, Developer, HR, BDE, CA, Doctor.." typeahead="item as item.name for item in titleSearchResult | filter:$viewValue">
+                                <input type="text" name="jobTitle" id="jobTitle" class="form-control" ng-keyup="jobTitle()" ng-model="user.jobTitle" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, Developer, HR, BDE, CA, Doctor.." typeahead="item as item.name for item in titleSearchResult | filter:$viewValue" autocomplete="off">
                                 <label ng-show="errorjobTitle" class="error">{{errorjobTitle}}</label>
                             </div>
                             <div class="form-group">
                                 <label for="text">Where are you from?</label>
-                                <input type="text" name="city" id="city" class="form-control" ng-keyup="cityList()" ng-model="user.cityList" placeholder="Enter your city name" typeahead="item as item.city_name for item in citySearchResult | filter:$viewValue">
+                                <input type="text" name="city" id="city" class="form-control" ng-keyup="cityList()" ng-model="user.cityList" placeholder="Enter your city name" typeahead="item as item.city_name for item in citySearchResult | filter:$viewValue" autocomplete="off">
                                 <label ng-show="errorcityList" class="error">{{errorcityList}}</label>
                             </div>
                             <div class="form-group cus_field">
@@ -184,7 +184,7 @@
                     }
                 };
                 $scope.submitBasicInfoForm = function () {
-                    //if ($scope.basicinfo.validate()) {
+                    if ($scope.basicinfo.validate()) {
                         angular.element('#basicinfo #submit').addClass("form_submit");
                         $scope.loader_show = true;
                         $http({
@@ -215,9 +215,10 @@
                                         }
                                     }
                                 });
-//                    } else {
-//                        return false;
-//                    }
+                    } else {
+                        return false;
+                    }
+
                 };
 
 

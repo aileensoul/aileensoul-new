@@ -31,8 +31,18 @@ class Data_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
-    function universityList(){
+
+    function universityList() {
         
+    }
+
+    function findJobTitle($search_keyword = '') {
+        $this->db->select('jt.title_id')->from('job_title jt');
+        $this->db->where('jt.name', $search_keyword);
+        $this->db->where('jt.status', 'publish');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
     }
 
     function searchJobTitle($search_keyword = '') {
@@ -47,6 +57,16 @@ class Data_model extends CI_Model {
         } else {
             $result_array = array();
         }
+        return $result_array;
+    }
+
+    function findCityList($search_keyword = '') {
+        $this->db->select('c.city_id')->from('cities c');
+        $this->db->like('c.city_name', $search_keyword);
+        $this->db->where('c.status', '1');
+        $this->db->where('c.state_id !=', '0');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
         return $result_array;
     }
 
