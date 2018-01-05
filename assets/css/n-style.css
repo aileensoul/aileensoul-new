@@ -799,6 +799,7 @@ header.profile-header .logo a{color:#5c5c5c;}
     padding-right: 0px!important;
     font-size: 11px!important;
 }
+.has-error input, input.error, select.error, .has-error textarea, textarea.error {border: 1px solid #ff0000 !important;}
 .cus_field .error {bottom: 50px;}
 
 /***  media query  ***/
