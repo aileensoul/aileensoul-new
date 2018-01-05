@@ -459,7 +459,7 @@ function check_datevalidation() {
 }
 
 $("form").submit(function () {
-    alert(123);
+
     var day = $('.day').val();
     var month = $('.month').val();
     var year = $('.year').val();
@@ -501,12 +501,15 @@ $("form").submit(function () {
             $('.month').removeClass('error');
             $('.year').removeClass('error');
             $('.date-dropdowns .last_date_error').remove();
-            var rate = $('.worktype').val();
-            var currency = $('.currency').val();
-            alert(rate);
-            alert(currency);
-            return false;
 
+            var rate = $('#rate').val();
+            var currency = $('#currency').val();
+            if (rate != '') {
+                if (currency == null) {
+                    $('<label for="currency" class="last_date_error" style="display: block;">You had add rate so please select currency</label>').insertAfter("#currency");
+                    return false;
+                }
+            }
 
             return true;
         }
