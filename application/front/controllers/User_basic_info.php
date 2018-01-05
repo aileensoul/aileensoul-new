@@ -33,7 +33,7 @@ class User_basic_info extends MY_Controller {
         $data = array();
 
         $_POST = json_decode(file_get_contents('php://input'), true);
-        
+
         if (empty($_POST['jobTitle']))
             $errors['jobTitle'] = 'Job title is required.';
 
@@ -42,10 +42,11 @@ class User_basic_info extends MY_Controller {
 
         if (empty($_POST['field']))
             $errors['field'] = 'Field is required.';
-
-        if (empty($_POST['otherField']))
-            $errors['otherField'] = 'Other field is required.';
-
+        
+        if ($_POST['field'] == '0') {
+            if (empty($_POST['otherField']))
+                $errors['otherField'] = 'Other field is required.';
+        }
         if (!empty($errors)) {
             $data['errors'] = $errors;
         } else {

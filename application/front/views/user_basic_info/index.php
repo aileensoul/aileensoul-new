@@ -51,10 +51,12 @@
                             <div class="form-group">
                                 <label for="text">Who are you?</label>
                                 <input type="text" name="jobTitle" id="jobTitle" class="form-control" ng-keyup="jobTitle()" ng-model="user.jobTitle" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, Developer, HR, BDE, CA, Doctor.." typeahead="item as item.name for item in titleSearchResult | filter:$viewValue">
+                                <span ng-show="errorjobTitle" class="error">{{errorjobTitle}}</span>
                             </div>
                             <div class="form-group">
                                 <label for="text">Where are you from?</label>
                                 <input type="text" name="city" id="city" class="form-control" ng-keyup="cityList()" ng-model="user.cityList" placeholder="Enter your city name" typeahead="item as item.city_name for item in citySearchResult | filter:$viewValue">
+                                <span ng-show="errorcityList" class="error">{{errorcityList}}</span>
                             </div>
                             <div class="form-group cus_field">
                                 <label for="text">What is your field?</label>
@@ -63,10 +65,12 @@
                                     <option data-ng-repeat='fieldItem in fieldList' value='{{fieldItem.industry_id}}'>{{fieldItem.industry_name}}</option>             
                                     <option value="0">Other</option>
                                 </select>
+                                <span ng-show="errorfield" class="error">{{errorfield}}</span>
                             </div>
                             <div class="form-group" ng-if="user.field == '0'">
                                 <label for="text">Other Field</label>
                                 <input type="text" class="form-control" ng-model="user.otherField" placeholder="Enter other field" ng-required="true">
+                                <span ng-show="errorotherField" class="error">{{errorotherField}}</span>
                             </div>
                             <p class="text-center submit-btn">
                                 <button type="submit" id="submit" class="btn1">Submit</button>
@@ -180,7 +184,7 @@
                     }
                 };
                 $scope.submitBasicInfoForm = function () {
-                    if ($scope.basicinfo.validate()) {
+                    //if ($scope.basicinfo.validate()) {
                         angular.element('#basicinfo #submit').addClass("form_submit");
                         $scope.loader_show = true;
                         $http({
@@ -191,11 +195,10 @@
                         })
                                 .success(function (data) {
                                     if (data.errors) {
-                                        $scope.errorContactName = data.errors.contactname;
-                                        $scope.errorContactMobile = data.errors.contactmobile;
-                                        $scope.errorEmail = data.errors.email;
-                                        $scope.errorCity = data.errors.city;
-                                        $scope.errorContactWebsite = data.errors.contactwebsite;
+                                        $scope.errorjobTitle = data.errors.jobTitle;
+                                        $scope.errorcityList = data.errors.cityList;
+                                        $scope.errorfield = data.errors.field;
+                                        $scope.errorotherField = data.errors.otherField;
                                     } else {
                                         if (data.is_success == '1') {
                                             angular.element('#contactinfo #next').removeClass("form_submit");
@@ -212,9 +215,9 @@
                                         }
                                     }
                                 });
-                    } else {
-                        return false;
-                    }
+//                    } else {
+//                        return false;
+//                    }
 
                 };
 
