@@ -19,7 +19,9 @@ function forgot_profile() {
 
 }
 function forgot_close() {
-       $('#login').modal('show');
+       // $('#login').modal('show');
+       // $('body').addClass('modal-open');
+       // $('body').addClass('no-login');
 }
 
 
