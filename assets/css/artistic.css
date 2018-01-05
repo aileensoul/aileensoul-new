@@ -2103,9 +2103,9 @@ label.cameraButton:active {
 .head_details1 {
     text-align: center;
 }
-.head_details1 h5:hover {
+/*.head_details1 h5:hover {
     text-decoration: underline;
-}
+}*/
 .profile-boxProfileCard h5 i {
     padding-right: 7px;
 }

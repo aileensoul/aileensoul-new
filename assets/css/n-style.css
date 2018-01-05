@@ -9,6 +9,7 @@
 .form-box{width:700px; margin:0 auto; border-radius:4px;
 	border:1px solid #c7c7c7;
 	border-radius:5px;
+    position: relative;
     -webkit-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
 	-moz-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
 	box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
@@ -787,8 +788,19 @@ header.profile-header .logo a{color:#5c5c5c;}
 .dis-box{padding:35px 0;}
 /*** end all profile detail  ***/
 
-
-
+.error-msg p, label.error {
+    background: none;
+    color: red !important;
+    padding: 0px 10px !important;
+    position: absolute;
+    right: 20px;
+    z-index: 8;
+    line-height: 15px;
+    padding-right: 0px!important;
+    font-size: 11px!important;
+}
+.has-error input, input.error, select.error, .has-error textarea, textarea.error {border: 1px solid #ff0000 !important;}
+.cus_field .error {bottom: 50px;}
 
 /***  media query  ***/
 @media screen and (min-width: 768px) {

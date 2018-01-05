@@ -471,16 +471,16 @@
       var profile_login = '<?php echo $profile_login; ?>';
      var user_id = '<?php echo $this->session->userdata('aileenuser');?>';
   </script>
-
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_reg.js?ver='.time()); ?>"></script>
 <?php
         if (IS_JOB_JS_MINIFY == '0') {
             ?>
-  <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_reg.js?ver='.time()); ?>"></script>
+  <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_reg.js?ver='.time()); ?>"></script>-->
   <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_job_reg&skill.js?ver='.time()); ?>"></script>
 <?php }else{?>
 
 
- <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_reg.js?ver='.time()); ?>"></script>
+ <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_reg.js?ver='.time()); ?>"></script>-->
   <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_job_reg&skill.js?ver='.time()); ?>"></script>
   
 <?php }?>
