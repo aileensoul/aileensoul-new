@@ -836,7 +836,8 @@ label.cameraButton input[accept*="camera"] {
 .ui-state-focus {
     margin: 0 !important;
 }
-.alert.alert-danger {
+.alert.alert-danger {font-size: 16px;}
+/*.alert.alert-danger {
     background-color: #f2dede;
     border-color: #ebccd1;
     color: #a94442;
@@ -850,7 +851,7 @@ label.cameraButton input[accept*="camera"] {
     z-index: 9;
     font-size: 18px;
     margin-top: -10px;
-}
+}*/
 .custom-row .user-pic:hover a{width:100%;}
 .post-img-user{
     color:#fff;
