@@ -1325,6 +1325,7 @@ label.cameraButton input[accept*="camera"] {
     font-size: 18px;
     margin-top: -10px;
 }*/
+.alert.alert-danger {font-size: 16px;}
 .post-img-user {
     color: #fff;
     background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
