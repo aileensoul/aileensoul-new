@@ -260,6 +260,7 @@ header('Expires: ' . $date);
                         var btn = document.getElementById("myBtn");
                         btn.onclick = function () {
                             $('#forgotPassword').modal('show');
+                         
                         }
                         function login()
                         {
