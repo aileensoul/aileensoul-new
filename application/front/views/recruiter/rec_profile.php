@@ -24,7 +24,7 @@
  if ($this->uri->segment(3) != $userid){
      echo $job_header2_border; 
  }
- elseif($recdata[0]['re_step'] == 3){
+ elseif($recdata['re_step'] == 3){
   echo $recruiter_header2_border; 
  }
  elseif($returnpage == 'notification'){
@@ -119,17 +119,17 @@
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
                             
-                             <?php  $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
+                             <?php  $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata['recruiter_user_image'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                      if ($recdata[0]['recruiter_user_image'] != '' && $info) { ?>
-                     <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
+                      if ($recdata['recruiter_user_image'] != '' && $info) { ?>
+                     <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata['recruiter_user_image']; ?>" alt="<?php echo $recdata['recruiter_user_image']; ?>" >
                                 <?php
                             } else {
-                                $a = $recdata[0]['rec_firstname'];
+                                $a = $recdata['rec_firstname'];
                                 $acr = substr($a, 0, 1);
 
-                                $b = $recdata[0]['rec_lastname'];
+                                $b = $recdata['rec_lastname'];
                                 $acr1 = substr($b, 0, 1);
                                 ?>
                                 <div class="post-img-user">
@@ -146,7 +146,7 @@
                     </div>
                     <!--PROFILE PIC CODE END-->
                     <div class="job-menu-profile mob-block">
-                        <a href="javascript:void(0);" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>"><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
+                        <a href="javascript:void(0);" title="<?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?>"><h3><?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?></h3></a>
                         <!-- text head start -->
                         <div class="profile-text" >
 
@@ -155,7 +155,7 @@
 
                             <?php 
                             if ($this->uri->segment(3) == $userid) {
-                                if ($recdata[0]['designation'] == '') {
+                                if ($recdata['designation'] == '') {
                                     ?>
             
                                     <a id="designation" class="designation" title="Designation">Designation</a>
@@ -163,19 +163,19 @@
                                 <?php } else {
                                     ?> 
                  
-                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
+                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"><?php echo ucfirst(strtolower($recdata['designation'])); ?></a>
                                     <?php
                                 }
                             } else {
 
 
-                                if ($recdata[0]['designation'] == '') {
+                                if ($recdata['designation'] == '') {
                                     ?>
                                    
                                     <a id="designation"  title="Designation">Designation</a>
 
                                 <?php } else {  ?>
-                                    <a id="designation"  title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
+                                    <a id="designation"  title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata['designation'])); ?></a> <?php
                                 }
                             }
                             ?>
@@ -189,7 +189,7 @@
 
                             <?php
                             $userid = $this->session->userdata('aileenuser');
-                            if ($recdata[0]['user_id'] == $userid) {
+                            if ($recdata['user_id'] == $userid) {
                                 ?>     
                                 <ul class="current-user pro-fw">
 
@@ -272,13 +272,13 @@
             <!-- menubar --> 
             <div class="middle-part container rec_res">
                 <div class="job-menu-profile  mob-none ">
-                    <a href="javascript:void(0);" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>"><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
+                    <a href="javascript:void(0);" title="<?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?>"><h3><?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?></h3></a>
                     <!-- text head start -->
                     <div class="profile-text" >
 
                         <?php
                        if ($this->uri->segment(3) == $userid) {
-                            if ($recdata[0]['designation'] == "") {
+                            if ($recdata['designation'] == "") {
                                 ?>
 
                                 <a id="designation" class="designation" title="Designation">Designation</a>
@@ -286,17 +286,17 @@
                             } else {
                                 ?> 
                                 
-                                <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
+                                <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"><?php echo ucfirst(strtolower($recdata['designation'])); ?></a>
                             <?php
                             }
                         } else {
-                           if ($recdata[0]['designation'] == '') {
+                           if ($recdata['designation'] == '') {
                                     ?>
                                    
                                     <a id="designation"  title="Designation">Designation</a>
 
                                 <?php } else {  ?>
-                                    <a id="designation"  title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
+                                    <a id="designation"  title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata['designation'])); ?></a> <?php
                                 }
                         }
                         ?>
@@ -342,8 +342,8 @@
                                                     <ul class="clearfix">
                                                         <li> <b> Name</b> <span> 
                                                                 <?php
-                                                                if ($recdata[0]['rec_firstname'] || $recdata[0]['rec_lastname']) {
-                                                                    echo $recdata[0]['rec_firstname'] . '  ' . $recdata[0]['rec_lastname'];
+                                                                if ($recdata['rec_firstname'] || $recdata['rec_lastname']) {
+                                                                    echo $recdata['rec_firstname'] . '  ' . $recdata['rec_lastname'];
                                                                 } else {
                                                                     echo PROFILENA;
                                                                 }
@@ -352,8 +352,8 @@
 
                                                         <li> <b>Email </b><span> 
                                                                 <?php
-                                                                if ($recdata[0]['rec_email']) {
-                                                                    echo $recdata[0]['rec_email'];
+                                                                if ($recdata['rec_email']) {
+                                                                    echo $recdata['rec_email'];
                                                                 } else {
                                                                     echo PROFILENA;
                                                                 }
@@ -365,9 +365,9 @@
                                                         <?php
                                                         if ($this->uri->segment(3) != $userid) {
 
-                                                            if ($recdata[0]['rec_phone']) {
+                                                            if ($recdata['rec_phone']) {
                                                                 ?>
-                                                                <li><b> Phone Number</b> <span><?php echo $recdata[0]['rec_phone']; ?>
+                                                                <li><b> Phone Number</b> <span><?php echo $recdata['rec_phone']; ?>
 
                                                                     </span> </li>
 
@@ -376,9 +376,9 @@
                                                                 echo "";
                                                             }
                                                         } else {
-                                                            if ($recdata[0]['rec_phone']) {
+                                                            if ($recdata['rec_phone']) {
                                                                 ?>
-                                                                <li><b> Phone Number</b> <span><?php echo $recdata[0]['rec_phone']; ?>
+                                                                <li><b> Phone Number</b> <span><?php echo $recdata['rec_phone']; ?>
 
                                                                     </span> </li>
 
@@ -411,23 +411,23 @@
                                                 <div class="profile-job-profile-menu">
                                                     <ul class="clearfix">
                                                         <li> <b>Company Name</b><span><?php
-                                                                if ($recdata[0]['re_comp_name']) {
-                                                                    echo $recdata[0]['re_comp_name'];
+                                                                if ($recdata['re_comp_name']) {
+                                                                    echo $recdata['re_comp_name'];
                                                                 } else {
                                                                     echo PROFILENA;
                                                                 }
                                                                 ?></span>
                                                         </li>
                                                         <li><b> Company Email Address</b> <span><?php
-                                                                if ($recdata[0]['re_comp_email']) {
-                                                                    echo $recdata[0]['re_comp_email'];
+                                                                if ($recdata['re_comp_email']) {
+                                                                    echo $recdata['re_comp_email'];
                                                                 } else {
                                                                     echo PROFILENA;
                                                                 }
                                                                 ?></span> </li>
                                                         <li> <b>Company Phone Number</b><span> <?php
-                                                                if ($recdata[0]['re_comp_phone']) {
-                                                                    echo $recdata[0]['re_comp_phone'];
+                                                                if ($recdata['re_comp_phone']) {
+                                                                    echo $recdata['re_comp_phone'];
                                                                 } else {
                                                                     echo PROFILENA;
                                                                 }
@@ -440,10 +440,10 @@
                                                         <?php
                                                         if ($this->uri->segment(3) != $userid) { 
 
-                                                            if ($recdata[0]['re_comp_site']) {
+                                                            if ($recdata['re_comp_site']) {
                                                                 ?>
                                                                 <li> <b>Company Website</b><span><a target="_blank"><?php
-                                                                   echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
+                                                                   echo $this->common->rec_profile_links($recdata['re_comp_site']);
                                                                 ?></a></span>
                                                                 </li>
                                                                 <?php
@@ -451,10 +451,10 @@
                                                                 echo "";
                                                             }
                                                         } else { 
-                                                            if ($recdata[0]['re_comp_site']) {
+                                                            if ($recdata['re_comp_site']) {
                                                                 ?>
                                                                 <li> <b>Company Website</b><span><a target="_blank"><?php
-                                                                  echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
+                                                                  echo $this->common->rec_profile_links($recdata['re_comp_site']);
                                                                 ?></a></span>
                                                                 </li>
                                                                 <?php
@@ -469,7 +469,7 @@
                                                         ?>
 
                                                         <li> <b> Country</b> <span><?php
-                                                                $cache_time = $this->db->select('country_name')->get_where('countries', array('country_id' => $recdata[0]['re_comp_country']))->row()->country_name;
+                                                                $cache_time = $this->db->select('country_name')->get_where('countries', array('country_id' => $recdata['re_comp_country']))->row()->country_name;
 
                                                                 if ($cache_time) {
                                                                     echo $cache_time;
@@ -480,7 +480,7 @@
                                                         </li>
 
                                                         <li> <b>State </b><span> <?php
-                                                                $cache_time = $this->db->select('state_name')->get_where('states', array('state_id' => $recdata[0]['re_comp_state']))->row()->state_name;
+                                                                $cache_time = $this->db->select('state_name')->get_where('states', array('state_id' => $recdata['re_comp_state']))->row()->state_name;
                                                                 if ($cache_time) {
                                                                     echo $cache_time;
                                                                 } else {
@@ -491,10 +491,10 @@
 
                                                         <?php
                                                         if ($this->uri->segment(3) != $userid) {
-                                                            if ($recdata[0]['re_comp_city']) {
+                                                            if ($recdata['re_comp_city']) {
                                                                 ?>
                                                                 <li><b> City</b> <span><?php
-                                                                        $cache_time = $this->db->select('city_name')->get_where('cities', array('city_id' => $recdata[0]['re_comp_city']))->row()->city_name;
+                                                                        $cache_time = $this->db->select('city_name')->get_where('cities', array('city_id' => $recdata['re_comp_city']))->row()->city_name;
                                                                         if ($cache_time) {
                                                                             echo $cache_time;
                                                                         }
@@ -504,10 +504,10 @@
                                                                 echo "";
                                                             }
                                                         } else {
-                                                            if ($recdata[0]['re_comp_city']) {
+                                                            if ($recdata['re_comp_city']) {
                                                                 ?>
                                                                 <li><b> City</b> <span><?php
-                                                                        $cache_time = $this->db->select('city_name')->get_where('cities', array('city_id' => $recdata[0]['re_comp_city']))->row()->city_name;
+                                                                        $cache_time = $this->db->select('city_name')->get_where('cities', array('city_id' => $recdata['re_comp_city']))->row()->city_name;
                                                                         if ($cache_time) {
                                                                             echo $cache_time;
                                                                         }
@@ -526,17 +526,17 @@
 
                                                         <?php
                                                         if ($this->uri->segment(3) != $userid) {
-                                                            if ($recdata[0]['re_comp_sector']) {
+                                                            if ($recdata['re_comp_sector']) {
                                                                 ?>
-                                                                <li><b>Skill/Sector I Hire For</b><span><pre><?php echo $this->common->make_links($recdata[0]['re_comp_sector']); ?></pre></span></li>
+                                                                <li><b>Skill/Sector I Hire For</b><span><pre><?php echo $this->common->make_links($recdata['re_comp_sector']); ?></pre></span></li>
                                                                 <?php
                                                             } else {
                                                                 echo "";
                                                             }
                                                         } else {
-                                                            if ($recdata[0]['re_comp_sector']) {
+                                                            if ($recdata['re_comp_sector']) {
                                                                 ?>
-                                                                <li><b>Skill/Sector I Hire For</b><span><pre><?php echo $this->common->make_links($recdata[0]['re_comp_sector']); ?></pre></span></li>
+                                                                <li><b>Skill/Sector I Hire For</b><span><pre><?php echo $this->common->make_links($recdata['re_comp_sector']); ?></pre></span></li>
                                                                 <?php
                                                             } else {
                                                                 ?>
@@ -551,22 +551,22 @@
 
                                                         <?php
                                                         if ($this->uri->segment(3) != $userid) {
-                                                            if ($recdata[0]['re_comp_profile']) {
+                                                            if ($recdata['re_comp_profile']) {
                                                                 ?>
                                                                 <li><b>Company Profile</b> <span><pre>
                                                                             <?php
-                                                                echo $this->common->make_links($recdata[0]['re_comp_profile']);
+                                                                echo $this->common->make_links($recdata['re_comp_profile']);
                                                                 ?></pre></span> </li>
                                                                 <?php
                                                             } else {
                                                                 echo "";
                                                             }
                                                         } else {
-                                                            if ($recdata[0]['re_comp_profile']) {
+                                                            if ($recdata['re_comp_profile']) {
                                                                 ?>
                                                                 <li><b>Company Profile</b> <span><pre>
                                                                             <?php
-                                                                echo $this->common->make_links($recdata[0]['re_comp_profile']);
+                                                                echo $this->common->make_links($recdata['re_comp_profile']);
                                                                 ?></pre></span> </li>
                                                                 <?php
                                                             } else {
@@ -581,19 +581,19 @@
 
                                                         <?php
                                                         if ($this->uri->segment(3) != $userid) {
-                                                            if ($recdata[0]['comp_logo']) {
+                                                            if ($recdata['comp_logo']) {
                                                                 ?>
                                                                 <li><b>Company Logo</b> <span>
 
                                                                        <?php if (IMAGEPATHFROM == 'upload') { ?>
-                                                                        <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['comp_logo']) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" alt="<?php echo $recdata[0]['comp_logo']; ?>">
+                                                                        <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata['comp_logo']) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" alt="<?php echo $recdata['comp_logo']; ?>">
                                                                         <?php } else{ 
 
-                                $filename = $this->config->item('rec_profile_thumb_upload_path') .$recdata[0]['comp_logo'];
+                                $filename = $this->config->item('rec_profile_thumb_upload_path') .$recdata['comp_logo'];
                                     $s3 = new S3(awsAccessKey, awsSecretKey);
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                     if($info){  ?>
-                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['comp_logo']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata[0]['comp_logo']; ?>"/> 
+                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata['comp_logo']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata['comp_logo']; ?>"/> 
                                 <?php }else{
                                     echo PROFILENA;
                                  }?>
@@ -605,18 +605,18 @@
                                                                 echo "";
                                                             }
                                                         } else {
-                                                            if ($recdata[0]['comp_logo']) {
+                                                            if ($recdata['comp_logo']) {
                                                                 ?>
                                                                 <li><b>Company Logo</b> <span>
 
                                                                      <?php if (IMAGEPATHFROM == 'upload') { ?>
-                                                                        <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['comp_logo']) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" >
+                                                                        <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata['comp_logo']) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" >
 
-                                                                        <?php } else {  $filename = $this->config->item('rec_profile_thumb_upload_path') .$recdata[0]['comp_logo'];
+                                                                        <?php } else {  $filename = $this->config->item('rec_profile_thumb_upload_path') .$recdata['comp_logo'];
                                     $s3 = new S3(awsAccessKey, awsSecretKey);
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                     if($info){  ?>
-                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['comp_logo']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata[0]['comp_logo']; ?>"/> 
+                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata['comp_logo']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata['comp_logo']; ?>"/> 
                                                 <?php } else{
                                     echo PROFILENA;
                                  } }?>
