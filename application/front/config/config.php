@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if ($_SERVER['HTTP_HOST'] == "localhost") {
     $config['base_url'] = 'http://localhost/aileensoul-new/';
 } else {
-    $config['base_url'] = 'https://www.aileensoul.com/';
+    $config['base_url'] = 'http://35.165.1.109:81/';
 }
 
 
@@ -377,7 +377,7 @@ $config['encryption_key'] = 'CIPAMA';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'aileensoul_front_session';
+$config['sess_cookie_name'] = 'aileensouldesigner_front_session';
 //$config['sess_expiration'] = 7200;
 //$config['sess_expiration'] = (60*60*24*365*10);
 $config['sess_expiration'] = 315360000;
@@ -450,8 +450,8 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
 $config['csrf_protection'] = FALSE;
-$config['csrf_token_name'] = 'aileensoulnewfrontcsrf';
-$config['csrf_cookie_name'] = 'aileensoulnewfrontcsrf';
+$config['csrf_token_name'] = 'aileensoulnewlivecsrf';
+$config['csrf_cookie_name'] = 'aileensoulnewlivecsrf';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = FALSE;
 $config['csrf_exclude_uris'] = array();
@@ -762,8 +762,8 @@ $config['bus_bg_main_max_height'] = '3000';
 
 // BUSINESS PROFILE BACKGROUND THUMBS
 $config['bus_bg_thumb_upload_path'] = 'uploads/business_bg/thumbs/';
-$config['bus_bg_thumb_width'] = '450'; //400
-$config['bus_bg_thumb_height'] = '130'; //150
+$config['bus_bg_thumb_width'] = '305'; //400
+$config['bus_bg_thumb_height'] = '110'; //150
 
 // BUSINESS PROFILE BACKGROUND ORIGINAL
 $config['bus_bg_original_upload_path'] = 'uploads/business_bg/original/';
@@ -807,17 +807,7 @@ $config['bus_post_resize4_width'] = '550';
 $config['bus_post_resize4_height'] = '315';
 //$config['bus_post_resize4_height'] = '220';
 
-// BUSINESS MESSAGE IMAGE
-$config['bus_message_main_upload_path'] = 'uploads/business_message/main/';
-$config['bus_message_main_allowed_types'] = 'gif|jpeg|jpg|PNG|png|pdf|mp4|mp3|avi|ogg|3gp|webm';
-$config['bus_message_main_max_size'] = '100000000'; //in KB
-$config['bus_message_main_max_width'] = '4500';
-$config['bus_message_main_max_height'] = '3000';
 
-// BUSINESS PROFILE IMAGE THUMBS
-$config['bus_message_thumb_upload_path'] = 'uploads/business_message/thumbs/';
-$config['bus_message_thumb_width'] = '160';
-$config['bus_message_thumb_height'] = '160';
 
 // ARTISTIC PROFILE IMAGE
 $config['art_profile_main_upload_path'] = 'uploads/artistic_profile/main/';
@@ -909,21 +899,3 @@ $config['blog_main_max_height'] = '5000';
 $config['blog_thumb_upload_path'] = 'uploads/blog/thumbs/';
 $config['blog_thumb_width'] = '150';
 $config['blog_thumb_height'] = '150';
-
-// BLOG RELATED THUMB
-$config['blog_related_upload_path'] = 'uploads/blog/related/';
-$config['blog_related_width'] = '150';
-$config['blog_related_height'] = '150';
-
-
-// BUSINESS MESSAGE IMAGE
-$config['rec_message_main_upload_path'] = 'uploads/recruiter_message/main/';
-$config['rec_message_main_allowed_types'] = 'gif|jpeg|jpg|PNG|png|pdf|mp4|mp3|avi|ogg|3gp|webm';
-$config['rec_message_main_max_size'] = '100000000'; //in KB
-$config['rec_message_main_max_width'] = '4500';
-$config['rec_message_main_max_height'] = '3000';
-
-// BUSINESS PROFILE IMAGE THUMBS
-$config['rec_message_thumb_upload_path'] = 'uploads/recruiter_message/thumbs/';
-$config['rec_message_thumb_width'] = '160';
-$config['rec_message_thumb_height'] = '160';
