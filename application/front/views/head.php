@@ -59,7 +59,7 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 
 <?php } else if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'jobpost') { ?>
     <meta name="description" content="Job Description for the post of <?php echo $exp_title; ?> in <?php echo ucfirst($recdata[0]['re_comp_name']); ?> in <?php if ($city_name) {
-        echo $city_name . '-';
+        echo $city_name . ', ';
     }echo $state_name; ?> for <?php echo $exp_descp; ?> of experience. Apply Now!" />
 
 <?php } else if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?>
@@ -89,7 +89,7 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 
 <?php } else if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'details') { ?>
 
-    <meta name="description" content="<?php echo ucfirst($meta_des[0]['art_name']) . ' ' . ucfirst($meta_des[0]['art_lastname']) . ' is a ' . $keyskill_meta . ' artist situated at ' . ucfirst($location_city) . ',' . ucfirst($location_country) . '. ' . 'View full artistic detail & art portfolio at Aileensoul.com'; ?>" />
+    <meta name="description" content="<?php echo ucfirst($meta_des[0]['art_name']) . ' ' . ucfirst($meta_des[0]['art_lastname']) . ' is a ' . $keyskill_meta . ' artist situated at ' . ucfirst($location_city) . ', ' . ucfirst($location_country) . '. ' . 'View full artistic detail & art portfolio at Aileensoul.com'; ?>" />
 
 <?php } else {
     ?>
