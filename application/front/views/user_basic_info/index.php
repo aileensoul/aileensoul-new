@@ -73,7 +73,7 @@
                                 <label ng-show="errorotherField" class="error">{{errorotherField}}</label>
                             </div>
                             <p class="text-center submit-btn">
-                                <button type="submit" id="submit" class="btn1">Submit</button>
+                                <button type="submit" id="submit" class="btn1">Submit<span class="ajax_load" id="basic_info_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                             </p>
                         </form>
                 </div>
@@ -86,21 +86,24 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">×</button>
                     <h3>Eduction Information</h3>
-                    <form>
+                    <form name="studentinfo" id="studentinfo" ng-submit="submitStudentInfoForm()" ng-validate="studentInfoValidate">
                         <div class="form-group">
                             <label for="text">What are you studying right now?</label>
-                            <input type="text" class="form-control" placeholder="Pursuing: Engineering, Medicine, Desiging, MBA, Accounting, BA, 5th, 10th, 12th ..">
+                            <input type="text" name="currentStudy" id="currentStudy" class="form-control" placeholder="Pursuing: Engineering, Medicine, Desiging, MBA, Accounting, BA, 5th, 10th, 12th .." ng-keyup="currentStudy()" ng-model="user.currentStudy" typeahead="item as item.degree_name for item in degreeSearchResult | filter:$viewValue" autocomplete="off">
+                            <label ng-show="errorcurrentStudy" class="error">{{errorcurrentStudy}}</label>
                         </div>
                         <div class="form-group">
                             <label for="text">Where are you from?</label>
-                            <input type="text" class="form-control" ng-keyup="cityList1()" ng-model="user.cityList1" placeholder="Enter your city name">
+                            <input type="text" name="city" id="city" class="form-control" ng-keyup="cityList()" ng-model="user.cityList" placeholder="Enter your city name" typeahead="item as item.city_name for item in citySearchResult | filter:$viewValue" autocomplete="off">
+                            <label ng-show="errorcityList" class="error">{{errorcityList}}</label>
                         </div>
                         <div class="form-group">
                             <label for="text">University / Collage / School </label>
-                            <input type="text" class="form-control" placeholder="Enter your University / Collage / school ">
+                            <input type="text" name="university" id="university" class="form-control" placeholder="Enter your University / Collage / school " ng-model="user.universityName" ng-keyup="universityList()" typeahead="item as item.university_name for item in universitySearchResult | filter:$viewValue" autocomplete="off">
+                            <label ng-show="erroruniversityName" class="error">{{erroruniversityName}}</label>
                         </div>
                         <p class="text-center submit-btn">
-                            <button type="submit" class="btn1">Submit</button>
+                            <button type="submit" id="submit" class="btn1">Submit<span class="ajax_load" id="student_info_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                         </p>
                     </form>
 
@@ -118,14 +121,17 @@
         <script type="text/javascript" src="<?php echo base_url('assets/js/angular-validate.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/angular/angular-route.1.6.4.js') ?>"></script>
         <script>
-                                var base_url = '<?php echo base_url(); ?>';
-                                var slug = '<?php echo $slugid; ?>';
-                                var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+                                    var base_url = '<?php echo base_url(); ?>';
+                                    var slug = '<?php echo $slugid; ?>';
+                                    var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
         </script>
         <script>
             var profileBasicInfoApp = angular.module('profileBasicInfoApp', ['ui.bootstrap', 'ngValidate']);
             profileBasicInfoApp.controller('profileBasicInfoController', function ($scope, $http) {
                 $scope.user = {};
+                $('#basic_info_ajax_load').hide();
+                $('#student_info_ajax_load').hide();
+                // PROFEETIONAL DATA
                 getFieldList();
                 function getFieldList() {
                     $http.get(base_url + "general_data/getFieldList").then(function (success) {
@@ -186,11 +192,11 @@
                 $scope.submitBasicInfoForm = function () {
                     if ($scope.basicinfo.validate()) {
                         angular.element('#basicinfo #submit').addClass("form_submit");
-                        $scope.loader_show = true;
+                        $('#basic_info_ajax_load').show();
                         $http({
                             method: 'POST',
                             url: base_url + 'user_basic_info/ng_basic_info_insert',
-                            data: $scope.user, 
+                            data: $scope.user,
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                         })
                                 .success(function (data) {
@@ -201,8 +207,91 @@
                                         $scope.errorotherField = data.errors.otherField;
                                     } else {
                                         if (data.is_success == '1') {
-                                            angular.element('#contactinfo #next').removeClass("form_submit");
-                                            $scope.loader_show = false;
+                                            angular.element('#basicinfo #submit').removeClass("form_submit");
+                                            $('#basic_info_ajax_load').hide();
+                                            window.location = base_url + 'profiles/'
+                                        } else {
+                                            return false;
+                                        }
+                                    }
+                                });
+                    } else {
+                        return false;
+                    }
+
+                };
+                
+                // STUDENT DATA
+                
+                $scope.currentStudy = function () {
+                    $http({
+                        method: 'POST',
+                        url: base_url + 'general_data/degreeList',
+                        data: 'q=' + $scope.user.currentStudy,
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    })
+                            .then(function (success) {
+                                data = success.data;
+                                $scope.degreeSearchResult = data;
+                            });
+                }
+
+                $scope.universityList = function () {
+                    $http({
+                        method: 'POST',
+                        url: base_url + 'general_data/searchUniversityList',
+                        data: 'q=' + $scope.user.universityName,
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    })
+                            .then(function (success) {
+                                data = success.data;
+                                $scope.universitySearchResult = data;
+                            });
+                }
+
+                $scope.studentInfoValidate = {
+                    rules: {
+                        currentStudy: {
+                            required: true,
+                        },
+                        city: {
+                            required: true,
+                        },
+                        university: {
+                            required: true,
+                        }
+                    },
+                    messages: {
+                        currentStudy: {
+                            required: "Current study is required.",
+                        },
+                        city: {
+                            required: "City is required.",
+                        },
+                        university: {
+                            required: "University name is required.",
+                        }
+                    }
+                };
+                $scope.submitStudentInfoForm = function () {
+                    if ($scope.studentinfo.validate()) {
+                        angular.element('#studentinfo #submit').addClass("form_submit");
+                        $('#student_info_ajax_load').show();
+                        $http({
+                            method: 'POST',
+                            url: base_url + 'user_basic_info/ng_student_info_insert',
+                            data: $scope.user,
+                            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                        })
+                                .success(function (data) {
+                                    if (data.errors) {
+                                        $scope.errorcurrentStudy = data.errors.currentStudy;
+                                        $scope.errorcityList = data.errors.cityList;
+                                        $scope.erroruniversityName = data.errors.universityName;
+                                } else {
+                                        if (data.is_success == '1') {
+                                            angular.element('#studentinfo #submit').removeClass("form_submit");
+                                            $('#student_info_ajax_load').hide();
                                             window.location = base_url + 'profiles/'
                                         } else {
                                             return false;
