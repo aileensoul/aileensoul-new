@@ -17,7 +17,7 @@
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
         <?php echo $header; ?>
-        <?php if ($recdata[0]['re_step'] == 3) { ?>
+        <?php if ($recdata['re_step'] == 3) { ?>
             <?php echo $recruiter_header2_border; ?>
         <?php } ?>
         <div id="preloader"></div>
@@ -105,17 +105,17 @@
                     <!--PROFILE PIC CODE START-->
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
-                                   <?php  $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
+                                   <?php  $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata['recruiter_user_image'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                      if ($recdata[0]['recruiter_user_image'] != '' && $info) { ?>
-                     <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
+                      if ($recdata['recruiter_user_image'] != '' && $info) { ?>
+                     <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata['recruiter_user_image']; ?>" alt="<?php echo $recdata['recruiter_user_image']; ?>" >
                                 <?php
                             } else {
-                                $a = $recdata[0]['rec_firstname'];
+                                $a = $recdata['rec_firstname'];
                                 $acr = substr($a, 0, 1);
 
-                                $b = $recdata[0]['rec_lastname'];
+                                $b = $recdata['rec_lastname'];
                                 $acr1 = substr($b, 0, 1);
                                 ?>
                                 <div class="post-img-user">
@@ -130,12 +130,12 @@
                     </div>
                     <!--PROFILE PIC CODE END-->
                     <div class="job-menu-profile mob-block">
-                        <a href="<?php echo site_url('recruiter/rec_profile/' . $recdata[0]['userid']); ?>" title='Recruiter Profile'><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
+                        <a href="<?php echo site_url('recruiter/rec_profile/' . $recdata['userid']); ?>" title='Recruiter Profile'><h3><?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?></h3></a>
                         <!-- text head start -->
                         <div class="profile-text" >
 
                             <?php
-                            if ($recdata[0]['designation'] == "") {
+                            if ($recdata['designation'] == "") {
                                 ?>
 
                                 <a id="designation" class="designation" title="Designation">Designation</a>
@@ -144,7 +144,7 @@
                                
                                 ?> 
 
-                                <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
+                                <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"><?php echo ucfirst(strtolower($recdata['designation'])); ?></a>
                             <?php } ?>
 
                         </div>
@@ -164,7 +164,7 @@
 
                             <?php
                             $userid = $this->session->userdata('aileenuser');
-                            if ($recdata[0]['user_id'] == $userid) {
+                            if ($recdata['user_id'] == $userid) {
                                 ?>     
                                 <ul class="current-user pro-fw">
 
@@ -205,12 +205,12 @@
 
             <div class="middle-part container rec_res">    
                 <div class="job-menu-profile mob-none  ">
-                    <a href="<?php echo site_url('recruiter/profile/' . $recdata[0]['userid']); ?>" title='<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>'><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
+                    <a href="<?php echo site_url('recruiter/profile/' . $recdata['userid']); ?>" title='<?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?>'><h3><?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?></h3></a>
                     <!-- text head start -->
                     <div class="profile-text" >
 
                         <?php
-                        if ($recdata[0]['designation'] == "") {
+                        if ($recdata['designation'] == "") {
                             ?>
 
                             <a id="designation" class="designation" title="Designation">Designation</a>
@@ -218,7 +218,7 @@
                         } else {
                             ?> 
 
-                            <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
+                            <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"><?php echo ucfirst(strtolower($recdata['designation'])); ?></a>
                         <?php } ?>
 
                     </div>
