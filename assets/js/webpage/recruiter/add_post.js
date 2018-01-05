@@ -92,8 +92,8 @@ $.validator.addMethod("greaterThan1",
                 return true;
             } else
             {
-                //return parseInt(value) > parseInt($min.val());
-                return (value) > ($min.val());
+                return parseInt(value) > parseInt($min.val());
+                //return (value) > ($min.val());
             }
         }, "Maximum experience must be greater than minimum experience.");
 
