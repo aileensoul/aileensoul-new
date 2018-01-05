@@ -31,7 +31,7 @@
         </style>
     </head>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
-    <body class="page-container-bg-solid page-boxed no-login freeh3 cust-add-live botton_footer">
+    <body class="page-container-bg-solid page-boxed no-login freeh3 cust-add-live botton_footer ">
         <header>
             <div class="container">
                 <div class="row">

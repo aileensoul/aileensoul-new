@@ -510,7 +510,6 @@ $("form").submit(function () {
                     return false;
                 }
             }
-
             return true;
         }
     }
