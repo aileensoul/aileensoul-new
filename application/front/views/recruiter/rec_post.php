@@ -22,7 +22,7 @@
         $userid = $this->session->userdata('aileenuser');
         if ($postdataone[0]['user_id'] != $userid) {
             echo $job_header2_border;
-        } elseif ($recdata[0]['re_step'] == 3) {
+        } elseif ($recdata['re_step'] == 3) {
             echo $recruiter_header2_border;
         } elseif ($returnpage == 'notification') {
             
@@ -108,18 +108,18 @@
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
                             <?php
-                            $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
+                            $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata['recruiter_user_image'];
                             $s3 = new S3(awsAccessKey, awsSecretKey);
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                            if ($recdata[0]['recruiter_user_image'] != '' && $info) {
+                            if ($recdata['recruiter_user_image'] != '' && $info) {
                                 ?>
-                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
+                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata['recruiter_user_image']; ?>" alt="<?php echo $recdata['recruiter_user_image']; ?>" >
                                 <?php
                             } else {
-                                $a = $recdata[0]['rec_firstname'];
+                                $a = $recdata['rec_firstname'];
                                 $acr = substr($a, 0, 1);
 
-                                $b = $recdata[0]['rec_lastname'];
+                                $b = $recdata['rec_lastname'];
                                 $acr1 = substr($b, 0, 1);
                                 ?>
                                 <div class="post-img-user">
@@ -139,20 +139,20 @@
                         <div class="profile-text" >
                             <?php
                             if ($this->uri->segment(3) == $userid) {
-                                if ($recdata[0]['designation'] == '') {
+                                if ($recdata['designation'] == '') {
                                     ?>
                                     <a id="designation" class="designation" title="Designation">Designation</a>
                                 <?php } else {
                                     ?> 
-                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> 
+                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"><?php echo ucfirst(strtolower($recdata['designation'])); ?></a> 
                                     <?php
                                 }
                             } else {
-                                if ($recdata[0]['designation'] == '') {
+                                if ($recdata['designation'] == '') {
                                     ?>
                                     <a id="designation"  title="Designation">Designation</a>
                                 <?php } else { ?>
-                                    <a id="designation"  title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
+                                    <a id="designation"  title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata['designation'])); ?></a> <?php
                                 }
                             }
                             ?>
@@ -163,17 +163,17 @@
                         <div class=" right-side-menu art-side-menu padding_less_right right-menu-jr">  
                             <?php
                             $userid = $this->session->userdata('aileenuser');
-                            if ($recdata[0]['user_id'] == $userid) {
+                            if ($recdata['user_id'] == $userid) {
                                 ?>     
                                 <ul class="current-user pro-fw4">
                                     <?php } else { ?>
                                     <ul class="pro-fw">
                                         <?php } ?>  
                                     <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>>
-                                        <?php if ($this->uri->segment(3) != $userid) { ?>
+                                        <?php if ($this->uri->segment(3) != $userid && $this->uri->segment(3) != '') { ?>
                                             <a title="Details" href="<?php echo base_url('recruiter/profile/' . $this->uri->segment(3)); ?>">Details</a>
                                         <?php } else { ?>
-                                            <a title="Details" href="<?php echo base_url('recruiter/profile'); ?>">Details</a>
+                                            <a title="Details" href="<?php echo base_url('recruiter/profile/'.$userid); ?>">Details</a>
                                         <?php } ?>
                                     </li>
                                     <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>>
@@ -219,20 +219,20 @@
                     <div class="profile-text" >
                         <?php
                             if ($this->uri->segment(3) == $userid) {
-                                if ($recdata[0]['designation'] == '') {
+                                if ($recdata['designation'] == '') {
                                     ?>
                                     <a id="designation" class="designation" title="Designation">Designation</a>
                                 <?php } else {
                                     ?> 
-                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> 
+                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"><?php echo ucfirst(strtolower($recdata['designation'])); ?></a> 
                                     <?php
                                 }
                             } else {
-                                if ($recdata[0]['designation'] == '') {
+                                if ($recdata['designation'] == '') {
                                     ?>
                                     <a id="designation"  title="Designation">Designation</a>
                                 <?php } else { ?>
-                                    <a id="designation"  title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
+                                    <a id="designation"  title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata['designation'])); ?></a> <?php
                                 }
                             }
                             ?>
