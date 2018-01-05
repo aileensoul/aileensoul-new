@@ -78,7 +78,7 @@
 
                                     <fieldset <?php if ($fname) { ?> class="error-msg" <?php } ?>>
                                         <label >First Name <font  color="red">*</font> :</label>                          
-                                        <input type="text" name="firstname" id="firstname" tabindex="1" placeholder="Enter first name" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" value="<?php echo $userdata[0]['first_name']; ?>" maxlength="35">
+                                        <input type="text" name="firstname" id="firstname" tabindex="1" placeholder="Enter first name" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" value="<?php echo $userdata['first_name']; ?>" maxlength="35">
                                         <?php
                                         echo form_error('firstname');
                                         ;
@@ -86,7 +86,7 @@
                                     </fieldset>
                                     <fieldset <?php if ($lname) { ?> class="error-msg" <?php } ?>>
                                         <label >Last Name <font  color="red">*</font>:</label>
-                                        <input type="text" name="lastname" id="lastname" tabindex="2" placeholder="Enter last name" style="text-transform: capitalize;" onfocus="this.value = this.value;" value="<?php echo $userdata[0]['last_name']; ?>" maxlength="35">
+                                        <input type="text" name="lastname" id="lastname" tabindex="2" placeholder="Enter last name" style="text-transform: capitalize;" onfocus="this.value = this.value;" value="<?php echo $userdata['last_name']; ?>" maxlength="35">
                                         <?php
                                         echo form_error('lastname');
                                         ;
@@ -94,7 +94,7 @@
                                     </fieldset>
                                     <fieldset <?php if ($email) { ?> class="error-msg" <?php } ?>>
                                         <label >Email Address <font  color="red">*</font> :</label>
-                                        <input type="email" name="email_reg1" id="email_reg1" tabindex="3" placeholder="Enter email address" value="<?php echo $userdata[0]['email']; ?>" maxlength="255">
+                                        <input type="email" name="email_reg1" id="email_reg1" tabindex="3" placeholder="Enter email address" value="<?php echo $userdata['email']; ?>" maxlength="255">
                                         <?php
                                         echo form_error('email_reg1');
                                         ;
