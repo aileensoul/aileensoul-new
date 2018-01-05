@@ -444,7 +444,7 @@
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" tabindex="43" data-toggle="modal" onclick="forgot_profile();" title="Forgot Password ?" id="myBtn">Forgot Password ?</a>
+                                            <a href="javascript:void(0)" tabindex="43" data-toggle="modal" onclick="forgot_profile();" title="Forgot Password" id="myBtn">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
@@ -547,7 +547,7 @@
 
                                         <p class="form-text" style="margin-bottom: 10px;">
                                             By Clicking on create an account button you agree our
-                                            <a tabindex="109" href="<?php echo base_url('terms-and-condition'); ?>">Terms and Condition</a> and <a tabindex="110" href="<?php echo base_url('main/privacy_policy'); ?>" title="Privacy policy">Privacy policy</a>.
+                                            <a tabindex="109" href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition">Terms and Condition</a> and <a tabindex="110" href="<?php echo base_url('main/privacy_policy'); ?>" title="Privacy policy">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="111" class="btn1">Create an account</button>
