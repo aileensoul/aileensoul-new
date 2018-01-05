@@ -171,7 +171,7 @@
                                         <div class="custom-add-box">
                                             <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?></h3>
                                             <div class="p15 fw">
-                                                <fieldset  <?php if($rating){ ?> class="error-msg col-md-12 pl10 work_type_custom" <?php } else{ ?> class="col-md-12 pl10 work_type_custom" <?php } ?>>
+                                                <fieldset  <?php if($rating){ ?> class="error-msg col-md-3 pl10 work_type_custom" <?php } else{ ?> class="col-md-12 pl10 work_type_custom" <?php } ?>>
                                                     <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="13" class="worktype_minheight worktype" name="rating" value="0"> Hourly
                                                     <input type="radio" tabindex="14" class="worktype"  name="rating" value="1"> Fixed
                                                     <input type="radio" tabindex="15" class="worktype"  name="rating" value="2"> Not Fixed
@@ -194,7 +194,7 @@
                                                     <?php echo form_error('currency'); ?>
                                                 </fieldset>
                                                 
-                                                <fieldset class="hs-submit half-width">
+                                                <fieldset class="hs-submit full-width">
                                                     <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                                     <?php if (($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                                     <a title="cancel" class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>

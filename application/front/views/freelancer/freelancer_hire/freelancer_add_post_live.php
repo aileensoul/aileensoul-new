@@ -201,12 +201,12 @@
                                                     </select>
                                                     <?php echo form_error('currency'); ?>
                                                 </fieldset>
-                                                <fieldset class="col-md-12 pl10 work_type_custom">
+                                                <fieldset class="col-md-3 pl10 work_type_custom">
                                                     <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="13" class="worktype_minheight" name="rating"  value="0"> Hourly
                                                     <input type="radio" tabindex="14"  name="rating" value="1"> Fixed
                                                     <?php echo form_error('rating'); ?>
                                                 </fieldset>
-                                                <fieldset class="hs-submit half-width">
+                                                <fieldset class="hs-submit full-width">
                                                     <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                                     <input type="submit" title="Post" id="submit"  class="add_post_btns" tabindex="18" name="submit" value="Post">
 
