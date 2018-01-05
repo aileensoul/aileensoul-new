@@ -298,13 +298,13 @@ class Profile extends CI_Controller {
     public function check_emailforget() {
 
         $email_reg = $this->input->post('email_reg');
-        $contition_array = array('is_delete' => '0', 'status' => '1');
-        $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        // $contition_array = array('is_delete' => '0', 'status' => '1');
+        // $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
         $condition_array = array('is_delete' => '0', 'status' => '1');
 
-        $check_result = $this->common->check_unique_avalibility('user', 'user_email', $email_reg, '', '', $condition_array);
+        $check_result = $this->common->check_unique_avalibility('user_login', 'email', $email_reg, '', '', $condition_array);
 
         if ($check_result) {
             echo 'false';
