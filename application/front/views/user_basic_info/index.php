@@ -203,13 +203,7 @@
                                         if (data.is_success == '1') {
                                             angular.element('#contactinfo #next').removeClass("form_submit");
                                             $scope.loader_show = false;
-                                            activeDescription();
-                                            $scope.tab_active(3);
-                                            $("li#left-form-each-li-3 a").attr({
-                                                href: "#description",
-                                                'data-toggle': "tab",
-                                                'ng-click': "getDescription(); tab_active(3)"
-                                            });
+                                            window.location = base_url + 'profiles/'
                                         } else {
                                             return false;
                                         }
