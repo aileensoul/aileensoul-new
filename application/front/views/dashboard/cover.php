@@ -1,3 +1,4 @@
+<?php //echo "<pre>"; print_r($userdata); die(); ?>
 <!DOCTYPE html>
 <html lang="en" class="custom-c">
     <head>
@@ -59,13 +60,14 @@
         <?php echo $header; ?>
         <div class="middle-section">
             <!--verify link start-->
+            
             <?php
             $userid = $this->session->userdata('aileenuser');
             $this->db->select('*');
             $this->db->where('created_date BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW()');
             $this->db->where('user_id', $userid);
             $result = $this->db->get('user')->result_array();
-            if ($userdata['user_verify'] == 0 && count($result) > 0) { 
+            if ($userdata['user_verify'] == '0' && count($result) > 0) { 
                 ?>
                 <div class="profile-text1 animated fadeInDownBig" id="verifydiv">
                     <div class="alert alert-warning  vs-o">
@@ -84,12 +86,13 @@
                     </div>
                 </div> 
                 <?php
-            } else if ($userdata['user_verify'] == 2 && count($result) > 0) {
+            } else if ($userdata['user_verify'] == '2' && count($result) > 0) { 
                 $d1 = strtotime($userdata['verify_date']);
                 $d2 = strtotime(date("Y-m-d H:i:s"));
                 $result_var = $d2 - $d1;
                 $hours = $result_var / 60 / 60;
-                if ($hours > 24 && $userdata['user_verify'] == 2) {
+                //echo $hours; die();
+                if ($hours > 24 && $userdata['user_verify'] == '2') {  
                     ?>
 
 
@@ -452,7 +455,7 @@
         <?php if ($userdata['user_slider'] == 1) { ?>
             <div id="onload-Modal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="modal-close" data-dismiss="modal" onclick="closever();">&times;</button>
                     <div class="main_sl">
                         <div class="main_box">
                             <div class="imagesl">
@@ -1094,6 +1097,7 @@
                 });
 
             });
+            
         </script>
     </body>
 </html>

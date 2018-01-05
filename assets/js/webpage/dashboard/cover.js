@@ -510,12 +510,10 @@ document.getElementById("verifydiv").style.display = "none";
 }
 
 function closever() {
-
     $.ajax({
         type: 'POST',
         url: base_url + 'dashboard/closever',
         success: function (response) {
-
             $('#verifydiv').hide();
         }
     })
