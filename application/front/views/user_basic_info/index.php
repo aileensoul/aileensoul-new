@@ -56,7 +56,7 @@
                                 <label for="text">Where are you from?</label>
                                 <input type="text" name="city" id="city" class="form-control" ng-keyup="cityList()" ng-model="user.cityList" placeholder="Enter your city name" typeahead="item as item.city_name for item in citySearchResult | filter:$viewValue">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group cus_field">
                                 <label for="text">What is your field?</label>
                                 <select name="field" ng-model="user.field" id="field" ng-change="other_field(this)">
                                     <option value="" selected="selected">Select your field</option>
