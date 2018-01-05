@@ -391,7 +391,7 @@ header h2{
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #888;  
-    width: 100%;
+    /*width: 100%;*/
     float: left;
 }
 .profile-modal-close, .modal-close,
