@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html>
+    
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 
 <body ng-app="myApp">
 
-<p><a href="">Main</a></p>
+<p><a href="#/!">Main</a></p>
 
 <a href="red">Red</a>
-<a href="green">Green</a>
-<a href="blue">Blue</a>
+<a href="angularurl/green">Green</a>
+<a href="angularurl/blue">Blue</a>
 
 <div ng-view></div>
 
 <script>
 var app = angular.module("myApp", ["ngRoute"]);
-app.config(function($routeProvider) {
+app.config(function($routeProvider,$locationProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "main.htm"
+        templateUrl : "main.html"
     })
     .when("/red", {
-        templateUrl : "red.htm"
+        templateUrl : "red.html"
     })
     .when("/green", {
-        templateUrl : "green.htm"
+        templateUrl : "green.html"
     })
     .when("/blue", {
-        templateUrl : "blue.htm"
+        templateUrl : "blue.html"
     });
+    
+    $locationProvider.html5Mode(true);
 });
 </script>
 

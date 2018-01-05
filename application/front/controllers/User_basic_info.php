@@ -94,5 +94,15 @@ class User_basic_info extends MY_Controller {
 
         $this->load->view('autoselecteasy', $this->data);
     }
+    
+     public function red() {
+
+        $this->load->view('user_basic_info/red', $this->data);
+    }
+    
+     public function green() {
+
+        $this->load->view('user_basic_info/green', $this->data);
+    }
 
 }
