@@ -34,6 +34,11 @@
 <?php echo $header; ?>
 <!-- END HEADER -->
 <body class="cus-login botton_footer cus-error">
+
+  <?php 
+      $userid = $this->session->userdata('aileenuser');
+      if(!$userid){
+?>
    <header>
             <div class="container">
                 <div class="row">
@@ -48,7 +53,9 @@
                     </div>
                 </div>
             </div>
-        </header>
+    </header>
+
+        <?php }?>
    <section>
       <div class="user-midd-section " id="paddingtop_fixed">
          <div class="container">
