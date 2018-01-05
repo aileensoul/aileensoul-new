@@ -52,6 +52,7 @@
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
+                        <h3 class="col-chang">Please Post your requirement of the work that you need, we will recommend the freelancers accordingly.</h3>
                         <div class="col-md-2 col-sm-1"> 
                             <div  class="add-post-button">
 
@@ -71,7 +72,7 @@
                             </div> 
 
                             <div class="common-form custom-form">
-                                <h3 class="col-chang">Please Post your requirement of the work that you need, we will recommend the freelancers accordingly.</h3>
+                                
 
                                 <div class="job-saved-box">
 

@@ -1,6 +1,5 @@
 // CHECK SEARCH KEYWORD AND LOCATION BLANK START
 function checkvalue() {
-
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
     if (searchkeyword == "" && searchplace == "") {
@@ -9,7 +8,6 @@ function checkvalue() {
 }
 
 function checkvalue_search() {
-
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
     if (searchkeyword == "" && searchplace == "")
@@ -18,7 +16,6 @@ function checkvalue_search() {
     }
 }
 function check() {
-
     var keyword = $.trim(document.getElementById('tags1').value);
     var place = $.trim(document.getElementById('searchplace1').value);
     if (keyword == "" && place == "") {
@@ -93,10 +90,7 @@ $(document).ready(function () {
 //            },
             rate: {
                 number: true,
-                required: true,
-            },
-            currency:{
-                required: true,
+                // required: true,
             },
             country: {
                 required: true,
@@ -107,7 +101,7 @@ $(document).ready(function () {
             est_time: {
                 regx_num_space: /[0-9\s][a-zA-Z]/
             },
-            rating:{
+            rating: {
                 required: true,
             }
 
@@ -131,19 +125,14 @@ $(document).ready(function () {
 //            currency: {
 //                required: "Please select currency type",
 //            },
-          rate: {
-                required: "Rate is required.",
-            },
-            currency:{
-                required: "Currency is required.",
-            },
+
             country: {
                 required: "Please select country."
             },
             state: {
                 required: "Please select state."
             },
-             rating:{
+            rating: {
                 required: "Work type is required.",
             }
 
@@ -267,7 +256,7 @@ $(function () {
     }
 
     $("#skills2").bind("keydown", function (event) {
-       
+
         if (event.keyCode === $.ui.keyCode.TAB &&
                 $(this).autocomplete("instance").menu.active) {
             event.preventDefault();
@@ -470,6 +459,7 @@ function check_datevalidation() {
 }
 
 $("form").submit(function () {
+    alert(123);
     var day = $('.day').val();
     var month = $('.month').val();
     var year = $('.year').val();
@@ -511,16 +501,29 @@ $("form").submit(function () {
             $('.month').removeClass('error');
             $('.year').removeClass('error');
             $('.date-dropdowns .last_date_error').remove();
+            var rate = $('.worktype').val();
+            var currency = $('.currency').val();
+            alert(rate);
+            alert(currency);
+            return false;
+
+
             return true;
         }
     }
+
+
+    if (rate != '') {
+
+    }
+
 });
 //ALL POPUP CLOSE USING ESC START
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         //$( "#bidmodal" ).hide();
         $('#bidmodal2').modal('hide');
-         $('#other_field').val('');
+        $('#other_field').val('');
     }
 });
 //ALL POPUP CLOSE USING ESC END

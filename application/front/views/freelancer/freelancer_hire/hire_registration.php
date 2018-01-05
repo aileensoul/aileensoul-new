@@ -59,7 +59,7 @@
                             <div class="job_reg_page_fprm">
                                 <?php
                                 if ($this->uri->segment(3) == 'live-post') {
-                                    echo '<div class="alert alert-success">Your Project is automatically Post after completing Employer registation...!</div>';
+                                    echo '<div class="alert alert-success">Your Project is automatically Post after completing Employer registration...!</div>';
                                 }
                                 ?>
                                 <div class="common-form job_reg_main">
