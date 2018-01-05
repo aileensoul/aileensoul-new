@@ -38,6 +38,7 @@
                 <div class="user-midd-section" id="paddingtop_fixed">
                     <div class="container">
                         <div class="row">
+                             <h3 class="col-chang">Please Post your requirement of the work that you need, we will recommend the freelancers accordingly.</h3>
                             <div class="col-md-2 col-sm-1"></div>
                             <div class="col-md-8 col-sm-10 animated fadeInLeftBig">
                                 <div>
@@ -51,8 +52,7 @@
                                     ?>
                                 </div>
                                 <div class="common-form custom-form">
-                                    <h3 class="col-chang">Please Post your requirement of the work that you need, we will recommend the freelancers accordingly.</h3>
-
+                                   
                                     <div class="job-saved-box">
 
                                         <?php echo form_open(base_url('freelancer/freelancer_add_post_insert'), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit', 'onsubmit' => "imgval()")); ?>
