@@ -21,7 +21,7 @@
       
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
-        <?php if ($recdata[0]['re_step'] == 3) { ?>
+        <?php if ($recdata['re_step'] == 3) { ?>
             <?php echo $recruiter_header2_border; ?>
         <?php } ?>
         <div id="preloader"></div>
@@ -111,16 +111,16 @@
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
                             <?php
-                            $imageee = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
-                            if (file_exists($imageee) && $recdata[0]['recruiter_user_image'] != '') {
+                            $imageee = $this->config->item('rec_profile_thumb_upload_path') . $recdata['recruiter_user_image'];
+                            if (file_exists($imageee) && $recdata['recruiter_user_image'] != '') {
                                 ?>
-                                <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image']); ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
+                                <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata['recruiter_user_image']); ?>" alt="<?php echo $recdata['recruiter_user_image']; ?>" >
                                 <?php
                             } else {
-                                $a = $recdata[0]['rec_firstname'];
+                                $a = $recdata['rec_firstname'];
                                 $acr = substr($a, 0, 1);
 
-                                $b = $recdata[0]['rec_lastname'];
+                                $b = $recdata['rec_lastname'];
                                 $acr1 = substr($b, 0, 1);
                                 ?>
                                 <div class="post-img-user">
@@ -135,7 +135,7 @@
                     </div>
                     <!--PROFILE PIC CODE END-->
                     <div class="job-menu-profile mob-block">
-                        <a href="javascript:void(0);" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>"><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
+                        <a href="javascript:void(0);" title="<?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?>"><h3><?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?></h3></a>
                         <!-- text head start -->
                         <div class="profile-text" >
 
@@ -144,7 +144,7 @@
 
                             <?php
                             if ($returnpage == '') {
-                                if ($recdata[0]['designation'] == '') {
+                                if ($recdata['designation'] == '') {
                                     ?>
                        
                                     <a id="designation" class="designation" title="Designation">Designation</a>
@@ -152,19 +152,19 @@
                                 <?php } else {
                                     ?> 
                         
-                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
+                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"><?php echo ucfirst(strtolower($recdata['designation'])); ?></a>
                                     <?php
                                 }
                             } else {
 
 
-                                if ($recdata[0]['designation'] == '') {
+                                if ($recdata['designation'] == '') {
                                     ?>
                                    
                                     <a id="designation" class="designation" title="Designation">Designation</a>
 
                                 <?php } else { ?>
-                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
+                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata['designation'])); ?></a> <?php
                                 }
                             }
                             ?>
@@ -178,7 +178,7 @@
 
                             <?php
                             $userid = $this->session->userdata('aileenuser');
-                            if ($recdata[0]['user_id'] == $userid) {
+                            if ($recdata['user_id'] == $userid) {
                                 ?>     
                                 <ul class="current-user pro-fw">
 
@@ -258,13 +258,13 @@
             <!-- menubar --> 
             <div class="middle-part container rec_res">
                 <div class="job-menu-profile mob-none pt20">
-                    <a title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" href="javascript:void(0);" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>"><h5><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h5></a>
+                    <a title="<?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?>" href="javascript:void(0);" title="<?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?>"><h5><?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?></h5></a>
                     <!-- text head start -->
                     <div class="profile-text" >
 
                         <?php
                         if ($returnpage == '') {
-                            if ($recdata[0]['designation'] == "") {
+                            if ($recdata['designation'] == "") {
                                 ?>
 
                                 <a id="designation" class="designation" title="Designation">Designation</a>
@@ -272,11 +272,11 @@
                             } else {
                                 ?> 
                                
-                                <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
+                                <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>"><?php echo ucfirst(strtolower($recdata['designation'])); ?></a>
                                 <?php
                             }
                         } else {
-                            echo ucfirst(strtolower($recdata[0]['designation']));
+                            echo ucfirst(strtolower($recdata['designation']));
                         }
                         ?>
 

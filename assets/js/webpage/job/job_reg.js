@@ -1,4 +1,3 @@
-
 //validation start
 $(document).ready(function () {
     // $.validator.addMethod("lowercase", function(value, element, regexpr) {          
@@ -57,7 +56,6 @@ $(document).ready(function () {
         rules: {
 
             first_name: {
-
                 required: true,
                 regx2: /^[a-zA-Z0-9-.,']*[0-9a-zA-Z][a-zA-Z]*/,
                 regx_digit: /^([^0-9]*)$/,
@@ -65,7 +63,6 @@ $(document).ready(function () {
             },
 
             last_name: {
-
                 required: true,
                 regx2: /^[a-zA-Z0-9-.,']*[0-9a-zA-Z][a-zA-Z]*/,
                 regx_digit: /^([^0-9]*)$/,

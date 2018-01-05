@@ -41,6 +41,7 @@
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
+                        <h3 class="col-chang cus-change">Please post your requirement, so that we can recommend you the candidates</h3>
                         <div class="col-md-2 col-sm-1"> 
                             <div  class="add-post-button">
 
@@ -60,7 +61,7 @@
                             </div> 
 
                             <div class="common-form custom-form">
-                                <h3>Please post your requirement, so that we can recommend you the candidates</h3>
+                                
 
                                 <div class="job-saved-box">
 

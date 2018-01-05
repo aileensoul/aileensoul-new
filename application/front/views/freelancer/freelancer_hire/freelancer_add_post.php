@@ -8,7 +8,7 @@
         <?php echo $head; ?> 
         <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
-        <?php } else {?>
+        <?php }else {?>
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
         <?php } ?>
         <style type="text/css">
@@ -38,6 +38,7 @@
                 <div class="user-midd-section" id="paddingtop_fixed">
                     <div class="container">
                         <div class="row">
+                             <h3 class="col-chang cus-chang">Please Post your requirement of the work that you need, we will recommend the freelancers accordingly.</h3>
                             <div class="col-md-2 col-sm-1"></div>
                             <div class="col-md-8 col-sm-10 animated fadeInLeftBig">
                                 <div>
@@ -51,8 +52,7 @@
                                     ?>
                                 </div>
                                 <div class="common-form custom-form">
-                                    <h3 class="col-chang">Please Post your requirement of the work that you need, we will recommend the freelancers accordingly.</h3>
-
+                                   
                                     <div class="job-saved-box">
 
                                         <?php echo form_open(base_url('freelancer/freelancer_add_post_insert'), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit', 'onsubmit' => "imgval()")); ?>
@@ -171,6 +171,12 @@
                                         <div class="custom-add-box">
                                             <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?></h3>
                                             <div class="p15 fw">
+                                                <fieldset  <?php if($rating){ ?> class="error-msg col-md-3 pl10 work_type_custom" <?php } else{ ?> class="col-md-12 pl10 work_type_custom" <?php } ?>>
+                                                    <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="13" class="worktype_minheight worktype" name="rating" value="0"> Hourly
+                                                    <input type="radio" tabindex="14" class="worktype"  name="rating" value="1"> Fixed
+                                                    <input type="radio" tabindex="15" class="worktype"  name="rating" value="2"> Not Fixed
+                                                    <?php echo form_error('rating'); ?>
+                                                </fieldset>
                                                 <fieldset   <?php if ($rate) { ?> class="error-msg col-md-6 pl10" <?php } else{ ?> class="col-md-6 pl10" <?php } ?> >
                                                     <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:<span style="color:red">*</span></label>
                                                     <input tabindex="11" name="rate" type="text" id="rate" placeholder="Enter your rate"/>
@@ -187,12 +193,8 @@
                                                     </select>
                                                     <?php echo form_error('currency'); ?>
                                                 </fieldset>
-                                                <fieldset  <?php if($rating){ ?> class="error-msg col-md-12 pl10 work_type_custom" <?php } else{ ?> class="col-md-12 pl10 work_type_custom" <?php } ?>>
-                                                    <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="13" class="worktype_minheight" name="rating" value="0"> Hourly
-                                                    <input type="radio" tabindex="14"  name="rating" value="1"> Fixed
-                                                    <?php echo form_error('rating'); ?>
-                                                </fieldset>
-                                                <fieldset class="hs-submit half-width">
+                                                
+                                                <fieldset class="hs-submit full-width">
                                                     <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                                     <?php if (($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                                     <a title="cancel" class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>

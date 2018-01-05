@@ -7,12 +7,12 @@
         <?php if (IS_HIRE_CSS_MINIFY == '0') { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
 
         <?php } else { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
 
         <?php } ?>
         <style type="text/css">
@@ -52,6 +52,7 @@
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
+                        <h3 class="col-chang cus-chang">Please Post your requirement of the work that you need, we will recommend the freelancers accordingly.</h3>
                         <div class="col-md-2 col-sm-1"> 
                             <div  class="add-post-button">
 
@@ -71,7 +72,7 @@
                             </div> 
 
                             <div class="common-form custom-form">
-                                <h3 class="col-chang">Please Post your requirement of the work that you need, we will recommend the freelancers accordingly.</h3>
+                                
 
                                 <div class="job-saved-box">
 
@@ -200,12 +201,12 @@
                                                     </select>
                                                     <?php echo form_error('currency'); ?>
                                                 </fieldset>
-                                                <fieldset class="col-md-12 pl10 work_type_custom">
+                                                <fieldset class="col-md-3 pl10 work_type_custom">
                                                     <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="13" class="worktype_minheight" name="rating"  value="0"> Hourly
                                                     <input type="radio" tabindex="14"  name="rating" value="1"> Fixed
                                                     <?php echo form_error('rating'); ?>
                                                 </fieldset>
-                                                <fieldset class="hs-submit half-width">
+                                                <fieldset class="hs-submit full-width">
                                                     <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                                     <input type="submit" title="Post" id="submit"  class="add_post_btns" tabindex="18" name="submit" value="Post">
 

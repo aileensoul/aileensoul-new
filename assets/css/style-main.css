@@ -391,7 +391,7 @@ header h2{
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #888;  
-    width: 100%;
+    /*width: 100%;*/
     float: left;
 }
 .profile-modal-close, .modal-close,
@@ -515,7 +515,7 @@ header h2{
 
 /**---------- end model ---------------**/
 
-
+.cus-chang{font-size: 27px!important;font-weight: normal;margin-bottom: 20px;color: #1b8ab9 !important;font-family: "Arial" !important;}
 
 @media all and (transform-3d),(-webkit-transform-3d){
     .carousel-fade .carousel-inner>.item.active.left,.carousel-fade .carousel-inner>.item.active.right,.carousel-fade .carousel-inner>.item.next,.carousel-fade .carousel-inner>.item.prev{
