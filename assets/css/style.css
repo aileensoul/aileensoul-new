@@ -2137,17 +2137,7 @@ body.modal-open{position: fixed;}
 .pushmenu-push{position: initial;}
 .cus_em:hover{text-transform: none;}
 
-.error-msg p, label.error {
-    background: none;
-    color: red !important;
-    padding: 0px 10px !important;
-    position: absolute;
-    right: 8px;
-    z-index: 8;
-    line-height: 15px;
-    padding-right: 0px!important;
-    font-size: 11px!important;
-}
+
 
 /***  media query  ***/
 
