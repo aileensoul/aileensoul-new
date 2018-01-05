@@ -221,7 +221,7 @@ function register_profile() {
 }
 
 function forgot_close() {
-                $('#login').modal('show');
+    $('#login').modal('show');
 }
 
 
@@ -444,7 +444,7 @@ $(document).ready(function () { //aletr("hii");
         submitHandler: submitforgotForm
     });
     /* validation */
-    
+
     function submitforgotForm()
     {
 
@@ -530,7 +530,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             //url: '<?php echo base_url() ?>registration/user_check_login',
-            url: base_url + "registration/user_check_login",
+            url: base_url + "login/job_check_login",
             data: post_data,
             dataType: "json",
             beforeSend: function ()
@@ -541,7 +541,11 @@ $(document).ready(function () {
             success: function (response)
             {
                 if (response.data == "ok") {
-                    window.location = base_url + "job/profile";
+                    if (response.is_job == 1) {
+                        window.location = base_url + "job/home";
+                    } else {
+                        window.location = base_url + "job/profile";
+                    }
                 } else if (response.is_artistic == 1) {
                     window.location = base_url + "job/profile";
                     // window.location = "<?php echo base_url() ?>artist/profile";
