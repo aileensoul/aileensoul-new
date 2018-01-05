@@ -144,85 +144,104 @@ header('Expires: ' . $date);
                     </div>
                 </div>
             </section>
-            <div id="myModal" class="modal">
-                <div class="modal-content md-2">
-                    <?php
-                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                    echo form_open('profile/forgot_password', $form_attribute);
-                    ?>
-                    <div class="modal-header" style="width: 100%; text-align: center;">
-                        <span class="close">&times;</span>
-                        <label style="color: #1b8ab9;">Forgot Password</label>
-                    </div>
-                    <div class="modal-body" style="    width: 100%;
-                         text-align: center;">
-                        <label  style="margin-bottom: 15px; color: #5b5b5b;"> Enter your e-mail address below to get your password.</label>
-                        <input style="" type="text" name="forgot_email" id="forgot_email" placeholder="Email Address*" autocomplete="off" class="form-control placeholder-no-fix">
+            <div class="modal fade login" id="forgotPassword" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content login-frm">
+                        <button type="button" class="modal-close" data-dismiss="modal" onclick="login_profile();">&times;</button>       
+                        <div class="modal-body">
+                            <div class="right-main">
+                                <div class="right-main-inner">
+                                    <div class="">
+                                        <div id="forgotbuton"></div> 
+                                        <div class="title">
+                                            <h1 class="ttc tlh2">Forgot Password</h1>
+                                        </div>
+                                        <?php
+                                        $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                                        echo form_open('profile/forgot_password', $form_attribute);
+                                        ?>
+                                        <div class="form-group">
+                                            <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                                            <div id="error2" style="display:block;">
+                                                <?php
+                                                if ($this->session->flashdata('erroremail')) {
+                                                    echo $this->session->flashdata('erroremail');
+                                                }
+                                                ?>
+                                            </div>
+                                            <div id="errorlogin"></div> 
+                                        </div>
 
-                    </div>
-                    <div class="modal-footer ">
-                        <div class="submit_btn text-center">              
-                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" /> 
+                                        <p class="pt-20 text-center">
+                                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
+                                        </p>
+
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    </form>
                 </div>
             </div>
             <?php echo $login_footer ?>
         </div>
+        
         <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>  
+        <script src="<?php echo base_url('assets/js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script>
-                                            $(document).ready(function () {
+                        $(document).ready(function () {
 
-                                                // text animation effect 
-                                                var $lines = $('.top-middle h3.text-effect');
-                                                $lines.hide();
-                                                var lineContents = new Array();
+                            // text animation effect 
+                            var $lines = $('.top-middle h3.text-effect');
+                            $lines.hide();
+                            var lineContents = new Array();
 
-                                                var terminal = function () {
+                            var terminal = function () {
 
-                                                    var skip = 0;
-                                                    typeLine = function (idx) {
-                                                        idx == null && (idx = 0);
-                                                        var element = $lines.eq(idx);
-                                                        var content = lineContents[idx];
-                                                        if (typeof content == "undefined") {
-                                                            $('.skip').hide();
-                                                            return;
-                                                        }
-                                                        var charIdx = 0;
+                                var skip = 0;
+                                typeLine = function (idx) {
+                                    idx == null && (idx = 0);
+                                    var element = $lines.eq(idx);
+                                    var content = lineContents[idx];
+                                    if (typeof content == "undefined") {
+                                        $('.skip').hide();
+                                        return;
+                                    }
+                                    var charIdx = 0;
 
-                                                        var typeChar = function () {
-                                                            var rand = Math.round(Math.random() * 150) + 25;
+                                    var typeChar = function () {
+                                        var rand = Math.round(Math.random() * 150) + 25;
 
-                                                            setTimeout(function () {
-                                                                var char = content[charIdx++];
-                                                                element.append(char);
-                                                                if (typeof char !== "undefined")
-                                                                    typeChar();
-                                                                else {
-                                                                    element.append('<br/><span class="output">' + element.text().slice(9, -1) + '</span>');
-                                                                    element.removeClass('active');
-                                                                    typeLine(++idx);
-                                                                }
-                                                            }, skip ? 0 : rand);
-                                                        }
-                                                        content = '' + content + '';
-                                                        element.append(' ').addClass('active');
-                                                        typeChar();
-                                                    }
+                                        setTimeout(function () {
+                                            var char = content[charIdx++];
+                                            element.append(char);
+                                            if (typeof char !== "undefined")
+                                                typeChar();
+                                            else {
+                                                element.append('<br/><span class="output">' + element.text().slice(9, -1) + '</span>');
+                                                element.removeClass('active');
+                                                typeLine(++idx);
+                                            }
+                                        }, skip ? 0 : rand);
+                                    }
+                                    content = '' + content + '';
+                                    element.append(' ').addClass('active');
+                                    typeChar();
+                                }
 
-                                                    $lines.each(function (i) {
-                                                        lineContents[i] = $(this).text();
-                                                        $(this).text('').show();
-                                                    });
+                                $lines.each(function (i) {
+                                    lineContents[i] = $(this).text();
+                                    $(this).text('').show();
+                                });
 
-                                                    typeLine();
-                                                }
+                                typeLine();
+                            }
 
-                                                terminal();
-                                            });
+                            terminal();
+                        });
         </script>
 
 
@@ -238,82 +257,86 @@ header('Expires: ' . $date);
         <?php } ?>
 
         <script>
-                                            function login()
-                                            {
-                                                document.getElementById('error1').style.display = 'none';
+                        var btn = document.getElementById("myBtn");
+                        btn.onclick = function () {
+                            $('#forgotPassword').modal('show');
+                        }
+                        function login()
+                        {
+                            document.getElementById('error1').style.display = 'none';
+                        }
+                        //validation for edit email formate form
+                        $(document).ready(function () {
+                            /* validation */
+                            $("#login_form").validate({
+                                rules: {
+                                    email_login: {
+                                        required: true,
+                                    },
+                                    password_login: {
+                                        required: true,
+                                    }
+                                },
+                                messages:
+                                        {
+                                            email_login: {
+                                                required: "Please enter email address",
+                                            },
+                                            password_login: {
+                                                required: "Please enter password",
                                             }
-                                            //validation for edit email formate form
-                                            $(document).ready(function () {
-                                                /* validation */
-                                                $("#login_form").validate({
-                                                    rules: {
-                                                        email_login: {
-                                                            required: true,
-                                                        },
-                                                        password_login: {
-                                                            required: true,
-                                                        }
-                                                    },
-                                                    messages:
-                                                            {
-                                                                email_login: {
-                                                                    required: "Please enter email address",
-                                                                },
-                                                                password_login: {
-                                                                    required: "Please enter password",
-                                                                }
-                                                            },
-                                                    submitHandler: submitForm
-                                                });
-                                                /* validation */
-                                                /* login submit */
-                                                function submitForm()
-                                                {
-                                                    var email_login = $("#email_login").val();
-                                                    var password_login = $("#password_login").val();
-                                                    var redirect_url = '<?php echo $redirect_url; ?>';
-                                                    var post_data = {
-                                                        'email_login': email_login,
-                                                        'password_login': password_login,
-                                                        'redirect_url': redirect_url,
-                                                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
-                                                    }
-                                                    $.ajax({
-                                                        type: 'POST',
-                                                        url: '<?php echo base_url() ?>login/check_login',
-                                                        data: post_data,
-                                                        dataType: "json",
-                                                        beforeSend: function ()
-                                                        {
-                                                            $("#error").fadeOut();
-                                                            $("#btn-login").html('Login ...');
-                                                        },
-                                                        success: function (response)
-                                                        {
-                                                            if (response.data == "ok") {
-                                                                $("#btn-login").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                                                                if (redirect_url == '') {
-                                                                    window.location = "<?php echo base_url() ?>profiles/" + response.user_slug;
-                                                                } else {
-                                                                    window.location = redirect_url;
-                                                                }
-                                                            } else if (response.data == "password") {
-                                                                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
-                                                                document.getElementById("password_login").classList.add('error');
-                                                                document.getElementById("password_login").classList.add('error');
-                                                                $("#btn-login").html('Login');
-                                                            } else {
-                                                                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
-                                                                document.getElementById("email_login").classList.add('error');
-                                                                document.getElementById("email_login").classList.add('error');
-                                                                $("#btn-login").html('Login');
-                                                            }
-                                                        }
-                                                    });
-                                                    return false;
-                                                }
-                                                /* login submit */
-                                            });
+                                        },
+                                submitHandler: submitForm
+                            });
+                            /* validation */
+                            /* login submit */
+                            function submitForm()
+                            {
+                                var email_login = $("#email_login").val();
+                                var password_login = $("#password_login").val();
+                                var redirect_url = '<?php echo $redirect_url; ?>';
+                                var post_data = {
+                                    'email_login': email_login,
+                                    'password_login': password_login,
+                                    'redirect_url': redirect_url,
+                                    '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+                                }
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '<?php echo base_url() ?>login/check_login',
+                                    data: post_data,
+                                    dataType: "json",
+                                    beforeSend: function ()
+                                    {
+                                        $("#error").fadeOut();
+                                        $("#btn-login").html('Login ...');
+                                    },
+                                    success: function (response)
+                                    {
+                                        if (response.data == "ok") {
+                                            $("#btn-login").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                                            if (redirect_url == '') {
+                                                window.location = "<?php echo base_url() ?>profiles/" + response.user_slug;
+                                            } else {
+                                                window.location = redirect_url;
+                                            }
+                                        } else if (response.data == "password") {
+                                            $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
+                                            document.getElementById("password_login").classList.add('error');
+                                            document.getElementById("password_login").classList.add('error');
+                                            $("#btn-login").html('Login');
+                                        } else {
+                                            $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
+                                            document.getElementById("email_login").classList.add('error');
+                                            document.getElementById("email_login").classList.add('error');
+                                            $("#btn-login").html('Login');
+                                        }
+                                    }
+                                });
+                                return false;
+                            }
+                            /* login submit */
+                        });
 
 
 
@@ -329,30 +352,28 @@ header('Expires: ' . $date);
 
         <script>
             // Get the modal
-            var modal = document.getElementById('myModal');
+//            var modal = document.getElementById('myModal');
 
             // Get the button that opens the modal
-            var btn = document.getElementById("myBtn");
+
 
             // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
+//            var span = document.getElementsByClassName("close")[0];
 
             // When the user clicks the button, open the modal 
-            btn.onclick = function () {
-                modal.style.display = "block";
-            }
+
 
             // When the user clicks on <span> (x), close the modal
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
+//            span.onclick = function () {
+//                modal.style.display = "none";
+//            }
 
             // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
+//            window.onclick = function (event) {
+//                if (event.target == modal) {
+//                    modal.style.display = "none";
+//                }
+//            }
         </script>
 
         <!-- forgot password script end -->
