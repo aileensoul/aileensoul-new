@@ -17,7 +17,7 @@
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
         <?php } ?>
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
+    <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer freeh3">
         <?php echo $header; ?>
         <?php if ($recdata['re_step'] == 3) { ?>
             <?php echo $recruiter_header2_border; ?>
@@ -29,7 +29,7 @@
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
-                        <h3 class="col-chang cus-change">Please post your requirement, so that we can recommend you the candidates</h3>
+                        <h3 class="col-chang cus-chang text-center" style="color: #1b8ab9 !important;">Please post your requirement, so that we can recommend you the candidates</h3>
                         <div class="col-md-2 col-sm-1"> 
                             <div  class="add-post-button">
 

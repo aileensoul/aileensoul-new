@@ -41,7 +41,7 @@
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
-                        <h3 class="col-chang cus-change">Please post your requirement, so that we can recommend you the candidates</h3>
+                        <h3 class="col-chang cus-chang text-center" style="color: #1b8ab9 !important;">Please post your requirement, so that we can recommend you the candidates</h3>
                         <div class="col-md-2 col-sm-1"> 
                             <div  class="add-post-button">
 

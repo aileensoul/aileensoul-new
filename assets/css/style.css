@@ -865,7 +865,7 @@ label.error {
     
 }
 .freelancer_editpost_title{font-size:20px;}
-#postinfo .date-dropdowns .day, #postinfo .date-dropdowns .month {margin-right:2%;}
+#postinfo .date-dropdowns .day, #postinfo .date-dropdowns .month {margin-right:4.5%;}
 
 /***  only cover page  ***/
 #row1 {
@@ -2136,7 +2136,7 @@ word-break: break-word;}
 body.modal-open{position: fixed;}
 .pushmenu-push{position: initial;}
 .cus_em:hover{text-transform: none;}
-
+.cus-chang{font-size: 27px!important;font-weight: normal;margin-bottom: 20px;color: #1b8ab9 !important;font-family: "Arial" !important;}
 
 
 /***  media query  ***/
