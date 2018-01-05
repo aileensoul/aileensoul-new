@@ -270,11 +270,12 @@ header("Pragma: no-cache"); // HTTP/1.0
                     </div>
                 </div>
                 
-   <div class="modal login" id="myModal" role="dialog">
+        <!-- model for forgot password start -->
+        <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body cus-forgot">
+                    <button type="button" class="modal-close" data-dismiss="modal" onclick="login_profile();">&times;</button>       
+                    <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">
                                 <div class="">
@@ -282,11 +283,8 @@ header("Pragma: no-cache"); // HTTP/1.0
                                     <div class="title">
                                         <h1 class="ttc tlh2">Forgot Password</h1>
                                     </div>
-                                  <?php
-                                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                                    echo form_open('profile/forgot_password', $form_attribute);
-                                   ?>
-                                 
+                                   
+                                    <form name="forgot" id="forgot_password">
                                     <div class="form-group">
                                         <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
                                         <div id="error2" style="display:block;">
@@ -303,7 +301,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                         <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
                                     </p>
 
-                                   <?php echo form_close(); ?>
+                                    </form>
 
                                 </div>
                             </div>
@@ -314,10 +312,33 @@ header("Pragma: no-cache"); // HTTP/1.0
         </div>
 
         <!-- model for forgot password end -->
+<!--        <div id="myModal" class="modal">
+                    <div class="modal-content md-2">
+                        <?php
+                        $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                        echo form_open('profile/forgot_password', $form_attribute);
+                        ?>
+                        <div class="modal-header text-center">
+                            <span class="close">&times;</span>
+                            <label class="fp-clr">Forgot Password</label>
+                        </div>
+                        <div class="modal-body text-center">
+                            <label class="fp-clr1"> Enter your e-mail address below to get your password.</label>
+                            <input type="text" name="forgot_email" id="forgot_email" placeholder="Email*" autocomplete="off" class="form-control placeholder-no-fix">
+                        </div>
+                        <div class="modal-footer ">
+                            <div class="submit_btn">              
+                                <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" /> 
+                            </div>
+                        </div>
+                        <?php echo form_close(); ?>
+                    </div>
+                </div>-->
             </section>
             <?php echo $login_footer ?>
         </div>
         <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script>
                 var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
                 var base_url = '<?php echo base_url(); ?>';
