@@ -269,28 +269,51 @@ header("Pragma: no-cache"); // HTTP/1.0
                         </div>
                     </div>
                 </div>
-                <div id="myModal" class="modal">
-                    <div class="modal-content md-2">
-                        <?php
-                        $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                        echo form_open('profile/forgot_password', $form_attribute);
-                        ?>
-                        <div class="modal-header text-center">
-                            <span class="close">&times;</span>
-                            <label class="fp-clr">Forgot Password</label>
-                        </div>
-                        <div class="modal-body text-center">
-                            <label class="fp-clr1"> Enter your e-mail address below to get your password.</label>
-                            <input type="text" name="forgot_email" id="forgot_email" placeholder="Email*" autocomplete="off" class="form-control placeholder-no-fix">
-                        </div>
-                        <div class="modal-footer ">
-                            <div class="submit_btn">              
-                                <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" /> 
+                
+   <div class="modal login" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content login-frm">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body cus-forgot">
+                        <div class="right-main">
+                            <div class="right-main-inner">
+                                <div class="">
+                                    <div id="forgotbuton"></div> 
+                                    <div class="title">
+                                        <h1 class="ttc tlh2">Forgot Password</h1>
+                                    </div>
+                                  <?php
+                                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                                    echo form_open('profile/forgot_password', $form_attribute);
+                                   ?>
+                                 
+                                    <div class="form-group">
+                                        <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                                        <div id="error2" style="display:block;">
+                                            <?php
+                                            if ($this->session->flashdata('erroremail')) {
+                                                echo $this->session->flashdata('erroremail');
+                                            }
+                                            ?>
+                                        </div>
+                                        <div id="errorlogin"></div> 
+                                    </div>
+
+                                    <p class="pt-20 text-center">
+                                        <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
+                                    </p>
+
+                                   <?php echo form_close(); ?>
+
+                                </div>
                             </div>
                         </div>
-                        <?php echo form_close(); ?>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- model for forgot password end -->
             </section>
             <?php echo $login_footer ?>
         </div>
