@@ -76,7 +76,7 @@ class Freelancer_hire extends MY_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $contition_array = array('status' => 1);
-            $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $this->data['countries'] = $this->freelancer_hire_model->getCountry();
             $this->data['title'] = "Registration | Employer Profile" . TITLEPOSTFIX;
             $this->load->view('freelancer/freelancer_hire/hire_registration', $this->data);
         } else {
@@ -99,11 +99,10 @@ class Freelancer_hire extends MY_Controller {
             );
             $insert_id1 = $this->common->insert_data($data, 'freelancer_hire_reg');
             if ($this->input->post('segment') == 'live-post') {
+                
                 $segment = $this->input->post('segment');
-
-                $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id' => $userid);
-                $temp = $this->common->select_data_by_condition('freelancer_post_live', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+                $temp = $this->freelancer_hire_model->getprojectlivedatabyuserid($userid);
+                
                 $data = array(
                     'post_name' => $temp[0]['post_name'],
                     'post_description' => $temp[0]['post_description'],
@@ -152,7 +151,7 @@ class Freelancer_hire extends MY_Controller {
 
         $select_data = 'fullname,username,email,skyupid,phone,user_id,free_hire_step';
         $userdata = $this->freelancer_hire_model->getfreelancerhiredata($userid, $select_data);
-       
+
         if ($userdata) {
             $step = $userdata['free_hire_step'];
             if ($step == 1 || $step > 1) {

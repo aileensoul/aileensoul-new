@@ -37,5 +37,12 @@ class Freelancer_hire_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function getprojectlivedatabyuserid($userid = '') {
+        $this->db->select('*')->from("freelancer_post_live pl");
+        $this->db->where(array('status' => '1', 'is_delete' => '0', 'user_id' => $userid));
+        $query = $this->db->get();
+//       $result_array = $query->row_array();
+        return $query->result_array();
+    }
 
 }
