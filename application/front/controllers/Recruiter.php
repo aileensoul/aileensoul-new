@@ -4400,7 +4400,7 @@ class Recruiter extends MY_Controller {
                 $data = array(
                     'industry_name' => $other_industry,
                     'created_date' => date('Y-m-d h:i:s', time()),
-                    'status' => '1',
+                    'status' => '2',
                     'is_delete' => '0',
                     'is_other' => '1',
                     'user_id' => $userid
@@ -4436,8 +4436,9 @@ class Recruiter extends MY_Controller {
         } else {
             $select .= 1;
         }
-        echo $select;
-        die();
+       echo json_encode(array(
+            "select" => $select,
+        ));
     }
 
 //add other_industry into database End 
