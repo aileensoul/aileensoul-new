@@ -25,6 +25,10 @@ class User_basic_info extends MY_Controller {
         $this->load->view('user_basic_info/index', $this->data);
     }
     
+    public function ng_basic_info_insert(){
+        
+    }
+    
     public function autocomplete() {
      
         $this->load->view('autoselecteasy', $this->data);

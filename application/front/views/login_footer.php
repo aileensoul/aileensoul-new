@@ -53,13 +53,7 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main' || $this->u
 
     <!-- IMAGE PRELOADER SCRIPT -->
     <script type="text/javascript">
-        //  function preload(arrayOfImages) {
-        //     $(arrayOfImages).each(function () {
-        //         $('<img />').attr('src',this).appendTo('body').css('display','none');
-        //     });
-        // }
-
-        $.fn.preload = function (fn) {
+        /*$.fn.preload = function (fn) {
             var len = this.length, i = 0;
             return this.each(function () {
                 var tmp = new Image, self = this;
@@ -73,6 +67,6 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main' || $this->u
 
         $('img').preload(function (perc, done) {
             console.log(this, perc, done);
-        });
+        }); */
     </script>
     <!-- IMAGE PRELOADER SCRIPT -->
