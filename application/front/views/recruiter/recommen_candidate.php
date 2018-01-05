@@ -20,7 +20,7 @@
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
-        <?php if ($recdata[0]['re_step'] == 3) { ?>
+        <?php if ($recdata['re_step'] == 3) { ?>
             <?php echo $recruiter_header2_border; ?>
         <?php } ?>
         <div id="preloader"></div>
@@ -35,21 +35,21 @@
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
-                                            <a title="Recruiter profile" class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" tabindex="-1" 
+                                            <a title="Recruiter profile" class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile/' . $recdata['user_id']); ?>" tabindex="-1" 
                                                aria-hidden="true" rel="noopener">
                                                 <div class="bg-images no-cover-upload"> 
                                                     <?php
-                                                    $image_ori = $recdata[0]['profile_background'];
-                                                    $filename = $this->config->item('rec_bg_main_upload_path') . $recdata[0]['profile_background'];
+                                                    $image_ori = $recdata['profile_background'];
+                                                    $filename = $this->config->item('rec_bg_main_upload_path') . $recdata['profile_background'];
                                                     $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                                    if ($info && $recdata[0]['profile_background'] != '') {
+                                                    if ($info && $recdata['profile_background'] != '') {
                                                         ?>
-                                                        <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata[0]['profile_background']; ?>"/>
+                                                        <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata['profile_background']; ?>"/>
                                                         <?php
                                                     } else {
                                                         ?>
-                                                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
+                                                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?>" >
                                                         <?php
                                                     }
                                                     ?>
@@ -59,22 +59,22 @@
                                         <div class="profile-boxProfileCard-content clearfix">
                                             <div class="left_side_box_img buisness-profile-txext">
 
-                                                <a title="Recruiter profile" class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                                <a title="Recruiter profile" class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('recruiter/profile/' . $recdata['user_id']); ?>" title="<?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                                     <?php
-                                                    $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
+                                                    $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata['recruiter_user_image'];
                                                     $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                                    if ($recdata[0]['recruiter_user_image'] != '' && $info) {
+                                                    if ($recdata['recruiter_user_image'] != '' && $info) {
                                                         ?>
-                                                        <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
+                                                        <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata['recruiter_user_image']; ?>" alt="<?php echo $recdata['recruiter_user_image']; ?>" >
                                                         <?php
                                                     } else {
 
 
-                                                        $a = $recdata[0]['rec_firstname'];
+                                                        $a = $recdata['rec_firstname'];
                                                         $acr = substr($a, 0, 1);
 
-                                                        $b = $recdata[0]['rec_lastname'];
+                                                        $b = $recdata['rec_lastname'];
                                                         $acr1 = substr($b, 0, 1);
                                                         ?>
                                                         <div class="post-img-profile">
@@ -89,26 +89,26 @@
                                             </div>
                                             <div class="right_left_box_design ">
                                                 <span class="profile-company-name ">
-                                                    <a href="<?php echo site_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
+                                                    <a href="<?php echo site_url('recruiter/profile/' . $recdata['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?></a>
                                                 </span>
 
                                                         
                                                 <div class="profile-boxProfile-name">
-                                                    <a href="<?php echo site_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
+                                                    <a href="<?php echo site_url('recruiter/profile/' . $recdata['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata['designation'])); ?>">
                                                         <?php
-                                                        if (ucfirst(strtolower($recdata[0]['designation']))) {
-                                                            echo ucfirst(strtolower($recdata[0]['designation']));
+                                                        if (ucfirst(strtolower($recdata['designation']))) {
+                                                            echo ucfirst(strtolower($recdata['designation']));
                                                         } else {
                                                             echo "Designation";
                                                         }
                                                         ?></a>
                                                 </div>
                                                 <ul class=" left_box_menubar">
-                                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Details" href="<?php echo base_url('recruiter/profile/' . $recdata[0]['user_id']); ?>"> Details</a>
+                                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Details" href="<?php echo base_url('recruiter/profile/' . $recdata['user_id']); ?>"> Details</a>
                                                     </li>                                
-                                                    <li id="rec_post_home" <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a title="Post" href="<?php echo base_url('recruiter/post/' . $recdata[0]['user_id']); ?>">Post</a>
+                                                    <li id="rec_post_home" <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a title="Post" href="<?php echo base_url('recruiter/post/' . $recdata['user_id']); ?>">Post</a>
                                                     </li>
-                                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'save-candidate') { ?> class="active" <?php } ?>><a title="Saved Candidate" class="padding_less_right" href="<?php echo base_url('recruiter/save-candidate/' . $recdata[0]['user_id']); ?>">Saved </a>
+                                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'save-candidate') { ?> class="active" <?php } ?>><a title="Saved Candidate" class="padding_less_right" href="<?php echo base_url('recruiter/save-candidate/' . $recdata['user_id']); ?>">Saved </a>
                                                     </li>
 
                                                 </ul>
