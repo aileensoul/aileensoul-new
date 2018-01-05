@@ -6,10 +6,10 @@
             <?php echo $title; ?>
         </title>
         <?php echo $head; ?> 
-        <?php if (IS_HIRE_CSS_MINIFY == '0') {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
-        <?php }else {?>
-         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+        <?php if (IS_HIRE_CSS_MINIFY == '0') { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
         <?php } ?>
         <style type="text/css">
             .last_date_error{
@@ -26,11 +26,11 @@
             .autoposition{
                 position: absolute!important;
                 z-index: 999 !important;
-                
+
             }
         </style>
     </head>
-    <body class="pushmenu-push botton_footer">
+    <body class="pushmenu-push botton_footer freeh3">
         <?php echo $header; ?>
         <?php echo $freelancer_hire_header2_border; ?>
         <section>
@@ -38,7 +38,7 @@
                 <div class="user-midd-section" id="paddingtop_fixed">
                     <div class="container">
                         <div class="row">
-                             <h3 class="col-chang cus-chang">Please Post your requirement of the work that you need, we will recommend the freelancers accordingly.</h3>
+                            <h3 class="col-chang cus-chang">Please Post your requirement of the work that you need, we will recommend the freelancers accordingly.</h3>
                             <div class="col-md-2 col-sm-1"></div>
                             <div class="col-md-8 col-sm-10 animated fadeInLeftBig">
                                 <div>
@@ -52,21 +52,20 @@
                                     ?>
                                 </div>
                                 <div class="common-form custom-form">
-                                   
+
                                     <div class="job-saved-box">
 
-                                        <?php echo form_open(base_url('freelancer/freelancer_add_post_insert'), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit', 'onsubmit' => "imgval()")); ?>
+                                        <?php echo form_open(base_url('freelancer_hire/freelancer_add_post_insert'), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit', 'onsubmit' => "imgval()")); ?>
 
                                         <?php
                                         $post_name = form_error('post_name');
                                         $skills = form_error('skills');
                                         $post_desc = form_error('post_desc');
-                                         $fields = form_error('fields_req');
-                                          $lastdate = form_error('latdate');
-                                           $rate = form_error('rate');
-                                            $currency = form_error('currency');
-                                             $rating = form_error('rating');
-                                             
+                                        $fields = form_error('fields_req');
+                                        $lastdate = form_error('latdate');
+//                                           $rate = form_error('rate');
+//                                            $currency = form_error('currency');
+                                        $rating = form_error('rating');
                                         ?>
                                         <div class="custom-add-box">
                                             <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("project_description"); ?></h3>
@@ -82,13 +81,13 @@
                                                     <textarea class="add-post-textarea" name="post_desc" id="post_desc" placeholder="Enter description" tabindex="2" onpaste="OnPaste_StripFormatting(this, event);"></textarea>
                                                     <?php echo form_error('post_desc'); ?>
                                                 </fieldset>
-                                                <fieldset  <?php if ($skills) { ?> class="error-msg full-width" <?php } else{ ?> class="full-width" <?php }?>>
+                                                <fieldset  <?php if ($skills) { ?> class="error-msg full-width" <?php } else { ?> class="full-width" <?php } ?>>
                                                     <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
                                                     <input id="skills2" name="skills" tabindex="3" size="90" placeholder="Enter skills">
                                                     <span id="fullname-error"></span>
                                                     <?php echo form_error('skills'); ?>
                                                 </fieldset>
-                                                <fieldset  <?php if ($fields) { ?> class="error-msg full-width" <?php } else { ?> class="full-width" <?php }?>>
+                                                <fieldset  <?php if ($fields) { ?> class="error-msg full-width" <?php } else { ?> class="full-width" <?php } ?>>
                                                     <label><?php echo $this->lang->line("field_of_requirement"); ?>:<span style="color:red">*</span></label>
                                                     <select tabindex="4" name="fields_req" id="fields_req" class="field_other">
                                                         <option  value="" selected option disabled><?php echo $this->lang->line("select_filed"); ?></option>
@@ -162,7 +161,7 @@
                                                 <fieldset <?php if ($lastdate) { ?> class="error-msg" <?php } ?>>
                                                     <label><?php echo $this->lang->line("last_date_apply"); ?>:<span style="color:red">*</span></label>
                                                     <input type="hidden" id="example2" name="latdate">
-                                                    <?php echo form_error('latdate');?> 
+                                                    <?php echo form_error('latdate'); ?> 
                                                 </fieldset>
 
 
@@ -171,19 +170,19 @@
                                         <div class="custom-add-box">
                                             <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?></h3>
                                             <div class="p15 fw">
-                                                <fieldset  <?php if($rating){ ?> class="error-msg col-md-3 pl10 work_type_custom" <?php } else{ ?> class="col-md-12 pl10 work_type_custom" <?php } ?>>
+                                                <fieldset  <?php if ($rating) { ?> class="error-msg col-md-3 pl10 work_type_custom" <?php } else { ?> class="col-md-12 pl10 work_type_custom" <?php } ?>>
                                                     <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="13" class="worktype_minheight worktype" name="rating" value="0"> Hourly
                                                     <input type="radio" tabindex="14" class="worktype"  name="rating" value="1"> Fixed
                                                     <input type="radio" tabindex="15" class="worktype"  name="rating" value="2"> Not Fixed
                                                     <?php echo form_error('rating'); ?>
                                                 </fieldset>
-                                                <fieldset   <?php if ($rate) { ?> class="error-msg col-md-6 pl10" <?php } else{ ?> class="col-md-6 pl10" <?php } ?> >
+                                                <fieldset   <?php if ($rate) { ?> class="error-msg col-md-6 pl10" <?php } else { ?> class="col-md-6 pl10" <?php } ?> >
                                                     <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:<span style="color:red">*</span></label>
                                                     <input tabindex="11" name="rate" type="text" id="rate" placeholder="Enter your rate"/>
                                                     <span id="fullname-error"></span>
                                                     <?php echo form_error('rate'); ?>
                                                 </fieldset>
-                                                <fieldset  <?php if ($currency) { ?> class="error-msg col-md-6 two-select-box" <?php } else { ?> class="col-md-6 two-select-box" <?php }?> > 
+                                                <fieldset class="col-md-6 two-select-box"> 
                                                     <label><?php echo $this->lang->line("currency"); ?>:<span style="color:red">*</span></label>
                                                     <select tabindex="12" name="currency" id="currency">
                                                         <option  value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
@@ -193,13 +192,13 @@
                                                     </select>
                                                     <?php echo form_error('currency'); ?>
                                                 </fieldset>
-                                                
+
                                                 <fieldset class="hs-submit full-width">
                                                     <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                                     <?php if (($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
-                                                    <a title="cancel" class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
+                                                        <a title="cancel" class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
                                                     <?php } else { ?>
-                                                    <a title="cancel" class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelance-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
+                                                        <a title="cancel" class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelance-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
                                                     <?php } ?>
                                                     <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
                                                 </fieldset>
@@ -207,8 +206,8 @@
 
                                             </div>
                                         </div>
-                                     
-                                         <?php echo form_close(); ?>
+
+                                        <?php echo form_close(); ?>
                                     </div>
                                     <div class="col-md-1">
                                     </div>
@@ -219,9 +218,9 @@
                 </div>
             </div>
         </section>
-      
-            <?php echo $login_footer ?>
-            <?php echo $footer; ?>
+
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -245,30 +244,30 @@
                 </div>
             </div>
         </div>
-       
+
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-       <!-- Model Popup Close -->
-        <!-- Calender JS Start-->
-        <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
-        <!-- Calender Js End-->
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        
-            <?php } else {  ?>
-          <!-- Model Popup Close -->
-        <!-- Calender JS Start-->
-        <script src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
-        <!-- Calender Js End-->
-        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        
+            <!-- Model Popup Close -->
+            <!-- Calender JS Start-->
+            <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
+            <!-- Calender Js End-->
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+
+        <?php } else { ?>
+            <!-- Model Popup Close -->
+            <!-- Calender JS Start-->
+            <script src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
+            <!-- Calender Js End-->
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()); ?>"></script>
+
         <?php } ?>
-         
+
         <script>
                         var base_url = '<?php echo base_url(); ?>';
 
                         // LEAVE PAGE ON ADD AND EDIT POST PAGE START
                         function leave_page(clicked_id)
                         {
-                           
+
                             var post_name = document.getElementById('post_name').value;
                             var post_desc = document.getElementById('post_desc').value;
                             var fields_req = document.getElementById('fields_req').value;
@@ -439,15 +438,15 @@
                         // LEAVE PAGE ON ADD AND EDIT POST PAGE END 
         </script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>
-         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-        <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>-->
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
-            <?php } else {  ?>
-            <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>-->
-        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
+            <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>-->
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+                <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>-->
+            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <?php } ?>
-        
-     
+
+
         <style type="text/css">
             #skills-error{margin-top: 42px;}
             #example2-error{margin-top: 41px;}
