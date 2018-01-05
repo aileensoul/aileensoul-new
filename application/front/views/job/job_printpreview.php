@@ -169,9 +169,9 @@ if ($job[0]['job_user_image'] != '' && $info) {
 
                                 if ($job[0]['designation'] == '') {
                                     ?>
-                                    <a id="designation"> <?php echo "Current Work"; ?> </a> 
+                                    <a id="designation" style="cursor: pointer;"> <?php echo "Current Work"; ?> </a> 
                                 <?php } else { ?>
-                                    <a id="designation"> <?php echo ucwords($job[0]['designation']); ?> </a> <?php
+                                    <a id="designation" style="cursor: pointer;"> <?php echo ucwords($job[0]['designation']); ?> </a> <?php
                                 }
                             }
                             ?>
@@ -201,9 +201,9 @@ if ($job[0]['job_user_image'] != '' && $info) {
                         } else {
                             if ($job[0]['designation'] == '') {
                                 ?>
-                                <a id="designation"> <?php echo "Current Work"; ?> </a> 
+                                <a id="designation" style="cursor: pointer !important;"> <?php echo "Current Work"; ?> </a> 
                             <?php } else { ?>
-                                <a id="designation"> <?php echo ucwords($job[0]['designation']); ?> </a> <?php
+                                <a id="designation" style="cursor: pointer !important;"> <?php echo ucwords($job[0]['designation']); ?> </a> <?php
                             }
                         }
                         ?>
