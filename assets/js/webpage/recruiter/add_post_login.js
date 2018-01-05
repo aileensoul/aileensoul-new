@@ -21,6 +21,16 @@ function forgot_profile() {
 function forgot_close() {
        $('#login').modal('show');
 }
+
+
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        $('#register_profile').modal('hide');
+        $('#login').modal('hide');
+        $('#forgotPassword').modal('hide');
+    }
+});
+
 //function login_profile1(){
 //    $('#register_apply').modal('hide');
 //    $('#login1').modal('show');
