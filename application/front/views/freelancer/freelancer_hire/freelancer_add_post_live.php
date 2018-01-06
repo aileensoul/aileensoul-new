@@ -186,9 +186,11 @@
                                             <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?></h3>
                                             <div class="p15 fw">
                                                 <fieldset class="col-md-3 pl10 work_type_custom">
+                                                    <div class="cus_work">
                                                     <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="11" class="worktype_minheight" name="rating"  value="0"> Hourly
                                                     <input type="radio" tabindex="12"  name="rating" value="1"> Fixed
                                                     <input type="radio" tabindex="13" class="worktype"  name="rating" value="2"> Not Fixed
+                                                    </div>
                                                     <?php echo form_error('rating'); ?>
                                                 </fieldset>
 
