@@ -237,18 +237,18 @@
                     <!-- text head end -->
                 </div>
                 <div class="col-md-7 col-sm-12 mob-clear">
-                    <div class="common-form">
-                        <div class="job-saved-box">
+                    
+                        <div class="page-title">
                             <h3>Saved Candidate</h3>
-                            <div class="contact-frnd-post">
-                                <div class = "job-contact-frnd">
+                        </div>
+                            <!-- <div class="contact-frnd-post"> -->
+                                <div class = "job-contact-frnd cust-border">
                                     <!--AJAX DATA START FOR RECOMMAND CANDIDATE-->
-                                </div>
+                                
                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
-                            </div>
+                            <!-- </div> -->
 
                         </div>
-                    </div>
                 </div>
             </div>
             <!-- MIDDLE SECTION END-->

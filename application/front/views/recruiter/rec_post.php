@@ -249,7 +249,7 @@
                     <div class="page-title">
                         <h3>Post</h3>
                     </div>
-                    <div class="job-contact-frnd1">
+                    <div class="job-contact-frnd1 cust-border">
 
 
                     </div>
