@@ -160,15 +160,24 @@
                                 <div class="custom-add-box">
                                     <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?></h3>
                                     <div class="p15 fw">
+                                         <fieldset style="padding-left: 8px;"  <?php if ($rating) { ?> class="error-msg col-md-6" <?php } else{ ?> class="col-md-6" <?php }?>>
+                                             <div class="cus_work">
+                                            <label><?php echo $this->lang->line("work_type"); ?><span style="color:red">*</span></label>
+                                            <input type="radio" name="rating" tabindex="11" <?php if ($freelancerpostdata[0]['post_rating_type'] == '0') { ?> checked <?php } ?> value="0" > Hourly
+                                            <input type="radio" name="rating" tabindex="12"  <?php if ($freelancerpostdata[0]['post_rating_type'] == '1') { ?> checked <?php } ?> value ="1"> Fixed
+                                            <input type="radio" tabindex="13" class="worktype"  name="rating" value="2"> Not Fixed
+                                             </div>
+                                            <?php echo form_error('rating'); ?>
+                                        </fieldset>
                                         <fieldset style="padding-left: 8px;"  <?php if ($rate) { ?> class="error-msg col-md-6" <?php } else{ ?> class="col-md-6" <?php  }?> >
                                             <label class="control-label"><?php echo $this->lang->line("rate"); ?>:<span style="color:red">*</span></label>
-                                            <input name="rate" type="number" id="rate" tabindex="11" placeholder="Enter your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
+                                            <input name="rate" type="number" id="rate" tabindex="14" placeholder="Enter your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
                                             <span id="fullname-error"></span>
                                             <?php echo form_error('rate'); ?>
                                         </fieldset>
                                         <fieldset  <?php if ($currency) { ?> class="error-msg col-md-6" <?php } else{ ?> class="col-md-6" <?php } ?>> 
                                             <label><?php echo $this->lang->line("currency"); ?>:<span style="color:red">*</span></label>
-                                            <select name="currency" id="currency" tabindex="12">
+                                            <select name="currency" id="currency" tabindex="15">
                                                 <option value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
                                                 <?php
                                                 if (count($currency) > 0) {
@@ -187,12 +196,7 @@
                                             </select>
                                             <?php echo form_error('currency'); ?>
                                         </fieldset>
-                                        <fieldset style="padding-left: 8px;"  <?php if ($rating) { ?> class="error-msg col-md-6" <?php } else{ ?> class="col-md-6" <?php }?>>
-                                            <label><?php echo $this->lang->line("work_type"); ?><span style="color:red">*</span></label>
-                                            <input type="radio" name="rating" tabindex="13" <?php if ($freelancerpostdata[0]['post_rating_type'] == '0') { ?> checked <?php } ?> value="0" > Hourly
-                                            <input type="radio" name="rating" tabindex="14"  <?php if ($freelancerpostdata[0]['post_rating_type'] == '1') { ?> checked <?php } ?> value ="1"> Fixed
-                                            <?php echo form_error('rating'); ?>
-                                        </fieldset>
+                                       
                                         <fieldset class="hs-submit full-width">
                                             <?php if (($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelance-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                                 <a title="Cancel" class="add_post_btnc" onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
