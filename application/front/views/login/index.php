@@ -44,7 +44,7 @@ header('Expires: ' . $date);
 
         <?php } ?>
         <?php
-        if ($_SERVER['HTTP_HOST'] != "localhost") {
+        if (base_url() == "https://www.aileensoul.com/") {
             ?>
 
             <script>

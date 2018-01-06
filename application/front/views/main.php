@@ -34,7 +34,7 @@ header("Pragma: no-cache"); // HTTP/1.0
             });
         </script>
         <?php
-        if ($_SERVER['HTTP_HOST'] != "localhost") {
+        if (base_url() == "https://www.aileensoul.com/") {
             ?>
 
             <script>

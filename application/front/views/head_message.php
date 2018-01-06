@@ -24,7 +24,7 @@ header('Expires: '.$date);
 <meta charset="utf-8" />
 <!-- SEO CHANGES START -->
 <?php
-if ($_SERVER['HTTP_HOST'] != "localhost") {
+ if (base_url() == "https://www.aileensoul.com/") {
     ?>
     
     <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
