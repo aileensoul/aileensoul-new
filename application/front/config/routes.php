@@ -78,6 +78,7 @@ $route['sitemap/artistic-profile'] = "sitemap/artistic_profile";
 $route['profile'] = "profile";
 $route['profiles'] = "dashboard";
 $route['profiles/basic-information/(:any)'] = "user_basic_info";
+$route['profiles/opportunities/(:any)'] = "user_opportunities";
 $route['profiles/(:any)'] = "dashboard";
 
 
