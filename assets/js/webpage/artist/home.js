@@ -2114,7 +2114,7 @@ jQuery(document).ready(function ($) {
             $("input[name='my_text']").val(50);
             $(".file-preview-frame").hide();
             document.getElementById("progress_div").style.display = "none";
-            $('.art-all-post div:first').remove();
+            //$('.art-all-post div:first').remove();
             $(".art-all-post").prepend(response.responseText);
 
             $('video, audio').mediaelementplayer();

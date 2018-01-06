@@ -4,13 +4,13 @@
         <title><?php echo $title; ?></title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/bootstrap.min.css?ver='.time()) ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/animate.css?ver='.time()) ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/font-awesome.min.css?ver='.time()) ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/owl.carousel.min.css?ver='.time()) ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/jquery.mCustomScrollbar.min.css?ver='.time()) ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-commen.css?ver='.time()) ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-style.css?ver='.time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/bootstrap.min.css?ver=' . time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/animate.css?ver=' . time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/font-awesome.min.css?ver=' . time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/owl.carousel.min.css?ver=' . time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/jquery.mCustomScrollbar.min.css?ver=' . time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-commen.css?ver=' . time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-style.css?ver=' . time()) ?>">
     </head>
     <body>
         <?php echo $header_profile; ?>
@@ -21,7 +21,11 @@
                     <div class="add-post">
                         <div class="post-box" data-target="#post-popup" data-toggle="modal">
                             <div class="post-img">
-                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                    <img src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                <?php } else { ?>
+                                    <img src="<?php echo base_url(NOBUSIMAGE) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                <?php } ?>
                             </div>
                             <div class="post-text">
                                 Post Opportunity
@@ -584,10 +588,10 @@
             </div>
 
         </div>
-        <script src="<?php echo base_url('assets/js/jquery.min.js?ver='.time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/owl.carousel.min.js?ver='.time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/jquery.mCustomScrollbar.concat.min.js?ver='.time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.min.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/owl.carousel.min.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.mCustomScrollbar.concat.min.js?ver=' . time()) ?>"></script>
         <script>
             jQuery(document).ready(function ($) {
                 var owl = $('.owl-carousel');
