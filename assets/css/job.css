@@ -1458,7 +1458,6 @@ label.cameraButton:active{
 }
 .job_work_experience_main_div{
     border:none;
-    margin-top:10px;
     border-bottom:2px solid #d9d9d9;
     margin-bottom:20px
 }
@@ -2233,10 +2232,14 @@ p.job-top-btn a.btn4:first-child{
     position:relative;
     pointer-events:none
 }
-
 .cust-div-h3 ul {padding-left: 10px;}
 .cust-div-h3 ul li{padding-left: 0px !important;}
 .lbpos a{color: #5c5c5c;}
+.job_work_experience_main_div h6:first-child{margin-top:0px;}
+.job_work_experience_main_div h6{margin-top:15px;}
+
+
+
 @media screen and (min-width:768px){
     .mob-progressbar.temp{
         display:none
