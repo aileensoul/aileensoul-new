@@ -171,20 +171,22 @@
                                             <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?></h3>
                                             <div class="p15 fw">
                                                 <fieldset  <?php if ($rating) { ?> class="error-msg col-md-3 pl10 work_type_custom" <?php } else { ?> class="col-md-12 pl10 work_type_custom" <?php } ?>>
-                                                    <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="13" class="worktype_minheight worktype" name="rating" value="0"> Hourly
-                                                    <input type="radio" tabindex="14" class="worktype"  name="rating" value="1"> Fixed
-                                                    <input type="radio" tabindex="15" class="worktype"  name="rating" value="2"> Not Fixed
+                                                    <div class="cus_work">
+                                                    <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="11" class="worktype_minheight worktype" name="rating" value="0"> Hourly
+                                                    <input type="radio" tabindex="12" class="worktype"  name="rating" value="1"> Fixed
+                                                    <input type="radio" tabindex="13" class="worktype"  name="rating" value="2"> Not Fixed
+                                                    </div>
                                                     <?php echo form_error('rating'); ?>
                                                 </fieldset>
                                                 <fieldset  class="col-md-6 pl10" >
                                                     <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:<span class="optional">(optional)</span></label>
-                                                    <input tabindex="11" name="rate" type="text" id="rate" placeholder="Enter your rate"/>
+                                                    <input tabindex="14" name="rate" type="text" id="rate" placeholder="Enter your rate"/>
                                                     <span id="fullname-error"></span>
                                                     <?php echo form_error('rate'); ?>
                                                 </fieldset>
                                                 <fieldset class="col-md-6 two-select-box"> 
                                                     <label><?php echo $this->lang->line("currency"); ?>:<span class="optional">(optional)</span></label>
-                                                    <select tabindex="12" name="currency" id="currency">
+                                                    <select tabindex="15" name="currency" id="currency">
                                                         <option  value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
                                                         <?php foreach ($currency as $cur) { ?>
                                                             <option value="<?php echo $cur['currency_id']; ?>"><?php echo $cur['currency_name']; ?></option>
@@ -200,7 +202,7 @@
                                                     <?php } else { ?>
                                                         <a title="cancel" class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelance-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
                                                     <?php } ?>
-                                                    <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
+                                                    <input type="submit" tabindex="16" id="submit"  class="add_post_btns" name="submit" value="Post">    
                                                 </fieldset>
 
 

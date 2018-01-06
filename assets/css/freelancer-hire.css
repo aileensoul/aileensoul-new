@@ -1603,7 +1603,8 @@ p.pull-right a.btn4:last-child {line-height: 22px;}
     pointer-events:none;
 }
 .work_type_custom label.error{right: 18px;}
-
+.cus_work{position: relative;width: 310px;}
+fieldset.work_type_custom input{height: 30px;min-height: 25px;}
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
     .common-form fieldset.mgrd input[type="radio"] {

@@ -495,14 +495,14 @@
     var base_url = '<?php echo base_url(); ?>';
     var clone_mathod_count='<?php echo $clone_mathod_count; ?>';
 </script>
-
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_work_exp.js?ver='.time()); ?>"></script>
 <?php
         if (IS_JOB_JS_MINIFY == '0') {
             ?>
-<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_work_exp.js?ver='.time()); ?>"></script>
+<!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_work_exp.js?ver='.time()); ?>"></script>-->
 <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver='.time()); ?>"></script>
 <?php }else{?>
-<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_work_exp.js?ver='.time()); ?>"></script>
+<!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_work_exp.js?ver='.time()); ?>"></script>-->
 <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver='.time()); ?>"></script>
 <?php }?>
  </body>

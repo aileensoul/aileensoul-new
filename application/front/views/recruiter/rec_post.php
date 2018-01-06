@@ -245,18 +245,13 @@
 
                 </div>
             
-                <div class="col-md-7 col-sm-12 mob-clear">
-                    <div class="common-form">
-                        <div class="job-saved-box">
-                            <h3>Post</h3>
-                            <div class="contact-frnd-post">
-                                <div class = "job-contact-frnd1">
-                                    <!--AJAX DATA START FOR RECOMMAND CANDIDATE-->
-                                </div>
-                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
-                            </div>
+                <div class="col-md-7 col-sm-12 mob-clear ">
+                    <div class="page-title">
+                        <h3>Post</h3>
+                    </div>
+                    <div class="job-contact-frnd1 cust-border">
 
-                        </div>
+
                     </div>
                 </div>
             </div>
