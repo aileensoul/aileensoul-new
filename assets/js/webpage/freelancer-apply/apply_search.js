@@ -334,7 +334,9 @@ $(document).ready(function () { //aletr("hii");
                     $("#forgotbuton").html(response.message);
                     setTimeout(function () {
                         $('#login').modal('show');
-                         $('#forgotPassword').modal('hide');
+                        $('#forgotPassword').modal('hide');
+                        $("#forgotbuton").html('');
+                        document.getElementById("forgot_email").value = "";
                     }, 5000); // milliseconds
 
                  

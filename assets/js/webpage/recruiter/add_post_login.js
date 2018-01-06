@@ -1079,6 +1079,8 @@ function submitforgotForm()
                 setTimeout(function () {
                     $('#forgotPassword').modal('hide');
                     $('#login').modal('show');
+                     $("#forgotbuton").html('');
+                    document.getElementById("forgot_email").value = "";
                 }, 5000); // milliseconds
                 //window.location = base_url + "job/home/live-post";
             } else {

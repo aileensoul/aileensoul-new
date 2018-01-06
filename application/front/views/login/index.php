@@ -158,7 +158,7 @@ header('Expires: ' . $date);
                                         </div>
                                         <?php
                                         $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                                        echo form_open('profile/forgot_password', $form_attribute);
+                                        echo form_open('profile/forgot_live', $form_attribute);
                                         ?>
                                         <div class="form-group">
                                             <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
@@ -410,10 +410,47 @@ header('Expires: ' . $date);
 
 
                     },
-                });
-                /* validation */
 
-            });
+                    submitHandler: submitforgotForm
+                });
+
+
+
+function submitforgotForm()
+{
+
+    var email_login = $("#forgot_email").val();
+
+    var post_data = {
+        'forgot_email': email_login,
+    }
+    $.ajax({
+        type: 'POST',
+        url: "<?php echo site_url() . 'profile/forgot_live' ?>",
+        //url: base_url + 'profile/forgot_live',
+        data: post_data,
+        dataType: "json",
+        beforeSend: function ()
+        {
+            $("#error").fadeOut();
+        },
+        success: function (response)
+        { 
+            if (response.data == "success") {
+                $("#forgotbuton").html(response.message);
+                setTimeout(function () {
+                    $('#forgotPassword').modal('hide');
+                    $("#forgotbuton").html('');
+                    document.getElementById("forgot_email").value = "";
+                }, 5000); 
+            } else {
+                $("#forgotbuton").html(response.message);
+            }
+        }
+    });
+    return false;
+}            /* validation */
+});
         </script>
 
         <script>
