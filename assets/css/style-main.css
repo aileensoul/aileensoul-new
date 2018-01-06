@@ -1,6 +1,7 @@
 body,html{
     width:100%
 }
+body.about-us{padding-bottom:60px;}
 .btn-right a:focus,.login p a:focus,.mail-sent li a:focus,footer ul li a:focus{
     text-decoration:none!important
 }
@@ -2504,10 +2505,12 @@ header.profile-header .logo a{
 	margin-bottom: 15px; 
 	color: #a0b3b0;
 }
+
 /*.no-login .has-error input, input.error, select.error, .has-error textarea, textarea.error {border-bottom:1px solid #ff0000 !important;}*/
 .main_otp_box_middle_submit #new_password:focus{border-bottom: 1px solid #1b8ab9 !important;}
 .main_otp_box_middle_submit #code:focus{border-bottom: 1px solid #1b8ab9 !important;}
 .main_otp_box_middle span #showhide:focus{text-decoration: none;}
+
 
 
 @media screen and (min-height:540px){
@@ -2820,7 +2823,7 @@ header.profile-header .logo a{
 }
 @media screen and (max-width:767px){
     footer,header .col-md-4.col-sm-3{
-        text-align:center
+        text-align:center;
     }
     .footer-ul .mob-none{
         display:none
@@ -2881,7 +2884,7 @@ header.profile-header .logo a{
         float:left
     }
     .main-login .middle-main{
-        ;
+       
          background-position:0 16%;
          background-size: 150% auto;
     }
@@ -3202,6 +3205,7 @@ header.profile-header .logo a{
     }
     .main_otp_box_middle_submit input[type=password],.main_otp_box_middle_submit input[type=text]{
     width:50%
+	}
 }
 @media screen and (max-width:640px){
     .btns .btn-4{
