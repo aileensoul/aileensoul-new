@@ -2,7 +2,7 @@ $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         //$('#myModal1').hide();
         if (document.getElementById('myModal1').style.display === "block") {
-            alert("falguni");
+            //alert("falguni");
 
             document.getElementById('myModal1').style.display = 'none';
         }
