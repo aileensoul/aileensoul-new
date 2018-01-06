@@ -71,18 +71,12 @@
                                                     ?>
                                                     <div class="data_img_2">
                                                         <?php
+                                                        
                                                         $a = $jobdata[0]['fname'];
-                                                        $words = explode(" ", $a);
-                                                        foreach ($words as $w) {
-                                                            $acronym .= $w[0];
-                                                        }
-                                                        ?>
-                                                        <?php
+                                                        $acronym = substr($a, 0, 1);
                                                         $b = $jobdata[0]['lname'];
-                                                        $words = explode(" ", $b);
-                                                        foreach ($words as $w) {
-                                                            $acronym1 .= $w[0];
-                                                        }
+                                                        $acronym1 = substr($b, 0, 1);
+
                                                         ?>
                                                         <div class="post-img-profile">
                                                             <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
