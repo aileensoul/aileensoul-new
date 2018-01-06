@@ -2133,7 +2133,7 @@ word-break: break-word;}
 .text_blur{color: transparent;
     text-shadow: rgba(0,0,0,0.8) 0 0 5px;
     user-select: none;pointer-events: none;}
-body.modal-open{position: fixed;}
+/*body.modal-open{position: fixed;}*/
 .pushmenu-push{position: initial;}
 .cus_em:hover{text-transform: none;}
 .cus-chang{font-size: 27px!important;font-weight: normal;margin-bottom: 20px;color: #1b8ab9 !important;font-family: "Arial" !important;}
