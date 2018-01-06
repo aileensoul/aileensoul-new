@@ -471,6 +471,16 @@
         {
             $('#experience_month').attr('disabled', 'disabled');
         }
+
+        // var element = document.getElementById("experience_year");
+        // element.classList.add("valuechangecolor");
+}
+
+function expmonth_click(){
+
+// var element = document.getElementById("experience_month");
+//         element.classList.add("valuechangecolor");
+  
 }
 
        $(".alert").delay(3200).fadeOut(300);
