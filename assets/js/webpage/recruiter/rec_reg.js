@@ -180,11 +180,11 @@ $(document).ready(function () {
                 $("#btn1").html('Create an account ...');
             },
             success: function (response)
-            { alert("ksjkskjds");
+            { 
                 //alert(postid);
                 var userid = response.userid;
                 if (response.okmsg == "ok") {
-                    alert(123);
+                   
                     window.location = base_url + "recruiter/registration";
                 } else {
                     $("#register_error").fadeIn(1000, function () {
