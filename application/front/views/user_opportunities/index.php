@@ -4,14 +4,13 @@
         <title>Aileensoul</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css_new/bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css_new/animte.css">
-        <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css_new/font-awesome.min.css">
-        <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css_new/owl.carousel.min.css">
-        <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css_new/jquery.mCustomScrollbar.min.css">
-
-        <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css_new/n-commen.css">
-        <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css_new/n-style.css">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/bootstrap.min.css?ver='.time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/animate.css?ver='.time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/font-awesome.min.css?ver='.time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/owl.carousel.min.css?ver='.time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/jquery.mCustomScrollbar.min.css?ver='.time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-commen.css?ver='.time()) ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-style.css?ver='.time()) ?>">
 
     </head>
     <body>
@@ -28,7 +27,7 @@
                         <div class="col-md-6 col-sm-6 right-header">
                             <ul>
                                 <li class="dropdown all">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>img/all.png"></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>n-images/all.png"></a>
 
                                     <div class="dropdown-menu">
                                         <div class="dropdown-title">
@@ -40,7 +39,7 @@
                                                     <div class="all-down"> 
                                                         <a href="#"> 
                                                             <div class="all-img"> 
-                                                                <img src="<?php echo base_url('assets/') ?>img/i5.jpg">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/i5.jpg">
                                                             </div>
                                                             <div class="text-all"> Artistic Profile </div>
                                                         </a> 
@@ -50,7 +49,7 @@
                                                     <div class="all-down"> 
                                                         <a href="#"> 
                                                             <div class="all-img"> 
-                                                                <img src="<?php echo base_url('assets/') ?>img/i4.jpg">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/i4.jpg">
                                                             </div>
                                                             <div class="text-all"> Business Profile </div>
                                                         </a> 
@@ -60,7 +59,7 @@
                                                     <div class="all-down"> 
                                                         <a href="#"> 
                                                             <div class="all-img"> 
-                                                                <img src="<?php echo base_url('assets/') ?>img/i1.jpg">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/i1.jpg">
                                                             </div>
                                                             <div class="text-all"> Job Profile </div>
                                                         </a> 
@@ -70,7 +69,7 @@
                                                     <div class="all-down"> 
                                                         <a href="#"> 
                                                             <div class="all-img"> 
-                                                                <img src="<?php echo base_url('assets/') ?>img/i2.jpg">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/i2.jpg">
                                                             </div>
                                                             <div class="text-all"> Recruiter Profile </div>
                                                         </a> 
@@ -80,7 +79,7 @@
                                                     <div class="all-down"> 
                                                         <a href="#"> 
                                                             <div class="all-img"> 
-                                                                <img src="<?php echo base_url('assets/') ?>img/i3.jpg">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/i3.jpg">
                                                             </div>
                                                             <div class="text-all"> Freelance Profile </div>
                                                         </a> 
@@ -91,10 +90,10 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>img/op.png"></a>
+                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/op.png"></a>
                                 </li>
                                 <li id="add-contact" class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>img/add-contact.png"></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>n-images/add-contact.png"></a>
 
                                     <div class="dropdown-menu">
                                         <div class="dropdown-title">
@@ -106,7 +105,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <div class="user-name">
@@ -131,7 +130,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <div class="user-name">
@@ -156,7 +155,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <div class="user-name">
@@ -181,7 +180,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <div class="user-name">
@@ -206,7 +205,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <div class="user-name">
@@ -231,7 +230,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <div class="user-name">
@@ -257,7 +256,7 @@
                                     </div>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>img/message.png"></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>n-images/message.png"></a>
                                     <div class="dropdown-menu">
                                         <div class="dropdown-title">
                                             Messages <a href="#" class="pull-right">See All</a>
@@ -268,7 +267,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6><b>Atosa Ahmedabad</b></h6>
@@ -284,7 +283,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6><b>Atosa Ahmedabad</b></h6>
@@ -300,7 +299,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6><b>Atosa Ahmedabad</b></h6>
@@ -316,7 +315,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6><b>Atosa Ahmedabad</b></h6>
@@ -332,7 +331,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6><b>Atosa Ahmedabad</b></h6>
@@ -348,7 +347,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6><b>Atosa Ahmedabad</b></h6>
@@ -364,7 +363,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6><b>Atosa Ahmedabad</b></h6>
@@ -381,7 +380,7 @@
                                     </div>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>img/noti.png"></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>n-images/noti.png"></a>
 
                                     <div class="dropdown-menu">
                                         <div class="dropdown-title">
@@ -393,7 +392,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6>
@@ -412,7 +411,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6>
@@ -431,7 +430,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6>
@@ -450,7 +449,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6>
@@ -469,7 +468,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6>
@@ -488,7 +487,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6>
@@ -507,7 +506,7 @@
                                                     <a href="#">
                                                         <div class="dropdown-database">
                                                             <div class="post-img">
-                                                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg" alt="No Business Image">
+                                                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                             </div>
                                                             <div class="dropdown-user-detail">
                                                                 <h6>
@@ -527,7 +526,7 @@
                                     </div>
                                 </li>
                                 <li class="dropdown user-id">
-                                    <a href="#" class="dropdown-toggle user-id-custom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usr-img"><img src="<?php echo base_url('assets/') ?>img/user-pic.jpg"></span><span class="pr-name">Dhaval</span></a>
+                                    <a href="#" class="dropdown-toggle user-id-custom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usr-img"><img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg"></span><span class="pr-name">Dhaval</span></a>
 
                                     <ul class="dropdown-menu profile-dropdown">
                                         <li>Account</li>
@@ -548,11 +547,11 @@
                 <div class="left-part">
                     <div class="user-profile-box">
                         <div class="user-cover-img">
-                            <img src="<?php echo base_url('assets/') ?>img/user-cover.jpg">
+                            <img src="<?php echo base_url('assets/') ?>n-images/user-cover.jpg">
                         </div>
                         <div class="user-detail">
                             <div class="user-img">
-                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                             </div>
                             <div class="user-detail-right">
                                 <div class="user-detail-top">
@@ -580,7 +579,7 @@
                             <li>
                                 <a href="#">
                                     <div class="all-pr-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/i1.png">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/i1.jpg">
                                     </div>
                                     <span>Job Profile</span>
                                 </a>
@@ -588,7 +587,7 @@
                             <li>
                                 <a href="#">
                                     <div class="all-pr-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/i2.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/i2.jpg">
                                     </div>
                                     <span>Recruiter Profile</span>
                                 </a>
@@ -596,7 +595,7 @@
                             <li>
                                 <a href="#">
                                     <div class="all-pr-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/i3.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/i3.jpg">
                                     </div>
                                     <span>Freelance Profile</span>
                                 </a>
@@ -604,7 +603,7 @@
                             <li>
                                 <a href="#">
                                     <div class="all-pr-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/i4.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/i4.jpg">
                                     </div>
                                     <span>Business Profile</span>
                                 </a>
@@ -612,7 +611,7 @@
                             <li>
                                 <a href="#">
                                     <div class="all-pr-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/i5.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/i5.jpg">
                                     </div>
                                     <span>Artistic Profile</span>
                                 </a>
@@ -667,7 +666,7 @@
                     <div class="add-post">
                         <div class="post-box" data-target="#post-popup" data-toggle="modal">
                             <div class="post-img">
-                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                             </div>
                             <div class="post-text">
                                 Post Opportunity
@@ -679,7 +678,7 @@
                         <div class="all-post-top">
                             <div class="post-head">
                                 <div class="post-img">
-                                    <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                    <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                 </div>
                                 <div class="post-detail">
                                     <div class="fw">
@@ -692,7 +691,7 @@
                                 <div class="post-right-dropdown dropdown">
 
 
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>img/right-down.png"></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>n-images/right-down.png"></a>
 
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Action</a></li>
@@ -715,7 +714,7 @@
                             </div>
                             <div class="post-images">
                                 <div class="one-img">
-                                    <img src="<?php echo base_url('assets/') ?>img/img1.jpg">
+                                    <img src="<?php echo base_url('assets/') ?>n-images/img1.jpg">
                                 </div>
                             </div>
                             <div class="post-bottom">
@@ -742,7 +741,7 @@
                             <div class="comment-box">
                                 <div class="post-comment">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-dis">
                                         <div class="comment-name"><a>Sarasvati Musical Shop</a></div>
@@ -758,7 +757,7 @@
 
                                 <div class="post-comment">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-dis">
                                         <div class="comment-name"><a>Sarasvati Musical Shop</a></div>
@@ -774,7 +773,7 @@
 
                                 <div class="add-comment">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-input">
                                         <input type="text" placeholder="Add a Comment ...">
@@ -790,7 +789,7 @@
                         <div class="all-post-top">
                             <div class="post-head">
                                 <div class="post-img">
-                                    <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                    <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                 </div>
                                 <div class="post-detail">
                                     <div class="fw">
@@ -803,7 +802,7 @@
                                 <div class="post-right-dropdown dropdown">
 
 
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>img/right-down.png"></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>n-images/right-down.png"></a>
 
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Action</a></li>
@@ -825,10 +824,10 @@
                             </div>
                             <div class="post-images">
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>img/img1.jpg"></a>
+                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>img/img1.jpg"></a>
+                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                             </div>
                             <div class="post-bottom">
@@ -855,7 +854,7 @@
                             <div class="comment-box">
                                 <div class="post-comment">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-dis">
                                         <div class="comment-name"><a>Sarasvati Musical Shop</a></div>
@@ -871,7 +870,7 @@
 
                                 <div class="add-comment">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-input">
                                         <input type="text" placeholder="Add a Comment ...">
@@ -887,7 +886,7 @@
                         <div class="all-post-top">
                             <div class="post-head">
                                 <div class="post-img">
-                                    <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                    <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                 </div>
                                 <div class="post-detail">
                                     <div class="fw">
@@ -900,7 +899,7 @@
                                 <div class="post-right-dropdown dropdown">
 
 
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>img/right-down.png"></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>n-images/right-down.png"></a>
 
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Action</a></li>
@@ -922,13 +921,13 @@
                             </div>
                             <div class="post-images">
                                 <div class="three-img-top">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>img/img1.jpg"></a>
+                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>img/img1.jpg"></a>
+                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>img/img1.jpg"></a>
+                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                             </div>
                             <div class="post-bottom">
@@ -955,7 +954,7 @@
                             <div class="comment-box">
                                 <div class="post-comment">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-dis">
                                         <div class="comment-name"><a>Sarasvati Musical Shop</a></div>
@@ -971,7 +970,7 @@
 
                                 <div class="add-comment">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-input">
                                         <input type="text" placeholder="Add a Comment ...">
@@ -987,7 +986,7 @@
                         <div class="all-post-top">
                             <div class="post-head">
                                 <div class="post-img">
-                                    <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                    <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                 </div>
                                 <div class="post-detail">
                                     <div class="fw">
@@ -1000,7 +999,7 @@
                                 <div class="post-right-dropdown dropdown">
 
 
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>img/right-down.png"></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>n-images/right-down.png"></a>
 
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Action</a></li>
@@ -1022,16 +1021,16 @@
                             </div>
                             <div class="post-images four-img">
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>img/img1.jpg"></a>
+                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>img/img1.jpg"></a>
+                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>img/img1.jpg"></a>
+                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>img/img1.jpg"></a>
+                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                     <div class="view-more-img">
                                         <span>View All (+5)</span>
                                     </div>
@@ -1061,7 +1060,7 @@
                             <div class="comment-box">
                                 <div class="post-comment">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-dis">
                                         <div class="comment-name"><a>Sarasvati Musical Shop</a></div>
@@ -1077,7 +1076,7 @@
 
                                 <div class="add-comment">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-input">
                                         <input type="text" placeholder="Add a Comment ...">
@@ -1093,7 +1092,7 @@
 
                 <div class="right-part">
                     <div class="add-box">
-                        <img src="<?php echo base_url('assets/') ?>img/add.jpg">
+                        <img src="<?php echo base_url('assets/') ?>n-images/add.jpg">
                     </div>
                     <div class="all-contact">
                         <h4>Contacts<a href="#" class="pull-right">All</a></h4>
@@ -1101,7 +1100,7 @@
                             <div class="owl-carousel owl-theme">
                                 <div class="item">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
 
                                     </div>
                                     <div class="user-list-detail">
@@ -1112,7 +1111,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
 
                                     </div>
                                     <div class="user-list-detail">
@@ -1123,7 +1122,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
 
                                     </div>
                                     <div class="user-list-detail">
@@ -1134,7 +1133,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
 
                                     </div>
                                     <div class="user-list-detail">
@@ -1145,7 +1144,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
 
                                     </div>
                                     <div class="user-list-detail">
@@ -1156,7 +1155,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
 
                                     </div>
                                     <div class="user-list-detail">
@@ -1184,7 +1183,7 @@
                     <div class="post-popup-box">
                         <div class="post-box">
                             <div class="post-img">
-                                <img src="<?php echo base_url('assets/') ?>img/user-pic.jpg">
+                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                             </div>
                             <div class="post-text">
                                 <textarea class="title-text-area" placeholder="Post Opportunity"></textarea>
@@ -1230,10 +1229,10 @@
             </div>
 
         </div>
-        <script src="<?php echo base_url('assets/') ?>js/jquery.min.js"></script>
-        <script src="<?php echo base_url('assets/') ?>js/bootstrap.min.js"></script>
-        <script src="<?php echo base_url('assets/') ?>js/owl.carousel.min.js"></script>
-        <script src="<?php echo base_url('assets/') ?>js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="<?php echo base_url('assets/js/jquery.min.js?ver='.time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/owl.carousel.min.js?ver='.time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.mCustomScrollbar.concat.min.js?ver='.time()) ?>"></script>
         <script>
             jQuery(document).ready(function ($) {
                 var owl = $('.owl-carousel');
