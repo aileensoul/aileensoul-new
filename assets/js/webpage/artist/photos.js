@@ -1,12 +1,11 @@
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
-        //$('#myModal1').hide();
-        if (document.getElementById('myModal1').style.display === "block") {
-            alert("falguni");
 
+        $("body").removeClass("model-open");
+        if (document.getElementById('myModal1').style.display === "block") {
             document.getElementById('myModal1').style.display = 'none';
         }
-        $('#myModal1').model('hide');
+         $('#myModal1').model('hide');
     }
 });
 
@@ -49,12 +48,12 @@ function showSlides(n) {
     dots[slideIndex - 1].className += " active";
     captionText.innerHTML = dots[slideIndex - 1].alt;
 }
-$(document).on('keydown', function (e) {
-    if (e.keyCode === 27) {
-        $("#myModal1").hide();
-        $("body").removeClass("model-open");
-    }
-});
+// $(document).on('keydown', function (e) {
+//     if (e.keyCode === 27) {
+//         $("#myModal1").hide();
+//         $("body").removeClass("model-open");
+//     }
+// });
 
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);

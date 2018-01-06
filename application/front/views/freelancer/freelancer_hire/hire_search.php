@@ -648,6 +648,8 @@
                 setTimeout(function () {
                     $('#login').modal('show');
                      $('#forgotPassword').modal('hide');
+                      $("#forgotbuton").html('');
+                    document.getElementById("forgot_email").value = "";
                 }, 5000); // milliseconds
 
                 //window.location = base_url + "job/home/live-post";

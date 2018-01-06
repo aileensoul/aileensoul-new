@@ -7,19 +7,45 @@ class User_model extends CI_Model {
 
     public function getUserData($user_id = '') {
         $this->db->select("u.user_id,u.first_name,u.last_name,u.user_dob,u.user_gender,u.user_agree,u.created_date,u.verify_date,u.user_verify,u.user_slider,u.user_slug,ui.user_image,ui.modify_date,ui.edit_ip,ui.profile_background,ui.profile_background_main,ul.email,ul.password,ul.is_delete,ul.status,ul.password_code")->from("user u");
-        $this->db->join('user_info ui', 'ui.user_id = u.user_id','left');
-        $this->db->join('user_login ul', 'ul.user_id = u.user_id','left');
+        $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+        $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
         $this->db->where("u.user_id =" . $user_id);
         $query = $this->db->get();
         $result_array = $query->row_array();
         return $result_array;
     }
-    
-    public function getUserSelectedData($user_id = '',$select_data='') {
+
+    public function is_userBasicInfo($user_id = '') {
+        $this->db->select("COUNT(*) as total")->from("user_profession up");
+        $this->db->where("up.user_id", $user_id);
+        $query = $this->db->get();
+        $result_array = $query->row('total');
+        return $result_array;
+    }
+
+    public function is_userStudentInfo($user_id = '') {
+        $this->db->select("COUNT(*) as total")->from("user_student us");
+        $this->db->where("us.user_id", $user_id);
+        $query = $this->db->get();
+        $result_array = $query->row('total');
+        return $result_array;
+    }
+
+    public function getUserSelectedData($user_id = '', $select_data = '') {
         $this->db->select($select_data)->from("user u");
-        $this->db->join('user_info ui', 'ui.user_id = u.user_id','left');
-        $this->db->join('user_login ul', 'ul.user_id = u.user_id','left');
+        $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+        $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
         $this->db->where("u.user_id =" . $user_id);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+
+    public function getLeftboxData($user_id = '') {
+        $this->db->select('u.first_name,u.last_name,ui.user_image,ui.profile_background')->from("user u");
+        $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+        $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
+        $this->db->where("u.user_id", $user_id);
         $query = $this->db->get();
         $result_array = $query->row_array();
         return $result_array;
@@ -32,7 +58,7 @@ class User_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array;
     }
-    
+
     public function getUserPasswordById($user_id = '') {
         $this->db->select("ul.password")->from("user_login ul");
         $this->db->where("ul.user_id =" . $user_id);
@@ -75,28 +101,28 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-    
+
     public function getUserByEmail($user_email = '') {
         $this->db->select("ul.user_id,ul.email")->from("user_login ul");
-        $this->db->where(array('ul.email' => $user_email,'is_delete' => '0', 'status' => '1'));
+        $this->db->where(array('ul.email' => $user_email, 'is_delete' => '0', 'status' => '1'));
         $query = $this->db->get();
         $result_array = $query->row_array();
         return $result_array;
     }
-    
-    public function getUserPassword($userid = '',$oldpassword = '') {
+
+    public function getUserPassword($userid = '', $oldpassword = '') {
         $this->db->select("ul.user_id")->from("user_login ul");
-        $this->db->where(array('ul.user_id' => $userid,'password' => $oldpassword));
+        $this->db->where(array('ul.user_id' => $userid, 'password' => $oldpassword));
         $query = $this->db->get();
         $result_array = $query->row_array();
         return $result_array;
     }
-    
-     public function getUserDataByEmail($user_email = '') {
+
+    public function getUserDataByEmail($user_email = '') {
         $this->db->select("u.user_id,u.first_name,u.last_name,u.user_dob,u.user_gender,u.user_agree,u.created_date,u.verify_date,u.user_verify,u.user_slider,u.user_slug,ui.user_image,ui.modify_date,ui.edit_ip,ui.profile_background,ui.profile_background_main,ul.email,ul.password,ul.is_delete,ul.status,ul.password_code")->from("user u");
-        $this->db->join('user_info ui', 'ui.user_id = u.user_id','left');
-        $this->db->join('user_login ul', 'ul.user_id = u.user_id','left');
-        $this->db->where('ul.email',$user_email);
+        $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+        $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
+        $this->db->where('ul.email', $user_email);
         $query = $this->db->get();
         $result_array = $query->result_array();
         return $result_array;

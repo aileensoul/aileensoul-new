@@ -170,21 +170,22 @@
                                         <div class="custom-add-box">
                                             <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?></h3>
                                             <div class="p15 fw">
-                                                <fieldset  <?php if ($rating) { ?> class="error-msg col-md-3 pl10 work_type_custom" <?php } else { ?> class="col-md-12 pl10 work_type_custom" <?php } ?>>
+                                                <fieldset  <?php if ($rating) { ?> class="error-msg col-md-3 pl10 work_type_custom" <?php } else { ?> class="col-md-12 fw pl10 work_type_custom" <?php } ?>>
+                                                    <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label>
                                                     <div class="cus_work">
-                                                    <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="11" class="worktype_minheight worktype" name="rating" value="0"> Hourly
+                                                    <input type="radio" tabindex="11" class="worktype_minheight worktype" name="rating" value="0"> Hourly
                                                     <input type="radio" tabindex="12" class="worktype"  name="rating" value="1"> Fixed
                                                     <input type="radio" tabindex="13" class="worktype"  name="rating" value="2"> Not Fixed
                                                     </div>
                                                     <?php echo form_error('rating'); ?>
                                                 </fieldset>
-                                                <fieldset  class="col-md-6 pl10" >
+                                                <fieldset  class="half-width pl10" >
                                                     <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:<span class="optional">(optional)</span></label>
                                                     <input tabindex="14" name="rate" type="text" id="rate" placeholder="Enter your rate"/>
                                                     <span id="fullname-error"></span>
                                                     <?php echo form_error('rate'); ?>
                                                 </fieldset>
-                                                <fieldset class="col-md-6 two-select-box"> 
+                                                <fieldset class="half-width two-select-box"> 
                                                     <label><?php echo $this->lang->line("currency"); ?>:<span class="optional">(optional)</span></label>
                                                     <select tabindex="15" name="currency" id="currency">
                                                         <option  value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>

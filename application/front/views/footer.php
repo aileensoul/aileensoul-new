@@ -45,6 +45,15 @@
                 $('.dropbtn_common').next().removeClass('show');
             }
         });
+		
+		$(document).ready(function(){
+
+		  $("select").change(function(){
+			if ($(this).val()=="") $(this).css({color: "#aaa"});
+			else $(this).css({color: "#000"});
+		  });
+		  
+		});	
     });
 </script>
 <!-- CLOSE ALL DROPEDOWN WHEN CLICK TO BODY OR OTHER DROPDOWN END -->

@@ -95,6 +95,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                             <div class="">
                                 <?php echo $business_left; ?>
+                                <?php echo $left_footer; ?>
                             </div>
                         </div>
                         <div class=" custom-right-art post_detailbox mian_middle_post_box animated fadeInUp" >

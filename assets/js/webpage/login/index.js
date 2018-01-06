@@ -146,23 +146,58 @@ window.onclick = function (event) {
 }
 // forgot password script end 
 
-$(document).ready(function () { 
-    /* validation */
-    $("#forgot_password").validate({
-        rules: {
-            forgot_email: {
-                required: true,
-                email: true,
-            }
-        },
-        messages: {
-            forgot_email: {
-                required: "Email Address Is Required.",
-            }
-        },
-    });
-    /* validation */
-});
+// $(document).ready(function () { 
+//     /* validation */
+//     $("#forgot_password").validate({
+//         rules: {
+//             forgot_email: {
+//                 required: true,
+//                 email: true,
+//             }
+//         },
+//         messages: {
+//             forgot_email: {
+//                 required: "Email Address Is Required.",
+//             }
+//         },
+
+//         submitHandler: submitforgotForm
+
+//     });
+
+// function submitforgotForm()
+// { alert("hii55");
+
+//     var email_login = $("#forgot_email").val();
+
+//     var post_data = {
+//         'forgot_email': email_login,
+//     }
+//     $.ajax({
+//         type: 'POST',
+//         url: base_url + 'profile/forgot_live',
+//         data: post_data,
+//         dataType: "json",
+//         beforeSend: function ()
+//         {
+//             $("#error").fadeOut();
+//         },
+//         success: function (response)
+//         { 
+//             if (response.data == "success") {
+//                 $("#forgotbuton").html(response.message);
+//                 setTimeout(function () {
+//                     $('#forgotPassword').modal('hide');
+//                 }, 5000); 
+//             } else {
+//                 $("#forgotbuton").html(response.message);
+//             }
+//         }
+//     });
+//     return false;
+// }            /* validation */
+
+// });
 
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {

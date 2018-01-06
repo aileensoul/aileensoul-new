@@ -427,7 +427,7 @@
                                             </div>
                                             <div id="errorlogin"></div> 
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group pt10">
                                             <input type="password" tabindex="41" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
                                             <div id="error1" style="display:block;">
                                                 <?php
