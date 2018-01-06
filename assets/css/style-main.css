@@ -2125,8 +2125,8 @@ input:-webkit-autofill,input:-webkit-autofill:active,input:-webkit-autofill:focu
 }
 .contact .inner-form{
     float:left;
-    margin:0 20px
-    box-shadow{0 0 10px -1px rgba(217,217,217,1)}
+    margin:0 20px;
+    box-shadow:0 0 10px -1px rgba(217,217,217,1);
 }
 .contact-add{
     border:1px solid #c7c7c7;
@@ -2356,7 +2356,7 @@ img{
     font-size:14px;
     color:#9C9999;
     font-family:Arial;
-    margin:0 5px
+    margin:0 5px;
 }
 .btn3-cust:hover{
     background:-webkit-linear-gradient(top,rgba(255,255,255,1) 0,rgba(255,255,255,1) 100%);
@@ -2506,7 +2506,6 @@ header.profile-header .logo a{
 	color: #a0b3b0;
 }
 
-/*.no-login .has-error input, input.error, select.error, .has-error textarea, textarea.error {border-bottom:1px solid #ff0000 !important;}*/
 .main_otp_box_middle_submit #new_password:focus{border-bottom: 1px solid #1b8ab9 !important;}
 .main_otp_box_middle_submit #code:focus{border-bottom: 1px solid #1b8ab9 !important;}
 .main_otp_box_middle span #showhide:focus{text-decoration: none;}
@@ -2538,7 +2537,7 @@ header.profile-header .logo a{
 }
 @media (min-width:1280px){
     .cover .middle-section .container{
-        width:1265px
+        width:1265px;
     }
 }
 @media (max-width:1279px){
@@ -3206,6 +3205,8 @@ header.profile-header .logo a{
     .main_otp_box_middle_submit input[type=password],.main_otp_box_middle_submit input[type=text]{
     width:50%
 	}
+	.about-content p img{width:100%;}
+	.new-abput-page .img-custom{width:49%; padding:0 15px;}
 }
 @media screen and (max-width:640px){
     .btns .btn-4{
@@ -3408,6 +3409,7 @@ header.profile-header .logo a{
     footer ul li a{
         padding:5px!important
     }
+	.new-abput-page .img-custom{width:100%;}
 }
 @media screen and (max-width:360px){
     .main-inner .btn-right.pull-right a.btn2{
