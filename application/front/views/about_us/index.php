@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <?php
-<<<<<<< HEAD
+
         if (base_url() == "https://www.aileensoul.com/") {
             ?>
 
@@ -31,9 +31,9 @@
             <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
             <?php
         }
-=======
-        if($_SERVER['HTTP_HOST'] != "localhost"){
->>>>>>> b91722c93c9959028060922838c4c88c232c0b2f
+
+          if (base_url() == "https://www.aileensoul.com/") {
+
         ?>
         
         <script>
