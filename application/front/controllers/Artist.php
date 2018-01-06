@@ -241,6 +241,7 @@ class Artist extends MY_Controller {
                     'slug' => $this->setcategory_slug($this->input->post('firstname') . '-' . $this->input->post('lastname'), 'slug', 'art_reg')
                 );
 
+               // echo "<pre>"; print_r($data); die();
                 $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
 
                 if ($updatdata) {
