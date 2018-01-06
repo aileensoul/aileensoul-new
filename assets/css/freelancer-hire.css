@@ -1829,6 +1829,9 @@ fieldset.work_type_custom input{height: 30px;min-height: 25px;}
 	.mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:550px; }
 	/*** end advertise  ***/
 	.sort-emp-detail{width:66%;}
+    .work_type_custom label.error{top:22px;right: 18px;padding: 6px 10px !important;}
+
+
 }
 @media screen and (max-width: 840px) {
     

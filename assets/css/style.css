@@ -2224,7 +2224,7 @@ word-break: break-word;}
 }
 
 @media screen and (max-width: 1024px) {
-	.common-form input[type="radio"], .common-form input[type="checkbox"]{margin: 6px 10px;}
+	.common-form input[type="radio"], .common-form input[type="checkbox"]{margin: 6px 10px !important;}
 	.email-verify{ padding-left: 3%;}
 	.profile-text1 .as-p{font-size: 12px; letter-spacing: 0px;}
     .profile-text1 .chng_email{font-size: 12px;}

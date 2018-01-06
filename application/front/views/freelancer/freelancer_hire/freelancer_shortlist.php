@@ -257,6 +257,7 @@
             </div>
         </section>
         <?php echo $footer; ?>
+        <?php echo $login_footer ?>
         <!-- Model Popup Open -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
