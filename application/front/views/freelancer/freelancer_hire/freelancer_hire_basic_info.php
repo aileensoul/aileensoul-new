@@ -14,7 +14,7 @@
 
         <?php echo $header; ?>
         <?php
-        if ($freehiredata[0]['free_hire_step'] == '3') {
+        if ($freehiredata['free_hire_step'] == '3') {
             echo $freelancer_hire_header2_border;
         }
         ?>
