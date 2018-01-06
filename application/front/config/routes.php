@@ -55,6 +55,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //$route['login'] = 'Login/index';
 
 $route['default_controller'] = 'main';
+$route['user_basic_info/red'] = 'user_basic_info/autocomplete';
+$route['user_basic_info/blue'] = 'user_basic_info/autocomplete';
+$route['user_basic_info/green'] = 'user_basic_info/autocomplete';
+$route['user_basic_info/autocomplete'] = 'user_basic_info/autocomplete';
 //$route['default_controller'] = 'under_construction';
 
 
