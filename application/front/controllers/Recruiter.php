@@ -4010,9 +4010,7 @@ class Recruiter extends MY_Controller {
             $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
             $recruiterpostdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'recruiter_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage .= '<img src="' . base_url() . $this->config->item('rec_profile_thumb_upload_path') . $recruiterpostdata[0]['recruiter_user_image'] . '" alt="" >';
-            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
-            $userimage .= $this->lang->line("update_profile_picture");
-            $userimage .= '</a>';
+            $userimage .= '<a class="cusome_upload" title="Update profile pictuure" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="http://localhost/aileensoul-new/assets/img/cam.png" alt="cameraimage"> Update Profile Picture</a>';
 
             echo $userimage;
         } else {
