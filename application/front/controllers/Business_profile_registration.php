@@ -210,6 +210,7 @@ class Business_profile_registration extends MY_Controller {
         $errors = array();
         $data = array();
 
+        $userdata = $this->user_model->getUserData($userid);
         // Getting posted data and decodeing json
         $_POST = json_decode(file_get_contents('php://input'), true);
 
@@ -241,6 +242,9 @@ class Business_profile_registration extends MY_Controller {
                 $data['status'] = '1';
                 $data['is_deleted'] = '0';
                 $data['business_step'] = '1';
+
+                $data['contact_person'] = $userdata['first_name'] .' '.$userdata['last_name'];
+                $data['contact_email'] = $userdata['email'];
 
                 $insert_id = $this->common->insert_data_getid($data, 'business_profile');
                 if ($insert_id) {
