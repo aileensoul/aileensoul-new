@@ -23,6 +23,7 @@ class Freelancer extends MY_Controller {
 
     public function index() {
         $userid = $this->session->userdata('aileenuser');
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->load->view('freelancer/freelancer_main', $this->data);
     }
 
