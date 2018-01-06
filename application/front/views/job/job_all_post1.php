@@ -96,12 +96,12 @@
                                         <div class="right_left_box_design ">
                                             <span class="profile-company-name ">
                                                 <span class="profile-company-name ">
-                                                    <a   href="<?php echo site_url('job/resume/' . $jobdata[0]['slug']); ?>" title="<?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
+                                                    <a   href="<?php echo site_url('job/resume'); ?>" title="<?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
                                                 </span>
                                             </span>
                                                     <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => '1'))->row()->industry_name; ?>
                                             <div class="profile-boxProfile-name">
-                                                <a  href="<?php echo base_url('job/resume/' . $jobdata[0]['slug']); ?>" title="designation"><?php
+                                                <a  href="<?php echo base_url('job/resume'); ?>" title="designation"><?php
                                                     if (ucwords($jobdata[0]['designation'])) {
                                                         echo ucwords($jobdata[0]['designation']);
                                                     } else {
