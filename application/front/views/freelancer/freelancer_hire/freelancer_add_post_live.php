@@ -72,7 +72,7 @@
                             </div> 
 
                             <div class="common-form custom-form">
-                                
+
 
                                 <div class="job-saved-box">
 
@@ -185,15 +185,22 @@
                                         <div class="custom-add-box">
                                             <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?></h3>
                                             <div class="p15 fw">
+                                                <fieldset class="col-md-3 pl10 work_type_custom">
+                                                    <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="11" class="worktype_minheight" name="rating"  value="0"> Hourly
+                                                    <input type="radio" tabindex="12"  name="rating" value="1"> Fixed
+                                                    <input type="radio" tabindex="13" class="worktype"  name="rating" value="2"> Not Fixed
+                                                    <?php echo form_error('rating'); ?>
+                                                </fieldset>
+
                                                 <fieldset  class="col-md-6 pl10" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
                                                     <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:<span style="color:red">*</span></label>
-                                                    <input tabindex="11" name="rate" type="text" id="rate" placeholder="Enter your rate"/>
+                                                    <input tabindex="14" name="rate" type="text" id="rate" placeholder="Enter your rate"/>
                                                     <span id="fullname-error"></span>
                                                     <?php echo form_error('rate'); ?>
                                                 </fieldset>
                                                 <fieldset class="col-md-6" <?php if ($csurrency) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
                                                     <label><?php echo $this->lang->line("currency"); ?>:<span style="color:red">*</span></label>
-                                                    <select tabindex="12" name="currency" id="currency">
+                                                    <select tabindex="15" name="currency" id="currency">
                                                         <option  value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
                                                         <?php foreach ($currency as $cur) { ?>
                                                             <option value="<?php echo $cur['currency_id']; ?>"><?php echo $cur['currency_name']; ?></option>
@@ -201,14 +208,9 @@
                                                     </select>
                                                     <?php echo form_error('currency'); ?>
                                                 </fieldset>
-                                                <fieldset class="col-md-3 pl10 work_type_custom">
-                                                    <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label><input type="radio" tabindex="13" class="worktype_minheight" name="rating"  value="0"> Hourly
-                                                    <input type="radio" tabindex="14"  name="rating" value="1"> Fixed
-                                                    <?php echo form_error('rating'); ?>
-                                                </fieldset>
                                                 <fieldset class="hs-submit full-width">
                                                     <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
-                                                    <input type="submit" title="Post" id="submit"  class="add_post_btns" tabindex="18" name="submit" value="Post">
+                                                    <input type="submit" title="Post" id="submit"  class="add_post_btns" tabindex="16" name="submit" value="Post">
 
                                                 </fieldset>
 
@@ -464,9 +466,9 @@
         <?php } ?>
 
         <script>
-                                                var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
-                                                var base_url = '<?php echo base_url(); ?>';
-                                                var postslug = '<?php echo $this->uri->segment(3); ?>';
+                                                    var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
+                                                    var base_url = '<?php echo base_url(); ?>';
+                                                    var postslug = '<?php echo $this->uri->segment(3); ?>';
 
 
 
@@ -474,15 +476,15 @@
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
 
-           <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
+               <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
 
-            <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
+                <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
 
         <?php } else { ?>
 
-             <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
+                 <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
 
-            <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
+                <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
 
         <?php } ?>
 

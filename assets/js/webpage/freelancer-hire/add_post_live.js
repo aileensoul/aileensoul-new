@@ -162,12 +162,12 @@ $(document).ready(function () {
             est_time: {
                 regx_num_space: /[0-9\s][a-zA-Z]/
             },
-            rate: {
-                required: true,
-            },
-            currency: {
-                required: true,
-            },
+//            rate: {
+//                required: true,
+//            },
+//            currency: {
+//                required: true,
+//            },
             rating: {
                 required: true,
             }
@@ -199,12 +199,12 @@ $(document).ready(function () {
             state: {
                 required: "Please select state."
             },
-            rate: {
-                required: "Rate is required."
-            },
-            currency: {
-                required: "Currency is required.",
-            },
+//            rate: {
+//                required: "Rate is required."
+//            },
+//            currency: {
+//                required: "Currency is required.",
+//            },
             rating: {
                 required: "Work type is required.",
             }
@@ -306,6 +306,18 @@ $("#postinfo").submit(function () {
             $('.month').removeClass('error');
             $('.year').removeClass('error');
             $('.date-dropdowns .last_date_error').remove();
+
+            var rate = $('#rate').val();
+            var currency = $('#currency').val();
+            var worktype = $("input[name=rating]:checked").val();
+            alert(worktype);
+            if (rate != '') {
+                if (currency == null) {
+                    $('<label for="currency" class="last_date_error" style="display: block;">You had add rate so please select currency</label>').insertAfter("#currency");
+                    return false;
+                }
+            }
+
             return true;
         }
     }
@@ -584,7 +596,7 @@ function submitforgotForm()
                     $('#forgotPassword').modal('hide');
                 }, 5000); // milliseconds
 
-            
+
                 //window.location = base_url + "job/home/live-post";
             } else {
                 $("#forgotbuton").html(response.message);
