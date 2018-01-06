@@ -446,7 +446,7 @@ function forgot_profile() {
 
 $('.modal-close').click(function(e){ 
    // $('body').addClass('modal-open'); 
-    $('#login').modal('show');
+    //$('#login').modal('show');
 });
 
 $(document).on('click', '[data-toggle*=modal]', function () {
