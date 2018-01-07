@@ -25,10 +25,12 @@
                         </div>
                     </div>
                 </div>
+				<?php echo $login_footer ?>
             </div>
+			
         </section>
         
-       
+			
             <?php echo $footer; ?>
         <script>
             var base_url = '<?php echo base_url(); ?>';
