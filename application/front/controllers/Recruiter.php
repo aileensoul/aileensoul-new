@@ -5116,5 +5116,16 @@ if ($cityname != '') {
      public function testing(){
          $this->load->view('angularselect');
      }
+       
+public function basic_profile() {
+
+        $this->load->view('user_basic_info/red', $this->data);
+    }
+     public function student_profile() {
+
+        $this->load->view('user_basic_info/green', $this->data);
+    }
+    
+     
      
 }

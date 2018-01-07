@@ -95,18 +95,11 @@
                                 <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $jobdata[0]['job_user_image']; ?>" alt="<?php echo $jobdata[0]['job_user_image']; ?>" >
                             <?php } else { ?>
                                 <?php
+                            
                                 $a = $jobdata[0]['fname'];
-                                $words = explode(" ", $a);
-                                foreach ($words as $w) {
-                                    $acronym = $w[0];
-                                }
-                                ?>
-                                <?php
+                                $acronym = substr($a, 0, 1);
                                 $b = $jobdata[0]['lname'];
-                                $words = explode(" ", $b);
-                                foreach ($words as $w) {
-                                    $acronym1 = $w[0];
-                                }
+                                $acronym1 = substr($b, 0, 1);
                                 ?>
                                 <div class="post-img-user">
                                     <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>

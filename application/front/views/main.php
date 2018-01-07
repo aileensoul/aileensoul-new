@@ -286,7 +286,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                    
                                     <?php
                         $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                        echo form_open('profile/forgot_password', $form_attribute);
+                        echo form_open('profile/forgot_live', $form_attribute);
                         ?>
                                     <div class="form-group">
                                         <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">

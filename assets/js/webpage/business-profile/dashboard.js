@@ -124,7 +124,7 @@ function business_dashboard_post(slug, pagenum) {
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-                //  $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             } else {
                 $('#loader').show();
             }
@@ -1379,7 +1379,7 @@ var btn = document.getElementById("myBtn1");
 var span = document.getElementsByClassName("close3")[0];
 // When the user clicks the button, open the modal 
 btn.onclick = function () {
-   var product_name1 = document.getElementById("test-upload_product").value;
+    var product_name1 = document.getElementById("test-upload_product").value;
 
     var product_trim1 = product_name1.trim();
     var product_description1 = document.getElementById("test-upload_des").value;
@@ -1388,8 +1388,8 @@ btn.onclick = function () {
     var product_fileInput1 = document.getElementById("file-1").value;
 
     if (product_fileInput1 == '' && product_trim1 == '' && des_trim1 == '')
-    { 
-    modal.style.display = "block";
+    {
+        modal.style.display = "block";
     }
 }
 
@@ -1926,7 +1926,7 @@ function contact_person_query(clicked_id, status) {
         success: function (data) { //alert(data);
             // return data;
             contact_person_model(clicked_id, status, data);
-            
+
         }
     });
 }

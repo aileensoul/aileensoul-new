@@ -409,6 +409,8 @@ function submitforgotForm()
                 setTimeout(function () {
                     $('#forgotPassword').modal('hide');
                     $('#login').modal('show');
+                     $("#forgotbuton").html('');
+                    document.getElementById("forgot_email").value = "";
                 }, 5000); // milliseconds
                 //window.location = base_url + "job/home/live-post";
             } else {
@@ -440,11 +442,18 @@ function forgot_profile() {
 }
 
 
-
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#login').modal('hide');
+        $('#register').modal('hide');
+        $('#forgotPassword').modal('hide');
+        
+    }
+});
 
 $('.modal-close').click(function(e){ 
    // $('body').addClass('modal-open'); 
-    $('#login').modal('show');
+    //$('#login').modal('show');
 });
 
 $(document).on('click', '[data-toggle*=modal]', function () {

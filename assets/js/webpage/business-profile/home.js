@@ -59,12 +59,15 @@ function ajax_business_home_post(pagenum) {
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
+                $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             } else {
+                $('#loader').show();
             }
         },
         complete: function () {
         },
         success: function (data) {
+            $('.loader').remove();
             $('.business-all-post').append(data);
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -1038,7 +1041,7 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close1")[0];
 // When the user clicks the button, open the modal 
 btn.onclick = function () {
-    
+
     var product_name1 = document.getElementById("test-upload-product").value;
 
     var product_trim1 = product_name1.trim();
@@ -1048,8 +1051,8 @@ btn.onclick = function () {
     var product_fileInput1 = document.getElementById("file-1").value;
 
     if (product_fileInput1 == '' && product_trim1 == '' && des_trim1 == '')
-    { 
-    modal.style.display = "block";
+    {
+        modal.style.display = "block";
     }
 }
 // When the user clicks on <span> (x), close the modal
@@ -1641,7 +1644,7 @@ $(document).on('keydown', function (e) {
             });
         }
         document.getElementById('myModal').style.display = "none";
-         $('body').removeClass('modal-open');
+        $('body').removeClass('modal-open');
     }
 });
 
@@ -1653,7 +1656,7 @@ window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-     $('body').removeClass('modal-open');
+    $('body').removeClass('modal-open');
 }
 
 
