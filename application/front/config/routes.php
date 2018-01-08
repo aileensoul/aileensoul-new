@@ -58,6 +58,14 @@ $route['default_controller'] = 'main';
 
 $route['basic-information'] = 'user_info';
 $route['educational-information'] = 'user_info';
+
+$route['dashboard'] = 'Userprofile';
+$route['profiless'] = 'Userprofile';
+$route['detail'] = 'Userprofile';
+$route['followers'] = 'Userprofile';
+$route['following'] = 'Userprofile';
+$route['contacts'] = 'user_info';
+
 $route['opportunities'] = 'user_opportunities';
 
 //$route['default_controller'] = 'under_construction';

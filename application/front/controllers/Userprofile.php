@@ -14,6 +14,9 @@ class Userprofile extends MY_Controller {
     }
 
     public function index() {
+        $this->data['header'] = $this->load->view('userprofile/header', $this->data, TRUE);
+        $this->data['footer'] = $this->load->view('userprofile/footer', $this->data, TRUE);
+        $this->data['title'] = "Basic Information | Aileensoul";
         $this->load->view('userprofile/index', $this->data);
     }
 
