@@ -15,7 +15,7 @@
     <section>
 
         <div class="user-midd-section" id="paddingtop_fixed">
-<<<<<<< HEAD
+
                 <div class="container padding-360">
                     <div class="row4">
                            <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
@@ -112,7 +112,7 @@
 
      <?php echo $left_footer; ?>
 
-            
+                         </div>            
 
                         </div>
                           <div class="inner-right-part">
@@ -132,9 +132,9 @@
                                                         <div class="job-top-detail">
                                                             <h5><a href="javascript:void(0);"><?php echo $post['post_name']; ?></a></h5>
                                                             
-=======
 
-<div class="profile-boxProfileCard  module">
+
+                                <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
                                             <?php
                                             $hire_user = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $this->session->userdata('aileenuser'), $data = 'user_id', $join_str = array());
@@ -156,7 +156,7 @@
                                                            aria-hidden="true" rel="noopener">
                                                             <?php } ?>
                                                         <div class="bg-images no-cover-upload"> 
->>>>>>> 58977c3a3e4e7d4a6a2bab1f98dcb9efb73ee77b
+
                                                             <?php
                                                             if ($freelancr_user_data[0]['profile_background'] != '') {
                                                                 ?>
@@ -353,7 +353,7 @@
                                             $cityname = $this->db->get_where('cities', array('city_id' => $city))->row()->city_name;
                                             $countryname = $this->db->get_where('countries', array('country_id' => $country))->row()->country_name;
                                             ?>
-<<<<<<< HEAD
+
                                             <div class="art-img-nn">
                                                 <div class="art_no_post_img">
                                                     <img src="' . base_url() . 'img/job-no.png">
@@ -367,7 +367,7 @@
                                     </div>
             </div>
         </div>
-=======
+
                                             <span>
 
                                                 <?php
@@ -514,7 +514,7 @@
             <?php } ?>
 
 
->>>>>>> 58977c3a3e4e7d4a6a2bab1f98dcb9efb73ee77b
+
         </div>
     </section>
     <?php echo $login_footer ?>
