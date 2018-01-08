@@ -22,5 +22,5 @@
                 </p>
             </form>
     </div>
-    <a href="basic-information" title="Go to Back"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+    <a href="basic-information" title="Go to Back"><i class="fa fa-arrow-left" aria-hidden="true"> Back to Basic Information</i></a>
 </div>
