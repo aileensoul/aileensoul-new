@@ -15,7 +15,106 @@
     <section>
 
         <div class="user-midd-section" id="paddingtop_fixed">
-                   
+                           <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
+                            <div class="">
+                                <div class="full-box-module">   
+                                    <div class="profile-boxProfileCard  module">
+                                        <div class="profile-boxProfileCard-cover"> 
+                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block"
+                                               href="<?php echo base_url('freelance-hire/employer-details'); ?>"  tabindex="-1" aria-hidden="true" rel="noopener" 
+                                               title="<?php echo $freehiredata['fullname'] . " " . $freehiredata['username']; ?>">
+
+                                                <?php if ($freehiredata['profile_background'] != '') { ?>
+                                                    <div class="data_img">
+                                                        <img src="<?php echo FREE_HIRE_BG_THUMB_UPLOAD_URL . $freehiredata['profile_background']; ?>" class="bgImage" alt="<?php echo $freehiredata['fullname']. " ".$freehiredata['username'];  ?>" >
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div class="data_img bg-images no-cover-upload">
+                                                        <img alt="No Image" src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage">
+                                                    </div>
+                                                <?php } ?>
+                                            </a>
+                                        </div>
+                                        <div class="profile-boxProfileCard-content clearfix">
+                                            <div class="left_side_box_img buisness-profile-txext">
+
+                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('freelance-hire/employer-details'); ?>"  tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo $freehiredata['fullname'] . " " . $freehiredata['username']; ?>">
+                                                    <?php
+                                                    $fname = $freehiredata['fullname'];
+                                                    $lname = $freehiredata['username'];
+                                                    $sub_fname = substr($fname, 0, 1);
+                                                    $sub_lname = substr($lname, 0, 1);
+
+                                                    if ($freehiredata['freelancer_hire_user_image']) {
+                                                        if (IMAGEPATHFROM == 'upload') {
+                                                            if (!file_exists($this->config->item('free_hire_profile_main_upload_path') . $freehiredata['freelancer_hire_user_image'])) {
+                                                                ?>
+                                                                <div class="post-img-profile">
+                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                </div>
+                                                            <?php } else {
+                                                                ?>
+                                                                <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freehiredata['freelancer_hire_user_image']; ?>" alt="<?php echo $freehiredata['fullname'] . " " . $freehiredata['username']; ?>" > 
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            $filename = $this->config->item('free_hire_profile_main_upload_path') . $freehiredata['freelancer_hire_user_image'];
+                                                            $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                            if ($info) {
+                                                                ?>
+                                                                <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freehiredata['freelancer_hire_user_image']; ?>" alt="<?php echo $freehiredata['fullname'] . " " . $freehiredata['username']; ?>" >
+                                                            <?php } else {
+                                                                ?>
+                                                                <div class="post-img-profile">
+                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                </div> 
+                                                                <?php
+                                                            }
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <div class="post-img-profile">
+                                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </a>
+                                            </div>
+                                            <div class="right_left_box_design ">
+                                                <span class="profile-company-name ">
+                                                    <a href="<?php echo base_url('freelance-hire/employer-details'); ?>" title="<?php echo $freehiredata['fullname'] . " " . $freehiredata['username']; ?>"> <?php echo ucwords($freehiredata['fullname']) . ' ' . ucwords($freehiredata['username']); ?></a>  
+                                                </span>
+                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => '1'))->row()->industry_name; ?>
+                                                <div class="profile-boxProfile-name">
+                                                    <a href="<?php echo base_url('freelance-hire/employer-details'); ?>" title="<?php echo $freehiredata['fullname'] . " " . $freehiredata['username']; ?>"><?php
+                                                        if ($freehiredata['designation']) {
+                                                            echo $freehiredata['designation'];
+                                                        } else {
+                                                            echo "Designation";
+                                                        }
+                                                        ?></a>
+                                                </div>
+                                                <ul class=" left_box_menubar">
+                                                    <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>><a title="Employer Details"  class="padding_less_left" href="<?php echo base_url('freelance-hire/employer-details'); ?>" ><?php echo $this->lang->line("details"); ?></a></li>
+                                                    <li><a title="Projects" href="<?php echo base_url('freelance-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a></li>
+                                                    <li <?php if (($this->uri->segment(1) == 'freelance-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer"  class="padding_less_right" href="<?php echo base_url('freelance-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved"); ?></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>                             
+                                </div>
+                                
+
+     <?php echo $left_footer; ?>
+
+                                <div  class="add-post-button">
+                                    <a title="Post Project" class="btn btn-3 btn-3b" id ="Fh-post-project" href="<?php echo base_url('freelance-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
+                                </div>
+                            </div>
+
+                        </div>
                           <div class="inner-right-part">
                                         <div class="page-title">
                                             <h3>

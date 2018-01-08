@@ -29,7 +29,7 @@
             </div>
 
         </section>
-        <?php echo $login_footer ?>
+        
         <?php echo $footer; ?>
         <script>
             var base_url = '<?php echo base_url(); ?>';
