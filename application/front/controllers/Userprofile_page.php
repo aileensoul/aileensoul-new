@@ -40,7 +40,7 @@ class Userprofile_page extends MY_Controller {
       $userid = $this->session->userdata('aileenuser');
         $is_basicInfo = $this->data['is_basicInfo'] = $this->user_model->is_userBasicInfo($userid);
       if($is_basicInfo == 0){
-        $detailsData = $this->data['detailsData'] = $this->user_model->getUserStudentData($userid,$data="us.current_study,us.university_name,c.city_name");
+        $detailsData = $this->data['detailsData'] = $this->user_model->getUserStudentData($userid,$data="d.degree_name,u.university_name,c.city_name");
       } else { 
         $detailsData = $this->data['detailsData'] = $this->user_model->getUserProfessionData($userid,$data="up.designation,up.field,c.city_name");
       } 

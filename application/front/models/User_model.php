@@ -132,6 +132,7 @@ class User_model extends CI_Model {
     public function getUserProfessionData($user_id = '', $select_data = '') {
         $this->db->select($select_data)->from("user_profession up");
         $this->db->join('cities c', 'c.city_id = up.city', 'left');
+        $this->db->join('user usr', 'usr.user_id = us.user_id', 'left');
         $this->db->where("up.user_id =" . $user_id);
         $query = $this->db->get();
         $result_array = $query->row_array();
@@ -140,8 +141,10 @@ class User_model extends CI_Model {
     
     public function getUserStudentData($user_id = '', $select_data = '') {
         $this->db->select($select_data)->from("user_student us");
-        $this->db->join('cities c', 'c.city_id = up.city', 'left');
-        $this->db->join('university u', 'u.university_id = up.city', 'left');
+        $this->db->join('cities c', 'c.city_id = us.city', 'left');
+        $this->db->join('user usr', 'usr.user_id = us.user_id', 'left');
+        $this->db->join('university u', 'u.university_id = us.university_name', 'left');
+        $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
         $this->db->where("us.user_id =" . $user_id);
         $query = $this->db->get();
         $result_array = $query->row_array();
