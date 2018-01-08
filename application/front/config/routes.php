@@ -61,7 +61,7 @@ $route['educational-information'] = 'user_info';
 
 $route['dashboard'] = 'Userprofile';
 $route['profiless'] = 'Userprofile';
-$route['detail'] = 'Userprofile';
+$route['details'] = 'Userprofile';
 $route['followers'] = 'Userprofile';
 $route['following'] = 'Userprofile';
 $route['contacts'] = 'user_info';

@@ -22,8 +22,7 @@ class Userprofile_page extends MY_Controller {
         $this->load->view('userprofile/dashboard', $this->data);
     }
      public function details() {
-        $userid = $this->session->userdata('aileenuser');
-        $userdata = $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
+        
         $this->load->view('userprofile/details', $this->data);
     }
      public function contacts() {
@@ -34,6 +33,19 @@ class Userprofile_page extends MY_Controller {
     }
      public function following() {
         $this->load->view('userprofile/following', $this->data);
+    }
+    
+    
+    public function detail_data() { 
+      $userid = $this->session->userdata('aileenuser');
+        $is_basicInfo = $this->data['is_basicInfo'] = $this->user_model->is_userBasicInfo($userid);
+      if($is_basicInfo == 0){
+        $detailsData = $this->data['detailsData'] = $this->user_model->getUserStudentData($userid,$data="us.current_study,us.university_name,c.city_name");
+      } else { 
+        $detailsData = $this->data['detailsData'] = $this->user_model->getUserProfessionData($userid,$data="up.designation,up.field,c.city_name");
+      } 
+      
+      echo json_encode($detailsData);
     }
 
 }
