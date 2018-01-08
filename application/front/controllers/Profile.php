@@ -370,14 +370,15 @@ class Profile extends CI_Controller {
                 echo json_encode(
                         array(
                             "data" => 'success',
-                            "message" => '<div class="alert alert-success">We have successfully sent a code in provided email address.</div>',
+                            "message" => '<div class="alert alert-success">We have successfully sent a code on  provided email address.</div>',
                 ));
             } else {
 
                 echo json_encode(
                         array(
                             "data" => 'error',
-                            "message" => '<div class="alert alert-danger">Code for new password successfully not send in your email id.</div>',
+                            "message" => '<div class="alert alert-danger">we have not sent a code on provided email address
+.</div>',
                 ));
             }
         } else {
