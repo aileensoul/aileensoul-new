@@ -2004,22 +2004,22 @@ class Recruiter extends MY_Controller {
 
                             if (IMAGEPATHFROM == 'upload') {
 
-                                if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) {
+                                if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time_1)) {
 
                                     $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                                 } else {
-                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '" alt="' . $cache_time . '">';
+                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '" alt="' . $cache_time . '">';
                                 }
                             } else {
-
-                                $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
-                                $s3 = new S3(awsAccessKey, awsSecretKey);
-                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                if ($info) {
-                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '" alt="' . $cache_time . '">';
-                                } else {
-                                    $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
-                                }
+                                $rec_post .= '<img src="' . $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1 . '" alt="' . $cache_time_1 . '">';
+//                                $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
+//                                $s3 = new S3(awsAccessKey, awsSecretKey);
+//                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+//                                if ($info) {
+//                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '" alt="' . $cache_time . '">';
+//                                } else {
+//                                    $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
+//                                }
                             }
                         } else {
 
@@ -2167,7 +2167,7 @@ class Recruiter extends MY_Controller {
                         $rec_post .= '<div class="post-img">
                                             <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                         if ($cache_time_1) {
-                            $rec_post .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time) . '" alt=' . $cache_time . '>';
+                            $rec_post .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time_1) . '" alt=' . $cache_time_1 . '>';
                         } else {
                             $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                         }
