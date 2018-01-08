@@ -1,3 +1,19 @@
+$(document).ready(function () {
+
+     $('.ajax_load').hide();
+
+  });
+  
+function reg_loader(){
+
+      var form = $("#basicinfo");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+
+}   
+
+
 $.validator.addMethod("regx", function (value, element, regexpr) {
     return regexpr.test(value);
 }, "Number, space and special character are not allowed.");

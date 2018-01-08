@@ -20,6 +20,9 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
 
 $(document).ready(function () {
 
+
+     $('.ajax_load').hide();
+
     $("#basicinfo").validate({
 
         rules: {
@@ -96,6 +99,14 @@ $(document).ready(function () {
 });
 
 
+function reg_loader(){
+
+      var form = $("#basicinfo");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+
+}
 
 jQuery(document).ready(function ($) {
 

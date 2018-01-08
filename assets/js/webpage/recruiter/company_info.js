@@ -1,5 +1,8 @@
 
 $(document).ready(function () {
+
+     $('.ajax_load').hide();
+
     $('#country').on('change', function () {
         var countryID = $(this).val();
         
@@ -37,6 +40,16 @@ $(document).ready(function () {
 });
 
 //validation for edit email formate form
+
+
+function reg_loader(){
+
+      var form = $("#basicinfo");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+
+}
 
 jQuery.validator.addMethod("noSpace", function (value, element) {
     return value == '' || value.trim().length != 0;

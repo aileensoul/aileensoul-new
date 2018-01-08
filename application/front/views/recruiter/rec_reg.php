@@ -238,7 +238,10 @@
                          
                         <fieldset class=" full-width">
                            <div class="job_reg">
-                              <input title="Register" type="submit" id="submit" name="" value="Register" tabindex="11">
+                             <!--  <input title="Register" type="submit" id="submit" name="" value="Register" tabindex="11"> -->
+
+                              <button id="submit" name="submit" tabindex="11" onclick="return reg_loader();" class="cus_btn_sub">Register<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+
                            </div>
                         </fieldset>
     </form>

@@ -69,7 +69,7 @@ class Search extends MY_Controller {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => '4');
             $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($search_place == "") {
-            $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.business_step' => '4', 'user.is_delete' => '0', 'user.status' => '1');
+            $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.business_step' => '4', 'user_login.is_delete' => '0', 'user_login.status' => '1');
 
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
@@ -85,6 +85,11 @@ class Search extends MY_Controller {
             $join_str[0]['join_table_id'] = 'user.user_id';
             $join_str[0]['from_table_id'] = 'business_profile.user_id';
             $join_str[0]['join_type'] = '';
+
+            $join_str[1]['table'] = 'user_login';
+            $join_str[1]['join_table_id'] = 'user_login.user_id';
+            $join_str[1]['from_table_id'] = 'business_profile.user_id';
+            $join_str[1]['join_type'] = '';
 
             //   echo $search_condition; 
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
@@ -100,7 +105,7 @@ class Search extends MY_Controller {
 
             $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-            $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.city' => $cache_time, 'business_profile.business_step' => '4', 'user.is_delete' => '0', 'user.status' => '1');
+            $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.city' => $cache_time, 'business_profile.business_step' => '4', 'user_login.is_delete' => '0', 'user_login.status' => '1');
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
             if ($searchbusiness1) {
@@ -115,6 +120,11 @@ class Search extends MY_Controller {
             $join_str[0]['join_table_id'] = 'user.user_id';
             $join_str[0]['from_table_id'] = 'business_profile.user_id';
             $join_str[0]['join_type'] = '';
+
+            $join_str[1]['table'] = 'user_login';
+            $join_str[1]['join_table_id'] = 'user_login.user_id';
+            $join_str[1]['from_table_id'] = 'business_profile.user_id';
+            $join_str[1]['join_type'] = '';
 
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -220,7 +230,7 @@ class Search extends MY_Controller {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => '4', 'is_deleted' => '0');
             $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($search_place == "") {
-            $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1', 'business_step' => '4', 'user.is_delete' => '0', 'user.status' => '1');
+            $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1', 'business_step' => '4', 'user_login.is_delete' => '0', 'user_login.status' => '1');
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
             if ($searchbusiness1) {
@@ -234,6 +244,11 @@ class Search extends MY_Controller {
             $join_str[0]['join_table_id'] = 'user.user_id';
             $join_str[0]['from_table_id'] = 'business_profile.user_id';
             $join_str[0]['join_type'] = '';
+
+            $join_str[1]['table'] = 'user_login';
+            $join_str[1]['join_table_id'] = 'user_login.user_id';
+            $join_str[1]['from_table_id'] = 'business_profile.user_id';
+            $join_str[1]['join_type'] = '';
             //   echo $search_condition; 
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -247,7 +262,7 @@ class Search extends MY_Controller {
 
             $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id,business_profile.business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-            $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.city' => $cache_time, 'business_profile.business_step' => '4', 'user.is_delete' => '0', 'user.status' => '1');
+            $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.city' => $cache_time, 'business_profile.business_step' => '4', 'user_login.is_delete' => '0', 'user_login.status' => '1');
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
             if ($searchbusiness1) {
@@ -262,6 +277,11 @@ class Search extends MY_Controller {
             $join_str[0]['join_table_id'] = 'user.user_id';
             $join_str[0]['from_table_id'] = 'business_profile.user_id';
             $join_str[0]['join_type'] = '';
+
+            $join_str[1]['table'] = 'user_login';
+            $join_str[1]['join_table_id'] = 'user_login.user_id';
+            $join_str[1]['from_table_id'] = 'business_profile.user_id';
+            $join_str[1]['join_type'] = '';
 
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
