@@ -386,7 +386,7 @@ class Artist extends MY_Controller {
             redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
-        if ($this->input->post('next')) {
+        //if ($this->input->post('next')) {
 
             $this->form_validation->set_rules('country', 'Country', 'required');
             $this->form_validation->set_rules('state', 'State', 'required');
@@ -424,7 +424,7 @@ class Artist extends MY_Controller {
                     redirect('artist/artistic-address', refresh);
                 }
             }
-        }
+       // }
     }
 
     public function art_information() {

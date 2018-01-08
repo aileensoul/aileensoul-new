@@ -145,7 +145,10 @@
                            </fieldset>
                           
                            <fieldset class="hs-submit full-width">
-                              <input title="Save" type="submit"  id="next" name="next" value="Save" tabindex="12">
+                             <!--  <input title="Save" type="submit"  id="next" name="next" value="Save" tabindex="12"> -->
+
+                              <button id="next" name="next" class="cus_btn_sub" onclick="return profile_reg();" tabindex="12">Save<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+                              
                            </fieldset>
                            </form>
                         </div>

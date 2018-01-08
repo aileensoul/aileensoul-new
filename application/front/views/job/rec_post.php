@@ -263,15 +263,16 @@
                                                    <?php     } else { ?>
                                                             <img src="<?php echo  REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>" alt="<?php echo $cache_time; ?>">
                                                        <?php  }
-                                                    } else {
-                                                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
+                                                    } else { ?>
+                                                        <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time);  ?>" alt="<?php echo $cache_time; ?>">
+<!--                                                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
                                                         $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                                        if ($info) { ?>
-                                                           <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $cache_time  ?>" alt="<?php echo $cache_time; ?>">
-                                                         <?php } else { ?>
-                                                          <img src="<?php echo  base_url('assets/images/commen-img.png') ?>" alt="commonimage">
-                                                       <?php  }
+                                                        if ($info) { ?>-->
+                                                           <!--<img src="<?php echo $this->config->item('rec_profile_thumb_upload_path') . $cache_time  ?>" alt="<?php echo $cache_time; ?>">-->
+                                                         <?php //} else { ?>
+                                                          <!--<img src="<?php echo  base_url('assets/images/commen-img.png') ?>" alt="commonimage">-->
+                                                       <?php // }
                                                     }
                                                 } else { ?>
                                                     <img src="<?php echo  base_url('assets/images/commen-img.png') ?>" alt="commonimage">

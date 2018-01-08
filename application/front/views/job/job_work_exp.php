@@ -111,7 +111,8 @@
                                                 Fresher&nbsp;&nbsp;
                                                 </label>
                                                 <fieldset class="hs-submit full-width left_nest">
-                                                   <input title="Submit" type="submit" id="next" tabindex="2" name="next" value="Submit">
+                                                   <!-- <input title="Submit" type="submit" id="next" tabindex="2" name="next" value="Submit"> -->
+                                                   <button  id="next" tabindex="2" name="next"  onclick="return profile_reg();">Submit<span class="ajax_load pl10" id="fre_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                                                 </fieldset>
                                                 <?php echo form_close(); ?>
                                              </div>
@@ -299,7 +300,9 @@
                                                 </div>
                                              
                                                 <fieldset class="hs-submit full-width"> 
-                                                   <input title="Submit" style="" type="submit"  tabindex="8" id="next" name="next" value="Submit"  >
+                                                   <!-- <input title="Submit" style="" type="submit"  tabindex="8" id="next" name="next" value="Submit"  > -->
+
+                                                   <button tabindex="8" id="next" name="next" onclick="return profile_reg();">Submit<span class="ajax_load pl10" id="fre_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                                                 </fieldset>
                                                
                                                 <?php
@@ -422,7 +425,10 @@
                                                    <input title="Remove Experience" type="button" id="btnRemove" value=" - " disabled="disabled">
                                                 </div>
                                                 <fieldset class="hs-submit full-width"> 
-                                                   <input title="Submit" style="" type="submit" id="next" name="next" value="Submit">
+                                                   <!-- <input title="Submit" style="" type="submit" id="next" name="next" value="Submit"> -->
+
+                                                    <button tabindex="8" id="next" name="next" onclick="return profile_reg1();">Submit<span class="ajax_load pl10" id="exp_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+
                                                 </fieldset>
                                                 <?php echo form_close(); ?> 
                                              </div>

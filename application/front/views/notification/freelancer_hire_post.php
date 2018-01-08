@@ -283,11 +283,11 @@
                                             ?>
                                             <div class="art-img-nn">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url() . 'img/job-no.png">
+                                                    <img src="<?php echo base_url('img/job-no.png'); ?>">
 
                                                 </div>
                                                 <div class="art_no_post_text">
-                                                    No  Post Available.
+                                                    No  Project Available.
                                                 </div>
                                             </div>
                                         <?php } ?>

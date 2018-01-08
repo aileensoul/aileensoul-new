@@ -11,8 +11,8 @@
 .common-form form{padding: 0px;}
 
 
-.hs-submit a{line-height: 1;}
-
+.hs-submit a{line-height: 18px;}
+.common-form fieldset.hs-submit input{line-height: 21px;}
 /*** common css for job recrutor and freelancer  ***/
 
 .message1 h2 {
@@ -436,6 +436,7 @@ li.fr a {
     border-bottom: none;
 	height:94px;
 }
+.profile-boxProfileCard .bg-images img{height: 94px !important;}
 .profile-boxProfileCard-bg {
     background-size: 100%;
     border-radius: 4px 4px 0 0;

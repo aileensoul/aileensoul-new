@@ -1790,7 +1790,7 @@ Your browser does not support the audio tag.
                     $notification .= '<h6><b>' . ucwords($companyname) . '</b> <span class="noti-msg-y"> Commented on your photo in business profile. </span></h6>';
                     $notification .= '<div ><i class="clockimg" ></i><span class="day-text">';
                     $notification .= '' . $this->common->time_elapsed_string($total['not_created_date'], $full = false) . '';
-                    $notification .= '</span></div></div';
+                    $notification .= '</span></div></div>';
                     $notification .= '</div></a>';
                     $notification .= '</li>';
                 }

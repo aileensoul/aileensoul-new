@@ -2,6 +2,8 @@
 //Validation Start
 $(document).ready(function () {
 
+         $('.ajax_load').hide();
+
     $.validator.addMethod("regx1", function (value, element, regexpr) {
 
         if (!value)
@@ -96,6 +98,23 @@ $(document).ready(function () {
 
     });
 });
+
+
+function profile_reg(){
+
+    var form = $("#jobseeker_regform");
+    if(form.valid() == true ){
+     $('#fre_ajax_load').show();
+    }
+}
+
+function profile_reg1(){
+
+    var form = $("#jobseeker_regform1");
+    if(form.valid() == true ){
+     $('#exp_ajax_load').show();
+    }
+}
 
 $(document).ready(function () {
 

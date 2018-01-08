@@ -19,7 +19,7 @@
 
     </head>
 
-    <body class="page-container-bg-solid page-boxed botton_footer">
+    <body class="page-container-bg-solid page-boxed botton_footer freeh3">
         <?php echo $header; ?>
         <?php echo $freelancer_hire_header2_border; ?>
         <section>
@@ -39,7 +39,7 @@
                                 ?>
                             </div>
                             <div class="common-form custom-form">
-                                <h3 class="col-chang"><?php echo $this->lang->line("edit_project"); ?></h3>
+                                <h3 class="col-chang cus-chang"><?php echo $this->lang->line("edit_project"); ?></h3>
                                 <?php echo form_open(base_url('freelancer_hire/freelancer_edit_post_insert/' . $freelancerpostdata[0]['post_id']), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit')); ?>
                                 <?php
                                 $post_name = form_error('post_name');

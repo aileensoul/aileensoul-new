@@ -159,7 +159,10 @@
                                     <?php echo form_error('pincode'); ?>
 									</fieldset>								
                                 <fieldset class="hs-submit full-width">                                       
-                                   <input type="submit"  id="next" name="next" tabindex="6" value="Next">      
+                                 <!--   <input type="submit"  id="next" name="next" tabindex="6" value="Next">   -->
+
+                                   <button id="next" name="next" tabindex="6" onclick="return reg_loader();">Next<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+
                                    </fieldset>
                             </form>
                         </div>
