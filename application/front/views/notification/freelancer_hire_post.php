@@ -15,6 +15,8 @@
     <section>
 
         <div class="user-midd-section" id="paddingtop_fixed">
+                <div class="container padding-360">
+                    <div class="row4">
                            <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                             <div class="">
                                 <div class="full-box-module">   
@@ -109,10 +111,7 @@
 
      <?php echo $left_footer; ?>
 
-                                <div  class="add-post-button">
-                                    <a title="Post Project" class="btn btn-3 btn-3b" id ="Fh-post-project" href="<?php echo base_url('freelance-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
-                                </div>
-                            </div>
+            
 
                         </div>
                           <div class="inner-right-part">
@@ -293,7 +292,8 @@
                                             </div>
                                         <?php } ?>
                                     </div>
-        
+            </div>
+        </div>
         </div>
     </section>
 <?php echo $login_footer ?>
