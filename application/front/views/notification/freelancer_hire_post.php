@@ -111,7 +111,7 @@
 
      <?php echo $left_footer; ?>
 
-                               
+                            </div>
 
                         </div>
                           <div class="inner-right-part">
@@ -292,9 +292,10 @@
                                             </div>
                                         <?php } ?>
                                     </div>
-                        </div>
                     </div>
-        </div>
+                    </div>
+                    </div>
+        
     </section>
 <?php echo $login_footer ?>
     <?php echo $footer; ?>
