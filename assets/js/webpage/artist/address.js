@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-     $('.ajax_load').hide();
+    // $('.ajax_load').hide();
      
     $('#country').on('change', function () {
         var countryID = $(this).val();
@@ -44,7 +44,8 @@ function reg_loader(){
 
       var form = $("#address");
     if(form.valid() == true ){
-     $('#profilereg_ajax_load').show();
+      $('#profilereg_ajax_load').show();
+     //document.getElementById('profilereg_ajax_load').style.display = 'block'
     }
 
 }
