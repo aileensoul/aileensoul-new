@@ -1,5 +1,7 @@
 $(document).ready(function(){ 
 
+     $('.ajax_load').hide();
+     
   if(profile_login == 'live'){
 
         $('#register').modal('show');
@@ -85,6 +87,11 @@ $(document).ready(function () {
  });
 
 function validate(){
+
+     var form = $("#artinfo");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
 
   var strUser1 = $('#skills').val();
    if(strUser1 == ''){

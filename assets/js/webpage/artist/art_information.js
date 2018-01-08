@@ -1,11 +1,13 @@
 jQuery(document).ready(function ($) {
+
+     $('.ajax_load').hide();
+
     $(window).load(function () {
         $('#preloader').fadeOut('slow', function () {
             $(this).remove();
         });
     });
 });
-
 
 
 jQuery.validator.addMethod("noSpace", function (value, element) {
@@ -145,6 +147,11 @@ function validation_other(event) {
 
 function validate() {
 
+     var form = $("#artinfo");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+    
     var strUser1 = $('#skills').val();
     if (strUser1 == '') {
         $("#multidropdown").addClass("error");

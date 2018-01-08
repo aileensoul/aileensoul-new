@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+     $('.ajax_load').hide();
+     
     $('#country').on('change', function () {
         var countryID = $(this).val();
         if (countryID) {
@@ -37,7 +40,14 @@ $(document).ready(function () {
 });
 
 
+function reg_loader(){
 
+      var form = $("#address");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+
+}
 
 $(document).ready(function () {
 
