@@ -742,7 +742,7 @@
                                        
                                        <div class="fr img_remove">
                                           <!-- <input title="Save" style="font-size: 14px;" class="job_edu_graduation_submit_btn" tabindex="11" type="Submit"  id="next" name="next" value="Save"> -->
-                                          <button id="next" name="next" class=="job_edu_graduation_submit_btn" onclick="return profile_reg_gra();">Save<span class="ajax_load pl10" id="grareg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+                                          <button id="next" name="next" class="job_edu_graduation_submit_btn" onclick="return profile_reg_gra();">Save<span class="ajax_load pl10" id="grareg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                                           
                                        </div>
                                        <div class="display_inline_block" >

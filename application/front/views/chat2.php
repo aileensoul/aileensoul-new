@@ -866,7 +866,7 @@ if ($lstusrdata) {
                     var message_from_profile = <?php echo $message_from_profile ?>;
                     // alert(message_from_profile);
                     // business data start
-                    if (message_from_profile == 1) {
+                    if (message_from_profile == 5) {
 
                     var base_url = '<?php echo base_url(); ?>';
                     $(function () {
@@ -1008,7 +1008,7 @@ if ($lstusrdata) {
                             minLength: 2,
                                     source: function(request, response) {
                                     // delegate back to autocomplete, but extract the last term
-                                    $.getJSON(base_url + "freelancer/freelancer_hire_search_keyword", { term : extractLast(request.term)}, response);
+                                    $.getJSON(base_url + "freelancer_hire/freelancer_hire_search_keyword", { term : extractLast(request.term)}, response);
                                     },
                                     focus: function() {
                                     // prevent value inserted on focus
@@ -1059,7 +1059,7 @@ if ($lstusrdata) {
                             minLength: 2,
                                     source: function(request, response) {
                                     // delegate back to autocomplete, but extract the last term
-                                    $.getJSON(base_url + "freelancer/freelancer_search_city", { term : extractLast(request.term)}, response);
+                                    $.getJSON(base_url + "freelancer_hire/freelancer_search_city", { term : extractLast(request.term)}, response);
                                     },
                                     focus: function() {
                                     // prevent value inserted on focus
@@ -1114,7 +1114,7 @@ if ($lstusrdata) {
                             minLength: 2,
                                     source: function(request, response) {
                                     // delegate back to autocomplete, but extract the last term
-                                    $.getJSON(base_url + "freelancer/freelancer_hire_search_keyword", { term : extractLast(request.term)}, response);
+                                    $.getJSON(base_url + "freelancer/freelancer_apply_search_keyword", { term : extractLast(request.term)}, response);
                                     },
                                     focus: function() {
                                     // prevent value inserted on focus
@@ -1194,6 +1194,60 @@ if ($lstusrdata) {
                             });
                     });
 //SCRIPT FOR CITY AUTOFILL OF SEARCH END
+function checkvalue() {
+    var searchkeyword1 = $.trim(document.getElementById('tags').value);
+
+    //  var searchkeyword = searchkeyword.replace(' ', '-');
+    // var searchkeyword = searchkeyword.replace(/[^' ']/g, '-');
+    var searchkeyword = searchkeyword1.replace(/\s/g, '-');
+    var searchkeyword = searchkeyword.replace(/[^a-zA-Z0-9\-]/g, '');
+    var searchkeyword = searchkeyword.replace(/-+/g, "-");
+
+    var searchplace1 = $.trim(document.getElementById('searchplace').value);
+    var searchplace = searchplace1.replace(' ', '-');
+    var searchplace = searchplace.replace(/[^a-zA-Z0-9\-]/g, '');
+
+    
+
+    if (searchkeyword == "" && searchplace == "") {
+     
+        return false;
+    } else {
+       
+        if (searchkeyword == "") {
+            window.location = base_url + 'project-in-' + searchplace;
+            return false;
+        } else if (searchplace == "") {
+            if (searchkeyword == 'projects') {
+                window.location = base_url + 'projects';
+            } else {
+
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "freelancer/session",
+                    data: 'keyword=' + encodeURIComponent(searchkeyword1) ,
+                    success: function (data) {
+                       window.location = base_url + searchkeyword + '-project';
+                    }
+                });
+              //  window.location = base_url + searchkeyword + '-project';
+            }
+            return false;
+        } else {
+             $.ajax({
+                    type: 'POST',
+                    url: base_url + "freelancer/session",
+                    data: 'keyword=' + encodeURIComponent(searchkeyword1) + '&keyword1=' + encodeURIComponent(searchplace1) ,
+                    success: function (data) {
+                       window.location = base_url + searchkeyword + '-project-in-' + searchplace;
+                    }
+                });
+            
+            return false;
+        }
+    }
+}
+
 
 
                     }
@@ -1342,7 +1396,7 @@ if ($lstusrdata) {
                             minLength: 2,
                                     source: function(request, response) {
                                     // delegate back to autocomplete, but extract the last term
-                                    $.getJSON("<?php echo base_url(); ?>general/get_alldata", { term : extractLast(request.term)}, response);
+                                    $.getJSON("<?php echo base_url(); ?>job/get_alldata", { term : extractLast(request.term)}, response);
                                     },
                                     focus: function() {
                                     // prevent value inserted on focus
@@ -1379,7 +1433,7 @@ if ($lstusrdata) {
                             minLength: 2,
                                     source: function(request, response) {
                                     // delegate back to autocomplete, but extract the last term
-                                    $.getJSON("<?php echo base_url(); ?>general/get_alldata", { term : extractLast(request.term)}, response);
+                                    $.getJSON("<?php echo base_url(); ?>job/get_alldata", { term : extractLast(request.term)}, response);
                                     },
                                     focus: function() {
                                     // prevent value inserted on focus
@@ -1470,7 +1524,7 @@ if ($lstusrdata) {
                     }
                     //JOB POST SERACH
                     //ARTUSTIC POST SERACH
-                    if (message_from_profile == 3) {
+                    if (message_from_profile == 6) {
                     var base_url = '<?php echo base_url(); ?>';
                     $(function() {
                     function split(val) {
@@ -1576,7 +1630,7 @@ if ($lstusrdata) {
                     <script>
                                     var message_from_profile = <?php echo $message_from_profile ?>;
                                     // business data start
-                                    if (message_from_profile == 1) {
+                                    if (message_from_profile == 5) {
 
                                     var base_url = '<?php echo base_url(); ?>';
                                     $(function () {
@@ -1587,7 +1641,7 @@ if ($lstusrdata) {
                                     return split(term).pop();
                                     }
 
-                                    $(".bus_search_loc").bind("keydown",  function (event) {alert(1313); 
+                                    $(".searchplace").bind("keydown",  function (event) {
                                     if  (event.keyCode ===  $.ui.keyCode.TAB &&
                                             $(this).autocomplete("instance").menu.active) {
                                     event.preventDefault();
@@ -1597,9 +1651,9 @@ if ($lstusrdata) {
                                             minLength: 2,
                                                     source: function (request,  response) {
                                                     // delegate back to autocomplete, but extract the last term
-                                                    $.getJSON(base_url +  "business_profile/get_location",  {term: extractLast(request.term)},  response);
+                                                    $.getJSON(base_url +  "business_profile/ajax_location_data",  {term: extractLast(request.term)},  response);
                                                     },
-                                                    focus:                                function () {
+                                                    focus:function () {
                                                     // prevent value inserted on focus
                                                     return false;
                                                     },
@@ -1640,15 +1694,15 @@ if ($lstusrdata) {
 
                                     $(function () {
                                     function split(val) {
-                                    return val.split(/,\s*                                /);
+                                    return val.split(/,\s*/);
                                     }
                                     function extractLast(term) {
                                     return split(term).pop();
                                     }
 
-                                    $(".bus_search_comp").bind("keydown",  function (event) {
+                                    $(".tags").bind("keydown",  function (event) {
                                     if  (event.keyCode ===  $.ui.keyCode.TAB &&
-                                            $(this                                ).autocomplete("ins                                tance").menu.active) {
+                                            $(this).autocomplete("instance").menu.active) {
                                     event.preventDefault();
                                     }
                                     }                                )
@@ -1656,7 +1710,7 @@ if ($lstusrdata) {
                                             minLength: 2,
                                                     source: function (request,  response) {
                                                     // delegate back to autocomplete, but extract the last term
-                                                    $.getJSON(base_url +  "business_profile/get_all_data",  {term: extractLast(request.term)},  response);
+                                                    $.getJSON(base_url +  "business_profile/ajax_business_skill",  {term: extractLast(request.term)},  response);
                                                     },
                                                     focus: function () {
                                                     // prevent value inserted on focus
@@ -1721,7 +1775,7 @@ if ($lstusrdata) {
                                             minLength: 2,
                                                     source: function(request, response) {
                                                     // delegate back to autocom                                plete, but extr                                act the last term
-                                                    $.getJSON(base_url + "freelancer/freelancer_hire_search_keyword", { term : extractLast(request.term)}, response);
+                                                    $.getJSON(base_url + "freelancer_hire/freelancer_hire_search_keyword", { term : extractLast(request.term)}, response);
                                                     },
                                                     focus: function() {
                                                     // prevent value inserted on focus
@@ -1826,7 +1880,7 @@ if ($lstusrdata) {
                                                     minLength: 2,
                                                                                             source: function(request, response) {
                                                                                             // delegate back to autocomplete, but extract the last term
-                                                    $.getJSON(base_url + "freelancer/freelancer_hire_search_keyword", { term : extractLast(request.term)}, response);
+                                                    $.getJSON(base_url + "freelancer_hire/freelancer_hire_search_keyword", { term : extractLast(request.term)}, response);
                                                                                                     },
                                                                                                     focus: function() {
                                                                                                     // prevent value inserted on focus
@@ -2054,7 +2108,7 @@ if ($lstusrdata) {
                                             minLength: 2,
                                                     source: function(request, response) {
                                                     // delegate back to autocomplete, but extract the last term
-                                                    $.getJSON("<?php echo base_url(); ?>general/get_alldata", { term : extractLast(request.term)}, response);
+                                                    $.getJSON("<?php echo base_url(); ?>job/get_alldata", { term : extractLast(request.term)}, response);
                                                     },
                                                     focus: function() {
                                                     // prevent value inserted on focus
@@ -2091,7 +2145,7 @@ if ($lstusrdata) {
                                             minLength: 2,
                                                     source: function(request, response) {
                                                     // delegate back to autocomplete, but extract the last term
-                                                    $.getJSON("<?php echo base_url(); ?>general/get_alldata", { term : extractLast(request.term)}, response);
+                                                    $.getJSON("<?php echo base_url(); ?>job/get_alldata", { term : extractLast(request.term)}, response);
                                                     },
                                                     focus: function() {
                                                     // prevent value inserted on focus
@@ -2105,6 +2159,7 @@ if ($lstusrdata) {
                                                     },
                                             });
                                     });
+
 
                                 <!--new script for jobtitle,company and skill for mobile view end-->
 
@@ -2144,7 +2199,29 @@ if ($lstusrdata) {
                                                     
                                                     });
                                                     });
-                                                    
+                                                  function checkvalue() { 
+     
+       var searchkeyword = $.trim(document.getElementById('tags').value);
+       var searchkeyword = searchkeyword.replace(' ', '-');
+       var searchkeyword = searchkeyword.replace('/[^A-Za-z0-9\-]/', '');
+       var searchplace = $.trim(document.getElementById('searchplace').value);
+   
+       if (searchkeyword == "" && searchplace == "") {
+           return false;
+       }else{
+           
+           if(searchkeyword == ""){
+               window.location = base_url + 'jobs-in-' + searchplace;
+               return false;
+           } else if(searchplace == ""){
+               window.location = base_url + searchkeyword + '-jobs';
+               return false;
+           }else{
+               window.location = base_url + searchkeyword + '-jobs-in-' + searchplace;
+               return false;
+           }
+       }
+   }   
                                                     <!--new script for cities end-->
                                                     
                                                     <!--new script for cities start mobile view-->
@@ -2188,7 +2265,7 @@ if ($lstusrdata) {
                                 }
                                 //JOB POST SERACH
                                 //ARTUSTIC POST SERACH
-                                if (message_from_profile == 3) {
+                                if (message_from_profile == 6) {
            var base_url = '<?php echo base_url(); ?>';
     $(function() {
         function split( val ) {
