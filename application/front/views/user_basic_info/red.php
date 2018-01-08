@@ -2,9 +2,10 @@
                 <div class="form-box">
                     <h2 class="text-center">Basic Information</h3>
                         <form name="basicinfo" id="basicinfo" ng-submit="submitBasicInfoForm()" ng-validate="basicInfoValidate">
-                            <div class="form-group">
+<!--                            <div class="form-group">
                                 <p class="student-or-not">If you are a student then <a data-target="#Student-info" data-toggle="modal" href="javascript:;">Click Here.</a></p>
-                            </div>
+                            </div>-->
+<a href="user_basic_info/student_profile">Student information</a>
                             <div class="form-group">
                                 <label for="text">Who are you?</label>
                                 <input type="text" name="jobTitle" id="jobTitle" class="form-control" ng-keyup="jobTitle()" ng-model="user.jobTitle" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, Developer, HR, BDE, CA, Doctor.." typeahead="item as item.name for item in titleSearchResult | filter:$viewValue" autocomplete="off">

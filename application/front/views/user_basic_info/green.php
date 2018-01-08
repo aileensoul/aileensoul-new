@@ -1,6 +1,6 @@
  <div class="container">
                 <div class="form-box">
-                    <h3>Eduction Information</h3>
+                    <h2 class="text-center">Eduction Information</h3>
                     <form name="studentinfo" id="studentinfo" ng-submit="submitStudentInfoForm()" ng-validate="studentInfoValidate">
                         <div class="form-group">
                             <label for="text">What are you studying right now?</label>

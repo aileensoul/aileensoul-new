@@ -48,7 +48,7 @@
 
         <div class="middle-section">
 <a href="user_basic_info/basic_profile">Basic information</a>
-<a href="user_basic_info/student_profile">Student information</a>
+<!--<a href="user_basic_info/student_profile">Student information</a>-->
             <!-- MIDDLE SECTION -->
             
             <div ng-view></div>
