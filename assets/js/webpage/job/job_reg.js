@@ -1,5 +1,6 @@
 //validation start
 $(document).ready(function () {
+     $('.ajax_load').hide();
     // $.validator.addMethod("lowercase", function(value, element, regexpr) {          
     //          return regexpr.test(value);
     //      }, "email Should be in Small Character");
