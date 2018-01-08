@@ -2826,18 +2826,18 @@ class Freelancer_hire extends MY_Controller {
         $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
                                             <td style="padding:5px;">';
-        if ($this->data['freehiredata'][0]['freelancer_hire_user_image']) {
+        if ($this->data['freehiredata']['freelancer_hire_user_image']) {
             $email_html .= '<img alt="User Image" src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['freehiredata'][0]['freelancer_hire_user_image'] . '" width="60" height="60"></td>';
         } else {
-            $fname = $this->data['freehiredata'][0]['fullname'];
-            $lname = $this->data['freehiredata'][0]['username'];
+            $fname = $this->data['freehiredata']['fullname'];
+            $lname = $this->data['freehiredata']['username'];
             $sub_fname = substr($fname, 0, 1);
             $sub_lname = substr($lname, 0, 1);
             $email_html .= '<div class="post-img-div">
                           ' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div> </td>';
         }
         $email_html .= '<td style="padding:5px;">
-						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . " " . $writting_word . '</b> you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
+						<p>Employer <b>' . $this->data['freehiredata']['fullname'] . " " . $this->data['freehiredata']['username'] . " " . $writting_word . '</b> you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
@@ -2845,7 +2845,7 @@ class Freelancer_hire extends MY_Controller {
                                             </td>
 					</tr>
                                     </table>';
-        $subject = $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . " " . $writting_word . ' you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
+        $subject = $this->data['freehiredata']['fullname'] . " " . $this->data['freehiredata']['username'] . " " . $writting_word . ' you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
 
         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
         $email_html = '';
@@ -2855,15 +2855,15 @@ class Freelancer_hire extends MY_Controller {
         if ($this->data['freehiredata'][0]['freelancer_hire_user_image']) {
             $email_html .= '<img alt = "User Image" src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['freehiredata'][0]['freelancer_hire_user_image'] . '" width="60" height="60"></td>';
         } else {
-            $fname = $this->data['freehiredata'][0]['fullname'];
-            $lname = $this->data['freehiredata'][0]['username'];
+            $fname = $this->data['freehiredata']['fullname'];
+            $lname = $this->data['freehiredata']['username'];
             $sub_fname = substr($fname, 0, 1);
             $sub_lname = substr($lname, 0, 1);
             $email_html .= '<div class="post-img-div">
                           ' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div> </td>';
         }
         $email_html .= '<td style="padding:5px;">
-						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . " " . $writting_word . '</b>  you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
+						<p>Employer <b>' . $this->data['freehiredata']['fullname'] . " " . $this->data['freehiredata']['username'] . " " . $writting_word . '</b>  you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
@@ -2871,7 +2871,7 @@ class Freelancer_hire extends MY_Controller {
                                             </td>
 					</tr>
                                     </table>';
-        $subject = $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . " " . $writting_word . ' you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
+        $subject = $this->data['freehiredata']['fullname'] . " " . $this->data['freehiredata']['username'] . " " . $writting_word . ' you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
 
         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
     }
