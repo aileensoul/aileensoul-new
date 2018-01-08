@@ -11,6 +11,8 @@ class Notification extends MY_Controller {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('email_model');
+        $this->load->model('freelancer_hire_model');
+        $this->lang->load('message', 'english');
 //AWS access info start
         $this->load->library('S3');
         //AWS access info end
