@@ -127,5 +127,25 @@ class User_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
+    
+    
+    public function getUserProfessionData($user_id = '', $select_data = '') {
+        $this->db->select($select_data)->from("user_profession up");
+        $this->db->join('cities c', 'c.city_id = up.city', 'left');
+        $this->db->where("up.user_id =" . $user_id);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+    
+    public function getUserStudentData($user_id = '', $select_data = '') {
+        $this->db->select($select_data)->from("user_student us");
+        $this->db->join('cities c', 'c.city_id = up.city', 'left');
+        $this->db->join('university u', 'u.university_id = up.city', 'left');
+        $this->db->where("us.user_id =" . $user_id);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
 
 }

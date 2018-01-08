@@ -83,7 +83,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
         <script>
              var base_url = '<?php echo base_url(); ?>';
-               var app = angular.module("userProfileApp", ["ngRoute"]);
+             var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+              
+             var app = angular.module("userProfileApp", ["ngRoute"]);
                     app.config(function ($routeProvider, $locationProvider) {
                         $routeProvider
                                 .when("/profiless", {
@@ -95,8 +97,8 @@
                                  //   controller: 'basicInfoController'
                                 })
                                 .when("/details", {
-                                    templateUrl: base_url + "userprofile_page/details"
-                                 //   controller: 'basicInfoController'
+                                    templateUrl: base_url + "userprofile_page/details",
+                                    controller: 'detailsController'
                                 })
                                 .when("/contacts", {
                                     templateUrl: base_url + "userprofile_page/contacts"
@@ -114,6 +116,30 @@
 //                    redirectTo: '/profiles/'
 //                    });
                         $locationProvider.html5Mode(true);
+                    });
+                    
+                       app.controller('detailsController', function ($scope, $http, $location) {
+                        $scope.user = {};
+                        // PROFEETIONAL DATA
+                        getFieldList();
+                        function getFieldList() {
+                           
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'userprofile_page/detail_data',
+                                data: 'u=' + user_id,
+                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                            })
+                                    .then(function (success) { 
+                                        data = success.data;
+                                        $scope.titleSearchResult = data;
+                                    });
+                        }
+
+                     
+                        $scope.goMainLink = function(path){
+                            location.href=path;
+                        }
                     });
             </script>
 <!--        <script>
