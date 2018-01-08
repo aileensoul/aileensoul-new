@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class User_basic_info extends MY_Controller {
+class User_info extends MY_Controller {
 
     public $data;
 
@@ -25,7 +25,7 @@ class User_basic_info extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Basic Information | Aileensoul";
-        $this->load->view('user_basic_info/main', $this->data);
+        $this->load->view('user_info/index', $this->data);
     }
 
 //    public function index() {
