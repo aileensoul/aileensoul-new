@@ -12,6 +12,7 @@ class User_opportunities extends MY_Controller {
         parent::__construct();
         $this->load->model('email_model');
         $this->load->model('user_model');
+        $this->load->model('user_opportunity');
         $this->load->model('data_model');
         $this->load->library('S3');
     }
@@ -28,6 +29,12 @@ class User_opportunities extends MY_Controller {
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
         $this->load->view('user_opportunities/index', $this->data);
+    }
+    
+    public function getContactSuggetion(){
+        $userid = $this->session->userdata('aileenuser');
+        $user_data = $this->user_opportunity->getContactSuggetion($userid);
+        echo json_encode($user_data);
     }
 
 }
