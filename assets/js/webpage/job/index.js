@@ -2,7 +2,7 @@
 //javascript validation start 
 $(document).ready(function () {
 
-
+  $('.ajax_load').hide();
     // $.validator.addMethod("lowercase", function(value, element, regexpr) {          
     // return regexpr.test(value);
     // }, "Email should be in small character");
@@ -244,7 +244,13 @@ $(document).ready(function () {
 });
 
 // javascript validation End 
+function profile_reg(){
 
+    var form = $("#jobseeker_regform");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+}
 
 // FOr city data fetch start 
 
