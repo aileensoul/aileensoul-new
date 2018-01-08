@@ -1442,7 +1442,7 @@ class Job extends MY_Controller {
 
 //Click on Add_More_WorkExp Process End
 
-        if ($this->input->post('next')) {
+        //if ($this->input->post('next')) {
 
             $exp = $this->input->post('radio');
 
@@ -1813,7 +1813,7 @@ class Job extends MY_Controller {
                     redirect('job/work-experience', 'refresh');
                 }
             }
-        }
+        //}
     }
 
     //End first time insert and update
