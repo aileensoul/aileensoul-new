@@ -1997,12 +1997,22 @@ footer ul li a:hover{
     display:none
 }
 
-
+@media screen and (min-width:1296px){
+    .container{
+        width:1280px
+    }
+}
 @media screen and (min-width:1200px) and (max-width:1350px){
     #InboxContainer{
         right:-5px
     }
 }
+@media screen and (max-width:1296px){
+    .header2{
+        width:1140px;
+    }
+	.fixed_right_display{display:none;}
+}	
 @media screen and (max-width:1279px){
     .reactivate_header h2{
         font-size:22px
