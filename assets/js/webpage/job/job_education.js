@@ -2,6 +2,8 @@
 //validation primary start
 $().ready(function () {
 
+     $('.ajax_load').hide();
+
     jQuery.validator.addMethod("noSpace", function (value, element) {
         return value == '' || value.trim().length != 0;
     }, "No space please and don't leave it empty");
@@ -84,6 +86,44 @@ $().ready(function () {
 
     });
 });
+
+
+
+function profile_reg(){
+
+    var form = $("#jobseeker_regform_primary");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+    
+}
+
+function profile_reg_sec(){
+
+    var form = $("#jobseeker_regform_secondary");
+    if(form.valid() == true ){
+     $('#profile_ajax_load').show();
+    }
+   
+}
+
+function profile_reg_highsec(){
+
+    var form = $("#jobseeker_regform_higher_secondary");
+    if(form.valid() == true ){
+     $('#profilehighreg_ajax_load').show();
+    }
+   
+}
+
+function profile_reg_gra(){
+
+    var form = $("#jobseeker_regform");
+    if(form.valid() == true ){
+     $('#grareg_ajax_load').show();
+    }
+   
+}
 
 //pattern validation at percentage start//
 $.validator.addMethod("pattern_primary", function (value, element, param) {

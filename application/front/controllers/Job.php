@@ -1186,7 +1186,7 @@ class Job extends MY_Controller {
         if ($this->input->post('previous')) {
             redirect('job/qualification', refresh);
         }
-        if ($this->input->post('next')) {
+        //if ($this->input->post('next')) { 
 
             $data = array(
                 'project_name' => trim($this->input->post('project_name')),
@@ -1208,7 +1208,7 @@ class Job extends MY_Controller {
                 
                 redirect('job/project', 'refresh');
             }
-        }
+        //}
     }
 
 //job seeker Project And Training / Internship controller end 

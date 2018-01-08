@@ -86,7 +86,8 @@
                               <input type="text" name="training_organization" tabindex="6"  id="training_organization" placeholder="Enter Name of Organization" value="<?php if($training_organization1){ echo $training_organization1; } else { echo $job[0]['training_organization']; }?>" maxlength="255"/>
                            </fieldset>
                            <fieldset class="hs-submit full-width">
-                              <input title="Save" type="submit"  id="next" name="next" value="Save" tabindex="7">
+                             <!--  <input title="Save" type="submit"  id="next" name="next" value="Save" tabindex="7"> -->
+                             <button id="next" name="next" onclick="return profile_reg();" tabindex="7">Save<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                            </fieldset>
                            </form>
                         </div>

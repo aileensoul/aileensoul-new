@@ -200,7 +200,7 @@
                                                      ?>">
                                              <br>
 
-                                             <button title="Save" class="submit_btn" tabindex="6">Save</button>
+                                             <button title="Save" class="submit_btn" tabindex="6" onclick="return profile_reg();">Save<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                                              <fieldset class="hs-submit full-width" style="">
                                               
                                              </fieldset>
@@ -334,7 +334,7 @@
                                                   echo $edu_certificate_secondary1;
                                                   }
                                                  ?>">
-                                          <button title="Save" class="submit_btn" tabindex="7">Save</button>
+                                          <button title="Save" class="submit_btn" tabindex="7" onclick="return profile_reg_sec();">Save<span class="ajax_load pl10" id="profile_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                                           <br>
                                           <fieldset class="hs-submit full-width" style="">
                                            
@@ -488,7 +488,7 @@
                                                  echo $edu_certificate_higher_secondary1;
                                              }
                                              ?>">
-                                          <button title="Save" class="submit_btn" tabindex="9">Save</button>
+                                          <button title="Save" class="submit_btn" tabindex="9" onclick="return profile_reg_highsec();">Save<span class="ajax_load pl10" id="profilehighreg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                                           <br>
                                           <fieldset class="hs-submit full-width" style="">
                                             
@@ -741,7 +741,8 @@
                                           ?>
                                        
                                        <div class="fr img_remove">
-                                          <input title="Save" style="font-size: 14px;" class="job_edu_graduation_submit_btn" tabindex="11" type="Submit"  id="next" name="next" value="Save">
+                                          <!-- <input title="Save" style="font-size: 14px;" class="job_edu_graduation_submit_btn" tabindex="11" type="Submit"  id="next" name="next" value="Save"> -->
+                                          <button id="next" name="next" class=="job_edu_graduation_submit_btn" onclick="return profile_reg_gra();">Save<span class="ajax_load pl10" id="grareg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                                           
                                        </div>
                                        <div class="display_inline_block" >
