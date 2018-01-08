@@ -866,7 +866,7 @@ if ($lstusrdata) {
                     var message_from_profile = <?php echo $message_from_profile ?>;
                     // alert(message_from_profile);
                     // business data start
-                    if (message_from_profile == 1) {
+                    if (message_from_profile == 5) {
 
                     var base_url = '<?php echo base_url(); ?>';
                     $(function () {
@@ -1630,7 +1630,7 @@ function checkvalue() {
                     <script>
                                     var message_from_profile = <?php echo $message_from_profile ?>;
                                     // business data start
-                                    if (message_from_profile == 1) {
+                                    if (message_from_profile == 5) {
 
                                     var base_url = '<?php echo base_url(); ?>';
                                     $(function () {
@@ -1641,7 +1641,7 @@ function checkvalue() {
                                     return split(term).pop();
                                     }
 
-                                    $(".bus_search_loc").bind("keydown",  function (event) {alert(1313); 
+                                    $(".searchplace").bind("keydown",  function (event) {
                                     if  (event.keyCode ===  $.ui.keyCode.TAB &&
                                             $(this).autocomplete("instance").menu.active) {
                                     event.preventDefault();
@@ -1651,9 +1651,9 @@ function checkvalue() {
                                             minLength: 2,
                                                     source: function (request,  response) {
                                                     // delegate back to autocomplete, but extract the last term
-                                                    $.getJSON(base_url +  "business_profile/get_location",  {term: extractLast(request.term)},  response);
+                                                    $.getJSON(base_url +  "business_profile/ajax_location_data",  {term: extractLast(request.term)},  response);
                                                     },
-                                                    focus:                                function () {
+                                                    focus:function () {
                                                     // prevent value inserted on focus
                                                     return false;
                                                     },
@@ -1694,15 +1694,15 @@ function checkvalue() {
 
                                     $(function () {
                                     function split(val) {
-                                    return val.split(/,\s*                                /);
+                                    return val.split(/,\s*/);
                                     }
                                     function extractLast(term) {
                                     return split(term).pop();
                                     }
 
-                                    $(".bus_search_comp").bind("keydown",  function (event) {
+                                    $(".tags").bind("keydown",  function (event) {
                                     if  (event.keyCode ===  $.ui.keyCode.TAB &&
-                                            $(this                                ).autocomplete("ins                                tance").menu.active) {
+                                            $(this).autocomplete("instance").menu.active) {
                                     event.preventDefault();
                                     }
                                     }                                )
@@ -1710,7 +1710,7 @@ function checkvalue() {
                                             minLength: 2,
                                                     source: function (request,  response) {
                                                     // delegate back to autocomplete, but extract the last term
-                                                    $.getJSON(base_url +  "business_profile/get_all_data",  {term: extractLast(request.term)},  response);
+                                                    $.getJSON(base_url +  "business_profile/ajax_business_skill",  {term: extractLast(request.term)},  response);
                                                     },
                                                     focus: function () {
                                                     // prevent value inserted on focus
