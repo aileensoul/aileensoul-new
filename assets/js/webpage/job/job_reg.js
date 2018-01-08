@@ -203,6 +203,13 @@ $(document).ready(function () {
 });
 
 
+function profile_reg(){
+
+    var form = $("#jobseeker_regform");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+}
 function login_data() {
     $('#login').modal('show');
     $('#register').modal('hide');

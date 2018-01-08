@@ -180,7 +180,7 @@
                            <div class="job_reg">
                         
                               <!-- <input title="Register" type="submit" id="submit" name="" value="Register" tabindex="12"> -->
-                              <button id="submit" name="" class="cus_btn_sub" onclick="profile_reg();">Register<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+                              <button id="submit" name="" class="cus_btn_sub" onclick="return profile_reg();" tabindex="12">Register<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                            </div>
                         </fieldset>
                         <?php echo form_close();?>

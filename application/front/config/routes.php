@@ -58,6 +58,7 @@ $route['default_controller'] = 'main';
 
 $route['basic-information'] = 'user_info';
 $route['educational-information'] = 'user_info';
+$route['opportunities'] = 'user_opportunities';
 
 //$route['default_controller'] = 'under_construction';
 
