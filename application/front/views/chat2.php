@@ -2160,6 +2160,7 @@ function checkvalue() {
                                             });
                                     });
 
+
                                 <!--new script for jobtitle,company and skill for mobile view end-->
 
                                     <!--new script for cities start-->
@@ -2198,7 +2199,29 @@ function checkvalue() {
                                                     
                                                     });
                                                     });
-                                                    
+                                                  function checkvalue() { 
+     
+       var searchkeyword = $.trim(document.getElementById('tags').value);
+       var searchkeyword = searchkeyword.replace(' ', '-');
+       var searchkeyword = searchkeyword.replace('/[^A-Za-z0-9\-]/', '');
+       var searchplace = $.trim(document.getElementById('searchplace').value);
+   
+       if (searchkeyword == "" && searchplace == "") {
+           return false;
+       }else{
+           
+           if(searchkeyword == ""){
+               window.location = base_url + 'jobs-in-' + searchplace;
+               return false;
+           } else if(searchplace == ""){
+               window.location = base_url + searchkeyword + '-jobs';
+               return false;
+           }else{
+               window.location = base_url + searchkeyword + '-jobs-in-' + searchplace;
+               return false;
+           }
+       }
+   }   
                                                     <!--new script for cities end-->
                                                     
                                                     <!--new script for cities start mobile view-->
