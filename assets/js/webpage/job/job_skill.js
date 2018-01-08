@@ -1,3 +1,14 @@
+$(document).ready(function () {
+     $('.ajax_load').hide();
+ });
+
+function profile_reg(){
+
+    var form = $("#jobseeker_regform");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+}
 
 //Validation Start
 $.validator.addMethod("regx1", function (value, element, regexpr) {

@@ -92,7 +92,10 @@
                               <?php echo form_error('cities'); ?>
                            </fieldset>
                            <fieldset class="hs-submit full-width">
-                              <input title="Save" type="submit" title="Save"  id="next" name="next" tabindex="5" value="Save">
+                             <!--  <input title="Save" type="submit" title="Save"  id="next" name="next" tabindex="5" value="Save"> -->
+
+                              <button id="next" name="next" class="cus_btn_sub" onclick="return profile_reg();" tabindex="5">Save<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+
                            </fieldset>
                            </form>
                         </div>

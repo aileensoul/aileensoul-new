@@ -1306,7 +1306,7 @@ class Job extends MY_Controller {
         if ($this->input->post('previous')) {
             redirect('job/project', refresh);
         }
-        if ($this->input->post('next')) {
+       // if ($this->input->post('next')) {
 
             // job title start   
             if ($jobtitle != " ") {
@@ -1392,7 +1392,7 @@ class Job extends MY_Controller {
             } else {
                 redirect('job/work-area', 'refresh');
             }
-        }
+        //}
     }
 
 //job seeker skill controller end
