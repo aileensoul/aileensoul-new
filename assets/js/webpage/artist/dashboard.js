@@ -1796,7 +1796,6 @@ function imgval(event) {
 
     var fileInput = document.getElementById("file-1").files;
     var product_name = document.getElementById("test-upload-product").value;
-    var modal = document.getElementById('myModal3');
 
     var product_trim = product_name.trim();
 
@@ -1823,7 +1822,7 @@ function imgval(event) {
 
             }
         });
-         modal.style.display = "block";
+
         event.preventDefault();
         return false;
 
@@ -1866,7 +1865,7 @@ function imgval(event) {
 
                         }
                     });
-                     modal.style.display = "block";
+
                     event.preventDefault();
                     return false;
 
@@ -1884,7 +1883,7 @@ function imgval(event) {
 
                         }
                     });
-                     modal.style.display = "block";
+
                     event.preventDefault();
                     return false;
                 }
@@ -1908,7 +1907,7 @@ function imgval(event) {
 
                         }
                     });
-                     modal.style.display = "block";
+
                     event.preventDefault();
                     return false;
                 }
@@ -1932,7 +1931,7 @@ function imgval(event) {
 
                             }
                         });
-                         modal.style.display = "block";
+
                         event.preventDefault();
                         return false;
                     }
@@ -1952,7 +1951,7 @@ function imgval(event) {
                         }
                     });
 
-                     modal.style.display = "block";
+
                     event.preventDefault();
                     return false;
                 }
@@ -1975,7 +1974,7 @@ function imgval(event) {
 
                             }
                         });
-                         modal.style.display = "block";
+
                         event.preventDefault();
                         return false;
                     }
@@ -1992,7 +1991,7 @@ function imgval(event) {
 
                         }
                     });
-                     modal.style.display = "block";
+
                     event.preventDefault();
                     return false;
                 }
@@ -2010,7 +2009,7 @@ function imgval(event) {
 
                     }
                 });
-                 modal.style.display = "block";
+
                 event.preventDefault();
                 return false;
 
@@ -2028,7 +2027,7 @@ function imgval(event) {
 
                     }
                 });
-                 modal.style.display = "block";
+
                 event.preventDefault();
                 return false;
             }
