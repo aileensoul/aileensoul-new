@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Userprofile extends MY_Controller {
+class Userprofile_page extends MY_Controller {
 
     public $data;
 
