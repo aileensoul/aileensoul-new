@@ -735,6 +735,8 @@ fieldset .add_post_btnc,fieldset .add_post_btns{
 }
 .freelancer_home footer{height:auto; background-color:transparent !important; color:#fff;}
 .freelancer_home footer ul li a{color:#fff;}
+.freelancer_home footer ul li a:hover{color: #1b8ab9;text-decoration: none;}
+.freelancer_home footer ul li a:focus{color: #1b8ab9;text-decoration: none;}
 .navy-blue-bg{
     background:#1b8ab9;
     border-top:1px solid #fff

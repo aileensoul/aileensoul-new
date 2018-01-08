@@ -2495,6 +2495,9 @@ fieldset.work_type_custom input{height: 30px;min-height: 25px;}
 }
 	/*** end add  ***/
 }
+@media screen and (max-width: 360px) {
+    
+}
 @media screen and (max-width: 319px) {
     .profile-job-details .post_title {
         font-size: 9px;
