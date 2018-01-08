@@ -179,7 +179,8 @@
                         <fieldset class=" full-width">
                            <div class="job_reg">
                         
-                              <input title="Register" type="submit" id="submit" name="" value="Register" tabindex="12">
+                              <!-- <input title="Register" type="submit" id="submit" name="" value="Register" tabindex="12"> -->
+                              <button id="submit" name="">Register</button>
                            </div>
                         </fieldset>
                         <?php echo form_close();?>
