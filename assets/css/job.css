@@ -424,6 +424,7 @@ li.fr a{
     border-bottom:none;
     height:94px
 }
+.profile-boxProfileCard .bg-images img{height: 94px !important;}
 .profile-boxProfileCard-bg{
     background-size:100%;
     border-radius:4px 4px 0 0;

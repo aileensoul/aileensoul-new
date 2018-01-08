@@ -1878,7 +1878,7 @@ body.cover{
     border-bottom:1px solid #ff000
 }
 #onload-Modal .modal-dialog button{
-    top:30px!important;
+    top:0px!important;
     right:0!important;
     background:0 0!important;
     border:none!important
@@ -2509,7 +2509,13 @@ header.profile-header .logo a{
 .main_otp_box_middle_submit #new_password:focus{border-bottom: 1px solid #1b8ab9 !important;}
 .main_otp_box_middle_submit #code:focus{border-bottom: 1px solid #1b8ab9 !important;}
 .main_otp_box_middle span #showhide:focus{text-decoration: none;}
-
+.modal-dialog{
+    height:100%;
+    width:100%;
+    display:flex;
+    align-items:center;
+    margin:0 auto
+}
 
 
 @media screen and (min-height:540px){

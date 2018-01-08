@@ -180,8 +180,12 @@ button,input[type=button],input[type=submit]{
     -o-transition:all .4s ease-in-out;
     transition:all .4s ease-in-out
 }
+.modal-open button:hover,input[type=button]:hover,input[type=submit]:hover{
+    background:#156f95;
+}
+
 button:hover,input[type=button]:hover,input[type=submit]:hover{
-    background:#156f95
+    background:#156f95;
 }
 input[type=text],input[type=password],input[type=tel],input[type=email],input[type=search],select,textarea{
     -webkit-appearance:none
@@ -2335,6 +2339,9 @@ footer div.pt20{
 .hout_noti{
     color:#4c4c4c;
 }
+.main_sl{position: relative;}
+
+
 
 
 @media screen and (max-height:540px){
