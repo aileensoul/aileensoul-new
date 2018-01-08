@@ -21,14 +21,12 @@
         $returnpage = $_GET['page'];
        
         if ($this->session->userdata('aileenuser') != $recliveid) {
-            echo "88888";
              echo $freelancer_post_header2_border;
         } elseif ($freelancr_user_data[0]['free_hire_step'] == 3) {
             echo $freelancer_hire_header2_border;
         } elseif ($this->session->userdata('aileenuser') == $recliveid) {
             echo $freelancer_hire_header2_border;
         } else {
-            echo "9999";die();
         }
         ?>
 
