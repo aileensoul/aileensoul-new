@@ -577,8 +577,11 @@ if ($lstusrdata) {
                     }
                 </script>
                 <script type="text/javascript">
+                    $(document).on('keydown', function (e) {
                     if (e.which == 13 && !e.shiftKey) {
+                       
                     e.preventDefault();
+                     
                     var $field = $('#message');
                     var data = $('#message').html();
                     var data = $('#message').html().replace(/<div>/gi, '<br>').replace(/<\/div>/gi, '');
@@ -591,6 +594,7 @@ if ($lstusrdata) {
                     }
                     $('#submit').trigger('click');
                     }
+                     });
 
                 </script>
                 <script type="text/javascript">
