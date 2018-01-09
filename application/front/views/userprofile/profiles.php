@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-4 col-xs-12">
                                 <div class="left-box">
-                                    <a href="#"><img title="Business Profile" src="img/i4.jpg"></a>
+                                    <a href="#"><img title="Business Profile" src="<?php echo base_url(). "assets/n-images/i4.jpg"; ?>"></a>
                                 </div>
                             </div>
                             <div class="col-md-8 col-sm-8 col-xs-12">
@@ -33,6 +33,8 @@
                                     <p>Grow your business network.</p>
                                     <div class="btns">
                                         <a title="Take me in" class="btn-4" href="#">Take me in</a> 
+                                        <a title="Take me in" class="btn-4" href="#">Active</a> 
+                                        <a title="Take me in" class="btn-4" href="#">Register</a> 
 										<a title="How it works" data-target="#bus-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
                                     </div>
                                 </div>
@@ -46,7 +48,7 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-4">
                                 <div class="left-box">
-                                    <a href="#"><img title="Job Profile" src="img/i1.jpg"></a>
+                                    <a href="#"><img title="Job Profile" src="<?php echo base_url(). "assets/n-images/i1.jpg"; ?>"></a>
                                 </div>
                             </div>
                             <div class="col-md-8 col-sm-8">
@@ -55,6 +57,8 @@
                                     <p>Find best job options and connect with recruiters.</p>
                                     <div class="btns">
 										<a title="Take me in" class="btn-4" href="#">Take me in</a> 
+										<a title="Take me in" class="btn-4" href="#">Active</a> 
+										<a title="Take me in" class="btn-4" href="#">Register</a> 
 										<a title="How it works" data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
                                     </div>
                                 </div>
@@ -68,7 +72,7 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-4 col-xs-12">
                                 <div class="left-box">
-                                    <a href="#"><img title="Recruiter Profile" src="img/i2.jpg"></a>
+                                    <a href="#"><img title="Recruiter Profile" src="<?php echo base_url(). "assets/n-images/i2.jpg"; ?>"></a>
                                 </div>
                             </div>
                             <div class="col-md-8 col-sm-8 col-xs-12">
@@ -77,6 +81,8 @@
                                     <p>Hire quality employees here.</p>
                                     <div class="btns">
                                         <a title="Take me in" class="btn-4" href="#">Take me in</a>
+                                        <a title="Take me in" class="btn-4" href="#">Register</a>
+                                        <a title="Take me in" class="btn-4" href="#">Active</a>
 										<a title="How it works" data-target="#rec-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
 									</div>
                                 </div>
@@ -89,7 +95,7 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-4">
                                 <div class="left-box">
-                                    <a href="#"><img title="Artistic Profile" src="img/i5.jpg"></a>
+                                    <a href="#"><img title="Artistic Profile" src="<?php echo base_url(). "assets/n-images/i5.jpg"; ?>"></a>
                                 </div>
                             </div>
                             <div class="col-md-8 col-sm-8">
@@ -98,6 +104,8 @@
                                     <p>Show your art &amp; talent to the world.</p>
                                     <div class="btns">
 										<a title="Take me in" class="btn-4" href="#">Take me in</a>
+										<a title="Take me in" class="btn-4" href="#">Register</a>
+										<a title="Take me in" class="btn-4" href="#">Active</a>
                                         <a title="How it Works" data-target="#art-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
 									</div>
 								</div>
@@ -110,7 +118,7 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-4">
                                 <div class="left-box">
-                                    <a href="#"><img title="Freelance Profile" src="img/i3.jpg"></a>
+                                    <a href="#"><img title="Freelance Profile" src="<?php echo base_url(). "assets/n-images/i3.jpg"; ?>"></a>
                                 </div>
                             </div>
                             <div class="col-md-8 col-sm-8">
@@ -119,6 +127,8 @@
                                     <p>Hire freelancers and also find freelance work.</p>
                                     <div class="btns">
 										<a title="Take me in" class="btn-4" href="#">Take me in</a>
+										<a title="Take me in" class="btn-4" href="#">Register</a>
+										<a title="Take me in" class="btn-4" href="#">Active</a>
 										<a title="How it works" data-target="#fre-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
 									</div>
                                 </div>

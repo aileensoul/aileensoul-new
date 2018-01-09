@@ -99,8 +99,8 @@
                     app.config(function ($routeProvider, $locationProvider) {
                         $routeProvider
                                 .when("/profiless", {
-                                    templateUrl: base_url + "userprofile_page/profile"
-                                 //   controller: 'basicInfoController'
+                                    templateUrl: base_url + "userprofile_page/profile",
+                                    controller: 'profilesController'
                                 })
                                 .when("/dashboard", {
                                     templateUrl: base_url + "userprofile_page/dashboard"
@@ -126,6 +126,33 @@
 //                    redirectTo: '/profiles/'
 //                    });
                         $locationProvider.html5Mode(true);
+                    });
+                    
+                    app.controller('profilesController', function ($scope, $http, $location) {
+                        $scope.user = {};
+                        // PROFEETIONAL DATA
+                        getFieldList();
+                        function getFieldList() {
+                           
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'userprofile_page/profiles_data',
+                                data: 'u=' + user_id,
+                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                            })
+                                    .then(function (success) {
+                                        details_data = success.data;
+                                alert(details_data.rp_status);
+                                $scope.re_status = 
+                                        $scope.details_data = details_data;
+                                    });
+                        }
+
+                     
+                        $scope.goMainLink = function(path){
+                            location.href=path;
+                        }
+                      
                     });
                     
                        app.controller('detailsController', function ($scope, $http, $location) {

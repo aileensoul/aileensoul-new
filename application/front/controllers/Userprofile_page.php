@@ -13,6 +13,7 @@ class Userprofile_page extends MY_Controller {
         $this->load->library('form_validation');
         
         $this->load->model('user_model');
+        $this->load->model('userprofile_model');
     }
 
     public function profile() {
@@ -46,6 +47,12 @@ class Userprofile_page extends MY_Controller {
       } 
       
       echo json_encode($detailsData);
+    }
+    
+     public function profiles_data() { 
+      $userid = $this->session->userdata('aileenuser');
+        $profilesData = $this->data['profilesData'] = $this->userprofile_model->getDashboardData($userid,$data="r.re_status as rp_status,r.is_delete as rp_delete,r.re_step as rp_step,jr.is_delete as jp_delete,jr.status as jp_status,jr.job_step as jp_step,bp.status as bp_status,bp.is_deleted as bp_delete,bp.business_step as bp_step,fh.status as fh_status,fh.is_delete as fh_delete,fh.free_hire_step as fh_step,fp.status as fp_status,fp.is_delete as fp_delete,fp.free_post_step as fp_step");
+      echo json_encode($profilesData); 
     }
 
 }

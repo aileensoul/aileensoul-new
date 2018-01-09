@@ -8,8 +8,8 @@ if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
 $format = 'D, d M Y H:i:s \G\M\T';
 $now = time();
 
-$date = gmdate($format, $now+30);
-header('Expires: '.$date);
+$date = gmdate($format, $now + 30);
+header('Expires: ' . $date);
 header("Cache-Control: no-store, no-cache, must-revalidate"); // HTTP/1.1
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache"); // HTTP/1.0
@@ -40,6 +40,14 @@ header("Pragma: no-cache"); // HTTP/1.0
                 ga('create', 'UA-91486853-1', 'auto');
                 ga('send', 'pageview');
 
+            </script>
+
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({
+                    google_ad_client: "ca-pub-6060111582812113",
+                    enable_page_level_ads: true
+                });
             </script>
             <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
             <?php
@@ -135,7 +143,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                             <div class="blog_inside_post_main">
                                                 <div class="blog_main_post_first_part">
                                                     <div class="blog_main_post_img">
-                                                        <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog_detail[0]['image'] .'?ver='.time()) ?>"  alt="Blog">
+                                                        <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog_detail[0]['image'] . '?ver=' . time()) ?>"  alt="Blog">
                                                     </div>
                                                 </div>
                                                 <div class="blog_main_post_second_part">
@@ -187,74 +195,74 @@ header("Pragma: no-cache"); // HTTP/1.0
                                                             }
                                                             ?>
                                                             <span>
-                                                            <?php
-                                                            if (count($blog_all) != 0) {
-
-                                                                foreach ($blog_all as $key => $blog) {
-
-                                                                    if ($blog['id'] == $blog_detail[0]['id']) {
-                                                                        echo $key + 1;
-                                                                        echo '/';
-                                                                        echo count($blog_all);
-                                                                    }
-                                                                }
-                                                            }
-                                                            ?>
-                                                            </span>
                                                                 <?php
                                                                 if (count($blog_all) != 0) {
 
                                                                     foreach ($blog_all as $key => $blog) {
 
-                                                                        if ($blog['id'] == $blog_detail[0]['id'] && ($key + 1) != count($blog_all)) {
-                                                                            ?>
-                                                                        <a href="<?php echo base_url('blog/' . $blog_all[$key + 1]['blog_slug']); ?>"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                                                                            <?php
+                                                                        if ($blog['id'] == $blog_detail[0]['id']) {
+                                                                            echo $key + 1;
+                                                                            echo '/';
+                                                                            echo count($blog_all);
                                                                         }
                                                                     }
                                                                 }
                                                                 ?>
+                                                            </span>
+                                                            <?php
+                                                            if (count($blog_all) != 0) {
+
+                                                                foreach ($blog_all as $key => $blog) {
+
+                                                                    if ($blog['id'] == $blog_detail[0]['id'] && ($key + 1) != count($blog_all)) {
+                                                                        ?>
+                                                                        <a href="<?php echo base_url('blog/' . $blog_all[$key + 1]['blog_slug']); ?>"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                            }
+                                                            ?>
                                                         </div>
                                                     </div>
-                                                            <?php
-                                                            //FOR GETTING USER COMMENT
-                                                            $condition_array = array('status' => 'approve', 'blog_id' => $blog_detail[0]['id']);
-                                                            $blog_comment = $this->common->select_data_by_condition('blog_comment', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
+                                                    <?php
+                                                    //FOR GETTING USER COMMENT
+                                                    $condition_array = array('status' => 'approve', 'blog_id' => $blog_detail[0]['id']);
+                                                    $blog_comment = $this->common->select_data_by_condition('blog_comment', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
 
 
-                                                            foreach ($blog_comment as $comment) {
-                                                                ?>  
+                                                    foreach ($blog_comment as $comment) {
+                                                        ?>  
                                                         <div class="all-comments">
                                                             <ul>
                                                                 <li class="comment-list">
                                                                     <div class="c-user-img">
-                                                                        <img src="<?php echo base_url(NOIMAGE) . '?ver='.time(); ?>" alt="Noimage">
+                                                                        <img src="<?php echo base_url(NOIMAGE) . '?ver=' . time(); ?>" alt="Noimage">
                                                                     </div>
                                                                     <div class="c-user-comments">
                                                                         <h5><?php echo $comment['name']; ?></h5>
                                                                         <p><?php echo $comment['message']; ?></p>
                                                                         <p class="pt5"><span class="comment-time">
-                                                        <?php
-                                                        $date = new DateTime($comment['comment_date']);
-                                                        echo $date->format('d') . PHP_EOL;
-                                                        echo "-";
+                                                                                <?php
+                                                                                $date = new DateTime($comment['comment_date']);
+                                                                                echo $date->format('d') . PHP_EOL;
+                                                                                echo "-";
 
-                                                        $date = new DateTime($comment['comment_date']);
-                                                        echo $date->format('M') . PHP_EOL;
-                                                        echo "-";
+                                                                                $date = new DateTime($comment['comment_date']);
+                                                                                echo $date->format('M') . PHP_EOL;
+                                                                                echo "-";
 
-                                                        $date = new DateTime($comment['comment_date']);
-                                                        echo $date->format('Y') . PHP_EOL;
-                                                        ?>
+                                                                                $date = new DateTime($comment['comment_date']);
+                                                                                echo $date->format('Y') . PHP_EOL;
+                                                                                ?>
                                                                             </span>
                                                                         </p>
                                                                     </div>
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                                                <?php
-                                                                            }//for loop end
-                                                                            ?>
+                                                        <?php
+                                                    }//for loop end
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -280,33 +288,33 @@ header("Pragma: no-cache"); // HTTP/1.0
                                             </fieldset>
                                         </form>
                                     </div>
-    <?php if (count($rand_blog) > 0) { ?>
+                                    <?php if (count($rand_blog) > 0) { ?>
                                         <div class="related-blog">
                                             <h3>Related Blogs</h3>
                                             <div class="row">
-        <?php foreach ($rand_blog as $random) { ?>
+                                                <?php foreach ($rand_blog as $random) { ?>
                                                     <div class="col-md-4 col-sm-12">
                                                         <div class="rel-blog-box">
                                                             <a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><div class="rel-blog-img">
-                                                                    <img src="<?php echo base_url($this->config->item('blog_related_upload_path') . $random['image'] . '?ver='.time()) ?>" alt="<?php echo $random['image']; ?>">
+                                                                    <img src="<?php echo base_url($this->config->item('blog_related_upload_path') . $random['image'] . '?ver=' . time()) ?>" alt="<?php echo $random['image']; ?>">
                                                                 </div></a>
                                                             <h5> <a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><?php echo $random['title']; ?> </a> </h5>
                                                         </div>
                                                     </div>
 
-        <?php } ?>
+                                                <?php } ?>
 
                                             </div>
                                         </div>
                                     <?php } ?>
 
-    <?php } else {
-    ?>
+                                <?php } else {
+                                    ?>
 
                                     <div class="art_no_post_avl">
                                         <div class="art-img-nn">
                                             <div class="art_no_post_img">
-                                                <img src="<?php echo base_url('assets/img/bui-no.png?ver='.time()) ?>" alt="Noimage">
+                                                <img src="<?php echo base_url('assets/img/bui-no.png?ver=' . time()) ?>" alt="Noimage">
                                             </div>
                                             <div class="art_no_post_text">
                                                 Sorry, this content isn't available at the moment
@@ -314,8 +322,8 @@ header("Pragma: no-cache"); // HTTP/1.0
                                         </div>
                                     </div>
 
-<?php }
-?>
+                                <?php }
+                                ?>
                             </div> 
 
                             <ul class="load-more-blog">
@@ -325,16 +333,16 @@ header("Pragma: no-cache"); // HTTP/1.0
                         <div class="col-md-3 col-sm-4 hidden-xs">
                             <div class="blog_latest_post" >
                                 <h3>Latest Post</h3>
-<?php
-foreach ($blog_last as $blog) {
-    ?>
+                                <?php
+                                foreach ($blog_last as $blog) {
+                                    ?>
                                     <div class="latest_post_posts">
                                         <ul>
                                             <li>
                                                 <div class="post_inside_data">
                                                     <div class="post_latest_left">
                                                         <div class="lateaqt_post_img">
-                                                            <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> <img src="<?php echo base_url($this->config->item('blog_thumb_upload_path') . $blog['image'] . '?ver='.time()) ?>" alt="<?php echo $blog['image']; ?>"></a>
+                                                            <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> <img src="<?php echo base_url($this->config->item('blog_thumb_upload_path') . $blog['image'] . '?ver=' . time()) ?>" alt="<?php echo $blog['image']; ?>"></a>
                                                         </div>
                                                     </div>
                                                     <div class="post_latest_right">
@@ -348,9 +356,9 @@ foreach ($blog_last as $blog) {
                                         </ul>
                                     </div>
                                     <!--latest_post_posts end -->
-    <?php
-}//for loop end
-?>
+                                    <?php
+                                }//for loop end
+                                ?>
                             </div>
                             <!--blog_latest_post end -->
 
@@ -376,35 +384,35 @@ foreach ($blog_last as $blog) {
 
         </section>
 
-<?php if (IS_OUTSIDE_JS_MINIFY == '0') { ?>
+        <?php if (IS_OUTSIDE_JS_MINIFY == '0') { ?>
             <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
             <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
 
-<?php } else { ?>
+        <?php } else { ?>
 
             <script src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
             <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-<?php } ?>
-<?php
-echo $login_footer
-?>
+        <?php } ?>
+        <?php
+        echo $login_footer
+        ?>
 
-<?php if (IS_OUTSIDE_JS_MINIFY == '0') { ?>
+        <?php if (IS_OUTSIDE_JS_MINIFY == '0') { ?>
             <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
             <script src="<?php echo base_url('assets/js/jquery.validate.js?ver=' . time()); ?>"></script>
-<?php } else { ?>
+        <?php } else { ?>
 
             <script src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
             <script src="<?php echo base_url('assets/js_min/jquery.validate.js?ver=' . time()); ?>"></script>
-<?php } ?>
+        <?php } ?>
         <!-- This Js is used for call popup -->
 
         <script>
-                                                            var base_url = '<?php echo base_url(); ?>';
+                                                                    var base_url = '<?php echo base_url(); ?>';
         </script>
         <script>
 
-        //AJAX DATA LOAD BY LAZZY LOADER END
+            //AJAX DATA LOAD BY LAZZY LOADER END
         </script>
         <?php if (IS_OUTSIDE_JS_MINIFY == '0') { ?>
             <script src="<?php echo base_url('assets/js/webpage/blog/blog_detail.js?ver=' . time()); ?>"></script>

@@ -25,9 +25,9 @@ header("Pragma: no-cache"); // HTTP/1.0
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<?php
- if (base_url() == "https://www.aileensoul.com/") {
-    ?>
+        <?php
+        if (base_url() == "https://www.aileensoul.com/") {
+            ?>
 
             <script>
                 (function (i, s, o, g, r, a, m) {
@@ -46,10 +46,19 @@ header("Pragma: no-cache"); // HTTP/1.0
                 ga('send', 'pageview');
 
             </script>
+
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({
+                    google_ad_client: "ca-pub-6060111582812113",
+                    enable_page_level_ads: true
+                });
+            </script>
+
             <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
-    <?php
-}
-?>
+            <?php
+        }
+        ?>
         <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
         <?php
         $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -59,9 +68,9 @@ header("Pragma: no-cache"); // HTTP/1.0
             footer > .container{border:1px solid transparent!important;}
             .footer{border:1px solid #d9d9d9;}
         </style>
-<?php
-foreach ($blog_detail as $blog) {
-    ?>
+        <?php
+        foreach ($blog_detail as $blog) {
+            ?>
             <!-- Open Graph data -->
             <meta property="og:title" content="<?php echo $blog['title']; ?>" />
             <meta  property="og:type" content="Blog" />
@@ -80,9 +89,9 @@ foreach ($blog_detail as $blog) {
             <meta name="twitter:creator" content="By Aileensoul">
             <meta name="twitter:image" content="http://placekitten.com/250/250">
             <meta name="twitter:domain" content="<?php base_url('blog/' . $blog['blog_slug']) ?>">
-    <?php
-}
-?>
+            <?php
+        }
+        ?>
 
         <?php if (IS_OUTSIDE_CSS_MINIFY == '0') { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css?ver=' . time()); ?>">
@@ -91,22 +100,22 @@ foreach ($blog_detail as $blog) {
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver=' . time()); ?>">
 
-<?php } else { ?>
+        <?php } else { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/blog.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-style.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/font-awesome.min.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style.css?ver=' . time()); ?>">
 
-<?php } ?>
+        <?php } ?>
 
         <?php if (IS_OUTSIDE_JS_MINIFY == '0') { ?>
             <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
 
-<?php } else { ?>
+        <?php } else { ?>
             <script src="<?php echo base_url('assets/js_min/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
 
-<?php } ?>
+        <?php } ?>
     </head>
     <body class="blog">
         <div class="main-inner">
@@ -118,10 +127,10 @@ foreach ($blog_detail as $blog) {
                         </div>
                         <div class="col-md-8 col-sm-9" style="padding-top: 5px;">
                             <div class="btn-right pull-right">
-<?php if (!$this->session->userdata('aileenuser')) { ?>
+                                <?php if (!$this->session->userdata('aileenuser')) { ?>
                                     <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
                                     <a href="<?php echo base_url('registration'); ?>" class="btn3">Create an account</a>
-<?php } ?>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -133,33 +142,33 @@ foreach ($blog_detail as $blog) {
                         <div class="col-md-4 col-sm-5 col-xs-3 mob-zindex">
 
                             <div class="logo pl20">
-<?php
-if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri->segment(2) == 'tag') {
-    ?>
+                                <?php
+                                if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri->segment(2) == 'tag') {
+                                    ?>
                                     <a href="<?php echo base_url('blog'); ?>">
                                         <h3  style="color: #1b8ab9;">Blog</h3>
                                     </a>
-    <?php
-} else {
-    ?>
+                                    <?php
+                                } else {
+                                    ?>
                                     <a href="<?php echo base_url('blog'); ?>">
                                         <h3  style="color: #1b8ab9;">Blog</h3>
                                     </a>
-    <?php
-}
-?>
+                                    <?php
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="col-md-8 col-sm-7 col-xs-9 header-left-menu">
                             <div class="main-menu-right">
                                 <ul class="">
-<?php foreach ($blog_category as $category) { ?>
+                                    <?php foreach ($blog_category as $category) { ?>
                                         <li class="category">
                                             <div id="category_<?php echo $cateory['id']; ?>"  onclick="return category_data(<?php echo $category['id']; ?>);">
-    <?php echo $category['name']; ?>
+                                                <?php echo $category['name']; ?>
                                             </div>
                                         </li>
-<?php } ?>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
@@ -181,26 +190,26 @@ if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri-
                     <div class="container">
                         <div class="row">
                             <div class="blog_post_outer col-md-9 col-sm-8 pr0">
-<?php
-if ($this->input->get('q')) {
-    ?>
+                                <?php
+                                if ($this->input->get('q')) {
+                                    ?>
                                     <div class="blog-tag">
                                         <div class="tag-line"><span>Search results for</span> <?php echo $search_keyword; ?></div>
                                     </div>
-    <?php
-}//if end  
-if ($this->uri->segment(2) == 'tag') {
-    ?>
+                                    <?php
+                                }//if end  
+                                if ($this->uri->segment(2) == 'tag') {
+                                    ?>
                                     <div class="blog-tag">
                                         <div class="tag-line"><span>Tag:</span> <?php echo $search_keyword; ?></div>
                                     </div>
-    <?php
-}//if end  
+                                    <?php
+                                }//if end  
 
-if (count($blog_detail) == 0) {
+                                if (count($blog_detail) == 0) {
 
-    if ($this->input->get('q') || $this->uri->segment(2) == 'tag') {
-        ?>
+                                    if ($this->input->get('q') || $this->uri->segment(2) == 'tag') {
+                                        ?>
                                         <div class="job-saved-box">
                                             <div class="blog-tag" style="margin-bottom: 0px;">
 
@@ -215,14 +224,14 @@ if (count($blog_detail) == 0) {
                                                 </div>
                                             </div>
                                         </div>
-        <?php
-    }
-    if ($this->uri->segment(3) == 'popular') {
-        echo "Not Any Popular Blog";
-    }
-}//if end
-else {
-    ?>
+                                        <?php
+                                    }
+                                    if ($this->uri->segment(3) == 'popular') {
+                                        echo "Not Any Popular Blog";
+                                    }
+                                }//if end
+                                else {
+                                    ?>
                                     <div class="job-contact-frnd">
 
                                     </div>
@@ -231,8 +240,8 @@ else {
                                         <li class="loadbutton"></li>
                                         <li class="loadcatbutton"></li>
                                     </ul>
-<?php }
-?>
+                                <?php }
+                                ?>
                             </div>
 
                             <div class="col-md-3 col-sm-4 hidden-xs">
@@ -250,9 +259,9 @@ else {
                                 </div>
                                 <div class="blog_latest_post">
                                     <h3>Latest Post</h3>
-<?php
-foreach ($blog_last as $blog) {
-    ?>
+                                    <?php
+                                    foreach ($blog_last as $blog) {
+                                        ?>
                                         <div class="latest_post_posts">
                                             <ul>
                                                 <li>
@@ -275,9 +284,9 @@ foreach ($blog_last as $blog) {
                                             </ul>
                                         </div>
                                         <!--latest_post_posts end -->
-    <?php
-}//for loop end
-?>
+                                        <?php
+                                    }//for loop end
+                                    ?>
                                 </div>
 
 
@@ -289,16 +298,16 @@ foreach ($blog_last as $blog) {
                 </div>
 
             </section>
-<?php
-echo $login_footer
-?>
+            <?php
+            echo $login_footer
+            ?>
         </div>
 
         <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>
         <script>
-        //AJAX DATA LOAD BY LAZZY LOADER START
+            //AJAX DATA LOAD BY LAZZY LOADER START
             $(document).ready(function () {
                 blog_post();
 
@@ -387,11 +396,11 @@ echo $login_footer
                     }
                 });
             }
-        //AJAX DATA LOAD BY LAZZY LOADER END
+            //AJAX DATA LOAD BY LAZZY LOADER END
         </script>
-<?php if (IS_OUTSIDE_JS_MINIFY == '0') { ?>
+        <?php if (IS_OUTSIDE_JS_MINIFY == '0') { ?>
             <script src="<?php echo base_url('assets/js/webpage/blog/blog.js?ver=' . time()); ?>"></script>
-<?php } else { ?>
+        <?php } else { ?>
             <script src="<?php echo base_url('assets/js_min/webpage/blog/blog.js?ver=' . time()); ?>"></script>
         <?php } ?>
     </body>
