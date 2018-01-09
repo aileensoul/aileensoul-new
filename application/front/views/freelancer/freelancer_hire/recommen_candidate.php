@@ -137,8 +137,7 @@
                                             <!--AJAX DATA...........-->
 
                                             <!-- body tag inner data end -->
-                                            <div class="col-md-1">
-                                            </div>
+                                            
                                         </div>
                                         <div class="fw" id="loader" style="text-align:center;"><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
 

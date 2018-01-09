@@ -43,10 +43,10 @@
 <header>
     <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-sm-3">
+                    <div class="col-md-4 col-sm-3 left-header text-center fw-479">
                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
                     </div>
-                    <div class="col-md-8 col-sm-9">
+                    <div class="col-md-8 col-sm-9 right-header fw-479 text-center">
                         <div class="btn-right pull-right">
                             <a href="javascript:void(0);" onclick="login_profile();" class="btn2" title="Login">Login</a>
                             <a href="javascript:void(0);" onclick="register_profile();" class="btn3" title="Create an account">Create an account</a>

@@ -2388,6 +2388,15 @@ img{
     background:linear-gradient(to bottom,#de5c90 0,#207cca 0,#de5c90 0,#912281 100%,#de5c90 100%);
     text-decoration:none
 }
+.btn-right .btn-new1:focus{
+    color:#fff !important;
+    background:#de5c90;
+    background:-moz-linear-gradient(top,#de5c90 0,#207cca 0,#de5c90 0,#912281 100%,#de5c90 100%)!important;
+    background:-webkit-linear-gradient(top,#de5c90 0,#207cca 0,#de5c90 0,#912281 100%,#de5c90 100%)!important;
+    background:linear-gradient(to bottom,#de5c90 0,#207cca 0,#de5c90 0,#912281 100%,#de5c90 100%)!important;
+    text-decoration:none
+}
+
 .introduce_button .btn-new1{
     letter-spacing:1.5px!important;
     font-family:arial;
@@ -2400,7 +2409,12 @@ img{
 }
 .introduce_button .btn-new1:focus{
     text-decoration:none;
-    color:#fff
+    color:#fff;
+    background:#de5c90;
+    background:-moz-linear-gradient(top,#de5c90 0,#207cca 0,#de5c90 0,#912281 100%,#de5c90 100%);
+    background:-webkit-linear-gradient(top,#de5c90 0,#207cca 0,#de5c90 0,#912281 100%,#de5c90 100%);
+    background:linear-gradient(to bottom,#de5c90 0,#207cca 0,#de5c90 0,#912281 100%,#de5c90 100%);
+    text-decoration:none
 }
 .profile-bnr{
     position:relative
@@ -2931,7 +2945,8 @@ header.profile-header .logo a{
         width:99%
     }
     .btn-right{
-        padding-top:15px;
+        /*padding-top: 15px;*/
+        padding-top:0px;
         padding-right:0
     }
     .main-inner .btn-right.pull-right{
@@ -3216,6 +3231,7 @@ header.profile-header .logo a{
 	}
 	.about-content p img{width:100%;}
 	.new-abput-page .img-custom{width:49%; padding:0 15px;}
+    .profile-bnr .logo{text-align: center;}
 }
 @media screen and (max-width:640px){
     .btns .btn-4{

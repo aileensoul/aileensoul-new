@@ -26,7 +26,7 @@ header('Cache-Control: public, max-age=30');
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver='.time()); ?>">
         <meta charset="utf-8">
         <?php
-        if($_SERVER['HTTP_HOST'] != "localhost"){
+        if ($_SERVER['HTTP_HOST'] == "www.aileensoul.com"){
         ?>
         
         <script>

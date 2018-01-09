@@ -24,10 +24,10 @@
            <header>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
+                    <div class="col-md-4 col-sm-3 left-header text-center fw-479">
                      <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
                     </div>
-                    <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
+                    <div class="col-md-8 col-sm-9 right-header fw-479 text-center">
                         <div class="btn-right pull-right">
                             <a href="javascript:void(0);" onclick="login_profile();" title="Login" class="btn2">Login</a>
                             <a href="javascript:void(0);" onclick="register_profile();" title="Creat an account" class="btn3">Creat an account</a>

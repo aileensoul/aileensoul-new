@@ -63,7 +63,7 @@ function editableTextBlurred() {
 $(document).ready(function () {
     $("a.designation").click(divClicked);
     if (!user_session) {
-        $('#register').modal('show');
+        $('#register12').modal('show');
     }
     // for registation of main profile start
     $.validator.addMethod("lowercase", function (value, element, regexpr) {
@@ -338,7 +338,7 @@ function short_user(abc) {
 //SHAORTLIST USER END
 //login pop up open start
 function login_profile() {
-    $('#register').modal('hide');
+    $('#register12').modal('hide');
     $('#login').modal('show');
 }
 //login pop up open end
@@ -352,7 +352,7 @@ function forgot_profile() {
 }
 function register_profile() {
     $('#login').modal('hide');
-    $('#register').modal('show');
+    $('#register12').modal('show');
 }
 /* validation */
 
