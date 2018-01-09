@@ -40,7 +40,7 @@
                                     }
                                     ?>">
                                         <a class="profile-boxProfileCard-bg u-bgUserColor a-block"
-                                           href="<?php echo base_url('job/resume'); ?>"
+                                           href="<?php echo base_url('job/resume/'.$jobdata[0]['slug']); ?>"
                                            tabindex="-1"
                                            aria-hidden="true"
                                            rel="noopener" title="job resume">
