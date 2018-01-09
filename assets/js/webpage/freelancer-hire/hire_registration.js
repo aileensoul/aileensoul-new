@@ -37,6 +37,8 @@ $(document).ready(function () {
     if (!user_session) {
         $('#register').modal('show');
     }
+
+    $('.ajax_load').hide();
 // for registation of main profile start
     $.validator.addMethod("lowercase", function (value, element, regexpr) {
         return regexpr.test(value);
@@ -226,6 +228,16 @@ $(document).ready(function () {
 
 });
 //CODE FOR COUNTRY,STATE,CITY END
+
+
+function validate(){
+
+     var form = $("#freelancerhire_regform");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+}
+
 
 $.validator.addMethod("regx", function (value, element, regexpr) {
     if (!value) {
