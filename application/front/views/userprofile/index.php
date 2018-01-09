@@ -142,8 +142,8 @@
                             })
                                     .then(function (success) {
                                         details_data = success.data;
-                                alert(details_data.rp_status);
-                                $scope.re_status = 
+                                alert(details_data.rp_step);
+                                
                                         $scope.details_data = details_data;
                                     });
                         }
@@ -178,7 +178,7 @@
                             location.href=path;
                         }
                         
-                        $scope.makeActive = function(item){ alert(123);
+                        $scope.makeActive = function(item){
                              $scope.active = $scope.active == item?'':item;
                         }
                     });
