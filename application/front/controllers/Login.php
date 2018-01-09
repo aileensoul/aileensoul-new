@@ -83,7 +83,7 @@ class Login extends CI_Controller {
         } else {
             $is_data = 'email';
         }
-       
+
         echo json_encode(
                 array(
                     "data" => $is_data,
@@ -103,10 +103,15 @@ class Login extends CI_Controller {
             if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
             } else {
-                $this->session->set_userdata('aileenuser', $userinfo['user_id']);
-                $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
-                $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
-                $data = 'ok';
+                if ($userinfo['password'] == md5($password_login)) {
+                    $this->session->set_userdata('aileenuser', $userinfo['user_id']);
+                    $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
+                    $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
+                    $data = 'ok';
+                }else if ($userinfo['password'] != md5($password_login)) {
+                    $data = 'password';
+                    $id = $result[0]['user_id'];
+                }
             }
         } else if ($email_login == $userinfo['email']) {
             $data = 'password';
@@ -140,10 +145,15 @@ class Login extends CI_Controller {
             if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
             } else {
+                if ($userinfo['password'] == md5($password_login)) {
                 $this->session->set_userdata('aileenuser', $userinfo['user_id']);
                 $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
                 $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
                 $data = 'ok';
+                }else if ($userinfo['password'] != md5($password_login)) {
+                    $data = 'password';
+                    $id = $result[0]['user_id'];
+                }
             }
         } else if ($email_login == $userinfo['email']) {
             $data = 'password';
