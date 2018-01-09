@@ -1,5 +1,8 @@
 //CODE FOR COUNTRY,STATE, CITY START
 $(document).ready(function () {
+
+     $('.ajax_load').hide();
+     
     $('#country').on('change', function () {
         var countryID = $(this).val();
         if (countryID) {
@@ -35,6 +38,16 @@ $(document).ready(function () {
     });
 });
 //CODE FOR COUNTRY,STATE,CITY END
+
+
+function validate(){
+
+     var form = $("#freelancer_post_addressinfo");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+}
+
 
 ////CHECK SEARCH KEYWORD AND LOCATION BLANK START
 //function checkvalue() {

@@ -177,7 +177,10 @@
                                                <?php echo form_error('phoneno'); ?>
                                     </fieldset>
                                     <fieldset class="hs-submit full-width">
-                                        <input type="submit"  id="next" name="next" value="Next" tabindex="6">
+                                        <!-- <input type="submit"  id="next" name="next" value="Next" tabindex="6"> -->
+
+                                         <button id="next" name="next" tabindex="6" onclick="return validate();">Next<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+
                                     </fieldset>
                                     <?php echo form_close(); ?>
                                 </div>
@@ -213,7 +216,7 @@
             <?php
         } else {
             ?>
-            <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_post_basic_information.js?ver=' . time()); ?>"></script>    
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_basic_information.js?ver=' . time()); ?>"></script>    
             <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
         <?php } ?>
 

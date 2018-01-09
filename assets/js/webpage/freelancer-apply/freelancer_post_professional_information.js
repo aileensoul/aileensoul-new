@@ -11,6 +11,8 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
 
 $(document).ready(function () {
 
+     $('.ajax_load').hide();
+
     $("#freelancer_post_professional").validate({
 
         ignore: '*:not([name])',
@@ -72,6 +74,15 @@ $(document).ready(function () {
     });
 });
 //FORM FILL UP VALIDATION END
+
+function validate(){
+
+     var form = $("#freelancer_post_professional");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+}
+
 //SKILL VALIDATION START
 function imgval() {
     var skill_main = document.getElementById("skill1").value;

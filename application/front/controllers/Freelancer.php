@@ -380,7 +380,7 @@ class Freelancer extends MY_Controller {
             $postid = trim($this->input->post('livepostid'));
         }
 
-        if ($this->input->post('next')) {
+       // if ($this->input->post('next')) {
             $this->form_validation->set_rules('country', 'Country', 'required');
             $this->form_validation->set_rules('state', 'State', 'required');
 
@@ -427,7 +427,7 @@ class Freelancer extends MY_Controller {
                     }
                 }
             }
-        }
+       // }
     }
 
 //FREELANCER_APPLY ADDRESS INFORMATION INSERT CODE END
@@ -498,7 +498,7 @@ class Freelancer extends MY_Controller {
         $skill1 = $this->input->post('skills');
         $skills = explode(',', $skill1);
 
-        if ($this->input->post('next')) {
+        //if ($this->input->post('next')) {
             $this->form_validation->set_rules('field', 'Field', 'required');
             $this->form_validation->set_rules('skill_description', 'Skill Description', 'required');
 
@@ -575,7 +575,7 @@ class Freelancer extends MY_Controller {
                     }
                 }
             }
-        }
+        //}
     }
 
 //FREELANCER_APPLY POST_PROFESSIONAL_INFORMATION INSERT DATA END
