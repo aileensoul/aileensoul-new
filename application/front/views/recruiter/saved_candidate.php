@@ -171,7 +171,7 @@
                                 <?php } else { ?>
                                     <ul class="pro-fw4">
                                     <?php } ?>  
-                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('recruiter/profile'); ?>">Details</a>
+                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('recruiter/profile/'.$userid); ?>">Details</a>
                                     </li>
 
 
