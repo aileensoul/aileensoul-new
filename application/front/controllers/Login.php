@@ -334,9 +334,14 @@ class Login extends CI_Controller {
             if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
             } else {
+                if ($userinfo['password'] == md5($password_login)) {
                 $this->session->set_userdata('aileenuser', $userinfo['user_id']);
                 $this->session->set_userdata('aileenuser_slug', $userinfo['user_slug']);
                 $is_data = 'ok';
+                }else if ($userinfo['password'] != md5($password_login)) {
+                    $is_data = 'password';
+                    $id = $result[0]['user_id'];
+                }
             }
         } else if ($email_login == $result[0]['email']) {
             $is_data = 'password';
@@ -420,10 +425,15 @@ class Login extends CI_Controller {
             if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
             } else {
+                if ($userinfo['password'] == md5($password_login)) {
                 $this->session->set_userdata('aileenuser', $userinfo['user_id']);
                 $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
                 $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
                 $is_data = 'ok';
+                }else if ($userinfo['password'] != md5($password_login)) {
+                    $is_data = 'password';
+                    $id = $result[0]['user_id'];
+                }
             }
         } else if ($email_login == $result['user_email']) {
             $is_data = 'password';
@@ -453,10 +463,15 @@ class Login extends CI_Controller {
             if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
             } else {
+                if ($userinfo['password'] == md5($password_login)) {
                 $this->session->set_userdata('aileenuser', $userinfo['user_id']);
                 $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
                 $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
                 $is_data = 'ok';
+                }else if ($userinfo['password'] != md5($password_login)) {
+                    $is_data = 'password';
+                    $id = $result[0]['user_id'];
+                }
             }
         } else if ($email_login == $result[0]['user_email']) {
             $is_data = 'password';
@@ -488,10 +503,15 @@ class Login extends CI_Controller {
             if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
             } else {
+                if ($userinfo['password'] == md5($password_login)) {
                 $this->session->set_userdata('aileenuser', $userinfo['user_id']);
                 $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
                 $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
                 $is_data = 'ok';
+                }else if ($userinfo['password'] != md5($password_login)) {
+                    $is_data = 'password';
+                    $id = $result[0]['user_id'];
+                }
             }
         } else if ($email_login == $result[0]['user_email']) {
             $is_data = 'password';
