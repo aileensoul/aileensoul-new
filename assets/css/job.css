@@ -2231,7 +2231,7 @@ label.cameraButton input[accept*=camera]{
     display:none!important
 }
 .cust-block li{
-    margin-left:-20px
+    margin-left:-10px
 }
 .all-job-bottom p.pull-right a.btn4:last-child{
     padding:3px 12px!important
