@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--<html lang="en" ng-app="userProfileApp" ng-controller="userProfileController">-->
-<html lang="en" ng-app="userProfileApp">
+<html lang="en" ng-app="userProfileApp" ng-controller="userProfileController">
+<!--<html lang="en" ng-app="userProfileApp">-->
 <head>
        <base href="/aileensoul-new/" >
 	<title ng-bind="title"></title>
@@ -85,7 +85,17 @@
              var base_url = '<?php echo base_url(); ?>';
              var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
               
+              
              var app = angular.module("userProfileApp", ["ngRoute"]);
+             
+             var item = '<?php echo $this->uri->segment(1); ?>'               
+   app.controller('userProfileController', function($scope) {
+     $scope.active = $scope.active == item?'':item;
+     $scope.makeActive = function(item) {       
+       $scope.active = $scope.active == item?'':item;
+     }
+   })
+   
                     app.config(function ($routeProvider, $locationProvider) {
                         $routeProvider
                                 .when("/profiless", {
@@ -140,7 +150,14 @@
                         $scope.goMainLink = function(path){
                             location.href=path;
                         }
+                        
+                        $scope.makeActive = function(item){ alert(123);
+                             $scope.active = $scope.active == item?'':item;
+                        }
                     });
+                    
+     
+
             </script>
 <!--        <script>
             jQuery(document).ready(function($) {

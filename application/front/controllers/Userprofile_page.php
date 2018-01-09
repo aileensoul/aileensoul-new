@@ -42,7 +42,7 @@ class Userprofile_page extends MY_Controller {
       if($is_basicInfo == 0){
         $detailsData = $this->data['detailsData'] = $this->user_model->getUserStudentData($userid,$data="d.degree_name as Degree,u.university_name as University,c.city_name as City,usr.first_name as First name,usr.last_name as Last name,usr.user_dob as DOB");
       } else { 
-        $detailsData = $this->data['detailsData'] = $this->user_model->getUserProfessionData($userid,$data="up.designation,up.field,c.city_name as City,usr.first_name as First name,usr.last_name as Last name,usr.user_dob as DOB");
+        $detailsData = $this->data['detailsData'] = $this->user_model->getUserProfessionData($userid,$data="jt.name as Designation,it.industry_name as Industry,c.city_name as City,usr.first_name as First name,usr.last_name as Last name,usr.user_dob as DOB");
       } 
       
       echo json_encode($detailsData);
