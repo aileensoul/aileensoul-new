@@ -2263,10 +2263,13 @@ class Recruiter extends MY_Controller {
                 } else {
                 }
             }
+               $no_post = '';
+               $no_post = "dataavl";
         } else {
 
 
-
+            $no_post = '';
+            $no_post = "nodata";
             $rec_post .= '<div class="art-img-nn">
                                             <div class="art_no_post_img">
 
@@ -2279,8 +2282,13 @@ class Recruiter extends MY_Controller {
                                         </div>';
         }
 
+        echo json_encode(
+                    array(
+                        "postdata" => $rec_post,
+                        "nopostvar" => $no_post,
+            ));
 
-        echo $rec_post;
+        //echo $rec_post;
     }
 
 // RECRUITER POST AJAX LAZZY LOADER DATA END

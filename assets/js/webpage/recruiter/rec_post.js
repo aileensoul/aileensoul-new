@@ -39,7 +39,7 @@ function rec_post(pagenum) {
         type: 'POST',
         url: base_url + "recruiter/ajax_rec_post?page=" + pagenum + "&id=" + id + "&returnpage=" + return_page,
         data: {total_record: $("#total_record").val()},
-        dataType: "html",
+        dataType: 'json',
         beforeSend: function () {
             if (pagenum == 'undefined') {
                  $(".job-contact-frnd1").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
@@ -52,7 +52,11 @@ function rec_post(pagenum) {
         },
         success: function (data) {
             $('.loader').remove();
-            $('.job-contact-frnd1').append(data);
+
+            if(data.nopostvar == 'nodata'){
+                $("#nodataavl").addClass("cust-border");
+            }
+            $('.job-contact-frnd1').append(data.postdata);
 
             // second header class add for scroll
             var nb = $('.post-design-box').length;
