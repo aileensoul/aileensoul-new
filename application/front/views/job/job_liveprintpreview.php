@@ -1939,7 +1939,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
              function login_data() { 
                 $('#login').modal('show');
                 $('#register').modal('hide');
-                //$('body').addClass('modal-open');
+                $('body').addClass('modal-open');
 
             }
             function register_profile() {
@@ -1949,13 +1949,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             function forgot_profile() {
                 $('#forgotPassword').modal('show');
                 $('#login').modal('hide');
+                $('body').addClass('modal-open');
 
             }
 
 
 $('.modal-close').click(function(e){ 
-   // $('body').addClass('modal-open'); 
     $('#login').modal('show');
+    $('body').addClass('modal-open');
 });
 
 
