@@ -115,7 +115,10 @@
                                         </fieldset>
                                         <input type="hidden" tabindex="2" name="free_step" id="free_step" value="<?php echo $free_post_step; ?>">
                                         <fieldset class="hs-submit full-width">
-                                            <input type="submit"  id="submit" tabindex="4" name="submit" value="Submit" onclick="return portfolio_form_submit(event);" >
+                                            <!-- <input type="submit"  id="submit" tabindex="4" name="submit" value="Submit" onclick="return portfolio_form_submit(event);" > -->
+
+                                             <button id="submit" name="submit" tabindex="4" onclick="return portfolio_form_submit(event);">Submit<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+
                                         </fieldset>
                                     </form>
                                 </div>
@@ -148,7 +151,7 @@
         <?php
     } else {
         ?>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_post_portfolio.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_portfolio.js?ver=' . time()); ?>"></script>
         <script  type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
     <?php } ?>
 

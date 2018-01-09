@@ -1,5 +1,9 @@
 //CODE FOR COUNTRY,STATE,CITY DATA FETCH START
 $(document).ready(function () {
+
+    $('.ajax_load').hide();
+
+    
     $('#country').on('change', function () {
         var countryID = $(this).val();
         if (countryID) {
@@ -45,7 +49,13 @@ $(document).ready(function ($) {
     });
 });
 //CODE FOR PRELOADER END
+function validate(){
 
+     var form = $("#address_info");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+}
 // CHECK SEARCH KEYWORD AND LOCATION BLANK START
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);

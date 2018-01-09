@@ -160,7 +160,9 @@
                                     <?php ?>
 
                                     <fieldset class="hs-submit full-width">
-                                        <input type="submit"  id="next" tabindex="6" name="next" value="Next">
+                                        <!-- <input type="submit"  id="next" tabindex="6" name="next" value="Next"> -->
+
+                                        <button id="next" name="next" tabindex="6" onclick="return validate();">Next<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                                     </fieldset>
                                     <?php echo form_close(); ?>
                                 </div>

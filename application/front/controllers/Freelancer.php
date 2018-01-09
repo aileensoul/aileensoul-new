@@ -380,7 +380,7 @@ class Freelancer extends MY_Controller {
             $postid = trim($this->input->post('livepostid'));
         }
 
-        if ($this->input->post('next')) {
+       // if ($this->input->post('next')) {
             $this->form_validation->set_rules('country', 'Country', 'required');
             $this->form_validation->set_rules('state', 'State', 'required');
 
@@ -427,7 +427,7 @@ class Freelancer extends MY_Controller {
                     }
                 }
             }
-        }
+       // }
     }
 
 //FREELANCER_APPLY ADDRESS INFORMATION INSERT CODE END
@@ -498,7 +498,7 @@ class Freelancer extends MY_Controller {
         $skill1 = $this->input->post('skills');
         $skills = explode(',', $skill1);
 
-        if ($this->input->post('next')) {
+        //if ($this->input->post('next')) {
             $this->form_validation->set_rules('field', 'Field', 'required');
             $this->form_validation->set_rules('skill_description', 'Skill Description', 'required');
 
@@ -575,7 +575,7 @@ class Freelancer extends MY_Controller {
                     }
                 }
             }
-        }
+        //}
     }
 
 //FREELANCER_APPLY POST_PROFESSIONAL_INFORMATION INSERT DATA END
@@ -619,7 +619,7 @@ class Freelancer extends MY_Controller {
         }
         $userid = $this->session->userdata('aileenuser');
 
-        if ($this->input->post('next')) {
+       // if ($this->input->post('next')) {
             if ($this->input->post('fixed_rate') == 1) {
                 $data = array(
                     'freelancer_post_fixed_rate' => trim($this->input->post('fixed_rate')),
@@ -670,7 +670,7 @@ class Freelancer extends MY_Controller {
                     redirect('freelance-work/rate', refresh);
                 }
             }
-        }
+       // }
     }
 
 //FREELANCER_APPLY RATE PAGE DATA INSERT END
@@ -713,7 +713,7 @@ class Freelancer extends MY_Controller {
             redirect('freelancer/freelancer_post_rate', refresh);
         }
 
-        if ($this->input->post('next')) {
+        //if ($this->input->post('next')) {
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($userdata[0]['free_post_step'] == 7) {
@@ -752,7 +752,7 @@ class Freelancer extends MY_Controller {
                     redirect('freelance-work/avability', refresh);
                 }
             }
-        }
+      //  }
     }
 
 //FREELANCER_APPLY AVABILITY PAGE DATA INSERT END

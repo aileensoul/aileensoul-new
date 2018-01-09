@@ -1,8 +1,8 @@
-$(document).ready(function () { 
-
-
-     $('#register_profile').modal('show');
- });
+//$(document).ready(function () { 
+//
+//
+//     $('#register_profile').modal('show');
+// });
 
 function login_profile() {
 

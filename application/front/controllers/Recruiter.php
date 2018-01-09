@@ -2613,11 +2613,11 @@ class Recruiter extends MY_Controller {
                     $contition_array = array('title_id' => $p['work_job_title']);
                     $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                    $return_html .= '<li><b>Job Title</b><span>' . $jobtitle[0]['name'] . '</span></li>';
+                    $return_html .= '<li><b>Job Title</b><span class="text_blur">' . $jobtitle[0]['name'] . '</span></li>';
                 }
                 if ($p['keyskill']) {
                     $jobskil = array();
-                    $return_html .= '<li><b>Skills</b><span>';
+                    $return_html .= '<li><b>Skills</b><span class="text_blur">';
 
                     $work_skill = explode(',', $p['keyskill']);
                     foreach ($work_skill as $skill) {
@@ -2631,7 +2631,7 @@ class Recruiter extends MY_Controller {
                     $contition_array = array('industry_id' => $p['work_job_industry']);
                     $industry = $this->common->select_data_by_condition('job_industry', $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                    $return_html .= '<li> <b> Industry</b> <span>' . $industry[0]['industry_name'] . '</span></li>';
+                    $return_html .= '<li> <b> Industry</b> <span class="text_blur">' . $industry[0]['industry_name'] . '</span></li>';
                 }
                 if ($p['work_job_city']) {
                     $work_city = explode(',', $p['work_job_city']);
@@ -2643,7 +2643,7 @@ class Recruiter extends MY_Controller {
                             $cities2[] = $citydata1[0]['city_name'];
                         }
                     }
-                    $return_html .= '<li> <b> Preferred Cites</b> <span>' . implode(',', $cities2) . '</span></li>';
+                    $return_html .= '<li> <b> Preferred Cites</b> <span class="text_blur">' . implode(',', $cities2) . '</span></li>';
                 }
 
                 $contition_array = array('user_id' => $p['iduser'], 'experience' => 'Experience', 'status' => '1');
@@ -2658,7 +2658,7 @@ class Recruiter extends MY_Controller {
                         $total_work_month += $work1['experience_month'];
                     }
 
-                    $return_html .= '<li> <b> Total Experience</b><span>';
+                    $return_html .= '<li> <b> Total Experience</b><span class="text_blur">';
 
                     if ($total_work_month == '12 month' && $total_work_year == '0 year') {
                         $return_html .= '1 year';
@@ -2703,12 +2703,12 @@ class Recruiter extends MY_Controller {
                         }
                     }
                     if ($p['experience'] == 'Fresher') {
-                        $return_html .= '<li> <b> Total Experience</b><span>' . $p['experience'] . '</span></li>';
+                        $return_html .= '<li> <b> Total Experience</b><span class="text_blur">' . $p['experience'] . '</span></li>';
                     } //if complete
                 }//else complete
 
                 if ($p['board_primary'] && $p['board_secondary'] && $p['board_higher_secondary'] && $p['degree']) {
-                    $return_html .= '<li><b>Degree</b><span>';
+                    $return_html .= '<li><b>Degree</b><span class="text_blur">';
                     $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
                     if ($cache_time) {
                         $return_html .= $cache_time;
@@ -2717,7 +2717,7 @@ class Recruiter extends MY_Controller {
                     }
                     $return_html .= '</span></li>';
 
-                    $return_html .= '<li><b>Stream</b><span>';
+                    $return_html .= '<li><b>Stream</b><span class="text_blur">';
                     $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
                     if ($cache_time) {
                         $return_html .= $cache_time;
@@ -2727,7 +2727,7 @@ class Recruiter extends MY_Controller {
 
                     $return_html .= '</span></li>';
                 } elseif ($p['board_secondary'] && $p['board_higher_secondary'] && $p['degree']) {
-                    $return_html .= '<li><b>Degree</b><span>';
+                    $return_html .= '<li><b>Degree</b><span class="text_blur">';
                     $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
                     if ($cache_time) {
                         $return_html .= $cache_time;
@@ -2736,7 +2736,7 @@ class Recruiter extends MY_Controller {
                     }
                     $return_html .= '</span></li>';
 
-                    $return_html .= '<li><b>Stream</b><span>';
+                    $return_html .= '<li><b>Stream</b><span class="text_blur">';
                     $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
                     if ($cache_time) {
                         $return_html .= $cache_time;
@@ -2745,7 +2745,7 @@ class Recruiter extends MY_Controller {
                     }
                     $return_html .= '</span></li>';
                 } elseif ($p['board_higher_secondary'] && $p['degree']) {
-                    $return_html .= '<li><b>Degree</b><span>';
+                    $return_html .= '<li><b>Degree</b><span class="text_blur">';
                     $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
                     if ($cache_time) {
                         $return_html .= $cache_time;
@@ -2754,7 +2754,7 @@ class Recruiter extends MY_Controller {
                     }
                     $return_html .= '</span></li>';
 
-                    $return_html .= '<li><b>Stream</b><span>';
+                    $return_html .= '<li><b>Stream</b><span class="text_blur">';
                     $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
                     if ($cache_time) {
                         $return_html .= $cache_time;
@@ -2763,14 +2763,14 @@ class Recruiter extends MY_Controller {
                     }
                     $return_html .= '</span></li>';
                 } else if ($p['board_secondary'] && $p['degree']) {
-                    $return_html .= '<li><b>Degree</b><span>';
+                    $return_html .= '<li><b>Degree</b><span class="text_blur">';
                     $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
                     if ($cache_time) {
                         $return_html .= $cache_time;
                     } else {
                         $return_html .= PROFILENA;
                     }
-                    $return_html .= '</span></li><li><b>Stream</b><span>';
+                    $return_html .= '</span></li><li><b>Stream</b><span class="text_blur">';
                     $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
                     if ($cache_time) {
                         $return_html .= $cache_time;
@@ -2779,7 +2779,7 @@ class Recruiter extends MY_Controller {
                     }
                     $return_html .= '</span></li>';
                 } elseif ($p['board_primary'] && $p['degree']) {
-                    $return_html .= '<li><b>Degree</b><span>';
+                    $return_html .= '<li><b>Degree</b><span class="text_blur">';
                     $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
                     if ($cache_time) {
                         $return_html .= $cache_time;
@@ -2788,7 +2788,7 @@ class Recruiter extends MY_Controller {
                     }
                     $return_html .= '</span></li>';
 
-                    $return_html .= '<li><b>Stream</b><span>';
+                    $return_html .= '<li><b>Stream</b><span class="text_blur">';
                     $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
                     if ($cache_time) {
                         $return_html .= $cache_time;
@@ -2798,21 +2798,21 @@ class Recruiter extends MY_Controller {
                     $return_html .= '</span></li>';
                 } elseif ($p['board_primary'] && $p['board_secondary'] && $p['board_higher_secondary']) {
                     $return_html .= '<li><b>Board of Higher Secondary</b>';
-                    $return_html .= '<span>' . $p['board_higher_secondary'] . '</span></li>';
+                    $return_html .= '<span class="text_blur">' . $p['board_higher_secondary'] . '</span></li>';
 
-                    $return_html .= '<li><b>Percentage of Higher Secondary</b><span>' . $p['percentage_higher_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Higher Secondary</b><span class="text_blur">' . $p['percentage_higher_secondary'] . '</span></li>';
                 } elseif ($p['board_secondary'] && $p['board_higher_secondary']) {
-                    $return_html .= '<li><b>Board of Higher Secondary</b><span>' . $p['board_higher_secondary'] . '</span></li>';
-                    $return_html .= '<li><b>Percentage of Higher Secondary</b><span>' . $p['percentage_higher_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Board of Higher Secondary</b><span class="text_blur">' . $p['board_higher_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Higher Secondary</b><span class="text_blur">' . $p['percentage_higher_secondary'] . '</span></li>';
                 } elseif ($p['board_primary'] && $p['board_higher_secondary']) {
 
-                    $return_html .= '<li><b>Board of Higher Secondary</b><span>' . $p['board_higher_secondary'] . '</span></li>';
-                    $return_html .= '<li><b>Percentage of Higher Secondary</b><span>' . $p['percentage_higher_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Board of Higher Secondary</b><span class="text_blur">' . $p['board_higher_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Higher Secondary</b><span class="text_blur">' . $p['percentage_higher_secondary'] . '</span></li>';
                 } elseif ($p['board_primary'] && $p['board_secondary']) {
-                    $return_html .= '<li><b>Board of Secondary</b><span>' . $p['board_secondary'] . '</span></li>';
-                    $return_html .= '<li><b>Percentage of Secondary</b><span>' . $p['percentage_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Board of Secondary</b><span class="text_blur">' . $p['board_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Secondary</b><span class="text_blur">' . $p['percentage_secondary'] . '</span></li>';
                 } elseif ($p['degree']) {
-                    $return_html .= '<li><b>Degree</b><span>';
+                    $return_html .= '<li><b>Degree</b><span class="text_blur">';
                     $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
                     if ($cache_time) {
                         $return_html .= $cache_time;
@@ -2821,7 +2821,7 @@ class Recruiter extends MY_Controller {
                     }
                     $return_html .= '</span></li>';
 
-                    $return_html .= '<li><b>Stream</b><span>';
+                    $return_html .= '<li><b>Stream</b><span class="text_blur">';
                     $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
                     if ($cache_time) {
                         $return_html .= $cache_time;
@@ -2830,18 +2830,18 @@ class Recruiter extends MY_Controller {
                     }
                     $return_html .= '</span></li>';
                 } elseif ($p['board_higher_secondary']) {
-                    $return_html .= '<li><b>Board of Higher Secondary</b><span>' . $p['board_higher_secondary'] . '</span></li>';
-                    $return_html .= '<li><b>Percentage of Higher Secondary</b><span>' . $p['percentage_higher_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Board of Higher Secondary</b><span class="text_blur">' . $p['board_higher_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Higher Secondary</b><span class="text_blur">' . $p['percentage_higher_secondary'] . '</span></li>';
                 } elseif ($p['board_secondary']) {
 
-                    $return_html .= '<li><b>Board of Secondary</b><span>' . $p['board_secondary'] . '</span></li>';
-                    $return_html .= '<li><b>Percentage of Secondary</b><span>' . $p['percentage_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Board of Secondary</b><span class="text_blur">' . $p['board_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Secondary</b><span class="text_blur">' . $p['percentage_secondary'] . '</span></li>';
                 } elseif ($p['board_primary']) {
-                    $return_html .= '<li><b>Board of Primary</b><span>' . $p['board_primary'] . '</span></li>';
-                    $return_html .= '<li><b>Percentage of Primary</b><span>' . $p['percentage_primary'] . '</span></li>';
+                    $return_html .= '<li><b>Board of Primary</b><span class="text_blur">' . $p['board_primary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Primary</b><span class="text_blur">' . $p['percentage_primary'] . '</span></li>';
                 }
 
-                $return_html .= '<li><b>E-mail</b><span>';
+                $return_html .= '<li><b>E-mail</b><span class="text_blur">';
                 if ($p['email']) {
                     $return_html .= $p['email'];
                 } else {
@@ -2850,7 +2850,7 @@ class Recruiter extends MY_Controller {
                 $return_html .= '</span></li>';
 
                 if ($p['phnno']) {
-                    $return_html .= '<li><b>Mobile Number</b><span>' . $p['phnno'] . '</span></li>';
+                    $return_html .= '<li><b>Mobile Number</b><span class="text_blur">' . $p['phnno'] . '</span></li>';
                 }
                 $return_html .= '<input type="hidden" name="search" id="search" value="' . $keyword . '">
                                     <input type="hidden" name="search" id="search1" value="' . $keyword1 . '">';

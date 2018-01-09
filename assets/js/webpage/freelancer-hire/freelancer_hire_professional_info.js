@@ -41,6 +41,10 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
 }
 }, "Only space, only number and only special characters are not allow");
 $(document).ready(function () {
+
+     $('.ajax_load').hide();
+
+
     $("#professional_info1").validate({
         rules: {
             professional_info: {
@@ -57,6 +61,17 @@ $(document).ready(function () {
     });
 });
 //FORM FILL UP VALIDATION END  
+
+
+function validate(){
+
+     var form = $("#professional_info1");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+}
+
+
 
 // FLASH MASSAGE DISPLAY TIMING START
 $(".alert").delay(3200).fadeOut(300);

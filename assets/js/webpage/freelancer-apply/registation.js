@@ -34,7 +34,20 @@ $('#state').on('change', function () {
         $('#city').html('<option value="">Select state first</option>');
     }
 });
+
+function validate(){
+
+     var form = $("#freelancer_regform");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+}
+
+
 $(document).ready(function () {
+
+     $('.ajax_load').hide();
+
     if (!user_session) {
         $('#register').modal('show');
     }

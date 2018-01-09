@@ -125,7 +125,10 @@
                                                <?php echo form_error('work_hour'); ?>
                                     </fieldset>
                                     <fieldset class="hs-submit full-width">
-                                        <input type="submit"  id="next" name="next" value="Next" tabindex="3">
+                                      <!--   <input type="submit"  id="next" name="next" value="Next" tabindex="3"> -->
+
+                                       <button id="next" name="next" tabindex="3" onclick="return validate();">Next<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+
                                     </fieldset>
                                     <?php echo form_close(); ?>
                                 </div>
