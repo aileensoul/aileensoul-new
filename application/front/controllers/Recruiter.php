@@ -2841,17 +2841,39 @@ class Recruiter extends MY_Controller {
                     $return_html .= '<li><b>Percentage of Primary</b><span>' . $p['percentage_primary'] . '</span></li>';
                 }
 
-                $return_html .= '<li><b>E-mail</b><span>';
-                if ($p['email']) {
-                    $return_html .= $p['email'];
-                } else {
-                    $return_html .= PROFILENA;
-                }
-                $return_html .= '</span></li>';
+                if ($this->session->userdata('aileenuser')) {
 
+                        $return_html .= '<li><b>E-mail</b><span>';
+                        if ($p['email']) {
+                            $return_html .= $p['email'];
+                        } else {
+                            $return_html .= PROFILENA;
+                        }
+                        $return_html .= '</span></li>';
+               }else{
+
+                     $return_html .= '<li><b>E-mail</b><span class="text_blur">';
+                        if ($p['email']) {
+                            $return_html .= $p['email'];
+                        } else {
+                            $return_html .= PROFILENA;
+                        }
+                        $return_html .= '</span></li>';
+
+               }
+
+            if ($this->session->userdata('aileenuser')) {
                 if ($p['phnno']) {
                     $return_html .= '<li><b>Mobile Number</b><span>' . $p['phnno'] . '</span></li>';
                 }
+
+         }else{
+
+            if ($p['phnno']) {
+                    $return_html .= '<li><b>Mobile Number</b><span class="text_blur">' . $p['phnno'] . '</span></li>';
+                }
+
+         }
                 $return_html .= '<input type="hidden" name="search" id="search" value="' . $keyword . '">
                                     <input type="hidden" name="search" id="search1" value="' . $keyword1 . '">';
 

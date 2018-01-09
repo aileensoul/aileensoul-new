@@ -162,7 +162,7 @@ function recommen_candidate_post(pagenum) {
                         email_reg: {
                             required: true,
                             email: true,
-                            lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
+//                            lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
                             remote: {
                                 url: base_url +"registration/check_email",
                                 type: "post",
