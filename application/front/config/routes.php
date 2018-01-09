@@ -64,7 +64,7 @@ $route['profiless'] = 'Userprofile';
 $route['details'] = 'Userprofile';
 $route['followers'] = 'Userprofile';
 $route['following'] = 'Userprofile';
-$route['contacts'] = 'user_info';
+$route['contacts'] = 'Userprofile';
 
 $route['opportunities'] = 'user_opportunities';
 
