@@ -188,7 +188,7 @@
                     </div>
                 </div>
 
-                <div class="right-part">
+                <div class="right-part" style="position:relative;">
                     <div class="add-box">
                         <img src="<?php echo base_url('assets/n-images/add.jpg') ?>">
                     </div>
@@ -196,7 +196,7 @@
                         <h4>Contacts<a href="#" class="pull-right">All</a></h4>
                         <div class="all-user-list">
                             <!--                            <div class="owl-carousel owl-theme">
-                                                            <div class="item"  ng-repeat="suggetion in contactSuggetion">
+                                                            <div class="item" ng-repeat="suggetion in contactSuggetion">
                                                                 <div class="post-img">
                                                                     <img src="<?php echo base_url('assets/n-images/user-pic.jpg') ?>">
                                                                 </div>
@@ -207,16 +207,21 @@
                                                                 <button class="follow-btn">Add to contact</button>
                                                             </div>
                                                         </div>-->
-                            <data-owl-carousel class="owl-carousel owl-theme" data-options="owlOptionsTestimonials">
-                                <div owl-carousel-item="" ng-repeat="suggetion in contactSuggetion" class="item">
-                                    <div class="post-img">
-                                        <img src="<?php echo base_url('assets/n-images/user-pic.jpg') ?>">
+                            <data-owl-carousel class="owl-carousel" data-options="{navigation: true, pagination: false, rewindNav : false}">
+                                <div owl-carousel-item="" ng-repeat="item in items1" class="item">
+                                    <div class="item">
+                                        <div class="post-img" ng-if="item.user_image != ''">
+                                            <img src="<?php echo USER_THUMB_UPLOAD_URL ?>{{item.user_image}}">
+                                        </div>
+                                        <div class="post-img" ng-if="item.user_image == ''">
+                                            <div class="post-img-mainuser">AA</div>
+                                        </div>
+                                        <div class="user-list-detail">
+                                            <p class="contact-name"><a href="#">{{item.first_name}}</a></p>
+                                            <p class="contact-designation"><a href="#">SEO Executive</a></p>
+                                        </div>
+                                        <button class="follow-btn">Add to contact</button>
                                     </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">{{suggetion.first_name}}</a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
                                 </div>
                             </data-owl-carousel>
                         </div>
@@ -289,189 +294,129 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 
         <script>
+                                        var base_url = '<?php echo base_url(); ?>';
+                                        var slug = '<?php echo $slugid; ?>';
+                                        var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+                                        var title = '<?php echo $title; ?>';
+                                        /*var app = angular.module("userOppoApp", ['ui.bootstrap']);
+                                         
+                                         app.controller('userOppoController', function ($scope, $http, $location) {
+                                         $scope.user = {};
+                                         getContactSuggetion();
+                                         function getContactSuggetion() {
+                                         $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
+                                         $scope.contactSuggetion = success.data;
+                                         }, function (error) {});
+                                         }
+                                         $scope.addToContact = function () {
+                                         $http({
+                                         method: 'POST',
+                                         url: base_url + 'general_data/searchJobTitle',
+                                         data: 'q=' + $scope.user.jobTitle,
+                                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                         })
+                                         .then(function (success) {
+                                         data = success.data;
+                                         $scope.titleSearchResult = data;
+                                         });
+                                         }
+                                         }); */
 
-                                    var base_url = '<?php echo base_url(); ?>';
-                                    var slug = '<?php echo $slugid; ?>';
-                                    var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
-                                    var title = '<?php echo $title; ?>';
 
-                                    var app = angular.module("userOppoApp", ['ui.bootstrap']);
+                                        var app = angular.module('userOppoApp', ['ui.bootstrap']);
+                                        app.controller('userOppoController', function($scope, $http) {
 
-                                    app.controller('homeCtrl', ['$scope', '$http', 'appServ', 'toastr', '$routeParams', '$location', '$filter',
-
-                                        function ($scope, appServ, toastr, $routeParams, $location, $filter) {
-                                            $scope.owlOptionsTestimonials = {
-                                                autoPlay: 4000,
-                                                stopOnHover: true,
-                                                slideSpeed: 300,
-                                                paginationSpeed: 600,
-                                                items: 2
-                                            }
-                                        }
                                         getContactSuggetion();
                                         function getContactSuggetion() {
-                                            $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
-                                                $scope.contactSuggetion = success.data;
-                                            }, function (error) {});
+                                        $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
+                                        $scope.items1 = success.data;
+                                        }, function (error) {});
                                         }
-                                    ]);
-
-                                    app.directive("owlCarousel", function () {
+                                        }).directive("owlCarousel", function() {
                                         return {
-                                            restrict: 'E',
-                                            transclude: false,
-                                            link: function (scope) {
-                                                scope.initCarousel = function (element) {
-                                                    console.log('initCarousel');
-
-                                                    // provide any default options you want
-                                                    var defaultOptions = {};
-                                                    var customOptions = scope.$eval($(element).attr('data-options'));
-                                                    // combine the two options objects
-                                                    for (var key in customOptions) {
-                                                        defaultOptions[key] = customOptions[key];
-                                                    }
-                                                    // init carousel
-                                                    var curOwl = $(element).data('owlCarousel');
-                                                    if (!angular.isDefined(curOwl)) {
-                                                        $(element).owlCarousel(defaultOptions);
-                                                    }
-                                                    scope.cnt++;
-                                                };
-                                            }
-                                        };
-                                    }).directive('owlCarouselItem', [
-                                        function () {
-                                            return {
-                                                restrict: 'A',
+                                        restrict: 'E',
                                                 transclude: false,
-                                                link: function (scope, element) {
-                                                    // wait for the last item in the ng-repeat then call init
-                                                    if (scope.$last) {
-                                                        console.log('lst element');
-                                                        scope.initCarousel(element.parent());
-                                                    }
+                                                link: function (scope) {
+                                                scope.initCarousel = function(element) {
+                                                // provide any default options you want
+                                                var defaultOptions = {
+                                                };
+                                                var customOptions = scope.$eval($(element).attr('data-options'));
+                                                // combine the two options objects
+                                                for (var key in customOptions) {
+                                                defaultOptions[key] = customOptions[key];
                                                 }
-                                            };
-                                        }
-                                    ]);
-                                    
-                                    /*
-                                     var app = angular.module("userOppoApp", ['ui.bootstrap']);
-                                     app.directive("owlCarousel", function() {
-                                     return {
-                                     restrict: 'E',
-                                     transclude: false,
-                                     link: function(scope) {
-                                     scope.initCarousel = function(element) {
-                                     console.log('initCarousel');
-                                     // provide any default options you want
-                                     var defaultOptions = {};
-                                     var customOptions = scope.$eval($(element).attr('data-options'));
-                                     // combine the two options objects
-                                     for (var key in customOptions) {
-                                     defaultOptions[key] = customOptions[key];
-                                     }
-                                     // init carousel
-                                     var curOwl = $(element).data('owlCarousel');
-                                     if (!angular.isDefined(curOwl)) {
-                                     $(element).owlCarousel(defaultOptions);
-                                     }
-                                     scope.cnt++;
-                                     };
-                                     }
-                                     };
-                                     }).directive('owlCarouselItem', [
-                                     function() {
-                                     return {
-                                     restrict: 'A',
-                                     transclude: false,
-                                     link: function(scope, element) {
-                                     // wait for the last item in the ng-repeat then call init
-                                     if (scope.$last) {
-                                     console.log('lst element');
-                                     scope.initCarousel(element.parent());
-                                     }
-                                     }
-                                     };
-                                     }
-                                     ]);
-                                     app.controller('userOppoController', function ($scope, $http, $location) {
-                                     $scope.user = {};
-                                     $scope.user = {};
-                                     getContactSuggetion();
-                                     function getContactSuggetion() {
-                                     $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
-                                     $scope.contactSuggetion = success.data;
-                                     }, function (error) {});
-                                     }
-                                     $scope.addToContact = function () {
-                                     alert(2132132);
-                                     $http({
-                                     method: 'POST',
-                                     url: base_url + 'general_data/searchJobTitle',
-                                     data: 'q=' + $scope.user.jobTitle,
-                                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                     })
-                                     .then(function (success) {
-                                     data = success.data;
-                                     $scope.titleSearchResult = data;
-                                     });
-                                     }
-                                     }); */
+                                                // init carousel
+                                                $(element).owlCarousel(defaultOptions);
+                                                };
+                                                }
+                                        };
+                                        })
+                                                .directive('owlCarouselItem', [function() {
+                                                return {
+                                                restrict: 'A',
+                                                        transclude: false,
+                                                        link: function(scope, element) {
+                                                        // wait for the last item in the ng-repeat then call init
+                                                        if (scope.$last) {
+                                                        scope.initCarousel(element.parent());
+                                                        }
+                                                        }
+                                                };
+                                                }]);
         </script>
-        <script>
-            jQuery(document).ready(function ($) {
-                var owl = $('.owl-carousel');
-                owl.on('initialize.owl.carousel initialized.owl.carousel ' +
-                        'initialize.owl.carousel initialize.owl.carousel ' +
-                        'resize.owl.carousel resized.owl.carousel ' +
-                        'refresh.owl.carousel refreshed.owl.carousel ' +
-                        'update.owl.carousel updated.owl.carousel ' +
-                        'drag.owl.carousel dragged.owl.carousel ' +
-                        'translate.owl.carousel translated.owl.carousel ' +
-                        'to.owl.carousel changed.owl.carousel',
-                        function (e) {
-                            $('.' + e.type)
-                                    .removeClass('secondary')
-                                    .addClass('success');
-                            window.setTimeout(function () {
-                                $('.' + e.type)
-                                        .removeClass('success')
-                                        .addClass('secondary');
-                            }, 500);
-                        });
-                owl.owlCarousel({
-                    loop: true,
-                    nav: true,
-                    lazyLoad: true,
-                    margin: 0,
-                    video: true,
-                    responsive: {
-                        0: {
-                            items: 1
-                        },
-                        600: {
-                            items: 2
-                        },
-                        960: {
-                            items: 2,
-                        },
-                        1200: {
-                            items: 2
-                        }
-                    }
-                });
-            });
+        <script type="text/javascript">
+//            $(window).load(function () {
+//            var owl = $('.owl-carousel');
+//            owl.on('initialize.owl.carousel initialized.owl.carousel ' +
+//                    'initialize.owl.carousel initialize.owl.carousel ' +
+//                    'resize.owl.carousel resized.owl.carousel ' +
+//                    'refresh.owl.carousel refreshed.owl.carousel ' +
+//                    'update.owl.carousel updated.owl.carousel ' +
+//                    'drag.owl.carousel dragged.owl.carousel ' +
+//                    'translate.owl.carousel translated.owl.carousel ' +
+//                    'to.owl.carousel changed.owl.carousel',
+//                    function (e) {
+//                    $('.' + e.type)
+//                            .removeClass('secondary')
+//                            .addClass('success');
+//                    window.setTimeout(function () {
+//                    $('.' + e.type)
+//                            .removeClass('success')
+//                            .addClass('secondary');
+//                    }, 500);
+//                    });
+//            owl.owlCarousel({
+//            loop: true,
+//                    nav: true,
+//                    lazyLoad: true,
+//                    margin: 0,
+//                    video: true,
+//                    responsive: {
+//                    0: {
+//                    items: 1
+//                    },
+//                            600: {
+//                            items: 2
+//                            },
+//                            960: {
+//                            items: 2,
+//                            },
+//                            1200: {
+//                            items: 2
+//                            }
+//                    }
+//            });
+//            });
             // mcustom scroll bar
             (function ($) {
-                $(window).on("load", function () {
+            $(window).on("load", function () {
 
-                    $(".custom-scroll").mCustomScrollbar({
-                        autoHideScrollbar: true,
-                        theme: "minimal"
-                    });
-                });
+            $(".custom-scroll").mCustomScrollbar({
+            autoHideScrollbar: true,
+                    theme: "minimal"
+            });
+            });
             })(jQuery);
         </script>
 
