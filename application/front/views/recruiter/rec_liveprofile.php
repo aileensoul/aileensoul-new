@@ -983,13 +983,18 @@ $(document).ready(function () {
                 $('#register').modal('show');
             }
             function forgot_profile() {
+                 $('#login').modal('hide');
                 $('#forgotPassword').modal('show');
             }
 
+
+ $(".modal-close").click(function(){
+    $('#login').modal('show');
+});
 </script>
 
 
- <script type="text/javascript">
+ <!-- <script type="text/javascript">
     
     $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
@@ -1000,7 +1005,7 @@ $(document).ready(function () {
     }
 });
 
-</script>
+</script> -->
  <script type="text/javascript">
             function login()
             {
