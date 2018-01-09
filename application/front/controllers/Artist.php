@@ -15802,7 +15802,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     foreach ($artdata as $rowdata) {
                         $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
                         $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
-
+                        
                         $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
 
                         $geturl = $this->get_url($rowdata['user_id']);
@@ -15907,7 +15907,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         }
                         $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
                             <div class="comment-details-menu"><p>';
-                        $return_html .= date('d-M-Y', strtotime($rowdata['created_date']));
+                        $return_html .= $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date'])));
                         $return_html .= '</br>';
                         $return_html .= '</p></div></div>
                 </div>';
