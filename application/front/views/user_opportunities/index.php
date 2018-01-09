@@ -202,14 +202,14 @@
                                             <img src="<?php echo USER_THUMB_UPLOAD_URL ?>{{item.user_image}}">
                                         </div>
                                         <div class="post-img" ng-if="item.user_image == ''">
-                                            <div class="post-img-mainuser">{{item.first_name | limitTo:1 | uppercase}}{{item.last_name | limitTo:1 | uppercase}}</div>
+                                            <div class="post-img-mainuser">{{item.first_name| limitTo:1 | uppercase}}{{item.last_name| limitTo:1 | uppercase}}</div>
                                         </div>
                                         <div class="user-list-detail">
                                             <p class="contact-name"><a href="#" ng-bind="(item.first_name | limitTo:1 | uppercase) + (item.first_name.substr(1) | lowercase)"></a></p>
                                             <p class="contact-designation"><a href="#" ng-if="item.degree_name != ''">{{item.title_name}}CEO</a></p>
                                             <p class="contact-designation"><a href="#" ng-if="item.degree_name == ''">{{item.degree_name}}</a></p>
                                         </div>
-                                        <button class="follow-btn">Add to contact</button>
+                                        <button class="follow-btn" ng-click="addToContact(item.user_id)">Add to contact</button>
                                     </div>
                                 </div>
                             </data-owl-carousel>
@@ -289,12 +289,23 @@
                                             var title = '<?php echo $title; ?>';
                                             var app = angular.module('userOppoApp', ['ui.bootstrap']);
                                             app.controller('userOppoController', function ($scope, $http) {
-
                                                 getContactSuggetion();
                                                 function getContactSuggetion() {
                                                     $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
                                                         $scope.items1 = success.data;
                                                     }, function (error) {});
+                                                }
+                                                $scope.addToContact = function (user_id,index) {
+                                                    $http({
+                                                        method: 'POST',
+                                                        url: base_url + 'user_opportunities/addToContact',
+                                                        data: 'user_id=' + user_id,
+                                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                                    }).then(function (success) {
+                                                        if (success.data.message == 1) {
+                                                            $scope.items.splice(index, 1);
+                                                        }
+                                                    });
                                                 }
                                             });
                                             app.filter('wordFirstCase', function () {
