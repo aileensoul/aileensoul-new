@@ -2388,6 +2388,15 @@ img{
     background:linear-gradient(to bottom,#de5c90 0,#207cca 0,#de5c90 0,#912281 100%,#de5c90 100%);
     text-decoration:none
 }
+.btn-right .btn-new1:focus{
+    color:#fff !important;
+    background:#de5c90;
+    background:-moz-linear-gradient(top,#de5c90 0,#207cca 0,#de5c90 0,#912281 100%,#de5c90 100%)!important;
+    background:-webkit-linear-gradient(top,#de5c90 0,#207cca 0,#de5c90 0,#912281 100%,#de5c90 100%)!important;
+    background:linear-gradient(to bottom,#de5c90 0,#207cca 0,#de5c90 0,#912281 100%,#de5c90 100%)!important;
+    text-decoration:none
+}
+
 .introduce_button .btn-new1{
     letter-spacing:1.5px!important;
     font-family:arial;

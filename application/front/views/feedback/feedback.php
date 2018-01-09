@@ -25,7 +25,7 @@ header('Cache-Control: public, max-age=30');
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <?php
-        if ($_SERVER['HTTP_HOST'] != "localhost") {
+        if ($_SERVER['HTTP_HOST'] == "www.aileensoul.com") {
             ?>
 
             <script>
