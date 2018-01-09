@@ -442,7 +442,7 @@ class Freelancer_hire extends MY_Controller {
 
 
 
-        if ($this->input->post('next')) {
+        //if ($this->input->post('next')) {
 
 
             $this->form_validation->set_rules('country', 'Please Enter Your country', 'required');
@@ -505,7 +505,7 @@ class Freelancer_hire extends MY_Controller {
                     redirect('freelance-hire/address-information', refresh);
                 }
             }
-        }
+        //}
     }
 
     public function freelancer_hire_professional_info() {
@@ -546,7 +546,7 @@ class Freelancer_hire extends MY_Controller {
 
 
 
-        if ($this->input->post('next')) {
+       // if ($this->input->post('next')) {
 
 
 
@@ -583,7 +583,7 @@ class Freelancer_hire extends MY_Controller {
                 redirect('freelance-hire/professional-information', refresh);
             }
             // }
-        }
+       // }
     }
 
     //keyskill automatic retrieve cobtroller start

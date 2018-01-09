@@ -78,7 +78,9 @@
                                     <?php echo form_error('professional_info'); ?> 
                                 </fieldset>
                                 <fieldset style="margin-top: 4%"" class="hs-submit full-width">
-                                    <input type="submit" tabindex="2" id="next" name="next" value="Submit">
+                                   <!--  <input type="submit" tabindex="2" id="next" name="next" value="Submit"> -->
+
+                                    <button id="next" name="next" tabindex="2" onclick="return validate();">Submit<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                                 </fieldset>
                                 <?php echo form_close(); ?>
                             </div>
