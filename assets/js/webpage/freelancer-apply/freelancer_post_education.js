@@ -15,7 +15,18 @@
 //}
 ////CHECK SEARCH KEYWORD AND LOCATION BLANK END
 //CODE FOR DEGREE DATA START
+function validate(){
+
+     var form = $("#freelancer_post_education");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+}
+
+
 $(document).ready(function () {
+
+     $('.ajax_load').hide();
 
     $('#degree').on('change', function () {
         var degreeID = $(this).val();

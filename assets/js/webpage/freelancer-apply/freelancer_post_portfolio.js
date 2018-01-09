@@ -3,6 +3,9 @@ $(".alert").delay(3200).fadeOut(300);
 //FLASH MASSAGE SCRIPT END
 //CODE FOR PREELOADER START
 jQuery(document).ready(function ($) {
+
+    $('.ajax_load').hide();
+
                     // site preloader -- also uncomment the div in the header and the css style for #preloader
                     $(window).load(function () {
                         $('#preloader').fadeOut('slow', function () {
@@ -10,6 +13,7 @@ jQuery(document).ready(function ($) {
                         });
                     });
                 });
+
 //CODE FOR PREELOADER END
 ////CHECK SEARCH KEYWORD AND LOCATION BLANK START
 // function checkvalue() {
@@ -65,6 +69,14 @@ jQuery(document).ready(function ($) {
                 }
 //DELETE PDF CODE END
  function portfolio_form_submit(event) {
+
+
+    // var form = $("#freelancer_post_portfolio");
+    // if(form.valid() == true ){
+    //  $('#profilereg_ajax_load').show();
+    // }
+
+
                     var image_hidden_portfolio = document.getElementById("image_hidden_portfolio").value;
                     var portfolio_attachment = document.getElementById("portfolio_attachment").value;
                     var free_post_step = document.getElementById("free_step").value;
@@ -89,6 +101,10 @@ jQuery(document).ready(function ($) {
                         return false;
                     } else
                     {
+
+                         $('#profilereg_ajax_load').show();
+
+                         
                         var fd = new FormData();
                         fd.append("image", $("#portfolio_attachment")[0].files[0]);
                         files = this.files;

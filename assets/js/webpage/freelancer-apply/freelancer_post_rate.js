@@ -45,4 +45,16 @@ $(".alert").delay(3200).fadeOut(300);
                     });
                 });
 //FORM FILL UP VALIDATION END
+jQuery(document).ready(function ($) {
+
+    $('.ajax_load').hide();
+});
+
+function validate(){
+
+     var form = $("#freelancer_post_rate");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+}
 

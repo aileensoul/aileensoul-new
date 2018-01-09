@@ -16,6 +16,9 @@
 ////CHECK SEARCH KEYWORD AND LOCATION BLANK END
 //FOR PREELOADER START
  jQuery(document).ready(function ($) {
+
+     $('.ajax_load').hide();
+     
                     $(window).load(function () {
                         $('#preloader').fadeOut('slow', function () {
                             $(this).remove();
@@ -23,6 +26,16 @@
                     });
                 });
 //FOR PREELOADER END
+
+function validate(){
+
+     var form = $("#freelancer_post_avability");
+    if(form.valid() == true ){
+     $('#profilereg_ajax_load').show();
+    }
+}
+
+
 //FORM FILL UP VALIDATION START
 $.validator.addMethod("regx", function(value, element, regexpr) {          
    if(!value) 

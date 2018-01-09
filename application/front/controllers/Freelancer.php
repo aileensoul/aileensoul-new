@@ -619,7 +619,7 @@ class Freelancer extends MY_Controller {
         }
         $userid = $this->session->userdata('aileenuser');
 
-        if ($this->input->post('next')) {
+       // if ($this->input->post('next')) {
             if ($this->input->post('fixed_rate') == 1) {
                 $data = array(
                     'freelancer_post_fixed_rate' => trim($this->input->post('fixed_rate')),
@@ -670,7 +670,7 @@ class Freelancer extends MY_Controller {
                     redirect('freelance-work/rate', refresh);
                 }
             }
-        }
+       // }
     }
 
 //FREELANCER_APPLY RATE PAGE DATA INSERT END
@@ -713,7 +713,7 @@ class Freelancer extends MY_Controller {
             redirect('freelancer/freelancer_post_rate', refresh);
         }
 
-        if ($this->input->post('next')) {
+        //if ($this->input->post('next')) {
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($userdata[0]['free_post_step'] == 7) {
@@ -752,7 +752,7 @@ class Freelancer extends MY_Controller {
                     redirect('freelance-work/avability', refresh);
                 }
             }
-        }
+      //  }
     }
 
 //FREELANCER_APPLY AVABILITY PAGE DATA INSERT END
