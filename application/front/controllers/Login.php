@@ -61,15 +61,21 @@ class Login extends CI_Controller {
         $result = $this->user_model->getUserByEmail($email_login);
 
         $userinfo = $this->logins->check_login($email_login, $password_login);
+
         $user_slug = '';
         if ($userinfo['user_id'] != '') {
             if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
             } else {
-                $this->session->set_userdata('aileenuser', $userinfo['user_id']);
-                $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
-                $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
-                $data = 'ok';
+                if ($userinfo['password'] == md5($password_login)) {
+                    $this->session->set_userdata('aileenuser', $userinfo['user_id']);
+                    $user_slug = $this->user_model->getUserSlugById($userinfo['user_id']);
+                    $this->session->set_userdata('aileenuser_slug', $user_slug['user_slug']);
+                    $is_data = 'ok';
+                } else if ($userinfo['password'] != md5($password_login)) {
+                    $is_data = 'password';
+                    $id = $result[0]['user_id'];
+                }
             }
         } else if ($email_login == $result[0]['user_email']) {
             $is_data = 'password';
@@ -77,10 +83,10 @@ class Login extends CI_Controller {
         } else {
             $is_data = 'email';
         }
-
+       
         echo json_encode(
                 array(
-                    "data" => $data,
+                    "data" => $is_data,
                     "user_slug" => $user_slug['user_slug']
         ));
     }
@@ -343,6 +349,7 @@ class Login extends CI_Controller {
                     "is_artistic" => $artistic
         ));
     }
+
     public function fblogin() {// echo '<pre>'; print_r($_POST); 
         if ($_POST['id'] != " ") {
             $fbid = $_POST['id'];
@@ -424,8 +431,8 @@ class Login extends CI_Controller {
                     "data" => $is_data, "id" => $id, "is_rec" => $rec,
         ));
     }
-    
-      public function job_check_login() {
+
+    public function job_check_login() {
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
 
@@ -459,7 +466,7 @@ class Login extends CI_Controller {
                     "is_job" => $job,
         ));
     }
-    
+
     public function business_check_login() {
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
