@@ -54,7 +54,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 left-header text-center fw-479">
-                      <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a>
+                     <div class="logo"> <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a></div>
                     </div>
                     <div class="col-md-8 col-sm-9 right-header fw-479 text-center">
                         <div class="btn-right pull-right">
@@ -1932,6 +1932,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
       </script>
 
       <script>
+
+
+        $(document).ready(function () {
+                // setTimeout(function () {
+                    $('#register').modal('show');
+                // }, 2000);
+            });
+
             function login_profile() {
                 $('#register').modal('show');
                // $('body').addClass('modal-open');
@@ -1962,17 +1970,7 @@ $('.modal-close').click(function(e){
 
    </script>
 
-   <script type="text/javascript">
-    
-    $( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        //$('#register').modal('hide');
-        // $('#login').modal('hide');
-    }
-});
-
-</script>
- <script type="text/javascript">
+    <script type="text/javascript">
             function login()
             {
                 document.getElementById('error1').style.display = 'none';
@@ -2265,16 +2263,9 @@ $('.modal-close').click(function(e){
         if (IS_JOB_JS_MINIFY == '1') {
             ?>
 
-      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_printpreview.js?ver='.time()); ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/cover_profile_common.js?ver='.time()); ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
       <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/progressbar_common.js?ver='.time()); ?>"></script>
 
       <?php }else{?>
-
-  <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_printpreview.js?ver='.time()); ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/cover_profile_common.js?ver='.time()); ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver='.time()); ?>"></script>
       <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/progressbar_common.js?ver='.time()); ?>"></script>
 
 
