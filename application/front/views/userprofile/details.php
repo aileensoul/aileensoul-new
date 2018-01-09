@@ -7,14 +7,10 @@
 						<div class="p15 fw">
 							<div class="detail-box">
 								<h4>Basic Information</h4>
-								<ul>
-									<li><b>Name:</b> <span>Prasant Dadhaniya</span></li>
-									<li><b>Designation:</b> <span>SEO Excutive</span></li>
-									<li><b>City:</b> <span>	Ahmedabad</span></li>
-									<li><b>indestry:</b> <span>It Sector</span></li>
-									<li><b>DOB:</b> <span>26-11-1990</span></li>
-									
+								<ul ng-repeat="(key, value) in details_data">
+									<li><b>{{key}}:</b> <span>{{value}}</span></li>
 								</ul>
+                                                                
 							</div>
 						</div>
 					</div>

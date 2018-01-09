@@ -130,9 +130,9 @@
                                 data: 'u=' + user_id,
                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                             })
-                                    .then(function (success) { 
-                                        data = success.data;
-                                        $scope.titleSearchResult = data;
+                                    .then(function (success) {
+                                        details_data = success.data;
+                                        $scope.details_data = details_data;
                                     });
                         }
 

@@ -40,9 +40,9 @@ class Userprofile_page extends MY_Controller {
       $userid = $this->session->userdata('aileenuser');
         $is_basicInfo = $this->data['is_basicInfo'] = $this->user_model->is_userBasicInfo($userid);
       if($is_basicInfo == 0){
-        $detailsData = $this->data['detailsData'] = $this->user_model->getUserStudentData($userid,$data="d.degree_name,u.university_name,c.city_name");
+        $detailsData = $this->data['detailsData'] = $this->user_model->getUserStudentData($userid,$data="d.degree_name as Degree,u.university_name as University,c.city_name as City,usr.first_name as First name,usr.last_name as Last name,usr.user_dob as DOB");
       } else { 
-        $detailsData = $this->data['detailsData'] = $this->user_model->getUserProfessionData($userid,$data="up.designation,up.field,c.city_name");
+        $detailsData = $this->data['detailsData'] = $this->user_model->getUserProfessionData($userid,$data="up.designation,up.field,c.city_name as City,usr.first_name as First name,usr.last_name as Last name,usr.user_dob as DOB");
       } 
       
       echo json_encode($detailsData);

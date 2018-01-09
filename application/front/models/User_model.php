@@ -133,6 +133,8 @@ class User_model extends CI_Model {
         $this->db->select($select_data)->from("user_profession up");
         $this->db->join('cities c', 'c.city_id = up.city', 'left');
         $this->db->join('user usr', 'usr.user_id = us.user_id', 'left');
+        $this->db->join('job_title jt', 'usr.user_id = us.user_id', 'left');
+        $this->db->join('user usr', 'usr.user_id = us.user_id', 'left');
         $this->db->where("up.user_id =" . $user_id);
         $query = $this->db->get();
         $result_array = $query->row_array();
