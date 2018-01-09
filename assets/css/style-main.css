@@ -3216,6 +3216,7 @@ header.profile-header .logo a{
 	}
 	.about-content p img{width:100%;}
 	.new-abput-page .img-custom{width:49%; padding:0 15px;}
+    .profile-bnr .logo{text-align: center;}
 }
 @media screen and (max-width:640px){
     .btns .btn-4{
