@@ -25,15 +25,11 @@ header("Pragma: no-cache"); // HTTP/1.0
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<<<<<<< HEAD
-        <?php
-        if (base_url() == "https://www.aileensoul.com/") {
-            ?>
-=======
+
 <?php
  if ($_SERVER['HTTP_HOST'] == "www.aileensoul.com") {
     ?>
->>>>>>> 7b019917a6389d13f7bb347984eb693237858fb0
+
 
             <script>
                 (function (i, s, o, g, r, a, m) {
