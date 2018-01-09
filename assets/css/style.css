@@ -2909,7 +2909,7 @@ footer div.pt20{
     }
     @media screen and (max-width:540px){
         .cls-ve{
-            right:3px;
+            right:5px;
             top:23px
         }
         label.cameraButton{
@@ -3163,7 +3163,7 @@ footer div.pt20{
             width:100%
         }
         .cls-ve{
-            top:23px
+            top:30px
         }
         .next,.prev{
             top:215px
