@@ -505,7 +505,7 @@ $("form").submit(function () {
             var rate = $('#rate').val();
             var currency = $('#currency').val();
             var worktype = $("input[name=rating]:checked").val();
-            alert(worktype);
+            
                     if (rate != '') {
                 if (currency == null) {
                     $('<label for="currency" class="last_date_error" style="display: block;">You had add rate so please select currency</label>').insertAfter("#currency");

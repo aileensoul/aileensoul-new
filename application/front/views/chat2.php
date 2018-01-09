@@ -505,6 +505,7 @@ if ($lstusrdata) {
                     var data = $('#message').html();
                     data = data.replace(/&nbsp;/gi, " ");
                     if (check_perticular(data) == true) {
+                       
                     return false;
                     }
                     var data = $('#message').html().replace(/<div>/gi, '<br>').replace(/<\/div>/gi, '');
@@ -512,22 +513,27 @@ if ($lstusrdata) {
                     data = data.replace(/<div><br><\/div>/gi, " ");
                     data = data.replace(/<br>/, '');
                     if (data == '' || data == '<br>') {
+                     
                     return false;
                     }
                     if (check_perticular(data) == true) {
+                       
                     return false;
                     }
 
                     $("#message").html("");
                     sendChat(data, function () {
+                       
                     });
                     });
                     $("#message").click(function () {
+                     
                     $(this).prop("contentEditable", true);
                     });
                     $('#message').keypress(function (e) {
-
+                      
                     if (e.keyCode == 13 && !e.shiftKey) {
+                      
                     e.preventDefault();
                     var sel = $("#message");
                     var txt = sel.html();
@@ -538,6 +544,7 @@ if ($lstusrdata) {
                     txt = txt.replace(/<div><br><\/div>/gi, " ");
                     txt = txt.replace(/<br>/, '');
                     txt = txt.replace(/&nbsp;/gi, " ");
+                    alert(txt);
                     //            txt = txt.replace(/<div><br><\/div>/gi, " ");
                     //            txt = txt.replace(/&gt;/gi, ">");
                     //            txt = txt.replace(/div/gi, "p");
@@ -592,6 +599,7 @@ if ($lstusrdata) {
                     if (data == '' || data == '<br>') {
                     return false;
                     }
+                    
                     $('#submit').trigger('click');
                     }
                      });
@@ -669,7 +677,7 @@ if ($lstusrdata) {
 
                     //$('#user_search').keypress(function() {
                     $("#user_search").on("keyup", function (event) {
-
+                     
                     var val = $('#user_search').val();
                     var usrid = '<?php echo $toid; ?>';
                     // khyati chnages  start
