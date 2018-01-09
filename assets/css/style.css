@@ -2340,6 +2340,7 @@ footer div.pt20{
     color:#4c4c4c;
 }
 .main_sl{position: relative;}
+
 .cus_btn_sub{
     font-size:17px!important;
     height:auto;
@@ -2756,7 +2757,7 @@ footer div.pt20{
     }
     .modal.in .modal-dialog{
         width:100%;
-        padding:0 15px
+        padding:0 15px;
     }
     .padd_set .change-password{
         padding:0
