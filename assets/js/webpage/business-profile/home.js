@@ -67,7 +67,7 @@ function ajax_business_home_post(pagenum) {
         complete: function () {
         },
         success: function (data) {
-            $('.loader').remove();
+            $('#loader').remove();
             $('.business-all-post').append(data);
             var nb = $('.post-design-box').length;
             if (nb == 0) {
