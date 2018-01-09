@@ -228,8 +228,8 @@ body{
 body.custom-landscape,body.outer-page{
     padding-bottom:104px
 }
-.custom-landscape .btn1{color: #fff;background: #1b8ab9;}
-.custom-landscape .btn1:hover{color: #1b8ab9;background: #fff!important;}
+.header-login .btn1{color: #fff;background: #1b8ab9;}
+.header-login .btn1:hover{color: #1b8ab9;background: #fff!important;}
 .modal-open .btn1:hover{color: #fff !important;border:1px solid #156f95;background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#1b8ab9),color-stop(56%,#3bb0ac),color-stop(100%,#3bb0ac))!important;background:-webkit-linear-gradient(96deg,#3bb0ac 0,#3bb0ac 44%,#1b8ab9 100%)!important;background:-o-linear-gradient(96deg,#3bb0ac 0,#3bb0ac 44%,#1b8ab9 100%)!important;background:-ms-linear-gradient(96deg,#3bb0ac 0,#3bb0ac 44%,#1b8ab9 100%)!important;background:linear-gradient(354deg,#3bb0ac 0,#1b8ab9 44%,#1b8ab9 100%)!important;}
 header{
     z-index:10;
