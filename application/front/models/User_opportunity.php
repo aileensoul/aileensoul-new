@@ -13,7 +13,7 @@ class User_opportunity extends CI_Model {
         $this->db->order_by('u.user_id', 'DESC');
         $this->db->limit('30');
         $query = $this->db->get();
-        $result_array = $query->row_array();
+        $result_array = $query->result_array();
         return $result_array;
     }
 
