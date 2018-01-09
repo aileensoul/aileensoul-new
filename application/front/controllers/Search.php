@@ -1253,6 +1253,9 @@ Your browser does not support the audio tag.
         $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
+        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1', 'free_hire_step' => '3');
+        $free_hire_result = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
         if (count($unique) > 0) {
             foreach ($freelancerpostdata1 as $row) {
                 $return_html .= '<div class="profile-job-post-detail clearfix search">
