@@ -2527,8 +2527,8 @@ footer ul li a:hover{
         font-size:12px!important
     }
     #notification_inside{
-        padding:5px 5px 9px 1px!important;
-        margin-left:7px!important
+        padding:0px 5px 5px 1px!important;
+        margin-left:60px!important
     }
     .job_con #InboxContainer::before{
         right:105px

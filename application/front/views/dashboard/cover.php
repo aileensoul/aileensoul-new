@@ -639,7 +639,7 @@
                                                         <span class="mian_4_hed"><?php echo ucfirst($userdata['first_name']);
         echo" ";
         echo ucfirst($userdata['last_name']); ?></span>
-                                                        <p>Welcome In Aileensoul</p>
+                                                        <p>Welcome in Aileensoul</p>
                                                         <p>
                                                             <a class="btn-go" href="">Let's Go</a>
                                                         </p>

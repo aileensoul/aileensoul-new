@@ -142,8 +142,6 @@
                             })
                                     .then(function (success) {
                                         details_data = success.data;
-                                alert(details_data.rp_step);
-                                
                                         $scope.details_data = details_data;
                                     });
                         }

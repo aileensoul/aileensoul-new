@@ -3509,7 +3509,7 @@ header.profile-header .logo a{
         margin-right:12px
     }
     .login .form-group select.day,.login .form-group select.month,.login .form-group select.year{
-        width:50px!important
+        width:70px!important
     }
 }
 @media screen and (max-width:319px){

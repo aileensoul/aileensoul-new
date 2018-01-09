@@ -577,6 +577,7 @@ if ($lstusrdata) {
                     }
                 </script>
                 <script type="text/javascript">
+                    $('#message').on('keydown', function (e) {
                     if (e.which == 13 && !e.shiftKey) {
                     e.preventDefault();
                     var $field = $('#message');
@@ -591,7 +592,7 @@ if ($lstusrdata) {
                     }
                     $('#submit').trigger('click');
                     }
-
+                    });
                 </script>
                 <script type="text/javascript">
                     function delete_chat(from, message_id) {
