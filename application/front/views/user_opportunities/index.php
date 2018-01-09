@@ -188,25 +188,13 @@
                     </div>
                 </div>
 
-                <div class="right-part" style="position:relative;">
+                <div class="right-part">
                     <div class="add-box">
                         <img src="<?php echo base_url('assets/n-images/add.jpg') ?>">
                     </div>
                     <div class="all-contact">
                         <h4>Contacts<a href="#" class="pull-right">All</a></h4>
                         <div class="all-user-list">
-                            <!--                            <div class="owl-carousel owl-theme">
-                                                            <div class="item" ng-repeat="suggetion in contactSuggetion">
-                                                                <div class="post-img">
-                                                                    <img src="<?php echo base_url('assets/n-images/user-pic.jpg') ?>">
-                                                                </div>
-                                                                <div class="user-list-detail">
-                                                                    <p class="contact-name"><a href="#">{{suggetion.first_name}}</a></p>
-                                                                    <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                                                </div>
-                                                                <button class="follow-btn">Add to contact</button>
-                                                            </div>
-                                                        </div>-->
                             <data-owl-carousel class="owl-carousel" data-options="{navigation: true, pagination: false, rewindNav : false}">
                                 <div owl-carousel-item="" ng-repeat="item in items1" class="item">
                                     <div class="item">
@@ -214,11 +202,12 @@
                                             <img src="<?php echo USER_THUMB_UPLOAD_URL ?>{{item.user_image}}">
                                         </div>
                                         <div class="post-img" ng-if="item.user_image == ''">
-                                            <div class="post-img-mainuser">{{item.first_name}}</div>
+                                            <div class="post-img-mainuser">{{item.first_name | limitTo:1 | uppercase}}{{item.last_name | limitTo:1 | uppercase}}</div>
                                         </div>
                                         <div class="user-list-detail">
-                                            <p class="contact-name"><a href="#">{{item.first_name}}</a></p>
-                                            <p class="contact-designation"><a href="#">{{item.last_name}}</a></p>
+                                            <p class="contact-name"><a href="#" ng-bind="(item.first_name | limitTo:1 | uppercase) + (item.first_name.substr(1) | lowercase)"></a></p>
+                                            <p class="contact-designation"><a href="#" ng-if="item.degree_name != ''">{{item.title_name}}CEO</a></p>
+                                            <p class="contact-designation"><a href="#" ng-if="item.degree_name == ''">{{item.degree_name}}</a></p>
                                         </div>
                                         <button class="follow-btn">Add to contact</button>
                                     </div>
@@ -294,104 +283,85 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 
         <script>
-                                                var base_url = '<?php echo base_url(); ?>';
-                                                var slug = '<?php echo $slugid; ?>';
-                                                var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
-                                                var title = '<?php echo $title; ?>';
-                                                /*var app = angular.module("userOppoApp", ['ui.bootstrap']);
-                                                 
-                                                 app.controller('userOppoController', function ($scope, $http, $location) {
-                                                 $scope.user = {};
-                                                 getContactSuggetion();
-                                                 function getContactSuggetion() {
-                                                 $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
-                                                 $scope.contactSuggetion = success.data;
-                                                 }, function (error) {});
-                                                 }
-                                                 $scope.addToContact = function () {
-                                                 $http({
-                                                 method: 'POST',
-                                                 url: base_url + 'general_data/searchJobTitle',
-                                                 data: 'q=' + $scope.user.jobTitle,
-                                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                                 })
-                                                 .then(function (success) {
-                                                 data = success.data;
-                                                 $scope.titleSearchResult = data;
-                                                 });
-                                                 }
-                                                 }); */
-
-
-                                                var app = angular.module('userOppoApp', ['ui.bootstrap']);
-                                                app.controller('userOppoController', function($scope, $http) {
+                                            var base_url = '<?php echo base_url(); ?>';
+                                            var slug = '<?php echo $slugid; ?>';
+                                            var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+                                            var title = '<?php echo $title; ?>';
+                                            var app = angular.module('userOppoApp', ['ui.bootstrap']);
+                                            app.controller('userOppoController', function ($scope, $http) {
 
                                                 getContactSuggetion();
                                                 function getContactSuggetion() {
-                                                $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
-                                                $scope.items1 = success.data;
-                                                }, function (error) {});
+                                                    $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
+                                                        $scope.items1 = success.data;
+                                                    }, function (error) {});
                                                 }
-                                                }).directive("owlCarousel", function() {
+                                            });
+                                            app.filter('wordFirstCase', function () {
+                                                return function (text) {
+                                                    return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
+                                                };
+                                            });
+                                            app.directive("owlCarousel", function () {
                                                 return {
-                                                restrict: 'E',
-                                                        link: function (scope) {
-                                                        scope.initCarousel = function(element) {
-                                                        // provide any default options you want
-                                                        var defaultOptions = {
+                                                    restrict: 'E',
+                                                    link: function (scope) {
+                                                        scope.initCarousel = function (element) {
+                                                            // provide any default options you want
+                                                            var defaultOptions = {
                                                                 loop: true,
                                                                 nav: true,
                                                                 lazyLoad: true,
                                                                 margin: 0,
                                                                 video: true,
                                                                 responsive: {
-                                                                0: {
-                                                                items: 2
-                                                                },
-                                                                        600: {
+                                                                    0: {
                                                                         items: 2
-                                                                        },
-                                                                        960: {
+                                                                    },
+                                                                    600: {
+                                                                        items: 2
+                                                                    },
+                                                                    960: {
                                                                         items: 2,
-                                                                        },
-                                                                        1200: {
+                                                                    },
+                                                                    1200: {
                                                                         items: 2
-                                                                        }
+                                                                    }
                                                                 }
+                                                            };
+                                                            var customOptions = scope.$eval($(element).attr('data-options'));
+                                                            // combine the two options objects
+                                                            for (var key in customOptions) {
+                                                                defaultOptions[key] = customOptions[key];
+                                                            }
+                                                            // init carousel
+                                                            $(element).owlCarousel(defaultOptions);
                                                         };
-                                                        var customOptions = scope.$eval($(element).attr('data-options'));
-                                                        // combine the two options objects
-                                                        for (var key in customOptions) {
-                                                        defaultOptions[key] = customOptions[key];
-                                                        }
-                                                        // init carousel
-                                                        $(element).owlCarousel(defaultOptions);
-                                                        };
-                                                        }
+                                                    }
                                                 };
-                                                })
-                                                        .directive('owlCarouselItem', [function() {
-                                                        return {
+                                            });
+                                            app.directive('owlCarouselItem', [function () {
+                                                    return {
                                                         restrict: 'A',
-                                                                link: function(scope, element) {
-                                                                // wait for the last item in the ng-repeat then call init
-                                                                if (scope.$last) {
+                                                        link: function (scope, element) {
+                                                            // wait for the last item in the ng-repeat then call init
+                                                            if (scope.$last) {
                                                                 scope.initCarousel(element.parent());
-                                                                }
-                                                                }
-                                                        };
-                                                        }]);
+                                                            }
+                                                        }
+                                                    };
+                                                }]);
         </script>
         <script type="text/javascript">
             // mcustom scroll bar
             (function ($) {
-            $(window).on("load", function () {
+                $(window).on("load", function () {
 
-            $(".custom-scroll").mCustomScrollbar({
-            autoHideScrollbar: true,
-                    theme: "minimal"
-            });
-            });
+                    $(".custom-scroll").mCustomScrollbar({
+                        autoHideScrollbar: true,
+                        theme: "minimal"
+                    });
+                });
             })(jQuery);
         </script>
 

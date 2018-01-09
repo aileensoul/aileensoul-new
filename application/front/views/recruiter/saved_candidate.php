@@ -241,8 +241,8 @@
                         <div class="page-title">
                             <h3>Saved Candidate</h3>
                         </div>
-                            <!-- <div class="contact-frnd-post"> -->
-                                <div class = "job-contact-frnd cust-border">
+                            <div class="contact-frnd-post">
+                                <div class = "job-contact-frnd ">
                                     <!--AJAX DATA START FOR RECOMMAND CANDIDATE-->
                                 
                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
