@@ -106,7 +106,7 @@ class Registration extends CI_Controller {
                 $user_insert = $this->common->insert_data_getid($user_data, 'user');
                 if ($user_insert) {
                     $user_login_data = array(
-                        'email' => $this->input->post('email_reg'),
+                        'email' => strtolower($this->input->post('email_reg')),
                         'password' => md5($this->input->post('password_reg')),
                         'is_delete' => '0',
                         'status' => '1',
