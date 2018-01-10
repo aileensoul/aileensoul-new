@@ -92,6 +92,7 @@
                                         echo form_error('lastname');
                                         ?>
                                     </fieldset>
+                                    <div class="fw">
                                     <fieldset>
                                         <label >Email Address <font  color="red">*</font> :</label>
                                         <input type="email" name="email" id="email" tabindex="3" placeholder="Enter email address" value="<?php echo $userdata['email']; ?>" maxlength="255">
@@ -105,7 +106,7 @@
                                         <input type="text" name="phoneno" id="phoneno" tabindex="4" placeholder="Enter phone number"  maxlength="255">
 
                                     </fieldset>
-
+                                </div>
                                     <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
                                         <label>Country:<span style="color:red">*</span></label>								
                                         <select name="country" id="country" tabindex="5">
