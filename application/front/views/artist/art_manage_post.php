@@ -267,7 +267,7 @@ $loginuser = $userdata[0]['art_id'];
 
                     </a> 
                         </div>
-                        <div id="myBtn3"  class="editor-content popup-text">
+                        <div id="myBtn3"  class="editor-content popup-text" onclick="return modelopen();">
                             <span> Post Your Art....</span> 
 <div class="padding-left padding_les_left camer_h">
                                 <i class=" fa fa-camera" >

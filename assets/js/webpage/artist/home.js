@@ -1,33 +1,36 @@
 
 var modal = document.getElementById('myModal');
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+// // Get the button that opens the modal
+// var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+// // Get the <span> element that closes the modal
+ var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
-btn.onclick = function () {
-    var product_name1 = document.getElementById("test-upload_product").value;
+// // When the user clicks the button, open the modal 
+// btn.onclick = function () {
+//     var product_name1 = document.getElementById("test-upload_product").value;
 
-    var product_trim1 = product_name1.trim();
-    var product_description1 = document.getElementById("test-upload_des").value;
-    var des_trim1 = product_description1.trim();
+//     var product_trim1 = product_name1.trim();
+//     var product_description1 = document.getElementById("test-upload_des").value;
+//     var des_trim1 = product_description1.trim();
 
-    var product_fileInput1 = document.getElementById("file-1").value;
+//     var product_fileInput1 = document.getElementById("file-1").value;
 
-    if (product_fileInput1 == '' && product_trim1 == '' && des_trim1 == '')
-    { 
-    modal.style.display = "block";
-    }
-}
+//     if (product_fileInput1 == '' && product_trim1 == '' && des_trim1 == '')
+//     { 
+//     modal.style.display = "block";
+//     }
+// }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () { 
+// // When the user clicks on <span> (x), close the modal
+ span.onclick = function () { 
     modal.style.display = "none";
 }
 
+function modelopen(){
+   modal.style.display = "block";
+}
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
@@ -2100,6 +2103,11 @@ jQuery(document).ready(function ($) {
             bar.width(percentVal)
             percent.html(percentVal);
             document.body.classList.remove('modal-open');
+
+            document.getElementById('myBtn').removeAttribute("onclick");
+
+            $('#myBtn').prop('onclick',null).off('click');
+
         },
         success: function () {
             var percentVal = '100%';
@@ -2107,6 +2115,8 @@ jQuery(document).ready(function ($) {
             percent.html(percentVal);
         },
         complete: function (response) {
+
+            $("#myBtn").on("click", modelopen);
             // Output AJAX response to the div container
             document.getElementById('test-upload_product').value = '';
             document.getElementById('test-upload_des').value = '';
@@ -2130,8 +2140,7 @@ jQuery(document).ready(function ($) {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
             $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
-
-
+              
         }
     };
     // Submit the form
