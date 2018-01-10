@@ -24,7 +24,7 @@
    <!-- END HEAD -->
  
    <body class="page-container-bg-solid page-boxed">
-
+<?php if($this->session->userdata('aileenuser')){ ?>
      <header>
             <div class="container">
                 <div class="row">
@@ -40,6 +40,7 @@
                 </div>
             </div>
         </header>
+<?php } else{ echo $header; } ?>
 
       <div class="user-midd-section" id="paddingtop_fixed">
       <div class="container">
