@@ -88,6 +88,7 @@
                         <fieldset class="full-width">
                            <label >Email Address <font  color="red">*</font> :</label>
                            <input type="email" name="email" id="email" tabindex="3" placeholder="Enter your Email Address" value="<?php echo $userdata['email'];?>" maxlength="255">
+                            <span class="email_note"><b>Note:-</b> Related notification email will be send on provided email address kindly use regular  email address.<div></div></span>
                            <?php echo form_error('email');; ?>
                         </fieldset>
                         <fieldset class="fresher_radio col-xs-12" >

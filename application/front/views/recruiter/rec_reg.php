@@ -102,6 +102,7 @@
                                             echo $userdata['email'];
                                         }
                                         ?>" /><span id="email-error" ></span>
+                                        <span class="email_note"><b>Note:-</b> Related notification email will be send on provided email address kindly use regular  email address.<div></div></span>
                                                <?php echo form_error('email'); ?>
                                     </fieldset>
                         <fieldset class="full-width">

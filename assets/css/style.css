@@ -2394,7 +2394,7 @@ footer div.pt20{
     background:linear-gradient(354deg,#3bb0ac 0,#1b8ab9 44%,#1b8ab9 100%)
 }
 
-
+.email_note{font-size: 11px;line-height: 1.2;float: left;padding-top: 5px;color: #999;}
 
 @media screen and (max-height:540px){
     .no-login .modal-dialog{
