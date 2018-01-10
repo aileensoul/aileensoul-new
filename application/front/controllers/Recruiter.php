@@ -2584,13 +2584,12 @@ class Recruiter extends MY_Controller {
                 $s3 = new S3(awsAccessKey, awsSecretKey);
                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                 if ($info && $p['job_user_image'] != '') {
-                    if($this->session->userdata('aileenuser')){
-                        if($recruiter){
+                    if ($this->session->userdata('aileenuser')) {
+                        if ($recruiter) {
                             $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
                                     <img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $p['job_user_image'] . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
                                     </a>';
-                            
-                        }else{
+                        } else {
                             $return_html .= '<a href="' . base_url('recruiter/registration') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
                                     <img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $p['job_user_image'] . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
                                     </a>';
@@ -2605,14 +2604,14 @@ class Recruiter extends MY_Controller {
                     $acr = substr($a, 0, 1);
                     $b = $p['lname'];
                     $acr1 = substr($b, 0, 1);
-                    if($this->session->userdata('aileenuser')){
-                        if($recruiter){
+                    if ($this->session->userdata('aileenuser')) {
+                        if ($recruiter) {
                             $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '">';
-                        }else{
+                        } else {
                             $return_html .= '<a href="' . base_url('recruiter/registration') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '">';
                         }
                     }
-                    
+
                     $return_html .= '<div class="post-img-profile">' . ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)) . '</div>';
                     $return_html .= '</a>';
                 }
@@ -2622,10 +2621,10 @@ class Recruiter extends MY_Controller {
                                     <ul>
                                         <li>';
                 if ($this->session->userdata('aileenuser')) {
-                    if($recruiter){
+                    if ($recruiter) {
                         $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="' . base_url('job/resume/' . $p['slug'] . '') . '">';
-                    }else{
-                    $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="' . base_url('recruiter/registration') . '">';
+                    } else {
+                        $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="' . base_url('recruiter/registration') . '">';
                     }
                 } else {
                     $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="javascript:void(0)" onClick="login_profile()">';
@@ -2927,12 +2926,11 @@ class Recruiter extends MY_Controller {
                 if ($userid != $p['iduser']) {
                     if (!$data) {
                         if ($this->session->userdata('aileenuser')) {
-                            if($recruiter){
+                            if ($recruiter) {
                                 $return_html .= '<a href="' . base_url('chat/abc/2/1/' . $p['iduser']) . '">';
-                            }else{
+                            } else {
                                 $return_html .= '<a href="' . base_url('recruiter/registration') . '">';
                             }
-                            
                         } else {
                             $return_html .= '<a href="javascript:void(0)" onClick="login_profile()">';
                         }
@@ -2940,12 +2938,11 @@ class Recruiter extends MY_Controller {
                         $return_html .= '<input type="hidden" id="hideenuser' . $p['job_id'] . '" value= "' . $p['job_id'] . '">';
                         $return_html .= '<a id="' . $p['iduser'] . '"';
                         if ($this->session->userdata('aileenuser')) {
-                            if($recruiter){
+                            if ($recruiter) {
                                 $return_html .= 'onClick="savepopup(' . $p['iduser'] . ',' . $p['job_id'] . ')"';
-                            }else{
+                            } else {
                                 $return_html .= 'onClick=""';
                             }
-                            
                         } else {
                             $return_html .= 'onClick="login_profile()"';
                         }

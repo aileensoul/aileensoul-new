@@ -1052,7 +1052,7 @@ Your browser does not support the audio tag.
                 }
             }
         } else {
-            $return_html .= '<div class="text-center rio">
+            $return_html .= '<div class="text-center rio cust-border">
                 <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
                 <p style="text-transform:none !important;border:0px;">We couldn\'t find what you were looking for.</p>
                 <ul class="padding_less_left">

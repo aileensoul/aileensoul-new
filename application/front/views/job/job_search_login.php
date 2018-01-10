@@ -116,9 +116,9 @@
 
 
                     <div class="custom-right-art mian_middle_post_box animated fadeInUp">
-                        <div class="common-form">
+                        <!--<div class="common-form">-->
 
-                            <div class="job-saved-box">
+                            <div class="page-title">
                                 <h3>
 
                                     <?php
@@ -146,7 +146,7 @@
                                 </div>
 
                             </div>
-                        </div>
+                        <!--</div>-->
                     </div>
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
