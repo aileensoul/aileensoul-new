@@ -316,7 +316,7 @@
                 var post_id = "<?php echo $postid; ?>";
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo base_url() . "freelancer/free_invite_user" ?>',
+                    url: '<?php echo base_url() . "freelancer_hire/free_invite_user" ?>',
                     data: 'post_id=' + post_id + '&invited_user=' + clicked_id,
                     dataType: 'json',
                     success: function (data) { //alert(data);
