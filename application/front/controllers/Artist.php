@@ -15788,8 +15788,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                 $return_html .= '</div>
                                        </a>
-                                    </div>
-                                    <div class="art-all-comment col-md-12">
+                                    </div>';
+                                   if ($artdata) {
+                                 $return_html .='<div class="art-all-comment col-md-12">
                                        <div id="fourcomment' . $key['art_post_id'] . '" style="display:none;">
                                        </div>
                                        <div id="threecomment' . $key['art_post_id'] . '" style="display:block">
@@ -15798,7 +15799,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 $contition_array = array('art_post_id' => $key['art_post_id'], 'status' => '1');
                 $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
 
-                if ($artdata) {
+                
                     foreach ($artdata as $rowdata) {
                         $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
                         $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
@@ -15912,8 +15913,10 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         $return_html .= '</p></div></div>
                 </div>';
                     }
+                
+                $return_html .= '</div></div></div>';
                 }
-                $return_html .= '</div></div></div></div></div></div>';
+                $return_html .= '</div></div></div>';
             }
             //loop end for post 
             $return_html .= '</div>

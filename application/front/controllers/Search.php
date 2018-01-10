@@ -639,13 +639,12 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 // </div>';
 
 
-                                 $return_html .= '<div>
+                                $return_html .= '<div>
 <a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg') . '?ver=' . time() . '" alt="PDF.jpg">
 </div>
 </a>
 </div>';
-
                             } elseif (in_array($ext, $allowesvideo)) {
 
                                 $return_html .= '<div>
@@ -1255,7 +1254,7 @@ Your browser does not support the audio tag.
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1', 'free_hire_step' => '3');
         $free_hire_result = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         if (count($unique) > 0) {
             foreach ($freelancerpostdata1 as $row) {
                 $return_html .= '<div class="profile-job-post-detail clearfix search">
@@ -1310,11 +1309,19 @@ Your browser does not support the audio tag.
                                                                         <ul>
                                                                             <li>';
                 if ($userid) {
-                    $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelance-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"><h6>';
-                    $return_html .= ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']);
-                    $return_html .= '</h6>
+                    if ($free_hire_result) {
+                        $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelance-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"><h6>';
+                        $return_html .= ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']);
+                        $return_html .= '</h6>
                                                                                 </a>
                                                                             </li>';
+                    } else {
+                        $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelance-hire/registration') . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"><h6>';
+                        $return_html .= ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']);
+                        $return_html .= '</h6>
+                                                                                </a>
+                                                                            </li>';
+                    }
                 } else {
                     $return_html .= '<a style="margin-right: 4px;" onclick="login_profile();" href="javascript:void(0);" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"><h6>';
                     $return_html .= ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']);
@@ -1510,7 +1517,7 @@ Your browser does not support the audio tag.
         } else {
             $skill = explode('project', $searchvalue);
             $location = explode('-in-', $searchvalue);
-           
+
 
 //             echo "<pre>";
 //            print_r($search_skill_title);
@@ -1522,7 +1529,6 @@ Your browser does not support the audio tag.
 //            $search_skill_title= $search_skill;
             $search_skill_title = str_replace('-', ' ', $search_skill);
             $search_place_title = str_replace('-', ' ', $search_place);
-          
         }
 
         $userid = $this->session->userdata('aileenuser');
