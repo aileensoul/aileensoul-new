@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title><?php echo $title; ?></title>
 
-
+         <?php echo $head; ?>
         <?php
         if (IS_ART_CSS_MINIFY == '0') {
             ?>
