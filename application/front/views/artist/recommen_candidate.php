@@ -59,6 +59,7 @@
 			<div class="left_fixed"> 
 
                      <?php echo $left_artistic; ?> 
+                       <?php echo $left_footer; ?>
             </div>
 			
          </div>
