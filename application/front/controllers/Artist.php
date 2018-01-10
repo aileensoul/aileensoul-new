@@ -15065,6 +15065,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
             redirect('artist/art_post', refresh);
         }
 
+         $userid = $this->session->userdata('aileenuser');
         // Retrieve the posted search term.
         $searchskill = trim($this->input->get('skills'));
         $this->data['keyword'] = $searchskill;
@@ -15257,9 +15258,20 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                                        width: 59%;
                                        padding-top: 10px; padding-bottom: 10px;">
                                        <ul>
-                                          <li style="padding-top: 0px;">
-                                             <a style="  font-size: 19px;font-weight: 600;" href="javascript:void(0);" onclick="register_profile();" title="' . $key['art_name'] . ' ' . $key['art_lastname'] . '">' . ucfirst(strtolower($key['art_name'])) . ' ' . ucfirst(strtolower($key['art_lastname'])) . '</a>
-                                          </li>
+                                          <li style="padding-top: 0px;">';
+
+                                          if($userid){
+                                             
+                                              $return_html .= '<a style="  font-size: 19px;font-weight: 600;" href="' . base_url('artist'). '"  title="' . $key['art_name'] . ' ' . $key['art_lastname'] . '">' . ucfirst(strtolower($key['art_name'])) . ' ' . ucfirst(strtolower($key['art_lastname'])) . '</a>';
+
+                                          }else{
+
+                                             $return_html .= '<a style="  font-size: 19px;font-weight: 600;" href="javascript:void(0);" onclick="register_profile();" title="' . $key['art_name'] . ' ' . $key['art_lastname'] . '">' . ucfirst(strtolower($key['art_name'])) . ' ' . ucfirst(strtolower($key['art_lastname'])) . '</a>';
+
+                                          }
+
+
+                                          $return_html .= '</li>
                                           <li style="display: block;">
                                              <a  class="color-search">';
                     if ($key['designation']) {
@@ -15323,11 +15335,20 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         $status = $this->db->select('follow_status')->get_where('follow', array('follow_type' => '1', 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $key['art_id']))->row()->follow_status;
                         if ($status == 0 || $status == " ") {
 
+                            if($userid){
+
+                                $return_html .= '<div id="followdiv " class="user_btn"><a href="' . base_url('artist'). '" id="follow' . $key['art_id'] . '">
+                                           
+                                            <span>Follow</span> 
+                                             </a>
+                                          </div>';
+                            }else{
                             $return_html .= '<div id="followdiv " class="user_btn">
                                             <button id="follow' . $key['art_id'] . '" onClick="register_profile();">
                                             <span>Follow</span> 
                                              </button>
                                           </div>';
+                            }
                         } elseif ($status == 1) {
 
                             $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
@@ -15335,9 +15356,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                                          <span> Following </span>
                                         </button></div>';
                         }
-                        $return_html .= '</div>
-                                       <a href="javascript:void(0);" onclick="register_profile();"> Message</a>
-                                    </div>';
+                        $return_html .= '</div>';
+                                       $return_html .= '<a href="javascript:void(0);" onclick="register_profile();"> Message</a>';
+                                    $return_html .= '</div>';
                     }
                     // follow meassge div end 
                     $return_html .= '</div>
