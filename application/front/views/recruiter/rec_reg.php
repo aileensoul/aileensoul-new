@@ -93,7 +93,7 @@
                                                ?>" id="last_name" /><span id="fullname-error" ></span>
                                                <?php echo form_error('last_name'); ?>
                                     </fieldset>
-                        <fieldset class="full-width">
+                        <fieldset class="full-width vali_er">
                                         <label>Email address:<span class="red">*</span></label>
                                         <input name="email"  type="text" id="email" tabindex="3" placeholder="Enter Email"  value="<?php
                                         if ($email) {

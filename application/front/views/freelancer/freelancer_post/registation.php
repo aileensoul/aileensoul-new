@@ -91,7 +91,7 @@
                                         <?php
                                         echo form_error('lastname');
                                         ?>
-                                    </fieldset>
+                                    </fieldset class="vali_er">
                                     <div class="fw">
                                     <fieldset>
                                         <label >Email Address <font  color="red">*</font> :</label>
