@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title><?php echo $title; ?></title>
@@ -15,7 +16,7 @@
 <link href="<?php echo base_url('assets/js/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
 
 <?php }?>
-</head>
+
 
 <?php
         if (IS_ART_CSS_MINIFY == '0') {
@@ -48,7 +49,7 @@
                 background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
             }
 </style>
-
+</head>
 <body>
 <?php echo $header; ?>
  <?php echo $art_header2_border; ?>
