@@ -1038,6 +1038,7 @@ fieldset .add_post_btnc,fieldset .add_post_btns{
 .cus_em:hover{
     text-transform: none;
 }
+.main_otp_box_middle a:hover{text-decoration: none !important;}
 .banner-box .upload-camera{
     z-index:3
 }
