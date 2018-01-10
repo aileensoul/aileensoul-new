@@ -420,6 +420,7 @@ class Login extends CI_Controller {
         $password_login = $this->input->post('password_login');
 
         $result = $this->user_model->getUserByEmail($email_login);
+      //  echo "<pre>"; print_r($result);die();
         $userinfo = $this->logins->check_login($email_login, $password_login);
         if (count($userinfo) > 0) {
             if ($userinfo['status'] == "2") {
@@ -432,7 +433,7 @@ class Login extends CI_Controller {
                 $is_data = 'ok';
                 }else if ($userinfo['password'] != md5($password_login)) {
                     $is_data = 'password';
-                    $id = $result[0]['user_id'];
+                    $id = $result['user_id'];
                 }
             }
         } else if ($email_login == $result['user_email']) {
@@ -441,7 +442,7 @@ class Login extends CI_Controller {
         } else {
             $is_data = 'email';
         }
-        $rec_result = $this->recruiter_model->CheckRecruiterAvailable($id);
+        $rec_result = $this->recruiter_model->CheckRecruiterAvailable($result['user_id']);
         $rec = 0;
         if ($rec_result['total'] > 0) {
             $rec = 1;

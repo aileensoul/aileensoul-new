@@ -585,8 +585,10 @@ $(document).ready(function () {
             success: function (response)
             {
                 if (response.data == "ok") {
-                    //  alert("login");
-                    if(response.recuser == 1){
+                     
+                    
+                    if(response.is_rec == 1){
+                       
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                     // 8-11   window.location = base_url + "job/home";
                     var post_name = $("#post_name").val();
@@ -644,6 +646,7 @@ $(document).ready(function () {
                         }
                     });
                 }else{
+                   
                       var post_name = $("#post_name").val();
                     var skills = $("#skills2").val();
                     var position = $("#position").val();
