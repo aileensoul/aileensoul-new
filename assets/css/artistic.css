@@ -3079,6 +3079,7 @@ label.cameraButton:active {
     cursor: pointer;
     color: #9C9999;
     font-family: Arial;
+    text-align: center;
     font-size: 13px;
     margin-top: 3px;
     /* box-shadow: 2px -2px 8px #9C9999; */
