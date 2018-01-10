@@ -64,6 +64,57 @@
                     <div class="col-md-4 fixed_art profile-box profile-box-custom fixed_left_side animated fadeInDownBig">
                         <div class="">
                             <!-- space for left bar -->
+
+                                                                          <div class="all-profile-box">
+                                <div class="all-pro-head">
+                                    <h4>Profiles<a href="javascript:void(0);" onclick="register_profile();" class="pull-right" title="All">All</a></h4>
+                                </div>
+                                <ul class="all-pr-list">
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="register_profile();" title="job">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="<?php echo 'job profile'; ?>">
+                                            </div>
+                                            <span>Job Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="register_profile();" title="recruiter">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>"  alt="<?php echo 'recruiter profile'; ?>">
+                                            </div>
+                                            <span>Recruiter Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="register_profile();" title="freelancer">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="<?php echo 'freelancer profile'; ?>">
+                                            </div>
+                                            <span>Freelance Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="register_profile();" title="business-profile">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="<?php echo 'business profile'; ?>">
+                                            </div>
+                                            <span>Business Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="register_profile();" title="artist">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="artist">
+                                            </div>
+                                            <span>Artistic Profile</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <?php echo $left_footer; ?>
+                            
                         </div>
                     </div>
                     <div class="custom-right-art mian_middle_post_box animated fadeInUp">
