@@ -1036,28 +1036,32 @@ function business_home_follow_ignore(clicked_id)
 // Get the modal
 var modal = document.getElementById('myModal');
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+//var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close1")[0];
 // When the user clicks the button, open the modal 
-btn.onclick = function () {
+// btn.onclick = function () {
 
-    var product_name1 = document.getElementById("test-upload-product").value;
+//     var product_name1 = document.getElementById("test-upload-product").value;
 
-    var product_trim1 = product_name1.trim();
-    var product_description1 = document.getElementById("test-upload-des").value;
-    var des_trim1 = product_description1.trim();
+//     var product_trim1 = product_name1.trim();
+//     var product_description1 = document.getElementById("test-upload-des").value;
+//     var des_trim1 = product_description1.trim();
 
-    var product_fileInput1 = document.getElementById("file-1").value;
+//     var product_fileInput1 = document.getElementById("file-1").value;
 
-    if (product_fileInput1 == '' && product_trim1 == '' && des_trim1 == '')
-    {
-        modal.style.display = "block";
-    }
-}
+//     if (product_fileInput1 == '' && product_trim1 == '' && des_trim1 == '')
+//     {
+//         modal.style.display = "block";
+//     }
+// }
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
+}
+
+function modelopen(){
+   modal.style.display = "block";
 }
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -1836,6 +1840,8 @@ jQuery(document).ready(function ($) {
             var percentVal = percentComplete + '%';
             bar.width(percentVal)
             percent.html(percentVal);
+
+            $('#myBtn').prop('onclick',null).off('click');
         },
         success: function () {
 //            var percentVal = '100%';
@@ -1844,6 +1850,9 @@ jQuery(document).ready(function ($) {
         },
         complete: function (response) {
 
+
+             $("#myBtn").on("click", modelopen);
+             
             var percentVal = '100%';
             bar.width(percentVal)
             percent.html(percentVal);

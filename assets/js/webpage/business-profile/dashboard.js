@@ -64,6 +64,9 @@ jQuery(document).ready(function ($) {
             var percentVal = percentComplete + '%';
             bar.width(percentVal)
             percent.html(percentVal);
+
+            $('#myBtn1').prop('onclick',null).off('click');
+
         },
         success: function () {
             var percentVal = '100%';
@@ -71,6 +74,9 @@ jQuery(document).ready(function ($) {
             percent.html(percentVal);
         },
         complete: function (response) { //alert(response.responseText);
+            
+             $("#myBtn1").on("click", modelopen);
+
             $('.art_no_post_avl').hide();
             document.getElementById('test-upload_product').value = '';
             document.getElementById('test-upload_des').value = '';
@@ -1374,30 +1380,33 @@ function del_particular_userpost(abc)
 // Get the modal
 var modal = document.getElementById('myModal3');
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn1");
+//var btn = document.getElementById("myBtn1");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close3")[0];
 // When the user clicks the button, open the modal 
-btn.onclick = function () {
-    var product_name1 = document.getElementById("test-upload_product").value;
+// btn.onclick = function () {
+//     var product_name1 = document.getElementById("test-upload_product").value;
 
-    var product_trim1 = product_name1.trim();
-    var product_description1 = document.getElementById("test-upload_des").value;
-    var des_trim1 = product_description1.trim();
+//     var product_trim1 = product_name1.trim();
+//     var product_description1 = document.getElementById("test-upload_des").value;
+//     var des_trim1 = product_description1.trim();
 
-    var product_fileInput1 = document.getElementById("file-1").value;
+//     var product_fileInput1 = document.getElementById("file-1").value;
 
-    if (product_fileInput1 == '' && product_trim1 == '' && des_trim1 == '')
-    {
-        modal.style.display = "block";
-    }
-}
+//     if (product_fileInput1 == '' && product_trim1 == '' && des_trim1 == '')
+//     {
+//         modal.style.display = "block";
+//     }
+// }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
 }
 
+function modelopen(){
+   modal.style.display = "block";
+}
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
