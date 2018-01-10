@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
     <title><?php echo $title; ?></title>
     <?php echo $head; ?> 
