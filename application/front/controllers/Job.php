@@ -457,7 +457,7 @@ class Job extends MY_Controller {
 
             //Update only one field into database End 
 
-            if ($updatedata) {            
+            if ($updatedata) {
                 redirect('job/qualification/secondary');
             } else {
                 redirect('job/qualification', refresh);
@@ -475,10 +475,10 @@ class Job extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'job_add_edu');
 
             if ($insert_id) {
-          
+
                 redirect('job/qualification/secondary');
             } else {
-               
+
                 redirect('job/qualification', refresh);
             }
         }
@@ -651,7 +651,7 @@ class Job extends MY_Controller {
             if ($updatedata) {
                 redirect('job/qualification/higher-secondary');
             } else {
-                
+
                 redirect('job/qualification', refresh);
             }
         } else {
@@ -843,7 +843,7 @@ class Job extends MY_Controller {
             if ($updatedata) {
                 redirect('job/qualification/graduation');
             } else {
-              
+
                 redirect('job/qualification', refresh);
             }
         } else {
@@ -936,7 +936,7 @@ class Job extends MY_Controller {
             if ($this->upload->do_upload('certificate')) {
 
                 $response['result'][] = $this->upload->data();
-              
+
                 $main_image_size = $_FILES['certificate']['size'];
 
                 if ($main_image_size > '1000000') {
@@ -1138,7 +1138,7 @@ class Job extends MY_Controller {
 
             redirect('job/project');
         } else {
-           
+
             redirect('job/qualification', 'refresh');
         }
     }
@@ -1188,26 +1188,26 @@ class Job extends MY_Controller {
         }
         //if ($this->input->post('next')) { 
 
-            $data = array(
-                'project_name' => trim($this->input->post('project_name')),
-                'project_duration' => $this->input->post('project_duration'),
-                'project_description' => trim($this->input->post('project_description')),
-                'training_as' => trim($this->input->post('training_as')),
-                'training_duration' => $this->input->post('training_duration'),
-                'training_organization' => trim($this->input->post('training_organization')),
-                'modified_date' => date('Y-m-d h:i:s', time())
-            );
+        $data = array(
+            'project_name' => trim($this->input->post('project_name')),
+            'project_duration' => $this->input->post('project_duration'),
+            'project_description' => trim($this->input->post('project_description')),
+            'training_as' => trim($this->input->post('training_as')),
+            'training_duration' => $this->input->post('training_duration'),
+            'training_organization' => trim($this->input->post('training_organization')),
+            'modified_date' => date('Y-m-d h:i:s', time())
+        );
 
 
-            $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+        $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
 
 
-            if ($updatedata) {
-                redirect('job/work-area');
-            } else {
-                
-                redirect('job/project', 'refresh');
-            }
+        if ($updatedata) {
+            redirect('job/work-area');
+        } else {
+
+            redirect('job/project', 'refresh');
+        }
         //}
     }
 
@@ -1230,7 +1230,7 @@ class Job extends MY_Controller {
 
         $contition_array = array('is_delete' => '0', 'is_other' => '0', 'industry_name !=' => "Others");
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-        
+
 
         $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
         $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1306,92 +1306,91 @@ class Job extends MY_Controller {
         if ($this->input->post('previous')) {
             redirect('job/project', refresh);
         }
-       // if ($this->input->post('next')) {
-
-            // job title start   
-            if ($jobtitle != " ") {
-                $contition_array = array('name' => $jobtitle);
-                $jobdata = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'title_id,name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                if ($jobdata) {
-                    $jobtitle = $jobdata[0]['title_id'];
-                } else {
-                    $forslug = $this->input->post('job_title');
-                    $data = array(
-                        'name' => ucfirst($this->input->post('job_title')),
-                        'slug' => $this->common->clean($forslug),
-                        'status' => 'draft',
-                    );
-                    $jobtitle = $this->common->insert_data_getid($data, 'job_title');
-                }
-            }
-
-            // skills  start   
-            if (count($skills) > 0) {
-
-                foreach ($skills as $ski) {
-                    $contition_array = array('skill' => trim($ski), 'type' => '1');
-                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-
-                    if (!$skilldata) {
-
-                        $contition_array = array('skill' => trim($ski), 'type' => '4');
-                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                    }
-                    if ($skilldata) {
-
-                        $skill[] = $skilldata[0]['skill_id'];
-                    } else {
-
-                        $data = array(
-                            'skill' => $ski,
-                            'status' => '1',
-                            'type' => '4',
-                            'user_id' => $userid,
-                        );
-                        $skill[] = $this->common->insert_data_getid($data, 'skill');
-                    }
-                }
-
-                $skills = implode(',', $skill);
-            }
-
-            // city  start   
-
-            if (count($cities) > 0) {
-
-                foreach ($cities as $cit) {
-                    $contition_array = array('city_name' => $cit);
-                    $citydata = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                    if ($citydata) {
-                        $city[] = $citydata[0]['city_id'];
-                    } else {
-                        $data = array(
-                            'city_name' => $cit,
-                            'status' => '1',
-                        );
-                        $city[] = $this->common->insert_data_getid($data, 'cities');
-                    }
-                }
-
-                $city = implode(',', $city);
-            }
-
-            //update data in table start
-
-            $data = array(
-                'keyskill' => $skills,
-                'work_job_title' => $jobtitle,
-                'work_job_industry' => $this->input->post('industry'),
-                'work_job_city' => $city,
-            );
-
-            $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
-
-            if ($updatedata) {
-                redirect('job/work-experience');
+        // if ($this->input->post('next')) {
+        // job title start   
+        if ($jobtitle != " ") {
+            $contition_array = array('name' => $jobtitle);
+            $jobdata = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'title_id,name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+            if ($jobdata) {
+                $jobtitle = $jobdata[0]['title_id'];
             } else {
-                redirect('job/work-area', 'refresh');
+                $forslug = $this->input->post('job_title');
+                $data = array(
+                    'name' => ucfirst($this->input->post('job_title')),
+                    'slug' => $this->common->clean($forslug),
+                    'status' => 'draft',
+                );
+                $jobtitle = $this->common->insert_data_getid($data, 'job_title');
             }
+        }
+
+        // skills  start   
+        if (count($skills) > 0) {
+
+            foreach ($skills as $ski) {
+                $contition_array = array('skill' => trim($ski), 'type' => '1');
+                $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+                if (!$skilldata) {
+
+                    $contition_array = array('skill' => trim($ski), 'type' => '4');
+                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                }
+                if ($skilldata) {
+
+                    $skill[] = $skilldata[0]['skill_id'];
+                } else {
+
+                    $data = array(
+                        'skill' => $ski,
+                        'status' => '1',
+                        'type' => '4',
+                        'user_id' => $userid,
+                    );
+                    $skill[] = $this->common->insert_data_getid($data, 'skill');
+                }
+            }
+
+            $skills = implode(',', $skill);
+        }
+
+        // city  start   
+
+        if (count($cities) > 0) {
+
+            foreach ($cities as $cit) {
+                $contition_array = array('city_name' => $cit);
+                $citydata = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                if ($citydata) {
+                    $city[] = $citydata[0]['city_id'];
+                } else {
+                    $data = array(
+                        'city_name' => $cit,
+                        'status' => '1',
+                    );
+                    $city[] = $this->common->insert_data_getid($data, 'cities');
+                }
+            }
+
+            $city = implode(',', $city);
+        }
+
+        //update data in table start
+
+        $data = array(
+            'keyskill' => $skills,
+            'work_job_title' => $jobtitle,
+            'work_job_industry' => $this->input->post('industry'),
+            'work_job_city' => $city,
+        );
+
+        $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+
+        if ($updatedata) {
+            redirect('job/work-experience');
+        } else {
+            redirect('job/work-area', 'refresh');
+        }
         //}
     }
 
@@ -1441,327 +1440,285 @@ class Job extends MY_Controller {
 
 
 //Click on Add_More_WorkExp Process End
-
         //if ($this->input->post('next')) {
 
+        $exp = $this->input->post('radio');
+
+
+        if ($exp == "Fresher") {
+
             $exp = $this->input->post('radio');
+            $exp_year = '';
+            $exp_month = '';
+            $job_title = '';
+            $companyname = '';
+            $companyemail = '';
+            $companyphn = '';
+            $certificate1 = '';
+
+            //upload work certificate process end
 
 
-            if ($exp == "Fresher") {
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $exp = $this->input->post('radio');
-                $exp_year = '';
-                $exp_month = '';
-                $job_title = '';
-                $companyname = '';
-                $companyemail = '';
-                $companyphn = '';
-                $certificate1 = '';
+            //update data at job_add_workexp for fresher table start
+            if ($jobdata[0]['total'] != 0) {
 
-                //upload work certificate process end
-
-
-                $contition_array = array('user_id' => $userid, 'status' => '1');
-                $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                //update data at job_add_workexp for fresher table start
-                if ($jobdata[0]['total'] != 0) {
-
-                    $data1 = array(
-                        'experience' => $exp,
-                        'experience_year' => '',
-                        'experience_month' => '',
-                        'jobtitle' => '',
-                        'companyname' => '',
-                        'companyemail' => '',
-                        'companyphn' => '',
-                        'work_certificate' => '',
-                        'status' => '1'
-                    );
+                $data1 = array(
+                    'experience' => $exp,
+                    'experience_year' => '',
+                    'experience_month' => '',
+                    'jobtitle' => '',
+                    'companyname' => '',
+                    'companyemail' => '',
+                    'companyphn' => '',
+                    'work_certificate' => '',
+                    'status' => '1'
+                );
 
 
-                    $updatedata1 = $this->common->update_data($data1, 'job_add_workexp', 'user_id', $userid);
+                $updatedata1 = $this->common->update_data($data1, 'job_add_workexp', 'user_id', $userid);
 
-                    $data = array(
-                        'experience' => $exp,
-                        'modified_date' => date('Y-m-d h:i:s', time())
-                    );
+                $data = array(
+                    'experience' => $exp,
+                    'modified_date' => date('Y-m-d h:i:s', time())
+                );
 
-                    $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
-                }
-                //update data at job_add_workexp for fresher table end
-                //Insert data at first time job_add_workexp for fresher table start        
-                else {
+                $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+            }
+            //update data at job_add_workexp for fresher table end
+            //Insert data at first time job_add_workexp for fresher table start        
+            else {
 
-                    $data1 = array(
-                        'experience' => $exp,
-                        'user_id' => $userid,
-                        'status' => '1'
-                    );
+                $data1 = array(
+                    'experience' => $exp,
+                    'user_id' => $userid,
+                    'status' => '1'
+                );
 
-                    $insertid = $this->common->insert_data_getid($data1, 'job_add_workexp');
+                $insertid = $this->common->insert_data_getid($data1, 'job_add_workexp');
 
-                    $data = array(
-                        'experience' => $exp,
-                        'modified_date' => date('Y-m-d h:i:s', time())
-                    );
-
-
-                    $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
-                }
-                //Insert data at first time job_add_workexp for fresher table end
+                $data = array(
+                    'experience' => $exp,
+                    'modified_date' => date('Y-m-d h:i:s', time())
+                );
 
 
-                if ($updatedata && $updatedata1 || $updatedata && $insertid) {
-                    redirect('job/home');
-                } else {
-                    redirect('job/work-experience', 'refresh');
-                }
+                $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+            }
+            //Insert data at first time job_add_workexp for fresher table end
+
+
+            if ($updatedata && $updatedata1 || $updatedata && $insertid) {
+                redirect('job/home');
             } else {
+                redirect('job/work-experience', 'refresh');
+            }
+        } else {
 
-                $exp = 'Experience';
+            $exp = 'Experience';
 
 
 // Multiple Image insert code start
-                $config = array(
-                    'upload_path' => $this->config->item('job_work_main_upload_path'),
-                    'allowed_types' => $this->config->item('job_work_main_allowed_types'),
-                    'max_size' => $this->config->item('job_work_main_max_size')
-                );
+            $config = array(
+                'upload_path' => $this->config->item('job_work_main_upload_path'),
+                'allowed_types' => $this->config->item('job_work_main_allowed_types'),
+                'max_size' => $this->config->item('job_work_main_max_size')
+            );
 
-                $images = array();
-                $this->load->library('upload');
+            $images = array();
+            $this->load->library('upload');
 
-                $files = $_FILES;
-                $count = count($_FILES['certificate']['name']);
+            $files = $_FILES;
+            $count = count($_FILES['certificate']['name']);
 
-                //S3 BUCKET ACCESS START
-                $s3 = new S3(awsAccessKey, awsSecretKey);
-                $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
-                //S3 BUCKET ACCESS START
-
-
-                for ($i = 0; $i < $count; $i++) {
-
-                    $_FILES['certificate']['name'] = $files['certificate']['name'][$i];
-                    $_FILES['certificate']['type'] = $files['certificate']['type'][$i];
-                    $_FILES['certificate']['tmp_name'] = $files['certificate']['tmp_name'][$i];
-                    $_FILES['certificate']['error'] = $files['certificate']['error'][$i];
-                    $_FILES['certificate']['size'] = $files['certificate']['size'][$i];
-
-                    $fileName = $_FILES['certificate']['name'];
-                    $images[] = $fileName;
-                    $config['file_name'] = $fileName;
-
-                    $this->upload->initialize($config);
-
-                    if ($this->upload->do_upload('certificate')) {
-                        $response['result'][] = $this->upload->data();
+            //S3 BUCKET ACCESS START
+            $s3 = new S3(awsAccessKey, awsSecretKey);
+            $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+            //S3 BUCKET ACCESS START
 
 
-                        $main_image_size = $_FILES['certificate']['size'];
+            for ($i = 0; $i < $count; $i++) {
 
-                        if ($main_image_size > '1000000') {
-                            $quality = "50%";
-                        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
-                            $quality = "55%";
-                        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
-                            $quality = "60%";
-                        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
-                            $quality = "65%";
-                        } elseif ($main_image_size > '1' && $main_image_size < '100') {
-                            $quality = "70%";
-                        } else {
-                            $quality = "100%";
-                        }
+                $_FILES['certificate']['name'] = $files['certificate']['name'][$i];
+                $_FILES['certificate']['type'] = $files['certificate']['type'][$i];
+                $_FILES['certificate']['tmp_name'] = $files['certificate']['tmp_name'][$i];
+                $_FILES['certificate']['error'] = $files['certificate']['error'][$i];
+                $_FILES['certificate']['size'] = $files['certificate']['size'][$i];
 
-                        /* RESIZE */
+                $fileName = $_FILES['certificate']['name'];
+                $images[] = $fileName;
+                $config['file_name'] = $fileName;
 
-                        $job[$i]['image_library'] = 'gd2';
-                        $job[$i]['source_image'] = $this->config->item('job_work_main_upload_path') . $response['result'][$i]['file_name'];
-                        $job[$i]['new_image'] = $this->config->item('job_work_main_upload_path') . $response['result'][$i]['file_name'];
-                        $job[$i]['quality'] = $quality;
-                        $instanse10 = "image10_$i";
-                        $this->load->library('image_lib', $job[$i], $instanse10);
-                        $this->$instanse10->watermark();
+                $this->upload->initialize($config);
 
-                        /* RESIZE */
-
-                        //S3 BUCKET STORE MAIN IMAGE START
-                        $main_image = $job[$i]['new_image'];
-                        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
-                        //S3 BUCKET STORE MAIN IMAGE END
-
-                        $job_profile_post_thumb[$i]['image_library'] = 'gd2';
-                        $job_profile_post_thumb[$i]['source_image'] = $this->config->item('job_work_main_upload_path') . $response['result'][$i]['file_name'];
-                        $job_profile_post_thumb[$i]['new_image'] = $this->config->item('job_work_thumb_upload_path') . $response['result'][$i]['file_name'];
-                        $job_profile_post_thumb[$i]['create_thumb'] = TRUE;
-                        $job_profile_post_thumb[$i]['maintain_ratio'] = TRUE;
-                        $job_profile_post_thumb[$i]['thumb_marker'] = '';
-                        $job_profile_post_thumb[$i]['width'] = $this->config->item('job_work_thumb_width');
-                        $job_profile_post_thumb[$i]['height'] = 2;
-                        $job_profile_post_thumb[$i]['master_dim'] = 'width';
-                        $job_profile_post_thumb[$i]['quality'] = "100%";
-                        $job_profile_post_thumb[$i]['x_axis'] = '0';
-                        $job_profile_post_thumb[$i]['y_axis'] = '0';
-                        $instanse = "image_$i";
-                        //Loading Image Library
-                        $this->load->library('image_lib', $job_profile_post_thumb[$i], $instanse);
-                        $dataimage = $response['result'][$i]['file_name'];
-                        //Creating Thumbnail
-                        $this->$instanse->resize();
-                        $response['error'][] = $thumberror = $this->$instanse->display_errors();
-                        $return['data'][] = $imgdata;
-                        $return['status'] = "success";
-                        $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
-
-                        //S3 BUCKET STORE THUMB IMAGE START
-                        $thumb_image = $job_profile_post_thumb[$i]['new_image'];
-                        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
-                        //S3 BUCKET STORE THUMB IMAGE END
-
-                        $main_file = $this->config->item('job_work_main_upload_path') . $response['result'][$i]['file_name'];
-
-                        $thumb_file = $this->config->item('job_work_thumb_upload_path') . $response['result'][$i]['file_name'];
-
-                        if ($_SERVER['HTTP_HOST'] != "localhost") {
-                            if (isset($main_file)) {
-                                unlink($main_file);
-                            }
-                            if (isset($thumb_file)) {
-                                unlink($thumb_file);
-                            }
-                        }
-
-                        $contition_array = array('user_id' => $userid);
-                        $job_reg_data = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'work_certificate', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                        $count_data = count($job_reg_data);
-
-                        for ($x = 0; $x < $count_data; $x++) {
-
-                            $job_reg_prev_image = $job_reg_data[$x]['work_certificate'];
+                if ($this->upload->do_upload('certificate')) {
+                    $response['result'][] = $this->upload->data();
 
 
-                            $image_hidden_certificate = $userdata[0]['image_hidden_certificate'][$x];
-                            $work_certificate = $files['certificate']['name'][$x];
+                    $main_image_size = $_FILES['certificate']['size'];
 
-
-                            if ($job_reg_prev_image != '') {
-
-                                $job_image_main_path = $this->config->item('job_work_main_upload_path');
-                                $job_bg_full_image = $job_image_main_path . $job_reg_prev_image;
-                                if (isset($job_bg_full_image)) {
-                                    if ($image_hidden_certificate == $job_reg_prev_image && $work_certificate != "") {
-                                        unlink($job_bg_full_image);
-                                    }
-                                }
-
-                                $job_image_thumb_path = $this->config->item('job_work_thumb_upload_path');
-                                $job_bg_thumb_image = $job_image_thumb_path . $job_reg_prev_image;
-                                if (isset($job_bg_thumb_image)) {
-                                    if ($image_hidden_certificate == $job_reg_prev_image && $work_certificate != "") {
-                                        unlink($job_bg_thumb_image);
-                                    }
-                                }
-                            }
-                        }//for loop end
+                    if ($main_image_size > '1000000') {
+                        $quality = "50%";
+                    } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+                        $quality = "55%";
+                    } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+                        $quality = "60%";
+                    } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+                        $quality = "65%";
+                    } elseif ($main_image_size > '1' && $main_image_size < '100') {
+                        $quality = "70%";
                     } else {
-
-                        $dataimage = '';
+                        $quality = "100%";
                     }
-                }
-                // Multiple Image insert code End
 
-                $contition_array = array('user_id' => $userid, 'status' => 1);
-                $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'count(*) as total,work_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    /* RESIZE */
 
-                //update data at job_add_workexp for Experience table start
-                if ($jobdata[0]['total'] != 0) {
+                    $job[$i]['image_library'] = 'gd2';
+                    $job[$i]['source_image'] = $this->config->item('job_work_main_upload_path') . $response['result'][$i]['file_name'];
+                    $job[$i]['new_image'] = $this->config->item('job_work_main_upload_path') . $response['result'][$i]['file_name'];
+                    $job[$i]['quality'] = $quality;
+                    $instanse10 = "image10_$i";
+                    $this->load->library('image_lib', $job[$i], $instanse10);
+                    $this->$instanse10->watermark();
 
-                    //Edit Multiple field into database Start 
-                    for ($x = 0; $x < $count1; $x++) {
+                    /* RESIZE */
 
-                        $exp_data = $userdata[0]['exp_data'][$x];
-                        if ($exp_data == 'old') {
+                    //S3 BUCKET STORE MAIN IMAGE START
+                    $main_image = $job[$i]['new_image'];
+                    $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+                    //S3 BUCKET STORE MAIN IMAGE END
 
-                            $files[] = $_FILES;
+                    $job_profile_post_thumb[$i]['image_library'] = 'gd2';
+                    $job_profile_post_thumb[$i]['source_image'] = $this->config->item('job_work_main_upload_path') . $response['result'][$i]['file_name'];
+                    $job_profile_post_thumb[$i]['new_image'] = $this->config->item('job_work_thumb_upload_path') . $response['result'][$i]['file_name'];
+                    $job_profile_post_thumb[$i]['create_thumb'] = TRUE;
+                    $job_profile_post_thumb[$i]['maintain_ratio'] = TRUE;
+                    $job_profile_post_thumb[$i]['thumb_marker'] = '';
+                    $job_profile_post_thumb[$i]['width'] = $this->config->item('job_work_thumb_width');
+                    $job_profile_post_thumb[$i]['height'] = 2;
+                    $job_profile_post_thumb[$i]['master_dim'] = 'width';
+                    $job_profile_post_thumb[$i]['quality'] = "100%";
+                    $job_profile_post_thumb[$i]['x_axis'] = '0';
+                    $job_profile_post_thumb[$i]['y_axis'] = '0';
+                    $instanse = "image_$i";
+                    //Loading Image Library
+                    $this->load->library('image_lib', $job_profile_post_thumb[$i], $instanse);
+                    $dataimage = $response['result'][$i]['file_name'];
+                    //Creating Thumbnail
+                    $this->$instanse->resize();
+                    $response['error'][] = $thumberror = $this->$instanse->display_errors();
+                    $return['data'][] = $imgdata;
+                    $return['status'] = "success";
+                    $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
 
-                            $work_certificate = $files['certificate']['name'][$x];
+                    //S3 BUCKET STORE THUMB IMAGE START
+                    $thumb_image = $job_profile_post_thumb[$i]['new_image'];
+                    $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+                    //S3 BUCKET STORE THUMB IMAGE END
+
+                    $main_file = $this->config->item('job_work_main_upload_path') . $response['result'][$i]['file_name'];
+
+                    $thumb_file = $this->config->item('job_work_thumb_upload_path') . $response['result'][$i]['file_name'];
+
+                    if ($_SERVER['HTTP_HOST'] != "localhost") {
+                        if (isset($main_file)) {
+                            unlink($main_file);
+                        }
+                        if (isset($thumb_file)) {
+                            unlink($thumb_file);
+                        }
+                    }
+
+                    $contition_array = array('user_id' => $userid);
+                    $job_reg_data = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'work_certificate', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    $count_data = count($job_reg_data);
+
+                    for ($x = 0; $x < $count_data; $x++) {
+
+                        $job_reg_prev_image = $job_reg_data[$x]['work_certificate'];
 
 
-                            if ($work_certificate == "") {
+                        $image_hidden_certificate = $userdata[0]['image_hidden_certificate'][$x];
+                        $work_certificate = $files['certificate']['name'][$x];
 
-                                $work_certificate1 = $userdata[0]['image_hidden_certificate'][$x];
-                            } else {
 
-                                $work_certificate1 = $work_certificate;
+                        if ($job_reg_prev_image != '') {
+
+                            $job_image_main_path = $this->config->item('job_work_main_upload_path');
+                            $job_bg_full_image = $job_image_main_path . $job_reg_prev_image;
+                            if (isset($job_bg_full_image)) {
+                                if ($image_hidden_certificate == $job_reg_prev_image && $work_certificate != "") {
+                                    unlink($job_bg_full_image);
+                                }
                             }
 
-
-                            $data = array(
-                                'user_id' => $userid,
-                                'experience' => $exp,
-                                'experience_year' => $userdata[0]['experience_year'][$x],
-                                'experience_month' => $userdata[0]['experience_month'][$x],
-                                'jobtitle' => $userdata[0]['jobtitle'][$x],
-                                'companyname' => $userdata[0]['companyname'][$x],
-                                'companyemail' => $userdata[0]['companyemail'][$x],
-                                'companyphn' => $userdata[0]['companyphn'][$x],
-                                'work_certificate' => str_replace(' ', '_', $work_certificate1),
-                            );
-
-                            $updatedata1 = $this->common->update_data($data, 'job_add_workexp', 'work_id', $jobdata[$x]['work_id']);
+                            $job_image_thumb_path = $this->config->item('job_work_thumb_upload_path');
+                            $job_bg_thumb_image = $job_image_thumb_path . $job_reg_prev_image;
+                            if (isset($job_bg_thumb_image)) {
+                                if ($image_hidden_certificate == $job_reg_prev_image && $work_certificate != "") {
+                                    unlink($job_bg_thumb_image);
+                                }
+                            }
                         }
+                    }//for loop end
+                } else {
 
-
-                        //update data at job_add_workexp for Experience table End
-                        //Insert data at job_add_workexp for Experience table start
-                        else {
-
-                            $files[] = $_FILES;
-
-                            $work_certificate = $files['certificate']['name'][$x];
-
-                            $data = array(
-                                'user_id' => $userid,
-                                'experience' => $exp,
-                                'experience_year' => $userdata[0]['experience_year'][$x],
-                                'experience_month' => $userdata[0]['experience_month'][$x],
-                                'jobtitle' => $userdata[0]['jobtitle'][$x],
-                                'companyname' => $userdata[0]['companyname'][$x],
-                                'companyemail' => $userdata[0]['companyemail'][$x],
-                                'companyphn' => $userdata[0]['companyphn'][$x],
-                                'work_certificate' => str_replace(' ', '_', $work_certificate),
-                                'status' => '1'
-                            );
-
-                            $insert_id = $this->common->insert_data_getid($data, 'job_add_workexp');
-                        }
-                    }
-                    //Edit Multiple field into database End 
-                    // for deleete fresher data when candidate is experience start
-                    $contition_array = array('user_id' => $userid, 'experience' => 'Fresher', 'status' => '1');
-                    $jobdata = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'count(*) as total,work_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                    $countdata = $jobdata[0]['total'];
-
-                    for ($x = 0; $x < $countdata; $x++) {
-
-
-                        $delete_data = $this->common->delete_data('job_add_workexp', 'work_id', $jobdata[$x]['work_id']);
-                    }
-                    // for deleete fresher data when candidate is experience ENd
+                    $dataimage = '';
                 }
+            }
+            // Multiple Image insert code End
 
-//Insert data at job_add_workexp for Experience table End
-//when insert and update data both same time Insert data at job_add_workexp for Experience table start
-                else {
+            $contition_array = array('user_id' => $userid, 'status' => 1);
+            $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'count(*) as total,work_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                    //Add Multiple field into database Start 
-                    for ($x = 0; $x < $count1; $x++) {
+            //update data at job_add_workexp for Experience table start
+            if ($jobdata[0]['total'] != 0) {
+
+                //Edit Multiple field into database Start 
+                for ($x = 0; $x < $count1; $x++) {
+
+                    $exp_data = $userdata[0]['exp_data'][$x];
+                    if ($exp_data == 'old') {
 
                         $files[] = $_FILES;
+
+                        $work_certificate = $files['certificate']['name'][$x];
+
+
+                        if ($work_certificate == "") {
+
+                            $work_certificate1 = $userdata[0]['image_hidden_certificate'][$x];
+                        } else {
+
+                            $work_certificate1 = $work_certificate;
+                        }
+
+
+                        $data = array(
+                            'user_id' => $userid,
+                            'experience' => $exp,
+                            'experience_year' => $userdata[0]['experience_year'][$x],
+                            'experience_month' => $userdata[0]['experience_month'][$x],
+                            'jobtitle' => $userdata[0]['jobtitle'][$x],
+                            'companyname' => $userdata[0]['companyname'][$x],
+                            'companyemail' => $userdata[0]['companyemail'][$x],
+                            'companyphn' => $userdata[0]['companyphn'][$x],
+                            'work_certificate' => str_replace(' ', '_', $work_certificate1),
+                        );
+
+                        $updatedata1 = $this->common->update_data($data, 'job_add_workexp', 'work_id', $jobdata[$x]['work_id']);
+                    }
+
+
+                    //update data at job_add_workexp for Experience table End
+                    //Insert data at job_add_workexp for Experience table start
+                    else {
+
+                        $files[] = $_FILES;
+
                         $work_certificate = $files['certificate']['name'][$x];
 
                         $data = array(
@@ -1778,41 +1735,82 @@ class Job extends MY_Controller {
                         );
 
                         $insert_id = $this->common->insert_data_getid($data, 'job_add_workexp');
-                        $i++;
                     }
-
-                    //Add Multiple field into database End 
-                    // for deleete fresher data when candidate is experience start
-                    $contition_array = array('user_id' => $userid, 'experience' => 'Fresher', 'status' => '1');
-                    $jobdata = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'count(*) as total,work_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                    $countdata = $jobdata[0]['total'];
-
-                    for ($x = 0; $x < $countdata; $x++) {
-
-
-                        $delete_data = $this->common->delete_data('job_add_workexp', 'work_id', $jobdata[$x]['work_id']);
-                    }
-                    // for deleete fresher data when candidate is experience ENd
                 }
-//when insert and update data both same time Insert data at job_add_workexp for Experience table End
-                //Update only one field into database start
-                $data = array(
-                    'experience' => $exp,
-                    'modified_date' => date('Y-m-d h:i:s', time())
-                );
+                //Edit Multiple field into database End 
+                // for deleete fresher data when candidate is experience start
+                $contition_array = array('user_id' => $userid, 'experience' => 'Fresher', 'status' => '1');
+                $jobdata = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'count(*) as total,work_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
-                //Update only one field into database End
+                $countdata = $jobdata[0]['total'];
 
+                for ($x = 0; $x < $countdata; $x++) {
 
 
-                if ($insert_id && $updatedata || $updatedata1 && $updatedata) {
-                    redirect('job/home');
-                } else {
-                    redirect('job/work-experience', 'refresh');
+                    $delete_data = $this->common->delete_data('job_add_workexp', 'work_id', $jobdata[$x]['work_id']);
                 }
+                // for deleete fresher data when candidate is experience ENd
             }
+
+//Insert data at job_add_workexp for Experience table End
+//when insert and update data both same time Insert data at job_add_workexp for Experience table start
+            else {
+
+                //Add Multiple field into database Start 
+                for ($x = 0; $x < $count1; $x++) {
+
+                    $files[] = $_FILES;
+                    $work_certificate = $files['certificate']['name'][$x];
+
+                    $data = array(
+                        'user_id' => $userid,
+                        'experience' => $exp,
+                        'experience_year' => $userdata[0]['experience_year'][$x],
+                        'experience_month' => $userdata[0]['experience_month'][$x],
+                        'jobtitle' => $userdata[0]['jobtitle'][$x],
+                        'companyname' => $userdata[0]['companyname'][$x],
+                        'companyemail' => $userdata[0]['companyemail'][$x],
+                        'companyphn' => $userdata[0]['companyphn'][$x],
+                        'work_certificate' => str_replace(' ', '_', $work_certificate),
+                        'status' => '1'
+                    );
+
+                    $insert_id = $this->common->insert_data_getid($data, 'job_add_workexp');
+                    $i++;
+                }
+
+                //Add Multiple field into database End 
+                // for deleete fresher data when candidate is experience start
+                $contition_array = array('user_id' => $userid, 'experience' => 'Fresher', 'status' => '1');
+                $jobdata = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'count(*) as total,work_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                $countdata = $jobdata[0]['total'];
+
+                for ($x = 0; $x < $countdata; $x++) {
+
+
+                    $delete_data = $this->common->delete_data('job_add_workexp', 'work_id', $jobdata[$x]['work_id']);
+                }
+                // for deleete fresher data when candidate is experience ENd
+            }
+//when insert and update data both same time Insert data at job_add_workexp for Experience table End
+            //Update only one field into database start
+            $data = array(
+                'experience' => $exp,
+                'modified_date' => date('Y-m-d h:i:s', time())
+            );
+
+            $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+            //Update only one field into database End
+
+
+
+            if ($insert_id && $updatedata || $updatedata1 && $updatedata) {
+                redirect('job/home');
+            } else {
+                redirect('job/work-experience', 'refresh');
+            }
+        }
         //}
     }
 
@@ -1843,7 +1841,7 @@ class Job extends MY_Controller {
 
             $data = '*';
 
-          $job_details =  $this->data['job'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str, $groupby);
+            $job_details = $this->data['job'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str, $groupby);
 
             //for getting data job_add_workexp table
             $contition_array = array('user_id' => $userid, 'status' => '1');
@@ -1890,7 +1888,7 @@ class Job extends MY_Controller {
 //For Counting Profile data start
 //For Counting Profile data END
 
-        $this->data['title'] = "Resume of " . $job_details[0]['fname']." ".$job_details[0]['lname'] . " | Details | Job Profile" . TITLEPOSTFIX;
+        $this->data['title'] = "Resume of " . $job_details[0]['fname'] . " " . $job_details[0]['lname'] . " | Details | Job Profile" . TITLEPOSTFIX;
 
 //for deactive profile and slug not found then see page start
 
@@ -2123,7 +2121,7 @@ class Job extends MY_Controller {
                 'job_delete' => '1',
                 'job_save' => '2'
             );
-           
+
             $insert_id = $this->common->insert_data_getid($data, 'job_apply');
             if ($insert_id) {
 
@@ -2565,7 +2563,6 @@ class Job extends MY_Controller {
             "select" => $select,
             "select1" => $select1,
         ));
-        
     }
 
 //add other_university into database End 
@@ -3077,7 +3074,7 @@ class Job extends MY_Controller {
         $contition_array = array('is_delete' => '0', 'industry_name' => "Others", 'is_other' => '0');
         $search_condition = "((status = '1'))";
         $this->data['other_industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-      
+
         if ($userid) {
             $this->data['profile_login'] = "login";
         } else {
@@ -3378,9 +3375,9 @@ class Job extends MY_Controller {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         // search keyword insert into database start
-       
+
         $this->data['keyword'] = $search_job;
-       
+
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
         $this->data['keyword1'] = $search_place;
@@ -3388,14 +3385,14 @@ class Job extends MY_Controller {
         $title = '';
         if (empty($search_job) && empty($search_place)) {
             $title = 'Find Latest Job Vacancies at Your Location';
-        }elseif ($search_job && $search_place) {
-            $title = $search_job.' in '.$search_place;
-        }elseif ($search_job) {
+        } elseif ($search_job && $search_place) {
+            $title = $search_job . ' in ' . $search_place;
+        } elseif ($search_job) {
             $title = $search_job;
-        }elseif ($search_place) {
+        } elseif ($search_place) {
             $title = $search_place;
         }
-        
+
         $this->data['title'] = $title . " - Job Profile - Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
@@ -3403,7 +3400,13 @@ class Job extends MY_Controller {
 
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
         if ($this->session->userdata('aileenuser')) {
+            $contition_array = array('user_id' => $this->session->userdata('aileenuser'), 'status' => '1', 'is_delete' => '0');
+            $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            if($jobdata){
             $this->load->view('job/job_all_post1', $this->data);
+            }else{
+                $this->load->view('job/job_search_login', $this->data);
+            }
         } else {
             $this->load->view('job/job_search_login', $this->data);
         }
@@ -3726,9 +3729,7 @@ class Job extends MY_Controller {
 </div>
 </div>';
             }
-
-        }
-        else {
+        } else {
 
             $return_html .= '<div class="art-img-nn">
     <div class="art_no_post_img">
@@ -3774,7 +3775,7 @@ class Job extends MY_Controller {
 
         $contition_array = array('job_apply.job_delete' => '1', 'job_apply.user_id' => $userid, 'job_apply.job_save' => '2');
         $postdetail = $this->data['postdetail'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = 'rec_post.*,job_apply.app_id,job_apply.user_id as userid', $sortby = 'job_apply.modify_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-        
+
         $postdetail1 = array_slice($postdetail, $start, $perpage);
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($postdetail);
@@ -3929,8 +3930,7 @@ class Job extends MY_Controller {
 </div>
 </div>';
             }
-        }
-        else {
+        } else {
             $return_html .= '<div class="art-img-nn">
     <div class="art_no_post_img">
         <img src="' . base_url('assets/img/job-no.png') . '">
@@ -4144,9 +4144,9 @@ class Job extends MY_Controller {
 
 // search keyword insert into database start
 
-        
-          $search_job = str_replace('-', ' ', trim($_GET["skill"]));
-          $search_place = str_replace('-', ' ', trim($_GET["place"]));
+
+        $search_job = str_replace('-', ' ', trim($_GET["skill"]));
+        $search_place = str_replace('-', ' ', trim($_GET["place"]));
 
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
@@ -4204,7 +4204,6 @@ class Job extends MY_Controller {
             $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
             $search_condition = "city IN ('$city_names')";
             $unique = $this->data['results'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-
         } elseif ($search_place == "") {
 
             //Search FOr Skill Start
@@ -4220,14 +4219,14 @@ class Job extends MY_Controller {
             $join_str[0]['join_type'] = '';
 
 
-            $contition_array = array('recruiter.user_id !=' => $userid, 'recruiter.re_step' => '3', 'rec_post.is_delete' =>  '0', 'rec_post.status' => '1');
+            $contition_array = array('recruiter.user_id !=' => $userid, 'recruiter.re_step' => '3', 'rec_post.is_delete' => '0', 'rec_post.status' => '1');
 
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name,rec_post.fresher,recruiter.re_comp_profile,rec_post.post_currency';
 
             $search_condition = "(rec_post.post_name LIKE '%$search_job%' or recruiter.re_comp_name LIKE '%$search_job%' or recruiter.rec_firstname LIKE '%$search_job%' or recruiter.rec_lastname LIKE '%$search_job%' or rec_post.other_skill LIKE '%$search_job%' or concat(
                     rec_firstname,' ',rec_lastname) LIKE '%$search_job%')";
-            
-         
+
+
 
             $results_all = $recpostdata['data'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
             //Search For firstname,lastname,companyname,other_skill and concat(firstname,lastname) End
@@ -4297,7 +4296,7 @@ class Job extends MY_Controller {
             }
         }
         $postdetail = $this->data['postdetail'] = $unique;
-      
+
 //Total Search All End
 
         $postdetail1 = array_slice($postdetail, $start, $perpage);
@@ -4598,7 +4597,7 @@ class Job extends MY_Controller {
             // FETCH INDUSTERY WISE JOB END
 
             $recommendata = array_merge((array) $titlearray, (array) $skillaarray, (array) $indarray);
-           
+
             $recommendata[] = array_reduce($recommendata, 'array_merge', array());
             $newdata[] = array_unique($recommendata, SORT_REGULAR);
         }
@@ -4606,7 +4605,7 @@ class Job extends MY_Controller {
         $postdetail = array_unique($recommanarray, SORT_REGULAR);
 
 //JOB CHANGES END
-    
+
         $postdetail1 = array_slice($postdetail, $start, $perpage);
 
         if (empty($_GET["total_record"])) {
@@ -5168,7 +5167,7 @@ class Job extends MY_Controller {
             redirect('recruiter/');
         }
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
-        
+
 
         $contition_array = array('user_id' => $id, 'is_delete' => '0', 're_status' => '0');
         $postdataone = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,recruiter_user_image,profile_background,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
@@ -5185,7 +5184,7 @@ class Job extends MY_Controller {
 
         $contition_array = array('rec_post.user_id' => $id, 'rec_post.is_delete' => '0', 'rec_post.post_id' => $postid);
         $rec_postdata = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit, $offset, $join_str, $groupby = '');
-      
+
         $rec_postdata1 = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
@@ -5415,7 +5414,6 @@ class Job extends MY_Controller {
                     }
                     $rec_post .= '>Save</a>';
                 }
-               
             }
             $rec_post .= '</div>
                                                                     </div>
@@ -5442,7 +5440,7 @@ class Job extends MY_Controller {
     // RECRUITER POST AJAX LAZZY LOADER DATA END
     //FOR RECRUITER POST START
     public function rec_profile($id = "") {
-        
+
         $user_id = $this->db->get_where('rec_post', array('post_id' => $id))->row()->user_id;
 
         $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 're_status' => '1');
@@ -5593,7 +5591,7 @@ class Job extends MY_Controller {
     public function all_post($city = '') {
 
         $city = $_GET['city'];
-     
+
         $this->data['title'] = 'Find Latest Job Vacancies at Your Location' . TITLEPOSTFIX;
         if ($city[0]['city']) {
 
@@ -5624,7 +5622,6 @@ class Job extends MY_Controller {
             $this->load->view('job/all_post_login', $this->data);
         }
     }
-
 
     public function job_notification_count($to_id = '') {
         $contition_array = array('not_read' => '2', 'not_to_id' => $to_id, 'not_type !=' => '1', 'not_type !=' => '2');

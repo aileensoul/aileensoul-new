@@ -6,101 +6,108 @@
         <!-- END HEAD -->
 
         <title><?php echo $title; ?></title>
-<?php
+        <?php
         if (IS_JOB_CSS_MINIFY == '0') {
             ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">
-        <?php }else{?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">
+        <?php } else { ?>
 
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver=' . time()); ?>">
-        <?php }?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/job.css?ver=' . time()); ?>">
+        <?php } ?>
     </head>
     <!-- END HEAD -->
-  
-    <body class="page-container-bg-solid page-boxed no-login botton_footer">
 
-        <header>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-3 col-xs-3 fw-479 left-header">
-                      <div class="logo"> <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="logo"></a></div>
-                    </div>
-                    <div class="col-md-8 col-sm-9 col-xs-9 fw-479 right-header">
-                        <div class="btn-right pull-right">
-                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
+    <body class="page-container-bg-solid page-boxed no-login botton_footer">
+        <?php
+        $userid = $this->session->userdata('aileenuser');
+        if (!$userid) {
+            ?>
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-3 col-xs-3 fw-479 left-header">
+                            <div class="logo"> <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a></div>
+                        </div>
+                        <div class="col-md-8 col-sm-9 col-xs-9 fw-479 right-header">
+                            <div class="btn-right pull-right">
+                                <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
+                                <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        <?php }else{
+            echo $header;
+            } ?>
+       
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
-                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt cust-block">
-                             <div class="">
-                                <div class="full-box-module">   
-                                    <div class="">
-                                        <div class=""> 
-                                            <div class="cust-div-h3">
-                                                <h3 style="color: #5c5c5c;text-align: center;font-size: 24px;">Job by Location</h3>
-                                            </div>
-                                            <ul class="jobs-loca-cus" style="list-style-type: none;padding-left: 10px;">
-                                                <li>
-                                             <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("jobs"); ?>" >All Jobs</a>
-                                            </label>
-                                            </li>
-                                            <li>
-                                            <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs-in-Ahmedabad"); ?>" <?php if ($keyword1 == 'Ahmedabad') { ?> class="job_active" <?php } ?>>Ahmedabad Jobs</a>
-                                            </label>
-                                            </li>
-                                            <li>
-                                            <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs-in-Bengaluru"); ?>" <?php if ($keyword1 == 'Bengaluru') { ?> class="job_active" <?php } ?>>Bengaluru Jobs</a>
-                                            </label>
-                                            </li>
-                                            <li>
-                                            <label for="City" class="lbpos fw"> 
-                                                <a href="<?php echo base_url("jobs-in-Chennai"); ?>" <?php if ($keyword1 == 'Chennai') { ?> class="job_active" <?php } ?>>Chennai Jobs</a>
-                                            </label>
-                                            </li>
-                                            <li>
-                                            <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs-in-Delhi"); ?>" <?php if ($keyword1 == 'Delhi') { ?> class="job_active" <?php } ?>>Delhi Jobs</a>
-                                            </label>
-                                            </li>
-                                            <li>
-                                            <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs-in-Hyderabad"); ?>" <?php if ($keyword1 == 'Hyderabad') { ?> class="job_active" <?php } ?>>Hyderabad Jobs</a>
-                                            </label>
-                                            </li>
-                                            <li>
-                                            <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs-in-Mumbai"); ?>" <?php if ($keyword1 == 'Mumbai') { ?> class="job_active" <?php } ?>>Mumbai Jobs</a>
-                                            </label>
-                                            </li>
-                                            <li>
-                                            <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs-in-Pune"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Pune Jobs</a>
-                                            </label>
-                                            </li>
-                                            </ul>
+                    <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt cust-block">
+                        <div class="">
+                            <div class="full-box-module">   
+                                <div class="">
+                                    <div class=""> 
+                                        <div class="cust-div-h3">
+                                            <h3 style="color: #5c5c5c;text-align: center;font-size: 24px;">Job by Location</h3>
                                         </div>
+                                        <ul class="jobs-loca-cus" style="list-style-type: none;padding-left: 10px;">
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("jobs"); ?>" >All Jobs</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("jobs-in-Ahmedabad"); ?>" <?php if ($keyword1 == 'Ahmedabad') { ?> class="job_active" <?php } ?>>Ahmedabad Jobs</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("jobs-in-Bengaluru"); ?>" <?php if ($keyword1 == 'Bengaluru') { ?> class="job_active" <?php } ?>>Bengaluru Jobs</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw"> 
+                                                    <a href="<?php echo base_url("jobs-in-Chennai"); ?>" <?php if ($keyword1 == 'Chennai') { ?> class="job_active" <?php } ?>>Chennai Jobs</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("jobs-in-Delhi"); ?>" <?php if ($keyword1 == 'Delhi') { ?> class="job_active" <?php } ?>>Delhi Jobs</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("jobs-in-Hyderabad"); ?>" <?php if ($keyword1 == 'Hyderabad') { ?> class="job_active" <?php } ?>>Hyderabad Jobs</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("jobs-in-Mumbai"); ?>" <?php if ($keyword1 == 'Mumbai') { ?> class="job_active" <?php } ?>>Mumbai Jobs</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("jobs-in-Pune"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Pune Jobs</a>
+                                                </label>
+                                            </li>
+                                        </ul>
                                     </div>
+                                </div>
 
-                                </div>                             
-                        
+                            </div>                             
 
 
 
-                         <?php echo $left_footer; ?>
-                         
+
+                            <?php echo $left_footer; ?>
+
                         </div>
 
                     </div>
@@ -110,17 +117,19 @@
 
                     <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                         <div class="common-form">
-                            
+
                             <div class="job-saved-box">
                                 <h3>
-                                  
+
                                     <?php
                                     if ($keyword == "" && $keyword1 == "") {
                                         echo 'All Jobs';
                                     } elseif ($keyword != "" && $keyword1 == "") {
-                                        echo $keyword; echo " Jobs";
+                                        echo $keyword;
+                                        echo " Jobs";
                                     } elseif ($keyword == "" && $keyword1 != "") {
-                                       echo " Jobs in "; echo $keyword1;
+                                        echo " Jobs in ";
+                                        echo $keyword1;
                                     } else {
                                         echo $keyword;
                                         echo " Jobs in ";
@@ -141,56 +150,56 @@
                     </div>
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
-                         <div class="all-profile-box">
-                                <div class="all-pro-head">
-                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
-                                </div>
-                                <ul class="all-pr-list">
-                                    <li>
-                                        <a href="<?php echo base_url('job'); ?>">
-                                            <div class="all-pr-img" alt="job">
-                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="job">
-                                            </div>
-                                            <span>Job Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo base_url('recruiter'); ?>" >
-                                            <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>" alt="recruiter">
-                                            </div>
-                                            <span>Recruiter Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo base_url('freelance'); ?>" >
-                                            <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>"  alt="freelancer">
-                                            </div>
-                                            <span>Freelance Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo base_url('business-profile'); ?>" >
-                                            <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="business profile">
-                                            </div>
-                                            <span>Business Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo base_url('artist'); ?>" >
-                                            <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="artist">
-                                            </div>
-                                            <span>Artistic Profile</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                        <div class="all-profile-box">
+                            <div class="all-pro-head">
+                                <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
                             </div>
+                            <ul class="all-pr-list">
+                                <li>
+                                    <a href="<?php echo base_url('job'); ?>">
+                                        <div class="all-pr-img" alt="job">
+                                            <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="job">
+                                        </div>
+                                        <span>Job Profile</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('recruiter'); ?>" >
+                                        <div class="all-pr-img">
+                                            <img src="<?php echo base_url('assets/img/i2.jpg'); ?>" alt="recruiter">
+                                        </div>
+                                        <span>Recruiter Profile</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('freelance'); ?>" >
+                                        <div class="all-pr-img">
+                                            <img src="<?php echo base_url('assets/img/i3.jpg'); ?>"  alt="freelancer">
+                                        </div>
+                                        <span>Freelance Profile</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('business-profile'); ?>" >
+                                        <div class="all-pr-img">
+                                            <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="business profile">
+                                        </div>
+                                        <span>Business Profile</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('artist'); ?>" >
+                                        <div class="all-pr-img">
+                                            <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="artist">
+                                        </div>
+                                        <span>Artistic Profile</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -210,8 +219,8 @@
     </div>
     <!-- Model Popup Close -->
 
-       
-    <?php echo $footer; ?>
+
+<?php echo $footer; ?>
 
     <!-- Login  -->
     <div class="modal fade login" id="login" role="dialog">
@@ -434,7 +443,7 @@
                                         <span>
                                             <select tabindex="106" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
-                                                
+
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">Mar</option>
@@ -447,7 +456,7 @@
                                                 <option value="10">Oct</option>
                                                 <option value="11">Nov</option>
                                                 <option value="12">Dec</option>
-                                               
+
                                             </select></span>
                                         <span>
                                             <select tabindex="107" class="year" name="selyear" id="selyear">
@@ -479,7 +488,7 @@
                                     </p>
                                     <p>
                                         <button tabindex="111" class="btn1">Create an account</button>
-                                                                                   
+
                                     </p>
                                     <div class="sign_in pt10">
                                         <p>
@@ -506,9 +515,9 @@
                 <div class="modal-body">
                     <div class="clearfix">
                         <div class="">
-                         <div class="title">
-                                        <h1 class="ttc tlh2">Welcome To Aileensoul</h1>
-                                    </div>
+                            <div class="title">
+                                <h1 class="ttc tlh2">Welcome To Aileensoul</h1>
+                            </div>
                             <div class="main-form">
                                 <form role="form" name="register_form" id="register_form" method="post">
                                     <div class="row">
@@ -545,7 +554,7 @@
                                         </select>
                                         <select tabindex="106" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
-                                           
+
                                             <option value="1">Jan</option>
                                             <option value="2">Feb</option>
                                             <option value="3">Mar</option>
@@ -558,7 +567,7 @@
                                             <option value="10">Oct</option>
                                             <option value="11">Nov</option>
                                             <option value="12">Dec</option>
-                                           
+
                                         </select>
                                         <select tabindex="107" class="year" name="selyear" id="selyear">
                                             <option value="" disabled selected value>Year</option>
@@ -589,13 +598,13 @@
                                     </p>
                                     <p>
                                         <button tabindex="111" class="btn1">Create an account</button>
-                                                                                   
+
                                     </p>
                                     <div class="sign_in pt10">
-                                            <p>
-                                                Already have an account ? <a tabindex="112" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
-                                            </p>
-                                        </div>
+                                        <p>
+                                            Already have an account ? <a tabindex="112" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
+                                        </p>
+                                    </div>
                                 </form>
                             </div>
 
@@ -608,39 +617,39 @@
     <!-- register for apply end -->
 
     <!-- script for skill textbox automatic start-->
-    
+
     <?php
-        if (IS_JOB_JS_MINIFY == '0') {
-            ?>
-    <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-<?php }else{?>
+    if (IS_JOB_JS_MINIFY == '0') {
+        ?>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+<?php } else { ?>
 
 
- <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
 
-<?php }?>
+<?php } ?>
     <script>
-                                            var base_url = '<?php echo base_url(); ?>';
+                                                var base_url = '<?php echo base_url(); ?>';
 
-                                            var skill = '<?php echo $keyword; ?>';
-                                            var skill = skill.replace('-', ' ');
+                                                var skill = '<?php echo $keyword; ?>';
+                                                var skill = skill.replace('-', ' ');
 
-                                            var place = '<?php echo $keyword1; ?>';
-                                            var place = place.replace('-', ' ');
+                                                var place = '<?php echo $keyword1; ?>';
+                                                var place = place.replace('-', ' ');
 
-                                            var csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                            var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                                                var csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                                                var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
     </script>
 
- <?php
-        if (IS_JOB_JS_MINIFY == '0') {
-            ?>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_search_login.js?ver=' . time()); ?>"></script>
+    <?php
+    if (IS_JOB_JS_MINIFY == '0') {
+        ?>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_search_login.js?ver=' . time()); ?>"></script>
 
-    <?php }else{?>
-<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_search_login.js?ver=' . time()); ?>"></script>
-    <?php }?>
+    <?php } else { ?>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_search_login.js?ver=' . time()); ?>"></script>
+<?php } ?>
 </body>
 </html>
