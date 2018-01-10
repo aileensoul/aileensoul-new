@@ -95,6 +95,7 @@ class Recruiter extends MY_Controller {
         }
         $this->load->view('recruiter/rec_basic_information', $this->data);
     }
+
 // RECRUITER BASIC INFORMATION STEP END  
 // RECRUITER BASIC INFORMATION INSERT STEP START  
     public function basic_information() {
@@ -115,7 +116,7 @@ class Recruiter extends MY_Controller {
         $this->form_validation->set_rules('email', ' EmailId', 'required|valid_email');
 
         if ($this->form_validation->run() == FALSE) {
-            
+
 
             if ($this->data['recdata']) {
 
@@ -813,7 +814,7 @@ class Recruiter extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'is_delete' => '0');
             $this->data['postdataone'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,recruiter_user_image,profile_background,designation,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-    
+
 
             $this->rec_avail_check($id);
 
@@ -2129,7 +2130,7 @@ class Recruiter extends MY_Controller {
 </div>';
                     }
                 } else {
-
+                    
                 }
             } else {
 
@@ -2163,7 +2164,7 @@ class Recruiter extends MY_Controller {
                         } else {
                             $cityname = '';
                         }
-                     
+
                         $rec_post .= '<div class="post-img">
                                             <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                         if ($cache_time_1) {
@@ -2261,10 +2262,11 @@ class Recruiter extends MY_Controller {
                         $rec_post .= '</p> </div> </div>';
                     }
                 } else {
+                    
                 }
             }
-               $no_post = '';
-               $no_post = "dataavl";
+            $no_post = '';
+            $no_post = "dataavl";
         } else {
 
 
@@ -2283,10 +2285,10 @@ class Recruiter extends MY_Controller {
         }
 
         echo json_encode(
-                    array(
-                        "postdata" => $rec_post,
-                        "nopostvar" => $no_post,
-            ));
+                array(
+                    "postdata" => $rec_post,
+                    "nopostvar" => $no_post,
+        ));
 
         //echo $rec_post;
     }
@@ -2342,7 +2344,15 @@ class Recruiter extends MY_Controller {
 
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
         if ($this->session->userdata('aileenuser')) {
-            $this->load->view('recruiter/recommen_candidate1', $this->data);
+            $contition_array = array('user_id' => $this->session->userdata('aileenuser'), 'is_delete' => '0', 're_status' => '1');
+            $recruiter = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            if ($recruiter) {
+                // echo "5555"; die();
+                $this->load->view('recruiter/recommen_candidate1', $this->data);
+            } else {
+                // echo "999";die();
+                $this->load->view('recruiter/rec_search_login', $this->data);
+            }
         } else {
 
             $this->load->view('recruiter/rec_search_login', $this->data);
@@ -2364,9 +2374,9 @@ class Recruiter extends MY_Controller {
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
-        if ($this->session->userdata('aileenuser')) {
-            $this->recruiter_apply_check();
-        }
+//        if ($this->session->userdata('aileenuser')) {
+//            $this->recruiter_apply_check();
+//        }
         $userid = $this->session->userdata('aileenuser');
 
         $searchkeyword = trim($_GET["skill"]);
@@ -2555,6 +2565,8 @@ class Recruiter extends MY_Controller {
         $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
         $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+        $contition_array = array('user_id' => $this->session->userdata('aileenuser'), 'is_delete' => '0', 're_status' => '1');
+        $recruiter = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($postdetail) {
 
             foreach ($searchdata1 as $p) {
@@ -2572,7 +2584,18 @@ class Recruiter extends MY_Controller {
                 $s3 = new S3(awsAccessKey, awsSecretKey);
                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                 if ($info && $p['job_user_image'] != '') {
-
+                    if($this->session->userdata('aileenuser')){
+                        if($recruiter){
+                            $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
+                                    <img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $p['job_user_image'] . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
+                                    </a>';
+                            
+                        }else{
+                            $return_html .= '<a href="' . base_url('recruiter/registration') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
+                                    <img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $p['job_user_image'] . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
+                                    </a>';
+                        }
+                    }
                     $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
                                     <img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $p['job_user_image'] . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
                                     </a>';
@@ -2582,8 +2605,14 @@ class Recruiter extends MY_Controller {
                     $acr = substr($a, 0, 1);
                     $b = $p['lname'];
                     $acr1 = substr($b, 0, 1);
-
-                    $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '">';
+                    if($this->session->userdata('aileenuser')){
+                        if($recruiter){
+                            $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '">';
+                        }else{
+                            $return_html .= '<a href="' . base_url('recruiter/registration') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '">';
+                        }
+                    }
+                    
                     $return_html .= '<div class="post-img-profile">' . ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)) . '</div>';
                     $return_html .= '</a>';
                 }
@@ -2593,7 +2622,11 @@ class Recruiter extends MY_Controller {
                                     <ul>
                                         <li>';
                 if ($this->session->userdata('aileenuser')) {
-                    $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="' . base_url('job/resume/' . $p['slug'] . '') . '">';
+                    if($recruiter){
+                        $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="' . base_url('job/resume/' . $p['slug'] . '') . '">';
+                    }else{
+                    $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="' . base_url('recruiter/registration') . '">';
+                    }
                 } else {
                     $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="javascript:void(0)" onClick="login_profile()">';
                 }
@@ -2851,37 +2884,34 @@ class Recruiter extends MY_Controller {
 
                 if ($this->session->userdata('aileenuser')) {
 
-                        $return_html .= '<li><b>E-mail</b><span>';
-                        if ($p['email']) {
-                            $return_html .= $p['email'];
-                        } else {
-                            $return_html .= PROFILENA;
-                        }
-                        $return_html .= '</span></li>';
-               }else{
+                    $return_html .= '<li><b>E-mail</b><span>';
+                    if ($p['email']) {
+                        $return_html .= $p['email'];
+                    } else {
+                        $return_html .= PROFILENA;
+                    }
+                    $return_html .= '</span></li>';
+                } else {
 
-                     $return_html .= '<li><b>E-mail</b><span class="text_blur">';
-                        if ($p['email']) {
-                            $return_html .= $p['email'];
-                        } else {
-                            $return_html .= PROFILENA;
-                        }
-                        $return_html .= '</span></li>';
-
-               }
-
-            if ($this->session->userdata('aileenuser')) {
-                if ($p['phnno']) {
-                    $return_html .= '<li><b>Mobile Number</b><span>' . $p['phnno'] . '</span></li>';
+                    $return_html .= '<li><b>E-mail</b><span class="text_blur">';
+                    if ($p['email']) {
+                        $return_html .= $p['email'];
+                    } else {
+                        $return_html .= PROFILENA;
+                    }
+                    $return_html .= '</span></li>';
                 }
 
-         }else{
+                if ($this->session->userdata('aileenuser')) {
+                    if ($p['phnno']) {
+                        $return_html .= '<li><b>Mobile Number</b><span>' . $p['phnno'] . '</span></li>';
+                    }
+                } else {
 
-            if ($p['phnno']) {
-                    $return_html .= '<li><b>Mobile Number</b><span class="text_blur">' . $p['phnno'] . '</span></li>';
+                    if ($p['phnno']) {
+                        $return_html .= '<li><b>Mobile Number</b><span class="text_blur">' . $p['phnno'] . '</span></li>';
+                    }
                 }
-
-         }
                 $return_html .= '<input type="hidden" name="search" id="search" value="' . $keyword . '">
                                     <input type="hidden" name="search" id="search1" value="' . $keyword1 . '">';
 
@@ -2897,7 +2927,12 @@ class Recruiter extends MY_Controller {
                 if ($userid != $p['iduser']) {
                     if (!$data) {
                         if ($this->session->userdata('aileenuser')) {
-                            $return_html .= '<a href="' . base_url('chat/abc/2/1/' . $p['iduser']) . '">';
+                            if($recruiter){
+                                $return_html .= '<a href="' . base_url('chat/abc/2/1/' . $p['iduser']) . '">';
+                            }else{
+                                $return_html .= '<a href="' . base_url('recruiter/registration') . '">';
+                            }
+                            
                         } else {
                             $return_html .= '<a href="javascript:void(0)" onClick="login_profile()">';
                         }
@@ -2905,7 +2940,12 @@ class Recruiter extends MY_Controller {
                         $return_html .= '<input type="hidden" id="hideenuser' . $p['job_id'] . '" value= "' . $p['job_id'] . '">';
                         $return_html .= '<a id="' . $p['iduser'] . '"';
                         if ($this->session->userdata('aileenuser')) {
-                            $return_html .= 'onClick="savepopup(' . $p['iduser'] . ',' . $p['job_id'] . ')"';
+                            if($recruiter){
+                                $return_html .= 'onClick="savepopup(' . $p['iduser'] . ',' . $p['job_id'] . ')"';
+                            }else{
+                                $return_html .= 'onClick=""';
+                            }
+                            
                         } else {
                             $return_html .= 'onClick="login_profile()"';
                         }
@@ -2955,7 +2995,7 @@ class Recruiter extends MY_Controller {
     }
 
 // RECRUITER GET LOCATION END
-    public function get_job_tile($id = "") {  
+    public function get_job_tile($id = "") {
         $userid = $this->session->userdata('aileenuser');
         //get search term
         $searchTerm = $_GET['term'];
@@ -3831,7 +3871,7 @@ class Recruiter extends MY_Controller {
         //if user deactive profile then redirect to recruiter/index untill active profile End
 
 
-        if ($this->input->post('cancel1')) { 
+        if ($this->input->post('cancel1')) {
             redirect('recruiter/post', refresh);
         } elseif ($this->input->post('cancel2')) {
             redirect('recruiter/profile', refresh);
@@ -3910,7 +3950,7 @@ class Recruiter extends MY_Controller {
                 $redirect_url = site_url('recruiter');
                 redirect($redirect_url, 'refresh');
             } else {
-                
+
                 $recruiter_reg_prev_image = $this->data['recdata']['recruiter_user_image'];
 
 
@@ -4302,7 +4342,6 @@ class Recruiter extends MY_Controller {
             $skilldata = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'GROUP_CONCAT(skill_id) as skill_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $skill_list = $skilldata[0]['skill_list'];
             //SKILL DATA END
-
             //INDUSTRY DATA START
             $contition_array = array('is_delete' => '0', 'status' => '1');
             $search_condition = "((industry_name LIKE '%$searchkeyword%') OR (industry_name LIKE '%$searchkeyword%' AND user_id = '$userid'))";
@@ -4464,7 +4503,7 @@ class Recruiter extends MY_Controller {
         } else {
             $select .= 1;
         }
-       echo json_encode(array(
+        echo json_encode(array(
             "select" => $select,
         ));
     }
@@ -4501,27 +4540,26 @@ class Recruiter extends MY_Controller {
         } else {
             $cache_time1 = $this->data['postdata'][0]['post_name'];
         }
-        
+
         if ($cache_time1 != '') {
-                            $text = strtolower($this->common->clean($cache_time1));
-                        } else {
-                            $text = '';
-                        }
-          
+            $text = strtolower($this->common->clean($cache_time1));
+        } else {
+            $text = '';
+        }
+
 
         $cityname = $this->db->get_where('cities', array('city_id' => $this->data['postdata'][0]['city']))->row()->city_name;
-if ($cityname != '') {
-                            $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
-                        } else {
-                            $cityname = '';
-                        }
-                        if($this->data['postdata'][0]['post_id'] != ''){
-      $url = $text . $cityname . '-' . $this->data['postdata'][0]['user_id'] . '-' . $this->data['postdata'][0]['post_id']; 
-        
-                        }else{
-                          $url = '';  
-                        }
-                            $segment3 = array_splice($segment3, 0, -2);
+        if ($cityname != '') {
+            $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+        } else {
+            $cityname = '';
+        }
+        if ($this->data['postdata'][0]['post_id'] != '') {
+            $url = $text . $cityname . '-' . $this->data['postdata'][0]['user_id'] . '-' . $this->data['postdata'][0]['post_id'];
+        } else {
+            $url = '';
+        }
+        $segment3 = array_splice($segment3, 0, -2);
         $segment3 = implode(' ', $segment3);
         $segment3 = ucfirst($segment3);
 
@@ -4529,15 +4567,15 @@ if ($cityname != '') {
 
         $contition_array = array('post_id !=' => $postid, 'status' => '1', 'rec_post.is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
         $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-       
-        if($url == $this->uri->segment(3)){
-        if ($this->session->userdata('aileenuser')) {
-            $this->load->view('job/rec_post', $this->data);
+
+        if ($url == $this->uri->segment(3)) {
+            if ($this->session->userdata('aileenuser')) {
+                $this->load->view('job/rec_post', $this->data);
+            } else {
+                $this->load->view('job/rec_post_login', $this->data);
+            }
         } else {
-            $this->load->view('job/rec_post_login', $this->data);
-        }
-        }else{
-            redirect('recruiter/jobpost/' . $url,refresh);
+            redirect('recruiter/jobpost/' . $url, refresh);
         }
     }
 
@@ -4653,7 +4691,7 @@ if ($cityname != '') {
             $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name,city_id,state_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $this->load->view('recruiter/rec_reg', $this->data);
         } else {
-    
+
             $data = array(
                 'rec_firstname' => $this->input->post('first_name'),
                 'rec_lastname' => $this->input->post('last_name'),
@@ -5112,13 +5150,13 @@ if ($cityname != '') {
         }
         echo "yes";
     }
-    
-       public function rec_check_login() {
+
+    public function rec_check_login() {
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
 
         $result = $this->user_model->getUserByEmail($email_login);
-        $userinfo = $this->logins->check_login($email_login,$password_login);
+        $userinfo = $this->logins->check_login($email_login, $password_login);
         if (count($userinfo) > 0) {
             if ($userinfo['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
@@ -5133,15 +5171,15 @@ if ($cityname != '') {
         } else {
             $is_data = 'email';
         }
-        $rec_result = $this->recruiter_model->CheckRecruiterAvailable($id); 
+        $rec_result = $this->recruiter_model->CheckRecruiterAvailable($id);
         $rec = 0;
         if ($rec_result['total'] > 0) {
             $rec = 1;
         }
         echo json_encode(
-            array(
-                    "data" => $is_data,"id" => $id,"is_rec" => $rec
+                array(
+                    "data" => $is_data, "id" => $id, "is_rec" => $rec
         ));
     }
-    
+
 }
