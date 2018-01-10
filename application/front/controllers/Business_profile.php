@@ -7645,7 +7645,13 @@ Your browser does not support the audio tag.
                 $contactperson_from = $this->user_model->getUserData($contact['contact_from_id']);
 
                 if ($contactperson_from) {
-                    $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
+                    // $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
+
+                $contition_array = array('user_id' => $contact['contact_from_id'], 'is_deleted' => '0', 'status' => '1');
+                $busdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    if($busdata){
+
                     $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
 
                     $contactdata .= '<li>';
@@ -7686,13 +7692,20 @@ Your browser does not support the audio tag.
                     $contactdata .= '<a href="javascript:void(0);" class="add-right-true"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
                     $contactdata .= '</div>';
                     $contactdata .= '</li>';
+                  }
                 }
             } else {
                 $contactperson_to = $this->user_model->getUserData($contact['contact_to_id']);
 
                 if ($contactperson_to) {
-                    $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
+                    //$busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
+
+                    $contition_array = array('user_id' => $contact['contact_to_id'], 'is_deleted' => '0', 'status' => '1');
+                    $busdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
                     $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
+
+                    if($busdata){
 
                     $contactdata .= '<li>';
                     $contactdata .= '<div class="addcontact-left custome-approved-contact">';
@@ -7730,6 +7743,8 @@ Your browser does not support the audio tag.
                     $contactdata .= '</div>';
                     $contactdata .= '</li>';
                 }
+
+               }
             }
         }
 

@@ -99,7 +99,7 @@ padding: 5px;}
 .all-post-box{border:1px solid #d2d2d2; margin-bottom:10px; width:100%; float:left; border-radius:4px;}
 .all-post-box .all-post-top{padding:15px; width:100%; float:left;}
 .post-field{width:100%; float:left; background:#fff;}
-.modal-content .post-field form{padding:0;}
+.modal-content .post-popup-box form{padding:0;}
 .modal-content .post-field .form-group{padding:5px 15px; border-bottom:10px solid #e8f3f8; margin-bottom:0;}
 .modal-content .post-field .form-group textarea{border:none; min-height:70px; max-height:80px; font-size:14px;}
 .modal-content .post-field .form-group input{border:none; padding:0;}

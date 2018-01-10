@@ -210,7 +210,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Business Image">
                                         <?php } ?>
                                     </div>
-                                    <div id="myBtn1"  class="editor-content popup-text">
+                                    <div id="myBtn1"  class="editor-content popup-text" onclick="return modelopen();">
                                         <span>Post Your Product....</span>
                                         <div class="padding-left padding_les_left camer_h">
                                             <i class=" fa fa-camera">

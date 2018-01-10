@@ -121,7 +121,7 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
                  
                 </a>
                </div>
-               <div id="myBtn"  class="editor-content popup-text">
+               <div id="myBtn"  class="editor-content popup-text" onclick="return modelopen();">
                   <span > Post Your Art....</span> 
                   <div class="padding-left padding_les_left camer_h">
                      <i class=" fa fa-camera" >

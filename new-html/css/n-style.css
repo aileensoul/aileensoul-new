@@ -8,6 +8,7 @@
 
 .form-box{width:700px; margin:0 auto; border-radius:4px;
 	border:1px solid #c7c7c7;
+    position: relative;
 	border-radius:5px;
     -webkit-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
 	-moz-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
@@ -98,7 +99,7 @@ padding: 5px;}
 .all-post-box{border:1px solid #d2d2d2; margin-bottom:10px; width:100%; float:left; border-radius:4px;}
 .all-post-box .all-post-top{padding:15px; width:100%; float:left;}
 .post-field{width:100%; float:left; background:#fff;}
-.modal-content .post-field form{padding:0;}
+.modal-content .post-popup-box form{padding:0;}
 .modal-content .post-field .form-group{padding:5px 15px; border-bottom:10px solid #e8f3f8; margin-bottom:0;}
 .modal-content .post-field .form-group textarea{border:none; min-height:70px; max-height:80px; font-size:14px;}
 .modal-content .post-field .form-group input{border:none; padding:0;}
@@ -204,12 +205,25 @@ padding: 8px;}
 .user-list-detail .contact-designation{line-height:1; padding-bottom:5px;}
 .user-list-detail .contact-designation a{font-size:12px; color:#5c5c5c;}
 .all-contact .all-user-list .item{padding:3px; text-align:center;}
-.all-contact .all-user-list .owl-nav{position:absolute; top:58px; width:100%;}
+.all-contact .all-user-list .owl-nav{position:absolute; top:63px; width:100%;}
 .all-contact .all-user-list .owl-nav .owl-prev{float:left; margin-left:-5px; font-size:0; content: '\f0dd'; font-family: FontAwesome; position:relative;}
 .all-contact .all-user-list .owl-nav .owl-prev:before{content: '\f053'; font-family: FontAwesome; font-size:16px; position:absolute; left:-5px; color:#b6b6b6; }
 .all-contact .all-user-list .owl-nav .owl-next{float:right; margin-right:-5px;  font-size:0; position:relative;}
 .all-contact .all-user-list .owl-nav .owl-next:after{content: '\f054'; font-family: FontAwesome; font-size:16px; position:absolute; right:-5px; color:#b6b6b6;}
 .all-contact .all-user-list .owl-nav div:hover{/*background-color:rgba(0,0,0,0.6);*/}
+.post-img, .post-img .post-img-mainuser{
+	color:#fff;
+    background:-moz-linear-gradient(96deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
+    background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#3bb0ac),color-stop(56%,#1b8ab9),color-stop(100%,#1b8ab9));
+    background:-webkit-linear-gradient(96deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
+    background:-o-linear-gradient(96deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
+    background:-ms-linear-gradient(96deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
+    background:linear-gradient(354deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
+    font-size:20px;
+    text-align:center;
+    text-transform:uppercase
+}
+.all-user-list .item .post-img .post-img-mainuser{padding:56px 0;}
 /***  end all follow part  ***/
 
 /***  end right part  ***/
@@ -787,6 +801,19 @@ header.profile-header .logo a{color:#5c5c5c;}
 .dis-box{padding:35px 0;}
 /*** end all profile detail  ***/
 
+.error-msg p, label.error {
+    background: none;
+    color: red !important;
+    padding: 0px 10px !important;
+    position: absolute;
+    right: 17px;
+    z-index: 8;
+    line-height: 15px;
+    padding-right: 0px!important;
+    font-size: 11px!important;
+}
+.has-error input, input.error, select.error, .has-error textarea, textarea.error {border: 1px solid #ff0000 !important;}
+.cus_field .error{bottom: 50px;}
 
 
 

@@ -1721,12 +1721,14 @@ input.form-control{
     padding:4px 10px;
     vertical-align:middle;
     color:#fff;
+    border:1px solid #1b8ab9;
     border-radius:3px;
     font-size:16px;
     width:87px;
     letter-spacing:.5px;
     font-family:arial
 }
+.otp_bottom_submit input:hover{background:linear-gradient(354deg,#3bb0ac 0,#1b8ab9 44%,#1b8ab9 100%) !important}
 .main_otp_box_middle_submit label{
     display:block;
     color:#1b8ab9;
@@ -1750,7 +1752,7 @@ input.form-control{
 }
 .otp_bottom_submit input.cancel_password{
     background:linear-gradient(to top,#e9e9e9 5%,#f9f9f9 100%)!important;
-    border:1px solid #dcdcdc!important
+    border:1px solid #dcdcdc!important;
 }
 .main_otp_box_middle_submit input[type=password],.main_otp_box_middle_submit input[type=text]{
     width:50%
@@ -2533,7 +2535,7 @@ header.profile-header .logo a{
     align-items:center;
     margin:0 auto
 }
-
+.main_otp_box_middle a:hover{text-decoration: none !important;}
 
 @media screen and (min-height:540px){
     .cover .modal-content{

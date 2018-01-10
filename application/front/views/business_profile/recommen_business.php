@@ -141,7 +141,10 @@
             <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
                 <div class="container art_container padding-360">
                     <div class="">
-                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt"><div class=""><?php echo $business_left; ?></div></div>
+                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt"><div class="">
+                            <?php echo $business_left; ?>
+                            <?php echo $left_footer; ?>
+                            </div></div>
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="common-form">
                                 <div class="job-saved-box">

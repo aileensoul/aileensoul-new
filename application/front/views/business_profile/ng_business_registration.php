@@ -198,9 +198,10 @@
                                                             <fieldset>
                                                                 <label>Contact email:<span style="color:red">*</span></label>
                                                                 <input name="email" ng-model="user.email" tabindex="3" autofocus type="text" id="email" placeholder="Enter contact email" value=""/>
+                                                                 
                                                                 <span ng-show="errorEmail" class="error">{{errorEmail}}</span>                                                                        
                                                             </fieldset>
-                                                            <fieldset>
+                                                            <fieldset class="vali_er">
                                                                 <label>Contact website<span class="optional">(optional)</span>:</label>
                                                                 <input name="contactwebsite" ng-model="user.contactwebsite" tabindex="4" autofocus type="url" id="contactwebsite" placeholder="Enter contact website" value=""/>
                                                                 <span class="website_hint" style="font-size: 13px; color: #1b8ab9;">Note : <i>Enter website url with http or https</i></span>                                 

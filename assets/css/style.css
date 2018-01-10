@@ -591,7 +591,7 @@ fieldset.full-width{
     border-color:#000
 }
 .error-msg input,.error-msg select,.has-error input,.has-error textarea,input.error,select.error,textarea.error{
-    border:1px solid red
+    border:1px solid red !important;
 }
 .no-login .has-error input, input.error, select.error, .has-error textarea, textarea.error {
     border-bottom:1px solid #ff0000 !important;
@@ -1038,6 +1038,7 @@ fieldset .add_post_btnc,fieldset .add_post_btns{
 .cus_em:hover{
     text-transform: none;
 }
+.main_otp_box_middle a:hover{text-decoration: none !important;}
 .banner-box .upload-camera{
     z-index:3
 }
@@ -2392,6 +2393,9 @@ footer div.pt20{
     background:-ms-linear-gradient(96deg,#3bb0ac 0,#3bb0ac 44%,#1b8ab9 100%);
     background:linear-gradient(354deg,#3bb0ac 0,#1b8ab9 44%,#1b8ab9 100%)
 }
+
+.email_note{font-size: 11px;line-height: 1.2;float: left;padding-top: 5px;color: #999;}
+.vali_er .error{bottom: -8px;}
 
 
 

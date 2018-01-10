@@ -279,7 +279,6 @@ header {
     background:-o-linear-gradient(96deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
     background:-ms-linear-gradient(96deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
     background:linear-gradient(354deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
-    backface-visibility: hidden;
     border-bottom: 1px solid #e6ecf0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     position: fixed;

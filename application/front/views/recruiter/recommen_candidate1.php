@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
     <title><?php echo $title; ?></title>
     <?php echo $head; ?> 
@@ -119,7 +120,8 @@
                                 </div>                             
                             </div>
 
-
+                              <?php echo $left_footer; ?>
+                              
                             <div  class="add-post-button">
 
                                 <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>" title="Recruiter Add Post"><i class="fa fa-plus" aria-hidden="true"></i>Post a Job</a>

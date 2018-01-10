@@ -92,9 +92,11 @@
                                         ;
                                         ?>
                                     </fieldset>
-                                    <fieldset <?php if ($email) { ?> class="error-msg" <?php } ?>>
+                                    <div class="fw">
+                                    <fieldset class="vali_er" <?php if ($email) { ?> class="error-msg" <?php } ?>>
                                         <label >Email Address <font  color="red">*</font> :</label>
                                         <input type="email" name="email_reg1" id="email_reg1" tabindex="3" placeholder="Enter email address" value="<?php echo $userdata['email']; ?>" maxlength="255">
+                                         <span class="email_note"><b>Note:-</b> Related notification email will be send on provided email address kindly use regular  email address.<div></div></span>
                                         <?php
                                         echo form_error('email_reg1');
                                         ;
@@ -105,7 +107,7 @@
                                         <input type="text" name="phoneno" id="phoneno" tabindex="4" placeholder="Enter phone number" value="" maxlength="255">
 
                                     </fieldset>
-
+                                </div>
                                     <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
                                         <label>Country:<span style="color:red">*</span></label>								
                                         <select name="country" id="country" tabindex="5">

@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/jquery.mCustomScrollbar.min.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-commen.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-style.css?ver=' . time()) ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>">
+        <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <?php echo $header_profile; ?>
@@ -195,21 +197,21 @@
                     <div class="all-contact">
                         <h4>Contacts<a href="#" class="pull-right">All</a></h4>
                         <div class="all-user-list">
-                            <data-owl-carousel class="owl-carousel" data-options="{navigation: true, pagination: false, rewindNav : false}">
-                                <div owl-carousel-item="" ng-repeat="item in items1" class="item">
-                                    <div class="item">
-                                        <div class="post-img" ng-if="item.user_image != ''">
-                                            <img src="<?php echo USER_THUMB_UPLOAD_URL ?>{{item.user_image}}">
+                            <data-owl-carousel class="owl-carousel" data-options="">
+                                <div owl-carousel-item="" ng-repeat="contact in contactSuggetion" class="item">
+                                    <div class="item" id="item-{{contact.user_id}}">
+                                        <div class="post-img" ng-if="contact.user_image != ''">
+                                            <img src="<?php echo USER_THUMB_UPLOAD_URL ?>{{contact.user_image}}">
                                         </div>
-                                        <div class="post-img" ng-if="item.user_image == ''">
-                                            <div class="post-img-mainuser">{{item.first_name | limitTo:1 | uppercase}}{{item.last_name | limitTo:1 | uppercase}}</div>
+                                        <div class="post-img" ng-if="contact.user_image == ''">
+                                            <div class="post-img-mainuser">{{contact.first_name| limitTo:1 | uppercase}}{{contact.last_name| limitTo:1 | uppercase}}</div>
                                         </div>
                                         <div class="user-list-detail">
-                                            <p class="contact-name"><a href="#" ng-bind="(item.first_name | limitTo:1 | uppercase) + (item.first_name.substr(1) | lowercase)"></a></p>
-                                            <p class="contact-designation"><a href="#" ng-if="item.degree_name != ''">{{item.title_name}}CEO</a></p>
-                                            <p class="contact-designation"><a href="#" ng-if="item.degree_name == ''">{{item.degree_name}}</a></p>
+                                            <p class="contact-name"><a href="#" ng-bind="(contact.first_name | limitTo:1 | uppercase) + (contact.first_name.substr(1) | lowercase)"></a></p>
+                                            <p class="contact-designation"><a href="#" ng-if="contact.degree_name != ''">{{contact.title_name}}CEO</a></p>
+                                            <p class="contact-designation"><a href="#" ng-if="contact.degree_name == ''">{{contact.degree_name}}</a></p>
                                         </div>
-                                        <button class="follow-btn">Add to contact</button>
+                                        <button class="follow-btn" ng-click="addToContact(contact.user_id, contact)">Add to contact</button>
                                     </div>
                                 </div>
                             </data-owl-carousel>
@@ -225,46 +227,49 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">×</button>
                     <div class="post-popup-box">
-                        <div class="post-box">
-                            <div class="post-img">
-                                <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                        <form>
+                            <?php echo form_open_multipart(base_url('user_opportunity/post_opportunity'), array('id' => 'post_opportunity', 'name' => 'post_opportunity', 'onsubmit' => "return post_opportunity_check(event)")); ?>
+                            <div class="post-box">
+                                <div class="post-img">
+                                    <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                        <img src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                    <?php } else { ?>
+                                        <img src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                    <?php } ?>
+                                </div>
+                                <div class="post-text">
+                                    <textarea class="title-text-area" placeholder="Post Opportunity" name="description"></textarea>
+                                </div>
+                                <div class="all-upload">
+                                    <div class="col-md-12"> 
+                                        <div class="form-group">
+                                            <input id="file-1" type="file" class="file" name="postattach[]"  multiple class="file" data-overwrite-initial="false" data-min-file-count="2" style="display: none;">
+                                        </div>
+                                    </div>
+                                    <label for="file-1">
+                                        <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
+                                        <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
+                                        <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
+                                        <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
+                                    </label>
+                                </div>
                             </div>
-                            <div class="post-text">
-                                <textarea class="title-text-area" placeholder="Post Opportunity"></textarea>
-                            </div>
-                            <div class="all-upload">
-                                <label for="file-1">
-                                    <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
-                                    <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
-                                    <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
-                                    <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
-                                </label>
-                            </div>
-
-                        </div>
-                        <div class="post-field">
-                            <form>
+                            <div class="post-field">
                                 <div class="form-group">
-
                                     <textarea placeholder="FOR WHOM THIS OPPORTUNITY ?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, PHP Developer, HR, BDE, CA, Doctor, Freelancer.." cols="10" rows="5" style="resize:none"></textarea>
-
                                 </div>
                                 <div class="form-group">
                                     <textarea type="text" class="" placeholder="WHICH LOCATION?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a; Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.. "></textarea>
-
                                 </div>
                                 <div class="form-group">
                                     <input type="text" placeholder="What is your field?">
                                 </div>
-
-
-                            </form>
-
-
-                        </div>
-                        <div class="text-right fw pt10">
-                            <a class="btn1" href="#">Post</a>
-                        </div>
+                            </div>
+                            <div class="text-right fw pt10">
+                                <!--<a class="btn1" href="#">Post</a>-->
+                                <button type="submit" class="btn1"  value="Submit">Post</button>    
+                            </div>
+                        </form>
                     </div>
 
 
@@ -289,79 +294,92 @@
                                             var title = '<?php echo $title; ?>';
                                             var app = angular.module('userOppoApp', ['ui.bootstrap']);
                                             app.controller('userOppoController', function ($scope, $http) {
-
-                                                getContactSuggetion();
-                                                function getContactSuggetion() {
-                                                    $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
-                                                        $scope.items1 = success.data;
-                                                    }, function (error) {});
-                                                }
+                                            getContactSuggetion();
+                                            function getContactSuggetion() {
+                                            $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
+                                            $scope.contactSuggetion = success.data;
+                                            }, function (error) {});
+                                            }
+                                            $scope.addToContact = function (user_id, contact) {
+                                            $http({
+                                            method: 'POST',
+                                                    url: base_url + 'user_opportunities/addToContact',
+                                                    data: 'user_id=' + user_id,
+                                                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                            }).then(function (success) {
+                                            if (success.data.message == 1) {
+                                            var index = $scope.contactSuggetion.indexOf(contact);
+                                            $('#item-' + user_id).remove();
+                                            $('.owl-carousel').trigger('next.owl.carousel');
+                                            }
+                                            });
+                                            }
                                             });
                                             app.filter('wordFirstCase', function () {
-                                                return function (text) {
-                                                    return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
-                                                };
+                                            return function (text) {
+                                            return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
+                                            };
                                             });
                                             app.directive("owlCarousel", function () {
-                                                return {
-                                                    restrict: 'E',
+                                            return {
+                                            restrict: 'E',
                                                     link: function (scope) {
-                                                        scope.initCarousel = function (element) {
-                                                            // provide any default options you want
-                                                            var defaultOptions = {
-                                                                loop: true,
-                                                                nav: true,
-                                                                lazyLoad: true,
-                                                                margin: 0,
-                                                                video: true,
-                                                                responsive: {
-                                                                    0: {
-                                                                        items: 2
-                                                                    },
+                                                    scope.initCarousel = function (element) {
+                                                    // provide any default options you want
+                                                    var defaultOptions = {
+                                                    loop: true,
+                                                            nav: true,
+                                                            lazyLoad: true,
+                                                            margin: 0,
+                                                            video: true,
+                                                            responsive: {
+                                                            0: {
+                                                            items: 2
+                                                            },
                                                                     600: {
-                                                                        items: 2
+                                                                    items: 2
                                                                     },
                                                                     960: {
-                                                                        items: 2,
+                                                                    items: 2,
                                                                     },
                                                                     1200: {
-                                                                        items: 2
+                                                                    items: 2
                                                                     }
-                                                                }
-                                                            };
-                                                            var customOptions = scope.$eval($(element).attr('data-options'));
-                                                            // combine the two options objects
-                                                            for (var key in customOptions) {
-                                                                defaultOptions[key] = customOptions[key];
                                                             }
-                                                            // init carousel
-                                                            $(element).owlCarousel(defaultOptions);
-                                                        };
+                                                    };
+                                                    var customOptions = scope.$eval($(element).attr('data-options'));
+                                                    // combine the two options objects
+                                                    for (var key in customOptions) {
+                                                    defaultOptions[key] = customOptions[key];
                                                     }
-                                                };
+                                                    // init carousel
+                                                    $(element).owlCarousel(defaultOptions);
+                                                    };
+                                                    }
+                                            };
                                             });
                                             app.directive('owlCarouselItem', [function () {
-                                                    return {
-                                                        restrict: 'A',
-                                                        link: function (scope, element) {
-                                                            // wait for the last item in the ng-repeat then call init
-                                                            if (scope.$last) {
-                                                                scope.initCarousel(element.parent());
-                                                            }
-                                                        }
-                                                    };
-                                                }]);
+                                            return {
+                                            restrict: 'A',
+                                                    link: function (scope, element) {
+                                                    // wait for the last item in the ng-repeat then call init
+                                                    if (scope.$last) {
+                                                    scope.initCarousel(element.parent());
+                                                    }
+                                                    }
+                                            };
+                                            }]);
         </script>
         <script type="text/javascript">
             // mcustom scroll bar
             (function ($) {
-                $(window).on("load", function () {
+            $(window).on("load", function () {
 
-                    $(".custom-scroll").mCustomScrollbar({
-                        autoHideScrollbar: true,
-                        theme: "minimal"
-                    });
-                });
+            $(".custom-scroll").mCustomScrollbar({
+            autoHideScrollbar: true,
+                    theme: "minimal"
+            });
+            });
             })(jQuery);
         </script>
 

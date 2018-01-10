@@ -2,7 +2,7 @@
 $(document).ready(function () { 
 
 
-     $('#register').modal('show');
+//     $('#register').modal('show');
 
     recommen_candidate_post();
     
