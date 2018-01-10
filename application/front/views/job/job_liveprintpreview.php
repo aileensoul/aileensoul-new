@@ -2012,7 +2012,7 @@ $('.modal-close').click(function(e){
                     }
                     $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url() ?>registration/user_check_login',
+                        url: '<?php echo base_url() ?>login/job_check_login',
                         data: post_data,
                         dataType: "json",
                         beforeSend: function ()
