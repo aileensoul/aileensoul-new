@@ -39,7 +39,7 @@ class Search extends MY_Controller {
         if ($this->input->get('skills') == "" && $this->input->get('searchplace') == "") {
             redirect('business-profile/home', refresh);
         }
-        // code for insert search keyword in database start
+// code for insert search keyword in database start
         $search_business = trim($this->input->get('skills'));
         $this->data['keyword'] = $search_business;
 
@@ -63,7 +63,7 @@ class Search extends MY_Controller {
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'search_info');
-            // code for insert search keyword in database end
+// code for insert search keyword in database end
         }
         if ($search_business == "") {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => '4');
@@ -91,7 +91,7 @@ class Search extends MY_Controller {
             $join_str[1]['from_table_id'] = 'business_profile.user_id';
             $join_str[1]['join_type'] = '';
 
-            //   echo $search_condition; 
+//   echo $search_condition; 
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
@@ -162,14 +162,14 @@ class Search extends MY_Controller {
 
 
 
-        //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
+//THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('business_profile/recommen_business', $this->data);
         } else {
 
             $this->load->view('business_profile/business_search_login', $this->data);
         }
-        //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA END
+//THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA END
     }
 
     public function ajax_business_search() {
@@ -192,7 +192,7 @@ class Search extends MY_Controller {
         if ($this->input->get('skills') == "" && $this->input->get('searchplace') == "") {
             redirect('business-profile/home/', refresh);
         }
-        // code for insert search keyword in database start
+// code for insert search keyword in database start
         $search_business = trim($this->input->get('skills'));
         $this->data['keyword'] = $search_business;
 
@@ -216,7 +216,7 @@ class Search extends MY_Controller {
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'search_info');
-            // code for insert search keyword in database end
+// code for insert search keyword in database end
         }
 
         $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1', 'FIND_IN_SET ("' . $userid . '", delete_post) !=' => '0');
@@ -249,7 +249,7 @@ class Search extends MY_Controller {
             $join_str[1]['join_table_id'] = 'user_login.user_id';
             $join_str[1]['from_table_id'] = 'business_profile.user_id';
             $join_str[1]['join_type'] = '';
-            //   echo $search_condition; 
+//   echo $search_condition; 
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
             $join_str[0]['table'] = 'business_profile';
@@ -299,8 +299,8 @@ class Search extends MY_Controller {
         $description = $business_post;
         $profile = $business_profile;
 
-        //$this->load->view('business_profile/recommen_business', $this->data);
-        //AJAX DATA
+//$this->load->view('business_profile/recommen_business', $this->data);
+//AJAX DATA
         $return_html = '';
         if (count($profile) > 0 || count($description) > 0) {
             if ($profile) {
@@ -615,7 +615,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                         if (count($businessmultiimage) == 1) {
 
                             $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-                            //$allowed = VALID_IMAGE;
+//$allowed = VALID_IMAGE;
                             $allowespdf = array('pdf');
                             $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
                             $allowesaudio = array('mp3');
@@ -1122,7 +1122,7 @@ Your browser does not support the audio tag.
         }
         $this->data['title'] = $title . " | Employer Profile - Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
-        //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
+//THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
         if ($this->session->userdata('aileenuser')) {
             $userid = $this->session->userdata('aileenuser');
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1', 'free_hire_step' => '3');
@@ -1133,18 +1133,18 @@ Your browser does not support the audio tag.
                 $this->load->view('freelancer/freelancer_hire/hire_search', $this->data);
             }
         } else {
-            // $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
+// $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
             $this->load->view('freelancer/freelancer_hire/hire_search', $this->data);
         }
 
 
-        // $this->load->view('freelancer/freelancer_hire/recommen_freelancer_hire', $this->data);
+// $this->load->view('freelancer/freelancer_hire/recommen_freelancer_hire', $this->data);
     }
 
 //freelancer hire  search end 
-    //freelancer hire  ajax search start 
+//freelancer hire  ajax search start 
     public function ajax_freelancer_hire_search($searchkeyword = "", $searchplace = "") {
-        // echo "rrrrr";die();
+// echo "rrrrr";die();
 
         $userid = $this->session->userdata('aileenuser');
 
@@ -1157,7 +1157,7 @@ Your browser does not support the audio tag.
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
-        // echo $this->input->get('skills');
+// echo $this->input->get('skills');
 
         $searchkeyword = $_GET["skill"];
         $searchplace = $_GET["place"];
@@ -1172,8 +1172,8 @@ Your browser does not support the audio tag.
             $contition_array = array('freelancer_post_city' => $cache_time, 'status' => '1', 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => '7', 'is_delete' => '0');
             $unique = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($searchplace == "" || $this->uri->segment(4) == "0") {
-            //  echo "4444";die();
-            //echo $search_skill;die();
+//  echo "4444";die();
+//echo $search_skill;die();
             $contition_array = array('status' => '1');
             $search_condition = "(skill LIKE '%$search_skill%')";
             $skillid = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1190,12 +1190,12 @@ Your browser does not support the audio tag.
                 $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => '7', 'user_id != ' => $userid, 'FIND_IN_SET("' . $value['skill_id'] . '", freelancer_post_area) != ' => '0');
                 $candidate[] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username,freelancer_post_country, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             }
-            //             echo "<pre>"; print_r($candidate); die();
+//             echo "<pre>"; print_r($candidate); die();
             $candidate = array_reduce($candidate, 'array_merge', array());
-            // echo "<pre>"; print_r($candidate); die();
+// echo "<pre>"; print_r($candidate); die();
 //            $candidate = array_unique($candidate, SORT_REGULAR);
 //             echo "<pre>"; print_r($candidate); die();
-            // echo count($candidate);die();
+// echo count($candidate);die();
 //            $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1))->row()->skill_id;
 //            $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", freelancer_post_area) != ' => '0');
 //            $candidate = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1204,20 +1204,20 @@ Your browser does not support the audio tag.
 
             $contition_array = array('freelancer_post_field' => $category_temp, 'user_id !=' => $userid, 'free_post_step' => '7', 'status' => '1');
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id,freelancer_post_country', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
-            //  echo "<pre>"; print_r($fieldfound); die();
+//  echo "<pre>"; print_r($fieldfound); die();
             $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id !=' => $userid, 'free_post_step' => '7');
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
             $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id,freelancer_post_country', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //  echo "<pre>"; print_r($otherdata); die();
+//  echo "<pre>"; print_r($otherdata); die();
             $new1 = array_merge((array) $candidate, (array) $fieldfound, (array) $otherdata);
 
-            //  echo "<pre>"; print_r($new1); die();
+//  echo "<pre>"; print_r($new1); die();
             $unique = array();
             foreach ($new1 as $value) {
                 $unique[$value['freelancer_post_reg_id']] = $value;
             }
         } else {
-            //   echo "Both";
+//   echo "Both";
 
             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => '1'))->row()->skill_id;
             $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_city' => $cache_time, 'free_post_step' => '7', 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", freelancer_post_area) != ' => '0');
@@ -1233,7 +1233,7 @@ Your browser does not support the audio tag.
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
             $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city,freelancer_post_country, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            // $unique = array_merge($candidate, $fieldfound, $otherdata);
+// $unique = array_merge($candidate, $fieldfound, $otherdata);
             $new1 = array_merge((array) $candidate, (array) $fieldfound, (array) $otherdata);
 
             $unique = array();
@@ -1314,17 +1314,16 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image'] . '" alt="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '" > </a>';
                         } else {
-                            if($userid){
-                                if($free_hire_result){
+                            if ($userid) {
+                                if ($free_hire_result) {
                                     $return_html .= '<a href = "' . base_url('freelance-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
-                                }else{
+                                } else {
                                     $return_html .= '<a href = "' . base_url('freelance-hire/registration') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                                 }
-                                
-                            }else{
+                            } else {
                                 $return_html .= '<a href = "javascript:void(0);" onclick="login_profile();" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                             }
-                            
+
                             $return_html .= '<div class = "post-img-div">';
                             $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
                             $return_html .= '</div>
@@ -1332,17 +1331,16 @@ Your browser does not support the audio tag.
                         }
                     }
                 } else {
-                    if($userid){
-                        if($free_hire_result){
+                    if ($userid) {
+                        if ($free_hire_result) {
                             $return_html .= '<a href = "' . base_url('freelance-work/freelancer-details/' . $row['freelancer_apply_slug']) . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
-                        }else{
+                        } else {
                             $return_html .= '<a href = "' . base_url('freelance-hire/registration') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                         }
-                        
-                    }else{
+                    } else {
                         $return_html .= '<a href = "javascript:void(0);" onclick="login_profile();" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                     }
-                    
+
                     $return_html .= '<div class = "post-img-div">';
                     $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
                     $return_html .= '</div>
@@ -1474,7 +1472,7 @@ Your browser does not support the audio tag.
                         $return_html .= "1 year";
                     } elseif ($row['freelancer_post_exp_month'] == '12 month' && $row['freelancer_post_exp_year'] != '') {
                         $year = explode(' ', $row['freelancer_post_exp_year']);
-                        // echo $year;
+// echo $year;
                         $totalyear = $year[0] + 1;
                         $return_html .= $totalyear . " year";
                     } elseif ($row['freelancer_post_exp_year'] != '' && $row['freelancer_post_exp_month'] == '') {
@@ -1590,7 +1588,7 @@ Your browser does not support the audio tag.
         $this->data['city'] = $city = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($userid) {
-            //echo "hi"; die();
+//echo "hi"; die();
             $data = array(
                 'search_keyword' => $search_skill,
                 'search_location' => $search_place,
@@ -1601,7 +1599,7 @@ Your browser does not support the audio tag.
                 'module' => '4'
             );
 
-            //   echo"<pre>"; print_r($data); die();
+//   echo"<pre>"; print_r($data); die();
             $insert_id = $this->common->insert_data_getid($data, 'search_info');
 // code for insert search keyword into database end
         }
@@ -1619,7 +1617,7 @@ Your browser does not support the audio tag.
         $this->data['title'] = $title . " | Freelancer Profile - Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
-        //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
+//THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
         if ($this->session->userdata('aileenuser')) {
             $userid = $this->session->userdata('aileenuser');
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1', 'free_post_step' => '7');
@@ -1630,17 +1628,18 @@ Your browser does not support the audio tag.
                 $this->load->view('freelancer/freelancer_post/apply_search', $this->data);
             }
         } else {
-            // $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
+// $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
             $this->load->view('freelancer/freelancer_post/apply_search', $this->data);
         }
 
-        //$this->load->view('freelancer/freelancer_post/recommen_freelancer_post', $this->data);
+//$this->load->view('freelancer/freelancer_post/recommen_freelancer_post', $this->data);
     }
 
 // freelancer post search end 
 
     public function ajax_freelancer_post_search() {
-
+        
+      
         $userid = $this->session->userdata('aileenuser');
         $perpage = 5;
         $page = 1;
@@ -1655,11 +1654,11 @@ Your browser does not support the audio tag.
         $search_skill = $_GET["skill"];
         $search_place = $_GET["place"];
 
-        //echo $search_skill;
-        // echo $search_place;die();
+//echo $search_skill;
+// echo $search_place;die();
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
-        //$date = date('Y-m-d', time());
-        //'freelancer_post.post_last_date >=' => $date,
+//$date = date('Y-m-d', time());
+//'freelancer_post.post_last_date >=' => $date,
 // code for insert search keyword into database end
         if ($search_skill == "" && $search_place == "") {
 
@@ -1688,14 +1687,14 @@ Your browser does not support the audio tag.
             $freeskillpost = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'freelancer_post.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $category_temp = $this->db->select('category_id')->get_where('category', array('category_slug' => $search_skill, 'status' => '1'))->row()->category_id;
-            //  echo $category_temp;die();
+//  echo $category_temp;die();
             $contition_array = array('post_field_req' => $category_temp, 'user_id !=' => $userid, 'status' => '1', 'is_delete' => '0');
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'freelancer_post.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby);
-            //  echo "<pre>"; print_r($fieldfound);die();
+//  echo "<pre>"; print_r($fieldfound);die();
             $search_condition = "(post_slug LIKE '%$search_skill%' or post_other_skill LIKE '%$search_skill%' or post_est_time LIKE '%$search_skill%' or post_rate LIKE '%$search_skill%' or  post_exp_year LIKE '%$search_skill%' or  post_exp_month LIKE '%$search_skill%')";
             $contion_array = array('freelancer_post.user_id !=' => $userid, 'status' => '1', 'is_delete' => '0');
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contion_array, $data = '*', $sortby = 'freelancer_post.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>";print_r($freeldata);die();
+//echo "<pre>";print_r($freeldata);die();
             $unique = array_merge((array) $freeskillpost, (array) $freeldata, (array) $fieldfound);
             $new = array();
             foreach ($unique as $value) {
@@ -1714,7 +1713,7 @@ Your browser does not support the audio tag.
 
             $contition_array = array('freelancer_post.status' => '1', 'freelancer_post.is_delete' => '0', 'freelancer_hire_reg.city' => $cache_time, 'freelancer_post.user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
             $freeskillpost = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'freelancer_post.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-            //  echo "<pre>"; print_r($freeskillpost);die();
+//  echo "<pre>"; print_r($freeskillpost);die();
 
             $join_str[0]['table'] = 'freelancer_hire_reg';
             $join_str[0]['join_table_id'] = 'freelancer_hire_reg.user_id';
@@ -1725,7 +1724,7 @@ Your browser does not support the audio tag.
             $contition_array = array('freelancer_post.post_field_req' => $category_temp, 'freelancer_post.user_id !=' => $userid, 'freelancer_post.status' => '1', 'freelancer_post.is_delete' => '0', 'freelancer_hire_reg.city' => $cache_time);
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'freelancer_post.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby);
 
-            //  echo "<pre>"; print_r($fieldfound);die();
+//  echo "<pre>"; print_r($fieldfound);die();
 
             $join_str[0]['table'] = 'freelancer_hire_reg';
             $join_str[0]['join_table_id'] = 'freelancer_hire_reg.user_id';
@@ -1743,12 +1742,12 @@ Your browser does not support the audio tag.
                 $new[$value['post_id']] = $value;
             }
         }
-        // echo "<pre>";print_r($new);die();
+// echo "<pre>";print_r($new);die();
         $this->data['freelancerhiredata'] = $new;
         $return_html = '';
 
         $freelancerhiredata1 = array_slice($new, $start, $perpage);
-        //  echo "<pre>";print_r($freelancerhiredata1);die();
+//  echo "<pre>";print_r($freelancerhiredata1);die();
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($new);
         }
@@ -1757,10 +1756,13 @@ Your browser does not support the audio tag.
         $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
+        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1', 'free_post_step' => '7');
+        $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
         if (count($new) > 0) {
-            // echo count($freelancerhiredata1);
+// echo count($freelancerhiredata1);
             foreach ($freelancerhiredata1 as $post) {
-
+                
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('user_id' => $userid, 'post_id' => $post['post_id'], 'job_delete' => '0');
                 $jobdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1809,10 +1811,23 @@ Your browser does not support the audio tag.
                     $return_html .= '<h5><a href="' . base_url('freelance-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
                     $return_html .= $post['post_name'];
                     $return_html .= '</a></h5>';
-                    $return_html .= '<p><a href="' . base_url('freelance-hire/employer-details/' . $hireslug) . '">';
-                    $return_html .= ucwords($firstname) . " " . ucwords($lastname);
-                    $return_html .= '</a></p>
-            </div>
+                    if ($this->session->userdata('aileenuser')) {
+                        if ($free_work_result) {
+                            $return_html .= '<p><a href="' . base_url('freelance-hire/employer-details/' . $hireslug) . '">';
+                            $return_html .= ucwords($firstname) . " " . ucwords($lastname);
+                            $return_html .= '</a></p>';
+                        } else {
+                            $return_html .= '<p><a href="' . base_url('freelance-work/registartion') . '">';
+                            $return_html .= ucwords($firstname) . " " . ucwords($lastname);
+                            $return_html .= '</a></p>';
+                        }
+                    } else {
+                        $return_html .= '<p><a href="javascript:void(0);">';
+                        $return_html .= ucwords($firstname) . " " . ucwords($lastname);
+                        $return_html .= '</a></p>';
+                    }
+
+                    $return_html .= ' </div>
             </div>
             <div class="all-job-middle">
                 <p class="pb5">
@@ -1894,8 +1909,7 @@ Your browser does not support the audio tag.
                 <p class="pull-right">';
                     $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                     if ($this->session->userdata('aileenuser')) {
-                        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1', 'free_post_step' => '7');
-                        $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
                         if ($free_work_result) {
                             $contition_array = array('post_id' => $post['post_id'], 'job_delete' => '0', 'user_id' => $userid);
                             $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1913,9 +1927,9 @@ Your browser does not support the audio tag.
                             }
                         } else {
 
-                            $return_html .= '<a href="' . base_url('freelance-work/basic-information') . '"    class= "btn4 savedpost">Save</a>';
+                            $return_html .= '<a href="' . base_url('freelance-work/registration') . '"    class= "btn4 savedpost">Save</a>';
 
-                            $return_html .= '<a href="' . base_url('freelance-work/basic-information') . '"  class= "btn4 applypost">Apply</a>';
+                            $return_html .= '<a href="' . base_url('freelance-work/registration') . '"  class= "btn4 applypost">Apply</a>';
                         }
                     } else {
                         $return_html .= '<a href="javascript:void(0);"  class= "btn4 applypost" onclick="create_profile_apply(' . $post['post_id'] . ');">Apply</a>';
@@ -1952,7 +1966,7 @@ Your browser does not support the audio tag.
         return $text;
     }
 
-    //AJAX BUSIENSS SEARCH WITHOUTL LOGIN START
+//AJAX BUSIENSS SEARCH WITHOUTL LOGIN START
 
     public function ajax_business_user_login_search() {
 
@@ -1960,7 +1974,7 @@ Your browser does not support the audio tag.
         if ($this->input->get('skills') == "" && $this->input->get('searchplace') == "") {
             redirect('business-profile/home/', refresh);
         }
-        // code for insert search keyword in database start
+// code for insert search keyword in database start
         $search_business = trim($this->input->get('skills'));
         $this->data['keyword'] = $search_business;
 
@@ -1984,7 +1998,7 @@ Your browser does not support the audio tag.
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'search_info');
-            // code for insert search keyword in database end
+// code for insert search keyword in database end
         }
         if ($search_business == "") {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => '4');
@@ -2002,7 +2016,7 @@ Your browser does not support the audio tag.
                 $search_condition = "(company_name LIKE '%$search_business%' or contact_website LIKE '%$search_business%' or other_business_type LIKE '%$search_business%' or other_industrial LIKE '%$search_business%')";
             }
 
-            //   echo $search_condition; 
+//   echo $search_condition; 
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'business_profile';
@@ -2042,8 +2056,8 @@ Your browser does not support the audio tag.
         $description = $business_post;
         $profile = $business_profile;
 
-        //$this->load->view('business_profile/recommen_business', $this->data);
-        //AJAX DATA
+//$this->load->view('business_profile/recommen_business', $this->data);
+//AJAX DATA
         $return_html = '';
         if (count($profile) > 0 || count($description) > 0) {
             if ($profile) {
@@ -2670,7 +2684,7 @@ Your browser does not support the audio tag.
         if (!$userid) {
             redirect('login');
         }
-        // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START
+// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START
 
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = ' business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
@@ -2707,7 +2721,7 @@ Your browser does not support the audio tag.
 // DEACTIVATE PROFILE END
     }
 
-    // BUSIENSS PROFILE USER FOLLOWING COUNT START
+// BUSIENSS PROFILE USER FOLLOWING COUNT START
 
     public function business_user_following_count($business_profile_id = '') {
         $userid = $this->session->userdata('aileenuser');
@@ -2729,8 +2743,8 @@ Your browser does not support the audio tag.
         return $following_count;
     }
 
-    // BUSIENSS PROFILE USER FOLLOWING COUNT END
-    // BUSIENSS PROFILE USER FOLLOWER COUNT START
+// BUSIENSS PROFILE USER FOLLOWING COUNT END
+// BUSIENSS PROFILE USER FOLLOWER COUNT START
 
     public function business_user_follower_count($business_profile_id = '') {
         $userid = $this->session->userdata('aileenuser');
@@ -2752,8 +2766,8 @@ Your browser does not support the audio tag.
         return $follower_count;
     }
 
-    // BUSIENSS PROFILE USER FOLLOWER COUNT END
-    // 
+// BUSIENSS PROFILE USER FOLLOWER COUNT END
+// 
     public function business_user_contacts_count($business_profile_id = '') {
 
         $userid = $this->session->userdata('aileenuser');
@@ -2776,5 +2790,5 @@ Your browser does not support the audio tag.
         return $contacts_count;
     }
 
-    //AJAX BUSIENSS SEARCH WITHOUTL LOGIN START
+//AJAX BUSIENSS SEARCH WITHOUTL LOGIN START
 }
