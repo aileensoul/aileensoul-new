@@ -14054,7 +14054,6 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
         $this->data['title'] = $title. " | Artistic Profile - Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
         $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
-        $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
 
         if ($this->session->userdata('aileenuser')) { //echo "h1"; die();
             $this->load->view('artist/recommen_candidate', $this->data);
