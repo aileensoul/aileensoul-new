@@ -228,14 +228,24 @@
                     <button type="button" class="modal-close" data-dismiss="modal">×</button>
                     <div class="post-popup-box">
                         <form>
+                            <?php echo form_open_multipart(base_url('user_opportunity/post_opportunity'), array('id' => 'post_opportunity', 'name' => 'post_opportunity', 'onsubmit' => "return post_opportunity_check(event)")); ?>
                             <div class="post-box">
                                 <div class="post-img">
-                                    <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                    <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                        <img src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                    <?php } else { ?>
+                                        <img src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                    <?php } ?>
                                 </div>
                                 <div class="post-text">
-                                    <textarea class="title-text-area" placeholder="Post Opportunity"></textarea>
+                                    <textarea class="title-text-area" placeholder="Post Opportunity" name="description"></textarea>
                                 </div>
                                 <div class="all-upload">
+                                    <div class="col-md-12"> 
+                                        <div class="form-group">
+                                            <input id="file-1" type="file" class="file" name="postattach[]"  multiple class="file" data-overwrite-initial="false" data-min-file-count="2" style="display: none;">
+                                        </div>
+                                    </div>
                                     <label for="file-1">
                                         <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
                                         <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
@@ -256,7 +266,8 @@
                                 </div>
                             </div>
                             <div class="text-right fw pt10">
-                                <a class="btn1" href="#">Post</a>
+                                <!--<a class="btn1" href="#">Post</a>-->
+                                <button type="submit" class="btn1"  value="Submit">Post</button>    
                             </div>
                         </form>
                     </div>
