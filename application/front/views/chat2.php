@@ -407,6 +407,9 @@ if ($lstusrdata) {
                     var userid = '<?php echo $userid; ?>';
                     var curuser = data.message_from;
                     var touser = data.message_to;
+                    var curuser_fname = '<?php echo $this->db->get_where('user', array('user_id' => $userid))->row()->first_name;?>';
+                    var curuser_lname = '<?php echo $this->db->get_where('user', array('user_id' => $userid))->row()->last_name;?>';
+                    var touser_name = data.first_name + ' ' + data.last_name;
                     if (curuser == userid) {
                     var timestamp = data.timestamp; // replace your timestamp
                     var date = new Date(timestamp * 1000);
@@ -434,7 +437,7 @@ if ($lstusrdata) {
                     var html = ' <li class="clearfix" id="message_li_' + data.id + '">';
                     html += '   <div class="message-data align-right">';
                     html += '    <span class="message-data-time" >' + formattedDate + '</span>&nbsp; &nbsp;';
-                    html += '    <span  class="message-data-name fr"  >' + data.nickname + ' <i class="fa fa-circle me"></i></span>';
+                    html += '    <span  class="message-data-name fr"  >' + curuser_fname + ' ' + curuser_lname + ' <i class="fa fa-circle me"></i></span>';
                     html += ' </div>';
                     //html += ' <div class="chat-body clearfix">';
                     html += '   <div class="msg_right"> <div class="messagedelete fl"><a href="javascript:void(0);" onclick="delete_chat(1,' + data.id + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div> <div class="message other-message float-right">' + print_message + '</div></div>';
@@ -469,7 +472,7 @@ if ($lstusrdata) {
                     var print_message = print_message.replace(/\\t/gi, "");
                     var html = '<li id="message_li_' + data.id + '" class="recive-data"> <div class="message-data">';
                     html += '<span class="message-data-time">' + formattedDate + ' </span>';
-                    html += '<span class="message-data-name fl"><i class="fa fa-circle online"></i>' + data.nickname + ' </span>';
+                    html += '<span class="message-data-name fl"><i class="fa fa-circle online"></i>' + touser_name + ' </span>';
                     html += ' </div>';
                     html += '    <div class="msg_left_data">   <div class="message my-message">' + print_message + '</div><div class="messagedelete"> <a href="javascript:void(0);" onclick="delete_chat(2,' + data.id + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div></div>';
                     html += '</li>';
@@ -566,7 +569,7 @@ if ($lstusrdata) {
                     });
                     setInterval(function () {
                     update_chats();
-                    }, 1500);
+                    }, 4000);
                 </script>
                 <script type="text/javascript">
                     function check_perticular(input) {

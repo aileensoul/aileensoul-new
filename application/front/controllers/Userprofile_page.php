@@ -60,8 +60,9 @@ class Userprofile_page extends MY_Controller {
     }
     
     public function vsrepeat_data() { 
-      $this->db->select('*');
+      $this->db->select('first_name as name');
       $this->db->from('user');
+      $this->db->limit('10');
         $query = $this->db->get();
      $data =  $query->result_array();
       echo json_encode($data); 

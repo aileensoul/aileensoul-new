@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Chat_model extends CI_Model {
 
-    function add_message($message, $nickname, $guid, $userid, $id, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id) {
+    function add_message($message,$userid, $id, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id) {
         date_default_timezone_set('Asia/Kolkata');
         $data1 = array(
             'message' => (string) $message,
@@ -57,7 +57,8 @@ class Chat_model extends CI_Model {
 
     function get_messages($timestamp, $userid, $id, $message_from_profile, $message_to_profile, $message_from_profile_id, $message_to_profile_id) {
         // khyati start 
-        
+         $this->db->select("messages.*,user.first_name,user.last_name")->from("messages");
+         $this->db->join('user', 'user.user_id = messages.message_from', 'left');
         $this->db->where('timestamp >', $timestamp);
         $where = '((message_from="' . $userid . '" AND message_to ="' . $id . '") OR (message_to="' . $userid . '" AND message_from ="' . $id . '")) AND ((message_from_profile = "' . $message_from_profile . '" AND message_to_profile ="' . $message_to_profile . '" ) OR (message_from_profile = "' . $message_to_profile . '" AND message_to_profile ="' . $message_from_profile . '" )) AND ((message_from_profile_id="' . $message_from_profile_id . '"AND message_to_profile_id ="' . $message_to_profile_id . '") OR (message_to_profile_id="' . $message_from_profile_id . '" AND message_from_profile_id ="' . $message_to_profile_id . '"))';
         $where .= 'AND is_message_from_delete !="' . $userid . '" AND is_message_to_delete !="' . $userid . '"';
@@ -68,9 +69,8 @@ class Chat_model extends CI_Model {
         //$this->db->where('message_to', $id);
         $this->db->order_by('timestamp', 'DESC');
         //	$this->db->limit(10); 
-        $query = $this->db->get('messages');
-      //  echo $this->db->last_query();
-        //die();
+        $query = $this->db->get();
+        
         return array_reverse($query->result_array());
     }
     
