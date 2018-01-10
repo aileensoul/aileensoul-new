@@ -14,6 +14,8 @@ class User_opportunity extends CI_Model {
         $this->db->join('user_student us', 'us.user_id = u.user_id', 'left');
         $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
         $this->db->where('u.user_id !=', $user_id);
+        $this->db->where('u.user_id NOT IN (select from_id from ailee_user_contact where to_id='.$user_id.')',NULL,FALSE);
+        $this->db->where('u.user_id NOT IN (select to_id from ailee_user_contact where from_id='.$user_id.')',NULL,FALSE);
         $this->db->order_by('u.user_id', 'DESC');
         $this->db->limit('30');
         $query = $this->db->get();
