@@ -61,7 +61,7 @@
         <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 fixed_art profile-box profile-box-custom fixed_left_side animated fadeInDownBig">
+                    <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                         <div class="">
                             <!-- space for left bar -->
 
