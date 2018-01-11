@@ -79,5 +79,11 @@ class User_opportunities extends MY_Controller {
         }
         echo json_encode($return_data);
     }
+    public function post_opportunity(){
+        echo '<pre>';
+        print_r($_POST);
+        print_r($_FILES);
+        exit;
+    }
 
 }
