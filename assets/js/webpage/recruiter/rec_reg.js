@@ -8,7 +8,9 @@ function reg_loader(){
 
       var form = $("#basicinfo");
     if(form.valid() == true ){
-     $('#profilereg_ajax_load').show();
+     //$('#profilereg_ajax_load').show();
+     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+     
     }
 
 }   

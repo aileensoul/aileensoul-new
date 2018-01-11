@@ -10,6 +10,8 @@ class User_opportunities extends MY_Controller {
     public function __construct() {
 
         parent::__construct();
+        $this->load->library('form_validation');
+        $this->load->library('user_agent');
         $this->load->model('email_model');
         $this->load->model('user_model');
         $this->load->model('user_opportunity');

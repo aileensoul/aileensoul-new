@@ -71,10 +71,12 @@ jQuery(document).ready(function ($) {
  function portfolio_form_submit(event) {
 
 
-    // var form = $("#freelancer_post_portfolio");
-    // if(form.valid() == true ){
-    //  $('#profilereg_ajax_load').show();
-    // }
+    var form = $("#freelancer_post_portfolio");
+    if(form.valid() == true ){
+     //$('#profilereg_ajax_load').show();
+     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+     
+    }
 
 
                     var image_hidden_portfolio = document.getElementById("image_hidden_portfolio").value;

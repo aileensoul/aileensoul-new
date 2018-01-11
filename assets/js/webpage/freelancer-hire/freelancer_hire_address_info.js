@@ -1,7 +1,7 @@
 //CODE FOR COUNTRY,STATE,CITY DATA FETCH START
 $(document).ready(function () {
 
-    $('.ajax_load').hide();
+   // $('.ajax_load').hide();
 
     
     $('#country').on('change', function () {
@@ -53,7 +53,10 @@ function validate(){
 
      var form = $("#address_info");
     if(form.valid() == true ){
-     $('#profilereg_ajax_load').show();
+     //$('#profilereg_ajax_load').show();
+
+     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+
     }
 }
 // CHECK SEARCH KEYWORD AND LOCATION BLANK START

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-<!-- start head -->
-<?php echo $head; ?>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
+    <!-- start head -->
+    <?php echo $head; ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
 
-<!-- END HEAD -->
-<!-- start header -->
-<?php echo $header; ?>
-<?php echo $job_header2_border; ?>
-<!-- END HEADER -->
+    <!-- END HEAD -->
+    <!-- start header -->
+    <?php echo $header; ?>
+    <?php echo $job_header2_border; ?>
+    <!-- END HEADER -->
 
     <body class="cust-job-width">
 
@@ -16,7 +16,7 @@
 
         <!-- cover pic end -->
 
-        <div id="paddingtop_fixed">
+        <div id="paddingtop_fixed" class="user-midd-section">
             <div class="container padding-360">
                 <div class="row4">
                     <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
@@ -24,21 +24,21 @@
                             <div class="full-box-module">   
                                 <div class="profile-boxProfileCard  module">
                                     <div class="profile-boxProfileCard-cover"> 
-                                        <a title="Recruiter profile" class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile/' . $recdata['user_id']); ?>" tabindex="-1" 
+                                        <a title="Recruiter profile" class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile/' . $postdata[0]['user_id']); ?>" tabindex="-1" 
                                            aria-hidden="true" rel="noopener">
                                             <div class="bg-images no-cover-upload"> 
                                                 <?php
                                                 $image_ori = $postdata[0]['profile_background'];
-                                                $filename = $this->config->item('rec_bg_main_upload_path') . $recdata['profile_background'];
+                                                $filename = $this->config->item('rec_bg_main_upload_path') . $postdata[0]['profile_background'];
                                                 $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                                if ($info && $recdata['profile_background'] != '') {
+                                                if ($info && $postdata[0]['profile_background'] != '') {
                                                     ?>
-                                                    <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata['profile_background']; ?>"/>
+                                                    <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $postdata[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $postdata[0]['profile_background']; ?>"/>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata['rec_firstname'] . ' ' . $recdata['rec_lastname']; ?>" >
+                                                    <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $postdata[0]['rec_firstname'] . ' ' . $postdata[0]['rec_lastname']; ?>" >
                                                     <?php
                                                 }
                                                 ?>
@@ -141,7 +141,7 @@
                                                             <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
                                                         <?php } else { ?>
                                                             <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
-                                                        <?php
+                                                            <?php
                                                         }
                                                     } else {
                                                         $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
@@ -152,13 +152,13 @@
                                                             <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
                                                         <?php } else { ?>
                                                             <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
-                                                        <?php
+                                                            <?php
                                                         }
                                                     }
                                                 } else {
                                                     ?>
                                                     <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
-                                            <?php } ?>
+                                                <?php } ?>
                                             </a>
                                         </div>
                                         <div class="job-top-detail">
@@ -172,19 +172,19 @@
                                             ?>
                                             <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5>
                                             <p><a href="javascript:void(0);">
-        <?php
-        $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
-        echo $out;
-        ?>
+                                                    <?php
+                                                    $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
+                                                    echo $out;
+                                                    ?>
                                                 </a>
                                             </p>
                                             <p><a href="javascript:void(0);"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
                                             <p class="loca-exp">
                                                 <span class="location">
-        <?php
-        $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
-        $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
-        ?>
+                                                    <?php
+                                                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                                                    $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
+                                                    ?>
                                                     <span>
 
                                                         <?php
@@ -220,8 +220,8 @@
         <!--                                            <p class="pull-right job-top-btn">
 
                                             <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
-                                                                        <a href="javascript:void(0);" class="btn4" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
-                                                                        <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" class="btn4">Edit</a>
+                                                                            <a href="javascript:void(0);" class="btn4" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
+                                                                            <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" class="btn4">Edit</a>
                                                 <?php
                                                 $join_str[0]['table'] = 'job_reg';
                                                 $join_str[0]['join_table_id'] = 'job_reg.user_id';
@@ -233,7 +233,7 @@
                                                 $apply_candida = $this->common->select_data_by_condition('job_apply', $condition_array, $data, $short_by = '', $order_by = '', $limit, $offset, $join_str, $groupby = '');
                                                 $countt = count($apply_candida);
                                                 ?>
-                                                                        <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="btn4">Applied  Candidate : <?php echo $countt ?></a>
+                                                                            <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="btn4">Applied  Candidate : <?php echo $countt ?></a>
                                                 <?php
                                             } else {
                                                 $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
@@ -245,9 +245,9 @@
                                                 $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                 if ($jobsave) {
                                                     ?>
-                                                                <a href="javascript:void(0);" class="btn4 applied">Applied</a>
+                                                                        <a href="javascript:void(0);" class="btn4 applied">Applied</a>
                                                 <?php } else { ?>
-                                                                <a href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  btn4" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
+                                                                        <a href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  btn4" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
                                                     <?php
                                                     $userid = $this->session->userdata('aileenuser');
                                                     $contition_array = array(
@@ -259,14 +259,14 @@
                                                     $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                     if ($jobsave) {
                                                         ?>
-                                                                        <a class="btn4 saved save_saved_btn">Saved</a>
+                                                                                    <a class="btn4 saved save_saved_btn">Saved</a>
                                                     <?php } else { ?>
-                                                                        <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> btn4 save_saved_btn">Save</a>
+                                                                                    <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> btn4 save_saved_btn">Save</a>
                                                     <?php } ?>
-                <?php
-            }
-        }
-        ?>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
 
                                                                                                     <a href="#" class="btn4">Save</a>
                                                                                                                             <a href="#" class="btn4">Apply</a>
@@ -328,14 +328,14 @@
                                                 </li>
                                                 <li><b>Industry</b>
                                                     <span> 
-        <?php
-        $cache_time4 = $this->db->get_where('job_industry', array('industry_id' => $post['industry_type']))->row()->industry_name;
-        echo $cache_time4;
-        ?>
+                                                        <?php
+                                                        $cache_time4 = $this->db->get_where('job_industry', array('industry_id' => $post['industry_type']))->row()->industry_name;
+                                                        echo $cache_time4;
+                                                        ?>
                                                     </span>
                                                 </li>
                                                 <li><b>Required education</b>
-                                                        <?php if ($post['degree_name'] != '' || $post['other_education'] != '') { ?>
+                                                    <?php if ($post['degree_name'] != '' || $post['other_education'] != '') { ?>
                                                         <span>
                                                             <?php
                                                             $comma = ", ";
@@ -376,9 +376,9 @@
                                                         </span>
                                                     <?php } else { ?>
                                                         <span>
-            <?php echo PROFILENA; ?>
+                                                            <?php echo PROFILENA; ?>
                                                         </span>
-                                                        <?php } ?>
+                                                    <?php } ?>
                                                 </li>
                                                 <li><b>Sallary</b>
                                                     <span>
@@ -409,7 +409,7 @@
                                                     <span>
                                                         <?php if ($post['interview_process'] != '') { ?>
                                                             <pre>
-                                                            <?php echo $this->common->make_links($post['interview_process']); ?></pre>
+                                                                <?php echo $this->common->make_links($post['interview_process']); ?></pre>
                                                             <?php
                                                         } else {
                                                             echo PROFILENA;
@@ -421,7 +421,7 @@
                                                     <span>
                                                         <?php if ($post['re_comp_profile'] != '') { ?>
                                                             <pre>
-                                                            <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
+                                                                <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
                                                             <?php
                                                         } else {
                                                             echo PROFILENA;
@@ -435,8 +435,8 @@
                                             <span class="job-post-date"><b>Posted on:  </b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
         <!--                                            <p class="pull-right">
                                             <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
-                                                        <a href="javascript:void(0);" class="btn4" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
-                                                        <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" class="btn4">Edit</a>
+                                                            <a href="javascript:void(0);" class="btn4" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
+                                                            <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" class="btn4">Edit</a>
                                                 <?php
                                                 $join_str[0]['table'] = 'job_reg';
                                                 $join_str[0]['join_table_id'] = 'job_reg.user_id';
@@ -448,7 +448,7 @@
                                                 $apply_candida = $this->common->select_data_by_condition('job_apply', $condition_array, $data, $short_by = '', $order_by = '', $limit, $offset, $join_str, $groupby = '');
                                                 $countt = count($apply_candida);
                                                 ?>
-                                                        <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="btn4">Applied  Candidate : <?php echo $countt ?></a>
+                                                            <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="btn4">Applied  Candidate : <?php echo $countt ?></a>
                                                 <?php
                                             } else {
                                                 $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
@@ -460,9 +460,9 @@
                                                 $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                 if ($jobsave) {
                                                     ?>
-                                                                <a href="javascript:void(0);" class="btn4 applied">Applied</a>
+                                                                        <a href="javascript:void(0);" class="btn4 applied">Applied</a>
                                                 <?php } else { ?>
-                                                                <a href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  btn4" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
+                                                                        <a href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  btn4" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
                                                     <?php
                                                     $userid = $this->session->userdata('aileenuser');
                                                     $contition_array = array(
@@ -474,14 +474,14 @@
                                                     $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                     if ($jobsave) {
                                                         ?>
-                                                                        <a class="btn4 saved save_saved_btn">Saved</a>
+                                                                                    <a class="btn4 saved save_saved_btn">Saved</a>
                                                     <?php } else { ?>
-                                                                        <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> btn4 save_saved_btn">Save</a>
+                                                                                    <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> btn4 save_saved_btn">Save</a>
                                                     <?php } ?>
-                <?php
-            }
-        }
-        ?>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
                                                                                                     <a href="#" class="btn4">Save</a>
                                                                                                     <a href="#" class="btn4">Apply</a>
                                             </p>-->
@@ -489,10 +489,10 @@
                                         </div>
                                     </div>
                                 </div>
-        <?php
-    }
-} else {
-    ?>
+                                <?php
+                            }
+                        } else {
+                            ?>
                             <div class="art-img-nn">
                                 <div class="art_no_post_img">
                                     <img src="' . base_url() . 'img/job-no.png">
@@ -502,20 +502,23 @@
                                     No  Post Available.
                                 </div>
                             </div>
-<?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
 
 
-            </div>
-            <!-- <footer> -->
-<?php echo $login_footer ?>
-<?php echo $footer; ?>
-            <!-- </footer> -->
+        </div>
+        <!-- <footer> -->
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
+        <!-- </footer> -->
 
 
     </body>
-
+    <script>
+        var base_url = '<?php echo base_url(); ?>';
+    </script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>
 </html>
 <!-- script for skill textbox automatic start (option 2)-->

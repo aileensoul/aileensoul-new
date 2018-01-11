@@ -104,7 +104,8 @@ function profile_reg(){
 
     var form = $("#jobseeker_regform");
     if(form.valid() == true ){
-     $('#fre_ajax_load').show();
+     //$('#fre_ajax_load').show();
+     document.getElementById('fre_ajax_load').style.display = 'inline-block';
     }
 }
 
@@ -112,7 +113,8 @@ function profile_reg1(){
 
     var form = $("#jobseeker_regform1");
     if(form.valid() == true ){
-     $('#exp_ajax_load').show();
+     //$('#exp_ajax_load').show();
+     document.getElementById('exp_ajax_load').style.display = 'inline-block';
     }
 }
 

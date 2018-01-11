@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 left-header">
-                    <h2 class="logo"><a ng-click="goMainLink('<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>');" title="Aileensoul"><img src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="Aileensoul"></a></h2>
+                    <h2 class="logo"><a ng-click="goMainLink('<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>');" title="Aileensoul"><img ng-src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="Aileensoul"></a></h2>
                     <?php if ($is_userBasicInfo == '1' || $is_userStudentInfo == '1') { ?>
                         <form>
                             <input type="text" name="search" placeholder="Search..">
@@ -14,7 +14,7 @@
                     <ul>
                         <?php if ($is_userBasicInfo == '1' || $is_userStudentInfo == '1') { ?>
                             <li class="dropdown all">
-                                <a href="#" title="All Profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/n-images/all.png') ?>" alt="All Profile"></a>
+                                <a href="#" title="All Profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/all.png') ?>" alt="All Profile"></a>
 
                                 <div class="dropdown-menu">
                                     <div class="dropdown-title">
@@ -26,7 +26,7 @@
                                                 <div class="all-down"> 
                                                     <a href="#"> 
                                                         <div class="all-img"> 
-                                                            <img src="<?php echo base_url('assets/n-images/i5.jpg') ?>">
+                                                            <img ng-src="<?php echo base_url('assets/n-images/i5.jpg') ?>">
                                                         </div>
                                                         <div class="text-all"> Artistic Profile </div>
                                                     </a> 
@@ -36,7 +36,7 @@
                                                 <div class="all-down"> 
                                                     <a href="#"> 
                                                         <div class="all-img"> 
-                                                            <img src="<?php echo base_url('assets/n-images/i4.jpg') ?>">
+                                                            <img ng-src="<?php echo base_url('assets/n-images/i4.jpg') ?>">
                                                         </div>
                                                         <div class="text-all"> Business Profile </div>
                                                     </a> 
@@ -46,7 +46,7 @@
                                                 <div class="all-down"> 
                                                     <a href="#"> 
                                                         <div class="all-img"> 
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/i1.jpg">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/i1.jpg">
                                                         </div>
                                                         <div class="text-all"> Job Profile </div>
                                                     </a> 
@@ -56,7 +56,7 @@
                                                 <div class="all-down"> 
                                                     <a href="#"> 
                                                         <div class="all-img"> 
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/i2.jpg">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/i2.jpg">
                                                         </div>
                                                         <div class="text-all"> Recruiter Profile </div>
                                                     </a> 
@@ -66,7 +66,7 @@
                                                 <div class="all-down"> 
                                                     <a href="#"> 
                                                         <div class="all-img"> 
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/i3.jpg">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/i3.jpg">
                                                         </div>
                                                         <div class="text-all"> Freelance Profile </div>
                                                     </a> 
@@ -77,10 +77,10 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="#" title="Opportunity"><img src="<?php echo base_url('assets/n-images/op.png?ver='.time()) ?>" alt="Opportunity"></a>
+                                <a href="#" title="Opportunity"><img ng-src="<?php echo base_url('assets/n-images/op.png?ver='.time()) ?>" alt="Opportunity"></a>
                             </li>
                             <li id="add-contact" class="dropdown">
-                                <a href="#" title="Contact Request" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/n-images/add-contact.png') ?>" alt="Contact Request"></a>
+                                <a href="#" title="Contact Request" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/add-contact.png') ?>" alt="Contact Request"></a>
 
                                 <div class="dropdown-menu">
                                     <div class="dropdown-title">
@@ -92,7 +92,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <div class="user-name">
@@ -117,7 +117,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <div class="user-name">
@@ -142,7 +142,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <div class="user-name">
@@ -167,7 +167,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <div class="user-name">
@@ -192,7 +192,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <div class="user-name">
@@ -217,7 +217,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <div class="user-name">
@@ -243,7 +243,7 @@
                                 </div>
                             </li>
                             <li class="dropdown">
-                                <a href="#" title="Messages" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/n-images/message.png?ver='.time()) ?>" alt="Messages"></a>
+                                <a href="#" title="Messages" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/message.png?ver='.time()) ?>" alt="Messages"></a>
                                 <div class="dropdown-menu">
                                     <div class="dropdown-title">
                                         Messages <a href="#" class="pull-right">See All</a>
@@ -254,7 +254,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6><b>Atosa Ahmedabad</b></h6>
@@ -270,7 +270,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6><b>Atosa Ahmedabad</b></h6>
@@ -286,7 +286,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6><b>Atosa Ahmedabad</b></h6>
@@ -302,7 +302,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6><b>Atosa Ahmedabad</b></h6>
@@ -318,7 +318,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6><b>Atosa Ahmedabad</b></h6>
@@ -334,7 +334,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6><b>Atosa Ahmedabad</b></h6>
@@ -350,7 +350,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6><b>Atosa Ahmedabad</b></h6>
@@ -367,7 +367,7 @@
                                 </div>
                             </li>
                             <li class="dropdown">
-                                <a href="#" title="Notification" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/n-images/noti.png?ver='.time()) ?>" alt="Notification"></a>
+                                <a href="#" title="Notification" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/noti.png?ver='.time()) ?>" alt="Notification"></a>
 
                                 <div class="dropdown-menu">
                                     <div class="dropdown-title">
@@ -379,7 +379,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6>
@@ -398,7 +398,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6>
@@ -417,7 +417,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6>
@@ -436,7 +436,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6>
@@ -455,7 +455,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6>
@@ -474,7 +474,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6>
@@ -493,7 +493,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
+                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <h6>
@@ -517,7 +517,7 @@
                         ?>
                         <li class="dropdown user-id">
                             <a href="#" title="<?php echo $userdata['first_name']; ?>" class="dropdown-toggle user-id-custom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <span class="usr-img"><?php if($userdata['user_image'] != ''){ ?><img src="<?php echo USER_THUMB_UPLOAD_URL.$userdata['user_image'] ?>" alt="<?php echo $userdata['first_name'] ?>"><?php }else{ ?><div class="custom-user"><?php echo ucfirst(strtolower(substr($userdata['first_name'], 0, 1))); ?></div><?php } ?></span>
+                                <span class="usr-img"><?php if($userdata['user_image'] != ''){ ?><img ng-src="<?php echo USER_THUMB_UPLOAD_URL.$userdata['user_image'] ?>" alt="<?php echo $userdata['first_name'] ?>"><?php }else{ ?><div class="custom-user"><?php echo ucfirst(strtolower(substr($userdata['first_name'], 0, 1))); ?></div><?php } ?></span>
                                 <span class="pr-name"><?php if(isset($userdata['first_name'])){ echo ucfirst($userdata['first_name']);}?></span>
                             </a>
                             <ul class="dropdown-menu profile-dropdown">
