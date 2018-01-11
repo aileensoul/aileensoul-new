@@ -54,8 +54,10 @@ class Blog extends CI_Controller {
             //THIS IF IS USED FOR WHILE SEARCH FOR RETRIEVE SAME PAGE START
             if ($this->input->get('q')) { 
 
-                $this->data['search_keyword'] = $search_keyword = trim($this->input->get('q'));
+                $this->data['search_keyword'] = $search_keyword1 = trim($this->input->get('q'));
 
+                $search_keyword = str_replace("'", '-', $search_keyword1);
+                //echo $search_keyword; die();
 
                 $search_condition = "(title LIKE '%$search_keyword%')";
                 $contition_array = array('status' => 'publish');
