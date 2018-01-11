@@ -143,7 +143,7 @@ input,select,textarea{
     border:1px solid #cacaca;
     outline:0;
     padding:5px 15px;
-    color:#acacac;
+    color:#000;
     font-size:13px!important;
     font-weight:400;
     border-radius:4px;
@@ -2418,7 +2418,9 @@ footer div.pt20{
 
 .email_note{font-size: 11px;line-height: 1.2;float: left;padding-top: 5px;color: #999;}
 .vali_er .error{bottom: -8px;}
-
+.job_reg_page_fprm select{
+    color: #acacac;
+}
 
 
 @media screen and (max-height:540px){
