@@ -24,7 +24,7 @@
 								    
 								</div>
 								<div class="custom-user-btn">
-									<a class="btn3">In Contacts</a>
+									<a class="btn3" ng-click="remove(contacts.user_id)">In Contacts</a>
 								</div>
 							</div>
 							

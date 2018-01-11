@@ -20,7 +20,20 @@
      <div ng-view></div>
 	<?php echo $footer; ?>
 		
-	
+	<div class="modal fade message-box" id="remove-contact" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" id="postedit"data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes">
+                            <div class="pop_content">Do you want to delete all message?<div class="model_ok_cancel"><a class="okbtn" ng-click="delete_all_history(m_a_d_message_to_profile_id)" href="javascript:void(0);" data-dismiss="modal">Yes</a><a class="cnclbtn" href="javascript:void(0);" data-dismiss="modal">No</a></div></div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+                        
+                        
 	<div style="display:none;" class="modal fade" id="post-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					
                         <div class="modal-dialog">
@@ -183,6 +196,15 @@
                     
                     app.controller('contactsController', function ($scope, $http, $location) {
                         $scope.user = {};
+                        var id = 1;
+                        $scope.remove = function(index){ //alert(123); return false;
+                        $('#remove-contact .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_contacts(" + index + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                           //$('.biderror .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id="" onClick='remove_post(1)' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                           $('#remove-contact').modal('show');
+                          // array.splice(index, 1);
+                               }
+                               
+                             
                         // PROFEETIONAL DATA
                         getFieldList();
                         function getFieldList() {
@@ -206,7 +228,11 @@
                       
                     });
                     
-     
+      function remove_contacts(index){ 
+          $(this).closest('.list_product').remove();
+                       // $(e.target).parent().remove();
+                           //array.splice(index, 1);
+                               }
 
             </script>
 <!--        <script>
