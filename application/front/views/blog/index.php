@@ -362,10 +362,39 @@ header("Pragma: no-cache"); // HTTP/1.0
             }
 
 
-            $('.loadbutton').click(function () {
-                var pagenum = parseInt($(".page_number:last").val()) + 1;
-                blog_post(pagenum);
-            });
+            // $('.loadbutton').click(function () {
+            //     var pagenum = parseInt($(".page_number:last").val()) + 1;
+            //     blog_post(pagenum);
+            // });
+
+
+$(document).ready(function () {
+
+    $(window).scroll(function () {
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    blog_post(pagenum);
+                }
+            }
+        }
+    });
+});
+
+
             var isProcessing = false;
             function blog_post(pagenum) {
                 if (isProcessing) {

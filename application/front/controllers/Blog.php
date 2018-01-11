@@ -59,6 +59,7 @@ class Blog extends CI_Controller {
                 $search_keyword = str_replace("'", '-', $search_keyword1);
                 //echo $search_keyword; die();
 
+
                 $search_condition = "(title LIKE '%$search_keyword%')";
                 $contition_array = array('status' => 'publish');
                 $bolg_data= $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = '*', $sortby = 'id', $orderby = 'desc', $limit, $offset);
@@ -369,7 +370,7 @@ class Blog extends CI_Controller {
         if ($page > $record) {
             // $lod_message = '<button class="loadmore">No more blog available</button>';  
         } else {
-            $lod_message = '<button class="loadmore">Load More ...</button>';
+            $lod_message = '<img src=" '.base_url('assets/images/loader.gif?ver='.time()).'" alt="'.'LOADERIMAGE'.'; ?>"/>';
         }
 
         echo json_encode(array(
