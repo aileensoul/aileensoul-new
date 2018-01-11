@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 class Userprofile_model extends CI_Model {
 
-    public function getDashboardData($user_id = '',$select_data = '') {
+    public function getDashboardData($user_id = '', $select_data = '') {
         $this->db->select($select_data)->from("user u");
         $this->db->join('art_reg a', 'a.user_id = u.user_id', 'left');
         $this->db->join('recruiter r', 'r.user_id = u.user_id', 'left');
@@ -18,22 +18,24 @@ class Userprofile_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array;
     }
-    
-     public function getContactData($user_id = '173',$select_data = '') {
-       
-        $this->db->select("u.user_id")->from("user  u");
-        $this->db->join('user_contact uc', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.from_id ELSE uc.from_id END)');
-        $this->db->join('user_contact uc', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.from_id ELSE uc.from_id END)');
-        $this->db->join('user_contact uc', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.from_id ELSE uc.from_id END)');
-     
-//        $this->db->where("ul.is_delete",'0');
-//        $this->db->where("ul.status",'1');
-        $this->db->order_by("u.user_id", "DESC");
-        
+
+    public function getContactData($user_id = '173', $select_data = '') {
+        $user_id = '173';
+
+
+        $this->db->select("u.user_id,u.first_name,u.last_name,ui.user_image,jt.name as title_name,d.degree_name,u.user_slug")->from("user_contact  uc");
+        $this->db->join('user u', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.to_id ELSE uc.from_id END)', 'left');
+       $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+        $this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
+        $this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
+        $this->db->join('user_student us', 'us.user_id = u.user_id', 'left');
+        $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
+        $this->db->where('u.user_id !=', $user_id);
+        $this->db->order_by("uc.id", "DESC");
+
         $query = $this->db->get();
         $result_array = $query->result_array();
         return $result_array;
     }
 
-  
 }

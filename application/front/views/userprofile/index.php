@@ -111,8 +111,8 @@
                                     controller: 'detailsController'
                                 })
                                 .when("/contacts", {
-                                    templateUrl: base_url + "userprofile_page/contacts"
-                                 //   controller: 'basicInfoController'
+                                    templateUrl: base_url + "userprofile_page/contacts",
+                                    controller: 'contactsController'
                                 })
                                 .when("/followers", {
                                     templateUrl: base_url + "userprofile_page/followers"
@@ -179,6 +179,31 @@
                         $scope.makeActive = function(item){
                              $scope.active = $scope.active == item?'':item;
                         }
+                    });
+                    
+                    app.controller('contactsController', function ($scope, $http, $location) {
+                        $scope.user = {};
+                        // PROFEETIONAL DATA
+                        getFieldList();
+                        function getFieldList() {
+                           
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'userprofile_page/contacts_data',
+                                data: 'u=' + user_id,
+                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                            })
+                                    .then(function (success) {
+                                        $scope.contats_data = success.data;
+                                        
+                                    });
+                        }
+
+                     
+                        $scope.goMainLink = function(path){
+                            location.href=path;
+                        }
+                      
                     });
                     
      
