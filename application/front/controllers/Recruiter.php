@@ -822,8 +822,12 @@ class Recruiter extends MY_Controller {
             $this->data['postdataone'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,recruiter_user_image,profile_background,designation,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
 
-        $this->load->view('recruiter/rec_post', $this->data);
-    }
+        if($userid){
+         $this->load->view('recruiter/rec_post', $this->data);
+        }else{
+            redirect('login/');
+        }
+    } 
 
 // RECRUITER POST END
 // RECRUITER EDIT POST START
