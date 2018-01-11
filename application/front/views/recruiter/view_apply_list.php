@@ -11,7 +11,7 @@
             <?php
         } else {
             ?>
-             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/1.10.3.jquery-ui.css'); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
         <?php } ?>
     </head>
@@ -35,11 +35,15 @@
 
                             <div class="add-post-button">
 
-                                <a href="<?php echo base_url('recruiter/post'); ?>" title="Back To Post"><div class="back">
+
+                                <div class="back">
+                                    <a href="<?php echo base_url('recruiter/post'); ?>" title="Back To Post">
                                         <div class="but1" >
                                             Back To Post
                                         </div>
-                                    </div></a>
+                                    </a>
+                                </div>
+
 
                             </div>
                         </div>
@@ -61,35 +65,36 @@
                                                                 <div class="profile-job-post-location-name-rec">
                                                                     <div style="display: inline-block; float: left;">
                                                                         <div  class="buisness-profile-pic-candidate">
-                                                                             <a style="  font-size: 19px;
-                                                                                   font-weight: 600;" href="<?php echo base_url('job/resume/' . $row['slug']); ?>" title="<?php echo $row['job_user_image']; ?>">
-
-                                                                                   <?php 
-                                                                                    $filename = $this->config->item('job_profile_thumb_upload_path') . $row['job_user_image'];
-                         $s3 = new S3(awsAccessKey, awsSecretKey);
-                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                      if ($row['job_user_image'] != '' && $info) { ?>
-                     <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $row['job_user_image']; ?>" alt="<?php echo $row['job_user_image']; ?>" >
-
-                                                                           
+                                                                            <a style="  font-size: 19px;
+                                                                               font-weight: 600;" href="<?php echo base_url('job/resume/' . $row['slug']); ?>" title="<?php echo $row['job_user_image']; ?>">
 
                                                                                 <?php
-                                                                            }  else { 
+                                                                                $filename = $this->config->item('job_profile_thumb_upload_path') . $row['job_user_image'];
+                                                                                $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                                                if ($row['job_user_image'] != '' && $info) {
+                                                                                    ?>
+                                                                                    <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $row['job_user_image']; ?>" alt="<?php echo $row['job_user_image']; ?>" >
 
-                                                                                $a = $row['fname'];
-                                                                                $acr = substr($a, 0, 1);
 
-                                                                                $b = $row['lname'];
-                                                                                $acr1 = substr($b, 0, 1);
-                                                                                ?>
-                                                                                <div class="post-img-profile">
-                                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
 
-                                                                                </div>
+                                                                                    <?php
+                                                                                } else {
 
-                                                                            <?php }
-                                                                            ?> 
-                                                                        </a>
+                                                                                    $a = $row['fname'];
+                                                                                    $acr = substr($a, 0, 1);
+
+                                                                                    $b = $row['lname'];
+                                                                                    $acr1 = substr($b, 0, 1);
+                                                                                    ?>
+                                                                                    <div class="post-img-profile">
+            <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
+
+                                                                                    </div>
+
+                                                                                <?php }
+                                                                                ?> 
+                                                                            </a>
                                                                         </div>
 
                                                                     </div>
@@ -98,7 +103,7 @@
                                                                             <li>
                                                                                 <a style="  font-size: 19px;
                                                                                    font-weight: 600;" href="<?php echo base_url('job/resume/' . $row['slug']); ?>" title="<?php echo $row['job_user_image']; ?>">
-                                                                                    <?php echo ucfirst(strtolower($row['fname'])) . ' ' . ucfirst(strtolower($row['lname'])); ?></a>
+        <?php echo ucfirst(strtolower($row['fname'])) . ' ' . ucfirst(strtolower($row['lname'])); ?></a>
                                                                             </li>
                                                                             <li class="show">
                                                                                 <a  style="font-size: 13px;" href="javascript: void(0)" title="Designation">
@@ -134,14 +139,16 @@
                                                                     if ($row['work_job_title']) {
                                                                         $contition_array = array('status' => 'publish', 'title_id' => $row['work_job_title']);
                                                                         $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                                       
-                                                                         if($jobtitle[0]['name']) { ?>
-                                                                        <li> <b> Job Title</b> <span>
-                                                                                <?php echo $jobtitle[0]['name']; ?>
-                                                                            </span>
-                                                                        </li>
 
-                                                                         <?php }} ?>
+                                                                        if ($jobtitle[0]['name']) {
+                                                                            ?>
+                                                                            <li> <b> Job Title</b> <span>
+                <?php echo $jobtitle[0]['name']; ?>
+                                                                                </span>
+                                                                            </li>
+
+                                                                        <?php }
+                                                                    } ?>
                                                                     <?php
                                                                     if ($row['keyskill']) {
                                                                         $jobskil = array();
@@ -166,7 +173,7 @@
                                                                         $industry = $this->common->select_data_by_condition('job_industry', $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                         ?>
                                                                         <li> <b> Industry</b> <span>
-                                                                                <?php echo $industry[0]['industry_name']; ?>
+                                                                        <?php echo $industry[0]['industry_name']; ?>
                                                                             </span>
                                                                         </li>
                                                                     <?php } ?>
@@ -183,7 +190,7 @@
                                                                         }
                                                                         ?>
                                                                         <li> <b> Preferred Cites</b> <span>
-                                                                                <?php echo implode(',', $cities); ?>                                                        
+                                                                        <?php echo implode(',', $cities); ?>                                                        
                                                                             </span>
                                                                         </li>
                                                                     <?php } ?> 
@@ -211,7 +218,7 @@
                                                                                     echo "1 year";
                                                                                 } elseif ($total_work_year != '0 year' && $total_work_month >= '12 month') {
                                                                                     $month = explode(' ', $total_work_year);
-                                                                                    
+
                                                                                     $year = $month[0];
                                                                                     $y = 0;
                                                                                     for ($i = 0; $i <= $y; $i++) {
@@ -262,7 +269,7 @@
                                                                     $contition_array = array('user_id' => $row['userid']);
                                                                     $graduation_data = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = '*', $sortby = 'job_graduation_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
                                                                     ?>
-                                                                    <?php if ($row['board_primary'] && $row['board_secondary'] && $row['board_higher_secondary'] && $graduation_data) { ?>
+                                                                            <?php if ($row['board_primary'] && $row['board_secondary'] && $row['board_higher_secondary'] && $graduation_data) { ?>
                                                                         <li>
                                                                             <b>Degree</b><span>
                                                                                 <?php
@@ -287,9 +294,9 @@
                                                                                 }
                                                                                 ?>                                                </span>
                                                                         </li>
-                                                                        <?php
-                                                                    } elseif ($row['board_secondary'] && $row['board_higher_secondary'] && $graduation_data) {
-                                                                        ?>
+            <?php
+        } elseif ($row['board_secondary'] && $row['board_higher_secondary'] && $graduation_data) {
+            ?>
                                                                         <li>
                                                                             <b>Degree</b><span>
 
@@ -319,8 +326,8 @@
                                                                         </li>
 
 
-                                                                    <?php } elseif ($row['board_higher_secondary'] && $graduation_data) {
-                                                                        ?>
+        <?php } elseif ($row['board_higher_secondary'] && $graduation_data) {
+            ?>
 
                                                                         <li>
                                                                             <b>Degree</b><span>
@@ -348,8 +355,8 @@
                                                                             </span>
                                                                         </li>
 
-                                                                    <?php } else if ($row['board_secondary'] && $graduation_data) {
-                                                                        ?>
+                                                                            <?php } else if ($row['board_secondary'] && $graduation_data) {
+                                                                                ?>
                                                                         <li>
                                                                             <b>Degree</b><span>
                                                                                 <?php
@@ -376,7 +383,7 @@
                                                                             </span>
                                                                         </li>
 
-                                                                    <?php } elseif ($row['board_primary'] && $graduation_data) { ?>
+                                                                            <?php } elseif ($row['board_primary'] && $graduation_data) { ?>
                                                                         <li>
                                                                             <b>Degree</b><span>
                                                                                 <?php
@@ -403,60 +410,60 @@
                                                                             </span>
                                                                         </li>
 
-                                                                    <?php } elseif ($row['board_primary'] && $row['board_secondary'] && $row['board_higher_secondary']) { ?>
+                                                                            <?php } elseif ($row['board_primary'] && $row['board_secondary'] && $row['board_higher_secondary']) { ?>
                                                                         <li><b>Board of Higher Secondary</b>
                                                                             <span>
-                                                                                <?php echo $row['board_higher_secondary']; ?>
+            <?php echo $row['board_higher_secondary']; ?>
                                                                             </span>
                                                                         </li>
                                                                         <li><b>Percentage of Higher Secondary</b>
                                                                             <span>
-                                                                                <?php echo $row['percentage_higher_secondary']; ?>
+            <?php echo $row['percentage_higher_secondary']; ?>
                                                                             </span>
                                                                         </li>
 
 
-                                                                    <?php } elseif ($row['board_secondary'] && $row['board_higher_secondary']) { ?>
+                                                                            <?php } elseif ($row['board_secondary'] && $row['board_higher_secondary']) { ?>
                                                                         <li><b>Board of Higher Secondary</b>
                                                                             <span>
-                                                                                <?php echo $row['board_higher_secondary']; ?>
+            <?php echo $row['board_higher_secondary']; ?>
                                                                             </span>
                                                                         </li>
                                                                         <li><b>Percentage of Higher Secondary</b>
                                                                             <span>
-                                                                                <?php echo $row['percentage_higher_secondary']; ?>
+                                                                        <?php echo $row['percentage_higher_secondary']; ?>
                                                                             </span>
                                                                         </li>
 
-                                                                    <?php } elseif ($row['board_primary'] && $row['board_higher_secondary']) { ?>
+        <?php } elseif ($row['board_primary'] && $row['board_higher_secondary']) { ?>
 
 
                                                                         <li><b>Board of Higher Secondary</b>
                                                                             <span>
-                                                                                <?php echo $row['board_higher_secondary']; ?>
+            <?php echo $row['board_higher_secondary']; ?>
                                                                             </span>
                                                                         </li>
                                                                         <li><b>Percentage of Higher Secondary</b>
                                                                             <span>
-                                                                                <?php echo $row['percentage_higher_secondary']; ?>
+            <?php echo $row['percentage_higher_secondary']; ?>
                                                                             </span>
                                                                         </li>
 
 
-                                                                    <?php } elseif ($row['board_primary'] && $row['board_secondary']) { ?>
+                                                                            <?php } elseif ($row['board_primary'] && $row['board_secondary']) { ?>
 
                                                                         <li><b>Board of Secondary</b>
                                                                             <span>
-                                                                                <?php echo $row['board_secondary']; ?>
+            <?php echo $row['board_secondary']; ?>
                                                                             </span>
                                                                         </li>
                                                                         <li><b>Percentage of Secondary</b>
                                                                             <span>
-                                                                                <?php echo $row['percentage_secondary']; ?>
+                                                                        <?php echo $row['percentage_secondary']; ?>
                                                                             </span>
                                                                         </li>
 
-                                                                    <?php } elseif ($graduation_data) { ?>
+        <?php } elseif ($graduation_data) { ?>
 
                                                                         <li>
                                                                             <b>Degree</b><span>
@@ -486,70 +493,70 @@
                                                                             </span>
                                                                         </li>
 
-                                                                    <?php } elseif ($row['board_higher_secondary']) { ?>
+                                                                            <?php } elseif ($row['board_higher_secondary']) { ?>
 
                                                                         <li><b>Board of Higher Secondary</b>
                                                                             <span>
-                                                                                <?php echo $row['board_higher_secondary']; ?>
+            <?php echo $row['board_higher_secondary']; ?>
                                                                             </span>
                                                                         </li>
                                                                         <li><b>Percentage of Higher Secondary</b>
                                                                             <span>
-                                                                                <?php echo $row['percentage_higher_secondary']; ?>
+            <?php echo $row['percentage_higher_secondary']; ?>
                                                                             </span>
                                                                         </li>
 
 
-                                                                    <?php } elseif ($row['board_secondary']) { ?> 
+                                                                            <?php } elseif ($row['board_secondary']) { ?> 
 
                                                                         <li><b>Board of Secondary</b>
                                                                             <span>
-                                                                                <?php echo $row['board_secondary']; ?>
+            <?php echo $row['board_secondary']; ?>
                                                                             </span>
                                                                         </li>
                                                                         <li><b>Percentage of Secondary</b>
                                                                             <span>
-                                                                                <?php echo $row['percentage_secondary']; ?>
+                                                                        <?php echo $row['percentage_secondary']; ?>
                                                                             </span>
                                                                         </li>
 
-                                                                    <?php } elseif ($row['board_primary']) { ?>
+                                                                            <?php } elseif ($row['board_primary']) { ?>
 
                                                                         <li><b>Board of Primary</b>
                                                                             <span>
-                                                                                <?php echo $row['board_primary']; ?>
+            <?php echo $row['board_primary']; ?>
                                                                             </span>
                                                                         </li>
                                                                         <li><b>Percentage of Primary</b>
                                                                             <span>
-                                                                                <?php echo $row['percentage_primary']; ?>
+                                                                        <?php echo $row['percentage_primary']; ?>
                                                                             </span>
                                                                         </li>
 
-                                                                    <?php } ?>
+        <?php } ?>
 
 
 
 
                                                                     <li><b>E-mail</b>
                                                                         <span><?php
-                                                                            echo $row['email'];
-                                                                            ?></span>
+        echo $row['email'];
+        ?></span>
                                                                     </li>
 
-                                                                    <?php
-                                                                    if ($row['phnno']) {
-                                                                        ?>
+        <?php
+        if ($row['phnno']) {
+            ?>
                                                                         <li><b>Mobile Number</b>
                                                                             <span>
 
-                                                                                <?php
-                                                                                echo $row['phnno'];
-                                                                                ?></span>
-                                                                        </li>
                                                                         <?php
-                                                                    }
-                                                                    ?>
+                                                                        echo $row['phnno'];
+                                                                        ?></span>
+                                                                        </li>
+            <?php
+        }
+        ?>
 
 
                                                                 </ul>
@@ -612,9 +619,9 @@
                                                         No Applied Candidate  Available.
                                                     </div>
                                                 </div>
-                                                <?php
-                                            }
-                                            ?>      
+    <?php
+}
+?>      
                                             <!-- khyati end -->
                                             <div class="col-md-1">
                                             </div>
@@ -648,87 +655,87 @@
         <!-- END FOOTER -->
         <!-- FIELD VALIDATION JS START -->
 
-        <?php
-        if (IS_REC_JS_MINIFY == '0') {
-            ?>
+<?php
+if (IS_REC_JS_MINIFY == '0') {
+    ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
             <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> 
             <!--SCRIPT FOR DATE START-->
             <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js'); ?>"></script>
 
-            <?php
-        } else {
-            ?>
-             <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
+    <?php
+} else {
+    ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js') ?>"></script>
             <script src="<?php echo base_url('assets/js_min/bootstrap.min.js'); ?>"></script> 
             <!--SCRIPT FOR DATE START-->
             <script src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js'); ?>"></script>
 
-        <?php } ?>
+<?php } ?>
 
 
 
         <script>
-                                                                var base_url = '<?php echo base_url(); ?>';
-                                                                var data1 = <?php echo json_encode($de); ?>;
-                                                                var data = <?php echo json_encode($demo); ?>;
-                                                                var jobdata = <?php echo json_encode($jobtitle); ?>;
-                                                                var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                                                var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                                                                                var base_url = '<?php echo base_url(); ?>';
+                                                                                var data1 = <?php echo json_encode($de); ?>;
+                                                                                var data = <?php echo json_encode($demo); ?>;
+                                                                                var jobdata = <?php echo json_encode($jobtitle); ?>;
+                                                                                var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                                                                                var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
         <!-- FIELD VALIDATION JS END -->
-          <?php
-        if (IS_REC_JS_MINIFY == '0') {
-            ?>
-              <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
+<?php
+if (IS_REC_JS_MINIFY == '0') {
+    ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
 
-            <?php
-        } else {
-            ?>
-                <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/search.js'); ?>"></script>
+    <?php
+} else {
+    ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/search.js'); ?>"></script>
 
-        <?php } ?>
-    
+<?php } ?>
+
         <script type="text/javascript">
 
 
-                                                                function inviteusermodel(abc) {
-                                                                    
-                                                                    $('.biderror .mes').html("<div class='pop_content'>Do you want to invite this candidate for interview?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal' title='Yes'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal' title='No'>No</a></div></div>");
-                                                                    $('#bidmodal').modal('show');
+                                                                                function inviteusermodel(abc) {
 
-                                                                }
+                                                                                    $('.biderror .mes').html("<div class='pop_content'>Do you want to invite this candidate for interview?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal' title='Yes'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal' title='No'>No</a></div></div>");
+                                                                                    $('#bidmodal').modal('show');
 
-                                                                function inviteuser(clicked_id)
-                                                                {
+                                                                                }
 
-                                                                    var post_id = "<?php echo $postid; ?>";
-                                                                    var post_id = "<?php echo $postid; ?>";
-                                                                
-                                                                    $.ajax({
-                                                                        type: 'POST',
-                                                                        url: '<?php echo base_url() . "recruiter/invite_user" ?>',
-                                                                        data: 'post_id=' + post_id + '&invited_user=' + clicked_id,
-                                                                        dataType: 'json',
-                                                                        success: function (data) {
-                                                                            $('#' + 'invited' + clicked_id).html(data.status).addClass('invited').removeClass('invite_border').removeAttr("onclick");
-                                                                            $('#' + 'invited' + clicked_id).css('cursor', 'default');
-                                                                            if (data.notification.notification_count != 0) {
-                                                                                var notification_count = data.notification.notification_count;
-                                                                                var to_id = data.notification.to_id;
-                                                                                show_header_notification(notification_count, to_id);
-                                                                            }
+                                                                                function inviteuser(clicked_id)
+                                                                                {
 
-                                                                        }
+                                                                                    var post_id = "<?php echo $postid; ?>";
+                                                                                    var post_id = "<?php echo $postid; ?>";
 
-                                                                    });
-                                                                }
+                                                                                    $.ajax({
+                                                                                        type: 'POST',
+                                                                                        url: '<?php echo base_url() . "recruiter/invite_user" ?>',
+                                                                                        data: 'post_id=' + post_id + '&invited_user=' + clicked_id,
+                                                                                        dataType: 'json',
+                                                                                        success: function (data) {
+                                                                                            $('#' + 'invited' + clicked_id).html(data.status).addClass('invited').removeClass('invite_border').removeAttr("onclick");
+                                                                                            $('#' + 'invited' + clicked_id).css('cursor', 'default');
+                                                                                            if (data.notification.notification_count != 0) {
+                                                                                                var notification_count = data.notification.notification_count;
+                                                                                                var to_id = data.notification.to_id;
+                                                                                                show_header_notification(notification_count, to_id);
+                                                                                            }
+
+                                                                                        }
+
+                                                                                    });
+                                                                                }
 
 
         </script>
         <script>
             function savepopup(id) {
-              
+
                 save_user(id);
                 //                       
                 $('.biderror .mes').html("<div class='pop_content'>Candidate successfully saved.");
