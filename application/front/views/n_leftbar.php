@@ -2,17 +2,17 @@
     <div class="user-profile-box">
         <div class="user-cover-img">
             <?php if ($leftbox_data['profile_background'] != '') { ?> 
-                <img src="<?php echo USER_BG_THUMB_UPLOAD_URL.$leftbox_data['profile_background'] ?>" alt="<?php echo $leftbox_data['first_name'] ?>" class="bgImage">
+                <img ng-src="<?php echo USER_BG_THUMB_UPLOAD_URL.$leftbox_data['profile_background'] ?>" alt="<?php echo $leftbox_data['first_name'] ?>" class="bgImage">
             <?php } else { ?>
-                <img src="<?php echo base_url(NOBUSIMAGE) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                <img ng-src="<?php echo base_url(NOBUSIMAGE) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
             <?php } ?>
         </div>
         <div class="user-detail">
             <div class="user-img">
                 <?php if ($leftbox_data['user_image'] != '') { ?> 
-                    <img src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                    <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
                 <?php } else { ?>
-                    <img src="<?php echo base_url(NOBUSIMAGE) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                    <img ng-src="<?php echo base_url(NOBUSIMAGE) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
                 <?php } ?>
             </div>
             <div class="user-detail-right">
@@ -39,7 +39,7 @@
             <li>
                 <a href="#" title="Job Profile">
                     <div class="all-pr-img">
-                        <img src="<?php echo base_url('assets/n-images/i1.jpg?ver='.time()) ?>" alt="Job Profile">
+                        <img ng-src="<?php echo base_url('assets/n-images/i1.jpg?ver='.time()) ?>" alt="Job Profile">
                     </div>
                     <span>Job Profile</span>
                 </a>
@@ -47,7 +47,7 @@
             <li>
                 <a href="#" title="Recruiter Profile">
                     <div class="all-pr-img">
-                        <img src="<?php echo base_url('assets/n-images/i2.jpg?ver='.time()) ?>" alt="Recruiter Profile">
+                        <img ng-src="<?php echo base_url('assets/n-images/i2.jpg?ver='.time()) ?>" alt="Recruiter Profile">
                     </div>
                     <span>Recruiter Profile</span>
                 </a>
@@ -55,7 +55,7 @@
             <li>
                 <a href="#" title="Freelance Profile">
                     <div class="all-pr-img">
-                        <img src="<?php echo base_url('assets/n-images/i3.jpg?ver='.time()) ?>" alt="Freelance Profile">
+                        <img ng-src="<?php echo base_url('assets/n-images/i3.jpg?ver='.time()) ?>" alt="Freelance Profile">
                     </div>
                     <span>Freelance Profile</span>
                 </a>
@@ -63,7 +63,7 @@
             <li>
                 <a href="#" title="Business Profile">
                     <div class="all-pr-img">
-                        <img src="<?php echo base_url('assets/n-images/i4.jpg?ver='.time()) ?>" alt="Business Profile">
+                        <img ng-src="<?php echo base_url('assets/n-images/i4.jpg?ver='.time()) ?>" alt="Business Profile">
                     </div>
                     <span>Business Profile</span>
                 </a>
@@ -71,7 +71,7 @@
             <li>
                 <a href="#" title="Artistic Profile">
                     <div class="all-pr-img">
-                        <img src="<?php echo base_url('assets/n-images/i5.jpg?ver='.time()) ?>" alt="Artistic Profile">
+                        <img ng-src="<?php echo base_url('assets/n-images/i5.jpg?ver='.time()) ?>" alt="Artistic Profile">
                     </div>
                     <span>Artistic Profile</span>
                 </a>
