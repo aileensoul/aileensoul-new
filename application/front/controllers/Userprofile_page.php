@@ -55,14 +55,20 @@ class Userprofile_page extends MY_Controller {
       echo json_encode($profilesData); 
     }
     
+    public function contacts_data() {
+    $userid = $this->session->userdata('aileenuser');
+        $contactsData = $this->data['contactsData'] = $this->userprofile_model->getContactData($userid,$data="");
+      echo json_encode($profilesData); 
+    }
+    
     public function vsrepeat() { 
       $this->load->view('vsrepeat');
     }
     
     public function vsrepeat_data() { 
-      $this->db->select('first_name as name');
+      $this->db->select('first_name as name,user_id as id');
       $this->db->from('user');
-      $this->db->limit('10');
+      $this->db->limit('50');
         $query = $this->db->get();
      $data =  $query->result_array();
       echo json_encode($data); 

@@ -117,7 +117,7 @@
                                         <fieldset class="hs-submit full-width">
                                             <!-- <input type="submit"  id="submit" tabindex="4" name="submit" value="Submit" onclick="return portfolio_form_submit(event);" > -->
 
-                                             <button id="submit" name="submit" tabindex="4" onclick="return portfolio_form_submit(event);">Submit<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+                                             <button id="submit" name="submit" tabindex="4" onclick="return portfolio_form_submit(event);">Submit<span class="ajax_load pl10" id="profilereg_ajax_load" style="display: none;"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
 
                                         </fieldset>
                                     </form>

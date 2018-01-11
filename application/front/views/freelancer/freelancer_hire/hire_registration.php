@@ -187,7 +187,7 @@
                                            <!--<input type="reset">-->
                                            <!--  <input title="Register" type="submit" id="submit"  tabindex="9" name="" value="Register"> -->
 
-                                           <button id="submit" name="submit" tabindex="9" onclick="return validate();" class="cus_btn_sub">Register<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+                                           <button id="submit" name="submit" tabindex="9" onclick="return validate();" class="cus_btn_sub">Register<span class="ajax_load pl10" id="profilereg_ajax_load" style="display: none;"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
 
                                         </div>
                                     </fieldset>

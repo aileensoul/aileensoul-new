@@ -200,7 +200,7 @@
                                                      ?>">
                                              <br>
 
-                                             <button title="Save" class="submit_btn" tabindex="6" onclick="return profile_reg();">Save<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+                                             <button title="Save" class="submit_btn" tabindex="6" onclick="return profile_reg();">Save<span class="ajax_load pl10" id="profilereg_ajax_load" style="display: none;"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
                                              <fieldset class="hs-submit full-width" style="">
                                               
                                              </fieldset>

@@ -6,7 +6,9 @@ function profile_reg(){
 
     var form = $("#jobseeker_regform");
     if(form.valid() == true ){
-     $('#profilereg_ajax_load').show();
+     //$('#profilereg_ajax_load').show();
+     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+     
     }
 }
 

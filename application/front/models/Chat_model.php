@@ -4,12 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Chat_model extends CI_Model {
 
-<<<<<<< HEAD
-    function add_message($message,$userid, $id, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id) {
-=======
-    //function add_message($message, $nickname, $guid, $userid, $id, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id) {
+
     function add_message($message, $userid, $id, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id) {
->>>>>>> 1dc4cc5d60f43e15c65a11396ffb16f7e95682dd
+
         date_default_timezone_set('Asia/Kolkata');
         $data1 = array(
             'message' => (string) $message,
