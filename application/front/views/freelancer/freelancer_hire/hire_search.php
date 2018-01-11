@@ -44,6 +44,116 @@
                 <div class="container">
                     <div class="">
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt"><div class="">
+
+
+                            <div class="all-profile-box">
+                                <div class="all-pro-head">
+                                    <?php 
+                                    if($userid){
+                                    ?>
+
+                                    <h4>Profiles<a href="<?php echo base_url('freelance-hire') ?>" class="pull-right" title="All">All</a></h4>
+
+                                    <?php }else{?>
+
+                                    <h4>Profiles<a href="javascript:void(0);" onclick="register_profile();" class="pull-right" title="All">All</a></h4>
+
+                                    <?php }?>
+                                </div>
+                                <ul class="all-pr-list">
+                                    <li>
+                                        <?php 
+                                       if($userid){
+                                    ?>
+                                        <a href="<?php echo base_url('freelance-hire') ?>" title="job">
+                                        <?php }else{?>
+
+                                        <a href="javascript:void(0);" onclick="register_profile();" title="job">
+
+                                        <?php }?>
+
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="<?php echo 'job profile'; ?>">
+                                            </div>
+                                            <span>Job Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+
+                                 <?php 
+                                       if($userid){
+                                    ?>
+                                        <a href="<?php echo base_url('freelance-hire') ?>" title="recruiter">
+
+                                    <?php }else{?>
+
+                                        <a href="javascript:void(0);" onclick="register_profile();" title="recruiter">
+
+                                    <?php }?>
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>"  alt="<?php echo 'recruiter profile'; ?>">
+                                            </div>
+                                            <span>Recruiter Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+
+                                   <?php 
+                                       if($userid){
+                                    ?>
+                                        <a href="<?php echo base_url('freelance-hire') ?>" title="freelancer">
+                                    <?php }else{?>
+
+                                        <a href="javascript:void(0);" onclick="register_profile();" title="freelancer">
+
+                                    <?php }?>
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="<?php echo 'freelancer profile'; ?>">
+                                            </div>
+                                            <span>Freelance Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+
+                                        <?php 
+                                       if($userid){
+                                    ?>
+                                        <a href="<?php echo base_url('freelance-hire') ?>" title="business-profile">
+
+                                      <?php }else{?>
+
+                                        <a href="javascript:void(0);" onclick="register_profile();" title="business-profile">
+
+                                            <?php }?>
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="<?php echo 'business profile'; ?>">
+                                            </div>
+                                            <span>Business Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+
+                                         <?php 
+                                       if($userid){
+                                    ?>
+                                        <a href="<?php echo base_url('freelance-hire') ?>" title="artist">
+                                            <?php }else{?>
+                                            
+                                        <a href="javascript:void(0);" onclick="register_profile();" title="artist">
+
+                                            <?php }?>
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="artist">
+                                            </div>
+                                            <span>Artistic Profile</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <?php echo $left_footer; ?>
+
+
                             </div>
                         </div>
 

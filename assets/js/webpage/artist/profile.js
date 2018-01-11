@@ -1,7 +1,5 @@
 $(document).ready(function(){ 
 
-     $('.ajax_load').hide();
-     
   if(profile_login == 'live'){
 
         $('#register').modal('show');
@@ -90,7 +88,8 @@ function validate(){
 
      var form = $("#artinfo");
     if(form.valid() == true ){
-     $('#profilereg_ajax_load').show();
+     //$('#profilereg_ajax_load').show();
+     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
     }
 
   var strUser1 = $('#skills').val();

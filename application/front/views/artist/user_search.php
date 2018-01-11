@@ -3,7 +3,10 @@
     <head>
         <title><?php echo $title; ?></title>
 
-         <?php echo $head; ?>
+         <?php echo $head; 
+         $userid = $this->session->userdata('aileenuser');
+
+         ?>
         <?php
         if (IS_ART_CSS_MINIFY == '0') {
             ?>
@@ -67,11 +70,30 @@
 
                                                                           <div class="all-profile-box">
                                 <div class="all-pro-head">
+                                    <?php 
+                                    if($userid){
+                                    ?>
+
+                                    <h4>Profiles<a href="<?php echo base_url('artist') ?>" class="pull-right" title="All">All</a></h4>
+
+                                    <?php }else{?>
+
                                     <h4>Profiles<a href="javascript:void(0);" onclick="register_profile();" class="pull-right" title="All">All</a></h4>
+
+                                    <?php }?>
                                 </div>
                                 <ul class="all-pr-list">
                                     <li>
+                                        <?php 
+                                       if($userid){
+                                    ?>
+                                        <a href="<?php echo base_url('artist') ?>" title="job">
+                                        <?php }else{?>
+
                                         <a href="javascript:void(0);" onclick="register_profile();" title="job">
+
+                                        <?php }?>
+
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="<?php echo 'job profile'; ?>">
                                             </div>
@@ -79,7 +101,17 @@
                                         </a>
                                     </li>
                                     <li>
+
+                                 <?php 
+                                       if($userid){
+                                    ?>
+                                        <a href="<?php echo base_url('artist') ?>" title="recruiter">
+
+                                    <?php }else{?>
+
                                         <a href="javascript:void(0);" onclick="register_profile();" title="recruiter">
+
+                                    <?php }?>
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i2.jpg'); ?>"  alt="<?php echo 'recruiter profile'; ?>">
                                             </div>
@@ -87,7 +119,16 @@
                                         </a>
                                     </li>
                                     <li>
+
+                                   <?php 
+                                       if($userid){
+                                    ?>
+                                        <a href="<?php echo base_url('artist') ?>" title="freelancer">
+                                    <?php }else{?>
+
                                         <a href="javascript:void(0);" onclick="register_profile();" title="freelancer">
+
+                                    <?php }?>
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="<?php echo 'freelancer profile'; ?>">
                                             </div>
@@ -95,7 +136,17 @@
                                         </a>
                                     </li>
                                     <li>
+
+                                        <?php 
+                                       if($userid){
+                                    ?>
+                                        <a href="<?php echo base_url('artist') ?>" title="business-profile">
+
+                                      <?php }else{?>
+
                                         <a href="javascript:void(0);" onclick="register_profile();" title="business-profile">
+
+                                            <?php }?>
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="<?php echo 'business profile'; ?>">
                                             </div>
@@ -103,7 +154,16 @@
                                         </a>
                                     </li>
                                     <li>
+
+                                         <?php 
+                                       if($userid){
+                                    ?>
+                                        <a href="<?php echo base_url('artist') ?>" title="artist">
+                                            <?php }else{?>
+                                            
                                         <a href="javascript:void(0);" onclick="register_profile();" title="artist">
+
+                                            <?php }?>
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="artist">
                                             </div>

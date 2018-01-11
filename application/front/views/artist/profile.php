@@ -223,7 +223,7 @@
                            <div class="job_reg">
                             
                                   <!--   <input type="submit"  id="next" name="next" value="Register" tabindex="9" onclick="return validate();"> -->
-                                    <button id="next" name="next" tabindex="9" onclick="return validate();" class="cus_btn_sub">Register<span class="ajax_load pl10" id="profilereg_ajax_load"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
+                                    <button id="next" name="next" tabindex="9" onclick="return validate();" class="cus_btn_sub">Register<span class="ajax_load pl10" id="profilereg_ajax_load" style="display: none;"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>
 
                            </div>
                         </fieldset>

@@ -1,7 +1,7 @@
 
 jQuery(document).ready(function($) {  
 
- $('.ajax_load').hide();
+ //$('.ajax_load').hide();
 
 // site preloader -- also uncomment the div in the header and the css style for #preloader
 $(window).load(function(){
@@ -14,7 +14,10 @@ function reg_loader(){
 
       var form = $("#artbasicinfo");
     if(form.valid() == true ){
-     $('#profilereg_ajax_load').show();
+     //$('#profilereg_ajax_load').show();
+
+     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+     
     }
 
 }
