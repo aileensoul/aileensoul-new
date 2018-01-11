@@ -192,7 +192,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                     <div class="container">
                         <div class="row">
                             <div class="blog_post_outer col-md-9 col-sm-8 pr0">
-                                <?php
+                                <!-- <?php
                                 if ($this->input->get('q')) {
                                     ?>
                                     <div class="blog-tag">
@@ -206,17 +206,38 @@ header("Pragma: no-cache"); // HTTP/1.0
                                         <div class="tag-line"><span>Tag:</span> <?php echo $search_keyword; ?></div>
                                     </div>
                                     <?php
-                                }//if end  
+                                }//if end  ?>  -->
 
-                                if (count($blog_detail) == 0) {
+                             <?php   if (count($blog_detail) == 0) {
 
                                     if ($this->input->get('q') || $this->uri->segment(2) == 'tag') {
                                         ?>
-                                        <div class="job-saved-box">
-                                            <div class="blog-tag" style="margin-bottom: 0px;">
 
-                                            </div>
+                    <div class="custom-right-art mian_middle_post_box animated fadeInUp">
+                            <div class="common-form">
+                                        <div class="job-saved-box">
+
+                                             <?php
+                                if ($this->input->get('q')) {
+                                    ?>
+                                     <h3>Search results for 
+                                        <?php
+                                       
+                                            echo '' . $search_keyword . '';
+                                       
+                                        ?></h3>
+
+                                    <?php } if ($this->uri->segment(2) == 'tag') {?>
+                                            <h3>Tag: 
+                                        <?php
+                                       
+                                            echo '' . $search_keyword . '';
+                                       
+                                        ?></h3>
+
+                                        <?php }?>
                                             <div class="contact-frnd-post">
+                                                <div class="job-contact-frnd1  cust-border">
                                                 <div class="text-center rio">
                                                     <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
                                                     <p style="margin-left:4%;text-transform:none !important;border:0px;">We couldn't find what you were looking for.</p>
@@ -225,7 +246,10 @@ header("Pragma: no-cache"); // HTTP/1.0
                                                     </ul>
                                                 </div>
                                             </div>
+                                            </div>
                                         </div>
+                                    </div>
+                                </div>
                                         <?php
                                     }
                                     if ($this->uri->segment(3) == 'popular') {
