@@ -128,7 +128,8 @@
                         </div>
                         <!--COVER PIC END-->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
-                            <div class="page-title">
+                            <div class="common-form">
+                                <div class="job-saved-box">
                                 <h3>
                                     <?php
                                     $searchkeyword = $this->session->userdata('searchkeyword');
@@ -149,13 +150,16 @@
                                     }
                                     ?>
                                 </h3>
-                            </div>
+                            
 
                             <div class="job-contact-frnd1">
 
 
                             </div>
                             <div id="loader" style="display: none;"><p style="text-align:center;"><img alt="loader" class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
+                        </div>
+                    </div>
+                    </div>
                         </div>
 
                         <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 

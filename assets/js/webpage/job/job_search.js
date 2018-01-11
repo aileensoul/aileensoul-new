@@ -61,7 +61,7 @@ function job_search(pagenum)
             var numItems = $('.job-contact-frnd1 .all-job-box').length;
             // return false;
             if (numItems == 0) {
-                $('.job-contact-frnd1').addClass('cust-border');
+                // $('.job-contact-frnd1').addClass('cust-border');
             }
             //display border for no projects available end
             // second header class add for scroll

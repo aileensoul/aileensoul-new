@@ -199,7 +199,7 @@
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="common-form">
                                 <div class="job-saved-box">
-                                    <h3 style="background-color: #fff; text-align: center; color: #003; border-bottom: 1px solid #d9d9d9;">
+                                    <h3 style="color: #5c5c5c;font-weight: 500;">
                                         Search result of 
                                         <?php
                                         if ($keyword != "" && $keyword1 == "") {
@@ -213,7 +213,7 @@
                                         }
                                         ?>
                                     </h3>
-                                        <div class="job-contact-frnd pt10">
+                                        <div class="job-contact-frnd">
                                             <!-- AJAX DATA... -->
                                         </div>
                                     

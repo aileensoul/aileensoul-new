@@ -21,7 +21,7 @@
                 <?php echo $n_leftbar; ?>
                 <div class="middle-part">
                     <div class="add-post">
-                        <div class="post-box" data-target="#post-popup" data-toggle="modal">
+                        <div class="post-box" data-target="#opportunity-popup" data-toggle="modal">
                             <div class="post-img">
                                 <?php if ($leftbox_data['user_image'] != '') { ?> 
                                     <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
@@ -33,6 +33,13 @@
                                 Post Opportunity
                             </div>
                             <span class="post-cam"><i class="fa fa-camera"></i></span>
+                        </div>
+                    </div>
+                    <div class="bs-example">
+                        <div class="progress progress-striped" id="progress_div">
+                            <div class="progress-bar" style="width: 0%;">
+                                <span class="sr-only">0%</span>
+                            </div>
                         </div>
                     </div>
                     <div class="all-post-box">
@@ -208,8 +215,11 @@
                                         </div>
                                         <div class="user-list-detail">
                                             <p class="contact-name"><a href="#" ng-bind="(contact.first_name | limitTo:1 | uppercase) + (contact.first_name.substr(1) | lowercase)"></a></p>
-                                            <p class="contact-designation"><a href="#" ng-if="contact.degree_name != ''">{{contact.title_name}}CEO</a></p>
-                                            <p class="contact-designation"><a href="#" ng-if="contact.degree_name == ''">{{contact.degree_name}}</a></p>
+                                            <p class="contact-designation">
+                                                <a href="#" ng-if="contact.title_name != ''">{{contact.title_name| uppercase}}</a>
+                                                <a href="#" ng-if="contact.title_name == ''">{{contact.degree_name| uppercase}}</a>
+                                                <a href="#" ng-if="contact.title_name == null && contact.degree_name == null">CURRENT WORK</a>
+                                            </p>
                                         </div>
                                         <button class="follow-btn" ng-click="addToContact(contact.user_id, contact)">Add to contact</button>
                                     </div>
@@ -221,13 +231,12 @@
             </div>
         </div>
 
-        <div style="display:none;" class="modal fade" id="post-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
+        <div style="display:none;" class="modal fade" id="opportunity-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">×</button>
                     <div class="post-popup-box">
-                        <?php echo form_open_multipart(base_url('user_opportunity/post_opportunity'), array('id' => 'post_opportunity', 'name' => 'post_opportunity', 'onsubmit' => "return post_opportunity_check(event)")); ?>
+                        <?php echo form_open_multipart(base_url('user_opportunities/post_opportunity'), array('id' => 'post_opportunity', 'name' => 'post_opportunity', 'ng-submit' => "post_opportunity_check(event)")); ?>
                         <div class="post-box">
                             <div class="post-img">
                                 <?php if ($leftbox_data['user_image'] != '') { ?> 
@@ -260,7 +269,7 @@
                                 <textarea name="location" id="location" type="text" class="" placeholder="WHICH LOCATION?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a; Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.. "></textarea>
                             </div>
                             <div class="form-group">
-                                <input name="field" id="field" type="text" placeholder="What is your field?">
+                                <input name="field" id="field" type="text" placeholder="What is your field?" autocomplete="off">
                             </div>
                         </div>
                         <div class="text-right fw pt10">
@@ -282,7 +291,8 @@
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()) ?>"></script>
-
+        <script src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
