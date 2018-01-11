@@ -1060,8 +1060,8 @@ span.onclick = function () {
     modal.style.display = "none";
 }
 
-function modelopen(){
-   modal.style.display = "block";
+function modelopen() {
+    modal.style.display = "block";
 }
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -1841,7 +1841,7 @@ jQuery(document).ready(function ($) {
             bar.width(percentVal)
             percent.html(percentVal);
 
-            $('#myBtn').prop('onclick',null).off('click');
+            $('#myBtn').prop('onclick', null).off('click');
         },
         success: function () {
 //            var percentVal = '100%';
@@ -1851,8 +1851,8 @@ jQuery(document).ready(function ($) {
         complete: function (response) {
 
 
-             $("#myBtn").on("click", modelopen);
-             
+            $("#myBtn").on("click", modelopen);
+
             var percentVal = '100%';
             bar.width(percentVal)
             percent.html(percentVal);
