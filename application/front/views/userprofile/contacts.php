@@ -16,78 +16,7 @@
 									<a class="btn3">In Contacts</a>
 								</div>
 							</div>
-							<div class="custom-user-box">
-								<div class="post-img">
-									<a href="#"><img src="img/user-pic.jpg"></a>
-								</div>
-								<div class="custom-user-detail">
-									<h4><a href="#">Prasant Dadhaniya</a></h4>
-									<p>IT Sector</p>
-								</div>
-								<div class="custom-user-btn">
-									<a class="btn3">In Contacts</a>
-								</div>
-							</div>
-							<div class="custom-user-box">
-								<div class="post-img">
-									<a href="#"><img src="img/user-pic.jpg"></a>
-								</div>
-								<div class="custom-user-detail">
-									<h4><a href="#">Prasant Dadhaniya</a></h4>
-									<p>IT Sector</p>
-								</div>
-								<div class="custom-user-btn">
-									<a class="btn3">In Contacts</a>
-								</div>
-							</div>
-							<div class="custom-user-box">
-								<div class="post-img">
-									<a href="#"><img src="img/user-pic.jpg"></a>
-								</div>
-								<div class="custom-user-detail">
-									<h4><a href="#">Prasant Dadhaniya</a></h4>
-									<p>IT Sector</p>
-								</div>
-								<div class="custom-user-btn">
-									<a class="btn3">In Contacts</a>
-								</div>
-							</div>
-							<div class="custom-user-box">
-								<div class="post-img">
-									<a href="#"><img src="img/user-pic.jpg"></a>
-								</div>
-								<div class="custom-user-detail">
-									<h4><a href="#">Prasant Dadhaniya</a></h4>
-									<p>IT Sector</p>
-								</div>
-								<div class="custom-user-btn">
-									<a class="btn3">In Contacts</a>
-								</div>
-							</div>
-							<div class="custom-user-box">
-								<div class="post-img">
-									<a href="#"><img src="img/user-pic.jpg"></a>
-								</div>
-								<div class="custom-user-detail">
-									<h4><a href="#">Prasant Dadhaniya</a></h4>
-									<p>IT Sector</p>
-								</div>
-								<div class="custom-user-btn">
-									<a class="btn3">In Contacts</a>
-								</div>
-							</div>
-							<div class="custom-user-box">
-								<div class="post-img">
-									<a href="#"><img src="img/user-pic.jpg"></a>
-								</div>
-								<div class="custom-user-detail">
-									<h4><a href="#">Prasant Dadhaniya</a></h4>
-									<p>IT Sector</p>
-								</div>
-								<div class="custom-user-btn">
-									<a class="btn3">In Contacts</a>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>

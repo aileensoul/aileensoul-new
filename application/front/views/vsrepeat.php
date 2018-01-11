@@ -1,19 +1,29 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <style>
-        md-virtual-repeat-container {
-  background-color: green;
+        .virtualRepeatdemoInfiniteScroll #vertical-container {
+    height: 292px;
+    width: 400px;
 }
-md-list-item {
-  background-color: red;
+
+.virtualRepeatdemoInfiniteScroll .repeated-item {
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+    height: 40px;
+    padding-top: 10px;
 }
-.repeated-item {
-  border-bottom: 1px solid #ddd;
-  box-sizing: border-box;
-  height: 40px;
-  padding-top: 10px;
+
+.virtualRepeatdemoInfiniteScroll md-content {
+    margin: 16px;
+}
+
+.virtualRepeatdemoInfiniteScroll md-virtual-repeat-container {
+    border: solid 1px grey;
+}
+
+.virtualRepeatdemoInfiniteScroll .md-virtual-repeat-container .md-virtual-repeat-offsetter {
+    padding-left: 16px;
 }
         </style>
     <title></title>
@@ -31,91 +41,84 @@ md-list-item {
   <script src="script.js"></script>
   
 </head>
-<body ng-app="BlankApp" ng-controller="MainVM" layout="column">
-  <h1 flex="none">{{vm.title}}</h1>
-  
-  <div flex layout="row">
-   <!--  <md-list flex layout="column">
-      <md-virtual-repeat-container flex>
-         <md-list-item md-virtual-repeat="item in vm.items">
-           Item {{item.name}}
-         </md-list-item>
-      </md-virtual-repeat-container> 
-    </md-list> -->
-    <md-virtual-repeat-container flex id="lazy-container">
-      <div md-virtual-repeat="item in self.userdata" item-size="5" md-on-demand class="repeated-item">
-              {{item.name}}
-      
-    </md-virtual-repeat-container>
-  </div>
-  
-  <script>
-      var base_url = '<?php echo base_url(); ?>';
-      var app = angular.module('BlankApp', ['ngMaterial']);
-app.controller('MainVM',function ($scope,$timeout,$http) {
-
-    var self = this;
-    self.title = "Virtual Repeat - Lazy Loading";
+<body ng-app="infiniteScrolling" class="virtualRepeatdemoInfiniteScroll">
+ 
+    <div ng-controller="AppCtrl as ctrl" ng-cloak>
+        <md-content layout="column">
+          <md-virtual-repeat-container id="vertical-container" flex>
+              <md-list>  
+          <md-list-item md-virtual-repeat="item in ctrl.infiniteItems" md-on-demand
+                     class="repeated-item" flex>
+                    {{item.id}}
+               </md-list-item>
+                  </md-list>
+            </md-virtual-repeat-container>
+        </md-content>
+    </div>
     
-   getFieldList();
-                        function getFieldList() {
-                            $http({
-                                method: 'POST',
-                                url: base_url + 'userprofile_page/vsrepeat_data',
-                               // data: 'q=' + $scope.user.cityList,
-                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    
+    <script>
+         var base_url = '<?php echo base_url(); ?>';
+         
+        (function () {
+    'use strict';
+    angular
+      .module('infiniteScrolling', ['ngMaterial'])
+      .controller('AppCtrl', function ($timeout,$scope,$http) {
+          // In this example, we set up our model using a plain object.
+          // Using a class works too. All that matters is that we implement
+          // getItemAtIndex and getLength.
+           var vm = this;
+           var abc = 1;
+           if(abc == 1) {
+          vm.infiniteItems = {
+              numLoaded_: 0,
+              toLoad_: 0,
+              khyati: 6,
+              items: [],
+
+              // Required.
+              getItemAtIndex: function (index) { 
+                 // var index = 11;
+                  if (index > this.numLoaded_) {
+                      this.fetchMoreItems_(index);
+                      return null;
+                  }
+                  return this.items[index];
+              },
+
+              // Required.
+              getLength: function () {
+                  return this.numLoaded_ + 5;
+              },
+
+              fetchMoreItems_: function (index) {
+                      //      alert(index);                 
+                 //alert(this.khyati);
+                 // if (this.khyati >= index) {
+                  if (index == this.khyati - 5) {
+                   //   alert("success");
+                    //  alert(this.khyati);
+                    //  alert(index);
+                      this.khyati += 5;
+                      this.toLoad_ += 5;
+                       $http({
+                               method: 'POST',
+                               url: 'http://localhost/aileensoul-new/userprofile_page/vsrepeat_data'
                             })
-                                    .then(function (success) {
-                                        data123 = success.data;
-                                     self.userdata    = data123;
-                                    });
-                        }
-                        
-    // self.items = [];
-
-    // for (var i = 0; i < 500; i++) {
-    //     self.items.push({
-    //         name: "item " + i
-    //     });
-    // }
-
-    self.infiniteItems = {
-        numLoaded_: -1,
-        toLoad_: 0,
-        getItemAtIndex: function (index) {
-           // alert(index);
-           // alert(self.infiniteItems.numLoaded_);
-            if (index > self.infiniteItems.numLoaded_) {
-                self.infiniteItems.fetchMoreItems_(index);
-                return null;
-            }
-            return index;
-        },
-        getLength: function () {
-            return self.infiniteItems.numLoaded_ + 5;
-        },
-        fetchMoreItems_: function (index) {
-
-          
-            if (self.infiniteItems.toLoad_ < index) {
-                self.infiniteItems.toLoad_ += 10;
-                $timeout(function () {
-                    self.infiniteItems.numLoaded_ = self.infiniteItems.toLoad_;
-                  
-                  self.title += "I";
-                }, 1000);
-            }
-        }
-
-    }
-});
-                
-//app.controller('MainVM', MainVM);// JavaScript source code
+                               .then(angular.bind(this, function (obj) {
+                           this.items = this.items.concat(obj.data);
+                           this.numLoaded_ = this.toLoad_;
+                       }));
+                      
+                  }
+              }
+          };
+      }
+       });
+})();
 
 
-      </script>
-      
+        </script>
 </body>
 </html>
-
-
