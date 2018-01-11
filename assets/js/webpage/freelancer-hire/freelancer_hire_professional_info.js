@@ -67,7 +67,9 @@ function validate(){
 
      var form = $("#professional_info1");
     if(form.valid() == true ){
-     $('#profilereg_ajax_load').show();
+     //$('#profilereg_ajax_load').show();
+     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+     
     }
 }
 

@@ -19,7 +19,9 @@ function validate(){
 
      var form = $("#freelancer_post_education");
     if(form.valid() == true ){
-     $('#profilereg_ajax_load').show();
+     //$('#profilereg_ajax_load').show();
+     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+     
     }
 }
 
