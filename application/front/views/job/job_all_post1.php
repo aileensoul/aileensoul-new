@@ -129,7 +129,8 @@
                         </div>
                     </div>
                     <div class="custom-right-art mian_middle_post_box animated fadeInUp">
-                        <div class="page-title">
+                        <div class="common-form">
+                            <div class="job-saved-box">
                             <h3>
                                 Search result of 
                                 <?php
@@ -148,11 +149,16 @@
                                 }
                                 ?>
                             </h3>
-                        </div>
+                            
+                        
+                     <div class="contact-frnd-post">
                         <div class="job-contact-frnd1">
 
                             <div class="loader"><p style="text-align:center;"><img class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>" alt="LOADERIMAGE"/></p></div>
                         </div>
+                        </div>
+                        </div>
+                    </div>
                     </div>
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 

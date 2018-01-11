@@ -173,7 +173,7 @@
                                         }
                                         ?></h3>
                                     <div class="contact-frnd-post">
-                                        <div class="job-contact-frnd ">
+                                        <div class="job-contact-frnd">
                                             <!--.........AJAX DATA......-->
 
 
