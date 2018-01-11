@@ -24,9 +24,9 @@
                         <div class="post-box" data-target="#post-popup" data-toggle="modal">
                             <div class="post-img">
                                 <?php if ($leftbox_data['user_image'] != '') { ?> 
-                                    <img src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                    <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
                                 <?php } else { ?>
-                                    <img src="<?php echo base_url(NOBUSIMAGE) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                    <img ng-src="<?php echo base_url(NOBUSIMAGE) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
                                 <?php } ?>
                             </div>
                             <div class="post-text">
@@ -39,7 +39,7 @@
                         <div class="all-post-top">
                             <div class="post-head">
                                 <div class="post-img">
-                                    <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                    <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                 </div>
                                 <div class="post-detail">
                                     <div class="fw">
@@ -52,7 +52,7 @@
                                 <div class="post-right-dropdown dropdown">
 
 
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/') ?>n-images/right-down.png"></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/') ?>n-images/right-down.png"></a>
 
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Action</a></li>
@@ -75,45 +75,45 @@
                             </div>
                             <div class="post-images">
                                 <div class="one-img">
-                                    <img src="<?php echo base_url('assets/') ?>n-images/img1.jpg">
+                                    <img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg">
                                 </div>
                             </div>
                             <!-- CONDITIONAL DIV -->
                             <div class="post-images">
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
+                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
+                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                             </div>
                             <!-- CONDITIONAL DIV -->
                             <!-- CONDITIONAL DIV -->
                             <div class="post-images">
                                 <div class="three-img-top">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
+                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
+                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
+                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                             </div>
                             <!-- CONDITIONAL DIV -->
                             <!-- CONDITIONAL DIV -->
                             <div class="post-images four-img">
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
+                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
+                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
+                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                 </div>
                                 <div class="two-img">
-                                    <a href="#"><img src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
+                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
                                     <div class="view-more-img">
                                         <span>View All (+5)</span>
                                     </div>
@@ -144,7 +144,7 @@
                             <div class="comment-box">
                                 <div class="post-comment">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                        <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-dis">
                                         <div class="comment-name"><a>Sarasvati Musical Shop</a></div>
@@ -160,7 +160,7 @@
 
                                 <div class="post-comment">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                        <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-dis">
                                         <div class="comment-name"><a>Sarasvati Musical Shop</a></div>
@@ -176,7 +176,7 @@
 
                                 <div class="add-comment">
                                     <div class="post-img">
-                                        <img src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                        <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-input">
                                         <input type="text" placeholder="Add a Comment ...">
@@ -192,7 +192,7 @@
 
                 <div class="right-part">
                     <div class="add-box">
-                        <img src="<?php echo base_url('assets/n-images/add.jpg') ?>">
+                        <img ng-src="<?php echo base_url('assets/n-images/add.jpg') ?>">
                     </div>
                     <div class="all-contact">
                         <h4>Contacts<a href="#" class="pull-right">All</a></h4>
@@ -201,7 +201,7 @@
                                 <div owl-carousel-item="" ng-repeat="contact in contactSuggetion" class="item">
                                     <div class="item" id="item-{{contact.user_id}}">
                                         <div class="post-img" ng-if="contact.user_image != ''">
-                                            <img src="<?php echo USER_THUMB_UPLOAD_URL ?>{{contact.user_image}}">
+                                            <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{contact.user_image}}">
                                         </div>
                                         <div class="post-img" ng-if="contact.user_image == ''">
                                             <div class="post-img-mainuser">{{contact.first_name| limitTo:1 | uppercase}}{{contact.last_name| limitTo:1 | uppercase}}</div>
@@ -227,47 +227,47 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">×</button>
                     <div class="post-popup-box">
-                        <form>
-                            <?php echo form_open_multipart(base_url('user_opportunity/post_opportunity'), array('id' => 'post_opportunity', 'name' => 'post_opportunity', 'onsubmit' => "return post_opportunity_check(event)")); ?>
-                            <div class="post-box">
-                                <div class="post-img">
-                                    <?php if ($leftbox_data['user_image'] != '') { ?> 
-                                        <img src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
-                                    <?php } else { ?>
-                                        <img src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
-                                    <?php } ?>
-                                </div>
-                                <div class="post-text">
-                                    <textarea name="description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
-                                </div>
-                                <div class="all-upload">
-                                    <div class="form-group">
-                                        <input id="postfiles" type="file" class="file" name="postfiles[]"  multiple class="file" data-overwrite-initial="false" data-min-file-count="2" style="display: none;">
-                                    </div>
-                                    <label for="postfiles">
-                                        <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
-                                        <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
-                                        <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
-                                        <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
-                                    </label>
-                                </div>
+                        <?php echo form_open_multipart(base_url('user_opportunity/post_opportunity'), array('id' => 'post_opportunity', 'name' => 'post_opportunity', 'onsubmit' => "return post_opportunity_check(event)")); ?>
+                        <div class="post-box">
+                            <div class="post-img">
+                                <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                    <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                <?php } else { ?>
+                                    <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                <?php } ?>
                             </div>
-                            <div class="post-field">
-                                <div class="form-group">
-                                    <textarea name="job_title" id="job_title" placeholder="FOR WHOM THIS OPPORTUNITY ?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, PHP Developer, HR, BDE, CA, Doctor, Freelancer.." cols="10" rows="5" style="resize:none"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <textarea name="location" id="location" type="text" class="" placeholder="WHICH LOCATION?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a; Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.. "></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input name="field" id="field" type="text" placeholder="What is your field?">
-                                </div>
+                            <div class="post-text">
+                                <textarea name="description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
                             </div>
-                            <div class="text-right fw pt10">
-                                <!--<a class="btn1" href="#">Post</a>-->
-                                <button type="submit" class="btn1"  value="Submit">Post</button>    
+                            <div class="all-upload">
+                                <div class="form-group">
+                                    <!--<input id="postfiles" type="file" class="file" name="postfiles"  multiple class="file" data-overwrite-initial="false" data-min-file-count="2" style="display: none;">-->
+                                    <input file-input type="file" id="fileInput" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+                                </div>
+                                <label for="fileInput" ng-click="postFiles()">
+                                    <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
+                                    <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
+                                    <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
+                                    <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
+                                </label>
                             </div>
-                            <?php echo form_close(); ?>
+                        </div>
+                        <div class="post-field">
+                            <div class="form-group">
+                                <textarea name="job_title" id="job_title" placeholder="FOR WHOM THIS OPPORTUNITY ?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, PHP Developer, HR, BDE, CA, Doctor, Freelancer.." cols="10" rows="5" style="resize:none"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="location" id="location" type="text" class="" placeholder="WHICH LOCATION?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a; Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.. "></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input name="field" id="field" type="text" placeholder="What is your field?">
+                            </div>
+                        </div>
+                        <div class="text-right fw pt10">
+                            <!--<a class="btn1" href="#">Post</a>-->
+                            <button type="submit" class="btn1"  value="Submit">Post</button>    
+                        </div>
+                        <?php echo form_close(); ?>
                     </div>
                 </div>
             </div>
