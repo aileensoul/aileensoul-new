@@ -708,6 +708,23 @@ footer ul li a{
 .contact #contact_form .form-group input[type="text"]:focus+label,.contact #contact_form .form-group input[type="email"]:focus+label,.contact #contact_form textarea:focus+label{
     color: #1b8ab9 !important;
 }
+
+
+.feedback-cus #feedback_form input.error,.feedback-cus #feedback_form textarea.error {
+    border:0px !important;
+    border-bottom: 1px solid red !important;
+}
+.feedback-cus #feedback_form .form-group input[type="text"]:focus,.feedback-cus #feedback_form .form-group input[type="email"]:focus,.feedback-cus #feedback_form textarea:focus{
+    border-bottom: 1px solid #1b8ab9 !important; 
+    color: #1b8ab9 !important;
+}
+.feedback-cus #feedback_form .form-group input[type="text"]:focus+label,.feedback-cus #feedback_form .form-group input[type="email"]:focus+label,.feedback-cus #feedback_form textarea:focus+label{
+    color: #1b8ab9 !important;
+}
+
+
+
+
 select{
   color:#acacac;
 }
@@ -2185,7 +2202,8 @@ input:-webkit-autofill,input:-webkit-autofill:active,input:-webkit-autofill:focu
     color:#838383!important;
     background:0 0;
     -webkit-background-clip:inherit;
-    -webkit-text-fill-color:inherit
+    -webkit-text-fill-color:inherit;
+    letter-spacing:5px;
 }
 .ftr-copuright{
     font-size:13px
@@ -2548,6 +2566,7 @@ header.profile-header .logo a{
     margin:0 auto
 }
 .main_otp_box_middle a:hover{text-decoration: none !important;}
+.contact-add .p20{padding: 46px 30px;}
 
 @media screen and (min-height:540px){
     .cover .modal-content{
@@ -2658,6 +2677,7 @@ header.profile-header .logo a{
     .about-content{
         width:100%!important
     }
+    .contact-add .p20{padding: 23px 30px;}
 }
 @media screen and (max-width:1024px){
     .middle-section{
@@ -2856,6 +2876,7 @@ header.profile-header .logo a{
     #onload-Modal .modal-dialog button{
         top:80px
     }
+    .contact-add .p20{padding: 46.50px 30px;}
 }
 @media screen and (max-width:767px){
     footer,header .col-md-4.col-sm-3{
@@ -3246,6 +3267,7 @@ header.profile-header .logo a{
 	.about-content p img{width:100%;}
 	.new-abput-page .img-custom{width:49%; padding:0 15px;}
     .profile-bnr .logo{text-align: center;}
+    .contact-add .p20{padding: 46.50px 30px;}
 }
 @media screen and (max-width:640px){
     .btns .btn-4{

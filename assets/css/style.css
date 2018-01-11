@@ -2418,8 +2418,12 @@ footer div.pt20{
 
 .email_note{font-size: 11px;line-height: 1.2;float: left;padding-top: 5px;color: #999;}
 .vali_er .error{bottom: -8px;}
-
-
+.job_reg_page_fprm select{
+    color: #acacac;
+}
+.freeh3 select{
+    color: #acacac;
+}
 
 @media screen and (max-height:540px){
     .no-login .modal-dialog{
@@ -2735,7 +2739,10 @@ footer div.pt20{
         height:7%
     }
     .modal-dialog,.people-list ul{
-        height:auto
+        height:auto;
+    }
+    .feedback-cus .modal-dialog,.people-list ul{
+        height:100%;
     }
     .right-side-menu{
         float:left;

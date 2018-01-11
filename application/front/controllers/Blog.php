@@ -52,18 +52,28 @@ class Blog extends CI_Controller {
             }
         } else {
             //THIS IF IS USED FOR WHILE SEARCH FOR RETRIEVE SAME PAGE START
-            if ($this->input->get('q')) {
+            if ($this->input->get('q')) { 
 
-                $this->data['search_keyword'] = $search_keyword = trim($this->input->get('q'));
+                $this->data['search_keyword'] = $search_keyword1 = trim($this->input->get('q'));
 
+                $search_keyword = str_replace("'", '-', $search_keyword1);
+                //echo $search_keyword; die();
 
-                $search_condition = "(title LIKE '%$search_keyword%' OR   description LIKE '%$search_keyword%')";
+                $search_condition = "(title LIKE '%$search_keyword%')";
                 $contition_array = array('status' => 'publish');
-                $this->data['blog_detail'] = $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = '*', $sortby = 'id', $orderby = 'desc', $limit, $offset);
+                $bolg_data= $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = '*', $sortby = 'id', $orderby = 'desc', $limit, $offset);
+
+                $search_condition = "(description LIKE '%$search_keyword%')";
+                $contition_array = array('status' => 'publish');
+                $bolg_data_des = $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = '*', $sortby = 'id', $orderby = 'desc', $limit, $offset);
+
+                $unique = array_merge($bolg_data, $bolg_data_des);
+                $this->data['blog_detail'] = array_unique($unique, SORT_REGULAR);
+                //echo "<pre>"; print_r($bolg_data_des); die();
             }
             //THIS IF IS USED FOR WHILE SEARCH FOR RETRIEVE SAME PAGE END
             //FOR GETTING ALL DATA START
-            else {
+            else { 
                 $condition_array = array('status' => 'publish');
                 $this->data['blog_detail'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
                 // echo "<pre>";print_r( $this->data['blog_detail']);die();
