@@ -642,8 +642,8 @@
                                                                     echo "";
                                                                 }
                                                                 if ($freelancerpostdata[0]['freelancer_post_fixed_rate'] == 1) { ?>
-                                                                    <span class="text-center"><?php echo $this->lang->line("also_work_fixed"); ?></span>
-                                                                    
+                                                                    <li> <span class="text-center"><?php echo $this->lang->line("also_work_fixed"); ?></span>
+                                                                    </li>
                                                              <?php   }
                                                                 ?>
                                                             </ul>
