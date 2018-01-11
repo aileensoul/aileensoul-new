@@ -142,34 +142,9 @@
                 <div class="container art_container padding-360">
                     <div class="">
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt"><div class="">
-                            <?php echo $business_left; ?>
-                            <?php echo $left_footer; ?>
-                            </div></div>
-                        <div class="custom-right-art mian_middle_post_box animated fadeInUp">
-                            <div class="common-form">
-                                <div class="job-saved-box">
-                                    <h3 style="background-color: #fff; text-align: center; color: #003; border-bottom: 1px solid #d9d9d9;">
-                                        Search result of 
-                                        <?php
-                                        if ($keyword != "" && $keyword1 == "") {
-                                            echo '"' . trim($keyword, ',') . '"';
-                                        } elseif ($keyword == "" && $keyword1 != "") {
-                                            echo '"' . trim($keyword1, ',') . '"';
-                                        } else {
-                                            echo '"' . trim($keyword, ',') . '"';
-                                            echo " and ";
-                                            echo '"' . trim($keyword1, ',') . '"';
-                                        }
-                                        ?>
-                                    </h3>
-                                        <div class="job-contact-frnd pt10">
-                                            <!-- AJAX DATA... -->
-                                        </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+                           
+
+                            <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
                             <div class="all-profile-box">
                                 <div class="all-pro-head">
                                     <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
@@ -218,6 +193,34 @@
                                 </ul>
                             </div>
                         </div>
+                             <?php echo $business_left; ?>
+                            <?php echo $left_footer; ?>
+                            </div></div>
+                        <div class="custom-right-art mian_middle_post_box animated fadeInUp">
+                            <div class="common-form">
+                                <div class="job-saved-box">
+                                    <h3 style="background-color: #fff; text-align: center; color: #003; border-bottom: 1px solid #d9d9d9;">
+                                        Search result of 
+                                        <?php
+                                        if ($keyword != "" && $keyword1 == "") {
+                                            echo '"' . trim($keyword, ',') . '"';
+                                        } elseif ($keyword == "" && $keyword1 != "") {
+                                            echo '"' . trim($keyword1, ',') . '"';
+                                        } else {
+                                            echo '"' . trim($keyword, ',') . '"';
+                                            echo " and ";
+                                            echo '"' . trim($keyword1, ',') . '"';
+                                        }
+                                        ?>
+                                    </h3>
+                                        <div class="job-contact-frnd pt10">
+                                            <!-- AJAX DATA... -->
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

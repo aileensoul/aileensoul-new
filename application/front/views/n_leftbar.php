@@ -25,10 +25,8 @@
                         <li><a href="#">Dashboard</a></li>
                         <li><a href="#">Detail</a></li>
                         <li><a href="#">Followers</a></li>
-
                     </ul>
                 </div>
-
             </div>
         </div>
     </div>

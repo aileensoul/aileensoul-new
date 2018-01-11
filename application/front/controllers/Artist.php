@@ -15266,7 +15266,14 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                                           }else{
 
+                                            if($userid){
+
+                                            $return_html .= '<a style="  font-size: 19px;font-weight: 600;" href="' . base_url('artist'). '" title="' . $key['art_name'] . ' ' . $key['art_lastname'] . '">' . ucfirst(strtolower($key['art_name'])) . ' ' . ucfirst(strtolower($key['art_lastname'])) . '</a>';
+
+                                            }else{
+
                                              $return_html .= '<a style="  font-size: 19px;font-weight: 600;" href="javascript:void(0);" onclick="register_profile();" title="' . $key['art_name'] . ' ' . $key['art_lastname'] . '">' . ucfirst(strtolower($key['art_name'])) . ' ' . ucfirst(strtolower($key['art_lastname'])) . '</a>';
+                                             }
 
                                           }
 
@@ -15656,12 +15663,29 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                     foreach ($artmultiimage as $multiimage) {
 
+                        if($userid){
+
+                        $return_html .= '<a href="' . base_url('artist'). '"><div class="two-images">
+                                                       <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">
+                                                    </div> </a>';
+                        }else{
+
                         $return_html .= '<a href="javascript:void(0);" onclick="register_profile();"><div class="two-images">
                                                        <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">
                                                     </div> </a>';
+                            }
                     }
                 } elseif (count($artmultiimage) == 3) {
-                    $return_html .= '<a href="javascript:void(0);" onclick="register_profile();"><div class="three-image-top">
+
+                    if($userid){
+
+                    $return_html .= '<a href="' . base_url('artist'). '">';
+
+                    }else{
+                    $return_html .= '<a href="javascript:void(0);" onclick="register_profile();">';
+                       }
+
+                     $return_html .= ' <div class="three-image-top">
                                                     <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" alt="' . $artmultiimage[0]['file_name'] . '">
                                                 </div>
                                                <div class="three-image">
@@ -15678,7 +15702,16 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                     foreach ($artmultiimage as $multiimage) {
 
-                        $return_html .= '<a href="javascript:void(0);" onclick="register_profile();"><div class="four-image">
+
+                        if($userid){
+
+                        $return_html .= '<a href="' . base_url('artist'). '">';
+
+                        }else{
+                        $return_html .= '<a href="javascript:void(0);" onclick="register_profile();">';
+                          }
+
+                        $return_html .= '<div class="four-image">
                                                         
                                                         <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">
                                                        
@@ -15689,7 +15722,16 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     $i = 0;
                     foreach ($artmultiimage as $multiimage) {
 
-                        $return_html .= ' <a href="javascript:void(0);" onclick="register_profile();"><div class="four-image">
+                        if($userid){
+
+                        $return_html .= ' <a href="' . base_url('artist'). '">';
+                      }else{
+                        
+                        $return_html .= ' <a href="javascript:void(0);" onclick="register_profile();">';
+
+                      }
+
+                       $return_html .= '<div class="four-image">
                                                            
                                                             <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" alt="' . $multiimage['file_name'] . '">  
                                                         </div></a>';
@@ -15699,12 +15741,28 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                             break;
                     }
 
-                    $return_html .= '<div class="four-image">
-                                                        <a href="javascript:void(0);" onclick="register_profile();">
-                                                        <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '" alt="' . $artmultiimage[3]['file_name'] . '">
-                                                        </a>
-                                                        <a href="javascript:void(0);" onclick="register_profile();">
-                                                    <div class="more-image" >
+                    $return_html .= '<div class="four-image">';
+
+                    if($userid){
+
+                    $return_html .= '<a href="' . base_url('artist'). '">';
+
+                    }else{
+
+                    $return_html .= '<a href="javascript:void(0);" onclick="register_profile();">';
+                     }
+
+                    $return_html .= '<img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '" alt="' . $artmultiimage[3]['file_name'] . '">
+                                                        </a>';
+
+                        if($userid){
+                          $return_html .= '<a href="' . base_url('artist'). '">';
+
+                        }else{
+                           $return_html .= '<a href="javascript:void(0);" onclick="register_profile();">';
+                        }
+
+                    $return_html .= '<div class="more-image" >
                                                 <span>
                                                      View All (+' . (count($artmultiimage) - 4) . ')
                                                  </span></div>
@@ -15721,8 +15779,16 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 $return_html .= '<div class="post-design-like-box col-md-12">
                                        <div class="post-design-menu">
                                           <ul class="col-md-6">
-                                             <li class="likepost' . $key['art_post_id'] . '">
-                                                <a href="javascript:void(0);" onclick="register_profile();">';
+                                             <li class="likepost' . $key['art_post_id'] . '">';
+
+
+                                if($userid){
+
+                $return_html .= '<a href="' . base_url('artist'). '">';
+
+                                }else{
+                $return_html .= '<a href="javascript:void(0);" onclick="register_profile();">';
+                                    }
 
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('art_post_id' => $key['art_post_id'], 'status' => '1');
@@ -15741,8 +15807,15 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 $contition_array = array('art_post_id' => $key['art_post_id'], 'status' => '1', 'is_delete' => '0');
                 $commnetcount = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $return_html .= '<a class="ripple like_h_w" href="javascript:void(0);" onclick="register_profile();">
-                                                <i class="fa fa-comment-o" aria-hidden="true"> 
+               if($userid){
+
+                $return_html .= '<a class="ripple like_h_w" href="' . base_url('artist'). '">';
+
+               }else{
+                $return_html .= '<a class="ripple like_h_w" href="javascript:void(0);" onclick="register_profile();">';
+                  }
+
+                $return_html .= '<i class="fa fa-comment-o" aria-hidden="true"> 
                                                 <span style="display: none;"></span>
                                                 </i> 
                                                 </a>
@@ -15796,8 +15869,15 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->art_name;
                     $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->art_lastname;
 
-                    $return_html .= '<div class="like_one_other">
-                                                    <a href="javascript:void(0);" onclick="register_profile();">';
+                    $return_html .= '<div class="like_one_other">';
+
+                    if($userid){
+
+                    $return_html .= '<a href="' . base_url('artist'). '">';
+
+                    }else{
+                    $return_html .= '<a href="javascript:void(0);" onclick="register_profile();">';
+                     }
 
                     $return_html .= ucfirst(strtolower($art_fname));
                     $return_html .= '&nbsp;';
@@ -15841,8 +15921,15 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->art_name;
                 $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->art_lastname;
 
-                $return_html .= '<a href="javascript:void(0);" onclick="register_profile();">
-                                          <div class="like_one_other">';
+                if($userid){
+
+                 $return_html .= '<a href="' . base_url('artist'). '">';
+
+                }else{
+                 $return_html .= '<a href="javascript:void(0);" onclick="register_profile();">';
+                }
+
+                $return_html .= '<div class="like_one_other">';
 
                 $return_html .= ucfirst(strtolower($art_fname));
                 $return_html .= '&nbsp;';
@@ -15881,7 +15968,14 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                         $return_html .= '<div class="all-comment-comment-box">
                                                         <div class="post-design-pro-comment-img">';
+
+                            if($userid){
+
+                        $return_html .= '<a href="' . base_url('artist'). '">';
+
+                            }else{
                         $return_html .= '<a href="javascript:void(0);" onclick="register_profile();">';
+                                }
 
                         $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->art_user_image;
 
@@ -15912,8 +16006,15 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                         $return_html .= '</a></div>
                                                         <div class="comment-name">';
-                        $return_html .= '<a href="javascript:void(0);" onclick="register_profile();">
-                                                            <b title="' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '">';
+
+                            if($userid){
+                             $return_html .= '<a href="' . base_url('artist'). '">';
+
+                            }else{
+                             $return_html .= '<a href="javascript:void(0);" onclick="register_profile();">';
+                          }
+
+                        $return_html .= '<b title="' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '">';
 
                         $return_html .= ucfirst(strtolower($artname));
                         $return_html .= '&nbsp;';
