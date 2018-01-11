@@ -2421,7 +2421,9 @@ footer div.pt20{
 .job_reg_page_fprm select{
     color: #acacac;
 }
-
+.freeh3 select{
+    color: #acacac;
+}
 
 @media screen and (max-height:540px){
     .no-login .modal-dialog{
