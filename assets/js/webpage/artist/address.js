@@ -44,8 +44,8 @@ function reg_loader(){
 
       var form = $("#address");
     if(form.valid() == true ){
-      $('#profilereg_ajax_load').show();
-     //document.getElementById('profilereg_ajax_load').style.display = 'block'
+      //$('#profilereg_ajax_load').show();
+     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
     }
 
 }
