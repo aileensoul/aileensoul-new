@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/owl.carousel.min.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/jquery.mCustomScrollbar.min.css?ver=' . time()) ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>">
-        <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-commen.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-style.css?ver=' . time()) ?>">
     </head>
@@ -241,10 +241,8 @@
                                     <textarea name="description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
                                 </div>
                                 <div class="all-upload">
-                                    <div class="col-md-12"> 
-                                        <div class="form-group">
-                                            <input id="postfiles" type="file" class="file" name="postfiles[]"  multiple class="file" data-overwrite-initial="false" data-min-file-count="2" style="display: none;">
-                                        </div>
+                                    <div class="form-group">
+                                        <input id="postfiles" type="file" class="file" name="postfiles[]"  multiple class="file" data-overwrite-initial="false" data-min-file-count="2" style="display: none;">
                                     </div>
                                     <label for="postfiles">
                                         <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
@@ -279,37 +277,27 @@
         <script src="<?php echo base_url('assets/js/owl.carousel.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery.mCustomScrollbar.concat.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
-        <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()) ?>"></script>
 
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
         <script src="<?php echo base_url('assets/js/angular-validate.min.js?ver=' . time()) ?>"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js">
+        </script>
 
         <script>
-                                            var base_url = '<?php echo base_url(); ?>';
-                                            var slug = '<?php echo $slugid; ?>';
-                                            var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
-                                            var title = '<?php echo $title; ?>';
-                                            var app = angular.module('userOppoApp', ['ui.bootstrap']);
-        </script>
-        <script type="text/javascript">
-            $('#postfiles').on('click', function(){
-            var a = document.getElementById('description').value;
-            var b = document.getElementById('job_title').value;
-            var c = document.getElementById('location').value;
-            var d = document.getElementById('field').value;
-            document.getElementById("post_opportunity").reset();
-            document.getElementById('description').value = a;
-            document.getElementById('job_title').value = b;
-            document.getElementById('location').value = c;
-            document.getElementById('field').value = d;
-            });
+            var base_url = '<?php echo base_url(); ?>';
+            var slug = '<?php echo $slugid; ?>';
+            var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+            var title = '<?php echo $title; ?>';
+            var app = angular.module('userOppoApp', ['ui.bootstrap']);
         </script>
 
+        <script src="<?php echo base_url('assets/js/webpage/user/user_opportunity.js?ver=' . time()) ?>"></script>
     </body>
 </html>
