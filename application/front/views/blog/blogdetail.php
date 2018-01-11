@@ -16,7 +16,7 @@ header("Pragma: no-cache"); // HTTP/1.0
 ?>
 <html lang="en">
     <head>
-        <title><?php echo $blog_detail[0]['title']; ?> - Aileensoul.com</title>
+        <title><?php echo $blog_detail[0]['title']; ?> - Aileensoul</title>
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
