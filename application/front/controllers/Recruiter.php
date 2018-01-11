@@ -4447,17 +4447,15 @@ class Recruiter extends MY_Controller {
         }
     }
 
-//add other_industry into database start 
-    public function recruiter_other_industry() {
-
+    
+     public function recruiter_other_industry() {
         $other_industry = $_POST['other_industry'];
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
-
-        $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => $other_industry);
-        $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
-        $userdata = $this->data['userdata'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'count(*) as total', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $count = $userdata[0]['total'];
+        $contition_array = array('is_delete' => '0', 'industry_name' => $other_industry);
+        $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+        $userdata = $this->data['userdata'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $count = count($userdata);
 
         if ($other_industry != NULL) {
             if ($count == 0) {
@@ -4472,15 +4470,12 @@ class Recruiter extends MY_Controller {
                 $insert_id = $this->common->insert_data_getid($data, 'job_industry');
                 if ($insert_id) {
 
-
-                    $contition_array = array('is_delete' => '0', 'is_other' => '0', 'industry_name !=' => "Others");
+                    $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
                     $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-                    $industry = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                    if (count($industry) > 0) {
-                        $select = '<option value="" selected option disabled>Select Industry</option>';
-
-                        foreach ($industry as $st) {
+                    $university = $this->data['university'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    if (count($university) > 0) {
+                        $select = '<option value="" selected option disabled>Select your Industry</option>';
+                        foreach ($university as $st) {
                             $select .= '<option value="' . $st['industry_id'] . '"';
                             if ($st['industry_name'] == $other_industry) {
                                 $select .= 'selected';
@@ -4489,10 +4484,9 @@ class Recruiter extends MY_Controller {
                         }
                     }
 //For Getting Other at end
-                    $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
-                    $industry_otherdata = $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                    $select .= '<option value="' . $industry_otherdata[0]['industry_id'] . '">' . $industry_otherdata[0]['industry_name'] . '</option>';
+                    $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Other");
+                    $university_otherdata = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $select .= '<option value="' . $university_otherdata[0]['industry_id'] . '">' . $university_otherdata[0]['industry_name'] . '</option>';
                 }
             } else {
                 $select .= 0;
@@ -4504,6 +4498,65 @@ class Recruiter extends MY_Controller {
             "select" => $select,
         ));
     }
+    
+    
+//add other_industry into database start 
+//    public function recruiter_other_industry1() {
+//
+//        $other_industry = $_POST['other_industry'];
+//        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+//
+//
+//        $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => $other_industry);
+//        $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
+//        $userdata = $this->data['userdata'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'count(*) as total', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//        $count = $userdata[0]['total'];
+//
+//        if ($other_industry != NULL) {
+//            if ($count == 0) {
+//                $data = array(
+//                    'industry_name' => $other_industry,
+//                    'created_date' => date('Y-m-d h:i:s', time()),
+//                    'status' => '2',
+//                    'is_delete' => '0',
+//                    'is_other' => '1',
+//                    'user_id' => $userid
+//                );
+//                $insert_id = $this->common->insert_data_getid($data, 'job_industry');
+//                if ($insert_id) {
+//
+//
+//                    $contition_array = array('is_delete' => '0', 'is_other' => '0', 'industry_name !=' => "Others");
+//                    $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+//                    $industry = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//
+//                    if (count($industry) > 0) {
+//                        $select = '<option value="" selected option disabled>Select Industry</option>';
+//
+//                        foreach ($industry as $st) {
+//                            $select .= '<option value="' . $st['industry_id'] . '"';
+//                            if ($st['industry_name'] == $other_industry) {
+//                                $select .= 'selected';
+//                            }
+//                            $select .= '>' . $st['industry_name'] . '</option>';
+//                        }
+//                    }
+////For Getting Other at end
+//                    $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
+//                    $industry_otherdata = $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//
+//                    $select .= '<option value="' . $industry_otherdata[0]['industry_id'] . '">' . $industry_otherdata[0]['industry_name'] . '</option>';
+//                }
+//            } else {
+//                $select .= 0;
+//            }
+//        } else {
+//            $select .= 1;
+//        }
+//        echo json_encode(array(
+//            "select" => $select,
+//        ));
+//    }
 
 //add other_industry into database End 
 

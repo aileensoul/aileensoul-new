@@ -929,6 +929,7 @@ $(document).on('change', '#industry', function (event) {
       $.ajax({
                           type: 'POST',
                           url: base_url + 'recruiter/recruiter_other_industry',
+                          dataType: 'json',
                           data: 'other_industry=' + textVal,
                           success: function (response) {
                       
@@ -945,9 +946,10 @@ $(document).on('change', '#industry', function (event) {
                               }  
                               else
                               {
+                                
                                    //$.fancybox.close();
                                    $('#bidmodal').modal('hide');
-                                   $('#industry').html(response);
+                                   $('.industry1').html(response.select);
                               }
                           }
                       });

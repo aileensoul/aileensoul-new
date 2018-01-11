@@ -88,7 +88,7 @@
                                             </fieldset>
                                             <fieldset class="full-width" <?php if ($industry) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
                                                 <label>Industry:<span style="color:red">*</span></label>
-                                                <select name="industry" id="industry" tabindex="6">
+                                                <select name="industry" id="industry" tabindex="6" class="industry1">
 
                                                     <option value="" selected option disabled>Select Industry</option>
 
