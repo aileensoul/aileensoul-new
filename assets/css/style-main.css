@@ -708,6 +708,21 @@ footer ul li a{
 .contact #contact_form .form-group input[type="text"]:focus+label,.contact #contact_form .form-group input[type="email"]:focus+label,.contact #contact_form textarea:focus+label{
     color: #1b8ab9 !important;
 }
+
+
+.feedback-cus #feedback_form input.error,.feedback-cus #feedback_form textarea.error {
+    border:0px !important;
+    border-bottom: 1px solid red !important;
+}
+.feedback-cus #feedback_form .form-group input[type="text"]:focus,.feedback-cus #feedback_form .form-group input[type="email"]:focus,.feedback-cus #feedback_form textarea:focus{
+    border-bottom: 1px solid #1b8ab9 !important; 
+    color: #1b8ab9 !important;
+}
+.feedback-cus #feedback_form .form-group input[type="text"]:focus+label,.feedback-cus #feedback_form .form-group input[type="email"]:focus+label,.feedback-cus #feedback_form textarea:focus+label{
+    color: #1b8ab9 !important;
+}
+
+
 select{
   color:#acacac;
 }

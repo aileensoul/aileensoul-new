@@ -143,7 +143,7 @@ input,select,textarea{
     border:1px solid #cacaca;
     outline:0;
     padding:5px 15px;
-    color:#000;
+    color:#acacac;
     font-size:13px!important;
     font-weight:400;
     border-radius:4px;
@@ -2735,7 +2735,10 @@ footer div.pt20{
         height:7%
     }
     .modal-dialog,.people-list ul{
-        height:auto
+        height:auto;
+    }
+    .feedback-cus .modal-dialog,.people-list ul{
+        height:100%;
     }
     .right-side-menu{
         float:left;
