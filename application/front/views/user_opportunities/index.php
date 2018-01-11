@@ -238,7 +238,7 @@
                                     <?php } ?>
                                 </div>
                                 <div class="post-text">
-                                    <textarea class="title-text-area" placeholder="Post Opportunity" name="description"></textarea>
+                                    <textarea name="description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
                                 </div>
                                 <div class="all-upload">
                                     <div class="col-md-12"> 
@@ -246,7 +246,7 @@
                                             <input id="postfiles" type="file" class="file" name="postfiles[]"  multiple class="file" data-overwrite-initial="false" data-min-file-count="2" style="display: none;">
                                         </div>
                                     </div>
-                                    <label for="file-1">
+                                    <label for="postfiles">
                                         <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
                                         <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
                                         <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
@@ -256,13 +256,13 @@
                             </div>
                             <div class="post-field">
                                 <div class="form-group">
-                                    <textarea name="job_title" placeholder="FOR WHOM THIS OPPORTUNITY ?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, PHP Developer, HR, BDE, CA, Doctor, Freelancer.." cols="10" rows="5" style="resize:none"></textarea>
+                                    <textarea name="job_title" id="job_title" placeholder="FOR WHOM THIS OPPORTUNITY ?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, PHP Developer, HR, BDE, CA, Doctor, Freelancer.." cols="10" rows="5" style="resize:none"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="location" type="text" class="" placeholder="WHICH LOCATION?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a; Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.. "></textarea>
+                                    <textarea name="location" id="location" type="text" class="" placeholder="WHICH LOCATION?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a; Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.. "></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <input name="field" type="text" placeholder="What is your field?">
+                                    <input name="field" id="field" type="text" placeholder="What is your field?">
                                 </div>
                             </div>
                             <div class="text-right fw pt10">
@@ -271,12 +271,8 @@
                             </div>
                             <?php echo form_close(); ?>
                     </div>
-
-
-
                 </div>
             </div>
-
         </div>
         <script src="<?php echo base_url('assets/js/jquery.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()) ?>"></script>
@@ -284,14 +280,14 @@
         <script src="<?php echo base_url('assets/js/jquery.mCustomScrollbar.concat.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
         <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
-        
+        <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()) ?>"></script>
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/angular-validate.min.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/angular-validate.min.js?ver=' . time()) ?>"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 
         <script>
@@ -300,95 +296,19 @@
                                             var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
                                             var title = '<?php echo $title; ?>';
                                             var app = angular.module('userOppoApp', ['ui.bootstrap']);
-                                            app.controller('userOppoController', function ($scope, $http) {
-                                            getContactSuggetion();
-                                            function getContactSuggetion() {
-                                            $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
-                                            $scope.contactSuggetion = success.data;
-                                            }, function (error) {});
-                                            }
-
-                                            $scope.addToContact = function (user_id, contact) {
-                                            $http({
-                                            method: 'POST',
-                                                    url: base_url + 'user_opportunities/addToContact',
-                                                    data: 'user_id=' + user_id,
-                                                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                            }).then(function (success) {
-                                            if (success.data.message == 1) {
-                                            var index = $scope.contactSuggetion.indexOf(contact);
-                                            $('#item-' + user_id).remove();
-                                            $('.owl-carousel').trigger('next.owl.carousel');
-                                            }
-                                            });
-                                            }
-                                            });
-                                            app.filter('wordFirstCase', function () {
-                                            return function (text) {
-                                            return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
-                                            };
-                                            });
-                                            app.directive("owlCarousel", function () {
-                                            return {
-                                            restrict: 'E',
-                                                    link: function (scope) {
-                                                    scope.initCarousel = function (element) {
-                                                    // provide any default options you want
-                                                    var defaultOptions = {
-                                                    loop: true,
-                                                            nav: true,
-                                                            lazyLoad: true,
-                                                            margin: 0,
-                                                            video: true,
-                                                            responsive: {
-                                                            0: {
-                                                            items: 2
-                                                            },
-                                                                    600: {
-                                                                    items: 2
-                                                                    },
-                                                                    960: {
-                                                                    items: 2,
-                                                                    },
-                                                                    1200: {
-                                                                    items: 2
-                                                                    }
-                                                            }
-                                                    };
-                                                    var customOptions = scope.$eval($(element).attr('data-options'));
-                                                    // combine the two options objects
-                                                    for (var key in customOptions) {
-                                                    defaultOptions[key] = customOptions[key];
-                                                    }
-                                                    // init carousel
-                                                    $(element).owlCarousel(defaultOptions);
-                                                    };
-                                                    }
-                                            };
-                                            });
-                                            app.directive('owlCarouselItem', [function () {
-                                            return {
-                                            restrict: 'A',
-                                                    link: function (scope, element) {
-                                                    // wait for the last item in the ng-repeat then call init
-                                                    if (scope.$last) {
-                                                    scope.initCarousel(element.parent());
-                                                    }
-                                                    }
-                                            };
-                                            }]);
         </script>
         <script type="text/javascript">
-            // mcustom scroll bar
-            (function ($) {
-            $(window).on("load", function () {
-
-            $(".custom-scroll").mCustomScrollbar({
-            autoHideScrollbar: true,
-                    theme: "minimal"
+            $('#postfiles').on('click', function(){
+            var a = document.getElementById('description').value;
+            var b = document.getElementById('job_title').value;
+            var c = document.getElementById('location').value;
+            var d = document.getElementById('field').value;
+            document.getElementById("post_opportunity").reset();
+            document.getElementById('description').value = a;
+            document.getElementById('job_title').value = b;
+            document.getElementById('location').value = c;
+            document.getElementById('field').value = d;
             });
-            });
-            })(jQuery);
         </script>
 
     </body>
