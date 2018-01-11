@@ -58,7 +58,7 @@ class Userprofile_page extends MY_Controller {
     public function contacts_data() {
     $userid = $this->session->userdata('aileenuser');
         $contactsData = $this->data['contactsData'] = $this->userprofile_model->getContactData($userid,$data="");
-      echo json_encode($profilesData); 
+      echo json_encode($contactsData); 
     }
     
     public function vsrepeat() { 
