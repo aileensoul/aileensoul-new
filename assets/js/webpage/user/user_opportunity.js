@@ -276,7 +276,6 @@ app.controller('userOppoController', function ($scope, $http) {
             var percentVal = '100%';
             bar.width(percentVal)
             percent.html(percentVal);
-            //$('.art_no_post_avl').hide();
             document.getElementById('description').value = '';
             document.getElementById('job_title').value = '';
             document.getElementById('location').value = '';

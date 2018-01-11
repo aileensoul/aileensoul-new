@@ -899,3 +899,42 @@ $config['blog_main_max_height'] = '5000';
 $config['blog_thumb_upload_path'] = 'uploads/blog/thumbs/';
 $config['blog_thumb_width'] = '150';
 $config['blog_thumb_height'] = '150';
+
+
+
+
+// USER POST 
+$config['user_post_main_upload_path'] = 'uploads/user_post/main/';
+$config['user_post_main_allowed_types'] = 'gif|jpeg|jpg|PNG|png|pdf|mp4|mp3|avi|ogg|3gp|webm';
+$config['user_post_main_allowed_types'] = '*';
+$config['user_post_main_max_size'] = '100000000'; //in KB 
+$config['user_post_main_max_width'] = '4500';
+$config['user_post_main_max_height'] = '3000';
+
+// USER POST RESIZED
+$config['user_post_resize_upload_path'] = 'uploads/user_post/resize/';
+
+// USER POST THUMBS
+$config['user_post_thumb_upload_path'] = 'uploads/user_post/thumbs/';
+$config['user_post_thumb_width'] = '280'; //335
+$config['user_post_thumb_height'] = '220'; //250
+
+// USER POST 335 X 320
+$config['user_post_resize1_upload_path'] = 'uploads/user_post/resize1/';
+$config['user_post_resize1_width'] = '280'; //335
+$config['user_post_resize1_height'] = '210'; //320
+
+// USER POST 335 X 245
+$config['user_post_resize2_upload_path'] = 'uploads/user_post/resize2/';
+$config['user_post_resize2_width'] = '280'; //335
+$config['user_post_resize2_height'] = '200'; //245
+
+// USER POST 210 X 210
+$config['user_post_resize3_upload_path'] = 'uploads/user_post/resize3/';
+$config['user_post_resize3_width'] = '210';
+$config['user_post_resize3_height'] = '210';
+
+// USER POST 550 X 220
+$config['user_post_resize4_upload_path'] = 'uploads/user_post/resize4/';
+$config['user_post_resize4_width'] = '550';
+$config['user_post_resize4_height'] = '315';
