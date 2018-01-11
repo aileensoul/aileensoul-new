@@ -1,4 +1,5 @@
-
+<!DOCTYPE html>
+<!--<html>-->
 <?php echo $head; ?>
 
 <?php if (IS_NOT_CSS_MINIFY == '0') { ?>  
@@ -8,14 +9,15 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
 
 <?php } ?>
-<?php echo $header; ?>
+
 <?php
 $select_data = 'profile_background,username,fullname,freelancer_hire_user_image,profile_background,profile_background_main,designation,freelancer_hire_slug,free_hire_step';
 $freehiredata = $this->freelancer_hire_model->getfreelancerhiredata($freelancerpostdata[0]['user_id'], $select_data);
 ?>
 
 <body   class="page-container-bg-solid page-boxed ">
-
+    <?php echo $header; ?>
+    <?php echo $freelancer_post_header2_border; ?>
     <section>
 
         <div class="user-midd-section" id="paddingtop_fixed">
