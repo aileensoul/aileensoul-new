@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--<html>-->
+<html>
 <?php echo $head; ?>
 
 <?php if (IS_NOT_CSS_MINIFY == '0') { ?>  
