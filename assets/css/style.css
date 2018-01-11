@@ -209,6 +209,26 @@ button,input[type=button],input[type=submit]{
     background:linear-gradient(354deg,#3bb0ac 0,#1b8ab9 44%,#1b8ab9 100%);
     color:#fff
 }
+.contact .login .btn1,.feedback-cus .btn1{
+    background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#3bb0ac),color-stop(56%,#1b8ab9),color-stop(100%,#1b8ab9));
+    background:-webkit-linear-gradient(96deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
+    background:-o-linear-gradient(96deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
+    background:-ms-linear-gradient(96deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
+    background:linear-gradient(354deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
+    color:#fff;
+    padding:5px 25px;
+    border-radius:4px;
+    border:2px solid #1b8ab9!important
+}
+
+.contact .login .btn1:focus,.feedback-cus .btn1:focus{
+    background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#1b8ab9),color-stop(56%,#3bb0ac),color-stop(100%,#3bb0ac));
+    background:-webkit-linear-gradient(96deg,#3bb0ac 0,#3bb0ac 44%,#1b8ab9 100%);
+    background:-o-linear-gradient(96deg,#3bb0ac 0,#3bb0ac 44%,#1b8ab9 100%);
+    background:-ms-linear-gradient(96deg,#3bb0ac 0,#3bb0ac 44%,#1b8ab9 100%);
+    background:linear-gradient(354deg,#3bb0ac 0,#1b8ab9 44%,#1b8ab9 100%);
+    color:#fff
+}
 
 
 
@@ -593,6 +613,8 @@ fieldset.full-width{
 .error-msg input,.error-msg select,.has-error input,.has-error textarea,input.error,select.error,textarea.error{
     border:1px solid red !important;
 }
+
+
 .no-login .has-error input, input.error, select.error, .has-error textarea, textarea.error {
     border-bottom:1px solid #ff0000 !important;
 }
@@ -2068,11 +2090,11 @@ footer div.pt20{
     background:0 0;
     -webkit-text-fill-color:#5c5c5c
 }
-.feedback-cus .btn1{
+/*.feedback-cus .btn1{
     background:#5c5c5c;
     color:#fff;
     border:none!important
-}
+}*/
 .btn4,.contact .con-address td a:hover{
     color:#1b8ab9
 }
