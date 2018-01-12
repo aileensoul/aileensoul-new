@@ -56,7 +56,7 @@ class Blog extends CI_Controller {
 
                 $this->data['search_keyword'] = $search_keyword1 = trim($this->input->get('q'));
 
-                $search_keyword = str_replace("'", '-', $search_keyword1);
+                $search_keyword = str_replace("'", "", $search_keyword1);
                 //echo $search_keyword; die();
 
                 $search_split = explode(" ",$search_keyword);

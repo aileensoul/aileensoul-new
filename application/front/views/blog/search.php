@@ -318,7 +318,6 @@ header("Pragma: no-cache"); // HTTP/1.0
             //AJAX DATA LOAD BY LAZZY LOADER START
             $(document).ready(function () {
                 blog_post();
-
             });
 
             function category_data(catid, pagenum) {
