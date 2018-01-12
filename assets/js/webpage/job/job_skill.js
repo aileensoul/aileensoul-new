@@ -1,5 +1,12 @@
 $(document).ready(function () {
      $('.ajax_load').hide();
+      var name = [];
+    $("#jobseeker_regform").find("select").each(function (i) {
+        name[i] = $(this).attr('id');
+        if ($(this).val() != '') {
+            $(this).addClass("color-black-custom");
+        }
+    });
  });
 
 function profile_reg(){

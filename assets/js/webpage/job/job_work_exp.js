@@ -2,8 +2,14 @@
 //Validation Start
 $(document).ready(function () {
 
-         $('.ajax_load').hide();
-
+    $('.ajax_load').hide();
+    var name = [];
+    $("#jobseeker_regform1").find("select").each(function (i) {
+        name[i] = $(this).attr('id');
+        if ($(this).val() != null) {
+            $(this).addClass("color-black-custom");
+        }
+    });
     $.validator.addMethod("regx1", function (value, element, regexpr) {
 
         if (!value)
@@ -32,8 +38,8 @@ $(document).ready(function () {
 
     $("#jobseeker_regform1").validate({
 
-      //  ignore: ":hidden",
-      ignore: [],
+        //  ignore: ":hidden",
+        ignore: [],
 
         rules: {
 
@@ -100,21 +106,21 @@ $(document).ready(function () {
 });
 
 
-function profile_reg(){
+function profile_reg() {
 
     var form = $("#jobseeker_regform");
-    if(form.valid() == true ){
-     //$('#fre_ajax_load').show();
-     document.getElementById('fre_ajax_load').style.display = 'inline-block';
+    if (form.valid() == true) {
+        //$('#fre_ajax_load').show();
+        document.getElementById('fre_ajax_load').style.display = 'inline-block';
     }
 }
 
-function profile_reg1(){
+function profile_reg1() {
 
     var form = $("#jobseeker_regform1");
-    if(form.valid() == true ){
-     //$('#exp_ajax_load').show();
-     document.getElementById('exp_ajax_load').style.display = 'inline-block';
+    if (form.valid() == true) {
+        //$('#exp_ajax_load').show();
+        document.getElementById('exp_ajax_load').style.display = 'inline-block';
     }
 }
 
@@ -470,37 +476,37 @@ function expyear_change_edittime() {
 
         if (experience_year)
         {
-            
+
             $('#input1 #experience_month').attr('disabled', false);
 
             if (experience_year === '0 year') {
-               
+
                 $("#input1 #experience_month option[value='0 month']").attr('disabled', true);
             } else {
-               
+
                 $("#input1 #experience_month option[value='0 month']").attr('disabled', false);
             }
         } else
         {
-            
+
             $('#input1 #experience_month').attr('disabled', 'disabled');
         }
 
         if (experience_year2)
         {
-           
+
             $('#input2 #experience_month2').attr('disabled', false);
 
             if (experience_year2 === '0 year') {
-                
+
                 $("#input2 #experience_month2 option[value='0 month']").attr('disabled', true);
             } else {
-                 
+
                 $("#input2 #experience_month2 option[value='0 month']").attr('disabled', false);
             }
         } else
         {
-           
+
             $('#input2 #experience_month2').attr('disabled', 'disabled');
         }
 
@@ -1057,4 +1063,4 @@ $(".alert").delay(3200).fadeOut(300);
 //    
 //    $('#exp_year').val(year1);
 //    $('#exp_month').val(month1);
-    
+

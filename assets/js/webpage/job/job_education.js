@@ -2,8 +2,40 @@
 //validation primary start
 $().ready(function () {
 
-     $('.ajax_load').hide();
-
+    $('.ajax_load').hide();
+    var name = [];
+    $("#jobseeker_regform_primary").find("select").each(function (i) {
+        name[i] = $(this).attr('id');
+        if ($(this).val() != '') {
+            $(this).addClass("color-black-custom");
+        }
+    });
+    
+    
+    var name1 = [];
+    $("#jobseeker_regform_secondary").find("select").each(function (i) {
+        name1[i] = $(this).attr('id');
+        if ($(this).val() != '') {
+            $(this).addClass("color-black-custom");
+        }
+    });
+    
+   
+    var name2 = [];
+    $("#jobseeker_regform_higher_secondary").find("select").each(function (i) {
+        name2[i] = $(this).attr('id');
+        if ($(this).val() != '') {
+            $(this).addClass("color-black-custom");
+        }
+    });
+   
+    var name3 = [];
+    $("#jobseeker_regform").find("select").each(function (i) {
+        name3[i] = $(this).attr('id');
+        if ($(this).val() != '') {
+            $(this).addClass("color-black-custom");
+        }
+    });
     jQuery.validator.addMethod("noSpace", function (value, element) {
         return value == '' || value.trim().length != 0;
     }, "No space please and don't leave it empty");
@@ -89,48 +121,48 @@ $().ready(function () {
 
 
 
-function profile_reg(){
+function profile_reg() {
 
     var form = $("#jobseeker_regform_primary");
-    if(form.valid() == true ){
-     //$('#profilereg_ajax_load').show();
-     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+    if (form.valid() == true) {
+        //$('#profilereg_ajax_load').show();
+        document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
 
     }
-    
+
 }
 
-function profile_reg_sec(){
+function profile_reg_sec() {
 
     var form = $("#jobseeker_regform_secondary");
-    if(form.valid() == true ){
-     //$('#profile_ajax_load').show();
-     document.getElementById('profile_ajax_load').style.display = 'inline-block';
+    if (form.valid() == true) {
+        //$('#profile_ajax_load').show();
+        document.getElementById('profile_ajax_load').style.display = 'inline-block';
 
     }
-   
+
 }
 
-function profile_reg_highsec(){
+function profile_reg_highsec() {
 
     var form = $("#jobseeker_regform_higher_secondary");
-    if(form.valid() == true ){
-     //$('#profilehighreg_ajax_load').show();
-     document.getElementById('profilehighreg_ajax_load').style.display = 'inline-block';
+    if (form.valid() == true) {
+        //$('#profilehighreg_ajax_load').show();
+        document.getElementById('profilehighreg_ajax_load').style.display = 'inline-block';
 
     }
-   
+
 }
 
-function profile_reg_gra(){
+function profile_reg_gra() {
 
     var form = $("#jobseeker_regform");
-    if(form.valid() == true ){
-     //$('#grareg_ajax_load').show();
-     document.getElementById('grareg_ajax_load').style.display = 'inline-block';
-     
+    if (form.valid() == true) {
+        //$('#grareg_ajax_load').show();
+        document.getElementById('grareg_ajax_load').style.display = 'inline-block';
+
     }
-   
+
 }
 
 //pattern validation at percentage start//
@@ -2227,7 +2259,7 @@ function next_page()
 //edit time next page
 function next_page_edit() {
 
-    $('.biderror .mes').html('<div class="message"><div class="pop_content">Do you want to leave this page?<div class="model_ok_cancel"><a class="okbtn"  class="mesg_link" href="' +base_url+'job/project" >Ok</a><a class="cnclbtn" href="javascript:void(0);" data-dismiss="modal">Cancel</a></div></div></div>');
+    $('.biderror .mes').html('<div class="message"><div class="pop_content">Do you want to leave this page?<div class="model_ok_cancel"><a class="okbtn"  class="mesg_link" href="' + base_url + 'job/project" >Ok</a><a class="cnclbtn" href="javascript:void(0);" data-dismiss="modal">Cancel</a></div></div></div>');
     $('#bidmodal').modal('show');
     // $.fancybox.open('<div class="message"><h2>Do you want to leave this page?</h2><a class="mesg_link" href="' +base_url+'job/project">OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
 }

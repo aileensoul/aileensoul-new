@@ -2,6 +2,13 @@ $(document).ready(function () {
 
     // $('.ajax_load').hide();
      
+    
+    $("#address").find("select").each(function (i) {
+        if ($(this).val() != '') {
+            $(this).addClass("color-black-custom");
+        }
+    });
+     
     $('#country').on('change', function () {
         var countryID = $(this).val();
         if (countryID) {
