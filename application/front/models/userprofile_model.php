@@ -19,7 +19,10 @@ class Userprofile_model extends CI_Model {
         return $result_array;
     }
 
-    public function getContactData($user_id = '173', $select_data = '') {
+    public function getContactData($user_id = '', $select_data = '') {
+        
+         $where = "((from_id = '" .$user_id. "' OR to_id = '" .$user_id. "'))";
+         
         $this->db->select("u.user_id,u.first_name,u.last_name,ui.user_image,jt.name as title_name,d.degree_name,u.user_slug")->from("user_contact  uc");
         $this->db->join('user u', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.to_id ELSE uc.from_id END)', 'left');
        $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
@@ -29,6 +32,7 @@ class Userprofile_model extends CI_Model {
         $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
         $this->db->where('u.user_id !=', $user_id);
         $this->db->where('uc.status', 'confirm');
+        $this->db->where($where);
         $this->db->order_by("uc.id", "DESC");
 
         $query = $this->db->get();
