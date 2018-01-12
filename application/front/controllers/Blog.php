@@ -70,21 +70,31 @@ class Blog extends CI_Controller {
 
                 $unique = array_merge($bolg_data, $bolg_data_des);
                 $this->data['blog_detail'] = array_unique($unique, SORT_REGULAR);
-                //echo "<pre>"; print_r($bolg_data_des); die();
+
+
+            $condition_array = array('status' => 'publish');
+            $this->data['blog_last'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
+
+               $this->load->view('blog/search', $this->data);
+
+               // echo "<pre>"; print_r($this->data['blog_detail']); die();
             }
             //THIS IF IS USED FOR WHILE SEARCH FOR RETRIEVE SAME PAGE END
             //FOR GETTING ALL DATA START
             else { 
                 $condition_array = array('status' => 'publish');
                 $this->data['blog_detail'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
-                // echo "<pre>";print_r( $this->data['blog_detail']);die();
-            }
-            //FOR GETTING ALL DATA START
-            //FOR GETTING 5 LAST DATA
+
             $condition_array = array('status' => 'publish');
             $this->data['blog_last'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
 
             $this->load->view('blog/index', $this->data);
+
+                // echo "<pre>";print_r( $this->data['blog_detail']);die();
+            }
+            //FOR GETTING ALL DATA START
+            //FOR GETTING 5 LAST DATA
+        
         }
     }
 
@@ -224,10 +234,41 @@ class Blog extends CI_Controller {
         if ($start < 0)
             $start = 0;
 
-        $condition_array = array('status' => 'publish');
+         $searchword = trim($this->input->get('searchword'));
+         //echo $searchword; die();
+
+    if($searchword){ 
+
+         $search_condition = "(title LIKE '%$searchword%')";
+         $contition_array = array('status' => 'publish');
+         $bolg_data= $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = 'id', $sortby = 'id', $orderby = 'desc', $limit = '', $offset = '');
+
+         $search_condition = "(description LIKE '%$searchword%')";
+         $contition_array = array('status' => 'publish');
+         $bolg_data_des = $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = 'id', $sortby = 'id', $orderby = 'desc', $limit = '', $offset = '');
+
+         $unique = array_merge($bolg_data, $bolg_data_des);
+         $blog_unique = array_unique($unique, SORT_REGULAR);
+
+        // echo "<pre>"; print_r($blog_unique); die();
+
+         foreach ($blog_unique as $key => $value) {
+             
+        $condition_array = array('id' => $value['id']);
+        $blog_val[] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'asc', $limit = $perpage, $offset = $start, $join_str = array());
+        $blog_val1[] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'asc', $limit = '', $offset = '', $join_str = array());
+
+         }
+         $blog_detail = array_reduce($blog_val, 'array_merge', array()); 
+         $blog_detail1 = array_reduce($blog_val1, 'array_merge', array()); 
+
+
+  }else{ 
+         $condition_array = array('status' => 'publish');
         $blog_detail = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = $perpage, $offset = $start, $join_str = array());
         $blog_detail1 = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = '', $offset = '', $join_str = array());
-
+  }
+       
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($blog_detail1);
         }
@@ -370,7 +411,8 @@ class Blog extends CI_Controller {
         if ($page > $record) {
             // $lod_message = '<button class="loadmore">No more blog available</button>';  
         } else {
-            $lod_message = '<img src=" '.base_url('assets/images/loader.gif?ver='.time()).'" alt="'.'LOADERIMAGE'.'; ?>"/>';
+          //  $lod_message = '<img src=" '.base_url('assets/images/loader.gif?ver='.time()).'" alt="'.'LOADERIMAGE'.'"/>';
+             $lod_message = '<button class="loadmore">See More ...</button>';
         }
 
         echo json_encode(array(

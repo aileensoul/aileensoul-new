@@ -47,10 +47,9 @@
         });
 		
 		$(document).ready(function(){
-
 		  $("select").change(function(){
-			if ($(this).val()=="") $(this).css({color: "#aaa"});
-			else $(this).css({color: "#000"});
+			if ($(this).val()=="") $(this).addClass("color-light-custom");
+			else $(this).addClass("color-black-custom");
 		  });
 		  
 		});	

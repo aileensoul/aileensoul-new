@@ -193,16 +193,59 @@ header("Pragma: no-cache"); // HTTP/1.0
                         <div class="row">
                             <div class="blog_post_outer col-md-9 col-sm-8 pr0">
                             
-                                    <div class="job-contact-frnd">
+                             <?php   if (count($blog_detail) == 0) {
 
+                                        ?>
+
+                    <div class="custom-right-art mian_middle_post_box animated fadeInUp">
+                            <div class="common-form">
+                                        <div class="job-saved-box">
+
+                                            
+                                     <h3>Search results for 
+                                        <?php
+                                       
+                                            echo '' . $search_keyword . '';
+                                       
+                                        ?></h3>
+
+                                            <div class="contact-frnd-post">
+                                                <div class="job-contact-frnd1  cust-border">
+                                                <div class="text-center rio">
+                                                    <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
+                                                    <p style="margin-left:4%;text-transform:none !important;border:0px;">We couldn't find what you were looking for.</p>
+                                                    <ul>
+                                                        <li style="text-transform:none !important; list-style: none;">Make sure you used the right keywords.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
+                                        <?php
+                                   
+                                 }//if end
+                                 else {
+                                    ?>
 
-                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo 'LOADERIMAGE'; ?>"/></div>
+                                    <h3>Search results for 
+                                        <?php
+                                       
+                                            echo '' . $search_keyword . '';
+                                       
+                                        ?></h3>
+
+                                    <div class="job-contact-frnd"> 
+
+                                    </div> 
 
                                     <ul class="load-more-blog">
                                         <li class="loadbutton"></li>
                                         <li class="loadcatbutton"></li>
                                     </ul>
+                                <?php }
+                                ?>
                               
                             </div>
 
@@ -267,13 +310,14 @@ header("Pragma: no-cache"); // HTTP/1.0
 
         <script>
             var base_url = '<?php echo base_url(); ?>';
+            var keyword = '<?php echo $search_keyword; ?>';
         </script>
         <script>
             //AJAX DATA LOAD BY LAZZY LOADER START
-            $(document).ready(function () {
-                blog_post();
+            // $(document).ready(function () {
+            //     blog_post();
 
-            });
+            // });
 
             function category_data(catid, pagenum) {
                 $('.job-contact-frnd').html("");
@@ -300,13 +344,13 @@ header("Pragma: no-cache"); // HTTP/1.0
                     data: {total_record: $("#total_record").val()},
                     dataType: "json",
                     beforeSend: function () {
-                         //$('#loader').show();
+
                     },
                     complete: function () {
-                         //$('#loader').hide();
+                        $('#loader').hide();
                     },
                     success: function (data) {
-                        // $('#loader').hide();
+                        $('.loader').remove();
                         $('.job-contact-frnd').append(data.blog_data);
                         $('.loadcatbutton').html(data.load_msg)
                         // second header class add for scroll
@@ -322,57 +366,60 @@ header("Pragma: no-cache"); // HTTP/1.0
             }
 
 
-            $('.loadbutton').click(function () {
-                var pagenum = parseInt($(".page_number:last").val()) + 1;
-                blog_post(pagenum);
-            });
+            // $('.loadbutton').click(function () {
+            //     var pagenum = parseInt($(".page_number:last").val()) + 1;
+            //     blog_post(pagenum);
+            // });
 
 
-// $(document).ready(function () {
+$(document).ready(function () {
 
-//     $(window).scroll(function () {
-//         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-//         if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+         blog_post();
 
-//             var page = $(".page_number:last").val();
-//             var total_record = $(".total_record").val();
-//             var perpage_record = $(".perpage_record").val();
-//             if (parseInt(perpage_record) <= parseInt(total_record)) {
-//                 var available_page = total_record / perpage_record;
-//                 available_page = parseInt(available_page, 10);
-//                 var mod_page = total_record % perpage_record;
-//                 if (mod_page > 0) {
-//                     available_page = available_page + 1;
-//                 }
-//                 //if ($(".page_number:last").val() <= $(".total_record").val()) {
-//                 if (parseInt(page) <= parseInt(available_page)) {
-//                     var pagenum = parseInt($(".page_number:last").val()) + 1;
-//                     blog_post(pagenum);
-//                 }
-//             }
-//         }
-//     });
-// });
+    $(window).scroll(function () {
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    blog_post(pagenum);
+                }
+            }
+        }
+    });
+});
+
 
             var isProcessing = false;
-            function blog_post(pagenum) {
+            function blog_post(pagenum) { 
                 if (isProcessing) {
                     return;
                 }
                 isProcessing = true;
                 $.ajax({
                     type: 'POST',
-                    url: base_url + "blog/blog_ajax?page=" + pagenum,
+                    url: base_url + "blog/blog_ajax?page=" + pagenum + "&searchword=" + keyword,
                     data: {total_record: $("#total_record").val()},
                     dataType: "json",
                     beforeSend: function () {
-                        $('#loader').show();
+
                     },
                     complete: function () {
                         $('#loader').hide();
                     },
                     success: function (data) {
-                      //  $('#loader').remove();
+                        $('.loader').remove();
                         $('.job-contact-frnd').append(data.blog_data);
                         $('.loadbutton').html(data.load_msg)
                         // second header class add for scroll

@@ -2,7 +2,15 @@
 $(document).ready(function () {
 
      $('.ajax_load').hide();
-
+     
+     var name = [];
+    $("#basicinfo").find("select").each(function (i) {
+        name[i] = $(this).attr('id');
+        if ($(this).val() != '') {
+            $(this).addClass("color-black-custom");
+        }
+    });
+     
     $('#country').on('change', function () {
         var countryID = $(this).val();
         
@@ -13,6 +21,8 @@ $(document).ready(function () {
                 data: 'country_id=' + countryID,
                 success: function (html) {
                     $('#state').html(html);
+                    $('#state').removeClass("color-black-custom");
+                    $('#city').removeClass("color-black-custom");
                     $('#city').html('<option value="">Select state first</option>');
                 }
             });
@@ -34,6 +44,7 @@ $(document).ready(function () {
                 }
             });
         } else {
+             $('#city').removeClass("color-black-custom");
             $('#city').html('<option value="">Select state first</option>');
         }
     });
