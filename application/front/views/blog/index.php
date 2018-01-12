@@ -288,7 +288,7 @@ header("Pragma: no-cache"); // HTTP/1.0
             });
 
             var isProcessing = false;
-            function cat_post(catid, pagenum) {
+            function cat_post(catid, pagenum) { 
                 if (isProcessing) {
 
                     return;
@@ -300,10 +300,10 @@ header("Pragma: no-cache"); // HTTP/1.0
                     data: {total_record: $("#total_record").val()},
                     dataType: "json",
                     beforeSend: function () {
-                         //$('#loader').show();
+                         $('#loader').show();
                     },
                     complete: function () {
-                         //$('#loader').hide();
+                         $('#loader').hide();
                     },
                     success: function (data) {
                         // $('#loader').hide();
