@@ -152,5 +152,38 @@ class User_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array;
     }
-
+    
+    public function getUserDataByslug($user_slug = '') {
+        $this->db->select("u.user_id,u.first_name,u.last_name,u.user_dob,u.user_gender,u.user_agree,u.created_date,u.verify_date,u.user_verify,u.user_slider,u.user_slug,ui.user_image,ui.modify_date,ui.edit_ip,ui.profile_background,ui.profile_background_main,ul.email,ul.password,ul.is_delete,ul.status,ul.password_code")->from("user u");
+        $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+        $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
+        $this->db->where("u.user_slug ='" . $user_slug . "'");
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+    
+      public function getUserProfessionDataBySlug($user_slug = '', $select_data = '') {
+        $this->db->select($select_data)->from("user_profession up");
+        $this->db->join('cities c', 'c.city_id = up.city', 'left');
+        $this->db->join('user usr', 'usr.user_id = up.user_id', 'left');
+        $this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
+        $this->db->join('industry_type it', 'it.industry_id = up.field', 'left');
+         $this->db->where("usr.user_slug ='" . $user_slug . "'");
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+    
+    public function getUserStudentDataBySlug($user_slug = '', $select_data = '') {
+        $this->db->select($select_data)->from("user_student us");
+        $this->db->join('cities c', 'c.city_id = us.city', 'left');
+        $this->db->join('user usr', 'usr.user_id = us.user_id', 'left');
+        $this->db->join('university u', 'u.university_id = us.university_name', 'left');
+        $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
+         $this->db->where("usr.user_slug ='" . $user_slug . "'");
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
 }

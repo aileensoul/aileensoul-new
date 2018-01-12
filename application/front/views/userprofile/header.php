@@ -3,7 +3,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 left-header">
-                        <h2 class="logo"><a href="#">Aileensoul</a></h2>
+                        <h2 class="logo"><a ng-click="goMainLink('<?php echo base_url(); ?>')">Aileensoul</a></h2>
 						<form>
 							<input type="text" name="search" placeholder="Search..">
 						</form>
@@ -15,7 +15,7 @@
 							
 								<div class="dropdown-menu">
 									<div class="dropdown-title">
-										Profiles <a href="profile.html" class="pull-right">All</a>
+										Profiles <a href="ng-click="goMainLink('<?php echo base_url('profiless/' . $user_slug); ?>')"" class="pull-right">All</a>
 									</div>
 									<div id="abody" class="as">
 										<ul>
@@ -549,9 +549,20 @@
 							<img src="<?php echo base_url('assets/n-images/cam.png')?>">Update Profile Picture
 						</a>
 					</div>
-					<h3><a href="#">Prasant Dadhaniya</a></h3>
-					<p>SEO Excutive</p>
-					<p>Ahmedabad, India</p>
+                                    <h3><a href="#"><?php echo ucfirst($userdata['first_name']) . ' ' . ucfirst($userdata['last_name']); ?></a></h3>
+				<?php if(count($is_userBasicInfo) != 0){ ?>	
+                                    <p><?php echo $is_userBasicInfo['Designation']; ?></p>
+                                <?php }else if(count($is_userStudentInfo) != 0){ ?>
+                                    <p><?php echo $is_userStudentInfo['Degree']; ?></p>
+                                <?php }else{ ?>
+                                    <p>Current Work</p>
+                                <?php } ?>
+                                    
+                                    <?php if(count($is_userBasicInfo) != 0){ ?>	
+                                    <p><?php echo $is_userBasicInfo['City']; ?></p>
+                                           <?php }else{ ?>
+                                    <p><?php echo $is_userStudentInfo['City']; ?></p>
+                                <?php } ?>
 				</div>
 				<div class="user-btns">
 					<a class="btn3">Add to contact</a>
