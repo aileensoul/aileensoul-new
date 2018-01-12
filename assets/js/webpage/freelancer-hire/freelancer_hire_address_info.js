@@ -1,9 +1,19 @@
 //CODE FOR COUNTRY,STATE,CITY DATA FETCH START
 $(document).ready(function () {
+    var name = [];
+    $("#address_info").find("select").each(function (i) {
+        name[i] = $(this).attr('id');
+        if ($(this).val() != '') {
+            $(this).addClass("color-black-custom");
+        }
+    });
 
-   // $('.ajax_load').hide();
 
-    
+
+
+    // $('.ajax_load').hide();
+
+
     $('#country').on('change', function () {
         var countryID = $(this).val();
         if (countryID) {
@@ -13,6 +23,8 @@ $(document).ready(function () {
                 data: 'country_id=' + countryID,
                 success: function (html) {
                     $('#state').html(html);
+                    $('#state').removeClass("color-black-custom");
+                    $('#city').removeClass("color-black-custom");
                     $('#city').html('<option value="">Select state first</option>');
                 }
             });
@@ -30,7 +42,9 @@ $(document).ready(function () {
                 url: base_url + "freelancer_hire/ajax_dataforcity",
                 data: 'state_id=' + stateID,
                 success: function (html) {
+                    $('#city').removeClass("color-black-custom");
                     $('#city').html(html);
+
                 }
             });
         } else {
@@ -49,13 +63,13 @@ $(document).ready(function ($) {
     });
 });
 //CODE FOR PRELOADER END
-function validate(){
+function validate() {
 
-     var form = $("#address_info");
-    if(form.valid() == true ){
-     //$('#profilereg_ajax_load').show();
+    var form = $("#address_info");
+    if (form.valid() == true) {
+        //$('#profilereg_ajax_load').show();
 
-     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+        document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
 
     }
 }
@@ -105,7 +119,7 @@ $(document).ready(function () {
             state: {
                 required: true,
             },
-           
+
             pincode: {
                 regx1: /^.{0,12}$/
             },
@@ -119,7 +133,7 @@ $(document).ready(function () {
             state: {
                 required: "State is required.",
             },
-           
+
         },
 
     });
