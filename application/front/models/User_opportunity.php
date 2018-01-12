@@ -30,5 +30,13 @@ class User_opportunity extends CI_Model {
         $result_array = $query->row_array();
         return $result_array;
     }
+    
+    public function get_jobtitle(){
+        $this->db->select("name as text")->from("job_title jt");
+        $this->db->where('status','publish');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
 
 }

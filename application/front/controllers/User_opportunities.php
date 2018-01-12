@@ -79,7 +79,12 @@ class User_opportunities extends MY_Controller {
         }
         echo json_encode($return_data);
     }
-
+    
+    public function get_jobtitle(){
+        $job_title = $this->user_opportunity->get_jobtitle();
+        echo json_encode($job_title);
+    }
+    
     public function post_opportunity() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
@@ -120,7 +125,7 @@ class User_opportunities extends MY_Controller {
         
         $update_data = array();
         $update_data['post_id'] = $user_opportunity_id;
-        $update_post = $this->common->update_data($update_data, 'user_post', 'post_id', $user_post_id);
+        $update_post = $this->common->update_data($update_data, 'user_post', 'id', $user_post_id);
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
@@ -426,7 +431,7 @@ class User_opportunities extends MY_Controller {
                         $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
                         
                         $insert_data = array();
-                        $insert_data['post_id']  = '';
+                        $insert_data['post_id']  = $user_post_id;
                         $insert_data['file_type']  = $file_type;
                         $insert_data['filename']  = $fileName;
                         $insert_data['modify_date']  = date('Y-m-d H:i:s',time());

@@ -191,7 +191,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                         </div>
 
                                         <div class="form-group">
-                                            <input tabindex="3" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
+                                            <input tabindex="3" type="email" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="new-email">
                                         </div>
                                         <div class="form-group">
                                             <input tabindex="4" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password" autocomplete="new-password">
@@ -320,14 +320,15 @@ header("Pragma: no-cache"); // HTTP/1.0
                 var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
                 var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
+        <script src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>
         <?php
         if (IS_OUTSIDE_JS_MINIFY == '0') {
             ?>
-            <script src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>
+            <!--<script src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>-->
             <?php
         } else {
             ?>
-            <script src="<?php echo base_url('assets/js_min/webpage/main.js?ver=' . time()); ?>"></script>
+            <!--<script src="<?php echo base_url('assets/js_min/webpage/main.js?ver=' . time()); ?>"></script>-->
         <?php } ?>
     </body>
 </html>
