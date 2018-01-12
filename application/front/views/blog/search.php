@@ -240,6 +240,8 @@ header("Pragma: no-cache"); // HTTP/1.0
 
                                     </div> 
 
+                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo 'LOADERIMAGE'; ?>"/></div>
+
                                     <ul class="load-more-blog">
                                         <li class="loadbutton"></li>
                                         <li class="loadcatbutton"></li>
@@ -314,10 +316,10 @@ header("Pragma: no-cache"); // HTTP/1.0
         </script>
         <script>
             //AJAX DATA LOAD BY LAZZY LOADER START
-            // $(document).ready(function () {
-            //     blog_post();
+            $(document).ready(function () {
+                blog_post();
 
-            // });
+            });
 
             function category_data(catid, pagenum) {
                 $('.job-contact-frnd').html("");
@@ -344,13 +346,13 @@ header("Pragma: no-cache"); // HTTP/1.0
                     data: {total_record: $("#total_record").val()},
                     dataType: "json",
                     beforeSend: function () {
-
+                        $('#loader').show();
                     },
                     complete: function () {
                         $('#loader').hide();
                     },
                     success: function (data) {
-                        $('.loader').remove();
+                        //$('.loader').remove();
                         $('.job-contact-frnd').append(data.blog_data);
                         $('.loadcatbutton').html(data.load_msg)
                         // second header class add for scroll
@@ -366,39 +368,10 @@ header("Pragma: no-cache"); // HTTP/1.0
             }
 
 
-            // $('.loadbutton').click(function () {
-            //     var pagenum = parseInt($(".page_number:last").val()) + 1;
-            //     blog_post(pagenum);
-            // });
-
-
-$(document).ready(function () {
-
-         blog_post();
-
-    $(window).scroll(function () {
-        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-
-            var page = $(".page_number:last").val();
-            var total_record = $(".total_record").val();
-            var perpage_record = $(".perpage_record").val();
-            if (parseInt(perpage_record) <= parseInt(total_record)) {
-                var available_page = total_record / perpage_record;
-                available_page = parseInt(available_page, 10);
-                var mod_page = total_record % perpage_record;
-                if (mod_page > 0) {
-                    available_page = available_page + 1;
-                }
-                //if ($(".page_number:last").val() <= $(".total_record").val()) {
-                if (parseInt(page) <= parseInt(available_page)) {
-                    var pagenum = parseInt($(".page_number:last").val()) + 1;
-                    blog_post(pagenum);
-                }
-            }
-        }
-    });
-});
+            $('.loadbutton').click(function () {
+                var pagenum = parseInt($(".page_number:last").val()) + 1;
+                blog_post(pagenum);
+            });
 
 
             var isProcessing = false;
@@ -413,13 +386,13 @@ $(document).ready(function () {
                     data: {total_record: $("#total_record").val()},
                     dataType: "json",
                     beforeSend: function () {
-
+                        $('#loader').show();
                     },
                     complete: function () {
                         $('#loader').hide();
                     },
                     success: function (data) {
-                        $('.loader').remove();
+                        // $('.loader').remove();
                         $('.job-contact-frnd').append(data.blog_data);
                         $('.loadbutton').html(data.load_msg)
                         // second header class add for scroll
