@@ -191,14 +191,14 @@ var data= <?php echo json_encode($demo); ?>;
 var base_url = '<?php echo base_url(); ?>';
 var data1 = <?php echo json_encode($city_data); ?>;
 </script>
-
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/address.js?ver='.time()); ?>"></script>
 <?php
   if (IS_ART_JS_MINIFY == '0') { ?>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/address.js?ver='.time()); ?>"></script>
+<!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/address.js?ver='.time()); ?>"></script>-->
 <?php }else{?>
 <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/address.js?ver='.time()); ?>"></script>
+<!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/artist/address.js?ver='.time()); ?>"></script>-->
 <?php }?>
 </body>
 </html>

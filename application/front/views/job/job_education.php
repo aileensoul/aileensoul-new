@@ -1009,16 +1009,16 @@
 
    
 </script>
-
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_education.js?ver='.time()); ?>"></script>
 <?php
         if (IS_JOB_JS_MINIFY == '0') {
             ?>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_education.js?ver='.time()); ?>"></script>
+<!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_education.js?ver='.time()); ?>"></script>-->
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
 
 <?php }else{?>
 
-<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_education.js?ver='.time()); ?>"></script>
+<!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_education.js?ver='.time()); ?>"></script>-->
 <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver='.time()); ?>"></script>
 
 <?php }?>
