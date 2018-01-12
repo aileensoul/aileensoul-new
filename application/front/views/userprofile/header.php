@@ -560,12 +560,12 @@
 				</div>
 				<div class="main-user-option">
 					<ul>
-						<li><a href="profiless"  ng-click='makeActive("profiless")' ng-class="{ 'active': active ==  'profiless'}">Profiles</a></li>
-						<li><a href="dashboard"  ng-click='makeActive("dashboard")' ng-class="{ 'active': active == 'dashboard'}">Dashboard</a></li>
-						<li><a href="details"  ng-click='makeActive("details")' ng-class="{ 'active': active== 'details'}">Details</a></li>
-						<li><a href="contacts"  ng-click='makeActive("contacts")' ng-class="{ 'active': active == 'contacts'}">Contacts</a></li>
-						<li><a href="followers"  ng-click='makeActive("followers")' ng-class="{ 'active': active == 'followers'}">followers</a></li>
-						<li><a href="following"  ng-click='makeActive("following")' ng-class="{ 'active': active == 'following'}">following</a></li>
+						<li><a href="profiless/prashant-dadhaniya"  ng-click='makeActive("profiless")' ng-class="{ 'active': active ==  'profiless'}">Profiles</a></li>
+						<li><a href="dashboard/prashant-dadhaniya"  ng-click='makeActive("dashboard")' ng-class="{ 'active': active == 'dashboard'}">Dashboard</a></li>
+						<li><a href="details/prashant-dadhaniya"  ng-click='makeActive("details")' ng-class="{ 'active': active== 'details'}">Details</a></li>
+						<li><a href="contacts/prashant-dadhaniya"  ng-click='makeActive("contacts")' ng-class="{ 'active': active == 'contacts'}">Contacts</a></li>
+						<li><a href="followers/prashant-dadhaniya"  ng-click='makeActive("followers")' ng-class="{ 'active': active == 'followers'}">followers</a></li>
+						<li><a href="following/prashant-dadhaniya"  ng-click='makeActive("following")' ng-class="{ 'active': active == 'following'}">following</a></li>
 					</ul>
 				</div>
 			</div>

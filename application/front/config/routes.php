@@ -59,12 +59,12 @@ $route['default_controller'] = 'main';
 $route['basic-information'] = 'user_info';
 $route['educational-information'] = 'user_info';
 
-$route['dashboard'] = 'Userprofile';
-$route['profiless'] = 'Userprofile';
-$route['details'] = 'Userprofile';
-$route['followers'] = 'Userprofile';
-$route['following'] = 'Userprofile';
-$route['contacts'] = 'Userprofile';
+$route['dashboard/(:any)'] = 'Userprofile';
+$route['profiless/(:any)'] = 'Userprofile';
+$route['details/(:any)'] = 'Userprofile';
+$route['followers/(:any)'] = 'Userprofile';
+$route['following/(:any)'] = 'Userprofile';
+$route['contacts/(:any)'] = 'Userprofile';
 
 $route['opportunities'] = 'user_opportunities';
 

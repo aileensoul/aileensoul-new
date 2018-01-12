@@ -96,6 +96,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
         <script>
              var base_url = '<?php echo base_url(); ?>';
+             var user_slug = '<?php echo $this->uri->segment(2); ?>';
              var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
               
               
@@ -108,30 +109,31 @@
        $scope.active = $scope.active == item?'':item;
      }
    })
-   
+             var user_slug = '<?php echo $this->uri->segment(2); ?>';
+  
                     app.config(function ($routeProvider, $locationProvider) {
                         $routeProvider
-                                .when("/profiless", {
+                                .when("/profiless/:name*", {
                                     templateUrl: base_url + "userprofile_page/profile",
                                     controller: 'profilesController'
                                 })
-                                .when("/dashboard", {
+                                .when("/dashboard/:name*", {
                                     templateUrl: base_url + "userprofile_page/dashboard"
                                  //   controller: 'basicInfoController'
                                 })
-                                .when("/details", {
+                                .when("/details/:name*", {
                                     templateUrl: base_url + "userprofile_page/details",
                                     controller: 'detailsController'
                                 })
-                                .when("/contacts", {
+                                .when("/contacts/:name*", {
                                     templateUrl: base_url + "userprofile_page/contacts",
                                     controller: 'contactsController'
                                 })
-                                .when("/followers", {
+                                .when("/followers/:name*", {
                                     templateUrl: base_url + "userprofile_page/followers"
                                  //   controller: 'basicInfoController'
                                 })
-                                .when("/following", {
+                                .when("/following/:name*", {
                                     templateUrl: base_url + "userprofile_page/following"
                                  //   controller: 'basicInfoController'
                                 })
@@ -142,6 +144,7 @@
                     });
                     
                     app.controller('profilesController', function ($scope, $http, $location) {
+                    alert(user_slug);
                         $scope.user = {};
                         // PROFEETIONAL DATA
                         getFieldList();
@@ -225,11 +228,18 @@
                         $scope.goMainLink = function(path){
                             location.href=path;
                         }
+                        
+                        $scope.goUserprofile = function(path){
+                            
+                            var base_url = '<?php echo base_url(); ?>';
+                            alert(path);
+                            alert(base_url);
+                            location.href= base_url + 'profiless/' +  path;
+                        }
                       
                     });
                     
       function remove_contacts(index){
-          
           $.ajax({
                 url: base_url + "userprofile_page/removeContacts",
                 type: "POST",
@@ -240,9 +250,7 @@
                 }
                 }
             });
-            
-         
-                               }
+                                           }
 
             </script>
 <!--        <script>

@@ -17,7 +17,10 @@
                                         </div>
                                                             
 								<div class="custom-user-detail">
-                                                                    <h4><a href="<?php echo base_url('profiless/') ?>{{contacts.user_slug}}" ng-bind="(contacts.first_name | limitTo:1 |uppercase) + (contacts.first_name.substr(1) | lowercase) + ' ' + (contacts.last_name | limitTo:1 |uppercase) + (contacts.last_name.substr(1) | lowercase)"></a></h4>
+                                                                    <h4>
+                                                                        
+                                                                        <a ng-click="goUserprofile(contacts.user_slug)" ng-bind="(contacts.first_name | limitTo:1 |uppercase) + (contacts.first_name.substr(1) | lowercase) + ' ' + (contacts.last_name | limitTo:1 |uppercase) + (contacts.last_name.substr(1) | lowercase)"></a>
+                                                                    </h4>
                                                                     <p ng-if="contacts.degree_name != ''">{{contacts.title_name}}</p>
                                                                     <p ng-if="contacts.degree_name == ''">{{contacts.degree_name}}</p>
                                                                     <p ng-if="contacts.degree_name == null && contacts.title_name == null">Current work</p>
