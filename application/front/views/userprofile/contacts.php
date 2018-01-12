@@ -4,7 +4,7 @@
 					<div class="list-box-custom">
 						<h3>Contacts</h3>
 						<div class="p15 fw" >
-							<div class="custom-user-box" ng-repeat="contacts in contats_data">
+							<div id="1234" class="custom-user-box" ng-repeat="contacts in contats_data">
 								
                                                             
                                                             
@@ -24,7 +24,7 @@
 								    
 								</div>
 								<div class="custom-user-btn">
-									<a class="btn3" ng-click="remove(contacts.user_id)">In Contacts</a>
+									<a class="btn3" id="{{contacts.user_id}}" ng-click="remove(contacts.user_id)">In Contacts</a>
 								</div>
 							</div>
 							

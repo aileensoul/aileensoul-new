@@ -228,10 +228,20 @@
                       
                     });
                     
-      function remove_contacts(index){ 
-          $(this).closest('.list_product').remove();
-                       // $(e.target).parent().remove();
-                           //array.splice(index, 1);
+      function remove_contacts(index){
+          
+          $.ajax({
+                url: base_url + "userprofile_page/removeContacts",
+                type: "POST",
+                data: {"id": index},
+                success: function (data) { 
+                  if (data == 1) { 
+                    $('#'+index).closest('.custom-user-box').fadeToggle();
+                }
+                }
+            });
+            
+         
                                }
 
             </script>
