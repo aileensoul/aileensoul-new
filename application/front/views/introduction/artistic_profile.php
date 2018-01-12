@@ -92,7 +92,19 @@ header('Expires: ' . $date);
                     </div>
                 </div>
             </div>		
-
+			<div class="fw pt20">
+				<div class="container pt20">
+                        <?php
+                        if (!$this->session->userdata('aileenuser') || $is_profile['is_artistic'] != '1') {
+                            ?>
+                            <div class="text-center introduce_button"><a href="<?php echo base_url('artist/profile') ?>" target="_blank" title="Create Artistic Profile" class="btn-new1">Create Artistic Profile</a></div>
+                        <?php } else {
+                            ?>
+                            <div class="text-center introduce_button"><a href="<?php echo base_url('artist') ?>" target="_blank" title="Take me in" class="btn-new1">Take me in</a></div>  
+                        <?php }
+                        ?>
+				</div>
+			</div>
             <section class="middle-main bg_white">
                 <div class="container">
                     <div class="profiles-details">
@@ -134,6 +146,7 @@ header('Expires: ' . $date);
                                 </p>
                             </div>
                         </div>
+					<div class="fw">
                         <?php
                         if (!$this->session->userdata('aileenuser') || $is_profile['is_artistic'] != '1') {
                             ?>
@@ -143,6 +156,7 @@ header('Expires: ' . $date);
                             <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('artist') ?>" target="_blank" title="Take me in" class="btn-new1">Take me in</a></div>  
                         <?php }
                         ?>
+					</div>
                     </div>
                 </div>
             </section>

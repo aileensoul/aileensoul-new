@@ -224,6 +224,10 @@ padding: 8px;}
     text-transform:uppercase
 }
 .all-user-list .item .post-img .post-img-mainuser{padding:56px 0;}
+.custom-user-list .post-img-mainuser{padding:18px 0;}
+.mes{text-align:center;}
+.model_ok_cancel .btn1{margin:5px; font-size:14px; line-height:1;}
+.model_ok_cancel{padding-top:5px;}
 /***  end all follow part  ***/
 
 /***  end right part  ***/

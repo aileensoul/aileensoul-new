@@ -809,6 +809,15 @@ textarea:focus::-webkit-input-placeholder{
     width:100%;
     float:left
 }
+.login-custom .outer-page .main-inner .middle-main{
+	padding:62px 0 0;
+}
+.registeration.outer-page .main-inner .middle-main{
+	padding:62px 0 0;
+}
+.outer-page .main-inner .middle-main{
+	padding:25px 0 0;
+}
 .main-inner .middle-main .container{
     height:100%
 }
@@ -2434,7 +2443,8 @@ img{
     font-family:arial;
     font-size:16px;
     border:2px solid #912281;
-    font-weight:700
+    font-weight:700;
+	padding:10px 35px;
 }
 .introduce_button .btn-new1:hover{
     text-decoration:none
@@ -2473,7 +2483,7 @@ header.profile-header .logo a{
 .profiles-details .top-detail{
     text-align:justify;
     padding:25px 0;
-    width:70%;
+    width:90%;
     margin:0 auto
 }
 .profiles-details .top-detail h1{
@@ -2882,6 +2892,7 @@ header.profile-header .logo a{
     footer,header .col-md-4.col-sm-3{
         text-align:center;
     }
+	.mob-pb20{padding-bottom:20px;}
     .footer-ul .mob-none{
         display:none
     }

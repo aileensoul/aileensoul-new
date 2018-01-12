@@ -93,7 +93,20 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
                     </div>
                 </div>
             </div>		
+			<div class="fw pt20">
+				<div class="container pt20">
+<?php
+if (!$this->session->userdata('aileenuser') || $is_profile['is_business'] != '1') {
+    ?>
+                            <div class="text-center introduce_button"><a href="<?php echo base_url('business-profile/business-information') ?>" title="Create Business Profile" target="_blank" class="btn-new1">Create Business Profile</a></div>
+                            <?php } else {
+                            ?>
 
+                            <div class="text-center introduce_button"><a href="<?php echo base_url('business-profile') ?>" title="Take me in" target="_blank" class="btn-new1">Take me in</a></div>
+<?php }
+?>
+						</div>
+						</div>
             <section class="middle-main bg_white">
                 <div class="container">
                     <div class="profiles-details">
@@ -134,6 +147,7 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
                                 </p>
                             </div>
                         </div>
+						<div class="fw">
 <?php
 if (!$this->session->userdata('aileenuser') || $is_profile['is_business'] != '1') {
     ?>
@@ -144,6 +158,7 @@ if (!$this->session->userdata('aileenuser') || $is_profile['is_business'] != '1'
                             <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('business-profile') ?>" title="Take me in" target="_blank" class="btn-new1">Take me in</a></div>
 <?php }
 ?>
+						</div>
                     </div>
                 </div>
             </section>
