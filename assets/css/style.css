@@ -160,7 +160,8 @@ label{
 select{
     padding:5px 15px;
     height:35px;
-    cursor:pointer
+    cursor:pointer;
+	color:#acacac;
 }
 .comment-edit-butn button:focus{
     background-color:#1b8ab9
