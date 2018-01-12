@@ -822,12 +822,12 @@ class Recruiter extends MY_Controller {
             $this->data['postdataone'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,recruiter_user_image,profile_background,designation,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
 
-        if($userid){
-         $this->load->view('recruiter/rec_post', $this->data);
-        }else{
+        if ($userid) {
+            $this->load->view('recruiter/rec_post', $this->data);
+        } else {
             redirect('login/');
         }
-    } 
+    }
 
 // RECRUITER POST END
 // RECRUITER EDIT POST START
@@ -4451,8 +4451,7 @@ class Recruiter extends MY_Controller {
         }
     }
 
-    
-     public function recruiter_other_industry() {
+    public function recruiter_other_industry() {
         $other_industry = $_POST['other_industry'];
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
@@ -4502,8 +4501,7 @@ class Recruiter extends MY_Controller {
             "select" => $select,
         ));
     }
-    
-    
+
 //add other_industry into database start 
 //    public function recruiter_other_industry1() {
 //
@@ -4561,7 +4559,6 @@ class Recruiter extends MY_Controller {
 //            "select" => $select,
 //        ));
 //    }
-
 //add other_industry into database End 
 
     public function live_post($userid = '', $postid = '', $posttitle = '') {
@@ -4706,7 +4703,15 @@ class Recruiter extends MY_Controller {
         $contition_array = array('status' => '1', 'state_id' => $this->data['recdata']['re_comp_state']);
         $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name,city_id,state_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        if ($this->session->userdata('aileenuser')) {
+            $userid = $this->session->userdata('aileenuser');
+            $recuser = $this->db->select('user_id')->get_where('recruiter', array('user_id' => $userid))->row()->user_id;
+        }
+        if($recuser){
+            redirect('recruiter/home', refresh);
+        }else{
         $this->load->view('recruiter/rec_reg', $this->data);
+        }
     }
 
     public function reg_insert() {
