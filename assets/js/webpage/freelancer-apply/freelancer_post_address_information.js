@@ -1,8 +1,12 @@
 //CODE FOR COUNTRY,STATE, CITY START
 $(document).ready(function () {
 
-     $('.ajax_load').hide();
-     
+    $('.ajax_load').hide();
+    $("#freelancer_post_addressinfo").find("select").each(function (i) {
+        if ($(this).val() != '') {
+            $(this).addClass("color-black-custom");
+        }
+    });
     $('#country').on('change', function () {
         var countryID = $(this).val();
         if (countryID) {
@@ -12,6 +16,8 @@ $(document).ready(function () {
                 data: 'country_id=' + countryID,
                 success: function (html) {
                     $('#state').html(html);
+                    $('#state').removeClass("color-black-custom");
+                    $('#city').removeClass("color-black-custom");
                     $('#city').html('<option value="">Select state first</option>');
                 }
             });
@@ -30,6 +36,7 @@ $(document).ready(function () {
                 data: 'state_id=' + stateID,
                 success: function (html) {
                     $('#city').html(html);
+                    $('#city').removeClass("color-black-custom");
                 }
             });
         } else {
@@ -40,13 +47,13 @@ $(document).ready(function () {
 //CODE FOR COUNTRY,STATE,CITY END
 
 
-function validate(){
+function validate() {
 
-     var form = $("#freelancer_post_addressinfo");
-    if(form.valid() == true ){
-     //$('#profilereg_ajax_load').show();
-     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
-     
+    var form = $("#freelancer_post_addressinfo");
+    if (form.valid() == true) {
+        //$('#profilereg_ajax_load').show();
+        document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+
     }
 }
 

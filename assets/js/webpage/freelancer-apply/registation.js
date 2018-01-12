@@ -11,6 +11,8 @@ $('#country').on('change', function () {
             data: 'country_id=' + countryID,
             success: function (html) {
                 $('#state').html(html);
+                $('#state').removeClass("color-black-custom");
+                $('#city').removeClass("color-black-custom");
                 $('#city').html('<option value="">Select state first</option>');
             }
         });
@@ -28,6 +30,7 @@ $('#state').on('change', function () {
             data: 'state_id=' + stateID,
             success: function (html) {
                 $('#city').html(html);
+                 $('#city').removeClass("color-black-custom");
             }
         });
     } else {
@@ -35,12 +38,12 @@ $('#state').on('change', function () {
     }
 });
 
-function validate(){
+function validate() {
 
-     var form = $("#freelancer_regform");
-    if(form.valid() == true ){
-    // $('#profilereg_ajax_load').show();
-     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+    var form = $("#freelancer_regform");
+    if (form.valid() == true) {
+        // $('#profilereg_ajax_load').show();
+        document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
 
     }
 }
@@ -48,7 +51,7 @@ function validate(){
 
 $(document).ready(function () {
 
-     $('.ajax_load').hide();
+    $('.ajax_load').hide();
 
     if (!user_session) {
         $('#register').modal('show');
@@ -663,12 +666,12 @@ function submitforgotForm()
                 setTimeout(function () {
                     $('#login').modal('show');
                     $('#forgotPassword').modal('hide');
-                     $("#forgotbuton").html('');
+                    $("#forgotbuton").html('');
                     document.getElementById("forgot_email").value = "";
                 }, 5000); // milliseconds
 
                 setTimeout(function () {
-                    
+
                 }, 5000); // milliseconds
                 //window.location = base_url + "job/home/live-post";
             } else {

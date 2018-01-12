@@ -1,35 +1,24 @@
-////CHECK SEARCH KEYWORD AND LOCATION BLANK START
-//function checkvalue() {
-//    var searchkeyword = $.trim(document.getElementById('tags').value);
-//    var searchplace = $.trim(document.getElementById('searchplace').value);
-//    if (searchkeyword == "" && searchplace == "") {
-//        return  false;
-//    }
-//}
-//function check() {
-//    var keyword = $.trim(document.getElementById('tags1').value);
-//    var place = $.trim(document.getElementById('searchplace1').value);
-//    if (keyword == "" && place == "") {
-//        return false;
-//    }
-//}
-////CHECK SEARCH KEYWORD AND LOCATION BLANK END
-//CODE FOR DEGREE DATA START
-function validate(){
 
-     var form = $("#freelancer_post_education");
-    if(form.valid() == true ){
-     //$('#profilereg_ajax_load').show();
-     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
-     
+//CODE FOR DEGREE DATA START
+function validate() {
+
+    var form = $("#freelancer_post_education");
+    if (form.valid() == true) {
+        //$('#profilereg_ajax_load').show();
+        document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+
     }
 }
 
 
 $(document).ready(function () {
 
-     $('.ajax_load').hide();
-
+    $('.ajax_load').hide();
+    $("#freelancer_post_education").find("select").each(function (i) {
+        if ($(this).val() != '') {
+            $(this).addClass("color-black-custom");
+        }
+    });
     $('#degree').on('change', function () {
         var degreeID = $(this).val();
         if (degreeID != 54) {
@@ -40,6 +29,7 @@ $(document).ready(function () {
                     data: 'degree_id=' + degreeID,
                     success: function (html) {
                         $('#stream').html(html);
+                        $('#stream').removeClass("color-black-custom");
                     }
                 });
             } else {
@@ -420,14 +410,14 @@ function remove_validation_stream() {
 //                    
 //            }
 //            });
-            
-    $(document).on('keydown', function (e) {
-                if (e.keyCode === 27) {
-                    $('#bidmodal2').modal('hide');
-                     $('#bidmodal_stream').modal('hide');     
-                      $('#bidmodal_degree').modal('hide');
-                               
-            }
-            });        
-            
+
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#bidmodal2').modal('hide');
+        $('#bidmodal_stream').modal('hide');
+        $('#bidmodal_degree').modal('hide');
+
+    }
+});
+
 //ALL POPUP CLOSE USING ESC END

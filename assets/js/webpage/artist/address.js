@@ -19,6 +19,8 @@ $(document).ready(function () {
                 data: 'country_id=' + countryID,
                 success: function (html) {
                     $('#state').html(html);
+                    $('#state').removeClass("color-black-custom");
+                    $('#city').removeClass("color-black-custom");
                     $('#city').html('<option value="">Select state first</option>');
                 }
             });
@@ -38,6 +40,7 @@ $(document).ready(function () {
                 data: 'state_id=' + stateID,
                 success: function (html) {
                     $('#city').html(html);
+                     $('#city').removeClass("color-black-custom");
                 }
             });
         } else {
