@@ -40,11 +40,13 @@ $(document).ready(function () {
                 url: base_url + "job_profile/ajax_data",
                 data: 'state_id=' + stateID,
                 success: function (html) {
+                    
                     $('#city').html(html);
+                     $('#city').removeClass("color-black-custom");
                 }
             });
         } else {
-             $('#city').removeClass("color-black-custom");
+            
             $('#city').html('<option value="">Select state first</option>');
         }
     });

@@ -3,9 +3,14 @@
 function checkvalue()
 {
     var searchkeyword = $.trim(document.getElementById('q').value);
+    var res = searchkeyword.replace(/'/g, "");
+     
     if (searchkeyword == "")
     {
         return false;
+    }else{
+
+        document.getElementById("q").value = res;
     }
 }
 // FOR SEARCH VALIDATION FOR EMAPTY SEARCH END 

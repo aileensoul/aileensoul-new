@@ -56,20 +56,27 @@ class Blog extends CI_Controller {
 
                 $this->data['search_keyword'] = $search_keyword1 = trim($this->input->get('q'));
 
-                $search_keyword = str_replace("'", '-', $search_keyword1);
+                $search_keyword = str_replace("'", "", $search_keyword1);
                 //echo $search_keyword; die();
 
+                $search_split = explode(" ",$search_keyword);
 
-                $search_condition = "(title LIKE '%$search_keyword%')";
-                $contition_array = array('status' => 'publish');
-                $bolg_data= $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = '*', $sortby = 'id', $orderby = 'desc', $limit, $offset);
+            foreach ($search_split as $key => $value) {
 
-                $search_condition = "(description LIKE '%$search_keyword%')";
+                $search_condition = "(title LIKE '%$value%')";
                 $contition_array = array('status' => 'publish');
-                $bolg_data_des = $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = '*', $sortby = 'id', $orderby = 'desc', $limit, $offset);
+                $bolg_data[] = $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = '*', $sortby = 'id', $orderby = 'desc', $limit, $offset);
+
+                $search_condition = "(description LIKE '%$value%')";
+                $contition_array = array('status' => 'publish');
+                $bolg_data_des[] = $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = '*', $sortby = 'id', $orderby = 'desc', $limit, $offset);
+
+           }
 
                 $unique = array_merge($bolg_data, $bolg_data_des);
-                $this->data['blog_detail'] = array_unique($unique, SORT_REGULAR);
+                $blog_unique1 = array_reduce($unique, 'array_merge', array()); 
+                $this->data['blog_detail'] = array_unique($blog_unique1, SORT_REGULAR);
+                //echo "<pre>"; print_r(count($this->data['blog_detail'])); die();
 
 
             $condition_array = array('status' => 'publish');
@@ -186,30 +193,6 @@ class Blog extends CI_Controller {
             echo 0;
         }
     }
-
-    //COMMENT INSERT BY USER END
-//SEARCH BY TAG START
-//public function tagsearch($tag='')
-//{
-//        //FOR SEARCH DATA WITH TAG,DETAIL AND DESCRIPTION IN BLOG TABLE
-//         $tag = str_replace("-"," ",$tag);
-//      
-//        $this->data['search_keyword']=$search_keyword = trim($tag);
-//        $search_condition = "(title LIKE '%$search_keyword%' OR   description LIKE '%$search_keyword%' OR  tag LIKE '%$search_keyword%')";
-//        $contition_array = array('status' => 'publish');
-//        $this->data['blog_detail'] = $this->common->select_data_by_search('blog', $search_condition, $contition_array,$data='*', $sortby='id', $orderby='desc', $limit, $offset);
-//
-//         //FOR GETTING ALL DATA
-//        $condition_array = array('status' => 'publish');
-//        $this->data['blog_all']  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='id', $order_by='desc', $limit, $offset, $join_str = array());
-//      
-//          //FOR GETTING 5 LAST DATA
-//          $condition_array = array('status' => 'publish');
-//        $this->data['blog_last']  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='id', $order_by='desc', $limit=5, $offset, $join_str = array());
-//
-//          $this->load->view('blog/index',$this->data);
-//}
-//SEARCH BY TAG END
 // blog available check start
     public function blog_check($slug = " ") {
 
@@ -235,32 +218,32 @@ class Blog extends CI_Controller {
             $start = 0;
 
          $searchword = trim($this->input->get('searchword'));
-         //echo $searchword; die();
 
     if($searchword){ 
 
-         $search_condition = "(title LIKE '%$searchword%')";
+         $search_split = explode(" ",$searchword);
+         foreach ($search_split as $key => $value) {
+             
+         $search_condition = "(title LIKE '%$value%')";
          $contition_array = array('status' => 'publish');
-         $bolg_data= $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = 'id', $sortby = 'id', $orderby = 'desc', $limit = '', $offset = '');
+         $bolg_data[] = $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '');
 
-         $search_condition = "(description LIKE '%$searchword%')";
+         $search_condition = "(description LIKE '%$value%')";
          $contition_array = array('status' => 'publish');
-         $bolg_data_des = $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = 'id', $sortby = 'id', $orderby = 'desc', $limit = '', $offset = '');
-
+         $bolg_data_des[] = $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '');
+        }
          $unique = array_merge($bolg_data, $bolg_data_des);
-         $blog_unique = array_unique($unique, SORT_REGULAR);
-
-        // echo "<pre>"; print_r($blog_unique); die();
-
+         $blog_unique1 = array_reduce($unique, 'array_merge', array()); 
+         $blog_unique = array_unique($blog_unique1, SORT_REGULAR);
+         
          foreach ($blog_unique as $key => $value) {
              
         $condition_array = array('id' => $value['id']);
-        $blog_val[] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'asc', $limit = $perpage, $offset = $start, $join_str = array());
-        $blog_val1[] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'asc', $limit = '', $offset = '', $join_str = array());
+        $blog_val1[] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $sort_by = 'id', $order_by = 'asc', $limit = '', $offset = '', $join_str = array());
 
          }
-         $blog_detail = array_reduce($blog_val, 'array_merge', array()); 
          $blog_detail1 = array_reduce($blog_val1, 'array_merge', array()); 
+         $blog_detail = array_slice($blog_detail1, $start, $perpage);
 
 
   }else{ 

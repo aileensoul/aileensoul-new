@@ -12,6 +12,12 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
 $(document).ready(function () {
 
      $('.ajax_load').hide();
+     
+     $("#freelancer_post_professional").find("select").each(function (i) {
+        if ($(this).val() != '') {
+            $(this).addClass("color-black-custom");
+        }
+    });
 
     $("#freelancer_post_professional").validate({
 
@@ -99,22 +105,6 @@ function imgval() {
 $(".alert").delay(3200).fadeOut(300);
 //FLASH MESSAGE SCRIPT END
 
-////CHECK SEARCH KEYWORD AND LOCATION BLANK START
-//function checkvalue() {
-//    var searchkeyword = $.trim(document.getElementById('tags').value);
-//    var searchplace = $.trim(document.getElementById('searchplace').value);
-//    if (searchkeyword == "" && searchplace == "") {
-//        return false;
-//    }
-//}
-//function check() {
-//    var keyword = $.trim(document.getElementById('tags1').value);
-//    var place = $.trim(document.getElementById('searchplace1').value);
-//    if (keyword == "" && place == "") {
-//        return false;
-//    }
-//}
-////CHECK SEARCH KEYWORD AND LOCATION BLANK END
 //COPY-PASTE CODE START
 var _onPaste_StripFormatting_IEPaste = false;
 function OnPaste_StripFormatting(elem, e) {
@@ -137,21 +127,7 @@ function OnPaste_StripFormatting(elem, e) {
     }
 }
 //COPY-PASTE CODE END
-////CODE FOR SKILL SELECTED START
-//                if (complex != '')
-//                {
-//                    $("#skill1").select2({
-//                        placeholder: "Select a Language",
-//                    }).select2('val', complex);
-//                }
-//                if (complex == '')
-//                {
-//                    $("#skill1").select2({
-//                        placeholder: "Select a Language",
-//
-//                    });
-//                }
-////CODE FOR SKILL SELECTED END
+
 //NEW SCRIPT FOR SKILL START
 
 $(function () {

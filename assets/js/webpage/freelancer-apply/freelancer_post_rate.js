@@ -1,20 +1,4 @@
-//
-////CHECK SEARCH KEYWORD AND LOCATION BLANK START
-//function checkvalue() {
-//                    var searchkeyword = $.trim(document.getElementById('tags').value);
-//                    var searchplace = $.trim(document.getElementById('searchplace').value);
-//                    if (searchkeyword == "" && searchplace == "") {
-//                        return  false;
-//                    }
-//                }
-//                function check() {
-//    var keyword = $.trim(document.getElementById('tags1').value);
-//    var place = $.trim(document.getElementById('searchplace1').value);
-//    if (keyword == "" && place == "") {
-//        return false;
-//    }
-//}
-////CHECK SEARCH KEYWORD AND LOCATION BLANK END
+
 //FLASH MESSAGE SCRIPT START
 $(".alert").delay(3200).fadeOut(300);
 //FLASH MESSAGE SCRIPT END
@@ -48,6 +32,11 @@ $(".alert").delay(3200).fadeOut(300);
 jQuery(document).ready(function ($) {
 
     $('.ajax_load').hide();
+    $("#freelancer_post_rate").find("select").each(function (i) {
+        if ($(this).val() != '') {
+            $(this).addClass("color-black-custom");
+        }
+    });
 });
 
 function validate(){
