@@ -20,6 +20,35 @@
         <div ng-view></div>
         <?php echo $footer; ?>
 
+        <!--PROFILE PIC MODEL START-->
+        <div class="modal fade message-box" id="bidmodal-2" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>      
+                    <div class="modal-body">
+                        <div class="mes">
+                            <div id="popup-form">
+
+                                <div class="fw" id="profi_loader"  style="display:none; text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="<?php echo 'LOADERIMAGE'; ?>"/></div>
+                                <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+                                    <div class="fw">
+                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
+                                    </div>
+
+                                    <div class="col-md-7 text-center">
+                                        <div id="upload-demo-one" style="display:none; width:350px"></div>
+                                    </div>
+                                    <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--PROFILE PIC MODEL END-->
+
         <div class="modal fade message-box" id="remove-contact" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -89,6 +118,8 @@
 
         </div>
         <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
+        <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/owl.carousel.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
@@ -118,7 +149,7 @@
                                         templateUrl: base_url + "userprofile_page/profile",
                                                 controller: 'profilesController'
                                         })
-                                        .when("/dashboard/:name*", {
+                                        .when("/dashboardd/:name*", {
                                         templateUrl: base_url + "userprofile_page/dashboard"
                                                 //   controller: 'basicInfoController'
                                         })
@@ -244,6 +275,216 @@
                                         }
                                 });
                                 }
+
+                                $uploadCrop1 = $('#upload-demo-one').croppie({
+                                enableExif: true,
+                                        viewport: {
+                                        width: 60,
+                                                height: 60,
+                                                type: 'square'
+                                        },
+                                        boundary: {
+                                        width: 30,
+                                                height: 30
+                                        }
+                                });
+                                $('#upload-one').on('change', function () {
+                                document.getElementById('upload-demo-one').style.display = 'block';
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                $uploadCrop1.croppie('bind', {
+                                url: e.target.result
+                                }).then(function () {
+                                console.log('jQuery bind complete');
+                                });
+                                }
+                                reader.readAsDataURL(this.files[0]);
+                                });
+                                $("#userimage").validate({
+                                rules: {
+                                profilepic: {
+                                required: true,
+                                },
+                                },
+                                        messages: {
+                                        profilepic: {
+                                        required: "Photo Required",
+                                        },
+                                        },
+                                        submitHandler: profile_pic
+                                });
+                                function profile_pic() {
+//    $('.upload-result-one').on('click', function (ev) {
+                                $uploadCrop1.croppie('result', {
+                                type: 'canvas',
+                                        size: 'viewport'
+                                }).then(function (resp) {
+                                $.ajax({
+                                //url: "/ajaxpro.php", user_image_insert
+                                // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
+                                url: base_url + "userprofile_page/user_image_insert1",
+                                        type: "POST",
+                                        data: {"image": resp},
+                                        beforeSend: function () {
+                                        $('#profi_loader').show();
+                                        // document.getElementById('profi_loader').style.display = 'block';
+                                        },
+                                        complete: function () {
+                                        //    $document.getElementById('profi_loader').style.display = 'none';
+                                        },
+                                        success: function (data) {
+                                        $('#profi_loader').hide();
+                                        $('#bidmodal-2').modal('hide');
+                                        $(".profile-img").html(data);
+                                        document.getElementById('upload-one').value = null;
+                                        document.getElementById('upload-demo-one').value = '';
+//                    html = '<img src="' + resp + '" />';
+//                    $("#upload-demo-i").html(html);
+                                        }
+                                });
+                                });
+//    });
+                                }
+
+                                function updateprofilepopup(id) {
+                                document.getElementById('upload-demo-one').style.display = 'none';
+                                document.getElementById('profi_loader').style.display = 'none';
+                                document.getElementById('upload-one').value = null;
+                                $('#bidmodal-2').modal('show');
+                                }
+
+
+                                // cover image start
+            
+                function myFunction() {
+                   
+                    document.getElementById("upload-demo").style.visibility = "hidden";
+                    document.getElementById("upload-demo-i").style.visibility = "hidden";
+                    document.getElementById('message1').style.display = "block";
+                }
+
+
+                function showDiv() {
+                   
+                    document.getElementById('row1').style.display = "block";
+                    document.getElementById('row2').style.display = "none";
+                    $(".cr-image").attr("src","");
+                    $("#upload").val('');
+                }
+           
+
+                $uploadCrop = $('#upload-demo').croppie({
+                    enableExif: true,
+                    viewport: {
+                        width: 1250,
+                        height: 350,
+                        type: 'square'
+                    },
+                    boundary: {
+                        width: 1250,
+                        height: 350
+                    }
+                });
+
+
+                $('.upload-result').on('click', function (ev) {
+                    
+                    $uploadCrop.croppie('result', {
+                        type: 'canvas',
+                        size: 'viewport'
+                    }).then(function (resp) {
+
+                        $.ajax({
+                            url: base_url + "userprofile_page/ajaxpro",
+                            type: "POST",
+                            data: {"image": resp},
+                            success: function (data) {
+                                if (data) {
+                                                $("#row2").html(data);
+                                                document.getElementById('row2').style.display = "block";
+                                                document.getElementById('row1').style.display = "none";
+                                                document.getElementById('message1').style.display = "none";
+                                                document.getElementById("upload-demo").style.visibility = "visible";
+                                                document.getElementById("upload-demo-i").style.visibility = "visible";
+
+                                            }
+                            }
+                        });
+
+                    });
+                });
+
+                $('.cancel-result').on('click', function (ev) {
+
+                    document.getElementById('row2').style.display = "block";
+                    document.getElementById('row1').style.display = "none";
+                    document.getElementById('message1').style.display = "none";
+                    $(".cr-image").attr("src","");
+                });
+
+                //aarati code start
+                $('#upload').on('change', function () {
+                   
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $uploadCrop.croppie('bind', {
+                            url: e.target.result
+                        }).then(function () {
+                            console.log('jQuery bind complete');
+                        });
+
+                    }
+                    reader.readAsDataURL(this.files[0]);
+
+                });
+
+                $('#upload').on('change', function () {
+
+                    var fd = new FormData();
+                    fd.append("image", $("#upload")[0].files[0]);
+
+                    files = this.files;
+                    size = files[0].size;
+
+ // pallavi code start for file type support
+if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
+   
+    picpopup();
+
+    document.getElementById('row1').style.display = "none";
+    document.getElementById('row2').style.display = "block";
+    return false;
+  }
+  // file type code end
+
+                    if (size > 26214400)
+                    {
+                        //show an alert to the user
+                        alert("Allowed file size exceeded. (Max. 25 MB)")
+
+                        document.getElementById('row1').style.display = "none";
+                        document.getElementById('row2').style.display = "block";
+
+                        return false;
+                    }
+
+
+//                    $.ajax({
+//
+//                        url: base_url +"recruiter/image",
+//                        type: "POST",
+//                        data: fd,
+//                        processData: false,
+//                        contentType: false,
+//                        success: function (response) {
+//
+//                        }
+//                    });
+                });
+
+                //aarati code end
+         
+//cover image end 
 
         </script>
 <!--        <script>

@@ -153,8 +153,8 @@ class User_model extends CI_Model {
         return $result_array;
     }
     
-    public function getUserDataByslug($user_slug = '') {
-        $this->db->select("u.user_id,u.first_name,u.last_name,u.user_dob,u.user_gender,u.user_agree,u.created_date,u.verify_date,u.user_verify,u.user_slider,u.user_slug,ui.user_image,ui.modify_date,ui.edit_ip,ui.profile_background,ui.profile_background_main,ul.email,ul.password,ul.is_delete,ul.status,ul.password_code")->from("user u");
+    public function getUserDataByslug($user_slug = '', $select_data = '') {
+        $this->db->select($select_data)->from("user u");
         $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
         $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
         $this->db->where("u.user_slug ='" . $user_slug . "'");

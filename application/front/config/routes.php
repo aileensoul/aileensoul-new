@@ -59,7 +59,7 @@ $route['default_controller'] = 'main';
 $route['basic-information'] = 'user_info';
 $route['educational-information'] = 'user_info';
 
-$route['dashboard/(:any)'] = 'Userprofile';
+$route['dashboardd/(:any)'] = 'Userprofile';
 $route['profiless/(:any)'] = 'Userprofile';
 $route['details/(:any)'] = 'Userprofile';
 $route['followers/(:any)'] = 'Userprofile';

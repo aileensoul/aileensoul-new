@@ -51,5 +51,13 @@ class Userprofile_model extends CI_Model {
         return $result_array;
         
      }
+     
+     function getUserBackImage($user_id = '') {
+        $this->db->select("profile_background,profile_background_main")->from("user_info");
+        $this->db->where("user_id", $user_id);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
 
 }
