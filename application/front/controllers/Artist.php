@@ -114,7 +114,15 @@ class Artist extends MY_Controller {
         } else {
             $this->data['profile_login'] = "live";
         }
+        if($this->session->userdata('aileenuser')){
+            $userid = $this->session->userdata('aileenuser');
+            $recuser = $this->db->select('user_id')->get_where('art_reg', array('user_id' => $userid))->row()->user_id;
+        }
+        if($recuser){
+            redirect('artist/home', refresh);
+        }else{
         $this->load->view('artist/profile', $this->data);
+        }
     }
 
     public function profile_insert() {
