@@ -515,6 +515,9 @@ class User_opportunities extends MY_Controller {
                                 }
                             }
                             /* THIS CODE UNCOMMENTED AFTER SUCCESSFULLY WORKING : REMOVE IMAGE FROM UPLOAD FOLDER */
+                            
+                            echo 'success';
+                            
                         } else {
                             echo $this->upload->display_errors();
                             exit;

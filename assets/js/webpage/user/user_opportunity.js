@@ -115,175 +115,176 @@ app.controller('userOppoController', function ($scope, $http) {
         document.getElementById('field').value = d;
     }
     $scope.post_opportunity_check = function (event) {
-        /*
-         var fileInput = document.getElementById("postfiles").files;
-         var product_name = document.getElementById("test-upload-product").value;
-         var product_trim = product_name.trim();
-         var product_description = document.getElementById("test-upload-des").value;
-         var des_trim = product_description.trim();
-         var product_fileInput = document.getElementById("file-1").value;
-         if (product_fileInput == '' && product_trim == '' && des_trim == '')
-         {
-         $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
-         $('#post').modal('show');
-         $(document).on('keydown', function (e) {
-         if (e.keyCode === 27) {
-         $('#posterrormodal').modal('hide');
-         $('.modal-post').show();
-         }
-         });
-         event.preventDefault();
-         return false;
-         } else {
-         for (var i = 0; i < fileInput.length; i++)
-         {
-         var vname = fileInput[i].name;
-         var vfirstname = fileInput[0].name;
-         var ext = vfirstname.split('.').pop();
-         var ext1 = vname.split('.').pop();
-         var allowedExtensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg'];
-         var allowesvideo = ['mp4', 'webm', 'mov', 'MP4'];
-         var allowesaudio = ['mp3'];
-         var allowespdf = ['pdf'];
-         
-         var foundPresent = $.inArray(ext, allowedExtensions) > -1;
-         var foundPresentvideo = $.inArray(ext, allowesvideo) > -1;
-         var foundPresentaudio = $.inArray(ext, allowesaudio) > -1;
-         var foundPresentpdf = $.inArray(ext, allowespdf) > -1;
-         
-         if (foundPresent == true)
-         {
-         var foundPresent1 = $.inArray(ext1, allowedExtensions) > -1;
-         if (foundPresent1 == true && fileInput.length <= 10) {
-         } else {
-         $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
-         $('#posterrormodal').modal('show');
-         setInterval('window.location.reload()', 10000);
-         $(document).on('keydown', function (e) {
-         if (e.keyCode === 27) {
-         $('#posterrormodal').modal('hide');
-         $('.modal-post').show();
-         }
-         });
-         event.preventDefault();
-         return false;
-         }
-         } else if (foundPresentvideo == true)
-         {
-         var foundPresent1 = $.inArray(ext1, allowesvideo) > -1;
-         if (foundPresent1 == true && fileInput.length == 1) {
-         } else {
-         $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
-         $('#posterrormodal').modal('show');
-         setInterval('window.location.reload()', 10000);
-         
-         $(document).on('keydown', function (e) {
-         if (e.keyCode === 27) {
-         $('#posterrormodal').modal('hide');
-         $('.modal-post').show();
-         }
-         });
-         event.preventDefault();
-         return false;
-         }
-         } else if (foundPresentaudio == true)
-         {
-         var foundPresent1 = $.inArray(ext1, allowesaudio) > -1;
-         if (foundPresent1 == true && fileInput.length == 1) {
-         
-         if (product_name == '') {
-         $('.biderror .mes').html("<div class='pop_content'>You have to add audio title.");
-         $('#posterrormodal').modal('show');
-         //setInterval('window.location.reload()', 10000);
-         
-         $(document).on('keydown', function (e) {
-         if (e.keyCode === 27) {
-         //$( "#bidmodal" ).hide();
-         $('#posterrormodal').modal('hide');
-         $('.modal-post').show();
-         }
-         });
-         event.preventDefault();
-         return false;
-         }
-         
-         } else {
-         $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
-         $('#posterrormodal').modal('show');
-         setInterval('window.location.reload()', 10000);
-         
-         $(document).on('keydown', function (e) {
-         if (e.keyCode === 27) {
-         $('#posterrormodal').modal('hide');
-         $('.modal-post').show();
-         }
-         });
-         event.preventDefault();
-         return false;
-         }
-         } else if (foundPresentpdf == true)
-         {
-         var foundPresent1 = $.inArray(ext1, allowespdf) > -1;
-         if (foundPresent1 == true && fileInput.length == 1) {
-         
-         if (product_name == '') {
-         $('.biderror .mes').html("<div class='pop_content'>You have to add pdf title.");
-         $('#posterrormodal').modal('show');
-         setInterval('window.location.reload()', 10000);
-         
-         $(document).on('keydown', function (e) {
-         if (e.keyCode === 27) {
-         $('#posterrormodal').modal('hide');
-         $('.modal-post').show();
-         }
-         });
-         event.preventDefault();
-         return false;
-         }
-         } else {
-         if (fileInput.length > 10) {
-         $('.biderror .mes').html("<div class='pop_content'>You can not upload more than 10 files at a time.");
-         } else {
-         $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
-         }
-         $('#posterrormodal').modal('show');
-         setInterval('window.location.reload()', 10000);
-         
-         $(document).on('keydown', function (e) {
-         if (e.keyCode === 27) {
-         $('#posterrormodal').modal('hide');
-         $('.modal-post').show();
-         
-         }
-         });
-         event.preventDefault();
-         return false;
-         }
-         } else if (foundPresentvideo == false) {
-         
-         $('.biderror .mes').html("<div class='pop_content'>This File Format is not supported Please Try to Upload MP4 or WebM files..");
-         $('#posterrormodal').modal('show');
-         setInterval('window.location.reload()', 10000);
-         
-         $(document).on('keydown', function (e) {
-         if (e.keyCode === 27) {
-         $('#posterrormodal').modal('hide');
-         $('.modal-post').show();
-         
-         }
-         });
-         event.preventDefault();
-         return false;
-         }
-         }
-         } */
+
+        var fileInput = document.getElementById("fileInput").files;
+        var description = document.getElementById("description").value;
+        var description = description.trim();
+        var job_title = $scope.job_title;
+        var location = $scope.location;
+        var fileInput = document.getElementById("fileInput").value;
+        if ((fileInput == '') && (description == '' || job_title.length == '0' || location.length == '0'))
+        {
+            $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
+            $('#post').modal('show');
+            $(document).on('keydown', function (e) {
+                if (e.keyCode === 27) {
+                    $('#posterrormodal').modal('hide');
+                    $('.modal-post').show();
+                }
+            });
+            event.preventDefault();
+            return false;
+        } else {
+            for (var i = 0; i < fileInput.length; i++)
+            {
+                var vname = fileInput[i].name;
+                var vfirstname = fileInput[0].name;
+                var ext = vfirstname.split('.').pop();
+                var ext1 = vname.split('.').pop();
+                var allowedExtensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg'];
+                var allowesvideo = ['mp4', 'webm', 'mov', 'MP4'];
+                var allowesaudio = ['mp3'];
+                var allowespdf = ['pdf'];
+
+                var foundPresent = $.inArray(ext, allowedExtensions) > -1;
+                var foundPresentvideo = $.inArray(ext, allowesvideo) > -1;
+                var foundPresentaudio = $.inArray(ext, allowesaudio) > -1;
+                var foundPresentpdf = $.inArray(ext, allowespdf) > -1;
+
+                if (foundPresent == true)
+                {
+                    var foundPresent1 = $.inArray(ext1, allowedExtensions) > -1;
+                    if (foundPresent1 == true && fileInput.length <= 10) {
+                    } else {
+                        $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
+                        $('#posterrormodal').modal('show');
+                        setInterval('window.location.reload()', 10000);
+                        $(document).on('keydown', function (e) {
+                            if (e.keyCode === 27) {
+                                $('#posterrormodal').modal('hide');
+                                $('.modal-post').show();
+                            }
+                        });
+                        event.preventDefault();
+                        return false;
+                    }
+                } else if (foundPresentvideo == true)
+                {
+                    var foundPresent1 = $.inArray(ext1, allowesvideo) > -1;
+                    if (foundPresent1 == true && fileInput.length == 1) {
+                    } else {
+                        $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
+                        $('#posterrormodal').modal('show');
+                        setInterval('window.location.reload()', 10000);
+
+                        $(document).on('keydown', function (e) {
+                            if (e.keyCode === 27) {
+                                $('#posterrormodal').modal('hide');
+                                $('.modal-post').show();
+                            }
+                        });
+                        event.preventDefault();
+                        return false;
+                    }
+                } else if (foundPresentaudio == true)
+                {
+                    var foundPresent1 = $.inArray(ext1, allowesaudio) > -1;
+                    if (foundPresent1 == true && fileInput.length == 1) {
+
+                        if (product_name == '') {
+                            $('.biderror .mes').html("<div class='pop_content'>You have to add audio title.");
+                            $('#posterrormodal').modal('show');
+                            //setInterval('window.location.reload()', 10000);
+
+                            $(document).on('keydown', function (e) {
+                                if (e.keyCode === 27) {
+                                    //$( "#bidmodal" ).hide();
+                                    $('#posterrormodal').modal('hide');
+                                    $('.modal-post').show();
+                                }
+                            });
+                            event.preventDefault();
+                            return false;
+                        }
+
+                    } else {
+                        $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
+                        $('#posterrormodal').modal('show');
+                        setInterval('window.location.reload()', 10000);
+
+                        $(document).on('keydown', function (e) {
+                            if (e.keyCode === 27) {
+                                $('#posterrormodal').modal('hide');
+                                $('.modal-post').show();
+                            }
+                        });
+                        event.preventDefault();
+                        return false;
+                    }
+                } else if (foundPresentpdf == true)
+                {
+                    var foundPresent1 = $.inArray(ext1, allowespdf) > -1;
+                    if (foundPresent1 == true && fileInput.length == 1) {
+
+                        if (product_name == '') {
+                            $('.biderror .mes').html("<div class='pop_content'>You have to add pdf title.");
+                            $('#posterrormodal').modal('show');
+                            setInterval('window.location.reload()', 10000);
+
+                            $(document).on('keydown', function (e) {
+                                if (e.keyCode === 27) {
+                                    $('#posterrormodal').modal('hide');
+                                    $('.modal-post').show();
+                                }
+                            });
+                            event.preventDefault();
+                            return false;
+                        }
+                    } else {
+                        if (fileInput.length > 10) {
+                            $('.biderror .mes').html("<div class='pop_content'>You can not upload more than 10 files at a time.");
+                        } else {
+                            $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
+                        }
+                        $('#posterrormodal').modal('show');
+                        setInterval('window.location.reload()', 10000);
+
+                        $(document).on('keydown', function (e) {
+                            if (e.keyCode === 27) {
+                                $('#posterrormodal').modal('hide');
+                                $('.modal-post').show();
+
+                            }
+                        });
+                        event.preventDefault();
+                        return false;
+                    }
+                } else if (foundPresentvideo == false) {
+
+                    $('.biderror .mes').html("<div class='pop_content'>This File Format is not supported Please Try to Upload MP4 or WebM files..");
+                    $('#posterrormodal').modal('show');
+                    setInterval('window.location.reload()', 10000);
+
+                    $(document).on('keydown', function (e) {
+                        if (e.keyCode === 27) {
+                            $('#posterrormodal').modal('hide');
+                            $('.modal-post').show();
+
+                        }
+                    });
+                    event.preventDefault();
+                    return false;
+                }
+            }
+            
+        }
     }
     // POST UPLOAD START
-    
+
     var bar = $('.progress-bar');
     var percent = $('.sr-only');
     var options = {
-        data: { job_title: $scope.job_title, location: $scope.location},
+        data: {job_title: $scope.job_title, location: $scope.location},
         beforeSend: function () {
             $('body').removeClass('modal-open');
             document.getElementById("progress_div").style.display = "block";

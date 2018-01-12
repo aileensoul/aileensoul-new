@@ -18,6 +18,31 @@
             .progress-bar{
                 background:linear-gradient(354deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%)!important
             }
+            .progress{
+                position:relative;
+                width:100%;
+                border:1px solid #ddd;
+                padding:1px;
+                border-radius:3px;
+                height:23px
+            }
+            .bar{
+                background-color:#1b8ab9;
+                width:0;
+                height:20px;
+                border-radius:3px
+            }
+            .percent{
+                position:absolute;
+                display:inline-block;
+                top:3px;
+                left:48%
+            }
+            .bs-example .sr-only{
+                position:inherit;
+                width:45px;
+                height:20px
+            }
         </style>
     </head>
     <body>
@@ -42,7 +67,7 @@
                         </div>
                     </div>
                     <div class="bs-example">
-                        <div class="progress progress-striped" id="progress_div">
+                        <div class="progress progress-striped" id="progress_div" style="display: none;">
                             <div class="progress-bar" style="width: 0%;">
                                 <span class="sr-only">0%</span>
                             </div>
@@ -306,6 +331,27 @@
                             <button type="submit" class="btn1"  value="Submit">Post</button>    
                         </div>
                         <?php echo form_close(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade message-box biderror" id="posterrormodal" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="posterror-modal-close" data-dismiss="modal">&times;
+                    </button>       
+                    <div class="modal-body">
+                        <span class="mes"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade message-box" id="post" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" id="post"data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes"></span>
                     </div>
                 </div>
             </div>
