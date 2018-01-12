@@ -3081,7 +3081,16 @@ class Job extends MY_Controller {
             $this->data['profile_login'] = "live";
         }
         $this->data['title'] = 'Register | Job Profile ' . TITLEPOSTFIX;
-        $this->load->view('job/job_reg', $this->data);
+        if ($this->session->userdata('aileenuser')) {
+            $userid = $this->session->userdata('aileenuser');
+            $jobuser = $this->db->select('user_id')->get_where('job_reg', array('user_id' => $userid))->row()->user_id;
+        }
+        if($jobuser){
+            redirect('job/home', refresh);
+        }else{
+          $this->load->view('job/job_reg', $this->data);  
+        }
+        
     }
 
     public function job_insert() {

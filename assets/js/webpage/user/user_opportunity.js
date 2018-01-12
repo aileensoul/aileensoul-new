@@ -71,25 +71,37 @@ app.directive('fileInput', function () {
     };
 });
 app.controller('userOppoController', function ($scope, $http) {
+
+    getFieldList();
+    function getFieldList() {
+        $http.get(base_url + "general_data/getFieldList").then(function (success) {
+            $scope.fieldList = success.data;
+        }, function (error) {});
+    }
     getContactSuggetion();
     function getContactSuggetion() {
         $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
             $scope.contactSuggetion = success.data;
         }, function (error) {});
     }
-
-    //$scope.job_title = [{text: 'Tag1'},{text: 'Tag2'},{text: 'Tag3'}];
     $scope.job_title = [];
-
-    $scope.loadJobTitle = function (query) {
-        return $http.get(base_url + 'user_opportunities/get_jobtitle');
+    $scope.loadJobTitle = function ($query) {
+        return $http.get(base_url + 'user_opportunities/get_jobtitle', {cache: true}).then(function (response) {
+            var job_title = response.data;
+            return job_title.filter(function (title) {
+                return title.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
+            });
+        });
     };
-
-    $scope.press_button = function () {
-        alert(2132123);
-        var a = $scope.tags;
-        console.log(a);
-    }
+    $scope.location = [];
+    $scope.loadLocation = function ($query) {
+        return $http.get(base_url + 'user_opportunities/get_location', {cache: true}).then(function (response) {
+            var location_data = response.data;
+            return location_data.filter(function (location) {
+                return location.city_name.toLowerCase().indexOf($query.toLowerCase()) != -1;
+            });
+        });
+    };
 
     $scope.postFiles = function () {
         var a = document.getElementById('description').value;
@@ -267,9 +279,11 @@ app.controller('userOppoController', function ($scope, $http) {
          } */
     }
     // POST UPLOAD START
+    
     var bar = $('.progress-bar');
     var percent = $('.sr-only');
     var options = {
+        data: { job_title: $scope.job_title, location: $scope.location},
         beforeSend: function () {
             $('body').removeClass('modal-open');
             document.getElementById("progress_div").style.display = "block";
@@ -313,8 +327,6 @@ app.controller('userOppoController', function ($scope, $http) {
     };
     $("#post_opportunity").ajaxForm(options);
     // POST UPLOAD END 
-
-
 
     $scope.addToContact = function (user_id, contact) {
         $http({

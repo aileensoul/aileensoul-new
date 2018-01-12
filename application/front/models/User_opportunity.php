@@ -31,11 +31,27 @@ class User_opportunity extends CI_Model {
         return $result_array;
     }
     
+//    public function get_jobtitle($search){
+//        $this->db->select("name")->from("job_title jt");
+//        $this->db->where('status','publish');
+//        $this->db->like('name',$search);
+//        $query = $this->db->get();
+//        $result_array = $query->result_array();
+//        return $result_array;
+//    }
     public function get_jobtitle(){
-        $this->db->select("name as text")->from("job_title jt");
+        $this->db->select("name")->from("job_title jt");
         $this->db->where('status','publish');
         $query = $this->db->get();
-        $result_array = $query->row_array();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+    
+    public function get_location(){
+        $this->db->select("city_name")->from("cities c");
+        $this->db->where('status','1');
+        $query = $this->db->get();
+        $result_array = $query->result_array();
         return $result_array;
     }
 

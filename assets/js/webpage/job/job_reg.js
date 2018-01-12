@@ -1,6 +1,8 @@
+
 //validation start
 $(document).ready(function () {
-     $('.ajax_load').hide();
+    $('.ajax_load').hide();
+
     // $.validator.addMethod("lowercase", function(value, element, regexpr) {          
     //          return regexpr.test(value);
     //      }, "email Should be in Small Character");
@@ -203,13 +205,13 @@ $(document).ready(function () {
 });
 
 
-function profile_reg(){
+function profile_reg() {
 
     var form = $("#jobseeker_regform");
-    if(form.valid() == true ){
-     //$('#profilereg_ajax_load').show();
-     document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
-     
+    if (form.valid() == true) {
+        //$('#profilereg_ajax_load').show();
+        document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
+
     }
 }
 function login_data() {
@@ -480,7 +482,7 @@ $(document).ready(function () { //aletr("hii");
                         $('#login').modal('show');
                         $('#forgotPassword').modal('hide');
                         $("#forgotbuton").html('');
-                       document.getElementById("forgot_email").value = "";
+                        document.getElementById("forgot_email").value = "";
                     }, 5000); // milliseconds
 
                     //window.location = base_url + "job/home/live-post";
@@ -594,7 +596,15 @@ $("#submit").on('click', function () {
             $("#submit").addClass("register_enable-cust");
             return false;
         } else {
-            return true;
+            if (year == '0 year' && month == null) {
+                $('#experience_year').addClass('error');
+                $('#experience_month').addClass('error');
+                $('<span class="error" id="experience_error" style="float: right;color: red; font-size: 11px;">Experiance is required</span>').insertAfter('#experience_month');
+                $("#submit").addClass("register_enable-cust");
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 //    $('.experience_month').append('<label for="year-month" class="year-month" style="display: block;">Experiance is required.</label>');
