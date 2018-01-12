@@ -36,7 +36,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 left-header text-center fw-479">
-                      <div class="logo">  <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a></div>
+                        <div class="logo">  <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a></div>
                     </div>
                     <div class="col-md-8 col-sm-9 right-header fw-479 text-center">
                         <div class="btn-right pull-right">
@@ -188,9 +188,9 @@
                                                 <fieldset class="col-md-12  pl10 work_type_custom">
                                                     <label class=""><?php echo $this->lang->line("work_type"); ?>:<span style="color:red">*</span></label>
                                                     <div class="cus_work">
-                                                    <input type="radio" tabindex="11" class="worktype_minheight" name="rating"  value="0"> Hourly
-                                                    <input type="radio" tabindex="12"  name="rating" value="1"> Fixed
-                                                    <input type="radio" tabindex="13" class="worktype"  name="rating" value="2"> Not Fixed
+                                                        <input type="radio" tabindex="11" class="worktype_minheight" name="rating"  value="0"> Hourly
+                                                        <input type="radio" tabindex="12"  name="rating" value="1"> Fixed
+                                                        <input type="radio" tabindex="13" class="worktype"  name="rating" value="2"> Not Fixed
                                                     </div>
                                                     <?php echo form_error('rating'); ?>
                                                 </fieldset>
@@ -235,7 +235,16 @@
 
         <?php echo $login_footer ?>
         <?php echo $footer; ?>
-
+        <div class="modal fade message-box biderror custom-message" id="bidmodal2" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content message">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
+                    <h2>Add Field</h2>         
+                    <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
+                    <div class="fw"><a title="OK" id="field" class="btn">OK</a></div>
+                </div>
+            </div>
+        </div>
         <!-- Login for submit post data -->
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
@@ -479,15 +488,15 @@
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
 
-               <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
+                   <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
 
-                <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
+                    <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
 
         <?php } else { ?>
 
-                 <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
+                     <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
 
-                <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
+                    <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>-->
 
         <?php } ?>
 
