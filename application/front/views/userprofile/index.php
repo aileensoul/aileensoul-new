@@ -141,8 +141,9 @@
                                         $scope.makeActive = function(item) {
                                         $scope.active = $scope.active == item?'':item;
                                         }
+                                        $scope.segment2 = '<?php echo $this->uri->segment(2); ?>';
+                                        $scope.user_slug = '<?php echo $userdata['user_slug']; ?>';
                                         })
-                                        var user_slug = '<?php echo $this->uri->segment(2); ?>';
                                 app.config(function ($routeProvider, $locationProvider) {
                                 $routeProvider
                                         .when("/profiless/:name*", {
@@ -355,118 +356,105 @@
 
 
                                 // cover image start
-            
-                function myFunction() {
-                   
-                    document.getElementById("upload-demo").style.visibility = "hidden";
-                    document.getElementById("upload-demo-i").style.visibility = "hidden";
-                    document.getElementById('message1').style.display = "block";
-                }
+
+                                function myFunction() {
+
+                                document.getElementById("upload-demo").style.visibility = "hidden";
+                                document.getElementById("upload-demo-i").style.visibility = "hidden";
+                                document.getElementById('message1').style.display = "block";
+                                }
 
 
-                function showDiv() {
-                   
-                    document.getElementById('row1').style.display = "block";
-                    document.getElementById('row2').style.display = "none";
-                    $(".cr-image").attr("src","");
-                    $("#upload").val('');
-                }
-           
+                                function showDiv() {
 
-                $uploadCrop = $('#upload-demo').croppie({
-                    enableExif: true,	
-                    viewport: {
-                        width: 1250,
-                        height: 350,
-                        type: 'square'
-                    },
-                    boundary: {
-                        width: 1250,
-                        height: 350
-                    }
-                });
+                                document.getElementById('row1').style.display = "block";
+                                document.getElementById('row2').style.display = "none";
+                                $(".cr-image").attr("src", "");
+                                $("#upload").val('');
+                                }
 
 
-                $('.upload-result').on('click', function (ev) {
-                    
-                    $uploadCrop.croppie('result', {
-                        type: 'canvas',
-                        size: 'viewport'
-                    }).then(function (resp) {
+                                $uploadCrop = $('#upload-demo').croppie({
+                                enableExif: true,
+                                        viewport: {
+                                        width: 1250,
+                                                height: 350,
+                                                type: 'square'
+                                        },
+                                        boundary: {
+                                        width: 1250,
+                                                height: 350
+                                        }
+                                });
+                                $('.upload-result').on('click', function (ev) {
 
-                        $.ajax({
-                            url: base_url + "userprofile_page/ajaxpro",
-                            type: "POST",
-                            data: {"image": resp},
-                            success: function (data) {
-                                if (data) {
-                                                $("#row2").html(data);
-                                                document.getElementById('row2').style.display = "block";
-                                                document.getElementById('row1').style.display = "none";
-                                                document.getElementById('message1').style.display = "none";
-                                                document.getElementById("upload-demo").style.visibility = "visible";
-                                                document.getElementById("upload-demo-i").style.visibility = "visible";
+                                $uploadCrop.croppie('result', {
+                                type: 'canvas',
+                                        size: 'viewport'
+                                }).then(function (resp) {
 
-                                            }
-                            }
-                        });
+                                $.ajax({
+                                url: base_url + "userprofile_page/ajaxpro",
+                                        type: "POST",
+                                        data: {"image": resp},
+                                        success: function (data) {
+                                        if (data) {
+                                        $("#row2").html(data);
+                                        document.getElementById('row2').style.display = "block";
+                                        document.getElementById('row1').style.display = "none";
+                                        document.getElementById('message1').style.display = "none";
+                                        document.getElementById("upload-demo").style.visibility = "visible";
+                                        document.getElementById("upload-demo-i").style.visibility = "visible";
+                                        }
+                                        }
+                                });
+                                });
+                                });
+                                $('.cancel-result').on('click', function (ev) {
 
-                    });
-                });
+                                document.getElementById('row2').style.display = "block";
+                                document.getElementById('row1').style.display = "none";
+                                document.getElementById('message1').style.display = "none";
+                                $(".cr-image").attr("src", "");
+                                });
+                                //aarati code start
+                                $('#upload').on('change', function () {
 
-                $('.cancel-result').on('click', function (ev) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                $uploadCrop.croppie('bind', {
+                                url: e.target.result
+                                }).then(function () {
+                                console.log('jQuery bind complete');
+                                });
+                                }
+                                reader.readAsDataURL(this.files[0]);
+                                });
+                                $('#upload').on('change', function () {
 
-                    document.getElementById('row2').style.display = "block";
-                    document.getElementById('row1').style.display = "none";
-                    document.getElementById('message1').style.display = "none";
-                    $(".cr-image").attr("src","");
-                });
+                                var fd = new FormData();
+                                fd.append("image", $("#upload")[0].files[0]);
+                                files = this.files;
+                                size = files[0].size;
+                                // pallavi code start for file type support
+                                if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
-                //aarati code start
-                $('#upload').on('change', function () {
-                   
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $uploadCrop.croppie('bind', {
-                            url: e.target.result
-                        }).then(function () {
-                            console.log('jQuery bind complete');
-                        });
+                                picpopup();
+                                document.getElementById('row1').style.display = "none";
+                                document.getElementById('row2').style.display = "block";
+                                return false;
+                                }
+                                // file type code end
 
-                    }
-                    reader.readAsDataURL(this.files[0]);
+                                if (size > 26214400)
+                                {
+                                //show an alert to the user
+                                alert("Allowed file size exceeded. (Max. 25 MB)")
 
-                });
-
-                $('#upload').on('change', function () {
-
-                    var fd = new FormData();
-                    fd.append("image", $("#upload")[0].files[0]);
-
-                    files = this.files;
-                    size = files[0].size;
-
- // pallavi code start for file type support
-if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
-   
-    picpopup();
-
-    document.getElementById('row1').style.display = "none";
-    document.getElementById('row2').style.display = "block";
-    return false;
-  }
-  // file type code end
-
-                    if (size > 26214400)
-                    {
-                        //show an alert to the user
-                        alert("Allowed file size exceeded. (Max. 25 MB)")
-
-                        document.getElementById('row1').style.display = "none";
-                        document.getElementById('row2').style.display = "block";
-
-                        return false;
-                    }
+                                        document.getElementById('row1').style.display = "none";
+                                document.getElementById('row2').style.display = "block";
+                                return false;
+                                }
 
 
 //                    $.ajax({
@@ -480,10 +468,9 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 //
 //                        }
 //                    });
-                });
+                                });
+                                //aarati code end
 
-                //aarati code end
-         
 //cover image end 
 
         </script>
