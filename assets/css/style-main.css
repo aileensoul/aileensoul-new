@@ -2204,8 +2204,13 @@ input:-webkit-autofill,input:-webkit-autofill:active,input:-webkit-autofill:focu
 }
 .contact .login .btn1{
     background:#8ab1c5;
-    border:none!important
+    border:none!important;
 }
+.contact .login .btn1:hover,.contact .login .btn1:focus{
+    background:#8ab1c5 !important;
+    border:none!important;
+}
+
 .contact .login .btn1:hover{background:#6291a9;}
 .contact .title h1{
     color:#838383!important;
