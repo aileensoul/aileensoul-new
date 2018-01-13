@@ -73,91 +73,76 @@
                             </div>
                         </div>
                     </div>
-                    <div class="all-post-box">
+                    <!-- Repeated Class Start -->
+                    <div class="all-post-box" ng-repeat="post in postData">
                         <div class="all-post-top">
                             <div class="post-head">
                                 <div class="post-img">
-                                    <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                    <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{post.user_data.user_image}}" ng-if="post.user_data.user_image != ''">
+                                    <img ng-src="<?php echo NOBUSIMAGE2 ?>" ng-if="post.user_data.user_image == ''">
                                 </div>
                                 <div class="post-detail">
                                     <div class="fw">
-                                        <a href="#" class="post-name">Prasant Dadhaniya</a><span class="post-time">7 hours ago</span>
+                                        <a href="#" class="post-name" ng-bind="(post.user_data.first_name) + ' ' + (post.user_data.last_name)"></a><span class="post-time">7 hours ago</span>
                                     </div>
                                     <div class="fw">
-                                        <span class="post-designation">SEO Executive</span>
+                                        <span class="post-designation" ng-if="post.user_data.title_name != ''" ng-bind="post.user_data.title_name"></span>
+                                        <span class="post-designation" ng-if="post.user_data.title_name == ''" ng-bind="post.user_data.degree_name"></span>
+                                        <span class="post-designation" ng-if="post.user_data.title_name == null && post.user_data.degree_name == null" ng-bind="CURRENT WORK"></span>
                                     </div>
                                 </div>
                                 <div class="post-right-dropdown dropdown">
-
-
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/') ?>n-images/right-down.png"></a>
-
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/right-down.png') ?>" alt="Right Down"></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Action</a></li>
                                         <li><a href="#">Another action</a></li>
                                         <li><a href="#">Something else here</a></li>
                                     </ul>
-
                                 </div>
                             </div>
                             <div class="post-discription">
                                 <h5 class="post-title">
-                                    <p><b>Opportunity for:</b> Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, Developer, HR, BDE, CA, Doctor..</p>
-                                    <p><b>Location:</b> Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo..</p>
+                                    <p><b>Opportunity for:</b> {{post.opportunity_data.opportunity_for}}</p>
+                                    <p><b>Location:</b> {{post.opportunity_data.location}}</p>
+                                    <p><b>Field:</b> {{post.opportunity_data.field}}</p>
                                 </h5>
 
-                                <div class="post-des-detail">
-                                    <b>Opportunity:</b> This webpage requires data that you entered earlier in order to be properly displayed. You can send this data again, but by doing so you will repeat any action this page previously performed.
-                                    Press the reload button to resubmit the data needed to load the page.
+                                <div class="post-des-detail"><b>Opportunity:</b>{{post.opportunity_data.opportunity}}</div>
+                            </div>
+                            <div class="post-images" ng-if="post.post_data.total_post_files == '1'">
+                                <div class="one-img" ng-repeat="post_file in post.post_file_data">
+                                    <a href="#"><img ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
+                                    <video ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'video'"></video>
+                                    <audio ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'audio'"></audio>
+                                    <a href="" title="Click Here"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg" ng-if="post.post_file_data.file_type == 'pdf'"></a>
                                 </div>
                             </div>
-                            <div class="post-images">
-                                <div class="one-img">
-                                    <img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg">
+                            <div class="post-images" ng-if="post.post_data.total_post_files == '2'">
+                                <div class="two-img" ng-repeat="post_file in post.post_file_data">
+                                    <a href="#"><img ng-src="<?php echo USER_POST_RESIZE1_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
                                 </div>
                             </div>
-                            <!-- CONDITIONAL DIV -->
-                            <div class="post-images">
-                                <div class="two-img">
-                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
-                                </div>
-                                <div class="two-img">
-                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
-                                </div>
+                            <div class="post-images" ng-if="post.post_data.total_post_files == '3'">
+                                <span ng-repeat="post_file in post.post_file_data">
+                                    <div class="three-img-top" ng-if="$index == '0'">
+                                        <a href="#"><img ng-src="<?php echo USER_POST_RESIZE4_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
+                                    </div>
+                                    <div class="two-img" ng-if="$index == '1'">
+                                        <a href="#"><img ng-src="<?php echo USER_POST_RESIZE1_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
+                                    </div>
+                                    <div class="two-img" ng-if="$index == '2'">
+                                        <a href="#"><img ng-src="<?php echo USER_POST_RESIZE1_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
+                                    </div>
                             </div>
-                            <!-- CONDITIONAL DIV -->
-                            <!-- CONDITIONAL DIV -->
-                            <div class="post-images">
-                                <div class="three-img-top">
-                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
-                                </div>
-                                <div class="two-img">
-                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
-                                </div>
-                                <div class="two-img">
-                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
-                                </div>
-                            </div>
-                            <!-- CONDITIONAL DIV -->
-                            <!-- CONDITIONAL DIV -->
-                            <div class="post-images four-img">
-                                <div class="two-img">
-                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
-                                </div>
-                                <div class="two-img">
-                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
-                                </div>
-                                <div class="two-img">
-                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
-                                </div>
-                                <div class="two-img">
-                                    <a href="#"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg"></a>
-                                    <div class="view-more-img">
+                            </span>
+                            <div class="post-images four-img" ng-if="post.post_data.total_post_files >= '4'">
+                                <div class="two-img" ng-repeat="post_file in post.post_file_data">
+                                    <a href="#"><img ng-src="<?php echo USER_POST_RESIZE2_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
+                                    <div class="view-more-img" ng-if="post.post_data.total_post_files > '4' && $indedx == '4'">
                                         <span>View All (+5)</span>
                                     </div>
                                 </div>
                             </div>
-                            <!-- CONDITIONAL DIV -->
                             <div class="post-bottom">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 col-xs-6">
@@ -226,6 +211,8 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Repeated Class Complete -->
+
                 </div>
 
                 <div class="right-part">
@@ -277,11 +264,11 @@
                                 <?php } ?>
                             </div>
                             <div class="post-text">
-                                <textarea name="description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
+                                <textarea name="description" ng-model="description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
                             </div>
                             <div class="all-upload">
                                 <div class="form-group">
-                                    <input file-input type="file" id="fileInput" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+                                    <input file-input type="file" ng-model="fileInput" id="fileInput" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
                                 </div>
                                 <label for="fileInput" ng-click="postFiles()">
                                     <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
@@ -324,7 +311,7 @@
                                 </select>
                             </div>
                             <div class="form-group" ng-if="field == '0'">
-                                <input type="text" class="form-control" ng-model="opp.otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
+                                <input type="text" class="form-control" ng-model="otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
                             </div>
                         </div>
                         <div class="text-right fw pt10">

@@ -71,7 +71,15 @@ app.directive('fileInput', function () {
     };
 });
 app.controller('userOppoController', function ($scope, $http) {
-
+    
+    getUserOpportunity();
+    function getUserOpportunity() {
+        $http.get(base_url + "user_opportunities/getUserOpportunity").then(function (success) {
+            $scope.postData = success.data;
+        }, function (error) {});
+    }
+    
+    
     getFieldList();
     function getFieldList() {
         $http.get(base_url + "general_data/getFieldList").then(function (success) {
@@ -302,18 +310,24 @@ app.controller('userOppoController', function ($scope, $http) {
         success: function () {
         },
         complete: function (response) {
+            console.log(response.responseText);
             var percentVal = '100%';
             bar.width(percentVal)
             percent.html(percentVal);
-            document.getElementById('description').value = '';
-            document.getElementById('job_title').value = '';
-            document.getElementById('location').value = '';
-            document.getElementById('field').value = '';
-            document.getElementById('fileInput').value = '';
-            $("input[name='text_num']").val(50);
-            $(".file-preview-frame").hide();
+            $scope.description = '';
+            $scope.job_title = '';
+            $scope.location = '';
+            $scope.field = '';
+            $scope.fileInput = '';
             document.getElementById("progress_div").style.display = "none";
-            $(".all-post-box").prepend(response.responseText);
+            //$(".all-post-box").prepend(response.responseText);
+            
+            
+            $scope.postData = response.responseText;
+            
+            
+            
+            
             $('video, audio').mediaelementplayer();
             var nb = $('.post-design-box').length;
             if (nb == 0) {
