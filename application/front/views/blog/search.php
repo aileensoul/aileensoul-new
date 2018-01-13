@@ -318,6 +318,8 @@ header("Pragma: no-cache"); // HTTP/1.0
             //AJAX DATA LOAD BY LAZZY LOADER START
             $(document).ready(function () {
                 blog_post();
+                document.getElementById("loader").classList.add("middle_loader");
+                //document.getElementById("loader").className = "middle_loader";
             });
 
             function category_data(catid, pagenum) {
@@ -392,6 +394,10 @@ header("Pragma: no-cache"); // HTTP/1.0
                     },
                     success: function (data) {
                         // $('.loader').remove();
+
+                      document.getElementById("loader").classList.remove("middle_loader");
+
+
                         $('.job-contact-frnd').append(data.blog_data);
                         $('.loadbutton').html(data.load_msg)
                         // second header class add for scroll
