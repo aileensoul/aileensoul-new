@@ -280,7 +280,7 @@ jQuery.validator.addMethod("isValid", function (value, element) {
 }, "Last date should be grater than or equal to today date.");
 
 $.validator.addMethod("greaterThan1",
-        function (value, element, param) {
+        function (value, element, param) { 
             var $min = $(param);
             if (this.settings.onfocusout) {
                 $min.off(".validate-greaterThan").on("blur.validate-greaterThan", function () {
@@ -293,7 +293,9 @@ $.validator.addMethod("greaterThan1",
             } else
             {
                 //return parseInt(value) > parseInt($min.val());
-                return (value) > ($min.val());
+                //return (value) > ($min.val());
+
+                return parseFloat(value) > parseFloat($min.val())
             }
         }, "Maximum experience must be greater than minimum experience.");
 
