@@ -195,10 +195,10 @@
                                                                 <input name="contactmobile" ng-model="user.contactmobile" tabindex="2" autofocus type="text" id="contactmobile" placeholder="Enter contact mobile" value=""/>
                                                                 <span ng-show="errorContactMobile" class="error">{{errorContactMobile}}</span>
                                                             </fieldset>
-                                                            <fieldset>
+                                                            <fieldset class="vali_er">
                                                                 <label>Contact email:<span style="color:red">*</span></label>
                                                                 <input name="email" ng-model="user.email" tabindex="3" autofocus type="text" id="email" placeholder="Enter contact email" value=""/>
-                                                                 
+                                                                 <span class="email_note"><b>Note:-</b> Related notification email will be send on provided email address kindly use regular  email address.<div></div></span>
                                                                 <span ng-show="errorEmail" class="error">{{errorEmail}}</span>                                                                        
                                                             </fieldset>
                                                             <fieldset class="vali_er">
