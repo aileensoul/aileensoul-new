@@ -229,7 +229,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                  else {
                                     ?>
 
-                                    <h3>Search results for 
+                                    <h3 style="border: 1px solid #d9d9d9;color: #5c5c5c;text-align: center;margin-bottom: 20px;">Search results for 
                                         <?php
                                        
                                             echo '' . $search_keyword . '';
