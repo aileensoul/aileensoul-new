@@ -767,7 +767,7 @@ fieldset .add_post_btns{padding: 10px 30px 12px!important;}
     border-right: none;
 }
 .add-post-button a:hover {
-    color: #1b8ab9;
+    color: #fff;
 }
 .back {
     width: 84%;
@@ -833,6 +833,7 @@ label.cameraButton input[accept*="camera"] {
 	outline: none;
 	max-width: 300px!important;
 	z-index:9999 !important;
+    position: fixed !important;
 }
 .ui-state-focus {
     margin: 0 !important;

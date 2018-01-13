@@ -1672,7 +1672,8 @@ label.cameraButton input[accept*=camera]{
     outline:0;
     max-width:300px!important;
     z-index:9999!important;
-    width:100%
+    width:100%;
+    position: fixed !important;
 }
 .ui-state-focus{
     margin:0!important
