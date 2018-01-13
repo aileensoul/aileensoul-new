@@ -1,5 +1,8 @@
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER START
 $(document).ready(function () {
+//    if(otherfiled){
+//      $('#otherfiled').modal('show');
+//    }
     freelancerhire_home();
 
     $(window).scroll(function () {

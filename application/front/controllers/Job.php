@@ -4154,7 +4154,7 @@ class Job extends MY_Controller {
 // search keyword insert into database start
 
 
-        $search_job = str_replace('-', ' ', trim($_GET["skill"]));
+        $search_job = $_GET["skill"];
         $search_place = str_replace('-', ' ', trim($_GET["place"]));
 
 
@@ -4251,7 +4251,7 @@ class Job extends MY_Controller {
             $search_condition = "(job_title.slug LIKE '%$search_job%')";
             $results_posttitleid = $recpostdata['data'] = $this->common->select_data_by_search('job_title', $search_condition, $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-            $unique1 = array_merge($results_skill, $results_all, $results_posttitleid);
+            $unique1 = array_merge((array)$results_skill, (array)$results_all, (array)$results_posttitleid);
 
             $unique = array();
             foreach ($unique1 as $value) {

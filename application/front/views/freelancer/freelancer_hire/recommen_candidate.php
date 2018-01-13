@@ -3,16 +3,21 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-     <?php
-        if (IS_HIRE_CSS_MINIFY == '0') {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
-        <?php } else {?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
+        <?php if (IS_HIRE_CSS_MINIFY == '0') { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/freelancer-hire.css?ver=' . time()); ?>">
         <?php } ?>
     </head>
     <body class="pushmenu-push">
         <?php echo $header; ?>
         <?php echo $freelancer_hire_header2_border; ?>
+        <?php
+        $userid = $this->session->userdata('aileenuser');
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+        $project_data =  $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'created_date', $orderby = 'desc', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+      //  echo "<pre>"; print_r($project_data);die();
+        ?>
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container padding-360">
@@ -28,7 +33,7 @@
 
                                                 <?php if ($freehiredata['profile_background'] != '') { ?>
                                                     <div class="data_img">
-                                                        <img src="<?php echo FREE_HIRE_BG_THUMB_UPLOAD_URL . $freehiredata['profile_background']; ?>" class="bgImage" alt="<?php echo $freehiredata['fullname']. " ".$freehiredata['username'];  ?>" >
+                                                        <img src="<?php echo FREE_HIRE_BG_THUMB_UPLOAD_URL . $freehiredata['profile_background']; ?>" class="bgImage" alt="<?php echo $freehiredata['fullname'] . " " . $freehiredata['username']; ?>" >
                                                     </div>
                                                 <?php } else { ?>
                                                     <div class="data_img bg-images no-cover-upload">
@@ -107,9 +112,9 @@
                                         </div>
                                     </div>                             
                                 </div>
-                                
 
-     <?php echo $left_footer; ?>
+
+                                <?php echo $left_footer; ?>
 
                                 <div  class="add-post-button">
                                     <a title="Post Project" class="btn btn-3 btn-3b" id ="Fh-post-project" href="<?php echo base_url('freelance-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
@@ -132,12 +137,12 @@
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("recommended_freelancer"); ?></h3>
                                     <div class="contact-frnd-post">
-                                        
+
                                         <div class="job-contact-frnd">
                                             <!--AJAX DATA...........-->
 
                                             <!-- body tag inner data end -->
-                                            
+
                                         </div>
                                         <div class="fw" id="loader" style="text-align:center;"><img alt="loader" src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
 
@@ -148,7 +153,7 @@
                         <!-- middle div  -->
                         <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
-                        <div class="all-profile-box">
+                            <div class="all-profile-box">
                                 <div class="all-pro-head">
                                     <h4>Profiles<a title="All" href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
                                 </div>
@@ -197,7 +202,7 @@
                             </div>
 
                         </div>
-                    
+
 
                     </div>
                 </div>
@@ -216,20 +221,31 @@
             </div>
         </div>
         <!-- Model Popup Close -->
+        <div class="modal fade message-box biderror custom-message" id="otherfiled" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content message">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
+                    <h2>Add Field</h2>         
+                    <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
+                    <div class="fw"><a title="OK" id="field" class="btn">OK</a></div>
+                </div>
+            </div>
+        </div>
         <script>
-                                            var base_url = '<?php echo base_url(); ?>';
+            var base_url = '<?php echo base_url(); ?>';
+            var otherfiled = '<?php echo $otherfiled; ?>';
         </script>
-        
+
         <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>
         <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
-        
+
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
           <!--<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>-->
         <!--<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>-->
-            <?php } else {  ?>
+        <?php } else { ?>
            <!--<script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>-->
         <!--<script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>-->
         <?php } ?>
-        
+
     </body>
 </html>

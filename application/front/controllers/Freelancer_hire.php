@@ -99,14 +99,17 @@ class Freelancer_hire extends MY_Controller {
             );
             $insert_id1 = $this->common->insert_data($data, 'freelancer_hire_reg');
             if ($this->input->post('segment') == 'live-post') {
-                
+
                 $segment = $this->input->post('segment');
                 $temp = $this->freelancer_hire_model->getprojectlivedatabyuserid($userid);
-                
+                if ($temp[0]['post_field_req'] == 15) {
+                    $otherfield = '16';
+                }
+
                 $data = array(
                     'post_name' => $temp[0]['post_name'],
                     'post_description' => $temp[0]['post_description'],
-                    'post_field_req' => $temp[0]['post_field_req'],
+                    'post_field_req' => $otherfield,
                     'post_skill' => $temp[0]['post_skill'],
                     'post_other_skill' => $temp[0]['post_other_skill'],
                     'post_est_time' => $temp[0]['post_est_time'],
@@ -136,13 +139,13 @@ class Freelancer_hire extends MY_Controller {
 
 
             if ($insert_id1) {
-                if($this->input->post('segment') == 'live-post'){
+                if ($this->input->post('segment') == 'live-post') {
                     redirect('freelance-hire/home', refresh);
-                }else{
-                redirect('freelance-hire/add-projects?page=professional', refresh);
+                } else {
+                    redirect('freelance-hire/add-projects?page=professional', refresh);
                 }
             } else {
-               
+
                 redirect('freelancer/hire_registation', refresh);
             }
         }
@@ -435,7 +438,7 @@ class Freelancer_hire extends MY_Controller {
                 }
             }
         } else {
-            redirect('freelance-hire/basic-information');
+            redirect('freelance-hire/registration');
         }
     }
 
@@ -450,66 +453,66 @@ class Freelancer_hire extends MY_Controller {
         //if ($this->input->post('next')) {
 
 
-            $this->form_validation->set_rules('country', 'Please Enter Your country', 'required');
-            $this->form_validation->set_rules('state', 'Please Enter Your state', 'required');
+        $this->form_validation->set_rules('country', 'Please Enter Your country', 'required');
+        $this->form_validation->set_rules('state', 'Please Enter Your state', 'required');
 
 
-            if ($this->form_validation->run() == FALSE) {
+        if ($this->form_validation->run() == FALSE) {
 
-                $this->load->view('freelancer/freelancer_hire/freelancer_hire_address_info');
-            } else {
-                //echo "hhh";
-                $contition_array = array('user_id' => $userid, 'status' => '1', 'free_hire_step' => '3');
-                $userdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                if ($userdata) {
-                    $data = array(
-                        'country' => trim($this->input->post('country')),
-                        'state' => trim($this->input->post('state')),
-                        'city' => trim($this->input->post('city')),
-                        'pincode' => trim($this->input->post('pincode')),
-                        'modified_date' => date('Y-m-d h:i:s')
-                    );
-                    $updatdata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
-                    if ($updatdata) {
-
-                        //  $this->session->set_flashdata('success', 'Address information updated successfully');
-                        redirect('freelance-hire/professional-information', refresh);
-                    } else {
-
-                        // $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                        redirect('freelance-hire/address-information', refresh);
-                    }
-                } else {
-                    
-                }
-
-
-
+            $this->load->view('freelancer/freelancer_hire/freelancer_hire_address_info');
+        } else {
+            //echo "hhh";
+            $contition_array = array('user_id' => $userid, 'status' => '1', 'free_hire_step' => '3');
+            $userdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            if ($userdata) {
                 $data = array(
                     'country' => trim($this->input->post('country')),
                     'state' => trim($this->input->post('state')),
                     'city' => trim($this->input->post('city')),
                     'pincode' => trim($this->input->post('pincode')),
-                    'modified_date' => date('Y-m-d h:i:s'),
-                    'user_id' => $userid,
-                    'free_hire_step' => '2'
+                    'modified_date' => date('Y-m-d h:i:s')
                 );
-
-
-
                 $updatdata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
-
-
                 if ($updatdata) {
 
-                    //   $this->session->set_flashdata('success', 'Address information updated successfully');
+                    //  $this->session->set_flashdata('success', 'Address information updated successfully');
                     redirect('freelance-hire/professional-information', refresh);
                 } else {
 
-                    //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                    // $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('freelance-hire/address-information', refresh);
                 }
+            } else {
+                
             }
+
+
+
+            $data = array(
+                'country' => trim($this->input->post('country')),
+                'state' => trim($this->input->post('state')),
+                'city' => trim($this->input->post('city')),
+                'pincode' => trim($this->input->post('pincode')),
+                'modified_date' => date('Y-m-d h:i:s'),
+                'user_id' => $userid,
+                'free_hire_step' => '2'
+            );
+
+
+
+            $updatdata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
+
+
+            if ($updatdata) {
+
+                //   $this->session->set_flashdata('success', 'Address information updated successfully');
+                redirect('freelance-hire/professional-information', refresh);
+            } else {
+
+                //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                redirect('freelance-hire/address-information', refresh);
+            }
+        }
         //}
     }
 
@@ -551,44 +554,41 @@ class Freelancer_hire extends MY_Controller {
 
 
 
-       // if ($this->input->post('next')) {
-
-
-
+        // if ($this->input->post('next')) {
 //            $this->form_validation->set_rules('professional_info', ' Please Enter Your professional info', 'required');
 //            if ($this->form_validation->run() == FALSE) {
 //
 //                $this->load->view('freelancer/freelancer_hire/freelancer_hire_professional_info');
 //            } else {
 
-            $data = array(
-                'professional_info' => trim($this->input->post('professional_info')),
-                'modified_date' => date('Y-m-d h:i:s'),
-                'user_id' => $userid,
-                'free_hire_step' => '3'
-            );
+        $data = array(
+            'professional_info' => trim($this->input->post('professional_info')),
+            'modified_date' => date('Y-m-d h:i:s'),
+            'user_id' => $userid,
+            'free_hire_step' => '3'
+        );
 
 
 
-            $updatdata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
+        $updatdata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
 
 
-            if ($updatdata) {
+        if ($updatdata) {
 
 //                    $this->session->set_flashdata('success', 'professional information updated successfully');
 
-                if ($userdata[0]['free_hire_step'] == 3) {
-                    redirect('freelance-hire/employer-details', refresh);
-                } else {
-                    redirect('freelance-hire/add-projects?page=professional', refresh);
-                }
+            if ($userdata[0]['free_hire_step'] == 3) {
+                redirect('freelance-hire/employer-details', refresh);
             } else {
-
-                $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                redirect('freelance-hire/professional-information', refresh);
+                redirect('freelance-hire/add-projects?page=professional', refresh);
             }
-            // }
-       // }
+        } else {
+
+            $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+            redirect('freelance-hire/professional-information', refresh);
+        }
+        // }
+        // }
     }
 
     //keyskill automatic retrieve cobtroller start
@@ -1852,13 +1852,13 @@ class Freelancer_hire extends MY_Controller {
         $this->form_validation->set_rules('post_desc', 'Project description', 'required');
         $this->form_validation->set_rules('fields_req', 'Field ', 'required');
         $this->form_validation->set_rules('skills', 'Skill', 'required');
-       // $this->form_validation->set_rules('latdate', 'Last date ', 'required');
+        // $this->form_validation->set_rules('latdate', 'Last date ', 'required');
 //        $this->form_validation->set_rules('rate', 'Rate', 'required');
 //        $this->form_validation->set_rules('currency', 'Currency', 'required');
         $this->form_validation->set_rules('rating', 'Work type', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            
+
             $contition_array = array('status' => '1');
             $this->data['category'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -1921,7 +1921,7 @@ class Freelancer_hire extends MY_Controller {
                 'status' => '1',
                 'is_delete' => '0'
             );
-            
+
             $insert_id = $this->common->insert_data_getid($data, 'freelancer_post');
             if ($insert_id) {
                 redirect('freelance-hire/home', refresh);
@@ -2773,7 +2773,7 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //FREELANCER_HIRE REMOVE SAVED FREELANCER END
-        public function free_invite_user() {
+    public function free_invite_user() {
         $postid = $_POST['post_id'];
         $invite_user = $_POST['invited_user'];
         //echo $invite_user;die();
@@ -2820,7 +2820,7 @@ class Freelancer_hire extends MY_Controller {
     }
 
 //FREELANCER_HIRE INVITE FREELANCER OF APLLIED END
-       public function selectemail_user($select_user = '', $post_id = '', $word = '') {
+    public function selectemail_user($select_user = '', $post_id = '', $word = '') {
         $invite_user = $select_user;
         $postid = $post_id;
         $writting_word = $word;
@@ -2880,4 +2880,5 @@ class Freelancer_hire extends MY_Controller {
 
         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
     }
+
 }
