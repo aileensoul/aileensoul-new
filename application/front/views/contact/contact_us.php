@@ -103,7 +103,7 @@ header('Expires: ' . $date);
 
                                     </div>
                                     <p class="pb15">
-                                        <span class="red">*</span>All fields are mendatory
+                                        <span class="red">*</span>All fields are mandatory
                                     </p>
                                     <p>
                                         <button title="Submit" class="btn1">Submit</button>
