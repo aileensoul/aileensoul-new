@@ -136,8 +136,13 @@ class Freelancer_hire extends MY_Controller {
 
 
             if ($insert_id1) {
-                redirect('freelance-hire/home', refresh);
+                if($this->input->post('segment') == 'live-post'){
+                    redirect('freelance-hire/home', refresh);
+                }else{
+                redirect('freelance-hire/add-projects?page=professional', refresh);
+                }
             } else {
+               
                 redirect('freelancer/hire_registation', refresh);
             }
         }
