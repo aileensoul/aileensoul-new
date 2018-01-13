@@ -443,7 +443,7 @@ $(document).ready(function () {
 
             last_date: {
 
-                required1: "Last date of apply is required.",
+                required: true,
                 isValid: 'Last date should be grater than and equal to today date.'
 
             },
