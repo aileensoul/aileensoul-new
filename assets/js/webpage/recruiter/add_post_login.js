@@ -109,7 +109,7 @@ function check_datevalidation() {
         if (parseInt(todaydate_in_str) > parseInt(selected_date_in_str)) {
             $('.day').addClass('error');
             $('.month').addClass('error');
-            $('.year').addClass('error');
+             $('.year').addClass('error');
 
             $('.date-dropdowns .last_date_error').remove();
             $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last date should be grater than and equal to today date</label>');

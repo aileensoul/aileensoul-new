@@ -18,6 +18,23 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/style-main.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter.css'); ?>">
         <?php } ?>
+
+
+        <style type="text/css">
+            .last_date_error{
+                background: none;
+                color: red !important;
+                padding: 0px 10px !important;
+                position: absolute;
+                right: 8px;
+                z-index: 8;
+                line-height: 15px;
+                padding-right: 0px!important;
+                font-size: 11px!important;
+            }
+
+        </style>
+        
     </head>
      
     <body class="page-container-bg-solid page-boxed freeh3 cust-add-live botton_footer">
