@@ -100,13 +100,14 @@
                                 </fieldset>
                                 <?php echo form_error('comp_name'); ?>
 
-                                <fieldset <?php if ($comp_email) { ?> class="error-msg" <?php } ?>>
+                                <fieldset class="vali_er" <?php if ($comp_email) { ?> class="error-msg" <?php } ?>>
                                     <label>Company Email:<span class="red">* </span></label>
                                     <input name="comp_email" type="text" tabindex="2" id="comp_email" placeholder="Enter Company Email" value="<?php
                                     if ($compemail) {
                                         echo $compemail;
                                     }
-                                    ?>" /><span id="fullname-error"></span>
+                                    ?>" />
+                                    <span class="email_note"><b>Note:-</b> Related notification email will be send on provided email address kindly use regular  email address.<div></div></span>
                                 </fieldset>
                                 <?php echo form_error('comp_email'); ?>
 

@@ -122,7 +122,8 @@
                                         } else {
                                             echo $userdata[0]['user_email'];
                                         }
-                                        ?>" /><span id="email-error" ></span>
+                                        ?>" />
+                                        
                                                <?php echo form_error('email'); ?>
                                     </fieldset>
 
