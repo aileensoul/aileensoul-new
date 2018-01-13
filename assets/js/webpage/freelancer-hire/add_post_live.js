@@ -240,6 +240,9 @@ function check_datevalidation() {
         var dd = todaydate.getDate();
         var mm = todaydate.getMonth() + 1; //January is 0!
         var yyyy = todaydate.getFullYear();
+        if (mm <= 9) {
+            mm = 0 + mm.toString();
+        }
         var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
 
 
@@ -287,6 +290,9 @@ $("#postinfo").submit(function () {
         var dd = todaydate.getDate();
         var mm = todaydate.getMonth() + 1; //January is 0!
         var yyyy = todaydate.getFullYear();
+        if (mm <= 9) {
+            mm = 0 + mm.toString();
+        }
         var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
 
 

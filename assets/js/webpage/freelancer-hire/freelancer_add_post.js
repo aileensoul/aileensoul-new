@@ -435,6 +435,9 @@ function check_datevalidation() {
         var dd = todaydate.getDate();
         var mm = todaydate.getMonth() + 1; //January is 0!
         var yyyy = todaydate.getFullYear();
+        if (mm <= 9) {
+            mm = 0 + mm.toString();
+        }
         var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
 
 
@@ -481,6 +484,12 @@ $("form").submit(function () {
         var todaydate = new Date();
         var dd = todaydate.getDate();
         var mm = todaydate.getMonth() + 1; //January is 0!
+<<<<<<< HEAD
+=======
+        if (mm <= 9) {
+            mm = 0 + mm.toString();
+        }
+>>>>>>> ac53ba92b31a957fb7795066f97853b77c60f286
         var yyyy = todaydate.getFullYear();
         var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
 

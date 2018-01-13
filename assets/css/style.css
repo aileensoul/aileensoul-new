@@ -2452,10 +2452,11 @@ footer div.pt20{
         margin-bottom:20px!important;
         height:auto!important
     }
+    .modal.in .modal-dialog{padding: 55px 15px !important;}
 }
 @media screen and (min-height:540px){
     .no-login .modal-content{
-        margin:0 auto
+        margin:0 auto;
     }
 }
 @media screen and (-webkit-min-device-pixel-ratio:0){

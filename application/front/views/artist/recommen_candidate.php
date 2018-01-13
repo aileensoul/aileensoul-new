@@ -80,7 +80,7 @@
                                   }
               ?>                               
                   </h3>
-                <div class="contact-frnd-post" style="padding: 0px;">
+                <div class="contact-frnd-post">
                   <div class="job-contact-frnd">
 				  	
 
