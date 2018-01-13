@@ -481,22 +481,19 @@ $("form").submit(function () {
         var todaydate = new Date();
         var dd = todaydate.getDate();
         var mm = todaydate.getMonth() + 1; //January is 0!
-        if (mm <= 9) {
-            mm = 0 + mm.toString()
-        }
         var yyyy = todaydate.getFullYear();
         var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
-      
+
+
         var selected_date_in_str = "" + year + month + day;
-        
+
         if (parseInt(todaydate_in_str) > parseInt(selected_date_in_str)) {
-         
             $('.day').addClass('error');
             $('.month').addClass('error');
             $('.year').addClass('error');
 
             $('.date-dropdowns .error').show();
-            $('.date-dropdowns').append('<label for="example2" class="last_date_error">Last date should be grater than and equal to today date</label>');
+            $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last date should be grater than and equal to today date</label>');
             $('.date-dropdowns .last_date_error').removeAttr('style');
             return false;
         } else {
@@ -507,9 +504,9 @@ $("form").submit(function () {
 
             var rate = $('#rate').val();
             var currency = $('#currency').val();
+            var worktype = $("input[name=rating]:checked").val();
             
-
-            if (rate != '') {
+                    if (rate != '') {
                 if (currency == null) {
                     $('<label for="currency" class="last_date_error" style="display: block;">You had add rate so please select currency</label>').insertAfter("#currency");
                     return false;
