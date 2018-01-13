@@ -90,6 +90,12 @@ class User_opportunities extends MY_Controller {
         echo json_encode($location);
     }
 
+    public function getUserOpportunity() {
+        $userid = $this->session->userdata('aileenuser');
+        $post_data = $this->user_opportunity->userPost($userid);
+        echo json_encode($post_data);
+    }
+
     public function post_opportunity() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
@@ -109,7 +115,7 @@ class User_opportunities extends MY_Controller {
         } elseif ($location[0]['city_name'] == '') {
             $error = 1;
         }
-        
+
         if ($error != '1') {
             foreach ($job_title as $title) {
                 $designation = $this->data_model->findJobTitle($title['name']);
@@ -142,7 +148,7 @@ class User_opportunities extends MY_Controller {
                 $city_id .= $cityId . ',';
             }
             $city_id = trim($city_id, ',');
-            
+
             $this->config->item('user_post_main_upload_path');
             $config = array(
                 'image_library' => 'gd',
@@ -515,9 +521,10 @@ class User_opportunities extends MY_Controller {
                                 }
                             }
                             /* THIS CODE UNCOMMENTED AFTER SUCCESSFULLY WORKING : REMOVE IMAGE FROM UPLOAD FOLDER */
-                            
-                            echo 'success';
-                            
+
+                            $post_data = $this->user_opportunity->userPost($userid);
+
+                            echo json_encode($post_data);
                         } else {
                             echo $this->upload->display_errors();
                             exit;

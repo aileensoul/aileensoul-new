@@ -67,8 +67,115 @@ $(function () {
 
     });
     $(".day").attr('tabindex', 12);
+    $(".day").attr('onChange', 'check_datevalidation();');
     $(".month").attr('tabindex', 13);
+    $(".month").attr('onChange', 'check_datevalidation();');
     $(".year").attr('tabindex', 14);
+    $(".year").attr('onChange', 'check_datevalidation();');
+
+});
+
+
+
+function check_datevalidation() {
+    var day = $('.day').val();
+    var month = $('.month').val();
+    var year = $('.year').val();
+    if (day == '' || month == '' || year == '') {
+        if (day == '') {
+            $('.day').addClass('error');
+        }
+        if (month == '') {
+            $('.month').addClass('error');
+        }
+        if (year == '') {
+            $('.year').addClass('error');
+        }
+        $('.date-dropdowns .last_date_error').remove();
+        $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last Date of apply is required.</label>');
+        return false;
+        //<label for="example2" class="error">Last Date of apply is required.</label>
+    } else {
+        var todaydate = new Date();
+        var dd = todaydate.getDate();
+        var mm = todaydate.getMonth() + 1; //January is 0!
+        var yyyy = todaydate.getFullYear();
+        if (mm <= 9) { mm = 0 + mm.toString(); }
+        var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
+
+
+        var selected_date_in_str = "" + year + month + day;
+
+        if (parseInt(todaydate_in_str) > parseInt(selected_date_in_str)) { alert("ggg");
+            $('.day').addClass('error');
+            $('.month').addClass('error');
+             $('.year').addClass('error');
+
+            $('.date-dropdowns .last_date_error').remove();
+            $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last date should be grater than and equal to today date</label>');
+            return false;
+        } else {
+            $('.day').removeClass('error');
+            $('.month').removeClass('error');
+            $('.year').removeClass('error');
+            $('.date-dropdowns .last_date_error').remove();
+            return true;
+        }
+    }
+}
+
+
+
+$("form").submit(function () {
+
+    var day = $('.day').val();
+    var month = $('.month').val();
+    var year = $('.year').val();
+    if (day == '' || month == '' || year == '') {
+        if (day == '') {
+            $('.day').addClass('error');
+        }
+        if (month == '') {
+            $('.month').addClass('error');
+        }
+        if (year == '') {
+            $('.year').addClass('error');
+        }
+        $('.date-dropdowns .last_date_error').remove();
+        $('.date-dropdowns').append('<label for="example2" class="last_date_error" style="display: block;">Last Date of apply is required.</label>');
+        return false;
+
+    } else {
+        var todaydate = new Date();
+        var dd = todaydate.getDate();
+        var mm = todaydate.getMonth() + 1; //January is 0!
+        var yyyy = todaydate.getFullYear();
+
+          if (mm <= 9) { mm = 0 + mm.toString(); }
+          
+        var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
+
+
+        var selected_date_in_str = "" + year + month + day;
+
+        if (parseInt(todaydate_in_str) > parseInt(selected_date_in_str)) {
+            $('.day').addClass('error');
+            $('.month').addClass('error');
+            $('.year').addClass('error');
+
+            $('.date-dropdowns .error').show();
+            $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last date should be grater than and equal to today date</label>');
+            $('.date-dropdowns .last_date_error').removeAttr('style');
+            return false;
+        } else {
+            $('.day').removeClass('error');
+            $('.month').removeClass('error');
+            $('.year').removeClass('error');
+            $('.date-dropdowns .last_date_error').remove();
+            return true;
+        }
+    }
+
 });
 
 
@@ -218,22 +325,22 @@ $.validator.addMethod("patternn", function (value, element, param) {
 }, "Salary is not in correct format.");
 
 //pattern validation at salary end//
-$.validator.addMethod("required1", function (value, element, regexpr) {
-    //return value == '' || value.trim().length != 0; 
+// $.validator.addMethod("required1", function (value, element, regexpr) {
+//     //return value == '' || value.trim().length != 0; 
 
-    if (!value)
-    {
-        $('.day').addClass('error');
-        $('.month').addClass('error');
-        $('.year').addClass('error');
-        return false;
-    } else
-    {
-        return true;
-    }
+//     if (!value)
+//     {
+//         $('.day').addClass('error');
+//         $('.month').addClass('error');
+//         $('.year').addClass('error');
+//         return false;
+//     } else
+//     {
+//         return true;
+//     }
 
-    // return regexpr.test(value);
-}, "Last date of apply is required.");
+//     // return regexpr.test(value);
+// }, "Last date of apply is required.");
 
 jQuery.validator.addMethod("isValid", function (value, element) {
 
@@ -295,7 +402,7 @@ $.validator.addMethod("greaterThan1",
                 //return parseInt(value) > parseInt($min.val());
                 //return (value) > ($min.val());
 
-                return parseFloat(value) > parseFloat($min.val())
+                return parseFloat(value) > parseFloat($min.val());
             }
         }, "Maximum experience must be greater than minimum experience.");
 
@@ -441,12 +548,12 @@ $(document).ready(function () {
 
             },
 
-            last_date: {
+            // last_date: {
 
-                required: true,
-                isValid: 'Last date should be grater than and equal to today date.'
+            //     required1: "Last date of apply is required.",
+            //     isValid: 'Last date should be grater than and equal to today date.'
 
-            },
+            // },
             minsal: {
 //                // required: true,
 //                //number:true,
@@ -520,10 +627,10 @@ $(document).ready(function () {
 
             },
 
-            last_date: {
+            // last_date: {
 
-                required: "Last date for apply required."
-            },
+            //     required: "Last date for apply required."
+            // },
 
             maxsal: {
                 required: "Maximum salary is required.",
@@ -724,75 +831,6 @@ $(document).ready(function () {
         });
         return false;
     }
-    
-////ONLY FOR LOGIN FROM HEADER START
-//$("#login_form_not").validate({
-//
-//        rules: {
-//            email_login: {
-//                required: true,
-//            },
-//            password_login: {
-//                required: true,
-//            }
-//        },
-//        messages:
-//                {
-//                    email_login: {
-//                        required: "Please enter email address",
-//                    },
-//                    password_login: {
-//                        required: "Please enter password",
-//                    }
-//                },
-//        submitHandler: submitForm1
-//    });
-//    /* validation */
-//    /* login submit */
-//    function submitForm1()
-//    {
-//
-//        var email_login = $("#email_login").val();
-//        var password_login = $("#password_login").val();
-//        var post_data = {
-//            'email_login': email_login,
-//            'password_login': password_login,
-//            csrf_token_name: csrf_hash
-//        }
-//        $.ajax({
-//            type: 'POST',
-//            url: base_url + 'registration/check_login',
-//            data: post_data,
-//            dataType: "json",
-//            beforeSend: function ()
-//            {
-//                $("#error").fadeOut();
-//                $("#btn1").html('Login ...');
-//            },
-//            success: function (response)
-//            {
-//                if (response.data == "ok") {
-//                  //  alert("login");
-//                    $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-//                 // 8-11   window.location = base_url + "job/home";
-//                    window.location = base_url + "dashboard";
-//                } else if (response.data == "password") {
-//                    $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
-//                    document.getElementById("password_login").classList.add('error');
-//                    document.getElementById("password_login").classList.add('error');
-//                    $("#btn1").html('Login');
-//                } else {
-//                    $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
-//                    document.getElementById("email_login").classList.add('error');
-//                    document.getElementById("email_login").classList.add('error');
-//                    $("#btn1").html('Login');
-//                }
-//            }
-//        });
-//        return false;
-//    }
-//    //ONLY FOR LOGIN FROM HEADER END
-
 
     $.validator.addMethod("lowercase", function (value, element, regexpr) {
         return regexpr.test(value);
@@ -1097,195 +1135,7 @@ function submitforgotForm()
     return false;
 }            /* validation */
 
-   
-    //ONLY FOR REGISTER FROM HEADER START
-//    $.validator.addMethod("lowercase", function (value, element, regexpr) {
-//        return regexpr.test(value);
-//    }, "Email should be in small character");
 
-//    $("#register").validate({
-//        rules: {
-//            first_name: {
-//                required: true,
-//            },
-//            last_name: {
-//                required: true,
-//            },
-//            email_reg: {
-//                required: true,
-//                email: true,
-//                lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
-//                remote: {
-//                    url: base_url + "registration/check_email",
-//                    type: "post",
-//                    data: {
-//                        email_reg: function () {
-//                            // alert("hi");
-//                            return $("#email_reg").val();
-//                        },
-//                        csrf_token_name: csrf_hash,
-//                    },
-//                },
-//            },
-//            password_reg: {
-//                required: true,
-//            },
-//            selday: {
-//                required: true,
-//            },
-//            selmonth: {
-//                required: true,
-//            },
-//            selyear: {
-//                required: true,
-//            },
-//            selgen: {
-//                required: true,
-//            }
-//        },
-//
-//        groups: {
-//            selyear: "selyear selmonth selday"
-//        },
-//        messages:
-//                {
-//                    first_name: {
-//                        required: "Please enter first name",
-//                    },
-//                    last_name: {
-//                        required: "Please enter last name",
-//                    },
-//                    email_reg: {
-//                        required: "Please enter email address",
-//                        remote: "Email address already exists",
-//                    },
-//                    password_reg: {
-//                        required: "Please enter password",
-//                    },
-//
-//                    selday: {
-//                        required: "Please enter your birthdate",
-//                    },
-//                    selmonth: {
-//                        required: "Please enter your birthdate",
-//                    },
-//                    selyear: {
-//                        required: "Please enter your birthdate",
-//                    },
-//                    selgen: {
-//                        required: "Please enter your gender",
-//                    }
-//
-//                },
-//        submitHandler: submitRegisterForm1
-//    });
-    /* register submit */
-//    function submitRegisterForm1()
-//    {
-//        var postid = '';
-//        var first_name = $("#first_name").val();
-//        var last_name = $("#last_name").val();
-//        var email_reg = $("#email_reg").val();
-//        var password_reg = $("#password_reg").val();
-//        var selday = $("#selday").val();
-//        var selmonth = $("#selmonth").val();
-//        var selyear = $("#selyear").val();
-//        var selgen = $("#selgen").val();
-//      
-////alert(postid);
-//        var post_data = {
-//            'first_name': first_name,
-//            'last_name': last_name,
-//            'email_reg': email_reg,
-//            'password_reg': password_reg,
-//            'selday': selday,
-//            'selmonth': selmonth,
-//            'selyear': selyear,
-//            'selgen': selgen,
-//            csrf_token_name: csrf_hash
-//        }
-//
-//
-//        var todaydate = new Date();
-//        var dd = todaydate.getDate();
-//        var mm = todaydate.getMonth() + 1; //January is 0!
-//        var yyyy = todaydate.getFullYear();
-//
-//        if (dd < 10) {
-//            dd = '0' + dd
-//        }
-//
-//        if (mm < 10) {
-//            mm = '0' + mm
-//        }
-//
-//        var todaydate = yyyy + '/' + mm + '/' + dd;
-//        var value = selyear + '/' + selmonth + '/' + selday;
-//
-//
-//        var d1 = Date.parse(todaydate);
-//        var d2 = Date.parse(value);
-//        if (d1 < d2) {
-//            $(".dateerror").html("Date of birth always less than to today's date.");
-//            return false;
-//        } else {
-//            if ((0 == selyear % 4) && (0 != selyear % 100) || (0 == selyear % 400))
-//            {
-//                if (selmonth == 4 || selmonth == 6 || selmonth == 9 || selmonth == 11) {
-//                    if (selday == 31) {
-//                        $(".dateerror").html("This month has only 30 days.");
-//                        return false;
-//                    }
-//                } else if (selmonth == 2) { //alert("hii");
-//                    if (selday == 31 || selday == 30) {
-//                        $(".dateerror").html("This month has only 29 days.");
-//                        return false;
-//                    }
-//                }
-//            } else {
-//                if (selmonth == 4 || selmonth == 6 || selmonth == 9 || selmonth == 11) {
-//                    if (selday == 31) {
-//                        $(".dateerror").html("This month has only 30 days.");
-//                        return false;
-//                    }
-//                } else if (selmonth == 2) {
-//                    if (selday == 31 || selday == 30 || selday == 29) {
-//                        $(".dateerror").html("This month has only 28 days.");
-//                        return false;
-//                    }
-//                }
-//            }
-//        }
-//        $.ajax({
-//            type: 'POST',
-//            url: base_url + 'registration/reg_insert',
-//            dataType: 'json',
-//            data: post_data,
-//            beforeSend: function ()
-//            {
-//                $("#register_error").fadeOut();
-//                $("#btn1").html('Create an account ...');
-//            },
-//            success: function (response)
-//            {
-//                
-//                if (response.okmsg == "ok") {
-//                    
-//                        $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-//                        window.location = base_url + "dashboard";
-//                 
-//                } else {
-//                    $("#register_error").fadeIn(1000, function () {
-//                        $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
-//                        $("#btn1").html('Create an account');
-//                    });
-//                }
-//
-//            }
-//        });
-//        return false;
-//    }
-     //ONLY FOR REGISTER FROM HEADER END
 });
 $('#submit').on('click', function () {
 

@@ -456,6 +456,9 @@
                
                if(melement.style.display == 'block'){
                    melement.style.display = 'none';
+                   //value none if user have press yes button start
+                $("#experience_year").val("");
+                $("#experience_month").val("");
                }
        
        }

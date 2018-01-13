@@ -23,9 +23,13 @@ $(function () {
         //startDate: today,
 
     });
- $(".day").attr('tabindex', 13);
+    $(".day").attr('tabindex', 13);
+    $(".day").attr('onChange', 'check_datevalidation();');
     $(".month").attr('tabindex', 14);
+    $(".month").attr('onChange', 'check_datevalidation();');
     $(".year").attr('tabindex', 15);
+    $(".year").attr('onChange', 'check_datevalidation();');
+
 });
 
 
@@ -292,12 +296,12 @@ $(document).ready(function () {
 
             },
 
-            last_date: {
+            // last_date: {
 
-                required1: "Last date of apply is required.",
-                isValid: 'Last date should be grater than and equal to today date.'
+            //     required1: "Last date of apply is required.",
+            //     isValid: 'Last date should be grater than and equal to today date.'
 
-            },
+            // },
             minsal: {
 //                // required: true,
 //                //number:true,
@@ -371,10 +375,10 @@ $(document).ready(function () {
 
             },
 
-            last_date: {
+            // last_date: {
 
-                required: "Last date for apply required."
-            },
+            //     required: "Last date for apply required."
+            // },
 
             maxsal: {
                 required: "Maximum salary is required.",
@@ -393,6 +397,109 @@ $(document).ready(function () {
 });
 
 //alert(data);
+
+
+
+function check_datevalidation() {
+    var day = $('.day').val();
+    var month = $('.month').val();
+    var year = $('.year').val();
+    if (day == '' || month == '' || year == '') {
+        if (day == '') {
+            $('.day').addClass('error');
+        }
+        if (month == '') {
+            $('.month').addClass('error');
+        }
+        if (year == '') {
+            $('.year').addClass('error');
+        }
+        $('.date-dropdowns .last_date_error').remove();
+        $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last Date of apply is required.</label>');
+        return false;
+        //<label for="example2" class="error">Last Date of apply is required.</label>
+    } else {
+        var todaydate = new Date();
+        var dd = todaydate.getDate();
+        var mm = todaydate.getMonth() + 1; //January is 0!
+        var yyyy = todaydate.getFullYear();
+        if (mm <= 9) { mm = 0 + mm.toString(); }
+        var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
+
+
+        var selected_date_in_str = "" + year + month + day;
+
+        if (parseInt(todaydate_in_str) > parseInt(selected_date_in_str)) {
+            $('.day').addClass('error');
+            $('.month').addClass('error');
+            $('.year').addClass('error');
+
+            $('.date-dropdowns .last_date_error').remove();
+            $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last date should be grater than and equal to today date</label>');
+            return false;
+        } else {
+            $('.day').removeClass('error');
+            $('.month').removeClass('error');
+            $('.year').removeClass('error');
+            $('.date-dropdowns .last_date_error').remove();
+            return true;
+        }
+    }
+}
+
+
+
+$("form").submit(function () {
+
+    var day = $('.day').val();
+    var month = $('.month').val();
+    var year = $('.year').val();
+    if (day == '' || month == '' || year == '') {
+        if (day == '') {
+            $('.day').addClass('error');
+        }
+        if (month == '') {
+            $('.month').addClass('error');
+        }
+        if (year == '') {
+            $('.year').addClass('error');
+        }
+        $('.date-dropdowns .last_date_error').remove();
+        $('.date-dropdowns').append('<label for="example2" class="last_date_error" style="display: block;">Last Date of apply is required.</label>');
+        return false;
+
+    } else {
+        var todaydate = new Date();
+        var dd = todaydate.getDate();
+        var mm = todaydate.getMonth() + 1; //January is 0!
+        var yyyy = todaydate.getFullYear();
+
+          if (mm <= 9) { mm = 0 + mm.toString(); }
+          
+        var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
+
+
+        var selected_date_in_str = "" + year + month + day;
+
+        if (parseInt(todaydate_in_str) > parseInt(selected_date_in_str)) {
+            $('.day').addClass('error');
+            $('.month').addClass('error');
+            $('.year').addClass('error');
+
+            $('.date-dropdowns .error').show();
+            $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last date should be grater than and equal to today date</label>');
+            $('.date-dropdowns .last_date_error').removeAttr('style');
+            return false;
+        } else {
+            $('.day').removeClass('error');
+            $('.month').removeClass('error');
+            $('.year').removeClass('error');
+            $('.date-dropdowns .last_date_error').remove();
+            return true;
+        }
+    }
+
+});
 
 // EDUCATION AUTOCOMPLETE DATA START
 

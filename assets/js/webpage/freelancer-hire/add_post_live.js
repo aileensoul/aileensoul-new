@@ -240,6 +240,9 @@ function check_datevalidation() {
         var dd = todaydate.getDate();
         var mm = todaydate.getMonth() + 1; //January is 0!
         var yyyy = todaydate.getFullYear();
+        if (mm <= 9) {
+            mm = 0 + mm.toString();
+        }
         var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
 
 
@@ -287,6 +290,9 @@ $("#postinfo").submit(function () {
         var dd = todaydate.getDate();
         var mm = todaydate.getMonth() + 1; //January is 0!
         var yyyy = todaydate.getFullYear();
+        if (mm <= 9) {
+            mm = 0 + mm.toString();
+        }
         var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
 
 
@@ -310,7 +316,7 @@ $("#postinfo").submit(function () {
             var rate = $('#rate').val();
             var currency = $('#currency').val();
             var worktype = $("input[name=rating]:checked").val();
-            alert(worktype);
+            
             if (rate != '') {
                 if (currency == null) {
                     $('<label for="currency" class="last_date_error" style="display: block;">You had add rate so please select currency</label>').insertAfter("#currency");

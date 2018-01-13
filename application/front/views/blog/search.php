@@ -210,7 +210,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                         ?></h3>
 
                                             <div class="contact-frnd-post">
-                                                <div class="job-contact-frnd1  cust-border">
+                                                <div class="job-contact-frnd1">
                                                 <div class="text-center rio">
                                                     <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
                                                     <p style="margin-left:4%;text-transform:none !important;border:0px;">We couldn't find what you were looking for.</p>
@@ -229,7 +229,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                  else {
                                     ?>
 
-                                    <h3>Search results for 
+                                    <h3 style="border: 1px solid #d9d9d9;color: #5c5c5c;text-align: center;margin-bottom: 20px;">Search results for 
                                         <?php
                                        
                                             echo '' . $search_keyword . '';
@@ -318,6 +318,8 @@ header("Pragma: no-cache"); // HTTP/1.0
             //AJAX DATA LOAD BY LAZZY LOADER START
             $(document).ready(function () {
                 blog_post();
+                document.getElementById("loader").classList.add("middle_loader");
+                //document.getElementById("loader").className = "middle_loader";
             });
 
             function category_data(catid, pagenum) {
@@ -392,6 +394,10 @@ header("Pragma: no-cache"); // HTTP/1.0
                     },
                     success: function (data) {
                         // $('.loader').remove();
+
+                      document.getElementById("loader").classList.remove("middle_loader");
+
+
                         $('.job-contact-frnd').append(data.blog_data);
                         $('.loadbutton').html(data.load_msg)
                         // second header class add for scroll

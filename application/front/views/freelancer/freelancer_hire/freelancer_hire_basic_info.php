@@ -104,7 +104,7 @@
                                         ?>">
                                                <?php echo form_error('lname'); ?>
                                     </fieldset>
-                                    <fieldset <?php if ($email) { ?> class="error-msg" <?php } ?>>
+                                    <fieldset class="vali_er" <?php if ($email) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("email"); ?><span class="red">*</span>:</label>
                                         <input type="text" name="email" tabindex="3" id="email" placeholder="Enter email" value="<?php
                                         if ($email1) {
@@ -113,7 +113,8 @@
                                             echo $userdata[0]['user_email'];
                                         }
                                         ?>">
-                                               <?php echo form_error('email'); ?>
+                                        <span class="email_note"><b>Note:-</b> Related notification email will be send on provided email address kindly use regular  email address.<div></div></span>
+                                        <?php echo form_error('email'); ?>
                                     </fieldset>
                                     <fieldset>
                                         <label><?php echo $this->lang->line("skype_id"); ?>:<span class="optional">(optional)</span></label>

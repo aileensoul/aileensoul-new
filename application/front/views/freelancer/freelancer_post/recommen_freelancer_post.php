@@ -151,13 +151,14 @@
                                     ?>
                                 </h3>
                             
-
+                            <div class="contact-frnd-post">
                             <div class="job-contact-frnd1">
 
 
                             </div>
                             <div id="loader" style="display: none;"><p style="text-align:center;"><img alt="loader" class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
                         </div>
+                    </div>
                     </div>
                     </div>
                         </div>

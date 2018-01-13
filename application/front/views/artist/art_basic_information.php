@@ -89,10 +89,11 @@
                                 </fieldset>
 								</div>
 								<div class="fw">
-                                <fieldset <?php if($email) {  ?> class="error-msg" <?php } ?>>
+                                <fieldset class="vali_er" <?php if($email) {  ?> class="error-msg" <?php } ?>>
                                 <?php $user_email = strtolower($art[0]['user_email']); ?>
                                     <label>E-mail address:<span style="color:red">*</span></label>
                                     <input name="email"  type="text" id="email" tabindex="3" placeholder="Enter e-mail address" value="<?php if($email1){ echo $email1; } else { echo $user_email; } ?>">
+                                    <span class="email_note"><b>Note:-</b> Related notification email will be send on provided email address kindly use regular  email address.<div></div></span>
                                      <?php echo form_error('email'); ?>
                                 </fieldset>                             
                                 <fieldset <?php if($phoneno) {  ?> class="error-msg" <?php } ?>>

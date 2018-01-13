@@ -60,9 +60,9 @@ function freelancerapply_search(pagenum)
              //display border for no projects available start
             var numItems = $('.job-contact-frnd1 .all-job-box').length;
             // return false;
-            if (numItems == 0) {
-                $('.job-contact-frnd1').addClass('cust-border');
-            }
+            // if (numItems == 0) {
+            //     // $('.job-contact-frnd1').addClass('cust-border');
+            // }
             //display border for no projects available end
             
             var nb = $('.post-design-box').length;

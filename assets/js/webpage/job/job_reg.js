@@ -3,6 +3,14 @@
 $(document).ready(function () {
     $('.ajax_load').hide();
 
+//for display experiancer if data is fill up  when user press back button start
+    var year = $("#experience_year option:selected").val();
+    var month = $("#experience_month option:selected").val();
+
+    if (year || month) {
+        document.getElementById('exp_data').style.display = 'block';
+    }
+//for display experiancer if data is fill up  when user press back button end
     // $.validator.addMethod("lowercase", function(value, element, regexpr) {          
     //          return regexpr.test(value);
     //      }, "email Should be in Small Character");
