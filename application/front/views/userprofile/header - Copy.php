@@ -528,7 +528,7 @@
 <div class="middle-section middle-section-banner">
 
     <div class="container-fluid bnr mob-banner">
-		<div class="main-banner gradient-bg">
+		<div class="main-banner">
          <!--COVER PIC CODE START -->
               <div class="row" id="row1" style="display:none;">
                     <div class="col-md-12 text-center">
@@ -537,7 +537,7 @@
                     <div class="col-md-12 cover-pic" >
                         <button title="Cancel" class="btn btn-success  cancel-result" onclick="">Cancel</button>
 
-                        <button title="Save" class="btn btn-success set-btn upload-result pull-right" onclick="myFunction()">Save</button>
+                        <button title="Save" class="btn btn-success set-btn upload-result " onclick="myFunction()">Save</button>
 
                         <div id="message1" style="display:none;">
                             <div id="floatBarsG">
@@ -580,19 +580,16 @@
 
                     </div>
                 </div>
-			<div class="upload-camera">
-				<?php if ($userdata['user_slug'] == $this->uri->segment(2)) { ?>
+		</div>
+
+            <!--div class="container tablate-container art-profile"-->    
+                <?php if ($userdata['user_slug'] == $this->uri->segment(2)) { ?>
                     <div class="upload-img">
-                        <label  class="cameraButton"><span class="tooltiptext">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
+                        <label  class="cameraButton"><span class="tooltiptext_rec">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*" capture="camera" onclick="showDiv()">
                         </label>
                     </div>
                 <?php } ?>
-			</div>
-		</div>
-
-            <!--div class="container tablate-container art-profile"-->    
-                
          <!--COVER PIC CODE END -->
         <div class="main-user-profile">
             <div class="user-photo-name">

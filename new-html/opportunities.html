@@ -665,15 +665,32 @@
 
                 <div class="middle-part">
                     <div class="add-post">
-                        <div class="post-box" data-target="#post-popup" data-toggle="modal">
+                        <div class="post-box" data-target="#post-popup1" data-toggle="modal">
                             <div class="post-img">
                                 <img src="img/user-pic.jpg">
                             </div>
                             <div class="post-text">
-                                Post Opportunity
+                                Share an opportunity, Article
                             </div>
-                            <span class="post-cam"><i class="fa fa-camera"></i></span>
+						
                         </div>
+						<div class="post-box-bottom">
+							<ul>
+								<li>
+									<a href="" data-target="#post-popup" data-toggle="modal">
+										<img src="img/post-op.png"><span>Post Opportunity</span>
+									</a>
+								</li>
+								<li class="pl15">
+									<a href="article.html">
+										<img src="img/article.png"><span>Post Article</span>
+									</a>
+								</li>
+							</ul>
+							<p class="pull-right">
+								<button type="submit" class="btn1" value="Submit">Post</button>
+							</p>
+						</div>
                     </div>
                     <div class="all-post-box">
                         <div class="all-post-top">
@@ -1175,7 +1192,59 @@
 
             </div>
         </div>
+		<!--  poup modal  -->
+		<div style="display:none;" class="modal fade" id="post-popup1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">×</button>
+                    <div class="post-popup-box">
+					<form>
+                        <div class="post-box">
+                            <div class="post-img">
+                                <img src="img/user-pic.jpg">
+                            </div>
+                            <div class="post-text">
+                                <textarea class="title-text-area" placeholder="Post Opportunity"></textarea>
+                            </div>
+                            <div class="all-upload">
+                                <label for="file-1">
+                                    <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
+                                    <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
+                                    <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
+                                    <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
+                                </label>
+                            </div>
+							<div class="post-box-bottom">
+								<ul>
+									<li>
+										<a href="" data-target="#post-popup" data-toggle="modal">
+											<img src="img/post-op.png"><span>Post Opportunity</span>
+										</a>
+									</li>
+									<li class="pl15">
+										<a href="article.html">
+											<img src="img/article.png"><span>Post Article</span>
+										</a>
+									</li>
+								</ul>
+								<p class="pull-right">
+									<button type="submit" class="btn1" value="Submit">Post</button>
+								</p>
+							</div>
+
+                        </div>
+                        
+                        
+						</form>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
         <div style="display:none;" class="modal fade" id="post-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
             <div class="modal-dialog">

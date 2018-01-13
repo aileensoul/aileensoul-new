@@ -71,15 +71,22 @@
 
 /***  middle part  ***/
 .middle-part{position:relative; width:584px; left:335px; float:left;}
-.middle-part .add-post{border:1px solid #d2d2d2; margin-bottom:10px; padding:5px; background:#e8f3f8; width:100%; float:left; border-radius:4px;}
-.post-box{padding:10px; background:#fff; position:relative; width:100%; float:left; border-radius:4px;}
+.middle-part .add-post{border:1px solid #d2d2d2; margin-bottom:10px; background:#fff; width:100%; float:left; border-radius:4px; padding:15px;}
+.post-box{background:#fff; position:relative; width:100%; float:left; border-radius:4px;}
 .post-img{width:50px; height:50px; border:1px solid #d2d2d2; float:left; }
 .post-img img{width:100%;}
 .post-box .post-text{width:90%; float:left; padding:14px 10px; font-size:22px; color:#999;}
 .post-box .post-cam{position:absolute; right:10px; top:23px;}
 .post-box .post-cam .fa{color:#1b8ab9; font-size:25px}
+.post-box-bottom{margin-top:10px; border-top:1px solid #d2d2d2; padding-top:5px; width:100%; float:left;}
+.post-box-bottom ul{padding:5px 0 0; margin:0; float:left;}
+.post-box-bottom ul li{list-style-type:none; display:inline-block;}
+.post-box-bottom ul li a{color:#5c5c5c;}
+.post-box-bottom ul li a span{display: inline-block; vertical-align: middle; padding-left:10px;}
+.post-box-bottom .btn1{padding:3px 20px;}
+.modal-content .post-box .post-box-bottom{margin-top:0;}
 .post-popup-box{background:#e8f3f8; padding:10px; width:100%; float:left; border-radius:4px;}
-.post-popup-box .post-box{margin-bottom:10px;}
+.post-popup-box .post-box{padding:15px;}
 .post-popup-box .post-box .post-text{padding:0px 0px 10px 10px;}
 .post-popup-box textarea{
 	padding:0px;
@@ -88,14 +95,14 @@
 	resize: none;
 	border: none;
 	line-height:1.5;}
-.post-popup-box	.post-box .post-text{width:508px;}
+.post-popup-box	.post-box .post-text{width:498px;}
 .post-popup-box .post-area{padding:10px; background:#fff; width:100%; float:left;}
 .post-popup-box .post-area textarea{min-height:100px; font-size: 15px !important;}
 .all-upload{width:100%; float:left;}
-.all-upload .upload_icon{margin: 0 8px; cursor: pointer;  margin-left: 4px; font-size: 20px; color: #616060;
+.all-upload .upload_icon{margin: 0 8px; cursor: pointer;  margin-left: 4px; font-size: 14px; color: #616060;
 padding: 5px;}
 .all-upload .upload_span_icon{font-family: 'arial'; padding-left: 2px; cursor: pointer;}
-.all-upload .upload_icon:hover{padding: 5px; background: #d9d9d9; border-radius: 5px; font-size: 20px;}
+.all-upload .upload_icon:hover{padding: 5px; background: #d9d9d9; border-radius: 5px;}
 .all-post-box{border:1px solid #d2d2d2; margin-bottom:10px; width:100%; float:left; border-radius:4px;}
 .all-post-box .all-post-top{padding:15px; width:100%; float:left;}
 .post-field{width:100%; float:left; background:#fff;}
@@ -224,6 +231,10 @@ padding: 8px;}
     text-transform:uppercase
 }
 .all-user-list .item .post-img .post-img-mainuser{padding:56px 0;}
+.custom-user-list .post-img-mainuser{padding:18px 0;}
+.mes{text-align:center;}
+.model_ok_cancel .btn1{margin:5px; font-size:14px; line-height:1;}
+.model_ok_cancel{padding-top:5px;}
 /***  end all follow part  ***/
 
 /***  end right part  ***/
@@ -871,8 +882,21 @@ header.profile-header .logo a{color:#5c5c5c;}
     width:auto!important
 }
 /***  end img upload css  ***/
-
-
+/***  article page  ***/
+.article-box{width:75%; margin:0 auto;}
+.art-banner{border:1px solid #d2d2d2; height:265px; border-radius:4px;}
+.upload-box{padding:25px 0; text-align:center;}
+.upload-box p{padding:19px 0; font-size:26px;}
+/***  end article page  ***/
+.gradient-bg{
+	background:#fff;
+    background-image:-ms-radial-gradient(center,ellipse farthest-corner,#FCFCFF 30%,#d5ebfd 100%);
+    background-image:-moz-radial-gradient(center,ellipse farthest-corner,#FCFCFF 30%,#d5ebfd 100%);
+    background-image:-o-radial-gradient(center,ellipse farthest-corner,#FCFCFF 30%,#d5ebfd 100%);
+    background-image:-webkit-gradient(radial,center center,0,center center,286,color-stop(30,#FCFCFF),color-stop(100,#d5ebfd));
+    background-image:-webkit-radial-gradient(center,ellipse farthest-corner,#FCFCFF 30%,#d5ebfd 100%);
+    background-image:radial-gradient(ellipse farthest-corner at center,#FCFCFF 30%,#d5ebfd 100%)
+}
 
 /***  media query  ***/
 @media screen and (min-width: 768px) {

@@ -38,7 +38,7 @@
                                     <div class="col-md-7 text-center">
                                         <div id="upload-demo-one" style="display:none; width:350px"></div>
                                     </div>
-                                    <input type="submit" class="upload-result-one btn1" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                                    <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
 
                             </div>
@@ -374,7 +374,7 @@
            
 
                 $uploadCrop = $('#upload-demo').croppie({
-                    enableExif: true,	
+                    enableExif: true,
                     viewport: {
                         width: 1250,
                         height: 350,
