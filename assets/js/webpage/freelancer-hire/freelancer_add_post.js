@@ -490,7 +490,7 @@ $("form").submit(function () {
         var selected_date_in_str = "" + year + month + day;
         
         if (parseInt(todaydate_in_str) > parseInt(selected_date_in_str)) {
-          alert(888);
+         
             $('.day').addClass('error');
             $('.month').addClass('error');
             $('.year').addClass('error');
