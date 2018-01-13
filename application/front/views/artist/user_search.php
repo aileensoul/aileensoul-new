@@ -194,13 +194,14 @@
                                     }
                                     ?>                               
                                 </h3>
-
+                                <div class="contact-frnd-post">
                                 <div class="job-contact-frnd ">
 
                                     <!-- AJAX DATA... -->
                                     <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="<?php echo "loader.gif"; ?>" /></div>
 
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>

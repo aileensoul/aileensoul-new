@@ -210,7 +210,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                         ?></h3>
 
                                             <div class="contact-frnd-post">
-                                                <div class="job-contact-frnd1  cust-border">
+                                                <div class="job-contact-frnd1">
                                                 <div class="text-center rio">
                                                     <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
                                                     <p style="margin-left:4%;text-transform:none !important;border:0px;">We couldn't find what you were looking for.</p>
