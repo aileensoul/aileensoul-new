@@ -40,9 +40,9 @@ class Userprofile_model extends CI_Model {
         return $result_array;
     }
     
-     public function removeContact($user_id = '', $id = '') { 
-        
-       $this->db->select("id")->from("user_contact as uc");
+     public function userContactStatus($user_id = '', $id = '') { 
+        $id = '15978';
+       $this->db->select("uc.status,uc.id")->from("user_contact as uc");
          $where = "((from_id = '" .$user_id. "' AND to_id = '" .$id."') OR (from_id = '" .$user_id. "' AND to_id = '" .$id. "'))";
         $this->db->where($where);
         $this->db->order_by("uc.id", "DESC");
@@ -51,6 +51,19 @@ class Userprofile_model extends CI_Model {
         return $result_array;
         
      }
+     
+     public function userFollowStatus($user_id = '', $id = '') { 
+        $id = '15978';
+       $this->db->select("uf.status,uf.id")->from("user_follow as uf");
+         $where = "((follow_from = '" .$user_id. "' AND follow_to = '" .$id."'))";
+        $this->db->where($where);
+        $this->db->order_by("uf.id", "DESC");
+      $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+        
+     }
+     
      
      function getUserBackImage($user_id = '') {
         $this->db->select("profile_background,profile_background_main")->from("user_info");

@@ -131,7 +131,7 @@
                                 var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
                                 var app = angular.module("userProfileApp", ["ngRoute"]);
                                 var item = '<?php echo $this->uri->segment(1); ?>'
-                                        app.controller('userProfileController', function($scope) {
+                                        app.controller('userProfileController', function($scope, $http) {
 
                                         $scope.goMainLink = function(path){
                                         location.href = path;
@@ -143,38 +143,71 @@
                                         }
                                         $scope.segment2 = '<?php echo $this->uri->segment(2); ?>';
                                         $scope.user_slug = '<?php echo $userdata['user_slug']; ?>';
+                                        $scope.to_id = '<?php echo $to_id; ?>';
+                                        $scope.contact_value = '<?php echo $contact_value; ?>';
+                                        $scope.contact_status = '<?php echo $contact_status; ?>';
+                                        $scope.contact_id = '<?php echo $contact_id; ?>';
+                                        $scope.follow_value = '<?php echo $follow_value; ?>';
+                                        $scope.follow_status = '<?php echo $follow_status; ?>';
+                                        $scope.follow_id = '<?php echo $follow_id; ?>';
+                                        $scope.contact = function(id, status){
+
+                                        $http({
+                                        method: 'POST',
+                                                url: base_url + 'userprofile_page/addcontact',
+                                                data: 'contact_id=' + id + '&status=' + status,
+                                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                                         })
-                                app.config(function ($routeProvider, $locationProvider) {
-                                $routeProvider
-                                        .when("/profiless/:name*", {
-                                        templateUrl: base_url + "userprofile_page/profile",
-                                                controller: 'profilesController'
+                                                .then(function (success) {
+
+                                                $scope.contact_value = success.data;
+                                                });
+                                        }
+                                          $scope.follow = function(id, status){
+
+                                        $http({
+                                        method: 'POST',
+                                                url: base_url + 'userprofile_page/addfollow',
+                                                data: 'follow_id=' + id + '&status=' + status,
+                                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                                         })
-                                        .when("/dashboardd/:name*", {
-                                        templateUrl: base_url + "userprofile_page/dashboard"
-                                                //   controller: 'basicInfoController'
+                                                .then(function (success) {
+
+                                                $scope.follow_value = success.data;
+                                                });
+                                        }
                                         })
-                                        .when("/details/:name*", {
-                                        templateUrl: base_url + "userprofile_page/details",
-                                                controller: 'detailsController'
-                                        })
-                                        .when("/contacts/:name*", {
-                                        templateUrl: base_url + "userprofile_page/contacts",
-                                                controller: 'contactsController'
-                                        })
-                                        .when("/followers/:name*", {
-                                        templateUrl: base_url + "userprofile_page/followers"
-                                                //   controller: 'basicInfoController'
-                                        })
-                                        .when("/following/:name*", {
-                                        templateUrl: base_url + "userprofile_page/following"
-                                                //   controller: 'basicInfoController'
-                                        })
+                                        app.config(function ($routeProvider, $locationProvider) {
+                                        $routeProvider
+                                                .when("/profiless/:name*", {
+                                                templateUrl: base_url + "userprofile_page/profile",
+                                                        controller: 'profilesController'
+                                                })
+                                                .when("/dashboardd/:name*", {
+                                                templateUrl: base_url + "userprofile_page/dashboard"
+                                                        //   controller: 'basicInfoController'
+                                                })
+                                                .when("/details/:name*", {
+                                                templateUrl: base_url + "userprofile_page/details",
+                                                        controller: 'detailsController'
+                                                })
+                                                .when("/contacts/:name*", {
+                                                templateUrl: base_url + "userprofile_page/contacts",
+                                                        controller: 'contactsController'
+                                                })
+                                                .when("/followers/:name*", {
+                                                templateUrl: base_url + "userprofile_page/followers"
+                                                        //   controller: 'basicInfoController'
+                                                })
+                                                .when("/following/:name*", {
+                                                templateUrl: base_url + "userprofile_page/following"
+                                                        //   controller: 'basicInfoController'
+                                                })
 //                    .otherwise({
 //                    redirectTo: '/profiles/'
 //                    });
-                                        $locationProvider.html5Mode(true);
-                                });
+                                                $locationProvider.html5Mode(true);
+                                        });
                                 app.controller('profilesController', function ($scope, $http, $location) {
                                 $scope.user = {};
                                 // PROFEETIONAL DATA
