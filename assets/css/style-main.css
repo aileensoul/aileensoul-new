@@ -2932,6 +2932,9 @@ header.profile-header .logo a{
     .bottom-middle,.header-login,.main-inner .btn-right.pull-right,.top-middle,header h2{
         text-align:center
     }
+    .header-login label.error{text-align: left;display: block;}
+    .dob .error{bottom: -21px;}
+    .gender-custom .error{bottom: -21px;}
     .header-login .btn1{
         margin-left:0
     }
@@ -3000,6 +3003,10 @@ header.profile-header .logo a{
         padding-top:0px;
         padding-right:0
     }
+    .main-login .btn-right{
+        padding-top: 15px;
+    }
+
     .main-inner .btn-right.pull-right{
         padding-top:0
     }
@@ -3284,6 +3291,8 @@ header.profile-header .logo a{
 	.new-abput-page .img-custom{width:49%; padding:0 15px;}
     .profile-bnr .logo{text-align: center;}
     .contact-add .p20{padding: 46.50px 30px;}
+    .modal-dialog{width: 95%;}
+
 }
 @media screen and (max-width:640px){
     .btns .btn-4{

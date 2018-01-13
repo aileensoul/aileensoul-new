@@ -627,6 +627,8 @@ fieldset.full-width{
     color: #1b8ab9 !important;
 }
 
+.
+
 
 
 
@@ -2445,7 +2447,7 @@ footer div.pt20{
 .job_reg_page_fprm select.color-black-custom{color:#000;}
 .color-black-custom{color:#000;}
 .color-light-custom{color:#acacac;}
-
+.right_middle_side_posrt .all-profile-box{width: calc(100% - 0px);margin-left: 0px;}
 
 @media screen and (max-height:540px){
     .no-login .modal-dialog{
