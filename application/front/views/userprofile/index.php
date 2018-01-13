@@ -280,13 +280,13 @@
                                 $uploadCrop1 = $('#upload-demo-one').croppie({
                                 enableExif: true,
                                         viewport: {
-                                        width: 60,
-                                                height: 60,
+                                        width: 200,
+                                                height: 200,
                                                 type: 'square'
                                         },
                                         boundary: {
-                                        width: 30,
-                                                height: 30
+                                        width: 300,
+                                                height: 300
                                         }
                                 });
                                 $('#upload-one').on('change', function () {
