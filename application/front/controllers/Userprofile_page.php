@@ -81,9 +81,9 @@ class Userprofile_page extends MY_Controller {
     public function removeContacts() {
         $userid = $this->session->userdata('aileenuser');
         $id = $_POST['id'];
-        $remove = $this->data['remove'] = $this->userprofile_model->removeContact($userid, $id);
+        $remove = $this->data['remove'] = $this->userprofile_model->userContactStatus($userid, $id);
 
-        if (count($remove) == 1) {
+        if (count($remove) != 0) {
             $data = array('status' => 'cancel');
             $insert_id = $this->common->update_data($data, 'user_contact', 'id', $remove['id']);
             $response = 1;
@@ -91,6 +91,55 @@ class Userprofile_page extends MY_Controller {
             $response = 0;
         }
         echo json_encode($response);
+    }
+    
+    public function addcontact() { 
+        $userid = $this->session->userdata('aileenuser');
+        $contact_id = $_POST['contact_id'];
+        $status = $_POST['status'];
+        $id = $_POST['to_id'];
+        $contact =  $this->userprofile_model->userContactStatus($userid, $id);
+
+        if (count($contact) != 0) {
+            $data = array('status' => $status);
+            $insert_id = $this->common->update_data($data, 'user_contact', 'id', $contact['id']);
+            $response = $status;
+        } else {
+            $data = array(
+                 'status' => $status,
+                 'from_id' => $userid,
+                 'to_id' => '15978',
+                 'not_read' => '2',
+                 'created_date' => $status,
+                 );
+            $insert_id = $this->common->insert_data($data, 'user_contact');
+            $response = $status;
+        }
+        echo $response;
+    }
+    
+    public function addfollow() { 
+        $userid = $this->session->userdata('aileenuser');
+        $follow_id = $_POST['follow_id'];
+        $status = $_POST['status'];
+        $id = $_POST['to_id'];
+        $follow = $this->userprofile_model->userFollowStatus($userid, $id);
+
+        if (count($follow) != 0) {
+            $data = array('status' => $status);
+            $insert_id = $this->common->update_data($data, 'user_follow', 'id', $follow['id']);
+            $response = $status;
+        }else{
+             $data = array(
+                 'status' => $status,
+                 'follow_from' => $userid,
+                 'follow_to' => '15978',
+                 'created_date' => $status,
+                 );
+            $insert_id = $this->common->insert_data($data, 'user_follow');
+            $response = $status;
+        }
+        echo $response;
     }
     
       //PROFILE PIC INSERT END  

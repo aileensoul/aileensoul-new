@@ -642,8 +642,14 @@ if ($userdata['user_image'] != '' && $info) {
                 <?php } ?>
             </div>
             <div class="user-btns" ng-if="user_slug == segment2">
-                <a class="btn3">Add to contact</a>
-                <a class="btn3">Follow</a>
+                <a class="btn3" ng-if="contact_value == 'new'" ng-click="contact(contact_id,'pending',to_id)">Add to contact1</a>
+                <a class="btn3" ng-if="contact_value == 'confirm'" ng-click="contact(contact_id)">Friends</a>
+                <a class="btn3" ng-if="contact_value == 'pending'" ng-click="contact(contact_id,'cancel',to_id)">Request sent</a>
+                <a class="btn3" ng-if="contact_value == 'cancel'" ng-click="contact(contact_id)">Add to contact2</a>
+                <!--<a class="btn3" ng-if="contact_value == 'cancel'" ng-click="contact(contact_id)">Add to contact3</a>-->
+                <a class="btn3" ng-if="follow_value == 0" ng-click="follow(follow_id,1,to_id)">Follow</a>
+                <a class="btn3" ng-if="follow_value == 'new'" ng-click="follow(follow_id,1,to_id)">Follow</a>
+                <a class="btn3" ng-if="follow_value == 1"  ng-click="follow(follow_id,0,to_id)">Following</a>
                 <a class="btn3">Message</a>
             </div>
             <div class="main-user-option">
