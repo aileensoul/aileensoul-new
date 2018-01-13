@@ -106,7 +106,7 @@ function check_datevalidation() {
 
         var selected_date_in_str = "" + year + month + day;
 
-        if (parseInt(todaydate_in_str) > parseInt(selected_date_in_str)) {
+        if (parseInt(todaydate_in_str) > parseInt(selected_date_in_str)) { alert("ggg");
             $('.day').addClass('error');
             $('.month').addClass('error');
              $('.year').addClass('error');
