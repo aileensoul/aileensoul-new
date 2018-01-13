@@ -395,7 +395,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                     success: function (data) {
                         // $('.loader').remove();
 
-                      document.getElementById("loader").classList.remove("middle_loader");
+                     // document.getElementById("loader").classList.remove("middle_loader");
 
 
                         $('.job-contact-frnd').append(data.blog_data);
