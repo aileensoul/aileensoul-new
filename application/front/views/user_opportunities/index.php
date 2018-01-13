@@ -102,12 +102,12 @@
                             </div>
                             <div class="post-discription">
                                 <h5 class="post-title">
-                                    <p><b>Opportunity for:</b> {{post.opportunity_data.opportunity_for}}</p>
-                                    <p><b>Location:</b> {{post.opportunity_data.location}}</p>
-                                    <p><b>Field:</b> {{post.opportunity_data.field}}</p>
+                                    <p ng-if="post.opportunity_data.opportunity_for"><b>Opportunity for:</b><span ng-bind="post.opportunity_data.opportunity_for"></span></p>
+                                    <p ng-if="post.opportunity_data.location"><b>Location:</b><span ng-bind="post.opportunity_data.location"></span></p>
+                                    <p ng-if="post.opportunity_data.field"><b>Field:</b><span ng-bind="post.opportunity_data.field"></span></p>
                                 </h5>
 
-                                <div class="post-des-detail"><b>Opportunity:</b>{{post.opportunity_data.opportunity}}</div>
+                                <div class="post-des-detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity"></span></div>
                             </div>
                             <div class="post-images" ng-if="post.post_data.total_post_files == '1'">
                                 <div class="one-img" ng-repeat="post_file in post.post_file_data">
@@ -136,10 +136,10 @@
                             </div>
                             </span>
                             <div class="post-images four-img" ng-if="post.post_data.total_post_files >= '4'">
-                                <div class="two-img" ng-repeat="post_file in post.post_file_data">
+                                <div class="two-img" ng-repeat="post_file in post.post_file_data | limitTo:4">
                                     <a href="#"><img ng-src="<?php echo USER_POST_RESIZE2_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
-                                    <div class="view-more-img" ng-if="post.post_data.total_post_files > '4' && $indedx == '4'">
-                                        <span>View All (+5)</span>
+                                    <div class="view-more-img" ng-if="$index == '3' && post.post_data.total_post_files > '4'">
+                                        <span>View All (+4)</span>
                                     </div>
                                 </div>
                             </div>
