@@ -106,7 +106,7 @@ $mobile_agent = $this->agent->mobile;
                                             <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Business Image">
                                         <?php } ?>
                                     </div>
-                                    <div id="myBtn"  class="editor-content popup-text" onclick="return modelopen();">
+                                    <div id="myBtn"  class="editor-content popup-text">
                                         <span> <?php echo $this->lang->line("post_your_product"); ?></span> 
                                         <div class="padding-left padding_les_left camer_h">
                                             <i class="fa fa-camera"></i> 
@@ -195,7 +195,19 @@ $mobile_agent = $this->agent->mobile;
                                 </li>
                             </ul>
                         </div>
-
+                        <div class="fw text-center">
+                            <?php if ($_SERVER['HTTP_HOST'] == "www.aileensoul.com") { ?>
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- Aileensoul_1 -->
+                                <ins class="adsbygoogle"
+                                     style="display:inline-block;width:336px;height:280px"
+                                     data-ad-client="ca-pub-6060111582812113"
+                                     data-ad-slot="4975905411"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div>
