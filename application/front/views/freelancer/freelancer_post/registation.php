@@ -51,7 +51,7 @@
         </header>
     <?php } ?>
     <!-- END HEADER -->
-    <body class="no-login botton_footer cus-error">
+    <body class="no-login botton_footer cus-error" id="add-model-open">
         <section>
             <div class="user-midd-section " id="paddingtop_fixed">
                 <div class="container">

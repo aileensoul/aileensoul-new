@@ -46,7 +46,7 @@
     <?php } ?>
     <!-- END HEADER -->
     <?php if (!$this->session->userdata('aileenuser')) { ?>
-        <body class="cus-no-login botton_footer cus-error no-login">
+        <body class="cus-no-login botton_footer cus-error no-login" id="add-model-open">
         <?php } else { ?>
         <body class="cus-no-login botton_footer cus-error">
         <?php } ?>
