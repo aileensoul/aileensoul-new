@@ -96,6 +96,54 @@ class User_opportunities extends MY_Controller {
         echo json_encode($post_data);
     }
 
+    public function likePost() {
+        $userid = $this->session->userdata('aileenuser');
+        $post_id = $_POST['post_id'];
+
+        $is_likepost = $this->user_opportunity->is_likepost($userid, $post_id);
+
+        if ($is_likepost['id'] != '') {
+            if ($is_likepost['is_like'] == '1') {
+                $data = array();
+                $data['is_like'] = '0';
+                $data['modify_date'] = date('Y-m-d H:i:s', time());
+                $updatedata = $this->common->update_data($data, 'user_post_like', 'id', $is_likepost['id']);
+                if ($updatedata) {
+                    $return_array['message'] = '1';
+                    $return_array['is_newLike'] = '0';
+                    $return_array['is_oldLike'] = '1';
+                }
+            } else {
+                $data = array();
+                $data['is_like'] = '1';
+                $data['modify_date'] = date('Y-m-d H:i:s', time());
+                $updatedata = $this->common->update_data($data, 'user_post_like', 'id', $is_likepost['id']);
+                if ($updatedata) {
+                    $return_array['message'] = '1';
+                    $return_array['is_newLike'] = '1';
+                    $return_array['is_oldLike'] = '0';
+                }
+            }
+        } else {
+            $insert_data = array();
+            $insert_data['user_id'] = $userid;
+            $insert_data['post_id'] = $post_id;
+            $insert_data['created_date'] = date('Y-m-d H:i:s', time());
+            $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
+            $insert_data['is_like'] = '1';
+            $user_post_like_id = $this->common->insert_data_getid($insert_data, 'user_post_like');
+            $return_array = array();
+            if ($user_post_like_id != '') {
+                $return_array['message'] = '1';
+                $return_array['is_newLike'] = '1';
+                $return_array['is_oldLike'] = '0';
+            } else {
+                $return_array['message'] = '0';
+            }
+        }
+        echo json_encode($return_array);
+    }
+
     public function post_opportunity() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');

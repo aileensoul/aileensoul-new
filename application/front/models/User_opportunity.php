@@ -54,7 +54,14 @@ class User_opportunity extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
-
+    
+    public function is_likepost(){
+        $this->db->select("upl.id,upl.is_like")->from("user_post_like upl");
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+    
     public function userPost($user_id = '') {
         $result_array = array();
         $this->db->select("up.id,up.user_id,up.post_for,up.created_date,up.post_id")->from("user_post up");

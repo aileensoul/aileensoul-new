@@ -147,7 +147,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                         <ul class="bottom-left">
-                                            <li><a href="#"><i class="fa fa-thumbs-up"></i></a></li>
+                                            <li><a href="javascript:void(0)" id="post-like-{{post.post_data.id}}" ng-click="post_like(post.post_data.id)"><i class="fa fa-thumbs-up"></i></a></li>
                                             <li><a href="#"><i class="fa fa-comment-o"></i></a></li>
                                         </ul>
                                     </div>
