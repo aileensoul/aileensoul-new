@@ -783,26 +783,26 @@ class Business_profile extends MY_Controller {
                         $insert_id1 = $this->common->insert_data_getid($data1, 'post_files');
                         /* THIS CODE UNCOMMENTED AFTER SUCCESSFULLY WORKING : REMOVE IMAGE FROM UPLOAD FOLDER */
 
-                        if ($_SERVER['HTTP_HOST'] != "localhost") {
-                            if (isset($main_image)) {
-                                unlink($main_image);
-                            }
-                            if (isset($thumb_image)) {
-                                unlink($thumb_image);
-                            }
-                            if (isset($resize_image)) {
-                                unlink($resize_image);
-                            }
-                            if (isset($resize_image1)) {
-                                unlink($resize_image1);
-                            }
-                            if (isset($resize_image2)) {
-                                unlink($resize_image2);
-                            }
-                            if (isset($resize_image4)) {
-                                unlink($resize_image4);
-                            }
-                        }
+                        // if ($_SERVER['HTTP_HOST'] != "localhost") {
+                        //     if (isset($main_image)) {
+                        //         unlink($main_image);
+                        //     }
+                        //     if (isset($thumb_image)) {
+                        //         unlink($thumb_image);
+                        //     }
+                        //     if (isset($resize_image)) {
+                        //         unlink($resize_image);
+                        //     }
+                        //     if (isset($resize_image1)) {
+                        //         unlink($resize_image1);
+                        //     }
+                        //     if (isset($resize_image2)) {
+                        //         unlink($resize_image2);
+                        //     }
+                        //     if (isset($resize_image4)) {
+                        //         unlink($resize_image4);
+                        //     }
+                        // }
                         /* THIS CODE UNCOMMENTED AFTER SUCCESSFULLY WORKING : REMOVE IMAGE FROM UPLOAD FOLDER */
                     } else {
                         echo $this->upload->display_errors();

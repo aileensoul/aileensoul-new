@@ -196,8 +196,8 @@
                                                         controller: 'contactsController'
                                                 })
                                                 .when("/followers/:name*", {
-                                                templateUrl: base_url + "userprofile_page/followers"
-                                                        //   controller: 'basicInfoController'
+                                                templateUrl: base_url + "userprofile_page/followers",
+                                                           controller: 'followersController'
                                                 })
                                                 .when("/following/:name*", {
                                                 templateUrl: base_url + "userprofile_page/following"
@@ -297,6 +297,58 @@
                                 }
 
                                 });
+                                
+                                              app.controller('followersController', function ($scope, $http, $location) {
+                                $scope.user = {};
+                                var id = 1;
+                                $scope.follow = function(index){ //alert(123); return false;
+                                
+                                }
+
+
+                                // PROFEETIONAL DATA
+                                getFieldList();
+                                function getFieldList() {
+
+                                $http({
+                                method: 'POST',
+                                        url: base_url + 'userprofile_page/followers_data',
+                                        data: 'u=' + user_id,
+                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                })
+                                        .then(function (success) {
+                                        $scope.contats_data = success.data;
+                                        });
+                                }
+                                
+                                $scope.follow = function(path){
+                                    $http({
+                                method: 'POST',
+                                        url: base_url + 'userprofile_page/follow_contact',
+                                        data: 'u=' + user_id,
+                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                })
+                                        .then(function (success) {
+                                        $scope.contats_data = success.data;
+                                        });
+                                }
+
+
+                                $scope.goMainLink = function(path){alert(22);
+                                location.href = path;
+                                }
+
+                                $scope.goUserprofile = function(path){
+
+                                var base_url = '<?php echo base_url(); ?>';
+                                location.href = base_url + 'profiless/' + path;
+                                }
+
+                                });
+                                
+                                
+                                
+                                
                                 function remove_contacts(index){
                                 $.ajax({
                                 url: base_url + "userprofile_page/removeContacts",

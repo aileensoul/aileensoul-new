@@ -1025,23 +1025,23 @@ class Artist extends MY_Controller {
                 $insert_id1 = $this->common->insert_data_getid($data1, 'post_files');
 
 
-                if ($_SERVER['HTTP_HOST'] != "localhost") {
-                    if (isset($main_image)) {
-                        unlink($main_image);
-                    }
-                    if (isset($thumb_image)) {
-                        unlink($thumb_image);
-                    }
-                    if (isset($resize_image)) {
-                        unlink($resize_image);
-                    }
-                    if (isset($resize_image1)) {
-                        unlink($resize_image1);
-                    }
-                    if (isset($resize_image2)) {
-                        unlink($resize_image2);
-                    }
-                }
+                // if ($_SERVER['HTTP_HOST'] != "localhost") {
+                //     if (isset($main_image)) {
+                //         unlink($main_image);
+                //     }
+                //     if (isset($thumb_image)) {
+                //         unlink($thumb_image);
+                //     }
+                //     if (isset($resize_image)) {
+                //         unlink($resize_image);
+                //     }
+                //     if (isset($resize_image1)) {
+                //         unlink($resize_image1);
+                //     }
+                //     if (isset($resize_image2)) {
+                //         unlink($resize_image2);
+                //     }
+                // }
             } else {
                 echo $this->upload->display_errors();
                 exit;

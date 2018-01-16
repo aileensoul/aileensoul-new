@@ -99,17 +99,34 @@ class Freelancer_hire extends MY_Controller {
             );
             $insert_id1 = $this->common->insert_data($data, 'freelancer_hire_reg');
             if ($this->input->post('segment') == 'live-post') {
-
                 $segment = $this->input->post('segment');
                 $temp = $this->freelancer_hire_model->getprojectlivedatabyuserid($userid);
-                if ($temp[0]['post_field_req'] == 15) {
-                    $otherfield = '16';
+
+                if (is_numeric($temp[0]['post_field_req'])) {
+                    $fielddata = $temp[0]['post_field_req'];
+                } else {
+                    $data = array(
+                        'category_name' => $temp[0]['post_field_req'],
+                        'created_date' => date('Y-m-d h:i:s', time()),
+                        'status' => '2',
+                        'is_delete' => '0',
+                        'is_other' => '2',
+                        'user_id' => $userid,
+                        'category_slug' => $this->common->clean($temp[0]['post_field_req'])
+                    );
+                    $insert_id = $this->common->insert_data_getid($data, 'category');
+                    if ($insert_id) {
+                        $contition_array = array('is_delete' => '0', 'category_name' => $temp[0]['post_field_req']);
+                        $search_condition = "(is_other = '2' AND user_id = $userid)";
+                        $fielddata = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = 'category_id', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        $fielddata =$fielddata[0]['category_id'];
+                    }
                 }
 
                 $data = array(
                     'post_name' => $temp[0]['post_name'],
                     'post_description' => $temp[0]['post_description'],
-                    'post_field_req' => $otherfield,
+                    'post_field_req' => $fielddata,
                     'post_skill' => $temp[0]['post_skill'],
                     'post_other_skill' => $temp[0]['post_other_skill'],
                     'post_est_time' => $temp[0]['post_est_time'],
@@ -2449,46 +2466,35 @@ class Freelancer_hire extends MY_Controller {
         }
     }
 
-    public function other_filed_live(){
+    public function other_filed_live() {
         $other_field = $_POST['other_field'];
         $contition_array = array('is_delete' => '0', 'category_name' => $other_field);
         $search_condition = "(status = '1')";
         $userdata = $this->data['userdata'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $count = count($userdata);
-      echo   $count;die();
+
         if ($other_field != NULL) {
             if ($count == 0) {
-//                $data = array(
-//                    'category_name' => $other_field,
-//                    'created_date' => date('Y-m-d h:i:s', time()),
-//                    'status' => '2',
-//                    'is_delete' => '0',
-//                    'is_other' => '2',
-//                    'user_id' => $userid,
-//                    'category_slug' => $this->common->clean($other_field)
-//                );
-//                $insert_id = $this->common->insert_data_getid($data, 'category');
-                if ($insert_id) {
-                    $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
-                    $search_condition = "((is_other = '2' AND user_id = $userid) OR (status = '1'))";
-                    $category = $this->data['category'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                    if (count($category) > 0) {
-                        $select = '<option value="" selected option disabled>Select your field</option>';
-                        foreach ($category as $st) {
-                            $select .= '<option value="' . $st['category_id'] . '"';
+                $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
+                $search_condition = "(status = '1')";
+                $category = $this->data['category'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if (count($category) > 0) {
+                    $select = '<option value="" selected option disabled>Select your field</option>';
+                    foreach ($category as $st) {
+                        $select .= '<option value="' . $st['category_id'] . '"';
 //                            if ($st['category_name'] == $other_field) {
 //                                $select .= 'selected';
 //                            }
-                            $select .= '>' . $st['category_name'] . '</option>';
-                        }
+                        $select .= '>' . $st['category_name'] . '</option>';
                     }
-//For Getting Other at end
-                    $select .= '<option value="" selected>' . $other_field . '</option>';
-                    $contition_array = array('is_delete' => '0', 'status' => '1', 'category_name' => "Other");
-                    $category_otherdata = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    $select .= '<option value="' . $category_otherdata[0]['category_id'] . '">' . $category_otherdata[0]['category_name'] . '</option>';
                 }
+//For Getting Other at end
+                $select .= '<option value="' . $other_field . '" selected>' . $other_field . '</option>';
+                $contition_array = array('is_delete' => '0', 'status' => '1', 'category_name' => "Other");
+                $category_otherdata = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $select .= '<option value="' . $category_otherdata[0]['category_id'] . '">' . $category_otherdata[0]['category_name'] . '</option>';
             } else {
                 $select .= 0;
             }
@@ -2496,13 +2502,11 @@ class Freelancer_hire extends MY_Controller {
             $select .= 1;
         }
 
-
         echo json_encode(array(
             "select" => $select,
         ));
-        
-        
     }
+
     //FREELANCER_HIRE  OTHER FIELD START
     public function freelancer_hire_other_field() {
 

@@ -59,6 +59,12 @@ class Userprofile_page extends MY_Controller {
         echo json_encode($profilesData);
     }
 
+    public function followers_data() {
+        $userid = $this->session->userdata('aileenuser');
+        $followersData = $this->data['followersData'] = $this->userprofile_model->getFollowersData($userid, $data = "");
+        echo json_encode($followersData);
+    }
+    
     public function contacts_data() {
         $userid = $this->session->userdata('aileenuser');
         $contactsData = $this->data['contactsData'] = $this->userprofile_model->getContactData($userid, $data = "");

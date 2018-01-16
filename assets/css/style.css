@@ -550,6 +550,9 @@ fieldset.full-width{
     border:1px solid #1b8ab9!important;
     color:#1b8ab9!important
 }
+.common-form fieldset input:focus+label{
+    color: #1b8ab9 !important;
+}
 .fullwidth_experience select{
     width:49%
 }
@@ -1742,7 +1745,7 @@ div .comment{
 .change-password-box form{
     text-align:left;
     border:1px solid #ddd;
-    padding:20px;
+    padding:10px;
     background-color:#fff
 }
 .change-password-box h4{
@@ -2446,7 +2449,7 @@ footer div.pt20{
 .main_frlancer a:focus{color: #fff !important;background: #156f95;}
 .main_frlancer a:active{color: #fff !important;background: #156f95;}
 .modal-open-other{overflow: hidden;}
-
+.dropdown2_content #abody p{padding-top: 85px;}
 @media screen and (max-height:540px){
     .no-login .modal-dialog{
         margin-bottom:20px!important;
