@@ -2445,7 +2445,7 @@ footer div.pt20{
 .right_middle_side_posrt .all-profile-box{width: calc(100% - 0px);margin-left: 0px;}
 .main_frlancer a:focus{color: #fff !important;background: #156f95;}
 .main_frlancer a:active{color: #fff !important;background: #156f95;}
-
+.modal-open-other{overflow: hidden;}
 
 @media screen and (max-height:540px){
     .no-login .modal-dialog{
