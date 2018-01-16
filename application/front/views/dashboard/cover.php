@@ -290,7 +290,7 @@
                                         <?php } else {
                                             ?>
 
-                                            <a title="Take me in" class="btn-4" id="rec-take-btn" href="<?php echo base_url('recruiter'); ?>">Take me in</a>
+                                            <a title="Take me in" class="btn-4" id="rec-take-btn" href="<?php echo base_url('recruiter/home'); ?>">Take me in</a>
 
                                         <?php } ?>
                                         <a title="How it works" data-target="#rec-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
@@ -325,7 +325,7 @@
                                         <?php } else {
                                             ?> 
 
-                                            <a title="Take me in" class="btn-4" id="job-take-btn" href="<?php echo base_url('job/'); ?>">Take me in</a> 
+                                            <a title="Take me in" class="btn-4" id="job-take-btn" href="<?php echo base_url('job/home'); ?>">Take me in</a> 
 
                                         <?php } ?>
                                         <a title="How it works" data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
@@ -359,7 +359,7 @@
                                             <a class="btn-1" id="business-active-btn" href="<?php echo base_url('business-profile'); ?>">Active</a>
                                         <?php } else {
                                             ?>
-                                            <a title="Take me in" class="btn-4" id="business-take-btn" href="<?php echo base_url('business-profile'); ?>">Take me in</a> 
+                                            <a title="Take me in" class="btn-4" id="business-take-btn" href="<?php echo base_url('business-profile/home'); ?>">Take me in</a> 
 
                                         <?php } ?>
                                         <a title="How it works" data-target="#bus-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
@@ -393,7 +393,7 @@
                                             <a class="btn-1" id="artistic-active-btn" href="<?php echo base_url('artist'); ?>">Active</a>
                                         <?php } else {
                                             ?>
-                                            <a title="Take me in" class="btn-4" id="artistic-take-btn" href="<?php echo base_url('artist'); ?>">Take me in</a>
+                                            <a title="Take me in" class="btn-4" id="artistic-take-btn" href="<?php echo base_url('artist/home'); ?>">Take me in</a>
                                         <?php } ?>
                                         <a title="How it Works" data-target="#art-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
 
