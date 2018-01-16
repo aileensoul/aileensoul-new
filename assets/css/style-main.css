@@ -2582,6 +2582,9 @@ header.profile-header .logo a{
 }
 .main_otp_box_middle a:hover{text-decoration: none !important;}
 .contact-add .p20{padding: 46px 30px;}
+.modal-open .dob select{color: #848484 !important;}
+
+
 
 @media screen and (min-height:540px){
     .cover .modal-content{
