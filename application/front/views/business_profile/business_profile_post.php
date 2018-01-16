@@ -106,7 +106,7 @@ $mobile_agent = $this->agent->mobile;
                                             <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Business Image">
                                         <?php } ?>
                                     </div>
-                                    <div id="myBtn"  class="editor-content popup-text">
+                                    <div id="myBtn"  class="editor-content popup-text" onclick="return modelopen();">
                                         <span> <?php echo $this->lang->line("post_your_product"); ?></span> 
                                         <div class="padding-left padding_les_left camer_h">
                                             <i class="fa fa-camera"></i> 
