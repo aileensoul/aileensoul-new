@@ -1899,8 +1899,8 @@ label.cameraButton input[accept*=camera]{
     padding:10px 20px
 }
 .custom-message .modal-content .btn:hover{
-    background:#fff!important;
-    color:#1b8ab9!important
+    background:#156f95!important;
+    color:#fff!important
 }
 .custom-message .modal-content .mes{
     padding:0!important;
