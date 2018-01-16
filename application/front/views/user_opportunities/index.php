@@ -189,11 +189,10 @@
                                         <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-input">
-                                        <div contenteditable data-directive ng-model="comment" class="editable_text" placeholder="Add a Comment ..."></div>
-                                        <!--<input type="text" placeholder="Add a Comment ...">-->
+                                        <div contenteditable data-directive ng-model="comment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-change="isMsgBoxEmpty = false" class="editable_text" placeholder="Add a Comment ..." ng-enter="sendComment({{post.post_data.id}})" id="commentTaxBox-{{post.post_data.id}}" ng-focus="setFocus" focus-me="setFocus"></div>
                                     </div>
                                     <div class="comment-submit">
-                                        <button class="btn2">Comment</button>
+                                        <button class="btn2" ng-click="sendComment(post.post_data.id)">Comment</button>
                                     </div>
                                 </div>
                             </div>
