@@ -3397,6 +3397,7 @@ class Job extends MY_Controller {
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
         $this->data['keyword1'] = $search_place;
+        
 
         $title = '';
         if (empty($search_job) && empty($search_place)) {
@@ -4199,8 +4200,8 @@ class Job extends MY_Controller {
             $contition_array = array('recruiter.re_status' => '1', 'recruiter.is_delete' => '0', 'status' => '1', 'rec_post.is_delete' => '0');
             $unique = $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         } elseif ($search_job == "") {
-
-
+           
+            
             $contition_array = array('slug' => $search_place, 'state_id !=' => '0');
             $groupid = $this->common->select_data_by_condition('cities', $contition_array, $data = 'group_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -4219,7 +4220,25 @@ class Job extends MY_Controller {
             $join_str[0]['join_type'] = '';
             $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
             $search_condition = "city IN ('$city_names')";
-            $unique = $this->data['results'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+            $city_search = $this->data['results'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+            
+            $contition_array = array('country_name' => $search_place, 'status' => '1');
+            $countryid = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+            $join_str[0]['table'] = 'recruiter';
+            $join_str[0]['join_table_id'] = 'recruiter.user_id';
+            $join_str[0]['from_table_id'] = 'rec_post.user_id';
+            $join_str[0]['join_type'] = '';
+
+            $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
+            $contition_array = array('recruiter.re_status' => '1', 'recruiter.is_delete' => '0', 'status' => '1', 'rec_post.is_delete' => '0','rec_post.country' =>$countryid[0]['country_id']);
+            $country_search = $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+           
+            $unique1 = array_merge((array)$country_search, (array)$city_search);
+            foreach ($unique1 as $value) {
+                $unique[$value['post_id']] = $value;
+            }
+            
         } elseif ($search_place == "") {
 
             //Search FOr Skill Start
