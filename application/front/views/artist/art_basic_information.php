@@ -89,7 +89,9 @@
                                 </fieldset>
 								</div>
 								<div class="fw">
-                                <fieldset class="vali_er" <?php if($email) {  ?> class="error-msg" <?php } ?>>
+                                <fieldset  <?php if($email) {  ?> class="error-msg vali_er " <?php }else{
+
+                                 ?> class="vali_er" <?php }?>>
                                 <?php $user_email = strtolower($art[0]['user_email']); ?>
                                     <label>E-mail address:<span style="color:red">*</span></label>
                                     <input name="email"  type="text" id="email" tabindex="3" placeholder="Enter e-mail address" value="<?php if($email1){ echo $email1; } else { echo $user_email; } ?>">
@@ -101,7 +103,7 @@
                                     <input name="phoneno"  type="text" id="phoneno" tabindex="4" placeholder="Enter phone number" value="<?php if($phoneno1){ echo $phoneno1; } ?>">
                                     <?php echo form_error('phoneno'); ?><br/>
                                 </fieldset> 
-								</div>
+								
                                 <fieldset class="hs-submit full-width">                                 
                                    <!--  <input type="submit"  id="next" name="next" value="Next" tabindex="5"> -->
                                    <button id="next" name="next" tabindex="5" onclick="return reg_loader();">Next<span class="ajax_load pl10" id="profilereg_ajax_load" style="display: none;"><i aria-hidden="true" class="fa fa-spin fa-refresh"></i></span></button>

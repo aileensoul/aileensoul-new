@@ -3952,8 +3952,8 @@ div .comment {
     font-size: 18px!important;
 }
 #artbasicinfo label.error{
-    position: relative;
-    right: 0;
+    position: absolute;
+    right: 8;
     margin-right: 0;
     text-align: right;
     margin-bottom: 0;

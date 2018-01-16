@@ -191,6 +191,7 @@ padding: 8px;}
 .comment-action li:last-child:after{display:none;}
 .comment-action li a{font-size:13px; color:#999;}
 .comment-action li a:hover{color:#1b8ab9;}
+.post-bottom .bottom-left a.like .fa-thumbs-up{color:#1b8ab9;}
 .comment-action li .like .fa-thumbs-up{color:#1b8ab9;}
 .post-bottom ul.bottom-right{padding-top:8px;}
 /***  end middle part  ***/

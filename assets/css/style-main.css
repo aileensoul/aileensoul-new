@@ -2585,7 +2585,6 @@ header.profile-header .logo a{
 .modal-open .dob select{color: #848484 !important;}
 
 
-
 @media screen and (min-height:540px){
     .cover .modal-content{
         margin:0 auto
@@ -3170,7 +3169,7 @@ header.profile-header .logo a{
         padding-right:15px
     }
     .form-pd{
-        padding:40px 0 33px
+        padding:70px 0 33px
     }
     .login #register_form span::after{
         right:15px
@@ -3282,7 +3281,7 @@ header.profile-header .logo a{
         padding-top:100px
     }
     .title h1{
-        font-size:20px!important
+        font-size:16px!important
     }
     #onload-Modal{
         display:none!important
