@@ -44,7 +44,7 @@
                 transform: inherit !important;
             }
             .modal-dialog {
-                height: auto;%;
+                height: auto;
                 width: 100%;
                 display: flex;
                 align-items: center;
