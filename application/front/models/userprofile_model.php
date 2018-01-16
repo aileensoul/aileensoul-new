@@ -44,21 +44,36 @@ class Userprofile_model extends CI_Model {
 
         $where = "((uf.follow_to = '" . $user_id . "'))";
 
-        $this->db->select("uf.id")->from("user_follow  uf");
-       // $this->db->join('user u', 'u.user_id = uf.follow_from', 'left');
-       // $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
-        //$this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
-        //$this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
-        //$this->db->join('user_student us', 'us.user_id = u.user_id', 'left');
-        //$this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
-        $this->db->where('u.user_id !=', $user_id);
-        $this->db->where('uf.status',1);
+        $this->db->select("u.user_id,u.first_name,u.last_name,ui.user_image,jt.name as title_name,d.degree_name,u.user_slug")->from("user_follow  uf");
+        $this->db->join('user u', 'u.user_id = uf.follow_from', 'left');
+        $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+        $this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
+        $this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
+        $this->db->join('user_student us', 'us.user_id = u.user_id', 'left');
+        $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
+//        $this->db->where('u.user_id !=', $user_id);
+        $this->db->where('uf.status', '1');
         $this->db->where($where);
         $this->db->order_by("uf.id", "DESC");
 
         $query = $this->db->get();
         $result_array = $query->result_array();
-        return $result_array;
+        $user_follow_array = array();
+        // echo '<pre>'; print_r($result_array); die();
+        $new_follow_array = array();
+        foreach ($result_array as $result) {
+            $condition = "((uf.follow_from = '" . $user_id . "' AND uf.follow_to = '" . $result['user_id'] . "'))";
+            $this->db->select("uf.id as follow_user_id")->from("user_follow uf");
+            $this->db->where('uf.status', '1');
+            $this->db->where($condition);
+            $querry = $this->db->get();
+            $result_query = $querry->result_array();
+            $result['follow_user_id'] = $result_query[0]['follow_user_id'];
+
+            array_push($new_follow_array, $result);
+        }
+
+        return $new_follow_array;
     }
 
     public function userContactStatus($user_id = '', $id = '') {

@@ -163,7 +163,7 @@
                                                 $scope.contact_value = success.data;
                                                 });
                                         }
-                                          $scope.follow = function(id, status){
+                                        $scope.follow = function(id, status){
 
                                         $http({
                                         method: 'POST',
@@ -197,7 +197,7 @@
                                                 })
                                                 .when("/followers/:name*", {
                                                 templateUrl: base_url + "userprofile_page/followers",
-                                                           controller: 'followersController'
+                                                        controller: 'followersController'
                                                 })
                                                 .when("/following/:name*", {
                                                 templateUrl: base_url + "userprofile_page/following"
@@ -297,12 +297,11 @@
                                 }
 
                                 });
-                                
-                                              app.controller('followersController', function ($scope, $http, $location) {
+                                app.controller('followersController', function ($scope, $http, $location,$compile) {
                                 $scope.user = {};
                                 var id = 1;
                                 $scope.follow = function(index){ //alert(123); return false;
-                                
+
                                 }
 
 
@@ -317,19 +316,35 @@
                                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                                 })
                                         .then(function (success) {
-                                        $scope.contats_data = success.data;
+                                        $scope.follow_data = success.data;
                                         });
                                 }
-                                
-                                $scope.follow = function(path){
-                                    $http({
+
+                                $scope.follow_user = function(id){
+                                $http({
                                 method: 'POST',
-                                        url: base_url + 'userprofile_page/follow_contact',
-                                        data: 'u=' + user_id,
+                                        url: base_url + 'userprofile_page/follow_user',
+                                        data: 'to_id=' + user_id,
                                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                                 })
                                         .then(function (success) {
-                                        $scope.contats_data = success.data;
+                                           
+                                        $("#" + id).html($compile(success.data)($scope));
+                            
+                                        });
+                                }
+                                
+                                $scope.unfollow_user = function(id){
+                                $http({
+                                method: 'POST',
+                                        url: base_url + 'userprofile_page/unfollow_user',
+                                        data: 'to_id=' + user_id,
+                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                })
+                                        .then(function (success) {
+                                           
+                                        $("#" + id).html($compile(success.data)($scope));
+                            
                                         });
                                 }
 
@@ -345,10 +360,6 @@
                                 }
 
                                 });
-                                
-                                
-                                
-                                
                                 function remove_contacts(index){
                                 $.ajax({
                                 url: base_url + "userprofile_page/removeContacts",

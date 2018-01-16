@@ -139,7 +139,7 @@ class Userprofile_page extends MY_Controller {
              $data = array(
                  'status' => $status,
                  'follow_from' => $userid,
-                 'follow_to' => '15978',
+                 'follow_to' => $id,
                  'created_date' => $status,
                  );
             $insert_id = $this->common->insert_data($data, 'user_follow');
@@ -147,6 +147,67 @@ class Userprofile_page extends MY_Controller {
         }
         echo $response;
     }
+    
+    public function follow_user() { 
+        $userid = $this->session->userdata('aileenuser');
+        $follow_id = $_POST['follow_id'];
+        $id = $_POST['to_id'];
+        $follow = $this->userprofile_model->userFollowStatus($userid, $id);
+
+        if (count($follow) != 0) {
+            $data = array('status' => 1);
+            $insert_id = $this->common->update_data($data, 'user_follow', 'id', $follow['id']);
+         //   $response = $status;
+            
+            $html = '<a class="btn3"  ng-click="unfollow_user(follow.user_id)">Following</a>';
+            
+            }else{
+             $data = array(
+                 'status' => 1,
+                 'follow_from' => $userid,
+                 'follow_to' => $id,
+                 'created_date' => $status,
+                 );
+            $insert_id = $this->common->insert_data($data, 'user_follow');
+           // $response = $status;
+            $html = '<a class="btn3"  ng-click="unfollow_user(follow.user_id)">Following</a>';
+        }
+        
+       
+        echo $html;
+    }
+    
+    
+    public function unfollow_user() { 
+        $userid = $this->session->userdata('aileenuser');
+        $follow_id = $_POST['follow_id'];
+        $id = $_POST['to_id'];
+        $follow = $this->userprofile_model->userFollowStatus($userid, $id);
+
+        if (count($follow) != 0) {
+            $data = array('status' => 0);
+            $insert_id = $this->common->update_data($data, 'user_follow', 'id', $follow['id']);
+         //   $response = $status;
+            
+            $html = '<a class="btn3"  ng-click="follow_user(follow.user_id)">Follow</a>';
+            
+            }else{
+             $data = array(
+                 'status' => 0,
+                 'follow_from' => $userid,
+                 'follow_to' => $id,
+                 'created_date' => $status,
+                 );
+            $insert_id = $this->common->insert_data($data, 'user_follow');
+           // $response = $status;
+            $html = '<a class="btn3"  ng-click="follow_user(follow.user_id)">Follow</a>';
+        }
+        
+       
+        echo $html;
+    }
+    
+    
     
       //PROFILE PIC INSERT END  
 
