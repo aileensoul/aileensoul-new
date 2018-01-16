@@ -383,6 +383,13 @@ function create_profile() {
 }
 /* validation */
 
+
+$('.modal-close').click(function(e){ 
+    $('#login').modal('show');
+    //$('body').addClass('modal-open');
+    document.getElementById("add-model-open").classList.add("modal-open-other");
+});
+
 $("#login_form").validate({
 
     rules: {
