@@ -2730,8 +2730,10 @@ p.job-top-btn a.btn4:first-child{
         margin-top:25px
     }
     #paddingtop_fixed{
-        padding-top:71px!important
+        padding-top:71px!important;
+        
     }
+    .no-login #paddingtop_fixed{padding-top:132px!important;}
     .left-side-bar{
         position:relative
     }
@@ -3221,6 +3223,7 @@ p.job-top-btn a.btn4:first-child{
     .cust-block li{
         width:100%
     }
+    .modal.in .modal-dialog{margin: inherit !important;}
 }
 @media screen and (max-width:360px){
     .art_no_post_text{

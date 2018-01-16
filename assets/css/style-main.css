@@ -350,6 +350,7 @@ header h2{
 .modal.login{
     width: 100%;
     border: none;
+    border-radius: none;
 }
 .modal.login .modal-content{
     padding: 0px;
@@ -2580,6 +2581,7 @@ header.profile-header .logo a{
     align-items:center;
     margin:0 auto
 }
+
 .main_otp_box_middle a:hover{text-decoration: none !important;}
 .contact-add .p20{padding: 46px 30px;}
 .modal-open .dob select{color: #848484 !important;}
@@ -3294,7 +3296,7 @@ header.profile-header .logo a{
     .profile-bnr .logo{text-align: center;}
     .contact-add .p20{padding: 46.50px 30px;}
     .modal-dialog{width: 95%;}
-
+    .login .modal-dialog{height: auto;}
 }
 @media screen and (max-width:640px){
     .btns .btn-4{
@@ -3572,7 +3574,7 @@ header.profile-header .logo a{
         margin-right:12px;
     }
     .login .form-group select.day,.login .form-group select.month,.login .form-group select.year{
-        width:65px!important;
+        width:50px!important;
     }
 }
 @media screen and (max-width:319px){
