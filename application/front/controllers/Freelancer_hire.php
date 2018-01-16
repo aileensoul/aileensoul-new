@@ -2475,16 +2475,6 @@ class Freelancer_hire extends MY_Controller {
 
         if ($other_field != NULL) {
             if ($count == 0) {
-//                $data = array(
-//                    'category_name' => $other_field,
-//                    'created_date' => date('Y-m-d h:i:s', time()),
-//                    'status' => '2',
-//                    'is_delete' => '0',
-//                    'is_other' => '2',
-//                    'user_id' => $userid,
-//                    'category_slug' => $this->common->clean($other_field)
-//                );
-//                $insert_id = $this->common->insert_data_getid($data, 'category');
 
                 $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
                 $search_condition = "(status = '1')";
@@ -2511,7 +2501,6 @@ class Freelancer_hire extends MY_Controller {
         } else {
             $select .= 1;
         }
-
 
         echo json_encode(array(
             "select" => $select,
