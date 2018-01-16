@@ -3352,8 +3352,10 @@ class Job extends MY_Controller {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
 
-                    //$trim_char = trim($val, $trimCharacters);
-                    $result[] = strtolower($val);
+                  
+                    $trim_char  = preg_replace('/[^a-zA-Z0-9_ -]/s','',$val);
+                    $trimchar = trim($trim_char);
+                    $result[] = strtolower($trimchar);
                 }
             }
         }
