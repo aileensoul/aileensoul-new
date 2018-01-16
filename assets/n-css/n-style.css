@@ -191,6 +191,7 @@ padding: 8px;}
 .comment-action li:last-child:after{display:none;}
 .comment-action li a{font-size:13px; color:#999;}
 .comment-action li a:hover{color:#1b8ab9;}
+.comment-action li .like .fa-thumbs-up{color:#1b8ab9;}
 .post-bottom ul.bottom-right{padding-top:8px;}
 /***  end middle part  ***/
 
@@ -900,6 +901,9 @@ header.profile-header .logo a{color:#5c5c5c;}
     background-image:radial-gradient(ellipse farthest-corner at center,#FCFCFF 30%,#d5ebfd 100%)
 }
 .sticky-container.right-profile{display:none;}
+.custom-dediter{padding:20px 0 60px; border-bottom:1px solid #d2d2d2; min-height:300px; position:relative;}
+.publish-btn{position:absolute; bottom:10px; width:100%;}
+.related-article{padding:20px 0; border-bottom:1px solid #d2d2d2;}
 /***  media query  ***/
 @media screen and (min-width: 768px) {
 
