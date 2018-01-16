@@ -2450,6 +2450,10 @@ footer div.pt20{
 .main_frlancer a:active{color: #fff !important;background: #156f95;}
 .modal-open-other{overflow: hidden;}
 .dropdown2_content #abody p{padding-top: 85px;}
+.cus-sel-col .other_stream option{color: #1b8ab9 !important;}
+
+
+
 @media screen and (max-height:540px){
     .no-login .modal-dialog{
         margin-bottom:20px!important;
@@ -2909,6 +2913,7 @@ footer div.pt20{
 	.freelancer_home .freelancer-midd{height:auto; padding-bottom:0;}
 	.freelancer_home .ftr-copuright.pb20{padding-bottom:0;}
     .job-saved-box .notification-box ul li{padding: 8px;margin: 8px;}
+    .logo img{max-width: 130px;}
     
 }
     @media screen and (max-width:640px){
@@ -3261,6 +3266,7 @@ footer div.pt20{
         .login .form-group select.day,.login .form-group select.month{
             width:60px
         }
+         .logo img{max-width: 110px;}
     }
     @media screen and (max-width:320px){
         .main-txt{
@@ -3280,7 +3286,7 @@ footer div.pt20{
             margin-right:27px!important
         }
         .login .form-group select.day,.login .form-group select.month,.login .form-group select.year{
-            width:50px!important
+            width:50px!important;
         }
     }
     @media screen and (max-width:280px){
