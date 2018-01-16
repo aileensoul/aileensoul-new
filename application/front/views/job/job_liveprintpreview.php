@@ -48,7 +48,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </style>
       
     </head>
-   <body   class="page-container-bg-solid page-boxed botton_footer no-login">
+   <body   class="page-container-bg-solid page-boxed botton_footer no-login" id="add-model-open">
 
      <header>
             <div class="container">
@@ -1964,7 +1964,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
 $('.modal-close').click(function(e){ 
     $('#login').modal('show');
-    $('body').addClass('modal-open');
+    //$('body').addClass('modal-open');
+    document.getElementById("add-model-open").classList.add("modal-open-other");
 });
 
 
