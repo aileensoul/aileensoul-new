@@ -113,7 +113,7 @@
                                                 </fieldset>
                                                 <fieldset class="full-width" <?php if ($industry) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
                                                     <label>Industry:<span style="color:red">*</span></label>
-                                                    <select name="industry" id="industry" tabindex="4">
+                                                    <select name="industry" id="industry" tabindex="4"  class="industry1">
 
                                                         <option value="" selected option disabled>Select Industry</option>
 
@@ -651,21 +651,22 @@
 
 
         </script>
+        
         <?php
         if (IS_REC_JS_MINIFY == '0') {
             ?>
             <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
             <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/add_post_login.js?ver=' . time()); ?>"></script>
+            <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/add_post_login.js?ver=' . time()); ?>"></script>-->
             <?php
         } else {
             ?>
             <script src="<?php echo base_url('assets/js_min/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
             <script src="<?php echo base_url('assets/js_min/bootstrap.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/jquery.validate.min.js?ver=' . time()) ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/add_post_login.js?ver=' . time()); ?>"></script>
+            <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/recruiter/add_post_login.js?ver=' . time()); ?>"></script>-->
         <?php } ?>
-
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/add_post_login.js?ver=' . time()); ?>"></script>
     </body>
 </html>

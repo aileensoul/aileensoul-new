@@ -4463,24 +4463,24 @@ class Recruiter extends MY_Controller {
         if ($other_industry != NULL) {
             if ($count == 0) {
 
-                    $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
-                    $search_condition = "(status = '1')";
-                    $university = $this->data['university'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    if (count($university) > 0) {
-                        $select = '<option value="" selected option disabled>Select your Industry</option>';
-                        foreach ($university as $st) {
-                            $select .= '<option value="' . $st['industry_id'] . '"';
+                $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
+                $search_condition = "(status = '1')";
+                $university = $this->data['university'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                if (count($university) > 0) {
+                    $select = '<option value="" selected option disabled>Select your Industry</option>';
+                    foreach ($university as $st) {
+                        $select .= '<option value="' . $st['industry_id'] . '"';
 //                            if ($st['industry_name'] == $other_industry) {
 //                                $select .= 'selected';
 //                            }
-                            $select .= '>' . $st['industry_name'] . '</option>';
-                        }
+                        $select .= '>' . $st['industry_name'] . '</option>';
                     }
+                }
 //For Getting Other at end
-                    $select .= '<option value="' . $other_industry . '" selected>' . $other_industry . '</option>';
-                    $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Other");
-                    $university_otherdata = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    $select .= '<option value="' . $university_otherdata[0]['industry_id'] . '">' . $university_otherdata[0]['industry_name'] . '</option>';
+                $select .= '<option value="' . $other_industry . '" selected>' . $other_industry . '</option>';
+                $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Other");
+                $university_otherdata = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $select .= '<option value="' . $university_otherdata[0]['industry_id'] . '">' . $university_otherdata[0]['industry_name'] . '</option>';
 //                }
             } else {
                 $select .= 0;
@@ -4492,6 +4492,7 @@ class Recruiter extends MY_Controller {
             "select" => $select,
         ));
     }
+
     public function recruiter_other_industry() {
         $other_industry = $_POST['other_industry'];
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
@@ -4748,10 +4749,10 @@ class Recruiter extends MY_Controller {
             $userid = $this->session->userdata('aileenuser');
             $recuser = $this->db->select('user_id')->get_where('recruiter', array('user_id' => $userid))->row()->user_id;
         }
-        if($recuser){
+        if ($recuser) {
             redirect('recruiter/home', refresh);
-        }else{
-        $this->load->view('recruiter/rec_reg', $this->data);
+        } else {
+            $this->load->view('recruiter/rec_reg', $this->data);
         }
     }
 
@@ -4817,7 +4818,27 @@ class Recruiter extends MY_Controller {
 
                 $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id' => $userid);
                 $temp = $this->common->select_data_by_condition('rec_post_login', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+             
+                if (is_numeric($temp[0]['industry_type'])) {
+                    $industrydata = $temp[0]['industry_type'];
+                } else {
+                    $data = array(
+                        'industry_name' => $temp[0]['industry_type'],
+                        'created_date' => date('Y-m-d h:i:s', time()),
+                        'status' => '2',
+                        'is_delete' => '0',
+                        'is_other' => '1',
+                        'user_id' => $userid
+                    );
+                    $insert_id = $this->common->insert_data_getid($data, 'job_industry');
+                    if ($insert_id) {
+                        $contition_array = array('is_delete' => '0', 'industry_name' => $temp[0]['industry_type']);
+                        $search_condition = "(is_other = '1' AND user_id = $userid)";
+                        $industrydata = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        $industrydata = $industrydata[0]['industry_id'];
+                    }
+                }
+               
                 $data = array(
                     'post_name' => $temp[0]['post_name'],
                     'post_description' => $temp[0]['post_description'],
@@ -4830,7 +4851,7 @@ class Recruiter extends MY_Controller {
                     'min_year' => $temp[0]['min_year'],
                     'max_year' => $temp[0]['max_year'],
                     'interview_process' => $temp[0]['interview_process'],
-                    'industry_type' => $temp[0]['industry_type'],
+                    'industry_type' => $industrydata,
                     'degree_name' => $temp[0]['degree_name'],
                     'emp_type' => $temp[0]['emp_type'],
                     'fresher' => $temp[0]['fresher'],
