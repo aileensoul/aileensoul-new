@@ -1231,7 +1231,7 @@ fieldset .add_post_btns:hover {
     border-right: none;
 }
 .add-post-button a:hover {
-    color: #1b8ab9;
+    color: #fff;
 }
 label.cameraButton input[accept*="camera"] {
     display: none;
@@ -1608,6 +1608,10 @@ p.pull-right a.btn4:last-child {line-height: 22px;}
 fieldset.work_type_custom input{height: 30px;min-height: 25px;}
 .job-contact-frnd .add-post-button .btn-3{margin: 10px;}
 .job-contact-frnd .rio .add-post-button.add-post-custom{text-align:center; margin:0 0 6px;}
+
+
+
+
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
     .common-form fieldset.mgrd input[type="radio"] {

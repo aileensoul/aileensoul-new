@@ -3395,182 +3395,182 @@ header.profile-header .logo a{
     .about-h2{
         padding-top:60px;
         padding-bottom:0;
-        font-size:40px
+        font-size:40px;
     }
 }
 @media screen and (max-width:479px){
     .mob-none,.profile-box-1.art::after,.profile-box-1.art::before,.profile-box-1.bus::before,.profile-box-1.job::after,.profile-box-1.job::before{
-        display:none
+        display:none;
     }
     .custom-box .custom-width .right-box h1 a::after{
         left:50%!important;
         width:150px;
-        margin-left:-75px
+        margin-left:-75px;
     }
     .pt-a{
-        padding-top:35px
+        padding-top:35px;
     }
     .profile-detail h2{
-        font-size:17px
+        font-size:17px;
     }
     .middle-main{
-        padding:30px 0
+        padding:30px 0;
     }
     .login{
-        width:100%
+        width:100%;
     }
     .header-login .input{
-        width:44%
+        width:44%;
     }
     .main-inner .btn-right.pull-right a.btn2{
-        margin-bottom:15px
+        margin-bottom:15px;
     }
     .about-us .main-inner .btn-right.pull-right a.btn2,.contact .main-inner .btn-right.pull-right a.btn2,.feedback .main-inner .btn-right.pull-right a.btn2{
-        margin-bottom:0
+        margin-bottom:0;
     }
     .inner-form .login form{
-        padding:15px 10px
+        padding:15px 10px;
     }
     .btn-4,.btns .btn-4{
-        padding:5px 20px
+        padding:5px 20px;
     }
     .title h1{
-        font-size:24px
+        font-size:24px;
     }
     .box-profile{
-        margin:0 15px 20px
+        margin:0 15px 20px;
     }
     .login .form-group select.year{
-        width:57px
+        width:57px;
     }
     .login h4{
-        font-size:20px
+        font-size:20px;
     }
     .md-2{
-        width:90%!important
+        width:90%!important;
     }
     .profile-detail h2{
         line-height:1.5;
-        margin-top:10px
+        margin-top:10px;
     }
     .btn-4{
-        font-size:12px
+        font-size:12px;
     }
     .img-custom{
-        width:100%
+        width:100%;
     }
     .team-1{
         height:200px;
-        width:200px
+        width:200px;
     }
     .about-h2{
         font-size:30px;
-        padding-top:50px
+        padding-top:50px;
     }
     .about-para{
-        font-size:15px
+        font-size:15px;
     }
     .about-us .terms-con-cus{
-        background-size:cover
+        background-size:cover;
     }
     .about-us .middle-main .all-tem .text-custom h4{
-        font-size:20px
+        font-size:20px;
     }
     .about-us .middle-main .all-tem .text-custom p{
-        font-size:15px
+        font-size:15px;
     }
     .con-address td{
         width:100%;
-        float:left
+        float:left;
     }
     .con-address td:first-child{
-        padding-bottom:0
+        padding-bottom:0;
     }
-    .con-address td:last-child{
+    .con-address td:last-child{;
         padding-top:0
     }
     .site-map-all-profile ul li{
-        width:100%
+        width:100%;
     }
     footer ul li a{
-        padding:5px!important
+        padding:5px!important;
     }
 	.new-abput-page .img-custom{width:100%;}
 }
 @media screen and (max-width:360px){
     .main-inner .btn-right.pull-right a.btn2{
-        padding:8px 18px
+        padding:8px 18px;
     }
     .main-inner .btn-right.pull-right a.btn3{
-        padding:5px 18px
+        padding:5px 18px;
     }
     .banner{
-        padding-top:10px
+        padding-top:10px;
     }
     .how-it-popup .modal-body h3{
         font-size:22px;
-        margin-bottom:12px
+        margin-bottom:12px;
     }
     .mob-add{
         margin-bottom:0;
-        border:none
+        border:none;
     }
     .padding-360{
         padding-left:1px;
-        padding-right:1px
+        padding-right:1px;
     }
     .contact-frnd-post{
-        padding:10px 8px 0
+        padding:10px 8px 0;
     }
     .mid-trns .custom-padd{
         padding-right:0;
-        padding-left:0
+        padding-left:0;
     }
     .login #register_form span::after{
-        right:16px
+        right:16px;
     }
     .login form{
-        padding:16px 8px 15px!important
+        padding:16px 8px 15px!important;
     }
     .login .form-group select.day,.login .form-group select.month{
-        width:60px
+        width:60px;
     }
     .main_otp_box_middle_submit input[type=password],.main_otp_box_middle_submit input[type=text]{
-    width:100%}
+    width:100%;}
 }
 @media screen and (max-width:320px){
     .por_content ul li{
-        padding:10px
+        padding:10px;
     }
     .login .form-group select{
-        width:60px
+        width:60px;
     }
     .por_content ul li .pro-text{
-        font-size:12px
+        font-size:12px;
     }
     .por_content ul li img{
         margin-right:3px;
         float:left;
         width:40px;
-        height:40px
+        height:40px;
     }
     .por_content ul li .pro-text .count{
-        width:14px
+        width:14px;
     }
     .login form{
-        padding:16px 8px 15px!important
+        padding:16px 8px 15px!important;
     }
     .about-us .main-inner .btn-right.pull-right a.btn2{
-        margin-bottom:10px
+        margin-bottom:10px;
     }
     .about-us .titlea h1{
-        font-size:32px
+        font-size:32px;
     }
     .login .form-group select{
-        margin-right:12px
+        margin-right:12px;
     }
     .login .form-group select.day,.login .form-group select.month,.login .form-group select.year{
-        width:70px!important
+        width:65px!important;
     }
 }
 @media screen and (max-width:319px){

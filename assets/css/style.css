@@ -627,11 +627,6 @@ fieldset.full-width{
     color: #1b8ab9 !important;
 }
 
-.
-
-
-
-
 /*.no-login .has-error input, input.error, select.error, .has-error textarea, textarea.error {
     border-bottom:1px solid #ff0000 !important;
 }*/
@@ -2448,6 +2443,9 @@ footer div.pt20{
 .color-black-custom{color:#000;}
 .color-light-custom{color:#acacac;}
 .right_middle_side_posrt .all-profile-box{width: calc(100% - 0px);margin-left: 0px;}
+.main_frlancer a:focus{color: #fff !important;background: #156f95;}
+.main_frlancer a:active{color: #fff !important;background: #156f95;}
+
 
 @media screen and (max-height:540px){
     .no-login .modal-dialog{
@@ -2607,7 +2605,7 @@ footer div.pt20{
     }
     .cls-ve{
         position:absolute;
-        top:12px;
+        top:21px;
         right:10px;
         z-index:10
     }
@@ -2908,6 +2906,7 @@ footer div.pt20{
 	.freelancer_home .freelancer-midd{height:auto; padding-bottom:0;}
 	.freelancer_home .ftr-copuright.pb20{padding-bottom:0;}
     .job-saved-box .notification-box ul li{padding: 8px;margin: 8px;}
+    
 }
     @media screen and (max-width:640px){
         .cover-pic{
@@ -3101,7 +3100,7 @@ footer div.pt20{
             padding:3px 10px
         }
         .cls-ve{
-            top:35px
+            top:32px
         }
         .people-list .search input{
             width:93%
