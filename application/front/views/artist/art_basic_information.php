@@ -89,7 +89,9 @@
                                 </fieldset>
 								</div>
 								<div class="fw">
-                                <fieldset class="vali_er" <?php if($email) {  ?> class="error-msg" <?php } ?>>
+                                <fieldset  <?php if($email) {  ?> class="error-msg vali_er" <?php }else{
+
+                                 ?> class="vali_er" <?php }?>>
                                 <?php $user_email = strtolower($art[0]['user_email']); ?>
                                     <label>E-mail address:<span style="color:red">*</span></label>
                                     <input name="email"  type="text" id="email" tabindex="3" placeholder="Enter e-mail address" value="<?php if($email1){ echo $email1; } else { echo $user_email; } ?>">
