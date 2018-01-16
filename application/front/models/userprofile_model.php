@@ -20,12 +20,12 @@ class Userprofile_model extends CI_Model {
     }
 
     public function getContactData($user_id = '', $select_data = '') {
-        
-         $where = "((from_id = '" .$user_id. "' OR to_id = '" .$user_id. "'))";
-         
+
+        $where = "((from_id = '" . $user_id . "' OR to_id = '" . $user_id . "'))";
+
         $this->db->select("u.user_id,u.first_name,u.last_name,ui.user_image,jt.name as title_name,d.degree_name,u.user_slug")->from("user_contact  uc");
         $this->db->join('user u', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.to_id ELSE uc.from_id END)', 'left');
-       $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+        $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
         $this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
         $this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
         $this->db->join('user_student us', 'us.user_id = u.user_id', 'left');
@@ -39,33 +39,51 @@ class Userprofile_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
-    
-     public function userContactStatus($user_id = '', $id = '') { 
-        $id = '15978';
-       $this->db->select("uc.status,uc.id")->from("user_contact as uc");
-         $where = "((from_id = '" .$user_id. "' AND to_id = '" .$id."') OR (from_id = '" .$user_id. "' AND to_id = '" .$id. "'))";
-        $this->db->where($where);
-        $this->db->order_by("uc.id", "DESC");
-      $query = $this->db->get();
-        $result_array = $query->row_array();
-        return $result_array;
-        
-     }
-     
-     public function userFollowStatus($user_id = '', $id = '') { 
-        $id = '15978';
-       $this->db->select("uf.status,uf.id")->from("user_follow as uf");
-         $where = "((follow_from = '" .$user_id. "' AND follow_to = '" .$id."'))";
+
+    public function getFollowersData($user_id = '', $select_data = '') {
+
+        $where = "((uf.follow_to = '" . $user_id . "'))";
+
+        $this->db->select("uf.id")->from("user_follow  uf");
+       // $this->db->join('user u', 'u.user_id = uf.follow_from', 'left');
+       // $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+        //$this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
+        //$this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
+        //$this->db->join('user_student us', 'us.user_id = u.user_id', 'left');
+        //$this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
+        $this->db->where('u.user_id !=', $user_id);
+        $this->db->where('uf.status',1);
         $this->db->where($where);
         $this->db->order_by("uf.id", "DESC");
-      $query = $this->db->get();
+
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+
+    public function userContactStatus($user_id = '', $id = '') {
+        $id = '15978';
+        $this->db->select("uc.status,uc.id")->from("user_contact as uc");
+        $where = "((from_id = '" . $user_id . "' AND to_id = '" . $id . "') OR (from_id = '" . $user_id . "' AND to_id = '" . $id . "'))";
+        $this->db->where($where);
+        $this->db->order_by("uc.id", "DESC");
+        $query = $this->db->get();
         $result_array = $query->row_array();
         return $result_array;
-        
-     }
-     
-     
-     function getUserBackImage($user_id = '') {
+    }
+
+    public function userFollowStatus($user_id = '', $id = '') {
+        $id = '15978';
+        $this->db->select("uf.status,uf.id")->from("user_follow as uf");
+        $where = "((follow_from = '" . $user_id . "' AND follow_to = '" . $id . "'))";
+        $this->db->where($where);
+        $this->db->order_by("uf.id", "DESC");
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+
+    function getUserBackImage($user_id = '') {
         $this->db->select("profile_background,profile_background_main")->from("user_info");
         $this->db->where("user_id", $user_id);
         $query = $this->db->get();
