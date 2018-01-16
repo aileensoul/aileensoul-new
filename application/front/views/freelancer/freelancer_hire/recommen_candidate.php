@@ -12,12 +12,7 @@
     <body class="pushmenu-push">
         <?php echo $header; ?>
         <?php echo $freelancer_hire_header2_border; ?>
-        <?php
-        $userid = $this->session->userdata('aileenuser');
-        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
-        $project_data =  $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'created_date', $orderby = 'desc', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-      //  echo "<pre>"; print_r($project_data);die();
-        ?>
+
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container padding-360">
