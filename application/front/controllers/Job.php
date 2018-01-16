@@ -3326,6 +3326,7 @@ class Job extends MY_Controller {
 
         //get search term
         $searchTerm = $_GET['term'];
+        //$trimCharacters = ',';
         if (!empty($searchTerm)) {
 
             $contition_array = array('re_status' => '1', 're_step' => '3');
@@ -3350,15 +3351,19 @@ class Job extends MY_Controller {
         foreach ($uni as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
-                    $result[] = $val;
+
+                    //$trim_char = trim($val, $trimCharacters);
+                    $result[] = strtolower($val);
                 }
             }
         }
-        foreach ($result as $key => $value) {
-            $result1[$key]['value'] = $value;
-        }
+        // foreach ($result as $key => $value) {
+        //     $result1[$key]['value'] = $value;
+        // }
         $result1 = array_values($result);
-        echo json_encode($result1);
+        $result2 = array_unique($result1);
+        //echo "<pre>"; print_r($result2); die();
+        echo json_encode($result2);
     }
 
 //Get All data for search End
