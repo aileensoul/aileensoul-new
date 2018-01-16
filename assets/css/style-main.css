@@ -2956,8 +2956,8 @@ header.profile-header .logo a{
     }
     .logo{
         font-size:24px;
-        margin-bottom:10px
     }
+    .no-login .logo{margin-bottom: 10px;}
     .mid-trns{
         width:100%
     }

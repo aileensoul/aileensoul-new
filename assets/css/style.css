@@ -2716,6 +2716,7 @@ footer div.pt20{
     .tablate-add-custom{
         display:block
     }
+    .cus-chang{font-size: 20px !important;}
 }
 @media screen and (max-width:900px){
     .custom-right{
@@ -2914,6 +2915,7 @@ footer div.pt20{
 	.freelancer_home .ftr-copuright.pb20{padding-bottom:0;}
     .job-saved-box .notification-box ul li{padding: 8px;margin: 8px;}
     .logo img{max-width: 130px;}
+    .cus-chang{margin-bottom: 0px;}
     
 }
     @media screen and (max-width:640px){
@@ -3215,6 +3217,7 @@ footer div.pt20{
         .job-top-detail{
             width:83%
         }
+        .cus-chang{font-size: 17px !important;margin-bottom: 0px;line-height: 26px;}
     }
     @media screen and (max-width:360px){
         .chat .chat-header .chat-with,.job-top-detail h5 a{
