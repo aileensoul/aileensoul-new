@@ -65,7 +65,7 @@
                                 }
                                 ?>
                                 <div class="common-form job_reg_main">
-                                    <h3>Welcome In Freelancer Profile</h3>
+                                    <h3>Welcome in Freelancer Profile</h3>
                                     <?php echo form_open(base_url('freelancer/registation_insert/' . $this->uri->segment(4)), array('id' => 'freelancer_regform', 'name' => 'freelancer_regform', 'class' => 'clearfix')); ?>
                                     <?php
                                     $fullname = form_error('firstname');

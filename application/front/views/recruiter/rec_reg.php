@@ -67,7 +67,7 @@
                      } ?>
                                  
                      <div class="common-form job_reg_main">
-                        <h3>Welcome In Recruiter Profile</h3>
+                        <h3>Welcome in Recruiter Profile</h3>
                          
                         <form id="basicinfo" name="basicinfo" class="clearfix">
                         <fieldset>

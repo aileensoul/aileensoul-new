@@ -69,7 +69,7 @@
                   <div class="job_reg_page_fprm">
                       
                      <div class="common-form job_reg_main">
-                        <h3>Welcome In Artistic Profile</h3>
+                        <h3>Welcome in Artistic Profile</h3>
 
                         <?php echo form_open(base_url('artist/profile_insert'), array('id' => 'artinfo','name' => 'artinfo','class' => 'clearfix', 'onsubmit' => "return validation_other(event)")); ?>
 

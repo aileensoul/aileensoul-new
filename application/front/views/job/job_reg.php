@@ -69,7 +69,7 @@
                                 }
                                 ?>
                      <div class="common-form job_reg_main">
-                        <h3>Welcome In Job Profile</h3>
+                        <h3>Welcome in Job Profile</h3>
                         <?php echo form_open(base_url('job/job_insert'), array('id' => 'jobseeker_regform', 'name' => 'jobseeker_regform', 'class' => 'clearfix')); ?>
                         <fieldset>
                            <label >First Name <font  color="red">*</font> :</label>
