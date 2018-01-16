@@ -1137,13 +1137,72 @@ function submitforgotForm()
 
 
 });
-$('#submit').on('click', function () {
+//$('#submit').on('click', function () {
+//
+//    if ($('#freelancer_regform').valid())
+//    {
+//        register_profile();
+//
+//    }
+//
+//
+//});
 
-    if ($('#freelancer_regform').valid())
+//OTHER INDUSTRY INSERT START
+$(document).on('change', '#industry', function (event) {
+
+    var item = $(this);
+    var industry = (item.val());
+
+    if (industry == 288)
     {
-        register_profile();
 
+        item.val('');
+
+        $('.biderror .mes').html('<h2>Add Industry</h2><input tabindex="1" type="text" name="other_indu" id="other_indu"><a id="indus" tabindex="2" class="btn">OK</a>');
+        $('#bidmodal').modal('show');
+        // $.fancybox.open('<div class="message" style="width:300px;"><h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a></div>');
+
+        $('.message #indus').off('click').on('click', function () {
+
+            $("#other_indu").removeClass("keyskill_border_active");
+            $('#field_error').remove();
+            var x = $.trim(document.getElementById("other_indu").value);
+            if (x == '') {
+                $("#other_indu").addClass("keyskill_border_active");
+                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_indu');
+                return false;
+            } else {
+                var $textbox = $('.message').find('input[type="text"]'),
+                        textVal = $textbox.val();
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + 'recruiter/other_industry_live',
+                    dataType: 'json',
+                    data: 'other_industry=' + textVal,
+                    success: function (response) {
+
+                        if (response == 0)
+                        {
+                            $("#other_indu").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written industry already available in industry Selection</span>').insertAfter('#other_indu');
+                        } else if (response == 1)
+                        {
+
+                            $("#other_indu").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty industry  is not valid</span>').insertAfter('#other_indu');
+                        } else
+                        {
+
+                            //$.fancybox.close();
+                            $('#bidmodal').modal('hide');
+                            $('.industry1').html(response.select);
+                        }
+                    }
+                });
+            }
+        });
     }
 
-
 });
+//OTHER INDUSTRY INSERT END

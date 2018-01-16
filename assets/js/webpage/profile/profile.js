@@ -7,15 +7,14 @@ $(document).ready(function () {
             last_name: {
                 required: true,
             },
-            email: {
+            email_profile: {
                 required: true,
-                email: true,
                 remote: {
                     url: base_url + "profile/check_email",
                     type: "post",
                     data: {
                         email: function () {
-                            return $("#email").val();
+                            return $("#email_profile").val();
                         },
                         //get_csrf_token_name: get_csrf_hash,
                     },async: false
@@ -41,9 +40,8 @@ $(document).ready(function () {
             last_name: {
                 required: "Last Name Is Required."
             },
-            email: {
+            email_profile: {
                 required: "Email Address Is Required.",
-                email: "Please Enter Valid Email Id.",
                 remote: "Email already exists"
             },
             selday: {

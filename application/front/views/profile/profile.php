@@ -42,7 +42,7 @@ color: #1b8ab9 !important;}
                                     </fieldset>
                                     <fieldset>           
                                         <label >E-mail Address:</label>
-                                        <input name="email" tabindex="4"  type="text" id="email" placeholder="EmailAddress..."  value="<?php echo $userdata['email'] ?>"   onblur="return email_id();"/><span id="email-error"></span> <?php echo form_error('email'); ?>
+                                        <input name="email_profile" tabindex="4"  type="email" id="email_profile" placeholder="EmailAddress..."  value="<?php echo $userdata['email'] ?>"/><span id="email-error"></span> <?php echo form_error('email'); ?>
                                     </fieldset>
                                     <fieldset>        
                                         <label>Birthday:</label>

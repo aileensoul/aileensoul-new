@@ -245,7 +245,7 @@
         </div>
         <!-- Model Popup Close -->
         <!-- Bid-modal  -->
-        <div class="modal fade message-box biderror custom-message" id="bidmodal_degree" role="dialog">
+        <div class="modal fade message-box biderror custom-message cus-sel-col" id="bidmodal_degree" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content message2">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>

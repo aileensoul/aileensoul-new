@@ -55,6 +55,53 @@ class User_opportunity extends CI_Model {
         return $result_array;
     }
 
+    public function is_likepost($userid = '', $post_id = '') {
+        $this->db->select("upl.id,upl.is_like")->from("user_post_like upl");
+        $this->db->join('user_login ul', 'ul.user_id = upl.user_id', 'left');
+        $this->db->where('upl.user_id', $userid);
+        $this->db->where('upl.post_id', $post_id);
+        $this->db->where('ul.status', '1');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+
+    public function likepost_count($post_id = '') {
+        $this->db->select("COUNT(*) as like_count")->from("user_post_like upl");
+        $this->db->join('user_login ul', 'ul.user_id = upl.user_id', 'left');
+        $this->db->where('upl.post_id', $post_id);
+        $this->db->where('ul.status', '1');
+        $this->db->where('is_like', '1');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['like_count'];
+    }
+
+    public function is_userlikePost($user_id = '', $post_id = '') {
+        $this->db->select("COUNT(*) as like_count")->from("user_post_like upl");
+        $this->db->join('user_login ul', 'ul.user_id = upl.user_id', 'left');
+        $this->db->where('upl.post_id', $post_id);
+        $this->db->where('upl.user_id', $user_id);
+        $this->db->where('ul.status', '1');
+        $this->db->where('is_like', '1');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['like_count'];
+    }
+
+    public function postLikeData($post_id = '') {
+        $this->db->select("CONCAT(u.first_name,' ',u.last_name) as username")->from("user_post_like upl");
+        $this->db->join('user u', 'u.user_id = upl.user_id', 'left');
+        $this->db->join('user_login ul', 'ul.user_id = upl.user_id', 'left');
+        $this->db->where('upl.post_id', $post_id);
+        $this->db->where('upl.is_like', '1');
+        $this->db->where('ul.status', '1');
+        $this->db->order_by('upl.id', 'desc');
+        $this->db->limit('1');
+        $query = $this->db->get();
+        return $post_like_data = $query->row_array();
+    }
+
     public function userPost($user_id = '') {
         $result_array = array();
         $this->db->select("up.id,up.user_id,up.post_for,up.created_date,up.post_id")->from("user_post up");
@@ -75,7 +122,7 @@ class User_opportunity extends CI_Model {
             $total_post_files = $query->row_array('file_count');
             $result_array[$key]['post_data']['total_post_files'] = $total_post_files['file_count'];
 
-            $this->db->select("u.user_id,u.first_name,u.last_name,ui.user_image,jt.name as title_name,d.degree_name")->from("user u");
+            $this->db->select("u.user_id,CONCAT(u.first_name,' ',u.last_name) as fullname,ui.user_image,jt.name as title_name,d.degree_name")->from("user u");
             $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
             $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
             $this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
@@ -93,7 +140,7 @@ class User_opportunity extends CI_Model {
                 $this->db->where('uo.id', $value['post_id']);
                 $this->db->where('FIND_IN_SET(jt.title_id, uo.`opportunity_for`) !=', 0);
                 $this->db->where('FIND_IN_SET(c.city_id, uo.`location`) !=', 0);
-                $this->db->group_by('uo.opportunity_for','uo.location');
+                $this->db->group_by('uo.opportunity_for', 'uo.location');
                 $query = $this->db->get();
                 $opportunity_data = $query->row_array();
                 $result_array[$key]['opportunity_data'] = $opportunity_data;
@@ -104,12 +151,21 @@ class User_opportunity extends CI_Model {
             $query = $this->db->get();
             $post_file_data = $query->result_array();
             $result_array[$key]['post_file_data'] = $post_file_data;
+
+            $post_like_data = $this->postLikeData($value['post_id']);
+            $post_like_count = $this->likepost_count($value['post_id']);
+            $result_array[$key]['post_like_count'] = $post_like_count;
+            $result_array[$key]['is_userlikePost'] = $this->is_userlikePost($user_id, $value['post_id']);
+            if ($post_like_count > 1) {
+                $result_array[$key]['post_like_data'] = $post_like_data['username'] . ' and ' . ($post_like_count - 1) . ' other';
+            } elseif ($post_like_count == 1) {
+                $result_array[$key]['post_like_data'] = $post_like_data['username'];
+            }
         }
 //        echo '<pre>';
 //        print_r($result_array);
 //        exit;
         return $result_array;
     }
-    
 
 }

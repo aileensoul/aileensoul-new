@@ -3951,13 +3951,13 @@ div .comment {
 #filename {
     font-size: 18px!important;
 }
-#artbasicinfo label.error {
-    position: relative;
-    right: 0;
+#artbasicinfo label.error{
+    position: absolute;
+    right: 8;
     margin-right: 0;
     text-align: right;
     margin-bottom: 0;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
 }
 .two-images img {
     width: 280px;

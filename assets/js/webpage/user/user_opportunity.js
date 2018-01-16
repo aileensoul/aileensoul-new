@@ -71,15 +71,15 @@ app.directive('fileInput', function () {
     };
 });
 app.controller('userOppoController', function ($scope, $http) {
-    
+
     getUserOpportunity();
     function getUserOpportunity() {
         $http.get(base_url + "user_opportunities/getUserOpportunity").then(function (success) {
             $scope.postData = success.data;
         }, function (error) {});
     }
-    
-    
+
+
     getFieldList();
     function getFieldList() {
         $http.get(base_url + "general_data/getFieldList").then(function (success) {
@@ -284,7 +284,7 @@ app.controller('userOppoController', function ($scope, $http) {
                     return false;
                 }
             }
-            
+
         }
     }
     // POST UPLOAD START
@@ -321,13 +321,13 @@ app.controller('userOppoController', function ($scope, $http) {
             $scope.fileInput = '';
             document.getElementById("progress_div").style.display = "none";
             //$(".all-post-box").prepend(response.responseText);
-            
-            
+
+
             $scope.postData = response.responseText;
-            
-            
-            
-            
+
+
+
+
             $('video, audio').mediaelementplayer();
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -357,6 +357,29 @@ app.controller('userOppoController', function ($scope, $http) {
             }
         });
     }
+
+    $scope.post_like = function (post_id) {
+        $http({
+            method: 'POST',
+            url: base_url + 'user_opportunities/likePost',
+            data: 'post_id=' + post_id,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function (success) {
+            if (success.data.message == 1) {
+                if (success.data.is_newLike == 1) {
+                    $('#post-like-' + post_id).addClass('like');
+                    $('#post-like-count-' + post_id).html(success.data.likePost_count);
+                    $('#post-other-like-' + post_id).html(success.data.post_like_data);
+                } else if (success.data.is_oldLike == 1) {
+                    $('#post-like-' + post_id).removeClass('like');
+                    $('#post-like-count-' + post_id).html(success.data.likePost_count);
+                    $('#post-other-like-' + post_id).html(success.data.post_like_data);
+                }
+            }
+        });
+    }
+
+
 });
 
 $(window).on("load", function () {

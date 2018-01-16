@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="post-detail">
                                     <div class="fw">
-                                        <a href="#" class="post-name" ng-bind="(post.user_data.first_name) + ' ' + (post.user_data.last_name)"></a><span class="post-time">7 hours ago</span>
+                                        <a href="#" class="post-name" ng-bind="post.user_data.fullname"></a><span class="post-time">7 hours ago</span>
                                     </div>
                                     <div class="fw">
                                         <span class="post-designation" ng-if="post.user_data.title_name != ''" ng-bind="post.user_data.title_name"></span>
@@ -147,20 +147,23 @@
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                         <ul class="bottom-left">
-                                            <li><a href="#"><i class="fa fa-thumbs-up"></i></a></li>
+                                            <li>
+                                                <a href="javascript:void(0)" id="post-like-{{post.post_data.id}}" ng-click="post_like(post.post_data.id)" ng-if="post.is_userlikePost == '1'" class="like"><i class="fa fa-thumbs-up"></i></a>
+                                                <a href="javascript:void(0)" id="post-like-{{post.post_data.id}}" ng-click="post_like(post.post_data.id)" ng-if="post.is_userlikePost == '0'"><i class="fa fa-thumbs-up"></i></a>
+                                            </li>
                                             <li><a href="#"><i class="fa fa-comment-o"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                         <ul class="pull-right bottom-right">
-                                            <li class="like-count">1<span>Like</span></li>
-                                            <li class="comment-count">5<span>Comment</span></li>
+                                            <li class="like-count"><span id="post-like-count-{{post.post_data.id}}" ng-bind="post.post_like_count"></span><span>Like</span></li>
+                                            <li class="comment-count"><span class="post-comment-count">5</span><span>Comment</span></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="like-other-box">
-                                <a href="#">xyz and 5 others</a>
+                                <div class="like-other-box">
+                                    <a href="#" ng-bind="post.post_like_data" id="post-other-like-{{post.post_data.id}}"></a>
                             </div>
                         </div>
                         <div class="all-post-bottom">
@@ -181,28 +184,13 @@
                                     </div>
                                 </div>
 
-                                <div class="post-comment">
-                                    <div class="post-img">
-                                        <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
-                                    </div>
-                                    <div class="comment-dis">
-                                        <div class="comment-name"><a>Sarasvati Musical Shop</a></div>
-                                        <div class="comment-dis-inner">However, most attention in this field is given to crop varieties and to crop wild relatives. Cultivated varieties can be broadly classified into “modern varieties” and “farmer's or traditional varieties”. </div>
-                                        <ul class="comment-action">
-                                            <li><a href="#"><i class="fa fa-thumbs-up"></i></a></li>
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Delete</a></li>
-                                            <li><a href="#">13 minutes ago</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
                                 <div class="add-comment">
                                     <div class="post-img">
                                         <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
                                     </div>
                                     <div class="comment-input">
-                                        <input type="text" placeholder="Add a Comment ...">
+                                        <div contenteditable data-directive ng-model="comment" class="editable_text" placeholder="Add a Comment ..."></div>
+                                        <!--<input type="text" placeholder="Add a Comment ...">-->
                                     </div>
                                     <div class="comment-submit">
                                         <button class="btn2">Comment</button>

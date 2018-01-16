@@ -350,6 +350,7 @@ header h2{
 .modal.login{
     width: 100%;
     border: none;
+    border-radius: none;
 }
 .modal.login .modal-content{
     padding: 0px;
@@ -2580,8 +2581,12 @@ header.profile-header .logo a{
     align-items:center;
     margin:0 auto
 }
+
 .main_otp_box_middle a:hover{text-decoration: none !important;}
 .contact-add .p20{padding: 46px 30px;}
+.modal-open .dob select{color: #848484 !important;}
+
+
 
 @media screen and (min-height:540px){
     .cover .modal-content{
@@ -2951,8 +2956,8 @@ header.profile-header .logo a{
     }
     .logo{
         font-size:24px;
-        margin-bottom:10px
     }
+    .no-login .logo{margin-bottom: 10px;}
     .mid-trns{
         width:100%
     }
@@ -3167,7 +3172,7 @@ header.profile-header .logo a{
         padding-right:15px
     }
     .form-pd{
-        padding:40px 0 33px
+        padding:70px 0 33px
     }
     .login #register_form span::after{
         right:15px
@@ -3279,7 +3284,7 @@ header.profile-header .logo a{
         padding-top:100px
     }
     .title h1{
-        font-size:20px!important
+        font-size:16px!important
     }
     #onload-Modal{
         display:none!important
@@ -3292,7 +3297,7 @@ header.profile-header .logo a{
     .profile-bnr .logo{text-align: center;}
     .contact-add .p20{padding: 46.50px 30px;}
     .modal-dialog{width: 95%;}
-
+    .login .modal-dialog{height: auto;}
 }
 @media screen and (max-width:640px){
     .btns .btn-4{
@@ -3570,7 +3575,7 @@ header.profile-header .logo a{
         margin-right:12px;
     }
     .login .form-group select.day,.login .form-group select.month,.login .form-group select.year{
-        width:65px!important;
+        width:50px!important;
     }
 }
 @media screen and (max-width:319px){

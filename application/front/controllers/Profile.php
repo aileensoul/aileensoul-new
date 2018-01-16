@@ -44,7 +44,7 @@ class Profile extends CI_Controller {
 
         $this->form_validation->set_rules('first_name', 'first Name', 'required');
         $this->form_validation->set_rules('last_name', 'last Name', 'required');
-        $this->form_validation->set_rules('email', ' EmailId', 'required|valid_email');
+        $this->form_validation->set_rules('email_profile', ' EmailId', 'required|valid_email');
 
         $this->form_validation->set_rules('gender', ' gender', 'required');
 
@@ -66,7 +66,7 @@ class Profile extends CI_Controller {
 
         $data_login = array(
 
-                'email' => $this->input->post('email')
+                'email' => $this->input->post('email_profile')
         );
 
         $updatdata1 = $this->common->update_data($data_login, 'user_login', 'user_id', $id);

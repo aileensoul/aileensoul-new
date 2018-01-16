@@ -246,21 +246,21 @@
                                                                                                 var skill = '<?php echo $keyword; ?>';
                                                                                                 
                                                                                                 var place = '<?php echo $keyword1; ?>';
-                                                                                              
+                                                                                             
 
                                                                                                 var csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
                                                                                                 var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
                     </script>
-
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_search.js?ver=' . time()); ?>"></script>
 <?php
         if (IS_JOB_JS_MINIFY == '0') {
             ?>
-                    <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_search.js?ver=' . time()); ?>"></script>
+                    <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_search.js?ver=' . time()); ?>"></script>-->
                     <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>
 <?php }else{?>
 
 
-<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_search.js?ver=' . time()); ?>"></script>
+<!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/job_search.js?ver=' . time()); ?>"></script>-->
 <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/job/search_common.js?ver=' . time()); ?>"></script>
 
 <?php }?>

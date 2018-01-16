@@ -954,7 +954,7 @@
       </div>
    </section>
    <!-- Bid-modal  --> 
-      <div class="modal fade message-box biderror custom-message in" id="bidmodal" role="dialog"  >
+      <div class="modal fade message-box biderror custom-message in cus-sel-col" id="bidmodal" role="dialog"  >
          <div class="modal-dialog modal-lm" >
             <div class="modal-content message">
                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       

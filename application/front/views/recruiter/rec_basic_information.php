@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="fw">
 
-                                    <fieldset>
+                                    <fieldset class="vali_er">
                                         <label>Email address:<span class="red">*</span></label>
                                         <input name="email"  type="text" id="email" tabindex="3" placeholder="Enter Email"  value="<?php
                                         if ($email) {
@@ -123,7 +123,7 @@
                                             echo $userdata[0]['user_email'];
                                         }
                                         ?>" />
-                                        
+                                    <span class="email_note"><b>Note:-</b> Related notification email will be send on provided email address kindly use regular  email address.<div></div></span>                                
                                                <?php echo form_error('email'); ?>
                                     </fieldset>
 

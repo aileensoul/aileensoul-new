@@ -33,7 +33,7 @@
 <!-- start header -->
 <?php echo $header; ?>
 <!-- END HEADER -->
-<body class="cus-login botton_footer cus-error">
+<body class="cus-login botton_footer cus-error no-login">
 
   <?php 
       $userid = $this->session->userdata('aileenuser');

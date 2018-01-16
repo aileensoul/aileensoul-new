@@ -28,14 +28,19 @@ class General extends MY_Controller {
 
             $contition_array = array('state_id !=' => '0', 'status' => '1');
             $search_condition = "(city_name LIKE '" . trim($searchTerm) . "%')";
-            $citylist = $this->common->select_data_by_search('cities', $search_condition, $contition_array, $data = 'city_id as id,city_name as text', $sortby = 'city_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'city_name');
+            $citylist = $this->common->select_data_by_search('cities', $search_condition, $contition_array, $data = 'city_id as id,city_name as text', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str5 = '', $groupby = 'city_name');
+            
+            $contition_array = array('country_id !=' => '0', 'status' => '1');
+            $search_condition = "(country_name LIKE '" . trim($searchTerm) . "%')";
+            $countrylist = $this->common->select_data_by_search('countries', $search_condition, $contition_array, $data = 'country_id as id,country_name as text', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str5 = '', $groupby = 'country_name');
         }
-        foreach ($citylist as $key => $value) {
-            //   $citydata[$key]['id'] = $value['id'];
-            $citydata[$key]['value'] = $value['text'];
+        $unique = array_merge((array) $citylist, (array) $countrylist);
+        foreach ($unique as $key => $value) {
+          
+            $palcedata[$key]['value'] = $value['text'];
         }
 
-        $cdata = array_values($citydata);
+        $cdata = array_values($palcedata);
         echo json_encode($cdata);
     }
 

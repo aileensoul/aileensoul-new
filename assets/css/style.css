@@ -175,7 +175,7 @@ button,input[type=button],input[type=submit]{
     border:0;
     padding:10px 30px 12px;
     letter-spacing:1px;
-    margin-left:15px;
+    /*margin-left:15px;*/
     -webkit-transition:all .4s ease-in-out;
     -moz-transition:all .4s ease-in-out;
     -o-transition:all .4s ease-in-out;
@@ -549,6 +549,9 @@ fieldset.full-width{
 .common-form fieldset input:focus{
     border:1px solid #1b8ab9!important;
     color:#1b8ab9!important
+}
+.common-form fieldset input:focus+label{
+    color: #1b8ab9 !important;
 }
 .fullwidth_experience select{
     width:49%
@@ -1742,7 +1745,7 @@ div .comment{
 .change-password-box form{
     text-align:left;
     border:1px solid #ddd;
-    padding:20px;
+    padding:10px;
     background-color:#fff
 }
 .change-password-box h4{
@@ -2446,6 +2449,10 @@ footer div.pt20{
 .main_frlancer a:focus{color: #fff !important;background: #156f95;}
 .main_frlancer a:active{color: #fff !important;background: #156f95;}
 .modal-open-other{overflow: hidden;}
+.dropdown2_content #abody p{padding-top: 85px;}
+.cus-sel-col .other_stream option{color: #1b8ab9 !important;}
+
+
 
 @media screen and (max-height:540px){
     .no-login .modal-dialog{
@@ -2709,6 +2716,7 @@ footer div.pt20{
     .tablate-add-custom{
         display:block
     }
+    .cus-chang{font-size: 20px !important;}
 }
 @media screen and (max-width:900px){
     .custom-right{
@@ -2906,6 +2914,8 @@ footer div.pt20{
 	.freelancer_home .freelancer-midd{height:auto; padding-bottom:0;}
 	.freelancer_home .ftr-copuright.pb20{padding-bottom:0;}
     .job-saved-box .notification-box ul li{padding: 8px;margin: 8px;}
+    .logo img{max-width: 130px;}
+    .cus-chang{margin-bottom: 0px;}
     
 }
     @media screen and (max-width:640px){
@@ -3207,6 +3217,7 @@ footer div.pt20{
         .job-top-detail{
             width:83%
         }
+        .cus-chang{font-size: 17px !important;margin-bottom: 0px;line-height: 26px;}
     }
     @media screen and (max-width:360px){
         .chat .chat-header .chat-with,.job-top-detail h5 a{
@@ -3258,6 +3269,7 @@ footer div.pt20{
         .login .form-group select.day,.login .form-group select.month{
             width:60px
         }
+         .logo img{max-width: 110px;}
     }
     @media screen and (max-width:320px){
         .main-txt{
@@ -3277,7 +3289,7 @@ footer div.pt20{
             margin-right:27px!important
         }
         .login .form-group select.day,.login .form-group select.month,.login .form-group select.year{
-            width:50px!important
+            width:50px!important;
         }
     }
     @media screen and (max-width:280px){
