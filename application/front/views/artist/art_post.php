@@ -220,7 +220,20 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
                                     </li>
                                 </ul>
                             </div>
-          
+            
+                            <div class="fw text-center">
+                            <?php if ($_SERVER['HTTP_HOST'] == "www.aileensoul.com") { ?>
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- Aileensoul_1 -->
+                                <ins class="adsbygoogle"
+                                     style="display:inline-block;width:336px;height:280px"
+                                     data-ad-client="ca-pub-6060111582812113"
+                                     data-ad-slot="4975905411"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            <?php } ?>
+                        </div>
      
       </div>
   <!-- Bid-modal  -->
