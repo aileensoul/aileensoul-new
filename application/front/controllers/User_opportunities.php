@@ -113,6 +113,12 @@ class User_opportunities extends MY_Controller {
                     $return_array['is_newLike'] = '0';
                     $return_array['is_oldLike'] = '1';
                     $return_array['likePost_count'] = $this->likePost_count($post_id);
+                    $postLikeData = $this->user_opportunity->postLikeData($post_id);
+                    if ($return_array['likePost_count'] > 1) {
+                        $return_array['post_like_data'] = $postLikeData['username'] . ' and ' . ($return_array['likePost_count'] - 1) . ' other';
+                    } elseif ($return_array['likePost_count'] == 1) {
+                        $return_array['post_like_data'] = $postLikeData['username'];
+                    }
                 }
             } else {
                 $data = array();
@@ -124,6 +130,12 @@ class User_opportunities extends MY_Controller {
                     $return_array['is_newLike'] = '1';
                     $return_array['is_oldLike'] = '0';
                     $return_array['likePost_count'] = $this->likePost_count($post_id);
+                    $postLikeData = $this->user_opportunity->postLikeData($post_id);
+                    if ($return_array['likePost_count'] > 1) {
+                        $return_array['post_like_data'] = $postLikeData['username'] . ' and ' . ($return_array['likePost_count'] - 1) . ' other';
+                    } elseif ($return_array['likePost_count'] == 1) {
+                        $return_array['post_like_data'] = $postLikeData['username'];
+                    }
                 }
             }
         } else {
@@ -140,6 +152,12 @@ class User_opportunities extends MY_Controller {
                 $return_array['is_newLike'] = '1';
                 $return_array['is_oldLike'] = '0';
                 $return_array['likePost_count'] = $this->likePost_count($post_id);
+                $postLikeData = $this->user_opportunity->postLikeData($post_id);
+                if ($return_array['likePost_count'] > 1) {
+                    $return_array['post_like_data'] = $postLikeData['username'] . ' and ' . ($return_array['likePost_count'] - 1) . ' other';
+                } elseif ($return_array['likePost_count'] == 1) {
+                    $return_array['post_like_data'] = $postLikeData['username'];
+                }
             } else {
                 $return_array['message'] = '0';
                 $return_array['likePost_count'] = $this->likePost_count($post_id);
