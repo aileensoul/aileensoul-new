@@ -1177,7 +1177,7 @@ $(document).on('change', '#industry', function (event) {
                         textVal = $textbox.val();
                 $.ajax({
                     type: 'POST',
-                    url: base_url + 'recruiter/recruiter_other_industry',
+                    url: base_url + 'recruiter/other_industry_live',
                     dataType: 'json',
                     data: 'other_industry=' + textVal,
                     success: function (response) {

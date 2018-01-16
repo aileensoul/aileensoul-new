@@ -4451,6 +4451,47 @@ class Recruiter extends MY_Controller {
         }
     }
 
+    public function other_industry_live() {
+        $other_industry = $_POST['other_industry'];
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+
+        $contition_array = array('is_delete' => '0', 'industry_name' => $other_industry);
+        $search_condition = "(status = '1')";
+        $userdata = $this->data['userdata'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $count = count($userdata);
+
+        if ($other_industry != NULL) {
+            if ($count == 0) {
+
+                    $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
+                    $search_condition = "(status = '1')";
+                    $university = $this->data['university'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    if (count($university) > 0) {
+                        $select = '<option value="" selected option disabled>Select your Industry</option>';
+                        foreach ($university as $st) {
+                            $select .= '<option value="' . $st['industry_id'] . '"';
+//                            if ($st['industry_name'] == $other_industry) {
+//                                $select .= 'selected';
+//                            }
+                            $select .= '>' . $st['industry_name'] . '</option>';
+                        }
+                    }
+//For Getting Other at end
+                    $select .= '<option value="' . $other_industry . '" selected>' . $other_industry . '</option>';
+                    $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Other");
+                    $university_otherdata = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $select .= '<option value="' . $university_otherdata[0]['industry_id'] . '">' . $university_otherdata[0]['industry_name'] . '</option>';
+//                }
+            } else {
+                $select .= 0;
+            }
+        } else {
+            $select .= 1;
+        }
+        echo json_encode(array(
+            "select" => $select,
+        ));
+    }
     public function recruiter_other_industry() {
         $other_industry = $_POST['other_industry'];
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
