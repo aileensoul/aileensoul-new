@@ -153,8 +153,8 @@
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                         <ul class="pull-right bottom-right">
-                                            <li class="like-count">1<span>Like</span></li>
-                                            <li class="comment-count">5<span>Comment</span></li>
+                                            <li class="like-count"><span id="post-like-count-{{post.post_data.id}}" ng-bind="post.post_like_count"></span><span>Like</span></li>
+                                            <li class="comment-count"><span class="post-comment-count">5</span><span>Comment</span></li>
                                         </ul>
                                     </div>
                                 </div>

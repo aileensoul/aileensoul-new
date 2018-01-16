@@ -112,6 +112,7 @@ class User_opportunities extends MY_Controller {
                     $return_array['message'] = '1';
                     $return_array['is_newLike'] = '0';
                     $return_array['is_oldLike'] = '1';
+                    $return_array['likePost_count'] = $this->likePost_count($post_id);
                 }
             } else {
                 $data = array();
@@ -122,6 +123,7 @@ class User_opportunities extends MY_Controller {
                     $return_array['message'] = '1';
                     $return_array['is_newLike'] = '1';
                     $return_array['is_oldLike'] = '0';
+                    $return_array['likePost_count'] = $this->likePost_count($post_id);
                 }
             }
         } else {
@@ -137,11 +139,20 @@ class User_opportunities extends MY_Controller {
                 $return_array['message'] = '1';
                 $return_array['is_newLike'] = '1';
                 $return_array['is_oldLike'] = '0';
+                $return_array['likePost_count'] = $this->likePost_count($post_id);
             } else {
                 $return_array['message'] = '0';
+                $return_array['likePost_count'] = $this->likePost_count($post_id);
             }
         }
         echo json_encode($return_array);
+    }
+
+    public function likePost_count($post_id = '') {
+        $userid = $this->session->userdata('aileenuser');
+
+        $likepost_count = $this->user_opportunity->likepost_count($post_id);
+        return $likepost_count;
     }
 
     public function post_opportunity() {

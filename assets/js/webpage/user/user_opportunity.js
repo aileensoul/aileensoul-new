@@ -368,8 +368,10 @@ app.controller('userOppoController', function ($scope, $http) {
             if (success.data.message == 1) {
                 if (success.data.is_newLike == 1) {
                     $('#post-like-' + post_id).addClass('like');
+                    $('#post-like-count-' + post_id).html(success.data.likePost_count);
                 } else if (success.data.is_oldLike == 1) {
                     $('#post-like-' + post_id).removeClass('like');
+                    $('#post-like-count-' + post_id).html(success.data.likePost_count);
                 }
             }
         });
