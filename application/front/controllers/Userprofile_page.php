@@ -70,6 +70,12 @@ class Userprofile_page extends MY_Controller {
         $contactsData = $this->data['contactsData'] = $this->userprofile_model->getContactData($userid, $data = "");
         echo json_encode($contactsData);
     }
+    
+    public function following_data() {
+        $userid = $this->session->userdata('aileenuser');
+        $followingData = $this->data['followingData'] = $this->userprofile_model->getFollowingData($userid, $data = "");
+        echo json_encode($followingData);
+    }
 
     public function vsrepeat() {
         $this->load->view('vsrepeat');
@@ -94,6 +100,21 @@ class Userprofile_page extends MY_Controller {
             $insert_id = $this->common->update_data($data, 'user_contact', 'id', $remove['id']);
             $response = 1;
         } else {
+            $response = 0;
+        }
+        echo json_encode($response);
+    }
+    
+    public function unfollowingContacts() {
+        $userid = $this->session->userdata('aileenuser');
+        $id = $_POST['id'];
+        $follow = $this->userprofile_model->userFollowStatus($userid, $id);
+
+        if (count($follow) != 0) {
+            $data = array('status' => '0');
+            $insert_id = $this->common->update_data($data, 'user_follow', 'id', $follow['id']);
+           $response = 1; 
+            } else {
             $response = 0;
         }
         echo json_encode($response);
@@ -159,7 +180,7 @@ class Userprofile_page extends MY_Controller {
             $insert_id = $this->common->update_data($data, 'user_follow', 'id', $follow['id']);
          //   $response = $status;
             
-            $html = '<a class="btn3"  ng-click="unfollow_user(follow.user_id)">Following</a>';
+            $html = '<a class="btn3"  ng-click="unfollow_user(' .$id.')">Following</a>';
             
             }else{
              $data = array(
@@ -170,7 +191,7 @@ class Userprofile_page extends MY_Controller {
                  );
             $insert_id = $this->common->insert_data($data, 'user_follow');
            // $response = $status;
-            $html = '<a class="btn3"  ng-click="unfollow_user(follow.user_id)">Following</a>';
+            $html = '<a class="btn3"  ng-click="unfollow_user(' .$id.')">Following</a>';
         }
         
        
@@ -189,7 +210,7 @@ class Userprofile_page extends MY_Controller {
             $insert_id = $this->common->update_data($data, 'user_follow', 'id', $follow['id']);
          //   $response = $status;
             
-            $html = '<a class="btn3"  ng-click="follow_user(follow.user_id)">Follow</a>';
+            $html = '<a class="btn3"  ng-click="follow_user(' .$id.')">Follow</a>';
             
             }else{
              $data = array(
@@ -200,7 +221,7 @@ class Userprofile_page extends MY_Controller {
                  );
             $insert_id = $this->common->insert_data($data, 'user_follow');
            // $response = $status;
-            $html = '<a class="btn3"  ng-click="follow_user(follow.user_id)">Follow</a>';
+            $html = '<a class="btn3"  ng-click="follow_user(' .$id.')">Follow</a>';
         }
         
        

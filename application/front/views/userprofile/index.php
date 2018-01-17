@@ -62,7 +62,6 @@
             </div>
         </div>
 
-
         <div style="display:none;" class="modal fade" id="post-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
             <div class="modal-dialog">
@@ -131,15 +130,15 @@
                                 var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
                                 var app = angular.module("userProfileApp", ["ngRoute"]);
                                 var item = '<?php echo $this->uri->segment(1); ?>'
-                                        app.controller('userProfileController', function($scope, $http) {
+                                        app.controller('userProfileController', function ($scope, $http) {
 
-                                        $scope.goMainLink = function(path){
+                                        $scope.goMainLink = function (path) {
                                         location.href = path;
                                         }
 
-                                        $scope.active = $scope.active == item?'':item;
-                                        $scope.makeActive = function(item) {
-                                        $scope.active = $scope.active == item?'':item;
+                                        $scope.active = $scope.active == item ? '' : item;
+                                        $scope.makeActive = function (item) {
+                                        $scope.active = $scope.active == item ? '' : item;
                                         }
                                         $scope.segment2 = '<?php echo $this->uri->segment(2); ?>';
                                         $scope.user_slug = '<?php echo $userdata['user_slug']; ?>';
@@ -150,7 +149,7 @@
                                         $scope.follow_value = '<?php echo $follow_value; ?>';
                                         $scope.follow_status = '<?php echo $follow_status; ?>';
                                         $scope.follow_id = '<?php echo $follow_id; ?>';
-                                        $scope.contact = function(id, status){
+                                        $scope.contact = function (id, status) {
 
                                         $http({
                                         method: 'POST',
@@ -163,7 +162,7 @@
                                                 $scope.contact_value = success.data;
                                                 });
                                         }
-                                        $scope.follow = function(id, status){
+                                        $scope.follow = function (id, status) {
 
                                         $http({
                                         method: 'POST',
@@ -200,8 +199,8 @@
                                                         controller: 'followersController'
                                                 })
                                                 .when("/following/:name*", {
-                                                templateUrl: base_url + "userprofile_page/following"
-                                                        //   controller: 'basicInfoController'
+                                                templateUrl: base_url + "userprofile_page/following",
+                                                        controller: 'followingController'
                                                 })
 //                    .otherwise({
 //                    redirectTo: '/profiles/'
@@ -227,7 +226,7 @@
                                 }
 
 
-                                $scope.goMainLink = function(path){
+                                $scope.goMainLink = function (path) {
                                 location.href = path;
                                 }
 
@@ -251,18 +250,18 @@
                                 }
 
 
-                                $scope.goMainLink = function(path){
+                                $scope.goMainLink = function (path) {
                                 location.href = path;
                                 }
 
-                                $scope.makeActive = function(item){
-                                $scope.active = $scope.active == item?'':item;
+                                $scope.makeActive = function (item) {
+                                $scope.active = $scope.active == item ? '' : item;
                                 }
                                 });
                                 app.controller('contactsController', function ($scope, $http, $location) {
                                 $scope.user = {};
                                 var id = 1;
-                                $scope.remove = function(index){ //alert(123); return false;
+                                $scope.remove = function (index) { //alert(123); return false;
                                 $('#remove-contact .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn btn1' id=" + id + " onClick='remove_contacts(" + index + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn btn1' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                 //$('.biderror .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id="" onClick='remove_post(1)' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                 $('#remove-contact').modal('show');
@@ -286,21 +285,22 @@
                                 }
 
 
-                                $scope.goMainLink = function(path){alert(22);
+                                $scope.goMainLink = function (path) {
+                                alert(22);
                                 location.href = path;
                                 }
 
-                                $scope.goUserprofile = function(path){
+                                $scope.goUserprofile = function (path) {
 
                                 var base_url = '<?php echo base_url(); ?>';
                                 location.href = base_url + 'profiless/' + path;
                                 }
 
                                 });
-                                app.controller('followersController', function ($scope, $http, $location,$compile) {
+                                app.controller('followersController', function ($scope, $http, $location, $compile) {
                                 $scope.user = {};
                                 var id = 1;
-                                $scope.follow = function(index){ //alert(123); return false;
+                                $scope.follow = function (index) { //alert(123); return false;
 
                                 }
 
@@ -320,49 +320,105 @@
                                         });
                                 }
 
-                                $scope.follow_user = function(id){
+                                $scope.follow_user = function (id) {
                                 $http({
                                 method: 'POST',
                                         url: base_url + 'userprofile_page/follow_user',
-                                        data: 'to_id=' + user_id,
+                                        data: 'to_id=' + id,
                                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                                 })
                                         .then(function (success) {
-                                           
+
                                         $("#" + id).html($compile(success.data)($scope));
-                            
                                         });
                                 }
-                                
-                                $scope.unfollow_user = function(id){
+
+                                $scope.unfollow_user = function (id) {
                                 $http({
                                 method: 'POST',
                                         url: base_url + 'userprofile_page/unfollow_user',
-                                        data: 'to_id=' + user_id,
+                                        data: 'to_id=' + id,
                                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                                 })
                                         .then(function (success) {
-                                           
+
                                         $("#" + id).html($compile(success.data)($scope));
-                            
                                         });
                                 }
 
 
-                                $scope.goMainLink = function(path){alert(22);
+                                $scope.goMainLink = function (path) {
+                                alert(22);
                                 location.href = path;
                                 }
 
-                                $scope.goUserprofile = function(path){
+                                $scope.goUserprofile = function (path) {
 
                                 var base_url = '<?php echo base_url(); ?>';
                                 location.href = base_url + 'profiless/' + path;
                                 }
 
                                 });
-                                function remove_contacts(index){
+                                app.controller('followingController', function ($scope, $http, $location, $compile) {
+                                $scope.user = {};
+                                var id = 1;
+                                $scope.follow = function (index) { //alert(123); return false;
+                                }
+                                // PROFEETIONAL DATA
+                                getFieldList();
+                                function getFieldList() {
+                                $http({
+                                method: 'POST',
+                                        url: base_url + 'userprofile_page/following_data',
+                                        data: 'u=' + user_id,
+                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                })
+                                        .then(function (success) {
+                                        $scope.follow_data = success.data;
+                                        });
+                                }
+                                $scope.unfollow_user = function (id) {
+                                $http({
+                                method: 'POST',
+                                        url: base_url + 'userprofile_page/unfollowingContacts',
+                                        data: 'to_id=' + id,
+                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                })
+                                        .then(function (success) {
+                                        if (success.data == 1) {
+                                        $('#' + id).closest('.custom-user-box').fadeToggle();
+                                        }
+
+
+                                        });
+                                }
+                                $scope.goMainLink = function (path) {
+                                alert(22);
+                                location.href = path;
+                                }
+
+                                $scope.goUserprofile = function (path) {
+
+                                var base_url = '<?php echo base_url(); ?>';
+                                location.href = base_url + 'profiless/' + path;
+                                }
+                                });
+                                function remove_contacts(index) {
                                 $.ajax({
                                 url: base_url + "userprofile_page/removeContacts",
+                                        type: "POST",
+                                        data: {"id": index},
+                                        success: function (data) {
+                                        if (data == 1) {
+                                        $('#' + index).closest('.custom-user-box').fadeToggle();
+                                        }
+                                        }
+                                });
+                                }
+
+                                function unfollowing_contacts(index) {
+                                $.ajax({
+                                url: base_url + "userprofile_page/unfollowingContacts",
                                         type: "POST",
                                         data: {"id": index},
                                         success: function (data) {
@@ -533,7 +589,7 @@
                                 files = this.files;
                                 size = files[0].size;
                                 // pallavi code start for file type support
-                                if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
+                                if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
 
                                 picpopup();
                                 document.getElementById('row1').style.display = "none";

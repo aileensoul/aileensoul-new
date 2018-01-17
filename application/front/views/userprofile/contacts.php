@@ -4,7 +4,7 @@
 					<div class="list-box-custom">
 						<h3>Contacts</h3>
 						<div class="p15 fw" >
-							<div id="1234" class="custom-user-box" ng-repeat="contacts in contats_data">
+							<div  class="custom-user-box" ng-repeat="contacts in contats_data">
 								
                                                             
                                                             
