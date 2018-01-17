@@ -100,7 +100,7 @@ class Userprofile_model extends CI_Model {
     
     public function userContactStatus($user_id = '', $id = '') {
         $this->db->select("uc.status,uc.id")->from("user_contact as uc");
-        $where = "((from_id = '" . $user_id . "' AND to_id = '" . $id . "') OR (from_id = '" . $user_id . "' AND to_id = '" . $id . "'))";
+        $where = "((from_id = '" . $user_id . "' AND to_id = '" . $id . "') OR (from_id = '" . $id . "' AND to_id = '" . $user_id . "'))";
         $this->db->where($where);
         $this->db->order_by("uc.id", "DESC");
         $query = $this->db->get();

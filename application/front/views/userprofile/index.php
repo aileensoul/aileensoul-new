@@ -146,15 +146,15 @@
                                         $scope.contact_value = '<?php echo $contact_value; ?>';
                                         $scope.contact_status = '<?php echo $contact_status; ?>';
                                         $scope.contact_id = '<?php echo $contact_id; ?>';
+                                      
                                         $scope.follow_value = '<?php echo $follow_value; ?>';
                                         $scope.follow_status = '<?php echo $follow_status; ?>';
                                         $scope.follow_id = '<?php echo $follow_id; ?>';
-                                        $scope.contact = function (id, status) {
-
+                                        $scope.contact = function (id,status,to_id) {
                                         $http({
                                         method: 'POST',
                                                 url: base_url + 'userprofile_page/addcontact',
-                                                data: 'contact_id=' + id + '&status=' + status,
+                                                data: 'contact_id=' + id + '&status=' + status+ '&to_id=' + to_id,
                                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                                         })
                                                 .then(function (success) {
@@ -162,12 +162,12 @@
                                                 $scope.contact_value = success.data;
                                                 });
                                         }
-                                        $scope.follow = function (id, status) {
+                                        $scope.follow = function (id, status,to_id) {
 
                                         $http({
                                         method: 'POST',
                                                 url: base_url + 'userprofile_page/addfollow',
-                                                data: 'follow_id=' + id + '&status=' + status,
+                                                data: 'follow_id=' + id + '&status=' + status+ '&to_id=' + to_id,
                                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                                         })
                                                 .then(function (success) {
