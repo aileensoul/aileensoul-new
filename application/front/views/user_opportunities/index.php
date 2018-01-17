@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="post-detail">
                                     <div class="fw">
-                                        <a href="#" class="post-name" ng-bind="post.user_data.fullname"></a><span class="post-time">7 hours ago</span>
+                                        <a ng-href="<?php echo base_url('profiless/') ?>{{post.user_data.user_slug}}" class="post-name" ng-bind="post.user_data.fullname"></a><span class="post-time">7 hours ago</span>
                                     </div>
                                     <div class="fw">
                                         <span class="post-designation" ng-if="post.user_data.title_name != ''" ng-bind="post.user_data.title_name"></span>

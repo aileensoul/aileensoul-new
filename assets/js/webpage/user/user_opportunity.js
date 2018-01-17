@@ -334,12 +334,7 @@ app.controller('userOppoController', function ($scope, $http) {
             $scope.fileInput = '';
             document.getElementById("progress_div").style.display = "none";
             //$(".all-post-box").prepend(response.responseText);
-
-
             $scope.postData = response.responseText;
-
-
-
 
             $('video, audio').mediaelementplayer();
             var nb = $('.post-design-box').length;

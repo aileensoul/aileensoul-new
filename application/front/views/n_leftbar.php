@@ -17,14 +17,14 @@
             </div>
             <div class="user-detail-right">
                 <div class="user-detail-top">
-                    <h4><a href="#" title="<?php echo ucfirst($leftbox_data['first_name']) . ' ' . ucfirst($leftbox_data['last_name']) ?>"><?php echo ucfirst($leftbox_data['first_name']) . ' ' . ucfirst($leftbox_data['last_name']) ?></a></h4>
+                    <h4><a href="<?php echo base_url('profiless/'.$leftbox_data['user_slug']) ?>" title="<?php echo ucfirst($leftbox_data['first_name']) . ' ' . ucfirst($leftbox_data['last_name']) ?>"><?php echo ucfirst($leftbox_data['first_name']) . ' ' . ucfirst($leftbox_data['last_name']) ?></a></h4>
                     <p><a href="#">Self Employee</a></p>
                 </div>
                 <div class="user-detail-bottom">
                     <ul>
-                        <li><a href="#">Dashboard</a></li>
-                        <li><a href="#">Detail</a></li>
-                        <li><a href="#">Followers</a></li>
+                        <li><a href="<?php echo base_url('profiless/'.$leftbox_data['user_slug']) ?>">Dashboard</a></li>
+                        <li><a href="<?php echo base_url('details/'.$leftbox_data['user_slug']) ?>">Detail</a></li>
+                        <li><a href="<?php echo base_url('followers/'.$leftbox_data['user_slug']) ?>">Followers</a></li>
                     </ul>
                 </div>
             </div>
