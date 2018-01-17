@@ -42,17 +42,17 @@ function business_search_post(pagenum) {
         data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
-            if (pagenum == 'undefined') {
-                // $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
-            } else {
+            // if (pagenum == 'undefined') {
+            //     // $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            // } else {
                 $('#loader').show();
-            }
+            //}
         },
         complete: function () {
             $('#loader').hide();
         },
         success: function (data) {
-            $('.loader').remove();
+            //$('#loader').remove();
             $('.job-contact-frnd').append(data);
 
             // second header class add for scroll

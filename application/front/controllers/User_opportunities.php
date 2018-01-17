@@ -106,13 +106,27 @@ class User_opportunities extends MY_Controller {
         $return_data = array();
         if ($postComentId) {
             $return_data['message'] = '1';
+            $return_data['comment_data'] = $this->user_opportunity->postCommentData($post_id);
+            $return_data['comment_count'] = $this->user_opportunity->postCommentCount($post_id);
         }
         else{
             $return_data['message'] = '0';
         }
         echo json_encode($return_data);
     }
-
+    
+    public function viewLastComment(){
+        $post_id = $_POST['post_id'];
+        $return_data = array();
+        $return_data['comment_data'] = $this->user_opportunity->postCommentData($post_id);
+        echo json_encode($return_data);
+    }
+    public function viewAllComment(){
+        $post_id = $_POST['post_id'];
+        $return_data = array();
+        $return_data['all_comment_data'] = $this->user_opportunity->viewAllComment($post_id);
+        echo json_encode($return_data);
+    }
     public function getUserOpportunity() {
         $userid = $this->session->userdata('aileenuser');
         $post_data = $this->user_opportunity->userPost($userid);

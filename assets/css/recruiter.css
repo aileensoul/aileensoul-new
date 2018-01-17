@@ -352,7 +352,7 @@ line-height: 1;}
     width: 100px;
     border-radius: 8px;
 }
-
+.rec_check {margin-top:15px;}
 .rec_check label{display: inline-block!important; cursor: pointer;}
 
 /***   banner image  ***/
@@ -1766,7 +1766,11 @@ fieldset.fresher_radio label {
         padding: 12px 5px 11px;
         font-size: 12px !important;
     }
-	
+	.btn4{
+        padding: 3px 10px !important;
+        margin-right: 2px;
+        margin-left: 2px;
+    }
 }
 
 @media screen and (max-width: 360px) {
@@ -1845,6 +1849,11 @@ fieldset.fresher_radio label {
 	.right-side-menu {
         width: 100%;
     }
+   .btn4 {
+    padding: 3px 2px !important;
+    margin-right: 2px;
+    margin-left: 2px;}
+
 	/***  add  ***/
 	.mob-add{margin-bottom:0; border:none;}
 	.padding-360{padding-left:1px; padding-right:1px;}
@@ -1855,4 +1864,6 @@ fieldset.fresher_radio label {
 
 @media screen and (max-width: 319px){
 	.profile-job-details .post_title{font-size: 11px;}
+    .job-top-detail{width: 80%;}
+    .btn4 {padding: 3px 2px !important;margin-right: 1px;margin-left: 1px;font-size: 13px;}
 }

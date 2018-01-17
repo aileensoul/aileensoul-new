@@ -101,6 +101,7 @@ class User_opportunity extends CI_Model {
         $query = $this->db->get();
         return $post_like_data = $query->row_array();
     }
+
     public function postCommentCount($post_id = '') {
         $this->db->select("COUNT(upc.id) as comment_count")->from("user_post_comment upc");
         $this->db->join('user_login ul', 'ul.user_id = upc.user_id', 'left');
@@ -111,8 +112,9 @@ class User_opportunity extends CI_Model {
         $result_array = $query->row_array();
         return $result_array['comment_count'];
     }
+
     public function postCommentData($post_id = '') {
-        $this->db->select("CONCAT(u.first_name,' ',u.last_name) as username, ui.user_image,upc.comment,upc.created_date")->from("user_post_comment upc");
+        $this->db->select("u.user_slug,CONCAT(u.first_name,' ',u.last_name) as username, ui.user_image,upc.comment,upc.created_date")->from("user_post_comment upc");
         $this->db->join('user u', 'u.user_id = upc.user_id', 'left');
         $this->db->join('user_login ul', 'ul.user_id = upc.user_id', 'left');
         $this->db->join('user_info ui', 'ui.user_id = upc.user_id', 'left');
@@ -124,6 +126,20 @@ class User_opportunity extends CI_Model {
         $query = $this->db->get();
         return $post_comment_data = $query->result_array();
     }
+
+    public function viewAllComment($post_id = '') {
+        $this->db->select("u.user_slug,CONCAT(u.first_name,' ',u.last_name) as username, ui.user_image,upc.comment,upc.created_date")->from("user_post_comment upc");
+        $this->db->join('user u', 'u.user_id = upc.user_id', 'left');
+        $this->db->join('user_login ul', 'ul.user_id = upc.user_id', 'left');
+        $this->db->join('user_info ui', 'ui.user_id = upc.user_id', 'left');
+        $this->db->where('upc.post_id', $post_id);
+        $this->db->where('ul.status', '1');
+        $this->db->where('upc.is_delete', '0');
+        $this->db->order_by('upc.id', 'asc');
+        $query = $this->db->get();
+        return $post_comment_data = $query->result_array();
+    }
+
     public function userPost($user_id = '') {
         $result_array = array();
         $this->db->select("up.id,up.user_id,up.post_for,up.created_date,up.post_id")->from("user_post up");
@@ -144,7 +160,7 @@ class User_opportunity extends CI_Model {
             $total_post_files = $query->row_array('file_count');
             $result_array[$key]['post_data']['total_post_files'] = $total_post_files['file_count'];
 
-            $this->db->select("u.user_id,CONCAT(u.first_name,' ',u.last_name) as fullname,ui.user_image,jt.name as title_name,d.degree_name")->from("user u");
+            $this->db->select("u.user_id,u.user_slug,CONCAT(u.first_name,' ',u.last_name) as fullname,ui.user_image,jt.name as title_name,d.degree_name")->from("user u");
             $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
             $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
             $this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');

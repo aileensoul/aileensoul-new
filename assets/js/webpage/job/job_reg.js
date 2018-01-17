@@ -225,12 +225,14 @@ function profile_reg() {
 function login_data() {
     $('#login').modal('show');
     $('#register').modal('hide');
+    $('body').addClass('modal-open');
 
 }
 
 function forgot_profile() {
     $('#forgotPassword').modal('show');
     $('#login').modal('hide');
+    $('body').addClass('modal-open');
 }
 function register_profile() {
     $('#login').modal('hide');
@@ -239,6 +241,7 @@ function register_profile() {
 
 function forgot_close() {
     $('#login').modal('show');
+    $('body').addClass('modal-open-other');
 }
 
 

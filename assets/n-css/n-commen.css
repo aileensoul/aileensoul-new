@@ -200,7 +200,7 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8a
     color: #1b8ab9;
 	}
 	
-	.ml20{margin-left:20px;}
+.ml20{margin-left:20px;}
 .mr20{margin-right:20px;}
 .btn-1{padding:10px 35px; border:1px solid #000000; color:#000; font-size:18px; display:inline-block;}
 .btn-1:hover{border:1px solid #1b8ab9; color:#fff !important; background:#1b8ab9;}

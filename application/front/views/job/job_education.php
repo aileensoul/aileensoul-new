@@ -964,6 +964,31 @@
             </div>
          </div>
       </div>
+
+
+
+       <div class="modal fade message-box biderror custom-message in cus-sel-col" id="bidmodal-other-degree" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content message">
+               <button type="button" class="modal-close"  id="model-close-degree" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+      <div class="modal fade message-box biderror custom-message in cus-sel-col" id="bidmodal-other-stream" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content message">
+               <button type="button" class="modal-close"  id="model-close-stream" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
       <!-- Model Popup Close -->
 
 

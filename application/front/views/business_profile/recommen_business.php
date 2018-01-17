@@ -133,7 +133,7 @@
             });
         </script>
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push">
+    <body class="page-container-bg-solid page-boxed pushmenu-push cus-bus">
         <?php echo $header; ?>
         <?php
         if ($is_business) { echo $business_header2_border; } ?>

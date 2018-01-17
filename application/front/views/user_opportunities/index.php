@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="post-detail">
                                     <div class="fw">
-                                        <a href="#" class="post-name" ng-bind="post.user_data.fullname"></a><span class="post-time">7 hours ago</span>
+                                        <a ng-href="<?php echo base_url('profiless/') ?>{{post.user_data.user_slug}}" class="post-name" ng-bind="post.user_data.fullname"></a><span class="post-time">7 hours ago</span>
                                     </div>
                                     <div class="fw">
                                         <span class="post-designation" ng-if="post.user_data.title_name != ''" ng-bind="post.user_data.title_name"></span>
@@ -151,7 +151,8 @@
                                                 <a href="javascript:void(0)" id="post-like-{{post.post_data.id}}" ng-click="post_like(post.post_data.id)" ng-if="post.is_userlikePost == '1'" class="like"><i class="fa fa-thumbs-up"></i></a>
                                                 <a href="javascript:void(0)" id="post-like-{{post.post_data.id}}" ng-click="post_like(post.post_data.id)" ng-if="post.is_userlikePost == '0'"><i class="fa fa-thumbs-up"></i></a>
                                             </li>
-                                            <li><a href="#"><i class="fa fa-comment-o"></i></a></li>
+                                            <li><a href="javascript:void(0);" ng-click="viewAllComment(post.post_data.id,$index,post)" ng-if="post.post_comment_data.length <= 1" id="comment-icon-{{post.post_data.id}}" class="last-comment"><i class="fa fa-comment-o"></i></a></li>
+                                            <li><a href="javascript:void(0);" ng-click="viewLastComment(post.post_data.id,$index,post)" ng-if="post.post_comment_data.length > 1" id="comment-icon-{{post.post_data.id}}" class="all-comment"><i class="fa fa-comment-o"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-6">
@@ -179,7 +180,7 @@
                                     </div>
                                     <div class="comment-dis">
                                         <div class="comment-name"><a ng-bind="comment.username"></a></div>
-                                        <div class="comment-dis-inner" ng-bind="comment.comment"></div>
+                                        <div class="comment-dis-inner" ng-bind-html="comment.comment"></div>
                                         <ul class="comment-action">
                                             <li><a href="#"><i class="fa fa-thumbs-up"></i></a></li>
                                             <li><a href="#">Edit</a></li>
@@ -199,10 +200,10 @@
 
                                     </div>
                                     <div class="comment-input">
-                                        <div contenteditable data-directive ng-model="comment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-change="isMsgBoxEmpty = false" class="editable_text" placeholder="Add a Comment ..." ng-enter="sendComment({{post.post_data.id}})" id="commentTaxBox-{{post.post_data.id}}" ng-focus="setFocus" focus-me="setFocus"></div>
+                                        <div contenteditable data-directive ng-model="comment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-change="isMsgBoxEmpty = false" class="editable_text" placeholder="Add a Comment ..." ng-enter="sendComment({{post.post_data.id}},$index,post)" id="commentTaxBox-{{post.post_data.id}}" ng-focus="setFocus" focus-me="setFocus"></div>
                                     </div>
                                     <div class="comment-submit">
-                                        <button class="btn2" ng-click="sendComment(post.post_data.id)">Comment</button>
+                                        <button class="btn2" ng-click="sendComment(post.post_data.id,$index,post)">Comment</button>
                                     </div>
                                 </div>
                             </div>
@@ -358,13 +359,13 @@
         <script src="<?php echo base_url('assets/js/angular-validate.min.js?ver=' . time()) ?>"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
         <script src="<?php echo base_url('assets/js/ng-tags-input.min.js?ver=' . time()); ?>"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
         <script>
                                     var base_url = '<?php echo base_url(); ?>';
                                     var slug = '<?php echo $slugid; ?>';
                                     var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
                                     var title = '<?php echo $title; ?>';
-                                    var app = angular.module('userOppoApp', ['ui.bootstrap', 'ngTagsInput']);
+                                    var app = angular.module('userOppoApp', ['ui.bootstrap', 'ngTagsInput', 'ngSanitize']);
         </script>
 
         <script src="<?php echo base_url('assets/js/webpage/user/user_opportunity.js?ver=' . time()) ?>"></script>
