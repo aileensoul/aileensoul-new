@@ -90,6 +90,29 @@ class User_opportunities extends MY_Controller {
         echo json_encode($location);
     }
 
+    public function postCommentInsert() {
+        $userid = $this->session->userdata('aileenuser');
+        $post_id = $_POST['post_id'];
+        $comment = $_POST['comment'];
+
+        $data = array();
+        $data['user_id'] = $userid;
+        $data['post_id'] = $post_id;
+        $data['comment'] = $comment;
+        $data['created_date'] = date('Y-m-d H:i:s', time());
+        $data['modify_date'] = date('Y-m-d H:i:s', time());
+        $data['is_delete'] = '0';
+        $postComentId = $this->common->insert_data_getid($data, 'user_post_comment');
+        $return_data = array();
+        if ($postComentId) {
+            $return_data['message'] = '1';
+        }
+        else{
+            $return_data['message'] = '0';
+        }
+        echo json_encode($return_data);
+    }
+
     public function getUserOpportunity() {
         $userid = $this->session->userdata('aileenuser');
         $post_data = $this->user_opportunity->userPost($userid);

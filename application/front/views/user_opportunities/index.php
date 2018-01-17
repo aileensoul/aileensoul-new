@@ -136,7 +136,7 @@
                             </div>
                             </span>
                             <div class="post-images four-img" ng-if="post.post_data.total_post_files >= '4'">
-                                <div class="two-img" ng-repeat="post_file in post.post_file_data | limitTo:4">
+                                <div class="two-img" ng-repeat="post_file in post.post_file_data| limitTo:4">
                                     <a href="#"><img ng-src="<?php echo USER_POST_RESIZE2_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
                                     <div class="view-more-img" ng-if="$index == '3' && post.post_data.total_post_files > '4'">
                                         <span>View All (+4)</span>
@@ -157,36 +157,46 @@
                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                         <ul class="pull-right bottom-right">
                                             <li class="like-count"><span id="post-like-count-{{post.post_data.id}}" ng-bind="post.post_like_count"></span><span>Like</span></li>
-                                            <li class="comment-count"><span class="post-comment-count">5</span><span>Comment</span></li>
+                                            <li class="comment-count"><span class="post-comment-count-{{post.post_data.id}}" ng-bind="post.post_comment_count"></span><span>Comment</span></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                                <div class="like-other-box">
-                                    <a href="#" ng-bind="post.post_like_data" id="post-other-like-{{post.post_data.id}}"></a>
+                            <div class="like-other-box">
+                                <a href="#" ng-bind="post.post_like_data" id="post-other-like-{{post.post_data.id}}"></a>
                             </div>
                         </div>
                         <div class="all-post-bottom">
                             <div class="comment-box">
-                                <div class="post-comment">
+                                <div class="post-comment" ng-repeat="comment in post.post_comment_data">
                                     <div class="post-img">
-                                        <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                        <div class="post-img" ng-if="comment.user_image != ''">
+                                            <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{comment.user_image}}">
+                                        </div>
+                                        <div class="post-img" ng-if="comment.user_image == ''">
+                                            <div class="post-img-mainuser">{{comment.first_name| limitTo:1 | uppercase}}{{comment.last_name| limitTo:1 | uppercase}}</div>
+                                        </div>
                                     </div>
                                     <div class="comment-dis">
-                                        <div class="comment-name"><a>Sarasvati Musical Shop</a></div>
-                                        <div class="comment-dis-inner">nice click.....</div>
+                                        <div class="comment-name"><a ng-bind="comment.username"></a></div>
+                                        <div class="comment-dis-inner" ng-bind="comment.comment"></div>
                                         <ul class="comment-action">
                                             <li><a href="#"><i class="fa fa-thumbs-up"></i></a></li>
                                             <li><a href="#">Edit</a></li>
                                             <li><a href="#">Delete</a></li>
-                                            <li><a href="#">13 minutes ago</a></li>
+                                            <li><a href="#" ng-bind="comment.created_date"></a></li>
                                         </ul>
                                     </div>
                                 </div>
 
                                 <div class="add-comment">
                                     <div class="post-img">
-                                        <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                        <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                            <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                        <?php } else { ?>
+                                            <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                        <?php } ?>
+
                                     </div>
                                     <div class="comment-input">
                                         <div contenteditable data-directive ng-model="comment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-change="isMsgBoxEmpty = false" class="editable_text" placeholder="Add a Comment ..." ng-enter="sendComment({{post.post_data.id}})" id="commentTaxBox-{{post.post_data.id}}" ng-focus="setFocus" focus-me="setFocus"></div>

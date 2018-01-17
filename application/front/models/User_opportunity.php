@@ -111,7 +111,19 @@ class User_opportunity extends CI_Model {
         $result_array = $query->row_array();
         return $result_array['comment_count'];
     }
-    
+    public function postCommentData($post_id = '') {
+        $this->db->select("CONCAT(u.first_name,' ',u.last_name) as username, ui.user_image,upc.comment,upc.created_date")->from("user_post_comment upc");
+        $this->db->join('user u', 'u.user_id = upc.user_id', 'left');
+        $this->db->join('user_login ul', 'ul.user_id = upc.user_id', 'left');
+        $this->db->join('user_info ui', 'ui.user_id = upc.user_id', 'left');
+        $this->db->where('upc.post_id', $post_id);
+        $this->db->where('ul.status', '1');
+        $this->db->where('upc.is_delete', '0');
+        $this->db->order_by('upc.id', 'desc');
+        $this->db->limit('1');
+        $query = $this->db->get();
+        return $post_comment_data = $query->result_array();
+    }
     public function userPost($user_id = '') {
         $result_array = array();
         $this->db->select("up.id,up.user_id,up.post_for,up.created_date,up.post_id")->from("user_post up");
@@ -171,13 +183,12 @@ class User_opportunity extends CI_Model {
             } elseif ($post_like_count == 1) {
                 $result_array[$key]['post_like_data'] = $post_like_data['username'];
             }
-            
-            
             $result_array[$key]['post_comment_count'] = $this->postCommentCount($value['post_id']);
+            $result_array[$key]['post_comment_data'] = $this->postCommentData($value['post_id']);
         }
-        echo '<pre>';
-        print_r($result_array);
-        exit;
+//        echo '<pre>';
+//        print_r($result_array);
+//        exit;
         return $result_array;
     }
 

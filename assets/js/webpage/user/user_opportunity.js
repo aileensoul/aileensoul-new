@@ -393,27 +393,20 @@ app.controller('userOppoController', function ($scope, $http) {
     }
 
     $scope.sendComment = function (post_id) {
-        var message = $('#commentTaxBox-' + post_id).html();
-        message = message.replace(/^(<br\s*\/?>)+/, '');
-        if (message) {
+        var comment = $('#commentTaxBox-' + post_id).html();
+        comment = comment.replace(/^(<br\s*\/?>)+/, '');
+        if (comment) {
             $scope.isMsg = true;
             $http({
                 method: 'POST',
                 url: base_url + 'user_opportunities/postCommentInsert',
-                data: 'message=' + message + '&business_slug=' + $scope.current,
+                data: 'comment=' + comment + '&post_id=' + post_id,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
                     .then(function (success) {
                         data = success.data;
-                        if (data.result != 'fail') {
-                            // GET SOCKET USER LIST START
-                            socket.emit('getBusinessChatUserList', {
-                                message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
-                            });
-
-                            // GET SOCKET USER LIST END    
-                            $('#as_chat_message').html('');
-                            $scope.setFocus = true;
+                        if (data.message == '1') {
+                            $scopr.post.post_comment_data = data.coment_data
                         }
                     });
         } else {
