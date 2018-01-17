@@ -392,9 +392,14 @@ app.controller('userOppoController', function ($scope, $http) {
         });
     }
 
-    $scope.sendComment = function (post_id) {
+    $scope.sendComment = function (post_id, index, post) {
+        var commentClassName = $('#comment-icon-' + post_id).attr('class').split(' ')[0];
         var comment = $('#commentTaxBox-' + post_id).html();
-        comment = comment.replace(/^(<br\s*\/?>)+/, '');
+        //comment = comment.replace(/^(<br\s*\/?>)+/, '');
+        comment = comment.replace(/&nbsp;/gi, " ");
+        comment = comment.replace(/<br>$/, '');
+        comment = comment.replace(/&gt;/gi, ">");
+        comment = comment.replace(/&/g, "%26");
         if (comment) {
             $scope.isMsg = true;
             $http({
@@ -406,12 +411,49 @@ app.controller('userOppoController', function ($scope, $http) {
                     .then(function (success) {
                         data = success.data;
                         if (data.message == '1') {
-                            $scopr.post.post_comment_data = data.coment_data
+                            if (commentClassName == 'last-comment') {
+                                $scope.postData[index].post_comment_data.splice(0, 1);
+                                $scope.postData[index].post_comment_data.push(data.comment_data[0]);
+                                $('.post-comment-count-' + post_id).html(data.comment_count);
+                                $('.editable_text').html('');
+                            } else {
+                                $scope.postData[index].post_comment_data.push(data.comment_data[0]);
+                                $('.post-comment-count-' + post_id).html(data.comment_count);
+                                $('.editable_text').html('');
+                            }
                         }
                     });
         } else {
             $scope.isMsgBoxEmpty = true;
         }
+    }
+
+    $scope.viewAllComment = function (post_id, index, post) {
+        $http({
+            method: 'POST',
+            url: base_url + 'user_opportunities/viewAllComment',
+            data: 'post_id=' + post_id,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    data = success.data;
+                    $scope.postData[index].post_comment_data = data.all_comment_data;
+                });
+
+    }
+
+    $scope.viewLastComment = function (post_id, index, post) {
+        $http({
+            method: 'POST',
+            url: base_url + 'user_opportunities/viewLastComment',
+            data: 'post_id=' + post_id,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    data = success.data;
+                    $scope.postData[index].post_comment_data = data.comment_data;
+                });
+
     }
 
 });
