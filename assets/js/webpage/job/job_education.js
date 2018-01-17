@@ -625,7 +625,7 @@ $(document).on('change', '#input1 select.degree', function (event) {
             type: 'POST',
             url: base_url + 'job/ajax_data',
             data: 'degree_id=' + degreeID,
-            success: function (html) {
+            success: function (html) { 
                 $("#input1 #stream" + lastChar).html(html);
             }
         });
@@ -981,6 +981,18 @@ $(document).on('change', '#input5 .university', function (event) {
 });
 //Click on University other option process End 
 
+$('#model-close-degree').on('click', function () { 
+     $('#bidmodal-other-degree').modal('hide');
+});
+
+
+$('#model-close-stream').on('click', function () { 
+     $('#bidmodal-other-stream').modal('hide');
+     $('.biderror .mes').html(html);
+     $('#bidmodal-other-degree').modal('show');
+});
+
+
 //Click on Degree other option process Start 
 $(document).on('change', '#input1 .degree', function (event) {
     var item = $(this);
@@ -990,7 +1002,7 @@ $(document).on('change', '#input1 .degree', function (event) {
     {
         item.val('');
         $('.biderror .mes').html(html);
-        $('#bidmodal').modal('show');
+        $('#bidmodal-other-degree').modal('show');
 
         // $.fancybox.open(html);
         $('.message #univer').on('click', function () {
@@ -1051,7 +1063,7 @@ $(document).on('change', '#input1 .degree', function (event) {
                         } else
                         {
                             //$.fancybox.close();
-                            $('#bidmodal').modal('hide');
+                            $('#bidmodal-other-degree').modal('hide');
                             $('.degree').html(response.select1);
                             $('#input1 .degree').html(response.select);
                             $('#input1 .stream').html(response.select2);
@@ -1370,18 +1382,17 @@ $(document).on('change', '#input5 .degree', function (event) {
     }
 });
 
-$(document).on('change', '.message #other_stream', function (event) {
+$(document).on('change', '.message #other_stream', function (event) { alert
     var item1 = $(this);
     var other_stream = (item1.val());
-
-
+    
     if (other_stream == 61)
     {
 
         //$.fancybox.open('<div class="message1" style="width:300px;"><h2>Add Stream</h2><input type="text" name="other_degree1" id="other_degree1"><a id="univer1" class="btn">OK</a></div>');
 
         $('.biderror .mes').html('<div class="message1" style="width:300px;"><h2>Add Stream</h2><input type="text" name="other_degree1" id="other_degree1"><a id="univer" class="btn">OK</a></div>');
-        $('#bidmodal').modal('show');
+        $('#bidmodal-other-stream').modal('show');
 
         $('.message1 #univer').on('click', function () {
 
@@ -1389,11 +1400,11 @@ $(document).on('change', '.message #other_stream', function (event) {
             $('#field_error').remove();
             var $textbox1 = $('.message1').find('input[type="text"]'),
                     textVal1 = $textbox1.val();
-            if (textVal1 == '') {
+            if (textVal1 == '') { 
                 $(".message1 #other_degree1").addClass("keyskill_border_active");
                 $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty stream is not valid</span>').insertAfter('.message1 #other_degree1');
 
-            } else {
+            } else { 
 
                 $.ajax({
                     type: 'POST',
@@ -1414,7 +1425,7 @@ $(document).on('change', '.message #other_stream', function (event) {
                         } else
                         {
                             //$.fancybox.close();
-                            $('#bidmodal').modal('hide');
+                            $('#bidmodal-other-stream').modal('hide');
                             $('.message #other_stream').html(response);
                         }
                     }
