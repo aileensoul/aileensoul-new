@@ -50,7 +50,7 @@
             }
 </style>
 </head>
-<body>
+<body class="cus-art">
 <?php echo $header; ?>
  <?php echo $art_header2_border; ?>
 <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
