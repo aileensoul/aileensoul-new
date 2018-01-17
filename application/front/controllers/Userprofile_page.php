@@ -134,7 +134,7 @@ class Userprofile_page extends MY_Controller {
             $data = array(
                  'status' => $status,
                  'from_id' => $userid,
-                 'to_id' => '15978',
+                 'to_id' => $id,
                  'not_read' => '2',
                  'created_date' => $status,
                  );
