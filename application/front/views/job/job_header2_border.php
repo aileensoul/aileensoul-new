@@ -93,7 +93,7 @@
    </div>
 </header>
 <!-- Bid-modal  -->
-<div class="modal fade message-box biderror custom-message cust-err" id="bidmodal" role="dialog">
+<!-- <div class="modal fade message-box biderror custom-message cust-err" id="bidmodal" role="dialog">
    <div class="modal-dialog modal-lm deactive">
       <div class="modal-content message">
          <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
@@ -102,7 +102,7 @@
          </div>
       </div>
    </div>
-</div>
+</div> -->
 <!-- Model Popup Close -->
 
 <script>
