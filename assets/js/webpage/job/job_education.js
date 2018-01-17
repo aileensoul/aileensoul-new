@@ -727,7 +727,7 @@ $(document).on('change', '#input1 .university', function (event) {
     if (uni == 463)
     {
         item.val('');
-        $('.biderror .mes').html('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
+        $('.biderror .mes').html('<h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a>');
         $('#bidmodal').modal('show');
         //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');   
 
