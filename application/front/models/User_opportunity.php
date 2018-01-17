@@ -114,7 +114,7 @@ class User_opportunity extends CI_Model {
     }
 
     public function postCommentData($post_id = '') {
-        $this->db->select("u.user_slug,CONCAT(u.first_name,' ',u.last_name) as username, ui.user_image,upc.comment,upc.created_date")->from("user_post_comment upc");
+        $this->db->select("u.user_slug,CONCAT(u.first_name,' ',u.last_name) as username, ui.user_image,upc.id as comment_id,upc.comment,upc.created_date")->from("user_post_comment upc");
         $this->db->join('user u', 'u.user_id = upc.user_id', 'left');
         $this->db->join('user_login ul', 'ul.user_id = upc.user_id', 'left');
         $this->db->join('user_info ui', 'ui.user_id = upc.user_id', 'left');
@@ -128,7 +128,7 @@ class User_opportunity extends CI_Model {
     }
 
     public function viewAllComment($post_id = '') {
-        $this->db->select("u.user_slug,CONCAT(u.first_name,' ',u.last_name) as username, ui.user_image,upc.comment,upc.created_date")->from("user_post_comment upc");
+        $this->db->select("u.user_slug,CONCAT(u.first_name,' ',u.last_name) as username, ui.user_image,upc.id as comment_id,upc.comment,upc.created_date")->from("user_post_comment upc");
         $this->db->join('user u', 'u.user_id = upc.user_id', 'left');
         $this->db->join('user_login ul', 'ul.user_id = upc.user_id', 'left');
         $this->db->join('user_info ui', 'ui.user_id = upc.user_id', 'left');

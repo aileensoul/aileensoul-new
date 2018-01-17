@@ -450,6 +450,28 @@ app.controller('userOppoController', function ($scope, $http) {
                 });
 
     }
+    $scope.deletePostComment = function (comment_id, post_id, index, post) {
+        var commentClassName = $('#comment-icon-' + post_id).attr('class').split(' ')[0];
+        $http({
+            method: 'POST',
+            url: base_url + 'user_opportunities/deletePostComment',
+            data: 'comment_id=' + comment_id,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    data = success.data;
+                    if (commentClassName == 'last-comment') {
+                        $scope.postData[index].post_comment_data.splice(0, 1);
+                        $scope.postData[index].post_comment_data.push(data.comment_data[0]);
+                        $('.post-comment-count-' + post_id).html(data.comment_count);
+                        $('.editable_text').html('');
+                    } else {
+                        $scope.postData[index].post_comment_data.push(data.comment_data[0]);
+                        $('.post-comment-count-' + post_id).html(data.comment_count);
+                        $('.editable_text').html('');
+                    }
+                });
+    }
 
 });
 

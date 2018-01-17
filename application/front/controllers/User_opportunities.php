@@ -108,25 +108,44 @@ class User_opportunities extends MY_Controller {
             $return_data['message'] = '1';
             $return_data['comment_data'] = $this->user_opportunity->postCommentData($post_id);
             $return_data['comment_count'] = $this->user_opportunity->postCommentCount($post_id);
-        }
-        else{
+        } else {
             $return_data['message'] = '0';
         }
         echo json_encode($return_data);
     }
-    
-    public function viewLastComment(){
+
+    public function deletePostComment() {
+        $comment_id = $_POST['comment_id'];
+
+        $update_data = array();
+        $update_data['modify_date'] = date('Y-m-d H:i:s', time());
+        $update_data['is_delete'] = '1';
+        $update_post = $this->common->update_data($update_data, 'user_post_comment', 'id', $comment_id);
+        if ($update_post) {
+            $return_data = array();
+            $return_data['message'] = 1;
+            $return_data['comment_data'] = $this->user_opportunity->postCommentData($post_id);
+            $return_data['comment_count'] = $this->user_opportunity->postCommentCount($post_id);
+        } else {
+            $return_data['message'] = '0';
+        }
+        echo json_encode($return_data);
+    }
+
+    public function viewLastComment() {
         $post_id = $_POST['post_id'];
         $return_data = array();
         $return_data['comment_data'] = $this->user_opportunity->postCommentData($post_id);
         echo json_encode($return_data);
     }
-    public function viewAllComment(){
+
+    public function viewAllComment() {
         $post_id = $_POST['post_id'];
         $return_data = array();
         $return_data['all_comment_data'] = $this->user_opportunity->viewAllComment($post_id);
         echo json_encode($return_data);
     }
+
     public function getUserOpportunity() {
         $userid = $this->session->userdata('aileenuser');
         $post_data = $this->user_opportunity->userPost($userid);

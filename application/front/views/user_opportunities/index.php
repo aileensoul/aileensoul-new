@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <!-- Repeated Class Start -->
-                    <div class="all-post-box" ng-repeat="post in postData" ng-if="postData.length > 0">
+                    <div class="all-post-box" ng-repeat="post in postData">
                         <div class="all-post-top">
                             <div class="post-head">
                                 <div class="post-img">
@@ -182,10 +182,10 @@
                                         <div class="comment-name"><a ng-bind="comment.username"></a></div>
                                         <div class="comment-dis-inner" ng-bind-html="comment.comment"></div>
                                         <ul class="comment-action">
-                                            <li><a href="#"><i class="fa fa-thumbs-up"></i></a></li>
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Delete</a></li>
-                                            <li><a href="#" ng-bind="comment.created_date"></a></li>
+                                            <li><a href="javascript:void(0);"><i class="fa fa-thumbs-up"></i></a></li>
+                                            <li><a href="javascript:void(0);">Edit</a></li> 
+                                            <li><a href="javascript:void(0);" ng-click="deletePostComment(comment.comment_id,post.post_data.id,$parent.$index,post)">Delete</a></li>
+                                            <li><a href="javascript:void(0);" ng-bind="comment.created_date"></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -209,10 +209,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                                <div class="all-post-box" ng-repeat="post in postData" ng-if="postData.length == 0">
-                                    
-                                </div>                                
                     <!-- Repeated Class Complete -->
 
                 </div>
