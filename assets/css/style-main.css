@@ -2585,7 +2585,7 @@ header.profile-header .logo a{
 .main_otp_box_middle a:hover{text-decoration: none !important;}
 .contact-add .p20{padding: 46px 30px;}
 .modal-open .dob select{color: #848484 !important;}
-
+.modal-open-other{overflow: hidden;}
 
 
 @media screen and (min-height:540px){
@@ -3298,6 +3298,7 @@ header.profile-header .logo a{
     .contact-add .p20{padding: 46.50px 30px;}
     .modal-dialog{width: 95%;}
     .login .modal-dialog{height: auto;}
+    .cus-chang{font-size: 20px!important;line-height: 26px;}
 }
 @media screen and (max-width:640px){
     .btns .btn-4{
@@ -3402,6 +3403,7 @@ header.profile-header .logo a{
         padding-bottom:0;
         font-size:40px;
     }
+    .modal.in .modal-dialog{padding: 60px 15px;}
 }
 @media screen and (max-width:479px){
     .mob-none,.profile-box-1.art::after,.profile-box-1.art::before,.profile-box-1.bus::before,.profile-box-1.job::after,.profile-box-1.job::before{
@@ -3501,6 +3503,8 @@ header.profile-header .logo a{
         padding:5px!important;
     }
 	.new-abput-page .img-custom{width:100%;}
+    .cus-chang{margin-bottom: 0px !important;font-size: 17px !important;}
+
 }
 @media screen and (max-width:360px){
     .main-inner .btn-right.pull-right a.btn2{
@@ -3575,7 +3579,7 @@ header.profile-header .logo a{
         margin-right:12px;
     }
     .login .form-group select.day,.login .form-group select.month,.login .form-group select.year{
-        width:50px!important;
+        width:60px!important;
     }
 }
 @media screen and (max-width:319px){

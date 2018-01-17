@@ -2144,7 +2144,9 @@ fieldset.work_type_custom input{height: 30px;min-height: 25px;}
 	/*** end add  ***/
 	.sort-emp-detail{width:80%;}
     .sort-emp-detail a{color: #5c5c5c;}
-	
+    .no-login .btn-right{text-align: center !important;}	
+    .no-login #paddingtop_fixed{padding-top: 132px !important;}
+
 }
 @media screen and (max-width: 640px) {
 	.mian_middle_post_box{width:100%;}
@@ -2411,6 +2413,7 @@ fieldset.work_type_custom input{height: 30px;min-height: 25px;}
     }
 	.sort-emp-msg{width:100%; float:left;}
     .btn4{font-size: 12px;margin-left: 1px;margin-right: 2px;margin-bottom: 5px; }
+    .no-login #paddingtop_fixed{padding-top: 105px !important;}
 }
 @media screen and (max-width: 360px) {
     #paddingtop_fixed {

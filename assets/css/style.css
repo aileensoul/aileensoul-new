@@ -2916,6 +2916,7 @@ footer div.pt20{
     .job-saved-box .notification-box ul li{padding: 8px;margin: 8px;}
     .logo img{max-width: 130px;}
     .cus-chang{margin-bottom: 0px;}
+    .cus-chang{font-size: 20px !important;line-height: 26px;}
     
 }
     @media screen and (max-width:640px){

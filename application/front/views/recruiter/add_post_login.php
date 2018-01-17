@@ -35,12 +35,12 @@
 
     </head>
 
-    <body class="page-container-bg-solid page-boxed freeh3 cust-add-live botton_footer">
+    <body class="page-container-bg-solid page-boxed freeh3 cust-add-live botton_footer no-login">
         <header>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 left-header text-center fw-479">
-                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a>
+                        <div class="logo"><a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="logo"></a></div>
                     </div>
                     <div class="col-md-8 col-sm-9 right-header fw-479 text-center">
                         <div class="btn-right pull-right">

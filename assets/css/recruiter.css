@@ -1544,6 +1544,8 @@ fieldset.fresher_radio label {
 	.mob-add{display:block; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; width:100%; float:left;}
 	/*** end add  ***/
 	.city-location .mian_middle_post_box{width:100%;}
+    .no-login #paddingtop_fixed{padding-top: 132px !important;}
+    .no-login .btn-right{text-align: center !important;}    
 }
 
 @media screen and (max-width: 640px) {
@@ -1771,6 +1773,7 @@ fieldset.fresher_radio label {
         margin-right: 2px;
         margin-left: 2px;
     }
+    .no-login #paddingtop_fixed{padding-top: 105px !important;}
 }
 
 @media screen and (max-width: 360px) {
