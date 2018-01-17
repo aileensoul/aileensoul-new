@@ -3145,7 +3145,7 @@ label.cameraButton:active {
 }
 .mian_middle_post_box {
     float: left;
-    width: 600px;
+    width: 590px;
     margin-left: 14px;
     left: 320px;
     position: relative;
@@ -4221,7 +4221,7 @@ div .comment {
     position:relative;
     pointer-events:none;
 }
-.cus-art .custom-right-art .contact-frnd-post{border: none !important;}
+.cus-art .custom-right-art .contact-frnd-post{border: none !important;padding: 0px;}
 
 
 /***  media query  ***/
