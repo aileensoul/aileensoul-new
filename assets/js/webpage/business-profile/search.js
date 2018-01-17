@@ -1,12 +1,11 @@
-$(document).ready(function () {
+$(document).ready(function () { 
     business_search_post();
 
-    $(window).scroll(function () {
-        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-//        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-        if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
+    $(window).scroll(function () { 
 
-            var page = $(".page_number:last").val();
+       if ($(window).scrollTop() + $(window).height() >= $(document).height()) { 
+
+            var page = $(".page_number:last").val(); 
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
             if (parseInt(perpage_record) <= parseInt(total_record)) {
@@ -17,7 +16,7 @@ $(document).ready(function () {
                     available_page = available_page + 1;
                 }
                 //if ($(".page_number:last").val() <= $(".total_record").val()) {
-                if (parseInt(page) <= parseInt(available_page)) {
+                if (parseInt(page) <= parseInt(available_page)) { 
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
                     business_search_post(pagenum);
                 }
@@ -26,7 +25,7 @@ $(document).ready(function () {
     });
 });
 var isProcessing = false;
-function business_search_post(pagenum) {
+function business_search_post(pagenum) { 
     if (isProcessing) {
         /*
          *This won't go past this condition while

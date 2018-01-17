@@ -175,7 +175,7 @@ class Search extends MY_Controller {
     public function ajax_business_search() {
 
 
-        $perpage = 5;
+        $perpage = 4;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];
@@ -338,14 +338,18 @@ class Search extends MY_Controller {
 
 //$this->load->view('business_profile/recommen_business', $this->data);
 //AJAX DATA
-        $return_html = '';
+        //$return_html = '';
         if (count($business_profile1) > 0 || count($description) > 0) {
             if ($profile) {
 
-                $return_html .= '<div class="profile-job-post-title-inside clearfix" style="">
-                                                    <div class="profile_search" style="background-color: white; margin-bottom: 10px; margin-top: 10px;">
-                                                        <h4 class="search_head">Profiles</h4>
-                                                        <div class="inner_search">';
+                
+               // if($page  == 1){
+
+                $return_html .= '<div class="profile-job-post-title-inside clearfix" style="">';
+                $return_html .= '<div class="profile_search" style="background-color: white; margin-bottom: 10px; margin-top: 10px;"><h4 class="search_head">Profiles</h4><div class="inner_search">';
+
+                            // }
+                                                        
                 foreach ($profile as $p) {
                     $return_html .= '<div class="profile-job-profile-button clearfix box_search_module">
                                                                     <div class="profile-job-post-location-name-rec">
@@ -432,8 +436,10 @@ class Search extends MY_Controller {
                                                                             </div>';
                         }
                     }
-                    $return_html .= '</div>
-                                                                </div>';
+
+                     //if($page  == 1){
+                    $return_html .= '</div></div>';
+                   // }
                 }
             }
             $return_html .= '</div>
