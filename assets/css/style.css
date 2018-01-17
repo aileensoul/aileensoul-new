@@ -637,7 +637,7 @@ fieldset .add_post_btnc,fieldset .add_post_btns{
     min-width:120px;
     padding:8px 30px 10px
 }
-.error-msg p,label.error{
+.error-msg p,label.error,label.error-other{
     background:0 0;
     color:red!important;
     padding:0 0 0 10px!important;
@@ -2853,7 +2853,7 @@ footer div.pt20{
     }
     .modal.in .modal-dialog{
         width:100%;
-        padding:0 15px;
+        padding:55px 15px;
     }
     .padd_set .change-password{
         padding:0
