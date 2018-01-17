@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <!-- Repeated Class Start -->
-                    <div class="all-post-box" ng-repeat="post in postData">
+                    <div class="all-post-box" ng-repeat="post in postData" ng-if="postData.length > 0">
                         <div class="all-post-top">
                             <div class="post-head">
                                 <div class="post-img">
@@ -209,6 +209,10 @@
                             </div>
                         </div>
                     </div>
+                    
+                                <div class="all-post-box" ng-repeat="post in postData" ng-if="postData.length == 0">
+                                    
+                                </div>                                
                     <!-- Repeated Class Complete -->
 
                 </div>
