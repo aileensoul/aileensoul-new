@@ -465,7 +465,7 @@ $("form").submit(function () {
             $('.year').addClass('error');
         }
         $('.date-dropdowns .last_date_error').remove();
-        $('.date-dropdowns').append('<label for="example2" class="last_date_error" style="display: block;">Last Date of apply is required.</label>');
+        $('.date-dropdowns').append('<label for="example2" class="last_date_error error-other" style="display: block;">Last Date of apply is required.</label>');
         return false;
 
     } else {
@@ -487,7 +487,7 @@ $("form").submit(function () {
             $('.year').addClass('error');
 
             $('.date-dropdowns .error').show();
-            $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last date should be grater than and equal to today date</label>');
+            $('.date-dropdowns').append('<label for="example2" class="error last_date_error error-other">Last date should be grater than and equal to today date</label>');
             $('.date-dropdowns .last_date_error').removeAttr('style');
             return false;
         } else {

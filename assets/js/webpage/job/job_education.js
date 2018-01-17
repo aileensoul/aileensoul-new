@@ -616,12 +616,11 @@ $('#btnAdd').on('click', function () {
 // Clone input type End
 
 //stream change depend on degeree start
-$(document).on('change', '#input1 select.degree', function (event) {
+$(document).on('change', '#input1 select.degree', function (event) { 
     var aa = $(this).attr('id');
     var lastChar = aa.substr(aa.length - 1);
     var degreeID = $('option:selected', this).val();
-    if (degreeID) {
-
+    if (degreeID) { 
         $.ajax({
             type: 'POST',
             url: base_url + 'job/ajax_data',
@@ -630,7 +629,7 @@ $(document).on('change', '#input1 select.degree', function (event) {
                 $("#input1 #stream" + lastChar).html(html);
             }
         });
-    } else {
+    } else { 
         $('#stream' + lastChar).html('<option value="">Select Degree first</option>');
     }
 });
