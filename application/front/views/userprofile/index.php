@@ -393,7 +393,6 @@
                                         });
                                 }
                                 $scope.goMainLink = function (path) {
-                                alert(22);
                                 location.href = path;
                                 }
 
@@ -467,23 +466,18 @@
                                         submitHandler: profile_pic
                                 });
                                 function profile_pic() {
-//    $('.upload-result-one').on('click', function (ev) {
                                 $uploadCrop1.croppie('result', {
                                 type: 'canvas',
                                         size: 'viewport'
                                 }).then(function (resp) {
                                 $.ajax({
-                                //url: "/ajaxpro.php", user_image_insert
-                                // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
                                 url: base_url + "userprofile_page/user_image_insert1",
                                         type: "POST",
                                         data: {"image": resp},
                                         beforeSend: function () {
                                         $('#profi_loader').show();
-                                        // document.getElementById('profi_loader').style.display = 'block';
                                         },
                                         complete: function () {
-                                        //    $document.getElementById('profi_loader').style.display = 'none';
                                         },
                                         success: function (data) {
                                         $('#profi_loader').hide();
@@ -491,12 +485,9 @@
                                         $(".profile-img").html(data);
                                         document.getElementById('upload-one').value = null;
                                         document.getElementById('upload-demo-one').value = '';
-//                    html = '<img src="' + resp + '" />';
-//                    $("#upload-demo-i").html(html);
                                         }
                                 });
                                 });
-//    });
                                 }
 
                                 function updateprofilepopup(id) {
@@ -609,17 +600,7 @@
                                 }
 
 
-//                    $.ajax({
-//
-//                        url: base_url +"recruiter/image",
-//                        type: "POST",
-//                        data: fd,
-//                        processData: false,
-//                        contentType: false,
-//                        success: function (response) {
-//
-//                        }
-//                    });
+
                                 });
                                 //aarati code end
 

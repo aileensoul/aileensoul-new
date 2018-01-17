@@ -99,7 +99,6 @@ class Userprofile_model extends CI_Model {
     }
     
     public function userContactStatus($user_id = '', $id = '') {
-        $id = '15978';
         $this->db->select("uc.status,uc.id")->from("user_contact as uc");
         $where = "((from_id = '" . $user_id . "' AND to_id = '" . $id . "') OR (from_id = '" . $user_id . "' AND to_id = '" . $id . "'))";
         $this->db->where($where);
@@ -110,7 +109,6 @@ class Userprofile_model extends CI_Model {
     }
 
     public function userFollowStatus($user_id = '', $id = '') {
-        $id = '15978';
         $this->db->select("uf.status,uf.id")->from("user_follow as uf");
         $where = "((follow_from = '" . $user_id . "' AND follow_to = '" . $id . "'))";
         $this->db->where($where);

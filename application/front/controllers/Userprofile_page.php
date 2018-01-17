@@ -107,9 +107,8 @@ class Userprofile_page extends MY_Controller {
     
     public function unfollowingContacts() {
         $userid = $this->session->userdata('aileenuser');
-        $id = $_POST['id'];
+        $id = $_POST['to_id'];
         $follow = $this->userprofile_model->userFollowStatus($userid, $id);
-
         if (count($follow) != 0) {
             $data = array('status' => '0');
             $insert_id = $this->common->update_data($data, 'user_follow', 'id', $follow['id']);
@@ -176,7 +175,7 @@ class Userprofile_page extends MY_Controller {
         $follow = $this->userprofile_model->userFollowStatus($userid, $id);
 
         if (count($follow) != 0) {
-            $data = array('status' => 1);
+            $data = array('status' => '1');
             $insert_id = $this->common->update_data($data, 'user_follow', 'id', $follow['id']);
          //   $response = $status;
             
@@ -184,10 +183,10 @@ class Userprofile_page extends MY_Controller {
             
             }else{
              $data = array(
-                 'status' => 1,
+                 'status' => '1',
                  'follow_from' => $userid,
                  'follow_to' => $id,
-                 'created_date' => $status,
+                 'created_date' => date("Y-m-d h:i:s"),
                  );
             $insert_id = $this->common->insert_data($data, 'user_follow');
            // $response = $status;
