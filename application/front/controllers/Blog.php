@@ -52,9 +52,14 @@ class Blog extends CI_Controller {
             }
         } else {
             //THIS IF IS USED FOR WHILE SEARCH FOR RETRIEVE SAME PAGE START
-            if ($this->input->get('q')) { 
+            if ($this->input->get('q') || $this->input->get('p')) { 
+
+                if($this->input->get('q')){
 
                 $this->data['search_keyword'] = $search_keyword1 = trim($this->input->get('q'));
+              }else if($this->input->get('p')){
+                $this->data['search_keyword'] = $search_keyword1 = trim($this->input->get('p'));
+              }
 
                 $search_keyword = str_replace("'", "", $search_keyword1);
                 //echo $search_keyword; die();

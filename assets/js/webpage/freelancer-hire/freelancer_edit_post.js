@@ -184,12 +184,12 @@ $(document).ready(function () {
             rating:{
                 required: true,
             },
-            rate:{
-                required: true,
-            },
-            currency:{
-                required: true,
-            }
+            // rate:{
+            //     required: true,
+            // },
+            // currency:{
+            //     required: true,
+            // }
 
         },
 
@@ -221,12 +221,12 @@ $(document).ready(function () {
             rating:{
                 required: "Work type is required.",
             },
-            rate:{
-                required: "Rate is required.",
-            },
-            currency:{
-                required: "Currency is required.",
-            }
+            // rate:{
+            //     required: "Rate is required.",
+            // },
+            // currency:{
+            //     required: "Currency is required.",
+            // }
         }
     });
 });

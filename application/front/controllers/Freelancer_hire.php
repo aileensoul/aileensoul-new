@@ -2010,9 +2010,9 @@ class Freelancer_hire extends MY_Controller {
         $this->form_validation->set_rules('post_desc', 'Project description', 'required');
         $this->form_validation->set_rules('fields_req', 'Field ', 'required');
         $this->form_validation->set_rules('skills', 'Skill', 'required');
-        $this->form_validation->set_rules('latdate', 'Last date ', 'required');
-        $this->form_validation->set_rules('rate', 'Rate', 'required');
-        $this->form_validation->set_rules('currency', 'Currency', 'required');
+       // $this->form_validation->set_rules('latdate', 'Last date ', 'required');
+       // $this->form_validation->set_rules('rate', 'Rate', 'required');
+        //$this->form_validation->set_rules('currency', 'Currency', 'required');
         $this->form_validation->set_rules('rating', 'Work type', 'required');
 
 

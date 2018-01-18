@@ -13,6 +13,22 @@ function checkvalue()
         document.getElementById("q").value = res;
     }
 }
+
+
+
+function checkvalue_one()
+{
+    var searchkeyword = $.trim(document.getElementById('p').value);
+    var res = searchkeyword.replace(/'/g, "");
+     
+    if (searchkeyword == "")
+    {
+        return false;
+    }else{
+
+        document.getElementById("p").value = res;
+    }
+}
 // FOR SEARCH VALIDATION FOR EMAPTY SEARCH END 
 
 // THIS SCRIPT IS USED FOR SCRAP IMAGE FOR FACEBOOK POST TO GET REAL IMAGE START
