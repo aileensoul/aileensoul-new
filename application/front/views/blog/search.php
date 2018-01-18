@@ -20,7 +20,7 @@ header("Pragma: no-cache"); // HTTP/1.0
 ?>
 <html class="blog_cl" lang="en">
     <head>
-        <title>Official Blog for Regular Updates, News and Sharing knowledge - Aileensoul</title>
+        <title>Search | Official Blog for Regular Updates, News and Sharing knowledge - Aileensoul</title>
         <meta name="description" content="Our Aileensoul official blog will describe our free service and related news, tips and tricks - stay tuned." />
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">
