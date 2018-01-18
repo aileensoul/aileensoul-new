@@ -73,11 +73,11 @@
                          $filename = $this->config->item('rec_bg_main_upload_path') . $image[0]['profile_background'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if ($info && $image[0]['profile_background'] != '') {
+                        if ($info && $image[0]['profile_background'] != '') { 
                             ?>
                            <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $image[0]['profile_background']; ?>" />
                      <?php
-                        } else {
+                        } else { 
                             ?>
 <div class="bg-images no-cover-upload">
                                  <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="<?php echo "NOIMAGE" ?>" />
