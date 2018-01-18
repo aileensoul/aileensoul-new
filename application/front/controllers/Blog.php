@@ -303,7 +303,9 @@ class Blog extends CI_Controller {
                                                     <div class="blog-comment-count">
                                                         <a>';
             $condition_array = array('status' => 'approve', 'blog_id' => $blog['id']);
-            $blog_comment = $this->common->select_data_by_condition('blog_comment', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
+            $blog_comment = $this->common->select_data_by_condition('blog_comment', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
+
+            //echo "<pre>"; print_r($blog_comment); die();
             $blog_data .= count($blog_comment);
 
             $blog_data .= '</a>
