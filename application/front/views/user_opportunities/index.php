@@ -182,9 +182,10 @@
                                         <div class="comment-name"><a ng-bind="comment.username"></a></div>
                                         <div class="comment-dis-inner" ng-bind-html="comment.comment"></div>
                                         <ul class="comment-action">
-                                            <li><a href="javascript:void(0);"><i class="fa fa-thumbs-up"></i></a></li>
+                                            <li><a href="javascript:void(0);" id="post-comment-like-{{comment.comment_id}}" ng-click="likePostComment(comment.comment_id,post.post_data.id,$parent.$index,$index)" ng-if="post.is_userlikePostComment == '1'" class="like"><i class="fa fa-thumbs-up"></i></a></li>
+                                            <li><a href="javascript:void(0);" id="post-comment-like-{{comment.comment_id}}" ng-click="likePostComment(comment.comment_id,post.post_data.id,$parent.$index,$index)" ng-if="post.is_userlikePostComment == '0'"><i class="fa fa-thumbs-up"></i></a></li>
                                             <li><a href="javascript:void(0);">Edit</a></li> 
-                                            <li><a href="javascript:void(0);" ng-click="deletePostComment(comment.comment_id,post.post_data.id,$parent.$index,post)">Delete</a></li>
+                                            <li><a href="javascript:void(0);" ng-click="deletePostComment(comment.comment_id,post.post_data.id,$parent.$index,$index,post)">Delete</a></li>
                                             <li><a href="javascript:void(0);" ng-bind="comment.created_date"></a></li>
                                         </ul>
                                     </div>
@@ -337,6 +338,18 @@
                     <button type="button" class="modal-close" id="post"data-dismiss="modal">&times;</button>       
                     <div class="modal-body">
                         <span class="mes"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade message-box" id="delete_model" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" id="postedit"data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes">
+                            <div class="pop_content">Do you want to delete this comment?<div class="model_ok_cancel"><a class="okbtn btn1" ng-click="deleteComment(c_d_comment_id, c_d_post_id, c_d_parent_index, c_d_index, c_d_post)" href="javascript:void(0);" data-dismiss="modal">Yes</a><a class="cnclbtn btn1" href="javascript:void(0);" data-dismiss="modal">No</a></div></div>
+                        </span>
                     </div>
                 </div>
             </div>

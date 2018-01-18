@@ -450,23 +450,55 @@ app.controller('userOppoController', function ($scope, $http) {
                 });
 
     }
-    $scope.deletePostComment = function (comment_id, post_id, index, post) {
+    $scope.deletePostComment = function (comment_id, post_id, parent_index, index, post) {
+        $scope.c_d_comment_id = comment_id;
+        $scope.c_d_post_id = post_id;
+        $scope.c_d_parent_index = parent_index;
+        $scope.c_d_index = index;
+        $scope.c_d_post = post;
+
+        $('#delete_model').modal('show');
+    }
+
+    $scope.deleteComment = function (comment_id, post_id, parent_index, index, post) {
         var commentClassName = $('#comment-icon-' + post_id).attr('class').split(' ')[0];
         $http({
             method: 'POST',
             url: base_url + 'user_opportunities/deletePostComment',
-            data: 'comment_id=' + comment_id,
+            data: 'comment_id=' + comment_id + '&post_id=' + post_id,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
                 .then(function (success) {
                     data = success.data;
                     if (commentClassName == 'last-comment') {
-                        $scope.postData[index].post_comment_data.splice(0, 1);
-                        $scope.postData[index].post_comment_data.push(data.comment_data[0]);
+                        $scope.postData[parent_index].post_comment_data.splice(0, 1);
+                        $scope.postData[parent_index].post_comment_data.push(data.comment_data[0]);
                         $('.post-comment-count-' + post_id).html(data.comment_count);
                         $('.editable_text').html('');
                     } else {
-                        $scope.postData[index].post_comment_data.push(data.comment_data[0]);
+                        $scope.postData[parent_index].post_comment_data.splice(index, 1);
+                        $('.post-comment-count-' + post_id).html(data.comment_count);
+                        $('.editable_text').html('');
+                    }
+                });
+    }
+
+    $scope.likePostComment = function (comment_id, post_id, parent_index, index) {
+        $http({
+            method: 'POST',
+            url: base_url + 'user_opportunities/likePostComment',
+            data: 'comment_id=' + comment_id + '&post_id=' + post_id,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    data = success.data;
+                    if (commentClassName == 'last-comment') {
+                        $scope.postData[parent_index].post_comment_data.splice(0, 1);
+                        $scope.postData[parent_index].post_comment_data.push(data.comment_data[0]);
+                        $('.post-comment-count-' + post_id).html(data.comment_count);
+                        $('.editable_text').html('');
+                    } else {
+                        $scope.postData[parent_index].post_comment_data.splice(index, 1);
                         $('.post-comment-count-' + post_id).html(data.comment_count);
                         $('.editable_text').html('');
                     }

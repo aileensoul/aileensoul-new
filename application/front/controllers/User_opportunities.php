@@ -116,6 +116,7 @@ class User_opportunities extends MY_Controller {
 
     public function deletePostComment() {
         $comment_id = $_POST['comment_id'];
+        $post_id = $_POST['post_id'];
 
         $update_data = array();
         $update_data['modify_date'] = date('Y-m-d H:i:s', time());
@@ -130,6 +131,30 @@ class User_opportunities extends MY_Controller {
             $return_data['message'] = '0';
         }
         echo json_encode($return_data);
+    }
+
+    public function likePostComment() {
+        $userid = $this->session->userdata('aileenuser');
+        $comment_id = $_POST['comment_id'];
+        $post_id = $_POST['post_id'];
+
+        $data = array();
+        $data['user_id'] = $userid;
+        $data['comment_id'] = $comment_id;
+        $data['created_date'] = date('Y-m-d H:i:s', time());
+        $data['modify_date'] = date('Y-m-d H:i:s', time());
+        $data['is_like'] = '1';
+        $like_post_comment = $this->common->insert_data_getid($data, 'user_post_comment_like');
+        if($like_post_comment){
+            $return_array =array();
+            $return_array['message'] = '1';
+            echo json_encode($return_array);
+        }
+        else{
+            $return_array =array();
+            $return_array['message'] = '0';
+            echo json_encode($return_array);
+        }
     }
 
     public function viewLastComment() {
