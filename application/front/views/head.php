@@ -157,4 +157,4 @@ if (IS_OUTSIDE_JS_MINIFY == '0') {
 <?php }
 ?>
 
-<!--<script src="<?php //echo base_url('node_modules/socket.io/node_modules/socket.io-client/socket.io.js?ver='.time());  ?>"></script>-->
+<script src="<?php echo base_url('node_modules/socket.io/node_modules/socket.io-client/socket.io.js?ver='.time());  ?>"></script>
