@@ -131,11 +131,6 @@
                                 var app = angular.module("userProfileApp", ["ngRoute"]);
                                 var item = '<?php echo $this->uri->segment(1); ?>'
                                         app.controller('userProfileController', function ($scope, $http) {
-
-                                        $scope.goMainLink = function (path) {
-                                        location.href = path;
-                                        }
-
                                         $scope.active = $scope.active == item ? '' : item;
                                         $scope.makeActive = function (item) {
                                         $scope.active = $scope.active == item ? '' : item;
@@ -227,9 +222,7 @@
                                 }
 
 
-                                $scope.goMainLink = function (path) {
-                                location.href = path;
-                                }
+                               
 
                                 });
                                 app.controller('detailsController', function ($scope, $http, $location) {
@@ -250,10 +243,6 @@
                                         });
                                 }
 
-
-                                $scope.goMainLink = function (path) {
-                                location.href = path;
-                                }
 
                                 $scope.makeActive = function (item) {
                                 $scope.active = $scope.active == item ? '' : item;
@@ -286,10 +275,6 @@
                                 }
 
 
-                                $scope.goMainLink = function (path) {
-                                alert(22);
-                                location.href = path;
-                                }
 
                                 $scope.goUserprofile = function (path) {
 
@@ -348,10 +333,6 @@
                                 }
 
 
-                                $scope.goMainLink = function (path) {
-                                alert(22);
-                                location.href = path;
-                                }
 
                                 $scope.goUserprofile = function (path) {
 
@@ -393,9 +374,7 @@
 
                                         });
                                 }
-                                $scope.goMainLink = function (path) {
-                                location.href = path;
-                                }
+                                
 
                                 $scope.goUserprofile = function (path) {
 

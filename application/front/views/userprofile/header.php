@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 left-header">
-                    <h2 class="logo"><a ng-click="goMainLink('<?php echo base_url(); ?>')" ng-href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                    <h2 class="logo"><a ng-href="<?php echo base_url(); ?>" target="_self">Aileensoul</a></h2>
                     <form>
                         <input type="text" name="search" placeholder="Search..">
                     </form>
@@ -15,7 +15,7 @@
 
                             <div class="dropdown-menu">
                                 <div class="dropdown-title">
-                                    Profiles <a ng-click="goMainLink('<?php echo base_url('profiless/' . $userdata['user_slug']); ?>')" ng-href="<?php echo base_url('profiless/' . $userdata['user_slug']); ?>" class="pull-right">All</a>
+                                    Profiles <a ng-href="<?php echo base_url('profiless/' . $userdata['user_slug']); ?>" target="_self"  class="pull-right">All</a>
                                 </div>
                                 <div id="abody" class="as">
                                     <ul>
