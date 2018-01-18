@@ -168,9 +168,7 @@ color: #fff;}
     background-color: #e8f3f8!important;
     border-radius: 50%;
 }
-.bottom-left li a i{cursor: pointer;
-font-size: 19px;
-padding: 8px;}
+.bottom-left li a i{cursor: pointer; font-size: 19px;padding: 8px;}
 .bottom-right li{font-size:13px; color:#999;}
 .bottom-right li span{padding-left:5px;}
 .like-other-box{width:100%; float:left; border-top:1px solid #d2d2d2; padding-top:0px;}
