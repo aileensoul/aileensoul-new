@@ -829,6 +829,7 @@ label.error{
     }
     .blog_search{display: none;}
     .hidden-xs .blog_search{display: block;}
+    .load-more-blog li button{font-size: 35px;}
 }
 @media screen and (max-width:767px){
     .date_blog_left{
