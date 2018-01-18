@@ -253,6 +253,7 @@
 
 
                     </div>
+                       <div class="fw" id="loader"  style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="<?php echo 'LOADERIMAGE'; ?>"/></div>
                 </div>
             </div>
 

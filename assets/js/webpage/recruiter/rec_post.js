@@ -41,17 +41,17 @@ function rec_post(pagenum) {
         data: {total_record: $("#total_record").val()},
         dataType: 'json',
         beforeSend: function () {
-            if (pagenum == 'undefined') {
-                 $(".job-contact-frnd1").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
-            } else {
+            //if (pagenum == 'undefined') {
+                 //$(".job-contact-frnd1").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            // } else {
                 $('#loader').show();
-           }
+           //}
         },
         complete: function () {
             $('#loader').hide();
         },
         success: function (data) {
-            $('.loader').remove();
+          //  $('.loader').remove();
 
             if(data.nopostvar == 'nodata'){
                 $("#nodataavl").addClass("cust-border");
