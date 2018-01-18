@@ -2586,7 +2586,35 @@ header.profile-header .logo a{
 .contact-add .p20{padding: 46px 30px;}
 .modal-open .dob select{color: #848484 !important;}
 .modal-open-other{overflow: hidden;}
+.cover .modal.in .modal-dialog{
+                top:inherit;
+                left:inherit;
+                -webkit-transform:inherit;
+                transform: inherit;
+                margin:0 auto;
+                float:none;
+                position:relative;
+            }
+.cover .modal.in .modal-dialog{
+    position:relative;
+    top: inherit; left: inherit;
+    -ms-transform: inherit !important;
+    -webkit-transform: inherit !important;
+    -moz-transform: inherit !important;
+    -o-transform: inherit !important;
+    transform: inherit !important;
+}
+.cover .modal-dialog {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
 
+.cover .modal-content {
+    /*margin: 0 auto;*/
+    width:600px;
+}
 
 @media screen and (min-height:540px){
     .cover .modal-content{
@@ -3299,6 +3327,8 @@ header.profile-header .logo a{
     .modal-dialog{width: 95%;}
     .login .modal-dialog{height: auto;}
     .cus-chang{font-size: 20px!important;line-height: 26px;}
+    .modal-dialog {height: auto !important;}
+    .blog .main-inner{padding-bottom: 0PX !important;}
 }
 @media screen and (max-width:640px){
     .btns .btn-4{
@@ -3393,6 +3423,7 @@ header.profile-header .logo a{
     .linkbox ul li,.profile-bnr img{
         width:100%
     }
+    .mian_middle_post_box{width: 100%;}
 }
 @media screen and (max-width:540px){
     .cus-about{
