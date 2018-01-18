@@ -578,14 +578,13 @@
 
                 </div>
             </div>
-            <div class="upload-camera">
-<?php if ($slug == $this->uri->segment(2)) { ?>
+            <div class="upload-camera" ng-if="live_slug == segment2">
                     <div class="upload-img">
                         <label  class="cameraButton"><span class="tooltiptext">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*" capture="camera" onclick="showDiv()">
                         </label>
                     </div>
-<?php } ?>
+
             </div>
         </div>
 
@@ -618,11 +617,9 @@ if ($userdata['user_image'] != '' && $info) {
 
                         </div>
 <?php } ?>
-                    <?php if ($slug == $this->uri->segment(2)) { ?>
-                        <a class="upload-profile cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();" title="Update profile picture">
+                        <a ng-if="live_slug == segment2" class="upload-profile cusome_upload"  href="javascript:void(0);" onclick="updateprofilepopup();" title="Update profile picture">
                             <img src="<?php echo base_url('assets/n-images/cam.png') ?>"  alt="<?php echo 'CAMERAIMAGE'; ?>">Update Profile Picture
                         </a>
-<?php } ?>
                 </div>
                 <!--PROFILE PIC CODE END -->
 
@@ -641,7 +638,7 @@ if ($userdata['user_image'] != '' && $info) {
                     <p><?php echo $is_userStudentInfo['City']; ?></p>
                 <?php } ?>
             </div>
-            <div class="user-btns" ng-if="user_slug == segment2">
+            <div class="user-btns" ng-if="live_slug != segment2">
                 <a class="btn3" ng-if="contact_value == 'new'" ng-click="contact(contact_id,'pending',to_id)">Add to contact</a>
                 <a class="btn3" ng-if="contact_value == 'confirm'" ng-click="contact(contact_id,'cancel',to_id)">Friends</a>
                 <a class="btn3" ng-if="contact_value == 'pending'" ng-click="contact(contact_id,'cancel',to_id)">Request sent</a>

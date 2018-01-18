@@ -135,6 +135,7 @@
                                         $scope.makeActive = function (item) {
                                         $scope.active = $scope.active == item ? '' : item;
                                         }
+                                $scope.live_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
                                         $scope.segment2 = '<?php echo $this->uri->segment(2); ?>';
                                         $scope.user_slug = '<?php echo $userdata['user_slug']; ?>';
                                         $scope.to_id = '<?php echo $to_id; ?>';
@@ -243,6 +244,10 @@
                                         });
                                 }
 
+
+                                $scope.goMainLink = function (path) {
+                                location.href = path;
+                                }
 
                                 $scope.makeActive = function (item) {
                                 $scope.active = $scope.active == item ? '' : item;
