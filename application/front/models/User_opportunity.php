@@ -140,6 +140,18 @@ class User_opportunity extends CI_Model {
         return $post_comment_data = $query->result_array();
     }
 
+    public function is_userlikePostComment($user_id = '', $comment_id = '') {
+        $this->db->select("COUNT(id) as like_count")->from("user_post_comment_like upcl");
+        $this->db->join('user_login ul', 'ul.user_id = upl.user_id', 'left');
+        $this->db->where('upl.post_id', $post_id);
+        $this->db->where('upl.user_id', $user_id);
+        $this->db->where('ul.status', '1');
+        $this->db->where('is_like', '1');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['like_count'];
+    }
+
     public function userPost($user_id = '') {
         $result_array = array();
         $this->db->select("up.id,up.user_id,up.post_for,up.created_date,up.post_id")->from("user_post up");
@@ -200,11 +212,18 @@ class User_opportunity extends CI_Model {
                 $result_array[$key]['post_like_data'] = $post_like_data['username'];
             }
             $result_array[$key]['post_comment_count'] = $this->postCommentCount($value['post_id']);
-            $result_array[$key]['post_comment_data'] = $this->postCommentData($value['post_id']);
+            $result_array[$key]['post_comment_data'] = $postCommentData = $this->postCommentData($value['post_id']);
+
+            foreach ($postCommentData as $commentData) {
+                $result_array[$key]['post_comment_data']['is_userlikePostComment'] = $this->is_userlikePostComment($user_id, $commentData['comment_id']);
+                echo '<pre>';
+                print_r($commentData);
+                exit;
+            }
         }
-//        echo '<pre>';
-//        print_r($result_array);
-//        exit;
+        echo '<pre>';
+        print_r($result_array);
+        exit;
         return $result_array;
     }
 
