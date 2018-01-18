@@ -326,7 +326,7 @@ footer>.container{
     cursor:default
 }
 .blog-comment a,.blog-comment-count a{
-    cursor:pointer;
+    cursor:default;
     color:#2e2e2e
 }
 .butn_w a:hover i{
@@ -348,7 +348,7 @@ footer>.container{
     font-size:15px
 }
 .blog-comment-count{
-    cursor:pointer
+    cursor:default;
 }
 .blog-comment-count a:hover{
     color:#2e2e2e
