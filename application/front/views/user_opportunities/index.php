@@ -136,7 +136,7 @@
                             </div>
                             </span>
                             <div class="post-images four-img" ng-if="post.post_data.total_post_files >= '4'">
-                                <div class="two-img" ng-repeat="post_file in post.post_file_data| limitTo:4">
+                                <div class="two-img" ng-repeat="post_file in post.post_file_data | limitTo:4">
                                     <a href="#"><img ng-src="<?php echo USER_POST_RESIZE2_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
                                     <div class="view-more-img" ng-if="$index == '3' && post.post_data.total_post_files > '4'">
                                         <span>View All (+4)</span>
@@ -151,8 +151,8 @@
                                                 <a href="javascript:void(0)" id="post-like-{{post.post_data.id}}" ng-click="post_like(post.post_data.id)" ng-if="post.is_userlikePost == '1'" class="like"><i class="fa fa-thumbs-up"></i></a>
                                                 <a href="javascript:void(0)" id="post-like-{{post.post_data.id}}" ng-click="post_like(post.post_data.id)" ng-if="post.is_userlikePost == '0'"><i class="fa fa-thumbs-up"></i></a>
                                             </li>
-                                            <li><a href="javascript:void(0);" ng-click="viewAllComment(post.post_data.id,$index,post)" ng-if="post.post_comment_data.length <= 1" id="comment-icon-{{post.post_data.id}}" class="last-comment"><i class="fa fa-comment-o"></i></a></li>
-                                            <li><a href="javascript:void(0);" ng-click="viewLastComment(post.post_data.id,$index,post)" ng-if="post.post_comment_data.length > 1" id="comment-icon-{{post.post_data.id}}" class="all-comment"><i class="fa fa-comment-o"></i></a></li>
+                                            <li><a href="javascript:void(0);" ng-click="viewAllComment(post.post_data.id, $index, post)" ng-if="post.post_comment_data.length <= 1" id="comment-icon-{{post.post_data.id}}" class="last-comment"><i class="fa fa-comment-o"></i></a></li>
+                                            <li><a href="javascript:void(0);" ng-click="viewLastComment(post.post_data.id, $index, post)" ng-if="post.post_comment_data.length > 1" id="comment-icon-{{post.post_data.id}}" class="all-comment"><i class="fa fa-comment-o"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-6">
@@ -180,12 +180,20 @@
                                     </div>
                                     <div class="comment-dis">
                                         <div class="comment-name"><a ng-bind="comment.username"></a></div>
-                                        <div class="comment-dis-inner" ng-bind-html="comment.comment"></div>
+                                        <div class="comment-dis-inner" id="comment-dis-inner-{{comment.comment_id}}" ng-bind-html="comment.comment"></div>
+                                            <div class="edit-comment" id="edit-comment-{{comment.comment_id}}" style="display:none;">
+                                            <div class="comment-input">
+                                                <div contenteditable data-directive ng-model="editComment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-change="isMsgBoxEmpty = false" class="editable_text" placeholder="Add a Comment ..." ng-enter="sendEditComment({{comment.comment_id}},$index,post)" id="editCommentTaxBox-{{comment.comment_id}}" ng-focus="setFocus" focus-me="setFocus" ng-paste="OnPaste_StripFormatting(this, event);"></div>
+                                            </div>
+                                            <div class="comment-submit">
+                                                <button class="btn2" ng-click="sendEditComment(comment.comment_id)">Comment</button>
+                                            </div>
+                                        </div>
                                         <ul class="comment-action">
-                                            <li><a href="javascript:void(0);" id="post-comment-like-{{comment.comment_id}}" ng-click="likePostComment(comment.comment_id,post.post_data.id,$parent.$index,$index)" ng-if="post.is_userlikePostComment == '1'" class="like"><i class="fa fa-thumbs-up"></i></a></li>
-                                            <li><a href="javascript:void(0);" id="post-comment-like-{{comment.comment_id}}" ng-click="likePostComment(comment.comment_id,post.post_data.id,$parent.$index,$index)" ng-if="post.is_userlikePostComment == '0'"><i class="fa fa-thumbs-up"></i></a></li>
-                                            <li><a href="javascript:void(0);">Edit</a></li> 
-                                            <li><a href="javascript:void(0);" ng-click="deletePostComment(comment.comment_id,post.post_data.id,$parent.$index,$index,post)">Delete</a></li>
+                                            <li><a href="javascript:void(0);" ng-click="likePostComment(comment.comment_id, post.post_data.id)" ng-if="comment.is_userlikePostComment == '1'" class="like"><i class="fa fa-thumbs-up"></i><span ng-bind="comment.postCommentLikeCount" id="post-comment-like-{{comment.comment_id}}"></span></a></li>
+                                            <li><a href="javascript:void(0);" ng-click="likePostComment(comment.comment_id, post.post_data.id)" ng-if="comment.is_userlikePostComment == '0'"><i class="fa fa-thumbs-up"></i><span ng-bind="comment.postCommentLikeCount" id="post-comment-like-{{comment.comment_id}}"></span></a></li>
+                                            <li><a href="javascript:void(0);" ng-click="editPostComment(comment.comment_id, post.post_data.id, $parent.$index, $index)">Edit</a></li> 
+                                            <li><a href="javascript:void(0);" ng-click="deletePostComment(comment.comment_id, post.post_data.id, $parent.$index, $index, post)">Delete</a></li>
                                             <li><a href="javascript:void(0);" ng-bind="comment.created_date"></a></li>
                                         </ul>
                                     </div>
@@ -204,7 +212,7 @@
                                         <div contenteditable data-directive ng-model="comment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-change="isMsgBoxEmpty = false" class="editable_text" placeholder="Add a Comment ..." ng-enter="sendComment({{post.post_data.id}},$index,post)" id="commentTaxBox-{{post.post_data.id}}" ng-focus="setFocus" focus-me="setFocus"></div>
                                     </div>
                                     <div class="comment-submit">
-                                        <button class="btn2" ng-click="sendComment(post.post_data.id,$index,post)">Comment</button>
+                                        <button class="btn2" ng-click="sendComment(post.post_data.id, $index, post)">Comment</button>
                                     </div>
                                 </div>
                             </div>
@@ -374,11 +382,11 @@
         <script src="<?php echo base_url('assets/js/ng-tags-input.min.js?ver=' . time()); ?>"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
         <script>
-                                    var base_url = '<?php echo base_url(); ?>';
-                                    var slug = '<?php echo $slugid; ?>';
-                                    var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
-                                    var title = '<?php echo $title; ?>';
-                                    var app = angular.module('userOppoApp', ['ui.bootstrap', 'ngTagsInput', 'ngSanitize']);
+                                var base_url = '<?php echo base_url(); ?>';
+                                var slug = '<?php echo $slugid; ?>';
+                                var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+                                var title = '<?php echo $title; ?>';
+                                var app = angular.module('userOppoApp', ['ui.bootstrap', 'ngTagsInput', 'ngSanitize']);
         </script>
 
         <script src="<?php echo base_url('assets/js/webpage/user/user_opportunity.js?ver=' . time()) ?>"></script>

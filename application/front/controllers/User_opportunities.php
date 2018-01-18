@@ -138,21 +138,66 @@ class User_opportunities extends MY_Controller {
         $comment_id = $_POST['comment_id'];
         $post_id = $_POST['post_id'];
 
-        $data = array();
-        $data['user_id'] = $userid;
-        $data['comment_id'] = $comment_id;
-        $data['created_date'] = date('Y-m-d H:i:s', time());
-        $data['modify_date'] = date('Y-m-d H:i:s', time());
-        $data['is_like'] = '1';
-        $like_post_comment = $this->common->insert_data_getid($data, 'user_post_comment_like');
-        if($like_post_comment){
-            $return_array =array();
-            $return_array['message'] = '1';
-            echo json_encode($return_array);
+        $userlikePostCommentData = $this->user_opportunity->userlikePostCommentData($userid, $comment_id);
+
+        $return_array = array();
+        if ($userlikePostCommentData['id'] != '') {
+            if ($userlikePostCommentData['is_like'] == '1') {
+                $data = array();
+                $data['is_like'] = '0';
+                $data['modify_date'] = date('Y-m-d H:i:s', time());
+                $updatedata = $this->common->update_data($data, 'user_post_comment_like', 'id', $userlikePostCommentData['id']);
+                if ($updatedata) {
+                    $return_array['message'] = '1';
+                    $return_array['is_newLike'] = '0';
+                    $return_array['is_oldLike'] = '1';
+                    $return_array['commentLikeCount'] = $this->user_opportunity->postCommentLikeCount($comment_id) == '0' ? '' : $this->user_opportunity->postCommentLikeCount($comment_id);
+                }
+            } else {
+                $data = array();
+                $data['is_like'] = '1';
+                $data['modify_date'] = date('Y-m-d H:i:s', time());
+                $updatedata = $this->common->update_data($data, 'user_post_comment_like', 'id', $userlikePostCommentData['id']);
+                if ($updatedata) {
+                    $return_array['message'] = '1';
+                    $return_array['is_newLike'] = '1';
+                    $return_array['is_oldLike'] = '0';
+                    $return_array['commentLikeCount'] = $this->user_opportunity->postCommentLikeCount($comment_id) == '0' ? '' : $this->user_opportunity->postCommentLikeCount($comment_id);
+                }
+            }
+        } else {
+            $data = array();
+            $data['user_id'] = $userid;
+            $data['comment_id'] = $comment_id;
+            $data['created_date'] = date('Y-m-d H:i:s', time());
+            $data['modify_date'] = date('Y-m-d H:i:s', time());
+            $data['is_like'] = '1';
+            $like_post_comment = $this->common->insert_data_getid($data, 'user_post_comment_like');
+            if ($like_post_comment) {
+                $return_array['message'] = '1';
+                $return_array['is_newLike'] = '1';
+                $return_array['is_oldLike'] = '0';
+                $return_array['commentLikeCount'] = $this->user_opportunity->postCommentLikeCount($comment_id) == '0' ? '' : $this->user_opportunity->postCommentLikeCount($comment_id);
+            } else {
+                $return_array['message'] = '0';
+                $return_array['is_newLike'] = '0';
+                $return_array['is_oldLike'] = '0';
+            }
         }
-        else{
-            $return_array =array();
-            $return_array['message'] = '0';
+        echo json_encode($return_array);
+    }
+
+    public function postCommentUpdate() {
+        $comment_id = $_POST['comment_id'];
+        $comment = $_POST['comment'];
+
+        $data = array();
+        $data['comment'] = $comment;
+        $data['modify_date'] = date('Y-m-d H:i:s', time());
+        $updatedata = $this->common->update_data($data, 'user_post_comment', 'id', $comment_id);
+        if($updatedata){
+            $return_array = array();
+            $return_array['message'] = 1;
             echo json_encode($return_array);
         }
     }

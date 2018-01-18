@@ -483,7 +483,7 @@ app.controller('userOppoController', function ($scope, $http) {
                 });
     }
 
-    $scope.likePostComment = function (comment_id, post_id, parent_index, index) {
+    $scope.likePostComment = function (comment_id, post_id) {
         $http({
             method: 'POST',
             url: base_url + 'user_opportunities/likePostComment',
@@ -492,19 +492,73 @@ app.controller('userOppoController', function ($scope, $http) {
         })
                 .then(function (success) {
                     data = success.data;
-                    if (commentClassName == 'last-comment') {
-                        $scope.postData[parent_index].post_comment_data.splice(0, 1);
-                        $scope.postData[parent_index].post_comment_data.push(data.comment_data[0]);
-                        $('.post-comment-count-' + post_id).html(data.comment_count);
-                        $('.editable_text').html('');
-                    } else {
-                        $scope.postData[parent_index].post_comment_data.splice(index, 1);
-                        $('.post-comment-count-' + post_id).html(data.comment_count);
-                        $('.editable_text').html('');
+                    if (data.message == '1') {
+                        if (data.is_newLike == 1) {
+                            $('#post-comment-like-' + comment_id).parent('a').addClass('like');
+                            $('#post-comment-like-' + comment_id).html(data.commentLikeCount);
+                        } else if (data.is_oldLike == 1) {
+                            $('#post-comment-like-' + comment_id).parent('a').removeClass('like');
+                            $('#post-comment-like-' + comment_id).html(data.commentLikeCount);
+                        }
+
                     }
                 });
     }
+    $scope.editPostComment = function (comment_id, post_id, parent_index, index) {
+        var editContent = $('#comment-dis-inner-' + comment_id).html();
+        $('#edit-comment-' + comment_id).show();
+        $('#editCommentTaxBox-' + comment_id).html(editContent);
+        $('#comment-dis-inner-' + comment_id).hide();
+    }
 
+    $scope.sendEditComment = function (comment_id) {
+        var comment = $('#editCommentTaxBox-' + comment_id).html();
+        comment = comment.replace(/&nbsp;/gi, " ");
+        comment = comment.replace(/<br>$/, '');
+        comment = comment.replace(/&gt;/gi, ">");
+        comment = comment.replace(/&/g, "%26");
+        if (comment) {
+            $scope.isMsg = true;
+            $http({
+                method: 'POST',
+                url: base_url + 'user_opportunities/postCommentUpdate',
+                data: 'comment=' + comment + '&comment_id=' + comment_id,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
+                    .then(function (success) {
+                        data = success.data;
+                        if (data.message == '1') {
+                            $('#comment-dis-inner-' + comment_id).show();
+                            $('#comment-dis-inner-' + comment_id).html(comment);
+                            $('#edit-comment-' + comment_id).html();
+                            $('#edit-comment-' + comment_id).hide();
+                        }
+                    });
+        } else {
+            $scope.isMsgBoxEmpty = true;
+        }
+    }
+
+    var _onPaste_StripFormatting_IEPaste = false;
+    $scope.OnPaste_StripFormatting = function (elem, e) {
+        if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
+            e.preventDefault();
+            var text = e.originalEvent.clipboardData.getData('text/plain');
+            window.document.execCommand('insertText', false, text);
+        } else if (e.clipboardData && e.clipboardData.getData) {
+            e.preventDefault();
+            var text = e.clipboardData.getData('text/plain');
+            window.document.execCommand('insertText', false, text);
+        } else if (window.clipboardData && window.clipboardData.getData) {
+            // Stop stack overflow
+            if (!_onPaste_StripFormatting_IEPaste) {
+                _onPaste_StripFormatting_IEPaste = true;
+                e.preventDefault();
+                window.document.execCommand('ms-pasteTextOnly', false);
+            }
+            _onPaste_StripFormatting_IEPaste = false;
+        }
+    }
 });
 
 $(window).on("load", function () {
@@ -513,3 +567,5 @@ $(window).on("load", function () {
         theme: "minimal"
     });
 });
+
+
