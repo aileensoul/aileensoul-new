@@ -55,7 +55,6 @@ class Blog extends CI_Controller {
             if ($this->input->get('q') || $this->input->get('p')) { 
 
                 if($this->input->get('q')){
-
                 $this->data['search_keyword'] = $search_keyword1 = trim($this->input->get('q'));
               }else if($this->input->get('p')){
                 $this->data['search_keyword'] = $search_keyword1 = trim($this->input->get('p'));
