@@ -175,15 +175,15 @@ class Search extends MY_Controller {
     public function ajax_business_search() {
 
 
-        $perpage = 4;
-        $page = 1;
-        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
-            $page = $_GET["page"];
-        }
+        // $perpage = 4;
+        // $page = 1;
+        // if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+        //     $page = $_GET["page"];
+        // }
 
-        $start = ($page - 1) * $perpage;
-        if ($start < 0)
-            $start = 0;
+        // $start = ($page - 1) * $perpage;
+        // if ($start < 0)
+        //     $start = 0;
 
         $business_login_slug = $this->data['business_login_slug'];
 
@@ -331,15 +331,15 @@ class Search extends MY_Controller {
             $_GET["total_record"] = count($business_profile1);
         }
        // echo "<pre>";  print_r(count($business_profile1)); die();
-        $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
-        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
-        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+        // $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        // $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        // $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
 
 //$this->load->view('business_profile/recommen_business', $this->data);
 //AJAX DATA
         //$return_html = '';
-        if (count($business_profile1) > 0 || count($description) > 0) {
+        if (count($business_profile) > 0 || count($description) > 0) {
             if ($profile) {
 
                 
