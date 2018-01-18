@@ -535,7 +535,7 @@ class Recruiter extends MY_Controller {
     public function add_post() {
         $this->data['title'] = 'Add Post | Recruiter Profile - Aileensoul';
 
-        if ($this->session->userdata('aileenuser')) {
+        if ($this->session->userdata('aileenuser')) { 
 
             $this->recruiter_apply_check();
 
