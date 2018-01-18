@@ -24,36 +24,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css_min/font-awesome.min.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
         <?php }?>
-        <style>
-            .cover .modal.in .modal-dialog{
-                top:inherit;
-                left:inherit;
-                -webkit-transform:inherit;
-                transform: inherit;
-                margin:0 auto;
-                float:none;
-                position:relative;
-            }
-            .modal.in .modal-dialog{
-                position:inherit;
-                top: inherit; left: inherit;
-                -ms-transform: inherit !important;
-                -webkit-transform: inherit !important;
-                -moz-transform: inherit !important;
-                -o-transform: inherit !important;
-                transform: inherit !important;
-            }
-            .modal-dialog {
-                height: auto;
-                width: 100%;
-                display: flex;
-                align-items: center;
-            }
-
-            .modal-content {
-                /*margin: 0 auto;*/
-                width:600px;
-            }
+        
         </style>
     </head>
     <body class="cover">
