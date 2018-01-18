@@ -175,15 +175,15 @@ class Search extends MY_Controller {
     public function ajax_business_search() {
 
 
-        // $perpage = 4;
-        // $page = 1;
-        // if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
-        //     $page = $_GET["page"];
-        // }
+        $perpage = 4;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
 
-        // $start = ($page - 1) * $perpage;
-        // if ($start < 0)
-        //     $start = 0;
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
 
         $business_login_slug = $this->data['business_login_slug'];
 
@@ -331,9 +331,9 @@ class Search extends MY_Controller {
             $_GET["total_record"] = count($business_profile1);
         }
        // echo "<pre>";  print_r(count($business_profile1)); die();
-        // $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
-        // $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
-        // $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+        $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
 
 //$this->load->view('business_profile/recommen_business', $this->data);
@@ -343,12 +343,12 @@ class Search extends MY_Controller {
             if ($profile) {
 
                 
-               // if($page  == 1){
+                if($page  == 1){
 
                 $return_html .= '<div class="profile-job-post-title-inside clearfix" style="">';
                 $return_html .= '<div class="profile_search" style="background-color: white; margin-bottom: 10px; margin-top: 10px;"><h4 class="search_head">Profiles</h4><div class="inner_search">';
 
-                            // }
+                     }
                                                         
                 foreach ($profile as $p) {
                     $return_html .= '<div class="profile-job-profile-button clearfix box_search_module">
