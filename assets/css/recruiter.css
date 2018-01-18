@@ -767,7 +767,7 @@ fieldset .add_post_btns{padding: 10px 30px 12px!important;}
     border-right: none;
 }
 .add-post-button a:hover {
-    color: #fff;
+    color: #1b8ab9;
 }
 .back {
     width: 84%;
@@ -1545,7 +1545,8 @@ fieldset.fresher_radio label {
 	/*** end add  ***/
 	.city-location .mian_middle_post_box{width:100%;}
     .no-login #paddingtop_fixed{padding-top: 132px !important;}
-    .no-login .btn-right{text-align: center !important;}    
+    .no-login .btn-right{text-align: center !important;}   
+    
 }
 
 @media screen and (max-width: 640px) {
@@ -1774,6 +1775,8 @@ fieldset.fresher_radio label {
         margin-left: 2px;
     }
     .no-login #paddingtop_fixed{padding-top: 105px !important;}
+    #artpost .fw fieldset:first-child label.error{position: relative !important;float: right;} 
+     #artpost .fw fieldset select+label.error{float: right;}    
 }
 
 @media screen and (max-width: 360px) {
