@@ -54,7 +54,7 @@ body.blog{
 }
 .blog-comment{
     font-size:12px;
-    cursor:pointer;
+    cursor:default;
     color:#2e2e2e
 }
 .blog_search{
