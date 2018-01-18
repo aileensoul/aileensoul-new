@@ -126,7 +126,7 @@
                                     <h1><a title="Freelance Profile" href="#">Freelance Profile</a></h1>
                                     <p>Hire freelancers and also find freelance work.</p>
                                     <div class="btns">
-                                        <a title="Take me in"  ng-if="details_data.rp_step == '3'" class="btn-4" ng-click="goMainLink('<?php echo base_url('freelancer'); ?>')">Take me in</a> 
+                                        <a title="Take me in"  ng-if="details_data.rp_step == '3'" class="btn-4" ng-click="goMainLink('<?php echo base_url('freelancer'); ?>')" ng-href="<?php echo base_url('freelancer'); ?>">Take me in</a> 
                                         <a title="Take me in" ng-if="details_data.rp_status == '0' && details_data.rp_step == '3'" class="btn-4" ng-click="goMainLink('<?php echo base_url('freelancer'); ?>')">Active</a> 
                                         <a title="Take me in" ng-if="details_data.fh_step == null && details_data.fp_step == null" class="btn-4" ng-click="goMainLink('<?php echo base_url('freelancer'); ?>')">Register</a> 
 										<a title="How it works" data-target="#fre-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>

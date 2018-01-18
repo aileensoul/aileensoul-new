@@ -176,6 +176,7 @@
                                         }
                                         })
                                         app.config(function ($routeProvider, $locationProvider) {
+                                           
                                         $routeProvider
                                                 .when("/profiless/:name*", {
                                                 templateUrl: base_url + "userprofile_page/profile",
@@ -201,9 +202,10 @@
                                                 templateUrl: base_url + "userprofile_page/following",
                                                         controller: 'followingController'
                                                 })
-//                    .otherwise({
+                    //.otherwise({
 //                    redirectTo: '/profiles/'
-//                    });
+                        
+                  //  });
                                                 $locationProvider.html5Mode(true);
                                         });
                                 app.controller('profilesController', function ($scope, $http, $location) {
