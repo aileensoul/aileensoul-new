@@ -181,10 +181,13 @@ header("Pragma: no-cache"); // HTTP/1.0
                 <div class="col-md-12 hidden-md hidden-lg pt20">
                     <div class="blog_search">
                         <div>
-                            <div class="searc_w"><input type="text" name="Search blog post" placeholder="Search Blog Post"></div>
-                            <div class="butn_w"><a href=""><i class="fa fa-search" aria-hidden="true"></i>
-                                </a>
-                            </div>
+                             <form action="<?php echo base_url('blog') ?>" method="get" autocomplete="off">
+                                            <div class="searc_w"><input type="text" name="p" id="p" placeholder="Search Blog Post"></div>
+                                            <button type="submit" class="butn_w" onclick="return checkvalue_one();"><i class="fa fa-search"></i></button> 
+
+
+                                        </form>
+
                         </div>
                     </div>
                 </div>
@@ -197,7 +200,7 @@ header("Pragma: no-cache"); // HTTP/1.0
 
                                         ?>
 
-                    <div class="custom-right-art mian_middle_post_box animated fadeInUp">
+                    <div class="blog_main_o">
                             <div class="common-form">
                                         <div class="job-saved-box">
 
