@@ -1114,6 +1114,8 @@ fieldset .add_post_btnc,fieldset .add_post_btns{
     border-top-right-radius:3px;
     border-bottom:none
 }
+.blog .job-saved-box h3{border: 1px solid #d9d9d9;}
+.blog .contact-frnd-post{border:1px solid #d9d9d9;border-top: none;: }
 .bg{
     background-color:#fff;
     border:1px solid #d9d9d9;
@@ -2435,7 +2437,8 @@ footer div.pt20{
 }
 
 .email_note{font-size: 11px;line-height: 1.2;float: left;padding-top: 5px;color: #999;}
-.vali_er .error{bottom: -8px;}
+.vali_er label.error{position: relative!important;right: 0px;width: 100%;text-align: right;top: 0px;margin-bottom: 0px;}
+.vali_er .email_note{padding-top: 0px !important;}
 .job_reg_page_fprm select{
     color: #acacac;
 }

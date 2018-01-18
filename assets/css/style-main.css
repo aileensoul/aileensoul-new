@@ -3328,6 +3328,7 @@ header.profile-header .logo a{
     .login .modal-dialog{height: auto;}
     .cus-chang{font-size: 20px!important;line-height: 26px;}
     .modal-dialog {height: auto !important;}
+    .blog .main-inner{padding-bottom: 0PX !important;}
 }
 @media screen and (max-width:640px){
     .btns .btn-4{
@@ -3422,6 +3423,7 @@ header.profile-header .logo a{
     .linkbox ul li,.profile-bnr img{
         width:100%
     }
+    .mian_middle_post_box{width: 100%;}
 }
 @media screen and (max-width:540px){
     .cus-about{

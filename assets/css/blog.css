@@ -827,6 +827,8 @@ label.error{
     .rel-blog-box h5{
         min-height:80px
     }
+    .blog_search{display: none;}
+    .hidden-xs .blog_search{display: block;}
 }
 @media screen and (max-width:767px){
     .date_blog_left{
@@ -915,6 +917,10 @@ label.error{
         padding:5px 0
     }
 	.load-more-blog li button{font-size:26px;}
+    .blog_search{display: block;}
+    .searc_w{width: 96%}
+    .butn_w{width: 4%;padding: 5px 0px !important;}
+    .butn_w a{padding: 6px 0px;}
 }
 @media screen and (max-width:639px){
     .em-py3{
