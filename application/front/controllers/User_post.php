@@ -195,7 +195,7 @@ class User_post extends MY_Controller {
         $data['comment'] = $comment;
         $data['modify_date'] = date('Y-m-d H:i:s', time());
         $updatedata = $this->common->update_data($data, 'user_post_comment', 'id', $comment_id);
-        if($updatedata){
+        if ($updatedata) {
             $return_array = array();
             $return_array['message'] = 1;
             echo json_encode($return_array);
@@ -302,56 +302,60 @@ class User_post extends MY_Controller {
     public function post_opportunity() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
-
+        
         $description = $_POST['description'];
         $field = $_POST['field'];
-        $job_title = $_POST['job_title'];
-        $location = $_POST['location'];
+        $job_title = json_decode($_POST['job_title'], TRUE);
+        $location = json_decode($_POST['location'], TRUE);
+        $post_for = $_POST['post_for'];
+
 
         $error = '';
-        if ($description == '') {
-            $error = 1;
-        } elseif ($field == '') {
-            $error = 1;
-        } elseif ($job_title[0]['name'] == '') {
-            $error = 1;
-        } elseif ($location[0]['city_name'] == '') {
-            $error = 1;
+        if ($post_for == 'opportunity') {
+            if ($description == '') {
+                $error = 1;
+            } elseif ($field == '') {
+                $error = 1;
+            } elseif ($job_title[0]['name'] == '') {
+                $error = 1;
+            } elseif ($location[0]['city_name'] == '') {
+                $error = 1;
+            }
         }
-
         if ($error != '1') {
-            foreach ($job_title as $title) {
-                $designation = $this->data_model->findJobTitle($title['name']);
-                if ($designation['title_id'] != '') {
-                    $jobTitleId = $designation['title_id'];
-                } else {
-                    $data = array();
-                    $data['name'] = $title['name'];
-                    $data['created_date'] = date('Y-m-d H:i:s', time());
-                    $data['modify_date'] = date('Y-m-d H:i:s', time());
-                    $data['status'] = 'draft';
-                    $data['slug'] = $this->common->clean($title['name']);
-                    $jobTitleId = $this->common->insert_data_getid($data, 'job_title');
+            if ($post_for == 'opportunity') {
+                foreach ($job_title as $title) {
+                    $designation = $this->data_model->findJobTitle($title['name']);
+                    if ($designation['title_id'] != '') {
+                        $jobTitleId = $designation['title_id'];
+                    } else {
+                        $data = array();
+                        $data['name'] = $title['name'];
+                        $data['created_date'] = date('Y-m-d H:i:s', time());
+                        $data['modify_date'] = date('Y-m-d H:i:s', time());
+                        $data['status'] = 'draft';
+                        $data['slug'] = $this->common->clean($title['name']);
+                        $jobTitleId = $this->common->insert_data_getid($data, 'job_title');
+                    }
+                    $job_title_id .= $jobTitleId . ',';
                 }
-                $job_title_id .= $jobTitleId . ',';
-            }
-            $job_title_id = trim($job_title_id, ',');
-            foreach ($location as $loc) {
-                $city = $this->data_model->findCityList($loc['city_name']);
-                if ($city['city_id'] != '') {
-                    $cityId = $city['city_id'];
-                } else {
-                    $data = array();
-                    $data['city_name'] = $loc['city_name'];
-                    $data['state_id'] = '0';
-                    $data['status'] = '2';
-                    $data['group_id'] = '0';
-                    $cityId = $this->common->insert_data_getid($data, 'cities');
+                $job_title_id = trim($job_title_id, ',');
+                foreach ($location as $loc) {
+                    $city = $this->data_model->findCityList($loc['city_name']);
+                    if ($city['city_id'] != '') {
+                        $cityId = $city['city_id'];
+                    } else {
+                        $data = array();
+                        $data['city_name'] = $loc['city_name'];
+                        $data['state_id'] = '0';
+                        $data['status'] = '2';
+                        $data['group_id'] = '0';
+                        $cityId = $this->common->insert_data_getid($data, 'cities');
+                    }
+                    $city_id .= $cityId . ',';
                 }
-                $city_id .= $cityId . ',';
+                $city_id = trim($city_id, ',');
             }
-            $city_id = trim($city_id, ',');
-
             $this->config->item('user_post_main_upload_path');
             $config = array(
                 'image_library' => 'gd',
@@ -369,7 +373,11 @@ class User_post extends MY_Controller {
 
             $insert_data = array();
             $insert_data['user_id'] = $userid;
-            $insert_data['post_for'] = 'opportunity';
+            if ($post_for == 'opportunity') {
+                $insert_data['post_for'] = 'opportunity';
+            } elseif ($post_for == 'simple') {
+                $insert_data['post_for'] = 'simple';
+            }
             $insert_data['post_id'] = '';
             $insert_data['created_date'] = date('Y-m-d H:i:s', time());
             $insert_data['status'] = 'publish';
@@ -377,23 +385,30 @@ class User_post extends MY_Controller {
 
             $user_post_id = $this->common->insert_data_getid($insert_data, 'user_post');
 
-            $insert_data = array();
-            $insert_data['post_id'] = $user_post_id;
-            $insert_data['opportunity_for'] = $job_title_id;
-            $insert_data['location'] = $city_id;
-            $insert_data['opportunity'] = $_POST['description'];
-            $insert_data['field'] = $_POST['field'];
-            $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
+            if ($post_for == 'opportunity') {
+                $insert_data = array();
+                $insert_data['post_id'] = $user_post_id;
+                $insert_data['opportunity_for'] = $job_title_id;
+                $insert_data['location'] = $city_id;
+                $insert_data['opportunity'] = $_POST['description'];
+                $insert_data['field'] = $_POST['field'];
+                $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
 
-            $user_opportunity_id = $this->common->insert_data_getid($insert_data, 'user_opportunity');
+                $inserted_id = $user_opportunity_id = $this->common->insert_data_getid($insert_data, 'user_opportunity');
+            } elseif ($post_for == 'simple') {
+                $insert_data = array();
+                $insert_data['post_id'] = $user_post_id;
+                $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
 
+                $inserted_id = $user_opportunity_id = $this->common->insert_data_getid($insert_data, 'user_opportunity');
+            }
             $update_data = array();
-            $update_data['post_id'] = $user_opportunity_id;
+            $update_data['post_id'] = $inserted_id;
             $update_post = $this->common->update_data($update_data, 'user_post', 'id', $user_post_id);
 
             $s3 = new S3(awsAccessKey, awsSecretKey);
             $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
-
+            
             if ($_FILES['postfiles']['name'][0] != '') {
 
                 for ($i = 0; $i < $count; $i++) {
@@ -724,10 +739,6 @@ class User_post extends MY_Controller {
                                 }
                             }
                             /* THIS CODE UNCOMMENTED AFTER SUCCESSFULLY WORKING : REMOVE IMAGE FROM UPLOAD FOLDER */
-
-                            $post_data = $this->user_post_model->userPost($userid);
-
-                            echo json_encode($post_data);
                         } else {
                             echo $this->upload->display_errors();
                             exit;
@@ -738,7 +749,10 @@ class User_post extends MY_Controller {
                     }
                 }
             }
+
+            $post_data = $this->user_post_model->userPost($userid, $limit = '1');
+            echo json_encode($post_data);
         }
     }
-
+    
 }

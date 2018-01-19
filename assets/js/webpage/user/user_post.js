@@ -52,10 +52,10 @@ app.directive('owlCarouselItem', [function () {
             }
         };
     }]);
-app.directive('fileInput', function () {
+app.directive('fileInput', function ($parse) {
     return {
         restrict: 'A',
-        link: function (scope, element, attrs) {
+        link: function ($scope, element, attrs) {
             $(element).fileinput({
                 uploadUrl: '#',
                 allowedFileExtensions: ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg', 'mp4', 'mp3', 'pdf'],
@@ -67,9 +67,15 @@ app.directive('fileInput', function () {
                     return filename.replace('(', '_').replace(']', '_');
                 }
             });
+            element.on("change", function (event) {
+                var files = event.target.files;
+                $parse(attrs.fileInput).assign($scope, element[0].files);
+                $scope.$apply();
+            });
         }
     };
 });
+
 // AUTO SCROLL MESSAGE DIV FIRST TIME END
 app.directive('ngEnter', function () {			// custom directive for sending message on enter click
     return function (scope, element, attrs) {
@@ -84,7 +90,8 @@ app.directive('ngEnter', function () {			// custom directive for sending message
     };
 });
 app.controller('userOppoController', function ($scope, $http) {
-
+    $scope.opp = {};
+    $scope.opp.post_for = 'opportunity';
     getUserOpportunity();
     function getUserOpportunity() {
         $http.get(base_url + "user_post/getUserOpportunity").then(function (success) {
@@ -135,7 +142,224 @@ app.controller('userOppoController', function ($scope, $http) {
         document.getElementById('location').value = c;
         document.getElementById('field').value = d;
     }
+
     $scope.post_opportunity_check = function (event) {
+
+        var fileInput = document.getElementById("fileInput").files;
+        var description = document.getElementById("description").value;
+        var description = description.trim();
+        var job_title = $scope.opp.job_title;
+        var location = $scope.opp.location;
+        var fileInput1 = document.getElementById("fileInput").value;
+        if ((fileInput1 == '') && (description == '' || job_title.length == '0' || location.length == '0'))
+        {
+            $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
+            $('#post').modal('show');
+            $(document).on('keydown', function (e) {
+                if (e.keyCode === 27) {
+                    $('#posterrormodal').modal('hide');
+                    $('.modal-post').show();
+                }
+            });
+            event.preventDefault();
+            return false;
+        } else {
+            for (var i = 0; i < fileInput.length; i++)
+            {
+                var vname = fileInput[i].name;
+                var vfirstname = fileInput[0].name;
+                var ext = vfirstname.split('.').pop();
+                var ext1 = vname.split('.').pop();
+                var allowedExtensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg'];
+                var allowesvideo = ['mp4', 'webm', 'mov', 'MP4'];
+                var allowesaudio = ['mp3'];
+                var allowespdf = ['pdf'];
+
+                var foundPresent = $.inArray(ext, allowedExtensions) > -1;
+                var foundPresentvideo = $.inArray(ext, allowesvideo) > -1;
+                var foundPresentaudio = $.inArray(ext, allowesaudio) > -1;
+                var foundPresentpdf = $.inArray(ext, allowespdf) > -1;
+
+                if (foundPresent == true)
+                {
+                    var foundPresent1 = $.inArray(ext1, allowedExtensions) > -1;
+                    if (foundPresent1 == true && fileInput.length <= 10) {
+                    } else {
+                        $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
+                        $('#posterrormodal').modal('show');
+                        setInterval('window.location.reload()', 10000);
+                        $(document).on('keydown', function (e) {
+                            if (e.keyCode === 27) {
+                                $('#posterrormodal').modal('hide');
+                                $('.modal-post').show();
+                            }
+                        });
+                        event.preventDefault();
+                        return false;
+                    }
+                } else if (foundPresentvideo == true)
+                {
+                    var foundPresent1 = $.inArray(ext1, allowesvideo) > -1;
+                    if (foundPresent1 == true && fileInput.length == 1) {
+                    } else {
+                        $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
+                        $('#posterrormodal').modal('show');
+                        setInterval('window.location.reload()', 10000);
+
+                        $(document).on('keydown', function (e) {
+                            if (e.keyCode === 27) {
+                                $('#posterrormodal').modal('hide');
+                                $('.modal-post').show();
+                            }
+                        });
+                        event.preventDefault();
+                        return false;
+                    }
+                } else if (foundPresentaudio == true)
+                {
+                    var foundPresent1 = $.inArray(ext1, allowesaudio) > -1;
+                    if (foundPresent1 == true && fileInput.length == 1) {
+
+                        if (product_name == '') {
+                            $('.biderror .mes').html("<div class='pop_content'>You have to add audio title.");
+                            $('#posterrormodal').modal('show');
+                            //setInterval('window.location.reload()', 10000);
+
+                            $(document).on('keydown', function (e) {
+                                if (e.keyCode === 27) {
+                                    //$( "#bidmodal" ).hide();
+                                    $('#posterrormodal').modal('hide');
+                                    $('.modal-post').show();
+                                }
+                            });
+                            event.preventDefault();
+                            return false;
+                        }
+
+                    } else {
+                        $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
+                        $('#posterrormodal').modal('show');
+                        setInterval('window.location.reload()', 10000);
+
+                        $(document).on('keydown', function (e) {
+                            if (e.keyCode === 27) {
+                                $('#posterrormodal').modal('hide');
+                                $('.modal-post').show();
+                            }
+                        });
+                        event.preventDefault();
+                        return false;
+                    }
+                } else if (foundPresentpdf == true)
+                {
+                    var foundPresent1 = $.inArray(ext1, allowespdf) > -1;
+                    if (foundPresent1 == true && fileInput.length == 1) {
+
+                        if (product_name == '') {
+                            $('.biderror .mes').html("<div class='pop_content'>You have to add pdf title.");
+                            $('#posterrormodal').modal('show');
+                            setInterval('window.location.reload()', 10000);
+
+                            $(document).on('keydown', function (e) {
+                                if (e.keyCode === 27) {
+                                    $('#posterrormodal').modal('hide');
+                                    $('.modal-post').show();
+                                }
+                            });
+                            event.preventDefault();
+                            return false;
+                        }
+                    } else {
+                        if (fileInput.length > 10) {
+                            $('.biderror .mes').html("<div class='pop_content'>You can not upload more than 10 files at a time.");
+                        } else {
+                            $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
+                        }
+                        $('#posterrormodal').modal('show');
+                        setInterval('window.location.reload()', 10000);
+
+                        $(document).on('keydown', function (e) {
+                            if (e.keyCode === 27) {
+                                $('#posterrormodal').modal('hide');
+                                $('.modal-post').show();
+
+                            }
+                        });
+                        event.preventDefault();
+                        return false;
+                    }
+                } else if (foundPresentvideo == false) {
+
+                    $('.biderror .mes').html("<div class='pop_content'>This File Format is not supported Please Try to Upload MP4 or WebM files..");
+                    $('#posterrormodal').modal('show');
+                    setInterval('window.location.reload()', 10000);
+
+                    $(document).on('keydown', function (e) {
+                        if (e.keyCode === 27) {
+                            $('#posterrormodal').modal('hide');
+                            $('.modal-post').show();
+
+                        }
+                    });
+                    event.preventDefault();
+                    return false;
+                }
+            }
+
+            var form_data = new FormData();
+            angular.forEach($scope.files, function (file) {
+                form_data.append('postfiles[]', file);
+            });
+            form_data.append('description', $scope.opp.description);
+            form_data.append('field', $scope.opp.field);
+            form_data.append('job_title', JSON.stringify($scope.opp.job_title));
+            form_data.append('location', JSON.stringify($scope.opp.location));
+            form_data.append('post_for', $scope.opp.post_for);
+            $http.post(base_url + 'user_post/post_opportunity', form_data,
+                    {
+                        transformRequest: angular.identity,
+                        headers: {'Content-Type': undefined, 'Process-Data': false}
+                    }).then(function (success) {
+                if (success) {
+                    $('body').removeClass('modal-open');
+                    $("#opportunity-popup").modal('hide');
+                    $scope.description = '';
+                    $scope.job_title = '';
+                    $scope.location = '';
+                    $scope.field = '';
+                    $scope.fileInput = '';
+                    $scope.postData.splice(0, 0, success.data[0]);
+                    $('video, audio').mediaelementplayer();
+                }
+            });
+            /*
+             $http({
+             method: 'POST',
+             url: base_url + 'user_post/post_opportunity',
+             data: $scope.opp,
+             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+             }).then(function (success) {
+             if (success) {
+             $('body').removeClass('modal-open');
+             $("#opportunity-popup").modal('hide');
+             $scope.description = '';
+             $scope.job_title = '';
+             $scope.location = '';
+             $scope.field = '';
+             $scope.fileInput = '';
+             $scope.postData.splice(0, 0, success.data[0]);
+             $('video, audio').mediaelementplayer();
+             }
+             });
+             */
+
+        }
+    }
+
+
+    // POST SOMETHING UPLOAD START
+
+    $scope.post_something_check = function (event) {
 
         var fileInput = document.getElementById("fileInput").files;
         var description = document.getElementById("description").value;
@@ -300,12 +524,8 @@ app.controller('userOppoController', function ($scope, $http) {
 
         }
     }
-    // POST UPLOAD START
 
-    var bar = $('.progress-bar');
-    var percent = $('.sr-only');
-    var options = {
-        data: {job_title: $scope.job_title, location: $scope.location},
+    var post_something_options = {
         beforeSend: function () {
             $('body').removeClass('modal-open');
             document.getElementById("progress_div").style.display = "block";
@@ -344,12 +564,13 @@ app.controller('userOppoController', function ($scope, $http) {
                 document.getElementById("art_no_post_avl").style.display = "none";
                 $("#dropdownclass").removeClass("no-post-h2");
             }
-//            $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
-//            check_no_post_data();
         }
     };
-    $("#post_opportunity").ajaxForm(options);
-    // POST UPLOAD END 
+    $("#post_something").ajaxForm(post_something_options);
+
+    // POST SOMETHING UPLOAD END
+
+
 
     $scope.addToContact = function (user_id, contact) {
         $http({

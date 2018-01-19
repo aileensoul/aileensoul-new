@@ -277,12 +277,12 @@
                 </div>
             </div>
         </div>
-        <div style="display:none;" class="modal fade" id="post-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--        <div style="display:none;" class="modal fade" id="post-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">×</button>
                     <div class="post-popup-box">
-                        <?php echo form_open_multipart(base_url('user_opportunities/user_post'), array('id' => 'user_post', 'name' => 'user_post', 'ng-submit' => "user_post_check(event)")); ?>
+                        <?php echo form_open_multipart(base_url('user_post/post_something'), array('id' => 'user_post', 'name' => 'user_post', 'ng-submit' => "post_something_check(event)")); ?>
                         <div class="post-box">
                             <div class="post-img">
                                 <?php if ($leftbox_data['user_image'] != '') { ?> 
@@ -323,6 +323,7 @@
                                         </a>
                                     </li>
                                 </ul>
+                                <input type="hidden" name="post_for" class="form-control" value="simple">
                                 <p class="pull-right">
                                     <button type="submit" class="btn1" value="Submit">Post</button>
                                 </p>
@@ -332,13 +333,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div style="display:none;" class="modal fade" id="opportunity-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">×</button>
                     <div class="post-popup-box">
-                        <?php echo form_open_multipart(base_url('user_opportunities/post_opportunity'), array('id' => 'post_opportunity', 'name' => 'post_opportunity', 'ng-submit' => "post_opportunity_check(event)")); ?>
+                        <form id="post_opportunity" name="post_opportunity" ng-submit="post_opportunity_check(event)">
                         <div class="post-box">
                             <div class="post-img">
                                 <?php if ($leftbox_data['user_image'] != '') { ?> 
@@ -348,11 +349,11 @@
                                 <?php } ?>
                             </div>
                             <div class="post-text">
-                                <textarea name="description" ng-model="description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
+                                <textarea name="description" ng-model="opp.description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
                             </div>
                             <div class="all-upload">
                                 <div class="form-group">
-                                    <input file-input type="file" ng-model="fileInput" id="fileInput" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+                                    <input file-input="files" ng-file-model="opp.postfiles" type="file" id="fileInput" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
                                 </div>
                                 <label for="fileInput" ng-click="postFiles()">
                                     <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
@@ -365,7 +366,7 @@
                         <div class="post-field">
                             <div id="content" class="form-group">
                                 <label>FOR WHOM THIS OPPORTUNITY ?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
-                                <tags-input ng-model="job_title" display-property="name" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, PHP Developer, HR, BDE, CA, Doctor, Freelancer.." replace-spaces-with-dashes="false" template="title-template" on-tag-added="onKeyup()">
+                                <tags-input ng-model="opp.job_title" display-property="name" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, PHP Developer, HR, BDE, CA, Doctor, Freelancer.." replace-spaces-with-dashes="false" template="title-template" on-tag-added="onKeyup()">
                                     <auto-complete source="loadJobTitle($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="title-autocomplete-template"></auto-complete>
                                 </tags-input>
                                 <script type="text/ng-template" id="title-template">
@@ -378,7 +379,7 @@
 
                             <div class="form-group">
                                 <label>WHICH LOCATION?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
-                                <tags-input ng-model="location" display-property="city_name" placeholder="Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.." replace-spaces-with-dashes="false" template="location-template" on-tag-added="onKeyup()">
+                                <tags-input ng-model="opp.location" display-property="city_name" placeholder="Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.." replace-spaces-with-dashes="false" template="location-template" on-tag-added="onKeyup()">
                                     <auto-complete source="loadLocation($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="location-autocomplete-template"></auto-complete>
                                 </tags-input>
                                 <script type="text/ng-template" id="location-template">
@@ -391,20 +392,22 @@
                             <div class="form-group">
                                 <label>What is your field?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
                                 <!--<input name="field" id="field" type="text" placeholder="What is your field?" autocomplete="off">-->
-                                <select name="field" ng-model="field" id="field" ng-change="other_field(this)">
+                                <select name="field" ng-model="opp.field" id="field" ng-change="other_field(this)">
                                     <option value="" selected="selected">Select your field</option>
                                     <option data-ng-repeat='fieldItem in fieldList' value='{{fieldItem.industry_id}}'>{{fieldItem.industry_name}}</option>             
                                     <option value="0">Other</option>
                                 </select>
                             </div>
                             <div class="form-group" ng-if="field == '0'">
-                                <input type="text" class="form-control" ng-model="otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
+                                <input type="text" class="form-control" ng-model="opp.otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
                             </div>
+                            <input type="hidden" name="post_for" ng-model="opp.post_for" class="form-control" value="">
                         </div>
                         <div class="text-right fw pt10 pb20 pr15">
                             <button type="submit" class="btn1"  value="Submit">Post</button>    
                         </div>
-                        <?php echo form_close(); ?>
+                        <?php// echo form_close(); ?>
+                        </form>
                     </div>
                 </div>
             </div>
