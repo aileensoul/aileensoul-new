@@ -834,6 +834,8 @@
             function login_profile() {
                 $('#login').modal('show');
                 $('#register').modal('hide');
+                $('body').addClass('modal-open-other');   
+
             }
             function register_profile() {
                 $('#login').modal('hide');
@@ -847,6 +849,12 @@
             function forgot_close() {
                // $('#login').modal('show');
             }
+
+            $('.modal-close').click(function(e){ 
+    $('body').removeClass('modal-open-other'); 
+    //$('#login').modal('show');
+});
+
 
         </script>
         <script>
