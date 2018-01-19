@@ -42,7 +42,7 @@
 ?>
 <body class="cus-no-login botton_footer">
   <?php }else{?>
- <body class="cus-no-login botton_footer model-open">
+ <body class="cus-no-login botton_footer model-open no-login">
 
    <header>
             <div class="container">

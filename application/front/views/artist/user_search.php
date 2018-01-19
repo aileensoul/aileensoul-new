@@ -43,7 +43,7 @@
 
     <?php } ?>
 
-    <body>
+    <body class="no-login">
         <?php if (!$this->session->userdata('aileenuser')) {  ?>
             <header>
                 <div class="container">
