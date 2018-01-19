@@ -541,6 +541,8 @@ app.controller('userOppoController', function ($scope, $http) {
 
     var _onPaste_StripFormatting_IEPaste = false;
     $scope.OnPaste_StripFormatting = function (elem, e) {
+        alert(1231);
+        return false;
         if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
             e.preventDefault();
             var text = e.originalEvent.clipboardData.getData('text/plain');

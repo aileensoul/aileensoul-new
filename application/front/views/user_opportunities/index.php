@@ -52,7 +52,7 @@
                 <?php echo $n_leftbar; ?>
                 <div class="middle-part">
                     <div class="add-post">
-                        <div class="post-box" data-target="#opportunity-popup" data-toggle="modal">
+                        <div class="post-box" data-target="#post-popup" data-toggle="modal">
                             <div class="post-img">
                                 <?php if ($leftbox_data['user_image'] != '') { ?> 
                                     <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
@@ -61,9 +61,31 @@
                                 <?php } ?>
                             </div>
                             <div class="post-text">
-                                Post Opportunity
+                                Share an opportunity, Article
                             </div>
-                            <span class="post-cam"><i class="fa fa-camera"></i></span>
+                            <!--<span class="post-cam"><i class="fa fa-camera"></i></span>-->
+                        </div>
+                        <div class="post-box-bottom">
+                            <ul>
+                                <li>
+                                    <a href="javascript:void(0);" data-target="#opportunity-popup" data-toggle="modal">
+                                        <img src="<?php echo base_url('assets/n-images/post-op.png') ?>"><span>Post Opportunity</span>
+                                    </a>
+                                </li>
+                                <li class="pl15">
+                                    <a href="article.html">
+                                        <img src="<?php echo base_url('assets/n-images/article.png') ?>"><span>Post Article</span>
+                                    </a>
+                                </li>
+                                <li class="pl15">
+                                    <a href="javascript:void(0);" data-target="#ask-question" data-toggle="modal">
+                                        <img src="<?php echo base_url('assets/n-images/ask-qustion.png') ?>"><span>Ask Quastion</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <p class="pull-right">
+                                <button type="submit" class="btn1" value="Submit">Post</button>
+                            </p>
                         </div>
                     </div>
                     <div class="bs-example">
@@ -136,7 +158,7 @@
                             </div>
                             </span>
                             <div class="post-images four-img" ng-if="post.post_data.total_post_files >= '4'">
-                                <div class="two-img" ng-repeat="post_file in post.post_file_data | limitTo:4">
+                                <div class="two-img" ng-repeat="post_file in post.post_file_data| limitTo:4">
                                     <a href="#"><img ng-src="<?php echo USER_POST_RESIZE2_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
                                     <div class="view-more-img" ng-if="$index == '3' && post.post_data.total_post_files > '4'">
                                         <span>View All (+4)</span>
@@ -181,7 +203,7 @@
                                     <div class="comment-dis">
                                         <div class="comment-name"><a ng-bind="comment.username"></a></div>
                                         <div class="comment-dis-inner" id="comment-dis-inner-{{comment.comment_id}}" ng-bind-html="comment.comment"></div>
-                                            <div class="edit-comment" id="edit-comment-{{comment.comment_id}}" style="display:none;">
+                                        <div class="edit-comment" id="edit-comment-{{comment.comment_id}}" style="display:none;">
                                             <div class="comment-input">
                                                 <div contenteditable data-directive ng-model="editComment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-change="isMsgBoxEmpty = false" class="editable_text" placeholder="Add a Comment ..." ng-enter="sendEditComment({{comment.comment_id}},$index,post)" id="editCommentTaxBox-{{comment.comment_id}}" ng-focus="setFocus" focus-me="setFocus" ng-paste="OnPaste_StripFormatting(this, event);"></div>
                                             </div>
@@ -255,7 +277,62 @@
                 </div>
             </div>
         </div>
-
+        <div style="display:none;" class="modal fade" id="post-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">×</button>
+                    <div class="post-popup-box">
+                        <?php echo form_open_multipart(base_url('user_opportunities/user_post'), array('id' => 'user_post', 'name' => 'user_post', 'ng-submit' => "user_post_check(event)")); ?>
+                        <div class="post-box">
+                            <div class="post-img">
+                                <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                    <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                <?php } else { ?>
+                                    <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                <?php } ?>
+                            </div>
+                            <div class="post-text">
+                                <textarea class="title-text-area" placeholder="Write something here..."></textarea>
+                            </div>
+                            <div class="all-upload">
+                                <div class="form-group">
+                                    <input file-input type="file" ng-model="fileInput" id="fileInput" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+                                </div>
+                                <label for="fileInput" ng-click="postFiles()">
+                                    <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
+                                    <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
+                                    <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
+                                    <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
+                                </label>
+                            </div>
+                            <div class="post-box-bottom">
+                                <ul>
+                                    <li>
+                                        <a href="javascript:void(0);" data-target="#opportunity-popup" data-toggle="modal">
+                                            <img src="<?php echo base_url('assets/n-images/post-op.png') ?>"><span>Post Opportunity</span>
+                                        </a>
+                                    </li>
+                                    <li class="pl15">
+                                        <a href="article.html">
+                                            <img src="<?php echo base_url('assets/n-images/article.png') ?>"><span>Post Article</span>
+                                        </a>
+                                    </li>
+                                    <li class="pl15">
+                                        <a href="javascript:void(0);" data-target="#ask-question" data-toggle="modal">
+                                            <img src="<?php echo base_url('assets/n-images/ask-qustion.png') ?>"><span>Ask Quastion</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p class="pull-right">
+                                    <button type="submit" class="btn1" value="Submit">Post</button>
+                                </p>
+                            </div>
+                        </div>
+                        <?php echo form_close(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div style="display:none;" class="modal fade" id="opportunity-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -286,8 +363,9 @@
                             </div>
                         </div>
                         <div class="post-field">
-                            <div class="form-group">
-                                <tags-input ng-model="job_title" display-property="name" placeholder="FOR WHOM THIS OPPORTUNITY?" replace-spaces-with-dashes="false" template="title-template" on-tag-added="onKeyup()">
+                            <div id="content" class="form-group">
+                                <label>FOR WHOM THIS OPPORTUNITY ?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                <tags-input ng-model="job_title" display-property="name" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, PHP Developer, HR, BDE, CA, Doctor, Freelancer.." replace-spaces-with-dashes="false" template="title-template" on-tag-added="onKeyup()">
                                     <auto-complete source="loadJobTitle($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="title-autocomplete-template"></auto-complete>
                                 </tags-input>
                                 <script type="text/ng-template" id="title-template">
@@ -299,7 +377,8 @@
                             </div>
 
                             <div class="form-group">
-                                <tags-input ng-model="location" display-property="city_name" placeholder="WHICH LOCATION?" replace-spaces-with-dashes="false" template="location-template" on-tag-added="onKeyup()">
+                                <label>WHICH LOCATION?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                <tags-input ng-model="location" display-property="city_name" placeholder="Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.." replace-spaces-with-dashes="false" template="location-template" on-tag-added="onKeyup()">
                                     <auto-complete source="loadLocation($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="location-autocomplete-template"></auto-complete>
                                 </tags-input>
                                 <script type="text/ng-template" id="location-template">
@@ -310,6 +389,7 @@
                                 </script>
                             </div>
                             <div class="form-group">
+                                <label>What is your field?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
                                 <!--<input name="field" id="field" type="text" placeholder="What is your field?" autocomplete="off">-->
                                 <select name="field" ng-model="field" id="field" ng-change="other_field(this)">
                                     <option value="" selected="selected">Select your field</option>
@@ -321,10 +401,62 @@
                                 <input type="text" class="form-control" ng-model="otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
                             </div>
                         </div>
-                        <div class="text-right fw pt10">
+                        <div class="text-right fw pt10 pb20 pr15">
                             <button type="submit" class="btn1"  value="Submit">Post</button>    
                         </div>
                         <?php echo form_close(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display:none;" class="modal fade" id="ask-question" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">×</button>
+                    <div class="post-popup-box">
+                        <form>
+                            <div class="post-box">
+                                <div class="post-img">
+                                    <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                        <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                    <?php } else { ?>
+                                        <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                    <?php } ?>
+                                </div>
+                                <div class="post-text">
+                                    <textarea class="title-text-area" placeholder="Ask Quastion"></textarea>
+                                </div>
+                                <div class="all-upload">
+                                    <label for="file-1">
+                                        <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Add Screenshot </span></i>
+                                        <i class="fa fa fa-link upload_icon"><span class="upload_span_icon"> Add Link</span>  </i> 
+
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="post-field">
+                                <div class="form-group">
+                                    <label>Add Description<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <textarea rows="1" max-rows="5" placeholder="Add Description" cols="10" style="resize:none"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Related Categories<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <input type="text" class="" placeholder="Related Categories">
+                                </div>
+                                <div class="form-group">
+                                    <label>From which field the Question asked?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <select>
+                                        <option>What is your field</option>
+                                        <option>IT</option>
+                                        <option>Teacher</option>
+                                        <option>Sports</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="text-right fw pt10 pb20 pr15">
+                                <button type="submit" class="btn1"  value="Submit">Post</button> 
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
