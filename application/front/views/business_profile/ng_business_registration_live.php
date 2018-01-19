@@ -494,7 +494,7 @@
                             <div class="right-main-inner">
                                 <div class="">
                                     <div id="forgotbuton"></div> 
-                                    <div class="title">
+                                    <div class="title">  
                                         <h1 class="ttc tlh2">Forgot Password</h1>
                                     </div>
                                     <?php
