@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class User_opportunities extends MY_Controller {
+class User_post extends MY_Controller {
 
     public $data;
 

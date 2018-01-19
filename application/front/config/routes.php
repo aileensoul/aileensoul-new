@@ -66,7 +66,7 @@ $route['followers/(:any)'] = 'Userprofile';
 $route['following/(:any)'] = 'Userprofile';
 $route['contacts/(:any)'] = 'Userprofile';
 
-$route['opportunities'] = 'user_opportunities';
+$route['opportunities'] = 'user_post';
 
 //$route['default_controller'] = 'under_construction';
 

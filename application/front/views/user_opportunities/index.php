@@ -292,7 +292,7 @@
                                 <?php } ?>
                             </div>
                             <div class="post-text">
-                                <textarea class="title-text-area" placeholder="Write something here..."></textarea>
+                                <textarea class="title-text-area" name="description" ng-model="description" placeholder="Write something here..."></textarea>
                             </div>
                             <div class="all-upload">
                                 <div class="form-group">
