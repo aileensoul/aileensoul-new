@@ -735,6 +735,7 @@ label.error{
 	font-size: 14px;
 	color: #272222;
 }
+header .col-md-4.col-sm-3 a{display: inline-block;}
 
 @media screen and (max-width:1279px){
     .term_desc{

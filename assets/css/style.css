@@ -3290,7 +3290,7 @@ footer div.pt20{
             margin-right:5px!important
         }
         .login .form-group select{
-            margin-right:27px!important
+            margin-right:12px!important
         }
         .login .form-group select.day,.login .form-group select.month,.login .form-group select.year{
             width:50px!important;
@@ -3307,7 +3307,7 @@ footer div.pt20{
             width:44px!important
         }
         .login .form-group select{
-            margin-right:20px!important
+            margin-right:12px!important
         }
     }
     @keyframes bounce_floatBarsG{
