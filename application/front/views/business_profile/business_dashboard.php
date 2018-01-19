@@ -494,7 +494,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 $('#forgotPassword').modal('show');
                 $('#register').modal('hide');
                 $('#login').modal('hide');
+                $('body').addClass('modal-open-other'); 
             }
+
+
+            $('.modal-close').click(function(e){ 
+    $('body').removeClass('modal-open-other'); 
+    //$('#login').modal('show');
+});
         </script>
         <script type="text/javascript">
             function login()
