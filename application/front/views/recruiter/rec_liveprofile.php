@@ -972,10 +972,14 @@ $(document).ready(function () {
 
     function login_profile() {
                 $('#register').modal('show');
+                 $('body').addClass('modal-open-other');
+                
             }
              function login_data() { 
                 $('#login').modal('show');
                 $('#register').modal('hide');
+                 $('body').addClass('modal-open-other');
+
 
             }
             function register_profile() {
@@ -985,11 +989,13 @@ $(document).ready(function () {
             function forgot_profile() {
                  $('#login').modal('hide');
                 $('#forgotPassword').modal('show');
+                 $('body').addClass('modal-open-other');
             }
 
 
  $(".modal-close").click(function(){
     $('#login').modal('show');
+     $('body').addClass('modal-open-other');
 });
 </script>
 
