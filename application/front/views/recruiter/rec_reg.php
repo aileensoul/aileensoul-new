@@ -273,7 +273,7 @@
       <!-- Model Popup Close -->
           <!-- register -->
 
-        <div class="modal fade register-model login" id="register" role="dialog">
+        <div class="modal fade register-model login" data-backdrop="static" data-keyboard="false" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
                     <div class="modal-body">

@@ -761,7 +761,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
           <!-- register -->
 
-        <div class="modal fade login register-model" id="register" role="dialog">
+        <div class="modal fade login register-model" data-backdrop="static" data-keyboard="false" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">      
                     <div class="modal-body">
