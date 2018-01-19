@@ -82,6 +82,12 @@ function artistic_search_post(pagenum) {
             $('.loader').remove();
             $('.job-contact-frnd').append(data);
 
+            var numItems = $('.job-contact-frnd .profile_search').length;
+            // return false;
+            if (numItems == 0) {
+                $('.contact-frnd-post').addClass('cust-bor');
+            }
+
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {

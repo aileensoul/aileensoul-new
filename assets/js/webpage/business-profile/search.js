@@ -54,13 +54,13 @@ function business_search_post(pagenum) {
             //$('#loader').remove();
             $('.job-contact-frnd').append(data);
 
- //display border for no projects available start
+
             var numItems = $('.job-contact-frnd .profile-job-post-title-inside').length;
             // return false;
             if (numItems == 0) {
-                $('.job-contact-frnd').addClass('cust-bor');
+                $('.contact-frnd-post').addClass('cust-bor');
             }
-            //display border for no projects available end
+   
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
