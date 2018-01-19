@@ -36,6 +36,13 @@ $(document).ready(function () {
     $("a.designation").click(divClicked);
     if (!user_session) {
         $('#register').modal('show');
+   
+//        $('#register').modal({
+//            show: true,
+//            keyboard: false,
+//            backdrop: 'static'
+//        });
+
     }
     // for registation of main profile start
     $.validator.addMethod("lowercase", function (value, element, regexpr) {
@@ -403,6 +410,7 @@ function submitforgotForm()
 //ALL POPUP CLOSE USING ESC START
 $(document).on('keydown', function (e) {
     if (e.keyCode == 27) {
+      //  alert(111);
         //$( "#bidmodal" ).hide();
         $('#bidmodal-2').modal('hide');
     }
