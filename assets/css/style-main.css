@@ -2623,6 +2623,7 @@ header.profile-header .logo a{
     border-bottom: 1px solid #1b8ab9 !important;   
     color: #1b8ab9;
 }
+header .col-md-4.col-sm-3 a{display: inline-block;}
 
 
 @media screen and (min-height:540px){
