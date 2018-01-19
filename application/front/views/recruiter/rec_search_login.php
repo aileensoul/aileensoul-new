@@ -23,7 +23,7 @@
    </head>
    <!-- END HEAD -->
  
-   <body class="page-container-bg-solid page-boxed">
+   <body class="page-container-bg-solid page-boxed no-login">
 <?php if(!$this->session->userdata('aileenuser')){ ?>
      <header>
             <div class="container">

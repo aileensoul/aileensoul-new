@@ -391,6 +391,7 @@ function submitforgotForm()
         function login_profile() {
                 $('#login').modal('show');
                 $('#register').modal('hide');
+                $('body').addClass('modal-open-other');
             }
             function register_profile() {
                 $('#login').modal('hide');
@@ -400,9 +401,11 @@ function submitforgotForm()
                 
                 $('#login').modal('hide');
                 $('#forgotPassword').modal('show');
+                $('body').addClass('modal-open-other');
             }
             function forgot_close(){
                 $('#login').modal('show');
+                $('body').addClass('modal-open-other');
             }
 
       $(document).on('click', '[data-toggle*=modal]', function () {
