@@ -120,7 +120,7 @@
                                                     echo 'checked';
                                                 }
                                             } else {
-                                                if ($job[0]['user_gender'] == 'M') {
+                                                if ($job['user_gender'] == 'M') {
                                                     echo 'checked';
                                                 }
                                             }
@@ -131,7 +131,7 @@
                                                     echo 'checked';
                                                 }
                                             } else {
-                                                if ($job[0]['user_gender'] == 'F') {
+                                                if ($job['user_gender'] == 'F') {
                                                     echo 'checked';
                                                 }
                                             }
@@ -222,7 +222,7 @@ if (IS_JOB_JS_MINIFY == '0') {
 <?php } ?>
             <script>
                                                 var base_url = '<?php echo base_url(); ?>';
-                                                var date_picker = '<?php echo date('Y-m-d', strtotime($job[0]['user_dob'])); ?>';
+                                                var date_picker = '<?php echo date('Y-m-d', strtotime($job['user_dob'])); ?>';
                                                 var date_picker_edit = '<?php echo date('Y-m-d', strtotime($dob1)); ?>';
 
             </script>
