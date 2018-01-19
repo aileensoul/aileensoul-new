@@ -3001,7 +3001,7 @@ label.cameraButton:active {
     float: left;
     width: 60%;
 }
-..designation_rec ul li {
+.designation_rec ul li {
     list-style: none;
 }
 .profile-job-post-title-inside .profile_search {
