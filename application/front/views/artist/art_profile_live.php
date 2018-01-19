@@ -545,7 +545,15 @@ if ($artisticdata[0]['art_bestofmine']) {
                 $('#forgotPassword').modal('show');
                 $('#register').modal('hide');
                 $('#login').modal('hide');
+                $('body').addClass('modal-open-other');   
+
             }
+
+
+            $('.modal-close').click(function(e){ 
+    $('body').removeClass('modal-open-other'); 
+    //$('#login').modal('show');
+});
 </script>
 
 <script type="text/javascript">
@@ -940,9 +948,9 @@ var slug = '<?php echo $artid; ?>';
                 });
             });
             $(document).ready(function () {
-                setTimeout(function () {
+               // setTimeout(function () {
                     $('#register').modal('show');
-                }, 2000);
+                //}, 2000);
             });
         </script>
         
