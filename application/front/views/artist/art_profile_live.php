@@ -531,15 +531,18 @@ if ($artisticdata[0]['art_bestofmine']) {
 <script>
             function login_profile() {
                 $('#register').modal('show');
+                 $('body').addClass('modal-open-other'); 
             }
              function login_data() { 
                 $('#login').modal('show');
                 $('#register').modal('hide');
+                 $('body').addClass('modal-open-other'); 
 
             }
             function register_profile() {
                 $('#login').modal('hide');
                 $('#register').modal('show');
+
             }
             function forgot_profile() {
                 $('#forgotPassword').modal('show');
