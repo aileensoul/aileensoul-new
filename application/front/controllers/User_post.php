@@ -287,6 +287,7 @@ class User_post extends MY_Controller {
             } else {
                 $return_array['message'] = '0';
                 $return_array['likePost_count'] = $this->likePost_count($post_id);
+                $return_array['post_like_data'] = '';
             }
         }
         echo json_encode($return_array);
@@ -302,7 +303,7 @@ class User_post extends MY_Controller {
     public function post_opportunity() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
-        
+
         $description = $_POST['description'];
         $field = $_POST['field'];
         $job_title = json_decode($_POST['job_title'], TRUE);
@@ -398,9 +399,10 @@ class User_post extends MY_Controller {
             } elseif ($post_for == 'simple') {
                 $insert_data = array();
                 $insert_data['post_id'] = $user_post_id;
+                $insert_data['description'] = $_POST['description'];
                 $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
 
-                $inserted_id = $user_opportunity_id = $this->common->insert_data_getid($insert_data, 'user_opportunity');
+                $inserted_id = $user_simple_id = $this->common->insert_data_getid($insert_data, 'user_simple_post');
             }
             $update_data = array();
             $update_data['post_id'] = $inserted_id;
@@ -408,7 +410,7 @@ class User_post extends MY_Controller {
 
             $s3 = new S3(awsAccessKey, awsSecretKey);
             $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
-            
+
             if ($_FILES['postfiles']['name'][0] != '') {
 
                 for ($i = 0; $i < $count; $i++) {
@@ -482,16 +484,19 @@ class User_post extends MY_Controller {
                             /* RESIZE */
 
                             $main_image = $this->config->item('user_post_main_upload_path') . $response['result'][$i]['file_name'];
-                            $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
-
+                            if (IMAGEPATHFROM == 's3bucket') {
+                                $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+                            }
+                            
                             $post_poster = $response['result'][$i]['file_name'];
                             $post_poster1 = explode('.', $post_poster);
                             $post_poster2 = end($post_poster1);
                             $post_poster = str_replace($post_poster2, 'png', $post_poster);
 
                             $main_image1 = $this->config->item('user_post_main_upload_path') . $post_poster;
-                            $abc = $s3->putObjectFile($main_image1, bucket, $main_image1, S3::ACL_PUBLIC_READ);
-
+                            if (IMAGEPATHFROM == 's3bucket') {
+                                $abc = $s3->putObjectFile($main_image1, bucket, $main_image1, S3::ACL_PUBLIC_READ);
+                            }
                             $image_width = $response['result'][$i]['image_width'];
                             $image_height = $response['result'][$i]['image_height'];
 
@@ -536,7 +541,9 @@ class User_post extends MY_Controller {
                                 $this->$instanse4->clear();
 
                                 $resize_image4 = $this->config->item('user_post_resize4_upload_path') . $response['result'][$i]['file_name'];
-                                $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
+                                if (IMAGEPATHFROM == 's3bucket') {
+                                    $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
+                                }
                                 /* RESIZE 4 */
                             }
 
@@ -576,9 +583,9 @@ class User_post extends MY_Controller {
                             $this->$instanse->resize();
 
                             $thumb_image = $this->config->item('user_post_thumb_upload_path') . $response['result'][$i]['file_name'];
-
-                            $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
-
+                            if (IMAGEPATHFROM == 's3bucket') {
+                                $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+                            }
                             if ($count == '2' || $count == '3') {
                                 /* CROP 335 X 320 */
                                 // reconfigure the image lib for cropping
@@ -617,8 +624,9 @@ class User_post extends MY_Controller {
                                 $this->$instanse1->crop();
 
                                 $resize_image = $this->config->item('user_post_resize1_upload_path') . $response['result'][$i]['file_name'];
-
-                                $abc = $s3->putObjectFile($resize_image, bucket, $resize_image, S3::ACL_PUBLIC_READ);
+                                if (IMAGEPATHFROM == 's3bucket') {
+                                    $abc = $s3->putObjectFile($resize_image, bucket, $resize_image, S3::ACL_PUBLIC_READ);
+                                }
                                 /* CROP 335 X 320 */
                             }
                             if ($count == '4' || $count > '4') {
@@ -660,8 +668,9 @@ class User_post extends MY_Controller {
                                 $this->$instanse2->crop();
 
                                 $resize_image1 = $this->config->item('user_post_resize2_upload_path') . $response['result'][$i]['file_name'];
-
-                                $abc = $s3->putObjectFile($resize_image1, bucket, $resize_image1, S3::ACL_PUBLIC_READ);
+                                if (IMAGEPATHFROM == 's3bucket') {
+                                    $abc = $s3->putObjectFile($resize_image1, bucket, $resize_image1, S3::ACL_PUBLIC_READ);
+                                }
 
                                 /* CROP 335 X 245 */
                             }
@@ -701,7 +710,9 @@ class User_post extends MY_Controller {
                             //Creating Thumbnail
                             $this->$instanse3->crop();
                             $resize_image2 = $this->config->item('user_post_resize3_upload_path') . $response['result'][$i]['file_name'];
-                            $abc = $s3->putObjectFile($resize_image2, bucket, $resize_image2, S3::ACL_PUBLIC_READ);
+                            if (IMAGEPATHFROM == 's3bucket') {
+                                $abc = $s3->putObjectFile($resize_image2, bucket, $resize_image2, S3::ACL_PUBLIC_READ);
+                            }
 
                             /* CROP 210 X 210 */
                             $response['error'][] = $thumberror = $this->$instanse->display_errors();
@@ -754,5 +765,5 @@ class User_post extends MY_Controller {
             echo json_encode($post_data);
         }
     }
-    
+
 }

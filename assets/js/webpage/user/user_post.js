@@ -91,7 +91,9 @@ app.directive('ngEnter', function () {			// custom directive for sending message
 });
 app.controller('userOppoController', function ($scope, $http) {
     $scope.opp = {};
+    $scope.sim = {};
     $scope.opp.post_for = 'opportunity';
+    $scope.sim.post_for = 'simple';
     getUserOpportunity();
     function getUserOpportunity() {
         $http.get(base_url + "user_post/getUserOpportunity").then(function (success) {
@@ -315,44 +317,28 @@ app.controller('userOppoController', function ($scope, $http) {
             form_data.append('job_title', JSON.stringify($scope.opp.job_title));
             form_data.append('location', JSON.stringify($scope.opp.location));
             form_data.append('post_for', $scope.opp.post_for);
+
+            $('body').removeClass('modal-open');
+            $("#opportunity-popup").modal('hide');
+
+
             $http.post(base_url + 'user_post/post_opportunity', form_data,
                     {
                         transformRequest: angular.identity,
-                        headers: {'Content-Type': undefined, 'Process-Data': false}
-                    }).then(function (success) {
-                if (success) {
-                    $('body').removeClass('modal-open');
-                    $("#opportunity-popup").modal('hide');
-                    $scope.description = '';
-                    $scope.job_title = '';
-                    $scope.location = '';
-                    $scope.field = '';
-                    $scope.fileInput = '';
-                    $scope.postData.splice(0, 0, success.data[0]);
-                    $('video, audio').mediaelementplayer();
-                }
-            });
-            /*
-             $http({
-             method: 'POST',
-             url: base_url + 'user_post/post_opportunity',
-             data: $scope.opp,
-             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-             }).then(function (success) {
-             if (success) {
-             $('body').removeClass('modal-open');
-             $("#opportunity-popup").modal('hide');
-             $scope.description = '';
-             $scope.job_title = '';
-             $scope.location = '';
-             $scope.field = '';
-             $scope.fileInput = '';
-             $scope.postData.splice(0, 0, success.data[0]);
-             $('video, audio').mediaelementplayer();
-             }
-             });
-             */
 
+                        headers: {'Content-Type': undefined, 'Process-Data': false}
+                    })
+                    .then(function (success) {
+                        if (success) {
+                            $scope.description = '';
+                            $scope.job_title = '';
+                            $scope.location = '';
+                            $scope.field = '';
+                            $scope.fileInput = '';
+                            $scope.postData.splice(0, 0, success.data[0]);
+                            $('video, audio').mediaelementplayer();
+                        }
+                    });
         }
     }
 
@@ -361,13 +347,11 @@ app.controller('userOppoController', function ($scope, $http) {
 
     $scope.post_something_check = function (event) {
 
-        var fileInput = document.getElementById("fileInput").files;
+        var fileInput = document.getElementById("fileInput1").files;
         var description = document.getElementById("description").value;
         var description = description.trim();
-        var job_title = $scope.job_title;
-        var location = $scope.location;
-        var fileInput = document.getElementById("fileInput").value;
-        if ((fileInput == '') && (description == '' || job_title.length == '0' || location.length == '0'))
+        var fileInput = document.getElementById("fileInput1").value;
+        if (fileInput == '' || description == '')
         {
             $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
             $('#post').modal('show');
@@ -522,53 +506,36 @@ app.controller('userOppoController', function ($scope, $http) {
                 }
             }
 
+            var form_data = new FormData();
+            angular.forEach($scope.files, function (file) {
+                form_data.append('postfiles[]', file);
+            });
+            form_data.append('description', $scope.sim.description);
+            form_data.append('post_for', $scope.sim.post_for);
+
+            $('body').removeClass('modal-open');
+            $("#opportunity-popup").modal('hide');
+
+
+            $http.post(base_url + 'user_post/post_opportunity', form_data,
+                    {
+                        transformRequest: angular.identity,
+
+                        headers: {'Content-Type': undefined, 'Process-Data': false}
+                    })
+                    .then(function (success) {
+                        if (success) {
+                            $scope.description = '';
+                            $scope.job_title = '';
+                            $scope.location = '';
+                            $scope.field = '';
+                            $scope.fileInput = '';
+                            $scope.postData.splice(0, 0, success.data[0]);
+                            $('video, audio').mediaelementplayer();
+                        }
+                    });
         }
     }
-
-    var post_something_options = {
-        beforeSend: function () {
-            $('body').removeClass('modal-open');
-            document.getElementById("progress_div").style.display = "block";
-            var percentVal = '0%';
-            bar.width(percentVal)
-            percent.html(percentVal);
-            $("#opportunity-popup").modal('hide');
-        },
-        uploadProgress: function (event, position, total, percentComplete) {
-            var percentVal = percentComplete + '%';
-            bar.width(percentVal)
-            percent.html(percentVal);
-            $('.btn1').prop('onclick', null).off('click');
-        },
-        success: function () {
-        },
-        complete: function (response) {
-            console.log(response.responseText);
-            var percentVal = '100%';
-            bar.width(percentVal)
-            percent.html(percentVal);
-            $scope.description = '';
-            $scope.job_title = '';
-            $scope.location = '';
-            $scope.field = '';
-            $scope.fileInput = '';
-            document.getElementById("progress_div").style.display = "none";
-            //$(".all-post-box").prepend(response.responseText);
-            $scope.postData = response.responseText;
-
-            $('video, audio').mediaelementplayer();
-            var nb = $('.post-design-box').length;
-            if (nb == 0) {
-                $("#dropdownclass").addClass("no-post-h2");
-            } else {
-                document.getElementById("art_no_post_avl").style.display = "none";
-                $("#dropdownclass").removeClass("no-post-h2");
-            }
-        }
-    };
-    $("#post_something").ajaxForm(post_something_options);
-
-    // POST SOMETHING UPLOAD END
 
 
 
@@ -598,11 +565,19 @@ app.controller('userOppoController', function ($scope, $http) {
                 if (success.data.is_newLike == 1) {
                     $('#post-like-' + post_id).addClass('like');
                     $('#post-like-count-' + post_id).html(success.data.likePost_count);
-                    $('#post-other-like-' + post_id).html(success.data.post_like_data);
+                    if (success.data.likePost_count == '0') {
+                        $('#post-other-like-' + post_id).html('');
+                    } else {
+                        $('#post-other-like-' + post_id).html(success.data.post_like_data);
+                    }
                 } else if (success.data.is_oldLike == 1) {
                     $('#post-like-' + post_id).removeClass('like');
                     $('#post-like-count-' + post_id).html(success.data.likePost_count);
-                    $('#post-other-like-' + post_id).html(success.data.post_like_data);
+                    if (success.data.likePost_count == '0') {
+                        $('#post-other-like-' + post_id).html('');
+                    } else {
+                        $('#post-other-like-' + post_id).html(success.data.post_like_data);
+                    }
                 }
             }
         });
