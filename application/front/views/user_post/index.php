@@ -521,6 +521,6 @@
                                 var app = angular.module('userOppoApp', ['ui.bootstrap', 'ngTagsInput', 'ngSanitize']);
         </script>
 
-        <script src="<?php echo base_url('assets/js/webpage/user/user_opportunity.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/user/user_post.js?ver=' . time()) ?>"></script>
     </body>
 </html>

@@ -87,7 +87,7 @@ app.controller('userOppoController', function ($scope, $http) {
 
     getUserOpportunity();
     function getUserOpportunity() {
-        $http.get(base_url + "user_opportunities/getUserOpportunity").then(function (success) {
+        $http.get(base_url + "user_post/getUserOpportunity").then(function (success) {
             $scope.postData = success.data;
         }, function (error) {});
     }
@@ -101,13 +101,13 @@ app.controller('userOppoController', function ($scope, $http) {
     }
     getContactSuggetion();
     function getContactSuggetion() {
-        $http.get(base_url + "user_opportunities/getContactSuggetion").then(function (success) {
+        $http.get(base_url + "user_post/getContactSuggetion").then(function (success) {
             $scope.contactSuggetion = success.data;
         }, function (error) {});
     }
     $scope.job_title = [];
     $scope.loadJobTitle = function ($query) {
-        return $http.get(base_url + 'user_opportunities/get_jobtitle', {cache: true}).then(function (response) {
+        return $http.get(base_url + 'user_post/get_jobtitle', {cache: true}).then(function (response) {
             var job_title = response.data;
             return job_title.filter(function (title) {
                 return title.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
@@ -116,7 +116,7 @@ app.controller('userOppoController', function ($scope, $http) {
     };
     $scope.location = [];
     $scope.loadLocation = function ($query) {
-        return $http.get(base_url + 'user_opportunities/get_location', {cache: true}).then(function (response) {
+        return $http.get(base_url + 'user_post/get_location', {cache: true}).then(function (response) {
             var location_data = response.data;
             return location_data.filter(function (location) {
                 return location.city_name.toLowerCase().indexOf($query.toLowerCase()) != -1;
@@ -354,7 +354,7 @@ app.controller('userOppoController', function ($scope, $http) {
     $scope.addToContact = function (user_id, contact) {
         $http({
             method: 'POST',
-            url: base_url + 'user_opportunities/addToContact',
+            url: base_url + 'user_post/addToContact',
             data: 'user_id=' + user_id,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (success) {
@@ -369,7 +369,7 @@ app.controller('userOppoController', function ($scope, $http) {
     $scope.post_like = function (post_id) {
         $http({
             method: 'POST',
-            url: base_url + 'user_opportunities/likePost',
+            url: base_url + 'user_post/likePost',
             data: 'post_id=' + post_id,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (success) {
@@ -399,7 +399,7 @@ app.controller('userOppoController', function ($scope, $http) {
             $scope.isMsg = true;
             $http({
                 method: 'POST',
-                url: base_url + 'user_opportunities/postCommentInsert',
+                url: base_url + 'user_post/postCommentInsert',
                 data: 'comment=' + comment + '&post_id=' + post_id,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
@@ -426,7 +426,7 @@ app.controller('userOppoController', function ($scope, $http) {
     $scope.viewAllComment = function (post_id, index, post) {
         $http({
             method: 'POST',
-            url: base_url + 'user_opportunities/viewAllComment',
+            url: base_url + 'user_post/viewAllComment',
             data: 'post_id=' + post_id,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
@@ -440,7 +440,7 @@ app.controller('userOppoController', function ($scope, $http) {
     $scope.viewLastComment = function (post_id, index, post) {
         $http({
             method: 'POST',
-            url: base_url + 'user_opportunities/viewLastComment',
+            url: base_url + 'user_post/viewLastComment',
             data: 'post_id=' + post_id,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
@@ -464,7 +464,7 @@ app.controller('userOppoController', function ($scope, $http) {
         var commentClassName = $('#comment-icon-' + post_id).attr('class').split(' ')[0];
         $http({
             method: 'POST',
-            url: base_url + 'user_opportunities/deletePostComment',
+            url: base_url + 'user_post/deletePostComment',
             data: 'comment_id=' + comment_id + '&post_id=' + post_id,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
@@ -486,7 +486,7 @@ app.controller('userOppoController', function ($scope, $http) {
     $scope.likePostComment = function (comment_id, post_id) {
         $http({
             method: 'POST',
-            url: base_url + 'user_opportunities/likePostComment',
+            url: base_url + 'user_post/likePostComment',
             data: 'comment_id=' + comment_id + '&post_id=' + post_id,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
@@ -521,7 +521,7 @@ app.controller('userOppoController', function ($scope, $http) {
             $scope.isMsg = true;
             $http({
                 method: 'POST',
-                url: base_url + 'user_opportunities/postCommentUpdate',
+                url: base_url + 'user_post/postCommentUpdate',
                 data: 'comment=' + comment + '&comment_id=' + comment_id,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })

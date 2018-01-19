@@ -30,7 +30,7 @@ class User_post extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
-        $this->load->view('user_opportunities/index', $this->data);
+        $this->load->view('user_post/index', $this->data);
     }
 
     public function getContactSuggetion() {
