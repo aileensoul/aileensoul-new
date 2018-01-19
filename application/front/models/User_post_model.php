@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class User_opportunity extends CI_Model {
+class User_post_model extends CI_Model {
 
     public function getContactSuggetion($user_id = '') {
         $this->db->select("u.user_id,u.first_name,u.last_name,ui.user_image,jt.name as title_name,d.degree_name")->from("user u");

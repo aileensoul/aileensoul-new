@@ -14,7 +14,7 @@ class User_post extends MY_Controller {
         $this->load->library('user_agent');
         $this->load->model('email_model');
         $this->load->model('user_model');
-        $this->load->model('user_opportunity');
+        $this->load->model('user_post_model');
         $this->load->model('data_model');
         $this->load->library('S3');
     }
@@ -35,7 +35,7 @@ class User_post extends MY_Controller {
 
     public function getContactSuggetion() {
         $userid = $this->session->userdata('aileenuser');
-        $user_data = $this->user_opportunity->getContactSuggetion($userid);
+        $user_data = $this->user_post_model->getContactSuggetion($userid);
         echo json_encode($user_data);
     }
 
@@ -43,7 +43,7 @@ class User_post extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $to_user_id = $_POST['user_id'];
         $return_data = array();
-        $checkContactData = $this->user_opportunity->checkContact($userid, $to_user_id);
+        $checkContactData = $this->user_post_model->checkContact($userid, $to_user_id);
         if ($checkContactData['total'] == '0') {
             $data = array();
             $data['from_id'] = $userid;
@@ -81,12 +81,12 @@ class User_post extends MY_Controller {
     }
 
     public function get_jobtitle() {
-        $job_title = $this->user_opportunity->get_jobtitle();
+        $job_title = $this->user_post_model->get_jobtitle();
         echo json_encode($job_title);
     }
 
     public function get_location() {
-        $location = $this->user_opportunity->get_location();
+        $location = $this->user_post_model->get_location();
         echo json_encode($location);
     }
 
@@ -106,8 +106,8 @@ class User_post extends MY_Controller {
         $return_data = array();
         if ($postComentId) {
             $return_data['message'] = '1';
-            $return_data['comment_data'] = $this->user_opportunity->postCommentData($post_id);
-            $return_data['comment_count'] = $this->user_opportunity->postCommentCount($post_id);
+            $return_data['comment_data'] = $this->user_post_model->postCommentData($post_id);
+            $return_data['comment_count'] = $this->user_post_model->postCommentCount($post_id);
         } else {
             $return_data['message'] = '0';
         }
@@ -125,8 +125,8 @@ class User_post extends MY_Controller {
         if ($update_post) {
             $return_data = array();
             $return_data['message'] = 1;
-            $return_data['comment_data'] = $this->user_opportunity->postCommentData($post_id);
-            $return_data['comment_count'] = $this->user_opportunity->postCommentCount($post_id);
+            $return_data['comment_data'] = $this->user_post_model->postCommentData($post_id);
+            $return_data['comment_count'] = $this->user_post_model->postCommentCount($post_id);
         } else {
             $return_data['message'] = '0';
         }
@@ -138,7 +138,7 @@ class User_post extends MY_Controller {
         $comment_id = $_POST['comment_id'];
         $post_id = $_POST['post_id'];
 
-        $userlikePostCommentData = $this->user_opportunity->userlikePostCommentData($userid, $comment_id);
+        $userlikePostCommentData = $this->user_post_model->userlikePostCommentData($userid, $comment_id);
 
         $return_array = array();
         if ($userlikePostCommentData['id'] != '') {
@@ -151,7 +151,7 @@ class User_post extends MY_Controller {
                     $return_array['message'] = '1';
                     $return_array['is_newLike'] = '0';
                     $return_array['is_oldLike'] = '1';
-                    $return_array['commentLikeCount'] = $this->user_opportunity->postCommentLikeCount($comment_id) == '0' ? '' : $this->user_opportunity->postCommentLikeCount($comment_id);
+                    $return_array['commentLikeCount'] = $this->user_post_model->postCommentLikeCount($comment_id) == '0' ? '' : $this->user_post_model->postCommentLikeCount($comment_id);
                 }
             } else {
                 $data = array();
@@ -162,7 +162,7 @@ class User_post extends MY_Controller {
                     $return_array['message'] = '1';
                     $return_array['is_newLike'] = '1';
                     $return_array['is_oldLike'] = '0';
-                    $return_array['commentLikeCount'] = $this->user_opportunity->postCommentLikeCount($comment_id) == '0' ? '' : $this->user_opportunity->postCommentLikeCount($comment_id);
+                    $return_array['commentLikeCount'] = $this->user_post_model->postCommentLikeCount($comment_id) == '0' ? '' : $this->user_post_model->postCommentLikeCount($comment_id);
                 }
             }
         } else {
@@ -177,7 +177,7 @@ class User_post extends MY_Controller {
                 $return_array['message'] = '1';
                 $return_array['is_newLike'] = '1';
                 $return_array['is_oldLike'] = '0';
-                $return_array['commentLikeCount'] = $this->user_opportunity->postCommentLikeCount($comment_id) == '0' ? '' : $this->user_opportunity->postCommentLikeCount($comment_id);
+                $return_array['commentLikeCount'] = $this->user_post_model->postCommentLikeCount($comment_id) == '0' ? '' : $this->user_post_model->postCommentLikeCount($comment_id);
             } else {
                 $return_array['message'] = '0';
                 $return_array['is_newLike'] = '0';
@@ -205,20 +205,20 @@ class User_post extends MY_Controller {
     public function viewLastComment() {
         $post_id = $_POST['post_id'];
         $return_data = array();
-        $return_data['comment_data'] = $this->user_opportunity->postCommentData($post_id);
+        $return_data['comment_data'] = $this->user_post_model->postCommentData($post_id);
         echo json_encode($return_data);
     }
 
     public function viewAllComment() {
         $post_id = $_POST['post_id'];
         $return_data = array();
-        $return_data['all_comment_data'] = $this->user_opportunity->viewAllComment($post_id);
+        $return_data['all_comment_data'] = $this->user_post_model->viewAllComment($post_id);
         echo json_encode($return_data);
     }
 
     public function getUserOpportunity() {
         $userid = $this->session->userdata('aileenuser');
-        $post_data = $this->user_opportunity->userPost($userid);
+        $post_data = $this->user_post_model->userPost($userid);
         echo json_encode($post_data);
     }
 
@@ -226,7 +226,7 @@ class User_post extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $post_id = $_POST['post_id'];
 
-        $is_likepost = $this->user_opportunity->is_likepost($userid, $post_id);
+        $is_likepost = $this->user_post_model->is_likepost($userid, $post_id);
 
         if ($is_likepost['id'] != '') {
             if ($is_likepost['is_like'] == '1') {
@@ -239,7 +239,7 @@ class User_post extends MY_Controller {
                     $return_array['is_newLike'] = '0';
                     $return_array['is_oldLike'] = '1';
                     $return_array['likePost_count'] = $this->likePost_count($post_id);
-                    $postLikeData = $this->user_opportunity->postLikeData($post_id);
+                    $postLikeData = $this->user_post_model->postLikeData($post_id);
                     if ($return_array['likePost_count'] > 1) {
                         $return_array['post_like_data'] = $postLikeData['username'] . ' and ' . ($return_array['likePost_count'] - 1) . ' other';
                     } elseif ($return_array['likePost_count'] == 1) {
@@ -256,7 +256,7 @@ class User_post extends MY_Controller {
                     $return_array['is_newLike'] = '1';
                     $return_array['is_oldLike'] = '0';
                     $return_array['likePost_count'] = $this->likePost_count($post_id);
-                    $postLikeData = $this->user_opportunity->postLikeData($post_id);
+                    $postLikeData = $this->user_post_model->postLikeData($post_id);
                     if ($return_array['likePost_count'] > 1) {
                         $return_array['post_like_data'] = $postLikeData['username'] . ' and ' . ($return_array['likePost_count'] - 1) . ' other';
                     } elseif ($return_array['likePost_count'] == 1) {
@@ -278,7 +278,7 @@ class User_post extends MY_Controller {
                 $return_array['is_newLike'] = '1';
                 $return_array['is_oldLike'] = '0';
                 $return_array['likePost_count'] = $this->likePost_count($post_id);
-                $postLikeData = $this->user_opportunity->postLikeData($post_id);
+                $postLikeData = $this->user_post_model->postLikeData($post_id);
                 if ($return_array['likePost_count'] > 1) {
                     $return_array['post_like_data'] = $postLikeData['username'] . ' and ' . ($return_array['likePost_count'] - 1) . ' other';
                 } elseif ($return_array['likePost_count'] == 1) {
@@ -295,7 +295,7 @@ class User_post extends MY_Controller {
     public function likePost_count($post_id = '') {
         $userid = $this->session->userdata('aileenuser');
 
-        $likepost_count = $this->user_opportunity->likepost_count($post_id);
+        $likepost_count = $this->user_post_model->likepost_count($post_id);
         return $likepost_count;
     }
 
@@ -725,7 +725,7 @@ class User_post extends MY_Controller {
                             }
                             /* THIS CODE UNCOMMENTED AFTER SUCCESSFULLY WORKING : REMOVE IMAGE FROM UPLOAD FOLDER */
 
-                            $post_data = $this->user_opportunity->userPost($userid);
+                            $post_data = $this->user_post_model->userPost($userid);
 
                             echo json_encode($post_data);
                         } else {
