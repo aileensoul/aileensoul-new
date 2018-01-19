@@ -391,7 +391,7 @@ function submitforgotForm()
         function login_profile() {
                 $('#login').modal('show');
                 $('#register').modal('hide');
-                $('body').addClass('modal-open-other');
+                $('body').addClass('modal-open');
             }
             function register_profile() {
                 $('#login').modal('hide');
@@ -404,8 +404,8 @@ function submitforgotForm()
                 $('body').addClass('modal-open-other');
             }
             function forgot_close(){
-                $('#login').modal('show');
-                $('body').addClass('modal-open-other');
+               // $('#login').modal('show');
+                $('body').removeClass('modal-open-other');
             }
 
       $(document).on('click', '[data-toggle*=modal]', function () {
