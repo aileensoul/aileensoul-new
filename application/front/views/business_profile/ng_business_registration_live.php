@@ -487,13 +487,14 @@
         </div>
         <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog login-frm">
+                  <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">
                                 <div class="">
                                     <div id="forgotbuton"></div> 
-                                    <div class="title">
+                                    <div class="title">  
                                         <h1 class="ttc tlh2">Forgot Password</h1>
                                     </div>
                                     <?php
@@ -568,7 +569,15 @@
                 $('#forgotPassword').modal('show');
                 $('#register').modal('hide');
                 $('#login').modal('hide');
+                  $('body').addClass('modal-open-other'); 
             }
+
+
+            $('.modal-close').click(function(e){ 
+    $('body').removeClass('modal-open-other'); 
+    $('#login').modal('show');
+});
+
         </script>
         <script type="text/javascript">
             function login()
