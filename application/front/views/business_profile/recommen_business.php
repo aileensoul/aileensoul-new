@@ -272,11 +272,12 @@
     var keyword1 = '<?php echo $keyword1; ?>';
     var slug_id = '<?php echo $slug_id; ?>';
 </script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/search.js?ver=' . time()); ?>"></script>
 <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/search.js?ver=' . time()); ?>"></script>
+    <!--<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/search.js?ver=' . time()); ?>"></script>-->
     <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
 <?php } else { ?>
-    <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/search.js?ver=' . time()); ?>"></script>
+    <!--<script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/search.js?ver=' . time()); ?>"></script>-->
     <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
 <?php } ?>
 </body>
