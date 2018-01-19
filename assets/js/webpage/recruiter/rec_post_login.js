@@ -70,7 +70,7 @@
 $(document).ready(function () { 
 
 
-     $('#register').modal('show');
+     //$('#register').modal('show');
  });
 
 
@@ -443,6 +443,7 @@ function forgot_profile() {
 }
 
 
+
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         $('#login').modal('hide');
@@ -453,7 +454,7 @@ $(document).on('keydown', function (e) {
 });
 
 $('.modal-close').click(function(e){ 
-   // $('body').addClass('modal-open'); 
+    $('body').removeClass('modal-open-other'); 
     //$('#login').modal('show');
 });
 
