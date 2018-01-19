@@ -252,7 +252,7 @@
 
           <!-- register -->
 
-        <div class="modal fade login register-model" id="register" role="dialog">
+        <div class="modal fade login register-model" id="register" role="dialog" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
                     <div class="modal-body">

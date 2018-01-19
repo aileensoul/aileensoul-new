@@ -363,7 +363,7 @@ if ($artisticdata[0]['art_bestofmine']) {
 
           <!-- register -->
 
-        <div class="modal fade login register-model" id="register" role="dialog">
+        <div class="modal fade login register-model" id="register" role="dialog" data-backdrop="static" data-keyboard="false"> 
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
