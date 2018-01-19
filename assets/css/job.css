@@ -2733,7 +2733,7 @@ p.job-top-btn a.btn4:first-child{
         padding-top:71px!important;
         
     }
-    .no-login #paddingtop_fixed{padding-top:132px!important;}
+    .modal-open #paddingtop_fixed{padding-top:132px!important;overflow: none;}
     .left-side-bar{
         position:relative
     }
