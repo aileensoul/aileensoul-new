@@ -439,6 +439,7 @@ function register_profile() {
 function forgot_profile() {
     $('#forgotPassword').modal('show');
     $('#login').modal('hide');
+    $('body').addClass('modal-open-other'); 
 }
 
 
