@@ -430,6 +430,8 @@
         </script>
         <script>
             function login_profile() {
+                
+                $('#register').modal('hide');
                 $('#login').modal('show');
             }
             function register_profile() {
@@ -438,7 +440,17 @@
             }
             function forgot_profile() {
                 $('#forgotPassword').modal('show');
+                $('body').addClass('modal-open-other');   
             }
+
+
+$('.modal-close').click(function(e){ 
+    $('body').removeClass('modal-open-other'); 
+    //$('#login').modal('show');
+});
+
+
+
         </script>
         <script type="text/javascript">
             function login()

@@ -366,7 +366,14 @@ function register_profile() {
 //            }
 function forgot_profile() {
     $('#forgotPassword').modal('show');
+    $('body').addClass('modal-open-other'); 
 }
+
+
+$('.modal-close').click(function(e){ 
+    $('body').removeClass('modal-open-other'); 
+    //$('#login').modal('show');
+});
 
 $(document).on('click', '[data-toggle*=modal]', function () {
     $('[role*=dialog]').each(function () {
