@@ -219,12 +219,8 @@ class User_post_model extends CI_Model {
                 $opportunity_data = $query->row_array();
                 $result_array[$key]['opportunity_data'] = $opportunity_data;
             } elseif ($value['post_for'] == 'simple') {
-                $this->db->select("uo.post_id,GROUP_CONCAT(DISTINCT(jt.name)) as opportunity_for,GROUP_CONCAT(DISTINCT(c.city_name)) as location,uo.opportunity,it.industry_name as field")->from("user_opportunity uo, ailee_job_title jt, ailee_cities c");
-                $this->db->join('industry_type it', 'it.industry_id = uo.field', 'left');
-                $this->db->where('uo.id', $value['post_id']);
-                $this->db->where('FIND_IN_SET(jt.title_id, uo.`opportunity_for`) !=', 0);
-                $this->db->where('FIND_IN_SET(c.city_id, uo.`location`) !=', 0);
-                $this->db->group_by('uo.opportunity_for', 'uo.location');
+                $this->db->select("usp.post_id,usp.description")->from("user_simple_post usp");
+                $this->db->where('usp.id', $value['post_id']);
                 $query = $this->db->get();
                 $opportunity_data = $query->row_array();
                 $result_array[$key]['opportunity_data'] = $opportunity_data;
