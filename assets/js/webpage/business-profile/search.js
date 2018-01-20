@@ -52,7 +52,11 @@ function business_search_post(pagenum) {
         },
         success: function (data) {
             //$('#loader').remove();
-            $('.job-contact-frnd').append(data);
+            if(data_con){
+                $('.job-contact-frnd-other').append(data);
+            }if(data_post){
+                $('.job-contact-frnd').append(data);
+            }
 
 
             var numItems = $('.job-contact-frnd .profile-job-post-title-inside').length;
