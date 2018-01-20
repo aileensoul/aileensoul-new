@@ -175,7 +175,7 @@ class Freelancer_hire extends MY_Controller {
 
         $select_data = 'fullname,username,email,skyupid,phone,user_id,free_hire_step';
         $userdata = $this->freelancer_hire_model->getfreelancerhiredata($userid, $select_data);
-
+       // echo $userdata['skyupid'];die();
         if ($userdata) {
             $step = $userdata['free_hire_step'];
             if ($step == 1 || $step > 1) {
@@ -203,7 +203,7 @@ class Freelancer_hire extends MY_Controller {
             $this->load->view('freelancer/freelancer_hire/freelancer_hire_basic_info');
         } else {
             $contition_array = array('user_id' => $userid, 'status' => '1');
-            $userdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $userdata = $this->freelancer_hire_model->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $first_lastname = trim($this->input->post('fname')) . " " . trim($this->input->post('lname'));
             if ($userdata) {
                 $data = array(
@@ -215,7 +215,7 @@ class Freelancer_hire extends MY_Controller {
                     'phone' => trim($this->input->post('phone')),
                     'modified_date' => date('Y-m-d h:i:s')
                 );
-                $updatedata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
+                $updatedata = $this->freelancer_hire_model->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
                 if ($updatedata) {
                     // $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('freelance-hire/address-information', refresh);
@@ -237,7 +237,7 @@ class Freelancer_hire extends MY_Controller {
                     'user_id' => $userid,
                     'free_hire_step' => '1'
                 );
-                $insert_id = $this->common->insert_data($data, 'freelancer_hire_reg');
+                $insert_id = $this->freelancer_hire_model->insert_data($data, 'freelancer_hire_reg');
                 if ($insert_id) {
                     //   $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('freelance-hire/address-information', refresh);

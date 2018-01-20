@@ -64,7 +64,7 @@ class Freelancer_hire_model extends CI_Model {
 
     function select_data_by_search($tablename, $search_condition, $condition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $group_by = '') {
         $this->db->select($data);
-        
+
         if (!empty($join_str)) {
             foreach ($join_str as $join) {
                 $this->db->join($join['table'], $join['join_table_id'] . '=' . $join['from_table_id']);
@@ -105,6 +105,44 @@ class Freelancer_hire_model extends CI_Model {
         $string = str_replace(' ', '-', $string);
         $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string);
         return preg_replace('/-+/', '-', $string);
+    }
+
+    function select_data_by_condition($tablename, $condition_array = array(), $data = '*', $sort_by = '', $order_by = '', $limit = '', $offset = '', $join_str = array(), $group_by = '') {
+        $this->db->simple_query('SET SESSION group_concat_max_len=15000');
+        $this->db->select($data);
+        if (!empty($join_str)) {
+            foreach ($join_str as $join) {
+                if ($join['type'] == '') {
+                    $this->db->join($join['table'], $join['join_table_id'] . '=' . $join['from_table_id']);
+                } else {
+                    $this->db->join($join['table'], $join['join_table_id'] . '=' . $join['from_table_id'], $join['join_type']);
+                }
+            }
+        }
+
+        if(!empty($having)){
+            $this->db->having($having);
+        }
+        
+        if ($sort_by != '' && $order_by != '') {
+            $this->db->$order_by($sort_by, $order_by);
+        }
+        if ($limit != '' && $offset == 0) {
+            $this->db->limit($limit);
+        } else if ($limit != '' && $offset != 0) {
+            $this->db->limit($limit, $offset);
+        }
+        if ($group_by) {
+            $this->db->group_by($group_by);
+        }
+
+        $query = $this->db->get($tablename);
+
+        if ($query->num_rows() > 0){
+            return $query->result_array();
+        }else{
+            return false;
+        }
     }
 
 }
