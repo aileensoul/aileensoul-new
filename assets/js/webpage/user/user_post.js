@@ -92,15 +92,16 @@ app.directive('ngEnter', function () {			// custom directive for sending message
 app.controller('userOppoController', function ($scope, $http) {
     $scope.opp = {};
     $scope.sim = {};
+    $scope.postData = {};
     $scope.opp.post_for = 'opportunity';
     $scope.sim.post_for = 'simple';
     getUserOpportunity();
     function getUserOpportunity() {
         $http.get(base_url + "user_post/getUserOpportunity").then(function (success) {
             $scope.postData = success.data;
+            $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
     }
-
 
     getFieldList();
     function getFieldList() {
@@ -222,21 +223,21 @@ app.controller('userOppoController', function ($scope, $http) {
                     var foundPresent1 = $.inArray(ext1, allowesaudio) > -1;
                     if (foundPresent1 == true && fileInput.length == 1) {
 
-                        if (product_name == '') {
-                            $('.biderror .mes').html("<div class='pop_content'>You have to add audio title.");
-                            $('#posterrormodal').modal('show');
-                            //setInterval('window.location.reload()', 10000);
-
-                            $(document).on('keydown', function (e) {
-                                if (e.keyCode === 27) {
-                                    //$( "#bidmodal" ).hide();
-                                    $('#posterrormodal').modal('hide');
-                                    $('.modal-post').show();
-                                }
-                            });
-                            event.preventDefault();
-                            return false;
-                        }
+                        /*if (product_name == '') {
+                         $('.biderror .mes').html("<div class='pop_content'>You have to add audio title.");
+                         $('#posterrormodal').modal('show');
+                         //setInterval('window.location.reload()', 10000);
+                         
+                         $(document).on('keydown', function (e) {
+                         if (e.keyCode === 27) {
+                         //$( "#bidmodal" ).hide();
+                         $('#posterrormodal').modal('hide');
+                         $('.modal-post').show();
+                         }
+                         });
+                         event.preventDefault();
+                         return false;
+                         } */
 
                     } else {
                         $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
@@ -257,20 +258,20 @@ app.controller('userOppoController', function ($scope, $http) {
                     var foundPresent1 = $.inArray(ext1, allowespdf) > -1;
                     if (foundPresent1 == true && fileInput.length == 1) {
 
-                        if (product_name == '') {
-                            $('.biderror .mes').html("<div class='pop_content'>You have to add pdf title.");
-                            $('#posterrormodal').modal('show');
-                            setInterval('window.location.reload()', 10000);
-
-                            $(document).on('keydown', function (e) {
-                                if (e.keyCode === 27) {
-                                    $('#posterrormodal').modal('hide');
-                                    $('.modal-post').show();
-                                }
-                            });
-                            event.preventDefault();
-                            return false;
-                        }
+                        /*if (product_name == '') {
+                         $('.biderror .mes').html("<div class='pop_content'>You have to add pdf title.");
+                         $('#posterrormodal').modal('show');
+                         setInterval('window.location.reload()', 10000);
+                         
+                         $(document).on('keydown', function (e) {
+                         if (e.keyCode === 27) {
+                         $('#posterrormodal').modal('hide');
+                         $('.modal-post').show();
+                         }
+                         });
+                         event.preventDefault();
+                         return false;
+                         } */
                     } else {
                         if (fileInput.length > 10) {
                             $('.biderror .mes').html("<div class='pop_content'>You can not upload more than 10 files at a time.");
@@ -421,21 +422,21 @@ app.controller('userOppoController', function ($scope, $http) {
                     var foundPresent1 = $.inArray(ext1, allowesaudio) > -1;
                     if (foundPresent1 == true && fileInput.length == 1) {
 
-                        if (product_name == '') {
-                            $('.biderror .mes').html("<div class='pop_content'>You have to add audio title.");
-                            $('#posterrormodal').modal('show');
-                            //setInterval('window.location.reload()', 10000);
-
-                            $(document).on('keydown', function (e) {
-                                if (e.keyCode === 27) {
-                                    //$( "#bidmodal" ).hide();
-                                    $('#posterrormodal').modal('hide');
-                                    $('.modal-post').show();
-                                }
-                            });
-                            event.preventDefault();
-                            return false;
-                        }
+                        /*if (product_name == '') {
+                         $('.biderror .mes').html("<div class='pop_content'>You have to add audio title.");
+                         $('#posterrormodal').modal('show');
+                         //setInterval('window.location.reload()', 10000);
+                         
+                         $(document).on('keydown', function (e) {
+                         if (e.keyCode === 27) {
+                         //$( "#bidmodal" ).hide();
+                         $('#posterrormodal').modal('hide');
+                         $('.modal-post').show();
+                         }
+                         });
+                         event.preventDefault();
+                         return false;
+                         } */
 
                     } else {
                         $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
@@ -456,20 +457,20 @@ app.controller('userOppoController', function ($scope, $http) {
                     var foundPresent1 = $.inArray(ext1, allowespdf) > -1;
                     if (foundPresent1 == true && fileInput.length == 1) {
 
-                        if (product_name == '') {
-                            $('.biderror .mes').html("<div class='pop_content'>You have to add pdf title.");
-                            $('#posterrormodal').modal('show');
-                            setInterval('window.location.reload()', 10000);
-
-                            $(document).on('keydown', function (e) {
-                                if (e.keyCode === 27) {
-                                    $('#posterrormodal').modal('hide');
-                                    $('.modal-post').show();
-                                }
-                            });
-                            event.preventDefault();
-                            return false;
-                        }
+                        /*if (product_name == '') {
+                         $('.biderror .mes').html("<div class='pop_content'>You have to add pdf title.");
+                         $('#posterrormodal').modal('show');
+                         setInterval('window.location.reload()', 10000);
+                         
+                         $(document).on('keydown', function (e) {
+                         if (e.keyCode === 27) {
+                         $('#posterrormodal').modal('hide');
+                         $('.modal-post').show();
+                         }
+                         });
+                         event.preventDefault();
+                         return false;
+                         } */
                     } else {
                         if (fileInput.length > 10) {
                             $('.biderror .mes').html("<div class='pop_content'>You can not upload more than 10 files at a time.");
@@ -535,7 +536,10 @@ app.controller('userOppoController', function ($scope, $http) {
         }
     }
 
-
+    $scope.loadMediaElement = function ()
+    {
+        $('video,audio').mediaelementplayer(/* Options */);
+    };
 
     $scope.addToContact = function (user_id, contact) {
         $http({
@@ -733,28 +737,6 @@ app.controller('userOppoController', function ($scope, $http) {
         }
     }
 
-    var _onPaste_StripFormatting_IEPaste = false;
-    $scope.OnPaste_StripFormatting = function (elem, e) {
-        alert(1231);
-        return false;
-        if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
-            e.preventDefault();
-            var text = e.originalEvent.clipboardData.getData('text/plain');
-            window.document.execCommand('insertText', false, text);
-        } else if (e.clipboardData && e.clipboardData.getData) {
-            e.preventDefault();
-            var text = e.clipboardData.getData('text/plain');
-            window.document.execCommand('insertText', false, text);
-        } else if (window.clipboardData && window.clipboardData.getData) {
-            // Stop stack overflow
-            if (!_onPaste_StripFormatting_IEPaste) {
-                _onPaste_StripFormatting_IEPaste = true;
-                e.preventDefault();
-                window.document.execCommand('ms-pasteTextOnly', false);
-            }
-            _onPaste_StripFormatting_IEPaste = false;
-        }
-    }
 });
 
 $(window).on("load", function () {
@@ -763,5 +745,41 @@ $(window).on("load", function () {
         theme: "minimal"
     });
 });
+
+$(document).ready(function (e) {
+    var _onPaste_StripFormatting_IEPaste = false;
+    function OnPaste_StripFormatting(e) {
+        alert(1212);
+        e.preventDefault();
+
+        var text = (e.originalEvent || e).clipboardData.getData('text/html') || prompt('Paste something..');
+        var $result = $('<div></div>').append($(text));
+
+        $(this).html($result.html());
+
+        // replace all styles except bold and italic
+        $.each($(this).find("*"), function (idx, val) {
+
+            var $item = $(val);
+            if ($item.length > 0) {
+                var saveStyle = {
+                    'font-weight': $item.css('font-weight'),
+                    'font-style': $item.css('font-style')
+                };
+                $item.removeAttr('style')
+                        .removeClass()
+                        .css(saveStyle);
+            }
+        });
+
+        // remove unnecesary tags (if paste from word)
+        $(this).children('style').remove();
+        $(this).children('meta').remove()
+        $(this).children('link').remove();
+
+    };
+
+});
+
 
 

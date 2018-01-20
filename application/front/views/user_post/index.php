@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/jquery.mCustomScrollbar.min.css?ver=' . time()) ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>">
         <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/ng-tags-input.min.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-commen.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-style.css?ver=' . time()) ?>">
@@ -43,6 +44,16 @@
                 width:45px;
                 height:20px
             }
+            .mejs__overlay-button {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+            .mejs__overlay-loading-bg-img {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+            .mejs__button > button {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+
         </style>
     </head>
     <body>
@@ -116,9 +127,8 @@
                                 <div class="post-right-dropdown dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/right-down.png') ?>" alt="Right Down"></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
+                                        <li><a href="javascript:void(0);">Edit Post</a></li>
+                                        <li><a href="javascript:void(0);">Delete Post</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -135,11 +145,21 @@
                                 <div class="post-des-detail" ng-if="post.simple_data.description"><span ng-bind-html="post.simple_data.description"></span></div>
                             </div>
                             <div class="post-images" ng-if="post.post_data.total_post_files == '1'">
-                                <div class="one-img" ng-repeat="post_file in post.post_file_data">
-                                    <a href="#"><img ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
-                                    <video ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'video'"></video>
-                                    <audio ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'audio'"></audio>
-                                    <a href="" title="Click Here"><img ng-src="<?php echo base_url('assets/') ?>n-images/img1.jpg" ng-if="post.post_file_data.file_type == 'pdf'"></a>
+                                <div class="one-img" ng-repeat="post_file in post.post_file_data" ng-init="$last ? loadMediaElement() : false">
+                                    <a href="#" ng-if="post_file.file_type == 'image'"><img ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" alt="{{post_file.filename}}"></a>
+                                    <span  ng-if="post_file.file_type == 'video'"> 
+                                        <video controls>
+                                            <source src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="video/mp4">
+                                        </video>
+                                        <!--<video controls poster="" class="mejs__player" ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}"></video>-->
+                                    </span>
+                                    <span  ng-if="post_file.file_type == 'audio'">
+                                        <audio controls>
+                                            <source src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="audio/mp3">
+                                        </audio>
+                                        <!--<audio controls ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}"></audio>-->
+                                    </span>
+                                    <a ng-href="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" target="_blank" title="Click Here" ng-if="post_file.file_type == 'pdf'"><img ng-src="<?php echo base_url('assets/images/PDF.jpg?ver=' . time()) ?>"></a>
                                 </div>
                             </div>
                             <div class="post-images" ng-if="post.post_data.total_post_files == '2'">
@@ -208,7 +228,7 @@
                                         <div class="comment-dis-inner" id="comment-dis-inner-{{comment.comment_id}}" ng-bind-html="comment.comment"></div>
                                         <div class="edit-comment" id="edit-comment-{{comment.comment_id}}" style="display:none;">
                                             <div class="comment-input">
-                                                <div contenteditable data-directive ng-model="editComment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-change="isMsgBoxEmpty = false" class="editable_text" placeholder="Add a Comment ..." ng-enter="sendEditComment({{comment.comment_id}},$index,post)" id="editCommentTaxBox-{{comment.comment_id}}" ng-focus="setFocus" focus-me="setFocus" ng-paste="OnPaste_StripFormatting(this, event);"></div>
+                                                <div contenteditable data-directive ng-model="editComment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-change="isMsgBoxEmpty = false" class="editable_text" placeholder="Add a Comment ..." ng-enter="sendEditComment({{comment.comment_id}},$index,post)" id="editCommentTaxBox-{{comment.comment_id}}" ng-focus="setFocus" focus-me="setFocus" onpaste="OnPaste_StripFormatting(event);"></div>
                                             </div>
                                             <div class="comment-submit">
                                                 <button class="btn2" ng-click="sendEditComment(comment.comment_id)">Comment</button>
