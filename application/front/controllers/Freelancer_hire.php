@@ -97,7 +97,7 @@ class Freelancer_hire extends MY_Controller {
                 'user_id' => $userid,
                 'free_hire_step' => '3'
             );
-            $insert_id1 = $this->common->insert_data($data, 'freelancer_hire_reg');
+            $insert_id1 = $this->freelancer_hire_model->insert_data($data, 'freelancer_hire_reg');
             if ($this->input->post('segment') == 'live-post') {
                 $segment = $this->input->post('segment');
                 $temp = $this->freelancer_hire_model->getprojectlivedatabyuserid($userid);
@@ -112,13 +112,13 @@ class Freelancer_hire extends MY_Controller {
                         'is_delete' => '0',
                         'is_other' => '2',
                         'user_id' => $userid,
-                        'category_slug' => $this->common->clean($temp[0]['post_field_req'])
+                        'category_slug' => $this->freelancer_hire_model->clean($temp[0]['post_field_req'])
                     );
-                    $insert_id = $this->common->insert_data_getid($data, 'category');
+                    $insert_id = $this->freelancer_hire_model->insert_data_getid($data, 'category');
                     if ($insert_id) {
                         $contition_array = array('is_delete' => '0', 'category_name' => $temp[0]['post_field_req']);
                         $search_condition = "(is_other = '2' AND user_id = $userid)";
-                        $fielddata = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = 'category_id', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        $fielddata = $this->freelancer_hire_model->select_data_by_search('category', $search_condition, $contition_array, $data = 'category_id', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                         $fielddata =$fielddata[0]['category_id'];
                     }
                 }
@@ -143,7 +143,7 @@ class Freelancer_hire extends MY_Controller {
                     'is_delete' => '0',
                 );
 
-                $insert_id = $this->common->insert_data_getid($data, 'freelancer_post');
+                $insert_id = $this->freelancer_hire_model->insert_data_getid($data, 'freelancer_post');
 
                 $data = array(
                     'is_delete' => '1',
@@ -151,7 +151,7 @@ class Freelancer_hire extends MY_Controller {
                     'modify_date' => date('y-m-d h:i:s')
                 );
 
-                $updatdata = $this->common->update_data($data, 'freelancer_post_live', 'post_id', $temp[0][post_id]);
+                $updatdata = $this->freelancer_hire_model->update_data($data, 'freelancer_post_live', 'post_id', $temp[0][post_id]);
             }
 
 
@@ -162,8 +162,7 @@ class Freelancer_hire extends MY_Controller {
                     redirect('freelance-hire/add-projects?page=professional', refresh);
                 }
             } else {
-
-                redirect('freelancer/hire_registation', refresh);
+                redirect('freelance-hire/registration', refresh);
             }
         }
     }
@@ -204,7 +203,7 @@ class Freelancer_hire extends MY_Controller {
             $this->load->view('freelancer/freelancer_hire/freelancer_hire_basic_info');
         } else {
             $contition_array = array('user_id' => $userid, 'status' => '1');
-            $userdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $userdata = $this->freelancer_hire_model->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $first_lastname = trim($this->input->post('fname')) . " " . trim($this->input->post('lname'));
             if ($userdata) {
                 $data = array(
@@ -216,7 +215,7 @@ class Freelancer_hire extends MY_Controller {
                     'phone' => trim($this->input->post('phone')),
                     'modified_date' => date('Y-m-d h:i:s')
                 );
-                $updatedata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
+                $updatedata = $this->freelancer_hire_model->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
                 if ($updatedata) {
                     // $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('freelance-hire/address-information', refresh);
@@ -238,7 +237,7 @@ class Freelancer_hire extends MY_Controller {
                     'user_id' => $userid,
                     'free_hire_step' => '1'
                 );
-                $insert_id = $this->common->insert_data($data, 'freelancer_hire_reg');
+                $insert_id = $this->freelancer_hire_model->insert_data($data, 'freelancer_hire_reg');
                 if ($insert_id) {
                     //   $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('freelance-hire/address-information', refresh);

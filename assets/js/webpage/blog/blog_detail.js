@@ -52,7 +52,7 @@ $(document).ready(function () {
            success: function (data) { 
                if(data == 1) 
                { 
-                $('.biderror .mes').html("<div class='pop_content'>Thank you for your valuable feedback.</div>");
+                $('.biderror .mes').html("<div class='pop_content'>Thank you for your valuable comment.</div>");
                 $('#bidmodal').modal('show');
 
                   $('#name').val(''); 

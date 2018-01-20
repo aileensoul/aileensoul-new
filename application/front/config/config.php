@@ -905,7 +905,7 @@ $config['blog_thumb_height'] = '150';
 
 // USER POST 
 $config['user_post_main_upload_path'] = 'uploads/user_post/main/';
-$config['user_post_main_allowed_types'] = 'gif|jpeg|jpg|PNG|png|pdf|mp4|mp3|avi|ogg|3gp|webm';
+//$config['user_post_main_allowed_types'] = 'gif|jpeg|jpg|PNG|png|pdf|mp4|mp3|avi|ogg|3gp|webm';
 $config['user_post_main_allowed_types'] = '*';
 $config['user_post_main_max_size'] = '100000000'; //in KB 
 $config['user_post_main_max_width'] = '4500';

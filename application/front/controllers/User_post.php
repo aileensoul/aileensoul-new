@@ -304,13 +304,12 @@ class User_post extends MY_Controller {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
-        $description = $_POST['description'];
+        $description = $_POST['description'] == 'undefined' ? '' : $_POST['description'];
         $field = $_POST['field'];
         $job_title = json_decode($_POST['job_title'], TRUE);
         $location = json_decode($_POST['location'], TRUE);
         $post_for = $_POST['post_for'];
-
-
+        
         $error = '';
         if ($post_for == 'opportunity') {
             if ($description == '') {
@@ -391,17 +390,16 @@ class User_post extends MY_Controller {
                 $insert_data['post_id'] = $user_post_id;
                 $insert_data['opportunity_for'] = $job_title_id;
                 $insert_data['location'] = $city_id;
-                $insert_data['opportunity'] = $_POST['description'];
-                $insert_data['field'] = $_POST['field'];
+                $insert_data['opportunity'] = $description;
+                $insert_data['field'] = $field;
                 $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
 
                 $inserted_id = $user_opportunity_id = $this->common->insert_data_getid($insert_data, 'user_opportunity');
             } elseif ($post_for == 'simple') {
                 $insert_data = array();
                 $insert_data['post_id'] = $user_post_id;
-                $insert_data['description'] = $_POST['description'];
+                $insert_data['description'] = $description;
                 $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
-
                 $inserted_id = $user_simple_id = $this->common->insert_data_getid($insert_data, 'user_simple_post');
             }
             $update_data = array();
@@ -451,8 +449,11 @@ class User_post extends MY_Controller {
                                 $uploaded_url = base_url() . $this->config->item('user_post_main_upload_path') . $response['result'][$i]['file_name'];
                                 exec("ffmpeg -i " . $uploaded_url . " -vcodec h264 -acodec aac -strict -2 " . $upload_data['file_path'] . $upload_data['raw_name'] . "1" . $upload_data['file_ext'] . "");
                                 exec("ffmpeg -ss 00:00:05 -i " . $upload_data['full_path'] . " " . $upload_data['file_path'] . $upload_data['raw_name'] . "1" . ".png");
-                                $fileName = $response['result'][$i]['file_name'] = $upload_data['raw_name'] . "1" . $upload_data['file_ext'];
-                                unlink($this->config->item('user_post_main_upload_path') . $upload_data['raw_name'] . "" . $upload_data['file_ext']);
+                                //$fileName = $response['result'][$i]['file_name'] = $upload_data['raw_name'] . "1" . $upload_data['file_ext'];
+                                $fileName = $response['result'][$i]['file_name'] = $upload_data['raw_name'] . "" . $upload_data['file_ext'];
+                                if (IMAGEPATHFROM == 's3bucket') {
+                                    unlink($this->config->item('user_post_main_upload_path') . $upload_data['raw_name'] . "" . $upload_data['file_ext']);
+                                }
                             }
 
                             $main_image_size = $_FILES['postfiles']['size'];
@@ -487,7 +488,7 @@ class User_post extends MY_Controller {
                             if (IMAGEPATHFROM == 's3bucket') {
                                 $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
                             }
-                            
+
                             $post_poster = $response['result'][$i]['file_name'];
                             $post_poster1 = explode('.', $post_poster);
                             $post_poster2 = end($post_poster1);
