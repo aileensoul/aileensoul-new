@@ -3620,7 +3620,7 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
         margin-right:12px;
     }
     .login .form-group select.day,.login .form-group select.month,.login .form-group select.year{
-        width:60px!important;
+        width:65px!important;
     }
 }
 @media screen and (max-width:319px){
@@ -3630,6 +3630,10 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
     .turmcon-cust .about-h2{
         font-size:25px
     }
+    .login .form-group select.day,.login .form-group select.month,.login .form-group select.year{
+        width:53px!important;
+    }
+    .login .form-group select{padding-left: 0px !important;}
 }
 @media screen and (-webkit-min-device-pixel-ratio:0){
     input,select,textarea{
