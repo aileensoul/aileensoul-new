@@ -122,7 +122,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="post-discription">
+                            <div class="post-discription" ng-if="post.post_data.post_for == 'opportunity'">
                                 <h5 class="post-title">
                                     <p ng-if="post.opportunity_data.opportunity_for"><b>Opportunity for:</b><span ng-bind="post.opportunity_data.opportunity_for"></span></p>
                                     <p ng-if="post.opportunity_data.location"><b>Location:</b><span ng-bind="post.opportunity_data.location"></span></p>
@@ -130,6 +130,9 @@
                                 </h5>
 
                                 <div class="post-des-detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity"></span></div>
+                            </div>
+                            <div class="post-discription" ng-if="post.post_data.post_for == 'simple'">
+                                <div class="post-des-detail" ng-if="post.simple_data.description"><span ng-bind-html="post.simple_data.description"></span></div>
                             </div>
                             <div class="post-images" ng-if="post.post_data.total_post_files == '1'">
                                 <div class="one-img" ng-repeat="post_file in post.post_file_data">

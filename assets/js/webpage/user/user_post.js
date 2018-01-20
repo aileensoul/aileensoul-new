@@ -330,11 +330,12 @@ app.controller('userOppoController', function ($scope, $http) {
                     })
                     .then(function (success) {
                         if (success) {
-                            $scope.description = '';
-                            $scope.job_title = '';
-                            $scope.location = '';
-                            $scope.field = '';
-                            $scope.fileInput = '';
+                            $scope.opp.description = '';
+                            $scope.opp.job_title = '';
+                            $scope.opp.location = '';
+                            $scope.opp.field = '';
+                            $scope.opp.postfiles = '';
+                            document.getElementById('fileInput').value = '';
                             $scope.postData.splice(0, 0, success.data[0]);
                             $('video, audio').mediaelementplayer();
                         }
@@ -350,8 +351,8 @@ app.controller('userOppoController', function ($scope, $http) {
         var fileInput = document.getElementById("fileInput1").files;
         var description = document.getElementById("description").value;
         var description = description.trim();
-        var fileInput = document.getElementById("fileInput1").value;
-        if (fileInput == '' || description == '')
+        var fileInput1 = document.getElementById("fileInput1").value;
+        if (fileInput1 == '' && description == '')
         {
             $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
             $('#post').modal('show');
@@ -514,22 +515,19 @@ app.controller('userOppoController', function ($scope, $http) {
             form_data.append('post_for', $scope.sim.post_for);
 
             $('body').removeClass('modal-open');
-            $("#opportunity-popup").modal('hide');
+            $("#post-popup").modal('hide');
 
 
             $http.post(base_url + 'user_post/post_opportunity', form_data,
                     {
                         transformRequest: angular.identity,
-
                         headers: {'Content-Type': undefined, 'Process-Data': false}
                     })
                     .then(function (success) {
                         if (success) {
-                            $scope.description = '';
-                            $scope.job_title = '';
-                            $scope.location = '';
-                            $scope.field = '';
-                            $scope.fileInput = '';
+                            $scope.sim.description = '';
+                            $scope.sim.postfiles = '';
+                            document.getElementById('fileInput1').value = '';
                             $scope.postData.splice(0, 0, success.data[0]);
                             $('video, audio').mediaelementplayer();
                         }
