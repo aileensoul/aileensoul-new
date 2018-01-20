@@ -216,9 +216,13 @@ class User_post extends MY_Controller {
         echo json_encode($return_data);
     }
 
-    public function getUserOpportunity() {
+    public function getUserPost() {
         $userid = $this->session->userdata('aileenuser');
-        $post_data = $this->user_post_model->userPost($userid);
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+        $post_data = $this->user_post_model->userPost($userid, $page);
         echo json_encode($post_data);
     }
 
@@ -309,7 +313,7 @@ class User_post extends MY_Controller {
         $job_title = json_decode($_POST['job_title'], TRUE);
         $location = json_decode($_POST['location'], TRUE);
         $post_for = $_POST['post_for'];
-        
+
         $error = '';
         if ($post_for == 'opportunity') {
             if ($description == '') {
@@ -762,7 +766,7 @@ class User_post extends MY_Controller {
                 }
             }
 
-            $post_data = $this->user_post_model->userPost($userid, $limit = '1');
+            $post_data = $this->user_post_model->userPost($userid, $start = '0', $limit = '1');
             echo json_encode($post_data);
         }
     }

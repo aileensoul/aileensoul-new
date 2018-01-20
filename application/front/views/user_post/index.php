@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="userOppoApp" ng-controller="userOppoController">
+<html lang="en" ng-app="userOppoApp" ng-controller="userOppoController" scrollable-container>
     <head>
         <title><?php echo $title; ?></title>
         <meta charset="utf-8">
@@ -108,6 +108,9 @@
                     </div>
                     <!-- Repeated Class Start -->
                     <div class="all-post-box" ng-repeat="post in postData">
+                        <input type="hidden" name="page_number" class="page_number" ng-class="page_number" ng-model="post.page_number" ng-value="{{post.page_data.page}}">
+                        <input type="hidden" name="total_record" class="total_record" ng-class="total_record" ng-model="post.total_record" ng-value="{{post.page_data.total_record}}">
+                        <input type="hidden" name="perpage_record" class="perpage_record" ng-class="perpage_record" ng-model="post.perpage_record" ng-value="{{post.page_data.perpage_record}}">
                         <div class="all-post-top">
                             <div class="post-head">
                                 <div class="post-img">
@@ -149,13 +152,13 @@
                                     <a href="#" ng-if="post_file.file_type == 'image'"><img ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" alt="{{post_file.filename}}"></a>
                                     <span  ng-if="post_file.file_type == 'video'"> 
                                         <video controls>
-                                            <source src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="video/mp4">
+                                            <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="video/mp4">
                                         </video>
                                         <!--<video controls poster="" class="mejs__player" ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}"></video>-->
                                     </span>
                                     <span  ng-if="post_file.file_type == 'audio'">
                                         <audio controls>
-                                            <source src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="audio/mp3">
+                                            <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="audio/mp3">
                                         </audio>
                                         <!--<audio controls ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}"></audio>-->
                                     </span>
