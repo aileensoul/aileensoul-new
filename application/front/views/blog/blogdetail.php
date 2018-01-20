@@ -227,10 +227,10 @@ header("Pragma: no-cache"); // HTTP/1.0
                                                     <?php
                                                     //FOR GETTING USER COMMENT
                                                     $condition_array = array('status' => 'approve', 'blog_id' => $blog_detail[0]['id']);
-                                                    $blog_comment = $this->common->select_data_by_condition('blog_comment', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
+                                                    $blog_comment = $this->common->select_data_by_condition('blog_comment', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit ="", $offset="", $join_str = array());
 
 
-                                                    foreach ($blog_comment as $comment) {
+                                                    foreach ($blog_comment as $comment) { 
                                                         ?>  
                                                         <div class="all-comments">
                                                             <ul>
@@ -239,7 +239,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                                                         <img src="<?php echo base_url(NOIMAGE) . '?ver=' . time(); ?>" alt="Noimage">
                                                                     </div>
                                                                     <div class="c-user-comments">
-                                                                        <h5><?php echo $comment['name']; ?></h5>
+                                                                        <h5><?php echo ucfirst($comment['name']); ?></h5>
                                                                         <p><?php echo $comment['message']; ?></p>
                                                                         <p class="pt5"><span class="comment-time">
                                                                                 <?php
