@@ -175,7 +175,7 @@ class Freelancer_hire extends MY_Controller {
 
         $select_data = 'fullname,username,email,skyupid,phone,user_id,free_hire_step';
         $userdata = $this->freelancer_hire_model->getfreelancerhiredata($userid, $select_data);
-       // echo $userdata['skyupid'];die();
+
         if ($userdata) {
             $step = $userdata['free_hire_step'];
             if ($step == 1 || $step > 1) {
