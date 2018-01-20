@@ -89,6 +89,22 @@ app.directive('ngEnter', function () {			// custom directive for sending message
         });
     };
 });
+app.directive("editableText", function () {
+    return {
+        controller: 'EditorController',
+        restrict: 'C',
+        replace: true,
+        transclude: true,
+    };
+});
+app.controller('EditorController', ['$scope', function ($scope) {
+        $scope.handlePaste = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var value = e.originalEvent.clipboardData.getData("Text");
+            document.execCommand('inserttext', false, value);
+        };
+    }]);
 app.controller('userOppoController', function ($scope, $http) {
     $scope.opp = {};
     $scope.sim = {};
@@ -737,6 +753,7 @@ app.controller('userOppoController', function ($scope, $http) {
         }
     }
 
+
 });
 
 $(window).on("load", function () {
@@ -745,41 +762,3 @@ $(window).on("load", function () {
         theme: "minimal"
     });
 });
-
-$(document).ready(function (e) {
-    var _onPaste_StripFormatting_IEPaste = false;
-    function OnPaste_StripFormatting(e) {
-        alert(1212);
-        e.preventDefault();
-
-        var text = (e.originalEvent || e).clipboardData.getData('text/html') || prompt('Paste something..');
-        var $result = $('<div></div>').append($(text));
-
-        $(this).html($result.html());
-
-        // replace all styles except bold and italic
-        $.each($(this).find("*"), function (idx, val) {
-
-            var $item = $(val);
-            if ($item.length > 0) {
-                var saveStyle = {
-                    'font-weight': $item.css('font-weight'),
-                    'font-style': $item.css('font-style')
-                };
-                $item.removeAttr('style')
-                        .removeClass()
-                        .css(saveStyle);
-            }
-        });
-
-        // remove unnecesary tags (if paste from word)
-        $(this).children('style').remove();
-        $(this).children('meta').remove()
-        $(this).children('link').remove();
-
-    };
-
-});
-
-
-
