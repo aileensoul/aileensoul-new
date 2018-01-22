@@ -106,20 +106,17 @@ app.controller('EditorController', ['$scope', function ($scope) {
         };
     }]);
 
-app.directive('scrollableContainer', function ($window, $document,$http) {
+app.directive('scrollableContainer', function ($window, $document, $http) {
     return {
         link: function ($scope, element, attrs) {
-            angular.element($document).on('scroll', function () {
-                if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
+            $(window).on('scroll', function () {
+//                if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
+                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                    //var post_index = $(".post_index:last").val();
                     var page = $(".page_number:last").val();
                     var total_record = $(".total_record").val();
                     var perpage_record = $(".perpage_record").val();
-                    
-                    alert(page);
-                    alert(total_record);
-                    alert(perpage_record);
-
-                    if (parseInt(perpage_record) <= parseInt(total_record)) {
+                    if (parseInt(perpage_record * page) <= parseInt(total_record)) {
                         var available_page = total_record / perpage_record;
                         available_page = parseInt(available_page, 10);
                         var mod_page = total_record % perpage_record;
@@ -135,8 +132,12 @@ app.directive('scrollableContainer', function ($window, $document,$http) {
                 }
             });
             function getUserPost(pagenum = '') {
+                $('#loader').show();
                 $http.get(base_url + "user_post/getUserPost?page=" + pagenum).then(function (success) {
-                    $scope.postData.push(success.data[0]);
+                    $('#loader').hide();
+                    for (var i in success.data) {
+                        $scope.postData.push(success.data[i]);
+                    }
                     $('video,audio').mediaelementplayer(/* Options */);
                 }, function (error) {});
             }
@@ -153,8 +154,11 @@ app.controller('userOppoController', function ($scope, $http) {
     $scope.sim.post_for = 'simple';
     getUserPost();
     function getUserPost(pagenum = '') {
+        $('#loader').show();
         $http.get(base_url + "user_post/getUserPost?page=" + pagenum).then(function (success) {
+            $('#loader').hide();
             $scope.postData = success.data;
+            check_no_post_data();
             $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
     }
@@ -792,7 +796,33 @@ app.controller('userOppoController', function ($scope, $http) {
             $scope.isMsgBoxEmpty = true;
         }
     }
+    $scope.deletePost = function (post_id, index) {
+        $scope.p_d_post_id = post_id;
+        $scope.p_d_index = index;
 
+        $('#delete_post_model').modal('show');
+    }
+    $scope.deletedPost = function (post_id, index) {
+        $http({
+            method: 'POST',
+            url: base_url + 'user_post/deletePost',
+            data: 'post_id=' + post_id,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    data = success.data;
+                    if (data.message == '1') {
+                        $scope.postData.splice(index, 1);
+                    }
+                });
+    }
+
+    function check_no_post_data() {
+        var numberPost = $scope.postData.length;
+        if (numberPost == 0) {
+            $('.all_user_post').html(no_user_post_html);
+        }
+    }
 
 });
 

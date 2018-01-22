@@ -183,9 +183,19 @@ class User_post_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array['post_count'];
     }
-
+    
+    public function getPostUserId($post_id=''){
+        $this->db->select("user_id")->from("user_post up");
+        $this->db->where('up.post_id', $post_id);
+        $this->db->where('up.status', 'publish');
+        $this->db->where('up.is_delete', '0');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['user_id'];
+    }
+    
     public function userPost($user_id = '', $page = '') {
-        $limit = '5';
+        $limit = '10';
         $start = ($page - 1) * $limit;
         if ($start < 0)
             $start = 0;

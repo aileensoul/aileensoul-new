@@ -17,6 +17,9 @@ class User_post extends MY_Controller {
         $this->load->model('user_post_model');
         $this->load->model('data_model');
         $this->load->library('S3');
+
+        $this->data['no_user_post_html'] = '<div class="user_no_post_avl"><h3>Post</h3><div class="user-img-nn"><div class="user_no_post_img"><img src=' . base_url('assets/img/bui-no.png?ver=' . time()) . ' alt="bui-no.png"></div><div class="art_no_post_text">No Post Available.</div></div></div>';
+        $this->data['no_user_contact_html'] = '<div class="art-img-nn"><div class="art_no_post_img"><img src="' . base_url('assets/img/No_Contact_Request.png?ver=' . time()) . '"></div><div class="art_no_post_text">No Contacts Available.</div></div>';
     }
 
     public function index() {
@@ -25,6 +28,7 @@ class User_post extends MY_Controller {
         $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
         $this->data['is_userBasicInfo'] = $this->user_model->is_userBasicInfo($userid);
         $this->data['is_userStudentInfo'] = $this->user_model->is_userStudentInfo($userid);
+        $this->data['is_userPostCount'] = $this->user_post_model->userPostCount($userid);
         $this->data['header_profile'] = $this->load->view('header_profile', $this->data, TRUE);
         $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
@@ -224,6 +228,30 @@ class User_post extends MY_Controller {
         }
         $post_data = $this->user_post_model->userPost($userid, $page);
         echo json_encode($post_data);
+    }
+
+    public function deletePost() {
+        $userid = $this->session->userdata('aileenuser');
+        $post_id = $_POST['post_id'];
+
+        $getPostUserId = $this->user_post_model->getPostUserId($post_id);
+
+        $data = array();
+        if ($userid == $getPostUserId) {
+            $data['is_delete'] = '1';
+            $updatedata = $this->common->update_data($data, 'user_post', 'id', $post_id);
+        } else {
+            $data['post_id'] = $post_id;
+            $data['user_id'] = $userid;
+            $data['delete_date'] = date('Y-m-d H:i:s', time());
+            $deleteId = $this->common->insert_data_getid($data, 'user_post_delete');
+        }
+
+        if ($updatedata || $deleteId) {
+            $return_array = array();
+            $return_array['message'] = 1;
+            echo json_encode($return_array);
+        }
     }
 
     public function likePost() {
