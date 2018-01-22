@@ -119,7 +119,12 @@ header("Pragma: no-cache"); // HTTP/1.0
 
         <?php } ?>
     </head>
-    <body class="blog">
+     <?php if (!$this->session->userdata('aileenuser')) { ?>
+    <body class="blog no-login">
+        <?php }else{?>
+         <body class="blog">
+
+        <?php }?>
         <div class="main-inner">
             <header>
                 <div class="container">
