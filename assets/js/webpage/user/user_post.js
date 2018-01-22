@@ -105,15 +105,55 @@ app.controller('EditorController', ['$scope', function ($scope) {
             document.execCommand('inserttext', false, value);
         };
     }]);
+
+app.directive('scrollableContainer', function ($window, $document,$http) {
+    return {
+        link: function ($scope, element, attrs) {
+            angular.element($document).on('scroll', function () {
+                if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
+                    var page = $(".page_number:last").val();
+                    var total_record = $(".total_record").val();
+                    var perpage_record = $(".perpage_record").val();
+                    
+                    alert(page);
+                    alert(total_record);
+                    alert(perpage_record);
+
+                    if (parseInt(perpage_record) <= parseInt(total_record)) {
+                        var available_page = total_record / perpage_record;
+                        available_page = parseInt(available_page, 10);
+                        var mod_page = total_record % perpage_record;
+                        if (mod_page > 0) {
+                            available_page = available_page + 1;
+                        }
+                        //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                        if (parseInt(page) <= parseInt(available_page)) {
+                            var pagenum = parseInt($(".page_number:last").val()) + 1;
+                            getUserPost(pagenum);
+                        }
+                    }
+                }
+            });
+            function getUserPost(pagenum = '') {
+                $http.get(base_url + "user_post/getUserPost?page=" + pagenum).then(function (success) {
+                    $scope.postData.push(success.data[0]);
+                    $('video,audio').mediaelementplayer(/* Options */);
+                }, function (error) {});
+            }
+        }
+    };
+});
+
+
 app.controller('userOppoController', function ($scope, $http) {
     $scope.opp = {};
     $scope.sim = {};
     $scope.postData = {};
     $scope.opp.post_for = 'opportunity';
     $scope.sim.post_for = 'simple';
-    getUserOpportunity();
-    function getUserOpportunity() {
-        $http.get(base_url + "user_post/getUserOpportunity").then(function (success) {
+    getUserPost();
+    function getUserPost(pagenum = '') {
+        $http.get(base_url + "user_post/getUserPost?page=" + pagenum).then(function (success) {
             $scope.postData = success.data;
             $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
