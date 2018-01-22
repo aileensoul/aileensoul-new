@@ -139,8 +139,16 @@ class User_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array;
     }
+    
+    public function getSameFieldProUser($field=''){
+        $this->db->select("GROUP_CONCAT(CONCAT('''', `user_id`, '''' )) AS group_user")->from("user_profession up");
+        $this->db->where("up.field =" . $field);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['group_user'];
+    }
 
-    public function getUserStudentData($user_id = '', $select_data = '') {
+        public function getUserStudentData($user_id = '', $select_data = '') {
         $this->db->select($select_data)->from("user_student us");
         $this->db->join('cities c', 'c.city_id = us.city', 'left');
         $this->db->join('user usr', 'usr.user_id = us.user_id', 'left');
@@ -150,6 +158,13 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         $result_array = $query->row_array();
         return $result_array;
+    }
+    public function getSameFieldStdUser($current_study=''){
+        $this->db->select("GROUP_CONCAT(CONCAT('''', `user_id`, '''' )) AS group_user")->from("user_student us");
+        $this->db->where("us.current_study =" . $current_study);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['group_user'];
     }
 
     public function getUserDataByslug($user_slug = '', $select_data = '') {

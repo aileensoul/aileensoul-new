@@ -173,7 +173,7 @@ class User_post_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array['like_count'];
     }
-    
+
     public function userPostCount($user_id = '') {
         $this->db->select("COUNT(up.id) as post_count")->from("user_post up");
         $this->db->where('up.user_id', $user_id);
@@ -183,8 +183,8 @@ class User_post_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array['post_count'];
     }
-    
-    public function getPostUserId($post_id=''){
+
+    public function getPostUserId($post_id = '') {
         $this->db->select("user_id")->from("user_post up");
         $this->db->where('up.post_id', $post_id);
         $this->db->where('up.status', 'publish');
@@ -193,17 +193,22 @@ class User_post_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array['user_id'];
     }
-    
+
     public function userPost($user_id = '', $page = '') {
         $limit = '10';
         $start = ($page - 1) * $limit;
         if ($start < 0)
             $start = 0;
 
-
+        $getUserProfessionData = $this->user_model->getUserProfessionData($user_id, $select_data = 'field');
+        $getUserStudentData = $this->user_model->getUserStudentData($user_id, $select_data = 'current_study');
+        
+        $getSameFieldProUser = $this->user_model->getSameFieldProUser($getUserProfessionData['field']);
+        $getSameFieldStdUser = $this->user_model->getSameFieldStdUser($getUserStudentData['current_study']);
+        
         $result_array = array();
         $this->db->select("up.id,up.user_id,up.post_for,UNIX_TIMESTAMP(STR_TO_DATE(up.created_date, '%Y-%m-%d %H:%i:%s')) as created_date,up.post_id")->from("user_post up");
-        $this->db->where('up.user_id', $user_id);
+        $this->db->where('up.user_id IN ('.$getSameFieldProUser.')');
         $this->db->where('up.status', 'publish');
         $this->db->where('up.is_delete', '0');
         $this->db->order_by('up.id', 'desc');
@@ -272,7 +277,7 @@ class User_post_model extends CI_Model {
                 $result_array[$key]['post_comment_data'][$key1]['is_userlikePostComment'] = $this->is_userlikePostComment($user_id, $value1['comment_id']);
                 $result_array[$key]['post_comment_data'][$key1]['postCommentLikeCount'] = $this->postCommentLikeCount($value1['comment_id']) == '0' ? '' : $this->postCommentLikeCount($value1['comment_id']);
             }
-            
+
             $result_array[$key]['page_data']['page'] = $page;
             $result_array[$key]['page_data']['total_record'] = $this->userPostCount($user_id);
             $result_array[$key]['page_data']['perpage_record'] = $limit;
