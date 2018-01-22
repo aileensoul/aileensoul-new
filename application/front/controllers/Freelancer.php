@@ -2088,6 +2088,7 @@ class Freelancer extends MY_Controller {
 
     //FREELANCER_APPLY PORTFOLIO UPLOAD PDF START
     public function pdf($id) {
+        $this->data['title'] =   "PDF | Freelancer Profile" . TITLEPOSTFIX;
         $contition_array = array('user_id' => $id, 'status' => '1');
         $this->data['freelancerdata'] = $freelancerdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $this->load->view('freelancer/freelancer_post/freelancer_pdf', $this->data);
