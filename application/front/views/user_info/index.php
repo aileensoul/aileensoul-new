@@ -141,7 +141,7 @@
                                 $('#basic_info_ajax_load').show();
                                 $http({
                                     method: 'POST',
-                                    url: base_url + 'user_basic_info/ng_basic_info_insert',
+                                    url: base_url + 'user_info/ng_basic_info_insert',
                                     data: $scope.user,
                                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                                 })
@@ -245,7 +245,7 @@
                                 $('#student_info_ajax_load').show();
                                 $http({
                                     method: 'POST',
-                                    url: base_url + 'user_basic_info/ng_student_info_insert',
+                                    url: base_url + 'user_info/ng_student_info_insert',
                                     data: $scope.user,
                                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                                 })

@@ -175,8 +175,23 @@ class User_post_model extends CI_Model {
     }
 
     public function userPostCount($user_id = '') {
+        $getUserProfessionData = $this->user_model->getUserProfessionData($user_id, $select_data = 'field');
+        $getUserStudentData = $this->user_model->getUserStudentData($user_id, $select_data = 'current_study');
+
+        $getSameFieldProUser = $this->user_model->getSameFieldProUser($getUserProfessionData['field']);
+        $getSameFieldStdUser = $this->user_model->getSameFieldStdUser($getUserStudentData['current_study']);
+
+        $getDeleteUserPost = $this->deletePostUser($user_id);
+        
         $this->db->select("COUNT(up.id) as post_count")->from("user_post up");
-        $this->db->where('up.user_id', $user_id);
+        if ($getUserProfessionData && $getSameFieldProUser) {
+            $this->db->where('up.user_id IN (' . $getSameFieldProUser . ')');
+        } elseif ($getUserStudentData && $getSameFieldStdUser) {
+            $this->db->where('up.user_id IN (' . $getSameFieldStdUser . ')');
+        }
+        if ($getDeleteUserPost) {
+            $this->db->where('up.id NOT IN (' . $getDeleteUserPost . ')');
+        }
         $this->db->where('up.status', 'publish');
         $this->db->where('up.is_delete', '0');
         $query = $this->db->get();
@@ -194,6 +209,14 @@ class User_post_model extends CI_Model {
         return $result_array['user_id'];
     }
 
+    public function deletePostUser($user_id = '') {
+        $this->db->select("GROUP_CONCAT(CONCAT('''', `post_id`, '''' )) AS group_post")->from("user_post_delete upd");
+        $this->db->where("upd.user_id", $user_id);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['group_post'];
+    }
+
     public function userPost($user_id = '', $page = '') {
         $limit = '10';
         $start = ($page - 1) * $limit;
@@ -202,13 +225,22 @@ class User_post_model extends CI_Model {
 
         $getUserProfessionData = $this->user_model->getUserProfessionData($user_id, $select_data = 'field');
         $getUserStudentData = $this->user_model->getUserStudentData($user_id, $select_data = 'current_study');
-        
+
         $getSameFieldProUser = $this->user_model->getSameFieldProUser($getUserProfessionData['field']);
         $getSameFieldStdUser = $this->user_model->getSameFieldStdUser($getUserStudentData['current_study']);
-        
+
+        $getDeleteUserPost = $this->deletePostUser($user_id);
+
         $result_array = array();
         $this->db->select("up.id,up.user_id,up.post_for,UNIX_TIMESTAMP(STR_TO_DATE(up.created_date, '%Y-%m-%d %H:%i:%s')) as created_date,up.post_id")->from("user_post up");
-        $this->db->where('up.user_id IN ('.$getSameFieldProUser.')');
+        if ($getUserProfessionData && $getSameFieldProUser) {
+            $this->db->where('up.user_id IN (' . $getSameFieldProUser . ')');
+        } elseif ($getUserStudentData && $getSameFieldStdUser) {
+            $this->db->where('up.user_id IN (' . $getSameFieldStdUser . ')');
+        }
+        if ($getDeleteUserPost) {
+            $this->db->where('up.id NOT IN (' . $getDeleteUserPost . ')');
+        }
         $this->db->where('up.status', 'publish');
         $this->db->where('up.is_delete', '0');
         $this->db->order_by('up.id', 'desc');
@@ -217,6 +249,7 @@ class User_post_model extends CI_Model {
         }
         $query = $this->db->get();
         $user_post = $query->result_array();
+
         foreach ($user_post as $key => $value) {
             $result_array[$key]['post_data'] = $user_post[$key];
 
