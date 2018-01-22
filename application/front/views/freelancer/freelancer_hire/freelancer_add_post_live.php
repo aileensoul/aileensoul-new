@@ -196,13 +196,13 @@
                                                 </fieldset>
 
                                                 <fieldset  class="half-width pl10" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
-                                                    <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:<span style="color:red">*</span></label>
+                                                    <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:</label>
                                                     <input tabindex="14" name="rate" type="text" id="rate" placeholder="Enter your rate"/>
                                                     <span id="fullname-error"></span>
                                                     <?php echo form_error('rate'); ?>
                                                 </fieldset>
                                                 <fieldset class="half-width" <?php if ($csurrency) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
-                                                    <label><?php echo $this->lang->line("currency"); ?>:<span style="color:red">*</span></label>
+                                                    <label><?php echo $this->lang->line("currency"); ?>:</label>
                                                     <select tabindex="15" name="currency" id="currency">
                                                         <option  value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
                                                         <?php foreach ($currency as $cur) { ?>
