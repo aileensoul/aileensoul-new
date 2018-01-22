@@ -249,6 +249,7 @@ background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
 background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
 padding: 21px 0;
+font-size: 20px;
 text-align: center;
 text-transform: uppercase;
 line-height: 1;}
