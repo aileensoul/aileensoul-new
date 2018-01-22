@@ -214,16 +214,16 @@ color: #fff;}
     display:inline-block; border:1px solid #d9d9d9;
     border-radius:4px;
     margin-top:0;
-    width:100%}
+    width:100%;}
 .user_no_post_avl h3{
     padding:4px 0;
     width:100%;
     color:#1b8ab9;
-    border-bottom:1px solid #d9d9d9
+    border-bottom:1px solid #d9d9d9;
 }
 .user_no_post_img{
     padding-top:20px;
-    padding-bottom:20px
+    padding-bottom:20px;
 }
 .user_no_post_text{
     line-height:40px;
