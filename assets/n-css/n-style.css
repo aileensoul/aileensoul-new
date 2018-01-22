@@ -953,6 +953,15 @@ header.profile-header .logo a{color:#5c5c5c;}
 .article-all-comment .post-comment:last-child{margin-bottom:0px;}
 .article-all-comment .comment-dis{width:92%;}
 /***  media query  ***/
+/***  video css  ***/
+.mejs__container.mejs__video{width:100% !important; height: auto !important; min-height: 270px !important;}
+.mejs__container.mejs__video video{width:100% !important; height: auto !important;}
+.mejs__container.mejs__video .mejs__overlay.mejs__overlay-play{width:100% !important;}
+.mejs__container.mejs__video .mejs__mediaelement{height: auto !important;}
+.mejs__poster.mejs__layer{width:100% !important;}
+.mejs__container.mejs__container-keyboard-inactive{}
+
+/***  end video  ***/
 @media screen and (min-width: 768px) {
 
 }
