@@ -318,7 +318,6 @@
                                 var base_url = '<?php echo base_url(); ?>';
                                 var user_slug = '<?php echo $this->uri->segment(2); ?>';
                                 var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
-                                var app = angular.module("userProfileApp", ["ngRoute"]);
                                 var item = '<?php echo $this->uri->segment(1); ?>';
                                 var live_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
                                 var segment2 = '<?php echo $this->uri->segment(2); ?>';
@@ -330,6 +329,9 @@
                                 var follow_value = '<?php echo $follow_value; ?>';
                                 var follow_status = '<?php echo $follow_status; ?>';
                                 var follow_id = '<?php echo $follow_id; ?>';
+                                var is_userPostCount = '<?php echo $is_userPostCount; ?>';
+                                
+                                var app = angular.module("userProfileApp", ['ngRoute','ui.bootstrap', 'ngTagsInput', 'ngSanitize']);
         </script>
         <script src="<?php echo base_url('assets/js/webpage/user/user_profile.js?ver=' . time()) ?>"></script>
     </body>
