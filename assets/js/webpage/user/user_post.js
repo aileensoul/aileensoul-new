@@ -478,7 +478,7 @@ app.controller('userOppoController', function ($scope, $http) {
 
                         headers: {'Content-Type': undefined, 'Process-Data': false}
                     })
-                    .then(function (success) {
+                    .then(function (success) { 
                         if (success) {
                             $scope.opp.description = '';
                             $scope.opp.job_title = '';
