@@ -354,6 +354,22 @@ class User_post extends MY_Controller {
                 $error = 1;
             }
         }
+        
+        if ($post_for == 'question') {
+           $ask_screenshot = $_POST['screenshot'];
+           $ask_question = $_POST['question'];
+           $ask_description = $_POST['description'];
+           $ask_field = $_POST['field'];
+           $ask_category = $_POST['category'];
+           $ask_weblink = $_POST['weblink'];
+     
+           if ($ask_question == '') {
+                $error = 1;
+            } elseif ($ask_field == '') {
+                $error = 1;
+            } 
+        }
+        
         if ($error != '1') {
             if ($post_for == 'opportunity') {
                 foreach ($job_title as $title) {
@@ -433,6 +449,17 @@ class User_post extends MY_Controller {
                 $insert_data['description'] = $description;
                 $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
                 $inserted_id = $user_simple_id = $this->common->insert_data_getid($insert_data, 'user_simple_post');
+            } elseif ($post_for == 'question') {
+                
+                $insert_data = array();
+                $insert_data['post_id'] = $user_post_id;
+                $insert_data['question'] = $ask_question;
+                $insert_data['screenshot'] = $ask_screenshot;
+                $insert_data['description'] = $ask_description;
+                $insert_data['category'] = $ask_category;
+                $insert_data['field'] = $ask_weblink;
+                $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
+                $inserted_id = $user_simple_id = $this->common->insert_data_getid($insert_data, 'user_ask_question');
             }
             $update_data = array();
             $update_data['post_id'] = $inserted_id;

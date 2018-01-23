@@ -149,9 +149,11 @@ app.directive('scrollableContainer', function ($window, $document, $http) {
 app.controller('userOppoController', function ($scope, $http) {
     $scope.opp = {};
     $scope.sim = {};
+    $scope.ask = {};
     $scope.postData = {};
     $scope.opp.post_for = 'opportunity';
     $scope.sim.post_for = 'simple';
+    $scope.ask.post_for = 'question';
     getUserPost();
     function getUserPost(pagenum = '') {
         $('#loader').show();
@@ -381,6 +383,92 @@ app.controller('userOppoController', function ($scope, $http) {
 
             $('body').removeClass('modal-open');
             $("#opportunity-popup").modal('hide');
+
+
+            $http.post(base_url + 'user_post/post_opportunity', form_data,
+                    {
+                        transformRequest: angular.identity,
+
+                        headers: {'Content-Type': undefined, 'Process-Data': false}
+                    })
+                    .then(function (success) {
+                        if (success) {
+                            $scope.opp.description = '';
+                            $scope.opp.job_title = '';
+                            $scope.opp.location = '';
+                            $scope.opp.field = '';
+                            $scope.opp.postfiles = '';
+                            document.getElementById('fileInput').value = '';
+                            $scope.postData.splice(0, 0, success.data[0]);
+                            $('video, audio').mediaelementplayer();
+                        }
+                    });
+        }
+    }
+    
+     $scope.IsVisible = false;
+            $scope.ShowHide = function () {
+                //If DIV is visible it will be hidden and vice versa.
+                $scope.IsVisible = $scope.IsVisible ? false : true;
+            }
+       
+        
+
+    $scope.ask_question_check = function (event) {
+        alert(event);
+        var field = document.getElementById("ask_field").value;
+        var description = document.getElementById("ask_que").value;
+        var description = description.trim();
+        var fileInput = document.getElementById("screenshot").files;
+        var fileInput1 = document.getElementById("screenshot").value;
+        alert(field);
+        alert(description);
+        if ((field == '') || (description == ''))
+        {
+            alert(1);
+            $('#post .mes').html("<div class='pop_content'>Ask question and Field is required.");
+            $('#post').modal('show');
+            $(document).on('keydown', function (e) {
+                if (e.keyCode === 27) {
+                    $('#posterrormodal').modal('hide');
+                    $('.modal-post').show();
+                }
+            });
+            event.preventDefault();
+            return false;
+        } else {
+            alert(2);
+            var length = fileInput.length;
+            alert(length);
+
+            var vfirstname = fileInput[0].name;
+            alert(vfirstname);
+            var ext = vfirstname.split('.').pop();
+            var ext1 = vfirstname.split('.').pop();
+            var allowedExtensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg'];
+
+            var foundPresent = $.inArray(ext, allowedExtensions) > -1;
+            if (foundPresent == true)
+            {
+                var foundPresent1 = $.inArray(ext1, allowedExtensions) > -1;
+
+            }
+
+
+            var form_data = new FormData();
+           
+            form_data.append('screenshot',$scope.ask.postfiles);
+            form_data.append('question', $scope.ask.ask_que);
+            form_data.append('description', $scope.ask.ask_description);
+            form_data.append('field', $scope.ask.ask_field);
+            form_data.append('category', JSON.stringify($scope.ask.related_category));
+            form_data.append('weblink', $scope.ask.web_link);
+            form_data.append('post_for', $scope.ask.post_for);
+alert("kkk");
+alert(form_data);
+            $('body').removeClass('modal-open');
+            $("#opportunity-popup").modal('hide');
+            $("#ask-question").modal('hide');
 
 
             $http.post(base_url + 'user_post/post_opportunity', form_data,

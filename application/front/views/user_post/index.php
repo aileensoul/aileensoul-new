@@ -188,7 +188,7 @@
                                     </div>
                                     </span>
                                     <div class="post-images four-img" ng-if="post.post_data.total_post_files >= '4'">
-                                        <div class="two-img" ng-repeat="post_file in post.post_file_data | limitTo:4">
+                                        <div class="two-img" ng-repeat="post_file in post.post_file_data| limitTo:4">
                                             <a href="#"><img ng-src="<?php echo USER_POST_RESIZE2_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
                                             <div class="view-more-img" ng-if="$index == '3' && post.post_data.total_post_files > '4'">
                                                 <span>View All (+4)</span>
@@ -450,7 +450,7 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">×</button>
                     <div class="post-popup-box">
-                        <form>
+                        <form id="ask_question" name="ask_question" ng-submit="ask_question_check(event)">
                             <div class="post-box">
                                 <div class="post-img">
                                     <?php if ($leftbox_data['user_image'] != '') { ?> 
@@ -460,34 +460,48 @@
                                     <?php } ?>
                                 </div>
                                 <div class="post-text">
-                                    <textarea class="title-text-area" placeholder="Ask Quastion"></textarea>
+                                    <textarea class="title-text-area" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Quastion"></textarea>
                                 </div>
                                 <div class="all-upload">
-                                    <label for="file-1">
+                                    <div class="form-group">
+                                        <input file-input="files" ng-file-model="ask.postfiles" type="file" id="screenshot" name="screenshot" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+                                    </div>
+                                    <label for="screenshot">
                                         <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Add Screenshot </span></i>
-                                        <i class="fa fa fa-link upload_icon"><span class="upload_span_icon"> Add Link</span>  </i> 
-
                                     </label>
+                                </div>
+                                <div class="add-link" ng-click="ShowHide()">
+                                    <i class="fa fa fa-link upload_icon"><span class="upload_span_icon"> Add Link</span>  </i> 
+                                </div>
+
+                                <div class="form-group"  ng-show = "IsVisible">
+                                    <input type="text" ng-model="ask.web_link" class="" placeholder="Add Your Web Link">
                                 </div>
                             </div>
                             <div class="post-field">
                                 <div class="form-group">
                                     <label>Add Description<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
-                                    <textarea rows="1" max-rows="5" placeholder="Add Description" cols="10" style="resize:none"></textarea>
+                                    <textarea rows="1" max-rows="5" ng-model="ask.ask_description" placeholder="Add Description" cols="10" style="resize:none"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Related Categories<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
-                                    <input type="text" class="" placeholder="Related Categories">
+                                    <input type="text" ng-model="ask.related_category" class="" placeholder="Related Categories">
                                 </div>
                                 <div class="form-group">
                                     <label>From which field the Question asked?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
-                                    <select>
-                                        <option>What is your field</option>
-                                        <option>IT</option>
-                                        <option>Teacher</option>
-                                        <option>Sports</option>
+                                    <select ng-model="ask.ask_field" id="ask_field">
+                                        <option value="" selected="selected">What is your field</option>
+                                        <option value="1">IT</option>
+                                        <option value="2">Teacher</option>
+                                        <option value="3">Sports</option>
+                                        <option value="0">Other</option>
                                     </select>
                                 </div>
+
+                                <div class="form-group" ng-if="ask.ask_field == '0'">
+                                    <input type="text" class="form-control" ng-model="ask.otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
+                                </div>
+                                <input type="hidden" name="post_for" ng-model="ask.post_for" class="form-control" value="">
                             </div>
                             <div class="text-right fw pt10 pb20 pr15">
                                 <button type="submit" class="btn1"  value="Submit">Post</button> 
