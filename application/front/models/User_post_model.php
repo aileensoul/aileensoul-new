@@ -200,8 +200,8 @@ class User_post_model extends CI_Model {
 
     public function userPostCountBySlug($user_slug = '') {
         $user_id = $this->db->select('user_id')->get_where('user', array('user_slug' => $user_slug))->row('user_id');
-        
-        
+
+
         $getUserProfessionData = $this->user_model->getUserProfessionData($user_id, $select_data = 'field');
         $getUserStudentData = $this->user_model->getUserStudentData($user_id, $select_data = 'current_study');
 
@@ -267,6 +267,95 @@ class User_post_model extends CI_Model {
         if ($getDeleteUserPost) {
             $this->db->where('up.id NOT IN (' . $getDeleteUserPost . ')');
         }
+        $this->db->where('up.status', 'publish');
+        $this->db->where('up.is_delete', '0');
+        $this->db->order_by('up.id', 'desc');
+        if ($limit != '') {
+            $this->db->limit($limit, $start);
+        }
+        $query = $this->db->get();
+        $user_post = $query->result_array();
+
+        foreach ($user_post as $key => $value) {
+            $result_array[$key]['post_data'] = $user_post[$key];
+
+            $this->db->select("count(*) as file_count")->from("user_post_file upf");
+            $this->db->where('upf.post_id', $value['id']);
+            $query = $this->db->get();
+            $total_post_files = $query->row_array('file_count');
+            $result_array[$key]['post_data']['total_post_files'] = $total_post_files['file_count'];
+
+            $this->db->select("u.user_id,u.user_slug,CONCAT(u.first_name,' ',u.last_name) as fullname,ui.user_image,jt.name as title_name,d.degree_name")->from("user u");
+            $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+            $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
+            $this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
+            $this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
+            $this->db->join('user_student us', 'us.user_id = u.user_id', 'left');
+            $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
+            $this->db->where('u.user_id', $value['user_id']);
+            $query = $this->db->get();
+            $user_data = $query->row_array();
+            $result_array[$key]['user_data'] = $user_data;
+
+            if ($value['post_for'] == 'opportunity') {
+                $this->db->select("uo.post_id,GROUP_CONCAT(DISTINCT(jt.name)) as opportunity_for,GROUP_CONCAT(DISTINCT(c.city_name)) as location,uo.opportunity,it.industry_name as field")->from("user_opportunity uo, ailee_job_title jt, ailee_cities c");
+                $this->db->join('industry_type it', 'it.industry_id = uo.field', 'left');
+                $this->db->where('uo.id', $value['post_id']);
+                $this->db->where('FIND_IN_SET(jt.title_id, uo.`opportunity_for`) !=', 0);
+                $this->db->where('FIND_IN_SET(c.city_id, uo.`location`) !=', 0);
+                $this->db->group_by('uo.opportunity_for', 'uo.location');
+                $query = $this->db->get();
+                $opportunity_data = $query->row_array();
+                $result_array[$key]['opportunity_data'] = $opportunity_data;
+            } elseif ($value['post_for'] == 'simple') {
+                $this->db->select("usp.description")->from("user_simple_post usp");
+                $this->db->where('usp.id', $value['post_id']);
+                $query = $this->db->get();
+                $simple_data = $query->row_array();
+                $result_array[$key]['simple_data'] = $simple_data;
+            }
+            $this->db->select("upf.file_type,upf.filename")->from("user_post_file upf");
+            $this->db->where('upf.post_id', $value['id']);
+            $query = $this->db->get();
+            $post_file_data = $query->result_array();
+            $result_array[$key]['post_file_data'] = $post_file_data;
+
+            $post_like_data = $this->postLikeData($value['id']);
+            $post_like_count = $this->likepost_count($value['id']);
+            $result_array[$key]['post_like_count'] = $post_like_count;
+            $result_array[$key]['is_userlikePost'] = $this->is_userlikePost($user_id, $value['id']);
+            if ($post_like_count > 1) {
+                $result_array[$key]['post_like_data'] = $post_like_data['username'] . ' and ' . ($post_like_count - 1) . ' other';
+            } elseif ($post_like_count == 1) {
+                $result_array[$key]['post_like_data'] = $post_like_data['username'];
+            }
+            $result_array[$key]['post_comment_count'] = $this->postCommentCount($value['id']);
+            $result_array[$key]['post_comment_data'] = $postCommentData = $this->postCommentData($value['id']);
+
+            foreach ($postCommentData as $key1 => $value1) {
+                $result_array[$key]['post_comment_data'][$key1]['is_userlikePostComment'] = $this->is_userlikePostComment($user_id, $value1['comment_id']);
+                $result_array[$key]['post_comment_data'][$key1]['postCommentLikeCount'] = $this->postCommentLikeCount($value1['comment_id']) == '0' ? '' : $this->postCommentLikeCount($value1['comment_id']);
+            }
+
+            $result_array[$key]['page_data']['page'] = $page;
+            $result_array[$key]['page_data']['total_record'] = $this->userPostCount($user_id);
+            $result_array[$key]['page_data']['perpage_record'] = $limit;
+        }
+//        echo '<pre>';
+//        print_r($result_array);
+//        exit;
+        return $result_array;
+    }
+
+    public function userDashboardPost($user_id = '', $page = '') {
+        $limit = '10';
+        $start = ($page - 1) * $limit;
+        if ($start < 0)
+            $start = 0;
+
+        $result_array = array();
+        $this->db->select("up.id,up.user_id,up.post_for,UNIX_TIMESTAMP(STR_TO_DATE(up.created_date, '%Y-%m-%d %H:%i:%s')) as created_date,up.post_id")->from("user_post up");
+        $this->db->where('user_id', $user_id);
         $this->db->where('up.status', 'publish');
         $this->db->where('up.is_delete', '0');
         $this->db->order_by('up.id', 'desc');

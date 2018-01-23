@@ -37,15 +37,15 @@ class Userprofile extends MY_Controller {
         $this->data['is_userPostCount'] = $this->user_post_model->userPostCountBySlug($userslug);
         
        $is_userContactInfo = $this->userprofile_model->userContactStatus($userid, $userdata['user_id']);
-        $is_userFollowInfo = $this->userprofile_model->userFollowStatus($userid, $userdata['user_id']);
+            $is_userFollowInfo = $this->userprofile_model->userFollowStatus($userid, $userdata['user_id']);
             $this->data['to_id'] = $userdata['user_id'];
        
-       if (count($is_userContactInfo) != 0) { 
+        if (count($is_userContactInfo) != 0) { 
             $this->data['contact_status'] = 1;
-          $this->data['contact_value'] = $is_userContactInfo['status'];
+            $this->data['contact_value'] = $is_userContactInfo['status'];
             $this->data['contact_id'] = $is_userContactInfo['id'];
         } else {
-          $this->data['contact_value'] = 'new';
+            $this->data['contact_value'] = 'new';
             $this->data['contact_status'] = 0;
             $this->data['contact_id'] = $is_userContactInfo['id'];
         }

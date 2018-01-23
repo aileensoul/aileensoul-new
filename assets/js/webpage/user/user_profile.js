@@ -196,7 +196,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
     $scope.postData = {};
     $scope.opp.post_for = 'opportunity';
     $scope.sim.post_for = 'simple';
-    getUserPost();
+    getUserDashboardPost();
 
     $(window).on('scroll', function () {
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -212,15 +212,14 @@ app.controller('dashboardController', function ($scope, $http, $location) {
                 }
                 if (parseInt(page) <= parseInt(available_page)) {
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
-                    getUserPostLoad(pagenum);
+                    getUserDashboardPostLoad(pagenum);
                 }
             }
         }
     });
-
-    function getUserPost(pagenum = '') {
+    function getUserDashboardPost(pagenum = '') {
         $('#loader').show();
-        $http.get(base_url + "user_post/getUserPost?page=" + pagenum).then(function (success) {
+        $http.get(base_url + "user_post/getUserDashboardPost?page=" + pagenum + "&user_slug=" + user_slug).then(function (success) {
             $('#loader').hide();
             $scope.postData = success.data;
             check_no_post_data();
@@ -228,9 +227,9 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         }, function (error) {});
     }
     
-    function getUserPostLoad(pagenum = '') {
+    function getUserDashboardPostLoad(pagenum = '') {
         $('#loader').show();
-        $http.get(base_url + "user_post/getUserPost?page=" + pagenum).then(function (success) {
+        $http.get(base_url + "user_post/getUserDashboardPost?page=" + pagenum + "&user_slug=" + user_slug).then(function (success) {
             $('#loader').hide();
             for (var i in success.data) {
                 $scope.postData.push(success.data[i]);
@@ -472,13 +471,10 @@ app.controller('dashboardController', function ($scope, $http, $location) {
     // POST SOMETHING UPLOAD START
 
     $scope.post_something_check = function (event) {
-
         var fileInput = document.getElementById("fileInput1").files;
         var description = document.getElementById("description").value;
         var description = description.trim();
         var fileInput1 = document.getElementById("fileInput1").value;
-
-        alert(fileInput1);
 
         if (fileInput1 == '' && description == '')
         {

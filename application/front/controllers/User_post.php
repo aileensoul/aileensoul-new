@@ -230,6 +230,17 @@ class User_post extends MY_Controller {
         echo json_encode($post_data);
     }
 
+    public function getUserDashboardPost() {
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+        $user_slug = $_GET["user_slug"];
+        $userid = $this->db->select('user_id')->get_where('user', array('user_slug' => $user_slug))->row('user_id');
+        $post_data = $this->user_post_model->userDashboardPost($userid, $page);
+        echo json_encode($post_data);
+    }
+
     public function deletePost() {
         $userid = $this->session->userdata('aileenuser');
         $post_id = $_POST['post_id'];
@@ -354,22 +365,22 @@ class User_post extends MY_Controller {
                 $error = 1;
             }
         }
-        
+
         if ($post_for == 'question') {
-           $ask_screenshot = $_POST['screenshot'];
-           $ask_question = $_POST['question'];
-           $ask_description = $_POST['description'];
-           $ask_field = $_POST['field'];
-           $ask_category = $_POST['category'];
-           $ask_weblink = $_POST['weblink'];
-     
-           if ($ask_question == '') {
+            $ask_screenshot = $_POST['screenshot'];
+            $ask_question = $_POST['question'];
+            $ask_description = $_POST['description'];
+            $ask_field = $_POST['field'];
+            $ask_category = $_POST['category'];
+            $ask_weblink = $_POST['weblink'];
+
+            if ($ask_question == '') {
                 $error = 1;
             } elseif ($ask_field == '') {
                 $error = 1;
-            } 
+            }
         }
-        
+
         if ($error != '1') {
             if ($post_for == 'opportunity') {
                 foreach ($job_title as $title) {
@@ -452,7 +463,7 @@ class User_post extends MY_Controller {
                 $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
                 $inserted_id = $user_simple_id = $this->common->insert_data_getid($insert_data, 'user_simple_post');
             } elseif ($post_for == 'question') {
-                
+
                 $insert_data = array();
                 $insert_data['post_id'] = $user_post_id;
                 $insert_data['question'] = $ask_question;
