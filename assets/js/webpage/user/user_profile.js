@@ -1,3 +1,112 @@
+app.filter('wordFirstCase', function () {
+    return function (text) {
+        return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
+    };
+});
+app.directive("owlCarousel", function () {
+    return {
+        restrict: 'E',
+        link: function (scope) {
+            scope.initCarousel = function (element) {
+                // provide any default options you want
+                var defaultOptions = {
+                    loop: true,
+                    nav: true,
+                    lazyLoad: true,
+                    margin: 0,
+                    video: true,
+                    responsive: {
+                        0: {
+                            items: 2
+                        },
+                        600: {
+                            items: 2
+                        },
+                        960: {
+                            items: 2,
+                        },
+                        1200: {
+                            items: 2
+                        }
+                    }
+                };
+                var customOptions = scope.$eval($(element).attr('data-options'));
+                // combine the two options objects
+                for (var key in customOptions) {
+                    defaultOptions[key] = customOptions[key];
+                }
+                // init carousel
+                $(element).owlCarousel(defaultOptions);
+            };
+        }
+    };
+});
+app.directive('owlCarouselItem', [function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element) {
+                // wait for the last item in the ng-repeat then call init
+                if (scope.$last) {
+                    scope.initCarousel(element.parent());
+                }
+            }
+        };
+    }]);
+app.directive('fileInput', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function ($scope, element, attrs) {
+            $(element).fileinput({
+                uploadUrl: '#',
+                allowedFileExtensions: ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg', 'mp4', 'mp3', 'pdf'],
+                overwriteInitial: false,
+                maxFileSize: 1000000,
+                maxFilesNum: 10,
+                //allowedFileTypes: ['image','video', 'flash'],
+                slugCallback: function (filename) {
+                    return filename.replace('(', '_').replace(']', '_');
+                }
+            });
+            element.on("change", function (event) {
+                var files = event.target.files;
+                $parse(attrs.fileInput).assign($scope, element[0].files);
+                $scope.$apply();
+            });
+        }
+    };
+});
+
+// AUTO SCROLL MESSAGE DIV FIRST TIME END
+app.directive('ngEnter', function () {			// custom directive for sending message on enter click
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if (event.which === 13 && !event.shiftKey) {
+                scope.$apply(function () {
+                    scope.$eval(attrs.ngEnter);
+                });
+                event.preventDefault();
+            }
+        });
+    };
+});
+app.directive("editableText", function () {
+    return {
+        controller: 'EditorController',
+        restrict: 'C',
+        replace: true,
+        transclude: true,
+    };
+});
+app.controller('EditorController', ['$scope', function ($scope) {
+        $scope.handlePaste = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var value = e.originalEvent.clipboardData.getData("Text");
+            document.execCommand('inserttext', false, value);
+        };
+    }]);
+
+
 app.controller('userProfileController', function ($scope, $http) {
     $scope.active = $scope.active == item ? '' : item;
     $scope.makeActive = function (item) {
@@ -13,6 +122,7 @@ app.controller('userProfileController', function ($scope, $http) {
     $scope.follow_value = follow_value;
     $scope.follow_status = follow_status;
     $scope.follow_id = follow_id;
+
     $scope.contact = function (id, status, to_id) {
         $http({
             method: 'POST',
@@ -21,7 +131,6 @@ app.controller('userProfileController', function ($scope, $http) {
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
                 .then(function (success) {
-
                     $scope.contact_value = success.data;
                 });
     }
@@ -36,7 +145,7 @@ app.controller('userProfileController', function ($scope, $http) {
                     $scope.follow_value = success.data;
                 });
     }
-})
+});
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
             .when("/profiless/:name*", {
@@ -75,11 +184,10 @@ app.controller('profilesController', function ($scope, $http, $location) {
             url: base_url + 'userprofile_page/profiles_data',
             data: 'u=' + user_id,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        })
-                .then(function (success) {
-                    details_data = success.data;
-                    $scope.details_data = details_data;
-                });
+        }).then(function (success) {
+            details_data = success.data;
+            $scope.details_data = details_data;
+        });
     }
 });
 app.controller('dashboardController', function ($scope, $http, $location) {
@@ -89,11 +197,44 @@ app.controller('dashboardController', function ($scope, $http, $location) {
     $scope.opp.post_for = 'opportunity';
     $scope.sim.post_for = 'simple';
     getUserPost();
+
+    $(window).on('scroll', function () {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record * page) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    getUserPostLoad(pagenum);
+                }
+            }
+        }
+    });
+
     function getUserPost(pagenum = '') {
         $('#loader').show();
         $http.get(base_url + "user_post/getUserPost?page=" + pagenum).then(function (success) {
             $('#loader').hide();
             $scope.postData = success.data;
+            check_no_post_data();
+            $('video,audio').mediaelementplayer(/* Options */);
+        }, function (error) {});
+    }
+    
+    function getUserPostLoad(pagenum = '') {
+        $('#loader').show();
+        $http.get(base_url + "user_post/getUserPost?page=" + pagenum).then(function (success) {
+            $('#loader').hide();
+            for (var i in success.data) {
+                $scope.postData.push(success.data[i]);
+            }
             check_no_post_data();
             $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
@@ -109,6 +250,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
     function getContactSuggetion() {
         $http.get(base_url + "user_post/getContactSuggetion").then(function (success) {
             $scope.contactSuggetion = success.data;
+//            console.log($scope.contactSuggetion);
         }, function (error) {});
     }
     $scope.job_title = [];
@@ -327,7 +469,6 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         }
     }
 
-
     // POST SOMETHING UPLOAD START
 
     $scope.post_something_check = function (event) {
@@ -336,6 +477,9 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         var description = document.getElementById("description").value;
         var description = description.trim();
         var fileInput1 = document.getElementById("fileInput1").value;
+
+        alert(fileInput1);
+
         if (fileInput1 == '' && description == '')
         {
             $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
@@ -776,7 +920,6 @@ app.controller('contactsController', function ($scope, $http, $location) {
                 });
     }
     $scope.goUserprofile = function (path) {
-        var base_url = '<?php echo base_url(); ?>';
         location.href = base_url + 'profiless/' + path;
     }
 });

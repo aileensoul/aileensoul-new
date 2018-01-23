@@ -182,7 +182,33 @@ class User_post_model extends CI_Model {
         $getSameFieldStdUser = $this->user_model->getSameFieldStdUser($getUserStudentData['current_study']);
 
         $getDeleteUserPost = $this->deletePostUser($user_id);
+        $this->db->select("COUNT(up.id) as post_count")->from("user_post up");
+        if ($getUserProfessionData && $getSameFieldProUser) {
+            $this->db->where('up.user_id IN (' . $getSameFieldProUser . ')');
+        } elseif ($getUserStudentData && $getSameFieldStdUser) {
+            $this->db->where('up.user_id IN (' . $getSameFieldStdUser . ')');
+        }
+        if ($getDeleteUserPost) {
+            $this->db->where('up.id NOT IN (' . $getDeleteUserPost . ')');
+        }
+        $this->db->where('up.status', 'publish');
+        $this->db->where('up.is_delete', '0');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['post_count'];
+    }
+
+    public function userPostCountBySlug($user_slug = '') {
+        $user_id = $this->db->select('user_id')->get_where('user', array('user_slug' => $user_slug))->row('user_id');
         
+        
+        $getUserProfessionData = $this->user_model->getUserProfessionData($user_id, $select_data = 'field');
+        $getUserStudentData = $this->user_model->getUserStudentData($user_id, $select_data = 'current_study');
+
+        $getSameFieldProUser = $this->user_model->getSameFieldProUser($getUserProfessionData['field']);
+        $getSameFieldStdUser = $this->user_model->getSameFieldStdUser($getUserStudentData['current_study']);
+
+        $getDeleteUserPost = $this->deletePostUser($user_id);
         $this->db->select("COUNT(up.id) as post_count")->from("user_post up");
         if ($getUserProfessionData && $getSameFieldProUser) {
             $this->db->where('up.user_id IN (' . $getSameFieldProUser . ')');
