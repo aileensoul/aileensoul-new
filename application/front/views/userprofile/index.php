@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="userProfileApp" ng-controller="userProfileController">
-    <!--<html lang="en" ng-app="userProfileApp">-->
     <head>
         <base href="/aileensoul-new/" >
         <title ng-bind="title"></title>
@@ -11,15 +10,13 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/font-awesome.min.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/owl.carousel.min.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/jquery.mCustomScrollbar.min.css') ?>">
-
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-commen.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-style.css') ?>">
-
+    </head>
     <body class="main-db">
         <?php echo $header; ?>
         <div ng-view></div>
         <?php echo $footer; ?>
-
         <!--PROFILE PIC MODEL START-->
         <div class="modal fade message-box" id="bidmodal-2" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -48,7 +45,6 @@
             </div>
         </div>
         <!--PROFILE PIC MODEL END-->
-
         <div class="modal fade message-box" id="remove-contact" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -61,60 +57,237 @@
                 </div>
             </div>
         </div>
-
         <div style="display:none;" class="modal fade" id="post-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
             <div class="modal-dialog">
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">×</button>
                     <div class="post-popup-box">
-                        <div class="post-box">
-                            <div class="post-img">
-                                <img src="<?php echo base_url('assets/n-images/user-pic.jpg') ?>">
-                            </div>
-                            <div class="post-text">
-                                <textarea class="title-text-area" placeholder="Post Opportunity"></textarea>
-                            </div>
-                            <div class="all-upload">
-                                <label for="file-1">
-                                    <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
-                                    <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
-                                    <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
-                                    <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
-                                </label>
-                            </div>
-
-                        </div>
-                        <div class="post-field">
-                            <form>
-                                <div class="form-group">
-
-                                    <textarea placeholder="FOR WHOM THIS OPPORTUNITY ?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, PHP Developer, HR, BDE, CA, Doctor, Freelancer.." cols="10" rows="5" style="resize:none"></textarea>
-
+                        <form id="post_something" name="post_something" ng-submit="post_something_check(event)">
+                            <div class="post-box">
+                                <div class="post-img">
+                                    <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                        <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                    <?php } else { ?>
+                                        <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                    <?php } ?>
                                 </div>
-                                <div class="form-group">
-                                    <textarea type="text" class="" placeholder="WHICH LOCATION?&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a;&#x09;&#x09;&#x09;&#x0a; Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.. "></textarea>
-
+                                <div class="post-text">
+                                    <textarea name="description" ng-model="sim.description" id="description" class="title-text-area" placeholder="Write something here..."></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="What is your field?">
+                                <div class="all-upload">
+                                    <div class="form-group">
+                                        <input file-input="files" ng-file-model="sim.postfiles" type="file" id="fileInput1" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+                                    </div>
+                                    <label for="fileInput1" ng-click="postFiles()">
+                                        <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
+                                        <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
+                                        <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
+                                        <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
+                                    </label>
                                 </div>
-
-
-                            </form>
-
-
-                        </div>
-                        <div class="text-right fw pt10">
-                            <a class="btn1" href="#">Post</a>
-                        </div>
+                                <div class="post-box-bottom">
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:void(0);" data-target="#opportunity-popup" data-toggle="modal">
+                                                <img src="<?php echo base_url('assets/n-images/post-op.png') ?>"><span>Post Opportunity</span>
+                                            </a>
+                                        </li>
+                                        <li class="pl15">
+                                            <a href="article.html">
+                                                <img src="<?php echo base_url('assets/n-images/article.png') ?>"><span>Post Article</span>
+                                            </a>
+                                        </li>
+                                        <li class="pl15">
+                                            <a href="javascript:void(0);" data-target="#ask-question" data-toggle="modal">
+                                                <img src="<?php echo base_url('assets/n-images/ask-qustion.png') ?>"><span>Ask Quastion</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <input type="hidden" name="post_for" ng-model="sim.post_for" class="form-control" value="">
+                                    <p class="pull-right">
+                                        <button type="submit" class="btn1" value="Submit">Post</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-
-
-
                 </div>
             </div>
+        </div>
+        <div style="display:none;" class="modal fade" id="opportunity-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">×</button>
+                    <div class="post-popup-box">
+                        <form id="post_opportunity" name="post_opportunity" ng-submit="post_opportunity_check(event)">
+                            <div class="post-box">
+                                <div class="post-img">
+                                    <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                        <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                    <?php } else { ?>
+                                        <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                    <?php } ?>
+                                </div>
+                                <div class="post-text">
+                                    <textarea name="description" ng-model="opp.description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
+                                </div>
+                                <div class="all-upload">
+                                    <div class="form-group">
+                                        <input file-input="files" ng-file-model="opp.postfiles" type="file" id="fileInput" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+                                    </div>
+                                    <label for="fileInput" ng-click="postFiles()">
+                                        <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
+                                        <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
+                                        <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
+                                        <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="post-field">
+                                <div id="content" class="form-group">
+                                    <label>FOR WHOM THIS OPPORTUNITY ?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" tooltips tooltip-append-to-body="true" tooltip-close-button="true" tooltip-side="right" tooltip-hide-trigger="click" tooltip-template="I'm a tooltip that is kwjnefk jnkwjenfkjnk kjwnekjn kjwnekfjn kjwenfkjnkwjnekfjnwkejnf kjwnef bounded on body!" alt="tooltip"></span></label>
+                                    <tags-input ng-model="opp.job_title" display-property="name" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, PHP Developer, HR, BDE, CA, Doctor, Freelancer.." replace-spaces-with-dashes="false" template="title-template" on-tag-added="onKeyup()">
+                                        <auto-complete source="loadJobTitle($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="title-autocomplete-template"></auto-complete>
+                                    </tags-input>
+                                    <script type="text/ng-template" id="title-template">
+                                        <div class="tag-template"><div class="right-panel"><span>{{$getDisplayText()}}</span><a class="remove-button" ng-click="$removeTag()">&#10006;</a></div></div>
+                                    </script>
+                                    <script type="text/ng-template" id="title-autocomplete-template">
+                                        <div class="autocomplete-template"><div class="right-panel"><span ng-bind-html="$highlight($getDisplayText())"></span></div></div>
+                                    </script>
+                                </div>
 
+                                <div class="form-group">
+                                    <label>WHICH LOCATION?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <tags-input ng-model="opp.location" display-property="city_name" placeholder="Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.." replace-spaces-with-dashes="false" template="location-template" on-tag-added="onKeyup()">
+                                        <auto-complete source="loadLocation($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="location-autocomplete-template"></auto-complete>
+                                    </tags-input>
+                                    <script type="text/ng-template" id="location-template">
+                                        <div class="tag-template"><div class="right-panel"><span>{{$getDisplayText()}}</span><a class="remove-button" ng-click="$removeTag()">&#10006;</a></div></div>
+                                    </script>
+                                    <script type="text/ng-template" id="location-autocomplete-template">
+                                        <div class="autocomplete-template"><div class="right-panel"><span ng-bind-html="$highlight($getDisplayText())"></span></div></div>
+                                    </script>
+                                </div>
+                                <div class="form-group">
+                                    <label>What is your field?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <!--<input name="field" id="field" type="text" placeholder="What is your field?" autocomplete="off">-->
+                                    <select name="field" ng-model="opp.field" id="field" ng-change="other_field(this)">
+                                        <option value="" selected="selected">Select your field</option>
+                                        <option data-ng-repeat='fieldItem in fieldList' value='{{fieldItem.industry_id}}'>{{fieldItem.industry_name}}</option>             
+                                        <option value="0">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" ng-if="field == '0'">
+                                    <input type="text" class="form-control" ng-model="opp.otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
+                                </div>
+                                <input type="hidden" name="post_for" ng-model="opp.post_for" class="form-control" value="">
+                            </div>
+                            <div class="text-right fw pt10 pb20 pr15">
+                                <button type="submit" class="btn1"  value="Submit">Post</button>    
+                            </div>
+                            <?php // echo form_close(); ?>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display:none;" class="modal fade" id="ask-question" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">×</button>
+                    <div class="post-popup-box">
+                        <form>
+                            <div class="post-box">
+                                <div class="post-img">
+                                    <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                        <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                    <?php } else { ?>
+                                        <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                    <?php } ?>
+                                </div>
+                                <div class="post-text">
+                                    <textarea class="title-text-area" placeholder="Ask Quastion"></textarea>
+                                </div>
+                                <div class="all-upload">
+                                    <label for="file-1">
+                                        <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Add Screenshot </span></i>
+                                        <i class="fa fa fa-link upload_icon"><span class="upload_span_icon"> Add Link</span>  </i> 
+
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="post-field">
+                                <div class="form-group">
+                                    <label>Add Description<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <textarea rows="1" max-rows="5" placeholder="Add Description" cols="10" style="resize:none"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Related Categories<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <input type="text" class="" placeholder="Related Categories">
+                                </div>
+                                <div class="form-group">
+                                    <label>From which field the Question asked?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <select>
+                                        <option>What is your field</option>
+                                        <option>IT</option>
+                                        <option>Teacher</option>
+                                        <option>Sports</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="text-right fw pt10 pb20 pr15">
+                                <button type="submit" class="btn1"  value="Submit">Post</button> 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade message-box biderror" id="posterrormodal" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="posterror-modal-close" data-dismiss="modal">&times;
+                    </button>       
+                    <div class="modal-body">
+                        <span class="mes"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade message-box" id="post" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" id="post"data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade message-box" id="delete_model" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" id="postedit"data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes">
+                            <div class="pop_content">Do you want to delete this comment?<div class="model_ok_cancel"><a class="okbtn btn1" ng-click="deleteComment(c_d_comment_id, c_d_post_id, c_d_parent_index, c_d_index, c_d_post)" href="javascript:void(0);" data-dismiss="modal">Yes</a><a class="cnclbtn btn1" href="javascript:void(0);" data-dismiss="modal">No</a></div></div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade message-box" id="delete_post_model" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" id="postedit"data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes">
+                            <div class="pop_content">Do you want to delete this post?<div class="model_ok_cancel"><a class="okbtn btn1" ng-click="deletedPost(p_d_post_id, p_d_index)" href="javascript:void(0);" data-dismiss="modal">Yes</a><a class="cnclbtn btn1" href="javascript:void(0);" data-dismiss="modal">No</a></div></div>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
@@ -129,530 +302,18 @@
                                 var user_slug = '<?php echo $this->uri->segment(2); ?>';
                                 var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
                                 var app = angular.module("userProfileApp", ["ngRoute"]);
-                                var item = '<?php echo $this->uri->segment(1); ?>'
-                                        app.controller('userProfileController', function ($scope, $http) {
-                                        $scope.active = $scope.active == item ? '' : item;
-                                        $scope.makeActive = function (item) {
-                                        $scope.active = $scope.active == item ? '' : item;
-                                        }
+                                var item = '<?php echo $this->uri->segment(1); ?>';
                                 $scope.live_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
-                                        $scope.segment2 = '<?php echo $this->uri->segment(2); ?>';
-                                        $scope.user_slug = '<?php echo $userdata['user_slug']; ?>';
-                                        $scope.to_id = '<?php echo $to_id; ?>';
-                                        $scope.contact_value = '<?php echo $contact_value; ?>';
-                                        $scope.contact_status = '<?php echo $contact_status; ?>';
-                                        $scope.contact_id = '<?php echo $contact_id; ?>';
-                                        $scope.follow_value = '<?php echo $follow_value; ?>';
-                                        $scope.follow_status = '<?php echo $follow_status; ?>';
-                                        $scope.follow_id = '<?php echo $follow_id; ?>';
-                                        $scope.contact = function (id, status, to_id) {
-                                        $http({
-                                        method: 'POST',
-                                                url: base_url + 'userprofile_page/addcontact',
-                                                data: 'contact_id=' + id + '&status=' + status + '&to_id=' + to_id,
-                                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                        })
-                                                .then(function (success) {
-
-                                                $scope.contact_value = success.data;
-                                                });
-                                        }
-                                        $scope.follow = function (id, status, to_id) {
-
-                                        $http({
-                                        method: 'POST',
-                                                url: base_url + 'userprofile_page/addfollow',
-                                                data: 'follow_id=' + id + '&status=' + status + '&to_id=' + to_id,
-                                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                        })
-                                                .then(function (success) {
-
-                                                $scope.follow_value = success.data;
-                                                });
-                                        }
-                                        })
-                                        app.config(function ($routeProvider, $locationProvider) {
-                                           
-                                        $routeProvider
-                                                .when("/profiless/:name*", {
-                                                templateUrl: base_url + "userprofile_page/profile",
-                                                        controller: 'profilesController'
-                                                })
-                                                .when("/dashboardd/:name*", {
-                                                templateUrl: base_url + "userprofile_page/dashboard"
-                                                        //   controller: 'basicInfoController'
-                                                })
-                                                .when("/details/:name*", {
-                                                templateUrl: base_url + "userprofile_page/details",
-                                                        controller: 'detailsController'
-                                                })
-                                                .when("/contacts/:name*", {
-                                                templateUrl: base_url + "userprofile_page/contacts",
-                                                        controller: 'contactsController'
-                                                })
-                                                .when("/followers/:name*", {
-                                                templateUrl: base_url + "userprofile_page/followers",
-                                                        controller: 'followersController'
-                                                })
-                                                .when("/following/:name*", {
-                                                templateUrl: base_url + "userprofile_page/following",
-                                                        controller: 'followingController'
-                                                })
-                    //.otherwise({
-//                    redirectTo: '/profiles/'
-                        
-                  //  });
-                                                $locationProvider.html5Mode(true);
-                                        });
-                                app.controller('profilesController', function ($scope, $http, $location) {
-                                $scope.user = {};
-                                // PROFEETIONAL DATA
-                                getFieldList();
-                                function getFieldList() {
-
-                                $http({
-                                method: 'POST',
-                                        url: base_url + 'userprofile_page/profiles_data',
-                                        data: 'u=' + user_id,
-                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                })
-                                        .then(function (success) {
-                                        details_data = success.data;
-                                        $scope.details_data = details_data;
-                                        });
-                                }
-
-
-                               
-
-                                });
-                                app.controller('detailsController', function ($scope, $http, $location) {
-                                $scope.user = {};
-                                // PROFEETIONAL DATA
-                                getFieldList();
-                                function getFieldList() {
-
-                                $http({
-                                method: 'POST',
-                                        url: base_url + 'userprofile_page/detail_data',
-                                        data: 'u=' + user_id,
-                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                })
-                                        .then(function (success) {
-                                        details_data = success.data;
-                                        $scope.details_data = details_data;
-                                        });
-                                }
-
-
-                                $scope.goMainLink = function (path) {
-                                location.href = path;
-                                }
-
-                                $scope.makeActive = function (item) {
-                                $scope.active = $scope.active == item ? '' : item;
-                                }
-                                });
-                                app.controller('contactsController', function ($scope, $http, $location) {
-                                $scope.user = {};
-                                var id = 1;
-                                $scope.remove = function (index) { //alert(123); return false;
-                                $('#remove-contact .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn btn1' id=" + id + " onClick='remove_contacts(" + index + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn btn1' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                                //$('.biderror .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id="" onClick='remove_post(1)' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                                $('#remove-contact').modal('show');
-                                // array.splice(index, 1);
-                                }
-
-
-                                // PROFEETIONAL DATA
-                                getFieldList();
-                                function getFieldList() {
-
-                                $http({
-                                method: 'POST',
-                                        url: base_url + 'userprofile_page/contacts_data',
-                                        data: 'u=' + user_id,
-                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                })
-                                        .then(function (success) {
-                                        $scope.contats_data = success.data;
-                                        });
-                                }
-
-
-
-                                $scope.goUserprofile = function (path) {
-
-                                var base_url = '<?php echo base_url(); ?>';
-                                location.href = base_url + 'profiless/' + path;
-                                }
-
-                                });
-                                app.controller('followersController', function ($scope, $http, $location, $compile) {
-                                $scope.user = {};
-                                var id = 1;
-                                $scope.follow = function (index) { //alert(123); return false;
-
-                                }
-
-
-                                // PROFEETIONAL DATA
-                                getFieldList();
-                                function getFieldList() {
-
-                                $http({
-                                method: 'POST',
-                                        url: base_url + 'userprofile_page/followers_data',
-                                        data: 'u=' + user_id,
-                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                })
-                                        .then(function (success) {
-                                        $scope.follow_data = success.data;
-                                        });
-                                }
-
-                                $scope.follow_user = function (id) {
-                                $http({
-                                method: 'POST',
-                                        url: base_url + 'userprofile_page/follow_user',
-                                        data: 'to_id=' + id,
-                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                })
-                                        .then(function (success) {
-
-                                        $("#" + id).html($compile(success.data)($scope));
-                                        });
-                                }
-
-                                $scope.unfollow_user = function (id) {
-                                $http({
-                                method: 'POST',
-                                        url: base_url + 'userprofile_page/unfollow_user',
-                                        data: 'to_id=' + id,
-                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                })
-                                        .then(function (success) {
-
-                                        $("#" + id).html($compile(success.data)($scope));
-                                        });
-                                }
-
-
-
-                                $scope.goUserprofile = function (path) {
-
-                                var base_url = '<?php echo base_url(); ?>';
-                                location.href = base_url + 'profiless/' + path;
-                                }
-
-                                });
-                                app.controller('followingController', function ($scope, $http, $location, $compile) {
-                                $scope.user = {};
-                                var id = 1;
-                                $scope.follow = function (index) { //alert(123); return false;
-                                }
-                                // PROFEETIONAL DATA
-                                getFieldList();
-                                function getFieldList() {
-                                $http({
-                                method: 'POST',
-                                        url: base_url + 'userprofile_page/following_data',
-                                        data: 'u=' + user_id,
-                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                })
-                                        .then(function (success) {
-                                        $scope.follow_data = success.data;
-                                        });
-                                }
-                                $scope.unfollow_user = function (id) {
-                                $http({
-                                method: 'POST',
-                                        url: base_url + 'userprofile_page/unfollowingContacts',
-                                        data: 'to_id=' + id,
-                                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                                })
-                                        .then(function (success) {
-                                        if (success.data == 1) {
-                                        $('#' + id).closest('.custom-user-box').fadeToggle();
-                                        }
-
-
-                                        });
-                                }
-                                
-
-                                $scope.goUserprofile = function (path) {
-
-                                var base_url = '<?php echo base_url(); ?>';
-                                location.href = base_url + 'profiless/' + path;
-                                }
-                                });
-                                function remove_contacts(index) {
-                                $.ajax({
-                                url: base_url + "userprofile_page/removeContacts",
-                                        type: "POST",
-                                        data: {"id": index},
-                                        success: function (data) {
-                                        if (data == 1) {
-                                        $('#' + index).closest('.custom-user-box').fadeToggle();
-                                        }
-                                        }
-                                });
-                                }
-
-                                function unfollowing_contacts(index) {
-                                $.ajax({
-                                url: base_url + "userprofile_page/unfollowingContacts",
-                                        type: "POST",
-                                        data: {"id": index},
-                                        success: function (data) {
-                                        if (data == 1) {
-                                        $('#' + index).closest('.custom-user-box').fadeToggle();
-                                        }
-                                        }
-                                });
-                                }
-
-                                $uploadCrop1 = $('#upload-demo-one').croppie({
-                                enableExif: true,
-                                        viewport: {
-                                        width: 200,
-                                                height: 200,
-                                                type: 'square'
-                                        },
-                                        boundary: {
-                                        width: 300,
-                                                height: 300
-                                        }
-                                });
-                                $('#upload-one').on('change', function () {
-                                document.getElementById('upload-demo-one').style.display = 'block';
-                                var reader = new FileReader();
-                                reader.onload = function (e) {
-                                $uploadCrop1.croppie('bind', {
-                                url: e.target.result
-                                }).then(function () {
-                                console.log('jQuery bind complete');
-                                });
-                                }
-                                reader.readAsDataURL(this.files[0]);
-                                });
-                                $("#userimage").validate({
-                                rules: {
-                                profilepic: {
-                                required: true,
-                                },
-                                },
-                                        messages: {
-                                        profilepic: {
-                                        required: "Photo Required",
-                                        },
-                                        },
-                                        submitHandler: profile_pic
-                                });
-                                function profile_pic() {
-                                $uploadCrop1.croppie('result', {
-                                type: 'canvas',
-                                        size: 'viewport'
-                                }).then(function (resp) {
-                                $.ajax({
-                                url: base_url + "userprofile_page/user_image_insert1",
-                                        type: "POST",
-                                        data: {"image": resp},
-                                        beforeSend: function () {
-                                        $('#profi_loader').show();
-                                        },
-                                        complete: function () {
-                                        },
-                                        success: function (data) {
-                                        $('#profi_loader').hide();
-                                        $('#bidmodal-2').modal('hide');
-                                        $(".profile-img").html(data);
-                                        document.getElementById('upload-one').value = null;
-                                        document.getElementById('upload-demo-one').value = '';
-                                        }
-                                });
-                                });
-                                }
-
-                                function updateprofilepopup(id) {
-                                document.getElementById('upload-demo-one').style.display = 'none';
-                                document.getElementById('profi_loader').style.display = 'none';
-                                document.getElementById('upload-one').value = null;
-                                $('#bidmodal-2').modal('show');
-                                }
-
-
-                                // cover image start
-
-                                function myFunction() {
-
-                                document.getElementById("upload-demo").style.visibility = "hidden";
-                                document.getElementById("upload-demo-i").style.visibility = "hidden";
-                                document.getElementById('message1').style.display = "block";
-                                }
-
-
-                                function showDiv() {
-
-                                document.getElementById('row1').style.display = "block";
-                                document.getElementById('row2').style.display = "none";
-                                $(".cr-image").attr("src", "");
-                                $("#upload").val('');
-                                }
-
-
-                                $uploadCrop = $('#upload-demo').croppie({
-                                enableExif: true,
-                                        viewport: {
-                                        width: 1250,
-                                                height: 350,
-                                                type: 'square'
-                                        },
-                                        boundary: {
-                                        width: 1250,
-                                                height: 350
-                                        }
-                                });
-                                $('.upload-result').on('click', function (ev) {
-
-                                $uploadCrop.croppie('result', {
-                                type: 'canvas',
-                                        size: 'viewport'
-                                }).then(function (resp) {
-
-                                $.ajax({
-                                url: base_url + "userprofile_page/ajaxpro",
-                                        type: "POST",
-                                        data: {"image": resp},
-                                        success: function (data) {
-                                        if (data) {
-                                        $("#row2").html(data);
-                                        document.getElementById('row2').style.display = "block";
-                                        document.getElementById('row1').style.display = "none";
-                                        document.getElementById('message1').style.display = "none";
-                                        document.getElementById("upload-demo").style.visibility = "visible";
-                                        document.getElementById("upload-demo-i").style.visibility = "visible";
-                                        }
-                                        }
-                                });
-                                });
-                                });
-                                $('.cancel-result').on('click', function (ev) {
-
-                                document.getElementById('row2').style.display = "block";
-                                document.getElementById('row1').style.display = "none";
-                                document.getElementById('message1').style.display = "none";
-                                $(".cr-image").attr("src", "");
-                                });
-                                //aarati code start
-                                $('#upload').on('change', function () {
-
-                                var reader = new FileReader();
-                                reader.onload = function (e) {
-                                $uploadCrop.croppie('bind', {
-                                url: e.target.result
-                                }).then(function () {
-                                console.log('jQuery bind complete');
-                                });
-                                }
-                                reader.readAsDataURL(this.files[0]);
-                                });
-                                $('#upload').on('change', function () {
-
-                                var fd = new FormData();
-                                fd.append("image", $("#upload")[0].files[0]);
-                                files = this.files;
-                                size = files[0].size;
-                                // pallavi code start for file type support
-                                if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-
-                                picpopup();
-                                document.getElementById('row1').style.display = "none";
-                                document.getElementById('row2').style.display = "block";
-                                return false;
-                                }
-                                // file type code end
-
-                                if (size > 26214400)
-                                {
-                                //show an alert to the user
-                                alert("Allowed file size exceeded. (Max. 25 MB)")
-
-                                        document.getElementById('row1').style.display = "none";
-                                document.getElementById('row2').style.display = "block";
-                                return false;
-                                }
-
-
-
-                                });
-                                //aarati code end
-
-//cover image end 
-
+                                $scope.segment2 = '<?php echo $this->uri->segment(2); ?>';
+                                $scope.user_slug = '<?php echo $userdata['user_slug']; ?>';
+                                $scope.to_id = '<?php echo $to_id; ?>';
+                                $scope.contact_value = '<?php echo $contact_value; ?>';
+                                $scope.contact_status = '<?php echo $contact_status; ?>';
+                                $scope.contact_id = '<?php echo $contact_id; ?>';
+                                $scope.follow_value = '<?php echo $follow_value; ?>';
+                                $scope.follow_status = '<?php echo $follow_status; ?>';
+                                $scope.follow_id = '<?php echo $follow_id; ?>';
         </script>
-<!--        <script>
-        jQuery(document).ready(function($) {
-          var owl = $('.owl-carousel');
-          owl.on('initialize.owl.carousel initialized.owl.carousel ' +
-            'initialize.owl.carousel initialize.owl.carousel ' +
-            'resize.owl.carousel resized.owl.carousel ' +
-            'refresh.owl.carousel refreshed.owl.carousel ' +
-            'update.owl.carousel updated.owl.carousel ' +
-            'drag.owl.carousel dragged.owl.carousel ' +
-            'translate.owl.carousel translated.owl.carousel ' +
-            'to.owl.carousel changed.owl.carousel',
-            function(e) {
-              $('.' + e.type)
-                .removeClass('secondary')
-                .addClass('success');
-              window.setTimeout(function() {
-                $('.' + e.type)
-                  .removeClass('success')
-                  .addClass('secondary');
-              }, 500);
-            });
-          owl.owlCarousel({
-            loop: true,
-            nav: true,
-            lazyLoad: true,
-            margin: 0,
-            video: true,
-            responsive: {
-              0: {
-                items: 1
-              },
-                              480: {
-                items: 2
-              },
-              540: {
-                items: 3
-              },
-              1200: {
-                items: 1,
-              },
-              1280: {
-                items: 2
-              }
-            }
-          });
-        });
-            // mcustom scroll bar
-                    (function($){
-                            $(window).on("load",function(){
-                                    
-                                    $(".custom-scroll").mCustomScrollbar({
-                                            autoHideScrollbar:true,
-                                            theme:"minimal"
-                                    });
-                                    
-                            });
-                    })(jQuery);
-                    
-                    
-              
-</script>-->
-
+        <script src="<?php echo base_url('assets/js/webpage/user/user_profile.js?ver=' . time()) ?>"></script>
     </body>
 </html>
