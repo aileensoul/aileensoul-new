@@ -240,6 +240,34 @@ class User_post extends MY_Controller {
         $post_data = $this->user_post_model->userDashboardPost($userid, $page);
         echo json_encode($post_data);
     }
+    
+    public function getUserDashboardImage(){
+        $user_slug = $_GET["user_slug"];
+        $userid = $this->db->select('user_id')->get_where('user', array('user_slug' => $user_slug))->row('user_id');
+        $post_image_data = $this->user_post_model->userDashboardImage($userid);
+        echo json_encode($post_image_data);
+    }
+    
+    public function getUserDashboardVideo(){
+        $user_slug = $_GET["user_slug"];
+        $userid = $this->db->select('user_id')->get_where('user', array('user_slug' => $user_slug))->row('user_id');
+        $post_video_data = $this->user_post_model->userDashboardVideo($userid);
+        echo json_encode($post_video_data);
+    }
+    
+    public function getUserDashboardAudio(){
+        $user_slug = $_GET["user_slug"];
+        $userid = $this->db->select('user_id')->get_where('user', array('user_slug' => $user_slug))->row('user_id');
+        $post_audio_data = $this->user_post_model->userDashboardAudio($userid);
+        echo json_encode($post_audio_data);
+    }
+    
+    public function getUserDashboardPdf(){
+        $user_slug = $_GET["user_slug"];
+        $userid = $this->db->select('user_id')->get_where('user', array('user_slug' => $user_slug))->row('user_id');
+        $post_pdf_data = $this->user_post_model->userDashboardPdf($userid);
+        echo json_encode($post_pdf_data);
+    }
 
     public function deletePost() {
         $userid = $this->session->userdata('aileenuser');

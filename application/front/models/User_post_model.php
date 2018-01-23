@@ -436,4 +436,51 @@ class User_post_model extends CI_Model {
         return $result_array;
     }
 
+    public function userDashboardImage($user_id = '') {
+        $this->db->select('filename')->from('user_post_file upf');
+        $this->db->join('user_post up', 'up.id = upf.post_id', 'left');
+        $this->db->where('file_type', 'image');
+        $this->db->order_by('upf.id','desc');
+        $this->db->limit('6');
+        $query = $this->db->get();
+        $userDashboardImage = $query->result_array();
+        $result_array['userDashboardImage'] = $userDashboardImage;
+        return $result_array;
+    }
+    
+    public function userDashboardVideo($user_id = '') {
+        $this->db->select('filename')->from('user_post_file upf');
+        $this->db->join('user_post up', 'up.id = upf.post_id', 'left');
+        $this->db->where('file_type', 'video');
+        $this->db->order_by('upf.id','desc');
+        $this->db->limit('6');
+        $query = $this->db->get();
+        $userDashboardVideo = $query->result_array();
+        $result_array['userDashboardVideo'] = $userDashboardVideo;
+        return $result_array;
+    }
+    
+    public function userDashboardAudio($user_id = '') {
+        $this->db->select('filename')->from('user_post_file upf');
+        $this->db->join('user_post up', 'up.id = upf.post_id', 'left');
+        $this->db->where('file_type', 'audio');
+        $this->db->order_by('upf.id','desc');
+        $this->db->limit('6');
+        $query = $this->db->get();
+        $userDashboardAudio = $query->result_array();
+        $result_array['userDashboardAudio'] = $userDashboardAudio;
+        return $result_array;
+    }
+    
+    public function userDashboardPdf($user_id = '') {
+        $this->db->select('filename')->from('user_post_file upf');
+        $this->db->join('user_post up', 'up.id = upf.post_id', 'left');
+        $this->db->where('file_type', 'pdf');
+        $this->db->order_by('upf.id','desc');
+        $this->db->limit('6');
+        $query = $this->db->get();
+        $userDashboardPdf = $query->result_array();
+        $result_array['userDashboardPdf'] = $userDashboardPdf;
+        return $result_array;
+    }
 }
