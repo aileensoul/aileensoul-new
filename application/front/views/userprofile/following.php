@@ -1,10 +1,7 @@
 <div class="container pt20">
-
-
     <div class="custom-user-list">
         <div class="list-box-custom">
             <h3>Following</h3>
-           
             <div class="p15 fw">
                 <div class="custom-user-box" ng-repeat="follow in follow_data">
                     <div class="post-img" ng-if="follow.user_image != '' && follow.user_image != null">
@@ -31,12 +28,12 @@
                 </div>
 
             </div>
-            
+
         </div>
     </div>
     <div class="right-add">
         <div class="custom-user-add">
-            <img src="img/add.jpg">
+            <img ng-src="<?php echo base_url('assets/n-images/add.jpg') ?>">
         </div>
     </div>
 

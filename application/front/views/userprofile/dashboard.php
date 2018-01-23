@@ -29,7 +29,7 @@
             </div>
             <div class="media-display">
                 <div class="all-meda" ng-repeat="imageData in postImageData">
-                    <a href=""><img ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{imageData.filename}}" alt="Image"></a>
+                    <a href=""><img ng-src="<?php echo USER_POST_THUMB_UPLOAD_URL ?>{{imageData.filename}}" alt="Image"></a>
                 </div>
             </div>
         </div>
@@ -40,10 +40,9 @@
             <div class="media-display">
                 <div class="all-meda" ng-repeat="videoData in postVideoData">
                     <a href="">
-<!--                        <video controls width="80" height="80">
+                        <video controls width="80" height="80">
                             <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{videoData.filename}}" type="video/mp4">
-                        </video>-->
-                        <img ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{imageData.filename}}" alt="Image">
+                        </video>
                     </a>
                 </div>
             </div>
@@ -54,7 +53,11 @@
             </div>
             <div class="media-display">
                 <div class="all-meda" ng-repeat="audioData in postAudioData">
-                    <a href=""><img src="<?php echo base_url('assets/n-images/img1.jpg') ?>"></a>
+                    <a href="">
+                        <audio controls>
+                            <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{audioData.filename}}" type="audio/mp3">
+                        </audio>
+                    </a>
                 </div>
             </div>
         </div>
@@ -62,9 +65,9 @@
             <div class="dash-left-title">
                 <h3><i class="fa fa-file-pdf-o"></i> PDF</h3>
             </div>
-            <div class="media-display"  ng-repeat="audioData in postPdfData">
+            <div class="media-display"  ng-repeat="pdfData in postPdfData">
                 <div class="all-meda">
-                    <a href=""><img src="<?php echo base_url('assets/n-images/img1.jpg') ?>"></a>
+                    <a href="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{pdfData.filename}}" target="_blank"><img ng-src="<?php echo base_url('assets/images/PDF.jpg?ver='.time()) ?>"></a>
                 </div>
             </div>
         </div>
@@ -239,7 +242,7 @@
                     </div>
                     </span>
                     <div class="post-images four-img" ng-if="post.post_data.total_post_files >= '4'">
-                        <div class="two-img" ng-repeat="post_file in post.post_file_data| limitTo:4">
+                        <div class="two-img" ng-repeat="post_file in post.post_file_data | limitTo:4">
                             <a href="#"><img ng-src="<?php echo USER_POST_RESIZE2_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
                             <div class="view-more-img" ng-if="$index == '3' && post.post_data.total_post_files > '4'">
                                 <span><a href="javascript:void(0);">View All (+4)</a></span>

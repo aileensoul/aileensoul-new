@@ -247,7 +247,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         $('#loader').show();
         $http.get(base_url + "user_post/getUserDashboardImage?user_slug=" + user_slug).then(function (success) {
             $('#loader').hide();
-            $scope.postImageData = success.data;
+            $scope.postImageData = success.data.userDashboardImage;
         }, function (error) {});
     }
     
@@ -255,8 +255,8 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         $('#loader').show();
         $http.get(base_url + "user_post/getUserDashboardVideo?user_slug=" + user_slug).then(function (success) {
             $('#loader').hide();
-            $scope.postVideoData = success.data;
-            $('video,audio').mediaelementplayer(/* Options */);
+            $scope.postVideoData = success.data.userDashboardVideo;
+//            $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
     }
     
@@ -264,8 +264,8 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         $('#loader').show();
         $http.get(base_url + "user_post/getUserDashboardAudio?user_slug=" + user_slug).then(function (success) {
             $('#loader').hide();
-            $scope.postAudioData = success.data;
-            $('video,audio').mediaelementplayer(/* Options */);
+            $scope.postAudioData = success.data.userDashboardAudio;
+//            $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
     }
     
@@ -273,7 +273,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         $('#loader').show();
         $http.get(base_url + "user_post/getUserDashboardPdf?user_slug=" + user_slug).then(function (success) {
             $('#loader').hide();
-            $scope.postPdfData = success.data;
+            $scope.postPdfData = success.data.userDashboardPdf;
             $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
     }
