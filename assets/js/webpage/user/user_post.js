@@ -171,6 +171,8 @@ app.controller('userOppoController', function ($scope, $http) {
             $scope.fieldList = success.data;
         }, function (error) {});
     }
+    
+    
     getContactSuggetion();
     function getContactSuggetion() {
         $http.get(base_url + "user_post/getContactSuggetion").then(function (success) {
@@ -428,17 +430,13 @@ app.controller('userOppoController', function ($scope, $http) {
         
 
     $scope.ask_question_check = function (event) {
-        alert(event);
         var field = document.getElementById("ask_field").value;
         var description = document.getElementById("ask_que").value;
         var description = description.trim();
         var fileInput = document.getElementById("screenshot").files;
         var fileInput1 = document.getElementById("screenshot").value;
-        alert(field);
-        alert(description);
         if ((field == '') || (description == ''))
         {
-            alert(1);
             $('#post .mes').html("<div class='pop_content'>Ask question and Field is required.");
             $('#post').modal('show');
             $(document).on('keydown', function (e) {
@@ -450,40 +448,30 @@ app.controller('userOppoController', function ($scope, $http) {
             event.preventDefault();
             return false;
         } else {
-            alert(2);
             var length = fileInput.length;
-            alert(length);
-
             var vfirstname = fileInput[0].name;
-            alert(vfirstname);
             var ext = vfirstname.split('.').pop();
             var ext1 = vfirstname.split('.').pop();
             var allowedExtensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg'];
-
             var foundPresent = $.inArray(ext, allowedExtensions) > -1;
             if (foundPresent == true)
             {
                 var foundPresent1 = $.inArray(ext1, allowedExtensions) > -1;
 
             }
-
-
             var form_data = new FormData();
-           
             form_data.append('screenshot',$scope.ask.postfiles);
             form_data.append('question', $scope.ask.ask_que);
             form_data.append('description', $scope.ask.ask_description);
             form_data.append('field', $scope.ask.ask_field);
+            form_data.append('other_field', $scope.ask.otherField);
             form_data.append('category', JSON.stringify($scope.ask.related_category));
             form_data.append('weblink', $scope.ask.web_link);
             form_data.append('post_for', $scope.ask.post_for);
-alert("kkk");
-alert(form_data);
+
             $('body').removeClass('modal-open');
             $("#opportunity-popup").modal('hide');
             $("#ask-question").modal('hide');
-
-
             $http.post(base_url + 'user_post/post_opportunity', form_data,
                     {
                         transformRequest: angular.identity,

@@ -491,9 +491,7 @@
                                     <label>From which field the Question asked?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
                                     <select ng-model="ask.ask_field" id="ask_field">
                                         <option value="" selected="selected">What is your field</option>
-                                        <option value="1">IT</option>
-                                        <option value="2">Teacher</option>
-                                        <option value="3">Sports</option>
+                                        <option data-ng-repeat='fieldItem in fieldList' value='{{fieldItem.industry_id}}'>{{fieldItem.industry_name}}</option>             
                                         <option value="0">Other</option>
                                     </select>
                                 </div>
