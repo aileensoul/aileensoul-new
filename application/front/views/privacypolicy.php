@@ -182,7 +182,7 @@ header('Cache-Control: public, max-age=30');
                                 <span class="em-py3">   Email : </span>
                                 <span class="em-py2">
                                     <a href="mailto:aileensoulinquiry@gmail.com"> aileensoulinquiry@gmail.com</a>
-                                    <br><a href="mailto:inquiry@aileensoul.com"> inquiry@aileensoul.com</a>
+                                    <br><a href="mailto:info@aileensoul.com"> info@aileensoul.com</a>
                                     <br><a href="mailto:inquiry@aileensoul.com"> inquiry@aileensoul.com</a>
                                     <br><a href="mailto:hr@aileensoul.com"> hr@aileensoul.com</a></span>
                                 <br>
