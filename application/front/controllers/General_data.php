@@ -69,5 +69,11 @@ class General_data extends MY_Controller {
         $getDegreeList = $this->data_model->searchDegreeList($degreeSearch);
         echo json_encode($getDegreeList);
     }
+    
+    public function searchQuestionList(){
+        $queSearch = $_POST['q'];
+        $getQueList = $this->data_model->searchQueList($queSearch);
+        echo json_encode($getQueList);
+    }
 
 }

@@ -411,7 +411,20 @@ app.controller('userOppoController', function ($scope, $http) {
                 //If DIV is visible it will be hidden and vice versa.
                 $scope.IsVisible = $scope.IsVisible ? false : true;
             }
-       
+    
+    
+    $scope.QuestionList = function () {
+            $http({
+            method: 'POST',
+                    url: base_url + 'general_data/searchQuestionList',
+                    data: 'q=' + $scope.ask.ask_que,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
+                    .then(function (success) {
+                    data = success.data;
+                    $scope.queSearchResult = data;
+                    });
+            }
         
 
     $scope.ask_question_check = function (event) {

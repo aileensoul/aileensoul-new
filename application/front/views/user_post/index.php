@@ -91,7 +91,7 @@
                                 </li>
                                 <li class="pl15">
                                     <a href="javascript:void(0);" data-target="#ask-question" data-toggle="modal">
-                                        <img src="<?php echo base_url('assets/n-images/ask-qustion.png') ?>"><span>Ask Quastion</span>
+                                        <img src="<?php echo base_url('assets/n-images/ask-qustion.png') ?>"><span>Ask Question</span>
                                     </a>
                                 </li>
                             </ul>
@@ -352,7 +352,7 @@
                                         </li>
                                         <li class="pl15">
                                             <a href="javascript:void(0);" data-target="#ask-question" data-toggle="modal">
-                                                <img src="<?php echo base_url('assets/n-images/ask-qustion.png') ?>"><span>Ask Quastion</span>
+                                                <img src="<?php echo base_url('assets/n-images/ask-qustion.png') ?>"><span>Ask Question</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -460,7 +460,7 @@
                                     <?php } ?>
                                 </div>
                                 <div class="post-text">
-                                    <textarea class="title-text-area" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Quastion"></textarea>
+                                    <textarea class="title-text-area" ng-keyup="QuestionList()" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Question" typeahead="item as item.question for item in queSearchResult | filter:$viewValue" autocomplete="off"></textarea>
                                 </div>
                                 <div class="all-upload">
                                     <div class="form-group">

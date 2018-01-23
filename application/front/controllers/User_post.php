@@ -425,6 +425,8 @@ class User_post extends MY_Controller {
                 $insert_data['post_for'] = 'opportunity';
             } elseif ($post_for == 'simple') {
                 $insert_data['post_for'] = 'simple';
+            } elseif ($post_for == 'question') {
+                $insert_data['post_for'] = 'question';
             }
             $insert_data['post_id'] = '';
             $insert_data['created_date'] = date('Y-m-d H:i:s', time());
