@@ -10,6 +10,10 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/font-awesome.min.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/owl.carousel.min.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/jquery.mCustomScrollbar.min.css') ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>">
+        <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/ng-tags-input.min.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-commen.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-style.css') ?>">
     </head>
@@ -295,24 +299,37 @@
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/owl.carousel.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
+        <script src="<?php echo base_url('assets/js/angular-validate.min.js?ver=' . time()) ?>"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+        <script src="<?php echo base_url('assets/js/ng-tags-input.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/angular/angular-tooltips.min.js?ver=' . time()); ?>"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
         <script>
                                 var base_url = '<?php echo base_url(); ?>';
                                 var user_slug = '<?php echo $this->uri->segment(2); ?>';
                                 var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
                                 var app = angular.module("userProfileApp", ["ngRoute"]);
                                 var item = '<?php echo $this->uri->segment(1); ?>';
-                                $scope.live_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
-                                $scope.segment2 = '<?php echo $this->uri->segment(2); ?>';
-                                $scope.user_slug = '<?php echo $userdata['user_slug']; ?>';
-                                $scope.to_id = '<?php echo $to_id; ?>';
-                                $scope.contact_value = '<?php echo $contact_value; ?>';
-                                $scope.contact_status = '<?php echo $contact_status; ?>';
-                                $scope.contact_id = '<?php echo $contact_id; ?>';
-                                $scope.follow_value = '<?php echo $follow_value; ?>';
-                                $scope.follow_status = '<?php echo $follow_status; ?>';
-                                $scope.follow_id = '<?php echo $follow_id; ?>';
+                                var live_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
+                                var segment2 = '<?php echo $this->uri->segment(2); ?>';
+                                var user_data_slug = '<?php echo $userdata['user_slug']; ?>';
+                                var to_id = '<?php echo $to_id; ?>';
+                                var contact_value = '<?php echo $contact_value; ?>';
+                                var contact_status = '<?php echo $contact_status; ?>';
+                                var contact_id = '<?php echo $contact_id; ?>';
+                                var follow_value = '<?php echo $follow_value; ?>';
+                                var follow_status = '<?php echo $follow_status; ?>';
+                                var follow_id = '<?php echo $follow_id; ?>';
         </script>
         <script src="<?php echo base_url('assets/js/webpage/user/user_profile.js?ver=' . time()) ?>"></script>
     </body>
