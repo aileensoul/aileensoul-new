@@ -486,6 +486,18 @@ app.controller('userOppoController', function ($scope, $http) {
                             $scope.opp.field = '';
                             $scope.opp.postfiles = '';
                             document.getElementById('fileInput').value = '';
+                            
+                             
+            
+                            $scope.ask.postfiles = '';
+                            $scope.ask.ask_que = '';
+                            $scope.ask.ask_description = '';
+                            $scope.ask.ask_field = '';
+                            $scope.ask.otherField = '';
+                            $scope.ask.related_category = '';
+                            $scope.ask.web_link = '';
+                            $scope.ask.post_for = '';
+                            
                             $scope.postData.splice(0, 0, success.data[0]);
                             $('video, audio').mediaelementplayer();
                         }
