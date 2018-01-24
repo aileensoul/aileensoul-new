@@ -683,9 +683,10 @@ footer ul li a{
     padding:5px 8px;
     font-size:12px;
 }
-#selday:focus,#selgen:focus,#selmonth:focus,#selyear:focus,.form-group textarea:focus{
+#selday:focus,#selgen:focus,#selmonth:focus,#selyear:focus,.form-group textarea:focus,#selgen:focus{
     border-bottom:1px solid #1b8ab9!important;
     color:#1b8ab9!important;
+    background: none !important;
 }
 .form-group textarea[type=text]:focus+label{
     color:#1b8ab9!important;
@@ -2485,7 +2486,7 @@ header.profile-header .logo a{
     font-size:50px
 }
 .profile-bnr img{
-    width:auto
+    width:100%;
 }
 .profiles-details .top-detail{
     text-align:justify;
@@ -2935,6 +2936,8 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
         top:80px
     }
     .contact-add .p20{padding: 46.50px 30px;}
+    .cus-job-img img{width: 75% !important;}
+    .cus-job-img{text-align: center;}
 }
 @media screen and (max-width:767px){
     footer,header .col-md-4.col-sm-3{
@@ -3312,8 +3315,9 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
         padding:0
     }
     .profiles-details h2{
-        font-size:19px;
-        margin-top:0
+        font-size:25px;
+        margin-top:0;
+        font-weight:500 !important;
     }
     .right-header{
         padding-top:15px
