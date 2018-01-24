@@ -380,3 +380,4 @@ $route['how-to-use-freelance-profile-in-aileensoul'] = "introduction/freelance_p
 $route['how-to-use-business-profile-in-aileensoul'] = "introduction/business_profile";
 $route['how-to-use-artistic-profile-in-aileensoul'] = "introduction/artistic_profile";
 
+$route['artist/pdf-view/(:any)'] = "artist/pdf_display/$1";

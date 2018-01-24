@@ -1287,7 +1287,7 @@ class Artist extends MY_Controller {
             } elseif (in_array($ext, $allowespdf)) {
 
                 $return_html .= '<div>
-<a title = "click to open" href = "' . base_url('artist/pdf_display/' . $row['art_post_id']) . '" target="_blank"><div class = "pdf_img">
+<a title = "click to open" href = "' . base_url('artist/pdf-view/' . $row['art_post_id']) . '" target="_blank"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF.jpg">
 </div>
 </a>
@@ -11765,7 +11765,7 @@ class Artist extends MY_Controller {
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
                             $return_html .= '<div>
-                                 <a title = "click to open" href = "' . base_url('artist/pdf_display/' . $row['art_post_id']) . '" target="_blank"><div class = "pdf_img">
+                                 <a title = "click to open" href = "' . base_url('artist/pdf-view/' . $row['art_post_id']) . '" target="_blank"><div class = "pdf_img">
                                   <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
                                   </div>
                                    </a></div>';
@@ -12815,7 +12815,7 @@ class Artist extends MY_Controller {
             foreach ($singlearray3 as $mi) {
 
                 $fetch_pdf .= '<div class="image_profile">';
-                $fetch_pdf .= '<a href="' . base_url('artist/pdf_display/' . $mi['post_id']) . '"><div class = "pdf_img">';
+                $fetch_pdf .= '<a href="' . base_url('artist/pdf-view/' . $mi['post_id']) . '"><div class = "pdf_img">';
                 $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '" alt="PDF.jpg">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
