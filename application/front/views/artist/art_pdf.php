@@ -94,7 +94,7 @@
              $artistictitle = $this->data['artistictitle'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
               ?>
 
-        <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url($this->config->item('art_post_main_upload_path') . $pdfv['file_name']) ?>">
+        <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url('artist/pdf-view/' . $pdfv['post_id']) ?>">
 
         <div class="margin_less" >
               <img src="<?php echo base_url('assets/images/PDF.jpg')?>" style="height: 100%; width: 100%;" alt="<?php echo "PDF.jpg"; ?>"> 
@@ -103,7 +103,7 @@
 
               
         <div class="pdf_name">
-        <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url($this->config->item('art_post_main_upload_path') . $pdfv['file_name']) ?>"><?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>
+        <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url('artist/pdf-view/' . $pdfv['post_id']) ?>"><?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>
           
         </a> </div>
 </div>
