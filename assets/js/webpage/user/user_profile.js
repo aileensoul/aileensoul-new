@@ -10,23 +10,23 @@ app.directive("owlCarousel", function () {
             scope.initCarousel = function (element) {
                 // provide any default options you want
                 var defaultOptions = {
-                    loop: true,
+                    loop: false,
                     nav: true,
                     lazyLoad: true,
                     margin: 0,
                     video: true,
                     responsive: {
                         0: {
-                            items: 1
+                            items: 2
                         },
                         600: {
-                            items: 3
+                            items: 2
                         },
                         960: {
-                            items: 3,
+                            items: 2,
                         },
                         1200: {
-                            items: 3
+                            items: 2
                         }
                     }
                 };
@@ -193,9 +193,11 @@ app.controller('profilesController', function ($scope, $http, $location) {
 app.controller('dashboardController', function ($scope, $http, $location) {
     $scope.opp = {};
     $scope.sim = {};
+    $scope.ask = {};
     $scope.postData = {};
     $scope.opp.post_for = 'opportunity';
     $scope.sim.post_for = 'simple';
+    $scope.ask.post_for = 'question';
     getUserDashboardPost();
     getUserDashboardImage();
     getUserDashboardVideo();
@@ -230,7 +232,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
             $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
     }
-    
+
     function getUserDashboardPostLoad(pagenum = '') {
         $('#loader').show();
         $http.get(base_url + "user_post/getUserDashboardPost?page=" + pagenum + "&user_slug=" + user_slug).then(function (success) {
@@ -242,7 +244,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
             $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
     }
-    
+
     function getUserDashboardImage(pagenum = '') {
         $('#loader').show();
         $http.get(base_url + "user_post/getUserDashboardImage?user_slug=" + user_slug).then(function (success) {
@@ -250,7 +252,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
             $scope.postImageData = success.data.userDashboardImage;
         }, function (error) {});
     }
-    
+
     function getUserDashboardVideo(pagenum = '') {
         $('#loader').show();
         $http.get(base_url + "user_post/getUserDashboardVideo?user_slug=" + user_slug).then(function (success) {
@@ -259,7 +261,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
 //            $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
     }
-    
+
     function getUserDashboardAudio(pagenum = '') {
         $('#loader').show();
         $http.get(base_url + "user_post/getUserDashboardAudio?user_slug=" + user_slug).then(function (success) {
@@ -268,7 +270,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
 //            $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
     }
-    
+
     function getUserDashboardPdf(pagenum = '') {
         $('#loader').show();
         $http.get(base_url + "user_post/getUserDashboardPdf?user_slug=" + user_slug).then(function (success) {
@@ -277,7 +279,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
             $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
     }
-    
+
     getFieldList();
     function getFieldList() {
         $http.get(base_url + "general_data/getFieldList").then(function (success) {
@@ -309,6 +311,18 @@ app.controller('dashboardController', function ($scope, $http, $location) {
             });
         });
     };
+    
+    $scope.category = [];
+    $scope.loadCategory = function ($query) {
+        return $http.get(base_url + 'user_post/get_category', {cache: true}).then(function (response) {
+            var category_data = response.data;
+            return category_data.filter(function (category) {
+                return category.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
+            });
+        });
+    };
+
+    
     $scope.postFiles = function () {
         var a = document.getElementById('description').value;
         var b = document.getElementById('job_title').value;
@@ -500,6 +514,100 @@ app.controller('dashboardController', function ($scope, $http, $location) {
                             $scope.opp.field = '';
                             $scope.opp.postfiles = '';
                             document.getElementById('fileInput').value = '';
+                            $scope.postData.splice(0, 0, success.data[0]);
+                            $('video, audio').mediaelementplayer();
+                        }
+                    });
+        }
+    }
+    $scope.IsVisible = false;
+    $scope.ShowHide = function () {
+        //If DIV is visible it will be hidden and vice versa.
+        $scope.IsVisible = $scope.IsVisible ? false : true;
+    }
+
+
+    $scope.questionList = function () {
+        $http({
+            method: 'POST',
+            url: base_url + 'general_data/searchQuestionList',
+            data: 'q=' + $scope.ask.ask_que,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    data = success.data;
+                    $scope.queSearchResult = data;
+                });
+    }
+    $scope.ask_question_check = function (event) {
+        var field = document.getElementById("ask_field").value;
+        var description = document.getElementById("ask_que").value;
+        var description = description.trim();
+        var fileInput = document.getElementById("fileInput2").files;
+        if ((field == '') || (description == ''))
+        {
+            $('#post .mes').html("<div class='pop_content'>Ask question and Field is required.");
+            $('#post').modal('show');
+            $(document).on('keydown', function (e) {
+                if (e.keyCode === 27) {
+                    $('#posterrormodal').modal('hide');
+                    $('.modal-post').show();
+                }
+            });
+            event.preventDefault();
+            return false;
+        } else {
+            var length = fileInput.length;
+            var vfirstname = fileInput[0].name;
+            var ext = vfirstname.split('.').pop();
+            var ext1 = vfirstname.split('.').pop();
+            var allowedExtensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg'];
+            var foundPresent = $.inArray(ext, allowedExtensions) > -1;
+            if (foundPresent == true)
+            {
+                var foundPresent1 = $.inArray(ext1, allowedExtensions) > -1;
+
+            }
+            var form_data = new FormData();
+            angular.forEach($scope.files, function (file) {
+                form_data.append('postfiles[]', file);
+            });
+            //form_data.append('postfiles',$scope.ask.postfiles);
+            form_data.append('question', $scope.ask.ask_que);
+            form_data.append('description', $scope.ask.ask_description);
+            form_data.append('field', $scope.ask.ask_field);
+            form_data.append('other_field', $scope.ask.otherField);
+            form_data.append('category', JSON.stringify($scope.ask.related_category));
+            form_data.append('weblink', $scope.ask.web_link);
+            form_data.append('post_for', $scope.ask.post_for);
+
+            $('body').removeClass('modal-open');
+            $("#opportunity-popup").modal('hide');
+            $("#ask-question").modal('hide');
+            $http.post(base_url + 'user_post/post_opportunity', form_data,
+                    {
+                        transformRequest: angular.identity,
+
+                        headers: {'Content-Type': undefined, 'Process-Data': false}
+                    })
+                    .then(function (success) {
+                        if (success) {
+                            $scope.opp.description = '';
+                            $scope.opp.job_title = '';
+                            $scope.opp.location = '';
+                            $scope.opp.field = '';
+                            $scope.opp.postfiles = '';
+                            document.getElementById('fileInput').value = '';
+
+                            $scope.ask.postfiles = '';
+                            $scope.ask.ask_que = '';
+                            $scope.ask.ask_description = '';
+                            $scope.ask.ask_field = '';
+                            $scope.ask.otherField = '';
+                            $scope.ask.related_category = '';
+                            $scope.ask.web_link = '';
+                            $scope.ask.post_for = '';
+
                             $scope.postData.splice(0, 0, success.data[0]);
                             $('video, audio').mediaelementplayer();
                         }
@@ -700,8 +808,8 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         }).then(function (success) {
             if (success.data.message == 1) {
                 var index = $scope.contactSuggetion.indexOf(contact);
-                $('#item-' + user_id).remove();
-                $('.owl-carousel').trigger('next.owl.carousel');
+                $('#item-' + user_id + ' button.follow-btn').html('Request Send');
+//                $('.owl-carousel').trigger('next.owl.carousel');
             }
         });
     }
@@ -1027,17 +1135,18 @@ app.controller('followingController', function ($scope, $http, $location, $compi
         $http({
             method: 'POST',
             url: base_url + 'userprofile_page/unfollowingContacts',
-             dataType: 'json',
+            dataType: 'json',
             data: 'to_id=' + id,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
-                .then(function (success) {alert(success.data.response);
-            alert(success.data.unfollowingcount);
+                .then(function (success) {
+                    alert(success.data.response);
+                    alert(success.data.unfollowingcount);
                     if (success.data.response == 1) {
                         $('#' + id).closest('.custom-user-box').fadeToggle();
-                        if(success.data.unfollowingcount == '0'){
-               $("#nofollowng").html("<div class='art-img-nn'><div class='art_no_post_img'><img src='assets/img/icon_notification_big.png' alt='notification image'></div><div class='art_no_post_text'>No Following Contacts Available. </div></div>");
-            }
+                        if (success.data.unfollowingcount == '0') {
+                            $("#nofollowng").html("<div class='art-img-nn'><div class='art_no_post_img'><img src='assets/img/icon_notification_big.png' alt='notification image'></div><div class='art_no_post_text'>No Following Contacts Available. </div></div>");
+                        }
                     }
                 });
     }
@@ -1053,12 +1162,13 @@ function remove_contacts(index) {
         dataType: 'json',
         type: "POST",
         data: {"id": index},
-        success: function (data) { alert(data.contactcount);
+        success: function (data) {
+            alert(data.contactcount);
             if (data.response == 1) {
                 $('#' + index).closest('.custom-user-box').fadeToggle();
-                if(data.contactcount == '1'){
-               $("#nocontact").html("<div class='art-img-nn'><div class='art_no_post_img'><img src='assets/img/icon_notification_big.png' alt='notification image'></div><div class='art_no_post_text'>No Contacts Available. </div></div>");
-            }
+                if (data.contactcount == '1') {
+                    $("#nocontact").html("<div class='art-img-nn'><div class='art_no_post_img'><img src='assets/img/icon_notification_big.png' alt='notification image'></div><div class='art_no_post_text'>No Contacts Available. </div></div>");
+                }
             }
         }
     });
@@ -1072,7 +1182,7 @@ function unfollowing_contacts(index) {
         success: function (data) {
             if (data.response == 1) {
                 $('#' + index).closest('.custom-user-box').fadeToggle();
-                 
+
             }
         }
     });
