@@ -115,6 +115,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             <td class="business_data_td2 website"><span><a target="_blank" href="<?php echo $business_data[0]['contact_website']; ?>"> <?php echo $business_data[0]['contact_website']; ?></a></span></td>
                                         </tr>
                                     <?php } ?>
+
+                                    
+                                    <?php if($business_data[0]['details']){?>
                                     <tr>
                                         <td class="business_data_td1 detaile_map"><i class="fa fa-suitcase"></i></td>
                                         <?php
@@ -123,6 +126,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         ?>
                                         <td class="business_data_td2"><span><?php echo $bus_detail; ?></span></td>
                                     </tr>
+                                    <?php }?>
                                 </table>
                             </div>
                         </div>
