@@ -510,4 +510,28 @@ class User_post_model extends CI_Model {
         $result_array['userDashboardPdf'] = $userDashboardPdf;
         return $result_array;
     }
+    
+     public function simplePost($post_id = '') {
+        $this->db->select('description')->from('user_simple_post usp');
+        $this->db->where('usp.post_id', $post_id);
+        $query = $this->db->get();
+        $userSimplePost = $query->row_array();
+        return $userSimplePost;
+    }
+    
+    public function opportunityPost($post_id = '') {
+        $this->db->select('opportunity_for,location,opportunity,field')->from('user_opportunity uo');
+        $this->db->where('uo.post_id', $post_id);
+        $query = $this->db->get();
+        $userOpportunityPost = $query->row_array();
+        return $userOpportunityPost;
+    }
+    
+    public function askQuestionPost($post_id = '') {
+        $this->db->select('question,description,category,field')->from('user_ask_question uaq');
+        $this->db->where('uaq.post_id', $post_id);
+        $query = $this->db->get();
+        $userAskPost = $query->row_array();
+        return $userAskPost;
+    }
 }

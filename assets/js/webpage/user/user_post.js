@@ -171,8 +171,8 @@ app.controller('userOppoController', function ($scope, $http) {
             $scope.fieldList = success.data;
         }, function (error) {});
     }
-    
-    
+
+
     getContactSuggetion();
     function getContactSuggetion() {
         $http.get(base_url + "user_post/getContactSuggetion").then(function (success) {
@@ -197,7 +197,7 @@ app.controller('userOppoController', function ($scope, $http) {
             });
         });
     };
-    
+
     $scope.category = [];
     $scope.loadCategory = function ($query) {
         return $http.get(base_url + 'user_post/get_category', {cache: true}).then(function (response) {
@@ -417,27 +417,27 @@ app.controller('userOppoController', function ($scope, $http) {
                     });
         }
     }
-    
-     $scope.IsVisible = false;
-            $scope.ShowHide = function () {
-                //If DIV is visible it will be hidden and vice versa.
-                $scope.IsVisible = $scope.IsVisible ? false : true;
-            }
-    
-    
+
+    $scope.IsVisible = false;
+    $scope.ShowHide = function () {
+        //If DIV is visible it will be hidden and vice versa.
+        $scope.IsVisible = $scope.IsVisible ? false : true;
+    }
+
+
     $scope.questionList = function () {
-            $http({
+        $http({
             method: 'POST',
-                    url: base_url + 'general_data/searchQuestionList',
-                    data: 'q=' + $scope.ask.ask_que,
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
-                    .then(function (success) {
+            url: base_url + 'general_data/searchQuestionList',
+            data: 'q=' + $scope.ask.ask_que,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
                     data = success.data;
                     $scope.queSearchResult = data;
-                    });
-            }
-        
+                });
+    }
+
 
     $scope.ask_question_check = function (event) {
         var field = document.getElementById("ask_field").value;
@@ -490,7 +490,7 @@ app.controller('userOppoController', function ($scope, $http) {
 
                         headers: {'Content-Type': undefined, 'Process-Data': false}
                     })
-                    .then(function (success) { 
+                    .then(function (success) {
                         if (success) {
                             $scope.opp.description = '';
                             $scope.opp.job_title = '';
@@ -498,7 +498,7 @@ app.controller('userOppoController', function ($scope, $http) {
                             $scope.opp.field = '';
                             $scope.opp.postfiles = '';
                             document.getElementById('fileInput').value = '';
-                            
+
                             $scope.ask.postfiles = '';
                             $scope.ask.ask_que = '';
                             $scope.ask.ask_description = '';
@@ -507,7 +507,7 @@ app.controller('userOppoController', function ($scope, $http) {
                             $scope.ask.related_category = '';
                             $scope.ask.web_link = '';
                             $scope.ask.post_for = '';
-                            
+
                             $scope.postData.splice(0, 0, success.data[0]);
                             $('video, audio').mediaelementplayer();
                         }
@@ -878,6 +878,45 @@ app.controller('userOppoController', function ($scope, $http) {
         $('#edit-comment-' + comment_id).show();
         $('#editCommentTaxBox-' + comment_id).html(editContent);
         $('#comment-dis-inner-' + comment_id).hide();
+    }
+
+    $scope.EditPost = function (post_id, post_for, index) {
+        $scope.is_edit = 1;
+        alert(post_id);
+        alert(post_for);
+
+
+        $http({
+            method: 'POST',
+            url: base_url + 'user_post/editPost',
+            data: 'post_id=' + post_id + '&post_for=' + post_for,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    $scope.is_edit = 1;
+                    if (post_for == "opportunity") {
+                        $scope.opp.description = success.data.opportunity;
+                      //  $scope.sim.description = success.data.description;
+                      //  $scope.sim.description = success.data.description;
+                        $scope.opp.field = success.data.field;
+                        $("#opportunity-popup").modal('show');
+                    
+                    } else if (post_for == "simple") {
+                        $scope.sim.description = success.data.description;
+                       
+                        $("#post-popup").modal('show');
+                   
+                    } else if (post_for == "question"){
+                        $scope.ask.ask_que = success.data.question;
+                        $scope.ask.ask_description = success.data.description;
+                      //  $scope.sim.description = success.data.category;
+                        $scope.ask.ask_field = success.data.field;
+                    
+                        $("#ask-question").modal('show');
+                    }
+                });
+
+
     }
 
     $scope.sendEditComment = function (comment_id) {

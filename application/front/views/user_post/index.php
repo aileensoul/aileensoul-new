@@ -134,7 +134,7 @@
                                         <div class="post-right-dropdown dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/right-down.png') ?>" alt="Right Down"></a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="javascript:void(0);">Edit Post</a></li>
+                                                <li><a href="javascript:void(0);" ng-click="EditPost( post.post_data.id,post.post_data.post_for,$index)">Edit Post</a></li>
                                                 <li><a href="javascript:void(0);" ng-click="deletePost(post.post_data.id, $index)">Delete Post</a></li>
                                             </ul>
                                         </div>
@@ -337,7 +337,7 @@
                                 <div class="post-text">
                                     <textarea name="description" ng-model="sim.description" id="description" class="title-text-area" placeholder="Write something here..."></textarea>
                                 </div>
-                                <div class="all-upload">
+                                <div class="all-upload" ng-if="is_edit != 1">
                                     <div class="form-group">
                                         <input file-input="files" ng-file-model="sim.postfiles" type="file" id="fileInput1" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
                                     </div>
@@ -348,8 +348,8 @@
                                         <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
                                     </label>
                                 </div>
-                                <div class="post-box-bottom">
-                                    <ul>
+                                <div class="post-box-bottom" >
+                                    <ul ng-if="is_edit != 1">
                                         <li>
                                             <a href="javascript:void(0);" data-target="#opportunity-popup" data-toggle="modal">
                                                 <img src="<?php echo base_url('assets/n-images/post-op.png') ?>"><span>Post Opportunity</span>
@@ -394,7 +394,8 @@
                                 <div class="post-text">
                                     <textarea name="description" ng-model="opp.description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
                                 </div>
-                                <div class="all-upload">
+                          
+                                <div class="all-upload" ng-if="is_edit != 1">
                                     <div class="form-group">
                                         <input file-input="files" ng-file-model="opp.postfiles" type="file" id="fileInput" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
                                     </div>
@@ -472,7 +473,7 @@
                                 <div class="post-text">
                                     <textarea class="title-text-area" ng-keyup="questionList()" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Question" typeahead="item as item.question for item in queSearchResult | filter:$viewValue" autocomplete="off"></textarea>
                                 </div>
-                                <div class="all-upload">
+                                <div class="all-upload" ng-if="is_edit != 1">
                                     <div class="form-group">
                                         <input file-input="files" ng-file-model="ask.postfiles" type="file" id="fileInput2" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
                                     </div>

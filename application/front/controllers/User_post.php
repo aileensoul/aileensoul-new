@@ -906,5 +906,18 @@ class User_post extends MY_Controller {
             echo json_encode($post_data);
         }
     }
-
+  
+    public function editPost(){
+        $post_id = $_POST['post_id'];
+        $post_for = $_POST['post_for'];
+        
+        if($post_for == 'simple'){
+        $post_data = $this->user_post_model->simplePost($post_id);
+        }else if($post_for == 'opportunity'){
+        $post_data = $this->user_post_model->opportunityPost($post_id);
+        }else{
+        $post_data = $this->user_post_model->askQuestionPost($post_id);
+        }
+        echo json_encode($post_data);
+    }
 }
