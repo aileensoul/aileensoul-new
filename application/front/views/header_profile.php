@@ -3,10 +3,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 left-header">
-                    <h2 class="logo"><a ng-click="goMainLink('<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>');" title="Aileensoul"><img ng-src="<?php echo base_url('assets/img/logo-name.png?ver='.time()) ?>" alt="Aileensoul"></a></h2>
+                    <!--<h2 class="logo"><a ng-click="goMainLink('<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>');" title="Aileensoul"><img ng-src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="Aileensoul"></a></h2>-->
+                    <h2 class="logo"><a ng-href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" title="Aileensoul" target="_self"><img ng-src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="Aileensoul"></a></h2>
                     <?php if ($is_userBasicInfo == '1' || $is_userStudentInfo == '1') { ?>
-                        <form>
-                            <input type="text" name="search" placeholder="Search..">
+                        <form ng-submit="search_submit">
+                            <input type="text" name="search" placeholder="Search.." id="search">
                         </form>
                     <?php } ?>
                 </div>
@@ -77,7 +78,7 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="#" title="Opportunity"><img ng-src="<?php echo base_url('assets/n-images/op.png?ver='.time()) ?>" alt="Opportunity"></a>
+                                <a href="#" title="Opportunity"><img ng-src="<?php echo base_url('assets/n-images/op.png?ver=' . time()) ?>" alt="Opportunity"></a>
                             </li>
                             <li id="add-contact" class="dropdown">
                                 <a href="#" title="Contact Request" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/add-contact.png') ?>" alt="Contact Request"></a>
@@ -243,7 +244,7 @@
                                 </div>
                             </li>
                             <li class="dropdown">
-                                <a href="#" title="Messages" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/message.png?ver='.time()) ?>" alt="Messages"></a>
+                                <a href="#" title="Messages" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/message.png?ver=' . time()) ?>" alt="Messages"></a>
                                 <div class="dropdown-menu">
                                     <div class="dropdown-title">
                                         Messages <a href="#" class="pull-right">See All</a>
@@ -367,7 +368,7 @@
                                 </div>
                             </li>
                             <li class="dropdown">
-                                <a href="#" title="Notification" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/noti.png?ver='.time()) ?>" alt="Notification"></a>
+                                <a href="#" title="Notification" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/noti.png?ver=' . time()) ?>" alt="Notification"></a>
 
                                 <div class="dropdown-menu">
                                     <div class="dropdown-title">
@@ -517,8 +518,12 @@
                         ?>
                         <li class="dropdown user-id">
                             <a href="#" title="<?php echo $userdata['first_name']; ?>" class="dropdown-toggle user-id-custom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <span class="usr-img"><?php if($userdata['user_image'] != ''){ ?><img ng-src="<?php echo USER_THUMB_UPLOAD_URL.$userdata['user_image'] ?>" alt="<?php echo $userdata['first_name'] ?>"><?php }else{ ?><div class="custom-user"><?php echo ucfirst(strtolower(substr($userdata['first_name'], 0, 1))); ?></div><?php } ?></span>
-                                <span class="pr-name"><?php if(isset($userdata['first_name'])){ echo ucfirst($userdata['first_name']);}?></span>
+                                <span class="usr-img"><?php if ($userdata['user_image'] != '') { ?><img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $userdata['user_image'] ?>" alt="<?php echo $userdata['first_name'] ?>"><?php } else { ?><div class="custom-user"><?php echo ucfirst(strtolower(substr($userdata['first_name'], 0, 1))); ?></div><?php } ?></span>
+                                <span class="pr-name"><?php
+                                    if (isset($userdata['first_name'])) {
+                                        echo ucfirst($userdata['first_name']);
+                                    }
+                                    ?></span>
                             </a>
                             <ul class="dropdown-menu profile-dropdown">
                                 <li>Account</li>

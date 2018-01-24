@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-style.css') ?>">
     </head>
     <body class="main-db">
+        <?php echo $header_profile; ?>
         <?php echo $header; ?>
         <div ng-view></div>
         <?php echo $footer; ?>
