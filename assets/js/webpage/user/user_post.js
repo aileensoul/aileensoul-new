@@ -197,6 +197,16 @@ app.controller('userOppoController', function ($scope, $http) {
             });
         });
     };
+    
+    $scope.category = [];
+    $scope.loadCategory = function ($query) {
+        return $http.get(base_url + 'user_post/get_category', {cache: true}).then(function (response) {
+            var category_data = response.data;
+            return category_data.filter(function (category) {
+                return category.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
+            });
+        });
+    };
 
     $scope.postFiles = function () {
         var a = document.getElementById('description').value;
@@ -415,7 +425,7 @@ app.controller('userOppoController', function ($scope, $http) {
             }
     
     
-    $scope.QuestionList = function () {
+    $scope.questionList = function () {
             $http({
             method: 'POST',
                     url: base_url + 'general_data/searchQuestionList',
@@ -433,8 +443,7 @@ app.controller('userOppoController', function ($scope, $http) {
         var field = document.getElementById("ask_field").value;
         var description = document.getElementById("ask_que").value;
         var description = description.trim();
-        var fileInput = document.getElementById("screenshot").files;
-        var fileInput1 = document.getElementById("screenshot").value;
+        var fileInput = document.getElementById("fileInput2").files;
         if ((field == '') || (description == ''))
         {
             $('#post .mes').html("<div class='pop_content'>Ask question and Field is required.");
@@ -460,7 +469,10 @@ app.controller('userOppoController', function ($scope, $http) {
 
             }
             var form_data = new FormData();
-            form_data.append('screenshot',$scope.ask.postfiles);
+            angular.forEach($scope.files, function (file) {
+                form_data.append('postfiles[]', file);
+            });
+            //form_data.append('postfiles',$scope.ask.postfiles);
             form_data.append('question', $scope.ask.ask_que);
             form_data.append('description', $scope.ask.ask_description);
             form_data.append('field', $scope.ask.ask_field);
@@ -487,8 +499,6 @@ app.controller('userOppoController', function ($scope, $http) {
                             $scope.opp.postfiles = '';
                             document.getElementById('fileInput').value = '';
                             
-                             
-            
                             $scope.ask.postfiles = '';
                             $scope.ask.ask_que = '';
                             $scope.ask.ask_description = '';

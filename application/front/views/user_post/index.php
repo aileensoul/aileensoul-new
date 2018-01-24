@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/ng-tags-input.min.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-commen.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-style.css?ver=' . time()) ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/n-css/angular-tooltips.css.css?ver=' . time()) ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/n-css/angular-tooltips.css?ver=' . time()) ?>">
         <style type="text/css">
             .progress-bar{
                 background:linear-gradient(354deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%)!important
@@ -185,8 +185,8 @@
                                             <div class="two-img" ng-if="$index == '2'">
                                                 <a href="#"><img ng-src="<?php echo USER_POST_RESIZE1_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
                                             </div>
+                                        </span>
                                     </div>
-                                    </span>
                                     <div class="post-images four-img" ng-if="post.post_data.total_post_files >= '4'">
                                         <div class="two-img" ng-repeat="post_file in post.post_file_data| limitTo:4">
                                             <a href="#"><img ng-src="<?php echo USER_POST_RESIZE2_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
@@ -460,20 +460,19 @@
                                     <?php } ?>
                                 </div>
                                 <div class="post-text">
-                                    <textarea class="title-text-area" ng-keyup="QuestionList()" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Question" typeahead="item as item.question for item in queSearchResult | filter:$viewValue" autocomplete="off"></textarea>
+                                    <textarea class="title-text-area" ng-keyup="questionList()" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Question" typeahead="item as item.question for item in queSearchResult | filter:$viewValue" autocomplete="off"></textarea>
                                 </div>
                                 <div class="all-upload">
                                     <div class="form-group">
-                                        <input file-input="files" ng-file-model="ask.postfiles" type="file" id="screenshot" name="screenshot" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+                                        <input file-input="files" ng-file-model="ask.postfiles" type="file" id="fileInput2" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
                                     </div>
-                                    <label for="screenshot">
+                                    <label for="fileInput2" ng-click="postFiles()">
                                         <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Add Screenshot </span></i>
                                     </label>
+                                    <div class="add-link" ng-click="ShowHide()">
+                                        <i class="fa fa fa-link upload_icon"><span class="upload_span_icon"> Add Link</span>  </i> 
+                                    </div>
                                 </div>
-                                <div class="add-link" ng-click="ShowHide()">
-                                    <i class="fa fa fa-link upload_icon"><span class="upload_span_icon"> Add Link</span>  </i> 
-                                </div>
-
                                 <div class="form-group"  ng-show = "IsVisible">
                                     <input type="text" ng-model="ask.web_link" class="" placeholder="Add Your Web Link">
                                 </div>
@@ -485,7 +484,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Related Categories<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
-                                    <input type="text" ng-model="ask.related_category" class="" placeholder="Related Categories">
+                                    <tags-input ng-model="ask.related_category" display-property="name"placeholder="Related Category" replace-spaces-with-dashes="false" template="category-template" on-tag-added="onKeyup()">
+                                        <auto-complete source="loadCategory($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="category-autocomplete-template"></auto-complete>
+                                    </tags-input>
+                                    <script type="text/ng-template" id="category-template">
+                                        <div class="tag-template"><div class="right-panel"><span>{{$getDisplayText()}}</span><a class="remove-button" ng-click="$removeTag()">&#10006;</a></div></div>
+                                    </script>
+                                    <script type="text/ng-template" id="category-autocomplete-template">
+                                        <div class="autocomplete-template"><div class="right-panel"><span ng-bind-html="$highlight($getDisplayText())"></span></div></div>
+                                    </script>
                                 </div>
                                 <div class="form-group">
                                     <label>From which field the Question asked?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>

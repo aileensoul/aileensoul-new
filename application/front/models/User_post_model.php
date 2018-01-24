@@ -54,7 +54,16 @@ class User_post_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
-
+    
+    public function get_category() {
+        $this->db->select("name")->from("tags t");
+        $this->db->where('status', 'publish');
+        $this->db->where('is_delete', '0');
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+    
     public function is_likepost($userid = '', $post_id = '') {
         $this->db->select("upl.id,upl.is_like")->from("user_post_like upl");
         $this->db->join('user_login ul', 'ul.user_id = upl.user_id', 'left');
