@@ -17,16 +17,16 @@ app.directive("owlCarousel", function () {
                     video: true,
                     responsive: {
                         0: {
-                            items: 2
+                            items: 1
                         },
                         600: {
-                            items: 2
+                            items: 3
                         },
                         960: {
-                            items: 2,
+                            items: 3,
                         },
                         1200: {
-                            items: 2
+                            items: 3
                         }
                     }
                 };
