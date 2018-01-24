@@ -68,13 +68,23 @@ class Userprofile_page extends MY_Controller {
     public function contacts_data() {
         $userid = $this->session->userdata('aileenuser');
         $contactsData = $this->data['contactsData'] = $this->userprofile_model->getContactData($userid, $data = "");
+       if(count($contactsData) == 0){
+           echo count($contactsData);
+       }else{
         echo json_encode($contactsData);
+       }
     }
+    
+   
     
     public function following_data() {
         $userid = $this->session->userdata('aileenuser');
         $followingData = $this->data['followingData'] = $this->userprofile_model->getFollowingData($userid, $data = "");
+        if(count($followingData) == 0){
+           echo count($followingData);
+       }else{
         echo json_encode($followingData);
+       }
     }
 
     public function vsrepeat() {
@@ -102,7 +112,11 @@ class Userprofile_page extends MY_Controller {
         } else {
             $response = 0;
         }
-        echo json_encode($response);
+        $contactdata = $this->userprofile_model->getContactCount($userid);
+      
+        $removjson['response'] = $response;
+        $removjson['contactcount'] = $contactdata[0]['total'];
+        echo json_encode($removjson);
     }
     
     public function unfollowingContacts() {
@@ -116,7 +130,12 @@ class Userprofile_page extends MY_Controller {
             } else {
             $response = 0;
         }
-        echo json_encode($response);
+        $followingdata = $this->userprofile_model->getFollowingCount($userid);
+      
+        $unfollowingjson['response'] = $response;
+        $unfollowingjson['unfollowingcount'] = $followingdata[0]['total'];
+
+        echo json_encode($unfollowingjson);
     }
     
     public function addcontact() { 

@@ -2,8 +2,8 @@
     <div class="custom-user-list">
         <div class="list-box-custom">
             <h3>Following</h3>
-            <div class="p15 fw">
-                <div class="custom-user-box" ng-repeat="follow in follow_data">
+            <div class="p15 fw" id="nofollowng">
+                <div class="custom-user-box" ng-if="follow_data != '0'" ng-repeat="follow in follow_data">
                     <div class="post-img" ng-if="follow.user_image != '' && follow.user_image != null">
                         <a href="#"><img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{follow.user_image}}"></a>
                     </div>
@@ -28,6 +28,17 @@
                 </div>
 
             </div>
+            
+            <div class="custom-user-box"  ng-if="follow_data == '0'">
+                 <div class="art-img-nn">
+                                                <div class="art_no_post_img">
+
+                                                    <img src="assets/img/icon_notification_big.png" alt="notification image">
+
+                                                </div>
+                                                <div class="art_no_post_text">No Notification Available. </div>
+                                            </div>
+                </div>
 
         </div>
     </div>

@@ -1027,12 +1027,17 @@ app.controller('followingController', function ($scope, $http, $location, $compi
         $http({
             method: 'POST',
             url: base_url + 'userprofile_page/unfollowingContacts',
+             dataType: 'json',
             data: 'to_id=' + id,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
-                .then(function (success) {
-                    if (success.data == 1) {
+                .then(function (success) {alert(success.data.response);
+            alert(success.data.unfollowingcount);
+                    if (success.data.response == 1) {
                         $('#' + id).closest('.custom-user-box').fadeToggle();
+                        if(success.data.unfollowingcount == '0'){
+               $("#nofollowng").html("<div class='art-img-nn'><div class='art_no_post_img'><img src='assets/img/icon_notification_big.png' alt='notification image'></div><div class='art_no_post_text'>No Following Contacts Available. </div></div>");
+            }
                     }
                 });
     }
@@ -1045,11 +1050,15 @@ app.controller('followingController', function ($scope, $http, $location, $compi
 function remove_contacts(index) {
     $.ajax({
         url: base_url + "userprofile_page/removeContacts",
+        dataType: 'json',
         type: "POST",
         data: {"id": index},
-        success: function (data) {
-            if (data == 1) {
+        success: function (data) { alert(data.contactcount);
+            if (data.response == 1) {
                 $('#' + index).closest('.custom-user-box').fadeToggle();
+                if(data.contactcount == '1'){
+               $("#nocontact").html("<div class='art-img-nn'><div class='art_no_post_img'><img src='assets/img/icon_notification_big.png' alt='notification image'></div><div class='art_no_post_text'>No Contacts Available. </div></div>");
+            }
             }
         }
     });
@@ -1057,11 +1066,13 @@ function remove_contacts(index) {
 function unfollowing_contacts(index) {
     $.ajax({
         url: base_url + "userprofile_page/unfollowingContacts",
+        dataType: 'json',
         type: "POST",
         data: {"id": index},
         success: function (data) {
-            if (data == 1) {
+            if (data.response == 1) {
                 $('#' + index).closest('.custom-user-box').fadeToggle();
+                 
             }
         }
     });

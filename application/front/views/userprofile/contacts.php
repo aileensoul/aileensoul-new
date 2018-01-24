@@ -2,8 +2,8 @@
     <div class="custom-user-list">
         <div class="list-box-custom">
             <h3>Contacts</h3>
-            <div class="p15 fw" >
-                <div class="custom-user-box" ng-repeat="contacts in contats_data">
+            <div class="p15 fw" id="nocontact">
+                <div class="custom-user-box" ng-if="contats_data != '0'" ng-repeat="contacts in contats_data">
                     <div class="post-img" ng-if="contacts.user_image != '' && contacts.user_image != null">
                         <a href="#"><img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{contacts.user_image}}"></a>
                     </div>
@@ -21,6 +21,16 @@
                     <div class="custom-user-btn">
                         <a class="btn3" id="{{contacts.user_id}}" ng-click="remove(contacts.user_id)">In Contacts</a>
                     </div>
+                </div>
+                
+                <div class="custom-user-box"  ng-if="contats_data == '0'">
+                 <div class='art-img-nn'>
+                     <div class='art_no_post_img'>
+                         <img src='assets/img/icon_notification_big.png' alt='notification image'>
+                     </div>
+                     <div class='art_no_post_text'>No Contacts Available. </div>
+                         
+                 </div>
                 </div>
             </div>
         </div>

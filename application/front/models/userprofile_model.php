@@ -125,5 +125,32 @@ class Userprofile_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array;
     }
+    
+    public function getContactCount($user_id = '', $select_data = '') {
 
+        $where = "((from_id = '" . $user_id . "' OR to_id = '" . $user_id . "'))";
+
+        $this->db->select("count(*) as total")->from("user_contact  uc");
+        $this->db->where('uc.status', 'confirm');
+        $this->db->where($where);
+        $this->db->order_by("uc.id", "DESC");
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+    
+    public function getFollowingCount($user_id = '', $select_data = '') {
+
+        $where = "((uf.follow_from = '" . $user_id . "'))";
+
+        $this->db->select("count(*) as total")->from("user_follow  uf");
+     
+        $this->db->where('uf.status', '1');
+        $this->db->where($where);
+        $this->db->order_by("uf.id", "DESC");
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+       
+        return $result_array;
+    }
 }
