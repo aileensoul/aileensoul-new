@@ -48,6 +48,7 @@
                 </div>
             </div>
         </div>
+
         <!--PROFILE PIC MODEL END-->
         <div class="modal fade message-box" id="remove-contact" role="dialog">
             <div class="modal-dialog modal-lm">
