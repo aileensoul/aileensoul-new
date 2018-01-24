@@ -1287,7 +1287,7 @@ class Artist extends MY_Controller {
             } elseif (in_array($ext, $allowespdf)) {
 
                 $return_html .= '<div>
-<a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+<a title = "click to open" href = "' . base_url('artist/pdf_display/' . $row['art_post_id']) . '" target="_blank"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF.jpg">
 </div>
 </a>
@@ -11765,7 +11765,7 @@ class Artist extends MY_Controller {
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
                             $return_html .= '<div>
-                                 <a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+                                 <a title = "click to open" href = "' . base_url('artist/pdf_display/' . $row['art_post_id']) . '" target="_blank"><div class = "pdf_img">
                                   <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
                                   </div>
                                    </a></div>';
@@ -12815,7 +12815,7 @@ class Artist extends MY_Controller {
             foreach ($singlearray3 as $mi) {
 
                 $fetch_pdf .= '<div class="image_profile">';
-                $fetch_pdf .= '<a href="' . ART_POST_MAIN_UPLOAD_URL . $mi['file_name'] . '"><div class = "pdf_img">';
+                $fetch_pdf .= '<a href="' . base_url('artist/pdf_display/' . $mi['post_id']) . '"><div class = "pdf_img">';
                 $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '" alt="PDF.jpg">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
@@ -13114,7 +13114,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     } elseif (in_array($ext, $allowespdf)) {
 
                         $return_html .= '<div>
-<a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+<a title = "click to open" href = "' . base_url('artist/pdf_display/' . $row['art_post_id']) . '" target="_blank"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
 </div>
 </a>
@@ -14555,7 +14555,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
           </div>';
                     } elseif (in_array($ext, $allowespdf)) {
                         $return_html .= '<div>
-<a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank" alt="' . $artmultiimage[0]['file_name'] . '"><div class = "pdf_img">
+<a title = "click to open" href = "' . base_url('artist/pdf_display/' . $key['art_post_id']) . '" target="_blank" alt="' . $artmultiimage[0]['file_name'] . '"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
 </div>
 </a>
@@ -16202,6 +16202,15 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
         $count = $result[0]['total'];
         return $count;
+    }
+
+
+    public function pdf_display($id) { 
+        $this->data['title'] =   "PDF | Artistic Profile" . TITLEPOSTFIX;
+        $contition_array = array('post_id' => $id, 'is_deleted' => '1', 'insert_profile' => '1', 'post_format' => 'pdf');
+        $this->data['art_data'] = $art_data = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //echo "<pre>"; print_r($this->data['title']); die();
+        $this->load->view('artist/artist_pdf', $this->data);
     }
 
 }
