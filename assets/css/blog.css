@@ -243,6 +243,7 @@ footer ul li{
 }
 .blog_view_link,.blog_view_link2{
     padding:6px;
+    padding-bottom: 0px;
     color:#707070
 }
 .blog_view_link2 a{
