@@ -146,7 +146,7 @@ header("Pragma: no-cache"); // HTTP/1.0
             <div class="blog_header">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4 col-sm-5 col-xs-1 mob-zindex">
+                        <div class="col-md-4 col-sm-5 col-xs-2 mob-zindex">
 
                             <div class="logo pl20">
                                 <?php
@@ -166,7 +166,7 @@ header("Pragma: no-cache"); // HTTP/1.0
                                 ?>
                             </div>
                         </div>
-                        <div class="col-md-8 col-sm-7 col-xs-11 header-left-menu">
+                        <div class="col-md-8 col-sm-7 col-xs-10 header-left-menu">
                             <div class="main-menu-right">
                                 <ul class="">
                                     <?php foreach ($blog_category as $category) { ?>
