@@ -151,6 +151,16 @@
                                     <div class="post-discription" ng-if="post.post_data.post_for == 'simple'">
                                         <div class="post-des-detail" ng-if="post.simple_data.description"><span ng-bind-html="post.simple_data.description"></span></div>
                                     </div>
+                                    <div class="post-discription" ng-if="post.post_data.post_for == 'question'">
+                                        <h5 class="post-title">
+                                            <p ng-if="post.question_data.question"><b>Question:</b><span ng-bind="post.question_data.question"></span></p>
+                                            <p ng-if="post.question_data.description"><b>Description:</b><span ng-bind="post.question_data.description"></span></p>
+                                            <p ng-if="post.question_data.link"><b>Link:</b><span ng-bind="post.question_data.link"></span></p>
+                                            <p ng-if="post.question_data.category"><b>Category:</b><span ng-bind="post.question_data.category"></span></p>
+                                            <p ng-if="post.question_data.field"><b>Field:</b><span ng-bind="post.question_data.field"></span></p>
+                                        </h5>
+                                        <div class="post-des-detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity"></span></div>
+                                    </div>
                                     <div class="post-images" ng-if="post.post_data.total_post_files == '1'">
                                         <div class="one-img" ng-repeat="post_file in post.post_file_data" ng-init="$last ? loadMediaElement() : false">
                                             <a href="#" ng-if="post_file.file_type == 'image'"><img ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" alt="{{post_file.filename}}"></a>

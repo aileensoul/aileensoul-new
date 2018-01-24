@@ -390,7 +390,7 @@ class User_post extends MY_Controller {
         $other_field = $_POST['other_field'] == 'undefined' ? '' : $_POST['other_field'];
         $weblink = $_POST['weblink'] == 'undefined' ? '' : $_POST['weblink'];
         $category = json_decode($_POST['category'], TRUE);
-        
+
 
         $error = '';
         if ($post_for == 'opportunity') {
@@ -454,9 +454,9 @@ class User_post extends MY_Controller {
                 $city_id = trim($city_id, ',');
             } elseif ($post_for == 'question') {
                 foreach ($ask_category as $ask) {
-                    $ask = $this->data_model->findCategory($ask['name']);
-                    if ($ask['id'] != '') {
-                        $categoryId = $ask['id'];
+                    $asked = $this->data_model->findCategory($ask['name']);
+                    if ($asked['id'] != '') {
+                        $categoryId .= $asked['id'] . ',';
                     } else {
                         $data = array();
                         $data['name'] = $ask['name'];
@@ -464,9 +464,9 @@ class User_post extends MY_Controller {
                         $data['modify_date'] = date('Y-m-d H:i:s', time());
                         $data['user_id'] = $userid;
                         $data['status'] = 'draft';
-                        $categoryId = $this->common->insert_data_getid($data, 'tags');
+                        $categorysId = $this->common->insert_data_getid($data, 'tags');
+                        $categoryId .= $categorysId . ',';
                     }
-                    $categoryId .= $categoryId . ',';
                 }
                 $categoryId = trim($categoryId, ',');
             }
