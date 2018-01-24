@@ -702,17 +702,8 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 </a>
 </div>';
                             } elseif (in_array($ext, $allowespdf)) {
-
-//                                 $return_html .= '<div>
-// <a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
-//     <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
-// </div>
-// </a>
-// </div>';
-
-
                                 $return_html .= '<div>
-<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+<a title = "click to open" href = "' . base_url('business-profile/pdf-view/' . $post_business_profile_post_id) . '" target="_blank"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg') . '?ver=' . time() . '" alt="PDF.jpg">
 </div>
 </a>
