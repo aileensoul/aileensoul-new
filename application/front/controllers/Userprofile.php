@@ -69,5 +69,9 @@ class Userprofile extends MY_Controller {
             $this->load->view('userprofile/notavalible');
         }
     }
+    
+    public function looping(){
+        $this->load->view('userprofile/looping');
+    }
 
 }
