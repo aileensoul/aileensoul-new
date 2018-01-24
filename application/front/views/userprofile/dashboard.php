@@ -188,7 +188,7 @@
                         <div class="post-right-dropdown dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/right-down.png') ?>" alt="Right Down"></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:void(0);">Edit Post</a></li>
+                                <li><a href="javascript:void(0);" ng-click="EditPost( post.post_data.id,post.post_data.post_for,$index)">Edit Post</a></li>
                                 <li><a href="javascript:void(0);" ng-click="deletePost(post.post_data.id, $index)">Delete Post</a></li>
                             </ul>
                         </div>
@@ -445,7 +445,7 @@
                         <div class="post-text">
                             <textarea name="description" ng-model="opp.description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
                         </div>
-                        <div class="all-upload">
+                        <div class="all-upload" ng-if="is_edit != 1">
                             <div class="form-group">
                                 <input file-input="files" ng-file-model="opp.postfiles" type="file" id="fileInput" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
                             </div>

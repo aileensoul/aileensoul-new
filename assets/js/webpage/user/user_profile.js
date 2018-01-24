@@ -963,6 +963,18 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         $('#editCommentTaxBox-' + comment_id).html(editContent);
         $('#comment-dis-inner-' + comment_id).hide();
     }
+    
+    $scope.EditPost = function (post_id,post_for,index) {
+        alert(post_for);
+        $scope.is_edit = 1;
+       if(post_for == "opportunity"){
+       $("#opportunity-popup").modal('show');
+          }else if(post_for == "simple"){
+       $("#post-popup").modal('show');
+          }else{
+       $("#ask-question").modal('show');
+          } 
+    }
 
     $scope.sendEditComment = function (comment_id) {
         var comment = $('#editCommentTaxBox-' + comment_id).html();
