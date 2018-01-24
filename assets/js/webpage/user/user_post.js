@@ -10,7 +10,7 @@ app.directive("owlCarousel", function () {
             scope.initCarousel = function (element) {
                 // provide any default options you want
                 var defaultOptions = {
-                    loop: true,
+                    loop: false,
                     nav: true,
                     lazyLoad: true,
                     margin: 0,
@@ -721,8 +721,8 @@ app.controller('userOppoController', function ($scope, $http) {
         }).then(function (success) {
             if (success.data.message == 1) {
                 var index = $scope.contactSuggetion.indexOf(contact);
-                $('#item-' + user_id).remove();
-                $('.owl-carousel').trigger('next.owl.carousel');
+                $('#item-' + user_id + ' button.follow-btn').html('Request Send');
+//                $('.owl-carousel').trigger('next.owl.carousel');
             }
         });
     }
