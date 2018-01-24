@@ -94,6 +94,11 @@ class User_post extends MY_Controller {
         echo json_encode($location);
     }
 
+    public function get_category() {
+        $category = $this->user_post_model->get_category();
+        echo json_encode($category);
+    }
+
     public function postCommentInsert() {
         $userid = $this->session->userdata('aileenuser');
         $post_id = $_POST['post_id'];
@@ -240,29 +245,29 @@ class User_post extends MY_Controller {
         $post_data = $this->user_post_model->userDashboardPost($userid, $page);
         echo json_encode($post_data);
     }
-    
-    public function getUserDashboardImage(){
+
+    public function getUserDashboardImage() {
         $user_slug = $_GET["user_slug"];
         $userid = $this->db->select('user_id')->get_where('user', array('user_slug' => $user_slug))->row('user_id');
         $post_image_data = $this->user_post_model->userDashboardImage($userid);
         echo json_encode($post_image_data);
     }
-    
-    public function getUserDashboardVideo(){
+
+    public function getUserDashboardVideo() {
         $user_slug = $_GET["user_slug"];
         $userid = $this->db->select('user_id')->get_where('user', array('user_slug' => $user_slug))->row('user_id');
         $post_video_data = $this->user_post_model->userDashboardVideo($userid);
         echo json_encode($post_video_data);
     }
-    
-    public function getUserDashboardAudio(){
+
+    public function getUserDashboardAudio() {
         $user_slug = $_GET["user_slug"];
         $userid = $this->db->select('user_id')->get_where('user', array('user_slug' => $user_slug))->row('user_id');
         $post_audio_data = $this->user_post_model->userDashboardAudio($userid);
         echo json_encode($post_audio_data);
     }
-    
-    public function getUserDashboardPdf(){
+
+    public function getUserDashboardPdf() {
         $user_slug = $_GET["user_slug"];
         $userid = $this->db->select('user_id')->get_where('user', array('user_slug' => $user_slug))->row('user_id');
         $post_pdf_data = $this->user_post_model->userDashboardPdf($userid);
@@ -380,6 +385,12 @@ class User_post extends MY_Controller {
         $job_title = json_decode($_POST['job_title'], TRUE);
         $location = json_decode($_POST['location'], TRUE);
         $post_for = $_POST['post_for'];
+        $question = $_POST['question'];
+        $description = $_POST['description'];
+        $other_field = $_POST['other_field'] == 'undefined' ? '' : $_POST['other_field'];
+        $weblink = $_POST['weblink'] == 'undefined' ? '' : $_POST['weblink'];
+        $category = json_decode($_POST['category'], TRUE);
+
 
         $error = '';
         if ($post_for == 'opportunity') {
@@ -395,12 +406,11 @@ class User_post extends MY_Controller {
         }
 
         if ($post_for == 'question') {
-            $ask_screenshot = $_POST['screenshot'];
-            $ask_question = $_POST['question'];
-            $ask_description = $_POST['description'];
-            $ask_field = $_POST['field'];
-            $ask_category = $_POST['category'];
-            $ask_weblink = $_POST['weblink'];
+            $ask_question = $question;
+            $ask_description = $description;
+            $ask_field = $field;
+            $ask_category = $category;
+            $ask_weblink = $weblink;
 
             if ($ask_question == '') {
                 $error = 1;
@@ -442,6 +452,23 @@ class User_post extends MY_Controller {
                     $city_id .= $cityId . ',';
                 }
                 $city_id = trim($city_id, ',');
+            } elseif ($post_for == 'question') {
+                foreach ($ask_category as $ask) {
+                    $asked = $this->data_model->findCategory($ask['name']);
+                    if ($asked['id'] != '') {
+                        $categoryId .= $asked['id'] . ',';
+                    } else {
+                        $data = array();
+                        $data['name'] = $ask['name'];
+                        $data['created_date'] = date('Y-m-d H:i:s', time());
+                        $data['modify_date'] = date('Y-m-d H:i:s', time());
+                        $data['user_id'] = $userid;
+                        $data['status'] = 'draft';
+                        $categorysId = $this->common->insert_data_getid($data, 'tags');
+                        $categoryId .= $categorysId . ',';
+                    }
+                }
+                $categoryId = trim($categoryId, ',');
             }
             $this->config->item('user_post_main_upload_path');
             $config = array(
@@ -491,14 +518,13 @@ class User_post extends MY_Controller {
                 $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
                 $inserted_id = $user_simple_id = $this->common->insert_data_getid($insert_data, 'user_simple_post');
             } elseif ($post_for == 'question') {
-
                 $insert_data = array();
                 $insert_data['post_id'] = $user_post_id;
                 $insert_data['question'] = $ask_question;
-                $insert_data['screenshot'] = $ask_screenshot;
                 $insert_data['description'] = $ask_description;
-                $insert_data['category'] = $ask_category;
-                $insert_data['field'] = $ask_weblink;
+                $insert_data['category'] = $categoryId;
+                $insert_data['field'] = $ask_field;
+                $insert_data['link'] = $ask_weblink;
                 $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
                 $inserted_id = $user_simple_id = $this->common->insert_data_getid($insert_data, 'user_ask_question');
             }

@@ -174,5 +174,15 @@ class Data_model extends CI_Model {
         }
         return $result_array;
     }
+    
+    function findCategory($search_keyword = '') {
+        $this->db->select('t.id')->from('tags t');
+        $this->db->where('t.name', $search_keyword);
+        $this->db->where('t.status', 'publish');
+        $this->db->where('t.is_delete', '0');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
 
 }

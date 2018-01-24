@@ -1129,7 +1129,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
             } elseif (in_array($ext, $allowespdf)) {
 
                 $return_html .= '<div>
-<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+<a title = "click to open" href = "' . base_url('business-profile/pdf-view/' . $post_business_profile_post_id) . '" target="_blank"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg?ver=' . time()) . '" alt="PDF.jpg">
 </div>
 </a>
@@ -8893,7 +8893,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                     } elseif (in_array($ext, $allowespdf)) {
 
                         $return_html .= '<div>
-<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+<a title = "click to open" href = "' . base_url('business-profile/pdf-view/' . $post_business_profile_post_id) . '" target="_blank"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg') . '?ver=' . time() . '" alt="PDF.jpg">
 </div>
 </a>
@@ -9829,13 +9829,13 @@ Your browser does not support the audio tag.
         $join_str[0]['join_type'] = '';
 
         $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => '0', 'post_files.insert_profile' => '2', 'post_format' => 'pdf');
-        $businesspdf = $this->data['businessaudio'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
+        $businesspdf = $this->data['businessaudio'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name,post_id', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
 
         if ($businesspdf) {
             $i = 0;
             foreach ($businesspdf as $mi) {
                 $fetch_pdf .= '<div class = "image_profile">';
-                $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $mi['file_name'] . '" target="_blank"><div class = "pdf_img">';
+                $fetch_pdf .= '<a href = "' . base_url('business-profile/pdf-view/' . $mi['post_id']) . '" target="_blank"><div class = "pdf_img">';
                 $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '?ver=' . time() . '" alt="PDF.jpg">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
@@ -10162,7 +10162,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                     } elseif (in_array($ext, $allowespdf)) {
 
                         $return_html .= '<div>
-<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+<a title = "click to open" href = "' . base_url('business-profile/pdf-view/' . $post_business_profile_post_id) . '" target="_blank"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg') . '?ver=' . time() . '" alt="PDF.jpg">
 </div>
 </a>
@@ -10933,6 +10933,16 @@ Your browser does not support the audio tag.
 
         $contactcount = $contactperson[0]['total'];
         return $contactcount;
+    }
+
+
+
+    public function pdf_display($id) { 
+        $this->data['title'] =   "PDF | Business Profile" . TITLEPOSTFIX;
+        $contition_array = array('post_id' => $id, 'is_deleted' => '1', 'insert_profile' => '2', 'post_format' => 'pdf');
+        $this->data['bus_data'] = $bus_data = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //echo "<pre>"; print_r($this->data['title']); die();
+        $this->load->view('business_profile/bus_pdf', $this->data);
     }
 
 }

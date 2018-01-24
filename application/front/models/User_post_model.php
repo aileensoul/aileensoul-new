@@ -54,7 +54,16 @@ class User_post_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
-
+    
+    public function get_category() {
+        $this->db->select("name")->from("tags t");
+        $this->db->where('status', 'publish');
+        $this->db->where('is_delete', '0');
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+    
     public function is_likepost($userid = '', $post_id = '') {
         $this->db->select("upl.id,upl.is_like")->from("user_post_like upl");
         $this->db->join('user_login ul', 'ul.user_id = upl.user_id', 'left');
@@ -313,6 +322,15 @@ class User_post_model extends CI_Model {
                 $query = $this->db->get();
                 $simple_data = $query->row_array();
                 $result_array[$key]['simple_data'] = $simple_data;
+            }elseif ($value['post_for'] == 'question') {
+                $this->db->select("uaq.*,GROUP_CONCAT(DISTINCT(t.name)) as category,it.industry_name as field")->from("user_ask_question uaq, ailee_tags t");
+                $this->db->join('industry_type it', 'it.industry_id = uaq.field', 'left');
+                $this->db->where('uaq.id', $value['post_id']);
+                $this->db->where('FIND_IN_SET(t.id, uaq.`category`) !=', 0);
+                $this->db->group_by('uaq.category');
+                $query = $this->db->get();
+                $question_data = $query->row_array();
+                $result_array[$key]['question_data'] = $question_data;
             }
             $this->db->select("upf.file_type,upf.filename")->from("user_post_file upf");
             $this->db->where('upf.post_id', $value['id']);
@@ -402,6 +420,15 @@ class User_post_model extends CI_Model {
                 $query = $this->db->get();
                 $simple_data = $query->row_array();
                 $result_array[$key]['simple_data'] = $simple_data;
+            }elseif ($value['post_for'] == 'question') {
+                $this->db->select("uaq.*,GROUP_CONCAT(DISTINCT(t.name)) as category,it.industry_name as field")->from("user_ask_question uaq, ailee_tags t");
+                $this->db->join('industry_type it', 'it.industry_id = uaq.field', 'left');
+                $this->db->where('uaq.id', $value['post_id']);
+                $this->db->where('FIND_IN_SET(t.id, uaq.`category`) !=', 0);
+                $this->db->group_by('uaq.category');
+                $query = $this->db->get();
+                $question_data = $query->row_array();
+                $result_array[$key]['question_data'] = $question_data;
             }
             $this->db->select("upf.file_type,upf.filename")->from("user_post_file upf");
             $this->db->where('upf.post_id', $value['id']);
