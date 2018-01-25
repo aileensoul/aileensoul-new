@@ -47,7 +47,7 @@
                                                     </div>
                                                     <div class="dropdown-database confirm_div" ng-if="contact_request.status == 'confirm'">
                                                         <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/n-images/user-pic.jpg') ?>" alt="{{contact_request.fullname}}" ng-if="contact_request.user_image != ''">
+                                                            <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{contact_request.user_image}}" alt="{{contact_request.fullname}}" ng-if="contact_request.user_image != ''">
                                                             <img ng-src="<?php echo NOBUSIMAGE2 ?>" ng-if="contact_request.user_image == ''">
                                                         </div>
                                                         <div class="dropdown-user-detail">

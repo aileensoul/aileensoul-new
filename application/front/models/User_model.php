@@ -245,7 +245,7 @@ class User_model extends CI_Model {
     }
 
     public function contactRequestAction($user_id = '', $from_id = '', $action = '') {
-        $data = array('status' => $action);
+        $data = array('status' => $action, 'modify_date' => date('Y-m-d H:i:s', time()));
         $this->db->where('from_id', $from_id);
         $this->db->where('to_id', $user_id);
         $result_array = $this->db->update('user_contact', $data);

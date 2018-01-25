@@ -54,3 +54,7 @@ app.controller('headerCtrl', function ($scope, $http) {
         });
     }
 });
+$(".dropdown-menu").click(function (event) {
+    $(this).parent('li').addClass('open');
+    event.stopPropagation();
+});
