@@ -945,7 +945,8 @@ class User_post extends MY_Controller {
                 $tagname[$key]['name'] = $value;
             }
 
-            $post_data['tag_name'] = json_encode($tagname);
+           // $post_data['tag_name'] = json_encode($tagname);
+            $post_data['tag_name'] = $tagname;
         }
         echo json_encode($post_data);
     }

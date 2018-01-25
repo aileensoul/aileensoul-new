@@ -1011,7 +1011,6 @@ app.controller('userOppoController', function ($scope, $http) {
                         alert(success.data.opportunity_for);
                         alert(success.data.location);
                         $scope.opp.description = success.data.opportunity;
-                        //$scope.opp.job_title = [{"name": "Account Manager"}, {"name": "Accountant"}, {"name": "PHP Developer"}];
                         $scope.opp.job_title = success.data.opportunity_for;
                         $scope.opp.location = success.data.location;
                         $scope.opp.field = success.data.field;
@@ -1027,7 +1026,7 @@ app.controller('userOppoController', function ($scope, $http) {
                     } else if (post_for == "question") {
                         $scope.ask.ask_que = success.data.question;
                         $scope.ask.ask_description = success.data.description;
-                        //  $scope.ask.related_category = success.data.tag_name;
+                        $scope.ask.related_category = success.data.tag_name;
                         $scope.ask.ask_field = success.data.field;
 
                         $("#ask-question").modal('show');
