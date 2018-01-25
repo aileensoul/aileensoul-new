@@ -203,7 +203,8 @@ class User_model extends CI_Model {
     }
 
     public function contact_request_pending($user_id = '') {
-        $this->db->select('from_id,to_id,modify_date,status,not_read')->from('user_contact uc');
+        $this->db->select('uc.from_id,uc.to_id,uc.modify_date,uc.status,uc.not_read,concate(u.first_name,u.last_name)')->from('user_contact uc');
+        $this->db->join('user u', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.to_id ELSE uc.from_id END)');
         $this->db->where("from_id ='$user_id' OR to_id = '$user_id'");
         $this->db->where('status','pending');
         $query = $this->db->get();

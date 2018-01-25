@@ -387,6 +387,12 @@
                             <div class="post-img" ng-if="contact.user_image != ''">
                                 <img ng-src="<?php echo base_url('assets/n-images/view-all.png?ver=' . time()) ?>">
                             </div>
+                            <div class="user-list-detail">
+                                <p class="contact-name"></p>
+                                <p class="contact-designation">
+                                    <a href="#"><button class="follow-btn">View All</button></a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </data-owl-carousel>
