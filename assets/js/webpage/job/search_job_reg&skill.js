@@ -57,7 +57,7 @@
               source: function( request, response ) { 
                   // delegate back to autocomplete, but extract the last term
                   $.getJSON(base_url +"general/get_location", { term : extractLast( request.term )},response);
-                  $("#ui-id-1").addClass("autoposition");
+                  $("#ui-id-2").addClass("autoposition");
               },
               focus: function() {
                   // prevent value inserted on focus
@@ -124,7 +124,7 @@ $(function() {
                   // delegate back to autocomplete, but extract the last term
                   $.getJSON(base_url +"general/get_skill", { term : extractLast( request.term )},response);
                   $("#ui-id-1").addClass("autoposition");
-                  $("#ui-id-70").addClass("autoposition");
+                  $("#ui-id-3").addClass("autoposition");
               },
               focus: function() {
                   // prevent value inserted on focus
