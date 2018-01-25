@@ -175,6 +175,8 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8a
 	border: 1px solid #1b8ab9;
 	font-weight: normal; border-radius:4px; display:inline-block;}
 .btn4:hover{background:#1b8ab9; color:#fff;}
+.btn5{border:2px solid #fff; color:#fff; font-size:16px; padding:5px 15px; border-radius:4px; display:inline-block;}
+.btn5:hover{background:#fff;}
 .follow-btn{padding: 3px 10px; background: rgb(44, 83, 158);
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
@@ -237,6 +239,81 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', end
  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b8ab9', endColorstr='#3bb0ac',GradientType=0 ); 
 }
 /***  end buttons  ***/
+/***  custom check box and radio buttons  ***/
+.control {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.control__indicator {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border:1px solid #5c5c5c;
+  border-radius:4px;
+  /*background:#fff;*/
+}
+.control--radio .control__indicator {
+  border-radius: 50%;
+}
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+ /* background: #fff;*/
+}
+.control input:checked ~ .control__indicator {
+  background: #5c5c5c;
+}
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+  background: #5c5c5c;
+}
+.control input:disabled ~ .control__indicator {
+  background: #e6e6e6;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.control__indicator:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+.control input:checked ~ .control__indicator:after {
+  display: block;
+}
+.control--checkbox .control__indicator:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.control--checkbox input:disabled ~ .control__indicator:after {
+  border-color: #7b7b7b;
+}
+.control--radio .control__indicator:after {
+  left: 7px;
+  top: 7px;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+.control--radio input:disabled ~ .control__indicator:after {
+  background: #7b7b7b;
+}
+/***  end custom check box and radio buttons  ***/
 
 /***  form css  ***/
 label {font-size: 16px; font-weight: 400; color: #616060;}
@@ -247,7 +324,7 @@ input, textarea, select {
 	outline: none;
 	padding: 5px 15px;
 	color: #000;
-	font-size: 13px !important;
+	font-size: 13px;
 	font-weight: 400;
 	border-radius: 4px;
 	width: 100%;
