@@ -100,6 +100,8 @@
 .post-popup-box .post-area{padding:10px; background:#fff; width:100%; float:left;}
 .post-popup-box .post-area textarea{min-height:100px; font-size: 15px !important;}
 .all-upload{width:100%; float:left; border-bottom:1px solid #d2d2d2;}
+.all-upload label{float:left;}
+.all-upload .add-link{float:left;}
 .all-upload .upload_icon{margin: 0 8px; cursor: pointer;  margin-left: 4px; font-size: 14px; color: #616060;
 padding: 5px;}
 .all-upload .upload_span_icon{font-family: 'arial'; padding-left: 2px; cursor: pointer;}
