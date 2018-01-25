@@ -915,6 +915,8 @@ class User_post extends MY_Controller {
         $post_data = $this->user_post_model->simplePost($post_id);
         }else if($post_for == 'opportunity'){
         $post_data = $this->user_post_model->opportunityPost($post_id);
+        $post_data['kkk'] = json_encode(explode(',', $post_data['opportunity_for']));
+        echo '<pre>'; print_r($post_data); die();
         }else{
         $post_data = $this->user_post_model->askQuestionPost($post_id);
         }

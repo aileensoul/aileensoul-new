@@ -896,22 +896,27 @@ app.controller('userOppoController', function ($scope, $http) {
                     $scope.is_edit = 1;
                     if (post_for == "opportunity") {
                         $scope.opp.description = success.data.opportunity;
-                      //  $scope.sim.description = success.data.description;
-                      //  $scope.sim.description = success.data.description;
+                        $scope.opp.job_title = [{ name: 'Tag1' },{ name: 'Tag2' },{ name: 'Tag3' }];
+//$scope.tags = [
+//    { text: 'Tag1' },
+//    { text: 'Tag2' },
+//    { text: 'Tag3' }
+//  ];
+                        $scope.opp.location = success.data.location;
                         $scope.opp.field = success.data.field;
                         $("#opportunity-popup").modal('show');
-                    
+
                     } else if (post_for == "simple") {
                         $scope.sim.description = success.data.description;
-                       
+
                         $("#post-popup").modal('show');
-                   
-                    } else if (post_for == "question"){
+
+                    } else if (post_for == "question") {
                         $scope.ask.ask_que = success.data.question;
                         $scope.ask.ask_description = success.data.description;
-                      //  $scope.sim.description = success.data.category;
+                        //  $scope.sim.description = success.data.category;
                         $scope.ask.ask_field = success.data.field;
-                    
+
                         $("#ask-question").modal('show');
                     }
                 });
