@@ -57,6 +57,8 @@
             var slug = '<?php echo $slugid; ?>';
             var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
             var title = '<?php echo $title; ?>';
+            var header_all_profile = '<?php echo $header_all_profile; ?>';
+            
             var app = angular.module("basicInfoApp", ['ui.bootstrap', 'ngValidate', 'ngRoute']);
             app.config(function ($routeProvider, $locationProvider) {
             $routeProvider
@@ -273,5 +275,6 @@
             };
             });
         </script>
+        <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
     </body>
 </html>

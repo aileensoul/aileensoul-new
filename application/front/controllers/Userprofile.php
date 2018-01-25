@@ -79,6 +79,7 @@ class Userprofile extends MY_Controller {
     
     public function contact_request(){
         $userid = $this->session->userdata('aileenuser');
-        $this->data['contactRequest'] = $this->user_model->contact_request($userid);
+        $contactRequest = $this->user_model->contact_request($userid);
+        echo json_encode($contactRequest);
     }
 }

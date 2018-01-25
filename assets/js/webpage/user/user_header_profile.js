@@ -9,8 +9,8 @@ app.controller('headerCtrl', function ($scope, $http) {
             url: base_url + 'userprofile/contact_request',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (success) {
-            details_data = success.data;
-            $scope.details_data = details_data;
+            contact_request = success.data;
+            $scope.contact_request_data = contact_request;
         });
     }
 });
