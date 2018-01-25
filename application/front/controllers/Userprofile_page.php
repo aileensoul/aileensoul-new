@@ -74,8 +74,7 @@ class Userprofile_page extends MY_Controller {
         echo json_encode($contactsData);
        }
     }
-    
-   
+      
     
     public function following_data() {
         $userid = $this->session->userdata('aileenuser');
