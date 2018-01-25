@@ -1670,6 +1670,9 @@ p.pull-right a.btn4:last-child {line-height: 22px;}
     pointer-events:none;
 }
 
+ .autoposition{
+                position: absolute!important;
+                z-index: 999 !important;
 
 
 /***  media query  ***/
