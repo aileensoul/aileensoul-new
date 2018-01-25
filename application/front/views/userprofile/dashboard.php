@@ -388,8 +388,9 @@
                                 <img ng-src="<?php echo base_url('assets/n-images/view-all.png?ver=' . time()) ?>">
                             </div>
                             <div class="user-list-detail">
-                                <p class="contact-name"><a href="#"><button class="follow-btn">Find More Contacts</button></a></p>
+                                <p class="contact-name"><a href="#">Find More Contacts</a></p>
                             </div>
+                            <button class="follow-btn">View More</button>
                         </div>
                     </div>
                 </data-owl-carousel>
