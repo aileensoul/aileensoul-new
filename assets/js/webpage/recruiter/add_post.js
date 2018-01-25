@@ -33,6 +33,12 @@ $(function () {
 });
 
 
+
+$("#post_name").blur(function(){
+   $( "#ui-id-6 " ).addClass( "autoposition" );
+});
+
+
 function imgval() {
 //
 //    var skill_main = document.getElementById("skills").value;
@@ -696,6 +702,7 @@ $(function () {
                 source: function (request, response) {
                     // delegate back to autocomplete, but extract the last term
                     $.getJSON(base_url + "general/get_skill", {term: extractLast(request.term)}, response);
+                     $("#ui-id-1").addClass("autoposition");
                 },
                 focus: function () {
                     // prevent value inserted on focus
