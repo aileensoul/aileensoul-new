@@ -54,7 +54,7 @@ class User_post_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
-    
+
     public function get_category() {
         $this->db->select("name")->from("tags t");
         $this->db->where('status', 'publish');
@@ -63,7 +63,7 @@ class User_post_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
-    
+
     public function is_likepost($userid = '', $post_id = '') {
         $this->db->select("upl.id,upl.is_like")->from("user_post_like upl");
         $this->db->join('user_login ul', 'ul.user_id = upl.user_id', 'left');
@@ -322,7 +322,7 @@ class User_post_model extends CI_Model {
                 $query = $this->db->get();
                 $simple_data = $query->row_array();
                 $result_array[$key]['simple_data'] = $simple_data;
-            }elseif ($value['post_for'] == 'question') {
+            } elseif ($value['post_for'] == 'question') {
                 $this->db->select("uaq.*,GROUP_CONCAT(DISTINCT(t.name)) as category,it.industry_name as field")->from("user_ask_question uaq, ailee_tags t");
                 $this->db->join('industry_type it', 'it.industry_id = uaq.field', 'left');
                 $this->db->where('uaq.id', $value['post_id']);
@@ -420,7 +420,7 @@ class User_post_model extends CI_Model {
                 $query = $this->db->get();
                 $simple_data = $query->row_array();
                 $result_array[$key]['simple_data'] = $simple_data;
-            }elseif ($value['post_for'] == 'question') {
+            } elseif ($value['post_for'] == 'question') {
                 $this->db->select("uaq.*,GROUP_CONCAT(DISTINCT(t.name)) as category,it.industry_name as field")->from("user_ask_question uaq, ailee_tags t");
                 $this->db->join('industry_type it', 'it.industry_id = uaq.field', 'left');
                 $this->db->where('uaq.id', $value['post_id']);
@@ -467,74 +467,77 @@ class User_post_model extends CI_Model {
         $this->db->select('filename')->from('user_post_file upf');
         $this->db->join('user_post up', 'up.id = upf.post_id', 'left');
         $this->db->where('file_type', 'image');
-        $this->db->order_by('upf.id','desc');
+        $this->db->order_by('upf.id', 'desc');
         $this->db->limit('6');
         $query = $this->db->get();
         $userDashboardImage = $query->result_array();
         $result_array['userDashboardImage'] = $userDashboardImage;
         return $result_array;
     }
-    
+
     public function userDashboardVideo($user_id = '') {
         $this->db->select('filename')->from('user_post_file upf');
         $this->db->join('user_post up', 'up.id = upf.post_id', 'left');
         $this->db->where('file_type', 'video');
-        $this->db->order_by('upf.id','desc');
+        $this->db->order_by('upf.id', 'desc');
         $this->db->limit('6');
         $query = $this->db->get();
         $userDashboardVideo = $query->result_array();
         $result_array['userDashboardVideo'] = $userDashboardVideo;
         return $result_array;
     }
-    
+
     public function userDashboardAudio($user_id = '') {
         $this->db->select('filename')->from('user_post_file upf');
         $this->db->join('user_post up', 'up.id = upf.post_id', 'left');
         $this->db->where('file_type', 'audio');
-        $this->db->order_by('upf.id','desc');
+        $this->db->order_by('upf.id', 'desc');
         $this->db->limit('6');
         $query = $this->db->get();
         $userDashboardAudio = $query->result_array();
         $result_array['userDashboardAudio'] = $userDashboardAudio;
         return $result_array;
     }
-    
+
     public function userDashboardPdf($user_id = '') {
         $this->db->select('filename')->from('user_post_file upf');
         $this->db->join('user_post up', 'up.id = upf.post_id', 'left');
         $this->db->where('file_type', 'pdf');
-        $this->db->order_by('upf.id','desc');
+        $this->db->order_by('upf.id', 'desc');
         $this->db->limit('6');
         $query = $this->db->get();
         $userDashboardPdf = $query->result_array();
         $result_array['userDashboardPdf'] = $userDashboardPdf;
         return $result_array;
     }
-    
-     public function simplePost($post_id = '') {
+
+    public function simplePost($post_id = '') {
         $this->db->select('description')->from('user_simple_post usp');
         $this->db->where('usp.post_id', $post_id);
         $query = $this->db->get();
         $userSimplePost = $query->row_array();
         return $userSimplePost;
     }
-    
+
     public function opportunityPost($post_id = '') {
         $this->db->select("uo.post_id,field,GROUP_CONCAT(DISTINCT(jt.name)) as opportunity_for,GROUP_CONCAT(DISTINCT(c.city_name)) as location,uo.opportunity")->from("user_opportunity uo, ailee_job_title jt, ailee_cities c");
-                $this->db->where('uo.post_id', $post_id);
-                $this->db->where('FIND_IN_SET(jt.title_id, uo.`opportunity_for`) !=', 0);
-                $this->db->where('FIND_IN_SET(c.city_id, uo.`location`) !=', 0);
-                $this->db->group_by('uo.opportunity_for', 'uo.location');
-                $query = $this->db->get();
-                $opportunity_data = $query->row_array();
-                  return $opportunity_data;
+        $this->db->where('uo.post_id', $post_id);
+        $this->db->where('FIND_IN_SET(jt.title_id, uo.`opportunity_for`) !=', 0);
+        $this->db->where('FIND_IN_SET(c.city_id, uo.`location`) !=', 0);
+        $this->db->group_by('uo.opportunity_for', 'uo.location');
+        $query = $this->db->get();
+        $opportunity_data = $query->row_array();
+        return $opportunity_data;
     }
-    
+
     public function askQuestionPost($post_id = '') {
-        $this->db->select('question,description,category,field')->from('user_ask_question uaq');
+        $this->db->select("question,description,category,field,GROUP_CONCAT(DISTINCT(tg.name)) as tag_name")->from("user_ask_question uaq, ailee_tags tg");
         $this->db->where('uaq.post_id', $post_id);
+        $this->db->where('FIND_IN_SET(tg.id, uaq.`category`) !=', 0);
+        $this->db->group_by('uaq.category');
         $query = $this->db->get();
         $userAskPost = $query->row_array();
         return $userAskPost;
     }
+
 }

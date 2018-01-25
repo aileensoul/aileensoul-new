@@ -325,7 +325,7 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">×</button>
                     <div class="post-popup-box">
-                        <form id="post_something" name="post_something" ng-submit="post_something_check(event)">
+                        <form  id="post_something" name="post_something" ng-submit="post_something_check(event)">
                             <div class="post-box">
                                 <div class="post-img">
                                     <?php if ($leftbox_data['user_image'] != '') { ?> 
@@ -367,6 +367,7 @@
                                         </li>
                                     </ul>
                                     <input type="hidden" name="post_for" ng-model="sim.post_for" class="form-control" value="">
+                                    <input type="hidden" ng-if="is_edit == 1" id="edit_post_id" name="edit_post_id" ng-model="sim.edit_post_id" class="form-control" value="{{sim.edit_post_id}}">
                                     <p class="pull-right">
                                         <button type="submit" class="btn1" value="Submit">Post</button>
                                     </p>
