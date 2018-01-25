@@ -979,16 +979,43 @@ header.profile-header .logo a{color:#5c5c5c;}
 /***  profile main page  ***/
 .profile-main-page .left-part{position:absolute;}
 .profile-main-page .right-part{position:absolute;}
-	.left-search-box{border: 1px solid #d2d2d2;
+.left-search-box{border: 1px solid #d2d2d2;
     margin-bottom: 10px;
     width: 100%;
     float: left;
     border-radius: 4px;}
 .left-search-box h3{padding:10px; border-bottom:1px solid #d2d2d2;}
+.search-listing{padding:5px 10px; margin:0;}
+.search-listing li{padding:5px 0;list-style-type:none;}
+.list-type-bullet .search-listing li label{margin-bottom:0; width:100%; position:relative;}
+.list-type-bullet .search-listing li label:before{width:10px; height:10px; background:#5c5c5c; content:""; display:inline-block; border-radius:100%;}
+.list-type-bullet .search-listing li label a{color:#5c5c5c; padding-left:10px;}
+.accordion-toggle:after {
+    font-family: 'FontAwesome';
+    content: "\f078";    
+    float: right;
+}
+.accordion-opened .accordion-toggle:after {    
+    content: "\f054";    
+}
+.left-search-box .accordion-group h3{border-bottom:none;}
+.left-search-box .accordion-group h3 a{color:#5c5c5c;}
+.left-search-box .accordion-group .search-listing{border-top:1px solid #d2d2d2;}
+.top-border-box{border:1px solid #d2d2d2; border-radius:4px; margin-bottom:10px;}
+.top-border-box h3{padding:10px;}
+.title-center{text-align:center;}
+.title-center h2{position:relative; margin-bottom:15px;}
+.title-center h2:after{width:250px; margin:0 auto; content:""; display:inline-block; height:1px; background:#d2d2d2; position:absolute; left:0; right:0; bottom:-5px;}
+
+.work-type .search-listing li{width:50%; float:left;}
+.freelance-recommended-post .job-top-detail{padding:0; width:100%;}
+.job-top-detail h5 a span{font-weight:normal;}
+.job-top-detail h5 a:hover{border-bottom:none;}
+
 /***  end profile main page  ***/
 /***  audio video css  ***/
 .mejs__container.mejs__video,.mejs__layers .mejs__poster.mejs__layer,.mejs__mediaelement video,.mejs__overlay.mejs__layer,.video .mejs__poster{
-    width:100%!important
+    width:100%!important;
 }
 .profile-job-post-location-name .user_lst ul li .user_btn{
     padding-top:7px
