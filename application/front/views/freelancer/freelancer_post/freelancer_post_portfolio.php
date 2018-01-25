@@ -90,7 +90,7 @@
                                             <input type="file" name="portfolio_attachment" id="portfolio_attachment" class="portfolio_attachment" tabindex="1" autofocus placeholder="Portfolio attachment" multiple="" />&nbsp;&nbsp;&nbsp; 
                                             <span id ="filename" class="file_name_pdf"><?php echo $portfolio_attachment1; ?></span><span class="file_name"></span>
                                             <div class="portfolio_image" style="color:#f00; display: block;"></div>
-                                            <?php if ($portfolio_attachment1) { ?>
+                                            <?php if ($portfolio_attachment1) {  ?>
                                                 <div style="visibility:show;" id ="pdffile">
                                                     <?php $userid = $this->session->userdata('aileenuser'); ?>
                                                     <a title="Pdf" href="<?php echo base_url('freelancer/pdf/' . $userid) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
