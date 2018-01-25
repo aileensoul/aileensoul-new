@@ -175,6 +175,7 @@ color: #fff;}
 .like-other-box a{font-size:13px;}
 .comment-box .post-img{width:36px; height:36px;}
 .add-comment .comment-input{width:426px; padding:0 15px; float:left;}
+.edit-comment .comment-input{width:415px; padding:0 15px 0 0; float:left;}
 .add-comment .comment-input input{height:36px;}
 .comment-submit{width:90px; float:left;}
 .post-comment{width:100%; float:left; padding-bottom:10px; border-bottom:1px solid #d2d2d2; margin-bottom:15px;}
@@ -385,7 +386,7 @@ label.cameraButton input[accept*="camera"] {
 .left-info-box table td:first-child{width:30px;}
 
 .media-box{width:100%; float:left; border:1px solid #d2d2d2; border-radius:4px; padding:5px; margin-bottom:10px;}
-.media-box .media-display .all-meda{width:92px; margin:5px; height:92px; float:left; list-style-type:none;}
+.media-box .media-display .all-meda{width:92px; margin:5px; height:92px; float:left; list-style-type:none; overflow:hidden;}
 .media-box .media-display .all-meda img{width:100%; height:100%;}
 .dash-left-title h3{font-size:20px;}
 /** ripple effects  **/
@@ -982,7 +983,7 @@ header.profile-header .logo a{color:#5c5c5c;}
     border-radius: 4px;}
 .left-search-box h3{padding:10px; border-bottom:1px solid #d2d2d2;}
 /***  end profile main page  ***/
-/***  video css  ***/
+/***  audio video css  ***/
 .mejs__container.mejs__video,.mejs__layers .mejs__poster.mejs__layer,.mejs__mediaelement video,.mejs__overlay.mejs__layer,.video .mejs__poster{
     width:100%!important
 }
@@ -1000,8 +1001,11 @@ header.profile-header .logo a{color:#5c5c5c;}
     height:100%!important;
     background-size:100%!important
 }
+.audio_main_div{width:400px; margin:0 auto;}
+.latest_audio .audio_main_div{width:100%;}
+.latest_audio .audio_source{margin-top:-12px;}
 
-/***  end video  ***/
+/***  end audio video  ***/
 /***  media query  ***/
 @media screen and (min-width: 768px) {
 
