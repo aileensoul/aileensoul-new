@@ -134,7 +134,7 @@
                                         <div class="post-right-dropdown dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/right-down.png') ?>" alt="Right Down"></a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="javascript:void(0);" ng-click="EditPost( post.post_data.id,post.post_data.post_for,$index)">Edit Post</a></li>
+                                                <li><a href="javascript:void(0);" ng-click="EditPost(post.post_data.id, post.post_data.post_for, $index)">Edit Post</a></li>
                                                 <li><a href="javascript:void(0);" ng-click="deletePost(post.post_data.id, $index)">Delete Post</a></li>
                                             </ul>
                                         </div>
@@ -165,15 +165,23 @@
                                         <div class="one-img" ng-repeat="post_file in post.post_file_data" ng-init="$last ? loadMediaElement() : false">
                                             <a href="#" ng-if="post_file.file_type == 'image'"><img ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" alt="{{post_file.filename}}"></a>
                                             <span  ng-if="post_file.file_type == 'video'"> 
-                                                <video controls>
+                                                <video controls width = "100%" height = "350">
                                                     <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="video/mp4">
                                                 </video>
                                                 <!--<video controls poster="" class="mejs__player" ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}"></video>-->
                                             </span>
                                             <span  ng-if="post_file.file_type == 'audio'">
-                                                <audio controls>
-                                                    <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="audio/mp3">
-                                                </audio>
+                                                <div class = "audio_main_div">
+                                                    <div class = "audio_img">
+                                                        <img src = "<?php echo base_url('assets/images/music-icon.png?ver=' . time()) ?>" alt="music-icon.png">
+                                                    </div>
+                                                    <div class = "audio_source">
+                                                        <audio id = "audio_player" width = "100%" height = "40" controls>
+                                                            <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="audio/mp3">
+                                                            Your browser does not support the audio tag.
+                                                        </audio>
+                                                    </div>
+                                                </div>
                                                 <!--<audio controls ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}"></audio>-->
                                             </span>
                                             <a ng-href="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" target="_blank" title="Click Here" ng-if="post_file.file_type == 'pdf'"><img ng-src="<?php echo base_url('assets/images/PDF.jpg?ver=' . time()) ?>"></a>
@@ -314,6 +322,17 @@
                                         <button class="follow-btn" ng-click="addToContact(contact.user_id, contact)">Add to contact</button>
                                     </div>
                                 </div>
+                                <div owl-carousel-item="" class="item last-item-box">
+                                    <div class="item" id="last-item">
+                                        <div class="post-img" ng-if="contact.user_image != ''">
+                                            <img ng-src="<?php echo base_url('assets/n-images/view-all.png?ver=' . time()) ?>">
+                                        </div>
+                                        <div class="user-list-detail">
+                                            <p class="contact-name"><a href="#">Find More Contacts</a></p>
+                                        </div>
+                                        <button class="follow-btn">View More</button>
+                                    </div>
+                                </div>
                             </data-owl-carousel>
                         </div>
                     </div>
@@ -395,7 +414,7 @@
                                 <div class="post-text">
                                     <textarea name="description" ng-model="opp.description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
                                 </div>
-                          
+
                                 <div class="all-upload" ng-if="is_edit != 1">
                                     <div class="form-group">
                                         <input file-input="files" ng-file-model="opp.postfiles" type="file" id="fileInput" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
@@ -447,7 +466,7 @@
                                     <input type="text" class="form-control" ng-model="opp.otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
                                 </div>
                                 <input type="hidden" name="post_for" ng-model="opp.post_for" class="form-control" value="">
-                                 <input type="hidden" ng-if="is_edit == 1" id="edit_post_id" name="edit_post_id" ng-model="opp.edit_post_id" class="form-control" value="{{opp.edit_post_id}}">
+                                <input type="hidden" ng-if="is_edit == 1" id="edit_post_id" name="edit_post_id" ng-model="opp.edit_post_id" class="form-control" value="{{opp.edit_post_id}}">
                             </div>
                             <div class="text-right fw pt10 pb20 pr15">
                                 <button type="submit" class="btn1"  value="Submit">Post</button>    
@@ -485,9 +504,9 @@
                                     <div class="add-link" ng-click="ShowHide()">
                                         <i class="fa fa fa-link upload_icon"><span class="upload_span_icon"> Add Link</span>  </i> 
                                     </div>
-                                </div>
-                                <div class="form-group"  ng-show = "IsVisible">
-                                    <input type="text" ng-model="ask.web_link" class="" placeholder="Add Your Web Link">
+                                    <div class="form-group"  ng-show = "IsVisible">
+                                        <input type="text" ng-model="ask.web_link" class="" placeholder="Add Your Web Link">
+                                    </div>
                                 </div>
                             </div>
                             <div class="post-field">

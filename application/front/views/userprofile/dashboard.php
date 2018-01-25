@@ -383,7 +383,7 @@
                         </div>
                     </div>
                     <div owl-carousel-item="" class="item last-item-box">
-                        <div class="item" id="item-{{contact.user_id}}">
+                        <div class="item" id="last-item">
                             <div class="post-img" ng-if="contact.user_image != ''">
                                 <img ng-src="<?php echo base_url('assets/n-images/view-all.png?ver=' . time()) ?>">
                             </div>
