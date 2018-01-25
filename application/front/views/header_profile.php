@@ -1,4 +1,4 @@
-<header>
+<header ng-controller="headerCtrl">
     <div class="header animated fadeInDownBig">
         <div class="container">
             <div class="row">

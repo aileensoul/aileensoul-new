@@ -40,7 +40,7 @@
             <div class="media-display">
                 <div class="all-meda" ng-repeat="videoData in postVideoData">
                     <a href="">
-                        <video controls width = "100%" height = "130">
+                        <video controls width = "100%" height = "92">
                             <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{videoData.filename}}" type="video/mp4">
                         </video>
                     </a>
