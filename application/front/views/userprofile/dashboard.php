@@ -382,6 +382,25 @@
                             <button class="follow-btn" ng-click="addToContact(contact.user_id, contact)">Add to contact</button>
                         </div>
                     </div>
+                    <div owl-carousel-item="" class="item last-item-box">
+                        <div class="item" id="item-{{contact.user_id}}">
+                            <div class="post-img" ng-if="contact.user_image != ''">
+                                <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{contact.user_image}}">
+                            </div>
+                            <div class="post-img" ng-if="contact.user_image == ''">
+                                <div class="post-img-mainuser">{{contact.first_name| limitTo:1 | uppercase}}{{contact.last_name| limitTo:1 | uppercase}}</div>
+                            </div>
+                            <div class="user-list-detail">
+                                <p class="contact-name"><a href="#" ng-bind="(contact.first_name | limitTo:1 | uppercase) + (contact.first_name.substr(1) | lowercase)"></a></p>
+                                <p class="contact-designation">
+                                    <a href="#" ng-if="contact.title_name != ''">{{contact.title_name| uppercase}}</a>
+                                    <a href="#" ng-if="contact.title_name == ''">{{contact.degree_name| uppercase}}</a>
+                                    <a href="#" ng-if="contact.title_name == null && contact.degree_name == null">CURRENT WORK</a>
+                                </p>
+                            </div>
+                            <button class="follow-btn" ng-click="addToContact(contact.user_id, contact)">Add to contact</button>
+                        </div>
+                    </div>
                 </data-owl-carousel>
             </div>
         </div>
