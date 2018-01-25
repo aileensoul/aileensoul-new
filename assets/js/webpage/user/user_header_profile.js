@@ -4,6 +4,13 @@ app.controller('headerCtrl', function ($scope, $http) {
     }
     
     $scope.header_contact_request = function() {
-        alert(12313);
+        $http({
+            method: 'POST',
+            url: base_url + 'userprofile/contact_request',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function (success) {
+            details_data = success.data;
+            $scope.details_data = details_data;
+        });
     }
 });

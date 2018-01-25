@@ -23,7 +23,7 @@ class Userprofile extends MY_Controller {
     }
 
     public function index() {
-      $this->data['slug'] =  $slug = $this->session->userdata('aileenuser_slug');
+        $this->data['slug'] =  $slug = $this->session->userdata('aileenuser_slug');
         $userid = $this->session->userdata('aileenuser');
         $seg_slug = $this->uri->segment(2);
         
@@ -76,5 +76,9 @@ class Userprofile extends MY_Controller {
     public function looping(){
         $this->load->view('userprofile/looping');
     }
-
+    
+    public function contact_request(){
+        $userid = $this->session->userdata('aileenuser');
+        $this->data['contactRequest'] = $this->user_model->is_userBasicInfo($userid);
+    }
 }
