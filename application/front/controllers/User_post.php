@@ -36,6 +36,7 @@ class User_post extends MY_Controller {
         $this->data['title'] = "Opportunities | Aileensoul";
         $this->load->view('user_post/index', $this->data);
     }
+
     public function search() {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
@@ -906,25 +907,34 @@ class User_post extends MY_Controller {
             echo json_encode($post_data);
         }
     }
-  
-    public function editPost(){
+
+    public function editPost() {
         $post_id = $_POST['post_id'];
         $post_for = $_POST['post_for'];
-        
-        if($post_for == 'simple'){
-        $post_data = $this->user_post_model->simplePost($post_id);
-        }else if($post_for == 'opportunity'){
-        $post_data = $this->user_post_model->opportunityPost($post_id);
-        $post_opp = json_encode(explode(',', $post_data['opportunity_for']));
-        $post_data['oppdata'] = $post_opp;
-//        foreach($post_opp as $daat){
-//            $ppp['name'][] = $daat;
-//        }
-        //echo '<pre>'; print_r($ppp); die();
-        echo '<pre>'; print_r($post_data); die();
-        }else{
-        $post_data = $this->user_post_model->askQuestionPost($post_id);
+
+        if ($post_for == 'simple') {
+            $post_data = $this->user_post_model->simplePost($post_id);
+        } else if ($post_for == 'opportunity') {
+            $post_data = $this->user_post_model->opportunityPost($post_id);
+
+            $post_opp = explode(',', $post_data['opportunity_for']);
+            $post_opp_loc = explode(',', $post_data['location']);
+
+            foreach ($post_opp as $key => $value) {
+                $opprtunity[$key]['name'] = $value;
+            }
+
+            foreach ($post_opp_loc as $key => $value) {
+                $location[$key]['city_name'] = $value;
+            }
+            
+            $post_data['opportunity_for'] = json_encode($opprtunity);
+            $post_data['location'] = json_encode($location);
+           
+        } else {
+            $post_data = $this->user_post_model->askQuestionPost($post_id);
         }
         echo json_encode($post_data);
     }
+
 }

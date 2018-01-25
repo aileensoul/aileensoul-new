@@ -894,14 +894,11 @@ app.controller('userOppoController', function ($scope, $http) {
         })
                 .then(function (success) {
                     $scope.is_edit = 1;
-                    if (post_for == "opportunity") {
+                    if (post_for == "opportunity") { 
+                        alert(success.data.opportunity_for);
+                        alert(success.data.location);
                         $scope.opp.description = success.data.opportunity;
-                        $scope.opp.job_title = [{ name: 'Tag1' },{ name: 'Tag2' },{ name: 'Tag3' }];
-//$scope.tags = [
-//    { text: 'Tag1' },
-//    { text: 'Tag2' },
-//    { text: 'Tag3' }
-//  ];
+                        $scope.opp.job_title = [{"name":"Account Manager"},{"name":"Accountant"},{"name":"PHP Developer"}];
                         $scope.opp.location = success.data.location;
                         $scope.opp.field = success.data.field;
                         $("#opportunity-popup").modal('show');
