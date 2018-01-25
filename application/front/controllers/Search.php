@@ -172,18 +172,18 @@ class Search extends MY_Controller {
 //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA END
     }
 
-    public function ajax_business_search() {
+       public function ajax_business_search() {
 
 
-        $perpage = 4;
-        $page = 1;
-        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
-            $page = $_GET["page"];
-        }
+        // $perpage = 4;
+        // $page = 1;
+        // if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+        //     $page = $_GET["page"];
+        // }
 
-        $start = ($page - 1) * $perpage;
-        if ($start < 0)
-            $start = 0;
+        // $start = ($page - 1) * $perpage;
+        // if ($start < 0)
+        //     $start = 0;
 
         $business_login_slug = $this->data['business_login_slug'];
 
@@ -282,11 +282,7 @@ class Search extends MY_Controller {
             $condition_array = array('business_step' => '4', 'business_profile_post.is_delete' => '0');
             $search_condition = "(`business_profile_post_id` NOT IN ('$delete_post_id')) AND (business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
 
-
-
-             $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_user_image', $sortby = '', $orderby = '', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
-
-            $business_post1 = $post['data1'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id,business_profile.business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id,business_profile.business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
             $condition_array = array('business_profile.business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.city' => $cache_time, 'business_profile.business_step' => '4', 'user_login.is_delete' => '0', 'user_login.status' => '1');
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
@@ -322,58 +318,35 @@ class Search extends MY_Controller {
 
             $condition_array = array('business_step' => '4', 'business_profile_post.is_delete' => '0');
             $search_condition = "(`business_profile_post_id` NOT IN ('$delete_post_id')) AND (business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
-
-
-            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_user_image', $sortby = '', $orderby = '', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
-
-             $business_post1 = $post['data1'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
-
-
-        // $this->data['is_delete'] = $is_delete = $this->db->get_where('user', array('user_id' => $userid))->row()->user_id;
 
         $this->data['is_business'] = $is_business = $this->db->get_where('business_profile', array('user_id' => $userid))->row()->business_profile_id;
         $description = $business_post;
-        $this->data['profile'] = $profile = $business_profile;
+        $profile = $business_profile;
 
 
          $return_html = '';
-
-  if($profile){
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($business_profile1);
         }
        // echo "<pre>";  print_r(count($business_profile1)); die();
-        $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
-        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
-        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+        // $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        // $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        // $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
-    }
-    if($description){
 
-        if (empty($_GET["total_record"])) {
-            $_GET["total_record"] = count($business_post1);
-        }
-       // echo "<pre>";  print_r(count($business_profile1)); die();
-        $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
-        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
-        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
-
-    }
 //$this->load->view('business_profile/recommen_business', $this->data);
 //AJAX DATA
         //$return_html = '';
-
-        // $return_html .= '<div class="profile-job-post-title-inside clearfix" style="">';
-
-        if (count($business_profile1) > 0 || count($business_post1) > 0) {
+        if (count($business_profile) > 0 || count($description) > 0) {
             if ($profile) {
 
                 
                // if($page  == 1){
 
-               
-                // $return_html .= '<div class="profile_search" style="background-color: white; margin-bottom: 10px; margin-top: 10px;"><h4 class="search_head">Profiles</h4><div class="inner_search">';
+                $return_html .= '<div class="profile-job-post-title-inside clearfix" style="">';
+                $return_html .= '<div class="profile_search" style="background-color: white; margin-bottom: 10px; margin-top: 10px;"><h4 class="search_head">Profiles</h4><div class="inner_search">';
 
                             // }
                                                         
@@ -468,11 +441,9 @@ class Search extends MY_Controller {
                     $return_html .= '</div></div>';
                    // }
                 }
-
-                 // $return_html .= '</div>
-                 //                                </div>';
             }
-           
+            $return_html .= '</div>
+                                                </div>';
             if ($description) {
                 $return_html .= '<div class="col-md-12 profile_search " style="float: left; background-color: white; margin-top: 10px; margin-bottom: 10px; padding:0px!important;">
                                                         <h4 class="search_head">Posts</h4>
@@ -702,8 +673,17 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 </a>
 </div>';
                             } elseif (in_array($ext, $allowespdf)) {
+
+//                                 $return_html .= '<div>
+// <a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
+//     <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+// </div>
+// </a>
+// </div>';
+
+
                                 $return_html .= '<div>
-<a title = "click to open" href = "' . base_url('business-profile/pdf-view/' . $post_business_profile_post_id) . '" target="_blank"><div class = "pdf_img">
+<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg') . '?ver=' . time() . '" alt="PDF.jpg">
 </div>
 </a>
@@ -1125,6 +1105,7 @@ Your browser does not support the audio tag.
         }
         echo $return_html;
     }
+
 
 //freelancer hire search start
     public function freelancer_hire_index() {
