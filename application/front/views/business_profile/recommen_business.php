@@ -216,18 +216,8 @@
                                     <div class="contact-frnd-post">
                                         <div class="job-contact-frnd">
                                             <!-- AJAX DATA... -->
-                                            <div class="profile-job-post-title-inside clearfix" style="">
-                                            <?php if ($profile) {  ?>
-
-                                                <div class="profile_search" style="background-color: white; margin-bottom: 10px; margin-top: 10px;"><h4 class="search_head">Profiles</h4><div class="inner_search job-contact-frnd-other">
-
-                                                </div>
-                                            </div>
-
-                                                <?php }?>  
                                         </div>
-                                  
-                                   </div>
+                                     <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 </div>
 
                                  <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
