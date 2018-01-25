@@ -188,7 +188,7 @@
                         <div class="post-right-dropdown dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/right-down.png') ?>" alt="Right Down"></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:void(0);" ng-click="EditPost( post.post_data.id,post.post_data.post_for,$index)">Edit Post</a></li>
+                                <li><a href="javascript:void(0);" ng-click="EditPost(post.post_data.id, post.post_data.post_for, $index)">Edit Post</a></li>
                                 <li><a href="javascript:void(0);" ng-click="deletePost(post.post_data.id, $index)">Delete Post</a></li>
                             </ul>
                         </div>
@@ -225,9 +225,17 @@
                                 <!--<video controls poster="" class="mejs__player" ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}"></video>-->
                             </span>
                             <span  ng-if="post_file.file_type == 'audio'" >
-                                <audio controls width = "100%" height = "100">
-                                    <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="audio/mp3">
-                                </audio>
+                                <div class = "audio_main_div">
+                                    <div class = "audio_img">
+                                        <img src = "<?php echo base_url('assets/images/music-icon.png?ver=' . time()) ?>" alt="music-icon.png">
+                                    </div>
+                                    <div class = "audio_source">
+                                        <audio id = "audio_player" width = "100%" height = "40" controls>
+                                            <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="audio/mp3">
+                                            Your browser does not support the audio tag.
+                                        </audio>
+                                    </div>
+                                </div>
                                 <!--<audio controls ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}"></audio>-->
                             </span>
                             <a ng-href="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" target="_blank" title="Click Here" ng-if="post_file.file_type == 'pdf'"><img ng-src="<?php echo base_url('assets/images/PDF.jpg?ver=' . time()) ?>"></a>
@@ -252,7 +260,7 @@
                     </div>
                     </span>
                     <div class="post-images four-img" ng-if="post.post_data.total_post_files >= '4'">
-                        <div class="two-img" ng-repeat="post_file in post.post_file_data | limitTo:4">
+                        <div class="two-img" ng-repeat="post_file in post.post_file_data| limitTo:4">
                             <a href="#"><img ng-src="<?php echo USER_POST_RESIZE2_UPLOAD_URL ?>{{post_file.filename}}" ng-if="post_file.file_type == 'image'" alt="{{post_file.filename}}"></a>
                             <div class="view-more-img" ng-if="$index == '3' && post.post_data.total_post_files > '4'">
                                 <span><a href="javascript:void(0);">View All (+4)</a></span>
