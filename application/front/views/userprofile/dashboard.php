@@ -23,7 +23,7 @@
 
             </table>
         </div>
-        <div class="media-box">
+        <div class="media-box latest_photos">
             <div class="dash-left-title">
                 <h3><i class="fa fa-camera"></i> Photos</h3>
             </div>
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="media-box">
+        <div class="media-box latest_video">
             <div class="dash-left-title">
                 <h3><i class="fa fa-video-camera"></i> Video</h3>
             </div>
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div class="media-box">
+        <div class="media-box latest_audio">
             <div class="dash-left-title">
                 <h3><i class="fa fa-music"></i> Audio</h3>
             </div>
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-        <div class="media-box">
+        <div class="media-box latest_pdf">
             <div class="dash-left-title">
                 <h3><i class="fa fa-file-pdf-o"></i> PDF</h3>
             </div>

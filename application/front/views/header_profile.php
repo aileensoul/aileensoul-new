@@ -19,7 +19,7 @@
                                 <div class="dropdown-menu"></div>
                             </li>
                             <li>
-                                <a href="<?php echo base_url('user_post/') ?>" title="Opportunity"><img ng-src="<?php echo base_url('assets/n-images/op.png?ver=' . time()) ?>" alt="Opportunity"></a>
+                                <a ng-href="<?php echo base_url('opportunities') ?>" title="Opportunity" target="_self"><img ng-src="<?php echo base_url('assets/n-images/op.png?ver=' . time()) ?>" alt="Opportunity"></a>
                             </li>
                             <li id="add-contact" class="dropdown">
                                 <a href="#" title="Contact Request" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/add-contact.png') ?>" alt="Contact Request"></a>
