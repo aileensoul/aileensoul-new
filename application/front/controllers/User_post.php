@@ -927,14 +927,42 @@ class User_post extends MY_Controller {
             foreach ($post_opp_loc as $key => $value) {
                 $location[$key]['city_name'] = $value;
             }
-            
+
             $post_data['opportunity_for'] = json_encode($opprtunity);
             $post_data['location'] = json_encode($location);
-           
         } else {
             $post_data = $this->user_post_model->askQuestionPost($post_id);
+
+            $post_ask_que = explode(',', $post_data['tag_name']);
+
+            foreach ($post_ask_que as $key => $value) {
+                $tagname[$key]['name'] = $value;
+            }
+
+            $post_data['tag_name'] = json_encode($tagname);
         }
         echo json_encode($post_data);
+    }
+
+    public function edit_post_opportunity() {
+
+        $post_id = $_POST['post_id'];
+        $post_for = $_POST['post_for'];
+
+        if ($post_for == 'simple') {
+            $description = $_POST['description'];
+
+            $update_data = array();
+            $update_data['description'] = $description;
+            $update_data['modify_date'] = date('Y-m-d H:i:s', time());
+            $update_post_data = $this->common->update_data($update_data, 'user_simple_post', 'post_id', $post_id);
+        }
+
+        if ($update_post_data) {
+            echo 1;
+        } else {
+            echo 0;
+        }
     }
 
 }
