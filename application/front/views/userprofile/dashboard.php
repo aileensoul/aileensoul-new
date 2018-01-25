@@ -54,9 +54,17 @@
             <div class="media-display">
                 <div class="all-meda" ng-repeat="audioData in postAudioData">
                     <a href="">
-                        <audio controls width = "100%" height = "100">
-                            <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{audioData.filename}}" type="audio/mp3">
-                        </audio>
+                        <div class = "audio_main_div">
+                            <div class = "audio_img">
+                                <img src = "<?php echo base_url('assets/images/music-icon.png?ver=' . time()) ?>" alt="music-icon.png">
+                            </div>
+                            <div class = "audio_source">
+                                <audio id = "audio_player" width = "100%" height = "40" controls>
+                                    <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{audioData.filename}}" type="audio/mp3">
+                                    Your browser does not support the audio tag.
+                                </audio>
+                            </div>
+                        </div>
                     </a>
                 </div>
             </div>
