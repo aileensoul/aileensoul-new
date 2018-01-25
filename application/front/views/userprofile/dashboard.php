@@ -40,7 +40,7 @@
             <div class="media-display">
                 <div class="all-meda" ng-repeat="videoData in postVideoData">
                     <a href="">
-                        <video controls width="80" height="80">
+                        <video controls width = "100%" height = "350">
                             <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{videoData.filename}}" type="video/mp4">
                         </video>
                     </a>
@@ -54,7 +54,7 @@
             <div class="media-display">
                 <div class="all-meda" ng-repeat="audioData in postAudioData">
                     <a href="">
-                        <audio controls>
+                        <audio controls width = "100%" height = "100">
                             <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{audioData.filename}}" type="audio/mp3">
                         </audio>
                     </a>
