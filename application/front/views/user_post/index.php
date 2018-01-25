@@ -447,6 +447,7 @@
                                     <input type="text" class="form-control" ng-model="opp.otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
                                 </div>
                                 <input type="hidden" name="post_for" ng-model="opp.post_for" class="form-control" value="">
+                                 <input type="hidden" ng-if="is_edit == 1" id="edit_post_id" name="edit_post_id" ng-model="opp.edit_post_id" class="form-control" value="{{opp.edit_post_id}}">
                             </div>
                             <div class="text-right fw pt10 pb20 pr15">
                                 <button type="submit" class="btn1"  value="Submit">Post</button>    
