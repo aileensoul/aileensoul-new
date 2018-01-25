@@ -584,7 +584,7 @@ min-height: 15px;}
 .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{background-color:rgba(0,0,0,0.3);}
 .mCS-minimal.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar, .mCS-minimal.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar {background-color:rgba(0,0,0,0.6);}
 
-
+.time_ago{font-size:11px;}
 /***  end register header  ***/
 
 /***  model popup  ***/
