@@ -281,9 +281,9 @@ $(function () {
             event.preventDefault();
         }
     })
-            .autocomplete({
+            .autocomplete({ 
                 minLength: 2,
-                source: function (request, response) {
+                source: function (request, response) { 
                     // delegate back to autocomplete, but extract the last term
                     $.getJSON(base_url + "general/get_skill", {term: extractLast(request.term)}, response);
                      $("#ui-id-1").addClass("autoposition");
