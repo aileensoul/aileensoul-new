@@ -221,7 +221,14 @@ app.controller('userOppoController', function ($scope, $http) {
     }
 
     $scope.post_opportunity_check = function (event) {
-
+        
+         if (document.getElementById("edit_post_id")) {
+            var post_id = document.getElementById("edit_post_id").value;
+        } else {
+            var post_id = 0;
+        }
+        
+       if(post_id = 0){
         var fileInput = document.getElementById("fileInput").files;
         var description = document.getElementById("description").value;
         var description = description.trim();
@@ -416,6 +423,63 @@ app.controller('userOppoController', function ($scope, $http) {
                         }
                     });
         }
+        
+    }else{
+        alert(updated);
+        
+        
+        var description = document.getElementById("description").value;
+        var description = description.trim();
+        var job_title = $scope.opp.job_title;
+        var location = $scope.opp.location;
+        if ((description == '' || job_title.length == '0' || location.length == '0'))
+        {
+            $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write to post.");
+            $('#post').modal('show');
+            $(document).on('keydown', function (e) {
+                if (e.keyCode === 27) {
+                    $('#posterrormodal').modal('hide');
+                    $('.modal-post').show();
+                }
+            });
+            event.preventDefault();
+            return false;
+        } else {
+            
+
+            var form_data = new FormData();
+         
+            form_data.append('description', $scope.opp.description);
+            form_data.append('field', $scope.opp.field);
+            form_data.append('job_title', JSON.stringify($scope.opp.job_title));
+            form_data.append('location', JSON.stringify($scope.opp.location));
+            form_data.append('post_for', $scope.opp.post_for);
+
+            $('body').removeClass('modal-open');
+            $("#opportunity-popup").modal('hide');
+
+
+            $http.post(base_url + 'user_post/post_opportunity', form_data,
+                    {
+                        transformRequest: angular.identity,
+
+                        headers: {'Content-Type': undefined, 'Process-Data': false}
+                    })
+                    .then(function (success) {
+                        if (success) {
+                            $scope.opp.description = '';
+                            $scope.opp.job_title = '';
+                            $scope.opp.location = '';
+                            $scope.opp.field = '';
+                            $scope.opp.postfiles = '';
+                            document.getElementById('fileInput').value = '';
+                            $scope.postData.splice(0, 0, success.data[0]);
+                            $('video, audio').mediaelementplayer();
+                        }
+                    });
+        }
+        
+    }
     }
 
     $scope.IsVisible = false;
@@ -519,7 +583,6 @@ app.controller('userOppoController', function ($scope, $http) {
     // POST SOMETHING UPLOAD START
 
     $scope.post_something_check = function (event) {
-        alert(13);
         if (document.getElementById("edit_post_id")) {
             var post_id = document.getElementById("edit_post_id").value;
         } else {
@@ -951,6 +1014,7 @@ app.controller('userOppoController', function ($scope, $http) {
                         $scope.opp.job_title = [{"name": "Account Manager"}, {"name": "Accountant"}, {"name": "PHP Developer"}];
                         $scope.opp.location = success.data.location;
                         $scope.opp.field = success.data.field;
+                        $scope.opp.edit_post_id = post_id;
                         $("#opportunity-popup").modal('show');
 
                     } else if (post_for == "simple") {
