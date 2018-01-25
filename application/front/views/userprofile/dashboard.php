@@ -388,10 +388,7 @@
                                 <img ng-src="<?php echo base_url('assets/n-images/view-all.png?ver=' . time()) ?>">
                             </div>
                             <div class="user-list-detail">
-                                <p class="contact-name"></p>
-                                <p class="contact-designation">
-                                    <a href="#"><button class="follow-btn">View All</button></a>
-                                </p>
+                                <p class="contact-name"><a href="#"><button class="follow-btn">Find More Contacts</button></a></p>
                             </div>
                         </div>
                     </div>
