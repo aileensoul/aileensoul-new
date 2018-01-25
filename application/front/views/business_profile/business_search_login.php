@@ -64,7 +64,7 @@
         </script>   
     </head>
   
-    <body class="page-container-bg-solid page-boxed botton_footer">
+    <body class="page-container-bg-solid page-boxed botton_footer no-login">
         <header>
             <div class="container">
                 <div class="row">
