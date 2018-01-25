@@ -952,6 +952,45 @@ header.profile-header .logo a{color:#5c5c5c;}
 .article-all-comment .post-comment:first-child{padding-top:10px;}
 .article-all-comment .post-comment:last-child{margin-bottom:0px;}
 .article-all-comment .comment-dis{width:92%;}
+
+/***  search banner  ***/
+.search-banner{background:url("../n-images/search-bnr-job.jpg"); margin-bottom:20px; padding-bottom:60px; background-size:100%;}
+.search-box{width:860px; margin:0 auto; padding:30px; background:rgba(255,255,255,0.2);}
+.search-box .search-input input{width:40%; margin-right:15px; height:50px; font-size:22px;}
+.search-box .btn1{font-size:22px; padding:12px 21px;}
+.search-bnr-text{padding:100px 0 40px;}
+.search-bnr-text h1{text-align:center; font-size:42px; color:#fff; }
+.work-timing{padding-left:0;}
+.work-timing li{list-style-type:none; float:left; padding:0 20px;}
+.work-timing li:first-child{padding-left:0;}
+.work-timing li input{float:left; width:auto; height:auto; margin-right:10px;}
+.work-timing li label{color:#fff; margin-bottom:0;}
+.search-banner .control__indicator {border:1px solid #fff;}
+.search-banner .control input:checked ~ .control__indicator {background: #fff;}
+.search-banner .control:hover input:not([disabled]):checked ~ .control__indicator,
+.search-banner .control input:checked:focus ~ .control__indicator {background: #fff;}
+.search-banner .control--checkbox .control__indicator:after {border: solid #000; border-width: 0 2px 2px 0;}
+
+/***  end search banner  ***/
+/***  profile main page  ***/
+.profile-main-page .left-part{position:absolute;}
+.profile-main-page .right-part{position:absolute;}
+	.left-search-box{border: 1px solid #d2d2d2;
+    margin-bottom: 10px;
+    width: 100%;
+    float: left;
+    border-radius: 4px;}
+.left-search-box h3{padding:10px; border-bottom:1px solid #d2d2d2;}
+/***  end profile main page  ***/
+/***  video css  ***/
+.mejs__container.mejs__video{width:100% !important; height: auto !important; min-height: 270px !important;}
+.mejs__container.mejs__video video{width:100% !important; height: auto !important;}
+.mejs__container.mejs__video .mejs__overlay.mejs__overlay-play{width:100% !important;}
+.mejs__container.mejs__video .mejs__mediaelement{height: auto !important;}
+.mejs__poster.mejs__layer{width:100% !important;}
+.mejs__container.mejs__container-keyboard-inactive{}
+
+/***  end video  ***/
 /***  media query  ***/
 @media screen and (min-width: 768px) {
 
