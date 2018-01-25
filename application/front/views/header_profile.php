@@ -15,17 +15,17 @@
                     <ul>
                         <?php if ($is_userBasicInfo == '1' || $is_userStudentInfo == '1') { ?>
                             <li class="dropdown all">
-                                <a href="#" title="All Profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-click="header_all_profile()"><img ng-src="<?php echo base_url('assets/n-images/all.png') ?>" alt="All Profile"></a>
+                                <a href="javascript:void(0);" title="All Profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-click="header_all_profile()"><img ng-src="<?php echo base_url('assets/n-images/all.png') ?>" alt="All Profile"></a>
                                 <div class="dropdown-menu"></div>
                             </li>
                             <li>
                                 <a ng-href="<?php echo base_url('opportunities') ?>" title="Opportunity" target="_self"><img ng-src="<?php echo base_url('assets/n-images/op.png?ver=' . time()) ?>" alt="Opportunity"></a>
                             </li>
                             <li id="add-contact" class="dropdown">
-                                <a href="#" title="Contact Request" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/add-contact.png') ?>" alt="Contact Request"></a>
+                                <a href="javascript:void(0);" title="Contact Request" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-click="header_contact_request()"><img ng-src="<?php echo base_url('assets/n-images/add-contact.png') ?>" alt="Contact Request"></a>
                                 <div class="dropdown-menu">
                                     <div class="dropdown-title">
-                                        Contact Request <a href="all-contact.html" class="pull-right">See All</a>
+                                        Contact Request <a href="<?php echo base_url('contact-request') ?>" class="pull-right">See All</a>
                                     </div>
                                     <div class="content custom-scroll">
                                         <ul class="dropdown-data add-dropdown">
@@ -33,7 +33,7 @@
                                                 <a href="#">
                                                     <div class="dropdown-database">
                                                         <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                                            <img ng-src="<?php echo base_url('assets/n-images/user-pic.jpg') ?>">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <div class="user-name">
@@ -41,106 +41,6 @@
                                                                 <div class="msg-discription">IT Sector</div>
                                                             </div>
                                                         </div> 
-                                                    </div>
-                                                </a> 
-                                                <div class="user-request">
-                                                    <a href="#" class="add-left-true">
-                                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                                    </a>
-                                                    <a href="#" class="add-right-true">
-                                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <div class="user-name">
-                                                                <h6><b>Atosa Ahmedabad</b></h6>
-                                                                <div class="msg-discription">IT Sector</div>
-                                                            </div>
-
-                                                        </div> 
-
-                                                    </div>
-                                                </a> 
-                                                <div class="user-request">
-                                                    <a href="#" class="add-left-true">
-                                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                                    </a>
-                                                    <a href="#" class="add-right-true">
-                                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <div class="user-name">
-                                                                <h6><b>Atosa Ahmedabad</b></h6>
-                                                                <div class="msg-discription">IT Sector</div>
-                                                            </div>
-
-                                                        </div> 
-
-                                                    </div>
-                                                </a> 
-                                                <div class="user-request">
-                                                    <a href="#" class="add-left-true">
-                                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                                    </a>
-                                                    <a href="#" class="add-right-true">
-                                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <div class="user-name">
-                                                                <h6><b>Atosa Ahmedabad</b></h6>
-                                                                <div class="msg-discription">IT Sector</div>
-                                                            </div>
-
-                                                        </div> 
-
-                                                    </div>
-                                                </a> 
-                                                <div class="user-request">
-                                                    <a href="#" class="add-left-true">
-                                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                                    </a>
-                                                    <a href="#" class="add-right-true">
-                                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <div class="user-name">
-                                                                <h6><b>Atosa Ahmedabad</b></h6>
-                                                                <div class="msg-discription">IT Sector</div>
-                                                            </div>
-
-                                                        </div> 
-
                                                     </div>
                                                 </a> 
                                                 <div class="user-request">

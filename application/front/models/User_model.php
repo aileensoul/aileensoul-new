@@ -139,8 +139,8 @@ class User_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array;
     }
-    
-    public function getSameFieldProUser($field=''){
+
+    public function getSameFieldProUser($field = '') {
         $this->db->select("GROUP_CONCAT(CONCAT('''', `user_id`, '''' )) AS group_user")->from("user_profession up");
         $this->db->where("up.field =" . $field);
         $query = $this->db->get();
@@ -148,7 +148,7 @@ class User_model extends CI_Model {
         return $result_array['group_user'];
     }
 
-        public function getUserStudentData($user_id = '', $select_data = '') {
+    public function getUserStudentData($user_id = '', $select_data = '') {
         $this->db->select($select_data)->from("user_student us");
         $this->db->join('cities c', 'c.city_id = us.city', 'left');
         $this->db->join('user usr', 'usr.user_id = us.user_id', 'left');
@@ -159,7 +159,8 @@ class User_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array;
     }
-    public function getSameFieldStdUser($current_study=''){
+
+    public function getSameFieldStdUser($current_study = '') {
         $this->db->select("GROUP_CONCAT(CONCAT('''', `user_id`, '''' )) AS group_user")->from("user_student us");
         $this->db->where("us.current_study =" . $current_study);
         $query = $this->db->get();
@@ -196,6 +197,40 @@ class User_model extends CI_Model {
         $this->db->join('university u', 'u.university_id = us.university_name', 'left');
         $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
         $this->db->where("usr.user_slug ='" . $user_slug . "'");
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+
+    public function contact_request_pending($user_id = '') {
+        $this->db->select('uc.from_id,uc.to_id,uc.modify_date,uc.status,uc.not_read,concate(u.first_name,u.last_name)')->from('user_contact uc');
+        $this->db->join('user u', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.to_id ELSE uc.from_id END)');
+        $this->db->where("from_id ='$user_id' OR to_id = '$user_id'");
+        $this->db->where('status','pending');
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+
+    public function contact_request_accept($user_id = '') {
+        $this->db->select('from_id,to_id,modify_date,status,not_read')->from('user_contact uc');
+        $this->db->where("from_id ='$user_id' OR to_id = '$user_id'");
+        $this->db->where('status','confirm');
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+
+    public function contact_request($user_id = '') {
+        
+        $contact_request_pending = $this->contact_request_pending($user_id);
+        $contact_request_accept = $this->contact_request_accept($user_id);
+        
+        echo '<pre>';
+        print_r($contact_request_pending);
+        print_r($contact_request_accept);
+        exit;
+        
         $query = $this->db->get();
         $result_array = $query->row_array();
         return $result_array;

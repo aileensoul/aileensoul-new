@@ -382,6 +382,19 @@
                             <button class="follow-btn" ng-click="addToContact(contact.user_id, contact)">Add to contact</button>
                         </div>
                     </div>
+                    <div owl-carousel-item="" class="item last-item-box">
+                        <div class="item" id="item-{{contact.user_id}}">
+                            <div class="post-img" ng-if="contact.user_image != ''">
+                                <img ng-src="<?php echo base_url('assets/n-images/view-all.png?ver=' . time()) ?>">
+                            </div>
+                            <div class="user-list-detail">
+                                <p class="contact-name"></p>
+                                <p class="contact-designation">
+                                    <a href="#"><button class="follow-btn">View All</button></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </data-owl-carousel>
             </div>
         </div>
@@ -549,9 +562,9 @@
                             <div class="add-link" ng-click="ShowHide()">
                                 <i class="fa fa fa-link upload_icon"><span class="upload_span_icon"> Add Link</span>  </i> 
                             </div>
-                        </div>
-                        <div class="form-group"  ng-show = "IsVisible">
-                            <input type="text" ng-model="ask.web_link" class="" placeholder="Add Your Web Link">
+                            <div class="form-group"  ng-show = "IsVisible">
+                                <input type="text" ng-model="ask.web_link" class="" placeholder="Add Your Web Link">
+                            </div>
                         </div>
                     </div>
                     <div class="post-field">

@@ -1355,3 +1355,9 @@ $('#upload').on('change', function () {
         return false;
     }
 });
+$(window).on("load", function () {
+    $(".custom-scroll").mCustomScrollbar({
+        autoHideScrollbar: true,
+        theme: "minimal"
+    });
+});
