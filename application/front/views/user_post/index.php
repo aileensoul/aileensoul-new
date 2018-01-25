@@ -598,9 +598,10 @@
                                 var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
                                 var title = '<?php echo $title; ?>';
                                 var no_user_post_html = '<?php echo $no_user_post_html; ?>';
+                                var header_all_profile = '<?php echo $header_all_profile; ?>';
                                 var app = angular.module('userOppoApp', ['ui.bootstrap', 'ngTagsInput', 'ngSanitize']);
-        </script>
-
+        </script>               
+        <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/webpage/user/user_post.js?ver=' . time()) ?>"></script>
     </body>
 </html>
