@@ -1,4 +1,4 @@
-<header>
+<header ng-controller="headerCtrl">
     <div class="header animated fadeInDownBig">
         <div class="container">
             <div class="row">
@@ -15,74 +15,14 @@
                     <ul>
                         <?php if ($is_userBasicInfo == '1' || $is_userStudentInfo == '1') { ?>
                             <li class="dropdown all">
-                                <a href="#" title="All Profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/all.png') ?>" alt="All Profile"></a>
-
-                                <div class="dropdown-menu">
-                                    <div class="dropdown-title">
-                                        Profiles <a href="profile.html" title="All" class="pull-right">All</a>
-                                    </div>
-                                    <div id="abody" class="as">
-                                        <ul>
-                                            <li> 
-                                                <div class="all-down"> 
-                                                    <a href="#"> 
-                                                        <div class="all-img"> 
-                                                            <img ng-src="<?php echo base_url('assets/n-images/i5.jpg') ?>">
-                                                        </div>
-                                                        <div class="text-all"> Artistic Profile </div>
-                                                    </a> 
-                                                </div>
-                                            </li>
-                                            <li> 
-                                                <div class="all-down"> 
-                                                    <a href="#"> 
-                                                        <div class="all-img"> 
-                                                            <img ng-src="<?php echo base_url('assets/n-images/i4.jpg') ?>">
-                                                        </div>
-                                                        <div class="text-all"> Business Profile </div>
-                                                    </a> 
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="all-down"> 
-                                                    <a href="#"> 
-                                                        <div class="all-img"> 
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/i1.jpg">
-                                                        </div>
-                                                        <div class="text-all"> Job Profile </div>
-                                                    </a> 
-                                                </div>
-                                            </li>
-                                            <li> 
-                                                <div class="all-down"> 
-                                                    <a href="#"> 
-                                                        <div class="all-img"> 
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/i2.jpg">
-                                                        </div>
-                                                        <div class="text-all"> Recruiter Profile </div>
-                                                    </a> 
-                                                </div>
-                                            </li>
-                                            <li> 
-                                                <div class="all-down"> 
-                                                    <a href="#"> 
-                                                        <div class="all-img"> 
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/i3.jpg">
-                                                        </div>
-                                                        <div class="text-all"> Freelance Profile </div>
-                                                    </a> 
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <a href="#" title="All Profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-click="header_all_profile()"><img ng-src="<?php echo base_url('assets/n-images/all.png') ?>" alt="All Profile"></a>
+                                <div class="dropdown-menu"></div>
                             </li>
                             <li>
-                                <a href="#" title="Opportunity"><img ng-src="<?php echo base_url('assets/n-images/op.png?ver=' . time()) ?>" alt="Opportunity"></a>
+                                <a href="<?php echo base_url('user_post/') ?>" title="Opportunity"><img ng-src="<?php echo base_url('assets/n-images/op.png?ver=' . time()) ?>" alt="Opportunity"></a>
                             </li>
                             <li id="add-contact" class="dropdown">
                                 <a href="#" title="Contact Request" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="<?php echo base_url('assets/n-images/add-contact.png') ?>" alt="Contact Request"></a>
-
                                 <div class="dropdown-menu">
                                     <div class="dropdown-title">
                                         Contact Request <a href="all-contact.html" class="pull-right">See All</a>
@@ -100,9 +40,7 @@
                                                                 <h6><b>Atosa Ahmedabad</b></h6>
                                                                 <div class="msg-discription">IT Sector</div>
                                                             </div>
-
                                                         </div> 
-
                                                     </div>
                                                 </a> 
                                                 <div class="user-request">
