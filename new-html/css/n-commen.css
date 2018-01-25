@@ -509,6 +509,7 @@ header ul li #abody ul li:last-child {
 .dropdown-database .dropdown-user-detail{width:288px; float:left; padding-left:10px;}
 .dropdown-database .dropdown-user-detail h6{margin:0; font-size:14px;}
 .dropdown-database .dropdown-user-detail h6	b{color:#646464;}
+.confirm_div .dropdown-user-detail{line-height: 1.3; padding: 0 0 0 10px;}
 .day-text{font-size:11px;}
 .content{overflow: auto;
 position: relative;
