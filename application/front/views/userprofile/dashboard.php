@@ -40,7 +40,7 @@
             <div class="media-display">
                 <div class="all-meda" ng-repeat="videoData in postVideoData">
                     <a href="">
-                        <video controls width = "100%" height = "350">
+                        <video controls width = "100%" height = "92">
                             <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{videoData.filename}}" type="video/mp4">
                         </video>
                     </a>
@@ -219,13 +219,13 @@
                         <div class="one-img" ng-repeat="post_file in post.post_file_data" ng-init="$last ? loadMediaElement() : false">
                             <a href="#" ng-if="post_file.file_type == 'image'"><img ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" alt="{{post_file.filename}}"></a>
                             <span  ng-if="post_file.file_type == 'video'"> 
-                                <video controls>
+                                <video controls width = "100%" height = "350">
                                     <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="video/mp4">
                                 </video>
                                 <!--<video controls poster="" class="mejs__player" ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}"></video>-->
                             </span>
-                            <span  ng-if="post_file.file_type == 'audio'">
-                                <audio controls>
+                            <span  ng-if="post_file.file_type == 'audio'" >
+                                <audio controls width = "100%" height = "100">
                                     <source ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" type="audio/mp3">
                                 </audio>
                                 <!--<audio controls ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}"></audio>-->
