@@ -1001,7 +1001,7 @@ app.controller('userOppoController', function ($scope, $http) {
 
         $http({
             method: 'POST',
-            url: base_url + 'user_post/editPost',
+            url: base_url + 'user_post/getPostData',
             data: 'post_id=' + post_id + '&post_for=' + post_for,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
@@ -1011,7 +1011,8 @@ app.controller('userOppoController', function ($scope, $http) {
                         alert(success.data.opportunity_for);
                         alert(success.data.location);
                         $scope.opp.description = success.data.opportunity;
-                        $scope.opp.job_title = [{"name": "Account Manager"}, {"name": "Accountant"}, {"name": "PHP Developer"}];
+                        //$scope.opp.job_title = [{"name": "Account Manager"}, {"name": "Accountant"}, {"name": "PHP Developer"}];
+                        $scope.opp.job_title = success.data.opportunity_for;
                         $scope.opp.location = success.data.location;
                         $scope.opp.field = success.data.field;
                         $scope.opp.edit_post_id = post_id;

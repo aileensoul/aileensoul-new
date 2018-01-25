@@ -908,7 +908,7 @@ class User_post extends MY_Controller {
         }
     }
 
-    public function editPost() {
+    public function getPostData() {
         $post_id = $_POST['post_id'];
         $post_for = $_POST['post_for'];
 
@@ -927,9 +927,15 @@ class User_post extends MY_Controller {
             foreach ($post_opp_loc as $key => $value) {
                 $location[$key]['city_name'] = $value;
             }
-
-            $post_data['opportunity_for'] = json_encode($opprtunity);
-            $post_data['location'] = json_encode($location);
+//            $post_data['opportunity_for'] = json_encode($opprtunity);
+//            $post_data['location'] = json_encode($location);
+            $post_data['opportunity_for'] = $opprtunity;
+            $post_data['location'] = $location;
+//            echo '<pre>';
+//            print_r($opprtunity);
+//            print_r($location);
+//            print_r($post_data);
+//            exit;
         } else {
             $post_data = $this->user_post_model->askQuestionPost($post_id);
 
