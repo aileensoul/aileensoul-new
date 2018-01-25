@@ -664,8 +664,9 @@ $(function () {
     $("#post_name").autocomplete({
         source: function (request, response) {
             var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(jobdata, function (item) {
+            response($.grep(jobdata, function (item) { 
                 return matcher.test(item.label);
+                $("#ui-id-1").addClass("autoposition");
             }));
         },
         minLength: 1,
