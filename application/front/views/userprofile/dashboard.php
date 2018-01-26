@@ -201,28 +201,27 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="post-discription" ng-if="post.post_data.post_for == 'opportunity'">
-                        <h5 class="post-title">
-                            <p ng-if="post.opportunity_data.opportunity_for"><b>Opportunity for:</b><span ng-bind="post.opportunity_data.opportunity_for"></span></p>
-                            <p ng-if="post.opportunity_data.location"><b>Location:</b><span ng-bind="post.opportunity_data.location"></span></p>
-                            <p ng-if="post.opportunity_data.field"><b>Field:</b><span ng-bind="post.opportunity_data.field"></span></p>
-                        </h5>
-
-                        <div class="post-des-detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity"></span></div>
-                    </div>
-                    <div class="post-discription" ng-if="post.post_data.post_for == 'simple'">
-                        <div class="post-des-detail" ng-if="post.simple_data.description"><span ng-bind-html="post.simple_data.description"></span></div>
-                    </div>
-                    <div class="post-discription" ng-if="post.post_data.post_for == 'question'">
-                        <h5 class="post-title">
-                            <p ng-if="post.question_data.question"><b>Question:</b><span ng-bind="post.question_data.question"></span></p>
-                            <p ng-if="post.question_data.description"><b>Description:</b><span ng-bind="post.question_data.description"></span></p>
-                            <p ng-if="post.question_data.link"><b>Link:</b><span ng-bind="post.question_data.link"></span></p>
-                            <p ng-if="post.question_data.category"><b>Category:</b><span ng-bind="post.question_data.category"></span></p>
-                            <p ng-if="post.question_data.field"><b>Field:</b><span ng-bind="post.question_data.field"></span></p>
-                        </h5>
-                        <div class="post-des-detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity"></span></div>
-                    </div>
+                     <div class="post-discription" ng-if="post.post_data.post_for == 'opportunity'">
+                                        <h5 class="post-title">
+                                            <p ng-if="post.opportunity_data.opportunity_for"><b>Opportunity for:</b><span ng-bind="post.opportunity_data.opportunity_for" id="opp-post-opportunity-for-{{post.post_data.id}}"></span></p>
+                                            <p ng-if="post.opportunity_data.location"><b>Location:</b><span ng-bind="post.opportunity_data.location" id="opp-post-location-{{post.post_data.id}}"></span></p>
+                                            <p ng-if="post.opportunity_data.field"><b>Field:</b><span ng-bind="post.opportunity_data.field" id="opp-post-field-{{post.post_data.id}}"></span></p>
+                                        </h5>
+                                        <div class="post-des-detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity" id="opp-post-opportunity-{{post.post_data.id}}"></span></div>
+                                    </div>
+                                    <div class="post-discription" ng-if="post.post_data.post_for == 'simple'">
+                                        <div class="post-des-detail" ng-if="post.simple_data.description"><span ng-bind-html="post.simple_data.description" id="simple-post-description-{{post.post_data.id}}"></span></div>
+                                    </div>
+                                    <div class="post-discription" ng-if="post.post_data.post_for == 'question'">
+                                        <h5 class="post-title">
+                                            <p ng-if="post.question_data.question"><b>Question:</b><span ng-bind="post.question_data.question" id="ask-post-question-{{post.post_data.id}}"></span></p>
+                                            <p ng-if="post.question_data.description"><b>Description:</b><span ng-bind="post.question_data.description" id="ask-post-description-{{post.post_data.id}}"></span></p>
+                                            <p ng-if="post.question_data.link"><b>Link:</b><span ng-bind="post.question_data.link" id="ask-post-link-{{post.post_data.id}}"></span></p>
+                                            <p ng-if="post.question_data.category"><b>Category:</b><span ng-bind="post.question_data.category" id="ask-post-category-{{post.post_data.id}}"></span></p>
+                                            <p ng-if="post.question_data.field"><b>Field:</b><span ng-bind="post.question_data.field" id="ask-post-field-{{post.post_data.id}}"></span></p>
+                                        </h5>
+                                        <div class="post-des-detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity"></span></div>
+                                    </div>
                     <div class="post-images" ng-if="post.post_data.total_post_files == '1'">
                         <div class="one-img" ng-repeat="post_file in post.post_file_data" ng-init="$last ? loadMediaElement() : false">
                             <a href="#" ng-if="post_file.file_type == 'image'"><img ng-src="<?php echo USER_POST_MAIN_UPLOAD_URL ?>{{post_file.filename}}" alt="{{post_file.filename}}"></a>
@@ -398,212 +397,216 @@
         </div>
     </div>
 </div>
-<div style="display:none;" class="modal fade" id="post-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <button type="button" class="modal-close" data-dismiss="modal">×</button>
-            <div class="post-popup-box">
-                <form id="post_something" name="post_something" ng-submit="post_something_check(event)">
-                    <div class="post-box">
-                        <div class="post-img">
-                            <?php if ($leftbox_data['user_image'] != '') { ?> 
-                                <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
-                            <?php } else { ?>
-                                <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
-                            <?php } ?>
-                        </div>
-                        <div class="post-text">
-                            <textarea name="description" ng-model="sim.description" id="description" class="title-text-area" placeholder="Write something here..."></textarea>
-                        </div>
-                        <div class="all-upload">
-                            <div class="form-group">
-                                <input file-input="files" ng-file-model="sim.postfiles" type="file" id="fileInput1" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+ <div style="display:none;" class="modal fade" id="post-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">×</button>
+                    <div class="post-popup-box">
+                        <form  id="post_something" name="post_something" ng-submit="post_something_check(event)">
+                            <div class="post-box">
+                                <div class="post-img">
+                                    <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                        <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                    <?php } else { ?>
+                                        <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                    <?php } ?>
+                                </div>
+                                <div class="post-text">
+                                    <textarea name="description" ng-model="sim.description" id="description" class="title-text-area" placeholder="Write something here..."></textarea>
+                                </div>
+                                <div class="all-upload" ng-if="is_edit != 1">
+                                    <div class="form-group">
+                                        <input file-input="files" ng-file-model="sim.postfiles" type="file" id="fileInput1" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+                                    </div>
+                                    <label for="fileInput1" ng-click="postFiles()">
+                                        <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
+                                        <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
+                                        <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
+                                        <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
+                                    </label>
+                                </div>
+                                <div class="post-box-bottom" >
+                                    <ul ng-if="is_edit != 1">
+                                        <li>
+                                            <a href="javascript:void(0);" data-target="#opportunity-popup" data-toggle="modal">
+                                                <img src="<?php echo base_url('assets/n-images/post-op.png') ?>"><span>Post Opportunity</span>
+                                            </a>
+                                        </li>
+                                        <li class="pl15">
+                                            <a href="article.html">
+                                                <img src="<?php echo base_url('assets/n-images/article.png') ?>"><span>Post Article</span>
+                                            </a>
+                                        </li>
+                                        <li class="pl15">
+                                            <a href="javascript:void(0);" data-target="#ask-question" data-toggle="modal">
+                                                <img src="<?php echo base_url('assets/n-images/ask-qustion.png') ?>"><span>Ask Question</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <input type="hidden" name="post_for" ng-model="sim.post_for" class="form-control" value="">
+                                    <input type="hidden" ng-if="is_edit == 1" id="edit_post_id" name="edit_post_id" ng-model="sim.edit_post_id" class="form-control" value="{{sim.edit_post_id}}">
+                                    <p class="pull-right">
+                                        <button type="submit" class="btn1" value="Submit">Post</button>
+                                    </p>
+                                </div>
                             </div>
-                            <label for="fileInput1" ng-click="postFiles()">
-                                <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
-                                <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
-                                <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
-                                <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
-                            </label>
-                        </div>
-                        <div class="post-box-bottom">
-                            <ul>
-                                <li>
-                                    <a href="javascript:void(0);" data-target="#opportunity-popup" data-toggle="modal">
-                                        <img src="<?php echo base_url('assets/n-images/post-op.png') ?>"><span>Post Opportunity</span>
-                                    </a>
-                                </li>
-                                <li class="pl15">
-                                    <a href="article.html">
-                                        <img src="<?php echo base_url('assets/n-images/article.png') ?>"><span>Post Article</span>
-                                    </a>
-                                </li>
-                                <li class="pl15">
-                                    <a href="javascript:void(0);" data-target="#ask-question" data-toggle="modal">
-                                        <img src="<?php echo base_url('assets/n-images/ask-qustion.png') ?>"><span>Ask Quastion</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <input type="hidden" name="post_for" ng-model="sim.post_for" class="form-control" value="">
-                            <p class="pull-right">
-                                <button type="submit" class="btn1" value="Submit">Post</button>
-                            </p>
-                        </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div style="display:none;" class="modal fade" id="opportunity-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <button type="button" class="modal-close" data-dismiss="modal">×</button>
-            <div class="post-popup-box">
-                <form id="post_opportunity" name="post_opportunity" ng-submit="post_opportunity_check(event)">
-                    <div class="post-box">
-                        <div class="post-img">
-                            <?php if ($leftbox_data['user_image'] != '') { ?> 
-                                <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
-                            <?php } else { ?>
-                                <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
-                            <?php } ?>
-                        </div>
-                        <div class="post-text">
-                            <textarea name="description" ng-model="opp.description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
-                        </div>
-                        <div class="all-upload" ng-if="is_edit != 1">
-                            <div class="form-group">
-                                <input file-input="files" ng-file-model="opp.postfiles" type="file" id="fileInput" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
-                            </div>
-                            <label for="fileInput" ng-click="postFiles()">
-                                <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
-                                <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
-                                <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
-                                <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="post-field">
-                        <div id="content" class="form-group">
-                            <label>FOR WHOM THIS OPPORTUNITY ?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" tooltips tooltip-append-to-body="true" tooltip-close-button="true" tooltip-side="right" tooltip-hide-trigger="click" tooltip-template="I'm a tooltip that is kwjnefk jnkwjenfkjnk kjwnekjn kjwnekfjn kjwenfkjnkwjnekfjnwkejnf kjwnef bounded on body!" alt="tooltip"></span></label>
-                            <tags-input ng-model="opp.job_title" display-property="name" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, PHP Developer, HR, BDE, CA, Doctor, Freelancer.." replace-spaces-with-dashes="false" template="title-template" on-tag-added="onKeyup()">
-                                <auto-complete source="loadJobTitle($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="title-autocomplete-template"></auto-complete>
-                            </tags-input>
-                            <script type="text/ng-template" id="title-template">
-                                <div class="tag-template"><div class="right-panel"><span>{{$getDisplayText()}}</span><a class="remove-button" ng-click="$removeTag()">&#10006;</a></div></div>
-                            </script>
-                            <script type="text/ng-template" id="title-autocomplete-template">
-                                <div class="autocomplete-template"><div class="right-panel"><span ng-bind-html="$highlight($getDisplayText())"></span></div></div>
-                            </script>
-                        </div>
+ <div style="display:none;" class="modal fade" id="opportunity-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">×</button>
+                    <div class="post-popup-box">
+                        <form id="post_opportunity" name="post_opportunity" ng-submit="post_opportunity_check(event)">
+                            <div class="post-box">
+                                <div class="post-img">
+                                    <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                        <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                    <?php } else { ?>
+                                        <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                    <?php } ?>
+                                </div>
+                                <div class="post-text">
+                                    <textarea name="description" ng-model="opp.description" id="description" class="title-text-area" placeholder="Post Opportunity"></textarea>
+                                </div>
 
-                        <div class="form-group">
-                            <label>WHICH LOCATION?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
-                            <tags-input ng-model="opp.location" display-property="city_name" placeholder="Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.." replace-spaces-with-dashes="false" template="location-template" on-tag-added="onKeyup()">
-                                <auto-complete source="loadLocation($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="location-autocomplete-template"></auto-complete>
-                            </tags-input>
-                            <script type="text/ng-template" id="location-template">
-                                <div class="tag-template"><div class="right-panel"><span>{{$getDisplayText()}}</span><a class="remove-button" ng-click="$removeTag()">&#10006;</a></div></div>
-                            </script>
-                            <script type="text/ng-template" id="location-autocomplete-template">
-                                <div class="autocomplete-template"><div class="right-panel"><span ng-bind-html="$highlight($getDisplayText())"></span></div></div>
-                            </script>
-                        </div>
-                        <div class="form-group">
-                            <label>What is your field?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
-                            <!--<input name="field" id="field" type="text" placeholder="What is your field?" autocomplete="off">-->
-                            <select name="field" ng-model="opp.field" id="field" ng-change="other_field(this)">
-                                <option value="" selected="selected">Select your field</option>
-                                <option data-ng-repeat='fieldItem in fieldList' value='{{fieldItem.industry_id}}'>{{fieldItem.industry_name}}</option>             
-                                <option value="0">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group" ng-if="field == '0'">
-                            <input type="text" class="form-control" ng-model="opp.otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
-                        </div>
-                        <input type="hidden" name="post_for" ng-model="opp.post_for" class="form-control" value="">
+                                <div class="all-upload" ng-if="is_edit != 1">
+                                    <div class="form-group">
+                                        <input file-input="files" ng-file-model="opp.postfiles" type="file" id="fileInput" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+                                    </div>
+                                    <label for="fileInput" ng-click="postFiles()">
+                                        <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
+                                        <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
+                                        <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
+                                        <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="post-field">
+                                <div id="content" class="form-group">
+                                    <label>FOR WHOM THIS OPPORTUNITY ?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" tooltips tooltip-append-to-body="true" tooltip-close-button="true" tooltip-side="right" tooltip-hide-trigger="click" tooltip-template="I'm a tooltip that is kwjnefk jnkwjenfkjnk kjwnekjn kjwnekfjn kjwenfkjnkwjnekfjnwkejnf kjwnef bounded on body!" alt="tooltip"></span></label>
+                                    <tags-input ng-model="opp.job_title" display-property="name" placeholder="Ex:Seeking Opportunity, CEO, Enterpreneur, Founder, Singer, Photographer, PHP Developer, HR, BDE, CA, Doctor, Freelancer.." replace-spaces-with-dashes="false" template="title-template" on-tag-added="onKeyup()">
+                                        <auto-complete source="loadJobTitle($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="title-autocomplete-template"></auto-complete>
+                                    </tags-input>
+                                    <script type="text/ng-template" id="title-template">
+                                        <div class="tag-template"><div class="right-panel"><span>{{$getDisplayText()}}</span><a class="remove-button" ng-click="$removeTag()">&#10006;</a></div></div>
+                                    </script>
+                                    <script type="text/ng-template" id="title-autocomplete-template">
+                                        <div class="autocomplete-template"><div class="right-panel"><span ng-bind-html="$highlight($getDisplayText())"></span></div></div>
+                                    </script>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>WHICH LOCATION?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <tags-input ng-model="opp.location" display-property="city_name" placeholder="Ex:Mumbai, Delhi, New south wels, London, New York, Captown, Sydeny, Shanghai, Moscow, Paris, Tokyo.." replace-spaces-with-dashes="false" template="location-template" on-tag-added="onKeyup()">
+                                        <auto-complete source="loadLocation($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="location-autocomplete-template"></auto-complete>
+                                    </tags-input>
+                                    <script type="text/ng-template" id="location-template">
+                                        <div class="tag-template"><div class="right-panel"><span>{{$getDisplayText()}}</span><a class="remove-button" ng-click="$removeTag()">&#10006;</a></div></div>
+                                    </script>
+                                    <script type="text/ng-template" id="location-autocomplete-template">
+                                        <div class="autocomplete-template"><div class="right-panel"><span ng-bind-html="$highlight($getDisplayText())"></span></div></div>
+                                    </script>
+                                </div>
+                                <div class="form-group">
+                                    <label>What is your field?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <!--<input name="field" id="field" type="text" placeholder="What is your field?" autocomplete="off">-->
+                                    <select name="field" ng-model="opp.field" id="field" ng-change="other_field(this)">
+                                        <option value="" selected="selected">Select your field</option>
+                                        <option data-ng-repeat='fieldItem in fieldList' value='{{fieldItem.industry_id}}'>{{fieldItem.industry_name}}</option>             
+                                        <option value="0">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" ng-if="field == '0'">
+                                    <input type="text" class="form-control" ng-model="opp.otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
+                                </div>
+                                <input type="hidden" name="post_for" ng-model="opp.post_for" class="form-control" value="">
+                                <input type="hidden" ng-if="is_edit == 1" id="opp_edit_post_id" name="opp_edit_post_id" ng-model="opp.edit_post_id" class="form-control" value="{{opp.edit_post_id}}">
+                            </div>
+                            <div class="text-right fw pt10 pb20 pr15">
+                                <button type="submit" class="btn1"  value="Submit">Post</button>    
+                            </div>
+                            <?php // echo form_close(); ?>
+                        </form>
                     </div>
-                    <div class="text-right fw pt10 pb20 pr15">
-                        <button type="submit" class="btn1"  value="Submit">Post</button>    
-                    </div>
-                    <?php // echo form_close(); ?>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 <div style="display:none;" class="modal fade" id="ask-question" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <button type="button" class="modal-close" data-dismiss="modal">×</button>
-            <div class="post-popup-box">
-                <form id="ask_question" name="ask_question" ng-submit="ask_question_check(event)">
-                    <div class="post-box">
-                        <div class="post-img">
-                            <?php if ($leftbox_data['user_image'] != '') { ?> 
-                                <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
-                            <?php } else { ?>
-                                <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
-                            <?php } ?>
-                        </div>
-                        <div class="post-text">
-                            <textarea class="title-text-area" ng-keyup="questionList()" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Question" typeahead="item as item.question for item in queSearchResult | filter:$viewValue" autocomplete="off"></textarea>
-                        </div>
-                        <div class="all-upload">
-                            <div class="form-group">
-                                <input file-input="files" ng-file-model="ask.postfiles" type="file" id="fileInput2" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">×</button>
+                    <div class="post-popup-box">
+                        <form id="ask_question" name="ask_question" ng-submit="ask_question_check(event)">
+                            <div class="post-box">
+                                <div class="post-img">
+                                    <?php if ($leftbox_data['user_image'] != '') { ?> 
+                                        <img ng-src="<?php echo USER_THUMB_UPLOAD_URL . $leftbox_data['user_image'] . '?ver=' . time() ?>" alt="<?php echo $leftbox_data['first_name'] ?>">  
+                                    <?php } else { ?>
+                                        <img ng-src="<?php echo base_url(NOBUSIMAGE . '?ver=' . time()) ?>" alt="<?php echo $leftbox_data['first_name'] ?>">
+                                    <?php } ?>
+                                </div>
+                                <div class="post-text">
+                                    <textarea class="title-text-area" ng-keyup="questionList()" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Question" typeahead="item as item.question for item in queSearchResult | filter:$viewValue" autocomplete="off"></textarea>
+                                </div>
+                                <div class="all-upload" ng-if="is_edit != 1">
+                                    <div class="form-group">
+                                        <input file-input="files" ng-file-model="ask.postfiles" type="file" id="fileInput2" name="postfiles[]" data-overwrite-initial="false" data-min-file-count="2"  multiple style="display: none;">
+                                    </div>
+                                    <label for="fileInput2" ng-click="postFiles()">
+                                        <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Add Screenshot </span></i>
+                                    </label>
+                                    <div class="add-link" ng-click="ShowHide()">
+                                        <i class="fa fa fa-link upload_icon"><span class="upload_span_icon"> Add Link</span>  </i> 
+                                    </div>
+                                    <div class="form-group"  ng-show = "IsVisible">
+                                        <input type="text" ng-model="ask.web_link" class="" placeholder="Add Your Web Link">
+                                    </div>
+                                </div>
                             </div>
-                            <label for="fileInput2" ng-click="postFiles()">
-                                <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Add Screenshot </span></i>
-                            </label>
-                            <div class="add-link" ng-click="ShowHide()">
-                                <i class="fa fa fa-link upload_icon"><span class="upload_span_icon"> Add Link</span>  </i> 
-                            </div>
-                            <div class="form-group"  ng-show = "IsVisible">
-                                <input type="text" ng-model="ask.web_link" class="" placeholder="Add Your Web Link">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post-field">
-                        <div class="form-group">
-                            <label>Add Description<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
-                            <textarea rows="1" max-rows="5" ng-model="ask.ask_description" placeholder="Add Description" cols="10" style="resize:none"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Related Categories<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
-                            <tags-input ng-model="ask.related_category" display-property="name"placeholder="Related Category" replace-spaces-with-dashes="false" template="category-template" on-tag-added="onKeyup()">
-                                <auto-complete source="loadCategory($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="category-autocomplete-template"></auto-complete>
-                            </tags-input>
-                            <script type="text/ng-template" id="category-template">
-                                <div class="tag-template"><div class="right-panel"><span>{{$getDisplayText()}}</span><a class="remove-button" ng-click="$removeTag()">&#10006;</a></div></div>
-                            </script>
-                            <script type="text/ng-template" id="category-autocomplete-template">
-                                <div class="autocomplete-template"><div class="right-panel"><span ng-bind-html="$highlight($getDisplayText())"></span></div></div>
-                            </script>
-                        </div>
-                        <div class="form-group">
-                            <label>From which field the Question asked?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
-                            <select ng-model="ask.ask_field" id="ask_field">
-                                <option value="" selected="selected">What is your field</option>
-                                <option data-ng-repeat='fieldItem in fieldList' value='{{fieldItem.industry_id}}'>{{fieldItem.industry_name}}</option>             
-                                <option value="0">Other</option>
-                            </select>
-                        </div>
+                            <div class="post-field">
+                                <div class="form-group">
+                                    <label>Add Description<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <textarea rows="1" max-rows="5" ng-model="ask.ask_description" placeholder="Add Description" cols="10" style="resize:none"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Related Categories<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <tags-input ng-model="ask.related_category" display-property="name"placeholder="Related Category" replace-spaces-with-dashes="false" template="category-template" on-tag-added="onKeyup()">
+                                        <auto-complete source="loadCategory($query)" min-length="0" load-on-focus="false" load-on-empty="false" max-results-to-show="32" template="category-autocomplete-template"></auto-complete>
+                                    </tags-input>
+                                    <script type="text/ng-template" id="category-template">
+                                        <div class="tag-template"><div class="right-panel"><span>{{$getDisplayText()}}</span><a class="remove-button" ng-click="$removeTag()">&#10006;</a></div></div>
+                                    </script>
+                                    <script type="text/ng-template" id="category-autocomplete-template">
+                                        <div class="autocomplete-template"><div class="right-panel"><span ng-bind-html="$highlight($getDisplayText())"></span></div></div>
+                                    </script>
+                                </div>
+                                <div class="form-group">
+                                    <label>From which field the Question asked?<span class="pull-right"><img ng-src="<?php echo base_url('assets/n-images/tooltip.png') ?>" alt="tooltip"></span></label>
+                                    <select ng-model="ask.ask_field" id="ask_field">
+                                        <option value="" selected="selected">What is your field</option>
+                                        <option data-ng-repeat='fieldItem in fieldList' value='{{fieldItem.industry_id}}'>{{fieldItem.industry_name}}</option>             
+                                        <option value="0">Other</option>
+                                    </select>
+                                </div>
 
-                        <div class="form-group" ng-if="ask.ask_field == '0'">
-                            <input type="text" class="form-control" ng-model="ask.otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
-                        </div>
-                        <input type="hidden" name="post_for" ng-model="ask.post_for" class="form-control" value="">
+                                <div class="form-group" ng-if="ask.ask_field == '0'">
+                                    <input type="text" class="form-control" ng-model="ask.otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
+                                </div>
+                                <input type="hidden" name="post_for" ng-model="ask.post_for" class="form-control" value="">
+                           <input type="hidden" ng-if="is_edit == 1" id="ask_edit_post_id" name="ask_edit_post_id" ng-model="ask.edit_post_id" class="form-control" value="{{ask.edit_post_id}}">
+                            </div>
+                            <div class="text-right fw pt10 pb20 pr15">
+                                <button type="submit" class="btn1"  value="Submit">Post</button> 
+                            </div>
+                        </form>
                     </div>
-                    <div class="text-right fw pt10 pb20 pr15">
-                        <button type="submit" class="btn1"  value="Submit">Post</button> 
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 <div class="modal fade message-box biderror" id="posterrormodal" role="dialog">
     <div class="modal-dialog modal-lm">
         <div class="modal-content">
