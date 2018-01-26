@@ -959,6 +959,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 
 /***  search banner  ***/
 .search-banner{background:url("../n-images/search-bnr-job.jpg"); margin-bottom:20px; padding-bottom:60px; background-size:100%;}
+.recruiter-main .search-banner{background:url("../n-images/bnr-rec.jpg"); margin-bottom:20px; padding:25px 0; background-size:100%;}
 .search-box{width:860px; margin:0 auto; padding:30px; background:rgba(255,255,255,0.2);}
 .search-box .search-input input{width:40%; margin-right:15px; height:50px; font-size:22px;}
 .search-box .btn1{font-size:22px; padding:12px 21px;}
@@ -1012,6 +1013,11 @@ header.profile-header .logo a{color:#5c5c5c;}
 .job-top-detail h5 a span{font-weight:normal;}
 .job-top-detail h5 a:hover{border-bottom:none;}
 
+ /** reg form **/
+ .reg-form-box{background:rgba(255,255,255,0.3); padding:30px; border-radius:4px;}
+ .reg-form{border:1px solid #5c5c5c; border-radius:4px;}
+ .reg-form h3{text-align:center; font-size:22px; border-bottom:1px solid #5c5c5c; padding:10px 0;}
+ .reg-form form{padding:15px;}
 /***  end profile main page  ***/
 /***  audio video css  ***/
 .mejs__container.mejs__video,.mejs__layers .mejs__poster.mejs__layer,.mejs__mediaelement video,.mejs__overlay.mejs__layer,.video .mejs__poster{
