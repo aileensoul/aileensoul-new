@@ -1018,6 +1018,9 @@ header.profile-header .logo a{color:#5c5c5c;}
  .reg-form{border:1px solid #5c5c5c; border-radius:4px;}
  .reg-form h3{text-align:center; font-size:22px; border-bottom:1px solid #5c5c5c; padding:10px 0;}
  .reg-form form{padding:15px;}
+ .reg-form-box .reg-form .form-group{margin-bottom:25px;}
+ .reg-form-box .reg-form .form-group input, .reg-form-box .reg-form .form-group select, .reg-form-box .reg-form .form-group textarea {border-bottom:1px solid #5c5c5c; background:none; border-radius:0px; border-width: 0px 0px 1px 0px; padding:5px 10px;}
+ .reg-form-box .reg-form .form-group select{padding-left:6px;}
 /***  end profile main page  ***/
 /***  audio video css  ***/
 .mejs__container.mejs__video,.mejs__layers .mejs__poster.mejs__layer,.mejs__mediaelement video,.mejs__overlay.mejs__layer,.video .mejs__poster{
