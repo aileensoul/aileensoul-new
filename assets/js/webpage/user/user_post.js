@@ -227,7 +227,6 @@ app.controller('userOppoController', function ($scope, $http) {
         } else {
             var post_id = 0;
         }
-        alert(post_id);
         if (post_id == 0) {
             var fileInput = document.getElementById("fileInput").files;
             var description = document.getElementById("description").value;
@@ -431,10 +430,6 @@ app.controller('userOppoController', function ($scope, $http) {
             var job_title = $scope.opp.job_title;
             var location = $scope.opp.location;
 
-            alert(description);
-            alert(job_title);
-            alert(location);
-
 //            if ((description == '' || job_title.length == '0' || location.length == '0'))
             if ((job_title.length == '0' || location.length == '0'))
             {
@@ -519,7 +514,6 @@ app.controller('userOppoController', function ($scope, $http) {
         } else {
             var post_id = 0;
         }
-        alert(post_id);
         if (post_id == 0) {
             var field = document.getElementById("ask_field").value;
             var description = document.getElementById("ask_que").value;
@@ -625,7 +619,6 @@ app.controller('userOppoController', function ($scope, $http) {
             form_data.append('weblink', $scope.ask.web_link);
             form_data.append('post_for', $scope.ask.post_for);
             form_data.append('post_id',post_id);
-                alert(form_data);
                 $('body').removeClass('modal-open');
                 $("#opportunity-popup").modal('hide');
                 $("#ask-question").modal('hide');
@@ -1078,9 +1071,7 @@ app.controller('userOppoController', function ($scope, $http) {
 
     $scope.EditPost = function (post_id, post_for, index) {
         $scope.is_edit = 1;
-        alert(post_id);
-        alert(post_for);
-
+        
 
         $http({
             method: 'POST',
@@ -1091,8 +1082,6 @@ app.controller('userOppoController', function ($scope, $http) {
                 .then(function (success) {
                     $scope.is_edit = 1;
                     if (post_for == "opportunity") {
-                        alert(success.data.opportunity_for);
-                        alert(success.data.location);
                         $scope.opp.description = success.data.opportunity;
                         $scope.opp.job_title = success.data.opportunity_for;
                         $scope.opp.location = success.data.location;

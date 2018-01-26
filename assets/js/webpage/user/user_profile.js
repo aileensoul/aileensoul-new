@@ -342,7 +342,6 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         } else {
             var post_id = 0;
         }
-        alert(post_id);
         if (post_id == 0) {
             var fileInput = document.getElementById("fileInput").files;
             var description = document.getElementById("description").value;
@@ -546,12 +545,8 @@ app.controller('dashboardController', function ($scope, $http, $location) {
             var job_title = $scope.opp.job_title;
             var location = $scope.opp.location;
 
-            alert(description);
-            alert(job_title);
-            alert(location);
-
-//            if ((description == '' || job_title.length == '0' || location.length == '0'))
-            if ((job_title.length == '0' || location.length == '0'))
+            if ((description == '' || job_title.length == '0' || location.length == '0'))
+//            if ((job_title.length == '0' || location.length == '0'))
             {
                 $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write to post.");
                 $('#post').modal('show');
@@ -631,7 +626,6 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         } else {
             var post_id = 0;
         }
-        alert(post_id);
         if (post_id == 0) {
             var field = document.getElementById("ask_field").value;
             var description = document.getElementById("ask_que").value;
@@ -737,7 +731,6 @@ app.controller('dashboardController', function ($scope, $http, $location) {
             form_data.append('weblink', $scope.ask.web_link);
             form_data.append('post_for', $scope.ask.post_for);
             form_data.append('post_id',post_id);
-                alert(form_data);
                 $('body').removeClass('modal-open');
                 $("#opportunity-popup").modal('hide');
                 $("#ask-question").modal('hide');
@@ -1186,10 +1179,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
     
      $scope.EditPost = function (post_id, post_for, index) {
         $scope.is_edit = 1;
-        alert(post_id);
-        alert(post_for);
-
-
+        
         $http({
             method: 'POST',
             url: base_url + 'user_post/getPostData',
@@ -1199,8 +1189,6 @@ app.controller('dashboardController', function ($scope, $http, $location) {
                 .then(function (success) {
                     $scope.is_edit = 1;
                     if (post_for == "opportunity") {
-                        alert(success.data.opportunity_for);
-                        alert(success.data.location);
                         $scope.opp.description = success.data.opportunity;
                         $scope.opp.job_title = success.data.opportunity_for;
                         $scope.opp.location = success.data.location;
@@ -1404,8 +1392,6 @@ app.controller('followingController', function ($scope, $http, $location, $compi
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
                 .then(function (success) {
-                    alert(success.data.response);
-                    alert(success.data.unfollowingcount);
                     if (success.data.response == 1) {
                         $('#' + id).closest('.custom-user-box').fadeToggle();
                         if (success.data.unfollowingcount == '0') {
@@ -1427,7 +1413,6 @@ function remove_contacts(index) {
         type: "POST",
         data: {"id": index},
         success: function (data) {
-            alert(data.contactcount);
             if (data.response == 1) {
                 $('#' + index).closest('.custom-user-box').fadeToggle();
                 if (data.contactcount == '1') {
