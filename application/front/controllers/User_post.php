@@ -57,6 +57,12 @@ class User_post extends MY_Controller {
         $user_data = $this->user_post_model->getContactSuggetion($userid);
         echo json_encode($user_data);
     }
+    
+    public function getContactAllSuggetion(){
+        $userid = $this->session->userdata('aileenuser');
+        $user_data = $this->user_post_model->getContactAllSuggetion($userid);
+        echo json_encode($user_data);
+    }
 
     public function addToContact() {
         $userid = $this->session->userdata('aileenuser');

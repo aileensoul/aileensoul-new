@@ -56,7 +56,11 @@ class Userprofile_page extends MY_Controller {
         $pendingContactRequest = $this->user_model->contact_request_pending($userid);
         echo json_encode($pendingContactRequest);
     }
-    
+    public function contactRequestNotification(){
+        $userid = $this->session->userdata('aileenuser');
+        $contactRequestNotification = $this->user_model->contact_request_accept($userid);
+        echo json_encode($contactRequestNotification);
+    }
     
     public function detail_data() {
         $userid = $this->session->userdata('aileenuser');
