@@ -42,8 +42,21 @@ class Userprofile_page extends MY_Controller {
     }
     
     public function contact_request() {
+        $userid = $this->session->userdata('aileenuser');
+        $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
+        
+        $this->data['is_userBasicInfo'] = $this->user_model->is_userBasicInfo($userid);
+        $this->data['is_userStudentInfo'] = $this->user_model->is_userStudentInfo($userid);
+        
+        $this->data['header_profile'] = $this->load->view('header_profile', $this->data, TRUE);
         $this->load->view('userprofile/contact_request', $this->data);
     }
+    public function pending_contact_request(){
+        $userid = $this->session->userdata('aileenuser');
+        $pendingContactRequest = $this->user_model->contact_request_pending($userid);
+        echo json_encode($pendingContactRequest);
+    }
+    
     
     public function detail_data() {
         $userid = $this->session->userdata('aileenuser');
