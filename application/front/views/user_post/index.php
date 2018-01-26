@@ -109,8 +109,14 @@
                     </div>
                     <!-- Repeated Class Start -->
                     <div class="all_user_post">
-                        <?php if ($is_userPostCount > '0') { ?>
-                            <div class="all-post-box" ng-repeat="post in postData">
+                        <div class="user_no_post_avl" ng-if="postData.length == 0"><h3>Feed</h3><div class="user-img-nn">
+                               <div class="user_no_post_img">
+                                   <img src="<?php echo base_url('assets/img/bui-no.png?ver=' . time()); ?>" alt="bui-no.png">
+                               </div>
+                               <div class="art_no_post_text">No Feed Available.</div>
+                           </div></div>
+                        
+                            <div ng-if="postData.length != 0" class="all-post-box" ng-repeat="post in postData">
                                 <!--<input type="hidden" name="post_index" class="post_index" ng-class="post_index" ng-model="post_index" ng-value="{{$index + 1}}">-->
                                 <input type="hidden" name="page_number" class="page_number" ng-class="page_number" ng-model="post.page_number" ng-value="{{post.page_data.page}}">
                                 <input type="hidden" name="total_record" class="total_record" ng-class="total_record" ng-model="post.total_record" ng-value="{{post.page_data.total_record}}">
@@ -288,7 +294,7 @@
                                     </div>
                                 </div>
                             </div>
-                        <?php } ?>
+                        
                     </div>
                     <!-- Repeated Class Complete -->
                     <div class="fw" id="loader" style="text-align:center; display: block;"><img ng-src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) . '?ver=' . time() ?>" alt="Loader" /></div>

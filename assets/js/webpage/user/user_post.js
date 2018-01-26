@@ -160,7 +160,7 @@ app.controller('userOppoController', function ($scope, $http) {
         $http.get(base_url + "user_post/getUserPost?page=" + pagenum).then(function (success) {
             $('#loader').hide();
             $scope.postData = success.data;
-            check_no_post_data();
+           // check_no_post_data();
             $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
     }
@@ -851,7 +851,12 @@ app.controller('userOppoController', function ($scope, $http) {
                                 $scope.sim.description = '';
                                 $scope.sim.postfiles = '';
                                 document.getElementById('fileInput1').value = '';
+//                              //  alert($scope.postData.length);
+//                                if($scope.postData.length != 0){
                                 $scope.postData.splice(0, 0, success.data[0]);
+                           // }else{
+                           //   $scope.postData = success.data[0];
+                           // }
                                 $('video, audio').mediaelementplayer();
                             }
                         });
@@ -1157,12 +1162,12 @@ app.controller('userOppoController', function ($scope, $http) {
                 });
     }
 
-    function check_no_post_data() {
-        var numberPost = $scope.postData.length;
-        if (numberPost == 0) {
-            $('.all_user_post').html(no_user_post_html);
-        }
-    }
+//    function check_no_post_data() {
+//        var numberPost = $scope.postData.length;
+//        if (numberPost == 0) {
+//            $('.all_user_post').html(no_user_post_html);
+//        }
+//    }
 
 });
 

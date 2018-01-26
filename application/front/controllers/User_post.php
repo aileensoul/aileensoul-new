@@ -901,9 +901,10 @@ class User_post extends MY_Controller {
                         exit;
                     }
                 }
-            }
+            }   
 
             $post_data = $this->user_post_model->userPost($userid, $start = '0', $limit = '1');
+          //  echo count($post_data); '<pre>'; print_r($post_data); die();
             echo json_encode($post_data);
         }
     }
