@@ -1401,8 +1401,6 @@ app.controller('followingController', function ($scope, $http, $location, $compi
                 });
     }
     $scope.goUserprofile = function (path) {
-
-        var base_url = '<?php echo base_url(); ?>';
         location.href = base_url + 'profiless/' + path;
     }
 });
