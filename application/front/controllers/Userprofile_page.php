@@ -40,7 +40,11 @@ class Userprofile_page extends MY_Controller {
     public function following() {
         $this->load->view('userprofile/following', $this->data);
     }
-
+    
+    public function contact_request() {
+        $this->load->view('userprofile/contact_request', $this->data);
+    }
+    
     public function detail_data() {
         $userid = $this->session->userdata('aileenuser');
         $is_basicInfo = $this->data['is_basicInfo'] = $this->user_model->is_userBasicInfo($userid);
@@ -74,7 +78,6 @@ class Userprofile_page extends MY_Controller {
         echo json_encode($contactsData);
        }
     }
-      
     
     public function following_data() {
         $userid = $this->session->userdata('aileenuser');

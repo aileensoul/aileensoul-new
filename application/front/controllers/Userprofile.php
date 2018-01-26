@@ -91,5 +91,5 @@ class Userprofile extends MY_Controller {
         $contactRequest = $this->user_model->contactRequestAction($userid, $from_id, $action);
         echo json_encode($contactRequest);
     }
-
+    
 }
