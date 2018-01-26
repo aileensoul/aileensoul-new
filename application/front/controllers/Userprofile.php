@@ -19,17 +19,17 @@ class Userprofile extends MY_Controller {
         //  include('userprofile_include.php');
         $this->data['no_user_post_html'] = '<div class="user_no_post_avl"><h3>Feed</h3><div class="user-img-nn"><div class="user_no_post_img"><img src=' . base_url('assets/img/bui-no.png?ver=' . time()) . ' alt="bui-no.png"></div><div class="art_no_post_text">No Feed Available.</div></div></div>';
         $this->data['no_user_contact_html'] = '<div class="art-img-nn"><div class="art_no_post_img"><img src="' . base_url('assets/img/No_Contact_Request.png?ver=' . time()) . '"></div><div class="art_no_post_text">No Contacts Available.</div></div>';
-        $this->data['header_all_profile'] = '<div class="dropdown-title"> Profiles <a href="profile.html" title="All" class="pull-right">All</a> </div><div id="abody" class="as"> <ul> <li> <div class="all-down"> <a href="#"> <div class="all-img"> <img src="'.base_url('assets/n-images/i5.jpg').'"> </div><div class="text-all"> Artistic Profile </div></a> </div></li><li> <div class="all-down"> <a href="#"> <div class="all-img"> <img src="'.base_url('assets/n-images/i4.jpg') .'"> </div><div class="text-all"> Business Profile </div></a> </div></li><li> <div class="all-down"> <a href="#"> <div class="all-img"> <img src="'.base_url('assets/n-images/i1.jpg') .'"> </div><div class="text-all"> Job Profile </div></a> </div></li><li> <div class="all-down"> <a href="#"> <div class="all-img"> <img src="'. base_url('assets/n-images/i2.jpg') .'"> </div><div class="text-all"> Recruiter Profile </div></a> </div></li><li> <div class="all-down"> <a href="#"> <div class="all-img"> <img src="'.base_url('assets/n-images/i3.jpg') .'"> </div><div class="text-all"> Freelance Profile </div></a> </div></li></ul> </div>';
+        $this->data['header_all_profile'] = '<div class="dropdown-title"> Profiles <a href="profile.html" title="All" class="pull-right">All</a> </div><div id="abody" class="as"> <ul> <li> <div class="all-down"> <a href="#"> <div class="all-img"> <img src="' . base_url('assets/n-images/i5.jpg') . '"> </div><div class="text-all"> Artistic Profile </div></a> </div></li><li> <div class="all-down"> <a href="#"> <div class="all-img"> <img src="' . base_url('assets/n-images/i4.jpg') . '"> </div><div class="text-all"> Business Profile </div></a> </div></li><li> <div class="all-down"> <a href="#"> <div class="all-img"> <img src="' . base_url('assets/n-images/i1.jpg') . '"> </div><div class="text-all"> Job Profile </div></a> </div></li><li> <div class="all-down"> <a href="#"> <div class="all-img"> <img src="' . base_url('assets/n-images/i2.jpg') . '"> </div><div class="text-all"> Recruiter Profile </div></a> </div></li><li> <div class="all-down"> <a href="#"> <div class="all-img"> <img src="' . base_url('assets/n-images/i3.jpg') . '"> </div><div class="text-all"> Freelance Profile </div></a> </div></li></ul> </div>';
     }
 
     public function index() {
-        $this->data['slug'] =  $slug = $this->session->userdata('aileenuser_slug');
+        $this->data['slug'] = $slug = $this->session->userdata('aileenuser_slug');
         $userid = $this->session->userdata('aileenuser');
         $seg_slug = $this->uri->segment(2);
-        
-        if($seg_slug == $slug){
+
+        if ($seg_slug == $slug) {
             $userslug = $slug;
-        }else{
+        } else {
             $userslug = $seg_slug;
         }
         $userdata = $this->data['userdata'] = $this->user_model->getUserDataByslug($userslug, $datat = "u.user_id,u.first_name,u.last_name,u.user_dob,u.user_gender,u.user_agree,u.created_date,u.verify_date,u.user_verify,u.user_slider,u.user_slug,ui.user_image,ui.modify_date,ui.edit_ip,ui.profile_background,ui.profile_background_main,ul.email,ul.password,ul.is_delete,ul.status,ul.password_code");
@@ -38,12 +38,12 @@ class Userprofile extends MY_Controller {
         $this->data['is_userSlugBasicInfo'] = $this->user_model->getUserProfessionDataBySlug($userslug, $data = "jt.name as Designation,it.industry_name as Industry,c.city_name as City");
         $this->data['is_userSlugStudentInfo'] = $this->user_model->getUserStudentDataBySlug($userslug, $data = "d.degree_name as Degree,u.university_name as University,c.city_name as City");
         $this->data['is_userPostCount'] = $this->user_post_model->userPostCountBySlug($userslug);
-        
-       $is_userContactInfo = $this->userprofile_model->userContactStatus($userid, $userdata['user_id']);
-            $is_userFollowInfo = $this->userprofile_model->userFollowStatus($userid, $userdata['user_id']);
-            $this->data['to_id'] = $userdata['user_id'];
-       
-        if (count($is_userContactInfo) != 0) { 
+
+        $is_userContactInfo = $this->userprofile_model->userContactStatus($userid, $userdata['user_id']);
+        $is_userFollowInfo = $this->userprofile_model->userFollowStatus($userid, $userdata['user_id']);
+        $this->data['to_id'] = $userdata['user_id'];
+
+        if (count($is_userContactInfo) != 0) {
             $this->data['contact_status'] = 1;
             $this->data['contact_value'] = $is_userContactInfo['status'];
             $this->data['contact_id'] = $is_userContactInfo['id'];
@@ -72,13 +72,24 @@ class Userprofile extends MY_Controller {
             $this->load->view('userprofile/notavalible');
         }
     }
-    
-    public function looping(){
+
+    public function looping() {
         $this->load->view('userprofile/looping');
     }
-    
-    public function contact_request(){
+
+    public function contact_request() {
         $userid = $this->session->userdata('aileenuser');
-        $this->data['contactRequest'] = $this->user_model->contact_request($userid);
+        $contactRequest = $this->user_model->contact_request($userid);
+        echo json_encode($contactRequest);
     }
+
+    public function contactRequestAction() {
+        $userid = $this->session->userdata('aileenuser');
+        $from_id = $_POST['from_id'];
+        $action = $_POST['action'];
+
+        $contactRequest = $this->user_model->contactRequestAction($userid, $from_id, $action);
+        echo json_encode($contactRequest);
+    }
+
 }

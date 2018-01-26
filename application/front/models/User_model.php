@@ -203,37 +203,52 @@ class User_model extends CI_Model {
     }
 
     public function contact_request_pending($user_id = '') {
-        $this->db->select("uc.from_id,uc.to_id,uc.modify_date,uc.status,uc.not_read,CONCAT(u.first_name,' ', u.last_name) as fullname")->from("user_contact uc");
-        $this->db->join('user u', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.to_id ELSE uc.from_id END)');
-        $this->db->where("from_id ='$user_id' OR to_id = '$user_id'");
-        $this->db->where('status','pending');
+//        $this->db->select("uc.from_id,uc.to_id,uc.modify_date,uc.status,uc.not_read,CONCAT(u.first_name,' ', u.last_name) as fullname")->from("user_contact uc");
+//        $this->db->join('user u', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.to_id ELSE uc.from_id END)');
+        $this->db->select("uc.from_id,uc.modify_date,uc.status,uc.not_read,CONCAT(u.first_name,' ', u.last_name) as fullname,ui.user_image,jt.name as designation,d.degree_name as degree")->from("user_contact uc");
+        $this->db->join('user u', 'u.user_id = uc.from_id');
+        $this->db->join('user_info ui', 'ui.user_id = uc.from_id');
+        $this->db->join('user_profession up', 'up.user_id = uc.from_id', 'left');
+        $this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
+        $this->db->join('user_student us', 'us.user_id = uc.from_id', 'left');
+        $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
+        $this->db->where("uc.to_id", $user_id);
+        $this->db->where('uc.status', 'pending');
         $query = $this->db->get();
         $result_array = $query->result_array();
         return $result_array;
     }
 
     public function contact_request_accept($user_id = '') {
-        $this->db->select("uc.from_id,uc.to_id,uc.modify_date,uc.status,uc.not_read,CONCAT(u.first_name,' ', u.last_name) as fullname")->from("user_contact uc");
-        $this->db->join('user u', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.to_id ELSE uc.from_id END)');
-        $this->db->where("from_id ='$user_id' OR to_id = '$user_id'");
-        $this->db->where('status','confirm');
+//        $this->db->select("uc.from_id,uc.to_id,uc.modify_date,uc.status,uc.not_read,CONCAT(u.first_name,' ', u.last_name) as fullname")->from("user_contact uc");
+//        $this->db->join('user u', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.to_id ELSE uc.from_id END)');
+        $this->db->select("uc.to_id,uc.modify_date,uc.status,uc.not_read,CONCAT(u.first_name,' ', u.last_name) as fullname,ui.user_image,jt.name as designation,d.degree_name as degree")->from("user_contact uc");
+        $this->db->join('user u', 'u.user_id = uc.to_id');
+        $this->db->join('user_info ui', 'ui.user_id = uc.to_id');
+        $this->db->join('user_profession up', 'up.user_id = uc.to_id', 'left');
+        $this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
+        $this->db->join('user_student us', 'us.user_id = uc.to_id', 'left');
+        $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
+        $this->db->where("uc.from_id", $user_id);
+        $this->db->where('uc.status', 'confirm');
         $query = $this->db->get();
         $result_array = $query->result_array();
         return $result_array;
     }
 
     public function contact_request($user_id = '') {
-        
         $contact_request_pending = $this->contact_request_pending($user_id);
         $contact_request_accept = $this->contact_request_accept($user_id);
-        
-        echo '<pre>';
-        print_r($contact_request_pending);
-        print_r($contact_request_accept);
-        exit;
-        
-        $query = $this->db->get();
-        $result_array = $query->row_array();
+        $result_array = array_merge($contact_request_pending, $contact_request_accept);
+
+        return $result_array;
+    }
+
+    public function contactRequestAction($user_id = '', $from_id = '', $action = '') {
+        $data = array('status' => $action, 'modify_date' => date('Y-m-d H:i:s', time()));
+        $this->db->where('from_id', $from_id);
+        $this->db->where('to_id', $user_id);
+        $result_array = $this->db->update('user_contact', $data);
         return $result_array;
     }
 

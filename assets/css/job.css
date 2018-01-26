@@ -2260,7 +2260,10 @@ p.job-top-btn a.btn4:first-child{
 .lbpos a{color: #5c5c5c;}
 .job_work_experience_main_div h6:first-child{margin-top:0px;}
 .job_work_experience_main_div h6{margin-top:15px;}
-
+.autoposition{
+                position: absolute!important;
+                z-index: 999 !important;
+}
 
 
 @media screen and (min-width:768px){

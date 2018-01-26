@@ -1067,7 +1067,10 @@ fieldset.fresher_radio label {
 }
 
 .job-menu-profile a h3{display: inline-block;}
-
+.autoposition{
+                position: absolute!important;
+                z-index: 999 !important;
+}
 
 /***  media query  ***/
 

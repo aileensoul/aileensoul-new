@@ -4156,7 +4156,10 @@ body.reg-form{
 .cus-bus .custom-right-art .cust-bor{border:1px solid #d9d9d9 !important;border-top: none !important;}
 
 .no-login .contact-frnd-post{border-top: none !important;}
-
+.autoposition{
+                position: absolute!important;
+                z-index: 999 !important;
+}
 
 
 @media screen and (max-width:1279px){

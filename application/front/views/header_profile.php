@@ -29,50 +29,38 @@
                                     </div>
                                     <div class="content custom-scroll">
                                         <ul class="dropdown-data add-dropdown">
-                                            <li class="">
+                                            <li class="" ng-repeat="contact_request in contact_request_data">
                                                 <a href="#">
-                                                    <div class="dropdown-database">
+                                                    <div class="dropdown-database" ng-if="contact_request.status == 'pending'">
                                                         <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/n-images/user-pic.jpg') ?>">
+                                                            <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{contact_request.user_image}}" alt="{{contact_request.fullname}}" ng-if="contact_request.user_image != ''">
+                                                            <img ng-src="<?php echo NOBUSIMAGE2 ?>" ng-if="contact_request.user_image == ''">
                                                         </div>
                                                         <div class="dropdown-user-detail">
                                                             <div class="user-name">
-                                                                <h6><b>Atosa Ahmedabad</b></h6>
-                                                                <div class="msg-discription">IT Sector</div>
+                                                                <h6><b ng-bind="contact_request.fullname | capitalize"></b></h6>
+                                                                <div class="msg-discription" ng-bind="contact_request.designation | capitalize" ng-if="contact_request.designation != ''"></div>
+                                                                <div class="msg-discription" ng-bind="contact_request.degree | capitalize" ng-if="contact_request.designation == ''"></div>
+                                                                <div class="msg-discription" ng-if="contact_request.designation == '' && contact_request.degree == ''">Current Work</div>
                                                             </div>
                                                         </div> 
                                                     </div>
-                                                </a> 
-                                                <div class="user-request">
-                                                    <a href="#" class="add-left-true">
-                                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                                    </a>
-                                                    <a href="#" class="add-right-true">
-                                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
+                                                    <div class="dropdown-database confirm_div" ng-if="contact_request.status == 'confirm'">
                                                         <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg">
+                                                            <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{contact_request.user_image}}" alt="{{contact_request.fullname}}" ng-if="contact_request.user_image != ''">
+                                                            <img ng-src="<?php echo NOBUSIMAGE2 ?>" ng-if="contact_request.user_image == ''">
                                                         </div>
                                                         <div class="dropdown-user-detail">
-                                                            <div class="user-name">
-                                                                <h6><b>Atosa Ahmedabad</b></h6>
-                                                                <div class="msg-discription">IT Sector</div>
-                                                            </div>
-
+                                                            <b ng-bind="contact_request.fullname | capitalize"></b> confirmed your contact request.
+                                                            <div class="msg-discription"><span class="time_ago">2 Month Ago</span></div>
                                                         </div> 
-
                                                     </div>
                                                 </a> 
-                                                <div class="user-request">
-                                                    <a href="#" class="add-left-true">
+                                                <div class="user-request" ng-if="contact_request.status == 'pending'">
+                                                    <a href="javascript:void(0);" class="add-left-true" ng-click="confirmContactRequest(contact_request.from_id)">
                                                         <i class="fa fa-check" aria-hidden="true"></i>
                                                     </a>
-                                                    <a href="#" class="add-right-true">
+                                                    <a href="javascript:void(0);" class="add-right-true" ng-click="rejectContactRequest(contact_request.from_id)">
                                                         <i class="fa fa-times" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
@@ -98,89 +86,7 @@
                                                         <div class="dropdown-user-detail">
                                                             <h6><b>Atosa Ahmedabad</b></h6>
                                                             <div class="msg-discription">Hello how are you</div>
-
                                                             <span class="day-text">1 month ago</span>
-
-                                                        </div> 
-                                                    </div>
-                                                </a> 
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <h6><b>Atosa Ahmedabad</b></h6>
-                                                            <div class="msg-discription">Hello how are you</div>
-
-                                                            <span class="day-text">1 month ago</span>
-
-                                                        </div> 
-                                                    </div>
-                                                </a> 
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <h6><b>Atosa Ahmedabad</b></h6>
-                                                            <div class="msg-discription">Hello how are you</div>
-
-                                                            <span class="day-text">1 month ago</span>
-
-                                                        </div> 
-                                                    </div>
-                                                </a> 
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <h6><b>Atosa Ahmedabad</b></h6>
-                                                            <div class="msg-discription">Hello how are you</div>
-
-                                                            <span class="day-text">1 month ago</span>
-
-                                                        </div> 
-                                                    </div>
-                                                </a> 
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <h6><b>Atosa Ahmedabad</b></h6>
-                                                            <div class="msg-discription">Hello how are you</div>
-
-                                                            <span class="day-text">1 month ago</span>
-
-                                                        </div> 
-                                                    </div>
-                                                </a> 
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <h6><b>Atosa Ahmedabad</b></h6>
-                                                            <div class="msg-discription">Hello how are you</div>
-
-                                                            <span class="day-text">1 month ago</span>
-
                                                         </div> 
                                                     </div>
                                                 </a> 
@@ -214,101 +120,6 @@
                                     </div>
                                     <div class="content custom-scroll">
                                         <ul class="dropdown-data noti-dropdown">
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <h6>
-                                                                <b>   Atosa Ahmedabad</b> 
-                                                                <span class="">Started following you in business profile.</span>
-                                                            </h6>
-                                                            <div>
-
-                                                                <span class="day-text">1 month ago</span>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
-                                                </a> 
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <h6>
-                                                                <b>   Atosa Ahmedabad</b> 
-                                                                <span class="">Started following you in business profile.</span>
-                                                            </h6>
-                                                            <div>
-
-                                                                <span class="day-text">1 month ago</span>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
-                                                </a> 
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <h6>
-                                                                <b>   Atosa Ahmedabad</b> 
-                                                                <span class="">Started following you in business profile.</span>
-                                                            </h6>
-                                                            <div>
-
-                                                                <span class="day-text">1 month ago</span>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
-                                                </a> 
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <h6>
-                                                                <b>   Atosa Ahmedabad</b> 
-                                                                <span class="">Started following you in business profile.</span>
-                                                            </h6>
-                                                            <div>
-
-                                                                <span class="day-text">1 month ago</span>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
-                                                </a> 
-                                            </li>
-                                            <li class="">
-                                                <a href="#">
-                                                    <div class="dropdown-database">
-                                                        <div class="post-img">
-                                                            <img ng-src="<?php echo base_url('assets/') ?>n-images/user-pic.jpg" alt="No Business Image">
-                                                        </div>
-                                                        <div class="dropdown-user-detail">
-                                                            <h6>
-                                                                <b>   Atosa Ahmedabad</b> 
-                                                                <span class="">Started following you in business profile.</span>
-                                                            </h6>
-                                                            <div>
-
-                                                                <span class="day-text">1 month ago</span>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
-                                                </a> 
-                                            </li>
                                             <li class="">
                                                 <a href="#">
                                                     <div class="dropdown-database">

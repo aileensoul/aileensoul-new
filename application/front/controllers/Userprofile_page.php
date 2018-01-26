@@ -74,8 +74,7 @@ class Userprofile_page extends MY_Controller {
         echo json_encode($contactsData);
        }
     }
-    
-   
+      
     
     public function following_data() {
         $userid = $this->session->userdata('aileenuser');
@@ -146,7 +145,7 @@ class Userprofile_page extends MY_Controller {
         $contact =  $this->userprofile_model->userContactStatus($userid, $id);
 
         if (count($contact) != 0) {
-            $data = array('status' => $status);
+            $data = array('status' => $status,'modify_date' => date('Y-m-d H:i:s',time()));
             $insert_id = $this->common->update_data($data, 'user_contact', 'id', $contact['id']);
             $response = $status;
         } else {
@@ -155,7 +154,8 @@ class Userprofile_page extends MY_Controller {
                  'from_id' => $userid,
                  'to_id' => $id,
                  'not_read' => '2',
-                 'created_date' => $status,
+                 'created_date' => date('Y-m-d H:i:s',time()),
+                 'modify_date' => date('Y-m-d H:i:s',time()),
                  );
             $insert_id = $this->common->insert_data($data, 'user_contact');
             $response = $status;

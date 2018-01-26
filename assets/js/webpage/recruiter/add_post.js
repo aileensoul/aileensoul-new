@@ -33,6 +33,12 @@ $(function () {
 });
 
 
+
+$("#post_name").blur(function(){
+   $( "#ui-id-6 " ).addClass( "autoposition" );
+});
+
+
 function imgval() {
 //
 //    var skill_main = document.getElementById("skills").value;
@@ -658,8 +664,9 @@ $(function () {
     $("#post_name").autocomplete({
         source: function (request, response) {
             var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(jobdata, function (item) {
+            response($.grep(jobdata, function (item) { 
                 return matcher.test(item.label);
+                $("#ui-id-1").addClass("autoposition");
             }));
         },
         minLength: 1,
@@ -696,6 +703,8 @@ $(function () {
                 source: function (request, response) {
                     // delegate back to autocomplete, but extract the last term
                     $.getJSON(base_url + "general/get_skill", {term: extractLast(request.term)}, response);
+                     $("#ui-id-7").addClass("autoposition");
+                     $("#ui-id-1").addClass("autoposition");
                 },
                 focus: function () {
                     // prevent value inserted on focus

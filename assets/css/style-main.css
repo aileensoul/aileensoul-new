@@ -2625,7 +2625,10 @@ header.profile-header .logo a{
     color: #1b8ab9;
 }
 header .col-md-4.col-sm-3 a{display: inline-block;}
-
+.autoposition{
+                position: absolute!important;
+                z-index: 999 !important;
+}
 
 @media screen and (min-height:540px){
     .cover .modal-content{
