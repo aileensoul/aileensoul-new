@@ -68,6 +68,7 @@ $route['following/(:any)'] = 'Userprofile';
 $route['contacts/(:any)'] = 'Userprofile';
 
 $route['opportunities'] = 'user_post';
+$route['contact-request'] = 'userprofile_page/contact_request';
 
 //$route['default_controller'] = 'under_construction';
 
