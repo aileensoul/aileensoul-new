@@ -886,8 +886,8 @@ app.controller('userOppoController', function ($scope, $http) {
                         })
                         .then(function (success) {
                             if (success) {
-                                if (success.data == 1) {
-                                    $('#simple-post-description-' + post_id).html($scope.sim.description);
+                                if (success.data.response == 1) {
+                                    $('#simple-post-description-' + post_id).html(success.data.sim_description);
                                 }
                             }
                         });

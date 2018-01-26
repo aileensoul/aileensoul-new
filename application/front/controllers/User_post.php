@@ -1084,6 +1084,7 @@ class User_post extends MY_Controller {
             } else if ($post_for == 'simple') {
                 $updatedata = array(
                     'response' => 1,
+                    'sim_description' => $description,
                 );
             } else if ($post_for == 'question') {
                 $updatedata = array(
