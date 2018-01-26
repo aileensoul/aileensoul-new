@@ -18,13 +18,12 @@ app.controller('contactRequestController', function ($scope, $http) {
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (success) {
             if (success.data) {
-                alert(12121);
                 $scope.pending_contact_request_data[index].splice(0, 1);
             }
         });
     }
 
-    $scope.rejectContact = function (from_id, index, contact) {
+    $scope.rejectContact = function (from_id, index) {
         $http({
             method: 'POST',
             url: base_url + 'userprofile/contactRequestAction',

@@ -36,18 +36,18 @@
                                                     <span title="{{contact.fullname}}" class="main_compny_name" ng-bind="contact.fullname | capitalize"></span>
                                                 </div>
                                                 <div class="main_data_cq">
-                                                    <span class="dc_cl_m" title="{{contact.designation | capitalize}}" ng-if="contact.designation" ng-bind="contact.designation | capitalize"></span>
-                                                    <span class="dc_cl_m" title="{{contact.degree | capitalize}}" ng-if="contact.degree" ng-bind="contact.degree | capitalize"></span>
-                                                    <span class="dc_cl_m" title="Current Work" ng-if="contact.designation == '' && contact.degree== ''">CURRENT WORK</span>
+                                                    <span class="dc_cl_m" title="{{contact.designation| capitalize}}" ng-if="contact.designation" ng-bind="contact.designation | capitalize"></span>
+                                                    <span class="dc_cl_m" title="{{contact.degree| capitalize}}" ng-if="contact.degree" ng-bind="contact.degree | capitalize"></span>
+                                                    <span class="dc_cl_m" title="Current Work" ng-if="contact.designation == '' && contact.degree == ''">CURRENT WORK</span>
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="fw">
                                             <p class="request-btn">
-                                                <a href="javascript:void(0);" class="btn1 pull-left" ng-click="confirmContact(contact.from_id,$index,contact)">
+                                                <a href="javascript:void(0);" class="btn1 pull-left" ng-click="confirmContact(contact.from_id, $index)">
                                                     Confirm
                                                 </a>
-                                                <a href="javascript:void(0);" class="btn3 pull-right" ng-click="rejectContact(contact.from_id,$index,contact)">
+                                                <a href="javascript:void(0);" class="btn3 pull-right" ng-click="rejectContact(contact.from_id, $index)">
                                                     Decline
                                                 </a>
                                             </p>
@@ -132,18 +132,18 @@
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/owl.carousel.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
         <script src="<?php echo base_url('assets/js/angular-validate.min.js?ver=' . time()) ?>"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
         <script>
-                            var base_url = '<?php echo base_url(); ?>';
-                            var user_slug = '<?php echo $this->uri->segment(2); ?>';
-                            var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
-                            var item = '<?php echo $this->uri->segment(1); ?>';
-                            var app = angular.module("contactRequestApp", ['ngRoute', 'ui.bootstrap', 'ngSanitize']);
+                                                    var base_url = '<?php echo base_url(); ?>';
+                                                    var user_slug = '<?php echo $this->uri->segment(2); ?>';
+                                                    var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+                                                    var item = '<?php echo $this->uri->segment(1); ?>';
+                                                    var app = angular.module("contactRequestApp", ['ngRoute', 'ui.bootstrap', 'ngSanitize']);
         </script>
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/webpage/user/contact_request.js?ver=' . time()) ?>"></script>
