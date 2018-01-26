@@ -539,5 +539,37 @@ class User_post_model extends CI_Model {
         $userAskPost = $query->row_array();
         return $userAskPost;
     }
+    
+    public function GetQuestionCategoryName($categoryId = '') {
+         $this->db->select("GROUP_CONCAT(DISTINCT(t.name)) as category")->from("ailee_tags t");
+            $this->db->where('FIND_IN_SET(t.id,"' . $categoryId . '") !=', 0);
+            $query = $this->db->get();
+            $category = $query->row_array();
+        return $category;
+    }
+    
+    public function GetLocationName($city_id = '') {
+          $this->db->select("GROUP_CONCAT(DISTINCT(c.city_name)) as location")->from("ailee_cities c");
+            $this->db->where('FIND_IN_SET(c.city_id,"' . $city_id . '") !=', 0);
+            $query = $this->db->get();
+            $location = $query->row_array();
+             return $location;
+    }
+    
+     public function GetJobTitleName($job_title_id = '') {
+          $this->db->select("GROUP_CONCAT(DISTINCT(jt.name)) as opportunity_for")->from("ailee_job_title jt");
+            $this->db->where('FIND_IN_SET(jt.title_id,"' . $job_title_id . '") !=', 0);
+            $query = $this->db->get();
+            $title = $query->row_array();
+            return $title;
+    }
+    
+    public function GetIndustryFieldName($ask_field = '') {
+          $this->db->select("it.industry_name as field")->from("industry_type it");
+            $this->db->where('it.industry_id', $ask_field);
+            $query = $this->db->get();
+            $field = $query->row_array();
+             return $field;
+    }
 
 }

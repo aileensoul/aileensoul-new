@@ -964,6 +964,7 @@ class User_post extends MY_Controller {
             $update_data['modify_date'] = date('Y-m-d H:i:s', time());
             $update_post_data = $this->common->update_data($update_data, 'user_simple_post', 'post_id', $post_id);
         } else if ($post_for == 'opportunity') {
+
             $opp_desc = $_POST['description'];
             $opp_field = $_POST['field'];
             $job_title = json_decode($_POST['job_title'], TRUE);
@@ -1002,22 +1003,9 @@ class User_post extends MY_Controller {
             }
             $city_id = trim($city_id, ',');
 
-            $this->db->select("GROUP_CONCAT(DISTINCT(c.city_name)) as location")->from("ailee_cities c");
-            $this->db->where('FIND_IN_SET(c.city_id,"' . $city_id . '") !=', 0);
-            $query = $this->db->get();
-            $opportunity_location = $query->row_array();
-
-            $this->db->select("GROUP_CONCAT(DISTINCT(jt.name)) as opportunity_for")->from("ailee_job_title jt");
-            $this->db->where('FIND_IN_SET(jt.title_id,"' . $job_title_id . '") !=', 0);
-            $query = $this->db->get();
-            $opportunity_title = $query->row_array();
-
-
-            $this->db->select("it.industry_name as field")->from("industry_type it");
-            $this->db->where('it.industry_id', $opp_field);
-            $query = $this->db->get();
-            $opportunity_field = $query->row_array();
-
+            $opportunity_location = $this->user_post_model->GetLocationName($city_id);
+            $opportunity_title = $this->user_post_model->GetJobTitleName($job_title_id);
+            $opportunity_field = $this->user_post_model->GetIndustryFieldName($opp_field);
 
 
             $update_data = array();
@@ -1052,17 +1040,8 @@ class User_post extends MY_Controller {
             }
             $categoryId = trim($categoryId, ',');
 
-            $this->db->select("GROUP_CONCAT(DISTINCT(t.name)) as category")->from("ailee_tags t");
-            $this->db->where('FIND_IN_SET(t.id,"' . $categoryId . '") !=', 0);
-            $query = $this->db->get();
-            $question_category = $query->row_array();
-
-            $this->db->select("it.industry_name as field")->from("industry_type it");
-            $this->db->where('it.industry_id', $ask_field);
-            $query = $this->db->get();
-            $question_field = $query->row_array();
-
-
+            $question_category = $this->user_post_model->GetQuestionCategoryName($categoryId);
+            $question_field = $this->user_post_model->GetIndustryFieldName($ask_field);
 
             $update_data = array();
             $update_data['question'] = $ask_que;
