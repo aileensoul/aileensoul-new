@@ -305,7 +305,7 @@
                         <img ng-src="<?php echo base_url('assets/n-images/add.jpg') ?>">
                     </div>
                     <div class="all-contact">
-                        <h4>Contacts<a href="#" class="pull-right">All</a></h4>
+                        <h4>Contacts<a href="<?php echo base_url('contact-request') ?>" class="pull-right">All</a></h4>
                         <div class="all-user-list">
                             <data-owl-carousel class="owl-carousel" data-options="">
                                 <div owl-carousel-item="" ng-repeat="contact in contactSuggetion" class="item">
@@ -328,6 +328,7 @@
                                     </div>
                                 </div>
                                 <div owl-carousel-item="" class="item last-item-box">
+                                    <a href="<?php echo base_url('contact-request') ?>">
                                     <div class="item" id="last-item">
                                         <div class="post-img" ng-if="contact.user_image != ''">
                                             <img ng-src="<?php echo base_url('assets/n-images/view-all.png?ver=' . time()) ?>">
@@ -337,6 +338,7 @@
                                         </div>
                                         <button class="follow-btn">View More</button>
                                     </div>
+                                    </a>
                                 </div>
                             </data-owl-carousel>
                         </div>
