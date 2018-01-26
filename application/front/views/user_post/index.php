@@ -141,23 +141,22 @@
                                     </div>
                                     <div class="post-discription" ng-if="post.post_data.post_for == 'opportunity'">
                                         <h5 class="post-title">
-                                            <p ng-if="post.opportunity_data.opportunity_for"><b>Opportunity for:</b><span ng-bind="post.opportunity_data.opportunity_for"></span></p>
-                                            <p ng-if="post.opportunity_data.location"><b>Location:</b><span ng-bind="post.opportunity_data.location"></span></p>
-                                            <p ng-if="post.opportunity_data.field"><b>Field:</b><span ng-bind="post.opportunity_data.field"></span></p>
+                                            <p ng-if="post.opportunity_data.opportunity_for"><b>Opportunity for:</b><span ng-bind="post.opportunity_data.opportunity_for" id="opp-post-opportunity-for-{{post.post_data.id}}"></span></p>
+                                            <p ng-if="post.opportunity_data.location"><b>Location:</b><span ng-bind="post.opportunity_data.location" id="opp-post-location-{{post.post_data.id}}"></span></p>
+                                            <p ng-if="post.opportunity_data.field"><b>Field:</b><span ng-bind="post.opportunity_data.field" id="opp-post-field-{{post.post_data.id}}"></span></p>
                                         </h5>
-
-                                        <div class="post-des-detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity"></span></div>
+                                        <div class="post-des-detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity" id="opp-post-opportunity-{{post.post_data.id}}"></span></div>
                                     </div>
                                     <div class="post-discription" ng-if="post.post_data.post_for == 'simple'">
-                                        <div class="post-des-detail" ng-if="post.simple_data.description"><span ng-bind-html="post.simple_data.description"></span></div>
+                                        <div class="post-des-detail" ng-if="post.simple_data.description"><span ng-bind-html="post.simple_data.description" id="simple-post-description-{{post.post_data.id}}"></span></div>
                                     </div>
                                     <div class="post-discription" ng-if="post.post_data.post_for == 'question'">
                                         <h5 class="post-title">
-                                            <p ng-if="post.question_data.question"><b>Question:</b><span ng-bind="post.question_data.question"></span></p>
-                                            <p ng-if="post.question_data.description"><b>Description:</b><span ng-bind="post.question_data.description"></span></p>
-                                            <p ng-if="post.question_data.link"><b>Link:</b><span ng-bind="post.question_data.link"></span></p>
-                                            <p ng-if="post.question_data.category"><b>Category:</b><span ng-bind="post.question_data.category"></span></p>
-                                            <p ng-if="post.question_data.field"><b>Field:</b><span ng-bind="post.question_data.field"></span></p>
+                                            <p ng-if="post.question_data.question"><b>Question:</b><span ng-bind="post.question_data.question" id="ask-post-question-{{post.post_data.id}}"></span></p>
+                                            <p ng-if="post.question_data.description"><b>Description:</b><span ng-bind="post.question_data.description" id="ask-post-description-{{post.post_data.id}}"></span></p>
+                                            <p ng-if="post.question_data.link"><b>Link:</b><span ng-bind="post.question_data.link" id="ask-post-link-{{post.post_data.id}}"></span></p>
+                                            <p ng-if="post.question_data.category"><b>Category:</b><span ng-bind="post.question_data.category" id="ask-post-category-{{post.post_data.id}}"></span></p>
+                                            <p ng-if="post.question_data.field"><b>Field:</b><span ng-bind="post.question_data.field" id="ask-post-field-{{post.post_data.id}}"></span></p>
                                         </h5>
                                         <div class="post-des-detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity"></span></div>
                                     </div>
@@ -466,7 +465,7 @@
                                     <input type="text" class="form-control" ng-model="opp.otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
                                 </div>
                                 <input type="hidden" name="post_for" ng-model="opp.post_for" class="form-control" value="">
-                                <input type="hidden" ng-if="is_edit == 1" id="edit_post_id" name="edit_post_id" ng-model="opp.edit_post_id" class="form-control" value="{{opp.edit_post_id}}">
+                                <input type="hidden" ng-if="is_edit == 1" id="opp_edit_post_id" name="opp_edit_post_id" ng-model="opp.edit_post_id" class="form-control" value="{{opp.edit_post_id}}">
                             </div>
                             <div class="text-right fw pt10 pb20 pr15">
                                 <button type="submit" class="btn1"  value="Submit">Post</button>    
@@ -539,6 +538,7 @@
                                     <input type="text" class="form-control" ng-model="ask.otherField" placeholder="Enter other field" ng-required="true" autocomplete="off">
                                 </div>
                                 <input type="hidden" name="post_for" ng-model="ask.post_for" class="form-control" value="">
+                           <input type="hidden" ng-if="is_edit == 1" id="ask_edit_post_id" name="ask_edit_post_id" ng-model="ask.edit_post_id" class="form-control" value="{{ask.edit_post_id}}">
                             </div>
                             <div class="text-right fw pt10 pb20 pr15">
                                 <button type="submit" class="btn1"  value="Submit">Post</button> 

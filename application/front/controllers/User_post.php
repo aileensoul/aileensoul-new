@@ -945,14 +945,14 @@ class User_post extends MY_Controller {
                 $tagname[$key]['name'] = $value;
             }
 
-           // $post_data['tag_name'] = json_encode($tagname);
+            // $post_data['tag_name'] = json_encode($tagname);
             $post_data['tag_name'] = $tagname;
         }
         echo json_encode($post_data);
     }
 
     public function edit_post_opportunity() {
-
+        $userid = $this->session->userdata('aileenuser');
         $post_id = $_POST['post_id'];
         $post_for = $_POST['post_for'];
 
@@ -963,13 +963,144 @@ class User_post extends MY_Controller {
             $update_data['description'] = $description;
             $update_data['modify_date'] = date('Y-m-d H:i:s', time());
             $update_post_data = $this->common->update_data($update_data, 'user_simple_post', 'post_id', $post_id);
+        } else if ($post_for == 'opportunity') {
+            $opp_desc = $_POST['description'];
+            $opp_field = $_POST['field'];
+            $job_title = json_decode($_POST['job_title'], TRUE);
+            $location = json_decode($_POST['location'], TRUE);
+
+            foreach ($job_title as $title) {
+                $designation = $this->data_model->findJobTitle($title['name']);
+                if ($designation['title_id'] != '') {
+                    $jobTitleId = $designation['title_id'];
+                } else {
+                    $data = array();
+                    $data['name'] = $title['name'];
+                    $data['created_date'] = date('Y-m-d H:i:s', time());
+                    $data['modify_date'] = date('Y-m-d H:i:s', time());
+                    $data['status'] = 'draft';
+                    $data['slug'] = $this->common->clean($title['name']);
+                    $jobTitleId = $this->common->insert_data_getid($data, 'job_title');
+                }
+                $job_title_id .= $jobTitleId . ',';
+            }
+            $job_title_id = trim($job_title_id, ',');
+
+            foreach ($location as $loc) {
+                $city = $this->data_model->findCityList($loc['city_name']);
+                if ($city['city_id'] != '') {
+                    $cityId = $city['city_id'];
+                } else {
+                    $data = array();
+                    $data['city_name'] = $loc['city_name'];
+                    $data['state_id'] = '0';
+                    $data['status'] = '2';
+                    $data['group_id'] = '0';
+                    $cityId = $this->common->insert_data_getid($data, 'cities');
+                }
+                $city_id .= $cityId . ',';
+            }
+            $city_id = trim($city_id, ',');
+
+            $this->db->select("GROUP_CONCAT(DISTINCT(c.city_name)) as location")->from("ailee_cities c");
+            $this->db->where('FIND_IN_SET(c.city_id,"' . $city_id . '") !=', 0);
+            $query = $this->db->get();
+            $opportunity_location = $query->row_array();
+
+            $this->db->select("GROUP_CONCAT(DISTINCT(jt.name)) as opportunity_for")->from("ailee_job_title jt");
+            $this->db->where('FIND_IN_SET(jt.title_id,"' . $job_title_id . '") !=', 0);
+            $query = $this->db->get();
+            $opportunity_title = $query->row_array();
+
+
+            $this->db->select("it.industry_name as field")->from("industry_type it");
+            $this->db->where('it.industry_id', $opp_field);
+            $query = $this->db->get();
+            $opportunity_field = $query->row_array();
+
+
+
+            $update_data = array();
+            $update_data['opportunity_for'] = $job_title_id;
+            $update_data['location'] = $city_id;
+            $update_data['opportunity'] = $opp_desc;
+            $update_data['field'] = $opp_field;
+            $update_data['modify_date'] = date('Y-m-d H:i:s', time());
+            $update_post_data = $this->common->update_data($update_data, 'user_opportunity', 'post_id', $post_id);
+        } else if ($post_for == 'question') {
+            $ask_que = $_POST['question'];
+            $ask_desc = $_POST['description'];
+            $ask_field = $_POST['field'];
+            $ask_other_field = $_POST['other_field'];
+            $ask_web_link = $_POST['weblink'];
+            $ask_category = json_decode($_POST['category'], TRUE);
+
+            foreach ($ask_category as $ask) {
+                $asked = $this->data_model->findCategory($ask['name']);
+                if ($asked['id'] != '') {
+                    $categoryId .= $asked['id'] . ',';
+                } else {
+                    $data = array();
+                    $data['name'] = $ask['name'];
+                    $data['created_date'] = date('Y-m-d H:i:s', time());
+                    $data['modify_date'] = date('Y-m-d H:i:s', time());
+                    $data['user_id'] = $userid;
+                    $data['status'] = 'draft';
+                    $categorysId = $this->common->insert_data_getid($data, 'tags');
+                    $categoryId .= $categorysId . ',';
+                }
+            }
+            $categoryId = trim($categoryId, ',');
+
+            $this->db->select("GROUP_CONCAT(DISTINCT(t.name)) as category")->from("ailee_tags t");
+            $this->db->where('FIND_IN_SET(t.id,"' . $categoryId . '") !=', 0);
+            $query = $this->db->get();
+            $question_category = $query->row_array();
+
+            $this->db->select("it.industry_name as field")->from("industry_type it");
+            $this->db->where('it.industry_id', $ask_field);
+            $query = $this->db->get();
+            $question_field = $query->row_array();
+
+
+
+            $update_data = array();
+            $update_data['question'] = $ask_que;
+            $update_data['description'] = $ask_desc;
+            $update_data['category'] = $categoryId;
+            $update_data['field'] = $ask_field;
+            $update_data['modify_date'] = date('Y-m-d H:i:s', time());
+            $update_post_data = $this->common->update_data($update_data, 'user_ask_question', 'post_id', $post_id);
         }
 
         if ($update_post_data) {
-            echo 1;
+            if ($post_for == 'opportunity') {
+                $updatedata = array(
+                    'response' => 1,
+                    'opp_location' => $opportunity_location['location'],
+                    'opp_opportunity_for' => $opportunity_title['opportunity_for'],
+                    'opp_field' => $opportunity_field['field'],
+                );
+            } else if ($post_for == 'simple') {
+                $updatedata = array(
+                    'response' => 1,
+                );
+            } else if ($post_for == 'question') {
+                $updatedata = array(
+                    'response' => 1,
+                    'ask_question' => $ask_que,
+                    'ask_description' => $ask_desc,
+                    'ask_field' => $question_field['field'],
+                    'ask_category' => $question_category['category'],
+                );
+            }
         } else {
-            echo 0;
+            $updatedata = array(
+                'response' => 0,
+            );
         }
+
+        echo json_encode($updatedata);
     }
 
 }
