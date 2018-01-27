@@ -66,6 +66,7 @@ $route['details/(:any)'] = 'Userprofile';
 $route['followers/(:any)'] = 'Userprofile';
 $route['following/(:any)'] = 'Userprofile';
 $route['contacts/(:any)'] = 'Userprofile';
+$route['searchh/(:any)'] = 'Userprofile/search/$1';
 
 $route['opportunities'] = 'user_post';
 $route['contact-request'] = 'userprofile_page/contact_request';

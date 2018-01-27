@@ -100,4 +100,13 @@ class Userprofile extends MY_Controller {
         echo json_encode($contactRequestCount);
     }
     
+    public function search(){
+        $userid = $this->session->userdata('aileenuser');
+        $this->data['is_userBasicInfo'] = $this->user_model->is_userBasicInfo($userid);
+        $this->data['is_userStudentInfo'] = $this->user_model->is_userStudentInfo($userid);
+        $this->data['header_profile'] = $this->load->view('header_profile', $this->data, TRUE);
+        
+        $this->load->view('user_post/search');
+    }
+    
 }
