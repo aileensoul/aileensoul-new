@@ -375,7 +375,7 @@ label.cameraButton input[accept*="camera"] {
 .user-btns{padding:10px 0; text-align:center;}
 .user-btns a{width:165px;}
 .main-user-option ul{margin:0; padding:15px 0 0;}
-.main-user-option ul li{width:16.6666667%; float:left; border-top:1px solid #d9d9d9; text-align:center; list-style-type:none; border-right:1px solid #d9d9d9;}
+.main-user-option ul li{width:14.285714%; float:left; border-top:1px solid #d9d9d9; text-align:center; list-style-type:none; border-right:1px solid #d9d9d9;}
 .main-user-option ul li:last-child{border-right:0;}
 .main-user-option ul li a{display:block; padding:10px; color:#5c5c5c;}
 .main-user-option ul li a:hover{background:#1b8ab9; color:#fff;}
@@ -975,7 +975,14 @@ header.profile-header .logo a{color:#5c5c5c;}
 .search-banner .control:hover input:not([disabled]):checked ~ .control__indicator,
 .search-banner .control input:checked:focus ~ .control__indicator {background: #fff;}
 .search-banner .control--checkbox .control__indicator:after {border: solid #000; border-width: 0 2px 2px 0;}
-
+.banner-main-div{ 
+    display: -webkit-flex; /* Safari */
+    -webkit-align-items: center; /* Safari 7.0+ */
+    display: flex;
+    align-items: center;}
+.banner-main-div .banner-left{-webkit-flex: 1; /* Safari 6.1+ */
+   flex: 1;}
+.banner-left{text-align:center; color:#fff;}
 /***  end search banner  ***/
 /***  profile main page  ***/
 .profile-main-page .left-part{position:absolute;}

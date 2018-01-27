@@ -17,7 +17,7 @@ app.controller('contactRequestController', function ($scope, $http) {
             $scope.pending_contact_request_data = pending_contact_request;
         });
     }
-    function contactRequestNotification(){
+    function contactRequestNotification() {
         $http({
             method: 'POST',
             url: base_url + 'userprofile_page/contactRequestNotification',
@@ -52,7 +52,7 @@ app.controller('contactRequestController', function ($scope, $http) {
             }
         });
     }
-    $scope.addToContact = function (user_id,suggest) {
+    $scope.addToContact = function (user_id, suggest) {
         $http({
             method: 'POST',
             url: base_url + 'user_post/addToContact',

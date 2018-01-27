@@ -87,7 +87,7 @@ body {
 p{padding:0; margin:0;}
 
 a:hover{text-decoration:none;}
-
+.border-bottom-none{border-bottom:0px;}
 /***  buttons  ***/
 button{border:none;}
 .modal-close{
@@ -589,14 +589,30 @@ min-height: 15px;}
 .no-data{padding:50px 0; text-align:center; }
 .no-data .no-data-text{padding-top:20px;}
 .noti-box{width: 17px; height: 17px; background: red; display: inline-block; text-align: center; 
-border-radius: 50%;font-size: 10px;line-height: 1.6;position: absolute;right: 8px; top:-5px; display:none;}
+border-radius: 50%;font-size: 10px;line-height: 1.6;position: absolute;right: 8px; top:-5px;}
 /***  end register header  ***/
-/***  no data content div  ***/
-.no-data-box{border:1px solid #d2d2d2; border-radius:4px; width:100%; float:left; margin-bottom:10px;}
-.no-data-box h3{text-align:center; border-bottom:1px solid #d2d2d2; padding:10px;}
+/***  no data content div search page ***/
+.no-data-box, .availabel-data-box{border:1px solid #d2d2d2; border-radius:4px; width:100%; float:left; margin-bottom:10px;}
+.no-data-box h3, .availabel-data-box h3 {text-align:center; border-bottom:1px solid #d2d2d2; padding:10px;}
 .no-data-content{padding:35px 0; text-align:center;}
 .no-data-content p{line-height: 40px; color: #ccc; font-size: 26px;}
+.no-data-content p span{display:block; color: #ccc; font-size: 18px; line-height:1.5;}
+.no-data-content p span span{font-size: 14px;}
+.availabel-data-box .comment-dis{width:494px;}
+.availabel-data-box .add-comment .comment-input{width:404px;}
+
+.search-profiles{padding:10px; border-bottom:1px solid #d2d2d2; width:100%; float:left;}
+.search-profiles:last-child{border-bottom:0px solid #d2d2d2;}
+.search-profiles .profile-img{width:110px; height:110px; border:1px solid #d2d2d2; float:left;}
+.search-profiles .profile-img img{width:100%;}
+.search-profiles .profile-data{padding:0 10px; min-height:110px; width:300px; float:left;}
+.search-profiles .profile-data p{font-size:20px;}
+.search-profiles .profile-data span{display:block; font-size:14px; color:#999;}
+.search-profiles .profile-btns{width:150px; float:left;}
+.search-profiles .profile-btns a{width:100%; padding:3px 10px; margin:3px 0;}
+.availabel-data-box h3.border-bottom-none{border-bottom:0px;}
 /***  end no data content div  ***/
+
 
 /***  model popup  ***/
 .fade {
