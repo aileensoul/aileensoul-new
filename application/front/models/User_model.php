@@ -236,6 +236,16 @@ class User_model extends CI_Model {
         return $result_array;
     }
 
+    public function contactRequestCount($user_id = '') {
+        $this->db->select('COUNT(id) as total')->from('user_contact uc');
+        $this->db->where("(uc.to_id ='$user_id' AND uc.status = 'pending') OR (uc.from_id ='$user_id' AND uc.status = 'confirm')");
+        $this->db->where("uc.not_read", '2');
+        $this->db->where("(uc.status = 'confirm' OR  uc.status = 'pending')");
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
+
     public function contact_request($user_id = '') {
         $contact_request_pending = $this->contact_request_pending($user_id);
         $contact_request_accept = $this->contact_request_accept($user_id);
@@ -245,11 +255,29 @@ class User_model extends CI_Model {
     }
 
     public function contactRequestAction($user_id = '', $from_id = '', $action = '') {
-        $data = array('status' => $action, 'modify_date' => date('Y-m-d H:i:s', time()));
+        $data = array();
+        $data['status'] = $action;
+        $data['modify_date'] = date('Y-m-d H:i:s', time());
+        if ($action == 'confirm') {
+            $data['not_read'] = '2';
+        }
+        
         $this->db->where('from_id', $from_id);
         $this->db->where('to_id', $user_id);
         $result_array = $this->db->update('user_contact', $data);
         return $result_array;
+    }
+
+    public function contact_request_read($user_id = '') {
+        $data = array('not_read' => '1');
+        $this->db->where('to_id', $user_id);
+        $this->db->where('status', 'pending');
+        $result_array = $this->db->update('user_contact', $data);
+
+        $data1 = array('not_read' => '1');
+        $this->db->where('from_id', $user_id);
+        $this->db->where('status', 'confirm');
+        $result_array1 = $this->db->update('user_contact', $data1);
     }
 
 }

@@ -15,6 +15,19 @@ app.filter('capitalize', function () {
     }
 });
 app.controller('headerCtrl', function ($scope, $http) {
+    contactRequestCount();
+    
+    function contactRequestCount(){
+        $http({
+            method: 'POST',
+            url: base_url + 'userprofile/contactRequestCount',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function (success) {
+            contact_request = success.data;
+            $scope.contact_request_count = contact_request.total;
+        });
+    }
+
     $scope.header_all_profile = function () {
         $('.all .dropdown-menu').html(header_all_profile);
     }
@@ -27,30 +40,29 @@ app.controller('headerCtrl', function ($scope, $http) {
         }).then(function (success) {
             contact_request = success.data;
             $scope.contact_request_data = contact_request;
+            $scope.contact_request_count = '0';
         });
     }
 
-    $scope.confirmContactRequest = function (from_id) {
+    $scope.confirmContactRequest = function (from_id,index) {
         $http({
             method: 'POST',
             url: base_url + 'userprofile/contactRequestAction',
             data: 'from_id=' + from_id + '&action=confirm',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (success) {
-            contact_request = success.data;
-            $scope.contact_request_data = contact_request;
+            $scope.contact_request_data.splice(index, 1);
         });
     }
 
-    $scope.rejectContactRequest = function (from_id) {
+    $scope.rejectContactRequest = function (from_id,index) {
         $http({
             method: 'POST',
             url: base_url + 'userprofile/contactRequestAction',
             data: 'from_id=' + from_id + '&action=reject',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (success) {
-            contact_request = success.data;
-            $scope.contact_request_data = contact_request;
+            $scope.contact_request_data.splice(index, 1);
         });
     }
 });

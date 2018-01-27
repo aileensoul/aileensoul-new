@@ -23,7 +23,7 @@
                             </li>
                             <li id="add-contact" class="dropdown">
                                 <a href="javascript:void(0);" title="Contact Request" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-click="header_contact_request()"><img ng-src="<?php echo base_url('assets/n-images/add-contact.png') ?>" alt="Contact Request">
-                                    <span class="noti-box" style="display:block">1</span>
+                                    <span class="noti-box" style="display:block" ng-bind="contact_request_count" ng-if="contact_request_count != '0'"></span>
                                 </a>
                                 <div class="dropdown-menu">
                                     <div class="dropdown-title">
@@ -59,10 +59,10 @@
                                                     </div>
                                                 </a> 
                                                 <div class="user-request" ng-if="contact_request.status == 'pending'">
-                                                    <a href="javascript:void(0);" class="add-left-true" ng-click="confirmContactRequest(contact_request.from_id)">
+                                                    <a href="javascript:void(0);" class="add-left-true" ng-click="confirmContactRequest(contact_request.from_id,$index)">
                                                         <i class="fa fa-check" aria-hidden="true"></i>
                                                     </a>
-                                                    <a href="javascript:void(0);" class="add-right-true" ng-click="rejectContactRequest(contact_request.from_id)">
+                                                    <a href="javascript:void(0);" class="add-right-true" ng-click="rejectContactRequest(contact_request.from_id,$index)">
                                                         <i class="fa fa-times" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
