@@ -22,11 +22,6 @@ class User_post_model extends CI_Model {
             $this->db->limit('30');
             $query = $this->db->get();
             $result_array = $query->result_array();
-            echo '<pre>';
-            print_r($result_array);
-            die();
-            return $result_array;
-            die();
         } else {
             $this->db->select("u.user_id,u.first_name,u.last_name,ui.user_image,jt.name as title_name")->from("user u");
             $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
