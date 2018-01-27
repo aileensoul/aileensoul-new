@@ -160,7 +160,7 @@ app.controller('userOppoController', function ($scope, $http) {
         $http.get(base_url + "user_post/getUserPost?page=" + pagenum).then(function (success) {
             $('#loader').hide();
             $scope.postData = success.data;
-           // check_no_post_data();
+            // check_no_post_data();
             $('video,audio').mediaelementplayer(/* Options */);
         }, function (error) {});
     }
@@ -612,13 +612,13 @@ app.controller('userOppoController', function ($scope, $http) {
                 var form_data = new FormData();
 
                 form_data.append('question', $scope.ask.ask_que);
-            form_data.append('description', $scope.ask.ask_description);
-            form_data.append('field', $scope.ask.ask_field);
-            form_data.append('other_field', $scope.ask.otherField);
-            form_data.append('category', JSON.stringify($scope.ask.related_category));
-            form_data.append('weblink', $scope.ask.web_link);
-            form_data.append('post_for', $scope.ask.post_for);
-            form_data.append('post_id',post_id);
+                form_data.append('description', $scope.ask.ask_description);
+                form_data.append('field', $scope.ask.ask_field);
+                form_data.append('other_field', $scope.ask.otherField);
+                form_data.append('category', JSON.stringify($scope.ask.related_category));
+                form_data.append('weblink', $scope.ask.web_link);
+                form_data.append('post_for', $scope.ask.post_for);
+                form_data.append('post_id', post_id);
                 $('body').removeClass('modal-open');
                 $("#opportunity-popup").modal('hide');
                 $("#ask-question").modal('hide');
@@ -630,12 +630,12 @@ app.controller('userOppoController', function ($scope, $http) {
                         })
                         .then(function (success) {
                             if (success) {
-                                 if (success.data.response == 1) {
-                                $('#ask-post-question-' + post_id).html(success.data.ask_question);
-                                $('#ask-post-description-' + post_id).html(success.data.ask_description);
-                             //   $('#ask-post-link-' + post_id).html(success.data.opp_field);
-                                $('#ask-post-category-' + post_id).html(success.data.ask_category);
-                                $('#ask-post-field-' + post_id).html(success.data.ask_field);
+                                if (success.data.response == 1) {
+                                    $('#ask-post-question-' + post_id).html(success.data.ask_question);
+                                    $('#ask-post-description-' + post_id).html(success.data.ask_description);
+                                    //   $('#ask-post-link-' + post_id).html(success.data.opp_field);
+                                    $('#ask-post-category-' + post_id).html(success.data.ask_category);
+                                    $('#ask-post-field-' + post_id).html(success.data.ask_field);
                                 }
                                 $scope.opp.description = '';
                                 $scope.opp.job_title = '';
@@ -854,9 +854,9 @@ app.controller('userOppoController', function ($scope, $http) {
 //                              //  alert($scope.postData.length);
 //                                if($scope.postData.length != 0){
                                 $scope.postData.splice(0, 0, success.data[0]);
-                           // }else{
-                           //   $scope.postData = success.data[0];
-                           // }
+                                // }else{
+                                //   $scope.postData = success.data[0];
+                                // }
                                 $('video, audio').mediaelementplayer();
                             }
                         });
@@ -1076,7 +1076,7 @@ app.controller('userOppoController', function ($scope, $http) {
 
     $scope.EditPost = function (post_id, post_for, index) {
         $scope.is_edit = 1;
-        
+
 
         $http({
             method: 'POST',
