@@ -46,17 +46,17 @@
                         <div class="bg-images no-cover-upload">
                             <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="<?php echo 'NOIMAGE'; ?>" />
                         </div>
-<?php }
-?>
+                    <?php }
+                    ?>
 
                 </div>
             </div>
             <div class="upload-camera" ng-if="live_slug == segment2">
-                    <div class="upload-img">
-                        <label  class="cameraButton"><span class="tooltiptext">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
-                            <input type="file" id="upload" name="upload" accept="image/*" capture="camera" onclick="showDiv()">
-                        </label>
-                    </div>
+                <div class="upload-img">
+                    <label  class="cameraButton"><span class="tooltiptext">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
+                        <input type="file" id="upload" name="upload" accept="image/*" capture="camera" onclick="showDiv()">
+                    </label>
+                </div>
 
             </div>
         </div>
@@ -69,35 +69,35 @@
                 <!--PROFILE PIC CODE START -->
                 <div class="profile-img">
 
-<?php
-$filename = $this->config->item('user_thumb_upload_path') . $userdata['user_image'];
-$s3 = new S3(awsAccessKey, awsSecretKey);
-$this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-if ($userdata['user_image'] != '' && $info) {
-    ?>
+                    <?php
+                    $filename = $this->config->item('user_thumb_upload_path') . $userdata['user_image'];
+                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($userdata['user_image'] != '' && $info) {
+                        ?>
 
                         <img src="<?php echo USER_THUMB_UPLOAD_URL . $userdata['user_image']; ?>">
-    <?php
-} else {
-    $a = $userdata['first_name'];
-    $acr = substr($a, 0, 1);
+                        <?php
+                    } else {
+                        $a = $userdata['first_name'];
+                        $acr = substr($a, 0, 1);
 
-    $b = $userdata['last_name'];
-    $acr1 = substr($b, 0, 1);
-    ?>
+                        $b = $userdata['last_name'];
+                        $acr1 = substr($b, 0, 1);
+                        ?>
                         <div class="post-img-user">
-                        <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
+                            <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
 
                         </div>
-<?php } ?>
-                        <a ng-if="live_slug == segment2" class="upload-profile cusome_upload"  href="javascript:void(0);" onclick="updateprofilepopup();" title="Update profile picture">
-                            <img src="<?php echo base_url('assets/n-images/cam.png') ?>"  alt="<?php echo 'CAMERAIMAGE'; ?>">Update Profile Picture
-                        </a>
+                    <?php } ?>
+                    <a ng-if="live_slug == segment2" class="upload-profile cusome_upload"  href="javascript:void(0);" onclick="updateprofilepopup();" title="Update profile picture">
+                        <img src="<?php echo base_url('assets/n-images/cam.png') ?>"  alt="<?php echo 'CAMERAIMAGE'; ?>">Update Profile Picture
+                    </a>
                 </div>
                 <!--PROFILE PIC CODE END -->
 
                 <h3><a href="#"><?php echo ucfirst($userdata['first_name']) . ' ' . ucfirst($userdata['last_name']); ?></a></h3>
-<?php if (count($is_userSlugBasicInfo) != 0) { ?>	
+                <?php if (count($is_userSlugBasicInfo) != 0) { ?>	
                     <p><?php echo $is_userSlugBasicInfo['Designation']; ?></p>
                 <?php } else if (count($is_userSlugStudentInfo) != 0) { ?>
                     <p><?php echo $is_userSlugStudentInfo['Degree']; ?></p>
@@ -112,14 +112,15 @@ if ($userdata['user_image'] != '' && $info) {
                 <?php } ?>
             </div>
             <div class="user-btns" ng-if="live_slug != segment2">
-                <a class="btn3" ng-if="contact_value == 'new'" ng-click="contact(contact_id,'pending',to_id)">Add to contact</a>
-                <a class="btn3" ng-if="contact_value == 'confirm'" ng-click="contact(contact_id,'cancel',to_id)">Friends</a>
-                <a class="btn3" ng-if="contact_value == 'pending'" ng-click="contact(contact_id,'cancel',to_id)">Request sent</a>
-                <a class="btn3" ng-if="contact_value == 'cancel'" ng-click="contact(contact_id,'pending',to_id)">Add to contact</a>
+                <a class="btn3" ng-if="contact_value == 'new'" ng-click="contact(contact_id, 'pending', to_id)">Add to contact</a>
+                <a class="btn3" ng-if="contact_value == 'confirm'" ng-click="contact(contact_id, 'cancel', to_id)">Friends</a>
+                <a class="btn3" ng-if="contact_value == 'pending'" ng-click="contact(contact_id, 'cancel', to_id)">Request sent</a>
+                <a class="btn3" ng-if="contact_value == 'cancel'" ng-click="contact(contact_id, 'pending', to_id)">Add to contact</a>
+                <a class="btn3" ng-if="contact_value == 'reject'" ng-click="contact(contact_id, 'pending', to_id)">Add to contact</a>
                 <!--<a class="btn3" ng-if="contact_value == 'cancel'" ng-click="contact(contact_id)">Add to contact3</a>-->
-                <a class="btn3" ng-if="follow_value == 0" ng-click="follow(follow_id,1,to_id)">Follow</a>
-                <a class="btn3" ng-if="follow_value == 'new'" ng-click="follow(follow_id,1,to_id)">Follow</a>
-                <a class="btn3" ng-if="follow_value == 1"  ng-click="follow(follow_id,0,to_id)">Following</a>
+                <a class="btn3" ng-if="follow_value == 0" ng-click="follow(follow_id, 1, to_id)">Follow</a>
+                <a class="btn3" ng-if="follow_value == 'new'" ng-click="follow(follow_id, 1, to_id)">Follow</a>
+                <a class="btn3" ng-if="follow_value == 1"  ng-click="follow(follow_id, 0, to_id)">Following</a>
                 <a class="btn3">Message</a>
             </div>
             <div class="main-user-option">
