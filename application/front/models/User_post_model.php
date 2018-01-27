@@ -31,8 +31,9 @@ class User_post_model extends CI_Model {
             $this->db->where('u.user_id !=', $user_id);
             $this->db->where('u.user_id NOT IN (select from_id from ailee_user_contact where to_id=' . $user_id . ')', NULL, FALSE);
             $this->db->where('u.user_id NOT IN (select to_id from ailee_user_contact where from_id=' . $user_id . ')', NULL, FALSE);
-            $condition = 'up.designation = (select up.designation from ailee_user_profession where user_id=' . $user_id . ') AND up.city = (select up.city from ailee_user_profession where user_id=' . $user_id . ')';
+            $condition = 'up.designation = (select up.designation from ailee_user_profession where user_id=' . $user_id . ') OR up.city = (select up.city from ailee_user_profession where user_id=' . $user_id . ') OR up.field = (select up.field from ailee_user_profession where user_id=' . $user_id . ')';
             $this->db->where($condition);
+            $this->db->group_by("u.user_id");
             $this->db->order_by('u.user_id', 'DESC');
             $this->db->limit('30');
             $query = $this->db->get();
