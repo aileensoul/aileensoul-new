@@ -54,7 +54,13 @@ class User_post extends MY_Controller {
 
     public function getContactSuggetion() {
         $userid = $this->session->userdata('aileenuser');
-        $user_data = $this->user_post_model->getContactSuggetion($userid);
+        $is_basicInfo = $this->data['is_basicInfo'] = $this->user_model->is_userBasicInfo($userid);
+        if ($is_basicInfo == 0) {
+            $detailsData = "student";
+        } else {
+            $detailsData = "profession";
+        }
+        $user_data = $this->user_post_model->getContactSuggetion($userid,$detailsData);
         echo json_encode($user_data);
     }
     

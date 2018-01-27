@@ -5,24 +5,47 @@ if (!defined('BASEPATH'))
 
 class User_post_model extends CI_Model {
 
-    public function getContactSuggetion($user_id = '') {
-        $this->db->select("u.user_id,u.first_name,u.last_name,ui.user_image,jt.name as title_name,d.degree_name")->from("user u");
-        $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
-        $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
-        $this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
-        $this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
-        $this->db->join('user_student us', 'us.user_id = u.user_id', 'left');
-        $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
-        $this->db->where('u.user_id !=', $user_id);
-        $this->db->where('u.user_id NOT IN (select from_id from ailee_user_contact where to_id=' . $user_id . ')', NULL, FALSE);
-        $this->db->where('u.user_id NOT IN (select to_id from ailee_user_contact where from_id=' . $user_id . ')', NULL, FALSE);
-        $this->db->order_by('u.user_id', 'DESC');
-        $this->db->limit('30');
-        $query = $this->db->get();
-        $result_array = $query->result_array();
-        return $result_array;
+    public function getContactSuggetion($user_id = '', $detailsdata = '') {
+        if ($detailsdata == "student") {
+
+            $this->db->select("u.user_id,u.first_name,u.last_name,ui.user_image,d.degree_name")->from("user u");
+            $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+            $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
+            $this->db->join('user_student us', 'us.user_id = u.user_id', 'left');
+            $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
+            $this->db->where('u.user_id !=', $user_id);
+            $this->db->where('u.user_id NOT IN (select from_id from ailee_user_contact where to_id=' . $user_id . ')', NULL, FALSE);
+            $this->db->where('u.user_id NOT IN (select to_id from ailee_user_contact where from_id=' . $user_id . ')', NULL, FALSE);
+            $condition = 'us.current_study == (select us.current_study from ailee_user_student where user_id=' . $user_id . ') AND us.city == (select us.city from ailee_user_student where user_id=' . $user_id . ')';
+            $this->db->where($condition);
+            $this->db->order_by('u.user_id', 'DESC');
+            $this->db->limit('30');
+            $query = $this->db->get();
+            $result_array = $query->result_array();
+            echo '<pre>';
+            print_r($result_array);
+            die();
+            return $result_array;
+            die();
+        } else {
+            $this->db->select("u.user_id,u.first_name,u.last_name,ui.user_image,jt.name as title_name")->from("user u");
+            $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+            $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
+            $this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
+            $this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
+            $this->db->where('u.user_id !=', $user_id);
+            $this->db->where('u.user_id NOT IN (select from_id from ailee_user_contact where to_id=' . $user_id . ')', NULL, FALSE);
+            $this->db->where('u.user_id NOT IN (select to_id from ailee_user_contact where from_id=' . $user_id . ')', NULL, FALSE);
+            $condition = 'up.designation = (select up.designation from ailee_user_profession where user_id=' . $user_id . ') AND up.city = (select up.city from ailee_user_profession where user_id=' . $user_id . ')';
+            $this->db->where($condition);
+            $this->db->order_by('u.user_id', 'DESC');
+            $this->db->limit('30');
+            $query = $this->db->get();
+            $result_array = $query->result_array();
+            return $result_array;
+        }
     }
-    
+
     public function getContactAllSuggetion($user_id = '') {
         $this->db->select("u.user_id,CONCAT(u.first_name,' ',u.last_name) as fullname,ui.user_image,jt.name as title_name,d.degree_name")->from("user u");
         $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
@@ -375,7 +398,7 @@ class User_post_model extends CI_Model {
 
             $result_array[$key]['page_data']['page'] = $page;
             $result_array[$key]['page_data']['total_record'] = $this->userPostCount($user_id);
-          //  $result_array[$key]['page_data']['perpage_record'] = $limit;
+            //  $result_array[$key]['page_data']['perpage_record'] = $limit;
         }
 //        echo '<pre>';
 //        print_r($result_array);
@@ -557,37 +580,37 @@ class User_post_model extends CI_Model {
         $userAskPost = $query->row_array();
         return $userAskPost;
     }
-    
+
     public function GetQuestionCategoryName($categoryId = '') {
-         $this->db->select("GROUP_CONCAT(DISTINCT(t.name)) as category")->from("ailee_tags t");
-            $this->db->where('FIND_IN_SET(t.id,"' . $categoryId . '") !=', 0);
-            $query = $this->db->get();
-            $category = $query->row_array();
+        $this->db->select("GROUP_CONCAT(DISTINCT(t.name)) as category")->from("ailee_tags t");
+        $this->db->where('FIND_IN_SET(t.id,"' . $categoryId . '") !=', 0);
+        $query = $this->db->get();
+        $category = $query->row_array();
         return $category;
     }
-    
+
     public function GetLocationName($city_id = '') {
-          $this->db->select("GROUP_CONCAT(DISTINCT(c.city_name)) as location")->from("ailee_cities c");
-            $this->db->where('FIND_IN_SET(c.city_id,"' . $city_id . '") !=', 0);
-            $query = $this->db->get();
-            $location = $query->row_array();
-             return $location;
+        $this->db->select("GROUP_CONCAT(DISTINCT(c.city_name)) as location")->from("ailee_cities c");
+        $this->db->where('FIND_IN_SET(c.city_id,"' . $city_id . '") !=', 0);
+        $query = $this->db->get();
+        $location = $query->row_array();
+        return $location;
     }
-    
-     public function GetJobTitleName($job_title_id = '') {
-          $this->db->select("GROUP_CONCAT(DISTINCT(jt.name)) as opportunity_for")->from("ailee_job_title jt");
-            $this->db->where('FIND_IN_SET(jt.title_id,"' . $job_title_id . '") !=', 0);
-            $query = $this->db->get();
-            $title = $query->row_array();
-            return $title;
+
+    public function GetJobTitleName($job_title_id = '') {
+        $this->db->select("GROUP_CONCAT(DISTINCT(jt.name)) as opportunity_for")->from("ailee_job_title jt");
+        $this->db->where('FIND_IN_SET(jt.title_id,"' . $job_title_id . '") !=', 0);
+        $query = $this->db->get();
+        $title = $query->row_array();
+        return $title;
     }
-    
+
     public function GetIndustryFieldName($ask_field = '') {
-          $this->db->select("it.industry_name as field")->from("industry_type it");
-            $this->db->where('it.industry_id', $ask_field);
-            $query = $this->db->get();
-            $field = $query->row_array();
-             return $field;
+        $this->db->select("it.industry_name as field")->from("industry_type it");
+        $this->db->where('it.industry_id', $ask_field);
+        $query = $this->db->get();
+        $field = $query->row_array();
+        return $field;
     }
 
 }
