@@ -1019,7 +1019,13 @@ header.profile-header .logo a{color:#5c5c5c;}
 .freelance-recommended-post .job-top-detail{padding:0; width:100%;}
 .job-top-detail h5 a span{font-weight:normal;}
 .job-top-detail h5 a:hover{border-bottom:none;}
-
+.content-img img{width:80%;}
+.content-bnr{max-height:350px; overflow:hidden; margin:80px 0;}
+.content-bnr img{width:100%;}
+.content-bnr .bnr-box{position:relative;}
+.content-bnr .content-bnt-text{position:absolute; text-align:center; width:100%; padding:100px 0; color:#fff; top:0px;}
+.content-bnr h1{padding-bottom:55px;}
+.it-works-img img{width:100%;}
  /** reg form **/
  .reg-form-box{background:rgba(255,255,255,0.3); padding:30px; border-radius:4px;}
  .reg-form{border:1px solid #5c5c5c; border-radius:4px;}
@@ -1028,6 +1034,22 @@ header.profile-header .logo a{color:#5c5c5c;}
  .reg-form-box .reg-form .form-group{margin-bottom:25px;}
  .reg-form-box .reg-form .form-group input, .reg-form-box .reg-form .form-group select, .reg-form-box .reg-form .form-group textarea {border-bottom:1px solid #5c5c5c; background:none; border-radius:0px; border-width: 0px 0px 1px 0px; padding:5px 10px;}
  .reg-form-box .reg-form .form-group select{padding-left:6px;}
+ 
+ /** rec fix sub header  **/
+ .sub-fix-head{border-bottom:1px solid #d2d2d2; padding-bottom:20px;}
+ .sub-fix-head p span{font-size:28px; padding-top:11px; display:inline-block; }
+ 
+ /** business profile **/
+ .custom-width-box{width:80%; margin:0 auto;}
+ .custom-width-box .content-img img{width:100%;}
+ .cat-box ul{padding:0 0 25px; width:100%; float:left;}
+ .cat-box ul li{list-style-type:none; text-align:center; width:20%; float:left; padding:10px;}
+ .cat-box ul li a{color:#5c5c5c;}
+ .cat-box ul li a span{color:#999;}
+ .cat-box ul li span{display:block;}
+ .search-business-top{padding:4px; width:100%; float:left;}
+ .search-business-top .bus-cover{max-height:150px; width:100%; overflow:hidden; border-radius:4px;}
+ .search-business-top .bus-cover img{border-radius:4px; min-height:150px; width:100%;}
 /***  end profile main page  ***/
 /***  audio video css  ***/
 .mejs__container.mejs__video,.mejs__layers .mejs__poster.mejs__layer,.mejs__mediaelement video,.mejs__overlay.mejs__layer,.video .mejs__poster{
