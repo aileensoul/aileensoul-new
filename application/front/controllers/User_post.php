@@ -1096,8 +1096,10 @@ class User_post extends MY_Controller {
         $this->load->view('user_post/search', $this->data);
     }
 
-    public function searchdata() {
-        $this->data['searchdata'] = $this->user_post_model->searchData($userid);
+    public function searchData() {
+        $searchKeyword = $_POST['searchKeyword'];
+        $searchData = $this->user_post_model->searchData($searchKeyword);
+        echo json_encode($searchData);
     }
 
 }
