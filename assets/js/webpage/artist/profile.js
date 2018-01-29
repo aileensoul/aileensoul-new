@@ -158,7 +158,7 @@ function validation_other(event){
           if(n == true){     
         if(category_trim == ''){
        $("#othercategory").addClass("othercategory_require");
-       $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">Other art category required. </span>').insertAfter('#othercategory');
+       $('<label class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">Other art category required. </label>').insertAfter('#othercategory');
         $("#othercategory").addClass("error");
         return false;
         event.preventDefault();
