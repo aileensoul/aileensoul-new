@@ -290,7 +290,7 @@ class User_post_model extends CI_Model {
     }
 
     public function userPost($user_id = '', $page = '') {
-        $limit = '10';
+        $limit = '15';
         $start = ($page - 1) * $limit;
         if ($start < 0)
             $start = 0;
@@ -403,7 +403,7 @@ class User_post_model extends CI_Model {
     }
 
     public function userDashboardPost($user_id = '', $page = '') {
-        $limit = '10';
+        $limit = '5';
         $start = ($page - 1) * $limit;
         if ($start < 0)
             $start = 0;
@@ -489,11 +489,10 @@ class User_post_model extends CI_Model {
                 $result_array[$key]['post_comment_data'][$key1]['is_userlikePostComment'] = $this->is_userlikePostComment($user_id, $value1['comment_id']);
                 $result_array[$key]['post_comment_data'][$key1]['postCommentLikeCount'] = $this->postCommentLikeCount($value1['comment_id']) == '0' ? '' : $this->postCommentLikeCount($value1['comment_id']);
             }
-
-            $result_array[$key]['page_data']['page'] = $page;
-            $result_array[$key]['page_data']['total_record'] = $this->userPostCount($user_id);
-            $result_array[$key]['page_data']['perpage_record'] = $limit;
         }
+        $result_array['page_data']['page'] = $page;
+        $result_array['page_data']['total_record'] = $this->userPostCount($user_id);
+        $result_array['page_data']['perpage_record'] = $limit;
 //        echo '<pre>';
 //        print_r($result_array);
 //        exit;
@@ -608,8 +607,8 @@ class User_post_model extends CI_Model {
         $field = $query->row_array();
         return $field;
     }
-    
-    public function searchData(){
+
+    public function searchData() {
         $this->db->select("*")->from("ailee_user u");
         //$this->db->where('it.industry_id', $ask_field);
         $query = $this->db->get();
@@ -619,4 +618,5 @@ class User_post_model extends CI_Model {
         exit;
         return $searchData;
     }
+
 }

@@ -100,4 +100,11 @@ class Userprofile extends MY_Controller {
         echo json_encode($contactRequestCount);
     }
     
-}
+    public function data() {
+
+        $this->load->view('loadmore/index', $this->data);
+    }
+     public function getdata() { echo "hi"; die();
+        
+    }
+    }

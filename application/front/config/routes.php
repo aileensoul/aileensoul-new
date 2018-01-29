@@ -91,6 +91,9 @@ $route['sitemap/freelance-profile'] = "sitemap/freelance_profile";
 $route['sitemap/business-profile'] = "sitemap/business_profile";
 $route['sitemap/artistic-profile'] = "sitemap/artistic_profile";
 
+$route['load_more/dataaaaa'] = "load_more/dataaaaa";
+
+
 $route['profile'] = "profile";
 $route['profiles'] = "dashboard";
 $route['profiles/basic-information/(:any)'] = "user_basic_info";
