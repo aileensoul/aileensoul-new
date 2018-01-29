@@ -38,7 +38,7 @@
         echo "bg-images no-cover-upload";
     } ?>">
                                         <a class="profile-boxProfileCard-bg u-bgUserColor a-block"
-                                           href="<?php echo base_url('job/resume'); ?>"
+                                           href="<?php echo base_url('job/resume/'.$jobdata[0]['slug']); ?>"
                                            tabindex="-1"
                                            aria-hidden="true"
                                            rel="noopener" title="job resume">
@@ -96,12 +96,12 @@
                                         <div class="right_left_box_design ">
                                             <span class="profile-company-name ">
                                                 <span class="profile-company-name ">
-                                                    <a   href="<?php echo site_url('job/resume'); ?>" title="<?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
+                                                    <a   href="<?php echo site_url('job/resume/'.$jobdata[0]['slug']); ?>" title="<?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
                                                 </span>
                                             </span>
                                                     <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => '1'))->row()->industry_name; ?>
                                             <div class="profile-boxProfile-name">
-                                                <a  href="<?php echo base_url('job/resume'); ?>" title="designation"><?php
+                                                <a  href="<?php echo base_url('job/resume/'.$jobdata[0]['slug']); ?>" title="designation"><?php
                                                     if (ucwords($jobdata[0]['designation'])) {
                                                         echo ucwords($jobdata[0]['designation']);
                                                     } else {
@@ -111,7 +111,7 @@
                                             </div>
                                             <ul class=" left_box_menubar">
                                                 <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume') { ?> class="active" <?php } ?>>
-                                                    <a class="padding_less_left" title="Details" href="<?php echo base_url('job/resume'); ?>" title="job resume"> Details</a>
+                                                    <a class="padding_less_left" title="Details" href="<?php echo base_url('job/resume/'.$jobdata[0]['slug']); ?>" title="job resume"> Details</a>
                                                 </li>
                                                 
                                                 <li <?php if ($this->uri->segment(1) == 'search' && $this->uri->segment(2) == 'saved-job') { ?> class="active" <?php } ?>><a title="Saved Job" href="<?php echo base_url('job/saved-job'); ?>" title="Saved">Saved </a>
@@ -161,7 +161,57 @@
                     </div>
                     </div>
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-
+                        <div class="full-box-module">   
+                            <div class="">
+                                <div class=""> 
+                                    <div class="cust-div-h3">
+                                        <h3 style="color: #5c5c5c;text-align: center;font-size: 24px;">Job by Location</h3>
+                                    </div>
+                                    <ul class="jobs-loca-cus" style="list-style-type: none;padding-left: 10px;">
+                                        <li>
+                                            <label for="City" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs"); ?>" >All Jobs</a>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label for="City" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs-in-Ahmedabad"); ?>" <?php if ($keyword1 == 'Ahmedabad') { ?> class="job_active" <?php } ?>>Ahmedabad Jobs</a>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label for="City" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs-in-Bengaluru"); ?>" <?php if ($keyword1 == 'Bengaluru') { ?> class="job_active" <?php } ?>>Bengaluru Jobs</a>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label for="City" class="lbpos fw"> 
+                                                <a href="<?php echo base_url("jobs-in-Chennai"); ?>" <?php if ($keyword1 == 'Chennai') { ?> class="job_active" <?php } ?>>Chennai Jobs</a>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label for="City" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs-in-Delhi"); ?>" <?php if ($keyword1 == 'Delhi') { ?> class="job_active" <?php } ?>>Delhi Jobs</a>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label for="City" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs-in-Hyderabad"); ?>" <?php if ($keyword1 == 'Hyderabad') { ?> class="job_active" <?php } ?>>Hyderabad Jobs</a>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label for="City" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs-in-Mumbai"); ?>" <?php if ($keyword1 == 'Mumbai') { ?> class="job_active" <?php } ?>>Mumbai Jobs</a>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label for="City" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs-in-Pune"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Pune Jobs</a>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                          <div class="all-profile-box">
                                 <div class="all-pro-head">
                                     <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right" title="All">All</a></h4>
