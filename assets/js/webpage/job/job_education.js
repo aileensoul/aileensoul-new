@@ -1012,7 +1012,11 @@ $(document).on('change', '#input1 .degree', function (event) {
             if (stream == '' || degree == '')
             { 
                 //$('span[id^="jfield_error_degree"]').remove();
-                $("#field_error_degree").find("span").remove();
+                //$("#field_error_degree").find("span").remove();
+
+                $("#field_error_degree").hide(); 
+                $("#field_error_stream").hide(); 
+                
             
                 if (degree == '' && stream != '')
                 {
