@@ -4228,6 +4228,7 @@ div .comment {
                 position: absolute!important;
                 z-index: 999 !important;
 }
+.common-form fieldset label#othercategory_error{display: block !important;}
 
 
 /***  media query  ***/
