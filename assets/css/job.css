@@ -1251,7 +1251,7 @@ label.cameraButton:active{
     -moz-appearance:none;
     appearance:none;
     position:relative;
-    background:url(../img/down-arrow.png) right no-repeat
+    /*background:url(../img/down-arrow.png) right no-repeat*/
 }
 .common-form fieldset.fresher_select select{
     overflow:hidden
@@ -2264,6 +2264,25 @@ p.job-top-btn a.btn4:first-child{
                 position: absolute!important;
                 z-index: 999 !important;
 }
+
+fieldset.main_select_data select{
+    -moz-appearance:none;
+    -ms-appearance:none;
+    appearance:none;
+    background-position:right!important
+}
+fieldset.main_select_data span:after{
+    content:"\f0d7";
+    font-family:FontAwesome;
+    font-size:23px;
+    color:#aaa;
+    right:24px;
+    top:36px;
+    padding:0 0 2px;
+    position:absolute;
+    pointer-events:none
+}
+.message-degree {padding: 20px 30px;}
 
 
 @media screen and (min-width:768px){

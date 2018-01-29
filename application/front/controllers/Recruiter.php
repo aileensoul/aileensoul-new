@@ -346,9 +346,21 @@ class Recruiter extends MY_Controller {
                     $dataimage = $imgdata['file_name'];
 //Creating Thumbnail
 
-                    $main_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
+                    $main_image = $this->config->item('rec_profile_main_upload_path') . $imgdata['file_name'];
                     $thumb_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
-                    if ($_SERVER['HTTP_HOST'] != "localhost") {
+                   
+
+                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                    $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+                    $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
+                      //  echo $main_image;die();
+                    
+                   // $thumb_image = $rec_image_thumb_path . $imageName;
+                    copy($main_image, $thumb_image);
+                    $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+                    
+                     if ($_SERVER['HTTP_HOST'] != "localhost") {
                         if (isset($main_image)) {
                             unlink($main_image);
                         }
@@ -356,6 +368,7 @@ class Recruiter extends MY_Controller {
                             unlink($thumb_image);
                         }
                     }
+                    
                     $this->image_lib->resize();
                     $thumberror = $this->image_lib->display_errors();
                 } else {
@@ -402,6 +415,7 @@ class Recruiter extends MY_Controller {
                         }
 //delete image from folder when user change image End
                     }
+                    
                 }
                 $logo = $imgdata['file_name'];
             }
@@ -535,7 +549,7 @@ class Recruiter extends MY_Controller {
     public function add_post() {
         $this->data['title'] = 'Add Post | Recruiter Profile - Aileensoul';
 
-        if ($this->session->userdata('aileenuser')) { 
+        if ($this->session->userdata('aileenuser')) {
 
             $this->recruiter_apply_check();
 
@@ -2016,15 +2030,15 @@ class Recruiter extends MY_Controller {
                                     $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '" alt="' . $cache_time . '">';
                                 }
                             } else {
-                                $rec_post .= '<img src="' . $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1 . '" alt="' . $cache_time_1 . '">';
-//                                $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
-//                                $s3 = new S3(awsAccessKey, awsSecretKey);
-//                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-//                                if ($info) {
-//                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '" alt="' . $cache_time . '">';
-//                                } else {
-//                                    $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
-//                                }
+                              //  $rec_post .= '<img src="' . $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1 . '" alt="' . $cache_time_1 . '">';
+                                $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1;
+                                $s3 = new S3(awsAccessKey, awsSecretKey);
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if ($info) {
+                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '" alt="' . $cache_time . '">';
+                                } else {
+                                    $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
+                                }
                             }
                         } else {
 
@@ -2169,17 +2183,46 @@ class Recruiter extends MY_Controller {
                             $cityname = '';
                         }
 
-                        $rec_post .= '<div class="post-img">
-                                            <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
+//                        $rec_post .= '<div class="post-img">
+//                                            <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
+//                        if ($cache_time_1) {
+//                            $rec_post .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time_1) . '" alt=' . $cache_time_1 . '>';
+//                        } else {
+//                            $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
+//                        }
+//                        $rec_post .= '</a>
+//                                        </div>';
+
+$rec_post .= '<div class="post-img">
+                                            <a href="javascript:void(0);" onclick="upload_company_logo('.$post['user_id'].');" title="Upload Company Logo">';
                         if ($cache_time_1) {
-                            $rec_post .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time_1) . '" alt=' . $cache_time_1 . '>';
+
+                            if (IMAGEPATHFROM == 'upload') {
+
+                                if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time_1)) {
+
+                                    $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
+                                } else {
+                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '" alt="' . $cache_time . '">';
+                                }
+                            } else {
+                              //  $rec_post .= '<img src="' . $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1 . '" alt="' . $cache_time_1 . '">';
+                                $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1;
+                                $s3 = new S3(awsAccessKey, awsSecretKey);
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if ($info) {
+                                    $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '" alt="' . $cache_time . '">';
+                                } else {
+                                    $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
+                                }
+                            }
                         } else {
+
                             $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                         }
                         $rec_post .= '</a>
                                         </div>';
-
-
+                        
                         $cache_time1 = $this->db->get_where('recruiter', array(
                                     'user_id' => $post['user_id']
                                 ))->row()->re_comp_name;
@@ -4818,7 +4861,7 @@ class Recruiter extends MY_Controller {
 
                 $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id' => $userid);
                 $temp = $this->common->select_data_by_condition('rec_post_login', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-             
+
                 if (is_numeric($temp[0]['industry_type'])) {
                     $industrydata = $temp[0]['industry_type'];
                 } else {
@@ -4838,7 +4881,7 @@ class Recruiter extends MY_Controller {
                         $industrydata = $industrydata[0]['industry_id'];
                     }
                 }
-               
+
                 $data = array(
                     'post_name' => $temp[0]['post_name'],
                     'post_description' => $temp[0]['post_description'],

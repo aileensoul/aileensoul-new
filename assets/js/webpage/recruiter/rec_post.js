@@ -561,3 +561,12 @@ function updateprofilepopup(id) {
 }
 
 //CODE FOR PROFILE PIC UPLOAD WITH CROP END
+
+function upload_company_logo(id){
+   
+   $('#bidmodal-com-logo').show();
+        //document.getElementById('bidmodal-com-logo').style.display = 'block';
+
+    alert(id);
+    
+}
