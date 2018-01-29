@@ -403,7 +403,7 @@ class User_post_model extends CI_Model {
     }
 
     public function userDashboardPost($user_id = '', $page = '') {
-        $limit = '4';
+        $limit = '10';
         $start = ($page - 1) * $limit;
         if ($start < 0)
             $start = 0;
