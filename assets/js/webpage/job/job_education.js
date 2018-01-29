@@ -1384,7 +1384,7 @@ $(document).on('change', '#input5 .degree', function (event) {
     }
 });
 
-$(document).on('change', '.message #other_stream', function (event) { alert
+$(document).on('change', '.message-degree #other_stream', function (event) { alert
     var item1 = $(this);
     var other_stream = (item1.val());
     
