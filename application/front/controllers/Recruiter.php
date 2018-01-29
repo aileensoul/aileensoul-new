@@ -348,19 +348,18 @@ class Recruiter extends MY_Controller {
 
                     $main_image = $this->config->item('rec_profile_main_upload_path') . $imgdata['file_name'];
                     $thumb_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
-                   
+
 
                     $s3 = new S3(awsAccessKey, awsSecretKey);
                     $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
                     $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
-                      //  echo $main_image;die();
-                    
-                   // $thumb_image = $rec_image_thumb_path . $imageName;
+                    //  echo $main_image;die();
+                    // $thumb_image = $rec_image_thumb_path . $imageName;
                     copy($main_image, $thumb_image);
                     $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
-                    
-                     if ($_SERVER['HTTP_HOST'] != "localhost") {
+
+                    if ($_SERVER['HTTP_HOST'] != "localhost") {
                         if (isset($main_image)) {
                             unlink($main_image);
                         }
@@ -368,7 +367,7 @@ class Recruiter extends MY_Controller {
                             unlink($thumb_image);
                         }
                     }
-                    
+
                     $this->image_lib->resize();
                     $thumberror = $this->image_lib->display_errors();
                 } else {
@@ -415,7 +414,6 @@ class Recruiter extends MY_Controller {
                         }
 //delete image from folder when user change image End
                     }
-                    
                 }
                 $logo = $imgdata['file_name'];
             }
@@ -2030,7 +2028,7 @@ class Recruiter extends MY_Controller {
                                     $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '" alt="' . $cache_time . '">';
                                 }
                             } else {
-                              //  $rec_post .= '<img src="' . $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1 . '" alt="' . $cache_time_1 . '">';
+                                //  $rec_post .= '<img src="' . $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1 . '" alt="' . $cache_time_1 . '">';
                                 $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1;
                                 $s3 = new S3(awsAccessKey, awsSecretKey);
                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -2193,8 +2191,8 @@ class Recruiter extends MY_Controller {
 //                        $rec_post .= '</a>
 //                                        </div>';
 
-$rec_post .= '<div class="post-img">
-                                            <a href="javascript:void(0);" onclick="upload_company_logo('.$post['user_id'].');" title="Upload Company Logo">';
+                        $rec_post .= '<div class="post-img">
+                                            <a href="javascript:void(0);" onclick="upload_company_logo(' . $post['user_id'] . ');" title="Upload Company Logo">';
                         if ($cache_time_1) {
 
                             if (IMAGEPATHFROM == 'upload') {
@@ -2206,7 +2204,7 @@ $rec_post .= '<div class="post-img">
                                     $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '" alt="' . $cache_time . '">';
                                 }
                             } else {
-                              //  $rec_post .= '<img src="' . $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1 . '" alt="' . $cache_time_1 . '">';
+                                //  $rec_post .= '<img src="' . $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1 . '" alt="' . $cache_time_1 . '">';
                                 $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1;
                                 $s3 = new S3(awsAccessKey, awsSecretKey);
                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -2222,7 +2220,7 @@ $rec_post .= '<div class="post-img">
                         }
                         $rec_post .= '</a>
                                         </div>';
-                        
+
                         $cache_time1 = $this->db->get_where('recruiter', array(
                                     'user_id' => $post['user_id']
                                 ))->row()->re_comp_name;
@@ -5344,6 +5342,109 @@ $rec_post .= '<div class="post-img">
                 array(
                     "data" => $is_data, "id" => $id, "is_rec" => $rec
         ));
+    }
+
+    public function company_logo() {
+        $userid = $this->session->userdata('aileenuser');
+        $temp = $_FILES["companylogo"]["name"];
+        $temporary = explode(".", $_FILES["companylogo"]["name"]);
+
+        $error = '';
+        if ($_FILES['companylogo']['name'] != '') {
+            $logo = '';
+            $job['upload_path'] = $this->config->item('rec_profile_main_upload_path');
+            $job['allowed_types'] = $this->config->item('rec_profile_main_allowed_types');
+            $job['max_size'] = $this->config->item('rec_profile_main_max_size');
+            $job['max_width'] = $this->config->item('rec_profile_main_max_width');
+            $job['max_height'] = $this->config->item('rec_profile_main_max_height');
+            $this->load->library('upload');
+            $this->upload->initialize($job);
+//Uploading Image
+            $this->upload->do_upload('companylogo');
+//Getting Uploaded Image File Data
+            $imgdata = $this->upload->data();
+            $imgerror = $this->upload->display_errors();
+
+            if ($imgerror == '') {
+
+//Configuring Thumbnail 
+                $job_thumb['image_library'] = 'gd2';
+                $job_thumb['source_image'] = $job['upload_path'] . $imgdata['file_name'];
+                $job_thumb['new_image'] = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
+                $job_thumb['create_thumb'] = TRUE;
+                $job_thumb['maintain_ratio'] = TRUE;
+                $job_thumb['thumb_marker'] = '';
+                $job_thumb['width'] = $this->config->item('rec_profile_thumb_width');
+                $job_thumb['height'] = 2;
+                $job_thumb['master_dim'] = 'width';
+                $job_thumb['quality'] = "100%";
+                $job_thumb['x_axis'] = '0';
+                $job_thumb['y_axis'] = '0';
+//Loading Image Library
+                $this->load->library('image_lib', $job_thumb);
+                $dataimage = $imgdata['file_name'];
+//Creating Thumbnail
+
+                $main_image = $this->config->item('rec_profile_main_upload_path') . $imgdata['file_name'];
+                $thumb_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
+
+
+                $s3 = new S3(awsAccessKey, awsSecretKey);
+                $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+                $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
+                //  echo $main_image;die();
+                // $thumb_image = $rec_image_thumb_path . $imageName;
+                copy($main_image, $thumb_image);
+                $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+
+                if ($_SERVER['HTTP_HOST'] != "localhost") {
+                    if (isset($main_image)) {
+                        unlink($main_image);
+                    }
+                    if (isset($thumb_image)) {
+                        unlink($thumb_image);
+                    }
+                }
+
+                $this->image_lib->resize();
+                $thumberror = $this->image_lib->display_errors();
+            } else {
+                $thumberror = '';
+            }
+            if ($imgerror != '' || $thumberror != '') {
+                $error[0] = $imgerror;
+                $error[1] = $thumberror;
+            } else {
+                $error = array();
+            }
+
+            $logoimage = $_FILES['companylogo']['name'];
+            if ($logoimage != "") {
+                $data = array(
+                    'comp_logo' => $_FILES['companylogo']['name']
+                );
+            } else {
+                $data = array(
+                    'comp_logo' => ''
+                );
+            }
+          
+            $insert_id = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
+            if ($insert_id) {
+                $data = "sucess";
+               // echo $data;
+
+                $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
+                $recruiterpostdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'comp_logo', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+                $userimage .= '<img src="' . base_url() . $this->config->item('rec_profile_thumb_upload_path') . $recruiterpostdata[0]['comp_logo'] . '" alt="" >';
+                // $userimage .= '<a href="javascript:void(0);" onclick="upload_company_logo(' . $post['user_id'] . ');" title="Upload Company Logo">Update Profile Picture</a>';
+                echo $userimage;
+            } else {
+                $data = "error";
+                echo $data;
+            }
+        }
     }
 
 }
