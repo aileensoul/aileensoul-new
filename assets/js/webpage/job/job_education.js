@@ -1016,7 +1016,7 @@ $(document).on('change', '#input1 .degree', function (event) {
 
                 $("#field_error_degree").hide(); 
                 $("#field_error_stream").hide(); 
-                
+
             
                 if (degree == '' && stream != '')
                 {
@@ -1400,8 +1400,12 @@ $(document).on('change', '.message-degree #other_stream', function (event) { ale
 
             $(".message1 #other_degree1").removeClass("keyskill_border_active");
             $('#field_error').remove();
-            var $textbox1 = $('.message1').find('input[type="text"]'),
-                    textVal1 = $textbox1.val();
+            //var $textbox1 = $('.message1').find('input[type="text"]'),
+                   // textVal1 = $textbox1.val();
+
+            var textVal1 = document.querySelector(".message1 #other_degree1").value;
+
+                    alert(textVal1);
             if (textVal1 == '') { 
                 $(".message1 #other_degree1").addClass("keyskill_border_active");
                 $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty stream is not valid</span>').insertAfter('.message1 #other_degree1');
