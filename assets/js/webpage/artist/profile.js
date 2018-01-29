@@ -158,7 +158,7 @@ function validation_other(event){
           if(n == true){     
         if(category_trim == ''){
        $("#othercategory").addClass("othercategory_require");
-       $('<label class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">Other art category required. </label>').insertAfter('#othercategory');
+       $('<label class="error" id="othercategory_error">Other art category required. </label>').insertAfter('#othercategory');
         $("#othercategory").addClass("error");
         return false;
         event.preventDefault();
@@ -172,7 +172,7 @@ function validation_other(event){
                    success: function (data) { 
                     if(data == 'true'){ 
                     $("#othercategory").addClass("othercategory_require");
-                   $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">This category already exists in art category field. </span>').insertAfter('#othercategory');
+                   $('<label class="error" id="othercategory_error">This category already exists in art category field. </label>').insertAfter('#othercategory');
                    $("#othercategory").addClass("error");
 
                    } else{ 
@@ -187,7 +187,7 @@ function validation_other(event){
        }
    }else{
        $("#skills").addClass("othercategory_require");
-       $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">You can select at max 10 Art category. </span>').insertAfter('#skills');
+       $('<label class="error" id="othercategory_error">You can select at max 10 Art category. </label>').insertAfter('#skills');
         return false;
         event.preventDefault();
    }
