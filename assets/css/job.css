@@ -2282,7 +2282,7 @@ fieldset.main_select_data span:after{
     position:absolute;
     pointer-events:none
 }
-
+.message-degree {padding: 20px 30px;}
 
 
 @media screen and (min-width:768px){
