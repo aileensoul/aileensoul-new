@@ -163,6 +163,7 @@
                         </fieldset>
                         <fieldset class="full-width main_select_data">
                            <label>Industry <font  color="red">*</font> :</label>
+                           <span>
                            <select name="industry" id="industry" tabindex="10">
                               <option value="" selected="selected">Select industry</option>
                               <?php foreach ($industry as $indu) { ?>
@@ -170,6 +171,7 @@
                               <?php } ?>
                                <option value="<?php echo $other_industry[0]['industry_id']; ?>"><?php echo $other_industry[0]['industry_name']; ?></option>
                            </select>
+                         </span>
                            <?php echo form_error('industry');; ?>
                         </fieldset>
                         <fieldset class="full-width fresher_select main_select_data" >
