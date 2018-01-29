@@ -149,8 +149,5 @@ class Userprofile_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
-    
-    public function userSearch(){
-        
-    }
+   
 }

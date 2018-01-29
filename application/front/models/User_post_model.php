@@ -608,5 +608,15 @@ class User_post_model extends CI_Model {
         $field = $query->row_array();
         return $field;
     }
-
+    
+    public function searchData(){
+        $this->db->select("*")->from("ailee_user u");
+        //$this->db->where('it.industry_id', $ask_field);
+        $query = $this->db->get();
+        $searchData = $query->result_array();
+        echo '<pre>';
+        print_r($searchData);
+        exit;
+        return $searchData;
+    }
 }
