@@ -55,7 +55,7 @@ function job_search(pagenum)
         },
         success: function (data) { 
 
-            $('.loader').remove();
+            //$('.loader').remove();
             $('.job-contact-frnd1').append(data);
              //display border for no projects available start
             var numItems = $('.job-contact-frnd1 .all-job-box').length;

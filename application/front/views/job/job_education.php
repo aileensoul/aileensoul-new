@@ -969,7 +969,7 @@
 
        <div class="modal fade message-box biderror custom-message in cus-sel-col" id="bidmodal-other-degree" role="dialog"  >
          <div class="modal-dialog modal-lm" >
-            <div class="modal-content message">
+            <div class="modal-content message-degree">
                <button type="button" class="modal-close"  id="model-close-degree" data-dismiss="modal">&times;</button>       
                <div class="modal-body">
                   <span class="mes"></span>
