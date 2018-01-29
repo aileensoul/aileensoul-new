@@ -490,10 +490,11 @@ class User_post_model extends CI_Model {
                 $result_array[$key]['post_comment_data'][$key1]['postCommentLikeCount'] = $this->postCommentLikeCount($value1['comment_id']) == '0' ? '' : $this->postCommentLikeCount($value1['comment_id']);
             }
 
-            $result_array[$key]['page_data']['page'] = $page;
-            $result_array[$key]['page_data']['total_record'] = $this->userPostCount($user_id);
-            $result_array[$key]['page_data']['perpage_record'] = $limit;
+            
         }
+        $result_array['page_data']['page'] = $page;
+            $result_array['page_data']['total_record'] = $this->userPostCount($user_id);
+            $result_array['page_data']['perpage_record'] = $limit;
 //        echo '<pre>';
 //        print_r($result_array);
 //        exit;
