@@ -766,7 +766,7 @@
                                                                             url: base_url + 'job/job_apply_post',
                                                                             data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
                                                                             dataType: 'json',
-                                                                            success: function (data) { alert(data.status);
+                                                                            success: function (data) { 
                                                                                 $('.savedpost' + abc).hide();
                                                                                 $('.applypost' + abc).html(data.status);
                                                                                 $('.applypost' + abc).attr('disabled', 'disabled');
