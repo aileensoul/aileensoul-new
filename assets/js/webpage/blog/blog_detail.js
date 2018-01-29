@@ -47,7 +47,7 @@ $(document).ready(function () {
           $.ajax({
            type: 'POST',
            url: base_url + 'blog/comment_insert',
-           data: 'blog_id=' +blog_id+ '&name=' +name+ '&email=' + email+ '&message=' + message,         
+           data: 'blog_id=' +blog_id+ '&name=' +name+ '&email=' + email+ '&message=' + encodeURIComponent(message),         
    
            success: function (data) { 
                if(data == 1) 
