@@ -680,11 +680,15 @@ class User_post_model extends CI_Model {
         }
 
         $searchData['profile'] = $searchProfileData;
-        
-        
+
+
         $searchPostData = array();
+
         $this->db->select("up.id,up.user_id,up.post_for,UNIX_TIMESTAMP(STR_TO_DATE(up.created_date, '%Y-%m-%d %H:%i:%s')) as created_date,up.post_id")->from("user_post up");
-        
+        $this->db->join('user_opportunity uo', 'uo.post_id = up.id', 'left');
+        $this->db->join('simple_post sp', 'sp.post_id = up.id', 'left');
+        $this->db->join('ask_question aq', 'aq.post_id = up.id', 'left');
+        $this->db->where('up.city', $keywordCity);
         
         if ($keywordCity) {
             $this->db->where('up.city', $keywordCity);
@@ -701,9 +705,11 @@ class User_post_model extends CI_Model {
             $this->db->or_like('u.first_name', $searchKeyword);
             $this->db->or_like('u.last_name', $searchKeyword);
         }
-        
-        
-        
+        $query = $this->db->get();
+        $user_post = $query->result_array();
+
+
+        $this->db->select("up.id,up.user_id,up.post_for,UNIX_TIMESTAMP(STR_TO_DATE(up.created_date, '%Y-%m-%d %H:%i:%s')) as created_date,up.post_id")->from("user_post up");
         $this->db->where('up.status', 'publish');
         $this->db->where('up.is_delete', '0');
         $this->db->order_by('up.id', 'desc');
@@ -787,7 +793,7 @@ class User_post_model extends CI_Model {
             $searchPostData[$key]['page_data']['total_record'] = $this->userPostCount($user_id);
             $searchPostData[$key]['page_data']['perpage_record'] = $limit;
         }
-        
+
         $searchData['post'] = $searchPostData;
 
         return $searchData;
