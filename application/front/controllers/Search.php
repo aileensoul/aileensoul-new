@@ -240,11 +240,11 @@ class Search extends MY_Controller {
         if ($search_business == "") {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => '4', 'is_deleted' => '0');
 
-            // $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+             $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-            $business_profile = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
-            $business_profile1 = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            //$business_profile = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
+            //$business_profile1 = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
         } elseif ($search_place == "") {
@@ -268,10 +268,10 @@ class Search extends MY_Controller {
             $join_str[1]['from_table_id'] = 'business_profile.user_id';
             $join_str[1]['join_type'] = '';
 //   echo $search_condition; 
-           // $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-            $business_profile = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
-            $business_profile1 = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+           // $business_profile = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
+           // $business_profile1 = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
             $join_str[0]['table'] = 'business_profile';
@@ -305,11 +305,11 @@ class Search extends MY_Controller {
             $join_str[1]['from_table_id'] = 'business_profile.user_id';
             $join_str[1]['join_type'] = '';
 
-           // $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
-            $business_profile = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
-            $business_profile1 = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            //$business_profile = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
+          //  $business_profile1 = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
             $join_str[0]['table'] = 'business_profile';
             $join_str[0]['join_table_id'] = 'business_profile.user_id';
@@ -339,7 +339,7 @@ class Search extends MY_Controller {
 //$this->load->view('business_profile/recommen_business', $this->data);
 //AJAX DATA
         //$return_html = '';
-        if (count($business_profile) > 0 || count($description) > 0) {
+        if (count($profile) > 0 || count($description) > 0) {
             if ($profile) {
 
                 
