@@ -346,9 +346,21 @@ class Recruiter extends MY_Controller {
                     $dataimage = $imgdata['file_name'];
 //Creating Thumbnail
 
-                    $main_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
+                    $main_image = $this->config->item('rec_profile_main_upload_path') . $imgdata['file_name'];
                     $thumb_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
-                    if ($_SERVER['HTTP_HOST'] != "localhost") {
+                   
+
+                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                    $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+                    $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
+                      //  echo $main_image;die();
+                    
+                   // $thumb_image = $rec_image_thumb_path . $imageName;
+                    copy($main_image, $thumb_image);
+                    $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+                    
+                     if ($_SERVER['HTTP_HOST'] != "localhost") {
                         if (isset($main_image)) {
                             unlink($main_image);
                         }
@@ -356,6 +368,7 @@ class Recruiter extends MY_Controller {
                             unlink($thumb_image);
                         }
                     }
+                    
                     $this->image_lib->resize();
                     $thumberror = $this->image_lib->display_errors();
                 } else {
@@ -402,6 +415,7 @@ class Recruiter extends MY_Controller {
                         }
 //delete image from folder when user change image End
                     }
+                    
                 }
                 $logo = $imgdata['file_name'];
             }
@@ -535,7 +549,7 @@ class Recruiter extends MY_Controller {
     public function add_post() {
         $this->data['title'] = 'Add Post | Recruiter Profile - Aileensoul';
 
-        if ($this->session->userdata('aileenuser')) { 
+        if ($this->session->userdata('aileenuser')) {
 
             $this->recruiter_apply_check();
 
@@ -4818,7 +4832,7 @@ class Recruiter extends MY_Controller {
 
                 $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id' => $userid);
                 $temp = $this->common->select_data_by_condition('rec_post_login', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-             
+
                 if (is_numeric($temp[0]['industry_type'])) {
                     $industrydata = $temp[0]['industry_type'];
                 } else {
@@ -4838,7 +4852,7 @@ class Recruiter extends MY_Controller {
                         $industrydata = $industrydata[0]['industry_id'];
                     }
                 }
-               
+
                 $data = array(
                     'post_name' => $temp[0]['post_name'],
                     'post_description' => $temp[0]['post_description'],
