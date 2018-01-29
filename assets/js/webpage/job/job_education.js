@@ -1041,9 +1041,9 @@ $(document).on('change', '#input1 .degree', function (event) {
                 return false;
             } else
             {
-                var $textbox = $('.message').find('input[type="text"]'),
+                var $textbox = $('.message-degree').find('input[type="text"]'),
                         textVal = $textbox.val();
-                var selectbox_stream = $('.message').find(":selected").text()
+                var selectbox_stream = $('.message-degree').find(":selected").text()
 
                 $.ajax({
                     type: 'POST',
@@ -1428,7 +1428,7 @@ $(document).on('change', '.message #other_stream', function (event) { alert
                         {
                             //$.fancybox.close();
                             $('#bidmodal-other-stream').modal('hide');
-                            $('.message #other_stream').html(response);
+                            $('.message-degree #other_stream').html(response);
                         }
                     }
                 });
