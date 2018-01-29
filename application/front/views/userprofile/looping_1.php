@@ -6,6 +6,7 @@
   <div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
       <!--<div ng-repeat='image in images'>-->
           <div ng-if="postData.length != 0" class="all-post-box" ng-repeat="post in postData">
+              
                 <input type="hidden" name="page_number" class="page_number" ng-class="page_number" ng-model="post.page_number" ng-value="{{post.page_data.page}}">
                 <input type="hidden" name="total_record" class="total_record" ng-class="total_record" ng-model="post.total_record" ng-value="{{post.page_data.total_record}}">
                 <input type="hidden" name="perpage_record" class="perpage_record" ng-class="perpage_record" ng-model="post.perpage_record" ng-value="{{post.page_data.perpage_record}}">
@@ -15,6 +16,7 @@
                             <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{post.user_data.user_image}}" ng-if="post.user_data.user_image != ''">
                             <img ng-src="<?php echo NOBUSIMAGE2 ?>" ng-if="post.user_data.user_image == ''">
                         </div>
+                        {{post.post_data.id}}
                         <div class="post-detail">
                             <div class="fw">
                                 <a ng-href="<?php echo base_url('profiless/') ?>{{post.user_data.user_slug}}" class="post-name" ng-bind="post.user_data.fullname"></a><span class="post-time">7 hours ago</span>
@@ -194,9 +196,9 @@ myApp.controller('DemoController', function($scope,$http) {
     
     getUserDashboardPost();
     
-    function getUserDashboardPost(pagenum = '') { alert(13);
+    function getUserDashboardPost(pagenum = '') { 
         $('#loader').show();
-        $http.get(base_url + "user_post/getUserDashboardPost?page=" + pagenum + "&user_slug=" + user_slug).then(function (success) {alert(success.data);
+        $http.get(base_url + "user_post/getUserDashboardPost?page=" + pagenum + "&user_slug=" + user_slug).then(function (success) {
             $('#loader').hide();
             $scope.postData = success.data;
           //  check_no_post_data();
@@ -207,9 +209,24 @@ myApp.controller('DemoController', function($scope,$http) {
 //  $scope.images = [1, 2, 3];
 
   $scope.loadMore = function() { //alert(111)
-    var last = $scope.images[$scope.images.length - 1];
-   // alert(last);
-    $http.get(base_url + "user_post/getUserDashboardPost?page=" + pagenum + "&user_slug=" + user_slug).then(function (success) {alert(success.data);
+    var last = $scope.postData[$scope.postData.length - 1];
+    var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+          //  if (parseInt(perpage_record * page) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+               // if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    alert(pagenum);
+                  //  getUserDashboardPostLoad(pagenum);
+               // }
+          //  }
+       $http.get(base_url + "user_post/getUserDashboardPost?page=" + pagenum + "&user_slug=" + user_slug).then(function (success) {
             $('#loader').hide();
             //$scope.postData = success.data;
             $scope.postData.push(last + success.data);
