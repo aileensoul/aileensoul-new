@@ -240,7 +240,7 @@
 
 
                 angular.element($window).bind("scroll", function(e) {
-                if ($(window).scrollTop() == $(document).height() - $(window).height()) {alert("yes");
+                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
                 var page = $(".page_number").val();
                 var total_record = $(".total_record").val();
                 var perpage_record = $(".perpage_record").val();
@@ -254,7 +254,6 @@
                 }
                 if (parseInt(page) <= parseInt(available_page)) {
                 var pagenum = parseInt($(".page_number").val()) + 1;
-//                    getUserDashboardPostLoad(pagenum);
                 $scope.getPosts(pagenum);
                 }
                 }
