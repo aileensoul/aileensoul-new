@@ -901,7 +901,9 @@ $config['blog_thumb_width'] = '150';
 $config['blog_thumb_height'] = '150';
 
 
-
+$config['blog_related_upload_path'] = 'uploads/blog/related/';
+$config['blog_thumb_width'] = '150';
+$config['blog_thumb_height'] = '150';
 
 // USER POST 
 $config['user_post_main_upload_path'] = 'uploads/user_post/main/';
