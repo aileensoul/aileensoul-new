@@ -290,6 +290,36 @@
             </div>
         </div>
         <!--PROFILE PIC MODEL END-->
+        
+        <!--COMPANY LOGO UPLOAD MODEL START-->
+        <div class="modal fade message-box" id="bidmodal-com-logo" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>      
+                    <div class="modal-body">
+                        <div class="mes">
+                            <div id="popup-form">
+
+                                <!--<div class="fw" id="profi_loader"  style="display:none; text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="<?php echo 'LOADERIMAGE'; ?>"/></div>-->
+                                <form id ="comlogo" name ="comlogo" class ="clearfix" enctype="multipart/form-data" method="post">
+                                    <div class="fw">
+                                        <input type="file" name="companylogo" accept="image/gif, image/jpeg, image/png" id="upload-complogo" >
+                                    </div>
+
+<!--                                    <div class="col-md-7 text-center">
+                                        <div id="upload-demo-one" style="display:none; width:350px"></div>
+                                    </div>-->
+                                    <input type="submit" class="upload-result-complogo" name="companylogosubmit" id="companylogosubmit" value="Save" >
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--COMPANY LOGO UPLOAD MODEL END-->
+        
         <!-- START FOOTER -->
       
 <?php echo $login_footer ?>

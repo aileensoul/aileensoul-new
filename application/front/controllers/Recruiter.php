@@ -2194,7 +2194,7 @@ class Recruiter extends MY_Controller {
 //                                        </div>';
 
 $rec_post .= '<div class="post-img">
-                                            <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
+                                            <a href="javascript:void(0);" onclick="upload_company_logo('.$post['user_id'].');" title="Upload Company Logo">';
                         if ($cache_time_1) {
 
                             if (IMAGEPATHFROM == 'upload') {
