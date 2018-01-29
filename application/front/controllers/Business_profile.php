@@ -1099,7 +1099,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 <div id = "editpostdetailbox' . $post_business_profile_post_id . '" style = "display:none;">
 <div contenteditable = "true" id = "editpostdesc' . $post_business_profile_post_id . '" placeholder = "Product Description" class = "textbuis  editable_text" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);">' . $post_product_description . '</div>
 </div>
-<button class = "fr" id = "editpostsubmit' . $post_business_profile_post_id . '" style = "display:none;margin: 5px 0; border-radius: 3px;" onClick = "edit_postinsert(' . $post_business_profile_post_id . ')">Save
+<button class = "fr" id = "editpostsubmit' . $post_business_profile_post_id . '" style = "display:none;margin: 5px 7px; border-radius: 3px;" onClick = "edit_postinsert(' . $post_business_profile_post_id . ')">Save
 </button>
 </div>
 </div>
@@ -8864,7 +8864,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 <div id = "editpostdetailbox' . $post_business_profile_post_id . '" style = "display:none;">
 <div contenteditable = "true" id = "editpostdesc' . $post_business_profile_post_id . '" placeholder = "Product Description" class = "textbuis  editable_text" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);">' . $post_product_description . '</div>
 </div>
-<button class = "fr" id = "editpostsubmit' . $post_business_profile_post_id . '" style = "display:none;margin: 5px 0; border-radius: 3px;" onClick = "edit_postinsert(' . $post_business_profile_post_id . ')">Save
+<button class = "fr" id = "editpostsubmit' . $post_business_profile_post_id . '" style = "display:none;margin: 5px 7px; border-radius: 3px;" onClick = "edit_postinsert(' . $post_business_profile_post_id . ')">Save
 </button>
 </div>
 </div>
@@ -10134,7 +10134,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 <div id = "editpostdetailbox' . $post_business_profile_post_id . '" style = "display:none;">
 <div contenteditable = "true" id = "editpostdesc' . $post_business_profile_post_id . '" placeholder = "Product Description" class = "textbuis  editable_text" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);">' . $post_product_description . '</div>
 </div>
-<button class = "fr" id = "editpostsubmit' . $post_business_profile_post_id . '" style = "display:none;margin: 5px 0; border-radius: 3px;" onClick = "edit_postinsert(' . $post_business_profile_post_id . ')">Save
+<button class = "fr" id = "editpostsubmit' . $post_business_profile_post_id . '" style = "display:none;margin: 5px 7px; border-radius: 3px;" onClick = "edit_postinsert(' . $post_business_profile_post_id . ')">Save
 </button>
 </div>
 </div>
