@@ -2454,9 +2454,9 @@ footer div.pt20{
 .modal-open-other{overflow: hidden;}
 .dropdown2_content #abody p{padding-top: 85px;}
 .cus-sel-col .other_stream option{color: #1b8ab9 !important;}
- .autoposition{
-                position: absolute!important;
-                z-index: 999 !important;
+.autoposition{
+        position: absolute!important;
+        z-index: 999 !important;
 }
 
 
