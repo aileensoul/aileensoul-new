@@ -14,6 +14,14 @@ class Data_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
+    function findFieldList($search_keyword = '') {
+        $this->db->select('it.industry_id')->from('industry_type it');
+        $this->db->where('it.industry_name', $search_keyword);
+        $this->db->where('it.status', '1');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array;
+    }
 
     function getJobTitle() {
         $this->db->select('jt.title_id,jt.name')->from('job_title jt');
@@ -56,6 +64,15 @@ class Data_model extends CI_Model {
         return $result_array;
     }
 
+    function getCityName($id) {
+        $this->db->select('c.city_name')->from('cities c');
+        $this->db->where('c.status', '1');
+        $this->db->where('c.city_id', $id);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['city_name'];
+    }
+
     function findCityList($search_keyword = '') {
         $this->db->select('c.city_id')->from('cities c');
         $this->db->where('c.city_name', $search_keyword);
@@ -80,6 +97,25 @@ class Data_model extends CI_Model {
             $result_array = array();
         }
         return $result_array;
+    }
+
+    function getStateIdByCityId($id = '') {
+        $this->db->select('c.state_id')->from('cities c');
+        $this->db->where('c.status', '1');
+        $this->db->where('c.city_id', $id);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['state_id'];
+    }
+
+    function getCountryByStateId($id = '') {
+        $this->db->select('c.country_name')->from('countries c');
+        $this->db->join('states s','s.country_id = c.country_id','left');
+        $this->db->where('c.status', '1');
+        $this->db->where('s.state_id', $id);
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['country_name'];
     }
 
     function universityList() {
@@ -157,7 +193,7 @@ class Data_model extends CI_Model {
         }
         return $result_array;
     }
-    
+
     function searchQueList($search_keyword = '') {
         $this->db->select('q.id,q.question')->from('user_ask_question q');
         if ($search_keyword != '') {
@@ -174,7 +210,7 @@ class Data_model extends CI_Model {
         }
         return $result_array;
     }
-    
+
     function findCategory($search_keyword = '') {
         $this->db->select('t.id')->from('tags t');
         $this->db->where('t.name', $search_keyword);

@@ -42,6 +42,11 @@ class General_data extends MY_Controller {
         echo json_encode($getCityList);
     }
     
+    public function getCityName() {
+        $getCityList = $this->data_model->getCityName();
+        echo json_encode($getCityList);
+    }
+    
     public function searchCityList() {
         $citySearch = $_POST['q'];
         $getCityList = $this->data_model->searchCityList($citySearch);
