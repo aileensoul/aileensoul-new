@@ -564,7 +564,9 @@ function updateprofilepopup(id) {
 
 function upload_company_logo(id){
    
-    $('#bidmodal-com-logo').model('show');
+   $('#bidmodal-com-logo').show();
+        //document.getElementById('bidmodal-com-logo').style.display = 'block';
+
     alert(id);
     
 }
