@@ -28,7 +28,8 @@
     border-bottom-right-radius:4px;
     padding:10px 10px 0;
     background-color:#fff;
-    border:1px solid #d9d9d9
+    border:1px solid #d9d9d9;
+    border-top:none;
 }
 .user-midd-section{
     margin:15px 0 35px

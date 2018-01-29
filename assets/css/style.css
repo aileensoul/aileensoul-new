@@ -525,7 +525,7 @@ fieldset.full-width{
 .common-form fieldset label,.panel-body label{
     margin:0 4px 2px;
     padding:0;
-    display:block
+    display:block !important;
 }
 .common-form{
     width:100%;
@@ -2448,7 +2448,7 @@ footer div.pt20{
 .job_reg_page_fprm select.color-black-custom{color:#000;}
 .color-black-custom{color:#000;}
 .color-light-custom{color:#acacac;}
-.right_middle_side_posrt .all-profile-box{width: calc(100% - 0px);margin-left: 0px;}
+.right_middle_side_posrt .all-profile-box{width: calc(100% - 8px);margin-left: 8px;}
 .main_frlancer a:focus{color: #fff !important;background: #156f95;}
 .main_frlancer a:active{color: #fff !important;background: #156f95;}
 .modal-open-other{overflow: hidden;}
