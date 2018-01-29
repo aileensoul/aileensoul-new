@@ -1,9 +1,7 @@
  <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
- <script src="<?php echo base_url('assets/js/infinite-scroll.js'); ?>"></script>
 
 <div ng-app='myApp' ng-controller='DemoController'>
-  <div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
       <!--<div ng-repeat='image in images'>-->
           <div ng-if="postData.length != 0" class="all-post-box" ng-repeat="post in postData">
                 <input type="hidden" name="page_number" class="page_number" ng-class="page_number" ng-model="post.page_number" ng-value="{{post.page_data.page}}">
@@ -184,7 +182,7 @@
             </div>
       <!--</div>-->
     <!--<img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'><br>-->
-  </div>
+ 
 </div>
 <script type='text/javascript'>
       var base_url = '<?php echo base_url(); ?>';
