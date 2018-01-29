@@ -224,28 +224,31 @@
 
                 $scope.row += $scope.rowperpage;
                 if ($scope.postData != undefined){alert(12);
+                     alert("page");
+                    alert(response.data.page_data.page);
+                console.log(response.data.page_data.page);
+                  $scope.page_number = response.data.page_data.page;
                 for (var i in response.data) {
                 $scope.postData.push(response.data[i]);
                 }
 
-                } else{alert(2);
-                console.log(response.data.page_data);
+                } else{
+                   
                 $scope.postData = response.data;
                 }
                 } else{
                 $scope.showLoadmore = false;
                 }
-
                 });
                 }
-
-
                 angular.element($window).bind("scroll", function(e) {
                 if ($(window).scrollTop() == $(document).height() - $(window).height()) {alert("yes");
                 var page = $(".page_number").val();
                 var total_record = $(".total_record").val();
                 var perpage_record = $(".perpage_record").val();
-                
+                alert(page);
+                alert(total_record);
+                alert(perpage_record);
                 if (parseInt(perpage_record * page) <= parseInt(total_record)) {
                 var available_page = total_record / perpage_record;
                 available_page = parseInt(available_page, 10);
@@ -253,7 +256,7 @@
                 if (mod_page > 0) {
                 available_page = available_page + 1;
                 }
-                if (parseInt(page) <= parseInt(available_page)) {
+                if (parseInt(page) <= parseInt(available_page)) {alert("done");
                 var pagenum = parseInt($(".page_number").val()) + 1;
 //                    getUserDashboardPostLoad(pagenum);
                 $scope.getPosts(pagenum);
