@@ -87,7 +87,9 @@ $(document).ready(function () {
 function validate(){
 
      var form = $("#artinfo");
-    if(form.valid() == true ){
+      var other_category = document.getElementById("othercategory").value;
+
+    if(form.valid() == true && other_category != ''){
      //$('#profilereg_ajax_load').show();
      document.getElementById('profilereg_ajax_load').style.display = 'inline-block';
     }
