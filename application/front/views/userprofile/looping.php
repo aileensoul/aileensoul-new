@@ -207,7 +207,7 @@ myApp.controller('DemoController', function($scope,$http) {
 //  $scope.images = [1, 2, 3];
 
   $scope.loadMore = function() { //alert(111)
-    var last = $scope.images[$scope.images.length - 1];
+    var last = $scope.postData[$scope.postData.length - 1];
    // alert(last);
     $http.get(base_url + "user_post/getUserDashboardPost?page=" + pagenum + "&user_slug=" + user_slug).then(function (success) {alert(success.data);
             $('#loader').hide();
