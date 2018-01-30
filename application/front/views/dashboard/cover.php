@@ -234,7 +234,39 @@
 
             <section class="all-profile-custom">
 
-                
+                <div id="job-scroll" class="custom-box odd">
+                    <div class="custom-width">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4">
+                                <div class="left-box">
+                                    <a  href="<?php echo base_url('job'); ?>"><img title="Job Profile" src="<?php echo base_url(); ?>assets/img/i1.png" alt="Job Profile"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                                <div class="right-box">
+                                    <h1><a title="Job Profile" href="<?php echo base_url('job'); ?>">Job Profile</a></h1>
+                                    <p>Find best job options and connect with recruiters.</p>
+                                    <div class="btns">
+
+                                        <?php if ($job['job_step'] != 10) { ?>
+                                            <a title="Register" class="btn-1" id="job-register-btn" href="<?php echo base_url('job/'); ?>">Register</a>
+                                        <?php } elseif ($job['status'] == '0' && $job['job_step'] == 10) {
+                                            ?>
+
+                                            <a class="btn-1" id="job-active-btn" href="<?php echo base_url('job/'); ?>">Active</a>
+                                        <?php } else {
+                                            ?> 
+
+                                            <a title="Take me in" class="btn-4" id="job-take-btn" href="<?php echo base_url('job/home'); ?>">Take me in</a> 
+
+                                        <?php } ?>
+                                        <a title="How it works" data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div id="rec-scroll" class="custom-box odd">
                     <div class="custom-width">
                         <div class="row">
@@ -273,42 +305,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="job-scroll" class="custom-box odd">
-                    <div class="custom-width">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-4">
-                                <div class="left-box">
-                                    <a  href="<?php echo base_url('job'); ?>"><img title="Job Profile" src="<?php echo base_url(); ?>assets/img/i1.png" alt="Job Profile"></a>
-                                </div>
-                            </div>
-                            <div class="col-md-8 col-sm-8">
-                                <div class="right-box">
-                                    <h1><a title="Job Profile" href="<?php echo base_url('job'); ?>">Job Profile</a></h1>
-                                    <p>Find best job options and connect with recruiters.</p>
-                                    <div class="btns">
-
-                                        <?php if ($job['job_step'] != 10) { ?>
-                                            <a title="Register" class="btn-1" id="job-register-btn" href="<?php echo base_url('job/'); ?>">Register</a>
-                                        <?php } elseif ($job['status'] == '0' && $job['job_step'] == 10) {
-                                            ?>
-
-                                            <a class="btn-1" id="job-active-btn" href="<?php echo base_url('job/'); ?>">Active</a>
-                                        <?php } else {
-                                            ?> 
-
-                                            <a title="Take me in" class="btn-4" id="job-take-btn" href="<?php echo base_url('job/home'); ?>">Take me in</a> 
-
-                                        <?php } ?>
-                                        <a title="How it works" data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                
+               
                 <div id="bus-scroll" class="custom-box odd">
                     <div class="custom-width">
                         <div class="row">
