@@ -1070,6 +1070,10 @@ header.profile-header .logo a{color:#5c5c5c;}
 .post-des-detail p a:hover{color:#1b8ab9; text-decoration:underline;}
 .ans-text{width:100%; float:left; padding:0 15px 10px; font-size:22px;}
 .ans-text span{width:100%; float:left; padding-top:10px; border-top:1px solid #d2d2d2;}
+.question{font-size:22px;}
+.question-page .bottom-left li a{font-size:14px;}
+.question-page .post-bottom ul.bottom-right{padding-top:0;}
+.question-page .post-bottom{padding:5px 0;}
  /** reg form **/
  .reg-form-box{background:rgba(255,255,255,0.3); padding:30px; border-radius:4px;}
  .reg-form{border:1px solid #5c5c5c; border-radius:4px;}
@@ -1128,6 +1132,30 @@ header.profile-header .logo a{color:#5c5c5c;}
 .latest_audio .audio_source{margin-top:-12px;}
 
 /***  end audio video  ***/
+/***  photo, audio, video, article page html  ***/
+.full-box{width:100%; float:left; border:1px solid #d2d2d2; padding:15px;}
+.media-tab{text-align:center;}
+.media-tab .nav-tabs {display:inline-block; border-bottom:none;}
+.media-tab .nav-tabs > li.active > a, .media-tab .nav-tabs > li.active > a:focus, .media-tab .nav-tabs > li.active > a:hover { border-width: 0; }
+.media-tab .nav-tabs > li > a { border: none; color: #666; font-size:22px;}
+.media-tab .nav-tabs > li.active > a, .media-tab .nav-tabs > li > a:hover { border: none; color: #1b8ab9 !important; background: transparent; }
+.media-tab .nav-tabs > li > a::after { content: ""; background: #1b8ab9; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+.media-tab .nav-tabs > li.active > a::after, .media-tab .nav-tabs > li:hover > a::after { transform: scale(1); }
+.media-tab .tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+.media-tab .tab-pane {padding: 15px 0;}
+.media-tab .tab-content{padding:20px}
+.all-tab{padding:0;}
+.all-tab li{display: inline-block;list-style-type: none;width: 220px;height: 220px;margin: 7px 5px;}
+.all-tab li img{width: 220px;height: 220px;}
+/*.video-tab li{width: 270px;height: 250px;}*/
+.audio-tab li{background: url(../n-images/music-icon1.png); width: 280px; background-size: 100%;
+    padding-top: 180px;}
+.audio-tab li audio{width:100%;}
+.pdf-tab li a img{width:75%; height:75%;}
+.article-tab li{width: 280px;}
+.article-tab li img{width: 280px;}
+
+/***  end photo, audio, video, article page html  ***/
 /***  media query  ***/
 @media screen and (min-width: 768px) {
 
