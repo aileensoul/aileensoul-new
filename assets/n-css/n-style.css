@@ -178,12 +178,14 @@ color: #fff;}
 .comment-box .post-img{width:36px; height:36px;}
 .add-comment .comment-input{width:426px; padding:0 15px; float:left;}
 .edit-comment .comment-input{width:415px; padding:0 15px 0 0; float:left;}
+.question-page .add-comment .comment-input{width:85%;}
+.question-page .edit-comment .comment-input{width:83%;}
 .add-comment .comment-input input{height:36px;}
-.comment-submit{width:90px; float:left;}
+.comment-submit{width:90px; float:right;}
 .post-comment{width:100%; float:left; padding-bottom:10px; border-bottom:1px solid #d2d2d2; margin-bottom:15px;}
 .post-comment .post-img{}
 .all-post-box .all-post-bottom{padding:15px; background:#e8f3f8; width:100%; float:left;}
-.comment-dis{width:515px; float:left; padding-left:10px;}
+.comment-dis{width:92%; float:left; padding-left:10px;}
 .comment-dis .comment-name a{color:#1b8ab9; font-weight:600; font-size:13px;}
 .comment-dis .comment-dis-inner{font-size:13px;}
 .comment-action{padding:0; width:100%; float:left; margin:0;}
@@ -642,7 +644,7 @@ box-shadow: 2px 2px 17px 0.8px rgba(217,217,217,1);}
 .custom-user-list .all-noti a h4{font-size:16px;}
 .all-noti .custom-user-detail p{font-size:13px;}
 .right-add{width:320px; float:right;}
-.custom-user-add{padding:10px; border:1px solid #d2d2d2; border-radius:4px; text-align:center; float:right;}
+.custom-user-add{padding:7px; border:1px solid #d2d2d2; border-radius:4px; text-align:center; float:right;}
 .detail-box{border:1px solid #d2d2d2; width:100%; float:left; border-radius:4px;}
 .detail-box h4{background:#e8f3f8; margin:0; padding:10px 15px; border-radius:4px;}
 .detail-box ul{padding:0 15px;}
@@ -932,6 +934,40 @@ header.profile-header .logo a{color:#5c5c5c;}
 .art-banner{border:1px solid #d2d2d2; height:265px; border-radius:4px;}
 .upload-box{padding:25px 0; text-align:center;}
 .upload-box p{padding:19px 0; font-size:26px;}
+.article-post .post-images{border:1px solid #d2d2d2;}
+.article-post-text{text-align:left; padding:10px 10px 0;}
+.article-post .post-images a{display:block; color:#5c5c5c;}
+.article-post .article-post-text p{font-weight:normal;}
+.article-post .post-bottom{border-top:0px;}
+.article-preview .art-banner a img{width:100%;}
+.article-preview .art-banner{overflow:hidden;}
+.article-preview .upload-box{padding-top:0;}
+.article-preview .upload-box p{padding-top:0;}
+.article-preview .article-title{padding-bottom:10px;}
+.article-author{padding:15px 0; width:100%; float:left; border-bottom:1px solid #d2d2d2; margin-bottom:15px;}
+.article-author .author-detail{float:left; width:47%; padding:5px;}
+.article-author .author-detail h4{margin:0; padding-bottom:2px;}
+.author-btn{width:47%; float:right;}
+.author-btn .user-btns .btn3{padding:6px 5px;}
+.author-btn .user-btns .btn3:last-child{margin-right:0;}
+.author-btn .user-btns a{width:135px;}
+.article-content p{padding-bottom:10px;}
+.article-all-comment{border-top:1px solid #d2d2d2;}
+.like-img a{display:inline-block;}
+.like-img a img{width:50px; height:50px;  border-radius:4px;  border:1px solid #d2d2d2;}
+.user-likes{margin-bottom:5px;}
+.user-likes a{width:50px; height:50px; border:1px solid #d2d2d2; border-radius:4px !important;}
+.user-likes a i{margin:5px 7px 7px;}
+.like-img:last-child a{padding:13px 0 !important;}
+.article-preview .like-other-box{border-top:0px;}
+#all-liks .bottom-left{max-height:400px; overflow-y:scroll;}
+#all-liks .bottom-left{padding:5px 15px;}
+#all-liks .bottom-left li{padding:10px 0px; list-style-type:none; width:100%; border-bottom:1px solid #d2d2d2; float:left;}
+#all-liks .bottom-left .like-img:last-child a{padding:0 !important;}
+#all-liks .bottom-left .like-img a{float:left;}
+#all-liks .like-detail {width:86%; float:left;}
+#all-liks .like-detail h4{display:block; margin:0; width:100%; float:left; padding:2px 0 5px;}
+#all-liks .like-detail p{font-size:14px;}
 /***  end article page  ***/
 .gradient-bg{
 	background:#fff;
@@ -951,6 +987,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 .rel-art-name a{color:#fff; font-weight:600;}
 .rel-art-box img{width:100%; height:211px;}
 .comment-article{padding:20px 0; width:100%; float:left;}
+.add-comment{width:100%; float:left;}
 .add-comment textarea{height:132px;}
 .article-all-comment{padding:20px 0; width:100%; float:left;}
 .article-all-comment .post-comment:first-child{padding-top:10px;}
@@ -1026,6 +1063,13 @@ header.profile-header .logo a{color:#5c5c5c;}
 .content-bnr .content-bnt-text{position:absolute; text-align:center; width:100%; padding:100px 0; color:#fff; top:0px;}
 .content-bnr h1{padding-bottom:55px;}
 .it-works-img img{width:100%;}
+.custom-user-list.question-page h3{border-bottom:0px;}
+.question-page .post-des-detail p{padding-bottom:5px;}
+.question-page .post-des-detail p:last-child{padding-bottom:0px;}
+.post-des-detail p a{color:#5c5c5c;}
+.post-des-detail p a:hover{color:#1b8ab9; text-decoration:underline;}
+.ans-text{width:100%; float:left; padding:0 15px 10px; font-size:22px;}
+.ans-text span{width:100%; float:left; padding-top:10px; border-top:1px solid #d2d2d2;}
  /** reg form **/
  .reg-form-box{background:rgba(255,255,255,0.3); padding:30px; border-radius:4px;}
  .reg-form{border:1px solid #5c5c5c; border-radius:4px;}
@@ -1047,9 +1091,19 @@ header.profile-header .logo a{color:#5c5c5c;}
  .cat-box ul li a{color:#5c5c5c;}
  .cat-box ul li a span{color:#999;}
  .cat-box ul li span{display:block;}
- .search-business-top{padding:4px; width:100%; float:left;}
+ .search-business-top{padding:4px; width:100%; float:left; border-bottom:1px solid #d2d2d2;}
  .search-business-top .bus-cover{max-height:150px; width:100%; overflow:hidden; border-radius:4px;}
  .search-business-top .bus-cover img{border-radius:4px; min-height:150px; width:100%;}
+ .search-business-top .bus-cover a{display:inline-block;}
+ .search-business-top .all-job-top{border-bottom:0;}
+ .search-business-top .all-job-top .post-img{width:100px; height:100px; border:5px solid #fff; margin-top:-50px; position:relative; border-radius:4px;}
+ .search-business-top .job-top-detail h5{font-size:18px; font-weight:normal;}
+ .search-business .search-detail{padding:0; width:100%; float:left; margin:0;} 
+ .search-business .search-detail li{list-style-type:none; font-size:16px; width:100%; float:left; padding:3px 0;}
+ .search-business .search-detail li a{color:#5c5c5c;} 
+ .search-business .search-detail li .img{float:left; width:30px;} 
+ .search-business .search-detail li .detail-content{float:left; width:94%;} 
+ 
 /***  end profile main page  ***/
 /***  audio video css  ***/
 .mejs__container.mejs__video,.mejs__layers .mejs__poster.mejs__layer,.mejs__mediaelement video,.mejs__overlay.mejs__layer,.video .mejs__poster{
