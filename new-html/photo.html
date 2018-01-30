@@ -601,17 +601,189 @@
 		                <div class="media-tab">
                             <div class="card">
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+									<li role="presentation" class="active"><a href="#article" aria-controls="article" role="tab" data-toggle="tab"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Article</a></li>
+                                    <li role="presentation">
+										<a href="#photo" aria-controls="photo" role="tab" data-toggle="tab">
+											<i class="fa fa-camera" aria-hidden="true"></i> Photo
+										</a></li>
+                                    <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><i class="fa fa-video-camera" aria-hidden="true"></i> Video</a></li>
+                                    <li role="presentation"><a href="#audio" aria-controls="audio" role="tab" data-toggle="tab"><i class="fa fa-music" aria-hidden="true"></i> Audio</a></li>
+                                    <li role="presentation"><a href="#pdf" aria-controls="pdf" role="tab" data-toggle="tab"><i class="fa fa-newspaper-o" aria-hidden="true"></i> PDF</a></li>
                                 </ul>
 
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="home">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                                    <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
-                                    <div role="tabpanel" class="tab-pane" id="messages">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                                    <div role="tabpanel" class="tab-pane" id="settings">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..
+									<div role="tabpanel" class="tab-pane active" id="article">
+										<ul class="all-tab article-tab">
+											<li>
+												<div class="rel-art-box">
+													<img src="img/art-post.jpg">
+													<div class="rel-art-name">
+														<a href="#">Article Name</a>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="rel-art-box">
+													<img src="img/art-post.jpg">
+													<div class="rel-art-name">
+														<a href="#">Article Name</a>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="rel-art-box">
+													<img src="img/art-post.jpg">
+													<div class="rel-art-name">
+														<a href="#">Article Name</a>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="rel-art-box">
+													<img src="img/art-post.jpg">
+													<div class="rel-art-name">
+														<a href="#">Article Name</a>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="rel-art-box">
+													<img src="img/art-post.jpg">
+													<div class="rel-art-name">
+														<a href="#">Article Name</a>
+													</div>
+												</div>
+											</li>
+											
+										</ul>
+									</div>
+                                    <div role="tabpanel" class="tab-pane" id="photo">
+										<ul class="all-tab">
+											<li><img src="n-images/img2.jpg"></li>
+											<li><img src="n-images/img2.jpg"></li>
+											<li><img src="n-images/img2.jpg"></li>
+											<li><img src="n-images/img2.jpg"></li>
+											<li><img src="n-images/img2.jpg"></li>
+											<li><img src="n-images/img2.jpg"></li>
+										</ul>
+									</div>
+                                    <div role="tabpanel" class="tab-pane" id="video">
+										<ul class="all-tab video-tab">
+											<li><img src="n-images/img1.jpg"></li>
+											<li><img src="n-images/img1.jpg"></li>
+											<li><img src="n-images/img1.jpg"></li>
+											<li><img src="n-images/img1.jpg"></li>
+											<li><img src="n-images/img1.jpg"></li>
+											<li><img src="n-images/img1.jpg"></li>
+										</ul>
+									</div>
+                                    <div role="tabpanel" class="tab-pane" id="audio">
+										<ul class="all-tab audio-tab">
+											<li>
+												<audio controls>
+												  <source src="horse.ogg" type="audio/ogg">
+												  <source src="horse.mp3" type="audio/mpeg">
+												Your browser does not support the audio element.
+												</audio>
+											</li>
+											<li>
+												<audio controls>
+												  <source src="horse.ogg" type="audio/ogg">
+												  <source src="horse.mp3" type="audio/mpeg">
+												Your browser does not support the audio element.
+												</audio>
+											</li>
+											<li>
+												<audio controls>
+												  <source src="horse.ogg" type="audio/ogg">
+												  <source src="horse.mp3" type="audio/mpeg">
+												Your browser does not support the audio element.
+												</audio>
+											</li>
+											<li>
+												<audio controls>
+												  <source src="horse.ogg" type="audio/ogg">
+												  <source src="horse.mp3" type="audio/mpeg">
+												Your browser does not support the audio element.
+												</audio>
+											</li>
+											
+										</ul>
+									</div>
+                                    
+                                    <div role="tabpanel" class="tab-pane" id="pdf">
+										<ul class="all-tab pdf-tab">
+											<li><a href="#"><img src="n-images/PDF.jpg"> <p>Hello</p></a></li>
+											<li><a href="#"><img src="n-images/PDF.jpg"> <p>Hello</p></a></li>
+											<li><a href="#"><img src="n-images/PDF.jpg"> <p>Hello</p></a></li>
+											<li><a href="#"><img src="n-images/PDF.jpg"><p>Hello</p></a></li>
+											<li><a href="#"><img src="n-images/PDF.jpg"><p>Hello</p></a></li>
+											<li><a href="#"><img src="n-images/PDF.jpg"><p>Hello</p></a></li>
+										</ul>
+									</div>
+                                </div>
+							</div>
+                        </div>
+						
+						<div class="media-tab">
+                            <div class="card">
+                                <ul class="nav nav-tabs" role="tablist">
+									<li class="active"><a href="#" ><i class="fa fa-newspaper-o" aria-hidden="true"></i> Article</a></li>
+                                    <li>
+										<a href="#">
+											<i class="fa fa-camera" aria-hidden="true"></i> Photo
+										</a>
+									</li>
+                                    <li><a href="#"><i class="fa fa-video-camera" aria-hidden="true"></i> Video</a></li>
+                                    <li><a href="#"><i class="fa fa-music" aria-hidden="true"></i> Audio</a></li>
+                                    <li><a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> PDF</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+									<div role="tabpanel" class="tab-pane active" id="article">
+										<ul class="all-tab article-tab">
+											<li>
+												<div class="rel-art-box">
+													<img src="img/art-post.jpg">
+													<div class="rel-art-name">
+														<a href="#">Article Name</a>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="rel-art-box">
+													<img src="img/art-post.jpg">
+													<div class="rel-art-name">
+														<a href="#">Article Name</a>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="rel-art-box">
+													<img src="img/art-post.jpg">
+													<div class="rel-art-name">
+														<a href="#">Article Name</a>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="rel-art-box">
+													<img src="img/art-post.jpg">
+													<div class="rel-art-name">
+														<a href="#">Article Name</a>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="rel-art-box">
+													<img src="img/art-post.jpg">
+													<div class="rel-art-name">
+														<a href="#">Article Name</a>
+													</div>
+												</div>
+											</li>
+											
+										</ul>
 									</div>
                                 </div>
 							</div>
