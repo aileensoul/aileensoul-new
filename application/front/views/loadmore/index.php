@@ -15,8 +15,8 @@
 
             <!-- Post -->
             <input name="page_number" class="page_number"  ng-model="page_number" ng-value="postData.page_data.page">
-            <input name="total_record" class="total_record"  ng-model="post.total_record" ng-value="postData.page_data.total_record">
-            <input name="perpage_record" class="perpage_record"  ng-model="post.perpage_record" ng-value="postData.page_data.perpage_record">
+            <input name="total_record" class="total_record"  ng-model="total_record" ng-value="postData.page_data.total_record">
+            <input name="perpage_record" class="perpage_record"  ng-model="perpage_record" ng-value="postData.page_data.perpage_record">
             <div ng-if="postData.length != 0" class="all-post-box" ng-repeat="post in postData">
 
                 <div class="all-post-top">
