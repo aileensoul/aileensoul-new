@@ -101,7 +101,8 @@
                                 var follow_id = '<?php echo $follow_id; ?>';
                                 var is_userPostCount = '<?php echo $is_userPostCount; ?>';
                                 var header_all_profile = '<?php echo $header_all_profile; ?>';
-                                var app = angular.module("userProfileApp", ['ngRoute', 'ui.bootstrap', 'ngTagsInput', 'ngSanitize']);
+                                 
+                               var app = angular.module("userProfileApp", ['ngRoute','ui.bootstrap', 'ngTagsInput', 'ngSanitize']);
         </script>
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/webpage/user/user_profile.js?ver=' . time()) ?>"></script>
