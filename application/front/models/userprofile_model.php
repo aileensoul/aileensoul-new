@@ -114,9 +114,7 @@ class Userprofile_model extends CI_Model {
         $start = ($page - 1) * $limit;
         if ($start < 0)
             $start = 0;
-
         $where = "((uf.follow_from = '" . $user_id . "'))";
-
         $this->db->select("u.user_id,u.first_name,u.last_name,ui.user_image,jt.name as title_name,d.degree_name,u.user_slug")->from("user_follow  uf");
         $this->db->join('user u', 'u.user_id = uf.follow_to', 'left');
         $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
