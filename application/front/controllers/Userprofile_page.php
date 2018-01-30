@@ -81,8 +81,12 @@ class Userprofile_page extends MY_Controller {
     }
 
     public function followers_data() {
+         $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
         $userid = $this->session->userdata('aileenuser');
-        $followersData = $this->data['followersData'] = $this->userprofile_model->getFollowersData($userid, $data = "");
+        $followersData = $this->data['followersData'] = $this->userprofile_model->getFollowersData($userid, $data = "",$page);
         echo json_encode($followersData);
     }
     
@@ -101,8 +105,12 @@ class Userprofile_page extends MY_Controller {
     }
     
     public function following_data() {
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
         $userid = $this->session->userdata('aileenuser');
-        $followingData = $this->data['followingData'] = $this->userprofile_model->getFollowingData($userid, $data = "");
+        $followingData = $this->data['followingData'] = $this->userprofile_model->getFollowingData($userid, $data = "",$page);
         if(count($followingData) == 0){
            echo count($followingData);
        }else{

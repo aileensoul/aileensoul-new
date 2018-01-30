@@ -3,7 +3,10 @@
         <div class="list-box-custom">
             <h3>Following</h3>
             <div class="p15 fw" id="nofollowng">
-                <div class="custom-user-box" ng-if="follow_data != '0'" ng-repeat="follow in follow_data">
+                <input name="page_number" class="page_number"  ng-model="page_number" ng-value="pagecntctData.pagedata.page">
+                <input name="total_record" class="total_record"  ng-model="total_record" ng-value="pagecntctData.pagedata.total_record">
+                <input name="perpage_record" class="perpage_record"  ng-model="perpage_record" ng-value="pagecntctData.pagedata.perpage_record">
+                <div class="custom-user-box" ng-if="follow_data != '0'" ng-repeat="follow in followingData">
                     <div class="post-img" ng-if="follow.user_image != '' && follow.user_image != null">
                         <a href="#"><img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{follow.user_image}}"></a>
                     </div>

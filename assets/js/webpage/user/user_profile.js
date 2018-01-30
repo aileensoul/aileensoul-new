@@ -1309,9 +1309,7 @@ app.controller('contactsController', function ($scope, $http, $location, $window
             url: base_url + "userprofile_page/contacts_data?page=" + pagenum,
             data: {row: $scope.row, rowperpage: $scope.rowperpage}
         }).then(function successCallback(response) {
-
             if (response.data != '') {
-
                 $scope.row += $scope.rowperpage;
                 if ($scope.contactData != undefined) {
                     $scope.page_number = response.data.pagedata.page;
@@ -1332,7 +1330,6 @@ app.controller('contactsController', function ($scope, $http, $location, $window
             var page = $(".page_number").val();
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
-            alert(page);
             if (parseInt(perpage_record * page) <= parseInt(total_record)) {
                 var available_page = total_record / perpage_record;
                 available_page = parseInt(available_page, 10);
@@ -1360,42 +1357,73 @@ app.controller('contactsController', function ($scope, $http, $location, $window
         $('#remove-contact').modal('show');
     }
     // PROFEETIONAL DATA
-//    getFieldList();
-//    function getFieldList() {
-//        $http({
-//            method: 'POST',
-//            url: base_url + 'userprofile_page/contacts_data',
-//            data: 'u=' + user_id,
-//            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-//        })
-//                .then(function (success) {
-//                    $scope.contats_data = success.data;
-//                });
-//    }
-//    $scope.goUserprofile = function (path) {
-//        location.href = base_url + 'profiless/' + path;
-//    }
+    $scope.goUserprofile = function (path) {
+        location.href = base_url + 'profiless/' + path;
+    }
 });
-app.controller('followersController', function ($scope, $http, $location, $compile) {
+app.controller('followersController', function ($scope, $http, $location, $compile,$window) {
+    
+    //    lazzy loader start
+// Variables
+    $scope.showLoadmore = true;
+    $scope.row = 0;
+    $scope.rowperpage = 3;
+    $scope.buttonText = "Load More";
+    // Fetch data
+    $scope.getFollowers = function (pagenum = '') {
+
+        $http({
+            method: 'post',
+            url: base_url + "userprofile_page/followers_data?page=" + pagenum,
+            data: {row: $scope.row, rowperpage: $scope.rowperpage}
+        }).then(function successCallback(response) {
+            if (response.data != '') {
+                $scope.row += $scope.rowperpage;
+                if ($scope.contactData != undefined) {
+                    $scope.page_number = response.data.pagedata.page;
+                    for (var i in response.data.contactrecord) {
+                        $scope.followersData.push(response.data.followerrecord[i]);
+                    }
+                } else {
+                    $scope.pagecntctData = response.data;
+                    $scope.followersData = response.data.followerrecord;
+                }
+            } else {
+                $scope.showLoadmore = false;
+            }
+        });
+    }
+    angular.element($window).bind("scroll", function (e) {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            var page = $(".page_number").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record * page) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                if (parseInt(page) <= parseInt(available_page)) {
+                    alert("go");
+                    var pagenum = parseInt($(".page_number").val()) + 1;
+                    // alert(pagenum);
+                    $scope.getFollowers(pagenum);
+                }
+            }
+        }
+    });
+    // Call function
+    $scope.getFollowers();
+//    lazzy loader end
+
     $scope.user = {};
     var id = 1;
     $scope.follow = function (index) { }
 
     // PROFEETIONAL DATA
-    getFieldList();
-    function getFieldList() {
-        $http({
-            method: 'POST',
-            url: base_url + 'userprofile_page/followers_data',
-            data: 'u=' + user_id,
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        })
-                .then(function (success) {
-                    $scope.follow_data = success.data;
-                });
-    }
-
-    $scope.follow_user = function (id) {
+       $scope.follow_user = function (id) {
         $http({
             method: 'POST',
             url: base_url + 'userprofile_page/follow_user',
@@ -1423,24 +1451,66 @@ app.controller('followersController', function ($scope, $http, $location, $compi
         location.href = base_url + 'profiless/' + path;
     }
 });
-app.controller('followingController', function ($scope, $http, $location, $compile) {
+app.controller('followingController', function ($scope, $http, $location, $compile,$window) {
+    //    lazzy loader start
+// Variables
+    $scope.showLoadmore = true;
+    $scope.row = 0;
+    $scope.rowperpage = 3;
+    $scope.buttonText = "Load More";
+    // Fetch data
+    $scope.getFollowing = function (pagenum = '') {
+
+        $http({
+            method: 'post',
+            url: base_url + "userprofile_page/following_data?page=" + pagenum,
+            data: {row: $scope.row, rowperpage: $scope.rowperpage}
+        }).then(function successCallback(response) {
+            if (response.data != '') {
+                $scope.row += $scope.rowperpage;
+                if ($scope.contactData != undefined) {
+                    $scope.page_number = response.data.pagedata.page;
+                    for (var i in response.data.followingrecord) {
+                        $scope.followingData.push(response.data.followingrecord[i]);
+                    }
+                } else {
+                    $scope.pagecntctData = response.data;
+                    $scope.followingData = response.data.followingrecord;
+                }
+            } else {
+                $scope.showLoadmore = false;
+            }
+        });
+    }
+    angular.element($window).bind("scroll", function (e) {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            var page = $(".page_number").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record * page) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                if (parseInt(page) <= parseInt(available_page)) {
+                    alert("go");
+                    var pagenum = parseInt($(".page_number").val()) + 1;
+                    // alert(pagenum);
+                    $scope.getFollowing(pagenum);
+                }
+            }
+        }
+    });
+    // Call function
+    $scope.getFollowing();
+//    lazzy loader end
     $scope.user = {};
     var id = 1;
     $scope.follow = function (index) {
     }
     // PROFEETIONAL DATA
-    getFieldList();
-    function getFieldList() {
-        $http({
-            method: 'POST',
-            url: base_url + 'userprofile_page/following_data',
-            data: 'u=' + user_id,
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        })
-                .then(function (success) {
-                    $scope.follow_data = success.data;
-                });
-    }
     $scope.unfollow_user = function (id) {
         $http({
             method: 'POST',

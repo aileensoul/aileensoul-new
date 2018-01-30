@@ -58,7 +58,12 @@ class Userprofile_model extends CI_Model {
         //  return $result_array;
     }
 
-    public function getFollowersData($user_id = '', $select_data = '') {
+    public function getFollowersData($user_id = '', $select_data = '', $page = '') {
+
+        $limit = '10';
+        $start = ($page - 1) * $limit;
+        if ($start < 0)
+            $start = 0;
 
         $where = "((uf.follow_to = '" . $user_id . "'))";
 
@@ -90,11 +95,25 @@ class Userprofile_model extends CI_Model {
 
             array_push($new_follow_array, $result);
         }
+        $total_record = $this->getFollowerCount($user_id, $select_data = '');
+        $page_array['page'] = $page;
+        $page_array['total_record'] = $total_record[0]['total'];
+        $page_array['perpage_record'] = $limit;
 
-        return $new_follow_array;
+        $data = array(
+            'followerrecord' => $new_follow_array,
+            'pagedata' => $page_array
+        );
+        return $data;
+        // return $new_follow_array;
     }
 
-    public function getFollowingData($user_id = '', $select_data = '') {
+    public function getFollowingData($user_id = '', $select_data = '', $page = '') {
+
+        $limit = '10';
+        $start = ($page - 1) * $limit;
+        if ($start < 0)
+            $start = 0;
 
         $where = "((uf.follow_from = '" . $user_id . "'))";
 
@@ -112,8 +131,17 @@ class Userprofile_model extends CI_Model {
 
         $query = $this->db->get();
         $result_array = $query->result_array();
+        $total_record = $this->getFollowingCount($user_id, $select_data = '');
+        $page_array['page'] = $page;
+        $page_array['total_record'] = $total_record[0]['total'];
+        $page_array['perpage_record'] = $limit;
 
-        return $result_array;
+        $data = array(
+            'followingrecord' => $result_array,
+            'pagedata' => $page_array
+        );
+        return $data;
+        // return $result_array;
     }
 
     public function userContactStatus($user_id = '', $id = '') {
@@ -159,6 +187,17 @@ class Userprofile_model extends CI_Model {
 
     public function getFollowingCount($user_id = '', $select_data = '') {
         $where = "((uf.follow_from = '" . $user_id . "'))";
+        $this->db->select("count(*) as total")->from("user_follow  uf");
+        $this->db->where('uf.status', '1');
+        $this->db->where($where);
+        $this->db->order_by("uf.id", "DESC");
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+
+    public function getFollowerCount($user_id = '', $select_data = '') {
+        $where = "((uf.follow_to = '" . $user_id . "'))";
         $this->db->select("count(*) as total")->from("user_follow  uf");
         $this->db->where('uf.status', '1');
         $this->db->where($where);
