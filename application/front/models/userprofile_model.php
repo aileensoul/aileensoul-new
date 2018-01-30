@@ -19,11 +19,16 @@ class Userprofile_model extends CI_Model {
         return $result_array;
     }
 
-    public function getContactData($user_id = '', $select_data = '') {
+    public function getContactData($user_id = '', $select_data = '', $page = '') {
+
+        $limit = '10';
+        $start = ($page - 1) * $limit;
+        if ($start < 0)
+            $start = 0;
 
         $where = "((from_id = '" . $user_id . "' OR to_id = '" . $user_id . "'))";
 
-        $this->db->select("u.user_id,u.first_name,u.last_name,ui.user_image,jt.name as title_name,d.degree_name,u.user_slug")->from("user_contact  uc");
+        $this->db->select("uc.id,u.user_id,u.first_name,u.last_name,ui.user_image,jt.name as title_name,d.degree_name,u.user_slug")->from("user_contact  uc");
         $this->db->join('user u', 'u.user_id = (CASE WHEN uc.from_id=' . $user_id . ' THEN uc.to_id ELSE uc.from_id END)', 'left');
         $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
         $this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
@@ -34,10 +39,23 @@ class Userprofile_model extends CI_Model {
         $this->db->where('uc.status', 'confirm');
         $this->db->where($where);
         $this->db->order_by("uc.id", "DESC");
-
+        if ($limit != '') {
+            $this->db->limit($limit, $start);
+        }
         $query = $this->db->get();
         $result_array = $query->result_array();
-        return $result_array;
+        $total_record = $this->getContactCount($user_id, $select_data = '');
+
+        $page_array['page'] = $page;
+        $page_array['total_record'] = $total_record[0]['total'];
+        $page_array['perpage_record'] = $limit;
+
+        $data = array(
+            'contactrecord' => $result_array,
+            'pagedata' => $page_array
+        );
+        return $data;
+        //  return $result_array;
     }
 
     public function getFollowersData($user_id = '', $select_data = '') {
@@ -169,7 +187,7 @@ class Userprofile_model extends CI_Model {
         $user_post = $query->result_array();
 
         foreach ($user_post as $key => $value) {
-             $result_array[$key]['post_data'] = $user_post[$key];
+            $result_array[$key]['post_data'] = $user_post[$key];
 
             $this->db->select("count(*) as file_count")->from("user_post_file upf");
             $this->db->where('upf.post_id', $value['id']);
@@ -237,18 +255,17 @@ class Userprofile_model extends CI_Model {
                 $result_array[$key]['post_comment_data'][$key1]['is_userlikePostComment'] = $this->is_userlikePostComment($user_id, $value1['comment_id']);
                 $result_array[$key]['post_comment_data'][$key1]['postCommentLikeCount'] = $this->postCommentLikeCount($value1['comment_id']) == '0' ? '' : $this->postCommentLikeCount($value1['comment_id']);
             }
-
         }
 
         $page_array['page'] = $page;
         $page_array['total_record'] = $this->userPostCount($user_id);
         $page_array['perpage_record'] = $limit;
-        
+
         $data = array(
-           'postrecord' => $result_array,
-           'pagedata' => $page_array
-       );
-        return $data; 
+            'postrecord' => $result_array,
+            'pagedata' => $page_array
+        );
+        return $data;
     }
 
     public function postLikeData($post_id = '') {

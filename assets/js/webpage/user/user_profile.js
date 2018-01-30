@@ -1306,21 +1306,21 @@ app.controller('contactsController', function ($scope, $http, $location, $window
 
         $http({
             method: 'post',
-            url: base_url + "userprofile_page/contacts_data?page=" + pagenum + "&user_slug=" + user_slug,
+            url: base_url + "userprofile_page/contacts_data?page=" + pagenum,
             data: {row: $scope.row, rowperpage: $scope.rowperpage}
         }).then(function successCallback(response) {
 
             if (response.data != '') {
 
                 $scope.row += $scope.rowperpage;
-                if ($scope.postData != undefined) {
+                if ($scope.contactData != undefined) {
                     $scope.page_number = response.data.pagedata.page;
-                    for (var i in response.data.postrecord) {
-                        $scope.forData.push(response.data.postrecord[i]);
+                    for (var i in response.data.contactrecord) {
+                        $scope.contactData.push(response.data.contactrecord[i]);
                     }
                 } else {
-                    $scope.postData = response.data;
-                    $scope.forData = response.data.postrecord;
+                    $scope.pagecntctData = response.data;
+                    $scope.contactData = response.data.contactrecord;
                 }
             } else {
                 $scope.showLoadmore = false;
@@ -1360,21 +1360,21 @@ app.controller('contactsController', function ($scope, $http, $location, $window
         $('#remove-contact').modal('show');
     }
     // PROFEETIONAL DATA
-    getFieldList();
-    function getFieldList() {
-        $http({
-            method: 'POST',
-            url: base_url + 'userprofile_page/contacts_data',
-            data: 'u=' + user_id,
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        })
-                .then(function (success) {
-                    $scope.contats_data = success.data;
-                });
-    }
-    $scope.goUserprofile = function (path) {
-        location.href = base_url + 'profiless/' + path;
-    }
+//    getFieldList();
+//    function getFieldList() {
+//        $http({
+//            method: 'POST',
+//            url: base_url + 'userprofile_page/contacts_data',
+//            data: 'u=' + user_id,
+//            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+//        })
+//                .then(function (success) {
+//                    $scope.contats_data = success.data;
+//                });
+//    }
+//    $scope.goUserprofile = function (path) {
+//        location.href = base_url + 'profiless/' + path;
+//    }
 });
 app.controller('followersController', function ($scope, $http, $location, $compile) {
     $scope.user = {};

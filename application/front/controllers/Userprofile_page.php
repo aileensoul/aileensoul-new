@@ -87,8 +87,12 @@ class Userprofile_page extends MY_Controller {
     }
     
     public function contacts_data() {
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
         $userid = $this->session->userdata('aileenuser');
-        $contactsData = $this->data['contactsData'] = $this->userprofile_model->getContactData($userid, $data = "");
+        $contactsData = $this->data['contactsData'] = $this->userprofile_model->getContactData($userid, $data = "",$page);
        if(count($contactsData) == 0){
            echo count($contactsData);
        }else{

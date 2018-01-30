@@ -3,12 +3,12 @@
         <div class="list-box-custom">
             <h3>Contacts</h3>
             <div class="p15 fw" id="nocontact">
-                <div class="custom-user-box" ng-if="contats_data != '0'" ng-repeat="contacts in contats_data">
-                    <input type="hidden" name="page_number" class="page_number" ng-class="page_number" ng-model="post.page_number" ng-value="{{post.page_data.page}}">
-                    <input type="hidden" name="total_record" class="total_record" ng-class="total_record" ng-model="post.total_record" ng-value="{{post.page_data.total_record}}">
-                    <input type="hidden" name="perpage_record" class="perpage_record" ng-class="perpage_record" ng-model="post.perpage_record" ng-value="{{post.page_data.perpage_record}}">
+                <input name="page_number" class="page_number"  ng-model="page_number" ng-value="pagecntctData.pagedata.page">
+                <input name="total_record" class="total_record"  ng-model="total_record" ng-value="pagecntctData.pagedata.total_record">
+                <input name="perpage_record" class="perpage_record"  ng-model="perpage_record" ng-value="pagecntctData.pagedata.perpage_record">
 
-
+                <div class="custom-user-box" ng-if="contats_data != '0'" ng-repeat="contacts in contactData">
+                    {{contacts.id}}
                     <div class="post-img" ng-if="contacts.user_image != '' && contacts.user_image != null">
                         <a href="#"><img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{contacts.user_image}}"></a>
                     </div>
