@@ -1338,9 +1338,7 @@ app.controller('contactsController', function ($scope, $http, $location, $window
                     available_page = available_page + 1;
                 }
                 if (parseInt(page) <= parseInt(available_page)) {
-                    alert("go");
                     var pagenum = parseInt($(".page_number").val()) + 1;
-                    // alert(pagenum);
                     $scope.getContacts(pagenum);
                 }
             }
@@ -1406,7 +1404,6 @@ app.controller('followersController', function ($scope, $http, $location, $compi
                     available_page = available_page + 1;
                 }
                 if (parseInt(page) <= parseInt(available_page)) {
-                    alert("go");
                     var pagenum = parseInt($(".page_number").val()) + 1;
                     // alert(pagenum);
                     $scope.getFollowers(pagenum);
@@ -1495,9 +1492,7 @@ app.controller('followingController', function ($scope, $http, $location, $compi
                     available_page = available_page + 1;
                 }
                 if (parseInt(page) <= parseInt(available_page)) {
-                    alert("go");
                     var pagenum = parseInt($(".page_number").val()) + 1;
-                    // alert(pagenum);
                     $scope.getFollowing(pagenum);
                 }
             }
