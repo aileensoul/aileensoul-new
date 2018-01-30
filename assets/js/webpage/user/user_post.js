@@ -618,6 +618,7 @@ app.controller('userOppoController', function ($scope, $http) {
                 form_data.append('category', JSON.stringify($scope.ask.related_category));
                 form_data.append('weblink', $scope.ask.web_link);
                 form_data.append('post_for', $scope.ask.post_for);
+                form_data.append('is_anonymously', $scope.ask.is_anonymously);
                 form_data.append('post_id', post_id);
                 $('body').removeClass('modal-open');
                 $("#opportunity-popup").modal('hide');
@@ -652,6 +653,7 @@ app.controller('userOppoController', function ($scope, $http) {
                                 $scope.ask.related_category = '';
                                 $scope.ask.web_link = '';
                                 $scope.ask.post_for = '';
+                                $scope.ask.is_anonymously = '';
 
                                 $scope.postData.splice(0, 0, success.data[0]);
                                 $('video, audio').mediaelementplayer();

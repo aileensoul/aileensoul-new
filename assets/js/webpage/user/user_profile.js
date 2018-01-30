@@ -644,17 +644,17 @@ app.controller('dashboardController', function ($scope, $http, $location) {
                 event.preventDefault();
                 return false;
             } else {
-                var length = fileInput.length;
-                var vfirstname = fileInput[0].name;
-                var ext = vfirstname.split('.').pop();
-                var ext1 = vfirstname.split('.').pop();
-                var allowedExtensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg'];
-                var foundPresent = $.inArray(ext, allowedExtensions) > -1;
-                if (foundPresent == true)
-                {
-                    var foundPresent1 = $.inArray(ext1, allowedExtensions) > -1;
-
-                }
+//                var length = fileInput.length;
+//                var vfirstname = fileInput[0].name;
+//                var ext = vfirstname.split('.').pop();
+//                var ext1 = vfirstname.split('.').pop();
+//                var allowedExtensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg'];
+//                var foundPresent = $.inArray(ext, allowedExtensions) > -1;
+//                if (foundPresent == true)
+//                {
+//                    var foundPresent1 = $.inArray(ext1, allowedExtensions) > -1;
+//
+//                }
                 var form_data = new FormData();
                 angular.forEach($scope.files, function (file) {
                     form_data.append('postfiles[]', file);
@@ -667,6 +667,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
                 form_data.append('category', JSON.stringify($scope.ask.related_category));
                 form_data.append('weblink', $scope.ask.web_link);
                 form_data.append('post_for', $scope.ask.post_for);
+                form_data.append('is_anonymously', $scope.ask.is_anonymously);
 
                 $('body').removeClass('modal-open');
                 $("#opportunity-popup").modal('hide');
@@ -694,6 +695,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
                                 $scope.ask.related_category = '';
                                 $scope.ask.web_link = '';
                                 $scope.ask.post_for = '';
+                                $scope.ask.is_anonymously = '';
 
                                 $scope.postData.splice(0, 0, success.data[0]);
                                 $('video, audio').mediaelementplayer();
@@ -730,6 +732,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
                 form_data.append('category', JSON.stringify($scope.ask.related_category));
                 form_data.append('weblink', $scope.ask.web_link);
                 form_data.append('post_for', $scope.ask.post_for);
+                form_data.append('is_anonymously', $scope.ask.is_anonymously);
                 form_data.append('post_id', post_id);
                 $('body').removeClass('modal-open');
                 $("#opportunity-popup").modal('hide');
@@ -764,6 +767,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
                                 $scope.ask.related_category = '';
                                 $scope.ask.web_link = '';
                                 $scope.ask.post_for = '';
+                                $scope.ask.is_anonymously = '';
 
                                 $scope.postData.splice(0, 0, success.data[0]);
                                 $('video, audio').mediaelementplayer();
