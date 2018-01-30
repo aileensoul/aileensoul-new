@@ -131,7 +131,7 @@ padding: 5px;}
 .post-images{padding-bottom:10px; width:100%; float:left;}
 .post-images .one-img{text-align:center;}
 .post-images .one-img img{max-width:100%;}
-.post-images .two-img{width:274px; float:left; margin:1px; height:200px; overflow:hidden; position:relative;}
+.post-images .two-img{width:calc(50% - 2px); float:left; margin:1px; height:200px; overflow:hidden; position:relative;}
 .post-images .two-img img{position: absolute;
   left: 50%;
   top: 50%;
