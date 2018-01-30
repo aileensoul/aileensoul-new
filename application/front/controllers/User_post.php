@@ -396,7 +396,8 @@ class User_post extends MY_Controller {
     public function post_opportunity() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
-
+        
+        
         $description = $_POST['description'] == 'undefined' ? '' : $_POST['description'];
         $field = $_POST['field'];
         $job_title = json_decode($_POST['job_title'], TRUE);
@@ -406,6 +407,7 @@ class User_post extends MY_Controller {
         $description = $_POST['description'];
         $other_field = $_POST['other_field'] == 'undefined' ? '' : $_POST['other_field'];
         $weblink = $_POST['weblink'] == 'undefined' ? '' : $_POST['weblink'];
+        $is_anonymously = $_POST['is_anonymously'] == 'undefined' ? '0' : '1';
         $category = json_decode($_POST['category'], TRUE);
 
 
@@ -542,6 +544,7 @@ class User_post extends MY_Controller {
                 $insert_data['category'] = $categoryId;
                 $insert_data['field'] = $ask_field;
                 $insert_data['link'] = $ask_weblink;
+                $insert_data['is_anonymously'] = $is_anonymously;
                 $insert_data['modify_date'] = date('Y-m-d H:i:s', time());
                 $inserted_id = $user_simple_id = $this->common->insert_data_getid($insert_data, 'user_ask_question');
             }

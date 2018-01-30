@@ -123,7 +123,11 @@
                             <input type="hidden" name="perpage_record" class="perpage_record" ng-class="perpage_record" ng-model="post.perpage_record" ng-value="{{post.page_data.perpage_record}}">
                             <div class="all-post-top">
                                 <div class="post-head">
-                                    <div class="post-img">
+                                    <div class="post-img" ng-if="post.post_data.post_for == 'question'">
+                                        <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{post.user_data.user_image}}" ng-if="post.user_data.user_image != '' && post.question_data.anonymously != '1'">
+                                        <img ng-src="<?php echo NOBUSIMAGE2 ?>" ng-if="post.user_data.user_image == '' && post.question_data.anonymously == '1'">
+                                    </div>
+                                    <div class="post-img" ng-if="post.post_data.post_for != 'question'">
                                         <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{post.user_data.user_image}}" ng-if="post.user_data.user_image != ''">
                                         <img ng-src="<?php echo NOBUSIMAGE2 ?>" ng-if="post.user_data.user_image == ''">
                                     </div>
@@ -329,15 +333,15 @@
                                 </div>
                                 <div owl-carousel-item="" class="item last-item-box">
                                     <a href="<?php echo base_url('contact-request') ?>">
-                                    <div class="item" id="last-item">
-                                        <div class="post-img" ng-if="contact.user_image != ''">
-                                            <img ng-src="<?php echo base_url('assets/n-images/view-all.png?ver=' . time()) ?>">
+                                        <div class="item" id="last-item">
+                                            <div class="post-img" ng-if="contact.user_image != ''">
+                                                <img ng-src="<?php echo base_url('assets/n-images/view-all.png?ver=' . time()) ?>">
+                                            </div>
+                                            <div class="user-list-detail">
+                                                <p class="contact-name"><a href="#">Find More Contacts</a></p>
+                                            </div>
+                                            <button class="follow-btn">View More</button>
                                         </div>
-                                        <div class="user-list-detail">
-                                            <p class="contact-name"><a href="#">Find More Contacts</a></p>
-                                        </div>
-                                        <button class="follow-btn">View More</button>
-                                    </div>
                                     </a>
                                 </div>
                             </data-owl-carousel>
@@ -510,6 +514,9 @@
                                     </label>
                                     <div class="add-link" ng-click="ShowHide()">
                                         <i class="fa fa fa-link upload_icon"><span class="upload_span_icon"> Add Link</span>  </i> 
+                                    </div>
+                                    <div class="add-anonymously">
+                                        <label class="control control--checkbox" title="Checked this">Add Anonymously<input type="checkbox" ng-model="ask.is_anonymously" value="1"><div class="control__indicator"></div></label>
                                     </div>
                                     <div class="form-group"  ng-show = "IsVisible">
                                         <input type="text" ng-model="ask.web_link" class="" placeholder="Add Your Web Link">
