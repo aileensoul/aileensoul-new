@@ -316,6 +316,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', end
 .control--radio input:disabled ~ .control__indicator:after {
   background: #7b7b7b;
 }
+.add-anonymously{display:inline-block; padding:9px 15px 0;}
 /***  end custom check box and radio buttons  ***/
 
 /***  form css  ***/
