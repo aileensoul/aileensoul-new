@@ -79,9 +79,10 @@
                 $scope.row += $scope.rowperpage;
                 if ($scope.postData != undefined){
                 $scope.page_number = response.data.pagedata.page;
-                //for (var i in response.data.postrecord) {
-                $scope.postData.push(response.data[0]);
-              //  }
+                for (var i in response.data.postrecord) {
+                    alert(response.data.postrecord[0]);
+                $scope.postData.push(response.data.postrecord[0]);
+                }
 
                 } else{
                     alert(response.data.pagedata.page);
