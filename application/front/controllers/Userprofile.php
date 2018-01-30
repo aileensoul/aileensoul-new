@@ -107,4 +107,14 @@ class Userprofile extends MY_Controller {
      public function getdata() { echo "hi"; die();
         
     }
+    public function getUserDashboardPost() {
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+        $user_slug = $_GET["user_slug"];
+        $userid = $this->db->select('user_id')->get_where('user', array('user_slug' => $user_slug))->row('user_id');
+        $post_data = $this->userprofile_model->userDashboardPost($userid, $page);
+        echo json_encode($post_data);
+    }
     }
