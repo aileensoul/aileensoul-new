@@ -39,7 +39,7 @@
                             <div class="profile-img post-img">
                                 <a href="#">
                                     <img src="<?php echo USER_THUMB_UPLOAD_URL ?>{{searchProfile.user_image}}" alt="{{searchProfile.fullname}}" ng-if="searchProfile.user_image">
-                                    <span ng-if="!searchProfile.user_image" ng-bind="(searchProfile.first_name| limitTo:1 | uppercase) + (searchProfile.last_name| limitTo:1 | uppercase)"></span>
+                                    <span ng-if="!searchProfile.user_image" ng-bind="(searchProfile.first_name| limitTo:1 | uppercase) + (searchProfile.last_name | limitTo:1 | uppercase)"></span>
                                 </a>
                             </div>
                             <div class="profile-data">
@@ -69,15 +69,28 @@
                                 <input type="hidden" name="perpage_record" class="perpage_record" ng-class="perpage_record" ng-model="post.perpage_record" ng-value="{{post.page_data.perpage_record}}">
                                 <div class="all-post-top">
                                     <div class="post-head">
-                                        <div class="post-img">
+                                        <div class="post-img" ng-if="post.post_data.post_for == 'question'">
+                                            <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{post.user_data.user_image}}" ng-if="post.user_data.user_image != '' && post.question_data.is_anonymously == '0'">
+                                            <span class="no-img-post"  ng-if="post.user_data.user_image == '' || post.question_data.is_anonymously == '1'">A</span>
+                                        </div>
+                                        <div class="post-img" ng-if="post.post_data.post_for != 'question'">
                                             <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{post.user_data.user_image}}" ng-if="post.user_data.user_image != ''">
-                                            <img ng-src="<?php echo NOBUSIMAGE2 ?>" ng-if="post.user_data.user_image == ''">
+                                            <span class="no-img-post" ng-bind="(post.user_data.first_name| limitTo:1 | uppercase) + (post.user_data.last_name | limitTo:1 | uppercase)"  ng-if="post.user_data.user_image == ''"></span>
                                         </div>
                                         <div class="post-detail">
-                                            <div class="fw">
+                                            <div class="fw" ng-if="post.post_data.post_for == 'question'">
+                                                <a href="javascript:void(0)" class="post-name" ng-if="post.question_data.is_anonymously == '1'">Anonymous</a><span class="post-time" ng-if="post.question_data.is_anonymously == '1'"></span>
+                                                <a ng-href="<?php echo base_url('profiless/') ?>{{post.user_data.user_slug}}" class="post-name" ng-bind="post.user_data.fullname" ng-if="post.question_data.is_anonymously == '0'"></a><span class="post-time" ng-if="post.question_data.is_anonymously == '0'">7 hours ago</span>
+                                            </div>
+                                            <div class="fw" ng-if="post.post_data.post_for != 'question'">
                                                 <a ng-href="<?php echo base_url('profiless/') ?>{{post.user_data.user_slug}}" class="post-name" ng-bind="post.user_data.fullname"></a><span class="post-time">7 hours ago</span>
                                             </div>
-                                            <div class="fw">
+                                            <div class="fw" ng-if="post.post_data.post_for == 'question'">
+                                                <span class="post-designation" ng-if="post.user_data.title_name != '' && post.question_data.is_anonymously == '0'" ng-bind="post.user_data.title_name"></span>
+                                                <span class="post-designation" ng-if="post.user_data.title_name == '' && post.question_data.is_anonymously == '0'" ng-bind="post.user_data.degree_name"></span>
+                                                <span class="post-designation" ng-if="post.user_data.title_name == null && post.user_data.degree_name == null && post.question_data.is_anonymously == '0'" ng-bind="CURRENT WORK"></span>
+                                            </div>
+                                            <div class="fw" ng-if="post.post_data.post_for != 'question'">
                                                 <span class="post-designation" ng-if="post.user_data.title_name != ''" ng-bind="post.user_data.title_name"></span>
                                                 <span class="post-designation" ng-if="post.user_data.title_name == ''" ng-bind="post.user_data.degree_name"></span>
                                                 <span class="post-designation" ng-if="post.user_data.title_name == null && post.user_data.degree_name == null" ng-bind="CURRENT WORK"></span>
@@ -454,9 +467,9 @@
         <script src="<?php echo base_url('assets/js/owl.carousel.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
         <script>
-                                                $('#content').on('change keyup keydown paste cut', 'textarea', function () {
-                                                $(this).height(0).height(this.scrollHeight);
-                                                }).find('textarea').change();
+                                $('#content').on('change keyup keydown paste cut', 'textarea', function () {
+                                $(this).height(0).height(this.scrollHeight);
+                                }).find('textarea').change();
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
@@ -466,11 +479,11 @@
         <script src="<?php echo base_url('assets/js/angular/angular-tooltips.min.js?ver=' . time()); ?>"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
         <script>
-                                                var base_url = '<?php echo base_url(); ?>';
-                                                var user_slug = '<?php echo $this->uri->segment(2); ?>';
-                                                var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
-                                                var searchKeyword = '<?php echo $search_keyword; ?>';
-                                                var app = angular.module("searchApp", ['ngRoute', 'ui.bootstrap', 'ngTagsInput', 'ngSanitize']);
+                                var base_url = '<?php echo base_url(); ?>';
+                                var user_slug = '<?php echo $this->uri->segment(2); ?>';
+                                var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+                                var searchKeyword = '<?php echo $search_keyword; ?>';
+                                var app = angular.module("searchApp", ['ngRoute', 'ui.bootstrap', 'ngTagsInput', 'ngSanitize']);
         </script>
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/webpage/user/user_search.js?ver=' . time()) ?>"></script>
