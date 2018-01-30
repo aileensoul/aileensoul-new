@@ -466,6 +466,18 @@ class User_post_model extends CI_Model {
                 $query = $this->db->get();
                 $question_data = $query->row_array();
                 $result_array[$key]['question_data'] = $question_data;
+            }elseif ($value['post_for'] == 'profile_update'){
+                $this->db->select("upu.*")->from("user_profile_update upu");
+                $this->db->where('upu.id', $value['post_id']);
+                $query = $this->db->get();
+                $profile_update = $query->row_array();
+                $result_array[$key]['profile_update'] = $profile_update;
+            }elseif ($value['post_for'] == 'cover_update'){
+                 $this->db->select("upu.*")->from("user_profile_update upu");
+                $this->db->where('upu.id', $value['post_id']);
+                $query = $this->db->get();
+                $cover_update = $query->row_array();
+                $result_array[$key]['cover_update'] = $cover_update;
             }
             $this->db->select("upf.file_type,upf.filename")->from("user_post_file upf");
             $this->db->where('upf.post_id', $value['id']);

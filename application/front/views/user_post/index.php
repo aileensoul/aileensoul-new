@@ -160,6 +160,13 @@
                                 <div class="post-discription" ng-if="post.post_data.post_for == 'simple'">
                                     <div class="post-des-detail" ng-if="post.simple_data.description"><span ng-bind-html="post.simple_data.description" id="simple-post-description-{{post.post_data.id}}"></span></div>
                                 </div>
+                                <div class="post-discription" ng-if="post.post_data.post_for == 'profile_update'">
+                                     <!--<img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{post.profile_update.data_value}}" ng-if="post.profile_update.data_value != ''">-->
+                                     <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{post.profile_update.data_value}}">
+                                </div>
+                                <div class="post-discription" ng-if="post.post_data.post_for == 'cover_update'">
+                                     <img ng-src="<?php echo USER_BG_MAIN_UPLOAD_URL ?>{{post.cover_update.data_value}}" ng-if="post.cover_update.data_value != ''">
+                                </div>
                                 <div class="post-discription" ng-if="post.post_data.post_for == 'question'">
                                     <h5 class="post-title">
                                         <p ng-if="post.question_data.question"><b>Question:</b><span ng-bind="post.question_data.question" id="ask-post-question-{{post.post_data.id}}"></span></p>
