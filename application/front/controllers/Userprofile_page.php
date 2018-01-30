@@ -451,6 +451,16 @@ class Userprofile_page extends MY_Controller {
         );
 
         $update = $this->common->update_data($data, 'user_info', 'user_id', $userid);
+        
+        $insert_data = array();
+                $insert_data['user_id'] = $user_post_id;
+                $insert_data['data_key'] = $ask_question;
+                $insert_data['data_value'] = $ask_description;
+                $insert_data['date'] = date('Y-m-d H:i:s', time());
+                $inserted_id = $user_cover_id = $this->common->insert_data_getid($insert_data, 'user_ask_question');
+            $update_data = array();
+            $update_data['post_id'] = $inserted_id;
+            $update_post = $this->common->update_data($update_data, 'user_post', 'id', $user_post_id);
 
         $user_reg_data = $this->userprofile_model->getUserBackImage($userid);
         $user_reg_back_image = $user_reg_data['profile_background'];
