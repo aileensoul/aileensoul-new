@@ -311,7 +311,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
             });
         });
     };
-    
+
     $scope.category = [];
     $scope.loadCategory = function ($query) {
         return $http.get(base_url + 'user_post/get_category', {cache: true}).then(function (response) {
@@ -322,7 +322,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         });
     };
 
-    
+
     $scope.postFiles = function () {
         var a = document.getElementById('description').value;
         var b = document.getElementById('job_title').value;
@@ -724,13 +724,13 @@ app.controller('dashboardController', function ($scope, $http, $location) {
                 var form_data = new FormData();
 
                 form_data.append('question', $scope.ask.ask_que);
-            form_data.append('description', $scope.ask.ask_description);
-            form_data.append('field', $scope.ask.ask_field);
-            form_data.append('other_field', $scope.ask.otherField);
-            form_data.append('category', JSON.stringify($scope.ask.related_category));
-            form_data.append('weblink', $scope.ask.web_link);
-            form_data.append('post_for', $scope.ask.post_for);
-            form_data.append('post_id',post_id);
+                form_data.append('description', $scope.ask.ask_description);
+                form_data.append('field', $scope.ask.ask_field);
+                form_data.append('other_field', $scope.ask.otherField);
+                form_data.append('category', JSON.stringify($scope.ask.related_category));
+                form_data.append('weblink', $scope.ask.web_link);
+                form_data.append('post_for', $scope.ask.post_for);
+                form_data.append('post_id', post_id);
                 $('body').removeClass('modal-open');
                 $("#opportunity-popup").modal('hide');
                 $("#ask-question").modal('hide');
@@ -742,12 +742,12 @@ app.controller('dashboardController', function ($scope, $http, $location) {
                         })
                         .then(function (success) {
                             if (success) {
-                                 if (success.data.response == 1) {
-                                $('#ask-post-question-' + post_id).html(success.data.ask_question);
-                                $('#ask-post-description-' + post_id).html(success.data.ask_description);
-                             //   $('#ask-post-link-' + post_id).html(success.data.opp_field);
-                                $('#ask-post-category-' + post_id).html(success.data.ask_category);
-                                $('#ask-post-field-' + post_id).html(success.data.ask_field);
+                                if (success.data.response == 1) {
+                                    $('#ask-post-question-' + post_id).html(success.data.ask_question);
+                                    $('#ask-post-description-' + post_id).html(success.data.ask_description);
+                                    //   $('#ask-post-link-' + post_id).html(success.data.opp_field);
+                                    $('#ask-post-category-' + post_id).html(success.data.ask_category);
+                                    $('#ask-post-field-' + post_id).html(success.data.ask_field);
                                 }
                                 $scope.opp.description = '';
                                 $scope.opp.job_title = '';
@@ -776,7 +776,7 @@ app.controller('dashboardController', function ($scope, $http, $location) {
 
     // POST SOMETHING UPLOAD START
 
-     $scope.post_something_check = function (event) {
+    $scope.post_something_check = function (event) {
         if (document.getElementById("edit_post_id")) {
             var post_id = document.getElementById("edit_post_id").value;
         } else {
@@ -1176,10 +1176,10 @@ app.controller('dashboardController', function ($scope, $http, $location) {
         $('#editCommentTaxBox-' + comment_id).html(editContent);
         $('#comment-dis-inner-' + comment_id).hide();
     }
-    
-     $scope.EditPost = function (post_id, post_for, index) {
+
+    $scope.EditPost = function (post_id, post_for, index) {
         $scope.is_edit = 1;
-        
+
         $http({
             method: 'POST',
             url: base_url + 'user_post/getPostData',
@@ -1294,7 +1294,65 @@ app.controller('detailsController', function ($scope, $http, $location) {
         $scope.active = $scope.active == item ? '' : item;
     }
 });
-app.controller('contactsController', function ($scope, $http, $location) {
+app.controller('contactsController', function ($scope, $http, $location, $window) {
+//    lazzy loader start
+// Variables
+    $scope.showLoadmore = true;
+    $scope.row = 0;
+    $scope.rowperpage = 3;
+    $scope.buttonText = "Load More";
+    // Fetch data
+    $scope.getContacts = function (pagenum = '') {
+
+        $http({
+            method: 'post',
+            url: base_url + "userprofile_page/contacts_data?page=" + pagenum + "&user_slug=" + user_slug,
+            data: {row: $scope.row, rowperpage: $scope.rowperpage}
+        }).then(function successCallback(response) {
+
+            if (response.data != '') {
+
+                $scope.row += $scope.rowperpage;
+                if ($scope.postData != undefined) {
+                    $scope.page_number = response.data.pagedata.page;
+                    for (var i in response.data.postrecord) {
+                        $scope.forData.push(response.data.postrecord[i]);
+                    }
+                } else {
+                    $scope.postData = response.data;
+                    $scope.forData = response.data.postrecord;
+                }
+            } else {
+                $scope.showLoadmore = false;
+            }
+        });
+    }
+    angular.element($window).bind("scroll", function (e) {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            var page = $(".page_number").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            alert(page);
+            if (parseInt(perpage_record * page) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                if (parseInt(page) <= parseInt(available_page)) {
+                    alert("go");
+                    var pagenum = parseInt($(".page_number").val()) + 1;
+                    // alert(pagenum);
+                    $scope.getContacts(pagenum);
+                }
+            }
+        }
+    });
+    // Call function
+    $scope.getContacts();
+//    lazzy loader end
+
     $scope.user = {};
     var id = 1;
     $scope.remove = function (index) {
