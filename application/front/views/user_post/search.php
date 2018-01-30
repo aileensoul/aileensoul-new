@@ -38,8 +38,8 @@
                         <div class="search-profiles" ng-repeat="searchProfile in searchProfileData">
                             <div class="profile-img">
                                 <a href="#">
-                                    <img src="<?php echo USER_THUMB_UPLOAD_URL ?>{{searchProfile.user_image}}" alt="searchProfile.fullname" ng-if="searchProfile.user_image">
-                                    <img src="<?php echo NOIMAGE ?>" alt="searchProfile.fullname" ng-if="!searchProfile.user_image">
+                                    <img src="<?php echo USER_THUMB_UPLOAD_URL ?>{{searchProfile.user_image}}" alt="{{searchProfile.fullname}}" ng-if="searchProfile.user_image">
+                                    <img src="<?php echo NOIMAGE ?>" alt="{{searchProfile.fullname}}" ng-if="!searchProfile.user_image">
                                 </a>
                             </div>
                             <div class="profile-data">
@@ -58,13 +58,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="availabel-data-box" ng-if="searchData.length != '0'">
+                    <div class="availabel-data-box" ng-if="searchPostData.length != '0'">
                         <h3>Posts </h3>
                             <div class="p10">
-                                <div ng-if="searchPostData.length != 0" class="all-post-box" ng-repeat="post in searchPostData">
+                                <div ng-if="searchPostData.length != 0" class="all-post-box" ng-repeat="post in postData">
                                     <input type="hidden" name="page_number" class="page_number" ng-class="page_number" ng-model="post.page_number" ng-value="{{post.page_data.page}}">
                                     <input type="hidden" name="total_record" class="total_record" ng-class="total_record" ng-model="post.total_record" ng-value="{{post.page_data.total_record}}">
-                                    <input type="hidden" name="perpage_record" class="perpage_record" ng-class="perpage_record" ng-model="post.perpage_re                                                                                                                                                                                                        cord" ng-value="{{post.page_data.perpage_record}}">
+                                    <input type="hidden" name="perpage_record" class="perpage_record" ng-class="perpage_record" ng-model="post.perpage_record" ng-value="{{post.page_data.perpage_record}}">
                                     <div class="all-post-top">
                                         <div class="post-head">
                                             <div class="post-img">
@@ -78,7 +78,7 @@
                                                 <div class="fw">
                                                     <span class="post-designation" ng-if="post.user_data.title_name != ''" ng-bind="post.user_data.title_name"></span>
                                                     <span class="post-designation" ng-if="post.user_data.title_name == ''" ng-bind="post.user_data.degree_name"></span>
-                                                    <span class="post-designation" ng                                                                                                                                                                                                        -if="post.user_data.title_name == null && p                                                                                                                                                                                                        ost.user_data.degree_name == null" ng-bind="CURRENT WORK"></span>
+                                                    <span class="post-designation" ng-if="post.user_data.title_name == null && post.user_data.degree_name == null" ng-bind="CURRENT WORK"></span>
                                                 </div>
                                             </div>
                                             <div class="post-right-dropdown dropdown">
@@ -95,7 +95,7 @@
                                                 <p ng-if="post.opportunity_data.location"><b>Location:</b><span ng-bind="post.opportunity_data.location" id="opp-post-location-{{post.post_data.id}}"></span></p>
                                                 <p ng-if="post.opportunity_data.field"><b>Field:</b><span ng-bind="post.opportunity_data.field" id="opp-post-field-{{post.post_data.id}}"></span></p>
                                             </h5>
-                                            <div class="post-des                                                                                                                                                                                                        -detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity" id="opp-post-opportunity-{{post.post_data.id}}"></span></div>
+                                            <div class="post-des-detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity" id="opp-post-opportunity-{{post.post_data.id}}"></span></div>
                                         </div>
                                         <div class="post-discription" ng-if="post.post_data.post_for == 'simple'">
                                             <div class="post-des-detail" ng-if="post.simple_data.description"><span ng-bind-html="post.simple_data.description" id="simple-post-description-{{post.post_data.id}}"></span></div>
@@ -106,7 +106,7 @@
                                                 <p ng-if="post.question_data.description"><b>Description:</b><span ng-bind="post.question_data.description" id="ask-post-description-{{post.post_data.id}}"></span></p>
                                                 <p ng-if="post.question_data.link"><b>Link:</b><span ng-bind="post.question_data.link" id="ask-post-link-{{post.post_data.id}}"></span></p>
                                                 <p ng-if="post.question_data.category"><b>Category:</b><span ng-bind="post.question_data.category" id="ask-post-category-{{post.post_data.id}}"></span></p>
-                                                <p ng-if="post.question_da                                                                                                                                                                                                        ta.field"><b>Field:</b><span ng-bind="post.question_data.field" id="ask-post-field-{{post.post_data.id}}"></span></p>
+                                                <p ng-if="post.question_data.field"><b>Field:</b><span ng-bind="post.question_data.field" id="ask-post-field-{{post.post_data.id}}"></span></p>
                                             </h5>
                                             <div class="post-des-detail" ng-if="post.opportunity_data.opportunity"><b>Opportunity:</b><span ng-bind="post.opportunity_data.opportunity"></span></div>
                                         </div>

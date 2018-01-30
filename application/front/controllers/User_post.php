@@ -128,6 +128,8 @@ class User_post extends MY_Controller {
         if ($postComentId) {
             $return_data['message'] = '1';
             $return_data['comment_data'] = $this->user_post_model->postCommentData($post_id);
+            $return_data['comment_data'][0]['is_userlikePostComment'] = '0';
+            $return_data['comment_data'][0]['postCommentLikeCount'] = '';
             $return_data['comment_count'] = $this->user_post_model->postCommentCount($post_id);
         } else {
             $return_data['message'] = '0';
