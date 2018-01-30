@@ -13,10 +13,10 @@
     <body ng-app='myapp'>
         <div class="container" ng-controller='fetchCtrl'>
             <!-- Post -->
-            <input name="page_number" class="page_number"  ng-model="page_number" ng-value="postData.pagedata.page">
-            <input name="total_record" class="total_record"  ng-model="total_record" ng-value="postData.pagedata.total_record">
-            <input name="perpage_record" class="perpage_record"  ng-model="perpage_record" ng-value="postData.pagedata.perpage_record">
-            <div ng-if="postData.length != 0" class="all-post-box" ng-repeat="post in postData.postrecord">
+            <input type="hidden" name="page_number" class="page_number"  ng-model="page_number" ng-value="postData.pagedata.page">
+            <input type="hidden" name="total_record" class="total_record"  ng-model="total_record" ng-value="postData.pagedata.total_record">
+            <input type="hidden" name="perpage_record" class="perpage_record"  ng-model="perpage_record" ng-value="postData.pagedata.perpage_record">
+            <div ng-if="postData.length != 0" class="all-post-box" ng-repeat="post in forData">
 
                 <div class="all-post-top">
                   {{post.post_data.id}}
@@ -80,13 +80,11 @@
                 if ($scope.postData != undefined){
                 $scope.page_number = response.data.pagedata.page;
                 for (var i in response.data.postrecord) {
-                    alert(response.data.postrecord[0]);
-                $scope.postData.push(response.data.postrecord[0]);
+                $scope.forData.push(response.data.postrecord[i]);
                 }
-
                 } else{
-                    alert(response.data.pagedata.page);
                 $scope.postData = response.data;
+                $scope.forData = response.data.postrecord;
                 }
                 } else{
                 $scope.showLoadmore = false;
@@ -98,7 +96,7 @@
                 var page = $(".page_number").val();
                 var total_record = $(".total_record").val();
                 var perpage_record = $(".perpage_record").val();
-               // alert(page);
+              alert(page);
                 if (parseInt(perpage_record * page) <= parseInt(total_record)) {
                 var available_page = total_record / perpage_record;
                 available_page = parseInt(available_page, 10);

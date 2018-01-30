@@ -155,7 +155,7 @@ class Userprofile_model extends CI_Model {
         $start = ($page - 1) * $limit;
         if ($start < 0)
             $start = 0;
-//echo $start; 
+
         $result_array = array();
         $this->db->select("up.id,up.user_id,up.post_for,UNIX_TIMESTAMP(STR_TO_DATE(up.created_date, '%Y-%m-%d %H:%i:%s')) as created_date,up.post_id")->from("user_post up");
         $this->db->where('user_id', $user_id);
