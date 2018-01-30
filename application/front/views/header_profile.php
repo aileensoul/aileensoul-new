@@ -6,8 +6,8 @@
                     <!--<h2 class="logo"><a ng-click="goMainLink('<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>');" title="Aileensoul"><img ng-src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="Aileensoul"></a></h2>-->
                     <h2 class="logo"><a ng-href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" title="Aileensoul" target="_self"><img ng-src="<?php echo base_url('assets/img/logo-name.png?ver=' . time()) ?>" alt="Aileensoul"></a></h2>
                     <?php if ($is_userBasicInfo == '1' || $is_userStudentInfo == '1') { ?>
-                        <form ng-submit="search_submit">
-                            <input type="text" name="search" placeholder="Search.." id="search">
+                    <form ng-submit="search_submit" action="<?php echo base_url('searchh') ?>">
+                            <input type="text" name="q" placeholder="Search.." id="search">
                         </form>
                     <?php } ?>
                 </div>

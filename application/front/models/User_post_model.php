@@ -609,7 +609,7 @@ class User_post_model extends CI_Model {
         return $field;
     }
 
-    public function searchData($searchKeyword = '') {
+    public function searchData($userid='', $searchKeyword = '') {
         $checkKeywordCity = $this->data_model->findCityList($searchKeyword);
         if ($checkKeywordCity['city_id'] != '') {
             $keywordCity = $checkKeywordCity['city_id'];
@@ -632,7 +632,7 @@ class User_post_model extends CI_Model {
             $keywordDegreeList = $checkKeywordDegreeList['degree_id'];
         }
 
-        $this->db->select("u.user_id,CONCAT(u.first_name,' ',u.last_name) as fullname,ui.user_image,jt.name as title_name,d.degree_name,it.industry_name,up.city as profession_city,us.city as student_city,d.degree_name,un.university_name")->from("user u");
+        $this->db->select("u.user_id,u.first_name,u.last_name,CONCAT(u.first_name,' ',u.last_name) as fullname,u.user_slug,ui.user_image,jt.name as title_name,d.degree_name,it.industry_name,up.city as profession_city,us.city as student_city,d.degree_name,un.university_name")->from("user u");
         $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
         $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
         $this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
@@ -641,7 +641,7 @@ class User_post_model extends CI_Model {
         $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
         $this->db->join('industry_type it', 'it.industry_id = up.field', 'left');
         $this->db->join('university un', 'un.university_name = us.university_name', 'left');
-
+        
 //        if ($keywordCity) {
 //            $this->db->where('up.city', $keywordCity);
 //            $this->db->or_where('us.city', $keywordCity);
@@ -661,8 +661,8 @@ class User_post_model extends CI_Model {
 
         $this->db->where("u.first_name Like '%$searchKeyword%' OR u.last_name Like '%$searchKeyword%' OR up.city = '$keywordCity' OR us.city = '$keywordCity' OR up.designation = '$keywordJobTitle'"
                 . " OR up.field = '$keywordFieldList' OR us.university_name = '$keywordUniversityList' OR us.current_study = '$keywordDegreeList'");
-
         $query = $this->db->get();
+        
         $searchProfileData = $query->result_array();
         foreach ($searchProfileData as $key => $value) {
             $is_userBasicInfo = $this->user_model->is_userBasicInfo($value['user_id']);
@@ -675,19 +675,35 @@ class User_post_model extends CI_Model {
                 $state_id = $this->data_model->getStateIdByCityId($value['student_city']);
                 $searchProfileData[$key]['country'] = $this->data_model->getCountryByStateId($state_id);
             }
+            $contact_detail = $this->db->select('from_id,to_id,status,not_read')->from('user_contact')->where('(from_id ='. $value['user_id'] .' AND to_id ='.$userid.') OR (to_id ='. $value['user_id'] .' AND from_id ='.$userid.')')->get()->row_array();
+            $searchProfileData[$key]['contact_from_id'] = $contact_detail['from_id'];
+            $searchProfileData[$key]['contact_to_id'] = $contact_detail['to_id'];
+            $searchProfileData[$key]['contact_status'] = $contact_detail['status'];
+            $searchProfileData[$key]['contact_not_read'] = $contact_detail['not_read'];
+            
+            $follow_detail = $this->db->select('follow_from,follow_to,status')->from('user_follow')->where('(follow_from ='. $value['user_id'] .' AND follow_to ='.$userid.') OR (follow_to ='. $value['user_id'] .' AND follow_from ='.$userid.')')->get()->row_array();
+            $searchProfileData[$key]['follow_from'] = $follow_detail['follow_from'];
+            $searchProfileData[$key]['follow_to'] = $follow_detail['follow_to'];
+            $searchProfileData[$key]['follow_status'] = $follow_detail['status'];
+            
         }
 
         $searchData['profile'] = $searchProfileData;
 
         $searchPostData = array();
-
+        $getDeleteUserPost = $this->deletePostUser($userid);
+        
         $this->db->select("up.id,up.user_id,up.post_for,UNIX_TIMESTAMP(STR_TO_DATE(up.created_date, '%Y-%m-%d %H:%i:%s')) as created_date,up.post_id")->from("user_post up");
         $this->db->join('user_opportunity uo', 'uo.post_id = up.id', 'left');
         $this->db->join('user_simple_post usp', 'usp.post_id = up.id', 'left');
         $this->db->join('user_ask_question uaq', 'uaq.post_id = up.id', 'left');
-        $this->db->where("FIND_IN_SET('" . $keywordJobTitle . "',uo.opportunity_for) OR FIND_IN_SET('" . $keywordCity . "',uo.location) OR uo.opportunity LIKE '%$searchKeyword%' OR uo.field = '$keywordFieldList' OR usp.description = '$searchKeyword'"
-                . " OR uaq.question = '$searchKeyword' OR uaq.description = '$searchKeyword' OR uaq.field = '$keywordFieldList'");
+        $this->db->where("(FIND_IN_SET('" . $keywordJobTitle . "',uo.opportunity_for) OR FIND_IN_SET('" . $keywordCity . "',uo.location) OR uo.opportunity LIKE '%$searchKeyword%' OR uo.field = '$keywordFieldList' OR usp.description LIKE '%$searchKeyword%'"
+                . " OR uaq.question LIKE '%$searchKeyword%' OR uaq.description LIKE '%$searchKeyword%' OR uaq.field = '$keywordFieldList')");
 
+        if ($getDeleteUserPost) {
+            $this->db->where('up.id NOT IN (' . $getDeleteUserPost . ')');
+        }
+        $this->db->order_by('up.id','desc');
         $query = $this->db->get();
         $user_post = $query->result_array();
 
