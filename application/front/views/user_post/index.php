@@ -515,9 +515,6 @@
                                     <div class="add-link" ng-click="ShowHide()">
                                         <i class="fa fa fa-link upload_icon"><span class="upload_span_icon"> Add Link</span>  </i> 
                                     </div>
-                                    <div class="add-anonymously">
-                                        <label class="control control--checkbox" title="Checked this">Add Anonymously<input type="checkbox" ng-model="ask.is_anonymously" value="1"><div class="control__indicator"></div></label>
-                                    </div>
                                     <div class="form-group"  ng-show = "IsVisible">
                                         <input type="text" ng-model="ask.web_link" class="" placeholder="Add Your Web Link">
                                     </div>
@@ -556,6 +553,9 @@
                                 <input type="hidden" ng-if="is_edit == 1" id="ask_edit_post_id" name="ask_edit_post_id" ng-model="ask.edit_post_id" class="form-control" value="{{ask.edit_post_id}}">
                             </div>
                             <div class="text-right fw pt10 pb20 pr15">
+                                <div class="add-anonymously">
+                                    <label class="control control--checkbox" title="Checked this">Add Anonymously<input type="checkbox" ng-model="ask.is_anonymously" value="1"><div class="control__indicator"></div></label>
+                                </div>
                                 <button type="submit" class="btn1"  value="Submit">Post</button> 
                             </div>
                         </form>
