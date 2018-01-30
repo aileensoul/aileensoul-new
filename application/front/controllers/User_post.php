@@ -88,6 +88,9 @@ class User_post extends MY_Controller {
             } elseif ($checkContactData['status'] == 'block') {
                 $return_data['status'] = 'block';
                 $return_data['message'] = '0';
+            } elseif ($checkContactData['status'] == 'pending') {
+                $return_data['status'] = 'pending';
+                $return_data['message'] = '1';
             } else {
                 $return_data['status'] = '';
                 $return_data['message'] = '0';
@@ -1099,8 +1102,9 @@ class User_post extends MY_Controller {
     }
 
     public function searchData() {
+        $userid = $this->session->userdata('aileenuser');
         $searchKeyword = $_POST['searchKeyword'];
-        $searchData = $this->user_post_model->searchData($searchKeyword);
+        $searchData = $this->user_post_model->searchData($userid,$searchKeyword);
         echo json_encode($searchData);
     }
 

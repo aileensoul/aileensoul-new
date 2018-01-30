@@ -97,7 +97,7 @@ app.controller('searchController', function ($scope, $http) {
         }, function (error) {});
     }
 
-    $scope.addToContact = function (user_id, contact) {
+    $scope.addToContact = function (user_id) {
         $http({
             method: 'POST',
             url: base_url + 'user_post/addToContact',
@@ -105,9 +105,34 @@ app.controller('searchController', function ($scope, $http) {
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (success) {
             if (success.data.message == 1) {
-                var index = $scope.contactSuggetion.indexOf(contact);
                 $('#item-' + user_id + ' button.follow-btn').html('Request Send');
-//                $('.owl-carousel').trigger('next.owl.carousel');
+                $('.owl-carousel').trigger('next.owl.carousel');
+            }
+        });
+    }
+    
+    $scope.addToContactSearch = function (user_id) {
+        $http({
+            method: 'POST',
+            url: base_url + 'user_post/addToContact',
+            data: 'user_id=' + user_id,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function (success) {
+            if (success.data.message == 1) {
+                $('#search-profile-contact-' + user_id).html('Request Send');
+            }
+        });
+    }
+    
+    $scope.followSearch = function (user_id) {
+        $http({
+            method: 'POST',
+            url: base_url + 'userprofile_page/addfollow',
+            data: 'to_id=' + user_id + '&status=1',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function (success) {
+            if (success.data == 1) {
+                $('#search-profile-follow-' + user_id).html('Following');
             }
         });
     }
