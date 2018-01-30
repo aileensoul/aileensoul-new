@@ -40,28 +40,30 @@ class Userprofile_page extends MY_Controller {
     public function following() {
         $this->load->view('userprofile/following', $this->data);
     }
-    
+
     public function contact_request() {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
-        
+
         $this->data['is_userBasicInfo'] = $this->user_model->is_userBasicInfo($userid);
         $this->data['is_userStudentInfo'] = $this->user_model->is_userStudentInfo($userid);
-        
+
         $this->data['header_profile'] = $this->load->view('header_profile', $this->data, TRUE);
         $this->load->view('userprofile/contact_request', $this->data);
     }
-    public function pending_contact_request(){
+
+    public function pending_contact_request() {
         $userid = $this->session->userdata('aileenuser');
         $pendingContactRequest = $this->user_model->contact_request_pending($userid);
         echo json_encode($pendingContactRequest);
     }
-    public function contactRequestNotification(){
+
+    public function contactRequestNotification() {
         $userid = $this->session->userdata('aileenuser');
         $contactRequestNotification = $this->user_model->contact_request_accept($userid);
         echo json_encode($contactRequestNotification);
     }
-    
+
     public function detail_data() {
         $userid = $this->session->userdata('aileenuser');
         $is_basicInfo = $this->data['is_basicInfo'] = $this->user_model->is_userBasicInfo($userid);
@@ -81,41 +83,41 @@ class Userprofile_page extends MY_Controller {
     }
 
     public function followers_data() {
-         $page = 1;
+        $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];
         }
         $userid = $this->session->userdata('aileenuser');
-        $followersData = $this->data['followersData'] = $this->userprofile_model->getFollowersData($userid, $data = "",$page);
+        $followersData = $this->data['followersData'] = $this->userprofile_model->getFollowersData($userid, $data = "", $page);
         echo json_encode($followersData);
     }
-    
+
     public function contacts_data() {
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];
         }
         $userid = $this->session->userdata('aileenuser');
-        $contactsData = $this->data['contactsData'] = $this->userprofile_model->getContactData($userid, $data = "",$page);
-       if(count($contactsData) == 0){
-           echo count($contactsData);
-       }else{
-        echo json_encode($contactsData);
-       }
+        $contactsData = $this->data['contactsData'] = $this->userprofile_model->getContactData($userid, $data = "", $page);
+        if (count($contactsData) == 0) {
+            echo count($contactsData);
+        } else {
+            echo json_encode($contactsData);
+        }
     }
-    
+
     public function following_data() {
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];
         }
         $userid = $this->session->userdata('aileenuser');
-        $followingData = $this->data['followingData'] = $this->userprofile_model->getFollowingData($userid, $data = "",$page);
-        if(count($followingData) == 0){
-           echo count($followingData);
-       }else{
-        echo json_encode($followingData);
-       }
+        $followingData = $this->data['followingData'] = $this->userprofile_model->getFollowingData($userid, $data = "", $page);
+        if (count($followingData) == 0) {
+            echo count($followingData);
+        } else {
+            echo json_encode($followingData);
+        }
     }
 
     public function vsrepeat() {
@@ -144,12 +146,12 @@ class Userprofile_page extends MY_Controller {
             $response = 0;
         }
         $contactdata = $this->userprofile_model->getContactCount($userid);
-      
+
         $removjson['response'] = $response;
         $removjson['contactcount'] = $contactdata[0]['total'];
         echo json_encode($removjson);
     }
-    
+
     public function unfollowingContacts() {
         $userid = $this->session->userdata('aileenuser');
         $id = $_POST['to_id'];
@@ -157,45 +159,45 @@ class Userprofile_page extends MY_Controller {
         if (count($follow) != 0) {
             $data = array('status' => '0');
             $insert_id = $this->common->update_data($data, 'user_follow', 'id', $follow['id']);
-           $response = 1; 
-            } else {
+            $response = 1;
+        } else {
             $response = 0;
         }
         $followingdata = $this->userprofile_model->getFollowingCount($userid);
-      
+
         $unfollowingjson['response'] = $response;
         $unfollowingjson['unfollowingcount'] = $followingdata[0]['total'];
 
         echo json_encode($unfollowingjson);
     }
-    
-    public function addcontact() { 
+
+    public function addcontact() {
         $userid = $this->session->userdata('aileenuser');
         $contact_id = $_POST['contact_id'];
         $status = $_POST['status'];
         $id = $_POST['to_id'];
-        $contact =  $this->userprofile_model->userContactStatus($userid, $id);
+        $contact = $this->userprofile_model->userContactStatus($userid, $id);
 
         if (count($contact) != 0) {
-            $data = array('status' => $status,'modify_date' => date('Y-m-d H:i:s',time()));
+            $data = array('status' => $status, 'modify_date' => date('Y-m-d H:i:s', time()));
             $insert_id = $this->common->update_data($data, 'user_contact', 'id', $contact['id']);
             $response = $status;
         } else {
             $data = array(
-                 'status' => $status,
-                 'from_id' => $userid,
-                 'to_id' => $id,
-                 'not_read' => '2',
-                 'created_date' => date('Y-m-d H:i:s',time()),
-                 'modify_date' => date('Y-m-d H:i:s',time()),
-                 );
+                'status' => $status,
+                'from_id' => $userid,
+                'to_id' => $id,
+                'not_read' => '2',
+                'created_date' => date('Y-m-d H:i:s', time()),
+                'modify_date' => date('Y-m-d H:i:s', time()),
+            );
             $insert_id = $this->common->insert_data($data, 'user_contact');
             $response = $status;
         }
         echo $response;
     }
-    
-    public function addfollow() { 
+
+    public function addfollow() {
         $userid = $this->session->userdata('aileenuser');
         $follow_id = $_POST['follow_id'];
         $status = $_POST['status'];
@@ -206,20 +208,20 @@ class Userprofile_page extends MY_Controller {
             $data = array('status' => $status);
             $insert_id = $this->common->update_data($data, 'user_follow', 'id', $follow['id']);
             $response = $status;
-        }else{
-             $data = array(
-                 'status' => $status,
-                 'follow_from' => $userid,
-                 'follow_to' => $id,
-                 'created_date' => $status,
-                 );
+        } else {
+            $data = array(
+                'status' => $status,
+                'follow_from' => $userid,
+                'follow_to' => $id,
+                'created_date' => $status,
+            );
             $insert_id = $this->common->insert_data($data, 'user_follow');
             $response = $status;
         }
         echo $response;
     }
-    
-    public function follow_user() { 
+
+    public function follow_user() {
         $userid = $this->session->userdata('aileenuser');
         $follow_id = $_POST['follow_id'];
         $id = $_POST['to_id'];
@@ -228,28 +230,26 @@ class Userprofile_page extends MY_Controller {
         if (count($follow) != 0) {
             $data = array('status' => '1');
             $insert_id = $this->common->update_data($data, 'user_follow', 'id', $follow['id']);
-         //   $response = $status;
-            
-            $html = '<a class="btn3"  ng-click="unfollow_user(' .$id.')">Following</a>';
-            
-            }else{
-             $data = array(
-                 'status' => '1',
-                 'follow_from' => $userid,
-                 'follow_to' => $id,
-                 'created_date' => date("Y-m-d h:i:s"),
-                 );
+            //   $response = $status;
+
+            $html = '<a class="btn3"  ng-click="unfollow_user(' . $id . ')">Following</a>';
+        } else {
+            $data = array(
+                'status' => '1',
+                'follow_from' => $userid,
+                'follow_to' => $id,
+                'created_date' => date("Y-m-d h:i:s"),
+            );
             $insert_id = $this->common->insert_data($data, 'user_follow');
-           // $response = $status;
-            $html = '<a class="btn3"  ng-click="unfollow_user(' .$id.')">Following</a>';
+            // $response = $status;
+            $html = '<a class="btn3"  ng-click="unfollow_user(' . $id . ')">Following</a>';
         }
-        
-       
+
+
         echo $html;
     }
-    
-    
-    public function unfollow_user() { 
+
+    public function unfollow_user() {
         $userid = $this->session->userdata('aileenuser');
         $follow_id = $_POST['follow_id'];
         $id = $_POST['to_id'];
@@ -258,33 +258,31 @@ class Userprofile_page extends MY_Controller {
         if (count($follow) != 0) {
             $data = array('status' => 0);
             $insert_id = $this->common->update_data($data, 'user_follow', 'id', $follow['id']);
-         //   $response = $status;
-            
-            $html = '<a class="btn3"  ng-click="follow_user(' .$id.')">Follow</a>';
-            
-            }else{
-             $data = array(
-                 'status' => 0,
-                 'follow_from' => $userid,
-                 'follow_to' => $id,
-                 'created_date' => $status,
-                 );
+            //   $response = $status;
+
+            $html = '<a class="btn3"  ng-click="follow_user(' . $id . ')">Follow</a>';
+        } else {
+            $data = array(
+                'status' => 0,
+                'follow_from' => $userid,
+                'follow_to' => $id,
+                'created_date' => $status,
+            );
             $insert_id = $this->common->insert_data($data, 'user_follow');
-           // $response = $status;
-            $html = '<a class="btn3"  ng-click="follow_user(' .$id.')">Follow</a>';
+            // $response = $status;
+            $html = '<a class="btn3"  ng-click="follow_user(' . $id . ')">Follow</a>';
         }
-        
-       
+
+
         echo $html;
     }
-    
-    
-    
-      //PROFILE PIC INSERT END  
+
+    //PROFILE PIC INSERT END  
 
     public function user_image_insert1() {
+        $userid = $this->session->userdata('aileenuser');
         $userslug = $this->session->userdata('aileenuser_slug');
-        $userdata  = $this->user_model->getUserDataByslug($userslug,$data='ui.user_image,u.user_slug,u.user_id');
+        $userdata = $this->user_model->getUserDataByslug($userslug, $data = 'ui.user_image,u.user_slug,u.user_id');
 
         $user_prev_image = $userdata['user_image'];
 
@@ -359,12 +357,28 @@ class Userprofile_page extends MY_Controller {
         );
 
         $update = $this->common->update_data($data, 'user_info', 'user_id', $userdata['user_id']);
+        
+        $insert_data = array();
+        $insert_data['user_id'] = $userid;
+        $insert_data['data_key'] = "profile_picture";
+        $insert_data['data_value'] = $imageName;
+        $insert_data['date'] = date('Y-m-d H:i:s', time());
+        $inserted_id = $user_cover_id = $this->common->insert_data_getid($insert_data, 'user_profile_update');
+
+        $insert_post_data = array();
+        $insert_post_data['user_id'] = $userid;
+        $insert_post_data['post_for'] = "profile_update";
+        $insert_post_data['post_id'] = $inserted_id;
+        $insert_post_data['status'] = 'publish';
+        $insert_post_data['is_delete'] = '0';
+        $insert_post_data['created_date'] = date('Y-m-d H:i:s', time());
+        $inserted_id = $user_cover_id = $this->common->insert_data_getid($insert_post_data, 'user_post');
 
         if ($update) {
-             $userdata  = $this->user_model->getUserDataByslug($userslug,$data='ui.user_image');
- 
-               $userimage .= '<img src="' . USER_THUMB_UPLOAD_URL . $userdata['user_image'] . '">';
-               $userimage .= '<a class="upload-profile cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();" title="Update profile picture">
+            $userdata = $this->user_model->getUserDataByslug($userslug, $data = 'ui.user_image');
+
+            $userimage .= '<img src="' . USER_THUMB_UPLOAD_URL . $userdata['user_image'] . '">';
+            $userimage .= '<a class="upload-profile cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();" title="Update profile picture">
                             <img src="' . base_url('assets/n-images/cam.png') . '"  alt="' . CAMERAIMAGE . '">Update Profile Picture
                         </a>';
             echo $userimage;
@@ -374,7 +388,7 @@ class Userprofile_page extends MY_Controller {
             redirect('profiless/' . $userdata['user_slug'], refresh);
         }
     }
-   
+
     // cover pic controller
     public function ajaxpro() {
 
@@ -451,16 +465,22 @@ class Userprofile_page extends MY_Controller {
         );
 
         $update = $this->common->update_data($data, 'user_info', 'user_id', $userid);
-        
+
         $insert_data = array();
-                $insert_data['user_id'] = $user_post_id;
-                $insert_data['data_key'] = $ask_question;
-                $insert_data['data_value'] = $ask_description;
-                $insert_data['date'] = date('Y-m-d H:i:s', time());
-                $inserted_id = $user_cover_id = $this->common->insert_data_getid($insert_data, 'user_ask_question');
-            $update_data = array();
-            $update_data['post_id'] = $inserted_id;
-            $update_post = $this->common->update_data($update_data, 'user_post', 'id', $user_post_id);
+        $insert_data['user_id'] = $userid;
+        $insert_data['data_key'] = "cover_picture";
+        $insert_data['data_value'] = $imageName;
+        $insert_data['date'] = date('Y-m-d H:i:s', time());
+        $inserted_id = $user_cover_id = $this->common->insert_data_getid($insert_data, 'user_profile_update');
+
+        $insert_post_data = array();
+        $insert_post_data['user_id'] = $userid;
+        $insert_post_data['post_for'] = "cover_update";
+        $insert_post_data['post_id'] = $inserted_id;
+        $insert_post_data['status'] = 'publish';
+        $insert_post_data['is_delete'] = '0';
+        $insert_post_data['created_date'] = date('Y-m-d H:i:s', time());
+        $inserted_id = $user_cover_id = $this->common->insert_data_getid($insert_post_data, 'user_post');
 
         $user_reg_data = $this->userprofile_model->getUserBackImage($userid);
         $user_reg_back_image = $user_reg_data['profile_background'];
