@@ -1,5 +1,13 @@
 <?php
 $s3 = new S3(awsAccessKey, awsSecretKey);
+
+$userid = $this->session->userdata('aileenuser');
+        
+$contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
+$data = "business_profile_id,user_id,business_user_image,business_slug,industriyal,other_industrial,company_name,profile_background,city,state,business_type,business_step";
+$business_common_data = $this->data['business_common_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
+
 ?>
 <div class="full-box-module">   
     <div class="profile-boxProfileCard  module">

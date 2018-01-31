@@ -5102,6 +5102,7 @@ Your browser does not support the audio tag.
         $company_name = $this->get_company_name($slug_id);
         $this->data['title'] = ucwords($company_name) . ' | Post Detail' . ' | Business Profile' . TITLEPOSTFIX;
         $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
+        include ('business_profile_include.php');
 
         $this->load->view('business_profile/postnewpage', $this->data);
     }
