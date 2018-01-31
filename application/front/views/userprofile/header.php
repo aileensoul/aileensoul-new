@@ -137,6 +137,8 @@
                             'active': active == 'followers'}">followers</a></li>
                     <li><a href="following/<?php echo $userdata['user_slug']; ?>"  ng-click='makeActive("following")' ng-class="{
                             'active': active == 'following'}">following</a></li>
+                    <li><a href="questions/<?php echo $userdata['user_slug']; ?>"  ng-click='makeActive("questions")' ng-class="{
+                            'active': active == 'questions'}">Questions</a></li>
                 </ul>
             </div>
         </div>

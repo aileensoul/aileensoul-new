@@ -3,6 +3,23 @@ app.filter('wordFirstCase', function () {
         return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
     };
 });
+app.filter('slugify', function () {
+    return function (input) {
+        if (!input)
+            return;
+
+        // make lower case and trim
+        var slug = input.toLowerCase().trim();
+
+        // replace invalid chars with spaces
+        slug = slug.replace(/[^a-z0-9\s-]/g, ' ');
+
+        // replace multiple spaces or hyphens with a single hyphen
+        slug = slug.replace(/[\s-]+/g, '-');
+
+        return slug;
+    };
+});
 app.directive("owlCarousel", function () {
     return {
         restrict: 'E',
@@ -171,6 +188,10 @@ app.config(function ($routeProvider, $locationProvider) {
             .when("/following/:name*", {
                 templateUrl: base_url + "userprofile_page/following",
                 controller: 'followingController'
+            })
+            .when("/questions/:name*", {
+                templateUrl: base_url + "userprofile_page/questions",
+                controller: 'questionsController'
             })
     $locationProvider.html5Mode(true);
 });
@@ -1363,8 +1384,8 @@ app.controller('contactsController', function ($scope, $http, $location, $window
         location.href = base_url + 'profiless/' + path;
     }
 });
-app.controller('followersController', function ($scope, $http, $location, $compile,$window) {
-    
+app.controller('followersController', function ($scope, $http, $location, $compile, $window) {
+
     //    lazzy loader start
 // Variables
     $scope.showLoadmore = true;
@@ -1424,7 +1445,7 @@ app.controller('followersController', function ($scope, $http, $location, $compi
     $scope.follow = function (index) { }
 
     // PROFEETIONAL DATA
-       $scope.follow_user = function (id) {
+    $scope.follow_user = function (id) {
         $http({
             method: 'POST',
             url: base_url + 'userprofile_page/follow_user',
@@ -1452,7 +1473,7 @@ app.controller('followersController', function ($scope, $http, $location, $compi
         location.href = base_url + 'profiless/' + path;
     }
 });
-app.controller('followingController', function ($scope, $http, $location, $compile,$window) {
+app.controller('followingController', function ($scope, $http, $location, $compile, $window) {
     //    lazzy loader start
 // Variables
     $scope.showLoadmore = true;
@@ -1530,6 +1551,194 @@ app.controller('followingController', function ($scope, $http, $location, $compi
     $scope.goUserprofile = function (path) {
         location.href = base_url + 'profiless/' + path;
     }
+});
+
+app.controller('questionsController', function ($scope, $http, $location, $compile, $window) {
+    //    lazzy loader start
+    $scope.showLoadmore = true;
+    $scope.row = 0;
+    $scope.rowperpage = 3;
+    $scope.buttonText = "Load More";
+
+    $scope.getQuestions = function (pagenum = '') {
+        $http({
+            method: 'post',
+            url: base_url + "userprofile_page/questions_list?page=" + pagenum,
+            data: {row: $scope.row, rowperpage: $scope.rowperpage}
+        }).then(function successCallback(response) {
+            if (response.data != '') {
+                $scope.row += $scope.rowperpage;
+                if ($scope.contactData != undefined) {
+                    $scope.page_number = response.data.pagedata.page;
+                    for (var i in response.data.questionsrecord) {
+                        $scope.questionsData.push(response.data.questionsrecord[i]);
+                    }
+                } else {
+                    $scope.pagecntctData = response.data;
+                    $scope.postData = response.data;
+                }
+            } else {
+                $scope.showLoadmore = false;
+            }
+        });
+    }
+    angular.element($window).bind("scroll", function (e) {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            var page = $(".page_number").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record * page) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number").val()) + 1;
+                    $scope.getQuestions(pagenum);
+                }
+            }
+        }
+    });
+    $scope.getQuestions();
+    $scope.goUserprofile = function (path) {
+        location.href = base_url + 'profiless/' + path;
+    }
+
+    $scope.post_like = function (post_id) {
+        $http({
+            method: 'POST',
+            url: base_url + 'user_post/likePost',
+            data: 'post_id=' + post_id,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function (success) {
+            if (success.data.message == 1) {
+                if (success.data.is_newLike == 1) {
+                    $('#post-like-' + post_id).addClass('like');
+                    $('#post-like-' + post_id).html('Liked');
+                    $('#post-like-count-' + post_id).html(success.data.likePost_count);
+                    if (success.data.likePost_count == '0') {
+                        $('#post-other-like-' + post_id).html('');
+                    } else {
+                        $('#post-other-like-' + post_id).html(success.data.post_like_data);
+                    }
+                } else if (success.data.is_oldLike == 1) {
+                    $('#post-like-' + post_id).removeClass('like');
+                    $('#post-like-' + post_id).html('Like');
+                    $('#post-like-count-' + post_id).html(success.data.likePost_count);
+                    if (success.data.likePost_count == '0') {
+                        $('#post-other-like-' + post_id).html('');
+                    } else {
+                        $('#post-other-like-' + post_id).html(success.data.post_like_data);
+                    }
+                }
+            }
+        });
+    }
+
+    $scope.giveAnswer = function (user_id) {
+        var ans_text_class = document.getElementById('ans-text-' + user_id).className.split(' ').pop();
+        if (ans_text_class == 'open') {
+            $('#ans-text-' + user_id).removeClass('open');
+            $('#ans-text-' + user_id).css('display', 'none');
+            $('#all-post-bottom-' + user_id).css('display', 'none');
+        } else {
+            $('#ans-text-' + user_id).addClass('open');
+            $('#ans-text-' + user_id).css('display', 'block');
+            $('#all-post-bottom-' + user_id).css('display', 'block');
+        }
+    }
+
+    $scope.sendComment = function (post_id, index, post) {
+        //var commentClassName = $('#comment-icon-' + post_id).attr('class').split(' ')[0];
+        var comment = $('#commentTaxBox-' + post_id).html();
+        //comment = comment.replace(/^(<br\s*\/?>)+/, '');
+        comment = comment.replace(/&nbsp;/gi, " ");
+        comment = comment.replace(/<br>$/, '');
+        comment = comment.replace(/&gt;/gi, ">");
+        comment = comment.replace(/&/g, "%26");
+        if (comment) {
+            $scope.isMsg = true;
+            $http({
+                method: 'POST',
+                url: base_url + 'user_post/postCommentInsert',
+                data: 'comment=' + comment + '&post_id=' + post_id,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
+                    .then(function (success) {
+                        data = success.data;
+                        if (data.message == '1') {
+                            $('.post-comment-count-' + post_id).html(data.comment_count);
+                            $('.editable_text').html('');
+                        }
+                    });
+        } else {
+            $scope.isMsgBoxEmpty = true;
+        }
+    }
+    
+    $scope.EditPost = function (post_id, post_for, index) {
+        $scope.is_edit = 1;
+
+
+        $http({
+            method: 'POST',
+            url: base_url + 'user_post/getPostData',
+            data: 'post_id=' + post_id + '&post_for=' + post_for,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    $scope.is_edit = 1;
+                    if (post_for == "opportunity") {
+                        $scope.opp.description = success.data.opportunity;
+                        $scope.opp.job_title = success.data.opportunity_for;
+                        $scope.opp.location = success.data.location;
+                        $scope.opp.field = success.data.field;
+                        $scope.opp.edit_post_id = post_id;
+                        $("#opportunity-popup").modal('show');
+
+                    } else if (post_for == "simple") {
+                        $scope.sim.description = success.data.description;
+                        $scope.sim.edit_post_id = post_id;
+
+                        $("#post-popup").modal('show');
+
+                    } else if (post_for == "question") {
+                        $scope.ask.ask_que = success.data.question;
+                        $scope.ask.ask_description = success.data.description;
+                        $scope.ask.related_category = success.data.tag_name;
+                        $scope.ask.ask_field = success.data.field;
+                        $scope.ask.edit_post_id = post_id;
+
+                        $("#ask-question").modal('show');
+                    }
+                });
+
+
+    }
+
+    $scope.deletePost = function (post_id, index) {
+        $scope.p_d_post_id = post_id;
+        $scope.p_d_index = index;
+
+        $('#delete_post_model').modal('show');
+    }
+    $scope.deletedPost = function (post_id, index) {
+        $http({
+            method: 'POST',
+            url: base_url + 'user_post/deletePost',
+            data: 'post_id=' + post_id,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    data = success.data;
+                    if (data.message == '1') {
+                        $scope.postData.splice(index, 1);
+                    }
+                });
+    }
+    
 });
 function remove_contacts(index) {
     $.ajax({

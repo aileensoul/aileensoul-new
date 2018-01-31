@@ -41,6 +41,10 @@ class Userprofile_page extends MY_Controller {
         $this->load->view('userprofile/following', $this->data);
     }
 
+    public function questions() {
+        $this->load->view('userprofile/questions', $this->data);
+    }
+
     public function contact_request() {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
@@ -357,7 +361,7 @@ class Userprofile_page extends MY_Controller {
         );
 
         $update = $this->common->update_data($data, 'user_info', 'user_id', $userdata['user_id']);
-        
+
         $insert_data = array();
         $insert_data['user_id'] = $userid;
         $insert_data['data_key'] = "profile_picture";
@@ -490,8 +494,8 @@ class Userprofile_page extends MY_Controller {
 
         echo $coverpic;
     }
-    
-    public function question_detail($question_id=''){
+
+    public function question_detail($question_id = '') {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
         $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
@@ -503,14 +507,21 @@ class Userprofile_page extends MY_Controller {
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['question_id'] = $question_id;
         $this->data['title'] = "Question | Aileensoul";
-        $this->load->view('userprofile/question_details',$this->data);
+        $this->load->view('userprofile/question_details', $this->data);
     }
-    
-    public function question_data(){
+
+    public function question_data() {
         $userid = $this->session->userdata('aileenuser');
-        
+
         $question_id = $_GET['question'];
-        $questionData = $this->userprofile_model->questionData($question_id,$userid);
+        $questionData = $this->userprofile_model->questionData($question_id, $userid);
         echo json_encode($questionData);
     }
+
+    public function questions_list() {
+        $userid = $this->session->userdata('aileenuser');
+        $questionList = $this->userprofile_model->questionList($userid);
+        echo json_encode($questionList);
+    }
+
 }
