@@ -58,7 +58,7 @@ header('Expires: ' . $date);
     } echo $country_name . ' View full business details like address, contact number, photos and more at Aileensoul.com.'; ?>" />
 
 <?php } else if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'jobpost') { ?>
-    <meta name="description" content="Job Description for the post of <?php echo $exp_title; ?> in <?php echo ucfirst($recdata[0]['re_comp_name']); ?> in <?php if ($city_name) {
+    <meta name="description" content="Job Description for the post of <?php echo $exp_title; ?> in <?php echo ucfirst($recdata['re_comp_name']); ?> in <?php if ($city_name) {
         echo $city_name . ', ';
     }echo $state_name; ?> for <?php echo $exp_descp; ?> of experience. Apply Now!" />
 
