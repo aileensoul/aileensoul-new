@@ -305,7 +305,7 @@
                                     <div class="fw">
                                         <input type="file" name="companylogo" accept="image/gif, image/jpeg, image/png" id="upload-complogo" >
                                     </div>
-                                    <input type="hidden" name="oldlogo" value="<?php echo $recdata['comp_logo']; ?>"
+                                    <input type="hidden" name="oldlogo" value="<?php echo $recdata['comp_logo']; ?>">
                                     <div class="col-md-7 text-center">
                                         <div id="upload-demo-one" style="display:none; width:350px"></div>
                                     </div>

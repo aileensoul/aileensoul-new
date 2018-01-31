@@ -2766,3 +2766,10 @@ $(document).ready(function () {
 //script for only jpg png image upload END
 
 $(".alert").delay(3200).fadeOut(300);
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        //$( "#bidmodal" ).hide();
+        $('#bidmodal-other-degree').modal('hide');
+       // $('#other_field').val('');
+    }
+});
