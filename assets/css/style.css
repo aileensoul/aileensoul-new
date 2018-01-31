@@ -2345,6 +2345,10 @@ footer div.pt20{
     right:0;
     bottom:76px
 }
+.left_side_posrt .all-profile-box{
+    margin-left:0px;
+    width:calc(100% - 0px)    
+}
 .all-profile-box{
     border:1px solid #d2d2d2;
     margin-bottom:10px;

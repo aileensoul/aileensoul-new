@@ -38,6 +38,9 @@
     border:1px solid #1b8ab9!important;
     color:#1b8ab9!important
 }
+.common-form select:focus+label,select.day:focus+label,select.month:focus+label,select.year:focus+label{
+    color:#1b8ab9!important
+}
 .common-form textarea:focus{
     border:1px solid #1b8ab9!important;
     color:#1b8ab9!important
