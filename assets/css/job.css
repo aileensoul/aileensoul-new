@@ -2283,7 +2283,7 @@ fieldset.main_select_data span:after{
     pointer-events:none
 }
 .message-degree {padding: 20px 30px;}
-
+.cus-mod-edu #bidmodal-other-stream .message{padding: 0px !important;}
 
 @media screen and (min-width:768px){
     .mob-progressbar.temp{
