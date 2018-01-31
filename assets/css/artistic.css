@@ -3515,10 +3515,10 @@ label.cameraButton:active {
 label.cameraButton input[accept*="camera"] {
     display: none;
 }
-.alert-danger {
+/*.alert-danger {
     color: black!important;
     font-size: 22px !important;
-}
+}*/
 .notificationsmsg #notificationTitle {
     display: none !important;
 }

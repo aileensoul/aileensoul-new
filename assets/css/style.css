@@ -2920,8 +2920,8 @@ footer div.pt20{
     }
 	.freelancer_home .midd-section{background-size:cover;}
 	.freelancer_home .main_frlancer{position:relative; top:inherit; left:inherit; transform:inherit; padding-bottom:50px;}
-	.freelancer_home footer{position:relative;}
-	.freelancer_home .freelancer-midd{height:auto; padding-bottom:0;}
+	/*.freelancer_home footer{position:relative;}*/
+	.freelancer_home .freelancer-midd{padding-bottom:0;}
 	.freelancer_home .ftr-copuright.pb20{padding-bottom:0;}
     .job-saved-box .notification-box ul li{padding: 8px;margin: 8px;}
     .logo img{max-width: 130px;}
