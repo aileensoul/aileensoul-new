@@ -1996,7 +1996,11 @@ footer ul li a:hover{
 .cameraButton #upload{
     display:none
 }
-
+@media screen and (min-width:1280px) and (max-width:1295px){
+	.header2{
+        width:1140px;
+    }
+}
 @media screen and (min-width:1296px){
     .container{
         width:1280px
@@ -2008,9 +2012,9 @@ footer ul li a:hover{
     }
 }
 @media screen and (max-width:1296px){
-    .header2{
+   /* .header2{
         width:1140px;
-    }
+    }*/
 	.fixed_right_display{display:none;}
 }	
 @media screen and (max-width:1279px){
