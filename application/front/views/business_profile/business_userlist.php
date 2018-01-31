@@ -38,8 +38,10 @@
                                             <h3>User list</h3>
                                             <div class="contact-frnd-post">
                                                 <!-- AJAX DATA... -->
+
+                                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="Loader" /></div>
                                             </div>
-                                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="Loader" /></div>
+                                           
                                             <div class="col-md-1">
                                             </div>
                                         </div>

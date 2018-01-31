@@ -8596,7 +8596,7 @@ No Contacts Available.
 
         /* INDUSTRIAL AND CITY WISE DATA START */
         $condition_array = array('business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.business_step' => '4');
-        $search_condition = "(business_profile.industriyal = '$industriyal' AND business_profile.industriyal != 0) AND (business_profile.other_industrial = '$other_industrial' AND business_profile.other_industrial != '') OR (business_profile.city = '$city')";
+        $search_condition = "(business_profile.industriyal = '$industriyal' AND business_profile.industriyal != 0) AND (business_profile.other_industrial = '$other_industrial' AND business_profile.other_industrial != '') OR (business_profile.city = '$city' AND business_profile.industriyal = '$industriyal')";
         $data = "GROUP_CONCAT(user_id) as industry_city_user_list";
         $industrial_city_data = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data, $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
         $industrial_city_list = $industrial_city_data[0]['industry_city_user_list'];
