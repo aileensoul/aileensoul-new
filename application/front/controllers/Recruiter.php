@@ -5437,13 +5437,18 @@ class Recruiter extends MY_Controller {
 
                 $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
                 $recruiterpostdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'comp_logo', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-                $userimage .= '<img src="' . base_url() . $this->config->item('rec_profile_thumb_upload_path') . $recruiterpostdata[0]['comp_logo'] . '" alt="" >';
+                $userimage .= '<a href="javascript:void(0);" onclick="upload_company_logo();" title="Upload Company Logo"><img src="' . base_url() . $this->config->item('rec_profile_thumb_upload_path') . $recruiterpostdata[0]['comp_logo'] . '" alt="" ></a>';
                 // $userimage .= '<a href="javascript:void(0);" onclick="upload_company_logo(' . $post['user_id'] . ');" title="Upload Company Logo">Update Profile Picture</a>';
                 echo $userimage;
             } else {
                 $data = "error";
                 echo $data;
             }
+        }else{
+            $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
+                $recruiterpostdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'comp_logo', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+                $userimage .= '<a href="javascript:void(0);" onclick="upload_company_logo();" title="Upload Company Logo"><img src="' . base_url() . $this->config->item('rec_profile_thumb_upload_path') . $recruiterpostdata[0]['comp_logo'] . '" alt="" ></a>';
+                echo $userimage; 
         }
     }
 

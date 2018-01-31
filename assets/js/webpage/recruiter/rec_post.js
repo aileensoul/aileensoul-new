@@ -581,19 +581,24 @@ $("#comlogo").on('submit', (function (e) {
         url: base_url + "recruiter/company_logo",
         type: "POST",
         data:new FormData(this),
+        beforeSend: function () {  
+                    $(".modal-content").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
+                },
         contentType: false,
         cache: false,
         processData: false,
         success: function (data) {
-           
+           $('.loader').remove();
              $(".post-img").html(data);
-            $('#bidmodal-com-logo').modal('hide');
+            $('#bidmodal-com-logo').hide();
+            document.getElementById("upload-complogo").value = '';
+           // $('upload-complogo').value('');
             //  $(".user-pic").html(data);
         },
         error: function () {}
     });
 }));
-//$("#comlogo").validate({
-//
-//    submitHandler: companylogo
-//});
+$('.modal-close').on('click', function (){
+    $('#bidmodal-com-logo').hide();
+    document.getElementById("upload-complogo").value = '';
+});
