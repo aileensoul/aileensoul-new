@@ -114,6 +114,7 @@ padding: 5px;}
 .modal-content .post-field .form-group textarea{border:none; min-height:30px; max-height:80px; font-size:14px; border:1px solid #d2d2d2; padding:5px 15px; margin-bottom:9px;}
 .modal-content .post-field .form-group input{/*border:none; padding:0;*/}
 .post-head{width:100%; float:left; position:relative;}
+.post-head .post-img .no-img-post{padding:13px 0; display:inline-block;}
 .post-detail{width:88%; float:left; padding-left:10px;}
 .post-detail .post-name{font-size:15px; color:#1b8ab9; font-weight:600; float:left; padding-right:10px;}
 .post-right-dropdown{width:4px; float:right;}
