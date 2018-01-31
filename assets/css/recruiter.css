@@ -1073,7 +1073,7 @@ fieldset.fresher_radio label {
                 position: absolute!important;
                 z-index: 999 !important;
 }
-.message-degree{padding: 20px 30px;}
+.cus-pop-mes{padding: 15px 0 !important;}
 
 /***  media query  ***/
 

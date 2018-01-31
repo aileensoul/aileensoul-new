@@ -2462,7 +2462,9 @@ footer div.pt20{
         position: absolute!important;
         z-index: 999 !important;
 }
-
+.notification_data_in_h2 #msg_not_loader{
+    margin-top: 85px;
+}
 
 @media screen and (max-height:540px){
     .no-login .modal-dialog{

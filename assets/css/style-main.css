@@ -3356,6 +3356,7 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
     .modal-dialog {height: auto !important;}
     .blog .main-inner{padding-bottom: 0PX !important;}
     .modal.in .modal-dialog{padding: 55px 15px;}
+    .profile-bnr img{width: 100% !important;}
 }
 @media screen and (max-width:640px){
     .btns .btn-4{
