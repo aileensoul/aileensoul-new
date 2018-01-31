@@ -71,6 +71,8 @@ $route['searchh'] = 'user_post/search';
 $route['opportunities'] = 'user_post';
 $route['contact-request'] = 'userprofile_page/contact_request';
 
+$route['questions/(:any)/(:any)'] = 'userprofile_page/question_detail/$1/$2';
+
 //$route['default_controller'] = 'under_construction';
 
 

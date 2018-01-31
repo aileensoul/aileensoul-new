@@ -518,7 +518,13 @@
                                     <?php } ?>
                                 </div>
                                 <div class="post-text">
-                                    <textarea class="title-text-area" ng-keyup="questionList()" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Question" typeahead="item as item.question for item in queSearchResult | filter:$viewValue" autocomplete="off"></textarea>
+                                    <!--<textarea class="title-text-area" ng-keyup="questionList()" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Question" typeahead="item as item.question for item in queSearchResult | filter:$viewValue" autocomplete="off"></textarea>-->
+                                    <textarea class="title-text-area" ng-keyup="questionList()" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Question"></textarea>
+                                    <ul class="questionSuggetion">
+                                        <li ng-repeat="que in queSearchResult">
+                                            <a ng-href="<?php echo base_url('questions/') ?>{{que.id}}/{{que.question | slugify}}" ng-bind="que.question"></a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <div class="all-upload" ng-if="is_edit != 1">
                                     <div class="form-group">

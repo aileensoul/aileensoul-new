@@ -77,6 +77,7 @@ class General_data extends MY_Controller {
     
     public function searchQuestionList(){
         $queSearch = $_POST['q'];
+        
         $getQueList = $this->data_model->searchQueList($queSearch);
         echo json_encode($getQueList);
     }
