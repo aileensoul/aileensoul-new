@@ -104,8 +104,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 <div class="business-profile-right">
                     <div class="bui-menu-profile">
                         <div class="profile-left">
-                            <h4 class="profile-head-text"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> <?php echo ucfirst($business_common_data[0]['company_name']); ?></a></h4>
-                            <h4 class="profile-head-text_dg"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
+                            <h1 class="profile-head-text"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> <?php echo ucfirst($business_common_data[0]['company_name']); ?></a></h1>
+                            <h2 class="profile-head-text_dg"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
                                     <?php
                                     if ($business_common_data[0]['industriyal']) {
                                         echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal']))->row()->industry_name;
@@ -116,7 +116,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         }
                                     }
                                     ?>
-                                </a></h4>
+                                </a></h2>
                         </div>
                         <?php
                         $userid = $this->session->userdata('aileenuser');

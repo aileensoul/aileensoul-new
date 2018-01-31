@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,8 @@
     <body class="pushmenu-push">
         <?php echo $header; ?>
         <?php echo $freelancer_hire_header2_border; ?>
+
+
 
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
@@ -126,8 +129,12 @@
                             return $text;
                         }
                         ?>
+
                         <!-- middle div stat -->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
+                            <?php if ($this->session->flashdata('error')) { ?>  
+                                    <p class="alert alert-success"><?php echo $this->session->flashdata('error'); ?></p>
+                            <?php } ?>
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("recommended_freelancer"); ?></h3>
@@ -195,7 +202,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            
+
 
                         </div>
 
@@ -236,11 +243,11 @@
         <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
 
         <?php if (IS_HIRE_JS_MINIFY == '0') { ?>
-          <!--<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>-->
-        <!--<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>-->
+                          <!--<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>-->
+                        <!--<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>-->
         <?php } else { ?>
-           <!--<script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>-->
-        <!--<script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>-->
+                           <!--<script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>-->
+                        <!--<script async type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>-->
         <?php } ?>
 
     </body>

@@ -120,21 +120,21 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 <div class="business-profile-right">
                     <div class="bui-menu-profile">
                         <div class="profile-left">
-                            <h4 class="profile-head-text"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> <?php echo ucfirst($business_common_data[0]['company_name']); ?></a></h4>
+                            <h1 class="profile-head-text"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> <?php echo ucfirst($business_common_data[0]['company_name']); ?></a></h1>
 
                             <?php if ($business_common_data[0]['industriyal']) { ?>
 
-                                <h4 class="profile-head-text_dg" title=" <?php echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal']))->row()->industry_name; ?>"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
+                                <h2 class="profile-head-text_dg" title=" <?php echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal']))->row()->industry_name; ?>"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
 
                                         <?php echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal']))->row()->industry_name; ?>
 
-                                    </a></h4>
+                                    </a></h2>
                                 <?php
                             }
                             if ($business_common_data[0]['other_industrial']) {
                                 ?>
 
-                                <h4 class="profile-head-text_dg" title="<?php echo ucfirst(strtolower($business_common_data[0]['other_industrial'])); ?>"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
+                                <h2 class="profile-head-text_dg" title="<?php echo ucfirst(strtolower($business_common_data[0]['other_industrial'])); ?>"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
 
                                         <?php
                                         if ($industry_type == '') {
@@ -150,7 +150,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             echo ucfirst(strtolower($shown_string));
                                         }
                                         ?>
-                                    </a></h4>
+                                    </a></h2>
                             <?php }
                             ?>
 

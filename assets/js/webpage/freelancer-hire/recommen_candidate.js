@@ -127,4 +127,4 @@ $(document).ready(function () {
     }
 });
 //SCRIPT FOR NO POST ADD CLASS DESIGNER RELATED HEADER2 END            
-
+$(".alert").delay(3200).fadeOut(300);

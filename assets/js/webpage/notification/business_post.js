@@ -720,6 +720,12 @@ function check_lengthedit(abc)
         text_num = maxLen - product_name.length;
         var msg = "You have reached your maximum limit of characters allowed";
         $("#test-upload-product").prop("readonly", true);
+
+        $("#editpostname" + abc).prop("readonly", true);
+        document.getElementById("editpostdesc" + abc).contentEditable = false;
+        document.getElementById("editpostsubmit" + abc).setAttribute("disabled", "disabled");
+
+
         $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
         $('#postedit').modal('show');
         var substrval = product_name.substring(0, maxLen);
@@ -730,6 +736,15 @@ function check_lengthedit(abc)
 //        document.getElementById("text_num").value = text_num;
     }
 }
+
+
+$('#postedit').on('click', function () {
+
+    $(".productpostname").prop("readonly", false);
+    $('.editable_text').attr('contentEditable', true);
+    $('.fr').attr('disabled', false);
+
+});
 /* POST BOX 50 CHARACTER LIMITATION CHECK END */
 /* SAVEPOST START */
 function save_post(abc)
@@ -1660,8 +1675,7 @@ $(window).on('load', function () {
     }
 });
 
-$('#postedit').on('click', function () {
-});
+
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         $('#postedit').modal('hide');

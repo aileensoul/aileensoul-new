@@ -787,7 +787,7 @@
 //save post start 
                                                                     function savepopup(id) {
                                                                         save_post(id);
-                                                                        $('.biderror .mes').html("<div class='pop_content'>Jobpost successfully saved.");
+                                                                        $('.biderror .mes').html("<div class='pop_content cus-pop-mes'>Jobpost successfully saved.");
                                                                         $('#bidmodal').modal('show');
                                                                     }
 

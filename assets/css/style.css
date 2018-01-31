@@ -2345,6 +2345,10 @@ footer div.pt20{
     right:0;
     bottom:76px
 }
+.left_side_posrt .all-profile-box{
+    margin-left:0px;
+    width:calc(100% - 0px)    
+}
 .all-profile-box{
     border:1px solid #d2d2d2;
     margin-bottom:10px;
@@ -2458,7 +2462,9 @@ footer div.pt20{
         position: absolute!important;
         z-index: 999 !important;
 }
-
+.notification_data_in_h2 #msg_not_loader{
+    margin-top: 85px;
+}
 
 @media screen and (max-height:540px){
     .no-login .modal-dialog{
@@ -2916,8 +2922,8 @@ footer div.pt20{
     }
 	.freelancer_home .midd-section{background-size:cover;}
 	.freelancer_home .main_frlancer{position:relative; top:inherit; left:inherit; transform:inherit; padding-bottom:50px;}
-	.freelancer_home footer{position:relative;}
-	.freelancer_home .freelancer-midd{height:auto; padding-bottom:0;}
+	/*.freelancer_home footer{position:relative;}*/
+	.freelancer_home .freelancer-midd{padding-bottom:0;}
 	.freelancer_home .ftr-copuright.pb20{padding-bottom:0;}
     .job-saved-box .notification-box ul li{padding: 8px;margin: 8px;}
     .logo img{max-width: 130px;}

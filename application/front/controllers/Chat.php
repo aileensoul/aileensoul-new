@@ -3730,7 +3730,11 @@ class Chat extends MY_Controller {
                 if ($user['user_image'] && (file_exists($image_path)) == 1) {
                     $usrsrch .= '<img src="' . $user_image . '" alt="' . $user['user_image'] . '" height="50px" weight="50px">';
                     //$usrsrch .= '</div>';
-                } else {
+                } else if($message_from_profile == 5){
+                    
+                    $usrsrch .= '<img src="' . base_url(NOBUSIMAGE) . '" alt="' . $user['user_image'] . '" height="50px" weight="50px">';                    
+                }
+                else {
                     $a = $user['first_name'];
                     $b = $user['last_name'];
                     $acr = substr($a, 0, 1);

@@ -79,7 +79,7 @@ class Userprofile extends MY_Controller {
 
     public function contact_request() {
         $userid = $this->session->userdata('aileenuser');
-        
+
         $contactRequestUpdate = $this->user_model->contact_request_read($userid);
         $contactRequest = $this->user_model->contact_request($userid);
         echo json_encode($contactRequest);
@@ -93,20 +93,24 @@ class Userprofile extends MY_Controller {
         $contactRequest = $this->user_model->contactRequestAction($userid, $from_id, $action);
         echo json_encode($contactRequest);
     }
-    public function contactRequestCount(){
+
+    public function contactRequestCount() {
         $userid = $this->session->userdata('aileenuser');
-        
+
         $contactRequestCount = $this->user_model->contactRequestCount($userid);
         echo json_encode($contactRequestCount);
     }
-    
+
     public function data() {
 
         $this->load->view('loadmore/index', $this->data);
     }
-     public function getdata() { echo "hi"; die();
-        
+
+    public function getdata() {
+        echo "hi";
+        die();
     }
+
     public function getUserDashboardPost() {
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
@@ -117,4 +121,5 @@ class Userprofile extends MY_Controller {
         $post_data = $this->userprofile_model->userDashboardPost($userid, $page);
         echo json_encode($post_data);
     }
-    }
+
+}
