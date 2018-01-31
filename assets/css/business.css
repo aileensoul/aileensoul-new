@@ -4164,7 +4164,9 @@ body.reg-form{
                 position: absolute!important;
                 z-index: 999 !important;
 }
-
+.bui-menu-profile h2, h2 a{
+    line-height: 32px !important;
+}
 
 @media screen and (max-width:1279px){
     .mian_middle_post_box{
