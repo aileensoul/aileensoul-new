@@ -258,7 +258,7 @@
                                     </div>
                                 </div>
                                 <div class="like-other-box">
-                                    <a href="#" ng-bind="post.post_like_data" id="post-other-like-{{post.post_data.id}}"></a>
+                                    <a href="javascript:void(0)" ng-click="like_user_list(post.post_data.id);" ng-bind="post.post_like_data" id="post-other-like-{{post.post_data.id}}"></a>
                                 </div>
                             </div>
                             <div class="all-post-bottom">

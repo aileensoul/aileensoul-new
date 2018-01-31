@@ -1677,7 +1677,7 @@ app.controller('questionsController', function ($scope, $http, $location, $compi
             $scope.isMsgBoxEmpty = true;
         }
     }
-    
+
     $scope.EditPost = function (post_id, post_for, index) {
         $scope.is_edit = 1;
 
@@ -1714,8 +1714,6 @@ app.controller('questionsController', function ($scope, $http, $location, $compi
                         $("#ask-question").modal('show');
                     }
                 });
-
-
     }
 
     $scope.deletePost = function (post_id, index) {
@@ -1738,7 +1736,7 @@ app.controller('questionsController', function ($scope, $http, $location, $compi
                     }
                 });
     }
-    
+
 });
 function remove_contacts(index) {
     $.ajax({
