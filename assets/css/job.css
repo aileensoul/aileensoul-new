@@ -17,6 +17,9 @@
 .hs-submit input[type=submit]:focus{
     background:#156f95
 }
+.common-form select:focus + label,.common-form textarea:focus + label{
+    color: #1b8ab9 !important;
+}
 .common-form select:focus,.common-form textarea:focus{
     border:1px solid #1b8ab9!important;
     color:#1b8ab9!important
