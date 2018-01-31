@@ -2640,9 +2640,9 @@ class Recruiter extends MY_Controller {
                                     </a>';
                         }
                     }
-                    $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
-                                    <img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $p['job_user_image'] . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
-                                    </a>';
+                    // $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
+                    //                 <img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $p['job_user_image'] . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
+                    //                 </a>';
                 } else {
 
                     $a = $p['fname'];
