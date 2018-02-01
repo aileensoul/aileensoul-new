@@ -67,4 +67,16 @@ class Business extends MY_Controller {
         $otherCategoryCount = $this->business_model->otherCategoryCount();
         echo $otherCategoryCount;
     }
+    
+    public function industry_slug() {
+
+        $contition_array = array('industry_id !=' => '0');
+        $inddata = $this->common->select_data_by_condition('industry_type', $contition_array, $data = 'industry_id,industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+        foreach ($inddata as $k => $v) {
+            $data = array('industry_slug' => $this->common->clean($v['industry_name']));
+            $insert_id = $this->common->update_data($data, 'industry_type', 'industry_id', $v['industry_id']);
+        }
+        echo "yes";
+    }
 }
