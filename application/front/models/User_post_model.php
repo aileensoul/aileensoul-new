@@ -834,5 +834,24 @@ class User_post_model extends CI_Model {
 
         return $searchData;
     }
+    
+    
+    public function getContactAllSuggetion($user_id = '') {
+        $this->db->select("u.user_id,CONCAT(u.first_name,' ',u.last_name) as fullname,ui.user_image,jt.name as title_name,d.degree_name")->from("user u");
+        $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+        $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
+        $this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
+        $this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
+        $this->db->join('user_student us', 'us.user_id = u.user_id', 'left');
+        $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
+        $this->db->where('u.user_id !=', $user_id);
+        $this->db->where('u.user_id NOT IN (select from_id from ailee_user_contact where to_id=' . $user_id . ')', NULL, FALSE);
+        $this->db->where('u.user_id NOT IN (select to_id from ailee_user_contact where from_id=' . $user_id . ')', NULL, FALSE);
+        $this->db->order_by('u.user_id', 'DESC');
+        $this->db->limit('40');
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
 
 }

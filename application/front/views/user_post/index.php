@@ -129,7 +129,7 @@
                                     </div>
                                     <div class="post-img" ng-if="post.post_data.post_for != 'question'">
                                         <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{post.user_data.user_image}}" ng-if="post.user_data.user_image != ''">
-                                        <span class="no-img-post" ng-bind="(post.user_data.first_name| limitTo:1 | uppercase) + (post.user_data.last_name| limitTo:1 | uppercase)"  ng-if="post.user_data.user_image == ''"></span>
+                                        <span class="no-img-post" ng-bind="(post.user_data.first_name| limitTo:1 | uppercase) + (post.user_data.last_name | limitTo:1 | uppercase)"  ng-if="post.user_data.user_image == ''"></span>
                                     </div>
                                     <div class="post-detail">
                                         <div class="fw" ng-if="post.post_data.post_for == 'question'">
@@ -173,7 +173,7 @@
                                     <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{post.profile_update.data_value}}">
                                 </div>
                                 <div class="post-discription" ng-if="post.post_data.post_for == 'cover_update'">
-                                     <img ng-src="<?php echo USER_BG_MAIN_UPLOAD_URL ?>{{post.cover_update.data_value}}" ng-if="post.cover_update.data_value != ''">
+                                    <img ng-src="<?php echo USER_BG_MAIN_UPLOAD_URL ?>{{post.cover_update.data_value}}" ng-if="post.cover_update.data_value != ''">
                                 </div>
                                 <div class="post-discription" ng-if="post.post_data.post_for == 'question'">
                                     <h5 class="post-title">
@@ -522,7 +522,7 @@
                                     <textarea class="title-text-area" ng-keyup="questionList()" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Question"></textarea>
                                     <ul class="questionSuggetion custom-scroll">
                                         <li ng-repeat="que in queSearchResult">
-                                            <a ng-href="<?php echo base_url('questions/') ?>{{que.id}}/{{que.question | slugify}}" ng-bind="que.question"></a>
+                                            <a ng-href="<?php echo base_url('questions/') ?>{{que.id}}/{{que.question| slugify}}" ng-bind="que.question"></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -629,19 +629,44 @@
                 </div>
             </div>
         </div>
-        
-        
-        <div class="modal fade message-box" id="likeusermodal" role="dialog">
-            <div class="modal-dialog modal-lm">
+        <div style="display:none;" class="modal fade" id="likeusermodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog">
                 <div class="modal-content">
-                    <button type="button" class="modal-close1" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
-                        <span class="mes">
-                        </span>
+                    <button type="button" class="modal-close" data-dismiss="modal">×</button>
+                    <h3>2 Likes</h3>
+
+                    <div class="modal-body padding_less_right">
+                        <div class="">
+                            <ul>
+
+                                <li>
+                                    <div class="like_user_listq">
+                                        <a href="" title="" class="head_main_name" >
+                                            <div class="like_user_list_img">
+                                                <img  src="http://localhost/aileensoul-new/uploads/user_profile/thumbs/1517320688.png"  alt="NOBUSIMAGE">
+                                            </div>
+                                            <div class="like_user_list_main_desc">
+                                                <div class="like_user_list_main_name">
+                                                    khyati raval
+                                                </div></a>
+                                        <div class="like_user_list_current_work">
+                                            <span class="head_main_work">Php developer</span>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
+
                 </div>
             </div>
+
         </div>
+
         <script src="<?php echo base_url('assets/js/jquery.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/owl.carousel.min.js?ver=' . time()) ?>"></script>

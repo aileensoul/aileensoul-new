@@ -1196,17 +1196,17 @@ app.controller('userOppoController', function ($scope, $http) {
 
     $scope.like_user_list = function(post_id){
         alert(post_id);
-       $.ajax({
-        type: 'POST',
-        url: base_url + "business_profile/likeuserlist",
-        data: 'post_id=' + post_id,
-        dataType: "html",
-        success: function (data) {
-            var html_data = data;
-            $('#likeusermodal .mes').html(html_data);
+//       $.ajax({
+//        type: 'POST',
+//        url: base_url + "business_profile/likeuserlist",
+//        data: 'post_id=' + post_id,
+//        dataType: "html",
+//        success: function (data) {
+//            var html_data = data;
+//            $('#likeusermodal .mes').html(html_data);
             $('#likeusermodal').modal('show');
-        }
-    });
+//        }
+//    });
     }
     
     $scope.like_user_model_list = function (comment_id, post_id, parent_index, index, post) {
