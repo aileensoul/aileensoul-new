@@ -22,7 +22,7 @@
     <!-- Start HEADER -->
 
     <!-- END HEADER -->
-    <body class="page-container-bg-solid page-boxed">
+    <body class="page-container-bg-solid page-boxed" style="overflow-x: hidden;">
         <?php
         echo $header;
         echo $job_header2_border;

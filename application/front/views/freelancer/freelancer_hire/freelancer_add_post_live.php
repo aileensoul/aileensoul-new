@@ -433,7 +433,7 @@
                                 <div class="">
                                     <div id="forgotbuton"></div> 
                                     <div class="title">
-                                        <h1 class="ttc tlh2">Forgot Password</h1>
+                                        <p class="ttc tlh2">Forgot Password</p>
                                     </div>
                                     <?php
                                     $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
