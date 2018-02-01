@@ -1196,12 +1196,17 @@ app.controller('userOppoController', function ($scope, $http) {
 
     $scope.like_user_list = function(post_id){
         alert(post_id);
-        $scope.c_d_comment_id = comment_id;
-        $scope.c_d_post_id = post_id;
-        $scope.c_d_parent_index = parent_index;
-        $scope.c_d_index = index;
-        $scope.c_d_post = post;
-        $('#delete_model').modal('show');
+       $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/likeuserlist",
+        data: 'post_id=' + post_id,
+        dataType: "html",
+        success: function (data) {
+            var html_data = data;
+            $('#likeusermodal .mes').html(html_data);
+            $('#likeusermodal').modal('show');
+        }
+    });
     }
     
     $scope.like_user_model_list = function (comment_id, post_id, parent_index, index, post) {

@@ -1113,5 +1113,12 @@ class User_post extends MY_Controller {
         $searchData = $this->user_post_model->searchData($userid,$searchKeyword);
         echo json_encode($searchData);
     }
+    
+    public function likeuserlist() {
+        $userid = $this->session->userdata('aileenuser');
+        $searchKeyword = $_POST['searchKeyword'];
+        $searchData = $this->user_post_model->searchData($userid,$searchKeyword);
+        echo json_encode($searchData);
+    }
 
 }
