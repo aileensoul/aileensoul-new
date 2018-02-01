@@ -1294,6 +1294,22 @@ app.controller('dashboardController', function ($scope, $http, $location) {
             $('.all_user_post').html(no_user_post_html);
         }
     }
+    
+    $scope.like_user_list = function (post_id) {
+        $http({
+            method: 'POST',
+            url: base_url + "user_post/likeuserlist",
+            data: 'post_id=' + post_id,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    $scope.count_likeUser = success.data.countlike;
+                    $scope.get_like_user_list = success.data.likeuserlist;
+                    $('#likeusermodal').modal('show');
+
+                });
+
+    }
 
 });
 app.controller('detailsController', function ($scope, $http, $location) {

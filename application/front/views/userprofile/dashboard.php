@@ -324,7 +324,7 @@
                         </div>
                     </div>
                     <div class="like-other-box">
-                        <a href="#" ng-bind="post.post_like_data" id="post-other-like-{{post.post_data.id}}"></a>
+                        <a href="#" ng-click="like_user_list(post.post_data.id);" ng-bind="post.post_like_data" id="post-other-like-{{post.post_data.id}}"></a>
                     </div>
                 </div>
                 <div class="all-post-bottom">
@@ -684,3 +684,36 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade message-box" id="likeusermodal" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                     <button type="button" class="modal-close" data-dismiss="modal">×</button>
+                    <h3>{{count_likeUser}} Likes</h3>
+                    <div class="modal-body padding_less_right">
+                        <div class="">
+                            <ul>
+                                
+                                
+                                <li class="like-img" ng-repeat="userlist in get_like_user_list">
+                                    <a class="ripple" href="<?php echo base_url('profiless/'); ?>{{userlist.user_slug}}" ng-if="userlist.user_image != null">
+                                        <img ng-src="<?php echo USER_THUMB_UPLOAD_URL ?>{{userlist.user_image}}">
+                                    </a>
+                                      <a class="ripple" href="<?php echo base_url('profiless/'); ?>{{userlist.user_slug}}" ng-if="userlist.user_image == null">
+                                        <div class="post-img-mainuser">{{userlist.first_name| limitTo:1 | uppercase}}{{userlist.last_name| limitTo:1 | uppercase}}</div>
+                                    </a>
+                                    <div class="like-detail">
+                                        <h4><a href="<?php echo base_url('profiless/'); ?>{{userlist.user_slug}}">{{userlist.fullname}}</a></h4>
+                                        <p ng-if="userlist.title_name == ''">{{userlist.degree_name}}</p>
+                                        <p ng-if="userlist.title_name != null">{{userlist.title_name}}</p>
+                                        <p ng-if="(userlist.title_name == null) && (userlist.degree_name == null)">Current work</p>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
