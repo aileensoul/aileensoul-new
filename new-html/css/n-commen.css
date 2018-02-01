@@ -926,7 +926,7 @@ footer ul li a:hover{
 
 /***  end center title  ***/
 /***  sub header  ***/
-.sub-header{width:100%; float:left; border-bottom:1px solid #d2d2d2; padding-top:55px;}
+.sub-header{width:100%; float:left; border-bottom:1px solid #d2d2d2; padding-top:55px; position:fixed;}
 .sub-header .sub-menu{padding:10px 0; margin:0; width:100%; float:left;}
 .sub-header .sub-menu li{list-style-type:none; float:left; padding:0px 25px;}
 .sub-header .sub-menu li:first-child{padding-left:0;}
@@ -954,6 +954,10 @@ footer ul li a:hover{
 }
 .sub-header .dropdown.open .dropdown-menu.account{width:180px; padding-top:0;}
 .sub-header .dropdown.open .dropdown-menu.account li:first-child{padding:10px; border-bottom:1px solid #d2d2d2; font-size:16px;}
+.sub-header .job-search-box1{float:right;}
+.sub-header .job-search-box1 fieldset.sec_h2 {width: 200px; float:left; margin:4px 10px 0 0; }
+.sub-header .job-search-box1 fieldset.sec_h2 input{border:1px solid #c0c0c0;}
+.sub-header .new-search-btn{float:left; width:34px; height:34px; margin-top:4px; border:1px solid #c0c0c0; border-radius:4px; padding:4px 8px;}
 /***  end sub header  ***/
 
 

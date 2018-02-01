@@ -768,13 +768,14 @@ option:not(first-child) {
     text-align:center;
 }
 .title p{
-    font-size:38px;
+    font-family:Lato,sans-serif;
+    font-weight:600;
     color:#1b8ab9;
+    background:-webkit-linear-gradient(96deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
     -webkit-text-fill-color:transparent;
-    /*text-transform:capitalize;*/
-    position:relative;
-    display:inline-block;
-    text-align:center;
+    margin-bottom:0;
+    -webkit-background-clip:text;
+    margin-bottom: 20px;
 }
 textarea:focus::-webkit-input-placeholder{
     color:#1b8ab9;
