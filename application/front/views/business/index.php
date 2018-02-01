@@ -45,14 +45,14 @@
                         <div class="cat-box">
                             <ul>
                                 <li ng-repeat="category in businessCategory">
-                                    <a href="{{category.industry_id}}">
+                                    <a href="<?php echo base_url('business-profile/category/') ?>{{category.industry_slug}}">
                                         <img src="<?php echo base_url('assets/n-images/car.png') ?>">
                                         <p>{{category.industry_name}}<span>({{category.count}})</span><p>
 
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{category.industry_id}}">
+                                    <a href="<?php echo base_url('business-profile/category/other') ?>">
                                         <img src="<?php echo base_url('assets/n-images/car.png') ?>">
                                         <p>Other<span>({{otherCategoryCount}})</span><p>
                                     </a>

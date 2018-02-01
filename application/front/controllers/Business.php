@@ -38,7 +38,7 @@ class Business extends MY_Controller {
         $this->data['title'] = "Opportunities | Aileensoul";
         $this->load->view('business/index', $this->data);
     }
-    
+
     public function category() {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
@@ -54,10 +54,29 @@ class Business extends MY_Controller {
         $this->load->view('business/category', $this->data);
     }
 
+    public function categoryBusinessList($category='') {
+        $userid = $this->session->userdata('aileenuser');
+        $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
+        $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
+        $this->data['is_userBasicInfo'] = $this->user_model->is_userBasicInfo($userid);
+        $this->data['is_userStudentInfo'] = $this->user_model->is_userStudentInfo($userid);
+        $this->data['is_userPostCount'] = $this->user_post_model->userPostCount($userid);
+        $this->data['header_profile'] = $this->load->view('header_profile', $this->data, TRUE);
+        $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
+        $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
+        $this->data['title'] = "Opportunities | Aileensoul";
+        $category_id = $this->db->select('industry_id')->get_where('industry_type',array('industry_slug'=>$category))->row_array('industry_id');
+        $this->data['category_id'] = $category_id['industry_id'];
+        $this->load->view('business/categoryBusinessList', $this->data);
+    }
+
     public function businessCategory() {
-        $businessCategory = $this->business_model->businessCategory();
+        $limit = $_GET['limit'];
+        $businessCategory = $this->business_model->businessCategory($limit);
         echo json_encode($businessCategory);
     }
+
     public function businessAllCategory() {
         $businessAllCategory = $this->business_model->businessAllCategory();
         echo json_encode($businessAllCategory);
@@ -66,6 +85,11 @@ class Business extends MY_Controller {
     public function otherCategoryCount() {
         $otherCategoryCount = $this->business_model->otherCategoryCount();
         echo $otherCategoryCount;
+    }
+    
+    public function businessListByCategory($id='') {
+        $businessListByCategory = $this->business_model->businessListByCategory($id);
+        echo json_encode($businessListByCategory);
     }
     
     public function industry_slug() {
@@ -79,4 +103,5 @@ class Business extends MY_Controller {
         }
         echo "yes";
     }
+
 }

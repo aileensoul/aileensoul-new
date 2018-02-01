@@ -5,8 +5,8 @@ if (!defined('BASEPATH'))
 
 class Business_model extends CI_Model {
 
-    function businessCategory() {
-        $this->db->select('count(bp.business_profile_id) as count,industry_id,industry_name')->from('industry_type it');
+    function businessCategory($limit='') {
+        $this->db->select('count(bp.business_profile_id) as count,industry_id,industry_name,industry_slug')->from('industry_type it');
         $this->db->join('business_profile bp', 'bp.industriyal = it.industry_id', 'left');
         $this->db->where('it.status', '1');
         $this->db->where('it.is_delete', '0');
@@ -15,14 +15,14 @@ class Business_model extends CI_Model {
         $this->db->where('bp.business_step', '4');
         $this->db->group_by('bp.industriyal');
         $this->db->order_by('count','desc');
-        $this->db->limit('9');
+        $this->db->limit($limit);
         $query = $this->db->get();
         $result_array = $query->result_array();
         return $result_array;
     }
     
     function businessAllCategory() {
-        $this->db->select('count(bp.business_profile_id) as count,industry_id,industry_name')->from('industry_type it');
+        $this->db->select('count(bp.business_profile_id) as count,industry_id,industry_name,industry_slug')->from('industry_type it');
         $this->db->join('business_profile bp', 'bp.industriyal = it.industry_id', 'left');
         $this->db->where('it.status', '1');
         $this->db->where('it.is_delete', '0');
@@ -46,6 +46,17 @@ class Business_model extends CI_Model {
         $query = $this->db->get();
         $result_array = $query->row_array();
         return $result_array['count'];
+    }
+    
+    function businessListByCategory($id=''){
+        $this->db->select('*')->from('business_profile bp');
+        $this->db->where('bp.industriyal', $id);
+        $this->db->where('bp.status', '1');
+        $this->db->where('bp.is_deleted', '0');
+        $this->db->where('bp.business_step', '4');
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
     }
 
     function isBusinessAvailable($id = '') {
