@@ -520,7 +520,7 @@
                                 <div class="post-text">
                                     <!--<textarea class="title-text-area" ng-keyup="questionList()" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Question" typeahead="item as item.question for item in queSearchResult | filter:$viewValue" autocomplete="off"></textarea>-->
                                     <textarea class="title-text-area" ng-keyup="questionList()" ng-model="ask.ask_que" id="ask_que" placeholder="Ask Question"></textarea>
-                                    <ul class="questionSuggetion">
+                                    <ul class="questionSuggetion custom-scroll">
                                         <li ng-repeat="que in queSearchResult">
                                             <a ng-href="<?php echo base_url('questions/') ?>{{que.id}}/{{que.question | slugify}}" ng-bind="que.question"></a>
                                         </li>
