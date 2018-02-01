@@ -1996,16 +1996,17 @@ footer ul li a:hover{
 .cameraButton #upload{
     display:none
 }
-@media screen and (min-width:1280px) and (max-width:1295px){
-	.header2{
-        width:1140px;
-    }
-}
-@media screen and (min-width:1296px){
+@media screen and (min-width:1300px){
     .container{
         width:1280px
     }
 }
+@media screen and (min-width:1280px) and (max-width:1299px){
+	.header2{
+        width:1140px;
+    }
+}
+
 @media screen and (min-width:1200px) and (max-width:1350px){
     #InboxContainer{
         right:-5px
