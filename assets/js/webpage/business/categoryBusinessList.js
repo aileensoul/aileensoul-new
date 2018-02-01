@@ -1,8 +1,7 @@
-app.controller('businessController', function ($scope, $http) {
+app.controller('businessListController', function ($scope, $http) {
     $scope.businessCategory = {};
-    
     function businessCategory(){
-        $http.get(base_url + "business/businessCategory?limit=9").then(function (success) {
+        $http.get(base_url + "business/businessCategory?limit=24").then(function (success) {
             $scope.businessCategory = success.data;
         }, function (error) {});
     }
@@ -13,6 +12,13 @@ app.controller('businessController', function ($scope, $http) {
         }, function (error) {});
     }
     otherCategoryCount();
+    function categoryBusinessList(){
+        $http.get(base_url + "business/businessListByCategory/" + category_id).then(function (success) {
+            $scope.categoryBusinessList = success.data;
+        }, function (error) {});
+    }
+    categoryBusinessList();
+    
 });
 
 $(window).on("load", function () {
