@@ -432,6 +432,14 @@ li.fr a {
     border-bottom: none;
 	height:94px;
 }
+.cus-left-project .profile-boxProfileCard {
+        border:none !important;
+}
+.cus-left-project .profile-boxProfileCard-cover{
+    border:none !important;
+}
+
+
 .profile-boxProfileCard .bg-images img{height: 94px !important;}
 .profile-boxProfileCard-bg {
     background-size: 100%;

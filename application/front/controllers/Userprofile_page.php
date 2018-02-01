@@ -41,6 +41,10 @@ class Userprofile_page extends MY_Controller {
         $this->load->view('userprofile/following', $this->data);
     }
 
+    public function questions() {
+        $this->load->view('userprofile/questions', $this->data);
+    }
+
     public function contact_request() {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
@@ -357,7 +361,7 @@ class Userprofile_page extends MY_Controller {
         );
 
         $update = $this->common->update_data($data, 'user_info', 'user_id', $userdata['user_id']);
-        
+
         $insert_data = array();
         $insert_data['user_id'] = $userid;
         $insert_data['data_key'] = "profile_picture";
@@ -489,6 +493,35 @@ class Userprofile_page extends MY_Controller {
         $coverpic = '  <div class="bg-images"><img id="image_src" name="image_src" src = "' . USER_BG_MAIN_UPLOAD_URL . $user_reg_back_image . '" /></div>';
 
         echo $coverpic;
+    }
+
+    public function question_detail($question_id = '') {
+        $userid = $this->session->userdata('aileenuser');
+        $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
+        $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
+        $this->data['is_userBasicInfo'] = $this->user_model->is_userBasicInfo($userid);
+        $this->data['is_userStudentInfo'] = $this->user_model->is_userStudentInfo($userid);
+        $this->data['header_profile'] = $this->load->view('header_profile', $this->data, TRUE);
+        $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
+        $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
+        $this->data['question_id'] = $question_id;
+        $this->data['title'] = "Question | Aileensoul";
+        $this->load->view('userprofile/question_details', $this->data);
+    }
+
+    public function question_data() {
+        $userid = $this->session->userdata('aileenuser');
+
+        $question_id = $_GET['question'];
+        $questionData = $this->userprofile_model->questionData($question_id, $userid);
+        echo json_encode($questionData);
+    }
+
+    public function questions_list() {
+        $userid = $this->session->userdata('aileenuser');
+        $questionList = $this->userprofile_model->questionList($userid);
+        echo json_encode($questionList);
     }
 
 }

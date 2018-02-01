@@ -28,7 +28,7 @@
 
  
 
-<body class="page-container-bg-solid page-boxed botton_footer">
+<body class="page-container-bg-solid page-boxed botton_footer cus-mod-edu">
   <!-- Start HEADER -->
 <?php 
       echo $header; 

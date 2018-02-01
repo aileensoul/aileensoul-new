@@ -197,9 +197,9 @@ class Data_model extends CI_Model {
     function searchQueList($search_keyword = '') {
         $this->db->select('q.id,q.question')->from('user_ask_question q');
         if ($search_keyword != '') {
-            $this->db->like('q.question', $search_keyword);
+            $this->db->where("q.question LIKE '%$search_keyword%'");
         }
-        $this->db->join('user_post up', 'up.post_id = q.post_id', 'left');
+        $this->db->join('user_post up', 'up.id = q.post_id', 'left');
         $this->db->where('up.status', 'publish');
         $this->db->where('up.is_delete', '0');
         $query = $this->db->get();

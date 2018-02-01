@@ -157,6 +157,9 @@ class Freelancer_hire extends MY_Controller {
 
             if ($insert_id1) {
                 if ($this->input->post('segment') == 'live-post') {
+                    $this->session->set_flashdata('error', 'Your project successfully posted');
+                  
+                  //  $this->load->view('freelancer/freelancer_hire/recommen_candidate', $this->data);
                     redirect('freelance-hire/home', refresh);
                 } else {
                     redirect('freelance-hire/add-projects?page=professional', refresh);

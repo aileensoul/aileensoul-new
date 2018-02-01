@@ -88,6 +88,7 @@ p{padding:0; margin:0;}
 
 a:hover{text-decoration:none;}
 .border-bottom-none{border-bottom:0px;}
+.fs22{font-size:22px;}
 /***  buttons  ***/
 button{border:none;}
 .modal-close{
@@ -924,6 +925,37 @@ footer ul li a:hover{
 .center-title:after{width:250px; height:1px; position:absolute; margin:0 auto; display:inline-block; content:""; left:0; right:0; bottom:-10px; background:#d2d2d2;}
 
 /***  end center title  ***/
+/***  sub header  ***/
+.sub-header{width:100%; float:left; border-bottom:1px solid #d2d2d2; padding-top:55px;}
+.sub-header .sub-menu{padding:10px 0; margin:0; width:100%; float:left;}
+.sub-header .sub-menu li{list-style-type:none; float:left; padding:0px 25px;}
+.sub-header .sub-menu li:first-child{padding-left:0;}
+.sub-header .sub-menu li a{font-size:16px; color:#5c5c5c;}
+.sub-header .sub-menu li > a i{padding-right:10px; font-size:16px;}
+.sub-header .sub-menu li a .fa{font-size:16px;}
+.sub-menu .user-id .user-id-custom::after{margin-top:0; position:relative; top:-3px;}
+.sub-menu .noti-box{left:32px; color:#fff;}
+.sub-header .dropdown .dropdown-menu{}
+.sub-header .dropdown.open .dropdown-menu{width:360px;}
+.sub-header .dropdown.open .dropdown-menu{left:0; top:32px; margin:0;}
+.sub-header .dropdown.open .dropdown-menu li{width:100%; border-right:0; padding:0;}
+.sub-header .dropdown.open .dropdown-menu li a{color:#777;}
+.sub-header .dropdown.open:before{
+	content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    color: transparent;
+    border: 10px solid black;
+    border-color: transparent transparent #d2d2d2;
+	top:21px;
+    right: 16px;
+}
+.sub-header .dropdown.open .dropdown-menu.account{width:180px; padding-top:0;}
+.sub-header .dropdown.open .dropdown-menu.account li:first-child{padding:10px; border-bottom:1px solid #d2d2d2; font-size:16px;}
+/***  end sub header  ***/
+
 
 
 /***  media query  ***/

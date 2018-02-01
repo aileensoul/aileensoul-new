@@ -229,16 +229,18 @@ class User_post extends MY_Controller {
     }
 
     public function viewLastComment() {
+        $userid = $this->session->userdata('aileenuser');
         $post_id = $_POST['post_id'];
         $return_data = array();
-        $return_data['comment_data'] = $this->user_post_model->postCommentData($post_id);
+        $return_data['comment_data'] = $this->user_post_model->postCommentData($post_id,$userid);
         echo json_encode($return_data);
     }
 
     public function viewAllComment() {
+        $userid = $this->session->userdata('aileenuser');
         $post_id = $_POST['post_id'];
         $return_data = array();
-        $return_data['all_comment_data'] = $this->user_post_model->viewAllComment($post_id);
+        $return_data['all_comment_data'] = $this->user_post_model->viewAllComment($post_id,$userid);
         echo json_encode($return_data);
     }
 

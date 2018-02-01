@@ -1157,6 +1157,15 @@ header.profile-header .logo a{color:#5c5c5c;}
 .article-tab li img{width: 280px;}
 
 /***  end photo, audio, video, article page html  ***/
+/***  ask-question design  ***/
+.questionSuggetion.question-available{padding:0px 15px; border:1px solid #d2d2d2; border-radius:4px; max-height:178px; overflow-y:scroll;}
+.questionSuggetion{border:0px;}
+.questionSuggetion li{padding:5px 5px; border-bottom:1px solid #d2d2d2; list-style-type:none;}
+.questionSuggetion li:last-child{border-bottom:0px;}
+.questionSuggetion li a{font-size:15px; color:#5c5c5c;}
+.questionSuggetion li a:hover{color:#1b8ab9;}
+/***  end ask-question design  ***/
+
 /***  media query  ***/
 @media screen and (min-width: 768px) {
 

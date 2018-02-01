@@ -170,10 +170,15 @@ class User_post_model extends CI_Model {
         $this->db->order_by('upc.id', 'desc');
         $this->db->limit('1');
         $query = $this->db->get();
-        return $post_comment_data = $query->result_array();
+        $post_comment_data = $query->result_array();
+        foreach ($post_comment_data as $key => $value) {
+            $post_comment_data[$key]['is_userlikePostComment'] = $this->is_userlikePostComment($user_id, $value['comment_id']);
+            $post_comment_data[$key]['postCommentLikeCount'] = $this->postCommentLikeCount($value['comment_id']) == '0' ? '' : $this->postCommentLikeCount($value['comment_id']);
+        }
+        return $post_comment_data;
     }
 
-    public function viewAllComment($post_id = '') {
+    public function viewAllComment($post_id = '', $user_id = '') {
         $this->db->select("u.user_slug,CONCAT(u.first_name,' ',u.last_name) as username, ui.user_image,upc.id as comment_id,upc.comment,UNIX_TIMESTAMP(STR_TO_DATE(upc.created_date, '%Y-%m-%d %H:%i:%s')) as created_date")->from("user_post_comment upc");
         $this->db->join('user u', 'u.user_id = upc.user_id', 'left');
         $this->db->join('user_login ul', 'ul.user_id = upc.user_id', 'left');
@@ -183,7 +188,12 @@ class User_post_model extends CI_Model {
         $this->db->where('upc.is_delete', '0');
         $this->db->order_by('upc.id', 'asc');
         $query = $this->db->get();
-        return $post_comment_data = $query->result_array();
+        $post_comment_data = $query->result_array();
+        foreach ($post_comment_data as $key => $value) {
+            $post_comment_data[$key]['is_userlikePostComment'] = $this->is_userlikePostComment($user_id, $value['comment_id']);
+            $post_comment_data[$key]['postCommentLikeCount'] = $this->postCommentLikeCount($value['comment_id']) == '0' ? '' : $this->postCommentLikeCount($value['comment_id']);
+        }
+        return $post_comment_data;
     }
 
     public function userlikePostCommentData($user_id = '', $comment_id = '') {
@@ -368,14 +378,14 @@ class User_post_model extends CI_Model {
                 $query = $this->db->get();
                 $question_data = $query->row_array();
                 $result_array[$key]['question_data'] = $question_data;
-            }elseif ($value['post_for'] == 'profile_update'){
+            } elseif ($value['post_for'] == 'profile_update') {
                 $this->db->select("upu.*")->from("user_profile_update upu");
                 $this->db->where('upu.id', $value['post_id']);
                 $query = $this->db->get();
                 $profile_update = $query->row_array();
                 $result_array[$key]['profile_update'] = $profile_update;
-            }elseif ($value['post_for'] == 'cover_update'){
-                 $this->db->select("upu.*")->from("user_profile_update upu");
+            } elseif ($value['post_for'] == 'cover_update') {
+                $this->db->select("upu.*")->from("user_profile_update upu");
                 $this->db->where('upu.id', $value['post_id']);
                 $query = $this->db->get();
                 $cover_update = $query->row_array();
@@ -478,14 +488,14 @@ class User_post_model extends CI_Model {
                 $query = $this->db->get();
                 $question_data = $query->row_array();
                 $result_array[$key]['question_data'] = $question_data;
-            }elseif ($value['post_for'] == 'profile_update'){
+            } elseif ($value['post_for'] == 'profile_update') {
                 $this->db->select("upu.*")->from("user_profile_update upu");
                 $this->db->where('upu.id', $value['post_id']);
                 $query = $this->db->get();
                 $profile_update = $query->row_array();
                 $result_array[$key]['profile_update'] = $profile_update;
-            }elseif ($value['post_for'] == 'cover_update'){
-                 $this->db->select("upu.*")->from("user_profile_update upu");
+            } elseif ($value['post_for'] == 'cover_update') {
+                $this->db->select("upu.*")->from("user_profile_update upu");
                 $this->db->where('upu.id', $value['post_id']);
                 $query = $this->db->get();
                 $cover_update = $query->row_array();
@@ -633,7 +643,7 @@ class User_post_model extends CI_Model {
         return $field;
     }
 
-    public function searchData($userid='', $searchKeyword = '') {
+    public function searchData($userid = '', $searchKeyword = '') {
         $checkKeywordCity = $this->data_model->findCityList($searchKeyword);
         if ($checkKeywordCity['city_id'] != '') {
             $keywordCity = $checkKeywordCity['city_id'];
@@ -665,7 +675,7 @@ class User_post_model extends CI_Model {
         $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
         $this->db->join('industry_type it', 'it.industry_id = up.field', 'left');
         $this->db->join('university un', 'un.university_name = us.university_name', 'left');
-        
+
 //        if ($keywordCity) {
 //            $this->db->where('up.city', $keywordCity);
 //            $this->db->or_where('us.city', $keywordCity);
@@ -686,7 +696,7 @@ class User_post_model extends CI_Model {
         $this->db->where("u.first_name Like '%$searchKeyword%' OR u.last_name Like '%$searchKeyword%' OR up.city = '$keywordCity' OR us.city = '$keywordCity' OR up.designation = '$keywordJobTitle'"
                 . " OR up.field = '$keywordFieldList' OR us.university_name = '$keywordUniversityList' OR us.current_study = '$keywordDegreeList'");
         $query = $this->db->get();
-        
+
         $searchProfileData = $query->result_array();
         foreach ($searchProfileData as $key => $value) {
             $is_userBasicInfo = $this->user_model->is_userBasicInfo($value['user_id']);
@@ -699,24 +709,23 @@ class User_post_model extends CI_Model {
                 $state_id = $this->data_model->getStateIdByCityId($value['student_city']);
                 $searchProfileData[$key]['country'] = $this->data_model->getCountryByStateId($state_id);
             }
-            $contact_detail = $this->db->select('from_id,to_id,status,not_read')->from('user_contact')->where('(from_id ='. $value['user_id'] .' AND to_id ='.$userid.') OR (to_id ='. $value['user_id'] .' AND from_id ='.$userid.')')->get()->row_array();
+            $contact_detail = $this->db->select('from_id,to_id,status,not_read')->from('user_contact')->where('(from_id =' . $value['user_id'] . ' AND to_id =' . $userid . ') OR (to_id =' . $value['user_id'] . ' AND from_id =' . $userid . ')')->get()->row_array();
             $searchProfileData[$key]['contact_from_id'] = $contact_detail['from_id'];
             $searchProfileData[$key]['contact_to_id'] = $contact_detail['to_id'];
             $searchProfileData[$key]['contact_status'] = $contact_detail['status'];
             $searchProfileData[$key]['contact_not_read'] = $contact_detail['not_read'];
-            
-            $follow_detail = $this->db->select('follow_from,follow_to,status')->from('user_follow')->where('(follow_from ='. $value['user_id'] .' AND follow_to ='.$userid.') OR (follow_to ='. $value['user_id'] .' AND follow_from ='.$userid.')')->get()->row_array();
+
+            $follow_detail = $this->db->select('follow_from,follow_to,status')->from('user_follow')->where('(follow_from =' . $value['user_id'] . ' AND follow_to =' . $userid . ') OR (follow_to =' . $value['user_id'] . ' AND follow_from =' . $userid . ')')->get()->row_array();
             $searchProfileData[$key]['follow_from'] = $follow_detail['follow_from'];
             $searchProfileData[$key]['follow_to'] = $follow_detail['follow_to'];
             $searchProfileData[$key]['follow_status'] = $follow_detail['status'];
-            
         }
 
         $searchData['profile'] = $searchProfileData;
 
         $searchPostData = array();
         $getDeleteUserPost = $this->deletePostUser($userid);
-        
+
         $this->db->select("up.id,up.user_id,up.post_for,UNIX_TIMESTAMP(STR_TO_DATE(up.created_date, '%Y-%m-%d %H:%i:%s')) as created_date,up.post_id")->from("user_post up");
         $this->db->join('user_opportunity uo', 'uo.post_id = up.id', 'left');
         $this->db->join('user_simple_post usp', 'usp.post_id = up.id', 'left');
@@ -727,7 +736,7 @@ class User_post_model extends CI_Model {
         if ($getDeleteUserPost) {
             $this->db->where('up.id NOT IN (' . $getDeleteUserPost . ')');
         }
-        $this->db->order_by('up.id','desc');
+        $this->db->order_by('up.id', 'desc');
         $query = $this->db->get();
         $user_post = $query->result_array();
 

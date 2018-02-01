@@ -1996,21 +1996,26 @@ footer ul li a:hover{
 .cameraButton #upload{
     display:none
 }
-
-@media screen and (min-width:1296px){
+@media screen and (min-width:1300px){
     .container{
         width:1280px
     }
 }
+@media screen and (min-width:1280px) and (max-width:1299px){
+	.header2{
+        width:1140px;
+    }
+}
+
 @media screen and (min-width:1200px) and (max-width:1350px){
     #InboxContainer{
         right:-5px
     }
 }
 @media screen and (max-width:1296px){
-    .header2{
+   /* .header2{
         width:1140px;
-    }
+    }*/
 	.fixed_right_display{display:none;}
 }	
 @media screen and (max-width:1279px){
@@ -2543,7 +2548,7 @@ footer ul li a:hover{
         padding:12px 8px 4px
     }
     #notificationContainer::before{
-        right:78px
+        right:73px
     }
     .logo h2{
         padding:0

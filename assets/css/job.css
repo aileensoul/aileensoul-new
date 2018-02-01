@@ -17,9 +17,13 @@
 .hs-submit input[type=submit]:focus{
     background:#156f95
 }
+
 .common-form select:focus,.common-form textarea:focus{
     border:1px solid #1b8ab9!important;
     color:#1b8ab9!important
+}
+.common-form select:focus+label,.common-form textarea:focus+label{
+    color: #1b8ab9 !important;
 }
 .mob-block{
     display:none
@@ -2283,7 +2287,11 @@ fieldset.main_select_data span:after{
     pointer-events:none
 }
 .message-degree {padding: 20px 30px;}
-
+.cus-mod-edu #bidmodal-other-stream .message{padding: 0px !important;}
+#hideuserlist .full-box-module{
+    width: calc(100% - 8px);
+    margin-left: 8px;
+}
 
 @media screen and (min-width:768px){
     .mob-progressbar.temp{
@@ -3345,6 +3353,9 @@ fieldset.main_select_data span:after{
     .work_exp .profile-job-profile-menu ul li span{
         width:50%;
         font-size:10px
+    }
+    #jobseeker_regform #datepicker + .error{
+        top:68px;
     }
 }
 @media screen and (max-width:319px){

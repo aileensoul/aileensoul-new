@@ -174,7 +174,13 @@ if ($lstusrdata) {
                                                     <img src="<?php echo $last_user_image; ?>" alt="<?php echo $last_user_image; ?>" height="50px" weight="50px">
                                                 </div>
         <?php
-    } else {
+    } else if($message_from_profile == 5){ ?>
+
+         <div class="chat_heae_img">
+                <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="<?php echo $last_user_image; ?>" height="50px" weight="50px">
+        </div>
+
+  <?php  }else {
         $a = $last_user_data['first_name'];
         $b = $last_user_data['last_name'];
         $acr = substr($a, 0, 1);

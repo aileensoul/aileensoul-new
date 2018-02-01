@@ -3067,7 +3067,7 @@ class Job extends MY_Controller {
         if ($userid) {
             $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
         } else {
-            $search_condition = "((is_other = '1') OR (is_other = '0'))";
+            $search_condition = "(is_other = '0')";
         }
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 

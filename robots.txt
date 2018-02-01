@@ -17,4 +17,4 @@ Disallow: /minifier/
 Disallow: /n-css/
 
 
-https://www.aileensoul.com/sitemap.xml
+Sitemap: https://www.aileensoul.com/sitemap.xml

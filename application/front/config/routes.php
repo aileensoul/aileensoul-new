@@ -66,10 +66,13 @@ $route['details/(:any)'] = 'Userprofile';
 $route['followers/(:any)'] = 'Userprofile';
 $route['following/(:any)'] = 'Userprofile';
 $route['contacts/(:any)'] = 'Userprofile';
+$route['questions/(:any)'] = 'Userprofile';
 $route['searchh'] = 'user_post/search';
 
 $route['opportunities'] = 'user_post';
 $route['contact-request'] = 'userprofile_page/contact_request';
+
+$route['questions/(:any)/(:any)'] = 'userprofile_page/question_detail/$1/$2';
 
 //$route['default_controller'] = 'under_construction';
 

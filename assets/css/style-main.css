@@ -767,6 +767,15 @@ option:not(first-child) {
     display:inline-block;
     text-align:center;
 }
+.title p{
+    font-size:38px;
+    color:#1b8ab9;
+    -webkit-text-fill-color:transparent;
+    /*text-transform:capitalize;*/
+    position:relative;
+    display:inline-block;
+    text-align:center;
+}
 textarea:focus::-webkit-input-placeholder{
     color:#1b8ab9;
 }
@@ -2871,7 +2880,7 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
         padding:0
     }
     .about-us .middle-main .all-tem .text-custom h4{
-        font-size:18px
+        font-size:20px
     }
     .about-us .middle-main .all-tem .text-custom p{
         font-size:12px
@@ -3232,10 +3241,10 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
         padding:0 0 80px
     }
     .about-us .middle-main .all-tem .text-custom h4{
-        font-size:19px
+        font-size:20px
     }
     .about-us .middle-main .all-tem .text-custom p{
-        font-size:13px
+        font-size:12px
     }
     .about-content{
         width:100%!important;
@@ -3346,6 +3355,8 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
     .cus-chang{font-size: 20px!important;line-height: 26px;}
     .modal-dialog {height: auto !important;}
     .blog .main-inner{padding-bottom: 0PX !important;}
+    .modal.in .modal-dialog{padding: 55px 15px;}
+    .profile-bnr img{width: 100% !important;}
 }
 @media screen and (max-width:640px){
     .btns .btn-4{
@@ -3451,7 +3462,7 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
         padding-bottom:0;
         font-size:40px;
     }
-    .modal.in .modal-dialog{padding: 60px 15px;}
+    .modal.in .modal-dialog{padding: 55px 15px;}
 }
 @media screen and (max-width:479px){
     .mob-none,.profile-box-1.art::after,.profile-box-1.art::before,.profile-box-1.bus::before,.profile-box-1.job::after,.profile-box-1.job::before{
@@ -3532,7 +3543,7 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
         font-size:20px;
     }
     .about-us .middle-main .all-tem .text-custom p{
-        font-size:15px;
+        font-size:12px;
     }
     .con-address td{
         width:100%;

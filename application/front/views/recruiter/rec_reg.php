@@ -30,7 +30,11 @@
 
 <!-- start header -->
 <!-- END HEADER -->
+<?php if(!$userid){ ?>
+<body class="botton_footer cus-error no-login">
+<?php } else{?>
 <body class="botton_footer cus-error">
+<?php } ?>
     <?php echo $header; ?>
 
     <?php  $userid = $this->session->userdata('aileenuser');

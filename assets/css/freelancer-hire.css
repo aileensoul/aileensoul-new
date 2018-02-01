@@ -245,7 +245,7 @@ li.fr a {
     font-size: 15px;
     padding: 3px 13px !important;
     margin-right: 2px;
-    margin-left: 2px;
+    margin-left: 7px;
     background-color: #ffffff;
     text-transform: capitalize;
     color: #1b8ab9;
@@ -1231,7 +1231,7 @@ fieldset .add_post_btns:hover {
     border-right: none;
 }
 .add-post-button a:hover {
-    color: #156f95;
+    color: #fff;
 }
 label.cameraButton input[accept*="camera"] {
     display: none;
