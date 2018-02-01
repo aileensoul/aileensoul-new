@@ -42,12 +42,19 @@ class User_model extends CI_Model {
     }
 
     public function getLeftboxData($user_id = '') {
-        $this->db->select('u.first_name,u.last_name,u.user_slug,ui.user_image,ui.profile_background')->from("user u");
+        $this->db->select('u.first_name,u.last_name,u.user_slug,ui.user_image,ui.profile_background,jt.name as title_name,d.degree_names')->from("user u");
         $this->db->join('user_info ui', 'ui.user_id = u.user_id', 'left');
+        $this->db->join('user_profession up', 'up.user_id = u.user_id', 'left');
+        $this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
+        $this->db->join('user_student us', 'us.user_id = u.user_id', 'left');
+        $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
         $this->db->join('user_login ul', 'ul.user_id = u.user_id', 'left');
         $this->db->where("u.user_id", $user_id);
         $query = $this->db->get();
         $result_array = $query->row_array();
+        
+        echo 'pre'; print_r($result_array); die(); 
+       
         return $result_array;
     }
 

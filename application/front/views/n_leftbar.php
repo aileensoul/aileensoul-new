@@ -18,7 +18,13 @@
             <div class="user-detail-right">
                 <div class="user-detail-top">
                     <h4><a href="<?php echo base_url('profiless/'.$leftbox_data['user_slug']) ?>" title="<?php echo ucfirst($leftbox_data['first_name']) . ' ' . ucfirst($leftbox_data['last_name']) ?>"><?php echo ucfirst($leftbox_data['first_name']) . ' ' . ucfirst($leftbox_data['last_name']) ?></a></h4>
-                    <p><a href="<?php echo base_url('profiless/'.$leftbox_data['user_slug']) ?>">Self Employee</a></p>
+                    <p><a href="<?php echo base_url('profiless/'.$leftbox_data['user_slug']) ?>">
+                            <?php if($leftbox_data['title_name'] == ""){ echo $leftbox_data['degree_name'];
+                            }else if($leftbox_data['title_name'] != ""){ echo $leftbox_data['title_name'];
+                             } else{?>
+                            Self Employee
+                             <?php } ?>
+                        </a></p>
                 </div>
                 <div class="user-detail-bottom">
                     <ul>
