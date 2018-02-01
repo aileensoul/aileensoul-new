@@ -520,6 +520,12 @@ app.controller('userOppoController', function ($scope, $http) {
                 .then(function (success) {
                     data = success.data;
                     $scope.queSearchResult = data;
+                    if($scope.queSearchResult.length > 0){
+                        $('.questionSuggetion').addClass('question-available');
+                    }
+                    else{
+                        $('.questionSuggetion').removeClass('question-available');
+                    }
                 });
     }
 
