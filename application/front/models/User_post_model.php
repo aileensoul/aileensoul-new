@@ -836,6 +836,20 @@ class User_post_model extends CI_Model {
     }
     
     
-    
+    public function getLikeUserList($post_id = '') {
+        $this->db->select("upl.id,upl.post_id,upl.user_id,u.user_slug,u.first_name,u.last_name,CONCAT(u.first_name,' ',u.last_name) as fullname,ui.user_image,jt.name as title_name,d.degree_name")->from("user_post_like upl");
+        $this->db->join('user u', 'u.user_id = upl.user_id', 'left');
+        $this->db->join('user_info ui', 'ui.user_id = upl.user_id', 'left');
+        $this->db->join('user_login ul', 'ul.user_id = upl.user_id', 'left');
+        $this->db->join('user_profession up', 'up.user_id = upl.user_id', 'left');
+        $this->db->join('job_title jt', 'jt.title_id = up.designation', 'left');
+        $this->db->join('user_student us', 'us.user_id = upl.user_id', 'left');
+        $this->db->join('degree d', 'd.degree_id = us.current_study', 'left');
+        $this->db->order_by('upl.id', 'DESC');
+        $this->db->where('upl.post_id',$post_id);
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
 
 }
