@@ -4,8 +4,51 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Business_model extends CI_Model {
+
+    function businessCategory() {
+        $this->db->select('count(bp.business_profile_id) as count,industry_id,industry_name')->from('industry_type it');
+        $this->db->join('business_profile bp', 'bp.industriyal = it.industry_id', 'left');
+        $this->db->where('it.status', '1');
+        $this->db->where('it.is_delete', '0');
+        $this->db->where('bp.status', '1');
+        $this->db->where('bp.is_deleted', '0');
+        $this->db->where('bp.business_step', '4');
+        $this->db->group_by('bp.industriyal');
+        $this->db->order_by('count','desc');
+        $this->db->limit('9');
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
     
-    function isBusinessAvailable($id=''){
+    function businessAllCategory() {
+        $this->db->select('count(bp.business_profile_id) as count,industry_id,industry_name')->from('industry_type it');
+        $this->db->join('business_profile bp', 'bp.industriyal = it.industry_id', 'left');
+        $this->db->where('it.status', '1');
+        $this->db->where('it.is_delete', '0');
+        $this->db->where('bp.status', '1');
+        $this->db->where('bp.is_deleted', '0');
+        $this->db->where('bp.business_step', '4');
+        $this->db->group_by('bp.industriyal');
+        $this->db->order_by('count','desc');
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+    
+    function otherCategoryCount() {
+        $this->db->select('count(bp.business_profile_id) as count')->from('business_profile bp');
+        $this->db->where('bp.industriyal', '0');
+        $this->db->where('bp.status', '1');
+        $this->db->where('bp.is_deleted', '0');
+        $this->db->where('bp.business_step', '4');
+        $this->db->group_by('bp.industriyal');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['count'];
+    }
+
+    function isBusinessAvailable($id = '') {
         $this->db->select('count(*) as total')->from('business_profile bp');
         $this->db->where('bp.user_id', $id);
         $this->db->where('bp.business_step', '4');
@@ -15,7 +58,7 @@ class Business_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array;
     }
-    
+
     function business_followers($follow_to = '', $sortby = '', $orderby = '', $limit = '', $offset = '') {
         $this->db->select('*')->from('business_profile bp');
         $this->db->join('user_login ul', 'ul.user_id = bp.user_id');
@@ -38,7 +81,7 @@ class Business_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
-    
+
     function business_following($follow_from = '', $sortby = '', $orderby = '', $limit = '', $offset = '') {
         $this->db->select('*')->from('business_profile bp');
         $this->db->join('user_login ul', 'ul.user_id = bp.user_id');
@@ -100,6 +143,7 @@ class Business_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
+
     function getBusinessLikeComment($post_id = '') {
         $this->db->select('bppc.*')->from('business_profile_post_comment bppc');
         $this->db->join('user_login ul', 'ul.user_id = bppc.user_id');
@@ -118,8 +162,8 @@ class Business_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
-    
-    function getBusinessCommentData($post_id = '',$select_data='') {
+
+    function getBusinessCommentData($post_id = '', $select_data = '') {
         $this->db->select($select_data)->from('business_profile_post_comment bppc');
         $this->db->join('user_login ul', 'ul.user_id = bppc.user_id');
         $this->db->where('business_profile_post_comment_id', $post_id);

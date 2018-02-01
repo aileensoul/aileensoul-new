@@ -1,12 +1,12 @@
-app.controller('businessController', function ($scope, $http) {
-    $scope.businessCategory = {};
+app.controller('businessCategoryController', function ($scope, $http) {
+    $scope.businessAllCategory = {};
     
-    function businessCategory(){
-        $http.get(base_url + "business/businessCategory").then(function (success) {
-            $scope.businessCategory = success.data;
+    function businessAllCategory(){
+        $http.get(base_url + "business/businessAllCategory").then(function (success) {
+            $scope.businessAllCategory = success.data;
         }, function (error) {});
     }
-    businessCategory();
+    businessAllCategory();
     function otherCategoryCount(){
         $http.get(base_url + "business/otherCategoryCount").then(function (success) {
             $scope.otherCategoryCount = success.data;

@@ -16,6 +16,7 @@ class Business extends MY_Controller {
         $this->load->model('user_model');
         $this->load->model('user_post_model');
         $this->load->model('data_model');
+        $this->load->model('business_model');
         $this->load->library('S3');
 
         $this->data['no_user_post_html'] = '<div class="user_no_post_avl"><h3>Feed</h3><div class="user-img-nn"><div class="user_no_post_img"><img src=' . base_url('assets/img/bui-no.png?ver=' . time()) . ' alt="bui-no.png"></div><div class="art_no_post_text">No Feed Available.</div></div></div>';
@@ -37,6 +38,33 @@ class Business extends MY_Controller {
         $this->data['title'] = "Opportunities | Aileensoul";
         $this->load->view('business/index', $this->data);
     }
+    
+    public function category() {
+        $userid = $this->session->userdata('aileenuser');
+        $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
+        $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
+        $this->data['is_userBasicInfo'] = $this->user_model->is_userBasicInfo($userid);
+        $this->data['is_userStudentInfo'] = $this->user_model->is_userStudentInfo($userid);
+        $this->data['is_userPostCount'] = $this->user_post_model->userPostCount($userid);
+        $this->data['header_profile'] = $this->load->view('header_profile', $this->data, TRUE);
+        $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
+        $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
+        $this->data['title'] = "Opportunities | Aileensoul";
+        $this->load->view('business/category', $this->data);
+    }
 
+    public function businessCategory() {
+        $businessCategory = $this->business_model->businessCategory();
+        echo json_encode($businessCategory);
+    }
+    public function businessAllCategory() {
+        $businessAllCategory = $this->business_model->businessAllCategory();
+        echo json_encode($businessAllCategory);
+    }
 
+    public function otherCategoryCount() {
+        $otherCategoryCount = $this->business_model->otherCategoryCount();
+        echo $otherCategoryCount;
+    }
 }
