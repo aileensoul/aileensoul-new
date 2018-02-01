@@ -520,10 +520,9 @@ app.controller('userOppoController', function ($scope, $http) {
                 .then(function (success) {
                     data = success.data;
                     $scope.queSearchResult = data;
-                    if($scope.queSearchResult.length > 0){
+                    if ($scope.queSearchResult.length > 0) {
                         $('.questionSuggetion').addClass('question-available');
-                    }
-                    else{
+                    } else {
                         $('.questionSuggetion').removeClass('question-available');
                     }
                 });
@@ -1194,21 +1193,22 @@ app.controller('userOppoController', function ($scope, $http) {
 //        }
 //    }
 
-    $scope.like_user_list = function(post_id){
-        alert(post_id);
-//       $.ajax({
-//        type: 'POST',
-//        url: base_url + "business_profile/likeuserlist",
-//        data: 'post_id=' + post_id,
-//        dataType: "html",
-//        success: function (data) {
-//            var html_data = data;
-//            $('#likeusermodal .mes').html(html_data);
-            $('#likeusermodal').modal('show');
-//        }
-//    });
+    $scope.like_user_list = function (post_id) {
+        $http({
+            method: 'POST',
+            url: base_url + "user_post/likeuserlist",
+            data: 'post_id=' + post_id,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    $scope.count_likeUser = success.data.countlike;
+                    $scope.get_like_user_list = success.data.likeuserlist;
+                    $('#likeusermodal').modal('show');
+
+                });
+
     }
-    
+
     $scope.like_user_model_list = function (comment_id, post_id, parent_index, index, post) {
         var commentClassName = $('#comment-icon-' + post_id).attr('class').split(' ')[0];
         $http({
