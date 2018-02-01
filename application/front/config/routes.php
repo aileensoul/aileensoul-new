@@ -104,7 +104,8 @@ $route['profiles/opportunities/(:any)'] = "user_opportunities";
 $route['profiles/(:any)'] = "dashboard";
 
 
-$route['business-profile'] = "business_profile/index";
+//$route['business-profile'] = "business_profile/index";
+$route['business-profile'] = "business/index";
 $route['business-profile/reactivate'] = "business_profile/reactivate";
 
 //$route['business-profile/business-information'] = "business_profile/business_information";
