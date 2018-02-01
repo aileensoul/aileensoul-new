@@ -768,8 +768,8 @@ option:not(first-child) {
     text-align:center;
 }
 .title p{
-    font-family:Lato,sans-serif;
-    font-weight:600;
+    font-family:'Arial';
+    font-weight:500;
     color:#1b8ab9;
     background:-webkit-linear-gradient(96deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);
     -webkit-text-fill-color:transparent;
@@ -2750,6 +2750,7 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
         width:100%!important
     }
     .contact-add .p20{padding: 23px 30px;}
+    .profiles-details h2::after{top:95px; }
 }
 @media screen and (max-width:1024px){
     .middle-section{

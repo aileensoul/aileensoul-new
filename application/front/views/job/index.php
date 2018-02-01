@@ -85,7 +85,7 @@
                                                    <?php echo form_error('lname'); ?>
                                         </fieldset>
                                         <fieldset class="fw">
-                                            <fieldset class="vali_er" <?php if ($email) { ?> class="error-msg" <?php } ?>>
+                                            <fieldset style="padding-left: 0px;" class="vali_er" <?php if ($email) { ?> class="error-msg" <?php } ?>>
                                                 <label>Email Address :<span class="red">*</span> </label>
                                                 <input type="email" name="email" id="email" tabindex="3" placeholder="Enter Email Address" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" value="<?php
                                                 if ($email1) {
@@ -97,7 +97,7 @@
                                                 <span class="email_note"><b>Note:-</b> Related notification email will be send on provided email address kindly use regular  email address.<div></div></span>
                                                 <?php echo form_error('email'); ?>
                                             </fieldset>
-                                            <fieldset <?php if ($phnno) { ?> class="error-msg" <?php } ?>>
+                                            <fieldset style="padding-right:0px;" <?php if ($phnno) { ?> class="error-msg" <?php } ?>>
                                                 <label>Phone Number :<span class="optional">(optional)</span></label>
                                                 <input type="text" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" name="phnno" id="phnno" tabindex="4" placeholder="Enter Phone Number" value="<?php
                                                 if ($phnno1) {
