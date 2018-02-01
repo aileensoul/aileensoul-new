@@ -1114,16 +1114,18 @@ class User_post extends MY_Controller {
         echo json_encode($searchData);
     }
     
-    public function likeuserlist() {
-        $userid = $this->session->userdata('aileenuser');
-        $post_id = $_POST['post_id'];
-        $userListData = $this->user_post_model->searchData($post_id);
-//        $contition_array = array('business_profile_post_id' => $post_id, 'status' => '1', 'is_delete' => '0');
-//        $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//        $likeuser = $commnetcount[0]['business_like_user'];
-//        $countlike = $commnetcount[0]['business_likes_count'] - 1;
-//        echo $modal;
-        echo json_encode($searchData);
-    }
+//    public function likeuserlist() {
+//        $userid = $this->session->userdata('aileenuser');
+//        $post_id = $_POST['post_id'];
+//        $userListData = $this->user_post_model->searchData($post_id);
+//        
+//        echo '<pre>'; print_r($userListData); die();
+////        $contition_array = array('business_profile_post_id' => $post_id, 'status' => '1', 'is_delete' => '0');
+////        $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+////        $likeuser = $commnetcount[0]['business_like_user'];
+////        $countlike = $commnetcount[0]['business_likes_count'] - 1;
+////        echo $modal;
+//        echo json_encode($searchData);
+//    }
 
 }
