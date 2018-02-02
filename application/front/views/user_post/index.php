@@ -630,7 +630,7 @@
             </div>
         </div>
         
-        <div class="modal fade message-box" id="likeusermodal" role="dialog">
+        <div class="modal fade message-box like-popup" id="likeusermodal" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
                      <button type="button" class="modal-close" data-dismiss="modal">×</button>
