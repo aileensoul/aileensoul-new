@@ -2195,6 +2195,9 @@ class Recruiter extends MY_Controller {
 //                                        </div>';
 
                         $rec_post .= '<div class="post-img">
+                            <div class="cus-profile">
+    <img src="' . base_url() . 'assets/img/cam.png" alt="cameraimage">
+    </div>
                                             <a href="javascript:void(0);" onclick="upload_company_logo(' . $post['user_id'] . ');" title="Upload Company Logo">';
                         if ($cache_time_1) {
 
