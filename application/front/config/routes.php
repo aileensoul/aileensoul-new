@@ -165,10 +165,10 @@ $route['notification/business-profile-post-detail/(:any)/(:any)'] = "notificatio
 //$route['business-profile/signup/description'] = "business_profile_registration/description";
 //$route['business-profile/signup/image'] = "business_profile_registration/image";
 
-$route['business-profile/business-information'] = "business_profile_registration/business_registration/$1";
-$route['business-profile/contact-information'] = "business_profile_registration/business_registration/$1";
-$route['business-profile/description'] = "business_profile_registration/business_registration/$1";
-$route['business-profile/image'] = "business_profile_registration/business_registration/$1";
+$route['business-profile/registration/business-information'] = "business_profile_registration/business_registration/$1";
+$route['business-profile/registration/contact-information'] = "business_profile_registration/business_registration/$1";
+$route['business-profile/registration/description'] = "business_profile_registration/business_registration/$1";
+$route['business-profile/registration/image'] = "business_profile_registration/business_registration/$1";
 
 $route['business-profile/signup/edit/business-information'] = "business_profile_registration/business_information_edit";
 $route['business-profile/signup/edit/contact-information'] = "business_profile_registration/contact_informatio_edit";

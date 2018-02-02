@@ -634,7 +634,7 @@
                             if (response.data == "ok") {
                                 $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Login');
                                 if (response.is_bussiness == '1') {
-                                    window.location = "<?php echo base_url() ?>business-profile/business-information";
+                                    window.location = "<?php echo base_url() ?>business-profile/registration/business-information";
                                 } else {
                                     window.location = "<?php echo base_url() ?>business-profile";
                                 }

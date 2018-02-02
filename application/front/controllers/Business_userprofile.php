@@ -1319,7 +1319,7 @@ Your browser does not support the audio tag.
                 redirect('business-profile/image', refresh);
             }
         } else {
-            redirect('business-profile/business-information', refresh);
+            redirect('business-profile/registration/business-information', refresh);
         }
 
 // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
