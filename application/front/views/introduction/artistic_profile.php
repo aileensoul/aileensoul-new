@@ -97,7 +97,7 @@ header('Expires: ' . $date);
                         <?php
                         if (!$this->session->userdata('aileenuser') || $is_profile['is_artistic'] != '1') {
                             ?>
-                            <div class="text-center introduce_button"><a href="<?php echo base_url('artist/profile') ?>" target="_blank" title="Create Artistic Profile" class="btn-new1">Create Artistic Profile</a></div>
+                            <div class="text-center introduce_button"><a href="<?php echo base_url('artist/registration') ?>" target="_blank" title="Create Artistic Profile" class="btn-new1">Create Artistic Profile</a></div>
                         <?php } else {
                             ?>
                             <div class="text-center introduce_button"><a href="<?php echo base_url('artist') ?>" target="_blank" title="Take me in" class="btn-new1">Take me in</a></div>  
@@ -150,7 +150,7 @@ header('Expires: ' . $date);
                         <?php
                         if (!$this->session->userdata('aileenuser') || $is_profile['is_artistic'] != '1') {
                             ?>
-                            <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('artist/profile') ?>" target="_blank" title="Create Artistic Profile" class="btn-new1">Create Artistic Profile</a></div>
+                            <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('artist/registration') ?>" target="_blank" title="Create Artistic Profile" class="btn-new1">Create Artistic Profile</a></div>
                         <?php } else {
                             ?>
                             <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('artist') ?>" target="_blank" title="Take me in" class="btn-new1">Take me in</a></div>  
