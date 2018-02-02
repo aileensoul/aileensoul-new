@@ -59,5 +59,9 @@ class Main extends CI_Controller {
     public function website_disclaimer() {
         $this->load->view('websitedisclaimer', $this->data);
     }
+    
+    public function demoeight($id = "") {
+      $this->load->view('websitedisclaimer', $this->data);
+    }
 
 }
