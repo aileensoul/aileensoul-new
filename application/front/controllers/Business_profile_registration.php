@@ -37,7 +37,7 @@ class Business_profile_registration extends MY_Controller {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
-        $this->data['reg_uri'] = $reg_uri = $this->uri->segment(2);
+        $this->data['reg_uri'] = $reg_uri = $this->uri->segment(3);
 
         $contition_array = array('user_id' => $userid, 'status' => '0');
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');

@@ -327,6 +327,7 @@
                                                                             var state_validation = '<?php echo $this->lang->line('state_validation') ?>';
                                                                             var address_validation = '<?php echo $this->lang->line('address_validation') ?>';
                                                                             var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+                                                                            var profile_login = '<?php echo $profile_login; ?>';
         </script>
         <script>
                     // Defining angularjs application.

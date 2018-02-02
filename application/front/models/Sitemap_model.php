@@ -43,13 +43,12 @@ class Sitemap_model extends CI_Model {
         $query = $this->db->get();
         return $result = $query->result_array();
     }
-    
+
     function getEmployees() {
         $this->db->select('fhr.username,fhr.fullname,fhr.freelancer_hire_slug')->from('freelancer_hire_reg fhr');
         $this->db->where(array('fhr.free_hire_step' => '3', 'fhr.is_delete' => '0', 'fhr.status' => '1'));
         $query = $this->db->get();
         return $result = $query->result_array();
-        
     }
 
     function getFreelancers() {
@@ -58,7 +57,7 @@ class Sitemap_model extends CI_Model {
         $this->db->where(array('fpr.free_post_step' => '7', 'fpr.is_delete' => '0', 'fpr.status' => '1'));
         $query = $this->db->get();
         $result = $query->result_array();
-        
+
         $newArray = array();
         foreach ($result as $key => $value) {
             $newArray[$value['category_name']][$key] = $value; // sort as per category name
@@ -70,7 +69,7 @@ class Sitemap_model extends CI_Model {
         $this->db->select('fp.post_id,fp.post_name,fp.user_id,fh.username,fh.fullname,ci.city_name,c.category_name')->from('freelancer_post fp');
         $this->db->join('category c', 'fp.post_field_req = c.category_id');
         $this->db->join('freelancer_hire_reg fh', 'fp.user_id = fh.user_id');
-        $this->db->join('cities ci', 'fp.city = ci.city_id');
+        $this->db->join('cities ci', 'fp.city = ci.city_id', 'left');
         $this->db->where(array('fp.status' => '1', 'fp.is_delete' => '0'));
         $query = $this->db->get();
         $result = $query->result_array();
