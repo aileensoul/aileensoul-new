@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 class Business_model extends CI_Model {
 
-    function businessCategory($limit='') {
+    function businessCategory($limit = '') {
         $this->db->select('count(bp.business_profile_id) as count,industry_id,industry_name,industry_slug')->from('industry_type it');
         $this->db->join('business_profile bp', 'bp.industriyal = it.industry_id', 'left');
         $this->db->where('it.status', '1');
@@ -14,13 +14,13 @@ class Business_model extends CI_Model {
         $this->db->where('bp.is_deleted', '0');
         $this->db->where('bp.business_step', '4');
         $this->db->group_by('bp.industriyal');
-        $this->db->order_by('count','desc');
+        $this->db->order_by('count', 'desc');
         $this->db->limit($limit);
         $query = $this->db->get();
         $result_array = $query->result_array();
         return $result_array;
     }
-    
+
     function businessAllCategory() {
         $this->db->select('count(bp.business_profile_id) as count,industry_id,industry_name,industry_slug')->from('industry_type it');
         $this->db->join('business_profile bp', 'bp.industriyal = it.industry_id', 'left');
@@ -30,12 +30,12 @@ class Business_model extends CI_Model {
         $this->db->where('bp.is_deleted', '0');
         $this->db->where('bp.business_step', '4');
         $this->db->group_by('bp.industriyal');
-        $this->db->order_by('count','desc');
+        $this->db->order_by('count', 'desc');
         $query = $this->db->get();
         $result_array = $query->result_array();
         return $result_array;
     }
-    
+
     function otherCategoryCount() {
         $this->db->select('count(bp.business_profile_id) as count')->from('business_profile bp');
         $this->db->where('bp.industriyal', '0');
@@ -47,9 +47,12 @@ class Business_model extends CI_Model {
         $result_array = $query->row_array();
         return $result_array['count'];
     }
-    
-    function businessListByCategory($id=''){
-        $this->db->select('*')->from('business_profile bp');
+
+    function businessListByCategory($id = '0') {
+        $this->db->select('bp.business_user_image,bp.profile_background,bp.business_slug,bp.other_industrial,bp.company_name,bp.country,bp.city,bp.details,bp.contact_website,it.industry_name,ct.city_name as city,cr.country_name as country')->from('business_profile bp');
+        $this->db->join('industry_type it', 'it.industry_id = bp.industriyal','left');
+        $this->db->join('cities ct', 'ct.city_id = bp.city','left');
+        $this->db->join('countries cr', 'cr.country_id = bp.country','left');
         $this->db->where('bp.industriyal', $id);
         $this->db->where('bp.status', '1');
         $this->db->where('bp.is_deleted', '0');

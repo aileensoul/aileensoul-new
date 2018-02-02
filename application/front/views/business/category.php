@@ -16,26 +16,7 @@
     <body class="profile-main-page">
         <?php echo $header_profile; ?>
         <div class="middle-section middle-section-banner">
-            <div class="search-banner">
-                <div class="container">
-                    <div class="text-right pt20">
-                        <a class="btn5" href="<?php echo base_url('business-profile/business-information') ?>" title="Create Business Profile">Create Business Profile</a>
-                    </div>
-                    <div class="search-bnr-text">
-                        <h1>Find The Business That Fits Your Life</h1>
-                    </div>
-                    <div class="search-box">
-                        <form>
-                            <div class="search-input">
-                                <input type="text" placeholder="Company, Cat, Products">
-                                <input type="text" placeholder="Location">
-                                <a href="#" class="btn1">Search</a>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <?php echo $search_banner; ?>
             <div class="container">
                 <div class="custom-user-list">
                     <div class="list-box-custom">
@@ -82,6 +63,7 @@
             var app = angular.module('businessCategoryApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/business/searchBusiness.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/webpage/business/category.js?ver=' . time()) ?>"></script>
     </body>
 </html>

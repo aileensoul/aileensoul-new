@@ -2750,7 +2750,7 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
         width:100%!important
     }
     .contact-add .p20{padding: 23px 30px;}
-    .profiles-details h2::after{top:95px; }
+    .profiles-details h2::after{top:95px;}
 }
 @media screen and (max-width:1024px){
     .middle-section{
