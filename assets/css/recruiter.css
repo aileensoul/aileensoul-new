@@ -124,6 +124,21 @@ li.fr a {text-decoration: none !important;}
 	border-radius:4px;
 	text-align:center;
 }
+.all-job-top .post-img{
+    position: relative;
+}
+.cus-profile{
+     width: 60px;
+    height:  60px;
+    background: rgba(0, 0, 0, 0.6);
+    background-size: 30px;
+    display:  block;
+    color:  #fff;
+    position:  absolute;
+    top: 0;
+}
+
+
 .profile-box-art {height: auto !important;}
 .profile-box-art ul li a {height: 50px; padding-top: 7px; padding-bottom: 7px;}
 .profile-box-art ul li {padding-left: 0 !important; padding-right: 3px !important;}
