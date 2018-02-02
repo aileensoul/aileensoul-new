@@ -21,7 +21,7 @@ class Userprofile_model extends CI_Model {
 
     public function getContactData($user_id = '', $select_data = '', $page = '') {
 
-        $limit = '10';
+        $limit = '6';
         $start = ($page - 1) * $limit;
         if ($start < 0)
             $start = 0;

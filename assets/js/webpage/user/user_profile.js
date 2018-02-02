@@ -1367,10 +1367,18 @@ app.controller('contactsController', function ($scope, $http, $location, $window
         });
     }
     angular.element($window).bind("scroll", function (e) {
-        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        console.log($(window).scrollTop());
+           console.log($(document).height() - $(window).height());
+        
+        if (($(window).scrollTop()) == ($(document).height() - $(window).height())) {
+          
+          
             var page = $(".page_number").val();
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
+            
+           // alert(parseInt(perpage_record * page));
+           // alert(total_record);
             if (parseInt(perpage_record * page) <= parseInt(total_record)) {
                 var available_page = total_record / perpage_record;
                 available_page = parseInt(available_page, 10);

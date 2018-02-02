@@ -61,7 +61,11 @@ class Main extends CI_Controller {
     }
     
     public function demoeight($id = "") {
-      $this->load->view('websitedisclaimer', $this->data);
+      $this->load->view('demoeight', $this->data);
+    }
+    
+    public function demoeightang($id = "") {
+      $this->load->view('demoangulareight', $this->data);
     }
 
 }

@@ -2016,6 +2016,9 @@ class Recruiter extends MY_Controller {
                         }
 
                         $rec_post .= '<div class="post-img">
+                            <div class="cus-profile">
+    <img src="' . base_url() . 'assets/img/cam.png" alt="cameraimage">
+    </div>
                                             <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                         if ($cache_time_1) {
 
