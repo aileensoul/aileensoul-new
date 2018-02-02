@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/ng-tags-input.min.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-commen.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/n-style.css') ?>">
+        <link href="<?php echo base_url('8/ninja-slider.css'); ?>" rel="stylesheet" type="text/css" />
+
     </head>
     <body class="main-db">
         <?php echo $header_profile; ?>
@@ -84,6 +86,7 @@
         <script src="<?php echo base_url('assets/js/ng-tags-input.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/angular/angular-tooltips.min.js?ver=' . time()); ?>"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
+        <script src="<?php echo base_url('8/ninja-slider.js'); ?>" type="text/javascript"></script>
         <script>
                                 var base_url = '<?php echo base_url(); ?>';
                                 var user_slug = '<?php echo $this->uri->segment(2); ?>';
@@ -101,8 +104,7 @@
                                 var follow_id = '<?php echo $follow_id; ?>';
                                 var is_userPostCount = '<?php echo $is_userPostCount; ?>';
                                 var header_all_profile = '<?php echo $header_all_profile; ?>';
-                                 
-                               var app = angular.module("userProfileApp", ['ngRoute','ui.bootstrap', 'ngTagsInput', 'ngSanitize']);
+                                var app = angular.module("userProfileApp", ['ngRoute', 'ui.bootstrap', 'ngTagsInput', 'ngSanitize']);
         </script>
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/webpage/user/user_profile.js?ver=' . time()) ?>"></script>
