@@ -21,10 +21,24 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 left-header">
-                        <h2 class="logo"><a href="#">Aileensoul</a></h2>
-						<!--form>
-							<input type="text" name="search" placeholder="Search..">
-						</form-->
+                        <h2 class="logo"><a href="#"><img src="n-images/mob-logo.png"></a></h2>
+						<div class="search-mob-block">
+						  <div class="">
+							 <a href="#search">
+								<label><i class="fa fa-search" aria-hidden="true"></i></label>
+							 </a>
+						  </div>
+						  <div id="search">
+							 <button type="button" class="close">×</button>
+							 <form method="get">
+								<div class="new-search-input">
+								   <input type="search" id="tags1" class="tags" name="skills" value="" placeholder="Job Title,Skill,Company" />
+								   <input type="search" id="searchplace1" class="searchplace" name="searchplace" value="" placeholder="Find Location" />
+								   <button type="submit"  id="search_btn" class="btn btn-primary" onclick="return check();">Search</button>
+								</div>
+							 </form>
+						  </div>
+					   </div>
 						<div class="right-header">
 							<ul>
 								<li class="dropdown user-id">
@@ -779,6 +793,19 @@ Here is my top 3 of pieces of feedback received throughout my career that were d
 					classie.toggle( showRight, 'disabled' );
 				}
 			}
+			
+			$(function () {
+				$('a[href="#search"]').on('click', function (event) {
+					event.preventDefault();
+					$('#search').addClass('open');
+					$('#search > form > input[type="search"]').focus();
+				});
+				$('#search, #search button.close').on('click keyup', function (event) {
+					if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+						$(this).removeClass('open');
+					}
+				});
+			});
 		</script>
 
 </body>

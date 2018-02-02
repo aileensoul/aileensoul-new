@@ -1003,6 +1003,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 .search-box{width:860px; margin:0 auto; padding:30px; background:rgba(255,255,255,0.2);}
 .search-box .search-input input{width:40%; margin-right:15px; height:50px; font-size:22px;}
 .search-box .btn1{font-size:22px; padding:12px 21px;}
+.search-box .search-input input.btn1{width:120px; margin-right:0;}
 .search-bnr-text{padding:100px 0 40px;}
 .search-bnr-text h1{text-align:center; font-size:42px; color:#fff; }
 .work-timing{padding-left:0;}
