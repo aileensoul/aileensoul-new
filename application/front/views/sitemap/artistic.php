@@ -77,6 +77,14 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
                     <!-- html code for inner page  -->
                     <div class="all-site-link">
                         <h2>Artistic Profile</h2>
+                        <div class="linkbox full_page">
+                            <div class="smap-catbox">
+                                <ul class="catbox-right artist-sitemap">
+                                    <li style="list-style-type: circle;font-size: 20px; width: 100%;">Login/Register</li>
+                                    <li style="padding-bottom: 30px;"><a href="<?php echo base_url('artist/registration') ?>">Register/Takeme in</a></li>
+                                </ul>
+                            </div>
+                        </div>
                         <h3>Profiles</h3>
                         <div class="linkbox">
                             <div class="smap-catbox">

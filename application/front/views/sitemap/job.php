@@ -76,6 +76,14 @@ header('Cache-Control: public, max-age=30');
                     <div class="all-site-link cust-link">
                         <!-- <h3>Job Profile <span>Categories</span></h3> -->
                         <h2 style="margin-left: -2px;">Job Profile</h2>
+                        <div class="linkbox">
+                            <div class="smap-catbox">
+                                <ul class="catbox-right artist-sitemap">
+                                    <li style="list-style-type: circle;font-size: 20px; width: 100%;">Login/Register</li>
+                                    <li style="padding-bottom: 30px; width: 100%;"><a href="<?php echo base_url('job/registration') ?>">Register/Takeme in</a></li>
+                                </ul>
+                            </div>
+                        </div>
                         <ul>
                             <li style="margin-bottom: 35px;list-style-type: none;margin-left: -14px;"><a href="https://www.aileensoul.com/jobs">All Jobs</a></li>
                         </ul>

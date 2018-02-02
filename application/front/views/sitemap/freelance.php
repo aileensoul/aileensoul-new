@@ -86,7 +86,7 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
                             <div class="smap-catbox">
                                 <ul class="catbox-right artist-sitemap">
                                     <li style="list-style-type: circle;font-size: 20px;">Login/Register</li>
-                                    <li style="padding-bottom: 30px;">Register/Takeme in</li>
+                                    <li style="padding-bottom: 30px;"><a href="<?php echo base_url('freelance-hire/registration') ?>">Register/Takeme in</a></li>
                                     <!--<li><a href="<?php echo base_url() ?>freelance-hire/add-projects" target="_blank">Post a Project</a></li>-->
                                     <li style="margin-left: -20px;padding-left: 38px;font-size: 20px;cursor: text;"><a style="text-transform: none;color: #333;" href="<?php echo base_url('freelance-hire/add-projects'); ?>"> Post a Project </a></li>
                                 </ul>
@@ -118,7 +118,14 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
                     </div>    
                     <div class="all-site-link cust-link">
                         <h3>Freelance Apply</h3>
-
+                        <div class="linkbox full_page">
+                            <div class="smap-catbox">
+                                <ul class="catbox-right artist-sitemap">
+                                    <li style="list-style-type: circle;font-size: 20px;">Login/Register</li>
+                                    <li style="padding-bottom: 30px;"><a href="<?php echo base_url('freelance-work/registration') ?>">Register/Takeme in</a></li>
+                                </ul>
+                            </div>
+                        </div>
                         <ul>
                             <li style="margin-bottom: 35px;list-style-type: none;margin-left: -15px;"><a href="https://www.aileensoul.com/projects">All Freelance Projects</a></li>
                             <li style="list-style-type: none;margin-left: -13px;margin-bottom: 30px;"><h4>Projects by Field</h4></li>

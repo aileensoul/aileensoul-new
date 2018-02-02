@@ -78,6 +78,14 @@ if(IS_OUTSIDE_JS_MINIFY == '0'){
                     <div class="all-site-link">
                         <!-- <h3>Business Profile <span>Categories</span></h3> -->
                         <h2 style="margin-left: -2px;">Business Profile</h2>
+                        <div class="linkbox full_page">
+                            <div class="smap-catbox">
+                                <ul class="catbox-right artist-sitemap">
+                                    <li style="list-style-type: circle;font-size: 20px; width: 100%;">Login/Register</li>
+                                    <li style="padding-bottom: 30px;"><a href="<?php echo base_url('business-profile/registration/business-information') ?>">Register/Takeme in</a></li>
+                                </ul>
+                            </div>
+                        </div>
                         <h3>Business Profiles by Categories</h3>
                         <div class="linkbox">
                             <?php
