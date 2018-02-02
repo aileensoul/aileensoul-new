@@ -99,7 +99,7 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <?php
 if (!$this->session->userdata('aileenuser') || $is_profile['is_job'] != '1') {
     ?>
-                            <div class="text-center introduce_button"><a href="<?php echo base_url('job/profile') ?>" target="_blank" title="Create Job Profile" class="btn-new1">Create Job Profile</a></div>
+                            <div class="text-center introduce_button"><a href="<?php echo base_url('job/registration') ?>" target="_blank" title="Create Job Profile" class="btn-new1">Create Job Profile</a></div>
                             <?php } else {
                             ?>
 
@@ -153,7 +153,7 @@ if (!$this->session->userdata('aileenuser') || $is_profile['is_job'] != '1') {
 <?php
 if (!$this->session->userdata('aileenuser') || $is_profile['is_job'] != '1') {
     ?>
-                            <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('job/profile') ?>" target="_blank" title="Create Job Profile" class="btn-new1">Create Job Profile</a></div>
+                            <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('job/registration') ?>" target="_blank" title="Create Job Profile" class="btn-new1">Create Job Profile</a></div>
                             <?php } else {
                             ?>
 

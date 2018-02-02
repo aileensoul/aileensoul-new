@@ -423,7 +423,7 @@ $(document).ready(function () {
             success: function (response)
             {
                 if (response.okmsg == "ok") {
-                    window.location = base_url + "job/profile";
+                    window.location = base_url + "job/registration";
                 } else {
                     $("#register_error").fadeIn(1000, function () {
                         $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
@@ -566,10 +566,10 @@ $(document).ready(function () {
                     if (response.is_job == 1) {
                         window.location = base_url + "job/home";
                     } else {
-                        window.location = base_url + "job/profile";
+                        window.location = base_url + "job/registration";
                     }
                 } else if (response.is_artistic == 1) {
-                    window.location = base_url + "job/profile";
+                    window.location = base_url + "job/registration";
                     // window.location = "<?php echo base_url() ?>artist/profile";
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');

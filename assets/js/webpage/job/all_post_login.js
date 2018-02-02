@@ -250,22 +250,22 @@ $(document).ready(function () {
                 if (response.okmsg == "ok") {// alert(1111);
                     if (postid == '') { //alert(777);
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                        window.location = base_url + "job/profile";
+                        window.location = base_url + "job/registration";
                         sendmail(userid);
                     } else {//alert('aaaaa');
 
                         //  alert(postid);
                         //  alert(8888)
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                        //  alert(base_url + 'job/profile/live-post?postid=' + postid);
-                        window.location = base_url + 'job/profile/live-post/' + postid;
+                        //  alert(base_url + 'job/registration/live-post?postid=' + postid);
+                        window.location = base_url + 'job/registration/live-post/' + postid;
                         sendmail(userid);
 
 //                        var alldata = 'all';
 //                        var id = response.id;
 //                        $.ajax({
 //                            type: 'POST',
-//                            url: base_url + 'job/profile/live-post',
+//                            url: base_url + 'job/registration/live-post',
 //                            data: 'post_id=' + postid + '&allpost=' + alldata + '&userid=' + id,
 //                            success: function (data)
 //                            {

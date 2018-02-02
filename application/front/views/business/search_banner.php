@@ -7,10 +7,10 @@
             <h1>Find The Business That Fits Your Life</h1>
         </div>
         <div class="search-box">
-            <form ng-submit="searchSubmit()" method="POST">
+            <form ng-submit="searchSubmit()" method="GET" action="<?php echo base_url('business-profile') ?>">
                 <div class="search-input">
-                    <input type="text" ng-model="sb.business" name="business" placeholder="Company, Cat, Products">
-                    <input type="text" ng-model="sb.location" name="location" placeholder="Location">
+                    <input type="text" ng-model="sb.business" name="q" placeholder="Company, Cat, Products">
+                    <input type="text" ng-model="sb.location" name="l" placeholder="Location">
                     <input type="submit" class="btn1" name="submit" value="Submit">
                 </div>
             </form>

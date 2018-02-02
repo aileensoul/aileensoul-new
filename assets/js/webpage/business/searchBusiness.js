@@ -5,6 +5,5 @@ app.controller('searchBusinessController', function ($scope, $http) {
         if (business == '' || location == '') {
             return false;
         }
-        window.location.href = business + '-business-in-' + location.toLowerCase();
     }
 });

@@ -108,6 +108,7 @@ $route['profiles/(:any)'] = "dashboard";
 $route['business-profile'] = "business/index";
 $route['business-profile/category'] = "business/category";
 $route['business-profile/category/(:any)'] = "business/categoryBusinessList/$1";
+//$route['business-profile/(:any)'] = "business/business_search/$1";
 
 
 $route['business-profile/reactivate'] = "business_profile/reactivate";
@@ -330,9 +331,9 @@ $route['job/project'] = "job/job_project_update";
 $route['job/work-area'] = "job/job_skill_update";
 $route['job/work-experience'] = "job/job_work_exp_update";
 
-$route['job/profile'] = "job/job_reg";
-$route['job/profile/live-post'] = "job/job_reg";
-$route['job/profile/live-post/(:any)'] = "job/job_reg/$1";
+$route['job/registration'] = "job/job_reg";
+$route['job/registration/live-post'] = "job/job_reg";
+$route['job/registration/live-post/(:any)'] = "job/job_reg/$1";
 //$route['job/search'] = "job/job_search";
  $route['jobs'] = "job/job_search";
  $route['jobs/(:any)'] = "job/job_search/$1";
