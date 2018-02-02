@@ -130,7 +130,7 @@ li.fr a {text-decoration: none !important;}
 .cus-profile img{
     width: 50% !important;
     height: auto !important;
-    margin: 18px 15px;
+    margin: 15px;
 
 }
 .cus_post_profile .post-img:hover .cus-profile{
@@ -1805,8 +1805,8 @@ fieldset.fresher_radio label {
     }
     .no-login #paddingtop_fixed{padding-top: 105px !important;}
     #artpost .fw fieldset:first-child label.error{position: relative !important;float: right;} 
-     #artpost .fw fieldset select+label.error{float: right;}    
-     .cus_post_profile .post-img:hover .cus-profile{width: 50px;height:  50px;}
+    #artpost .fw fieldset select+label.error{float: right;}    
+    .cus_post_profile .post-img:hover .cus-profile{width: 50px;height:  46px;}
     .cus-profile img {margin: 15px 13px;}
 }
 
@@ -1899,8 +1899,12 @@ fieldset.fresher_radio label {
 	/*** end add  ***/
 }
 
-@media screen and (max-width: 319px){
+@media screen and (max-width: 320px){
 	.profile-job-details .post_title{font-size: 11px;}
     .job-top-detail{width: 80%;}
     .btn4 {padding: 3px 2px !important;margin-right: 1px;margin-left: 1px;font-size: 13px;}
+    .cus_post_profile .post-img:hover .cus-profile{width: 45px !important;height:  41px !important;}
+    .cus-profile img {margin: 12px 11px;}
+
+    /*.cus-profile img {margin: 10px;}*/
 }
