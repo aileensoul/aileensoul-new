@@ -961,14 +961,16 @@ header.profile-header .logo a{color:#5c5c5c;}
 .user-likes a i{margin:5px 7px 7px;}
 .like-img:last-child a{padding:13px 0 !important;}
 .article-preview .like-other-box{border-top:0px;}
-#all-liks .bottom-left{max-height:400px; overflow-y:scroll;}
-#all-liks .bottom-left{padding:5px 15px;}
-#all-liks .bottom-left li{padding:10px 0px; list-style-type:none; width:100%; border-bottom:1px solid #d2d2d2; float:left;}
-#all-liks .bottom-left .like-img:last-child a{padding:0 !important;}
-#all-liks .bottom-left .like-img a{float:left;}
-#all-liks .like-detail {width:86%; float:left;}
-#all-liks .like-detail h4{display:block; margin:0; width:100%; float:left; padding:2px 0 5px;}
-#all-liks .like-detail p{font-size:14px;}
+.like-popup ul{max-height:425px; overflow-y:scroll;}
+.like-popup ul{padding:5px 15px;}
+.like-popup ul li{padding:10px 0px; list-style-type:none; width:100%; border-bottom:1px solid #d2d2d2; float:left;}
+.like-popup ul li a{margin-right:18px;}
+.like-popup ul .like-img:last-child a{padding:0 !important;}
+.like-popup ul .like-img a{float:left;}
+.like-popup .like-detail {width:86%; float:left;}
+.like-popup .like-detail h4{display:block; margin:0; width:100%; float:left; padding:2px 0 5px;}
+.like-popup .like-detail p{font-size:14px;}
+.like-popup .modal-body{padding:0;}
 /***  end article page  ***/
 .gradient-bg{
 	background:#fff;
