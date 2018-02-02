@@ -2016,9 +2016,7 @@ class Recruiter extends MY_Controller {
                         }
 
                         $rec_post .= '<div class="post-img">
-                            <div class="cus-profile">
-    <img src="' . base_url() . 'assets/img/cam.png" alt="cameraimage">
-    </div>
+                            
                                             <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                         if ($cache_time_1) {
 
@@ -2046,6 +2044,9 @@ class Recruiter extends MY_Controller {
                             $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                         }
                         $rec_post .= '</a>
+                            <div class="cus-profile">
+    <img src="' . base_url() . 'assets/img/cam.png" alt="cameraimage">
+    </div>
                                         </div>';
 
 
@@ -2195,9 +2196,7 @@ class Recruiter extends MY_Controller {
 //                                        </div>';
 
                         $rec_post .= '<div class="post-img">
-                            <div class="cus-profile">
-    <img src="' . base_url() . 'assets/img/cam.png" alt="cameraimage">
-    </div>
+                            
                                             <a href="javascript:void(0);" onclick="upload_company_logo(' . $post['user_id'] . ');" title="Upload Company Logo">';
                         if ($cache_time_1) {
 
@@ -2225,6 +2224,9 @@ class Recruiter extends MY_Controller {
                             $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                         }
                         $rec_post .= '</a>
+                            <div class="cus-profile">
+    <img src="' . base_url() . 'assets/img/cam.png" alt="cameraimage">
+    </div>
                                         </div>';
 
                         $cache_time1 = $this->db->get_where('recruiter', array(
