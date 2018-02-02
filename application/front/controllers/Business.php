@@ -56,7 +56,7 @@ class Business extends MY_Controller {
         $this->load->view('business/category', $this->data);
     }
 
-    public function categoryBusinessList($category='') {
+    public function categoryBusinessList($category = '') {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
         $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
@@ -69,10 +69,11 @@ class Business extends MY_Controller {
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
         $this->data['search_banner'] = $this->load->view('business/search_banner', $this->data, TRUE);
-        $category_id = $this->db->select('industry_id')->get_where('industry_type',array('industry_slug'=>$category))->row_array('industry_id');
+        $category_id = $this->db->select('industry_id')->get_where('industry_type', array('industry_slug' => $category))->row_array('industry_id');
         $this->data['category_id'] = $category_id['industry_id'];
         $this->load->view('business/categoryBusinessList', $this->data);
     }
+
     public function business_search() {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
@@ -86,8 +87,13 @@ class Business extends MY_Controller {
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
         $this->data['search_banner'] = $this->load->view('business/search_banner', $this->data, TRUE);
-        $category_id = $this->db->select('industry_id')->get_where('industry_type',array('industry_slug'=>$category))->row_array('industry_id');
+        $category_id = $this->db->select('industry_id')->get_where('industry_type', array('industry_slug' => $category))->row_array('industry_id');
         $this->data['category_id'] = $category_id['industry_id'];
+        $searchdata = $this->uri->segment('2');
+        $searchData = explode('-', $searchdata);
+        $this->data['business'] = $searchData[0];
+        $this->data['location'] = array_reverse($searchData)[0];
+
         $this->load->view('business/search', $this->data);
     }
 
@@ -106,12 +112,12 @@ class Business extends MY_Controller {
         $otherCategoryCount = $this->business_model->otherCategoryCount();
         echo $otherCategoryCount;
     }
-    
-    public function businessListByCategory($id='0') {
+
+    public function businessListByCategory($id = '0') {
         $businessListByCategory = $this->business_model->businessListByCategory($id);
         echo json_encode($businessListByCategory);
     }
-    
+
     public function industry_slug() {
 
         $contition_array = array('industry_id !=' => '0');

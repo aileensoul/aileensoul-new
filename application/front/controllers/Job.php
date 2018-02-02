@@ -51,7 +51,7 @@ class Job extends MY_Controller {
             if ($job[0]['job_step'] == 10) {
                 redirect('job/home', refresh);
             } else {
-                redirect('job/profile', refresh);
+                redirect('job/registration', refresh);
             }
         }
     }
@@ -3251,7 +3251,7 @@ class Job extends MY_Controller {
 
                 redirect('recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id']);
             } else {
-                redirect('job/profile');
+                redirect('job/registration');
             }
         }
     }
@@ -3272,7 +3272,7 @@ class Job extends MY_Controller {
 
             if ($apply_step[0]['job_step'] == "" || $apply_step[0]['job_step'] == "0") {
 
-                redirect('job/profile');
+                redirect('job/registration');
             }
         }
     }

@@ -122,9 +122,13 @@
                                     var title = '<?php echo $title; ?>';
                                     var header_all_profile = '<?php echo $header_all_profile; ?>';
                                     var category_id = '<?php echo $category_id; ?>';
+                                    var business = '<?php echo $business; ?>';
+                                    var location = '<?php echo $location; ?>';
+                                                                        
                                     var app = angular.module('businessListApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/business/categoryBusinessList.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/business/searchBusiness.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/business/search.js?ver=' . time()) ?>"></script>
     </body>
 </html>
