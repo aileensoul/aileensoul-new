@@ -127,15 +127,22 @@ li.fr a {text-decoration: none !important;}
 .all-job-top .post-img{
     position: relative;
 }
-.cus-profile{
+.cus-profile img{
+    width: 50% !important;
+    height: auto !important;
+    margin: 18px 15px;
+
+}
+.cus_post_profile .post-img:hover .cus-profile{
      width: 60px;
-    height:  60px;
+    height:  56px;
     background: rgba(0, 0, 0, 0.6);
     background-size: 30px;
     display:  block;
     color:  #fff;
     position:  absolute;
-    top: 0;
+    cursor: pointer;
+    top: 4px;
 }
 
 
@@ -1799,6 +1806,8 @@ fieldset.fresher_radio label {
     .no-login #paddingtop_fixed{padding-top: 105px !important;}
     #artpost .fw fieldset:first-child label.error{position: relative !important;float: right;} 
      #artpost .fw fieldset select+label.error{float: right;}    
+     .cus_post_profile .post-img:hover .cus-profile{width: 50px;height:  50px;}
+    .cus-profile img {margin: 15px 13px;}
 }
 
 @media screen and (max-width: 360px) {

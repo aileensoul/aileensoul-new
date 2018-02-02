@@ -16,7 +16,7 @@
         <?php } ?>
 
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer">
+    <body class="page-container-bg-solid page-boxed pushmenu-push botton_footer cus_post_profile">
         <?php echo $header; ?>
         <?php
         $userid = $this->session->userdata('aileenuser');
