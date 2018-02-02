@@ -2044,7 +2044,7 @@ class Recruiter extends MY_Controller {
                             $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                         }
                         $rec_post .= '</a>
-                            <div class="cus-profile">
+                            <div class="cus-profile" >
     <img src="' . base_url() . 'assets/img/cam.png" title="Upload Company Logo" alt="cameraimage">
     </div>
                                         </div>';
@@ -2197,7 +2197,7 @@ class Recruiter extends MY_Controller {
 
                         $rec_post .= '<div class="post-img">
                             
-                                            <a href="javascript:void(0);" onclick="upload_company_logo(' . $post['user_id'] . ');" title="Upload Company Logo">';
+                                            <a href="javascript:void(0);"  title="Upload Company Logo">';
                         if ($cache_time_1) {
 
                             if (IMAGEPATHFROM == 'upload') {
@@ -2224,7 +2224,7 @@ class Recruiter extends MY_Controller {
                             $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                         }
                         $rec_post .= '</a>
-                            <div class="cus-profile">
+                            <div class="cus-profile" onclick="upload_company_logo(' . $post['user_id'] . ');">
     <img src="' . base_url() . 'assets/img/cam.png" alt="cameraimage">
     </div>
                                         </div>';
