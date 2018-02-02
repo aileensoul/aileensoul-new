@@ -63,6 +63,7 @@
             var app = angular.module('businessCategoryApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/business/searchBusiness.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/webpage/business/category.js?ver=' . time()) ?>"></script>
     </body>
 </html>
