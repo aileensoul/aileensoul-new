@@ -157,7 +157,7 @@
                                 </div>
                                 <ul class="all-pr-list">
                                     <li>
-                                        <a href="<?php echo base_url('job'); ?>" title="Job">
+                                        <a href="<?php echo base_url('job'); ?>" title="Job Profile">
                                             <div class="all-pr-img">
                                                 <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="<?php echo "JOABIMAGE"?>">
                                             </div>
