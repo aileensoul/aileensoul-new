@@ -2225,7 +2225,7 @@ class Recruiter extends MY_Controller {
                         }
                         $rec_post .= '</a>
                             <div class="cus-profile" onclick="upload_company_logo(' . $post['user_id'] . ');">
-    <img src="' . base_url() . 'assets/img/cam.png" alt="cameraimage">
+    <img src="' . base_url() . 'assets/img/cam.png" title="Upload Company Logo" alt="cameraimage">
     </div>
                                         </div>';
 
