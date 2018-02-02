@@ -6,84 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="<?php echo base_url('8/ninja-slider.css'); ?>" rel="stylesheet" type="text/css" />
     <script src="<?php echo base_url('8/ninja-slider.js');?>" type="text/javascript"></script>
-<!--       <script>
-        function lightbox(idx) {
-            //show the slider's wrapper: this is required when the transitionType has been set to "slide" in the ninja-slider.js
-            var ninjaSldr = document.getElementById("ninja-slider");
-            ninjaSldr.parentNode.style.display = "block";
 
-            nslider.init(idx);
-
-            var fsBtn = document.getElementById("fsBtn");
-            fsBtn.click();
-        }
-
-        function fsIconClick(isFullscreen, ninjaSldr) { //fsIconClick is the default event handler of the fullscreen button
-            if (isFullscreen) {
-                ninjaSldr.parentNode.style.display = "none";
-            }
-        }
-    </script>-->
     </head>
     <body>
         <?php echo $header_profile; ?>
-       <header>
-        <a href="demo1.html">1</a>
-        <a href="demo2.html">2</a>
-        <a href="demo3.html">3</a>
-        <a href="demo4.html">4</a>
-        <a href="demo5.html">5</a>
-        <a href="demo6.html">6</a>
-        <a href="demo7.html">7</a>
-        <a href="demo8.html" class="active">8</a>
-        <a href="demo9.html">9</a>
-        <a href="demo10.html">10</a>
-    </header>
     <!--start-->
-    <div style="display:none;">
-        <div id="ninja-slider">
-            <div class="slider-inner">
-                <ul>
-                    <li>
-                        <a class="ns-img" href="<?php echo base_url() . 'assets/image8/abc.jpg'; ?>"></a>
-                        <div class="caption">
-                            <h3>Dummy Caption 1</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus accumsan purus.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="ns-img" href="<?php echo base_url() . 'assets/image8/a.jpg'; ?>"></a>
-                        <div class="caption">
-                            <h3>Dummy Caption 2</h3>
-                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="ns-img" style="background-image:url(<?php echo base_url() . 'assets/image8/b.jpg' ?>);"></span>
-                        <div class="caption">
-                            <h3>Dummy Caption 3</h3>
-                            <p>Duis fringilla arcu convallis urna commodo, et tempus velit posuere.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="ns-img" href="<?php echo base_url() . 'assets/image8/c.jpg'; ?>"></a>
-                        <div class="caption">
-                            <h3>Dummy Caption 4</h3>
-                            <p>Quisque semper dolor sed neque consequat scelerisque at sed ex. Nam gravida massa.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="ns-img" href="<?php echo base_url() . 'assets/image8/d.jpg'; ?>"></a>
-                        <div class="caption">
-                            <h3>Dummy Caption 5</h3>
-                            <p>Proin non dui at metus suscipit bibendum.</p>
-                        </div>
-                    </li>
-                </ul>
-                <div id="fsBtn" class="fs-icon" title="Expand/Close"></div>
-            </div>
-        </div>
-    </div>
+
     <div style="max-width:700px;margin:90px auto;">
         <h2>DEMO: Click Gallery Images to Popup Lightbox</h2>
         <br /><br />
