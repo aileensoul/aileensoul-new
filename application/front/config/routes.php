@@ -108,7 +108,7 @@ $route['profiles/(:any)'] = "dashboard";
 $route['business-profile'] = "business/index";
 $route['business-profile/category'] = "business/category";
 $route['business-profile/category/(:any)'] = "business/categoryBusinessList/$1";
-//$route['business-profile/(:any)'] = "business/business_search/$1";
+$route['business-profile/search(:any)'] = "business/business_search?$1";
 
 
 $route['business-profile/reactivate'] = "business_profile/reactivate";
