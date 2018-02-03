@@ -89,11 +89,8 @@ class Business extends MY_Controller {
         $this->data['search_banner'] = $this->load->view('business/search_banner', $this->data, TRUE);
         $category_id = $this->db->select('industry_id')->get_where('industry_type', array('industry_slug' => $category))->row_array('industry_id');
         $this->data['category_id'] = $category_id['industry_id'];
-        $searchdata = $this->uri->segment('2');
-        $searchData = explode('-', $searchdata);
-        $this->data['business'] = $searchData[0];
-        $this->data['location'] = array_reverse($searchData)[0];
-
+        $this->data['q'] = $_GET['q'];
+        $this->data['l'] = $_GET['l'];
         $this->load->view('business/search', $this->data);
     }
 
@@ -116,6 +113,13 @@ class Business extends MY_Controller {
     public function businessListByCategory($id = '0') {
         $businessListByCategory = $this->business_model->businessListByCategory($id);
         echo json_encode($businessListByCategory);
+    }
+
+    public function searchBusinessData() {
+        $keyword = $_GET['q'];
+        $city = $_GET['l'];
+        $searchBusinessData = $this->business_model->searchBusinessData($keyword,$city);
+        echo json_encode($searchBusinessData);
     }
 
     public function industry_slug() {
