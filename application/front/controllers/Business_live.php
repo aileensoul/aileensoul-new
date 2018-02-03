@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Business extends MY_Controller {
+class Business_live extends MY_Controller {
 
     public $data;
 
@@ -35,9 +35,9 @@ class Business extends MY_Controller {
         $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
-        $this->data['search_banner'] = $this->load->view('business/search_banner', $this->data, TRUE);
+        $this->data['search_banner'] = $this->load->view('business_live/search_banner', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
-        $this->load->view('business/index', $this->data);
+        $this->load->view('business_live/index', $this->data);
     }
 
     public function category() {
@@ -51,9 +51,9 @@ class Business extends MY_Controller {
         $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
-        $this->data['search_banner'] = $this->load->view('business/search_banner', $this->data, TRUE);
+        $this->data['search_banner'] = $this->load->view('business_live/search_banner', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
-        $this->load->view('business/category', $this->data);
+        $this->load->view('business_live/category', $this->data);
     }
 
     public function categoryBusinessList($category = '') {
@@ -68,10 +68,10 @@ class Business extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
-        $this->data['search_banner'] = $this->load->view('business/search_banner', $this->data, TRUE);
+        $this->data['search_banner'] = $this->load->view('business_live/search_banner', $this->data, TRUE);
         $category_id = $this->db->select('industry_id')->get_where('industry_type', array('industry_slug' => $category))->row_array('industry_id');
         $this->data['category_id'] = $category_id['industry_id'];
-        $this->load->view('business/categoryBusinessList', $this->data);
+        $this->load->view('business_live/categoryBusinessList', $this->data);
     }
 
     public function business_search() {
@@ -86,12 +86,12 @@ class Business extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
-        $this->data['search_banner'] = $this->load->view('business/search_banner', $this->data, TRUE);
+        $this->data['search_banner'] = $this->load->view('business_live/search_banner', $this->data, TRUE);
         $category_id = $this->db->select('industry_id')->get_where('industry_type', array('industry_slug' => $category))->row_array('industry_id');
         $this->data['category_id'] = $category_id['industry_id'];
         $this->data['q'] = $_GET['q'];
         $this->data['l'] = $_GET['l'];
-        $this->load->view('business/search', $this->data);
+        $this->load->view('business_live/search', $this->data);
     }
 
     public function businessCategory() {
