@@ -108,7 +108,7 @@ $route['profiles/(:any)'] = "dashboard";
 $route['business-profile'] = "business/index";
 $route['business-profile/category'] = "business/category";
 $route['business-profile/category/(:any)'] = "business/categoryBusinessList/$1";
-$route['business-profile/search(:any)'] = "business/business_search?$1";
+$route['business-profile/search'] = "business/business_search";
 
 
 $route['business-profile/reactivate'] = "business_profile/reactivate";
@@ -264,7 +264,15 @@ $route['freelance-work/profile/live-post/(:any)'] = "freelancer/registation/$1";
 //ARTISTIC ROUTES SETTINGS
 
 
-$route['artist'] = "artist/index";
+//$route['artist'] = "artist/index";
+$route['artist'] = "artistic/index";
+$route['artist/category'] = "artistic/category";
+$route['artist/category/(:any)'] = "artistic/categoryArtistList/$1";
+$route['artist/search'] = "artistic/artist_search";
+
+
+
+
 $route['artist/artistic-basic-information-insert'] = "artist/art_basic_information_insert";
 $route['artist/artistic-information-update'] = "artist/art_basic_information_update";
 
