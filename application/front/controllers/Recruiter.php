@@ -2043,11 +2043,13 @@ class Recruiter extends MY_Controller {
 
                             $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '" alt="commonimage">';
                         }
-                        $rec_post .= '</a>
-                            <div class="cus-profile" >
+                        $rec_post .= '</a>';
+                        if ($this->session->userdata('aileenuser') == $post['user_id']) {
+                            $rec_post .= '<div class="cus-profile" >
     <img src="' . base_url() . 'assets/img/cam.png" title="Upload Company Logo" alt="cameraimage">
-    </div>
-                                        </div>';
+    </div>';
+                        }
+                        $rec_post .= '</div>';
 
 
                         $cache_time1 = $this->db->get_where('recruiter', array(
@@ -5437,11 +5439,11 @@ class Recruiter extends MY_Controller {
                     'comp_logo' => ''
                 );
             }
-          
+
             $insert_id = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
             if ($insert_id) {
                 $data = "sucess";
-               // echo $data;
+                // echo $data;
 
                 $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
                 $recruiterpostdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'comp_logo', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -5452,11 +5454,11 @@ class Recruiter extends MY_Controller {
                 $data = "error";
                 echo $data;
             }
-        }else{
+        } else {
             $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
-                $recruiterpostdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'comp_logo', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-                $userimage .= '<a href="javascript:void(0);" onclick="upload_company_logo();" title="Upload Company Logo"><img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $recruiterpostdata[0]['comp_logo'] . '" alt="" ></a>';
-                echo $userimage; 
+            $recruiterpostdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'comp_logo', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+            $userimage .= '<a href="javascript:void(0);" onclick="upload_company_logo();" title="Upload Company Logo"><img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $recruiterpostdata[0]['comp_logo'] . '" alt="" ></a>';
+            echo $userimage;
         }
     }
 

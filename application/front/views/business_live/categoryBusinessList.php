@@ -127,7 +127,7 @@
                                     var app = angular.module('businessListApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/business/searchBusiness.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/business/categoryBusinessList.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/business-live/searchBusiness.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/business-live/categoryBusinessList.js?ver=' . time()) ?>"></script>
     </body>
 </html>

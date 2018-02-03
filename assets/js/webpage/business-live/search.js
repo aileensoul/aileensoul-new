@@ -1,13 +1,13 @@
 app.controller('businessSearchListController', function ($scope, $http) {
     $scope.businessCategory = {};
     function businessCategory() {
-        $http.get(base_url + "business/businessCategory?limit=24").then(function (success) {
+        $http.get(base_url + "business_live/businessCategory?limit=24").then(function (success) {
             $scope.businessCategory = success.data;
         }, function (error) {});
     }
     businessCategory();
     function otherCategoryCount() {
-        $http.get(base_url + "business/otherCategoryCount").then(function (success) {
+        $http.get(base_url + "business_live/otherCategoryCount").then(function (success) {
             $scope.otherCategoryCount = success.data;
         }, function (error) {});
     }
@@ -15,11 +15,11 @@ app.controller('businessSearchListController', function ($scope, $http) {
     function searchBusiness() {
         var search_data_url = '';
         if (q != '' && l == '') {
-            search_data_url = base_url + 'business/searchBusinessData?q=' + q;
+            search_data_url = base_url + 'business_live/searchBusinessData?q=' + q;
         } else if (q == '' && l != '') {
-            search_data_url = base_url + 'business/searchBusinessData?l=' + l;
+            search_data_url = base_url + 'business_live/searchBusinessData?l=' + l;
         } else {
-            search_data_url = base_url + 'business/searchBusinessData?q=' + q + '&l=' + l;
+            search_data_url = base_url + 'business_live/searchBusinessData?q=' + q + '&l=' + l;
         }
         
         $http.get(search_data_url).then(function (success) {
