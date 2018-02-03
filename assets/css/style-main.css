@@ -307,8 +307,7 @@ header h2{
 }
 .main-login .middle-main{
     padding:100px 0 50px;
-    background:url(../img/bg.png) no-repeat;
-    background-size:100%
+   
 }
 .main-login .middle-main .container{
     height:100%;
@@ -1668,9 +1667,11 @@ input.form-control{
     box-shadow:none!important;
     -webkit-appearance:none
 }
-.mid-trns{
+.main-login .mid-trns{
     width:100%;
-    float:left
+    float:left;
+	 background:url(../img/bg.png) no-repeat;
+    background-size:100%
 }
 .main-login header{
     padding:18px 0
