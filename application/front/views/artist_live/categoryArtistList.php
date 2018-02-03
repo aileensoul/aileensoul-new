@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="businessSearchListApp" ng-controller="businessSearchListController">
+<html lang="en" ng-app="businessListApp" ng-controller="businessListController">
     <head>
         <title ng-bind="title"></title>
         <meta charset="utf-8">
@@ -78,12 +78,12 @@
                         <div class="search-business-top">
                             <div class="bus-cover no-cover-upload">
                                 <a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-if="business.profile_background"><img ng-src="<?php echo BUS_BG_MAIN_UPLOAD_URL ?>{{business.profile_background}}"></a>
-                                <a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-if="!business.profile_background"><img ng-src="<?php echo BASEURL.WHITEIMAGE ?>"></a>
+                                <a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-if="!business.profile_background"><img ng-src="<?php echo BASEURL . WHITEIMAGE ?>"></a>
                             </div>
                             <div class="all-job-top">
                                 <div class="post-img">
                                     <a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-if="business.business_user_image"><img ng-src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{business.business_user_image}}"></a>
-                                    <a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-if="!business.business_user_image"><img ng-src="<?php echo BASEURL.NOBUSIMAGE ?>"></a>
+                                    <a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-if="!business.business_user_image"><img ng-src="<?php echo BASEURL . NOBUSIMAGE ?>"></a>
                                 </div>
                                 <div class="job-top-detail">
                                     <h5><a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-bind="business.company_name"></a></h5>
@@ -96,7 +96,7 @@
                             <ul class="search-detail">
                                 <li ng-if="business.contact_website"><span class="img"><img class="pr10" ng-src="<?php echo base_url('assets/n-images/website.png') ?>"></span> <p class="detail-content"><a ng-href="{{business.contact_website}}" target="_self" ng-bind="business.contact_website"></a></p></li>
                                 <li><span class="img"><img class="pr10" ng-src="<?php echo base_url('assets/n-images/location.png') ?>"></span> <p class="detail-content"><span ng-bind="business.city"></span><span ng-if="business.city">,(</span><span ng-bind="business.country">India</span><span ng-if="business.city">)</span></p></li>
-                                <li ng-if="business.details"><span class="img"><img class="pr10" ng-src="<?php echo base_url('assets/n-images/exp.png') ?>"></span><p class="detail-content">{{business.details | limitTo:110}}...<a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}"> Read more</a></p></li>
+                                <li ng-if="business.details"><span class="img"><img class="pr10" ng-src="<?php echo base_url('assets/n-images/exp.png') ?>"></span><p class="detail-content">{{business.details| limitTo:110}}...<a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}"> Read more</a></p></li>
                             </ul>
                         </div>
                     </div>
@@ -115,19 +115,19 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
         <script>
                                     var base_url = '<?php echo base_url(); ?>';
                                     var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
                                     var title = '<?php echo $title; ?>';
                                     var header_all_profile = '<?php echo $header_all_profile; ?>';
                                     var category_id = '<?php echo $category_id; ?>';
-                                    var q = '<?php echo $q; ?>';
-                                    var l = '<?php echo $l; ?>';
-                                    var app = angular.module('businessSearchListApp', ['ui.bootstrap']);
-        </script>   
+                                    var q = '';
+                                    var l = '';
+                                    var app = angular.module('artistListApp', ['ui.bootstrap']);
+        </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/business/searchBusiness.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/business/search.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/artist-live/searchBusiness.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/artist-live/categoryBusinessList.js?ver=' . time()) ?>"></script>
     </body>
 </html>

@@ -1,4 +1,4 @@
-<div class="search-banner" ng-controller="searchBusinessController">
+<div class="search-banner" ng-controller="searchArtistController">
     <div class="container">
         <div class="text-right pt20">
             <a class="btn5" href="<?php echo base_url('artist/registration') ?>">Create Artist Profile</a>

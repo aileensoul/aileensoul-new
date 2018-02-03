@@ -1,13 +1,13 @@
 app.controller('artistCategoryController', function ($scope, $http) {
     $scope.artistAllCategory = {};
     function artistAllCategory(){
-        $http.get(base_url + "artistic/artistAllCategory").then(function (success) {
+        $http.get(base_url + "artist_live/artistAllCategory").then(function (success) {
             $scope.artistAllCategory = success.data;
         }, function (error) {});
     }
     artistAllCategory();
     function otherCategoryCount(){
-        $http.get(base_url + "artistic/otherCategoryCount").then(function (success) {
+        $http.get(base_url + "artist_live/otherCategoryCount").then(function (success) {
             $scope.otherCategoryCount = success.data;
         }, function (error) {});
     }

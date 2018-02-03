@@ -105,10 +105,10 @@ $route['profiles/(:any)'] = "dashboard";
 
 
 //$route['business-profile'] = "business_profile/index";
-$route['business-profile'] = "business/index";
-$route['business-profile/category'] = "business/category";
-$route['business-profile/category/(:any)'] = "business/categoryBusinessList/$1";
-$route['business-profile/search'] = "business/business_search";
+$route['business-profile'] = "business_live/index";
+$route['business-profile/category'] = "business_live/category";
+$route['business-profile/category/(:any)'] = "business_live/categoryBusinessList/$1";
+$route['business-profile/search'] = "business_live/business_search";
 
 
 $route['business-profile/reactivate'] = "business_profile/reactivate";
@@ -265,10 +265,10 @@ $route['freelance-work/profile/live-post/(:any)'] = "freelancer/registation/$1";
 
 
 //$route['artist'] = "artist/index";
-$route['artist'] = "artistic/index";
-$route['artist/category'] = "artistic/category";
-$route['artist/category/(:any)'] = "artistic/categoryArtistList/$1";
-$route['artist/search'] = "artistic/artist_search";
+$route['artist'] = "artist_live/index";
+$route['artist/category'] = "artist_live/category";
+$route['artist/category/(:any)'] = "artist_live/categoryArtistList/$1";
+$route['artist/search'] = "artist_live/artist_search";
 
 
 

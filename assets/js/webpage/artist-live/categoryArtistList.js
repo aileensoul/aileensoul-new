@@ -1,23 +1,23 @@
-app.controller('businessListController', function ($scope, $http) {
-    $scope.businessCategory = {};
-    function businessCategory(){
-        $http.get(base_url + "business/businessCategory?limit=24").then(function (success) {
-            $scope.businessCategory = success.data;
+app.controller('artistListController', function ($scope, $http) {
+    $scope.artistCategory = {};
+    function artistCategory(){
+        $http.get(base_url + "artist_live/artistCategory?limit=24").then(function (success) {
+            $scope.artistCategory = success.data;
         }, function (error) {});
     }
-    businessCategory();
+    artistCategory();
     function otherCategoryCount(){
-        $http.get(base_url + "business/otherCategoryCount").then(function (success) {
+        $http.get(base_url + "artist_live/otherCategoryCount").then(function (success) {
             $scope.otherCategoryCount = success.data;
         }, function (error) {});
     }
     otherCategoryCount();
-    function categoryBusinessList(){
-        $http.get(base_url + "business/businessListByCategory/" + category_id).then(function (success) {
-            $scope.businessList = success.data;
+    function categoryArtistList(){
+        $http.get(base_url + "artist_live/artistListByCategory/" + category_id).then(function (success) {
+            $scope.artistList = success.data;
         }, function (error) {});
     }
-    categoryBusinessList();
+    categoryArtistList();
     
 });
 

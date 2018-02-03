@@ -167,7 +167,7 @@
                                             var app = angular.module('artistApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/artistic/searchArtist.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/artistic/index.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/artist-live/searchArtist.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/artist-live/index.js?ver=' . time()) ?>"></script>
     </body>
 </html>

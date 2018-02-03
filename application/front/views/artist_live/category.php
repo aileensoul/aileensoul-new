@@ -66,7 +66,7 @@
                                             var app = angular.module('artistCategoryApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/artistic/searchArtist.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/artistic/category.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/artist-live/searchArtist.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/artist-live/category.js?ver=' . time()) ?>"></script>
     </body>
 </html>
