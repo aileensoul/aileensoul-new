@@ -36,7 +36,7 @@ class Business_live extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['search_banner'] = $this->load->view('business_live/search_banner', $this->data, TRUE);
-        $this->data['title'] = "Opportunities | Aileensoul";
+        $this->data['title'] = "Business Profile | Aileensoul";
         $this->load->view('business_live/index', $this->data);
     }
 
@@ -52,7 +52,7 @@ class Business_live extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['search_banner'] = $this->load->view('business_live/search_banner', $this->data, TRUE);
-        $this->data['title'] = "Opportunities | Aileensoul";
+        $this->data['title'] = "Categories - Business Profile | Aileensoul";
         $this->load->view('business_live/category', $this->data);
     }
 
@@ -67,7 +67,7 @@ class Business_live extends MY_Controller {
         $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
-        $this->data['title'] = "Opportunities | Aileensoul";
+        $this->data['title'] = "Category - Business Profile | Aileensoul";
         $this->data['search_banner'] = $this->load->view('business_live/search_banner', $this->data, TRUE);
         $category_id = $this->db->select('industry_id')->get_where('industry_type', array('industry_slug' => $category))->row_array('industry_id');
         $this->data['category_id'] = $category_id['industry_id'];
@@ -85,7 +85,7 @@ class Business_live extends MY_Controller {
         $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
-        $this->data['title'] = "Opportunities | Aileensoul";
+        $this->data['title'] = "Search - Business Profile | Aileensoul";
         $this->data['search_banner'] = $this->load->view('business_live/search_banner', $this->data, TRUE);
         $category_id = $this->db->select('industry_id')->get_where('industry_type', array('industry_slug' => $category))->row_array('industry_id');
         $this->data['category_id'] = $category_id['industry_id'];
