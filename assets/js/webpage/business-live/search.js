@@ -1,4 +1,5 @@
 app.controller('businessSearchListController', function ($scope, $http) {
+    $scope.title = title;
     $scope.businessCategory = {};
     function businessCategory() {
         $http.get(base_url + "business_live/businessCategory?limit=24").then(function (success) {

@@ -1,4 +1,5 @@
 app.controller('businessController', function ($scope, $http) {
+    $scope.title = title;
     $scope.businessCategory = {};
     
     function businessCategory(){

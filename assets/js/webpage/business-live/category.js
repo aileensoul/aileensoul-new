@@ -1,4 +1,5 @@
 app.controller('businessCategoryController', function ($scope, $http) {
+    $scope.title = title;
     $scope.businessAllCategory = {};
     function businessAllCategory(){
         $http.get(base_url + "business_live/businessAllCategory").then(function (success) {

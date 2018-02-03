@@ -36,7 +36,7 @@ class Artist_live extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['search_banner'] = $this->load->view('artist_live/search_banner', $this->data, TRUE);
-        $this->data['title'] = "Opportunities | Aileensoul";
+        $this->data['title'] = "Artist Profile | Aileensoul";
         $this->load->view('artist_live/index', $this->data);
     }
 
@@ -52,11 +52,11 @@ class Artist_live extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['search_banner'] = $this->load->view('artist_live/search_banner', $this->data, TRUE);
-        $this->data['title'] = "Opportunities | Aileensoul";
+        $this->data['title'] = "Categories - Artist Profile | Aileensoul";
         $this->load->view('artist_live/category', $this->data);
     }
 
-    public function categoryArtisticList($category = '') {
+    public function categoryArtistList($category = '') {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
         $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
@@ -74,7 +74,7 @@ class Artist_live extends MY_Controller {
         $this->load->view('artist_live/categoryBusinessList', $this->data);
     }
 
-    public function business_search() {
+    public function artist_search() {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
         $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
@@ -110,16 +110,16 @@ class Artist_live extends MY_Controller {
         echo $otherCategoryCount;
     }
 
-    public function businessListByCategory($id = '0') {
-        $businessListByCategory = $this->artistic_model->businessListByCategory($id);
-        echo json_encode($businessListByCategory);
+    public function artistListByCategory($id = '0') {
+        $artistListByCategory = $this->artistic_model->artistListByCategory($id);
+        echo json_encode($artistListByCategory);
     }
 
-    public function searchBusinessData() {
+    public function searchArtistData() {
         $keyword = $_GET['q'];
         $city = $_GET['l'];
-        $searchBusinessData = $this->artistic_model->searchBusinessData($keyword,$city);
-        echo json_encode($searchBusinessData);
+        $searchArtistData = $this->artistic_model->searchArtistData($keyword,$city);
+        echo json_encode($searchArtistData);
     }
 
     public function art_category_slug() {

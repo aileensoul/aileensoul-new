@@ -1,4 +1,5 @@
 app.controller('artistListController', function ($scope, $http) {
+    $scope.title = title;
     $scope.artistCategory = {};
     function artistCategory(){
         $http.get(base_url + "artist_live/artistCategory?limit=24").then(function (success) {

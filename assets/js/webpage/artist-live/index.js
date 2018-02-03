@@ -1,4 +1,5 @@
 app.controller('artistController', function ($scope, $http) {
+    $scope.title = title;
     $scope.artistCategory = {};
     
     function artistCategory(){
