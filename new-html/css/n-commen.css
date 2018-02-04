@@ -936,7 +936,7 @@ footer ul li a:hover{
 
 /***  end center title  ***/
 /***  sub header  ***/
-.sub-header{width:100%; float:left; border-bottom:1px solid #d2d2d2; padding-top:48px; position:fixed; background:#fff;}
+.sub-header{width:100%; float:left; border-bottom:1px solid #d2d2d2; padding-top:55px; position:fixed; background:#fff; z-index:99;}
 .sub-header .sub-menu{padding:10px 0; margin:0; width:100%; float:left;}
 .sub-header .sub-menu li{list-style-type:none; float:left; padding:0px 25px;}
 .sub-header .sub-menu li:first-child{padding-left:0;}
@@ -944,7 +944,7 @@ footer ul li a:hover{
 .sub-header .sub-menu li > a i{padding-right:10px; font-size:16px;}
 .sub-header .sub-menu li a .fa{font-size:16px;}
 .sub-menu .user-id .user-id-custom::after{margin-top:0; position:relative; top:-3px;}
-.sub-menu .noti-box{left:7px; color:#fff; top:-10px;}
+.sub-menu .noti-box{left:32px; color:#fff; top:-5px;}
 .sub-header .dropdown .dropdown-menu{}
 .sub-header .dropdown.open .dropdown-menu{width:360px;}
 .sub-header .dropdown.open .dropdown-menu{left:0; top:32px; margin:0;}
@@ -1033,7 +1033,7 @@ footer ul li a:hover{
 /***  mob search  ***/
 .mobile-header{/*display:none;*/}
 .mobile-header header h2{padding-right:16px;}
-.search-mob-block{ width:80%;float:left; padding-top:2px;
+.search-mob-block{ width:85%;float:left; padding-top:2px;
     /*display:none*/
 }
 .mobile-header #search{
@@ -1118,6 +1118,10 @@ footer ul li a:hover{
 .mobile-header #search form .new-search-input{width:75%; float:left; padding-right:10px;}
 .mobile-header #search form .new-search-btn{width:25%; float:left;}
 .mobile-header #search form .new-search-btn button{position:relative; margin:5px 0; padding:7px 12px; height:35px; border:1px solid #d2d2d2;}
+.mobile-header .sub-header .dropdown.open .dropdown-menu{left:auto; top:25px; margin:0; right:10px;}
+.mobile-header{display:none;}
+.mobile-header .sub-header{padding-top:48px;}
+.mobile-header .sub-menu .noti-box{left:7px; color:#fff; top:-10px;}
 /*** end mob search  ***/
 /***  media query  ***/
 @media screen and (min-width: 768px) {
@@ -1142,10 +1146,15 @@ footer ul li a:hover{
 }
 
 @media screen and (max-width: 1279px) {
+	.sub-header .sub-menu li > a i{padding-right:5px;}
+	.sub-header .sub-menu li{padding:0px 20px;}
+	
 
 }
 @media screen and (max-width: 1199px) {
 	.left-header form{width:65%;}
+	.sub-header .sub-menu li{padding:0px 9px}
+	.sub-menu .noti-box{left:17px;}
 }
 @media screen and (max-width: 1024px) {
 
@@ -1154,24 +1163,29 @@ footer ul li a:hover{
 	.right-header ul li{padding:0 5px;}
 	.left-header form{width:54%;}
 	.left-header input[type="text"]{width:110px;}
-
+	.web-header{display:none;}
+	.mobile-header{display:block;}
+	.mobile-header header h2{padding-right:10px;}
+	.mobile-header header{padding:5px 0;}
+	.mobile-header .left-header{width:100%; float:left;}
+	.mobile-header .left-header form{margin:0 auto; float:none;}
+	.mobile-header .left-header input[type="text"]{width:100%; margin-bottom:5px;}
 }
 @media screen and (max-width: 767px) {
+	/*header{position:relative;}*/
     html{position:inherit;}
 	.container {
         width: 100%;
     }
-	.mobile-header header h2{padding-right:10px;}
-	.mobile-header header{padding:5px 0;}
-	.mobile-header .left-header{width:100%; float:left;}
-
+	.search-mob-block{width:80%;}
+	.modal-dialog{margin:15px 0;}
 	
-	
-	.mobile-header .left-header form{margin:0 auto; float:none;}
-	.mobile-header .left-header input[type="text"]{width:100%; margin-bottom:5px;}
 	
 }
 @media screen and (max-width: 639px) {
+	.modal-content{width:90%;}
+	.post-popup-box .post-box .post-text{width:85%;}
+	.modal-content .post-field label{font-size:14px;}
 	
 
 }
@@ -1179,10 +1193,13 @@ footer ul li a:hover{
 	.search-mob-block{width:76%;}
 }
 @media screen and (max-width: 479px) {
+	.none-479{display:none !important;}
 	.search-mob-block{width:67%;}
 	.bus-only .none-sub-menu{display:none;}
 	.mobile-header .sub-header.bus-only .sub-menu li{width:20%;}
 	.mobile-header .sub-header.bus-only .sub-menu li:first-child{width:40%;}
+	.modal-content .post-field label{font-size:12px;}
+	
 
 }
 @media screen and (max-width: 359px) {
@@ -1190,6 +1207,8 @@ footer ul li a:hover{
 	.none-sub-menu{display:none;}
 	.mobile-header .sub-header .sub-menu li{width:27%;}
 	.mobile-header .sub-header .sub-menu li:first-child{width:45%;}
+	
+	
 }
 @media screen and (max-width: 320px) {
 
