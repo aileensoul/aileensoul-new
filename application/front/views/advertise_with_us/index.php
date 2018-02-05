@@ -218,7 +218,8 @@ header('Cache-Control: public, max-age=30');
         <div class="middle-section">
 
             <div class="add-banner">
-                <img src="<?php echo base_url('assets/n-images/add-with-us.jpg') ?>">
+                <img src="<?php echo base_url('assets/n-images/add-with-us.jpg') ?>" alt="Advertise With Us">
+                <h1>Promote Your Business With Aileensoul</h1>
             </div>
             <div class="container">
                 <div class="add-form">
@@ -253,7 +254,7 @@ header('Cache-Control: public, max-age=30');
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12 text-right">
-                                    <input type="submit" id="submit" name="submit" value="Send">
+                                    <input type="submit" class="btn1" id="submit" name="submit" value="Send">
                                 </div>
 
                             </div>
