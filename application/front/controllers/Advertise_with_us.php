@@ -23,26 +23,22 @@ class Advertise_with_us extends CI_Controller {
     }
 
     public function advertise_insert() {
-        $feedback_firstname = $_POST['feedback_firstname'];
-        $feedback_lastname = $_POST['feedback_lastname'];
-        $feedback_email = $_POST['feedback_email'];
-        $subject = $_POST['feedback_subject'];
-        $message = $_POST['feedback_message'];
-        $toemail = "dshah1341@gmail.com";
-        $touser =  $_POST['feedback_email'];       
-
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+        
         $data = array(
-            'first_name' => $feedback_firstname,
-            'last_name' => $feedback_lastname,
-            'user_email' => $feedback_email,
-            'subject' => $subject,
-            'description' => $message,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'email' => $email,
+            'message' => $message,
             'created_date' => date('Y-m-d H:i:s', time()),
-            'is_delete' => '0'
+            'status' => '1'
         );
-        $insert_id = $this->common->insert_data_getid($data, 'feedback');
+        $insert_id = $this->common->insert_data_getid($data, 'advertise_with_us');
         if ($insert_id) {
-
+            echo 'ok';
         }
     }
 

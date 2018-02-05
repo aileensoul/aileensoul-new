@@ -222,33 +222,29 @@ header('Cache-Control: public, max-age=30');
             <div class="container">
                 <div class="add-form">
                     <h3>Advertise With Us</h3>
-                    <form>
+                    <form name="advertise" id="advertise" method="POST">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="First Name">
+                                    <input type="text" id="firstname" name="firstname" placeholder="First Name">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="Last Name">
+                                    <input type="text" id="lastname" name="lastname"  placeholder="Last Name">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="text" placeholder="Email Address">
+                                    <input type="text" id="email" name="email" placeholder="Email Address">
                                 </div>
 
                             </div>
                         </div>
-
-
-
-
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <textarea placeholder="Your Requirement"></textarea>
+                                    <textarea id="message" name="message" placeholder="Your Requirement"></textarea>
                                 </div>
 
                             </div>
@@ -256,7 +252,7 @@ header('Cache-Control: public, max-age=30');
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12 text-right">
-                                    <a href="" class="btn1">Send</a>
+                                    <input type="submit" id="submit" name="submit" value="Send">
                                 </div>
 
                             </div>
@@ -265,12 +261,24 @@ header('Cache-Control: public, max-age=30');
                 </div>
             </div>
         </div>
+        <div class="modal fade message-box biderror" id="bidmodal" role="dialog"  >
+            <div class="modal-dialog modal-lm" >
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php echo $login_footer ?>
+        <script>
+            var base_url = '<?php echo base_url(); ?>';
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="js/classie.js"></script>
-        
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js?ver=<?php echo time(); ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/advertise.js?ver=' . time()); ?>); ?>"></script>
     </body>
 </html>
