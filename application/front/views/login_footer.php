@@ -35,6 +35,7 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main' || $this->u
                         <li><a title="Contact Us" href="<?php echo base_url('contact-us'); ?>"  target="_blank">Contact Us</a></li>
                         <li><a title="Blog" href="<?php echo base_url('blog'); ?>" target="_blank">Blog</a></li>
                         <li><a title="Send Us Feedback" href="<?php echo base_url('feedback'); ?>" target="_blank">Send Us Feedback</a></li>
+                        <li><a title="Advertise With Us" href="<?php echo base_url('advertise-with-us'); ?>" target="_blank">Advertise With Us</a></li>
                         <?php
                         if (!$this->session->userdata('aileenuser')) {
                             ?>

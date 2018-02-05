@@ -74,16 +74,16 @@ echo $leftmenu;
                                     <th><i class="fa fa-bullhorn"></i> 
                                         <a href="javascript:void(0);">ID.</a>
                                     </th>
-                                    <th><i class="fa fa-envelope"></i> 
+                                    <th><i class="fa fa-user"></i> 
                                         <a href="javascript:void(0);">Full Name</a>
                                     </th>
-                                    <th><i class="fa fa-fw fa-pencil"></i> 
+                                    <th><i class="fa fa-envelope"></i> 
                                         <a href="javascript:void(0);">Email</a>
                                     </th>
                                     <th><i class="fa fa-fw fa-pencil"></i> 
                                         <a href="javascript:void(0);">Message</a>
                                     </th>
-                                    <th><i class="fa fa-fw fa-pencil"></i> 
+                                    <th><i class="fa fa-fw fa-calendar"></i> 
                                         <a href="javascript:void(0);">Created_date</a>
                                     </th>
                                 </tr>
@@ -203,60 +203,4 @@ echo $leftmenu;
         $('.callout-danger').delay(3000).hide('700');
         $('.callout-success').delay(3000).hide('700');
     });
-</script>
-
-<script>
-
-//Enable search button when user write something on textbox Start
-    $(document).ready(function () {
-        $('#search_btn').attr('disabled', true);
-
-        $('#search_keyword').keyup(function ()
-        {
-            if ($(this).val().length != 0)
-            {
-                $('#search_btn').attr('disabled', false);
-            } else
-            {
-                $('#search_btn').attr('disabled', true);
-            }
-        })
-
-        $('body').on('keydown', '#search_keyword', function (e) {
-            console.log(this.value);
-            if (e.which === 32 && e.target.selectionStart === 0) {
-                return false;
-            }
-        });
-    });
-//Enable search button when user write something on textbox End
-
-// $(function() {
-
-// });
-</script>
-
-<script type="text/javascript">
-    //Delete feedback Start
-    function delete_user(feedback_id)
-    {
-
-        $('.biderror .mes').html("<div class='pop_content'>Are you Sure you want to Delete this feedback?<div class='model_ok_cancel'><a class='okbtn' id=" + feedback_id + " onClick='user_deleted(" + feedback_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-        $('#bidmodal').modal('show');
-
-    }
-//Delete feedback End
-
-    function user_deleted(feedback_id) {
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url() . "feedback/delete_user" ?>',
-            data: 'feedback_id=' + feedback_id,
-            success: function (response)
-            {
-                $('#' + 'feedbackdel' + feedback_id).remove();
-            }
-        });
-
-    }
 </script>
