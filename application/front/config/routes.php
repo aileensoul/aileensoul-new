@@ -86,6 +86,7 @@ $route['disclaimer-policy'] = "Disclaimer";
 $route['contact-us'] = "contact_us";
 $route['terms-and-condition'] = "main/terms_condition";
 $route['privacy-policy'] = "main/privacy_policy";
+$route['advertise-with-us'] = "advertise_with_us";
 
 
 $route['sitemap/job-profile'] = "sitemap/job_profile";
