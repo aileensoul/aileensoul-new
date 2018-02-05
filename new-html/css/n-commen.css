@@ -614,6 +614,7 @@ border-radius: 50%;font-size: 10px;line-height: 1.6;position: absolute;right: 8p
 .search-profiles .profile-btns{width:150px; float:left;}
 .search-profiles .profile-btns a{width:100%; padding:3px 10px; margin:3px 0;}
 .availabel-data-box h3.border-bottom-none{border-bottom:0px;}
+.search-business-top .all-job-top .post-img img{min-height:100%;}
 /***  end no data content div  ***/
 /***  background  ***/
 .no-cover-upload{

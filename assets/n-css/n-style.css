@@ -476,7 +476,9 @@ label.cameraButton input[accept*="camera"] {
     transition: 0s
 }
 /** end ripple effects  **/
-
+.main-user-option-tablet{display:none;}
+.media-pages-tablet{display:none;}
+.user-btns a.btn3 img{display:none;}
 /***  end main dashboard page  ***/
 
 /***  profile page  ***/
@@ -1168,6 +1170,14 @@ header.profile-header .logo a{color:#5c5c5c;}
 .questionSuggetion li a{font-size:15px; color:#5c5c5c;}
 .questionSuggetion li a:hover{color:#1b8ab9;}
 /***  end ask-question design  ***/
+/***  add with us  ***/
+.add-banner img{width:100%;}
+.add-with-us .add-form{width:70%; margin:50px auto 0; border:1px solid #d2d2d2; border-radius:4px;}
+.add-with-us .add-form h3{padding:10px 0; text-align:center; border-bottom:1px solid #d2d2d2;}
+.add-with-us .add-form form{padding:20px 20px 5px;}
+.add-with-us .add-form form input{border-width:0px 0px 1px 0px; padding:5px 10px; border-radius:0;}
+.add-with-us .add-form form textarea{border-width:0px 0px 1px 0px; padding:5px 10px; border-radius:0;}
+/***  end add with us  ***/
 
 /***  media query  ***/
 @media screen and (min-width: 768px) {
@@ -1215,6 +1225,19 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.inner-right-part{width: 550px; left: 0;}
 	.job-detail .post-img{width:100px; height:100px;}
 	.detail-discription .all-job-middle ul li span{width:74%;}
+	
+	.main-user-option{display:none;}
+	.main-user-option-tablet{display:block;}
+	.main-user-option-tablet{width:100%; margin:0 auto;}
+	.main-user-profile{border-bottom:0;}
+	.media-pages-tablet{display:block;}
+	.media-pages-tablet{width:100%; float:left; border-top:1px solid #d2d2d2; border-bottom:1px solid #d2d2d2; text-align:center; padding:10px 0; margin:20px 0;}
+	.media-pages-tablet ul{display:inline-block; margin-bottom:0; padding:0;}
+	.media-pages-tablet ul li{display:inline-block; padding:0 25px; list-style-type:none;}
+	.media-pages-tablet ul li a{color:#5c5c5c;}
+	.user-btns a.btn3{font-size:0; border:0; text-align:center;}
+	.user-btns a.btn3 img{display:inline-block;}
+	.user-btns a.btn3:hover{background:none;}
 }
 @media screen and (max-width: 767px) {
     .container {width: 100%;}
@@ -1233,6 +1256,11 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.main-banner{max-height:300px;}
 	.main-user-option ul li a{font-size:14px; padding:10px 3px;}
 	.post-detail{width:87%;}
+	.user-photo-name .profile-img{width:120px; height:120px; margin-top:-90px;}
+	.upload-profile{width:110px; height:110px; padding:20px 6px; font-size:14px;}
+	.upload-profile img{margin-bottom:2px;}
+	.user-photo-name h3{font-size:18px;}
+	.user-photo-name p{font-size:14px;}
 }
 @media screen and (max-width: 639px) {
 	/***  all profile  ***/
@@ -1250,7 +1278,11 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.main-banner{max-height:260px;}
 	.post-box .post-text{width:85%;}
 	.add-comment .comment-input{width:73%;}
-	
+	.post-popup-box .post-box .post-text{width:84%;}
+	.post-box-bottom ul li a{font-size:14px;}
+	.all-upload .upload_icon{margin:0 2px;}
+	.user-btns a.btn3{width:32%; margin:0;}
+	.media-pages-tablet ul li{padding:0 10px;}
 
 }
 @media screen and (max-width: 539px) {
@@ -1259,6 +1291,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 
 }
 @media screen and (max-width: 479px) {
+	
 	/***  all profile  ***/
 	.custom-box .custom-width .right-box h1 a::after{left: 50% !important; width: 150px; margin-left: -75px;}
 	.page-title h3{font-size:18px;}
@@ -1291,6 +1324,12 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.all-job-top{padding:10px;}
 	.all-job-middle{padding:10px;}
 	.job-top-detail{width:83%;}
+	.all-upload .upload_icon{font-size:12px;}
+	/*.post-box-bottom ul li:last-child{padding-left:0; padding-top:5px;}*/
+	.post-box .post-text{font-size:16px;}
+	.post-box-bottom ul li a span{padding-left:5px;}
+	.media-pages-tablet ul li a{font-size:11px;}
+	.post-box-bottom ul li a{font-size:12px;}
 }
 @media screen and (max-width: 359px) {
 	.all-job-bottom{text-align:center;}
@@ -1301,6 +1340,9 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.post-bottom .col-sm-6.col-xs-7{padding-left:5px;}
 	.post-bottom ul.bottom-right li{padding:0 5px;}
 	.comment-dis{width:85%;}
+	.post-box .post-text{font-size:14px;}
+	.media-pages-tablet ul li{padding:0 8px;}
+	.post-box-bottom ul li a img{width:12px;}
 }
 @media screen and (max-width: 320px) {
 
