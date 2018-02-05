@@ -479,6 +479,7 @@ label.cameraButton input[accept*="camera"] {
 .main-user-option-tablet{display:none;}
 .media-pages-tablet{display:none;}
 .user-btns a.btn3 img{display:none;}
+.custom-select{width:100%; float:left;}
 /***  end main dashboard page  ***/
 
 /***  profile page  ***/
@@ -1174,6 +1175,8 @@ header.profile-header .logo a{color:#5c5c5c;}
 .add-with-us .middle-section{padding-top:0px;}
 .add-banner img{width:100%;}
 .add-with-us header{background:none; position:absolute;}
+.add-banner{position:relative;}
+.add-banner h1{position:absolute; text-align:center; width:100%; color:#fff; bottom:40px; font-size:50px;}
 .add-with-us .add-form{width:50%; margin:50px auto 0; border:1px solid #d2d2d2; border-radius:4px;}
 .add-with-us .add-form h3{padding:10px 0; text-align:center; border-bottom:1px solid #d2d2d2;}
 .add-with-us .add-form form{padding:20px 20px 5px;}
@@ -1228,7 +1231,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.job-detail .post-img{width:100px; height:100px;}
 	.detail-discription .all-job-middle ul li span{width:74%;}
 	
-	.main-user-option{display:none;}
+	.main-user-option .custom-none{display:none;}
 	.main-user-option-tablet{display:block;}
 	.main-user-option-tablet{width:100%; margin:0 auto;}
 	.main-user-profile{border-bottom:0;}
@@ -1240,6 +1243,11 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.user-btns a.btn3{font-size:0; border:0; text-align:center;}
 	.user-btns a.btn3 img{display:inline-block;}
 	.user-btns a.btn3:hover{background:none;}
+	.main-user-option ul.custom-select{border-bottom:1px solid #d2d2d2;}
+	.main-user-option ul.custom-select li{width:100%; text-align:left; border-right:none; position:relative;}
+	.main-user-option ul.custom-select li a{ padding:10px 15px;}
+	.main-user-option ul.custom-select li.active::after {content: "\f078"; font-family: FontAwesome; position: absolute; top: 11px; right: 8px; color: #5c5c5c;}
+	.main-user-option ul.custom-select li.active:hover::after{color:#fff;}
 }
 @media screen and (max-width: 767px) {
     .container {width: 100%;}
