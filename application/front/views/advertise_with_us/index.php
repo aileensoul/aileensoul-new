@@ -81,17 +81,18 @@ header('Cache-Control: public, max-age=30');
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6 col-sm-6 left-header">
-                                <h2 class="logo"><a href="#">Aileensoul</a></h2>
+                                <h2 class="logo"><a href="<?php echo base_url() ?>">Aileensoul</a></h2>
                                 <!--form>
                                         <input type="text" name="search" placeholder="Search..">
                                 </form-->
                             </div>
                             <div class="col-md-6 col-sm-6 right-header text-right">
-                                <a href="#" class="btn6">Login</a>
-                                <a href="#" class="btn7">Create an account</a>
+                                <?php if (!$this->session->userdata('aileenuser')) { ?>
+                                    <a href="<?php echo base_url('login'); ?>" class="btn6">Login</a>
+                                    <a href="<?php echo base_url('registration'); ?>" class="btn7">Create an account</a>
+                                <?php } ?>
                             </div>
-
-                        </div>
+                         </div>
                     </div>
                 </div>
 

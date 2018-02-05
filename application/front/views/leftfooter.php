@@ -22,6 +22,7 @@
 
 
             <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
+            <li><a href="<?php echo base_url('advertise-with-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Advertise With Us</a></li>
 
             <li><a id="trigger" class="click-profiles" style="" href="javascript:void(0)"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Profiles <i class="fa fa-sort-asc" aria-hidden="true"></i></a>
                 <div class="click-nav"><ul id="drop" class="left-ftr-profiles">
