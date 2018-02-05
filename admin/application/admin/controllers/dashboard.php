@@ -40,8 +40,12 @@ class Dashboard extends MY_Controller {
         
         //For count User Data
         $condition_array = array('is_delete' => '0');
-        $data="user_id";
-        $this->data['user_list'] = $get_users = $this->common->select_data_by_condition('user', $condition_array, $data, $short_by, $order_by, $limit, $offset, $join_str = array());
+        $data="user.user_id";
+        $join_str[0]['table'] = 'user_login ul';
+        $join_str[0]['join_table_id'] = 'ul.user_id';
+        $join_str[0]['from_table_id'] = 'user.user_id';
+        $join_str[0]['join_type'] = '';
+        $this->data['user_list'] = $get_users = $this->common->select_data_by_condition('user', $condition_array, $data, $short_by, $order_by, $limit, $offset, $join_str);
         
         //For Count Freelancer hire Register User Data
         $condition_array = array('is_delete' => '0','free_hire_step' =>'3');
