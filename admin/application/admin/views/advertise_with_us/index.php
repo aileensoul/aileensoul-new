@@ -162,16 +162,13 @@ echo $leftmenu;
                 }
                 ?>
             </div><!-- dta_left col-md-6--> 
-
             <!-- /pagination Start-->
-
             <?php
             if ($this->pagination->create_links()) {
 
                 $tot_client = ceil($total_rows / $limit);
                 $cur_client = ceil($offset / $limit) + 1;
                 ?>
-
                 <div class="text-right data_right col-md-6">
                     <div id="example2_paginate" class="dataTables_paginate paging_simple_numbers">
                         <?php echo $this->pagination->create_links(); ?> 
@@ -179,13 +176,9 @@ echo $leftmenu;
                 </div>
             <?php } ?>
             <!-- /pagination End-->
-
         </div><!-- /.row -->
-
-
     </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
-
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
 <!-- Bid-modal  -->
 <div class="modal fade message-box biderror" id="bidmodal" role="dialog"  >
