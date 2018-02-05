@@ -99,7 +99,7 @@
                                         <form role="form" name="login_form" id="login_form" method="post">
 
                                             <div class="form-group">
-                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm email_login" placeholder="Email Address*">
+                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" autofocus="" class="form-control input-sm email_login" placeholder="Email Address*">
                                                 <div id="error2" style="display:block;">
                                                     <?php
                                                     if ($this->session->flashdata('erroremail')) {
@@ -161,7 +161,7 @@
                                         <form role="form" name="login_form_save" id="login_form_save" method="post">
 
                                             <div class="form-group">
-                                                <input type="email" value="<?php echo $email; ?>" name="email_login_save" id="email_login_save" class="form-control input-sm email_login" placeholder="Email Address*">
+                                                <input type="email" value="<?php echo $email; ?>" name="email_login_save" id="email_login_save" autofocus="" class="form-control input-sm email_login" placeholder="Email Address*">
                                                 <div id="error2" style="display:block;">
                                                     <?php
                                                     if ($this->session->flashdata('erroremail')) {
@@ -223,7 +223,7 @@
                                         <form role="form" name="login_form_apply" id="login_form_apply" method="post">
 
                                             <div class="form-group">
-                                                <input type="email" value="<?php echo $email; ?>" name="email_login_apply" id="email_login_apply" class="form-control input-sm email_login" placeholder="Email Address*">
+                                                <input type="email" value="<?php echo $email; ?>" name="email_login_apply" id="email_login_apply" autofocus="" class="form-control input-sm email_login" placeholder="Email Address*">
                                                 <div id="error2" style="display:block;">
                                                     <?php
                                                     if ($this->session->flashdata('erroremail')) {
