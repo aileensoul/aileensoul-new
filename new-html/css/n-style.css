@@ -1182,6 +1182,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 .add-with-us .add-form form{padding:20px 20px 5px;}
 .add-with-us .add-form form input{border-width:0px 0px 1px 0px; padding:5px 10px; border-radius:0;}
 .add-with-us .add-form form textarea{border-width:0px 0px 1px 0px; padding:5px 10px; border-radius:0;}
+.add-with-us .add-form form input.btn1{width:auto; border-radius:4px;}
 /***  end add with us  ***/
 
 /***  media query  ***/
