@@ -24,15 +24,15 @@
                         <div class="cat-box">
                             <ul>
                                 <li ng-repeat="category in businessAllCategory">
-                                    <a href="<?php echo base_url('business-profile/category/') ?>{{category.industry_slug}}">
-                                        <img src="<?php echo base_url('assets/n-images/car.png?ver=' . time()) ?>">
-                                        <p>{{category.industry_name}}<span>({{category.count}})</span></p>
+                                    <a ng-href="<?php echo base_url('business-profile/category/') ?>{{category.industry_slug}}">
+                                        <img ng-src="<?php echo base_url('assets/n-images/car.png?ver=' . time()) ?>" alt="{{category.industry_name}}">
+                                        <p><span ng-bind="category.industry_name"></span><span ng-bind="'(' + category.count + ')'"></span></p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo base_url('business-profile/category/other') ?>">
-                                        <img src="<?php echo base_url('assets/n-images/car.png?ver=' . time()) ?>">
-                                        <p>Other<span>({{otherCategoryCount}})</span><p>
+                                    <a ng-href="<?php echo base_url('business-profile/category/other') ?>">
+                                        <img ng-src="<?php echo base_url('assets/n-images/car.png?ver=' . time()) ?>" alt="Other">
+                                        <p>Other<span ng-bind="'(' + otherCategoryCount + ')'"></span></p>
                                     </a>
                                 </li>
                             </ul>
@@ -42,7 +42,7 @@
 
                 <div class="right-part">
                     <div class="add-box">
-                        <img src="<?php echo base_url('assets/n-images/add.jpg') ?>">
+                        <img ng-src="<?php echo base_url('assets/n-images/add.jpg?ver='.time()) ?>" alt="Advertise">
                     </div>
                 </div>
             </div>

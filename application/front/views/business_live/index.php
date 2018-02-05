@@ -26,20 +26,19 @@
                         <div class="cat-box">
                             <ul>
                                 <li ng-repeat="category in businessCategory">
-                                    <a href="<?php echo base_url('business-profile/category/') ?>{{category.industry_slug}}">
-                                        <img src="<?php echo base_url('assets/n-images/car.png') ?>">
-                                        <p>{{category.industry_name}}<span>({{category.count}})</span><p>
-
+                                    <a ng-href="<?php echo base_url('business-profile/category/') ?>{{category.industry_slug}}">
+                                        <img ng-src="<?php echo base_url('assets/n-images/car.png?ver='.time()) ?>" alt="{{category.industry_name}}">
+                                        <p><span ng-bind="category.industry_name"></span><span ng-bind="'(' + category.count + ')'"></span></p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo base_url('business-profile/category/other') ?>">
-                                        <img src="<?php echo base_url('assets/n-images/car.png') ?>">
-                                        <p>Other<span>({{otherCategoryCount}})</span><p>
+                                    <a ng-href="<?php echo base_url('business-profile/category/other') ?>">
+                                        <img ng-src="<?php echo base_url('assets/n-images/car.png?ver='.time()) ?>" alt="Other">
+                                        <p>Other<span ng-bind="'(' + otherCategoryCount + ')'"></span></p>
                                     </a>
                                 </li>
                             </ul>
-                            <p class="text-center"><a href="<?php echo base_url('business-profile/category') ?>" class="btn-1">View More</a></p>
+                            <p class="text-center"><a ng-href="<?php echo base_url('business-profile/category') ?>" title="View More" class="btn-1">View More</a></p>
                         </div>
                     </div>
                 </div>

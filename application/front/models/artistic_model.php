@@ -87,7 +87,7 @@ class Artistic_model extends CI_Model {
     }
 
     function artistListByCategory($id = '') {
-        $this->db->select("ar.art_user_image,ar.profile_background,ar.slug,ar.other_skill,CONCAT(ar.art_name,' ',ar.art_lastname) as fullname,ar.art_country,ar.art_city,ar.art_desc_art,ac.art_category,ct.city_name as city,cr.country_name as country")->from("art_reg ar");
+        $this->db->select("ar.art_user_image,ar.profile_background,ar.slug,ar.other_skill,CONCAT(ar.art_name,' ',ar.art_lastname) as fullname,ar.art_country,ar.art_city,ar.art_desc_art,ar.user_id,ac.art_category,ct.city_name as city,cr.country_name as country")->from("art_reg ar");
         $this->db->join('art_category ac', 'ac.category_id = ar.art_skill', 'left');
         $this->db->join('cities ct', 'ct.city_id = ar.art_city', 'left');
         $this->db->join('countries cr', 'cr.country_id = ar.art_country', 'left');
@@ -97,6 +97,11 @@ class Artistic_model extends CI_Model {
         $this->db->where('ar.art_step', '4');
         $query = $this->db->get();
         $result_array = $query->result_array();
+        foreach ($result_array as $key => $value) {
+            $user_id = $value['user_id'];
+            $new_slug = $this->get_artistic_slug($user_id);
+            $result_array[$key]['slug'] = $new_slug;
+        }
         return $result_array;
     }
 
@@ -117,7 +122,7 @@ class Artistic_model extends CI_Model {
 
         $artCat = $this->findArtistCategory($keyword);
 
-        $this->db->select("ar.art_user_image,ar.profile_background,ar.slug,ar.other_skill,CONCAT(ar.art_name,' ',ar.art_lastname) as fullname,ar.art_country,ar.art_city,ar.art_desc_art,ac.art_category,ct.city_name as city,cr.country_name as country")->from("art_reg ar");
+        $this->db->select("ar.art_user_image,ar.profile_background,ar.slug,ar.other_skill,CONCAT(ar.art_name,' ',ar.art_lastname) as fullname,ar.art_country,ar.art_city,ar.art_desc_art,ar.user_id,ac.art_category,ct.city_name as city,cr.country_name as country")->from("art_reg ar");
         $this->db->join('art_category ac', 'ac.category_id = ar.art_skill', 'left');
         $this->db->join('cities ct', 'ct.city_id = ar.art_city', 'left');
         $this->db->join('countries cr', 'cr.country_id = ar.art_country', 'left');
@@ -130,14 +135,60 @@ class Artistic_model extends CI_Model {
         if ($location != '') {
             $this->db->where("(ct.city_name = '$location' OR cr.country_name = '$location' OR s.state_name = '$location')");
         }
-        
+
         $this->db->where('ar.status', '1');
         $this->db->where('ar.is_delete', '0');
         $this->db->where('ar.art_step', '4');
 
         $query = $this->db->get();
         $result_array = $query->result_array();
+        foreach ($result_array as $key => $value) {
+            $user_id = $value['user_id'];
+            $new_slug = $this->get_artistic_slug($user_id);
+            $result_array[$key]['slug'] = $new_slug;
+        }
         return $result_array;
+    }
+
+    function get_artistic_slug($userid = '') {
+        $contition_array = array('user_id' => $userid, 'status' => '1');
+        $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => '1'))->row()->city_name;
+
+        $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+        $category = $arturl[0]['art_skill'];
+        $category = explode(',', $category);
+
+        foreach ($category as $catkey => $catval) {
+            $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+            $categorylist[] = $art_category;
+        }
+
+        $listfinal1 = array_diff($categorylist, array('other'));
+        $listFinal = implode('-', $listfinal1);
+
+        if (!in_array(26, $category)) {
+            $category_url = $this->common->clean($listFinal);
+        } else if ($arturl[0]['art_skill'] && $arturl[0]['other_skill']) {
+
+            $trimdata = $this->common->clean($listFinal) . '-' . $this->common->clean($art_othercategory);
+            $category_url = trim($trimdata, '-');
+        } else {
+            $category_url = $this->common->clean($art_othercategory);
+        }
+
+        $city_get = $this->common->clean($city_url);
+
+        if (!$city_get) {
+            $url = $arturl[0]['slug'] . '-' . $category_url . '-' . $arturl[0]['art_id'];
+        } else if (!$category_url) {
+            $url = $arturl[0]['slug'] . '-' . $city_get . '-' . $arturl[0]['art_id'];
+        } else if ($city_get && $category_url) {
+            $url = $arturl[0]['slug'] . '-' . $category_url . '-' . $city_get . '-' . $arturl[0]['art_id'];
+        }
+        return $url;
     }
 
 }
