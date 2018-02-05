@@ -69,9 +69,9 @@ class Artist_live extends MY_Controller {
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
         $this->data['search_banner'] = $this->load->view('artist_live/search_banner', $this->data, TRUE);
-        $category_id = $this->db->select('industry_id')->get_where('industry_type', array('industry_slug' => $category))->row_array('industry_id');
-        $this->data['category_id'] = $category_id['industry_id'];
-        $this->load->view('artist_live/categoryBusinessList', $this->data);
+        echo$category_id = $this->db->select('category_id')->get_where('art_category', array('category_slug' => $category))->row_array('category_id');
+        $this->data['category_id'] = $category_id['category_id'];
+        $this->load->view('artist_live/categoryArtistList', $this->data);
     }
 
     public function artist_search() {
@@ -87,8 +87,6 @@ class Artist_live extends MY_Controller {
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
         $this->data['search_banner'] = $this->load->view('artist_live/search_banner', $this->data, TRUE);
-        $category_id = $this->db->select('industry_id')->get_where('industry_type', array('industry_slug' => $category))->row_array('industry_id');
-        $this->data['category_id'] = $category_id['industry_id'];
         $this->data['q'] = $_GET['q'];
         $this->data['l'] = $_GET['l'];
         $this->load->view('artist_live/search', $this->data);
@@ -118,8 +116,52 @@ class Artist_live extends MY_Controller {
     public function searchArtistData() {
         $keyword = $_GET['q'];
         $city = $_GET['l'];
-        $searchArtistData = $this->artistic_model->searchArtistData($keyword,$city);
+
+        $searchArtistData = $this->artistic_model->searchArtistData($keyword, $city);
         echo json_encode($searchArtistData);
+    }
+
+    public function get_url($userid) {
+
+        $contition_array = array('user_id' => $userid, 'status' => '1');
+        $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => '1'))->row()->city_name;
+
+        $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+        $category = $arturl[0]['art_skill'];
+        $category = explode(',', $category);
+
+        foreach ($category as $catkey => $catval) {
+            $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+            $categorylist[] = $art_category;
+        }
+
+        $listfinal1 = array_diff($categorylist, array('other'));
+        $listFinal = implode('-', $listfinal1);
+
+        if (!in_array(26, $category)) {
+            $category_url = $this->common->clean($listFinal);
+        } else if ($arturl[0]['art_skill'] && $arturl[0]['other_skill']) {
+
+            $trimdata = $this->common->clean($listFinal) . '-' . $this->common->clean($art_othercategory);
+            $category_url = trim($trimdata, '-');
+        } else {
+            $category_url = $this->common->clean($art_othercategory);
+        }
+
+        $city_get = $this->common->clean($city_url);
+
+        if (!$city_get) {
+            $url = $arturl[0]['slug'] . '-' . $category_url . '-' . $arturl[0]['art_id'];
+        } else if (!$category_url) {
+            $url = $arturl[0]['slug'] . '-' . $city_get . '-' . $arturl[0]['art_id'];
+        } else if ($city_get && $category_url) {
+            $url = $arturl[0]['slug'] . '-' . $category_url . '-' . $city_get . '-' . $arturl[0]['art_id'];
+        }
+        return $url;
     }
 
     public function art_category_slug() {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="businessListApp" ng-controller="businessListController">
+<html lang="en" ng-app="artistListApp" ng-controller="artistListController">
     <head>
         <title ng-bind="title"></title>
         <meta charset="utf-8">
@@ -24,11 +24,11 @@
                             <h3>Top Categories</h3>
                         </div>
                         <ul class="search-listing">
-                            <li ng-repeat="category in businessCategory">
-                                <label class=""><a href="<?php echo base_url('business-profile/category/') ?>{{category.industry_slug}}">{{category.industry_name}}<span class="pull-right">({{category.count}})</span></a></label>
+                            <li ng-repeat="category in artistCategory">
+                                <label class=""><a href="<?php echo base_url('artist/category/') ?>{{category.category_slug}}">{{category.art_category | capitalize}}<span class="pull-right">({{category.count}})</span></a></label>
                             </li>
                             <li>
-                                <label class=""><a href="<?php echo base_url('business-profile/category/other') ?>">Other<span class="pull-right">({{otherCategoryCount}})</span></a></label>
+                                <label class=""><a href="<?php echo base_url('artist/category/other') ?>">Other<span class="pull-right">({{otherCategoryCount}})</span></a></label>
                             </li>
                         </ul>
                     </div>
@@ -74,29 +74,28 @@
                     <div class="page-title">
                         <h3>Search Result</h3>
                     </div>
-                    <div class="all-job-box search-business" ng-repeat="business in businessList">
+                    <div class="all-job-box search-business" ng-repeat="artist in ArtistList">
                         <div class="search-business-top">
                             <div class="bus-cover no-cover-upload">
-                                <a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-if="business.profile_background"><img ng-src="<?php echo BUS_BG_MAIN_UPLOAD_URL ?>{{business.profile_background}}"></a>
-                                <a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-if="!business.profile_background"><img ng-src="<?php echo BASEURL . WHITEIMAGE ?>"></a>
+                                <a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-if="artist.profile_background"><img ng-src="<?php echo ART_BG_MAIN_UPLOAD_URL ?>{{artist.profile_background}}"></a>
+                                <a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-if="!artist.profile_background"><img ng-src="<?php echo BASEURL . WHITEIMAGE ?>"></a>
                             </div>
                             <div class="all-job-top">
                                 <div class="post-img">
-                                    <a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-if="business.business_user_image"><img ng-src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{business.business_user_image}}"></a>
-                                    <a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-if="!business.business_user_image"><img ng-src="<?php echo BASEURL . NOBUSIMAGE ?>"></a>
+                                    <a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-if="artist.art_user_image"><img ng-src="<?php echo ART_PROFILE_MAIN_UPLOAD_URL ?>{{artist.art_user_image}}"></a>
+                                    <a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-if="!artist.art_user_image"><img ng-src="<?php echo BASEURL . NOARTIMAGE ?>"></a>
                                 </div>
                                 <div class="job-top-detail">
-                                    <h5><a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-bind="business.company_name"></a></h5>
-                                    <h5 ng-if="business.industry_name"><a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-bind="business.industry_name"></a></h5>
-                                    <h5 ng-if="!business.industry_name"><a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}" ng-bind="business.other_industrial"></a></h5>
+                                    <h5><a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-bind="artist.fullname | capitalize"></a></h5>
+                                    <h5 ng-if="artist.art_category"><a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-bind="artist.art_category | capitalize"></a></h5>
+                                    <h5 ng-if="!artist.art_category"><a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-bind="artist.other_skill | capitalize"></a></h5>
                                 </div>
                             </div>
                         </div>
                         <div class="all-job-middle">
                             <ul class="search-detail">
-                                <li ng-if="business.contact_website"><span class="img"><img class="pr10" ng-src="<?php echo base_url('assets/n-images/website.png') ?>"></span> <p class="detail-content"><a ng-href="{{business.contact_website}}" target="_self" ng-bind="business.contact_website"></a></p></li>
-                                <li><span class="img"><img class="pr10" ng-src="<?php echo base_url('assets/n-images/location.png') ?>"></span> <p class="detail-content"><span ng-bind="business.city"></span><span ng-if="business.city">,(</span><span ng-bind="business.country">India</span><span ng-if="business.city">)</span></p></li>
-                                <li ng-if="business.details"><span class="img"><img class="pr10" ng-src="<?php echo base_url('assets/n-images/exp.png') ?>"></span><p class="detail-content">{{business.details| limitTo:110}}...<a href="<?php echo BASEURL ?>business-profile/dashboard/{{business.business_slug}}"> Read more</a></p></li>
+                                <li><span class="img"><img class="pr10" ng-src="<?php echo base_url('assets/n-images/location.png') ?>"></span> <p class="detail-content"><span ng-bind="artist.city"></span><span ng-if="artist.city">,(</span><span ng-bind="artist.country"></span><span ng-if="artist.city">)</span></p></li>
+                                <li ng-if="artist.art_desc_art"><span class="img"><img class="pr10" ng-src="<?php echo base_url('assets/n-images/exp.png') ?>"></span><p class="detail-content">{{artist.art_desc_art| limitTo:110}}...<a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}"> Read more</a></p></li>
                             </ul>
                         </div>
                     </div>
@@ -127,7 +126,7 @@
                                     var app = angular.module('artistListApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/artist-live/searchBusiness.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/artist-live/categoryBusinessList.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/artist-live/searchArtist.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/artist-live/categoryArtistList.js?ver=' . time()) ?>"></script>
     </body>
 </html>

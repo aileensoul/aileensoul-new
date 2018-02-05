@@ -3,7 +3,7 @@ app.controller('artistSearchListController', function ($scope, $http) {
     $scope.artistCategory = {};
     function artistCategory() {
         $http.get(base_url + "artist_live/artistCategory?limit=24").then(function (success) {
-            $scope.businessCategory = success.data;
+            $scope.artistCategory = success.data;
         }, function (error) {});
     }
     artistCategory();
@@ -16,11 +16,11 @@ app.controller('artistSearchListController', function ($scope, $http) {
     function searchArtist() {
         var search_data_url = '';
         if (q != '' && l == '') {
-            search_data_url = base_url + 'artist/searchArtistData?q=' + q;
+            search_data_url = base_url + 'artist_live/searchArtistData?q=' + q;
         } else if (q == '' && l != '') {
-            search_data_url = base_url + 'artist/searchArtistData?l=' + l;
+            search_data_url = base_url + 'artist_live/searchArtistData?l=' + l;
         } else {
-            search_data_url = base_url + 'artist/searchArtistData?q=' + q + '&l=' + l;
+            search_data_url = base_url + 'artist_live/searchArtistData?q=' + q + '&l=' + l;
         }
         
         $http.get(search_data_url).then(function (success) {

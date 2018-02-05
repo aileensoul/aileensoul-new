@@ -15,7 +15,7 @@ app.controller('artistListController', function ($scope, $http) {
     otherCategoryCount();
     function categoryArtistList(){
         $http.get(base_url + "artist_live/artistListByCategory/" + category_id).then(function (success) {
-            $scope.artistList = success.data;
+            $scope.ArtistList = success.data;
         }, function (error) {});
     }
     categoryArtistList();
