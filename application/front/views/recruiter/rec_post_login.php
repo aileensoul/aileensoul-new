@@ -919,7 +919,7 @@
                                     <form role="form" name="login_form_apply" id="login_form_apply" method="post">
 
                                         <div class="form-group">
-                                            <input type="email" value="<?php echo $email; ?>" name="email_login_apply" id="email_login_apply" class="form-control input-sm email_login" placeholder="Email Address*">
+                                            <input type="email" value="<?php echo $email; ?>" name="email_login_apply" id="email_login_apply" autofocus="" class="form-control input-sm email_login" placeholder="Email Address*">
                                             <div id="error2" style="display:block;">
                                                 <?php
                                                 if ($this->session->flashdata('erroremail')) {

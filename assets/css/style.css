@@ -2748,11 +2748,7 @@ footer div.pt20{
         margin-left:0
     }
 }
-@media screen and (max-width:700px){
-    .box,.popup{
-        width:70%
-    }
-}
+
 @media screen and (max-width:767px){
     .backdiv-mob,.search-mob-block{
         display:block
@@ -2931,7 +2927,12 @@ footer div.pt20{
     .cus-chang{font-size: 20px !important;line-height: 26px;}
     
 }
-    @media screen and (max-width:640px){
+@media screen and (max-width:700px){
+    .box,.popup{
+        width:70%
+    }
+}
+@media screen and (max-width:640px){
         .cover-pic{
             right:-4%
         }
@@ -2987,7 +2988,7 @@ footer div.pt20{
             width:100%
         }
     }
-    @media screen and (max-width:540px){
+@media screen and (max-width:540px){
         .cls-ve{
             right:5px;
             top:23px
@@ -3036,7 +3037,7 @@ footer div.pt20{
             width:84%
         }
     }
-    @media screen and (max-width:479px){
+@media screen and (max-width:479px){
         .fw-479,fieldset{
             width:100%
         }
@@ -3232,7 +3233,7 @@ footer div.pt20{
         }
         .cus-chang{font-size: 17px !important;margin-bottom: 0px;line-height: 26px;}
     }
-    @media screen and (max-width:360px){
+@media screen and (max-width:360px){
         .chat .chat-header .chat-with,.job-top-detail h5 a{
             font-size:14px
         }
