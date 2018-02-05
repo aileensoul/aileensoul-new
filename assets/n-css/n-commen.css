@@ -178,6 +178,27 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8a
 .btn4:hover{background:#1b8ab9; color:#fff;}
 .btn5{border:2px solid #fff; color:#fff; font-size:16px; padding:5px 15px; border-radius:4px; display:inline-block;}
 .btn5:hover{background:#fff;}
+.btn6{background: #fff;
+padding: 5px 25px;
+border-radius: 4px;
+border: 1px solid #fff;
+ display:inline-block; color:#5c5c5c;}
+.btn6:hover{
+	background:none;
+	color:#fff;
+}
+.btn7 {
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid #fff;
+	padding: 5px 25px;
+	display:inline-block;
+}
+.btn7:hover{
+	background:#fff;
+	color:#5c5c5c;
+}
+
 .follow-btn{padding: 3px 10px; background: rgb(44, 83, 158);
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
@@ -1091,10 +1112,10 @@ footer ul li a:hover{
 }
 .mobile-header #search .btn{
     position:absolute;
-    top:50%;
-    left:50%;
+    /*top:50%;
+    left:50%;*/
     margin-top:61px;
-    transform:translate(-50%,0);
+    /*transform:translate(-50%,0);*/
     background:#fff;
     color:#1b8ab9;
     border:none
@@ -1116,8 +1137,8 @@ footer ul li a:hover{
     z-index:99
 }
 .mobile-header #search form{width:100%; padding:0 15px 5px; border-bottom:1px solid #d2d2d2; float:left;}
-.mobile-header #search form .new-search-input{width:75%; float:left; padding-right:10px;}
-.mobile-header #search form .new-search-btn{width:25%; float:left;}
+.mobile-header #search form .new-search-input{width:100%; float:left;}
+.mobile-header #search form .new-search-btn{width:100%; float:left; text-align:center;}
 .mobile-header #search form .new-search-btn button{position:relative; margin:5px 0; padding:7px 12px; height:35px; border:1px solid #d2d2d2;}
 .mobile-header .sub-header .dropdown.open .dropdown-menu{left:auto; top:25px; margin:0; right:10px;}
 .mobile-header{display:none;}
