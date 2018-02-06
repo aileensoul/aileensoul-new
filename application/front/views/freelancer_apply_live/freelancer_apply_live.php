@@ -287,22 +287,22 @@
                     <div class="all-job-box freelance-recommended-post" ng-repeat="applypost in freepostapply">
                         <div class="all-job-top">
                             <div class="job-top-detail">
-                                <h5><a href="#">Create a website for western outfits(project title) <span>(6 days left)</span></a></h5>
+                                <h5><a href="#">{{applypost.post_name}}(project title) <span>(6 days left)</span></a></h5>
                                 <p><a href="#">Vivek Panday</a></p>
-                                <p>Budget : 25000 $ (hourly/fixed)</p>
+                                <p>Budget : {{applypost.post_rate}} {{applypost.post_currency}} (hourly/fixed)</p>
                             </div>
                         </div>
                         <div class="all-job-middle">
                             <p class="pb5">
                                 <span class="location">
-                                    <span><img class="pr5" src="<?php echo base_url('assets/n-images/location.png?ver=' . time()) ?>">Ahmedabad,(India)</span>
+                                    <span><img class="pr5" src="<?php echo base_url('assets/n-images/location.png?ver=' . time()) ?>">{{applypost.city}},({{applypost.country}})</span>
                                 </span>
                                 <span class="exp">
-                                    <span><img class="pr5" src="<?php echo base_url('assets/n-images/exp.png?ver=' . time()) ?>">Skils: html, css, photoshope etc..</span>
+                                    <span><img class="pr5" src="<?php echo base_url('assets/n-images/exp.png?ver=' . time()) ?>">Skils: {{applypost.post_skill}} etc..</span>
                                 </span>
                             </p>
                             <p>
-                                5+ years experience desired Proficiency with one or more of the modern front end frameworks HTML, CSS, Ajax, JSON) ...<a href="#">Read more</a>
+                                {{applypost.post_description}} ...<a href="#">Read more</a>
                             </p>
                             <p>
                                 Categories : <span>It software development</span>
@@ -326,82 +326,6 @@
                     <div class="add-box">
                         <img src="<?php echo base_url('assets/n-images/add.jpg?ver=' . time()) ?>">
                     </div>
-                    <div class="all-contact">
-                        <h4>Contacts<a href="#" class="pull-right">All</a></h4>
-                        <div class="all-user-list">
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="post-img">
-                                        <img src="<?php echo base_url('assets/n-images/user-pic.jpg?ver=' . time()) ?>">
-
-                                    </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">Prasant Dadhaniya </a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
-                                </div>
-                                <div class="item">
-                                    <div class="post-img">
-                                        <img src="<?php echo base_url('assets/n-images/user-pic.jpg?ver=' . time()) ?>">
-
-                                    </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">Prasant Dadhaniya </a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
-                                </div>
-                                <div class="item">
-                                    <div class="post-img">
-                                        <img src="<?php echo base_url('assets/n-images/user-pic.jpg?ver=' . time()) ?>">
-
-                                    </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">Prasant Dadhaniya </a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
-                                </div>
-                                <div class="item">
-                                    <div class="post-img">
-                                        <img src="<?php echo base_url('assets/n-images/user-pic.jpg?ver=' . time()) ?>">
-
-                                    </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">Prasant Dadhaniya </a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
-                                </div>
-                                <div class="item">
-                                    <div class="post-img">
-                                        <img src="<?php echo base_url('assets/n-images/user-pic.jpg?ver=' . time()) ?>">
-
-                                    </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">Prasant Dadhaniya </a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
-                                </div>
-                                <div class="item">
-                                    <div class="post-img">
-                                        <img src="<?php echo base_url('assets/n-images/user-pic.jpg?ver=' . time()) ?>">
-
-                                    </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">Prasant Dadhaniya </a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
@@ -601,68 +525,68 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 
         <script>
-                        jQuery(document).ready(function ($) {
-                        var owl = $('.owl-carousel');
-                        owl.on('initialize.owl.carousel initialized.owl.carousel ' +
-                                'initialize.owl.carousel initialize.owl.carousel ' +
-                                'resize.owl.carousel resized.owl.carousel ' +
-                                'refresh.owl.carousel refreshed.owl.carousel ' +
-                                'update.owl.carousel updated.owl.carousel ' +
-                                'drag.owl.carousel dragged.owl.carousel ' +
-                                'translate.owl.carousel translated.owl.carousel ' +
-                                'to.owl.carousel changed.owl.carousel',
-                                function (e) {
-                                $('.' + e.type)
-                                        .removeClass('secondary')
-                                        .addClass('success');
-                                window.setTimeout(function () {
-                                $('.' + e.type)
-                                        .removeClass('success')
-                                        .addClass('secondary');
-                                }, 500);
-                                });
-                        owl.owlCarousel({
-                        loop: true,
-                                nav: true,
-                                lazyLoad: true,
-                                margin: 0,
-                                video: true,
-                                responsive: {
-                                0: {
-                                items: 1
-                                },
-                                        600: {
-                                        items: 2
-                                        },
-                                        960: {
-                                        items: 2,
-                                        },
-                                        1200: {
-                                        items: 2
-                                        }
-                                }
-                        });
-                        });
-                        // mcustom scroll bar
-                        (function ($) {
-                        $(window).on("load", function () {
+                                    jQuery(document).ready(function ($) {
+                                    var owl = $('.owl-carousel');
+                                    owl.on('initialize.owl.carousel initialized.owl.carousel ' +
+                                            'initialize.owl.carousel initialize.owl.carousel ' +
+                                            'resize.owl.carousel resized.owl.carousel ' +
+                                            'refresh.owl.carousel refreshed.owl.carousel ' +
+                                            'update.owl.carousel updated.owl.carousel ' +
+                                            'drag.owl.carousel dragged.owl.carousel ' +
+                                            'translate.owl.carousel translated.owl.carousel ' +
+                                            'to.owl.carousel changed.owl.carousel',
+                                            function (e) {
+                                            $('.' + e.type)
+                                                    .removeClass('secondary')
+                                                    .addClass('success');
+                                            window.setTimeout(function () {
+                                            $('.' + e.type)
+                                                    .removeClass('success')
+                                                    .addClass('secondary');
+                                            }, 500);
+                                            });
+                                    owl.owlCarousel({
+                                    loop: true,
+                                            nav: true,
+                                            lazyLoad: true,
+                                            margin: 0,
+                                            video: true,
+                                            responsive: {
+                                            0: {
+                                            items: 1
+                                            },
+                                                    600: {
+                                                    items: 2
+                                                    },
+                                                    960: {
+                                                    items: 2,
+                                                    },
+                                                    1200: {
+                                                    items: 2
+                                                    }
+                                            }
+                                    });
+                                    });
+                                    // mcustom scroll bar
+                                    (function ($) {
+                                    $(window).on("load", function () {
 
-                        $(".custom-scroll").mCustomScrollbar({
-                        autoHideScrollbar: true,
-                                theme: "minimal"
-                        });
-                        });
-                        })(jQuery);
-                        $('#content').on('change keyup keydown paste cut', 'textarea', function () {
-                        $(this).height(0).height(this.scrollHeight);
-                        }).find('textarea').change();
-                        var base_url = '<?php echo base_url(); ?>';
-                        var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
-                        var title = '<?php echo $title; ?>';
-                        var header_all_profile = '<?php echo $header_all_profile; ?>';
-                        var q = '';
-                        var l = '';
-                        var app = angular.module('freeapplypostApp', ['ui.bootstrap']);
+                                    $(".custom-scroll").mCustomScrollbar({
+                                    autoHideScrollbar: true,
+                                            theme: "minimal"
+                                    });
+                                    });
+                                    })(jQuery);
+                                    $('#content').on('change keyup keydown paste cut', 'textarea', function () {
+                                    $(this).height(0).height(this.scrollHeight);
+                                    }).find('textarea').change();
+                                    var base_url = '<?php echo base_url(); ?>';
+                                    var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+                                    var title = '<?php echo $title; ?>';
+                                    var header_all_profile = '<?php echo $header_all_profile; ?>';
+                                    var q = '';
+                                    var l = '';
+                                    var app = angular.module('freeapplypostApp', ['ui.bootstrap']);
         </script>
 
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>  
