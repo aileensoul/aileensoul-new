@@ -1319,6 +1319,9 @@ header.profile-header .logo a{color:#5c5c5c;}
 	#post-popup .modal-content .all-upload .upload_icon:nth-child(2){border-bottom:0px;}
 	.post-popup-box .post-box .post-text{width:82%;}
 	#ask-question .modal-content .all-upload .upload_icon:first-child{border-bottom:0px;}
+	
+	.main-user-option-scroll tr td{text-align:center;}
+	.main-user-option-scroll tr td a{color:#5c5c5c;}
 }
 @media screen and (max-width: 639px) {
 	/***  all profile  ***/
