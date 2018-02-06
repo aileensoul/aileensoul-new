@@ -18,16 +18,13 @@
             <?php echo $search_banner ?>
             <div class="container">
                 <div class="left-part">
-                    <div class="left-search-box">
+                    <div class="left-search-box list-type-bullet">
                         <div class="">
                             <h3>Top Categories</h3>
                         </div>
                         <ul class="search-listing custom-scroll">
                             <li ng-repeat="category in jobCategory">
-                                <label class="control control--checkbox"><span ng-bind="category.industry_name"></span><span class="pull-right" ng-bind="'(' + category.count + ')'"></span>
-                                    <input type="checkbox" ng-value="{{category.industry_id}}"/>
-                                    <div class="control__indicator"></div>
-                                </label>
+                                <label class=""><a href="<?php echo base_url('job/category/') ?>{{category.industry_slug}}"><span ng-bind="category.industry_name | capitalize"></span><span class="pull-right" ng-bind="'(' + category.count + ')'"></span></a></label>
                             </li>
                         </ul>
 <!--                        <p class="text-right p10"><a href="#">More Categories</a></p>-->
@@ -37,86 +34,22 @@
                             <h3>Top Cities</h3>
                         </div>
                         <ul class="search-listing custom-scroll">
-                            <li>
-                                <label class=""><a href="#">IT<span class="pull-right">(50)</span></a></label>
+                            <li ng-repeat="city in jobCity">
+                                <label class=""><a href="#"><span ng-bind="city.city_name | capitalize"></span><span class="pull-right" ng-bind="'(' + city.count + ')'"></span></a></label>
                             </li>
                         </ul>
-                        <p class="text-right p10"><a href="#">More Categories</a></p>
+                        <!--<p class="text-right p10"><a href="#">More Categories</a></p>-->
                     </div>
-                    <div class="left-search-box">
+                    <div class="left-search-box list-type-bullet">
                         <div class="">
                             <h3>Top Company</h3>
                         </div>
-                        <ul class="search-listing">
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
+                        <ul class="search-listing custom-scroll">
+                            <li ng-repeat="company in jobCompany">
+                                <label class=""><a href="#"><span ng-bind="company.company_name | capitalize"></span><span class="pull-right" ng-bind="'(' + company.count + ')'"></span></a></label>
                             </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-
                         </ul>
-                        <p class="text-right p10"><a href="#">More Categories</a></p>
+                        <!--<p class="text-right p10"><a href="#">More Categories</a></p>-->
                     </div>
                     <div class="left-search-box">
                         <div class="accordion" id="accordion2">
@@ -128,31 +61,31 @@
                                     <ul class="search-listing">
                                         <li>
                                             <label class="control control--checkbox">Today
-                                                <input type="checkbox"/>
+                                                <input type="checkbox" name="posting_period[]" value="1"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         </li>
                                         <li>
                                             <label class="control control--checkbox">Last 7 Days
-                                                <input type="checkbox"/>
+                                                <input type="checkbox"  name="posting_period[]" value="2"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         </li>
                                         <li>
                                             <label class="control control--checkbox">Last 15 Days
-                                                <input type="checkbox"/>
+                                                <input type="checkbox"  name="posting_period[]" value="3"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         </li>
                                         <li>
                                             <label class="control control--checkbox">Last 45 Days
-                                                <input type="checkbox"/>
+                                                <input type="checkbox"  name="posting_period[]" value="4"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         </li>
                                         <li>
                                             <label class="control control--checkbox">More than 45 Days
-                                                <input type="checkbox"/>
+                                                <input type="checkbox"  name="posting_period[]" value="5"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         </li>
@@ -173,37 +106,37 @@
                                         <ul class="search-listing">
                                             <li>
                                                 <label class="control control--checkbox">0 to 1 year
-                                                    <input type="checkbox"/>
+                                                    <input type="checkbox" name="experience[]" value="1"/>
                                                     <div class="control__indicator"></div>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label class="control control--checkbox">1 to 2 year
-                                                    <input type="checkbox"/>
+                                                    <input type="checkbox" name="experience[]" value="2"/>
                                                     <div class="control__indicator"></div>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label class="control control--checkbox">2 to 3 year
-                                                    <input type="checkbox"/>
+                                                    <input type="checkbox" name="experience[]" value="3"/>
                                                     <div class="control__indicator"></div>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label class="control control--checkbox">3 to 4 year
-                                                    <input type="checkbox"/>
+                                                    <input type="checkbox" name="experience[]" value="4"/>
                                                     <div class="control__indicator"></div>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label class="control control--checkbox">4 to 5 year
-                                                    <input type="checkbox"/>
+                                                    <input type="checkbox" name="experience[]" value="5"/>
                                                     <div class="control__indicator"></div>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label class="control control--checkbox">More than 5 year
-                                                    <input type="checkbox"/>
+                                                    <input type="checkbox" name="experience[]" value="6"/>
                                                     <div class="control__indicator"></div>
                                                 </label>
                                             </li>
@@ -533,13 +466,13 @@
         <script data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
         <script>
-            var base_url = '<?php echo base_url(); ?>';
-            var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
-            var title = '<?php echo $title; ?>';
-            var header_all_profile = '<?php echo $header_all_profile; ?>';
-            var q = '';
-            var l = '';
-            var app = angular.module('jobApp', ['ui.bootstrap']);
+                                    var base_url = '<?php echo base_url(); ?>';
+                                    var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+                                    var title = '<?php echo $title; ?>';
+                                    var header_all_profile = '<?php echo $header_all_profile; ?>';
+                                    var q = '';
+                                    var l = '';
+                                    var app = angular.module('jobApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/webpage/job-live/searchJob.js?ver=' . time()) ?>"></script>

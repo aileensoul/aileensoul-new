@@ -40,4 +40,17 @@ class Job_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
+    function jobCompany($limit = '') {
+        $this->db->select('count(rp.user_id) as count,r.user_id,r.re_comp_name as company_name')->from('recruiter r');
+        $this->db->join('rec_post rp', 'rp.user_id = r.user_id', 'left');
+        $this->db->where('r.re_status', '1');
+        $this->db->where('rp.status', '1');
+        $this->db->where('rp.is_delete', '0');
+        $this->db->group_by('rp.user_id');
+        $this->db->order_by('count', 'desc');
+        $this->db->limit($limit);
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
 }
