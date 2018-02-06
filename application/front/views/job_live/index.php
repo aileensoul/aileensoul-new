@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="artistApp" ng-controller="artistController">
+<html lang="en" ng-app="jobApp" ng-controller="jobController">
     <head>
         <title ng-bind="title"></title>
         <meta charset="utf-8">
@@ -619,10 +619,10 @@
             var header_all_profile = '<?php echo $header_all_profile; ?>';
             var q = '';
             var l = '';
-            var app = angular.module('artistApp', ['ui.bootstrap']);
+            var app = angular.module('jobApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/artist-live/searchArtist.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/artist-live/index.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/job-live/searchJob.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/job-live/index.js?ver=' . time()) ?>"></script>
     </body>
 </html>
