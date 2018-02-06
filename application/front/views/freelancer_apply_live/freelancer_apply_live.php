@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="freeApp" ng-controller="artistController">
+<html lang="en" ng-app="freeapplypostApp" ng-controller="freeapplypostController">
     <head>
         <title>Aileensoul</title>
         <meta charset="utf-8">
@@ -599,72 +599,80 @@
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/owl.carousel.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery.mCustomScrollbar.concat.min.js?ver=' . time()) ?>"></script>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
         <script>
-            jQuery(document).ready(function ($) {
-                var owl = $('.owl-carousel');
-                owl.on('initialize.owl.carousel initialized.owl.carousel ' +
-                        'initialize.owl.carousel initialize.owl.carousel ' +
-                        'resize.owl.carousel resized.owl.carousel ' +
-                        'refresh.owl.carousel refreshed.owl.carousel ' +
-                        'update.owl.carousel updated.owl.carousel ' +
-                        'drag.owl.carousel dragged.owl.carousel ' +
-                        'translate.owl.carousel translated.owl.carousel ' +
-                        'to.owl.carousel changed.owl.carousel',
-                        function (e) {
-                            $('.' + e.type)
-                                    .removeClass('secondary')
-                                    .addClass('success');
-                            window.setTimeout(function () {
-                                $('.' + e.type)
-                                        .removeClass('success')
-                                        .addClass('secondary');
-                            }, 500);
-                        });
-                owl.owlCarousel({
-                    loop: true,
-                    nav: true,
-                    lazyLoad: true,
-                    margin: 0,
-                    video: true,
-                    responsive: {
-                        0: {
-                            items: 1
-                        },
-                        600: {
-                            items: 2
-                        },
-                        960: {
-                            items: 2,
-                        },
-                        1200: {
-                            items: 2
-                        }
-                    }
-                });
-
-
-
+    jQuery(document).ready(function ($) {
+    var owl = $('.owl-carousel');
+    owl.on('initialize.owl.carousel initialized.owl.carousel ' +
+            'initialize.owl.carousel initialize.owl.carousel ' +
+            'resize.owl.carousel resized.owl.carousel ' +
+            'refresh.owl.carousel refreshed.owl.carousel ' +
+            'update.owl.carousel updated.owl.carousel ' +
+            'drag.owl.carousel dragged.owl.carousel ' +
+            'translate.owl.carousel translated.owl.carousel ' +
+            'to.owl.carousel changed.owl.carousel',
+            function (e) {
+            $('.' + e.type)
+                    .removeClass('secondary')
+                    .addClass('success');
+            window.setTimeout(function () {
+            $('.' + e.type)
+                    .removeClass('success')
+                    .addClass('secondary');
+            }, 500);
             });
+    owl.owlCarousel({
+    loop: true,
+            nav: true,
+            lazyLoad: true,
+            margin: 0,
+            video: true,
+            responsive: {
+            0: {
+            items: 1
+            },
+                    600: {
+                    items: 2
+                    },
+                    960: {
+                    items: 2,
+                    },
+                    1200: {
+                    items: 2
+                    }
+            }
+    });
+    });
+    // mcustom scroll bar
+    (function ($) {
+    $(window).on("load", function () {
 
-            // mcustom scroll bar
-            (function ($) {
-                $(window).on("load", function () {
-
-                    $(".custom-scroll").mCustomScrollbar({
-                        autoHideScrollbar: true,
-                        theme: "minimal"
-                    });
-
-                });
-            })(jQuery);
-
-            $('#content').on('change keyup keydown paste cut', 'textarea', function () {
-                $(this).height(0).height(this.scrollHeight);
-            }).find('textarea').change();
-
-
-
+    $(".custom-scroll").mCustomScrollbar({
+    autoHideScrollbar: true,
+            theme: "minimal"
+    });
+    });
+    })(jQuery);
+    $('#content').on('change keyup keydown paste cut', 'textarea', function () {
+    $(this).height(0).height(this.scrollHeight);
+    }).find('textarea').change();
+    
+    var base_url = '<?php echo base_url(); ?>';
+    var user_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+    var title = '<?php echo $title; ?>';
+    var header_all_profile = '<?php echo $header_all_profile; ?>';
+    var q = '';
+    var l = '';
+    
+    var app = angular.module('freeapplypostApp', ['ui.bootstrap']);
         </script>
 
+        <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>  
+        <script src="<?php echo base_url('assets/js/webpage/freelancer-apply-live/index.js?ver=' . time()) ?>"></script>
     </body>
 </html>

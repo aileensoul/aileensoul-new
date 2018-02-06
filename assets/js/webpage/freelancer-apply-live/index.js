@@ -1,19 +1,15 @@
-app.controller('businessController', function ($scope, $http) {
-    $scope.title = title;
-    $scope.businessCategory = {};
+
+app.controller('freeapplypostController', function ($scope, $http) {
+//    $scope.title = title;
+    $scope.freelancerapplypost = {};
     
-    function businessCategory(){
-        $http.get(base_url + "business_live/businessCategory?limit=9").then(function (success) {
-            $scope.businessCategory = success.data;
+    function freelancerapplypost(){
+        alert("hi");
+        $http.get(base_url + "freelancer_apply_live/freelancer_apply_live_post?limit=9").then(function (success) {
+            $scope.freepostapply = success.data;
         }, function (error) {});
     }
-    businessCategory();
-    function otherCategoryCount(){
-        $http.get(base_url + "business_live/otherCategoryCount").then(function (success) {
-            $scope.otherCategoryCount = success.data;
-        }, function (error) {});
-    }
-    otherCategoryCount();
+   
 });
 
 $(window).on("load", function () {
