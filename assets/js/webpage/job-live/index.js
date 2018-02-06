@@ -2,6 +2,9 @@ app.controller('jobController', function ($scope, $http) {
     $scope.title = title;
     $scope.jobCategory = {};
     $scope.jobCity = {};
+    $scope.jobCompany = {};
+    $scope.jobSkill = {};
+    $scope.latestJob = {};
 
     function jobCategory() {
         $http.get(base_url + "job_live/jobCategory?limit=24").then(function (success) {
@@ -22,6 +25,24 @@ app.controller('jobController', function ($scope, $http) {
         }, function (error) {});
     }
     jobCompany();
+    function jobSkill() {
+        $http.get(base_url + "job_live/jobSkill?limit=24").then(function (success) {
+            $scope.jobSkill = success.data;
+        }, function (error) {});
+    }
+    jobSkill();
+    function latestJob() {
+        $http({
+            method: 'POST',
+            url: base_url + 'job_live/latestJob',
+            data: '',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    $scope.latestJob = success.data;
+                });
+    }
+    latestJob();
     function otherCategoryCount() {
         $http.get(base_url + "job_live/otherCategoryCount").then(function (success) {
             $scope.otherCategoryCount = success.data;
