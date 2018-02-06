@@ -100,10 +100,11 @@ class Job_model extends CI_Model {
     }
 
     function latestJob() {
-        $this->db->select("rp.post_id,rp.post_name,rp.post_description,rp.created_date,ct.city_name,cr.country_name,rp.min_year,rp.max_year,rp.fresher,CONCAT(r.rec_firstname,' ',r.rec_lastname) as fullname, r.re_comp_name,r.comp_logo")->from('rec_post rp');
+        $this->db->select("rp.post_id,rp.post_name,jt.name as string_post_name,rp.post_description,DATE_FORMAT(rp.created_date,'%d-%M-%Y') as created_date,ct.city_name,cr.country_name,rp.min_year,rp.max_year,rp.fresher,CONCAT(r.rec_firstname,' ',r.rec_lastname) as fullname, r.re_comp_name,r.comp_logo")->from('rec_post rp');
         $this->db->join('recruiter r', 'r.user_id = rp.user_id', 'left');
         $this->db->join('cities ct', 'ct.city_id = rp.city', 'left');
         $this->db->join('countries cr', 'cr.country_id = rp.country', 'left');
+        $this->db->join('job_title jt', 'jt.title_id = rp.post_name', 'left');
         $this->db->where('rp.status', '1');
         $this->db->where('rp.is_delete', '0');
         $this->db->order_by('rp.post_id', 'desc');

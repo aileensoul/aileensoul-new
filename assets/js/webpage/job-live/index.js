@@ -43,12 +43,10 @@ app.controller('jobController', function ($scope, $http) {
                 });
     }
     latestJob();
-    function otherCategoryCount() {
-        $http.get(base_url + "job_live/otherCategoryCount").then(function (success) {
-            $scope.otherCategoryCount = success.data;
-        }, function (error) {});
+    
+    $scope.applyJobFilter = function(){
+        alert(12123132);
     }
-    otherCategoryCount();
 });
 
 $(window).on("load", function () {

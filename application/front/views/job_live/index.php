@@ -18,6 +18,7 @@
             <?php echo $search_banner ?>
             <div class="container">
                 <div class="left-part">
+                    <form name="job-filter" id="job-filter" onchange="this.form.submit()" onsubmit="applyJobFilter()">
                     <div class="left-search-box list-type-bullet">
                         <div class="">
                             <h3>Top Categories</h3>
@@ -72,31 +73,31 @@
                                     <ul class="search-listing">
                                         <li>
                                             <label class="control control--checkbox">Today
-                                                <input type="checkbox" name="posting_period[]" value="1"/>
+                                                <input type="checkbox" ng-model="filter.posting_period[]" name="posting_period[]" value="1"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         </li>
                                         <li>
                                             <label class="control control--checkbox">Last 7 Days
-                                                <input type="checkbox"  name="posting_period[]" value="2"/>
+                                                <input type="checkbox" ng-model="filter.posting_period[]"  name="posting_period[]" value="2"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         </li>
                                         <li>
                                             <label class="control control--checkbox">Last 15 Days
-                                                <input type="checkbox"  name="posting_period[]" value="3"/>
+                                                <input type="checkbox" ng-model="filter.posting_period[]"  name="posting_period[]" value="3"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         </li>
                                         <li>
                                             <label class="control control--checkbox">Last 45 Days
-                                                <input type="checkbox"  name="posting_period[]" value="4"/>
+                                                <input type="checkbox" ng-model="filter.posting_period[]"  name="posting_period[]" value="4"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         </li>
                                         <li>
                                             <label class="control control--checkbox">More than 45 Days
-                                                <input type="checkbox"  name="posting_period[]" value="5"/>
+                                                <input type="checkbox" ng-model="filter.posting_period[]"  name="posting_period[]" value="5"/>
                                                 <div class="control__indicator"></div>
                                             </label>
                                         </li>
@@ -117,37 +118,37 @@
                                         <ul class="search-listing">
                                             <li>
                                                 <label class="control control--checkbox">0 to 1 year
-                                                    <input type="checkbox" name="experience[]" value="1"/>
+                                                    <input type="checkbox" ng-model="filter.experience[]" name="experience[]" value="1"/>
                                                     <div class="control__indicator"></div>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label class="control control--checkbox">1 to 2 year
-                                                    <input type="checkbox" name="experience[]" value="2"/>
+                                                    <input type="checkbox" ng-model="filter.experience[]" name="experience[]" value="2"/>
                                                     <div class="control__indicator"></div>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label class="control control--checkbox">2 to 3 year
-                                                    <input type="checkbox" name="experience[]" value="3"/>
+                                                    <input type="checkbox" ng-model="filter.experience[]" name="experience[]" value="3"/>
                                                     <div class="control__indicator"></div>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label class="control control--checkbox">3 to 4 year
-                                                    <input type="checkbox" name="experience[]" value="4"/>
+                                                    <input type="checkbox" ng-model="filter.experience[]" name="experience[]" value="4"/>
                                                     <div class="control__indicator"></div>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label class="control control--checkbox">4 to 5 year
-                                                    <input type="checkbox" name="experience[]" value="5"/>
+                                                    <input type="checkbox" ng-model="filter.experience[]" name="experience[]" value="5"/>
                                                     <div class="control__indicator"></div>
                                                 </label>
                                             </li>
                                             <li>
                                                 <label class="control control--checkbox">More than 5 year
-                                                    <input type="checkbox" name="experience[]" value="6"/>
+                                                    <input type="checkbox" ng-model="filter.experience[]" name="experience[]" value="6"/>
                                                     <div class="control__indicator"></div>
                                                 </label>
                                             </li>
@@ -159,7 +160,7 @@
 
                         </div>
                     </div>
-
+                    </form>
                     <div class="custom_footer_left fw">
                         <div class="">
                             <ul>
@@ -208,7 +209,8 @@
                                 <a href="#" ng-if="!job.comp_logo"><img src="<?php echo base_url('assets/n-images/commen-img.png') ?>"></a>
                             </div>
                             <div class="job-top-detail">
-                                <h5><a href="#" ng-bind="job.post_name"></a></h5>
+                                <h5><a href="#" ng-if="job.string_post_name" ng-bind="job.string_post_name"></a></h5>
+                                <h5><a href="#" ng-if="!job.string_post_name" ng-bind="job.post_name"></a></h5>
                                 <p><a href="#" ng-bind="job.re_comp_name"></a></p>
                                 <p><a href="#" ng-bind="job.fullname"></a></p>
                             </div>
