@@ -1189,8 +1189,12 @@ header.profile-header .logo a{color:#5c5c5c;}
 .add-with-us .add-form form input.error{border-width:0px 0px 1px 0px !important;}
 .add-with-us .add-form form textarea.error{border-width:0px 0px 1px 0px !important;}
 .add-with-us .add-form form textarea{border-width:0px 0px 1px 0px; padding:5px 10px; border-radius:0;}
-.add-with-us .add-form form input.btn1{width:auto; border-radius:4px;}
+.add-with-us .add-form form input.btn1{border-radius:4px;}
 .add-with-us .add-form form label.error{bottom:-5px;}
+.more-support{font-size:20px; letter-spacing:3px; padding-top:20px;}
+.more-support a{color:#5c5c5c; font-weight:bold;}
+.more-support a:hover{color:#1b8ab9; text-decoration:underline;}
+.add-form textarea{height:145px;}
 /***  end add with us  ***/
 
 /***  media query  ***/
@@ -1289,6 +1293,32 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.add-wi-us{position:relative;}
 	.add-banner img{max-height:320px; width:auto;}
 	.add-banner{overflow:hidden;}
+	.more-support{font-size:16px;}
+	
+	#post-popup1 .modal-content, #post-popup .modal-content, #ask-question .modal-content{width:100%; height:100%; border:0px; border-radius:0px;}
+	#post-popup1 .modal-dialog, #post-popup .modal-dialog, #ask-question .modal-dialog {padding:0; margin:0; height:100%;}
+	#post-popup1 .modal-close, #post-popup .modal-close, #ask-question .modal-close {top:0; right:0; border-radius:0; background:none; border:none; color:#5c5c5c;}
+	#post-popup1 .post-popup-box, #post-popup .post-popup-box, #ask-question .post-popup-box{margin-bottom:52px;} 
+	.post-popup-box .all-upload{border-bottom:0px; border-top:1px solid #d2d2d2;}
+	.post-popup-box .post-box{padding:15px 0;}
+	.post-popup-box .post-box .post-img{margin-left:15px;}
+	.post-popup-box .all-upload label{width:100%; margin-bottom:0;}
+	.post-popup-box .all-upload label i{width:100%; border-bottom:1px solid #d2d2d2;}
+	.post-popup-box .all-upload .upload_icon{padding:10px 15px; margin:0;}
+	.post-popup-box .all-upload .upload_icon:hover{background:none; border-radius:0;}
+	.post-popup-box .post-box-bottom{border-top:0px; padding:0;}
+	.post-popup-box .post-box-bottom ul {padding:0; width:100%;}
+	.post-popup-box .post-box-bottom ul li{width:100%; padding:5px 15px; border-bottom:1px solid #d2d2d2;}
+	.post-popup-box .all-upload .upload_icon{font-size:15px;}
+	.post-popup-box .all-upload .upload_icon .upload_span_icon{font-size:14px; padding-left:9px;}
+	.post-popup-box .post-box-bottom ul li a img{height:16px;}
+	.post-popup-box .post-box-bottom ul{margin-bottom:15px;}
+	.post-popup-box .post-box-bottom .btn1{margin-right:15px;}
+	#post-popup .modal-content .all-upload .upload_icon{width:50%; float:left;}
+	#post-popup .modal-content .all-upload .upload_icon:first-child{border-bottom:0px;}
+	#post-popup .modal-content .all-upload .upload_icon:nth-child(2){border-bottom:0px;}
+	.post-popup-box .post-box .post-text{width:82%;}
+	#ask-question .modal-content .all-upload .upload_icon:first-child{border-bottom:0px;}
 }
 @media screen and (max-width: 639px) {
 	/***  all profile  ***/
@@ -1306,7 +1336,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.main-banner{max-height:260px;}
 	.post-box .post-text{width:85%;}
 	.add-comment .comment-input{width:73%;}
-	.post-popup-box .post-box .post-text{width:84%;}
+	
 	.post-box-bottom ul li a{font-size:14px;}
 	.all-upload .upload_icon{margin:0 2px;}
 	.user-btns a.btn3{width:32%; margin:0;}

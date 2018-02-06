@@ -1189,8 +1189,12 @@ header.profile-header .logo a{color:#5c5c5c;}
 .add-with-us .add-form form input.error{border-width:0px 0px 1px 0px !important;}
 .add-with-us .add-form form textarea.error{border-width:0px 0px 1px 0px !important;}
 .add-with-us .add-form form textarea{border-width:0px 0px 1px 0px; padding:5px 10px; border-radius:0;}
-.add-with-us .add-form form input.btn1{width:auto; border-radius:4px;}
+.add-with-us .add-form form input.btn1{border-radius:4px;}
 .add-with-us .add-form form label.error{bottom:-5px;}
+.more-support{font-size:20px; letter-spacing:3px; padding-top:20px;}
+.more-support a{color:#5c5c5c; font-weight:bold;}
+.more-support a:hover{color:#1b8ab9; text-decoration:underline;}
+.add-form textarea{height:145px;}
 /***  end add with us  ***/
 
 /***  media query  ***/
@@ -1289,6 +1293,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.add-wi-us{position:relative;}
 	.add-banner img{max-height:320px; width:auto;}
 	.add-banner{overflow:hidden;}
+	.more-support{font-size:16px;}
 }
 @media screen and (max-width: 639px) {
 	/***  all profile  ***/

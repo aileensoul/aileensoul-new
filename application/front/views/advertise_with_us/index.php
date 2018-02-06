@@ -111,6 +111,7 @@ header('Cache-Control: public, max-age=30');
             <div class="container">
                 <div class="add-form">
                     <h3>Advertise With Us</h3>
+					
                     <form name="advertise" id="advertise" method="POST">
                         <div class="form-group">
                             <div class="row">
@@ -141,14 +142,15 @@ header('Cache-Control: public, max-age=30');
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12 text-right">
-                                    <input type="submit" class="btn1" id="submit" name="submit" value="Send">
+                                    <input type="submit" class="btn1" id="submit" name="submit" value="Submit">
                                 </div>
 
                             </div>
                         </div>
                     </form>
                 </div>
-            </div>
+				<p class="text-center more-support">For more support <a href="mailto:inquiry@aileensoul.com">inquiry@aileensoul.com</a>
+			</div>
         </div>
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog"  >
             <div class="modal-dialog modal-lm" >

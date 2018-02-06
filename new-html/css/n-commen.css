@@ -1204,9 +1204,10 @@ footer ul li a:hover{
 	.modal-dialog{margin:15px 0;}
 	
 	
+	
 }
 @media screen and (max-width: 639px) {
-	.modal-content{width:90%;}
+	
 	.post-popup-box .post-box .post-text{width:85%;}
 	.modal-content .post-field label{font-size:14px;}
 	
