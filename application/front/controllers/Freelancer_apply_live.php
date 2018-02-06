@@ -33,7 +33,7 @@ class Freelancer_apply_live extends MY_Controller {
     
     public function freelancer_apply_live_post() {
         $postdata = $this->data['postdata'] = $this->freelancer_apply_model->getfreelancerapplypost();
-        echo '<pre>'; print_r($postdata); die();
+        echo json_encode($postdata);
     }
 
 }

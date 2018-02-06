@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="freeApp" ng-controller="artistController">
     <head>
         <title>Aileensoul</title>
         <meta charset="utf-8">
