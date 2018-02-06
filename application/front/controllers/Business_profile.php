@@ -13,6 +13,8 @@ class Business_profile extends MY_Controller {
         $this->load->library('user_agent');
         $this->load->model('email_model');
         $this->load->model('user_model');
+        $this->load->model('user_post_model');
+        $this->load->model('data_model');
         $this->load->model('business_model');
         $this->lang->load('message', 'english');
         $this->load->helper('smiley');

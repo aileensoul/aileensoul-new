@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Artist_live extends MY_Controller {
+class Job_live extends MY_Controller {
 
     public $data;
 
@@ -16,7 +16,7 @@ class Artist_live extends MY_Controller {
         $this->load->model('user_model');
         $this->load->model('user_post_model');
         $this->load->model('data_model');
-        $this->load->model('artistic_model');
+        $this->load->model('job_model');
         $this->load->library('S3');
 
         $this->data['no_user_post_html'] = '<div class="user_no_post_avl"><h3>Feed</h3><div class="user-img-nn"><div class="user_no_post_img"><img src=' . base_url('assets/img/bui-no.png?ver=' . time()) . ' alt="bui-no.png"></div><div class="art_no_post_text">No Feed Available.</div></div></div>';
@@ -35,9 +35,9 @@ class Artist_live extends MY_Controller {
         $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
-        $this->data['search_banner'] = $this->load->view('artist_live/search_banner', $this->data, TRUE);
-        $this->data['title'] = "Artist Profile | Aileensoul";
-        $this->load->view('artist_live/index', $this->data);
+        $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
+        $this->data['title'] = "Job Profile | Aileensoul";
+        $this->load->view('job_live/index', $this->data);
     }
 
     public function category() {

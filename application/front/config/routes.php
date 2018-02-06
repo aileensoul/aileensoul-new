@@ -323,6 +323,10 @@ $route['blog/comment_insert'] = "blog/comment_insert";
 $route['blog/(:any)'] = "blog/index/$1";
 
 //JOB ROUTES SETTINGS
+
+$route['job'] = "job_live/index";
+
+
 $route['job/home'] = "job/job_all_post";
 $route['job/home/live-post'] = "job/job_all_post/$1";
 
