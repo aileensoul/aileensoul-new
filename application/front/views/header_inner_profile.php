@@ -1,5 +1,5 @@
 <header ng-controller="headerCtrl" ng-app="headerApp">
-    <div class="header animated fadeInDownBig">
+    <div class="animated fadeInDownBig">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 left-header">
@@ -17,7 +17,7 @@
                 <div class="col-md-6 col-sm-6 right-header">
                     <ul>
                         <?php if ($is_userBasicInfo == '1' || $is_userStudentInfo == '1') { ?>
-                            <li class="dropdown all">
+                            <li class="dropdown">
                                 <a href="javascript:void(0);" title="All Profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-click="header_all_profile()"><img ng-src="<?php echo base_url('assets/n-images/all.png') ?>" alt="All Profile"></a>
                                 <div class="dropdown-menu"></div>
                             </li>

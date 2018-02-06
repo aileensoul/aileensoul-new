@@ -137,15 +137,7 @@ $userid = $this->session->userdata('aileenuser');
                                 </div>
                             </div>
                         </li>
-                        <li class="dropdown user-id">
-                            <a href="#" class="dropdown-toggle user-id-custom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o" aria-hidden="true"></i><span class="pr-name">Account</span></a>
-
-                            <ul class="dropdown-menu account">
-                                <li>Account</li>
-                                <li><a href="#"><i class="fa fa-cog"></i> Setting</a></li>
-                                <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
-                            </ul>
-                        </li>
+                        
                         <li id="add-contact" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users" aria-hidden="true"></i> Contact
                                 <span class="noti-box">1</span>
@@ -310,6 +302,15 @@ $userid = $this->session->userdata('aileenuser');
                                     </ul>
                                 </div>
                             </div>
+                        </li>
+						<li class="dropdown user-id">
+                            <a href="#" class="dropdown-toggle user-id-custom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o" aria-hidden="true"></i><span class="pr-name">Account</span></a>
+
+                            <ul class="dropdown-menu account">
+                                <li>Account</li>
+                                <li><a href="#"><i class="fa fa-cog"></i> Setting</a></li>
+                                <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
