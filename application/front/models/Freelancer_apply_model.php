@@ -13,6 +13,14 @@ class Freelancer_apply_model extends CI_Model {
         return $result_array;
     }
     
+    public function getfreelancerapplypost($user_id, $select_data) {
+        $this->db->select($select_data)->from('freelancer_post');
+        $this->db->where(array('is_delete' => '0', 'status' => '1'));
+        $query = $this->db->get();
+         $result_array = $query->result_array();
+        return $result_array;
+    }
+    
     
     
     
