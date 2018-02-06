@@ -112,8 +112,14 @@ class Job_live extends MY_Controller {
         $jobListByCategory = $this->job_model->jobListByCategory($id);
         echo json_encode($jobListByCategory);
     }
-
-    public function searchArtistData() {
+    
+    public function jobCity(){
+        $limit = $_GET['limit'];
+        $jobCategory = $this->job_model->jobCategory($limit);
+        echo json_encode($jobCategory);
+    }
+    
+    public function searchJobData() {
         $keyword = $_GET['q'];
         $city = $_GET['l'];
 

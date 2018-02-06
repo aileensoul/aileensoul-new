@@ -23,7 +23,7 @@
                         <div class="">
                             <h3>Top Categories</h3>
                         </div>
-                        <ul class="search-listing">
+                        <ul class="search-listing custom-scroll">
                             <li ng-repeat="category in businessCategory">
                                 <label class=""><a href="<?php echo base_url('business-profile/category/') ?>{{category.industry_slug}}">{{category.industry_name}}<span class="pull-right">({{category.count}})</span></a></label>
                             </li>
