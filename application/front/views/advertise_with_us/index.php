@@ -17,7 +17,7 @@ header('Expires: ' . $date);
 
 header('Cache-Control: public, max-age=30');
 ?>
-<html lang="en">
+<html lang="en" class="add-wi-us">
     <head>
         <title>Advertise With Us - Aileensoul</title>
         <meta name="description" content="Promote your business with Aileensoul.com" />
@@ -81,7 +81,8 @@ header('Cache-Control: public, max-age=30');
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6 col-sm-6 left-header">
-                                <h2 class="logo"><a href="<?php echo base_url() ?>">Aileensoul</a></h2>
+                                <h2 class="logo"><a href="<?php echo base_url() ?>"><img src="<?php echo base_url('assets/img/logo-name.png') ?>"></a></h2>
+								
                                 <!--form>
                                         <input type="text" name="search" placeholder="Search..">
                                 </form-->
@@ -100,120 +101,6 @@ header('Cache-Control: public, max-age=30');
 
         </div>
 
-        <div class="mobile-header">
-            <header class="">
-                <div class="header animated fadeInDownBig">
-                    <div class="container">
-
-                        <div class="left-header">
-                            <h2 class="logo"><a href="#"><img src="<?php echo base_url('assets/n-images/mob-logo.png') ?>"></a></h2>
-                            <div class="search-mob-block">
-                                <div class="">
-                                    <a href="#search">
-                                        <input type="search" id="tags1" class="tags" name="skills" value="" placeholder="Job Title,Skill,Company" />
-                                    </a>
-                                </div>
-                                <div id="search">
-                                    <form method="get">
-                                        <div class="new-search-input">
-                                            <input type="search" id="tags1" class="tags" name="skills" value="" placeholder="Job Title,Skill,Company" />
-                                            <input type="search" id="searchplace1" class="searchplace" name="searchplace" value="" placeholder="Find Location" />
-
-                                        </div>
-                                        <div class="new-search-btn">
-                                            <button type="button" class="close-new btn">Cancel</button>
-                                            <button type="submit"  id="search_btn" class="btn btn-primary" onclick="return check();">Search</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="right-header">
-                                <ul>
-                                    <li class="dropdown user-id">
-                                        <a href="#" class="dropdown-toggle user-id-custom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usr-img"><img src="img/user-pic.jpg"></span><span class="pr-name"></span></a>
-
-                                        <ul class="dropdown-menu profile-dropdown">
-                                            <li>Account</li>
-                                            <li><a href="#"><i class="fa fa-cog"></i> Setting</a></li>
-                                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-            </header>
-            <div class="sub-header">
-                <div class="container">
-                    <div class="row">
-
-                        <ul class="sub-menu">
-
-                            <li>
-                                <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Artistic Profile</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-envelope" aria-hidden="true"></i><span class="none-sub-menu"> Message</span>
-                                    <span class="noti-box">1</span>
-                                </a>
-
-                            </li>
-
-                            <li class="dropdown user-id">
-                                <a href="#" class="dropdown-toggle user-id-custom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o" aria-hidden="true"></i><span class="pr-name"><span class="none-sub-menu"> Account</span></span></a>
-
-                                <ul class="dropdown-menu account">
-                                    <li>Account</li>
-                                    <li><a href="#"><i class="fa fa-cog"></i> Setting</a></li>
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-
-
-                    </div>
-                </div>
-
-            </div>
-
-
-
-
-
-
-            <div class="mob-bottom-menu">
-                <ul>
-                    <li>
-                        <a href="opportunities.html"><img src="n-images/op-bottom.png"></a>
-                    </li>
-                    <li id="add-contact" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="n-images/add-contact-bottom.png">
-                            <span class="noti-box">1</span>
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="n-images/message-bottom.png">
-                            <span class="noti-box">1</span>
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="n-images/noti-bottom.png">
-                            <span class="noti-box">1</span>
-                        </a>
-                    </li>
-                    <li>
-                        <button id="showRight"><img src="n-images/mob-menu.png"></button>
-                    </li>
-
-
-                </ul>
-            </div>
-        </div>
 
         <div class="middle-section">
 

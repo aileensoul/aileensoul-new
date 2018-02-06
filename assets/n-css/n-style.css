@@ -1177,12 +1177,20 @@ header.profile-header .logo a{color:#5c5c5c;}
 .add-with-us header{background:none; position:absolute;}
 .add-banner{position:relative;}
 .add-banner h1{position:absolute; text-align:center; width:100%; color:#fff; bottom:40px; font-size:50px;}
-.add-with-us .add-form{width:50%; margin:50px auto 0; border:1px solid #d2d2d2; border-radius:4px;}
+.add-with-us .add-form{width:50%; margin:50px auto 0; border:1px solid #d2d2d2; border-radius:4px;
+	-webkit-box-shadow:0 0 10px -1px rgba(217,217,217,1);
+    -moz-box-shadow:0 0 10px -1px rgba(217,217,217,1);
+    box-shadow:0 0 10px -1px rgba(217,217,217,1)
+}
 .add-with-us .add-form h3{padding:10px 0; text-align:center; border-bottom:1px solid #d2d2d2;}
 .add-with-us .add-form form{padding:20px 20px 5px;}
-.add-with-us .add-form form input{border-width:0px 0px 1px 0px; padding:5px 10px; border-radius:0;}
+.add-with-us .add-form form input{border-width:0px 0px 1px 0px; padding:5px 10px; border-radius:0; margin-bottom:15px;}
+.add-with-us .add-form form textarea{margin-bottom:15px;}
+.add-with-us .add-form form input.error{border-width:0px 0px 1px 0px !important;}
+.add-with-us .add-form form textarea.error{border-width:0px 0px 1px 0px !important;}
 .add-with-us .add-form form textarea{border-width:0px 0px 1px 0px; padding:5px 10px; border-radius:0;}
 .add-with-us .add-form form input.btn1{width:auto; border-radius:4px;}
+.add-with-us .add-form form label.error{bottom:-5px;}
 /***  end add with us  ***/
 
 /***  media query  ***/
@@ -1249,6 +1257,11 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.main-user-option ul.custom-select li a{ padding:10px 15px;}
 	.main-user-option ul.custom-select li.active::after {content: "\f078"; font-family: FontAwesome; position: absolute; top: 11px; right: 8px; color: #5c5c5c;}
 	.main-user-option ul.custom-select li.active:hover::after{color:#fff;}
+	.add-banner h1{font-size:30px;}
+	.add-with-us .search-mob-block{display:none;}
+	.add-with-us .dropdown.user-id{display:none;}
+	.add-with-us .add-form{width:80%;}
+	.add-with-us .web-header{display:block;}
 }
 @media screen and (max-width: 767px) {
     .container {width: 100%;}
@@ -1272,6 +1285,10 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.upload-profile img{margin-bottom:2px;}
 	.user-photo-name h3{font-size:18px;}
 	.user-photo-name p{font-size:14px;}
+	.add-banner h1{font-size:20px;}
+	.add-wi-us{position:relative;}
+	.add-banner img{max-height:320px; width:auto;}
+	.add-banner{overflow:hidden;}
 }
 @media screen and (max-width: 639px) {
 	/***  all profile  ***/
@@ -1341,6 +1358,10 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.post-box-bottom ul li a span{padding-left:5px;}
 	.media-pages-tablet ul li a{font-size:11px;}
 	.post-box-bottom ul li a{font-size:12px;}
+	.add-with-us .add-form{width:100%;}
+	.add-with-us .left-header{width:100%; float:left; text-align:center;}
+	.add-with-us .right-header{width:100%; float:left; text-align:center; padding-top:10px;}
+	.add-with-us .left-header h2{float:none; padding-right:0;}
 }
 @media screen and (max-width: 359px) {
 	.all-job-bottom{text-align:center;}

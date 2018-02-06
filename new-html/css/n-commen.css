@@ -711,9 +711,10 @@ footer ul{
 	float:right;
 	padding-left:0;
 	margin-bottom:0;
+	display:inline-block;
 }
 footer ul li{
-	float:left;
+	display:inline-block;
 	list-style-type:none;
 }
 footer ul li a{
