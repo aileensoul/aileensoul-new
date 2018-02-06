@@ -1,4 +1,4 @@
-app.controller('searchBusinessController', function ($scope, $window) {
+app.controller('searchJobController', function ($scope, $window) {
     $scope.keyword = q;
     $scope.city = l;
     $scope.searchSubmit = function () {

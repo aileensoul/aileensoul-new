@@ -22,104 +22,24 @@
                         <div class="">
                             <h3>Top Categories</h3>
                         </div>
-                        <ul class="search-listing">
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
+                        <ul class="search-listing custom-scroll">
+                            <li ng-repeat="category in jobCategory">
+                                <label class="control control--checkbox"><span ng-bind="category.industry_name"></span><span class="pull-right" ng-bind="'(' + category.count + ')'"></span>
+                                    <input type="checkbox" ng-value="{{category.industry_id}}"/>
                                     <div class="control__indicator"></div>
                                 </label>
                             </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-
                         </ul>
-                        <p class="text-right p10"><a href="#">More Categories</a></p>
+<!--                        <p class="text-right p10"><a href="#">More Categories</a></p>-->
                     </div>
                     <div class="left-search-box list-type-bullet">
                         <div class="">
                             <h3>Top Cities</h3>
                         </div>
-                        <ul class="search-listing">
+                        <ul class="search-listing custom-scroll">
                             <li>
                                 <label class=""><a href="#">IT<span class="pull-right">(50)</span></a></label>
                             </li>
-                            <li>
-                                <label class=""><a href="#">IT<span class="pull-right">(50)</span></a></label>
-                            </li>
-                            <li>
-                                <label class=""><a href="#">IT<span class="pull-right">(50)</span></a></label>
-                            </li>
-                            <li>
-                                <label class=""><a href="#">IT<span class="pull-right">(50)</span></a></label>
-                            </li>
-                            <li>
-                                <label class=""><a href="#">IT<span class="pull-right">(50)</span></a></label>
-                            </li>
-                            <li>
-                                <label class=""><a href="#">IT<span class="pull-right">(50)</span></a></label>
-                            </li>
-                            <li>
-                                <label class=""><a href="#">IT<span class="pull-right">(50)</span></a></label>
-                            </li>
-
                         </ul>
                         <p class="text-right p10"><a href="#">More Categories</a></p>
                     </div>

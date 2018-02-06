@@ -1,15 +1,15 @@
-app.controller('businessController', function ($scope, $http) {
+app.controller('jobController', function ($scope, $http) {
     $scope.title = title;
-    $scope.businessCategory = {};
+    $scope.jobCategory = {};
     
-    function businessCategory(){
-        $http.get(base_url + "business_live/businessCategory?limit=9").then(function (success) {
-            $scope.businessCategory = success.data;
+    function jobCategory(){
+        $http.get(base_url + "job_live/jobCategory?limit=24").then(function (success) {
+            $scope.jobCategory = success.data;
         }, function (error) {});
     }
-    businessCategory();
+    jobCategory();
     function otherCategoryCount(){
-        $http.get(base_url + "business_live/otherCategoryCount").then(function (success) {
+        $http.get(base_url + "job_live/otherCategoryCount").then(function (success) {
             $scope.otherCategoryCount = success.data;
         }, function (error) {});
     }

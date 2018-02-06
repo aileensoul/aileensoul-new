@@ -51,9 +51,9 @@ class Job_live extends MY_Controller {
         $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
-        $this->data['search_banner'] = $this->load->view('artist_live/search_banner', $this->data, TRUE);
+        $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
         $this->data['title'] = "Categories - Artist Profile | Aileensoul";
-        $this->load->view('artist_live/category', $this->data);
+        $this->load->view('job_live/category', $this->data);
     }
 
     public function categoryArtistList($category = '') {
@@ -68,13 +68,13 @@ class Job_live extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
-        $this->data['search_banner'] = $this->load->view('artist_live/search_banner', $this->data, TRUE);
+        $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
         echo$category_id = $this->db->select('category_id')->get_where('art_category', array('category_slug' => $category))->row_array('category_id');
         $this->data['category_id'] = $category_id['category_id'];
-        $this->load->view('artist_live/categoryArtistList', $this->data);
+        $this->load->view('job_live/categoryArtistList', $this->data);
     }
 
-    public function artist_search() {
+    public function job_search() {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
         $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
@@ -86,38 +86,38 @@ class Job_live extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
-        $this->data['search_banner'] = $this->load->view('artist_live/search_banner', $this->data, TRUE);
+        $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
         $this->data['q'] = $_GET['q'];
         $this->data['l'] = $_GET['l'];
-        $this->load->view('artist_live/search', $this->data);
+        $this->load->view('job_live/search', $this->data);
     }
 
-    public function artistCategory() {
+    public function jobCategory() {
         $limit = $_GET['limit'];
-        $artistCategory = $this->artistic_model->artistCategory($limit);
-        echo json_encode($artistCategory);
+        $jobCategory = $this->job_model->jobCategory($limit);
+        echo json_encode($jobCategory);
     }
 
-    public function artistAllCategory() {
-        $artistAllCategory = $this->artistic_model->artistAllCategory();
-        echo json_encode($artistAllCategory);
+    public function jobAllCategory() {
+        $jobAllCategory = $this->job_model->jobAllCategory();
+        echo json_encode($jobAllCategory);
     }
 
     public function otherCategoryCount() {
-        $otherCategoryCount = $this->artistic_model->otherCategoryCount();
+        $otherCategoryCount = $this->job_model->otherCategoryCount();
         echo $otherCategoryCount;
     }
 
-    public function artistListByCategory($id = '0') {
-        $artistListByCategory = $this->artistic_model->artistListByCategory($id);
-        echo json_encode($artistListByCategory);
+    public function jobListByCategory($id = '0') {
+        $jobListByCategory = $this->job_model->jobListByCategory($id);
+        echo json_encode($jobListByCategory);
     }
 
     public function searchArtistData() {
         $keyword = $_GET['q'];
         $city = $_GET['l'];
 
-        $searchArtistData = $this->artistic_model->searchArtistData($keyword, $city);
+        $searchArtistData = $this->job_model->searchArtistData($keyword, $city);
         echo json_encode($searchArtistData);
     }
 
