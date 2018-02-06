@@ -125,6 +125,17 @@ class Job_live extends MY_Controller {
         echo json_encode($jobCompany);
     }
     
+    public function jobSkill(){
+        $limit = $_GET['limit'];
+        $jobSkill = $this->job_model->jobSkill($limit);
+        echo json_encode($jobSkill);
+    }
+    
+    public function latestJob(){
+        $latestJob = $this->job_model->latestJob();
+        echo json_encode($latestJob);
+    }
+    
     public function searchJobData() {
         $keyword = $_GET['q'];
         $city = $_GET['l'];

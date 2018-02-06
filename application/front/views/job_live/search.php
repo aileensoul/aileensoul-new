@@ -23,14 +23,142 @@
                         <div class="">
                             <h3>Top Categories</h3>
                         </div>
-                        <ul class="search-listing">
-                            <li ng-repeat="category in artistCategory">
-                                <label class=""><a href="<?php echo base_url('artist/category/') ?>{{category.category_slug}}">{{category.art_category | capitalize}}<span class="pull-right">({{category.count}})</span></a></label>
-                            </li>
-                            <li>
-                                <label class=""><a href="<?php echo base_url('artist/category/other') ?>">Other<span class="pull-right">({{otherCategoryCount}})</span></a></label>
+                        <ul class="search-listing custom-scroll">
+                            <li ng-repeat="category in jobCategory">
+                                <label class=""><a href="<?php echo base_url('job/category/') ?>{{category.industry_slug}}"><span ng-bind="category.industry_name | capitalize"></span><span class="pull-right" ng-bind="'(' + category.count + ')'"></span></a></label>
                             </li>
                         </ul>
+<!--                        <p class="text-right p10"><a href="#">More Categories</a></p>-->
+                    </div>
+                    <div class="left-search-box list-type-bullet">
+                        <div class="">
+                            <h3>Top Cities</h3>
+                        </div>
+                        <ul class="search-listing custom-scroll">
+                            <li ng-repeat="city in jobCity">
+                                <label class=""><a href="<?php echo base_url('job/city/') ?>{{city.slug}}"><span ng-bind="city.city_name | capitalize"></span><span class="pull-right" ng-bind="'(' + city.count + ')'"></span></a></label>
+                            </li>
+                        </ul>
+                        <!--<p class="text-right p10"><a href="#">More Categories</a></p>-->
+                    </div>
+                    <div class="left-search-box list-type-bullet">
+                        <div class="">
+                            <h3>Top Company</h3>
+                        </div>
+                        <ul class="search-listing custom-scroll">
+                            <li ng-repeat="company in jobCompany">
+                                <label class=""><a href="<?php echo base_url('job/company/') ?>{{company.company_slug}}"><span ng-bind="company.company_name | capitalize"></span><span class="pull-right" ng-bind="'(' + company.count + ')'"></span></a></label>
+                            </li>
+                        </ul>
+                        <!--<p class="text-right p10"><a href="#">More Categories</a></p>-->
+                    </div>
+                    <div class="left-search-box list-type-bullet">
+                        <div class="">
+                            <h3>Top Skills</h3>
+                        </div>
+                        <ul class="search-listing custom-scroll">
+                            <li ng-repeat="skill in jobSkill">
+                                <label class=""><a href="<?php echo base_url('job/skill/') ?>{{skill.skill_slug}}"><span ng-bind="skill.skill | capitalize"></span><span class="pull-right" ng-bind="'(' + skill.count + ')'"></span></a></label>
+                            </li>
+                        </ul>
+                        <!--<p class="text-right p10"><a href="#">More Categories</a></p>-->
+                    </div>
+                    <div class="left-search-box">
+                        <div class="accordion" id="accordion2">
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <h3><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Posting Period</a></h3>
+                                </div>
+                                <div id="collapseOne" class="accordion-body collapse">
+                                    <ul class="search-listing">
+                                        <li>
+                                            <label class="control control--checkbox">Today
+                                                <input type="checkbox" name="posting_period[]" value="1"/>
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="control control--checkbox">Last 7 Days
+                                                <input type="checkbox"  name="posting_period[]" value="2"/>
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="control control--checkbox">Last 15 Days
+                                                <input type="checkbox"  name="posting_period[]" value="3"/>
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="control control--checkbox">Last 45 Days
+                                                <input type="checkbox"  name="posting_period[]" value="4"/>
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="control control--checkbox">More than 45 Days
+                                                <input type="checkbox"  name="posting_period[]" value="5"/>
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="left-search-box">
+                        <div class="accordion" id="accordion3">
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <h3><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapsetwo">Experience</a></h3>
+                                </div>
+                                <div id="collapsetwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <ul class="search-listing">
+                                            <li>
+                                                <label class="control control--checkbox">0 to 1 year
+                                                    <input type="checkbox" name="experience[]" value="1"/>
+                                                    <div class="control__indicator"></div>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="control control--checkbox">1 to 2 year
+                                                    <input type="checkbox" name="experience[]" value="2"/>
+                                                    <div class="control__indicator"></div>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="control control--checkbox">2 to 3 year
+                                                    <input type="checkbox" name="experience[]" value="3"/>
+                                                    <div class="control__indicator"></div>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="control control--checkbox">3 to 4 year
+                                                    <input type="checkbox" name="experience[]" value="4"/>
+                                                    <div class="control__indicator"></div>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="control control--checkbox">4 to 5 year
+                                                    <input type="checkbox" name="experience[]" value="5"/>
+                                                    <div class="control__indicator"></div>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="control control--checkbox">More than 5 year
+                                                    <input type="checkbox" name="experience[]" value="6"/>
+                                                    <div class="control__indicator"></div>
+                                                </label>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
                     <div class="custom_footer_left fw">

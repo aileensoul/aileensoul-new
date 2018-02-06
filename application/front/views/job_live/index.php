@@ -35,7 +35,7 @@
                         </div>
                         <ul class="search-listing custom-scroll">
                             <li ng-repeat="city in jobCity">
-                                <label class=""><a href="#"><span ng-bind="city.city_name | capitalize"></span><span class="pull-right" ng-bind="'(' + city.count + ')'"></span></a></label>
+                                <label class=""><a href="<?php echo base_url('job/city/') ?>{{city.slug}}"><span ng-bind="city.city_name | capitalize"></span><span class="pull-right" ng-bind="'(' + city.count + ')'"></span></a></label>
                             </li>
                         </ul>
                         <!--<p class="text-right p10"><a href="#">More Categories</a></p>-->
@@ -46,7 +46,18 @@
                         </div>
                         <ul class="search-listing custom-scroll">
                             <li ng-repeat="company in jobCompany">
-                                <label class=""><a href="#"><span ng-bind="company.company_name | capitalize"></span><span class="pull-right" ng-bind="'(' + company.count + ')'"></span></a></label>
+                                <label class=""><a href="<?php echo base_url('job/company/') ?>{{company.company_slug}}"><span ng-bind="company.company_name | capitalize"></span><span class="pull-right" ng-bind="'(' + company.count + ')'"></span></a></label>
+                            </li>
+                        </ul>
+                        <!--<p class="text-right p10"><a href="#">More Categories</a></p>-->
+                    </div>
+                    <div class="left-search-box list-type-bullet">
+                        <div class="">
+                            <h3>Top Skills</h3>
+                        </div>
+                        <ul class="search-listing custom-scroll">
+                            <li ng-repeat="skill in jobSkill">
+                                <label class=""><a href="<?php echo base_url('job/skill/') ?>{{skill.skill_slug}}"><span ng-bind="skill.skill | capitalize"></span><span class="pull-right" ng-bind="'(' + skill.count + ')'"></span></a></label>
                             </li>
                         </ul>
                         <!--<p class="text-right p10"><a href="#">More Categories</a></p>-->
@@ -185,45 +196,37 @@
                             </ul>
                         </div>
                     </div>
-
-
-
-
-
                 </div>
-
                 <div class="middle-part">
-
                     <div class="page-title">
-                        <h3>Letest Job</h3>
+                        <h3>Latest Job</h3>
                     </div>
-                    <div class="all-job-box">
+                    <div class="all-job-box" ng-repeat="job in latestJob">
                         <div class="all-job-top">
                             <div class="post-img">
-                                <a href="#"><img src="img/commen-img.png"></a>
+                                <a href="#" ng-if="job.comp_logo"><img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL ?>{{job.comp_logo}}"></a>
+                                <a href="#" ng-if="!job.comp_logo"><img src="<?php echo base_url('assets/n-images/commen-img.png') ?>"></a>
                             </div>
                             <div class="job-top-detail">
-                                <h5><a href="#">UI Developer/Front End Developer</a></h5>
-                                <p><a href="#">Enterprise Solution Inc</a></p>
-                                <p><a href="#">Vivek Panday</a></p>
+                                <h5><a href="#" ng-bind="job.post_name"></a></h5>
+                                <p><a href="#" ng-bind="job.re_comp_name"></a></p>
+                                <p><a href="#" ng-bind="job.fullname"></a></p>
                             </div>
                         </div>
                         <div class="all-job-middle">
                             <p class="pb5">
                                 <span class="location">
-                                    <span><img class="pr5" src="img/location.png">Ahmedabad,(India)</span>
+                                    <span><img class="pr5" src="<?php echo base_url('assets/img/location.png') ?>">{{job.city_name}},({{job.country_name}})</span>
                                 </span>
                                 <span class="exp">
-                                    <span><img class="pr5" src="img/exp.png">3 year - 7 year (freshers can also apply)</span>
+                                    <span><img class="pr5" src="<?php echo base_url('assets/img/exp.png') ?>">{{job.min_year}} year - {{job.max_year}} year <span ng-if="job.fresher == '1'">(freshers can also apply)</span></span>
                                 </span>
                             </p>
-                            <p>
-                                5+ years experience desired Proficiency with one or more of the modern front end frameworks (Angular, React, Vue)  Advanced knowledge of web basics (Javascript, HTML, CSS, Ajax, JSON) ........
-                            </p>
+                            <p ng-bind="(job.post_description | limitTo:175) + '.....'"></p>
 
                         </div>
                         <div class="all-job-bottom">
-                            <span class="job-post-date"><b>Posted on:</b>12-Nov-2017</span>
+                            <span class="job-post-date"><b>Posted on:</b><span ng-bind="job.created_date"></span></span>
                             <p class="pull-right">
                                 <a href="#" class="btn4">Save</a>
                                 <a href="#" class="btn4">Apply</a>
@@ -231,231 +234,13 @@
 
                         </div>
                     </div>
-                    <div class="all-job-box">
-                        <div class="all-job-top">
-                            <div class="post-img">
-                                <a href="#"><img src="img/commen-img.png"></a>
-                            </div>
-                            <div class="job-top-detail">
-                                <h5><a href="#">UI Developer/Front End Developer</a></h5>
-                                <p><a href="#">Enterprise Solution Inc</a></p>
-                                <p><a href="#">Vivek Panday</a></p>
-                            </div>
-                        </div>
-                        <div class="all-job-middle">
-                            <p class="pb5">
-                                <span class="location">
-                                    <span><img class="pr5" src="img/location.png">Ahmedabad,(India)</span>
-                                </span>
-                                <span class="exp">
-                                    <span><img class="pr5" src="img/exp.png">3 year - 7 year (freshers can also apply)</span>
-                                </span>
-                            </p>
-                            <p>
-                                5+ years experience desired Proficiency with one or more of the modern front end frameworks (Angular, React, Vue)  Advanced knowledge of web basics (Javascript, HTML, CSS, Ajax, JSON) ........
-                            </p>
-
-                        </div>
-                        <div class="all-job-bottom">
-                            <span class="job-post-date"><b>Posted on:</b>12-Nov-2017</span>
-                            <p class="pull-right">
-                                <a href="#" class="btn4">Save</a>
-                                <a href="#" class="btn4">Apply</a>
-                            </p>
-
-                        </div>
-                    </div>
-
-                    <div class="all-job-box">
-                        <div class="all-job-top">
-                            <div class="post-img">
-                                <a href="#"><img src="img/commen-img.png"></a>
-                            </div>
-                            <div class="job-top-detail">
-                                <h5><a href="#">UI Developer/Front End Developer</a></h5>
-                                <p><a href="#">Enterprise Solution Inc</a></p>
-                                <p><a href="#">Vivek Panday</a></p>
-                            </div>
-                        </div>
-                        <div class="all-job-middle">
-                            <p class="pb5">
-                                <span class="location">
-                                    <span><img class="pr5" src="img/location.png">Ahmedabad,(India)</span>
-                                </span>
-                                <span class="exp">
-                                    <span><img class="pr5" src="img/exp.png">3 year - 7 year (freshers can also apply)</span>
-                                </span>
-                            </p>
-                            <p>
-                                5+ years experience desired Proficiency with one or more of the modern front end frameworks (Angular, React, Vue)  Advanced knowledge of web basics (Javascript, HTML, CSS, Ajax, JSON) ........
-                            </p>
-
-                        </div>
-                        <div class="all-job-bottom">
-                            <span class="job-post-date"><b>Posted on:</b>12-Nov-2017</span>
-                            <p class="pull-right">
-                                <a href="#" class="btn4">Save</a>
-                                <a href="#" class="btn4">Apply</a>
-                            </p>
-
-                        </div>
-                    </div>
-                    <div class="all-job-box">
-                        <div class="all-job-top">
-                            <div class="post-img">
-                                <a href="#"><img src="img/commen-img.png"></a>
-                            </div>
-                            <div class="job-top-detail">
-                                <h5><a href="#">UI Developer/Front End Developer</a></h5>
-                                <p><a href="#">Enterprise Solution Inc</a></p>
-                                <p><a href="#">Vivek Panday</a></p>
-                            </div>
-                        </div>
-                        <div class="all-job-middle">
-                            <p class="pb5">
-                                <span class="location">
-                                    <span><img class="pr5" src="img/location.png">Ahmedabad,(India)</span>
-                                </span>
-                                <span class="exp">
-                                    <span><img class="pr5" src="img/exp.png">3 year - 7 year (freshers can also apply)</span>
-                                </span>
-                            </p>
-                            <p>
-                                5+ years experience desired Proficiency with one or more of the modern front end frameworks (Angular, React, Vue)  Advanced knowledge of web basics (Javascript, HTML, CSS, Ajax, JSON) ........
-                            </p>
-
-                        </div>
-                        <div class="all-job-bottom">
-                            <span class="job-post-date"><b>Posted on:</b>12-Nov-2017</span>
-                            <p class="pull-right">
-                                <a href="#" class="btn4">Save</a>
-                                <a href="#" class="btn4">Apply</a>
-                            </p>
-
-                        </div>
-                    </div>
-                    <div class="all-job-box">
-                        <div class="all-job-top">
-                            <div class="post-img">
-                                <a href="#"><img src="img/commen-img.png"></a>
-                            </div>
-                            <div class="job-top-detail">
-                                <h5><a href="#">UI Developer/Front End Developer</a></h5>
-                                <p><a href="#">Enterprise Solution Inc</a></p>
-                                <p><a href="#">Vivek Panday</a></p>
-                            </div>
-                        </div>
-                        <div class="all-job-middle">
-                            <p class="pb5">
-                                <span class="location">
-                                    <span><img class="pr5" src="img/location.png">Ahmedabad,(India)</span>
-                                </span>
-                                <span class="exp">
-                                    <span><img class="pr5" src="img/exp.png">3 year - 7 year (freshers can also apply)</span>
-                                </span>
-                            </p>
-                            <p>
-                                5+ years experience desired Proficiency with one or more of the modern front end frameworks (Angular, React, Vue)  Advanced knowledge of web basics (Javascript, HTML, CSS, Ajax, JSON) ........
-                            </p>
-
-                        </div>
-                        <div class="all-job-bottom">
-                            <span class="job-post-date"><b>Posted on:</b>12-Nov-2017</span>
-                            <p class="pull-right">
-                                <a href="#" class="btn4">Save</a>
-                                <a href="#" class="btn4">Apply</a>
-                            </p>
-
-                        </div>
-                    </div>
-
-
                 </div>
-
                 <div class="right-part">
                     <div class="add-box">
-                        <img src="img/add.jpg">
+                        <img src="<?php echo base_url('assets/n-images/add.jpg') ?>">
                     </div>
-                    <div class="all-contact">
-                        <h4>Contacts<a href="#" class="pull-right">All</a></h4>
-                        <div class="all-user-list">
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="post-img">
-                                        <img src="img/user-pic.jpg">
-
-                                    </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">Prasant Dadhaniya </a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
-                                </div>
-                                <div class="item">
-                                    <div class="post-img">
-                                        <img src="img/user-pic.jpg">
-
-                                    </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">Prasant Dadhaniya </a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
-                                </div>
-                                <div class="item">
-                                    <div class="post-img">
-                                        <img src="img/user-pic.jpg">
-
-                                    </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">Prasant Dadhaniya </a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
-                                </div>
-                                <div class="item">
-                                    <div class="post-img">
-                                        <img src="img/user-pic.jpg">
-
-                                    </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">Prasant Dadhaniya </a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
-                                </div>
-                                <div class="item">
-                                    <div class="post-img">
-                                        <img src="img/user-pic.jpg">
-
-                                    </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">Prasant Dadhaniya </a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
-                                </div>
-                                <div class="item">
-                                    <div class="post-img">
-                                        <img src="img/user-pic.jpg">
-
-                                    </div>
-                                    <div class="user-list-detail">
-                                        <p class="contact-name"><a href="#">Prasant Dadhaniya </a></p>
-                                        <p class="contact-designation"><a href="#">SEO Executive</a></p>
-                                    </div>
-                                    <button class="follow-btn">Add to contact</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
-
             </div>
-
         </div>
         <script src="<?php echo base_url('assets/js/jquery.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()) ?>"></script>
