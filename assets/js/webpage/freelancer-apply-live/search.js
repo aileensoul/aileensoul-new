@@ -15,12 +15,22 @@ app.controller('freelancerapplySearchListController', function ($scope, $http) {
 //    otherCategoryCount();
     function searchBusiness() {
         var search_data_url = '';
+        
+         if(f == '' && p == ''){
+            var time = "none";
+        }else if (f == '') {
+            var time = "part";
+        } else if (p == '') {
+            var time = "full";
+        }else{
+            var time = "both";
+        }
         if (q != '' && l == '') {
-            search_data_url = base_url + 'freelancer_apply_live/searchFreelancerApplyData?q=' + q;
+            search_data_url = base_url + 'freelancer_apply_live/searchFreelancerApplyData?q=' + q+ '&t=' +time;
         } else if (q == '' && l != '') {
-            search_data_url = base_url + 'freelancer_apply_live/searchFreelancerApplyData?l=' + l;
+            search_data_url = base_url + 'freelancer_apply_live/searchFreelancerApplyData?l=' + l+ '&t=' +time;;
         } else {
-            search_data_url = base_url + 'freelancer_apply_live/searchFreelancerApplyData?q=' + q + '&l=' + l;
+            search_data_url = base_url + 'freelancer_apply_live/searchFreelancerApplyData?q=' + q + '&l=' + l+ '&t=' +time;;
         }
         
         $http.get(search_data_url).then(function (success) {
