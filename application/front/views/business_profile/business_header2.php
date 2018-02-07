@@ -336,26 +336,30 @@ $userid = $this->session->userdata('aileenuser');
 </div>
 <div class="mobile-header">
     <header class="">
-        <div class="header animated fadeInDownBig">
+        <div class="animated fadeInDownBig">
             <div class="container">
 
                 <div class="left-header">
-                    <h2 class="logo"><a href="#"><img src="n-images/mob-logo.png"></a></h2>
+                    <h2 class="logo"><a href="#"><img src="<?php echo base_url('assets/n-images/mob-logo.png?ver=' . time()) ?>"></a></h2>
                     <div class="search-mob-block">
-                        <div class="">
+                        
                             <a href="#search">
                                 <input type="search" id="tags1" class="tags" name="skills" value="" placeholder="Job Title,Skill,Company" />
                             </a>
-                        </div>
+                        
                         <div id="search">
-                            <button type="button" class="close">×</button>
+                            
                             <form method="get">
                                 <div class="new-search-input">
                                     <input type="search" id="tags1" class="tags" name="skills" value="" placeholder="Job Title,Skill,Company" />
                                     <input type="search" id="searchplace1" class="searchplace" name="searchplace" value="" placeholder="Find Location" />
-                                    <button type="submit"  id="search_btn" class="btn btn-primary" onclick="return check();">Search</button>
+                                    
                                 </div>
-                            </form>
+								<div class="new-search-btn">
+									<button type="button" class="close-new btn">Cancel</button>
+									<button type="submit" id="search_btn" class="btn btn-primary" onclick="return check();">Search</button>
+								</div>
+							</form>
                         </div>
                     </div>
                     <div class="right-header">
@@ -426,25 +430,25 @@ $userid = $this->session->userdata('aileenuser');
     <div class="mob-bottom-menu">
         <ul>
             <li>
-                <a href="opportunities.html"><img src="n-images/op-bottom.png"></a>
+                <a href="opportunities.html"><img src="<?php echo base_url('assets/n-images/op-bottom.png?ver=' . time()) ?>"></a>
             </li>
             <li id="add-contact" class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="n-images/add-contact-bottom.png">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/n-images/add-contact-bottom.png?ver=' . time()) ?>">
                     <span class="noti-box">1</span>
                 </a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="n-images/message-bottom.png">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/n-images/message-bottom.png?ver=' . time()) ?>">
                     <span class="noti-box">1</span>
                 </a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="n-images/noti-bottom.png">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url('assets/n-images/noti-bottom.png?ver=' . time()) ?>">
                     <span class="noti-box">1</span>
                 </a>
             </li>
             <li>
-                <button id="showRight"><img src="n-images/mob-menu.png"></button>
+                <button id="showRight"><img src="<?php echo base_url('assets/n-images/mob-menu.png?ver=' . time()) ?>"></button>
             </li>
 
 
