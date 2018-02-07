@@ -66,7 +66,7 @@ class Freelancer_apply_live extends MY_Controller {
         $keyword = $_GET['q'];
         $city = $_GET['l'];
         $time = $_GET['t'];
-        $searchFreelancerApplyData = $this->freelancer_apply_model->searchFreelancerApplyData($keyword,$city);
+        $searchFreelancerApplyData = $this->freelancer_apply_model->searchFreelancerApplyData($keyword,$city,$time);
         echo json_encode($searchFreelancerApplyData);
     }
 
