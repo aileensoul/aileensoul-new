@@ -230,7 +230,7 @@ class Business_profile extends MY_Controller {
         $company_name = $this->get_company_name($id);
         $this->data['title'] = ucwords($company_name) . ' | Dashboard' . ' | Business Profile' . TITLEPOSTFIX;
         if (count($business_data) == 0) {
-            $this->load->view('business_profile/notavalible');
+            $this->load->view('business_profile/notavalible', $this->data);
         } else {
             if ($this->session->userdata('aileenuser')) {
                 $this->load->view('business_profile/business_profile_manage_post', $this->data);
