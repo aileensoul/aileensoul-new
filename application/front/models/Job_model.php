@@ -43,7 +43,7 @@ class Job_model extends CI_Model {
     }
 
     function jobCompany($limit = '') {
-        $this->db->select('count(rp.user_id) as count,r.user_id,r.re_comp_name as company_name')->from('recruiter r');
+        $this->db->select('count(rp.user_id) as count,r.user_id,r.rec_id, r.re_comp_name as company_name')->from('recruiter r');
         $this->db->join('rec_post rp', 'rp.user_id = r.user_id', 'left');
         $this->db->where('r.re_status', '1');
         $this->db->where('rp.status', '1');
@@ -110,6 +110,101 @@ class Job_model extends CI_Model {
         $this->db->order_by('rp.post_id', 'desc');
         $query = $this->db->get();
         $result_array = $query->result_array();
+        return $result_array;
+    }
+
+    function applyJobFilter($posting_period = '', $experience = '', $category = '', $location = '', $company = '', $skill = '') {
+//        echo $posting_period;
+//        echo '<br>';
+//        echo $experience;
+//        echo '<br>';
+//        echo $category;
+//        echo '<br>';
+//        echo $location;
+//        echo '<br>';
+//        echo $company;
+//        echo '<br>';
+//        echo $skill;
+
+
+        $this->db->select("rp.post_id,rp.post_name,jt.name as string_post_name,rp.post_description,DATE_FORMAT(rp.created_date,'%d-%M-%Y') as created_date,ct.city_name,cr.country_name,rp.min_year,rp.max_year,rp.fresher,CONCAT(r.rec_firstname,' ',r.rec_lastname) as fullname, r.re_comp_name,r.comp_logo")->from('rec_post rp');
+        $this->db->join('recruiter r', 'r.user_id = rp.user_id', 'left');
+        $this->db->join('cities ct', 'ct.city_id = rp.city', 'left');
+        $this->db->join('countries cr', 'cr.country_id = rp.country', 'left');
+        $this->db->join('job_title jt', 'jt.title_id = rp.post_name', 'left');
+        if ($posting_period != '') {
+            $posting_period = explode(',', $posting_period);
+            $posting_where = '(';
+            foreach ($posting_period as $key => $value) {
+                if ($value == '1') {
+                    $select_date1 = date('Y-m-d');
+                    $posting_where1 .= "rp.created_date = '$select_date1' OR";
+                } elseif ($value == '2') {
+                    $select_date2 = date('Y-m-d', strtotime('-7 days'));
+                    $posting_where1 .= " rp.created_date >= '$select_date2' OR";
+                } elseif ($value == '3') {
+                    $select_date3 = date('Y-m-d', strtotime('-15 days'));
+                    $posting_where1 .= " rp.created_date >= '$select_date3' OR";
+                } elseif ($value == '4') {
+                    $select_date4 = date('Y-m-d', strtotime('-45 days'));
+                    $posting_where1 .= " rp.created_date >= '$select_date4' OR";
+                } elseif ($value == '5') {
+                    $select_date5 = date('Y-m-d', strtotime('-45 days'));
+                    $posting_where1 .= " rp.created_date <= '$select_date5'";
+                }
+            }
+            $posting_where .= trim($posting_where1, 'OR');
+            $posting_where .= ')';
+        }
+        if ($posting_where) {
+            $this->db->where($posting_where);
+        }
+        if ($experience != '') {
+            $experience = explode(',', $experience);
+            $exp_where = '(';
+            foreach ($experience as $key => $value) {
+                if ($value == '1') {
+                    $select_min = '0';
+                    $select_max = '1';
+                    $select_date1 = date('Y-m-d');
+                    $exp_where1 .= " (rp.min_year = '$select_min' AND rp.max_year = '$select_max') OR";
+                } elseif ($value == '2') {
+                    $select_min = '1';
+                    $select_max = '2';
+                    $select_date2 = date('Y-m-d', strtotime('-7 days'));
+                    $exp_where1 .= " (rp.min_year = '$select_min' AND rp.max_year = '$select_max') OR";
+                } elseif ($value == '3') {
+                    $select_min = '2';
+                    $select_max = '3';
+                    $select_date3 = date('Y-m-d', strtotime('-15 days'));
+                    $exp_where1 .= " (rp.min_year = '$select_min' AND rp.max_year = '$select_max') OR";
+                } elseif ($value == '4') {
+                    $select_min = '3';
+                    $select_max = '4';
+                    $select_date4 = date('Y-m-d', strtotime('-45 days'));
+                    $exp_where1 .= " (rp.min_year = '$select_min' AND rp.max_year = '$select_max') OR";
+                } elseif ($value == '5') {
+                    $select_min = '4';
+                    $select_max = '5';
+                    $select_date5 = date('Y-m-d', strtotime('-45 days'));
+                    $exp_where1 .= " (rp.min_year = '$select_min' AND rp.max_year = '$select_max') OR";
+                }
+                else{
+                    $exp_where1 .= "(rp.min_year <= '5'";
+                }
+            }
+            $exp_where .= trim($exp_where1, 'OR');
+            $exp_where .= ')';
+        }
+        if ($exp_where) {
+            $this->db->where($exp_where);
+        }
+        $this->db->where('rp.status', '1');
+        $this->db->where('rp.is_delete', '0');
+        $this->db->order_by('rp.post_id', 'desc');
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+
         return $result_array;
     }
 
