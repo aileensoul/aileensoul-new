@@ -188,8 +188,7 @@ class Job_model extends CI_Model {
                     $select_max = '5';
                     $select_date5 = date('Y-m-d', strtotime('-45 days'));
                     $exp_where1 .= " (rp.min_year = '$select_min' AND rp.max_year = '$select_max') OR";
-                }
-                else{
+                } else {
                     $exp_where1 .= "(rp.min_year <= '5'";
                 }
             }
@@ -198,6 +197,40 @@ class Job_model extends CI_Model {
         }
         if ($exp_where) {
             $this->db->where($exp_where);
+        }
+
+        if ($category != '') {
+            $category = str_replace(",", "','", $category);
+            $cat_where = "(rp.industry_type IN ('$category'))";
+        }
+        if ($cat_where) {
+            $this->db->where($cat_where);
+        }
+        if ($skill != '') {
+            $skill = explode(',', $skill);
+            $skill_where = '(';
+            foreach ($skill as $key => $value) {
+                $skill_where1 .= ' FIND_IN_SET(rp.post_skill, ' . $value . ') OR';
+            }
+            $skill_where .= trim($skill_where1, 'OR');
+            $skill_where .= ')';
+        }
+        if ($skill_where) {
+            $this->db->where($skill_where);
+        }
+        if ($location != '') {
+            $location = str_replace(",", "','", $location);
+            $loc_where = "(rp.city IN ('$location'))";
+        }
+        if ($loc_where) {
+            $this->db->where($loc_where);
+        }
+        if ($company != '') {
+            $company = str_replace(",", "','", $company);
+            $com_where = "(rp.user_id IN ('$company'))";
+        }
+        if ($com_where) {
+            $this->db->where($com_where);
         }
         $this->db->where('rp.status', '1');
         $this->db->where('rp.is_delete', '0');

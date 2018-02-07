@@ -1,12 +1,12 @@
-app.controller('jobCategoryController', function ($scope, $http) {
+app.controller('jobSkillController', function ($scope, $http) {
     $scope.title = title;
     $scope.jobCategory = {};
     $scope.jobCity = {};
     $scope.jobCompany = {};
     $scope.jobSkill = {};
     $scope.latestJob = {};
-    $scope.category = category_id;
-    $('#filter-category-id').val(category_id);
+    $scope.skill = skill_id;
+    $('#filter-skill-id').val(skill_id);
 
     function jobCategory() {
         $http.get(base_url + "job_live/jobCategory?limit=25").then(function (success) {

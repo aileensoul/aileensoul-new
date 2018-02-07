@@ -40,7 +40,7 @@ class Job_live extends MY_Controller {
         $this->load->view('job_live/index', $this->data);
     }
 
-    public function category() {
+    public function category($category_slug = '') {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
         $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
@@ -52,6 +52,8 @@ class Job_live extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
+        $category_id = $this->db->select('ji.industry_id')->get_where('job_industry ji', array('industry_slug' => $category_slug))->row_array('ji.industry_id');
+        $this->data['category_id'] = $category_id['industry_id'];
         $this->data['title'] = "Categories - Artist Profile | Aileensoul";
         $this->load->view('job_live/category', $this->data);
     }
@@ -112,47 +114,41 @@ class Job_live extends MY_Controller {
         $jobListByCategory = $this->job_model->jobListByCategory($id);
         echo json_encode($jobListByCategory);
     }
-    
-    public function jobCity(){
+
+    public function jobCity() {
         $limit = $_GET['limit'];
         $jobCity = $this->job_model->jobCity($limit);
         echo json_encode($jobCity);
     }
-    
-    public function jobCompany(){
+
+    public function jobCompany() {
         $limit = $_GET['limit'];
         $jobCompany = $this->job_model->jobCompany($limit);
         echo json_encode($jobCompany);
     }
-    
-    public function jobSkill(){
+
+    public function jobSkill() {
         $limit = $_GET['limit'];
         $jobSkill = $this->job_model->jobSkill($limit);
         echo json_encode($jobSkill);
     }
-    
-    public function latestJob(){
+
+    public function latestJob() {
         $latestJob = $this->job_model->latestJob();
         echo json_encode($latestJob);
     }
-    
-    public function applyJobFilter(){
-        
-        echo '<pre>';
-        print_r($_POST);
-        exit;
-        
+
+    public function applyJobFilter() {
         $posting_period = implode(',', $_POST['posting_period']);
         $experience = implode(',', $_POST['experience']);
         $category = implode(',', $_POST['category']);
         $location = implode(',', $_POST['location']);
         $company = implode(',', $_POST['company']);
         $skill = implode(',', $_POST['skill']);
-        
-        $job_filter = $this->job_model->applyJobFilter($posting_period,$experience,$category,$location,$company,$skill);
+
+        $job_filter = $this->job_model->applyJobFilter($posting_period, $experience, $category, $location, $company, $skill);
         echo json_encode($job_filter);
     }
-
 
     public function searchJobData() {
         $keyword = $_GET['q'];
