@@ -1,4 +1,4 @@
-app.controller('businessSearchListController', function ($scope, $http) {
+app.controller('freelancerapplySearchListController', function ($scope, $http) {
     $scope.title = title;
     $scope.businessCategory = {};
     function businessCategory() {

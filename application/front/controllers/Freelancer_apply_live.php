@@ -26,14 +26,39 @@ class Freelancer_apply_live extends MY_Controller {
     }
 
     public function index() {
-        $this->data['search_banner'] = $this->load->view('freelancer_apply_live/search_banner', $this->data, TRUE);
         $this->data['header_profile'] = $this->load->view('header_profile', $this->data, TRUE);
+        $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
+        $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
+        $this->data['title'] = "Search - Business Profile | Aileensoul";
+        $this->data['search_banner'] = $this->load->view('freelancer_apply_live/search_banner', $this->data, TRUE);
+       
         $this->load->view('freelancer_apply_live/freelancer_apply_live', $this->data);
     }
 
     public function freelancer_apply_live_post() {
         $postdata = $this->freelancer_apply_model->getfreelancerapplypost();
         echo json_encode($postdata);
+    }
+    
+    public function freelancer_apply_search() {
+        $userid = $this->session->userdata('aileenuser');
+        $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
+        $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
+        $this->data['is_userBasicInfo'] = $this->user_model->is_userBasicInfo($userid);
+        $this->data['is_userStudentInfo'] = $this->user_model->is_userStudentInfo($userid);
+        $this->data['is_userPostCount'] = $this->user_post_model->userPostCount($userid);
+        $this->data['header_profile'] = $this->load->view('header_profile', $this->data, TRUE);
+        $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
+        $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
+        $this->data['title'] = "Search - Business Profile | Aileensoul";
+        $this->data['search_banner'] = $this->load->view('freelancer_apply_live/search_banner', $this->data, TRUE);
+        $category_id = $this->db->select('industry_id')->get_where('industry_type', array('industry_slug' => $category))->row_array('industry_id');
+        $this->data['category_id'] = $category_id['industry_id'];
+        $this->data['q'] = $_GET['q'];
+        $this->data['l'] = $_GET['l'];
+        $this->load->view('freelancer_apply_live/search', $this->data);
     }
 
 }

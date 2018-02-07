@@ -9,11 +9,11 @@ app.controller('searchFreelancerApplyController', function ($scope, $window) {
         if (keyword == '' && city == '') {
             return false;
         } else if (keyword != '' && city == '') {
-            $window.location.href = base_url + 'freelancer_apply_live/search?q=' + keyword;
+            $window.location.href = base_url + 'freelancer_apply_live/freelancer_apply_search?q=' + keyword;
         } else if (keyword == '' && city != '') {
-            $window.location.href = base_url + 'freelancer_apply_live/search?l=' + city;
+            $window.location.href = base_url + 'freelancer_apply_live/freelancer_apply_search?l=' + city;
         } else {
-            $window.location.href = base_url + 'freelancer_apply_live/search?q=' + keyword + '&l=' + city;
+            $window.location.href = base_url + 'freelancer_apply_live/freelancer_apply_search?q=' + keyword + '&l=' + city;
         }
     }
 });

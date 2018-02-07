@@ -17,13 +17,13 @@
                     <ul class="work-timing">
                         <li>
                             <label class="control control--checkbox">Full-Time
-                                <input type="checkbox"/>
+                                <input ng-model="full_time" name="f" type="checkbox"/>
                                 <div class="control__indicator"></div>
                             </label>
                         </li>
                         <li>
                             <label class="control control--checkbox">Part-Time
-                                <input type="checkbox"/>
+                                <input ng-model="part_time" name="p" type="checkbox"/>
                                 <div class="control__indicator"></div>
                             </label>
                         </li>
