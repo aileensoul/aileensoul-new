@@ -1,11 +1,8 @@
 /***  new flow  ***/
-
-
 /***  page 1  ***/
 .middle-section{padding:80px 0 50px;}
 .middle-section-banner{padding:55px 0 50px;}
 .register .middle-section{padding:120px 0 50px;}
-
 .form-box{width:700px; margin:0 auto; border-radius:4px;
 	border:1px solid #c7c7c7;
     position: relative;
@@ -84,6 +81,7 @@
 .post-box-bottom ul li{list-style-type:none; display:inline-block;}
 .post-box-bottom ul li a{color:#5c5c5c;}
 .post-box-bottom ul li a span{display: inline-block; vertical-align: middle; padding-left:10px;}
+.post-box-bottom ul li a span span{padding-left:0;}
 .post-box-bottom .btn1{padding:3px 20px;}
 .modal-content .post-box .post-box-bottom{margin-top:0;}
 .post-popup-box{width:100%; float:left; border-radius:4px;}
@@ -293,7 +291,7 @@ color: #fff;}
 .main-banner{max-height:340px; overflow:hidden; height:340px; position:relative;}
 .main-banner .banner-img img{width:100%;}
 .main-banner .banner-img{border-top:0;}
-.main-user-profile{border-bottom:1px solid #d9d9d9;}
+.main-user-profile{/*border-bottom:1px solid #d9d9d9;*/}
 .user-photo-name .profile-img{width:180px; height:180px; background:#fff; border:1px solid #d9d9d9; padding:4px; border-radius:100%; margin:-135px auto 0; position:relative;}
 .cameraButton .fa.fa-camera{
 	width:30px;
@@ -487,6 +485,7 @@ label.cameraButton input[accept*="camera"] {
 .table-responsive.content td a{display: block; padding: 10px;color: #5c5c5c; line-height:22px; }
 .table-responsive.content td a:hover{background: #1b8ab9; color: #fff;}
 .mob-comment .btn2 img{display:none;}
+.main-user-option-scroll{width:100%; float:left; border-bottom:1px solid #d2d2d2;}
 /***  end main dashboard page  ***/
 
 /***  profile page  ***/
@@ -1009,7 +1008,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 
 /***  search banner  ***/
 .search-banner{background:url("../n-images/search-bnr-job.jpg"); margin-bottom:20px; padding-bottom:60px; background-size:100%;}
-.recruiter-main .search-banner{background:url("../n-images/bnr-rec.jpg"); margin-bottom:20px; padding:25px 0; background-size:100%;}
+.recruiter-main .search-banner{background:url("../n-images/bnr-rec.jpg"); margin-bottom:20px; padding:25px 0; background-size:cover;}
 .search-box{width:860px; margin:0 auto; padding:30px; background:rgba(255,255,255,0.2);}
 .search-box .search-input input{width:40%; margin-right:15px; height:50px; font-size:22px;}
 .search-box .btn1{font-size:22px; padding:12px 21px;}
@@ -1093,8 +1092,8 @@ header.profile-header .logo a{color:#5c5c5c;}
  .reg-form{border:1px solid #5c5c5c; border-radius:4px;}
  .reg-form h3{text-align:center; font-size:22px; border-bottom:1px solid #5c5c5c; padding:10px 0;}
  .reg-form form{padding:15px;}
- .reg-form-box .reg-form .form-group{margin-bottom:25px;}
- .reg-form-box .reg-form .form-group input, .reg-form-box .reg-form .form-group select, .reg-form-box .reg-form .form-group textarea {border-bottom:1px solid #5c5c5c; background:none; border-radius:0px; border-width: 0px 0px 1px 0px; padding:5px 10px;}
+ .reg-form-box .reg-form .form-group{margin-bottom:0px;}
+ .reg-form-box .reg-form .form-group input, .reg-form-box .reg-form .form-group select, .reg-form-box .reg-form .form-group textarea {border-bottom:1px solid #5c5c5c; background:none; border-radius:0px; border-width: 0px 0px 1px 0px; padding:5px 10px; margin-bottom:20px;}
  .reg-form-box .reg-form .form-group select{padding-left:6px;}
  
  /** rec fix sub header  **/
@@ -1183,7 +1182,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 .add-banner img{width:100%;}
 .add-with-us header{background:none; position:absolute;}
 .add-banner{position:relative;}
-.add-banner h1{position:absolute; text-align:center; width:100%; color:#fff; bottom:40px; font-size:50px;}
+.add-banner h1{position:absolute; text-align:center; width:100%; color:#fff; bottom:45%; font-size:50px;}
 .add-with-us .add-form{width:50%; margin:50px auto 0; border:1px solid #d2d2d2; border-radius:4px;
 	-webkit-box-shadow:0 0 10px -1px rgba(217,217,217,1);
     -moz-box-shadow:0 0 10px -1px rgba(217,217,217,1);
@@ -1251,7 +1250,6 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.inner-right-part{width: 550px; left: 0;}
 	.job-detail .post-img{width:100px; height:100px;}
 	.detail-discription .all-job-middle ul li span{width:74%;}
-	
 	.main-user-option .custom-none{display:none;}
 	.main-user-option-tablet{display:block;}
 	.main-user-option-tablet{width:100%; margin:0 auto;}
@@ -1278,6 +1276,8 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.custom-user-list{width:100%;}
 	.search-box{width:720px;}
 	.search-box .search-input input{width:38%;}
+	.right-add{display:none;}
+	.all-noti .custom-user-box .custom-user-detail{width:90%;}
 }
 @media screen and (max-width: 767px) {
     .container {width: 100%;}
@@ -1344,10 +1344,9 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.table-responsive.content{overflow:scroll;}
 	.table-responsive.content td a:hover{ background:-webkit-linear-gradient(96deg,#1b8ab9 0,#1b8ab9 44%,#3bb0ac 100%);-webkit-background-clip:text;
     -webkit-text-fill-color:transparent; border-bottom:2px solid #1b8ab9; color:#1b8ab9;
-	
 	}
 	.table-responsive.content td a{padding:0;}
-	.search-box{width:100%;}
+	.search-box{width:100%; float:left;}
 	.cat-box ul li{width:33.33%;}
 	.search-box .search-input input{width:100%; margin-bottom:15px;}
 	.search-input{text-align:center;}
@@ -1358,8 +1357,14 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.search-box .search-input input{font-size:16px; height:40px;}
 	.search-box .btn1{padding:7px 21px;}
 	.custom-user-box .custom-user-detail{width:50%;}
-	.right-add{display:none;}
+	
 	.all-contact .all-user-list .owl-nav{top:75px;}
+	.all-noti .custom-user-box .custom-user-detail{width:84%;}
+	.custom-user-list .all-noti a h4{font-size:14px;}
+	.all-noti .custom-user-detail p{font-size:12px;}
+	.form-box{width:95%;}
+	.form-box h2{font-size:24px;}
+	.banner-main-div{display:inherit;}
 }
 @media screen and (max-width: 639px) {
 	/***  all profile  ***/
@@ -1382,6 +1387,9 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.all-upload .upload_icon{margin:0 2px;}
 	.user-btns a.btn3{width:32%; margin:0;}
 	.media-pages-tablet ul li{padding:0 10px;}
+	.work-timing li{padding:0 18px;}
+	.media-tab .nav-tabs > li > a{font-size:16px;}
+	.media-tab .nav > li > a{padding:10px;}
 
 }
 @media screen and (max-width: 539px) {
@@ -1440,7 +1448,6 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.mob-comment .btn2{background:none; font-size:0;}
 	.comment-box .add-comment .comment-input{padding:0;}
 	.mob-comment .btn2 img{display:block;}
-	
 	.cat-box ul li{width:50%;}
 	.search-business .search-detail li .detail-content{width:88%;}
 	
@@ -1449,6 +1456,17 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.custom-user-box .custom-user-detail h4{font-size:15px;}
 	.custom-user-box .custom-user-detail p{font-size:12px; padding-top:0;}
 	.all-contact .all-user-list .owl-nav{top:150px;}
+	.work-timing li{width:100%; padding-bottom:10px; padding-left:0;}
+	.all-noti .custom-user-box .custom-user-detail{padding-top:0;}
+	.student-or-not{font-size:14px;}
+	.form-box label{font-size:14px;}
+	.media-tab .nav-tabs > li > a{font-size:0px; margin:0 10px;}
+	.media-tab .nav-tabs > li > a i{font-size:16px;}
+	.media-tab .tab-content{padding:10px;}
+	.article-tab li{width:100%; margin:0;}
+	.question-page .bottom-left li a{font-size:12px; margin-right:10px !important}
+	.post-bottom ul.bottom-right li{padding:0 4px;}
+	.add-banner h1{bottom:35%;}
 }
 @media screen and (max-width: 359px) {
 	.all-job-bottom{text-align:center;}
@@ -1457,13 +1475,17 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.post-detail{width:79%;}
 	.post-bottom .col-sm-6.col-xs-5{padding-right:0;}
 	.post-bottom .col-sm-6.col-xs-7{padding-left:5px;}
-	.post-bottom ul.bottom-right li{padding:0 5px;}
+	.post-bottom ul.bottom-right li{}
 	.comment-dis{width:85%;}
 	.post-box .post-text{font-size:14px;}
 	.media-pages-tablet ul li{padding:0 8px;}
 	.post-box-bottom ul li a img{width:12px;}
 	.comment-action li{padding:0 5px;}
 	.all-contact .all-user-list .owl-nav{top:130px;}
+	.all-noti .custom-user-box .custom-user-detail{width:83%;}
+	.custom-user-list .all-noti a h4{font-size:13px;}
+	.custom-user-box .custom-user-detail p{font-size:12px;}
+	.form-box h2{font-size:22px;}
 }
 @media screen and (max-width: 320px) {
 
