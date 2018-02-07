@@ -395,7 +395,7 @@ header {
 header .logo a{color:#fff;}
 header .logo a:focus, header .logo a:hover {text-decoration:none;}
 header h2.logo{margin:0; float:left; padding-right:20px; padding:0; line-height:1;}
-.left-header form{float:left; width:70%;}
+.left-header form{float:left; width:70%; padding-left:15px;}
 .left-header input[type=text] {
     width: 200px;
     box-sizing: border-box;
