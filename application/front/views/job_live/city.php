@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="jobCategoryApp" ng-controller="jobCategoryController">
+<html lang="en" ng-app="jobCityApp" ng-controller="jobCityController">
     <head>
         <title ng-bind="title"></title>
         <meta charset="utf-8">
@@ -266,10 +266,10 @@
                                 var q = '';
                                 var l = '';
                                 var category_id = '<?php echo $category_id ?>';
-                                var app = angular.module('jobCategoryApp', ['ui.bootstrap']);
+                                var app = angular.module('jobCityApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/webpage/job-live/searchJob.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/job-live/category.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/job-live/city.js?ver=' . time()) ?>"></script>
     </body>
 </html>
