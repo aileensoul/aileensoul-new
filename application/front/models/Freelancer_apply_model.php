@@ -27,5 +27,32 @@ class Freelancer_apply_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
+    
+    function searchFreelancerApplyData($keyword = '', $location = '') {
+//        $keyword = str_replace('%20', ' ', $keyword);
+//        $location = str_replace('%20', ' ', $location);
+//        
+//        $busCat = $this->findBusinesCategory($keyword);
+//        
+//        $this->db->select('bp.business_user_image,bp.profile_background,bp.business_slug,bp.other_industrial,bp.company_name,bp.country,bp.city,bp.details,bp.contact_website,it.industry_name,ct.city_name as city,cr.country_name as country')->from('business_profile bp');
+//        $this->db->join('industry_type it', 'it.industry_id = bp.industriyal', 'left');
+//        $this->db->join('cities ct', 'ct.city_id = bp.city', 'left');
+//        $this->db->join('countries cr', 'cr.country_id = bp.country', 'left');
+//        $this->db->join('states s', 's.state_name = bp.state', 'left');
+//        if ($keyword != '' && $busCat == '') {
+//            $this->db->where("(bp.company_name LIKE '%$keyword%' OR bp.address LIKE '%$keyword%' OR bp.contact_person LIKE '%$keyword%' OR bp.contact_mobile LIKE '%$keyword%' OR bp.contact_email LIKE '%$keyword%' OR bp.contact_website LIKE '%$keyword%' OR bp.details LIKE '%$keyword%' OR bp.business_slug LIKE '%$keyword%' OR bp.other_business_type LIKE '%$keyword%' OR bp.other_industrial LIKE '%$keyword%')");
+//        }elseif ($keyword != '' && $busCat != '') {
+//            $this->db->where("(bp.company_name LIKE '%$keyword%' OR bp.address LIKE '%$keyword%' OR bp.contact_person LIKE '%$keyword%' OR bp.contact_mobile LIKE '%$keyword%' OR bp.contact_email LIKE '%$keyword%' OR bp.contact_website LIKE '%$keyword%' OR bp.details LIKE '%$keyword%' OR bp.business_slug LIKE '%$keyword%' OR bp.other_business_type LIKE '%$keyword%' OR bp.other_industrial LIKE '%$keyword%' OR bp.industriyal = '$busCat')");
+//        }
+//        if ($location != '') {
+//            $this->db->where("(ct.city_name = '$location' OR cr.country_name = '$location' OR s.state_name = '$location')");
+//        }
+//        $this->db->where('bp.status', '1');
+//        $this->db->where('bp.is_deleted', '0');
+//        $this->db->where('bp.business_step', '4');
+//        $query = $this->db->get();
+//        $result_array = $query->result_array();
+//        return $result_array;
+    }
 
 }

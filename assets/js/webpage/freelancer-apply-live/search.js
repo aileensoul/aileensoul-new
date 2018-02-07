@@ -1,26 +1,26 @@
 app.controller('freelancerapplySearchListController', function ($scope, $http) {
     $scope.title = title;
-    $scope.businessCategory = {};
-    function businessCategory() {
-        $http.get(base_url + "business_live/businessCategory?limit=24").then(function (success) {
-            $scope.businessCategory = success.data;
-        }, function (error) {});
-    }
-    businessCategory();
-    function otherCategoryCount() {
-        $http.get(base_url + "business_live/otherCategoryCount").then(function (success) {
-            $scope.otherCategoryCount = success.data;
-        }, function (error) {});
-    }
-    otherCategoryCount();
+//    $scope.businessCategory = {};
+//    function businessCategory() {
+//        $http.get(base_url + "business_live/businessCategory?limit=24").then(function (success) {
+//            $scope.businessCategory = success.data;
+//        }, function (error) {});
+//    }
+//    businessCategory();
+//    function otherCategoryCount() {
+//        $http.get(base_url + "business_live/otherCategoryCount").then(function (success) {
+//            $scope.otherCategoryCount = success.data;
+//        }, function (error) {});
+//    }
+//    otherCategoryCount();
     function searchBusiness() {
         var search_data_url = '';
         if (q != '' && l == '') {
-            search_data_url = base_url + 'business_live/searchBusinessData?q=' + q;
+            search_data_url = base_url + 'freelancer_apply_live/searchFreelancerApplyData?q=' + q;
         } else if (q == '' && l != '') {
-            search_data_url = base_url + 'business_live/searchBusinessData?l=' + l;
+            search_data_url = base_url + 'freelancer_apply_live/searchFreelancerApplyData?l=' + l;
         } else {
-            search_data_url = base_url + 'business_live/searchBusinessData?q=' + q + '&l=' + l;
+            search_data_url = base_url + 'freelancer_apply_live/searchFreelancerApplyData?q=' + q + '&l=' + l;
         }
         
         $http.get(search_data_url).then(function (success) {
