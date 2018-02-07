@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="artistSearchListApp" ng-controller="artistSearchListController">
+<html lang="en" ng-app="freelancerapplySearchListApp" ng-controller="freelancerapplySearchListController">
     <head>
         <title ng-bind="title"></title>
         <meta charset="utf-8">
@@ -122,10 +122,12 @@
                                     var header_all_profile = '<?php echo $header_all_profile; ?>';
                                     var q = '<?php echo $q; ?>';
                                     var l = '<?php echo $l; ?>';
-                                    var app = angular.module('artistSearchListApp', ['ui.bootstrap']);
+                                    var f = '<?php echo $f; ?>';
+                                    var p = '<?php echo $p; ?>';
+                                    var app = angular.module('freelancerapplySearchListApp', ['ui.bootstrap']);
         </script>   
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/artist-live/searchArtist.js?ver=' . time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/webpage/artist-live/search.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/freelancer-apply-live/searchfreelancerApply.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/freelancer-apply-live/search.js?ver=' . time()) ?>"></script>
     </body>
 </html>

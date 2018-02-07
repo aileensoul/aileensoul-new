@@ -550,6 +550,8 @@
                                     var header_all_profile = '<?php echo $header_all_profile; ?>';
                                     var q = '';
                                     var l = '';
+                                    var f = '';
+                                    var p = '';
                                     var app = angular.module('freeapplypostApp', ['ui.bootstrap']);
         </script>
 

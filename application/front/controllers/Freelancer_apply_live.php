@@ -32,7 +32,7 @@ class Freelancer_apply_live extends MY_Controller {
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Search - Business Profile | Aileensoul";
         $this->data['search_banner'] = $this->load->view('freelancer_apply_live/search_banner', $this->data, TRUE);
-       
+
         $this->load->view('freelancer_apply_live/freelancer_apply_live', $this->data);
     }
 
@@ -40,7 +40,7 @@ class Freelancer_apply_live extends MY_Controller {
         $postdata = $this->freelancer_apply_model->getfreelancerapplypost();
         echo json_encode($postdata);
     }
-    
+
     public function freelancer_apply_search() {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
