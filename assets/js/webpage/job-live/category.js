@@ -1,18 +1,65 @@
-app.controller('businessCategoryController', function ($scope, $http) {
+app.controller('jobCategoryController', function ($scope, $http) {
     $scope.title = title;
-    $scope.businessAllCategory = {};
-    function businessAllCategory(){
-        $http.get(base_url + "business_live/businessAllCategory").then(function (success) {
-            $scope.businessAllCategory = success.data;
+    $scope.jobCategory = {};
+    $scope.jobCity = {};
+    $scope.jobCompany = {};
+    $scope.jobSkill = {};
+    $scope.latestJob = {};
+
+    function jobCategory() {
+        $http.get(base_url + "job_live/jobCategory?limit=25").then(function (success) {
+            $scope.jobCategory = success.data;
         }, function (error) {});
     }
-    businessAllCategory();
-    function otherCategoryCount(){
-        $http.get(base_url + "business_live/otherCategoryCount").then(function (success) {
-            $scope.otherCategoryCount = success.data;
+    jobCategory();
+
+    function jobCity() {
+        $http.get(base_url + "job_live/jobCity?limit=25").then(function (success) {
+            $scope.jobCity = success.data;
         }, function (error) {});
     }
-    otherCategoryCount();
+    jobCity();
+    function jobCompany() {
+        $http.get(base_url + "job_live/jobCompany?limit=25").then(function (success) {
+            $scope.jobCompany = success.data;
+        }, function (error) {});
+    }
+    jobCompany();
+    function jobSkill() {
+        $http.get(base_url + "job_live/jobSkill?limit=25").then(function (success) {
+            $scope.jobSkill = success.data;
+        }, function (error) {});
+    }
+    jobSkill();
+    function latestJob() {
+        $http({
+            method: 'POST',
+            url: base_url + 'job_live/latestJob',
+            data: '',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    $scope.latestJob = success.data;
+                });
+    }
+    latestJob();
+
+    $scope.applyJobFilter = function () {
+        alert(111);
+        var d = $("#job-cat-filter").serialize();
+        $http({
+            method: 'POST',
+            url: base_url + 'job_live/applyJobFilter',
+            data: d,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    $scope.latestJob = success.data;
+                });
+    }
+    $('#job-cat-filter input').change(function () {
+        $scope.applyJobFilter();
+    });
 });
 
 $(window).on("load", function () {

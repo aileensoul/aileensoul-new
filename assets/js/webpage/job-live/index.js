@@ -7,26 +7,26 @@ app.controller('jobController', function ($scope, $http) {
     $scope.latestJob = {};
 
     function jobCategory() {
-        $http.get(base_url + "job_live/jobCategory?limit=24").then(function (success) {
+        $http.get(base_url + "job_live/jobCategory?limit=25").then(function (success) {
             $scope.jobCategory = success.data;
         }, function (error) {});
     }
     jobCategory();
 
     function jobCity() {
-        $http.get(base_url + "job_live/jobCity?limit=24").then(function (success) {
+        $http.get(base_url + "job_live/jobCity?limit=25").then(function (success) {
             $scope.jobCity = success.data;
         }, function (error) {});
     }
     jobCity();
     function jobCompany() {
-        $http.get(base_url + "job_live/jobCompany?limit=24").then(function (success) {
+        $http.get(base_url + "job_live/jobCompany?limit=25").then(function (success) {
             $scope.jobCompany = success.data;
         }, function (error) {});
     }
     jobCompany();
     function jobSkill() {
-        $http.get(base_url + "job_live/jobSkill?limit=24").then(function (success) {
+        $http.get(base_url + "job_live/jobSkill?limit=25").then(function (success) {
             $scope.jobSkill = success.data;
         }, function (error) {});
     }
@@ -43,10 +43,22 @@ app.controller('jobController', function ($scope, $http) {
                 });
     }
     latestJob();
-    
-    $scope.applyJobFilter = function(){
-        alert(12123132);
+
+    $scope.applyJobFilter = function () {
+        var d = $("#job-filter").serialize();
+        $http({
+            method: 'POST',
+            url: base_url + 'job_live/applyJobFilter',
+            data: d,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    $scope.latestJob = success.data;
+                });
     }
+    $('#job-filter input').change(function () {
+        $scope.applyJobFilter();
+    });
 });
 
 $(window).on("load", function () {

@@ -69,7 +69,7 @@ class Job_live extends MY_Controller {
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['title'] = "Opportunities | Aileensoul";
         $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
-        echo$category_id = $this->db->select('category_id')->get_where('art_category', array('category_slug' => $category))->row_array('category_id');
+        $category_id = $this->db->select('category_id')->get_where('art_category', array('category_slug' => $category))->row_array('category_id');
         $this->data['category_id'] = $category_id['category_id'];
         $this->load->view('job_live/categoryArtistList', $this->data);
     }
@@ -136,6 +136,24 @@ class Job_live extends MY_Controller {
         echo json_encode($latestJob);
     }
     
+    public function applyJobFilter(){
+        
+        echo '<pre>';
+        print_r($_POST);
+        exit;
+        
+        $posting_period = implode(',', $_POST['posting_period']);
+        $experience = implode(',', $_POST['experience']);
+        $category = implode(',', $_POST['category']);
+        $location = implode(',', $_POST['location']);
+        $company = implode(',', $_POST['company']);
+        $skill = implode(',', $_POST['skill']);
+        
+        $job_filter = $this->job_model->applyJobFilter($posting_period,$experience,$category,$location,$company,$skill);
+        echo json_encode($job_filter);
+    }
+
+
     public function searchJobData() {
         $keyword = $_GET['q'];
         $city = $_GET['l'];
