@@ -26,13 +26,13 @@ class Freelancer_apply_live extends MY_Controller {
     }
 
     public function index() {
+        $this->data['search_banner'] = $this->load->view('freelancer_apply_live/search_banner', $this->data, TRUE);
         $this->data['header_profile'] = $this->load->view('header_profile', $this->data, TRUE);
         $this->load->view('freelancer_apply_live/freelancer_apply_live', $this->data);
     }
-    
-    
+
     public function freelancer_apply_live_post() {
-        $postdata = $this->data['postdata'] = $this->freelancer_apply_model->getfreelancerapplypost();
+        $postdata = $this->freelancer_apply_model->getfreelancerapplypost();
         echo json_encode($postdata);
     }
 

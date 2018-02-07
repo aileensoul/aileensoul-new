@@ -1,4 +1,4 @@
-app.controller('searchBusinessController', function ($scope, $window) {
+app.controller('searchFreelancerApplyController', function ($scope, $window) {
     $scope.keyword = q;
     $scope.city = l;
     $scope.searchSubmit = function () {
@@ -9,11 +9,11 @@ app.controller('searchBusinessController', function ($scope, $window) {
         if (keyword == '' && city == '') {
             return false;
         } else if (keyword != '' && city == '') {
-            $window.location.href = base_url + 'business-profile/search?q=' + keyword;
+            $window.location.href = base_url + 'freelancer_apply_live/search?q=' + keyword;
         } else if (keyword == '' && city != '') {
-            $window.location.href = base_url + 'business-profile/search?l=' + city;
+            $window.location.href = base_url + 'freelancer_apply_live/search?l=' + city;
         } else {
-            $window.location.href = base_url + 'business-profile/search?q=' + keyword + '&l=' + city;
+            $window.location.href = base_url + 'freelancer_apply_live/search?q=' + keyword + '&l=' + city;
         }
     }
 });

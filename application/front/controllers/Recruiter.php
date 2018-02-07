@@ -1301,8 +1301,8 @@ class Recruiter extends MY_Controller {
         $updatedata = $this->common->update_data($data, 'save', 'save_id', $saveid);
     }
 
-// REMOVE CANDIDATE END
-// VIEW APPLIED LIST START
+//REMOVE CANDIDATE END
+//VIEW APPLIED LIST START
     public function view_apply_list($id = "") {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $recruiterdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'user_id,designation,rec_firstname,rec_lastname', $join_str = array());

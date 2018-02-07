@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/bootstrap.min.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/animte.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/n-css/animate.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/font-awesome.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/owl.carousel.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/n-css/jquery.mCustomScrollbar.min.css'); ?>">
@@ -15,45 +15,9 @@
 
     </head>
     <body class="profile-main-page">
-        <?php echo $header_profile; ?>
-
+       <?php echo $header_profile; ?>
         <div class="middle-section middle-section-banner">
-            <div class="search-banner">
-                <div class="container">
-                    <div class="text-right pt20">
-                        <a class="btn5" href="#">Create Freelance Apply Profile</a>
-                    </div>
-                    <div class="search-bnr-text">
-                        <h1>Lorem Ipsum the dummy text</h1>
-                    </div>
-                    <div class="search-box">
-                        <form>
-                            <div class="pb20 search-input">
-                                <input type="text" placeholder="Keywords, Title, Or Company">
-                                <input type="text" placeholder="City, State or Country">
-                                <a href="#" class="btn1">Search</a>
-                            </div>
-                            <div class="pt5">
-                                <ul class="work-timing">
-                                    <li>
-                                        <label class="control control--checkbox">Full-Time
-                                            <input type="checkbox"/>
-                                            <div class="control__indicator"></div>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="control control--checkbox">Part-Time
-                                            <input type="checkbox"/>
-                                            <div class="control__indicator"></div>
-                                        </label>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <?php echo $search_banner; ?>
             <div class="container">
                 <div class="left-part">
                     <div class="left-search-box">
@@ -310,8 +274,8 @@
 
                         </div>
                         <div class="all-job-bottom">
-                            <span>Applied Persons: 25</span>
-                            <span class="pl20">Shortlisted Persons: 25</span>
+                            <span>Applied Persons:  {{applypost.ShortListedCount}}</span>
+                            <span class="pl20">Shortlisted Persons:{{applypost.AppliedCount}}</span>
                             <p class="pull-right">
                                 <a href="#" class="btn4">Save</a>
                                 <a href="#" class="btn4">Apply</a>
@@ -590,6 +554,7 @@
         </script>
 
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>  
+          <script src="<?php echo base_url('assets/js/webpage/freelancer-apply-live/searchfreelancerApply.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/webpage/freelancer-apply-live/index.js?ver=' . time()) ?>"></script>
     </body>
 </html>
