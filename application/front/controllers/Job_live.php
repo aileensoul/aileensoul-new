@@ -57,8 +57,8 @@ class Job_live extends MY_Controller {
         $this->data['title'] = "Categories - Artist Profile | Aileensoul";
         $this->load->view('job_live/category', $this->data);
     }
-
-    public function categoryArtistList($category = '') {
+    
+    public function skill($skill_slug = '') {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
         $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
@@ -69,11 +69,47 @@ class Job_live extends MY_Controller {
         $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
-        $this->data['title'] = "Opportunities | Aileensoul";
         $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
-        $category_id = $this->db->select('category_id')->get_where('art_category', array('category_slug' => $category))->row_array('category_id');
-        $this->data['category_id'] = $category_id['category_id'];
-        $this->load->view('job_live/categoryArtistList', $this->data);
+        $category_id = $this->db->select('ji.industry_id')->get_where('job_industry ji', array('industry_slug' => $category_slug))->row_array('ji.industry_id');
+        $this->data['category_id'] = $category_id['industry_id'];
+        $this->data['title'] = "Skills - Artist Profile | Aileensoul";
+        $this->load->view('job_live/skill', $this->data);
+    }
+    
+    public function company($company_slug = '') {
+        $userid = $this->session->userdata('aileenuser');
+        $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
+        $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
+        $this->data['is_userBasicInfo'] = $this->user_model->is_userBasicInfo($userid);
+        $this->data['is_userStudentInfo'] = $this->user_model->is_userStudentInfo($userid);
+        $this->data['is_userPostCount'] = $this->user_post_model->userPostCount($userid);
+        $this->data['header_profile'] = $this->load->view('header_profile', $this->data, TRUE);
+        $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
+        $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
+        $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
+        $category_id = $this->db->select('ji.industry_id')->get_where('job_industry ji', array('industry_slug' => $category_slug))->row_array('ji.industry_id');
+        $this->data['category_id'] = $category_id['industry_id'];
+        $this->data['title'] = "Companies - Artist Profile | Aileensoul";
+        $this->load->view('job_live/company', $this->data);
+    }
+    
+    public function city($city_slug = '') {
+        $userid = $this->session->userdata('aileenuser');
+        $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
+        $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
+        $this->data['is_userBasicInfo'] = $this->user_model->is_userBasicInfo($userid);
+        $this->data['is_userStudentInfo'] = $this->user_model->is_userStudentInfo($userid);
+        $this->data['is_userPostCount'] = $this->user_post_model->userPostCount($userid);
+        $this->data['header_profile'] = $this->load->view('header_profile', $this->data, TRUE);
+        $this->data['n_leftbar'] = $this->load->view('n_leftbar', $this->data, TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
+        $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
+        $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
+        $category_id = $this->db->select('ji.industry_id')->get_where('job_industry ji', array('industry_slug' => $category_slug))->row_array('ji.industry_id');
+        $this->data['category_id'] = $category_id['industry_id'];
+        $this->data['title'] = "Cities - Artist Profile | Aileensoul";
+        $this->load->view('job_live/city', $this->data);
     }
 
     public function job_search() {

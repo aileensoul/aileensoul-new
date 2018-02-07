@@ -19,17 +19,6 @@
             <div class="container">
                 <div class="left-part">
                     <form name="job-cat-filter" id="job-cat-filter">
-                        <div class="left-search-box list-type-bullet">
-                            <div class="">
-                                <h3>Top Categories</h3>
-                            </div>
-                            <ul class="search-listing custom-scroll">
-                                <li ng-repeat="category in jobCategory">
-                                    <label class=""><a href="<?php echo base_url('job/category/') ?>{{category.industry_slug}}"><span ng-bind="category.industry_name | capitalize"></span></a></label>
-                                </li>
-                                <input type="hidden" ng-model="category" name="category[]" id="filter-category-id" value="">
-                            </ul>
-                        </div>
                         <div class="left-search-box">
                             <div class="">
                                 <h3>Top Cities</h3>
@@ -41,6 +30,17 @@
                                         <div class="control__indicator"></div>
                                     </label>
                                 </li>
+                            </ul>
+                        </div>
+                        <div class="left-search-box list-type-bullet">
+                            <div class="">
+                                <h3>Top Categories</h3>
+                            </div>
+                            <ul class="search-listing custom-scroll">
+                                <li ng-repeat="category in jobCategory">
+                                    <label class=""><a href="<?php echo base_url('job/category/') ?>{{category.industry_slug}}"><span ng-bind="category.industry_name | capitalize"></span></a></label>
+                                </li>
+                                <input type="hidden" ng-model="category" name="category[]" id="filter-category-id" value="">
                             </ul>
                         </div>
                         <div class="left-search-box">
