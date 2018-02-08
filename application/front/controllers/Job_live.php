@@ -70,8 +70,8 @@ class Job_live extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
-        $category_id = $this->db->select('ji.industry_id')->get_where('job_industry ji', array('industry_slug' => $category_slug))->row_array('ji.industry_id');
-        $this->data['category_id'] = $category_id['industry_id'];
+        $skill_id = $this->db->select('s.skill_id')->get_where('skill s', array('skill_slug' => $skill_slug))->row_array('s.skill_id');
+        $this->data['skill_id'] = $skill_id['skill_id'];
         $this->data['title'] = "Skills - Artist Profile | Aileensoul";
         $this->load->view('job_live/skill', $this->data);
     }
@@ -106,8 +106,8 @@ class Job_live extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
-        $category_id = $this->db->select('ji.industry_id')->get_where('job_industry ji', array('industry_slug' => $category_slug))->row_array('ji.industry_id');
-        $this->data['category_id'] = $category_id['industry_id'];
+        $city_id = $this->db->select('c.city_id')->get_where('cities c', array('slug' => $city_slug))->row_array('c.city_id');
+        $this->data['city_id'] = $city_id['city_id'];
         $this->data['title'] = "Cities - Artist Profile | Aileensoul";
         $this->load->view('job_live/city', $this->data);
     }

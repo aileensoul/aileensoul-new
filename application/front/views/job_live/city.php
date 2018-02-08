@@ -19,28 +19,28 @@
             <div class="container">
                 <div class="left-part">
                     <form name="job-cat-filter" id="job-cat-filter">
-                        <div class="left-search-box">
+                        <div class="left-search-box list-type-bullet">
                             <div class="">
                                 <h3>Top Cities</h3>
                             </div>
                             <ul class="search-listing custom-scroll">
                                 <li ng-repeat="city in jobCity">
-                                    <label class="control control--checkbox"><span ng-bind="city.city_name | capitalize"></span>
-                                        <input type="checkbox" ng-model="location" name="location[]" ng-value="{{city.city_id}}" ng-change="applyJobFilter()"/>
-                                        <div class="control__indicator"></div>
-                                    </label>
+                                    <label class=""><a href="<?php echo base_url('job/city/') ?>{{city.slug}}"><span ng-bind="city.city_name | capitalize"></span></a></label>
                                 </li>
+                                <input type="hidden" ng-model="location" name="location[]" id="filter-city-id" value="">
                             </ul>
                         </div>
-                        <div class="left-search-box list-type-bullet">
+                        <div class="left-search-box">
                             <div class="">
                                 <h3>Top Categories</h3>
                             </div>
                             <ul class="search-listing custom-scroll">
                                 <li ng-repeat="category in jobCategory">
-                                    <label class=""><a href="<?php echo base_url('job/category/') ?>{{category.industry_slug}}"><span ng-bind="category.industry_name | capitalize"></span></a></label>
+                                    <label class="control control--checkbox"><span ng-bind="category.industry_name | capitalize"></span>
+                                        <input type="checkbox" ng-model="categories" name="category[]" ng-value="{{category.industry_id}}" ng-change="applyJobFilter()"/>
+                                        <div class="control__indicator"></div>
+                                    </label>
                                 </li>
-                                <input type="hidden" ng-model="category" name="category[]" id="filter-category-id" value="">
                             </ul>
                         </div>
                         <div class="left-search-box">
@@ -265,7 +265,7 @@
                                 var header_all_profile = '<?php echo $header_all_profile; ?>';
                                 var q = '';
                                 var l = '';
-                                var category_id = '<?php echo $category_id ?>';
+                                var city_id = '<?php echo $city_id ?>';
                                 var app = angular.module('jobCityApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
