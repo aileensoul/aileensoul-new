@@ -5,10 +5,6 @@ app.controller('searchJobController', function ($scope, $window) {
     $scope.parttime = w.split('+')[1];
     $scope.internship = w.split('+')[2];
     
-    alert($scope.fulltime);
-    alert($scope.parttime);
-    alert($scope.internship);
-    
     $scope.searchSubmit = function () {
 
         var keyword = $scope.keyword.toLowerCase().split(' ').join('+');
@@ -46,4 +42,7 @@ app.controller('searchJobController', function ($scope, $window) {
             $window.location.href = base_url + 'job/search?q=' + keyword + '&l=' + city + '&w=' + work_type;
         }
     }
+    
+    
+    
 });

@@ -201,7 +201,19 @@
                     </div>
                 </div>
                 <div class="middle-part">
-                    <div class="page-title">
+                    <div class="no-data-box" ng-if="latestJob.length == '0'">
+                        <h3>Search result of "<?php echo $search_keyword ?>" </h3>
+                        <div class="no-data-content">
+                            <p><img src="<?php echo base_url('assets/n-images/no-data.png') ?>"></p>
+                            <p class="pt20">Oops No Data Found.</p>
+                            <p class="">
+                                <span>We couldn't find what you were looking for.
+                                    <span>Make sure you used the right keywords.</span>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="page-title" ng-if="latestJob.length != '0'">
                         <h3>Search Result</h3>
                     </div>
                     <div class="all-job-box" ng-repeat="job in latestJob">

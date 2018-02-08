@@ -31,7 +31,7 @@ app.controller('jobSearchListController', function ($scope, $http) {
         }, function (error) {});
     }
     jobSkill();
-    
+
     function searchJob() {
         var search_data_url = '';
         if (q != '' && l == '' && w == '') {
@@ -43,12 +43,28 @@ app.controller('jobSearchListController', function ($scope, $http) {
         } else {
             search_data_url = base_url + 'job_live/searchJobData?q=' + q + '&l=' + l + '&w=' + w;
         }
-        
+
         $http.get(search_data_url).then(function (success) {
             $scope.latestJob = success.data;
         }, function (error) {});
     }
     searchJob();
+
+    $scope.applyJobFilter = function () {
+        var d = $("#job-filter").serialize();
+        $http({
+            method: 'POST',
+            url: base_url + 'job_live/applyJobFilter',
+            data: d,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+                .then(function (success) {
+                    $scope.latestJob = success.data;
+                });
+    }
+    $('#job-filter input').change(function () {
+        $scope.applyJobFilter();
+    });
 
 });
 

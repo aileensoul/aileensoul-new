@@ -241,4 +241,78 @@ class Job_model extends CI_Model {
         return $result_array;
     }
 
+    function findJobCategory($keyword = '') {
+        $this->db->select('industry_id')->from('job_industry ji');
+        if ($keyword != '') {
+            $this->db->where("(ji.industry_name LIKE '%$keyword%')");
+        }
+        $this->db->where('ji.status', '1');
+        $this->db->where('ji.is_delete', '0');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['industry_id'];
+    }
+
+    function findJobSkill($keyword = '') {
+        $this->db->select('skill_id')->from('skill s');
+        if ($keyword != '') {
+            $this->db->where("(s.skill LIKE '%$keyword%')");
+        }
+        $this->db->where('s.status', '1');
+        $query = $this->db->get();
+        $result_array = $query->row_array();
+        return $result_array['skill_id'];
+    }
+
+    function searchJobData($keyword = '', $location = '', $work = '') {
+        $keyword = str_replace('%20', ' ', $keyword);
+        $location = str_replace('%20', ' ', $location);
+        $work = str_replace('%20', ' ', $work);
+        $work = explode(' ', $work);
+
+        $jobCat = $this->findJobCategory($keyword);
+        $jobSkill = $this->findJobSkill($keyword);
+
+        $this->db->select("rp.post_id,rp.post_name,jt.name as string_post_name,rp.post_description,DATE_FORMAT(rp.created_date,'%d-%M-%Y') as created_date,ct.city_name,cr.country_name,rp.min_year,rp.max_year,rp.fresher,CONCAT(r.rec_firstname,' ',r.rec_lastname) as fullname, r.re_comp_name,r.comp_logo")->from('rec_post rp');
+        $this->db->join('recruiter r', 'r.user_id = rp.user_id', 'left');
+        $this->db->join('cities ct', 'ct.city_id = rp.city', 'left');
+        $this->db->join('countries cr', 'cr.country_id = rp.country', 'left');
+        $this->db->join('states s', 's.state_name = rp.state', 'left');
+        $this->db->join('job_title jt', 'jt.title_id = rp.post_name', 'left');
+        if ($keyword != '' && $jobCat == '' && $jobSkill == '') {
+            $this->db->where("(rp.post_name LIKE '%$keyword%' OR jt.name LIKE '%$keyword%' OR rp.post_description LIKE '%$keyword%' OR rp.min_year LIKE '%$keyword%' OR rp.max_year LIKE '%$keyword%' OR r.re_comp_name LIKE '%$keyword%' OR r.rec_firstname LIKE '%$keyword%' OR r.rec_lastname LIKE '%$keyword%' OR rp.other_skill LIKE '%$keyword%')");
+        } elseif ($keyword != '' && $jobCat != '' && $jobSkill == '') {
+            $this->db->where("(rp.post_name LIKE '%$keyword%' OR jt.name LIKE '%$keyword%' OR rp.post_description LIKE '%$keyword%' OR rp.min_year LIKE '%$keyword%' OR rp.max_year LIKE '%$keyword%' OR r.re_comp_name LIKE '%$keyword%' OR r.rec_firstname LIKE '%$keyword%' OR r.rec_lastname LIKE '%$keyword%' OR rp.other_skill LIKE '%$keyword%' OR rp.industry_type = '$jobCat')");
+        } elseif ($keyword != '' && $jobCat != '' && $jobSkill != '') {
+            $this->db->where("(rp.post_name LIKE '%$keyword%' OR jt.name LIKE '%$keyword%' OR rp.post_description LIKE '%$keyword%' OR rp.min_year LIKE '%$keyword%' OR rp.max_year LIKE '%$keyword%' OR r.re_comp_name LIKE '%$keyword%' OR r.rec_firstname LIKE '%$keyword%' OR r.rec_lastname LIKE '%$keyword%' OR rp.other_skill LIKE '%$keyword%' OR rp.industry_type = '$jobCat'  OR FIND_IN_SET(rp.post_skill, '$jobSkill'))");
+        }
+        if ($work[0] != '') {
+            $work_where = '(';
+            foreach ($work as $key => $value) {
+                if ($value == 'fulltime') {
+                    $value = 'Full Time';
+                } else if ($value == 'parttime') {
+                    $value = 'Part Time';
+                } else if ($value == 'internship') {
+                    $value = 'Internship';
+                }
+                $work_where1 .= " rp.emp_type ='$value' OR";
+            }
+            $work_where .= trim($work_where1, 'OR');
+            $work_where .= ')';
+        }
+        if ($work_where) {
+            $this->db->where($work_where);
+        }
+        if ($location != '') {
+            $this->db->where("(ct.city_name = '$location' OR cr.country_name = '$location' OR s.state_name = '$location')");
+        }
+        $this->db->where('rp.status', '1');
+        $this->db->where('rp.is_delete', '0');
+        $this->db->order_by('rp.post_id', 'desc');
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
+
 }
