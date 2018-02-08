@@ -19,18 +19,187 @@
             <?php echo $search_banner; ?>
             <div class="container">
                 <div class="left-part">
-                    <div class="left-search-box list-type-bullet">
+                     <div class="left-search-box">
                         <div class="">
                             <h3>Top Categories</h3>
                         </div>
                         <ul class="search-listing">
-                            <li ng-repeat="category in artistCategory">
-                                <label class=""><a href="<?php echo base_url('artist/category/') ?>{{category.category_slug}}">{{category.art_category | capitalize}}<span class="pull-right">({{category.count}})</span></a></label>
+                            <li>
+                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
                             </li>
                             <li>
-                                <label class=""><a href="<?php echo base_url('artist/category/other') ?>">Other<span class="pull-right">({{otherCategoryCount}})</span></a></label>
+                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+
+                        </ul>
+                        <p class="text-right p10"><a href="#">More Categories</a></p>
+                    </div>
+                    
+                    <div class="left-search-box work-type">
+                        <div class="">
+                            <h3>Work Type</h3>
+                        </div>
+                        <ul class="search-listing pb10 fw">
+                            <li>
+                                <label class="control control--checkbox">Hourly
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">Fixed
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
                             </li>
                         </ul>
+
+                    </div>
+                    
+                     <div class="left-search-box">
+                        <div class="">
+                            <h3>Posting Period</h3>
+                        </div>
+                        <ul class="search-listing">
+                            <li>
+                                <label class="control control--checkbox">Today
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">Last 7 day
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">Last 15 day
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">Last 45 day
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--checkbox">More than 45 days
+                                    <input type="checkbox"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                    
+                      <div class="left-search-box">
+                        <div class="">
+                            <h3>Required Experience</h3>
+                        </div>
+                        <ul class="search-listing">
+                            <li>
+                                <label class="control control--radio">0 to 1 year
+                                    <input type="radio" name="radio" checked="checked"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--radio">1 to 2 year
+                                    <input type="radio" name="radio" checked="checked"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--radio">2 to 3 year
+                                    <input type="radio" name="radio" checked="checked"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--radio">3 to 4 year
+                                    <input type="radio" name="radio" checked="checked"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--radio">4 to 5 year
+                                    <input type="radio" name="radio" checked="checked"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="control control--radio">More than 5 year
+                                    <input type="radio" name="radio" checked="checked"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </li>
+                        </ul>
+
                     </div>
 
                     <div class="custom_footer_left fw">
@@ -74,29 +243,39 @@
                     <div class="page-title">
                         <h3>Search Result</h3>
                     </div>
-                    <div class="all-job-box search-business" ng-repeat="artist in artistList">
-                        <div class="search-business-top">
-                            <div class="bus-cover no-cover-upload">
-                                <a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-if="artist.profile_background"><img ng-src="<?php echo ART_BG_MAIN_UPLOAD_URL ?>{{artist.profile_background}}"></a>
-                                <a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-if="!artist.profile_background"><img ng-src="<?php echo BASEURL . WHITEIMAGE ?>"></a>
-                            </div>
-                            <div class="all-job-top">
-                                <div class="post-img">
-                                    <a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-if="artist.art_user_image"><img ng-src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL ?>{{artist.art_user_image}}"></a>
-                                    <a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-if="!artist.art_user_image"><img ng-src="<?php echo BASEURL . NOARTIMAGE ?>"></a>
-                                </div>
-                                <div class="job-top-detail">
-                                    <h5><a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-bind="artist.fullname | capitalize"></a></h5>
-                                    <h5 ng-if="artist.art_category"><a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-bind="artist.art_category | capitalize"></a></h5>
-                                    <h5 ng-if="!artist.art_category"><a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}" ng-bind="artist.other_skill | capitalize"></a></h5>
-                                </div>
+                    <div class="all-job-box freelance-recommended-post" ng-repeat="applypost in freepostapply">
+                        <div class="all-job-top">
+                            <div class="job-top-detail">
+                                <h5><a href="#">{{applypost.post_name}}(project title) <span>(6 days left)</span></a></h5>
+                                <p><a href="#">Vivek Panday</a></p>
+                                <p>Budget : {{applypost.post_rate}} {{applypost.post_currency}} (hourly/fixed)</p>
                             </div>
                         </div>
                         <div class="all-job-middle">
-                            <ul class="search-detail">
-                                <li><span class="img"><img class="pr10" ng-src="<?php echo base_url('assets/n-images/location.png') ?>"></span> <p class="detail-content"><span ng-bind="artist.city"></span><span ng-if="artist.city">,(</span><span ng-bind="artist.country"></span><span ng-if="artist.city">)</span></p></li>
-                                <li ng-if="artist.art_desc_art"><span class="img"><img class="pr10" ng-src="<?php echo base_url('assets/n-images/exp.png') ?>"></span><p class="detail-content">{{artist.art_desc_art| limitTo:110}}...<a href="<?php echo BASEURL ?>artist/dashboard/{{artist.slug}}"> Read more</a></p></li>
-                            </ul>
+                            <p class="pb5">
+                                <span class="location">
+                                    <span><img class="pr5" src="<?php echo base_url('assets/n-images/location.png?ver=' . time()) ?>">{{applypost.city}},({{applypost.country}})</span>
+                                </span>
+                                <span class="exp">
+                                    <span><img class="pr5" src="<?php echo base_url('assets/n-images/exp.png?ver=' . time()) ?>">Skils: {{applypost.post_skill}} etc..</span>
+                                </span>
+                            </p>
+                            <p>
+                                {{applypost.post_description}} ...<a href="#">Read more</a>
+                            </p>
+                            <p>
+                                Categories : <span>It software development</span>
+                            </p>
+
+                        </div>
+                        <div class="all-job-bottom">
+                            <span>Applied Persons:  {{applypost.ShortListedCount}}</span>
+                            <span class="pl20">Shortlisted Persons:{{applypost.AppliedCount}}</span>
+                            <p class="pull-right">
+                                <a href="#" class="btn4">Save</a>
+                                <a href="#" class="btn4">Apply</a>
+                            </p>
+
                         </div>
                     </div>
                 </div>

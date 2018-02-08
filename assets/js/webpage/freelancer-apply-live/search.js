@@ -34,7 +34,7 @@ app.controller('freelancerapplySearchListController', function ($scope, $http) {
         }
         
         $http.get(search_data_url).then(function (success) {
-            $scope.businessList = success.data;
+            $scope.freepostapply = success.data;
         }, function (error) {});
     }
     searchBusiness();
