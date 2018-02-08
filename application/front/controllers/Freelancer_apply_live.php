@@ -60,14 +60,14 @@ class Freelancer_apply_live extends MY_Controller {
         $this->data['l'] = $_GET['l'];
         $this->load->view('freelancer_apply_live/search', $this->data);
     }
-    
-    
+
     public function searchFreelancerApplyData() {
         $keyword = $_GET['q'];
         $city = $_GET['l'];
         $time = $_GET['t'];
-        $searchFreelancerApplyData = $this->freelancer_apply_model->searchFreelancerApplyData($keyword,$city,$time);
+        $searchFreelancerApplyData = $this->freelancer_apply_model->searchFreelancerApplyData($keyword, $city, $time);
         echo json_encode($searchFreelancerApplyData);
     }
+    
 
 }
