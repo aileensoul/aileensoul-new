@@ -69,5 +69,10 @@ class Freelancer_apply_live extends MY_Controller {
         echo json_encode($searchFreelancerApplyData);
     }
     
-
+    public function freelancerCategory() {
+        $limit = $_GET['limit'];
+        $freelancerCategory = $this->freelancer_apply_model->freelancerCategory($limit);
+        echo json_encode($freelancerCategory);
+        
+    }
 }

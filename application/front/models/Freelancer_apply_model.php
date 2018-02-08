@@ -56,5 +56,20 @@ class Freelancer_apply_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
+    
+    function freelancerCategory($limit = '') {
+        $this->db->select('count(fp.post_id) as count,ji.industry_id,ji.industry_name,ji.industry_slug')->from('job_industry ji');
+        $this->db->join('freelancer_post fp', 'fp.post_field_req = ji.industry_id', 'left');
+        $this->db->where('ji.status', '1');
+        $this->db->where('ji.is_delete', '0');
+        $this->db->where('fp.status', '1');
+        $this->db->where('fp.is_delete', '0');
+        $this->db->group_by('fp.post_field_req');
+        $this->db->order_by('count', 'desc');
+        $this->db->limit($limit);
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
 
 }

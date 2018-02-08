@@ -20,80 +20,16 @@
             <?php echo $search_banner; ?>
             <div class="container">
                 <div class="left-part">
-                    <div class="left-search-box">
+                    <div class="left-search-box list-type-bullet">
                         <div class="">
                             <h3>Top Categories</h3>
                         </div>
-                        <ul class="search-listing">
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
+                        <ul class="search-listing custom-scroll">
+                           
+                            <li ng-repeat="category in freelancerCategory">
+                               <label class=""><a href="<?php echo base_url('freelancer_apply/category/') ?>{{category.industry_slug}}"><span ng-bind="category.industry_name | capitalize"></span><span class="pull-right" ng-bind="'(' + category.count + ')'"></span></a></label>
                             </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="control control--checkbox">IT<span class="pull-right">(50)</span>
-                                    <input type="checkbox"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </li>
-
                         </ul>
-                        <p class="text-right p10"><a href="#">More Categories</a></p>
                     </div>
                     <div class="left-search-box work-type">
                         <div class="">
