@@ -1,33 +1,54 @@
-app.controller('businessSearchListController', function ($scope, $http) {
+app.controller('jobSearchListController', function ($scope, $http) {
     $scope.title = title;
-    $scope.businessCategory = {};
-    function businessCategory() {
-        $http.get(base_url + "business_live/businessCategory?limit=24").then(function (success) {
-            $scope.businessCategory = success.data;
+    $scope.jobCategory = {};
+    $scope.jobCity = {};
+    $scope.jobCompany = {};
+    $scope.jobSkill = {};
+    $scope.latestJob = {};
+
+    function jobCategory() {
+        $http.get(base_url + "job_live/jobCategory?limit=25").then(function (success) {
+            $scope.jobCategory = success.data;
         }, function (error) {});
     }
-    businessCategory();
-    function otherCategoryCount() {
-        $http.get(base_url + "business_live/otherCategoryCount").then(function (success) {
-            $scope.otherCategoryCount = success.data;
+    jobCategory();
+
+    function jobCity() {
+        $http.get(base_url + "job_live/jobCity?limit=25").then(function (success) {
+            $scope.jobCity = success.data;
         }, function (error) {});
     }
-    otherCategoryCount();
-    function searchBusiness() {
+    jobCity();
+    function jobCompany() {
+        $http.get(base_url + "job_live/jobCompany?limit=25").then(function (success) {
+            $scope.jobCompany = success.data;
+        }, function (error) {});
+    }
+    jobCompany();
+    function jobSkill() {
+        $http.get(base_url + "job_live/jobSkill?limit=25").then(function (success) {
+            $scope.jobSkill = success.data;
+        }, function (error) {});
+    }
+    jobSkill();
+    
+    function searchJob() {
         var search_data_url = '';
-        if (q != '' && l == '') {
-            search_data_url = base_url + 'business_live/searchBusinessData?q=' + q;
-        } else if (q == '' && l != '') {
-            search_data_url = base_url + 'business_live/searchBusinessData?l=' + l;
+        if (q != '' && l == '' && w == '') {
+            search_data_url = base_url + 'job_live/searchJobData?q=' + q;
+        } else if (q == '' && l != '' && w == '') {
+            search_data_url = base_url + 'job_live/searchJobData?l=' + l;
+        } else if (q == '' && l == '' && w != '') {
+            search_data_url = base_url + 'job_live/searchJobData?w=' + w;
         } else {
-            search_data_url = base_url + 'business_live/searchBusinessData?q=' + q + '&l=' + l;
+            search_data_url = base_url + 'job_live/searchJobData?q=' + q + '&l=' + l + '&w=' + w;
         }
         
         $http.get(search_data_url).then(function (success) {
-            $scope.businessList = success.data;
+            $scope.latestJob = success.data;
         }, function (error) {});
     }
-    searchBusiness();
+    searchJob();
 
 });
 

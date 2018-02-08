@@ -265,6 +265,7 @@
                                 var header_all_profile = '<?php echo $header_all_profile; ?>';
                                 var q = '';
                                 var l = '';
+                                var w = '';
                                 var category_id = '<?php echo $category_id ?>';
                                 var app = angular.module('jobCategoryApp', ['ui.bootstrap']);
         </script>               

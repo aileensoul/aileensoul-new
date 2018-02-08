@@ -265,6 +265,7 @@
                                 var header_all_profile = '<?php echo $header_all_profile; ?>';
                                 var q = '';
                                 var l = '';
+                                var w = '';
                                 var city_id = '<?php echo $city_id ?>';
                                 var app = angular.module('jobCityApp', ['ui.bootstrap']);
         </script>               

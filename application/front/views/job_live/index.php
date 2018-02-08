@@ -259,6 +259,7 @@
                                     var header_all_profile = '<?php echo $header_all_profile; ?>';
                                     var q = '';
                                     var l = '';
+                                    var w = '';
                                     var app = angular.module('jobApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>

@@ -265,6 +265,7 @@
                                 var header_all_profile = '<?php echo $header_all_profile; ?>';
                                 var q = '';
                                 var l = '';
+                                var w = '';
                                 var company_id = '<?php echo $company_id ?>';
                                 var app = angular.module('jobCompanyApp', ['ui.bootstrap']);
         </script>               

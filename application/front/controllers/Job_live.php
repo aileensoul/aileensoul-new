@@ -126,6 +126,7 @@ class Job_live extends MY_Controller {
         $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
         $this->data['q'] = $_GET['q'];
         $this->data['l'] = $_GET['l'];
+        $this->data['w'] = $_GET['w'];
         $this->load->view('job_live/search', $this->data);
     }
 
@@ -188,9 +189,10 @@ class Job_live extends MY_Controller {
     public function searchJobData() {
         $keyword = $_GET['q'];
         $city = $_GET['l'];
+        $work = $_GET['w'];
 
-        $searchArtistData = $this->job_model->searchArtistData($keyword, $city);
-        echo json_encode($searchArtistData);
+        $searchJobData = $this->job_model->searchJobData($keyword, $city, $work);
+        echo json_encode($searchJobData);
     }
 
     public function job_category_slug() {
