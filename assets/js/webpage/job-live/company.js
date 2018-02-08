@@ -47,7 +47,7 @@ app.controller('jobCompanyController', function ($scope, $http) {
 //    latestJob();
 
     $scope.applyJobFilter = function () {
-        var d = $("#job-cat-filter").serialize();
+        var d = $("#job-company-filter").serialize();
         $http({
             method: 'POST',
             url: base_url + 'job_live/applyJobFilter',
@@ -58,7 +58,7 @@ app.controller('jobCompanyController', function ($scope, $http) {
                     $scope.latestJob = success.data;
                 });
     }
-    $('#job-cat-filter input').change(function () {
+    $('#job-company-filter input').change(function () {
         $scope.applyJobFilter();
     });
     $scope.applyJobFilter();

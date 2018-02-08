@@ -9,7 +9,7 @@
         <div class="search-box">
             <form ng-submit="searchSubmit()">
                 <div class="pb20 search-input">
-                    <input type="text" ng-model="keyword" id="q" name="q" placeholder="Keywords, Title, Or Company" autocomplete="off">
+                    <input type="text" ng-model="keyword" id="q" name="q" placeholder="Keywords, Title, or Company" autocomplete="off">
                     <input type="text" ng-model="city" id="l" name="l" placeholder="City, State or Country" autocomplete="off">
                     <input type="submit" class="btn1" name="submit" value="Search">
                 </div>

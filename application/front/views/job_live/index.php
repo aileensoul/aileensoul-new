@@ -47,7 +47,7 @@
                         </div>
                         <ul class="search-listing custom-scroll">
                             <li ng-repeat="company in jobCompany">
-                                <label class=""><a href="<?php echo base_url('job/company/') ?>{{company.company_slug}}"><span ng-bind="company.company_name | capitalize"></span><span class="pull-right" ng-bind="'(' + company.count + ')'"></span></a></label>
+                                <label class=""><a href="<?php echo base_url('job/company/') ?>{{company.user_id}}"><span ng-bind="company.company_name | capitalize"></span><span class="pull-right" ng-bind="'(' + company.count + ')'"></span></a></label>
                             </li>
                         </ul>
                         <!--<p class="text-right p10"><a href="#">More Categories</a></p>-->

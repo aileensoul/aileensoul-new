@@ -18,16 +18,29 @@
             <?php echo $search_banner ?>
             <div class="container">
                 <div class="left-part">
-                    <form name="job-cat-filter" id="job-cat-filter">
+                    <form name="job-company-filter" id="job-company-filter">
                         <div class="left-search-box list-type-bullet">
+                            <div class="">
+                                <h3>Top Company</h3>
+                            </div>
+                            <ul class="search-listing custom-scroll">
+                                <li ng-repeat="company in jobCompany">
+                                    <label class=""><a href="<?php echo base_url('job/company/') ?>{{company.user_id}}"><span ng-bind="company.company_name | capitalize"></span></a></label>
+                                </li>
+                                <input type="hidden" ng-model="companies" name="company[]" id="filter-company-id" value="">
+                            </ul>
+                        </div>
+                        <div class="left-search-box">
                             <div class="">
                                 <h3>Top Categories</h3>
                             </div>
                             <ul class="search-listing custom-scroll">
                                 <li ng-repeat="category in jobCategory">
-                                    <label class=""><a href="<?php echo base_url('job/category/') ?>{{category.industry_slug}}"><span ng-bind="category.industry_name | capitalize"></span></a></label>
+                                    <label class="control control--checkbox"><span ng-bind="category.industry_name | capitalize"></span>
+                                        <input type="checkbox" ng-model="categories" name="category[]" ng-value="{{category.industry_id}}" ng-change="applyJobFilter()"/>
+                                        <div class="control__indicator"></div>
+                                    </label>
                                 </li>
-                                <input type="hidden" ng-model="category" name="category[]" id="filter-category-id" value="">
                             </ul>
                         </div>
                         <div class="left-search-box">
@@ -38,19 +51,6 @@
                                 <li ng-repeat="city in jobCity">
                                     <label class="control control--checkbox"><span ng-bind="city.city_name | capitalize"></span>
                                         <input type="checkbox" ng-model="location" name="location[]" ng-value="{{city.city_id}}" ng-change="applyJobFilter()"/>
-                                        <div class="control__indicator"></div>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="left-search-box">
-                            <div class="">
-                                <h3>Top Company</h3>
-                            </div>
-                            <ul class="search-listing custom-scroll">
-                                <li ng-repeat="company in jobCompany">
-                                    <label class="control control--checkbox"><span ng-bind="company.company_name | capitalize"></span>
-                                        <input type="checkbox" ng-model="companies" name="company[]" ng-value="{{company.user_id}}" ng-change="applyJobFilter()"/>
                                         <div class="control__indicator"></div>
                                     </label>
                                 </li>
@@ -265,7 +265,7 @@
                                 var header_all_profile = '<?php echo $header_all_profile; ?>';
                                 var q = '';
                                 var l = '';
-                                var category_id = '<?php echo $category_id ?>';
+                                var company_id = '<?php echo $company_id ?>';
                                 var app = angular.module('jobCompanyApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>

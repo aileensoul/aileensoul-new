@@ -76,7 +76,7 @@ class Job_live extends MY_Controller {
         $this->load->view('job_live/skill', $this->data);
     }
     
-    public function company($company_slug = '') {
+    public function company($company_id = '') {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->user_model->getUserSelectedData($userid, $select_data = "u.first_name,u.last_name,ui.user_image");
         $this->data['leftbox_data'] = $this->user_model->getLeftboxData($userid);
@@ -88,8 +88,7 @@ class Job_live extends MY_Controller {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
         $this->data['search_banner'] = $this->load->view('job_live/search_banner', $this->data, TRUE);
-        $category_id = $this->db->select('ji.industry_id')->get_where('job_industry ji', array('industry_slug' => $category_slug))->row_array('ji.industry_id');
-        $this->data['category_id'] = $category_id['industry_id'];
+        $this->data['company_id'] = $company_id;
         $this->data['title'] = "Companies - Artist Profile | Aileensoul";
         $this->load->view('job_live/company', $this->data);
     }
