@@ -5,7 +5,7 @@ app.controller('jobCityController', function ($scope, $http) {
     $scope.jobCompany = {};
     $scope.jobSkill = {};
     $scope.latestJob = {};
-    $scope.city = city_id;
+    $scope.location = city_id;
     $('#filter-city-id').val(city_id);
 
     function jobCategory() {

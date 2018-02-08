@@ -21,13 +21,26 @@
                     <form name="job-cat-filter" id="job-cat-filter">
                         <div class="left-search-box list-type-bullet">
                             <div class="">
+                                <h3>Top Skills</h3>
+                            </div>
+                            <ul class="search-listing custom-scroll">
+                                <li ng-repeat="skill in jobSkill">
+                                    <label class=""><a href="<?php echo base_url('job/skill/') ?>{{skill.skill_slug}}"><span ng-bind="skill.skill | capitalize"></span></a></label>
+                                </li>
+                                <input type="hidden" ng-model="skills" name="skill[]" id="filter-skill-id" value="">
+                            </ul>
+                        </div>
+                        <div class="left-search-box">
+                            <div class="">
                                 <h3>Top Categories</h3>
                             </div>
                             <ul class="search-listing custom-scroll">
                                 <li ng-repeat="category in jobCategory">
-                                    <label class=""><a href="<?php echo base_url('job/category/') ?>{{category.industry_slug}}"><span ng-bind="category.industry_name | capitalize"></span></a></label>
+                                    <label class="control control--checkbox"><span ng-bind="category.industry_name | capitalize"></span>
+                                        <input type="checkbox" ng-model="categories" name="category[]" ng-value="{{category.industry_id}}" ng-change="applyJobFilter()"/>
+                                        <div class="control__indicator"></div>
+                                    </label>
                                 </li>
-                                <input type="hidden" ng-model="category" name="category[]" id="filter-category-id" value="">
                             </ul>
                         </div>
                         <div class="left-search-box">
@@ -56,19 +69,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="left-search-box">
-                            <div class="">
-                                <h3>Top Skills</h3>
-                            </div>
-                            <ul class="search-listing custom-scroll">
-                                <li ng-repeat="skill in jobSkill">
-                                    <label class="control control--checkbox"><span ng-bind="skill.skill | capitalize"></span>
-                                        <input type="checkbox" ng-model="skills" name="skill[]" ng-value="{{skill.skill_id}}" ng-change="applyJobFilter()"/>
-                                        <div class="control__indicator"></div>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
+                        
                         <div class="left-search-box">
                         <div class="accordion" id="accordion2">
                             <div class="accordion-group">
@@ -265,7 +266,7 @@
                                 var header_all_profile = '<?php echo $header_all_profile; ?>';
                                 var q = '';
                                 var l = '';
-                                var category_id = '<?php echo $category_id ?>';
+                                var skill_id = '<?php echo $skill_id ?>';
                                 var app = angular.module('jobSkillApp', ['ui.bootstrap']);
         </script>               
         <script src="<?php echo base_url('assets/js/webpage/user/user_header_profile.js?ver=' . time()) ?>"></script>
