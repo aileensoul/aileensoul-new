@@ -75,4 +75,8 @@ class Freelancer_apply_live extends MY_Controller {
         echo json_encode($freelancerCategory);
         
     }
+    
+    public function categoryFreelancerList($cat_slug = ""){
+        echo 123; die();
+    }
 }

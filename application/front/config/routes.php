@@ -256,7 +256,9 @@ $route['freelance-work'] = "freelancer/freelancer_post";
 $route['freelance-work/profile/live-post'] = "freelancer/registation";
 $route['freelance-work/profile/live-post/(:any)'] = "freelancer/registation/$1";
 
-
+$route['freelance-work'] = "freelancer_apply_live/index";
+$route['freelance-work/category'] = "freelancer_apply_live/category";
+$route['freelance-work/category/(:any)'] = "freelancer_apply_live/categoryFreelancerList/$1";
 
 /* Report Route end */
 

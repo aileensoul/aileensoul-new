@@ -27,7 +27,7 @@
                         <ul class="search-listing custom-scroll">
                            
                             <li ng-repeat="category in freelancerCategory">
-                               <label class=""><a href="<?php echo base_url('freelancer_apply/category/') ?>{{category.industry_slug}}"><span ng-bind="category.industry_name | capitalize"></span><span class="pull-right" ng-bind="'(' + category.count + ')'"></span></a></label>
+                               <label class=""><a href="<?php echo base_url('freelance-work/category/') ?>{{category.industry_slug}}"><span ng-bind="category.industry_name | capitalize"></span><span class="pull-right" ng-bind="'(' + category.count + ')'"></span></a></label>
                             </li>
                         </ul>
                     </div>
