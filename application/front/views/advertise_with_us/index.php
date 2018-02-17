@@ -122,7 +122,7 @@ header('Cache-Control: public, max-age=30');
                             <p style="padding-left: 46px;"><b>Steps</b><br></p>
                             <ol class="cust-step">
                                 <li class="bg-col">Discuss your Requirement.</li>
-                                <li class="bg-col">Choose a perticular package.</li>
+                                <li class="bg-col">Choose a particular package.</li>
                                 <li class="bg-col">Accept the Agreement.</li>
                                 <li class="bg-col">Proceed with the payment.</li>
                                 <li class="bg-col">Your advertisement will be displayed.</li>
@@ -147,6 +147,8 @@ header('Cache-Control: public, max-age=30');
                 </div>
 
 
+
+
   <div class="container">
                     <div class="pt10">
                         <div class="titlea">
@@ -159,6 +161,43 @@ header('Cache-Control: public, max-age=30');
                        
                     </div>
                 </div>
+
+
+                 <div class="container">
+                    <div class="pt10">
+                        <div class="titlea">
+                            <h2 class="pb20" style="font-size: 40px;line-height:45px;color: #1b8ab9;padding-top: 20px;">Your target Audience. ?</h2>
+                        </div>
+                        <div class="about-content">
+                          <p>
+                            <img class="pull-right" src="<?php echo base_url('assets/img/HowtoAdvertiseWithUs.jpg') ?>">
+                            <p style="padding-left: 46px;"><b>Steps</b><br></p>
+                            <ol class="cust-step">
+                                <li class="bg-col">Discuss your Requirement.</li>
+                                <li class="bg-col">Choose a perticular package.</li>
+                                <li class="bg-col">Accept the Agreement.</li>
+                                <li class="bg-col">Proceed with the payment.</li>
+                                <li class="bg-col">Your advertisement will be displayed.</li>
+                            </ol>
+                            
+                            
+                            
+                            
+                            
+                         </p>    
+                        
+                        </div>
+                       <!--  <p class="text-center"><img src="<?php //echo base_url('assets/img/message.png'); ?>"></p> -->
+                        <!-- <div class="text-center">
+                            <ul class="mail-sent">
+                                <li><a title="Email us" href="mailto:hr@aileensoul.com">hr@aileensoul.com</a></li>
+                                <li><a title="Email us" href="mailto:info@aileensoul.com">info@aileensoul.com</a></li>
+                                <li><a title="Email us" href="mailto:inquiry@aileensoul.com">inquiry@aileensoul.com</a></li>
+                            </ul>
+                        </div> -->
+                    </div>
+                </div>
+
 
 
 
