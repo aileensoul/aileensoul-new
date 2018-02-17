@@ -166,14 +166,35 @@ header('Cache-Control: public, max-age=30');
                  <div class="container">
                     <div class="pt10">
                         <div class="titlea">
-                            <h2 class="pb20" style="font-size: 40px;line-height:45px;color: #1b8ab9;padding-top: 20px;">Your target Audience. </h2>
+                            <h2 class="pb20" style="font-size: 40px;line-height:45px;color: #1b8ab9;padding-top: 20px;">our Audience. </h2>
                         </div>
                         <div class="about-content">
                           <div>
                             <ul>
-                                <li style="list-style-type: none;width: 22%;float: left;border:1px solid #d9d9d9;padding: 10px;"><img src="<?php echo base_url('assets/img/Freelnace.jpg') ?>" style="height: 150px;width: 188px;"><br>
-                                    <b style="line-height: 30px;text-align: none !important;font-size: 20px;">Freelance-hire (Employer) Profile</b>
+                                <li style="list-style-type: none;width: 31%;float: left;border:1px solid #d9d9d9;padding: 10px;
+                                margin: -14px;margin-right:7px "><img src="<?php echo base_url('assets/img/Freelnace.jpg') ?>" style="height: 150px;width: 275px;"><br>
+                                    <b style="line-height: 30px;text-align: none !important;font-size: 20px;">Freelance-Employer Profile</b>
                                 <p style="line-height: 25px;font-size: 16px;text-align: justify;"> We have more then 300 clients from all over the world who gives freelance Project to freelancer. We can display your business advertise in that module so that you can get more leads regarding your business.</p></li>
+
+                                <li style="list-style-type: none;width: 31%;float: left;border:1px solid #d9d9d9;padding: 10px;margin: 10px"><img src="<?php echo base_url('assets/img/Business.jpg') ?>" style="height: 150px;width: 275px;"><br>
+                                    <b style="line-height: 30px;text-align: none !important;font-size: 20px;">business profile</b>
+                                <p style="line-height: 25px;font-size: 16px;text-align: justify;">  This is B2B marketplace so you can expand your business network, We also display Your advertise in this module so you can grow your B2B contacts.</p></li>
+
+                                <li style="list-style-type: none;width: 31%;float: left;border:1px solid #d9d9d9;padding: 10px;margin: 10px"><img src="<?php echo base_url('assets/img/Artist.jpg') ?>" style="height: 150px;width: 275px;"><br>
+                                    <b style="line-height: 30px;text-align: none !important;font-size: 20px;">Artistic profile</b>
+                                <p style="line-height: 25px;font-size: 16px;text-align: justify;">   We have artistic profile, in that profile we can show you advertise so if some artist wants to make mobile application or website they will contact you. So it is also beneficial for your business.</p></li>
+
+                           <li style="list-style-type: none;width: 31%;float: left;border:1px solid #d9d9d9;padding: 10px;margin: 10px"><img src="<?php echo base_url('assets/img/freelance-apply.jpg') ?>" style="height: 150px;width: 275px;"><br>
+                           <b style="line-height: 30px;text-align: none !important;font-size: 20px;">freelance apply Profile</b>
+                                <p style="line-height: 25px;font-size: 16px;text-align: justify;"> We have an advantage over this profile that it contains users from different age group and different countries. So core benefit from this profile is that your company branding will expand and more and more people will aware regarding to your business.</p></li>  
+
+                           <li style="list-style-type: none;width: 31%;float: left;border:1px solid #d9d9d9;padding: 10px;margin: 10px"><img src="<?php echo base_url('assets/img/recruiter.jpg') ?>" style="height: 150px;width: 275px;"><br>
+                           <b style="line-height: 30px;text-align: none !important;font-size: 20px;">Recruiter Profile</b>
+                                <p style="line-height: 25px;font-size: 16px;text-align: justify;"> We have an advantage over this profile that it contains users from different age group and different countries. So core benefit from this profile is that your company branding will expand and more and more people will aware regarding to your business.</p></li>  
+                                <li style="list-style-type: none;width: 31%;float: left;border:1px solid #d9d9d9;padding: 10px;margin: 10px"><img src="<?php echo base_url('assets/img/Job-Seeker-.jpg') ?>" style="height: 150px;width: 275px;"><br>
+                           <b style="line-height: 30px;text-align: none !important;font-size: 20px;">Job profile</b>
+                                <p style="line-height: 25px;font-size: 16px;text-align: justify;"> We have an advantage over this profile that it contains users from different age group and different countries. So core benefit from this profile is that your company branding will expand and more and more people will aware regarding to your business.</p></li>  
+
                                 <!-- <li><img src="<?php// echo base_url('assets/img/Business.jpg') ?>" style="height: 150px;width: 150px;">
                                     <b>business profile:-</b>
                                 <p> This is B2B marketplace so you can expand your business network, We also display Your advertise in this module so you can grow your B2B contacts.</p></li>
