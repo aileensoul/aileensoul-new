@@ -2641,8 +2641,33 @@ header .col-md-4.col-sm-3 a{display: inline-block;}
                 z-index: 999 !important;
 }
 
-.about-content .cust-step li{background: #d9d9d9;color: #5c5c5c;padding-left: 15px;margin: 5px;list-style-type: decimal;}
+.about-content .cust-step li{background: #d9d9d9;color: #5c5c5c;padding-left: 15px;margin: 5px;width: 45%;}
+/*.about-content .cust-step .bg-col:before{background: #5c5c5c;color: #fff;}*/
 .about-content b{font-size: 22px;}
+
+
+.bg-col:before {
+  background-color: #5c5c5c;
+  color: #fff;
+  padding:8px;
+}
+ol {
+  counter-reset: myOrderedListItemsCounter;
+}
+ol li {
+  list-style-type: none;
+  position: relative;
+}
+ol li:before {
+  counter-increment: myOrderedListItemsCounter;
+  content: counter(myOrderedListItemsCounter)".";
+  margin-right: 0.5em;
+}
+
+
+
+
+
 @media screen and (min-height:540px){
     .cover .modal-content{
         margin:0 auto

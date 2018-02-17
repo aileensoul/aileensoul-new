@@ -119,14 +119,14 @@ header('Cache-Control: public, max-age=30');
                         <div class="about-content">
                           <p>
                             <img class="pull-right" src="<?php echo base_url('assets/img/HowtoAdvertiseWithUs.jpg') ?>">
-                            <b>Steps</b>:-<br>
-                            <ul class="cust-step">
-                                <li>Discuss your Requirement.</li>
-                                <li>Choose a perticular package.</li>
-                                <li>Accept the Agreement.</li>
-                                <li>Proceed with the payment.</li>
-                                <li>Your advertisement will be displayed.</li>
-                            </ul>
+                            <p style="padding-left: 46px;"><b>Steps</b><br></p>
+                            <ol class="cust-step">
+                                <li class="bg-col">Discuss your Requirement.</li>
+                                <li class="bg-col">Choose a perticular package.</li>
+                                <li class="bg-col">Accept the Agreement.</li>
+                                <li class="bg-col">Proceed with the payment.</li>
+                                <li class="bg-col">Your advertisement will be displayed.</li>
+                            </ol>
                             
                             
                             
@@ -147,26 +147,16 @@ header('Cache-Control: public, max-age=30');
                 </div>
 
 
-   <div class="container">
+  <div class="container">
                     <div class="pt10">
                         <div class="titlea">
-                            <h1 class="pb20">How your advertise Display?</h1>
+                            <h1 class="pb20">How your advertise display?</h1>
                         </div>
                         <div class="about-content">
-                          <p>
-                            <img class="pull-left" src="<?php echo base_url('assets/img/Advertisedisplay.jpg') ?>">
-                            Founded in 2017, Aileensoul is a new age portal that amalgamates a variety of career-oriented services into a single unified platform with an aim to address the needs of  jobseekers, recruiters, business professionals, freelancers and artists - all under one roof! Introduced to fulfil one of the most fundamental and important aspects of an individual’s life - one’s desire to land a rewarding and successful career for himself or herself - Aileensoul’s futuristic platform serves to launch and advance the careers of first-time jobseekers, experienced business 
-                         </p>    
-                        
+                        <img style="width:100%;" src="<?php echo base_url('assets/img/Advertisedisplay.jpg') ?>">
+                            
                         </div>
-                       <!--  <p class="text-center"><img src="<?php //echo base_url('assets/img/message.png'); ?>"></p> -->
-                        <!-- <div class="text-center">
-                            <ul class="mail-sent">
-                                <li><a title="Email us" href="mailto:hr@aileensoul.com">hr@aileensoul.com</a></li>
-                                <li><a title="Email us" href="mailto:info@aileensoul.com">info@aileensoul.com</a></li>
-                                <li><a title="Email us" href="mailto:inquiry@aileensoul.com">inquiry@aileensoul.com</a></li>
-                            </ul>
-                        </div> -->
+                       
                     </div>
                 </div>
 
