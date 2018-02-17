@@ -150,7 +150,7 @@ header('Cache-Control: public, max-age=30');
    <div class="container">
                     <div class="pt10">
                         <div class="titlea">
-                            <h1 class="pb20">How your advertise Deiplay?</h1>
+                            <h1 class="pb20">How your advertise Display?</h1>
                         </div>
                         <div class="about-content">
                           <p>
