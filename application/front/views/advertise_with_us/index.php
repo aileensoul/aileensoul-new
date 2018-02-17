@@ -114,7 +114,7 @@ header('Cache-Control: public, max-age=30');
                 <div class="container">
                     <div class="pt10">
                         <div class="titlea">
-                            <h1 class="pb20">How to Advertise with us?</h1>
+                            <h2 class="pb20" style="font-size: 40px;line-height:45px;color: #1b8ab9;padding-top: 20px;">How to Advertise with us ?</h2>
                         </div>
                         <div class="about-content">
                           <p>
