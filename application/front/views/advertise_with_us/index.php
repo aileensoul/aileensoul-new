@@ -63,6 +63,7 @@ header('Cache-Control: public, max-age=30');
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/n-css/component.css?ver=' . time()); ?>" />
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/n-css/n-commen.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/n-css/n-style.css?ver=' . time()); ?>">
+            <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver='.time()) ?>">
         <?php } else { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/n-css/bootstrap.min.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/n-css/animte.css?ver=' . time()); ?>">
@@ -72,6 +73,7 @@ header('Cache-Control: public, max-age=30');
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/n-css/component.css?ver=' . time()); ?>" />
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/n-css/n-commen.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/n-css/n-style.css?ver=' . time()); ?>">
+            <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver='.time()) ?>">
         <?php } ?>
     </head>
     <body class="main-db add-with-us">
@@ -108,11 +110,34 @@ header('Cache-Control: public, max-age=30');
                 <img src="<?php echo base_url('assets/n-images/add-with-us.jpg') ?>" alt="Advertise With Us">
                 <h1>Promote Your Business With Aileensoul</h1>
             </div>
-            <div class="container">
+            <section class="middle-main">
+                <div class="container">
+                    <div class="pt10">
+                        <div class="titlea">
+                            <h1 class="pb20">About Aileensoul</h1>
+                        </div>
+                        <div class="about-content">
+                          <p>
+                            <img class="pull-right" src="<?php echo base_url('assets/img/HowtoAdvertiseWithUs.jpg') ?>">
+                            Founded in 2017, Aileensoul is a new age portal that amalgamates a variety of career-oriented services into a single unified platform with an aim to address the needs of  jobseekers, recruiters, business professionals, freelancers and artists - all under one roof! Introduced to fulfil one of the most fundamental and important aspects of an individual’s life - one’s desire to land a rewarding and successful career for himself or herself - Aileensoul’s futuristic platform serves to launch and advance the careers of first-time jobseekers, experienced business professionals/consultants and upcoming/veteran artists. 
+                         </p>    
+                        
+                        </div>
+                       <!--  <p class="text-center"><img src="<?php //echo base_url('assets/img/message.png'); ?>"></p> -->
+                        <!-- <div class="text-center">
+                            <ul class="mail-sent">
+                                <li><a title="Email us" href="mailto:hr@aileensoul.com">hr@aileensoul.com</a></li>
+                                <li><a title="Email us" href="mailto:info@aileensoul.com">info@aileensoul.com</a></li>
+                                <li><a title="Email us" href="mailto:inquiry@aileensoul.com">inquiry@aileensoul.com</a></li>
+                            </ul>
+                        </div> -->
+                    </div>
+                </div>
+            <!-- <div class="container">
                 <div class="add-form">
-                    <h3>Advertise With Us</h3>
+                    <h3>Advertise With Us</h3> -->
 					
-                    <form name="advertise" id="advertise" method="POST">
+                    <!-- <form name="advertise" id="advertise" method="POST">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
@@ -147,8 +172,8 @@ header('Cache-Control: public, max-age=30');
 
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </form> -->
+                <!-- </div> -->
 				<p class="text-center more-support">For more support <a href="mailto:inquiry@aileensoul.com">inquiry@aileensoul.com</a>
 			</div>
         </div>
