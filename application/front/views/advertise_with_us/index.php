@@ -169,23 +169,25 @@ header('Cache-Control: public, max-age=30');
                             <h2 class="pb20" style="font-size: 40px;line-height:45px;color: #1b8ab9;padding-top: 20px;">Your target Audience. </h2>
                         </div>
                         <div class="about-content">
-                          <p>
+                          <div>
                             <ul>
-                                <li><b>Freelance hire (Employer) Profile:-</b>
+                                <li><img src="<?php echo base_url('assets/img/Freelnace.jpg') ?>" style="height: 150px;width: 200px;"><br>
+                                    <b>Freelance hire (Employer) Profile:-</b>
                                 <p> We have more then 300 clients from all over the world who gives freelance Project to freelancer. We can display your business advertise in that module so that you can get more leads regarding your business.</p></li>
-                                <li><b>business profile:-</b>
+                                <!-- <li><img src="<?php// echo base_url('assets/img/Business.jpg') ?>" style="height: 150px;width: 150px;">
+                                    <b>business profile:-</b>
                                 <p> This is B2B marketplace so you can expand your business network, We also display Your advertise in this module so you can grow your B2B contacts.</p></li>
                                 <li><b>Artistic profile:- </b>
                                 <p>  We have artistic profile, in that profile we can show you advertise so if some artist wants to make mobile application or website they will contact you. So it is also beneficial for your business.</p></li>
                                 <li><b>Job profile & freelance apply Profile:-</b>
-                                <p>  We have an advantage over this profile that it contains users from different age group and different countries. So core benefit from this profile is that your company branding will expand and more and more people will aware regarding to your business.</p></li>
+                                <p>  We have an advantage over this profile that it contains users from different age group and different countries. So core benefit from this profile is that your company branding will expand and more and more people will aware regarding to your business.</p></li> -->
                             </ul>
                             
                             
                             
                             
                             
-                         </p>    
+                         </div>    
                         
                         </div>
                        <!--  <p class="text-center"><img src="<?php //echo base_url('assets/img/message.png'); ?>"></p> -->
