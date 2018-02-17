@@ -114,7 +114,7 @@ header('Cache-Control: public, max-age=30');
                 <div class="container">
                     <div class="pt10">
                         <div class="titlea">
-                            <h1 class="pb20">About Aileensoul</h1>
+                            <h1 class="pb20">How to Advertise with us?</h1>
                         </div>
                         <div class="about-content">
                           <p>
@@ -133,11 +133,11 @@ header('Cache-Control: public, max-age=30');
                         </div> -->
                     </div>
                 </div>
-            <!-- <div class="container">
+            <div class="container">
                 <div class="add-form">
-                    <h3>Advertise With Us</h3> -->
+                    <h3>Advertise With Us</h3>
 					
-                    <!-- <form name="advertise" id="advertise" method="POST">
+                    <form name="advertise" id="advertise" method="POST">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
@@ -172,8 +172,8 @@ header('Cache-Control: public, max-age=30');
 
                             </div>
                         </div>
-                    </form> -->
-                <!-- </div> -->
+                    </form>
+                </div>
 				<p class="text-center more-support">For more support <a href="mailto:inquiry@aileensoul.com">inquiry@aileensoul.com</a>
 			</div>
         </div>
