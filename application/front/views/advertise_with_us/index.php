@@ -172,7 +172,7 @@ header('Cache-Control: public, max-age=30');
                           <div>
                             <ul>
                                 <li style="list-style-type: none;width: 22%;float: left;border:1px solid #d9d9d9;padding: 10px;"><img src="<?php echo base_url('assets/img/Freelnace.jpg') ?>" style="height: 150px;width: 188px;"><br>
-                                    <b style="line-height: 30px;text-align: center !important;">Freelance hire (Employer) Profile:-</b>
+                                    <b style="line-height: 30px;text-align: none !important;font-size: 20px;">Freelance-hire (Employer) Profile</b>
                                 <p style="line-height: 25px;font-size: 16px;text-align: justify;"> We have more then 300 clients from all over the world who gives freelance Project to freelancer. We can display your business advertise in that module so that you can get more leads regarding your business.</p></li>
                                 <!-- <li><img src="<?php// echo base_url('assets/img/Business.jpg') ?>" style="height: 150px;width: 150px;">
                                     <b>business profile:-</b>
